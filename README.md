@@ -91,6 +91,9 @@ When working with a new world, your project folder will evolve to look like this
 - `Editor_Critique_[Round N].md`: Feedback generated during Phase 3's structural validation loops.
 - `Voice_Audit_Report`, `Arc_Transition_Audit`, `Intimacy_Audit_Report`: Feedback and pass/fail reports from the Phase 3 validation auditors.
 
+**workflows/ (Pipeline Instructions):**
+- `world-forge.md`: The main pipeline instructions document. This is the master file that your AI agent references to run the agentic start and guide the entire process.
+
 **templates/ (Reference Materials):**
 - Contains `.md` and `.json` reference files used by The Compiler and The Prompt Engineer to ensure all output is correctly formatted for SillyTavern.
 
