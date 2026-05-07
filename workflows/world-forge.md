@@ -68,8 +68,10 @@ description: A workflow to build worlds for player to roleplay in.
       |
       v
  PHASE 5: THE PROMPT ENGINEER
- Audits runtime correctness + authors Chat Completion Preset JSON.
+ Audits runtime correctness (read-only on Export/) + authors Chat Completion Preset JSON.
+ Recommends corrections for any conflicts found — manual user application required.
       |
+      |-- [Recommendations in Sections 7/8?] --> PHASE 5.5: MANUAL APPLY
       v
  ✅ PIPELINE COMPLETE
 ```
@@ -270,11 +272,29 @@ In SillyTavern: import `Group_Lorebook.json`, enable World + character groups + 
 
 **Read `Notes_On_functionality.md` completely before beginning. Load `templates/Chat_Completion_Preset_template.json` as the structural reference for Workstream B — do not author the preset from scratch.**
 
-**Workstream A — Audit:** Reviews every lorebook entry (including intimacy profiles and registers) for position correctness, injection order, keyword coverage, token budget risk. Reviews every character card for `system_prompt`, `post_history_instructions`, and `depth_prompt`. Produces audit report with corrected entry blocks ready to apply.
+**Workstream A — Audit (read-only against Export/):** Reviews every lorebook entry (including intimacy profiles and registers) for position correctness, injection order, keyword coverage, token budget risk. Reviews every character card for `system_prompt`, `post_history_instructions`, and `depth_prompt`. Produces audit report with **recommended corrections** for any issues found. The Prompt Engineer does NOT modify Export/ JSON files — recommendations are surfaced in Sections 7 and 8 of the audit report as plain-text instructions for the user to apply manually. The audit report's status line distinguishes "COMPLETE — pipeline ready" (no recommendations generated) from "AUDIT COMPLETE — N manual corrections required" (recommendations outstanding).
 
 **Workstream B — Chat Preset:** Begins with the Section 5.0b Block Selection Rationale — an analytical write-up that names this world's archetype, predicts 4-8 specific runtime failure modes, and maps each failure mode to the block(s) that address it. Block selection is the *outcome* of this analysis, not a checklist. The agent then starts from `templates/Chat_Completion_Preset_template.json` and authors content for the 8 core blocks (Main, Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Formatting, Jailbreak), enables/disables the 2 conditional core blocks (Multi-Character Dynamics for 2+ AI cards or Director NPC; NSFW for Section 8 in scope), and adds optional blocks from the menu (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction) or custom blocks as the Rationale warrants. NSFW when enabled covers thematic function discipline, voice & sound register (onomatopoeia mapped to body reactions, slurred speech mechanics, voice register shifts), body coordination (pre-scene retrieval of physical facts, multi-body geometry mapping, narrated adaptation when geometry doesn't work natively), hard limits, and world hard rules. Verifies `forbid_overrides: false` on `main` and `jailbreak`. Runs the Section 5f Pass 1 + Pass 2 self-validation before saving. Produces `[WorldName]_ChatPreset.json` ready for ST import.
 
-Appends SIGN-OFF to audit file. → **PIPELINE COMPLETE.**
+Appends SIGN-OFF to audit file.
+
+---
+
+## PHASE 5.5: MANUAL CORRECTION APPLICATION (conditional)
+
+**Invoke:** Manual user action — no agent runs this phase
+**Input:** `Export/Prompt_Engineer_Audit.md` Sections 7 and 8
+**Output:** Modified `Export/[CharName]_Card.json` and `Export/[LorebookName].json` files
+
+**Conditional phase.** Runs only if the Prompt Engineer's audit report contains recommendations in Sections 7 or 8. If the audit report's status is "COMPLETE — pipeline ready" with no recommendations, this phase is skipped.
+
+The user opens each file named in the audit's "Files With Recommended Corrections" sign-off block, locates the entry or field referenced by the recommendation, replaces the current value with the recommended value, and saves. After all recommendations have been applied, the world is ready for SillyTavern import.
+
+This phase exists because the Prompt Engineer operates with read-only authority on Export/ JSON files (audit/apply separation). Direct modification by the auditor would produce self-validating corrections with no review gate. Manual application by the user keeps the audit reviewable: corrections can be inspected, modified, or rejected before they reach the final files.
+
+For users who find manual application onerous on large worlds, a future pipeline iteration may add an automated apply step. As of this version, application is manual.
+
+→ **PIPELINE COMPLETE.**
 
 ---
 
@@ -291,6 +311,7 @@ Appends SIGN-OFF to audit file. → **PIPELINE COMPLETE.**
 | **Phase 3.7 Critical** | Intimacy Auditor flags Critical failures | Relevant Architect revises, re-runs through Editor and Intimacy Auditor |
 | **Phase 3.7 Conflict** | Function/substrate contradiction found | User decides: change substrate, change function, or accept the failure |
 | **Phase 4 Missing Templates** | Template file not found | Add to `templates/`, then `/worldforge resume phase4` |
+| **Phase 5 Audit Recommendations** | Sections 7/8 of `Prompt_Engineer_Audit.md` contain corrections | Open named Export/ files, apply each recommendation manually, save. Pipeline is COMPLETE only after all recommendations are applied. |
 
 ---
 
