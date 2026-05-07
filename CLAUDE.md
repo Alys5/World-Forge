@@ -1,0 +1,210 @@
+# CLAUDE.md
+
+> Standing context for AI coding agents (Claude Code, Antigravity, similar) working on this repository. This file is read first on every session start. It tells you what this project is, what the load-bearing architectural decisions are, and what rules govern safe modification of the pipeline files.
+
+---
+
+## What this repository is
+
+World Forge is a **multi-agent pipeline for building immersive roleplay worlds for SillyTavern**. It is not application code in the traditional sense — it is a curated collection of agent specifications (markdown), templates (markdown and JSON), and orchestration logic (markdown) that together define a structured creative writing pipeline.
+
+The pipeline is designed to run inside an agentic VS Code extension (typically Roo Code in Orchestrator mode). When invoked, it walks a user from a raw idea through 5+ phases of structured drafting and validation, producing a complete SillyTavern-ready world package.
+
+**The repository is the pipeline itself.** Editing files here changes how the pipeline behaves on its next run. There is no compilation step, no test suite, no deployment — files are read directly by the runtime agent.
+
+---
+
+## What this repository is NOT
+
+- **Not a SillyTavern fork or extension.** SillyTavern is the runtime environment that consumes the pipeline's outputs. This repo produces files for SillyTavern; it does not modify SillyTavern itself.
+- **Not a runtime engine.** The pipeline does not execute — it is consumed by an agentic IDE extension (Roo Code) that orchestrates LLM calls. Do not add execution logic, build steps, or deployment configuration.
+- **Not a code project.** The "code" here is markdown agent specifications. Treat them as you would treat carefully-versioned prose documents, not as source code.
+- **Not for editing during pipeline runs.** When a user is actively running `/worldforge start`, the pipeline files are being read by the runtime agent. Editing them mid-run produces undefined behavior.
+
+---
+
+## Repository structure (authoritative)
+
+```
+World-Forge/
+├── README.md                         ← Human-facing project description
+├── tutorial.md                       ← Usage tutorial
+├── Notes_On_functionality.md         ← Authoritative reference: how SillyTavern works internally
+├── .gitignore
+├── agent_roles/                      ← Phase-specific agent specifications
+│   ├── 00_The_Interviewer.md
+│   ├── 01_The_Refiner.md
+│   ├── 02_The_Architect.md
+│   ├── 03_The_Editor.md
+│   ├── 03b_The_Voice_Auditor.md
+│   ├── 03c_The_Arc_Transition_Auditor.md
+│   ├── 03d_The_Intimacy_Auditor.md
+│   ├── 04_The_Compiler.md
+│   ├── 05_The_Prompt_Engineer.md
+│   └── 06_The_Intimacy_Architect.md
+├── templates/                        ← Structural references the pipeline produces output against
+│   ├── Char_Card_creation.md
+│   ├── Lorebook_creation.md
+│   ├── Group_lorebook_template.md
+│   ├── Chat_Completion_Preset_template.json
+│   └── World_Seed_Template.md
+├── workflows/                        ← Pipeline orchestration
+│   └── world-forge.md
+└── Samples/                          ← Example world outputs for reference
+```
+
+**File authority levels:**
+- **READ-ONLY for the user's project work** but writable here in the pipeline repo: all `agent_roles/`, `templates/`, `workflows/`, and `Notes_On_functionality.md`. These are the pipeline definition.
+- **Generated at runtime** in the user's project folder (NOT in this repo): `Drafts/`, `Export/`, `World_Seed.md`, audit reports. These never appear in this repo unless they are explicit samples in `Samples/`.
+
+---
+
+## Core architectural principles (load-bearing — DO NOT VIOLATE without explicit instruction)
+
+These principles took multiple iterations to converge on. Each one has a specific failure mode it prevents. Changes that violate them will produce subtle bugs that surface only at runtime in roleplay sessions.
+
+### 1. The Three-Tier Lorebook Architecture
+
+Every piece of world information belongs to exactly one tier:
+
+- **Tier 1 — World Lorebook** (permanent, arc-agnostic): world rules, factions, species, mechanics, standing locations. Position 0 (Before Char Def). Never replaced or disabled.
+- **Tier 2 — Character Lorebooks** (permanent, arc-agnostic, one per major character): physical description, psychological dimensions, relationships, history. Position 1 (After Char Def). Never replaced.
+- **Tier 3 — Arc Lorebooks** (modular, one per arc, swapped in/out): ARC_STATE, CHARACTER_STATE, NPC_SHIFT, DRAMATIC_BEAT, TENSION, hidden information rules. Only one arc lorebook active at a time.
+
+If you find content that would fit in multiple tiers, this is a design smell. Surface it for review — the right home is usually the most modular tier (Tier 3 if it changes per-arc, Tier 2 if it changes per-character, Tier 1 only if it's truly universal).
+
+### 2. The Override Architecture (paired contract)
+
+Character cards' `system_prompt` and `post_history_instructions` fields override the SillyTavern Chat Completion Preset's Main Prompt and Jailbreak blocks at runtime, UNLESS the card uses the `{{original}}` macro to splice the preset's content back in.
+
+**Mandate:** Every character card's `system_prompt` and `post_history_instructions` MUST begin with `{{original}}` on its own line, followed by character-specific content.
+
+**The division of labor:**
+- **Preset Main Prompt** = engine-only (world-agnostic, character-agnostic): prose style, narration discipline, perspective rules, formatting rules, generic creative framework
+- **Card `system_prompt`** = character-specific only: identity, behavioral mandates, prohibitions, trigger-response pairs
+
+**Forbidden in cards (Editor will hard-fail):** narration rules, formatting rules, perspective rules, style guidelines, generic creative framework statements, generic character embodiment principles. These are engine-level and live in the preset.
+
+**Forbidden in preset Main Prompt (Prompt Engineer Pass 1 will hard-fail):** character names, arc names, faction names, location names, character-specific psychology language. These are character/world-specific and live in cards/lorebooks.
+
+If you find yourself moving content between cards and preset, verify which side of the contract it belongs on first.
+
+### 3. Audit-vs-Apply Separation
+
+The Editor (Phase 3), Voice Auditor (3.5), Arc Transition Auditor (3.6), Intimacy Auditor (3.7), and Prompt Engineer (5) are **read-only on draft and export files**. They produce critique reports, audit reports, and recommendations — they do not modify the files they audit.
+
+The Architect (Phase 2) and Intimacy Architect (Phase 2.5) are the **only agents with write authority on drafts**. The Compiler (Phase 4) is the only agent with write authority on `Export/` JSON files.
+
+The Prompt Engineer's audit recommendations (Sections 7 and 8 of `Prompt_Engineer_Audit.md`) require **manual user application** — see Phase 5.5 in `workflows/world-forge.md`. This is intentional: it preserves audit reviewability and prevents self-validating corrections.
+
+When modifying any agent spec, do not change its read/write authority without explicit instruction. The asymmetry is load-bearing.
+
+### 4. Position Rationale Requirement
+
+Every lorebook entry produced by the pipeline must include a `Position Rationale:` field. Default positions (per tier and entry type, documented in `agent_roles/02_The_Architect.md` Section 6) get the literal value "DEFAULT". Non-default positions require a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails.
+
+The Editor (Step 4.5) hard-fails entries with missing or shallow rationales. When editing entry templates, preserve the Position Rationale field.
+
+### 5. ARC_STATE Two-Subsection Structure
+
+ARC_STATE entries (one per arc, fires constantly during the active arc) MUST contain two clearly-labeled subsections:
+
+- `**Dramatic Situation:**` — descriptive scene-setting, world-fact register
+- `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` — directive bullets using imperative language (resist, dominates, never default to, dwells on, elides, do not, must, never, always)
+
+The Tonal Mandate must contain 4-8 bullets covering active register, prose dwells on, prose elides, live scene types, and hard prohibitions (where relevant). The Editor (Step 4a) hard-fails entries missing the structure or with insufficient directive language.
+
+This structure exists because un-split ARC_STATE entries get interpreted as world-description rather than as binding directives, causing the model to default to its own tonal disposition rather than the arc's specified register.
+
+### 6. Notes_On_functionality.md is the SillyTavern source of truth
+
+This file is the authoritative reference for SillyTavern's runtime behavior — prompt assembly, world info scanning, position values, lorebook flag effects, group chat field combination. When editing pipeline files, if you need to reference SillyTavern behavior, consult this file. If a position value, flag effect, or runtime mechanic appears to be wrong in this file, verify against the official SillyTavern source (https://github.com/SillyTavern/SillyTavern) before editing — this file has been corrected before for outdated content, and getting it right matters because every agent consults it.
+
+**Authoritative position enum (line ~661 of Notes_On_functionality.md):**
+- 0: before (Before Char)
+- 1: after (After Char)
+- 2: ANTop (Author's Note Top)
+- 3: ANBottom (Author's Note Bottom)
+- 4: atDepth
+- 5: EMTop (Example Messages Top — prepended to dialogueExamples)
+- 6: EMBottom (Example Messages Bottom — appended to dialogueExamples)
+- 7: outlet
+
+---
+
+## Cross-file consistency requirements
+
+These pairs of files must stay in sync. When editing one, check the other.
+
+| If you edit | Also check |
+|---|---|
+| `agent_roles/02_The_Architect.md` (entry templates) | `agent_roles/03_The_Editor.md` (validation rules) — they validate what the Architect produces |
+| `agent_roles/02_The_Architect.md` (card structure) | `templates/Char_Card_creation.md` — both define card field requirements |
+| `agent_roles/05_The_Prompt_Engineer.md` (block library) | `templates/Chat_Completion_Preset_template.json` — agent must produce against template structure |
+| `Notes_On_functionality.md` (position table) | All agent files referencing positions — they cite this table |
+| Any agent spec (sign-off block) | `workflows/world-forge.md` (phase descriptions) — phase outputs feed handoffs |
+| `agent_roles/06_The_Intimacy_Architect.md` | `agent_roles/03d_The_Intimacy_Auditor.md` — auditor validates what architect produces |
+
+---
+
+## Editing protocol
+
+When making changes to pipeline files, follow this order:
+
+1. **Read the file you're about to edit completely.** Pipeline files have load-bearing structural conventions (sign-off blocks, step numbering, sub-section headers). Don't edit blindly.
+2. **Check the cross-file consistency table above.** If your change touches a paired file, plan the edit for both at once.
+3. **Preserve sign-off blocks.** Each agent ends with a `## ✅ [AGENT] SIGN-OFF` block listing certification items. When adding new validation requirements, add corresponding sign-off items.
+4. **Preserve step numbering.** The Editor uses step numbers like 1, 2, 3, 4, 4a, 4.5, 5, 6, 7. New steps insert with sub-numbering (e.g., 4a) rather than renumbering existing steps.
+5. **For markdown documents, validate code fence balance after editing** (every ``` must have a closing ```).
+6. **Use git aggressively.** Commit before architectural changes. Branch for experiments. The pipeline has gotten complex enough that "what did we decide three weeks ago and why" is a real question; git history is the answer.
+
+---
+
+## Common failure modes to avoid
+
+These are mistakes that have been made before and produce subtle bugs:
+
+- **Adding engine instructions to a card template.** The override architecture forbids this. Engine instructions live in the preset Main Prompt.
+- **Adding character/world specifics to the preset Main Prompt.** Same architecture, inverse direction. Specifics live in cards and lorebooks.
+- **Using lorebook position values without consulting Notes_On_functionality.md.** Position 5 is EMTop (prepended), not "Before Example Messages" or "After Example Dialogue" — verify before writing.
+- **Marking an entry "DEFAULT" in Position Rationale when it isn't actually using defaults.** The Editor's 4.5b check catches this; produce honest rationales.
+- **Writing audit/recommendation content as if the auditor will apply it.** Auditor agents are read-only on the files they audit. Use "recommend" language consistently.
+- **Conflating ARC_STATE descriptive content with directive content.** Use the two-subsection structure; don't merge them.
+- **Editing `Notes_On_functionality.md` based on memory of how SillyTavern works.** Always verify against the official ST source if changing this file.
+- **Adding a new pipeline phase or agent without updating `workflows/world-forge.md`.** Orchestration is the source of truth for what runs when.
+
+---
+
+## Working style notes for AI agents
+
+The project owner (Andrei) has a specific working style that produces good outcomes:
+
+- **Decisions before implementation.** When proposing changes, present options with tradeoffs and wait for explicit approval before writing patches. Multi-file changes especially benefit from a "final scope confirmed?" gate.
+- **Push back honestly.** When a proposed change would harm the architecture or solve a non-existent problem, say so directly. Several improvements to this pipeline came from agents pushing back on requests that would have introduced complexity without value.
+- **Solve actual problems, not anticipated ones.** "Build one manually first, then come back if I find friction points" is the preferred pattern over speculative documentation.
+- **Surface latent bugs you notice during other work.** When fixing one thing, if you notice another thing that's wrong, flag it separately rather than fixing it silently or ignoring it.
+- **Verify against authoritative sources.** Memory of how SillyTavern works is unreliable; the official source and `Notes_On_functionality.md` are the references.
+
+---
+
+## Out of scope for this repo
+
+Do not, without explicit instruction:
+
+- Modify SillyTavern itself (this repo produces inputs for ST, not changes to ST)
+- Add language-specific code (Python, JavaScript, etc.) — the pipeline is pure markdown/JSON
+- Add CI/CD, test frameworks, or build configuration — there is nothing to compile or deploy
+- Add dependencies of any kind
+- Refactor file paths or folder structure (every agent references specific paths)
+- Generate world content (worlds are produced by running the pipeline against a user's World Seed; this repo defines the pipeline, not specific worlds — except for `Samples/`)
+- Add automated linting that modifies files (validation logic belongs in agent specs, not as separate tooling)
+
+---
+
+## Where to learn more
+
+- **Pipeline overview:** `README.md` (human-facing) and `workflows/world-forge.md` (agent-facing orchestrator)
+- **SillyTavern runtime mechanics:** `Notes_On_functionality.md`
+- **Per-phase agent specs:** `agent_roles/*.md`
+- **Output structural targets:** `templates/*.md` and `templates/*.json`
+- **Sample world outputs:** `Samples/`

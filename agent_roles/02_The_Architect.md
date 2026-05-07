@@ -243,6 +243,126 @@ One file per arc. These entries define the active narrative state when this arc 
 **Order Priority:** 100 (highest — this is the master narrative directive)
 **Position Rationale:** DEFAULT
 
+#### ⭐ ARC_STATE CONTENT STRUCTURE — MANDATORY TWO-SUBSECTION FORMAT
+
+The ARC_STATE entry's `content` field MUST contain two clearly-labeled subsections, in this order. The two subsections speak to the model in different registers and serve different functions. Without the structural separation, the dramatic-situation register dominates and the model interprets behavioral cues as world-facts rather than as binding directives.
+
+**Subsection 1: Dramatic Situation** (descriptive — what is true about this arc)
+
+Header: `**Dramatic Situation:**`
+
+Content:
+- The arc's title and genre tag
+- The dominant dramatic situation in 2–4 sentences (what is happening, who the antagonist is, where it is set, what the stakes are)
+- Standing world-conditions specific to this arc (faction states, key relationships, time pressure, etc.)
+- This is the scene-setting paragraph the model uses to understand the arc's premise. It is description, not instruction.
+
+**Subsection 2: Tonal Mandate** (directive — how the model must write in this arc)
+
+Header: `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**`
+
+Content: A bulleted list of 4–8 behavioral directives. Every bullet must use imperative language. Words like *resist, dominates, never default to, dwells on, elides, do not, must, never, always*. The bullets fall into these categories — include each that is relevant:
+
+- **Active register:** what register dominates (sober vs drunk, formal vs casual, defensive vs open). Include resistances ("resist any tendency to soften the opening register").
+- **Prose dwells on:** what the prose should linger on (specific atmospheric anchors, character behaviors, sensory details).
+- **Prose elides:** what the prose should skip or de-emphasize (redemptive hope in a grimdark arc, comforting tenderness in a survival arc, external concerns in a claustrophobic arc).
+- **Live scene types:** what scene types are active in this arc (so the model knows what kinds of scenes to bias toward).
+- **Hard prohibitions:** specific behaviors the model must never produce in this arc (e.g., "do not write the women as enthusiastically initiating from desire — they initiate from duty under time pressure").
+- **Failure mode anchors:** if you have observed specific failure modes in playtesting (model softens openings, model warms cruel characters, model skips trauma responses), name them explicitly as prohibitions.
+
+#### Worked Example: Arc 1 of a grim coercive arc
+
+```
+**Dramatic Situation:**
+THIS IS ARC 1: "Desperate Forced Acceleration." Genre: grim coaching drama, 
+claustrophobic time-pressure, domestic survival horror. Dana and Lisa have 60 
+days to transform Andrei from a sheltered virgin into a man whose sexual 
+behaviours are instinct, not decision. This is achieved through constant, 
+exhaustive repetition: morning sex, lunch quickies, evening marathons that 
+continue until Andrei physically cannot get erect. Both women drink heavily 
+to cope. The clock is the antagonist. The setting is the cramped Malmö 
+apartment — walls closing in, curtains drawn, the outside world irrelevant.
+
+**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**
+
+- Active register: the women cope through dark humor and self-punishment. 
+  Their relationship to {{user}} is exhausted solidarity — not protective care, 
+  not gentle guidance. Resist any tendency to soften the opening register or 
+  have the women perform comforting roles toward {{user}}.
+
+- Drunk register dominates when alcohol is present in scene; sober register 
+  surfaces only when explicitly sober. Never default to the sober register 
+  simply because the scene is intimate or vulnerable — the women's coping 
+  mechanism IS the inebriation.
+
+- Prose dwells on: the absurd, the cramped apartment closing in, the clock, 
+  the women's weary functional cruelty as coping, Andrei's shame and overwhelm.
+
+- Prose elides: redemptive hope, comforting tenderness, external world 
+  concerns. The arc is claustrophobic by design.
+
+- Live scene types: morning sex initiations, lunch quickies, evening 
+  marathons, exhausted post-coital conversations laced with dark humor, 
+  drinking sessions where the women process by mocking the situation.
+
+- Hard prohibitions: do not have the women express maternal care toward 
+  {{user}}; do not skip Andrei's overwhelm; do not write the women as 
+  enthusiastically initiating from desire (they initiate from duty under 
+  time pressure).
+```
+
+#### Worked Example: Arc 4 of the same world (wholesome redemption arc)
+
+The same character cards, the same world, the same lorebook architecture — but the active register has shifted entirely. The ARC_STATE for Arc 4 might look like:
+
+```
+**Dramatic Situation:**
+THIS IS ARC 4: "After the Cult." Genre: wholesome healing romance, slow-paced 
+domestic recovery, quiet earned tenderness. The cult has been broken. Dana, 
+Lisa, and Andrei have built a small life in a coastal town. The women are 
+sober for the first time in years. Andrei is no longer the project; he is a 
+partner. The setting is a small apartment with a balcony facing the sea — 
+windows open, light coming in, the outside world re-entering their lives.
+
+**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**
+
+- Active register: the women have stopped bracing. Their care for {{user}} is 
+  now genuine and unguarded — it does not need to be earned through duty. 
+  Resist any tendency to revert to Arc 1's transactional or defensive register; 
+  that register has been earned out of through the events of Arcs 2 and 3.
+
+- Sober register dominates. Drinking, when it appears, is social and limited — 
+  not coping. Never write the women as drinking heavily to cope; that is an 
+  Arc 1 register.
+
+- Prose dwells on: small acts of physical care, sensory anchors of recovery 
+  (sunlight, sea air, slow mornings), moments where the women catch themselves 
+  not bracing and notice the absence.
+
+- Prose elides: lingering paranoia about the cult (it is gone), trauma 
+  symptoms that the previous arcs resolved, sexualization of every intimate 
+  moment (intimacy is now sometimes just contact, not always sex).
+
+- Live scene types: shared meals, walks along the water, quiet conversations 
+  about the future, intimate scenes that are slow and non-transactional, 
+  moments of unprompted tenderness.
+
+- Hard prohibitions: do not write the women as defensive, sarcastic-as-shield, 
+  or transactionally-initiating; those registers belong to Arc 1. Do not 
+  introduce new external threats unless the user explicitly invites them — 
+  the arc is healing, not stress-testing.
+```
+
+Notice that the structural format is identical. Only the content changes. The Tonal Mandate for Arc 4 contains its own resistances — including resistance to reverting to Arc 1's register, which is the most common failure mode in late-arc play.
+
+#### Why the structure matters
+
+When ARC_STATE arrives at the model unsplit, all information arrives in one register and the dramatic-situation language dominates. Tonal cues that ARE present get absorbed as world-fact ("the women drink heavily") rather than as prose-directive ("the model must write the drunk register when alcohol is present"). The model can read about the women drinking and still write a sober warm scene because nothing told it the drunk register was a binding directive — it was just descriptive.
+
+When ARC_STATE arrives split, the dramatic-situation register stays where it was. Underneath, in clearly-labeled directive form, the model sees explicit instructions. These read as commands because they ARE commands, structurally and grammatically. The model has a much harder time interpreting "do not have the women express maternal care toward {{user}}" as flavor text.
+
+The Editor will hard-fail any ARC_STATE entry missing the Tonal Mandate subsection or whose Tonal Mandate contains fewer than 4 directive bullets or uses descriptive rather than imperative language.
+
 ### A2. CHARACTER_STATE Entries (mandatory for any character with a defined evolution arc)
 **Constant:** YES
 **Selective:** YES
@@ -488,6 +608,9 @@ Append to your submission note before handing to The Editor:
 
 ### Tier 3 — Arc Lorebook Entries
 - [ ] ARC_STATE entry for every arc (CONSTANT, no key)
+- [ ] **ARC_STATE content uses the mandatory two-subsection structure: `**Dramatic Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**`**
+- [ ] **ARC_STATE Tonal Mandate contains 4–8 bulleted directives using imperative language (resist, dominates, never default to, dwells on, elides, do not, must, never, always)**
+- [ ] **ARC_STATE Tonal Mandate covers active register, prose dwells on, prose elides, live scene types, and hard prohibitions where relevant**
 - [ ] ARC_STATE contains {{char}} and NPC knowledge rules (not {{user}} knowledge restrictions)
 - [ ] ARC_STATE names dramatic goals
 - [ ] Location entries for arc-relevant locations

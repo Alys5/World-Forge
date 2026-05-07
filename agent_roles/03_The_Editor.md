@@ -105,10 +105,66 @@ Score each criterion 1–3. Pass threshold: all ≥2, at least three = 3.
 **Tier 3 entry quality:**
 | Criterion | Standard |
 |---|---|
-| **ARC_STATE Completeness** | Hidden info rules present? Dramatic goals named? Tone/pacing mandate clear? |
+| **ARC_STATE Completeness** | See Step 4a below — this criterion now has structural sub-checks that don't fit in a table cell. |
 | **NPC_SHIFT Delta Integrity** | Entry contains only behavioral change, not repeated full profile. |
 | **DRAMATIC_BEAT Specificity** | Does the entry tell the LLM what to do when this beat occurs, not just that it exists? |
 | **TENSION Urgency** | Does the TENSION entry actually create narrative pressure, or just describe a situation? |
+
+### Step 4a — ARC_STATE Structural Validation (hard fail criteria)
+
+The ARC_STATE entry is the master narrative directive for an arc. Per the Architect's Section 8.A specification, its `content` field MUST follow a mandatory two-subsection structure: `**Dramatic Situation:**` (descriptive) followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` (directive). Without this structural separation, behavioral cues get absorbed as world-fact rather than as binding directives, and the model defaults to its own tonal disposition rather than the arc's specified register.
+
+For every ARC_STATE entry across every Tier 3 lorebook draft, verify:
+
+#### 4a-1 — Both subsections present (hard fail if missing)
+
+- [ ] The `content` field contains a literal `**Dramatic Situation:**` header
+- [ ] The `content` field contains a literal `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` header
+- [ ] The Dramatic Situation subsection appears before the Tonal Mandate subsection (the descriptive register orients the model before the directive register binds it)
+
+Missing either subsection or wrong ordering = hard reject. Cite the file and entry uid.
+
+#### 4a-2 — Dramatic Situation content (hard fail if missing required elements)
+
+- [ ] The arc's title and genre tag are present
+- [ ] The dominant dramatic situation is described in 2–4 sentences (what is happening, who/what is the antagonist, where the arc is set, what the stakes are)
+- [ ] Standing world-conditions specific to this arc are present (faction states, key relationships, time pressure, etc., as relevant)
+
+Missing any of these = hard reject. Cite the gap.
+
+#### 4a-3 — Tonal Mandate content (hard fail on insufficient directive bullets)
+
+- [ ] The Tonal Mandate contains 4–8 bulleted directives
+- [ ] Each bullet uses imperative/directive language (resist, dominates, never default to, dwells on, elides, do not, must, never, always, etc.) — descriptive language alone is insufficient
+- [ ] At minimum these categories are covered (where relevant to the arc): active register, prose dwells on, prose elides, hard prohibitions
+- [ ] If the world has had prior playtesting and observed failure modes (model softens openings, model warms cruel characters, model skips trauma responses), those failure modes are explicitly anchored as prohibitions
+
+Fewer than 4 directive bullets, or bullets that are purely descriptive without imperative verbs, or missing required category coverage = hard reject. Cite the deficiency per bullet.
+
+#### 4a-4 — Soft-flag check: Tonal Mandate quality
+
+For each bullet in the Tonal Mandate, evaluate:
+
+- Does the bullet name a specific behavior the model should produce or resist, or is it vague? "Resist softening" is specific. "Maintain the right tone" is vague.
+- Does the bullet contain content the active arc's character cards or other lorebook entries would already produce, or does it add behavioral guidance not available elsewhere? If the bullet duplicates content from CHARACTER_STATE or character cards, soft-flag for review (the Tonal Mandate should add arc-level prose direction, not restate character-level mandates).
+
+Soft-flag in critique report:
+
+```
+SOFT FLAG: ARC_STATE Tonal Mandate bullet in [file]:[entry uid] reads "[bullet text]"
+  Concern: [vague language / duplicates CHARACTER_STATE / duplicates card content / other]
+  Verify: tighten the bullet to specific behavioral directive, or remove if duplicative
+```
+
+#### 4a-5 — Existing ARC_STATE quality criteria (carried forward)
+
+Beyond the structural validation above, the original ARC_STATE Completeness checks still apply:
+
+- [ ] Hidden information rules present (what {{char}} and NPCs do not know in this arc)
+- [ ] Dramatic goals named (what the LLM should be working toward in this arc)
+- [ ] Pacing mandate clear (slow burn, time-pressured, episodic, etc.)
+
+These can appear in either the Dramatic Situation or Tonal Mandate subsections as appropriate — hidden information rules typically in Dramatic Situation, pacing in Tonal Mandate.
 
 ### Step 4.5 — Position Rationale Audit
 
@@ -360,6 +416,8 @@ Post-history: [checklist results + word count]
 - All Tier 1 entries: quality criteria met ✓
 - All Tier 2 entries: quality criteria met, arc isolation verified ✓
 - All Tier 3 entries: ARC_STATE complete with hidden info rules ✓
+- **All ARC_STATE entries: two-subsection structure present (Dramatic Situation + Tonal Mandate) ✓**
+- **All ARC_STATE Tonal Mandates: 4–8 directive bullets using imperative language ✓**
 - **All entries: Position Rationale present (DEFAULT or justified) ✓**
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**
