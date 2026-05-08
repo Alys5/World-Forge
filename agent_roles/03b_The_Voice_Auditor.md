@@ -24,7 +24,7 @@ If you flag failures, the pipeline returns to the Architect for revision, then b
 
 ## 3. INPUT
 - All Editor-approved files in `Drafts/`
-- `Drafts/Master_Design.md` — the narrative truth being verified against
+- `Drafts/Master_Design.md` — the narrative truth being verified against. **Read Section 11 (Style Contract) specifically — Section 11c's `is_multi_perspective` flag determines whether the perspective-bleed check (Step 3H below) fires.**
 - `World_Seed.md` Section 7b — the test scenarios the user provided
 
 If Section 7b is missing because the user did not provide test scenarios, generate three representative scenarios yourself based on the Master Design's arc beats, but flag this in the report so the user knows their pipeline is being verified against scenarios you invented rather than scenarios they intended to play.
@@ -42,6 +42,8 @@ For each AI-played character, generate this matrix:
 | [Scene from Section 7b or generated] | [Arc N] | [What the active CHARACTER_STATE specifies] | [The specific behavioral mandate or trigger-response that this scene should exercise] |
 
 Generate at least three test scenarios per character per arc. For a five-arc world with two characters, you produce a minimum of thirty test scenarios. Coverage is more important than brevity here — the audit only catches what it tests.
+
+**For multi-perspective worlds (Master Design Section 11c `is_multi_perspective: true`):** add at least one cross-perspective scenario per arc. A cross-perspective scenario places at least two cards with differing perspectives in the same scene context — typically the focal-perspective card and an overriding card (e.g., a 1st-person companion card and a 3rd-person Director card co-occurring). These scenarios are the only ones that exercise the perspective-bleed check (Step 3H). Single-perspective worlds skip this requirement.
 
 ### Step 2 — Generate sample dialogue
 
@@ -100,6 +102,26 @@ For each NPC that appears in the dialogue, verify their voice matches the NPC pr
 **G. The "model would invent this" check**
 For each meaningful character detail in the dialogue, ask: was this detail provided in the drafts, or did I invent it to fill a gap? If you invented it because the drafts were silent, the drafts have a coverage gap. The model running this material would also invent something there, and what it invents will not be consistent with what you invented.
 
+**H. Perspective Bleed Check (multi-perspective worlds only — runs when Master Design Section 11c `is_multi_perspective: true`)**
+
+This check fires only for worlds where at least two cards have differing effective perspectives (world default + per-card overrides). For each test scenario in the matrix, verify perspective integrity per turn:
+
+- **Active speaker's perspective is the only perspective rendered in that turn.** When the focal card is 1st-person, the entire turn is 1st-person from that card's POV — no 3rd-person glimpses, no omniscient narrator commentary, no "she did not yet know" interjections from outside the focal POV. When the focal card is 3rd-person omniscient, the entire turn is 3rd-person omniscient — no surprise 1st-person "I" appearing in narration.
+- **No cross-card perspective bleed within a single turn.** The Director card's omniscient narrator voice does not leak into a companion card's 1st-person turn. The companion card's intimate "I" register does not leak into the Director's 3rd-person scene-setting.
+- **Marker convention matches the active card's narration_marker.** A turn from a card with `asterisks_for_thoughts_only` does not start using asterisks for narration. A turn from a card with `asterisks_for_narration` does not start hiding its narration in plain prose.
+- **Active-speaker reference is unambiguous.** Multi-perspective worlds rely on `{{char}}` to signal the active card. Verify that nothing in the generated turn refers to the active card by another character's pronoun frame (e.g., a turn from the 1st-person companion accidentally rendering that companion as "she" because the Director's omniscient register bled in).
+
+Specific failure patterns to watch for, in roughly increasing severity:
+
+1. **Marker drift in a single turn** — companion card's turn uses asterisks-for-narration when its declared marker is asterisks-for-thoughts-only. Likely source: world Main `<style_contract>` not parameterized correctly, or the Formatting block still hardcoding old markers (Phase C territory, but the Voice Auditor surfaces it).
+2. **Pronoun bleed** — companion card's 1st-person "I" accidentally becomes "she" mid-turn, or Director's 3rd-person "she" accidentally becomes "I" mid-turn. Likely source: card's `<style_override>` block missing `{{char}}` reference, or block content not directive enough.
+3. **Omniscient interjection in a 1st-person turn** — the companion's 1st-person turn contains a sentence like "*She did not yet know what was waiting for her.*" Likely source: Director's omniscient register pulling on the model from earlier context, or the active-speaker rule not present in world Main.
+4. **POV switch mid-turn** — turn opens in one perspective and ends in another. Likely source: `<style_override>` block content insufficiently directive, or the world default's perspective contradicting the active card's override and the model attempting both.
+
+When a perspective-bleed failure is found, trace it to source per the Diagnosis table below — most cases are a card-side or preset-side fix, not an in-scene narrative issue.
+
+For single-perspective worlds (`is_multi_perspective: false`): skip Step 3H entirely. There is no perspective bleed to audit when all cards share one effective perspective.
+
 ### Step 4 — Diagnose the source of any failure
 
 When a failure is found, do not just flag the dialogue. Trace it back to the specific drafted file and section that produced the failure. Common patterns:
@@ -114,6 +136,10 @@ When a failure is found, do not just flag the dialogue. Trace it back to the spe
 | Detail invented by auditor | Coverage gap in the relevant lorebook entry |
 | Healed behavior in wrong arc | CHARACTER_STATE entry contaminating across arcs, or beats jumping |
 | Disguise inconsistency | NPC_SHIFT entry not capturing the arc transition correctly |
+| Marker drift in a turn | World Main `<style_contract>` content wrong, OR Formatting block content contradicting the contract — surface to Prompt Engineer |
+| Pronoun bleed within a turn | Overriding card's `<style_override>` block missing `{{char}}` reference, OR block directive language not strong enough — surface to Architect |
+| Omniscient interjection in 1st-person turn | World Main missing the active-speaker rule, OR cross-card context contamination from group-chat assembly — surface to Prompt Engineer |
+| POV switch mid-turn | Card's `<style_override>` block content directly contradicts world Main without sufficient resolution language — surface to Architect to tighten the override block |
 
 The diagnosis tells the Architect *where* to fix it, not just *what* is wrong.
 
@@ -191,12 +217,14 @@ If no failures → sign off cleanly.
 - [ ] All trigger-response pairs from cards exercised in test scenarios
 - [ ] All NPCs voiced in test scenarios
 - [ ] User test scenarios from Section 7b included (or generated equivalents flagged)
+- [ ] **Multi-perspective worlds: at least one cross-perspective scenario per arc included; OR confirmed `is_multi_perspective: false` in Master Design Section 11c and Step 3H skipped**
 
 ### Behavioral Fidelity
 - [ ] No Critical failures remain
 - [ ] All High failures resolved or explicitly accepted by user
 - [ ] All Medium failures noted for awareness
 - [ ] Coverage gaps closed in drafts
+- [ ] **Multi-perspective worlds: no perspective-bleed failures remain (marker drift, pronoun bleed, omniscient interjection in 1st-person turn, mid-turn POV switch); OR perspective-bleed check skipped per single-perspective world**
 
 **Status: APPROVED — Proceed to Phase 4 (The Compiler)**
 ```

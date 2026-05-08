@@ -304,6 +304,20 @@ These phrases unambiguously indicate engine-instruction contamination. They appe
 
 If any of these phrases appears in `system_prompt` or `post_history_instructions` content (after the `{{original}}` macro), reject the file. Cite the offending phrase and its line.
 
+**EXEMPTION — phrases inside a sanctioned `<style_override>` block:**
+
+The phrase scan above runs against `system_prompt` and `post_history_instructions` content, EXCEPT the contents of a sanctioned `<style_override>...</style_override>` block in `system_prompt`. A `<style_override>` block is sanctioned for the exemption ONLY when ALL of the following hold:
+
+1. The card's `extensions.world_forge.style_override` field is populated (not `null`, not absent) with a valid object containing `perspective_override`, `narration_marker_override`, and `override_rationale`.
+2. The `<style_override>` block sits in `system_prompt` immediately after `{{original}}` and the blank line, BEFORE any character-specific content.
+3. The block's content matches the structured fields (verified by Step 5e below).
+
+When all three hold, phrases inside the block matching the diagnostic list above (typically perspective and formatting-marker language, since that's the block's purpose) do NOT trigger a hard fail. Outside the block, the standard hard-fail rules apply with full force — including for cards that have an override declared. The exemption is narrowly scoped to the sanctioned block's content, nothing else.
+
+Cards whose `extensions.world_forge.style_override` is `null` or absent have NO exemption — any diagnostic phrase anywhere in their `system_prompt` or `post_history_instructions` is a hard fail, including phrases that happen to be wrapped in `<style_override>` tags. The structured field is the gate; the tags alone are not sufficient.
+
+If a `<style_override>` block appears in `post_history_instructions` or `depth_prompt`, hard-fail regardless of the structured field state. The block lives only in `system_prompt`.
+
 **SOFT FLAG — ambiguous keywords (flag for review, do not auto-reject):**
 
 These bare keywords sometimes indicate engine-instruction contamination but also appear naturally in legitimate character content. The Editor surfaces these in the critique report and asks the user (via the Architect's response) to verify the context.
@@ -345,6 +359,75 @@ After the override architecture passes, verify the character-specific content qu
 - [ ] Restates top 2–3 drift-prone CHARACTER-SPECIFIC rules
 - [ ] Defers to the active CHARACTER_STATE entry as authority
 - [ ] Ends with a character-specific behavioral directive (not an engine reminder)
+
+#### 5e — Style Override Coupling Validation (hybrid: hard fail + soft flag)
+
+This step validates that every card's `<style_override>` declaration — across the structured field, the system_prompt block, and the Master Design — is internally consistent. The check has four passes; failure at any pass is a hard reject unless explicitly marked as soft-flag.
+
+**Pass 1 — Structural-field validity (hard fail).**
+
+For every card, inspect `extensions.world_forge.style_override`:
+
+- [ ] If the field is absent or `null`: the card is non-overriding. Move to Pass 2.
+- [ ] If the field is populated: it must be an object containing exactly three keys: `perspective_override`, `narration_marker_override`, `override_rationale`. Missing any key, extra unrecognized keys, or wrong types = hard reject. Cite the card and the malformed field.
+- [ ] `perspective_override` must be one of: `first`, `second`, `third_limited`, `third_omniscient`, or `null`. Any other value = hard reject.
+- [ ] `narration_marker_override` must be one of: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose`, or `null`. Any other value = hard reject.
+- [ ] At least one of `perspective_override` or `narration_marker_override` must be a non-null enum value. Both `null` is a hard reject — the field's presence with both nulls is meaningless and likely indicates the Architect mis-emitted a non-overriding card. Direct fix: remove the entire `style_override` object and set the field to `null`.
+- [ ] `override_rationale` must be a non-empty string of at least 15 characters. Empty or whitespace-only or shorter than 15 chars = hard reject.
+
+**Pass 2 — Block presence (hard fail in either direction — non-overriding cards must have NO block; overriding cards MUST have a block).**
+
+- [ ] If the card's structural field is `null`/absent: scan `system_prompt` for any occurrence of `<style_override>` or `</style_override>`. Any match = hard reject. The card has no override declared but has emitted a block; this is exactly the contamination the exemption gate exists to prevent.
+- [ ] If the card's structural field is populated: scan `system_prompt` for exactly one `<style_override>...</style_override>` block. Zero blocks, multiple blocks, or unmatched tags = hard reject.
+- [ ] When a block is required: the block must appear immediately after `{{original}}` and the blank line, BEFORE any character-specific content. Block appearing later in the system_prompt = hard reject.
+- [ ] Scan `post_history_instructions` and `extensions.depth_prompt.prompt` for any occurrence of `<style_override>` or `</style_override>`. Any match in either location = hard reject regardless of structural field state. The block lives ONLY in `system_prompt`.
+
+**Pass 3 — Block content vs. structural field consistency (hard fail on mismatch).**
+
+For every card with both a populated structural field and a block (the only valid coexistence per Pass 2):
+
+- [ ] The block contains exactly two directive lines, in this order: `NARRATIVE PERSPECTIVE: [text]` and `FORMATTING MARKERS: [text]`. Missing either line, extra lines (other than whitespace), or wrong order = hard reject.
+- [ ] The `NARRATIVE PERSPECTIVE` line's directive content must reflect the structural `perspective_override` value (or, if `perspective_override` is `null`, must reflect the world default from Master Design Section 11a). Walk through these mappings:
+  - `first` → directive must indicate first-person POV with `{{char}}` as the focal narrator
+  - `second` → directive must indicate second-person POV (`{{user}}` addressed as "you" inside narration)
+  - `third_limited` → directive must indicate third-person limited POV with one focal character
+  - `third_omniscient` → directive must indicate third-person omniscient POV with cross-character interior access
+- [ ] The `FORMATTING MARKERS` line's directive content must reflect the structural `narration_marker_override` value (or, if null, the world default from Section 11a):
+  - `asterisks_for_narration` → directive must say *asterisks* delimit narration/action/interior
+  - `asterisks_for_thoughts_only` → directive must say *asterisks* delimit ONLY internal thoughts; action and narration are plain prose
+  - `plain_prose` → directive must say no asterisks anywhere
+- [ ] Mismatch between any structural field and the corresponding block directive = hard reject. Cite both the field value and the block content.
+- [ ] When the world is multi-perspective (Master Design Section 11c `is_multi_perspective: true`) AND the card has an override: the `NARRATIVE PERSPECTIVE` directive must reference `{{char}}` explicitly. No `{{char}}` reference in a multi-perspective override = hard reject. The active-speaker rule depends on it.
+
+**Pass 4 — Rationale quality (hybrid: hard fail + soft flag).**
+
+The structural `override_rationale` must justify the override on structural grounds, not stylistic preference.
+
+- [ ] **HARD FAIL** if the rationale matches any of these patterns (case-insensitive substring or close paraphrase): `"feels better"`, `"prefer"`, `"more natural"`, `"sounds better"`, `"reads better"`, `"my style"`, `"liked it"`, `"chose it"`, `"wanted to try"`, `"thought it would"`. These read as preference, not structural necessity.
+- [ ] **HARD FAIL** if the rationale does not name a structural feature of the card that makes the world default wrong. Structural features include: card function (Director/Narrator/NPC handler), card scope (manages multiple NPCs vs. single character), POV ambiguity in the world default for this card type, scene-setting role distinct from in-character action.
+- [ ] **SOFT FLAG** if the rationale mentions a structural feature but does so vaguely (e.g., "This card is a Director and needs different style"). Surface in the critique report:
+
+```
+SOFT FLAG: override_rationale in [Card_Name].extensions.world_forge.style_override
+  Rationale text: "[full rationale]"
+  Concern: structural reason named but lacks specificity
+  Verify: does the rationale make clear WHY the world default is structurally wrong for this card?
+```
+
+The user reviews the soft flag in the next round. If the rationale is sufficient as-is, the flag clears. If they confirm the rationale needs tightening, the Architect rewrites and the Compiler re-emits.
+
+**Pass 5 — Cross-check against Master Design Section 11b (hard fail on divergence).**
+
+Read Master Design Section 11b. For every card listed there with non-INHERIT values:
+
+- [ ] The card's `extensions.world_forge.style_override` field is populated (not `null`).
+- [ ] The card's `perspective_override` value matches Section 11b verbatim.
+- [ ] The card's `narration_marker_override` value matches Section 11b verbatim.
+- [ ] The card's `override_rationale` matches Section 11b verbatim (or is a textually equivalent paraphrase the user signed off on — direct verbatim is the safer pattern).
+
+For every card NOT listed in Section 11b: the card's `extensions.world_forge.style_override` field MUST be `null` or absent. A card with a populated override that does not appear in Section 11b is a divergence from the Master Design — hard reject. The Architect must either remove the override (if the card should not have one) or escalate back to the Refiner (if the Master Design itself is wrong).
+
+The Editor does not modify cards; it only flags. Recommended corrections appear in the Step 6 critique with exact field values and the specific Master Design line they should match.
 
 ### Step 6 — Issue Critique & Directives
 Produce `Drafts/Editor_Critique_[Round N].md`. Be specific: cite exact passages, entry names, or sections that fail. State exactly what must change.
@@ -424,9 +507,15 @@ Post-history: [checklist results + word count]
 - **All Position Rationale soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - All LLM instructions: checklists passed ✓
 - **All cards: `system_prompt` and `post_history_instructions` start with `{{original}}` ✓**
-- **All cards: no engine-instruction contamination (hard-fail phrase scan passed) ✓**
+- **All cards: no engine-instruction contamination (hard-fail phrase scan passed; sanctioned `<style_override>` blocks correctly exempted) ✓**
 - **All soft-flag ambiguous keywords reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - **All cards: `depth_prompt` does not contain `{{original}}` ✓**
+- **All cards: `<style_override>` block presence matches `extensions.world_forge.style_override` field state (Step 5e Pass 2) ✓**
+- **All overriding cards: `<style_override>` block content consistent with structural field values (Step 5e Pass 3) ✓**
+- **All overriding cards: `override_rationale` is structural, not stylistic (Step 5e Pass 4 hard-fail patterns clean) ✓**
+- **All overriding cards: structural field values match Master Design Section 11b verbatim (Step 5e Pass 5) ✓**
+- **Multi-perspective worlds: every overriding card's NARRATIVE PERSPECTIVE directive references `{{char}}` (Step 5e Pass 3) ✓**
+- **All Style Override Coupling soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - No structural failures ✓
 - All arc lorebooks ≥8 entries ✓
 

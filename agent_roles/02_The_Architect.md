@@ -27,6 +27,8 @@ Do not mix tiers. Tier 2 character lorebook entries must never contain arc-speci
 - `Drafts/Master_Design.md` — read completely. Verify REFINER SIGN-OFF is present.
 - Do not begin drafting if the sign-off is absent.
 
+**Pay specific attention to Section 11 — Style Contract.** The world default style (Section 11a) governs how you author every non-overriding card; per-card overrides (Section 11b) require you to emit a `<style_override>` block in those cards' `system_prompt`; the multi-perspective flag (Section 11c) determines whether overriding cards' override blocks must reference `{{char}}` explicitly. Section 11d (POV ambiguity advisory) is informational — it does not change what you draft; it tells the user where the runtime friction is. See Section 9 of this document (LLM Instruction Drafts) for the exact `<style_override>` emission mechanics.
+
 ---
 
 ## 4. DRAFT ORDER
@@ -466,6 +468,64 @@ The same logic applies to PHI/jailbreak:
 
 This produces the runtime stack: preset engine instructions → character-specific identity (in `system_prompt`); preset generic jailbreak → character-specific drift reminders (in `post_history_instructions`).
 
+### ⭐ STYLE OVERRIDE EMISSION (conditional — only for cards with overrides in Master Design Section 11b)
+
+For most cards, you do not emit a `<style_override>` block. The card's `system_prompt` is unchanged from the pre-Style-Contract pipeline: `{{original}}` followed by character-specific content. The card inherits the world's Main Prompt (with its `<style_contract>` block) via the `{{original}}` splice. Set `extensions.world_forge.style_override` to `null` (the Compiler will populate the field; the Architect's draft only needs to indicate `<no style override>` for these cards in the LLM Instructions draft).
+
+For the rare card whose Master Design Section 11b entry shows non-INHERIT values for `perspective_override` and/or `narration_marker_override`, you emit the override structure exactly as follows:
+
+**1. In `system_prompt`, immediately after `{{original}}` and the blank line, BEFORE any character-specific content, insert a `<style_override>...</style_override>` block.** The block contains exactly two lines, in this order:
+
+```
+<style_override>
+NARRATIVE PERSPECTIVE: [one or two sentences describing the perspective override. Reference {{char}} explicitly when the world is multi-perspective per Section 11c. Translate the enum value into directive prose — do not just write "third_omniscient" as text.]
+FORMATTING MARKERS: [one or two sentences describing the narration marker override. State what *asterisks* delimit and what "double quotes" delimit for THIS card. Translate the enum value into directive prose — do not just write "asterisks_for_narration" as text.]
+</style_override>
+```
+
+If only one of the two fields is overridden (the other reads `INHERIT` in Section 11b), still emit both lines — but in the line for the inherited field, write directives that match the world default (Section 11a). The block is always two lines; partial blocks confuse the Editor and the model.
+
+**2. Write the `<style_override>` block to be self-contained.** It contains ONLY perspective declaration and narration marker declaration. No narration discipline. No creative framework. No spatial mandates. No sensory rules. No character-specific identity. No mandates, prohibitions, or trigger-response pairs. Those go AFTER the closing `</style_override>` tag, in the normal character-specific section.
+
+**3. Reference `{{char}}` explicitly in the perspective directive when Section 11c reports `is_multi_perspective: true`.** Multi-perspective worlds need the model to identify the active speaker every turn. A line like "Narrate in third-person omniscient past tense — {{char}} is the focal speaker for this turn" makes the active-speaker rule concrete.
+
+**4. Populate `extensions.world_forge.style_override` in the LLM Instructions draft so the Compiler can carry it into the JSON.** Format:
+
+```
+EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
+  perspective_override: [enum value | null]
+  narration_marker_override: [enum value | null]
+  override_rationale: [verbatim from Master Design Section 11b]
+```
+
+Use `null` for whichever field reads `INHERIT` in Section 11b. The Compiler emits this as `null` in the JSON; the Editor cross-checks the structured fields against the `<style_override>` block content and hard-fails on mismatch.
+
+**5. Worked example — a Director/Narrator card in a 1st-person world.** World default: `perspective: first`, `narration_marker: asterisks_for_thoughts_only`. Section 11b entry for `[CARD_NAME]` reads `perspective_override: third_omniscient`, `narration_marker_override: asterisks_for_narration`, with a structural rationale. Section 11c reports `is_multi_perspective: true`. The Architect emits in `system_prompt`:
+
+```
+{{original}}
+
+<style_override>
+NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — reference the protagonists as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires.
+FORMATTING MARKERS: *Asterisks* delimit narration, action, and interior glimpses. "Double quotes" delimit spoken dialogue. **Double asterisks** delimit emphasis.
+</style_override>
+
+[character-specific identity and content begins here — no engine-level guidance, only character-specific content per the standard rules]
+```
+
+And in the LLM Instructions draft for that card:
+
+```
+EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
+  perspective_override: third_omniscient
+  narration_marker_override: asterisks_for_narration
+  override_rationale: [verbatim from Master Design Section 11b]
+```
+
+**6. Do not emit a `<style_override>` block in `post_history_instructions` or `depth_prompt`.** The block lives only in `system_prompt`. The Editor hard-fails `<style_override>` blocks anywhere else.
+
+**7. Do not invent overrides.** If Master Design Section 11b for a card shows both fields as `INHERIT`, do not emit a `<style_override>` block under any circumstances, even if you think the card "ought" to override. The override decision was made at the Refiner. If you believe an override is warranted that the Refiner missed, escalate by adding a note at the top of the Instructions draft requesting the user re-run the Refiner pass — do not freelance the override.
+
 ### WHAT YOU MUST NOT WRITE INTO THE CARD
 
 The Editor will hard-fail any card whose `system_prompt` or `post_history_instructions` contains engine-level instructions. The diagnostic phrases — listed exhaustively in the Editor agent — include:
@@ -478,6 +538,8 @@ The Editor will hard-fail any card whose `system_prompt` or `post_history_instru
 - Generic character embodiment principles ("embody the character authentically")
 
 If you find yourself drafting any of these into a card, stop. They live in the preset. They will be spliced in via `{{original}}` at runtime. Putting them in the card produces redundancy at best and conflicts at worst.
+
+**The single sanctioned exception** is the `<style_override>` block in `system_prompt`, emitted ONLY when Master Design Section 11b shows the card has an override declared. Inside the `<style_override>` block, perspective directives and narration-marker directives are not just allowed — they are required content. Outside the block, the standard hard-fail rules apply with full force, including for perspective and formatting language. See the "Style Override Emission" subsection above for the exact mechanics. Do not use the override block as a backdoor for any other engine-level content.
 
 ### THE CARD/LOREBOOK DESIGN PRINCIPLE — STILL APPLIES
 
@@ -624,7 +686,7 @@ Append to your submission note before handing to The Editor:
 - [ ] system_prompt drafted for every card (specific, not generic)
 - [ ] **system_prompt begins with `{{original}}` on its own line, followed by a blank line, then character-specific content**
 - [ ] system_prompt content (after `{{original}}`) opens with arc-journey identity statement, not Arc 1 state description
-- [ ] **system_prompt content (after `{{original}}`) contains NO engine-level guidance — no narration rules, formatting rules, perspective rules, style guidelines, or generic creative framework statements**
+- [ ] **system_prompt content (after `{{original}}`) contains NO engine-level guidance — no narration rules, formatting rules, perspective rules, style guidelines, or generic creative framework statements (the `<style_override>` block is the single sanctioned exception, and applies only to cards with an override declared in Master Design Section 11b)**
 - [ ] post_history_instructions drafted for every card
 - [ ] **post_history_instructions begins with `{{original}}` on its own line, followed by a blank line, then character-specific content**
 - [ ] post_history_instructions content after `{{original}}` is ≤150 words
@@ -633,6 +695,15 @@ Append to your submission note before handing to The Editor:
 - [ ] depth_prompt (when populated) contains NO engine-level guidance — character-specific only, and does NOT use `{{original}}` (depth_prompt is not an override field)
 - [ ] All trigger-response pairs defined
 - [ ] **Cross-arc consistency check completed (see below)**
+
+### Style Contract Compliance (per Master Design Section 11)
+- [ ] Master Design Section 11 read in full before drafting any card
+- [ ] Every card's `<style_override>` status matches Section 11b: cards with both override fields `INHERIT` get NO `<style_override>` block; cards with at least one non-INHERIT field get a complete two-line `<style_override>` block
+- [ ] Every emitted `<style_override>` block contains exactly two directive lines (NARRATIVE PERSPECTIVE and FORMATTING MARKERS) — no other content
+- [ ] Every emitted `<style_override>` block sits immediately after `{{original}}` and the blank line, before any character-specific content
+- [ ] No `<style_override>` block in `post_history_instructions` or `depth_prompt` (those locations are forbidden for this block)
+- [ ] When Section 11c reports `is_multi_perspective: true`: every overriding card's NARRATIVE PERSPECTIVE line references `{{char}}` explicitly
+- [ ] Every overriding card's `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block in the LLM Instructions draft is populated with values matching Section 11b verbatim, ready for the Compiler
 
 ### ⭐ Cross-Arc Consistency Check (mandatory for every evolving character)
 
