@@ -46,7 +46,29 @@ Read the World Seed and classify every piece of information:
 - Is it a permanent world truth? → Tier 1
 - Is it a permanent character truth? → Tier 2
 - Is it arc-specific or narrative-state-specific? → Tier 3
+- Is it engine-level prose-style metadata (Section 1.5 of the World Seed)? → Style Contract (does not belong to any lorebook tier; consumed by the Prompt Engineer to parameterize the preset's Main Prompt block, and by the Architect to author per-card `<style_override>` blocks where applicable). See Step 1.5 below.
 - Is it ambiguous? → Flag for resolution.
+
+### Step 1.5 — Style Contract Classification
+
+The World Seed's Section 1.5 declares engine-level prose conventions: perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register. This is NOT lore content and does NOT belong to any lorebook tier. It is engine configuration that downstream agents (Architect, Editor, Prompt Engineer) consume directly.
+
+Do this in three passes:
+
+**Pass 1 — Validate the world default.** Confirm Section 1.5a has values for all six fields. If a field reads `DEFAULTS` or is empty, fill in the legacy convention (`third_limited` / `past` / `asterisks_for_narration` / `double_quotes` / `double_asterisks` / `standard`) and note in your output that the default was applied. Confirm the values are valid enum members. If a value is not a valid enum member (e.g., user wrote "third person" instead of `third_limited`), normalize it to the closest enum and note the normalization. If normalization is ambiguous, log to `UNRESOLVED_QUESTIONS.md`.
+
+**Pass 2 — Aggregate per-card overrides.** Walk every character entry in Section 4 of the World Seed. For each card, read the Card Style Override subsection. Cards with both fields set to `INHERIT` are non-overriding (the common case); record nothing for those. Cards with at least one field non-INHERIT are overriding. For each overriding card, capture: card name, perspective override value, narration marker override value, override rationale.
+
+Validate each override:
+- The non-INHERIT field values must be valid enum members. Normalize if ambiguous.
+- The rationale must be non-empty. Empty rationale → log to `UNRESOLVED_QUESTIONS.md` with the card name.
+- The rationale must be structural, not stylistic. If the rationale reads like preference ("I prefer third-person", "feels more natural"), log to `UNRESOLVED_QUESTIONS.md` with the card name and ask the user for the structural reason. The Editor will hard-fail empty or stylistic rationales downstream; surfacing it now saves a round-trip.
+
+**Pass 3 — Multi-perspective detection.** Compute the set of distinct effective perspective values across all cards (world default + each override). If the set has more than one element (e.g., world default is `first` and one card overrides to `third_omniscient`), this world is multi-perspective. Record the multi-perspective flag in Master Design Section 11. Downstream consequences:
+- The Prompt Engineer adds an active-speaker rule to the world's Main Prompt `<style_contract>` block.
+- The Voice Auditor (Phase 3.5) runs an extra perspective-bleed check.
+
+A world where every card inherits the world default is single-perspective. A world where every card declares the same override (which would be a sign that the user has the world default wrong) is also single-perspective by effective value, but flag it for user review — they probably want the world default changed instead.
 
 ### Step 2 — Gap Detection
 For each tier, identify what is missing:
@@ -142,6 +164,38 @@ For each arc:
 - Per-card depth_prompt assessment: for each character card, note whether `data.extensions.depth_prompt` should be populated. Characters who need it: those with complex arc-dependent behavioral patterns (e.g., intimacy responses that shift fundamentally across arcs), strong prose style mandates that are prone to drift in long sessions, or behavioral requirements so numerous that system_prompt + post_history_instructions alone may not hold them in long context. Note the depth_prompt requirement explicitly so the Architect drafts it and the Compiler populates the field.
 - Any special schema requirements.
 
+### SECTION 11: STYLE CONTRACT (Engine Configuration)
+
+*This section is engine-level prose-style metadata, not lorebook content. The Prompt Engineer reads it to parameterize the preset's Main Prompt `<style_contract>` block. The Architect reads it to author per-card `<style_override>` blocks for cards that override the world default. The Editor reads it to validate cards' override declarations match the structured fields. SillyTavern itself does not consume Section 11 — it consumes the resulting preset and card content.*
+
+**11a. World Default**
+- `perspective`: [first | second | third_limited | third_omniscient]
+- `tense`: [past | present]
+- `narration_marker`: [asterisks_for_narration | asterisks_for_thoughts_only | plain_prose]
+- `dialogue_marker`: [double_quotes | single_quotes | em_dash | unmarked]
+- `emphasis_marker`: [double_asterisks | italics_underscore | none]
+- `paragraph_register`: [terse | standard | dwelling]
+- `style_notes`: [free text, or "none"]
+- `defaults_applied`: [true | false] — true if any field was filled with the legacy default because the user wrote DEFAULTS or left it blank
+
+**11b. Per-Card Overrides**
+
+[List every card that declares an override. One entry per overriding card. If no card overrides, write "No per-card overrides declared."]
+
+```
+- card_name: [CARD_NAME]
+  perspective_override: [enum value | INHERIT]
+  narration_marker_override: [enum value | INHERIT]
+  override_rationale: [verbatim from World Seed Section 4]
+  rationale_validated: [true | false] — true if Refiner Pass 2 deemed the rationale structural; false if logged to UNRESOLVED_QUESTIONS.md
+```
+
+**11c. Multi-Perspective Flag**
+- `is_multi_perspective`: [true | false] — true iff the set of effective perspectives across all cards (world default + each override) has more than one distinct value
+- Distinct perspectives in use: [list of enum values, e.g., `first` (Maya, Andrei), `third_omniscient` (Director)]
+
+If true: the Prompt Engineer adds an active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check; the Architect ensures every overriding card's `<style_override>` block references {{char}} explicitly so the model can identify the active speaker.
+
 > **Protagonist Lorebook requirement:** Every world that has a named {{user}} protagonist must include a `[ProtagonistName]_Lorebook.json` in the Tier 2 lorebook list. This is not a character card — it is reference data the model uses to react to {{user}} correctly. Without it, the model does not reliably know who {{user}} is, what they look like, how they carry themselves, or how other characters should respond to them. After pipeline completion, the user must link this lorebook to their active Persona in ST User Settings → Persona Management.
 
 ---
@@ -196,6 +250,13 @@ Append to end of `Master_Design.md`:
 - [ ] All character cards: LLM behavioral requirements (failure modes, mandates, prohibitions, trigger-response pairs)
 - [ ] All character cards: depth_prompt requirement assessed — note whether each character's behavioral complexity warrants a mid-context reinforcement injection at depth 4 (characters with arc-dependent intimacy responses, strong prose style requirements, or highly drift-prone behavior patterns are the primary candidates)
 - [ ] No unresolved structural blockers
+
+### Style Contract (Engine Configuration)
+- [ ] Section 11a: World default values present for all six fields (or DEFAULTS applied)
+- [ ] Section 11a: All values normalized to valid enum members
+- [ ] Section 11b: Every card's override status recorded (overriding or non-overriding)
+- [ ] Section 11b: Every overriding card's rationale validated (structural, not stylistic) — or unstructured rationales logged to UNRESOLVED_QUESTIONS.md
+- [ ] Section 11c: Multi-perspective flag computed and distinct perspectives enumerated
 
 **Status: LOCKED — Proceed to Phase 2 (The Architect)**
 ```

@@ -41,6 +41,59 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 ---
 
+## 1.5. STYLE CONTRACT **[REQUIRED]**
+
+*This section declares the world's prose conventions — perspective, tense, formatting markers, paragraph register. The Refiner classifies it as engine-level metadata; the Prompt Engineer parameterizes the world's Main Prompt block from these values; the Architect emits per-card style overrides where applicable. If you don't care about prose style and want pipeline defaults, write `DEFAULTS` for each field and the Refiner will fill in the legacy convention (third-person limited past, asterisks-for-narration, double-quote dialogue).*
+
+*The values you choose here apply to **every card in this world** unless a specific card declares an override (Section 4 — Card Style Override). Most worlds will set the contract once and never override; worlds with a Director/Narrator card alongside companion cards typically override perspective on the Director card only.*
+
+### 1.5a. World Default Style **[REQUIRED]**
+
+**Perspective:** [Pick one]
+- `first` — {{char}} narrates as "I". Strong intimacy, single-POV.
+- `second` — {{char}} addresses {{user}} as "you" inside the prose itself. Rare; gamebook register.
+- `third_limited` — {{char}} narrated as "she/he/they" but only {{char}}'s interior is visible. Default for most worlds.
+- `third_omniscient` — Narrator sees across all characters' interiors. Suits Director/Narrator-driven worlds.
+
+**Tense:** [Pick one]
+- `past` — "She walked across the harbor." Default for most prose fiction.
+- `present` — "She walks across the harbor." Heightened immediacy; harder to sustain across long sessions.
+
+**Narration Marker:** [Pick one — defines what `*asterisks*` mean in this world]
+- `asterisks_for_narration` — *Asterisks* delimit narration, action, and interior glimpses. Spoken dialogue uses quotes. Pipeline legacy default.
+- `asterisks_for_thoughts_only` — *Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue. Action and narration are plain prose. Spoken dialogue uses quotes.
+- `plain_prose` — No asterisks anywhere. Narration, action, and thought are all plain prose. Spoken dialogue uses quotes. Suits literary-realism worlds.
+
+**Dialogue Marker:** [Pick one]
+- `double_quotes` — `"What do you want?"` Default for most prose fiction.
+- `single_quotes` — `'What do you want?'` British convention.
+- `em_dash` — `— What do you want?` European-literary convention.
+- `unmarked` — Dialogue runs into prose without delimiters. Cormac McCarthy register; rarely advisable for roleplay.
+
+**Emphasis Marker:** [Pick one]
+- `double_asterisks` — `**emphasis**`. Pipeline legacy default.
+- `italics_underscore` — `_emphasis_`. Cleaner reading on some clients.
+- `none` — No emphasis marker; the prose carries its own weight.
+
+**Paragraph Register:** [Pick one]
+- `terse` — Short paragraphs, hard line breaks, dense action. Cyberpunk/noir register.
+- `standard` — Mixed paragraph lengths, scene flows naturally. Default for most prose.
+- `dwelling` — Long paragraphs, sensory detail accumulates, time slows. Literary-realism / horror / intimate register.
+
+**Style Notes (free text):** [Anything the enums don't capture. Examples: "characters' internal monologue is rendered in italics_underscore even though dialogue uses double_quotes", "narrator never uses contractions", "prose avoids modern idiom in pre-modern arcs". Leave blank if not applicable.]
+
+### 1.5b. Active-Speaker Rule (auto-generated; do not edit)
+
+*This rule is added to the world's Main Prompt automatically by the Prompt Engineer when at least one card declares a style override. It tells the model that the active card's style governs the current turn and forbids perspective bleed within a single turn. You do not write this — it is mechanical output of the pipeline.*
+
+### 1.5c. Per-Card Style Overrides
+
+*Style overrides are declared on individual cards in Section 4 (see "Card Style Override" subsection inside each character entry). This subsection is a placeholder for the Refiner to enumerate every override declared in Section 4, so the Prompt Engineer can verify its preset matches.*
+
+[Refiner: list every override here, one line per overriding card. Format: `[CARD_NAME] — perspective: [value], narration_marker: [value], rationale: [first 80 chars of rationale]`. Leave blank if no card overrides.]
+
+---
+
 ## 2. THE WORLD — Tier 1 Lorebook Material
 
 *Everything in this section becomes permanent world lorebook entries — active in every arc, every scene.*
@@ -168,6 +221,14 @@ Delete all instructional text in brackets before submitting. Leave the section h
 **The Crack:** [What bypasses the shield entirely? What makes the armor fall? 2–3 specific triggers.]
 
 **Voice Pattern:** [How do they speak? Sentence length, vocabulary level, verbal tics, what they never say directly, how they express strong emotion. Give the AI enough to write them distinctly.]
+
+**Card Style Override:** **[OPTIONAL — leave as `INHERIT` for the vast majority of cards]**
+
+*This card may override the world's perspective and narration marker (Section 1.5a) for its own turns. Override only when the card is structurally incompatible with the world default — typically a Director/Narrator card sitting alongside companion cards in a 1st-person world, or a confessional companion card in an otherwise 3rd-person world. Do NOT override for stylistic preference; that's what the world default is for. Tense, dialogue marker, emphasis marker, and paragraph register are world-coherence settings and cannot be overridden per card.*
+
+- **Perspective override:** [`INHERIT` (default — uses world Section 1.5a value) | `first` | `second` | `third_limited` | `third_omniscient`]
+- **Narration marker override:** [`INHERIT` (default) | `asterisks_for_narration` | `asterisks_for_thoughts_only` | `plain_prose`]
+- **Override rationale:** [REQUIRED if either override is not INHERIT. One sentence explaining the structural reason this card cannot use the world default. Stylistic preference is not a structural reason. Example: "Director card handling NPC voices and scene-setting from outside any character's POV; world-default first-person is structurally wrong for this role." The Editor hard-fails any non-INHERIT override with an empty or vague rationale.]
 
 **Opening Scenario:** [Where are they when the story starts? What is their situation and immediate goal?]
 
@@ -561,6 +622,16 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 - [ ] Genre and tone per arc described
 - [ ] Emotional payoff articulated
 - [ ] Tonal rules listed
+
+**Section 1.5 — Style Contract:**
+- [ ] Perspective declared (or `DEFAULTS`)
+- [ ] Tense declared
+- [ ] Narration marker declared
+- [ ] Dialogue marker declared
+- [ ] Emphasis marker declared
+- [ ] Paragraph register declared
+- [ ] Style notes captured (or noted as N/A)
+- [ ] Per-card overrides (if any) declared in Section 4 with non-empty structural rationales
 
 **Section 2 — The World:**
 - [ ] Setting described with specific sensory signature
