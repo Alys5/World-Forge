@@ -70,6 +70,14 @@ Validate each override:
 
 A world where every card inherits the world default is single-perspective. A world where every card declares the same override (which would be a sign that the user has the world default wrong) is also single-perspective by effective value, but flag it for user review — they probably want the world default changed instead.
 
+**Pass 4 — POV ambiguity advisory (non-blocking).** When the world default `perspective` is `first` or `second`, scan every card for Director/Narrator/NPC-handler indicators. A card is flagged as a Director if either of the following holds:
+- The card's "The Card's Function" field in World Seed Section 4 contains any of: `Director`, `Narrator`, `NPC controller`, `NPC handler`, `NPC manager`, `World Director`, or close variants (case-insensitive).
+- The card has an "NPC PROFILES" subsection (per World Seed Section 4's Director-card convention) with at least one populated NPC profile.
+
+For every Director-flagged card whose effective perspective (after override resolution from Pass 2) is `first` or `second`, record a POV ambiguity advisory in Master Design Section 11d. This is a **soft warning**, not a halt — the user may legitimately have a Director card narrating from a fixed focal NPC's POV. The advisory exists so the user notices the friction before runtime, not to block them.
+
+Do NOT log POV ambiguity to `UNRESOLVED_QUESTIONS.md`; that channel halts the pipeline and POV ambiguity should not. Section 11d is the correct surface.
+
 ### Step 2 — Gap Detection
 For each tier, identify what is missing:
 
@@ -196,6 +204,27 @@ For each arc:
 
 If true: the Prompt Engineer adds an active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check; the Architect ensures every overriding card's `<style_override>` block references {{char}} explicitly so the model can identify the active speaker.
 
+**11d. Style Contract Advisories (non-blocking)**
+
+*These are soft warnings the Refiner surfaces for the user's awareness. They do not halt the pipeline. Downstream agents may surface them in their own reports but do not enforce them. The user may acknowledge an advisory and proceed; the pipeline runs cleanly either way.*
+
+**POV Ambiguity Advisory** — `[present | absent]`
+
+Triggered when:
+- World default `perspective` is `first` or `second` (Section 11a)
+- AND at least one card meets the Director criteria from Step 1.5 Pass 4
+
+When `present`, list every Director-flagged card whose effective perspective is `first` or `second`, then include the following advisory text verbatim:
+
+> Your world default perspective is **[world default value]**. The following card(s) appear to be Director / Narrator / NPC handlers: **[CARD_NAME, CARD_NAME, ...]**. Director cards in first- or second-person worlds face a POV ambiguity at runtime: whose "I" (or "you") is speaking when the Director narrates? Companion cards in such worlds have a fixed POV — the character's own. Director cards handling multiple NPCs do not. Two paths forward:
+>
+> 1. **Accept the ambiguity.** Trust the model to pick a focal NPC per turn and narrate from that NPC's POV. Works on capable models in solo chat. Fragile on smaller models or in group-chat configurations where multiple cards' data is in the same context.
+> 2. **Declare a perspective_override on the Director card** — typically `third_omniscient` (narrator sees across all NPCs) or `third_limited` (narrator focuses on one NPC at a time, but in third-person). This is the structurally clean answer for most Director cards. Update World Seed Section 4 for that card and re-run the Refiner.
+>
+> The pipeline will run either way. Confirm path 1 explicitly or update to path 2.
+
+When `absent`, write `POV Ambiguity Advisory: absent (world default is third-person OR no Director cards detected).`
+
 > **Protagonist Lorebook requirement:** Every world that has a named {{user}} protagonist must include a `[ProtagonistName]_Lorebook.json` in the Tier 2 lorebook list. This is not a character card — it is reference data the model uses to react to {{user}} correctly. Without it, the model does not reliably know who {{user}} is, what they look like, how they carry themselves, or how other characters should respond to them. After pipeline completion, the user must link this lorebook to their active Persona in ST User Settings → Persona Management.
 
 ---
@@ -257,6 +286,7 @@ Append to end of `Master_Design.md`:
 - [ ] Section 11b: Every card's override status recorded (overriding or non-overriding)
 - [ ] Section 11b: Every overriding card's rationale validated (structural, not stylistic) — or unstructured rationales logged to UNRESOLVED_QUESTIONS.md
 - [ ] Section 11c: Multi-perspective flag computed and distinct perspectives enumerated
+- [ ] Section 11d: POV ambiguity advisory computed (present or absent); if present, affected cards listed and advisory text included verbatim
 
 **Status: LOCKED — Proceed to Phase 2 (The Architect)**
 ```
