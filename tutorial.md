@@ -94,6 +94,25 @@ By explicitly stating that Arc 1 intimacy is *transactional* and Arc 2 intimacy 
 
 ## 4. Next Steps
 
-Once your `World_Seed.md` is complete (whether written manually or with the Phase 0 Interviewer), simply tell the agent to begin Phase 1. 
+Once your `World_Seed.md` is complete (whether written manually or with the Phase 0 Interviewer), simply tell the agent to begin Phase 1.
 
 The Refiner will review your document, identify any gaps, and build the Master Design. From there, the agents will draft, edit, audit, and compile your world, ultimately placing a ready-to-play JSON package in your `Export/` folder.
+
+## 5. Wiring Up `{{user}}` After Compilation
+
+SillyTavern provides a structured import for `{{char}}` (the V3 character card JSON), but it provides **no equivalent import for `{{user}}`** — personas are configured manually. The pipeline produces two paired artifacts to support this:
+
+1. **`Export/User.md`** — the Persona Description text (a paste-ready block).
+2. **`Export/[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook.
+
+After importing the character cards and lorebooks into SillyTavern, finish the setup:
+
+1. Open **User Settings → Persona Management**.
+2. Create (or select) the persona for this world. Use the in-world name from the top of `Export/User.md` (e.g., for the Lucifer world, `Andrei Petrov`).
+3. Open `Export/User.md`. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` and paste it into the persona's **Description** field.
+4. In the same persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json`.
+5. Activate this persona before starting the chat.
+
+The Persona Description is the always-on identity floor: a tight, ≤150-word block that injects every turn so the LLM and NPCs always know who `{{user}}` is. The linked lorebook fires on keyword triggers for fuller detail (full physical description, psychology, relationships, powers, history). Together they give `{{user}}` parity with `{{char}}` despite SillyTavern's missing import format.
+
+> Note: `User.md` deliberately does **not** contain voice, personality, or speech patterns for `{{user}}`. The human plays `{{user}}` and writes their own dialogue and actions — those things are the human's domain, not the LLM's. `User.md` is reference data the LLM uses to react *to* `{{user}}` correctly.

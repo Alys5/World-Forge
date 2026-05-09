@@ -142,7 +142,12 @@ For each arc:
 - Per-card depth_prompt assessment: for each character card, note whether `data.extensions.depth_prompt` should be populated. Characters who need it: those with complex arc-dependent behavioral patterns (e.g., intimacy responses that shift fundamentally across arcs), strong prose style mandates that are prone to drift in long sessions, or behavioral requirements so numerous that system_prompt + post_history_instructions alone may not hold them in long context. Note the depth_prompt requirement explicitly so the Architect drafts it and the Compiler populates the field.
 - Any special schema requirements.
 
-> **Protagonist Lorebook requirement:** Every world that has a named {{user}} protagonist must include a `[ProtagonistName]_Lorebook.json` in the Tier 2 lorebook list. This is not a character card — it is reference data the model uses to react to {{user}} correctly. Without it, the model does not reliably know who {{user}} is, what they look like, how they carry themselves, or how other characters should respond to them. After pipeline completion, the user must link this lorebook to their active Persona in ST User Settings → Persona Management.
+> **Protagonist artifacts requirement:** Every world that has a named {{user}} protagonist must produce **two paired artifacts** for the SillyTavern Persona:
+>
+> 1. **`User.md`** — the Persona Description text the user pastes into ST → User Settings → Persona Management → Description. This is the always-on identity floor for `{{user}}` (≤150 words, third-person reference data, no voice/personality/manner content). Drafted by the Architect in Phase 2; passed through unchanged to `Export/User.md` by the Compiler in Phase 4.
+> 2. **`[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook the user links via the persona's Lorebook field. Reference data the model uses to react to `{{user}}` correctly: physical, psychology, relationships, powers, history. Fires on trigger keywords.
+>
+> SillyTavern provides no import format for personas, so the user wires both up manually after pipeline completion. The persona description is the constant baseline; the lorebook fires on keys for fuller detail. Without `User.md`, the user has nothing to put in the Description field and the LLM has no always-on identity anchor for `{{user}}` until a key fires — producing wrong NPC reactions in opening turns.
 
 ---
 
@@ -184,6 +189,7 @@ Append to end of `Master_Design.md`:
 - [ ] All major characters: psychological entry topics listed
 - [ ] All NPCs: full profile with trigger keywords
 - [ ] **Protagonist ({{user}}): physical description, psychology, powers, voice, and lorebook entry topics defined**
+- [ ] **Protagonist ({{user}}): identity floor available for `User.md` Persona Description — name, role/public face, distilled physical signature, world-relevant powers/limits flag (if applicable). Voice/personality/manner intentionally excluded — the human plays `{{user}}`.**
 
 ### Tier 3 — Arc Lorebook Material
 - [ ] All arcs defined with genre tags

@@ -32,8 +32,9 @@ Check for all required files before reading a single word of content.
 
 **Required files:**
 - `Drafts/Card_[CharName].md` — one per character card
+- `Drafts/User.md` — `{{user}}` Persona Description text (mandatory for any world with a named `{{user}}` protagonist; see Step 5.5 below)
 - `Drafts/Tier1_World_Entries.md` — single file, all Tier 1 entries
-- `Drafts/Tier2_[CharName]_Entries.md` — one per major character AND one per significant NPC
+- `Drafts/Tier2_[CharName]_Entries.md` — one per major character AND one per significant NPC (including the Tier 2 Protagonist Lorebook for `{{user}}`)
 - `Drafts/Tier3_Arc[N]_[Title]_Entries.md` — one per arc
 - `Drafts/Instructions_[CardName].md` — one per card
 
@@ -346,6 +347,109 @@ After the override architecture passes, verify the character-specific content qu
 - [ ] Defers to the active CHARACTER_STATE entry as authority
 - [ ] Ends with a character-specific behavioral directive (not an engine reminder)
 
+### Step 5.5 — `{{user}}` Persona Description Audit (`Drafts/User.md`)
+
+`User.md` is mandatory for any world with a named `{{user}}` protagonist. It supplies the persona description text the human pastes into ST → User Settings → Persona Management — the always-on `personaDescription` block injected every turn. Detail belongs in the Tier 2 Protagonist Lorebook (which fires on keys); `User.md` is the identity floor.
+
+The Architect's specification for this file is in Section 5.5 of `02_The_Architect.md`; the structural template is `templates/User_Persona_template.md`. Audit `Drafts/User.md` against the rules below.
+
+#### 5.5a — Presence and structure (hard fail)
+
+- [ ] `Drafts/User.md` exists.
+- [ ] The file contains a `## PERSONA DESCRIPTION` section.
+- [ ] That section contains a literal `--- BEGIN PERSONA DESCRIPTION ---` marker and a literal `--- END PERSONA DESCRIPTION ---` marker, with content between them.
+- [ ] The file contains a `## SETUP INSTRUCTIONS` section that names the Tier 2 Protagonist Lorebook filename (the file the user must link to the persona — must match the Tier 2 lorebook draft filename, e.g., `Andrei_Lorebook.json` for `Tier2_Andrei_Entries.md`).
+
+Missing file or any of the structural elements = hard reject.
+
+#### 5.5b — Length cap (hard fail)
+
+- [ ] The text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` is **≤150 words**.
+
+Over the cap = hard reject. The persona description injects every turn; bloat compounds. Cite the word count and direct the Architect to cut.
+
+#### 5.5c — Forbidden content scan (hybrid: hard fail + soft flag)
+
+`User.md` is reference data, not impersonation guidance. The human plays `{{user}}` — voice, personality, mannerisms, and dialogue style are the human's domain. Engine instructions live in the preset.
+
+**HARD FAIL — diagnostic phrases inside the BEGIN/END block (any single match = reject):**
+
+These phrases unambiguously indicate forbidden content. Match is case-insensitive.
+
+```
+"You are"          (first-person/second-person framing — persona description is third-person reference)
+"you must"
+"you should"
+"you will"
+"always "          (directive language — leading whitespace required to avoid false positives like "always-on")
+"never "
+"do not"
+"don't "
+"speaks with"
+"speech pattern"
+"sentence structure"
+"vocabulary"
+"accent"
+"voice"
+"dialogue"
+"mannerism"
+"manner of speech"
+"rhetorical"
+"narration rules"
+"formatting rules"
+"do not act for {{user}}"
+"don't act for {{user}}"
+"{{user}} controls"
+"trigger-response"
+```
+
+If any phrase appears inside the BEGIN/END block, hard reject. Cite the offending phrase and direct the Architect to strip and rewrite.
+
+**SOFT FLAG — ambiguous keywords (flag for review, do not auto-reject):**
+
+These sometimes indicate forbidden content but also appear naturally in legitimate identity description. Surface in critique:
+
+```
+"speak"        (could appear in legitimate context: "rooms quiet when he speaks")
+"says"         (idem)
+"register"     (could appear: "carries himself in a register of …")
+"tone"         (could appear: "his presence carries a tone of …")
+```
+
+For each soft-flag hit:
+
+```
+SOFT FLAG: "[keyword]" appears in User.md persona block at "[surrounding sentence]"
+  Verify: is this third-person identity description (legitimate) or voice/manner content
+  that belongs in the human's domain (must be removed)?
+```
+
+#### 5.5d — Identity floor quality (soft flag)
+
+The Persona Description block must establish the minimum identity floor: name, role/function/public face, and (where relevant) physical signature and world-relevant powers/limits. Without this, NPCs cannot react sensibly to `{{user}}` before any Tier 2 key fires.
+
+- [ ] The block opens with `{{user}}`'s in-world name and role/function/public face (1–3 sentences).
+- [ ] If the world has visual scenes, a physical signature is present (1–3 sentences) — distilled to one or two strokes, not the full anatomical paragraph (that lives in the Tier 2 lorebook).
+- [ ] If `{{user}}` has powers / a public identity / a hidden layer that materially shapes how NPCs and the world react to them, that is flagged in 1–2 sentences.
+
+Soft-flag (do not hard reject) any of:
+- Block opens without naming `{{user}}` or the role.
+- Block duplicates a full Tier 2 lorebook entry (physical paragraph, psychology paragraph) verbatim or near-verbatim — content that can wait for a key to fire belongs in the lorebook.
+- Block contains content with no clear function for NPC reaction or world-perception (e.g., backstory detail that does not shape any present-tense reaction).
+
+```
+SOFT FLAG: User.md persona block — [specific concern]
+  Verify: tighten to identity floor only (name, role, signature, world-relevant flags),
+  or push detail into the Tier 2 Protagonist Lorebook.
+```
+
+#### 5.5e — Lorebook pairing consistency (hard fail)
+
+- [ ] The lorebook filename named in the Setup Instructions matches the Tier 2 Protagonist Lorebook draft (`Tier2_[ProtagonistName]_Entries.md` → expected export `[ProtagonistName]_Lorebook.json`).
+- [ ] The in-world name in the `# {{user}} PERSONA — [Name]` heading matches the protagonist name used in the Tier 2 Protagonist Lorebook draft.
+
+Mismatch = hard reject. The pair must wire up correctly in ST or the user gets a broken persona.
+
 ### Step 6 — Issue Critique & Directives
 Produce `Drafts/Editor_Critique_[Round N].md`. Be specific: cite exact passages, entry names, or sections that fail. State exactly what must change.
 
@@ -406,8 +510,9 @@ Post-history: [checklist results + word count]
 
 ### Approved Files
 - [ ] Card_[CharName].md
+- [ ] User.md
 - [ ] Tier1_World_Entries.md
-- [ ] Tier2_[CharName]_Entries.md (list each)
+- [ ] Tier2_[CharName]_Entries.md (list each — including the Tier 2 Protagonist Lorebook)
 - [ ] Tier3_Arc[N]_[Title]_Entries.md (list each)
 - [ ] Instructions_[CardName].md (list each)
 
@@ -422,6 +527,7 @@ Post-history: [checklist results + word count]
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**
 - **All Position Rationale soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
+- **`User.md` present, structurally valid, ≤150 words, no voice/personality/engine content, lorebook filename matches Tier 2 Protagonist draft ✓**
 - All LLM instructions: checklists passed ✓
 - **All cards: `system_prompt` and `post_history_instructions` start with `{{original}}` ✓**
 - **All cards: no engine-instruction contamination (hard-fail phrase scan passed) ✓**
