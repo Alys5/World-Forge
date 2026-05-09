@@ -41,6 +41,7 @@ When working with a new world, your project folder will evolve to look like this
 ├── Drafts/
 │   ├── Master_Design.md
 │   ├── Card_[CharName].md
+│   ├── User.md                                    ⭐ {{user}} Persona Description (Phase 2)
 │   ├── Tier1_World_Entries.md
 │   ├── Tier2_[ProtagonistName]_Entries.md
 │   ├── Tier2_[CharName]_Entries.md
@@ -56,9 +57,11 @@ When working with a new world, your project folder will evolve to look like this
 │   ├── Char_Card_creation.md
 │   ├── Lorebook_creation.md
 │   ├── Group_lorebook_template.md
+│   ├── User_Persona_template.md                   ⭐ {{user}} Persona structural reference
 │   └── Chat_Completion_Preset_template.json       ⭐ new (Phase 5 structural reference)
 └── Export/
     ├── [CharName]_Card.json
+    ├── User.md                                    ⭐ {{user}} Persona Description (paste into ST)
     ├── [ProtagonistName]_Lorebook.json
     ├── World_Lorebook.json
     ├── [CharName]_Lorebook.json
@@ -82,6 +85,7 @@ When working with a new world, your project folder will evolve to look like this
 **Drafts/ (Work-in-Progress Content):**
 - `Master_Design.md`: The structured blueprint created by Phase 1, organizing your World Seed into concrete Tiers.
 - `Card_[CharName].md`: The draft character card content for a specific character.
+- `User.md`: The draft `{{user}}` Persona Description text — the always-on identity floor the human pastes into SillyTavern's Persona Description field. SillyTavern provides no import format for personas, so the pipeline produces a paste-ready text block instead. Paired with the Tier 2 Protagonist Lorebook. Excludes voice/personality/manner — those are the human's domain.
 - `Tier1_World_Entries.md`: Drafts of permanent, fundamental world lore and rules.
 - `Tier2_[ProtagonistName]_Entries.md` & `Tier2_[CharName]_Entries.md`: Drafts of character backgrounds, identity references, and permanent traits.
 - `Tier2_[CharName]_Intimacy_Profile.md`: Drafts of a character's permanent intimate preferences, boundaries, and physical reactions.
@@ -99,6 +103,7 @@ When working with a new world, your project folder will evolve to look like this
 
 **Export/ (Final Deliverables):**
 - `[CharName]_Card.json`: The final Character Card ready to import into SillyTavern.
+- `User.md`: The `{{user}}` Persona Description text, passed through unchanged from `Drafts/User.md`. After importing the rest, open ST → User Settings → Persona Management, create your persona, paste the block between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` into the persona's Description field, and link `[ProtagonistName]_Lorebook.json` in the persona's Lorebook field.
 - `World_Lorebook.json`, `[CharName]_Lorebook.json`, `[ProtagonistName]_Lorebook.json`: Permanent lorebooks representing Tier 1 and Tier 2 content.
 - `Arc[N]_Lorebook.json`: Modular lorebooks to swap in and out as the roleplay progresses through different arcs.
 - `[CharName]_Intimacy_Profile.json` & `Arc[N]_Intimacy_Register.json`: The compiled JSON lorebooks managing intimacy mechanics.

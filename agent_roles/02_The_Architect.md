@@ -33,10 +33,11 @@ Do not mix tiers. Tier 2 character lorebook entries must never contain arc-speci
 Draft in this sequence to prevent cross-contamination:
 
 1. Character Cards (persona, voice, system prompts)
-2. World Lorebook entries (Tier 1)
-3. Character Lorebook entries (Tier 2, one file per character)
-4. Arc Lorebook entries (Tier 3, one file per arc)
-5. LLM Instruction drafts (system_prompt + post_history_instructions per card)
+2. `User.md` — `{{user}}` Persona Description text (paired with the Tier 2 Protagonist Lorebook)
+3. World Lorebook entries (Tier 1)
+4. Character Lorebook entries (Tier 2, one file per character — including the Tier 2 Protagonist Lorebook for `{{user}}`)
+5. Arc Lorebook entries (Tier 3, one file per arc)
+6. LLM Instruction drafts (system_prompt + post_history_instructions per card)
 
 ---
 
@@ -70,6 +71,91 @@ Minimum 3 `<START>` blocks. Each demonstrates a different behavioral mode:
 1. Default defensive/surface behavior
 2. Shield being triggered
 3. The crack — what bypasses the shield
+
+---
+
+## 5.5. `{{user}}` PERSONA DESCRIPTION — `Drafts/User.md`
+
+This is a **mandatory** output for every world that has a named `{{user}}` protagonist. It pairs with the Tier 2 Protagonist Lorebook (`Drafts/Tier2_[ProtagonistName]_Entries.md`) you draft in Section 7.
+
+### Why this exists
+
+SillyTavern provides a structured import for `{{char}}` (V3 character card JSON). It provides **no equivalent import for `{{user}}`** — personas are configured manually in **User Settings → Persona Management**, where each persona has a name, a free-text Description field, and an optional linked Lorebook. The pipeline already produces the lorebook side; `User.md` produces the **Persona Description text** the user pastes into ST. Without it, the user has nothing to put into the persona description, and the LLM has no always-on identity floor for `{{user}}` — it must wait for a Tier 2 lorebook key to fire before it knows who `{{user}}` is. This produces wrong NPC reactions in the opening turns and any time no key has matched recently.
+
+The Persona Description is injected as `personaDescription` in ST's prompt assembly (see `Notes_On_functionality.md` — the prompt-assembly section): a `[system]` block that fires every turn while the persona is active.
+
+### What `User.md` is *not*
+
+`User.md` is **not** a character card. The human plays `{{user}}` and writes their own dialogue and actions. The pipeline does not instruct the LLM on how to impersonate `{{user}}`. `User.md` therefore MUST NOT contain:
+
+- **Voice / dialogue style / speech patterns / accent / rhetorical habits** — the human writes `{{user}}`'s voice directly.
+- **Personality traits framed as behavioral mandates** ("`{{user}}` is stoic and reserved" written as a directive) — the human plays the personality.
+- **Mannerisms / gestures / habits framed as instructions to the model** — the human controls these.
+- **First-person framing or "you are" framing** — `{{user}}` is not played by the LLM; the persona description is third-person reference data *about* `{{user}}`.
+- **Engine instructions** ("don't write actions for `{{user}}`," narration rules, formatting rules) — those live in the preset Main Prompt and are never duplicated in persona text.
+- **Trigger-response pairs, behavioral mandates, prohibitions** — those belong in the Tier 2 Protagonist Lorebook (which fires on keys) or in the preset (engine-level).
+
+The persona description's only job is to give the LLM the minimum reference context it needs so NPCs and `{{char}}` react correctly to `{{user}}` before any keyword-triggered Tier 2 entry has fired.
+
+### Structure
+
+The file has two parts: the **Persona Description block** (what the user pastes into ST) and the **Setup Instructions** (how the user wires it up). Only the Persona Description block is injected into the LLM prompt; the Setup Instructions are for the human reader and never reach the model.
+
+```
+# {{user}} PERSONA — [In-World Name]
+
+## PERSONA DESCRIPTION
+*Paste the block below — between the BEGIN and END markers — into:
+SillyTavern → User Settings → Persona Management → [your persona] → Description.
+This text is injected as a system message every turn while this persona is active. Keep it tight.*
+
+--- BEGIN PERSONA DESCRIPTION ---
+
+[Identity & Role — 1–3 sentences: in-world name, public role/function, what people see when they look at {{user}}]
+
+[Physical signature — 1–3 sentences in compact prose: build, distinguishing features, dress register, sensory cue. The full anatomical breakdown lives in the Tier 2 lorebook.]
+
+[Optional: world-relevant powers / limits / hidden layer — 1–2 sentences, only if it shapes how the world reacts to {{user}}]
+
+--- END PERSONA DESCRIPTION ---
+
+---
+
+## SETUP INSTRUCTIONS
+1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.
+2. Set the persona name to: `[In-World Name]`.
+3. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` above and paste it into the persona's **Description** field.
+4. In the same persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json` (the Tier 2 Protagonist Lorebook produced by the pipeline).
+5. Activate this persona before starting the chat. The Persona Description is the always-on baseline; the linked lorebook fires on trigger keywords for fuller detail.
+```
+
+### Drafting workflow
+
+1. Read World Seed § 3 (the Protagonist section) completely.
+2. **Identity & Role** — distill from § 3's "Identity & Role" and "The Contradiction": pick the surface the world sees, not the interior.
+3. **Physical Signature** — distill from § 3's "Protagonist Physical Description" into one or two compact sentences capturing build, signature feature, dress, sensory cue. Do **not** copy the full anatomical paragraph; that lives in the Tier 2 lorebook.
+4. **Powers/Limits/Hidden Layer** — include only if the world's reactions to `{{user}}` depend on it. Examples where it is needed: `{{user}}` has powers other characters can sense (Lucifer's stillness, a mage's aura); `{{user}}` has a public identity that meaningfully shapes deference, fear, or hostility from NPCs (a king, a wanted criminal); `{{user}}` has a hidden layer that is also a structural fact of the world. Examples where it is **not** needed: `{{user}}` is an ordinary person with no powers and no public role; the hidden layer is purely psychological / private to the player and doesn't shape NPC reactions.
+5. Verify the assembled block is third-person reference, not directive ("`{{user}}` is …", not "You are …" or "Always …").
+6. Verify the block contains no voice/personality/manner/style content.
+7. **Count words.** The Persona Description block (the text between the BEGIN and END markers) MUST be ≤150 words. Hard cap. This text injects every turn for the entire chat — every word costs tokens on every generation. If it does not fit in 150 words, voice/personality has crept in, or the lorebook material is being duplicated. Strip and rewrite.
+8. Write the Setup Instructions section verbatim from the structure above, substituting the in-world name and the lorebook filename.
+
+### Special cases
+
+- **Unnamed / abstract `{{user}}`:** if § 3 of the World Seed has no named protagonist and explicitly states the protagonist is open-ended, produce a minimal `User.md` whose Persona Description block consists of just the role context (e.g., *"`{{user}}` is a traveler whose identity is established through play. The world treats them as [register / station / faction relationship]."*). Setup Instructions still apply.
+- **No visual register:** if the world has no visual scenes (text adventure abstraction, dream logic), the Physical Signature section may be omitted with the note "*Physical: not applicable to this world's register.*"
+
+### Cross-reference with the Tier 2 Protagonist Lorebook
+
+`User.md` and `[ProtagonistName]_Lorebook.json` are paired artifacts, not redundant ones. If content lives in both, prefer the lorebook. The persona description should be the smallest viable identity anchor — anything that can wait for a key to fire belongs in the lorebook.
+
+| | Persona Description (in `User.md`) | Tier 2 Protagonist Lorebook |
+|---|---|---|
+| **Trigger** | Always on (every turn while persona active) | Keyword-triggered |
+| **Content scope** | Identity floor only | Full reference: physical detail, psychology, relationships, powers, history |
+| **Length** | ≤150 words | No fixed cap; per-entry standard |
+
+For the full structural specification, including the rationale for each section, see `templates/User_Persona_template.md`.
 
 ---
 
@@ -588,6 +674,16 @@ Append to your submission note before handing to The Editor:
 - [ ] Card description: full physical + psychological, no arc content
 - [ ] scenario and first_mes: Arc 1 entry point only
 - [ ] mes_example: 3+ exchanges covering default, shield, crack
+
+### `{{user}}` Persona Description — `Drafts/User.md`
+- [ ] File exists for any world with a named `{{user}}` protagonist
+- [ ] Persona Description block is third-person reference about `{{user}}` (not "you are …" / not directive)
+- [ ] Persona Description block ≤150 words (count the text between BEGIN/END markers only)
+- [ ] No voice / dialogue style / speech patterns / accent / rhetorical habits in the block
+- [ ] No personality traits framed as behavioral mandates
+- [ ] No engine instructions (narration rules, formatting rules, "don't write actions for `{{user}}`")
+- [ ] No trigger-response pairs, prohibitions, or behavioral mandates
+- [ ] Setup Instructions present, naming the protagonist lorebook filename to link in ST
 
 ### Tier 1 — World Lorebook Entries
 - [ ] All factions covered
