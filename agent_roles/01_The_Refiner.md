@@ -57,13 +57,15 @@ Do this in four passes (plus the POV advisory):
 
 **Pass 1 — Validate the world default.** Confirm Section 1.5a has values for all six fields. If a field reads `DEFAULTS` or is empty, fill in the legacy convention (`third_limited` / `past` / `asterisks_for_narration` / `double_quotes` / `double_asterisks` / `standard`) and note in your output that the default was applied. Confirm the values are valid enum members. If a value is not a valid enum member (e.g., user wrote "third person" instead of `third_limited`), normalize it to the closest enum and note the normalization. If normalization is ambiguous, log to `UNRESOLVED_QUESTIONS.md`.
 
-**Pass 2 — Aggregate per-card overrides.** Walk every character entry in Section 4 of the World Seed. For each card, read the Card Style Override subsection. Cards with all three override fields set to `INHERIT` are non-overriding (the common case); record nothing for those. Cards with at least one field non-INHERIT are overriding. For each overriding card, capture: card name, perspective override value, tense override value, narration marker override value, override rationale.
+**Pass 2 — Aggregate per-card overrides.** Walk every character entry in Section 4 of the World Seed. For each card, read the Card Style Override subsection. Cards with all five override fields set to `INHERIT` are non-overriding (the common case); record nothing for those. Cards with at least one field non-INHERIT are overriding. For each overriding card, capture: card name, perspective override value, tense override value, narration marker override value, dialogue marker override value, emphasis marker override value, override rationale.
 
 Validate each override:
 - The non-INHERIT field values must be valid enum members:
   - `perspective_override`: `first` | `second` | `third_limited` | `third_omniscient`
   - `tense_override`: `past` | `present`
   - `narration_marker_override`: `asterisks_for_narration` | `asterisks_for_thoughts_only` | `plain_prose`
+  - `dialogue_marker_override`: `double_quotes` | `single_quotes` | `em_dash` | `unmarked`
+  - `emphasis_marker_override`: `double_asterisks` | `italics_underscore` | `none`
 - Normalize ambiguous user input where possible (e.g., "first person" → `first`).
 - The rationale must be non-empty. Empty rationale → log to `UNRESOLVED_QUESTIONS.md` with the card name.
 - The rationale must be structural, not stylistic. If the rationale reads like preference ("I prefer third-person", "feels more natural"), log to `UNRESOLVED_QUESTIONS.md` with the card name and ask the user for the structural reason. The Editor will hard-fail empty or stylistic rationales downstream; surfacing it now saves a round-trip.
@@ -202,6 +204,8 @@ For each arc:
   perspective_override: [enum value | INHERIT]
   tense_override: [enum value | INHERIT]
   narration_marker_override: [enum value | INHERIT]
+  dialogue_marker_override: [enum value | INHERIT]
+  emphasis_marker_override: [enum value | INHERIT]
   override_rationale: [verbatim from World Seed Section 4]
   rationale_validated: [true | false] — true if Refiner Pass 2 deemed the rationale structural; false if logged to UNRESOLVED_QUESTIONS.md
 ```

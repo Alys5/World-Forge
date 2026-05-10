@@ -560,11 +560,11 @@ This produces the runtime stack: preset engine instructions → character-specif
 
 For most cards, you do not declare an override. The card's `system_prompt` is unchanged from the pre-Style-Contract pipeline: `{{original}}` followed by character-specific content. Set `extensions.world_forge.style_override` to `null` in the LLM Instructions draft (the Compiler will populate the JSON field).
 
-For the rare card whose Master Design Section 11b entry shows non-INHERIT values for `perspective_override`, `tense_override`, and/or `narration_marker_override`, you emit the metadata exactly as follows.
+For the rare card whose Master Design Section 11b entry shows non-INHERIT values for any of `perspective_override`, `tense_override`, `narration_marker_override`, `dialogue_marker_override`, or `emphasis_marker_override`, you emit the metadata exactly as follows.
 
-**1. Do NOT add any `<style_override>...</style_override>` tag block to the card's `system_prompt`, `post_history_instructions`, or `depth_prompt`.** The Editor hard-fails any literal `<style_override>` tag in any card text field (Step 5.6 Pass 2). Engine-level perspective and formatting language remain forbidden in card text under the standard contamination scan (Step 5b) — there is no exemption.
+**1. Do NOT add any `<style_override>...</style_override>` tag block to the card's `system_prompt`, `post_history_instructions`, or `depth_prompt`.** The Editor hard-fails any literal `<style_override>` tag in any card text field (Step 5.6 Pass 3). Engine-level perspective and formatting language remain forbidden in card text under the standard contamination scan (Step 5b) — there is no exemption.
 
-**2. Populate `extensions.world_forge.style_override` in the LLM Instructions draft.** The metadata has five fields: three enum overrides (`perspective_override`, `tense_override`, `narration_marker_override`), the `directives` array (resolved prose for the runtime extension to splice), and the `override_rationale`. You generate `directives` from the enum values using the canonical prose templates documented below.
+**2. Populate `extensions.world_forge.style_override` in the LLM Instructions draft.** The metadata has seven fields: five enum overrides (`perspective_override`, `tense_override`, `narration_marker_override`, `dialogue_marker_override`, `emphasis_marker_override`), the `directives` array (resolved prose for the runtime extension to splice), and the `override_rationale`. You generate `directives` from the enum values using the canonical prose templates documented below.
 
 Format for the LLM Instructions draft (the Compiler will translate this to JSON):
 
@@ -573,6 +573,8 @@ EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
   perspective_override: [enum value | null]
   tense_override: [enum value | null]
   narration_marker_override: [enum value | null]
+  dialogue_marker_override: [enum value | null]
+  emphasis_marker_override: [enum value | null]
   directives:
     - "NARRATIVE PERSPECTIVE: [resolved prose, see directive generation below]"
     - "FORMATTING MARKERS: [resolved prose, see directive generation below]"
@@ -596,47 +598,88 @@ Use `null` for whichever enum field reads `INHERIT` in Section 11b. At least one
 | `third_omniscient` | `past` | `Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
 | `third_omniscient` | `present` | `Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
 
-**Directive line: `FORMATTING MARKERS`** — emit when `narration_marker_override` is non-null. The line names what `*asterisks*` delimit for this card. Dialogue marker and emphasis marker come from the world contract (those are not per-card overridable).
+**Directive line: `FORMATTING MARKERS`** — emit when ANY of `narration_marker_override`, `dialogue_marker_override`, or `emphasis_marker_override` is non-null. The line composes from all three marker axes' *effective* values (override where set, world default where inherited) by joining three sub-clauses into a single sentence with the format `[narration clause]. [dialogue clause]. [emphasis clause].` (followed by `No other formatting conventions apply.`).
 
-| Effective narration marker | Resolved directive content |
+Per-axis sub-clause templates:
+
+**Narration marker sub-clause** (effective `narration_marker`):
+
+| Value | Sub-clause |
 |---|---|
-| `asterisks_for_narration` | `*Asterisks* delimit narration, action, and interior glimpses.` |
-| `asterisks_for_thoughts_only` | `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue. Action and narration are plain prose.` |
-| `plain_prose` | `No asterisks anywhere. Narration, action, and thought are all plain prose. Spoken dialogue still uses double quotes per the world contract.` |
+| `asterisks_for_narration` | `*Asterisks* delimit narration, action, and interior glimpses` |
+| `asterisks_for_thoughts_only` | `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue; narration and action are plain prose` |
+| `plain_prose` | `No asterisks anywhere — narration, action, and thought are all plain prose` |
 
-**4. Worked example — Director card in a past-tense, first-person world.** World default: `perspective: first`, `tense: past`, `narration_marker: asterisks_for_thoughts_only`. Section 11b entry for `[CARD_NAME]` reads `perspective_override: third_omniscient`, `tense_override: INHERIT`, `narration_marker_override: INHERIT`, with a structural rationale. Effective values for this card: perspective is `third_omniscient` (overridden), tense is `past` (inherited), narration_marker is `asterisks_for_thoughts_only` (inherited; not in directives because narration_marker_override is null).
+**Dialogue marker sub-clause** (effective `dialogue_marker`):
 
-The Architect's `system_prompt` for this card looks identical to any other card — `{{original}}` followed by character-specific content. The override appears in the LLM Instructions draft only:
+| Value | Sub-clause |
+|---|---|
+| `double_quotes` | `"Double quotes" delimit spoken dialogue` |
+| `single_quotes` | `'Single quotes' delimit spoken dialogue` |
+| `em_dash` | `An em-dash (—) precedes spoken dialogue with no closing marker` |
+| `unmarked` | `Spoken dialogue runs into the prose without delimiters` |
+
+**Emphasis marker sub-clause** (effective `emphasis_marker`):
+
+| Value | Sub-clause |
+|---|---|
+| `double_asterisks` | `**Double asterisks** delimit emphasis` |
+| `italics_underscore` | `_Italics-underscore_ delimits emphasis` |
+| `none` | `No emphasis marker — the prose carries its own weight` |
+
+Compose the FORMATTING MARKERS line as: `FORMATTING MARKERS: <narration sub-clause>. <dialogue sub-clause>. <emphasis sub-clause>. No other formatting conventions apply.`
+
+The line must contain all three sub-clauses, even if only one axis was overridden — the inherited axes still need to be stated explicitly so the override block is self-contained when the runtime extension splices it. (Field-level inheritance from `<style_contract>` works at the directive-line level, not the sub-clause level.)
+
+**4. Worked example — Director card in a past-tense, first-person world.** World default: `perspective: first`, `tense: past`, `narration_marker: asterisks_for_thoughts_only`, `dialogue_marker: double_quotes`, `emphasis_marker: double_asterisks`. Section 11b entry for `[CARD_NAME]` reads `perspective_override: third_omniscient`, all four other override fields `INHERIT`, with a structural rationale. Effective values for this card: perspective is `third_omniscient` (overridden); tense, narration_marker, dialogue_marker, and emphasis_marker are inherited from world. Only NARRATIVE PERSPECTIVE is in directives — none of the marker axes was overridden, so FORMATTING MARKERS is omitted.
 
 ```
 EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
   perspective_override: third_omniscient
   tense_override: null
   narration_marker_override: null
+  dialogue_marker_override: null
+  emphasis_marker_override: null
   directives:
     - "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
   override_rationale: World Director card handling NPCs and scene-setting from outside any single character's interior; the world default's first-person focal-character constraint is structurally wrong for this narrator role.
 ```
 
-Note: only ONE directive line — `FORMATTING MARKERS` is omitted because `narration_marker_override` is null. The world contract's FORMATTING MARKERS line carries through via field-level inheritance from `<style_contract>`.
+The world contract's FORMATTING MARKERS line carries through via field-level inheritance from `<style_contract>`.
 
-**5. Worked example — Group chat companion card overriding only tense.** World default: `perspective: third_limited`, `tense: past`. Section 11b entry for `[CARD_NAME]` reads `perspective_override: INHERIT`, `tense_override: present`, `narration_marker_override: INHERIT`. Effective values: perspective is `third_limited` (inherited), tense is `present` (overridden).
+**5. Worked example — Group chat companion overriding only tense.** World default: `perspective: third_limited`, `tense: past`, marker triplet at world default. Override: `tense_override: present`, all others INHERIT. Effective values: perspective is `third_limited` (inherited), tense is `present` (overridden), markers all inherited. NARRATIVE PERSPECTIVE is emitted (because tense_override is non-null); FORMATTING MARKERS is omitted (no marker axis was overridden).
 
 ```
 EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
   perspective_override: null
   tense_override: present
   narration_marker_override: null
+  dialogue_marker_override: null
+  emphasis_marker_override: null
   directives:
     - "NARRATIVE PERSPECTIVE: Narrate in third-person limited present tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior but not other characters'. {{user}} is referenced by name or pronoun, never addressed as \"you\" in narration."
   override_rationale: Companion card narrates in present tense for immediacy; world default is past for the broader narrative pace. Mixed-tense group chat with other cards in past third-person.
 ```
 
-The `NARRATIVE PERSPECTIVE` line is emitted because `tense_override` is non-null, and the line names *both* the inherited perspective (`third_limited`, from world default) AND the overridden tense (`present`).
+**6. Worked example — European-literary card overriding only dialogue marker.** World default: `perspective: third_limited`, `tense: past`, `narration_marker: asterisks_for_narration`, `dialogue_marker: double_quotes`, `emphasis_marker: double_asterisks`. Override: `dialogue_marker_override: em_dash`, all others INHERIT. Effective values: perspective and tense inherited; narration and emphasis markers inherited at their world defaults; dialogue marker is `em_dash` (overridden). Because a marker axis was overridden, FORMATTING MARKERS must be emitted, and it composes all three marker sub-clauses (the inherited ones at world defaults, the overridden one at its new value):
 
-**6. Do not invent overrides.** If Master Design Section 11b for a card shows all three fields as `INHERIT`, set `extensions.world_forge.style_override` to `null` in the LLM Instructions draft. Do not emit metadata for cards the Refiner did not flag. The override decision was made at the Refiner. If you believe an override is warranted that the Refiner missed, escalate by adding a note at the top of the Instructions draft requesting the user re-run the Refiner pass — do not freelance the override.
+```
+EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
+  perspective_override: null
+  tense_override: null
+  narration_marker_override: null
+  dialogue_marker_override: em_dash
+  emphasis_marker_override: null
+  directives:
+    - "FORMATTING MARKERS: *Asterisks* delimit narration, action, and interior glimpses. An em-dash (—) precedes spoken dialogue with no closing marker. **Double asterisks** delimit emphasis. No other formatting conventions apply."
+  override_rationale: European-literary card uses em-dash dialogue convention for register marking distinct from the world default's double-quote convention; structural choice tied to the card's literary-historical voice, not stylistic preference.
+```
 
-**7. Multi-axis awareness.** When Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`, the world has overrides on at least one axis. The world `<style_contract>` (authored by the Prompt Engineer) carries an active-speaker rule for this case. The metadata-only contract still holds: nothing different goes into the card's text. The runtime extension reads the metadata's `directives` array and splices for this card's turns.
+Note that the FORMATTING MARKERS line restates the inherited narration and emphasis sub-clauses verbatim from the world default — the override is at the directive-line level, so the line must be self-contained and cover all three marker axes.
+
+**7. Do not invent overrides.** If Master Design Section 11b for a card shows all five fields as `INHERIT`, set `extensions.world_forge.style_override` to `null` in the LLM Instructions draft. Do not emit metadata for cards the Refiner did not flag. The override decision was made at the Refiner. If you believe an override is warranted that the Refiner missed, escalate by adding a note at the top of the Instructions draft requesting the user re-run the Refiner pass — do not freelance the override.
+
+**8. Multi-axis awareness.** When Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`, the world has overrides on at least one of those two axes. The world `<style_contract>` (authored by the Prompt Engineer) carries an active-speaker rule for this case. (Marker overrides do not require the active-speaker rule because marker mismatches don't bleed across turns the way perspective/tense does — the model handles formatting per turn from the active card's directives.) The metadata-only contract still holds: nothing different goes into the card's text. The runtime extension reads the metadata's `directives` array and splices for this card's turns.
 
 ### WHAT YOU MUST NOT WRITE INTO THE CARD
 
@@ -821,9 +864,10 @@ Append to your submission note before handing to The Editor:
 ### Style Contract Compliance (per Master Design Section 11)
 - [ ] Master Design Section 11 read in full before drafting any card
 - [ ] **No `<style_override>` tag block appears anywhere in any card's `system_prompt`, `post_history_instructions`, or `depth_prompt` content. Per-card overrides are metadata-only.**
-- [ ] Every overriding card listed in Section 11b has its `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block populated in the LLM Instructions draft, with all three enum overrides (`perspective_override`, `tense_override`, `narration_marker_override`) matching Section 11b verbatim, ready for the Compiler to emit as JSON
-- [ ] Every overriding card's `directives` array is generated using the canonical prose templates above (Section 9 directive generation tables): one `NARRATIVE PERSPECTIVE` line if `perspective_override` OR `tense_override` is non-null; one `FORMATTING MARKERS` line if `narration_marker_override` is non-null
+- [ ] Every overriding card listed in Section 11b has its `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block populated in the LLM Instructions draft, with all five enum overrides (`perspective_override`, `tense_override`, `narration_marker_override`, `dialogue_marker_override`, `emphasis_marker_override`) matching Section 11b verbatim, ready for the Compiler to emit as JSON
+- [ ] Every overriding card's `directives` array is generated using the canonical prose templates above (Section 9 directive generation tables): one `NARRATIVE PERSPECTIVE` line if `perspective_override` OR `tense_override` is non-null; one `FORMATTING MARKERS` line if ANY of `narration_marker_override` / `dialogue_marker_override` / `emphasis_marker_override` is non-null
 - [ ] When generating the `NARRATIVE PERSPECTIVE` line, the perspective and tense values used are the *effective* values for the card (override value if set, else world default)
+- [ ] When generating the `FORMATTING MARKERS` line, all three marker sub-clauses are present; each sub-clause uses the *effective* value for its axis (override value if set, else world default); the line ends with `No other formatting conventions apply.`
 - [ ] Every non-overriding card has `extensions.world_forge.style_override: null` declared in its LLM Instructions draft (or the field omitted entirely — Compiler accepts either)
 - [ ] Every overriding card's `override_rationale` is structural, not stylistic (matches Section 11b verbatim)
 

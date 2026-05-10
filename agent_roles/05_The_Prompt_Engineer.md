@@ -379,15 +379,34 @@ The block library above describes what each block is *for*. The requirements bel
     | `third_omniscient` | `past` | `Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
     | `third_omniscient` | `present` | `Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
 
-  - `FORMATTING MARKERS:` — translate the world default `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values into directive prose. The Architect's per-card override `directives` reuses only the `narration_marker` half of this template (dialogue and emphasis markers are not per-card overridable). Templates by `narration_marker`:
+  - `FORMATTING MARKERS:` — compose three sub-clauses (narration + dialogue + emphasis) into a single sentence using the world default `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values. The Architect's per-card override `directives` use the same three sub-clause tables when ANY of the marker axes is overridden (the entire FORMATTING MARKERS line is emitted with all three sub-clauses, using effective values — override where set, world default where inherited).
 
-    | Narration marker | Directive (narration portion) |
+    **Narration marker sub-clause:**
+
+    | Value | Sub-clause |
     |---|---|
-    | `asterisks_for_narration` | `*Asterisks* delimit narration, action, and interior glimpses.` |
-    | `asterisks_for_thoughts_only` | `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue. Action and narration are plain prose.` |
-    | `plain_prose` | `No asterisks anywhere. Narration, action, and thought are all plain prose. Spoken dialogue still uses double quotes per the world contract.` |
+    | `asterisks_for_narration` | `*Asterisks* delimit narration, action, and interior glimpses` |
+    | `asterisks_for_thoughts_only` | `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue; narration and action are plain prose` |
+    | `plain_prose` | `No asterisks anywhere — narration, action, and thought are all plain prose` |
 
-    The world `<style_contract>` block combines the narration directive with the dialogue and emphasis marker directives in the same line. Per-card override `directives` use only the narration portion (dialogue/emphasis carry through from the world contract via field-level inheritance).
+    **Dialogue marker sub-clause:**
+
+    | Value | Sub-clause |
+    |---|---|
+    | `double_quotes` | `"Double quotes" delimit spoken dialogue` |
+    | `single_quotes` | `'Single quotes' delimit spoken dialogue` |
+    | `em_dash` | `An em-dash (—) precedes spoken dialogue with no closing marker` |
+    | `unmarked` | `Spoken dialogue runs into the prose without delimiters` |
+
+    **Emphasis marker sub-clause:**
+
+    | Value | Sub-clause |
+    |---|---|
+    | `double_asterisks` | `**Double asterisks** delimit emphasis` |
+    | `italics_underscore` | `_Italics-underscore_ delimits emphasis` |
+    | `none` | `No emphasis marker — the prose carries its own weight` |
+
+    Compose as: `FORMATTING MARKERS: <narration sub-clause>. <dialogue sub-clause>. <emphasis sub-clause>. No other formatting conventions apply.`
 
   - `ACTIVE-SPEAKER RULE:` — **include only when Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`** (any per-card override on either axis triggers the rule). Verbatim text:
     > `The active card's style contract governs the current turn. If a card declares its own <style_override>, the directives inside that block override the corresponding directives in this <style_contract> for that card's turns. Directives this <style_override> does NOT include continue to follow this <style_contract> — the override is field-level inheritance, not full-block replacement. Do not blend perspectives or marker conventions within a single turn.`

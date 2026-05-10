@@ -465,12 +465,14 @@ This step has five passes; failure at any pass is a hard reject unless explicitl
 For every card, inspect `extensions.world_forge.style_override`:
 
 - [ ] If the field is absent or `null`: the card is non-overriding. Move to Pass 2.
-- [ ] If the field is populated: it must be an object containing exactly five keys: `perspective_override`, `tense_override`, `narration_marker_override`, `directives`, `override_rationale`. Missing any key, extra unrecognized keys, or wrong types = hard reject. Cite the card and the malformed field.
+- [ ] If the field is populated: it must be an object containing exactly seven keys: `perspective_override`, `tense_override`, `narration_marker_override`, `dialogue_marker_override`, `emphasis_marker_override`, `directives`, `override_rationale`. Missing any key, extra unrecognized keys, or wrong types = hard reject. Cite the card and the malformed field.
 - [ ] `perspective_override` must be one of: `first`, `second`, `third_limited`, `third_omniscient`, or `null`. Any other value = hard reject.
 - [ ] `tense_override` must be one of: `past`, `present`, or `null`. Any other value = hard reject.
 - [ ] `narration_marker_override` must be one of: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose`, or `null`. Any other value = hard reject.
-- [ ] At least one of the three enum override fields must be a non-null enum value. All three `null` is a hard reject — the field's presence with all nulls is meaningless and likely indicates the Architect mis-emitted a non-overriding card. Direct fix: remove the entire `style_override` object and set the field to `null`.
-- [ ] `directives` must be an array of strings. Empty array is allowed only when all three enum overrides are `null` (which itself is a hard fail per the previous check). Each string must match the format `LABEL: prose`, with `LABEL` being one of `NARRATIVE PERSPECTIVE` or `FORMATTING MARKERS`. Other labels = hard reject. Cite the offending element.
+- [ ] `dialogue_marker_override` must be one of: `double_quotes`, `single_quotes`, `em_dash`, `unmarked`, or `null`. Any other value = hard reject.
+- [ ] `emphasis_marker_override` must be one of: `double_asterisks`, `italics_underscore`, `none`, or `null`. Any other value = hard reject.
+- [ ] At least one of the five enum override fields must be a non-null enum value. All five `null` is a hard reject — the field's presence with all nulls is meaningless and likely indicates the Architect mis-emitted a non-overriding card. Direct fix: remove the entire `style_override` object and set the field to `null`.
+- [ ] `directives` must be an array of strings. Empty array is allowed only when all five enum overrides are `null` (which itself is a hard fail per the previous check). Each string must match the format `LABEL: prose`, with `LABEL` being one of `NARRATIVE PERSPECTIVE` or `FORMATTING MARKERS`. Other labels = hard reject. Cite the offending element.
 - [ ] `override_rationale` must be a non-empty string of at least 15 characters. Empty or whitespace-only or shorter than 15 chars = hard reject.
 
 **Pass 2 — `directives` consistency with enums (hard fail).**
@@ -481,11 +483,11 @@ For every overriding card:
 
 - [ ] If `perspective_override` OR `tense_override` is non-null: `directives` must contain exactly one element with the `NARRATIVE PERSPECTIVE:` label. Missing line = hard reject. Multiple lines with the same label = hard reject.
 - [ ] If both `perspective_override` AND `tense_override` are `null`: `directives` must NOT contain a `NARRATIVE PERSPECTIVE:` line. Spurious line = hard reject (it indicates the Architect emitted an unjustified directive).
-- [ ] If `narration_marker_override` is non-null: `directives` must contain exactly one element with the `FORMATTING MARKERS:` label. Missing line = hard reject.
-- [ ] If `narration_marker_override` is `null`: `directives` must NOT contain a `FORMATTING MARKERS:` line. Spurious line = hard reject.
+- [ ] If ANY of `narration_marker_override`, `dialogue_marker_override`, or `emphasis_marker_override` is non-null: `directives` must contain exactly one element with the `FORMATTING MARKERS:` label. Missing line = hard reject.
+- [ ] If ALL of `narration_marker_override`, `dialogue_marker_override`, AND `emphasis_marker_override` are `null`: `directives` must NOT contain a `FORMATTING MARKERS:` line. Spurious line = hard reject.
 - [ ] When the `NARRATIVE PERSPECTIVE:` line is present, its prose content must match the canonical template for the card's *effective* perspective/tense pair (effective = override value if set, else world default from Master Design Section 11a). Use the directive-generation tables in Architect Section 9 as the source of truth. Mismatch = hard reject; cite the expected template and the actual content.
-- [ ] When the `FORMATTING MARKERS:` line is present, its prose content must match the canonical template for the card's *effective* narration marker (override value if set, else world default). Mismatch = hard reject.
-- [ ] Every directive line must reference `{{char}}` literally (the macro is required for the runtime extension to produce per-card prose; missing it = static directives that don't adapt to the active card). The exception is `plain_prose` narration marker, which doesn't need to reference `{{char}}`.
+- [ ] When the `FORMATTING MARKERS:` line is present, it must contain THREE sub-clauses (narration, dialogue, emphasis), each matching the canonical template for the card's *effective* value on that axis (override if set, else world default). The line must end with `No other formatting conventions apply.` Mismatch on any sub-clause = hard reject; cite the axis and the expected/actual content.
+- [ ] Every directive line that references a focal character must include `{{char}}` literally (the macro is required for the runtime extension to produce per-card prose; missing it = static directives that don't adapt to the active card). Exceptions: `plain_prose` narration sub-clause, `unmarked` dialogue sub-clause, and `none` emphasis sub-clause do not need to reference `{{char}}`.
 
 **Pass 3 — System prompt cleanliness (hard fail).**
 
@@ -519,6 +521,8 @@ Read Master Design Section 11b. For every card listed there with non-INHERIT val
 - [ ] The card's `perspective_override` value matches Section 11b verbatim.
 - [ ] The card's `tense_override` value matches Section 11b verbatim.
 - [ ] The card's `narration_marker_override` value matches Section 11b verbatim.
+- [ ] The card's `dialogue_marker_override` value matches Section 11b verbatim.
+- [ ] The card's `emphasis_marker_override` value matches Section 11b verbatim.
 - [ ] The card's `override_rationale` matches Section 11b verbatim (or is a textually equivalent paraphrase the user signed off on — direct verbatim is the safer pattern).
 
 For every card NOT listed in Section 11b: the card's `extensions.world_forge.style_override` field MUST be `null` or absent. A card with a populated override that does not appear in Section 11b is a divergence from the Master Design — hard reject. The Architect must either remove the override (if the card should not have one) or escalate back to the Refiner (if the Master Design itself is wrong).
@@ -609,8 +613,8 @@ Post-history: [checklist results + word count]
 - **All soft-flag ambiguous keywords reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - **All cards: `depth_prompt` does not contain `{{original}}` ✓**
 - **All cards: no literal `<style_override>` tag block in any card text field — metadata at `extensions.world_forge.style_override` is the sole declaration (Step 5.6 Pass 3) ✓**
-- **All overriding cards: `extensions.world_forge.style_override` is well-formed with five keys (perspective_override, tense_override, narration_marker_override, directives, override_rationale), valid enum values, ≥15-char rationale (Step 5.6 Pass 1) ✓**
-- **All overriding cards: `directives` array is consistent with the enum values — NARRATIVE PERSPECTIVE line iff perspective_override OR tense_override is non-null; FORMATTING MARKERS line iff narration_marker_override is non-null; directive prose matches canonical templates for effective values (Step 5.6 Pass 2) ✓**
+- **All overriding cards: `extensions.world_forge.style_override` is well-formed with seven keys (perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale), valid enum values, ≥15-char rationale (Step 5.6 Pass 1) ✓**
+- **All overriding cards: `directives` array is consistent with the enum values — NARRATIVE PERSPECTIVE line iff perspective_override OR tense_override is non-null; FORMATTING MARKERS line iff ANY of narration/dialogue/emphasis marker overrides is non-null; FORMATTING MARKERS line composes all three marker sub-clauses; directive prose matches canonical templates for effective values (Step 5.6 Pass 2) ✓**
 - **All overriding cards: `override_rationale` is structural, not stylistic (Step 5.6 Pass 4 hard-fail patterns clean) ✓**
 - **All overriding cards: enum values match Master Design Section 11b verbatim, including tense_override (Step 5.6 Pass 5) ✓**
 - **All Style Override Metadata soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**

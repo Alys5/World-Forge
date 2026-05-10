@@ -135,13 +135,15 @@ For each card:
 5. **Populate `data.extensions.depth_prompt`** if the character has complex arc-dependent behavioral requirements, strong prose style mandates, or intimacy response patterns that need mid-context reinforcement. The depth_prompt injects a third behavioral anchor at a specific depth in chat history — use it when system_prompt + post_history_instructions alone are insufficient for behavioral stability. Structure: `{"prompt": "[reinforcement text]", "depth": 4, "role": "system"}`. If not needed, set to `{"prompt": "", "depth": 4, "role": "system"}` — never omit the field.
 6. **Populate `data.extensions.world_forge.style_override`** from the Architect's `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block in `Instructions_[CardName].md`. Two valid forms:
    - **Non-overriding card** (the Architect's draft says `extensions.world_forge.style_override: null`, or the section is absent): emit the JSON field as `"world_forge": {"style_override": null}`.
-   - **Overriding card** (the Architect's draft has populated `perspective_override`, `tense_override`, `narration_marker_override`, `directives`, and `override_rationale` values): emit the JSON field as a structured object with all five keys:
+   - **Overriding card** (the Architect's draft has populated five enum overrides plus `directives` and `override_rationale`): emit the JSON field as a structured object with all seven keys:
      ```json
      "world_forge": {
        "style_override": {
          "perspective_override": "[enum value or null]",
          "tense_override": "[enum value or null]",
          "narration_marker_override": "[enum value or null]",
+         "dialogue_marker_override": "[enum value or null]",
+         "emphasis_marker_override": "[enum value or null]",
          "directives": [
            "NARRATIVE PERSPECTIVE: [verbatim from Architect's draft]",
            "FORMATTING MARKERS: [verbatim from Architect's draft]"
@@ -152,7 +154,7 @@ For each card:
      ```
    The `directives` array carries pre-resolved prose lines for the runtime extension; emit them verbatim from the Architect's draft (the Architect generates them using canonical prose templates). The number of directive lines depends on which axes are overridden:
    - One `NARRATIVE PERSPECTIVE` line if `perspective_override` OR `tense_override` is non-null
-   - One `FORMATTING MARKERS` line if `narration_marker_override` is non-null
+   - One `FORMATTING MARKERS` line if ANY of `narration_marker_override`, `dialogue_marker_override`, or `emphasis_marker_override` is non-null
    - Empty array if no axes are overridden (which itself indicates a non-overriding card and `style_override` should be `null`)
 
    The `world_forge` namespace sits inside `data.extensions` alongside `depth_prompt`. SillyTavern itself ignores unknown extension keys (per `Notes_On_functionality.md` Section 5.6 V3 card notes) so the field is inert on stock ST; a `world_forge`-aware ST extension reads the metadata's `directives` array and splices a `<style_override>` block built from those lines into the assembled main system prompt. **Never strip this field** — it is the canonical declaration of per-card style overrides; the audit trail and the runtime extension both rely on it being present in the JSON.
@@ -220,7 +222,7 @@ Before saving any file:
 - All required fields present and correctly typed
 - `system_prompt` and `post_history_instructions` are non-empty strings
 - `data.extensions.depth_prompt` is present on all character cards (prompt may be empty string if unused)
-- `data.extensions.world_forge.style_override` is present on all character cards (value is either `null` for non-overriding cards or a `{perspective_override, tense_override, narration_marker_override, directives, override_rationale}` five-key object for overriding cards, matching Master Design Section 11b and the Architect's directive draft verbatim)
+- `data.extensions.world_forge.style_override` is present on all character cards (value is either `null` for non-overriding cards or a `{perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale}` seven-key object for overriding cards, matching Master Design Section 11b and the Architect's directive draft verbatim)
 - `entries` object uses sequential string keys starting from `"0"`
 - No Markdown syntax leaked into JSON string values (escape `"` as `\"`, newlines as `\n`)
 - CONSTANT entries: `constant: true`, `selective: true`, `key: []`, `ignoreBudget: true`
@@ -284,7 +286,7 @@ Append to `Export/Compiler_Log.md`:
 - [ ] Protagonist Lorebook: alias and true name trigger keywords present ✓
 - [ ] Group Lorebook UIDs: unique across full set ✓
 - [ ] All `data.extensions.depth_prompt` fields present on all character cards ✓
-- [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, five-key object for overriding: perspective_override, tense_override, narration_marker_override, directives, override_rationale) ✓
+- [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, seven-key object for overriding: perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale) ✓
 - [ ] Notes_On_functionality.md consulted ✓
 
 ### Persona Linkage Instruction
