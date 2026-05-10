@@ -36,36 +36,21 @@ WHAT MUST NOT APPEAR IN THE CARD'S system_prompt OR post_history_instructions:
 
 These all live in the preset Main Prompt and are spliced in via `{{original}}`. Duplicating them in the card produces redundant guidance that wastes tokens and can produce subtle conflicts when the preset is updated independently of the cards.
 
-⭐ NARROW EXCEPTION — STYLE OVERRIDE BLOCK
+⭐ STYLE OVERRIDE — METADATA ONLY
 
-The single sanctioned exception to the "no engine-level content in cards" rule is the **`<style_override>` block** in `system_prompt`. A card may declare a per-card override of the world's perspective and narration marker (and ONLY those two engine concerns) when the card is structurally incompatible with the world default — typically a Director/Narrator card sitting alongside companion cards in a 1st-person world.
+A card may declare a per-card override of the world's perspective and narration marker (and ONLY those two engine concerns) when it is structurally incompatible with the world default — typically a Director/Narrator card sitting alongside companion cards in a single-character-perspective world.
 
-The override block has THREE coupled requirements that ALL must hold for the Editor to accept it:
+**The override is declared exclusively through structured metadata at `extensions.world_forge.style_override`.** No `<style_override>` tag block appears in the card's `system_prompt`, `post_history_instructions`, or `depth_prompt` content. The "no engine-level content in cards" rule applies in full to all card text fields — there is no in-text exception.
 
-1. **`extensions.world_forge.style_override`** is populated (see template below for schema). `null` or absent → standard contamination scan applies; any perspective/formatting language anywhere in `system_prompt` is a hard fail.
+How the override fires at runtime:
 
-2. **`<style_override>...</style_override>` block in `system_prompt`** appears immediately after `{{original}}` and the blank line, BEFORE any character-specific content. The block contains ONLY perspective declaration and narration marker declaration — nothing else. No narration discipline, no creative framework, no spatial mandates, no sensory rules, no character-specific content.
+- **Stock SillyTavern**: ignores `extensions.world_forge.style_override` (it's an unknown extension key, tolerated per `Notes_On_functionality.md` Section 5.6 V3 card notes). The world `<style_contract>` block in the preset's Main Prompt governs every turn for every card. The override is inert.
+- **`world_forge`-aware extension** (e.g., a SillyTavern extension that consumes the `world_forge` namespace): reads the metadata at runtime, synthesizes an `<style_override>` directive from the `perspective_override` and `narration_marker_override` fields, and splices it into the assembled main system prompt immediately after `</style_contract>` for the active card's turns. Per the active-speaker rule in the preset's `<style_contract>`, the directives in the synthesized override replace the corresponding directives in the world contract for that card's turns; directives the override does not include continue to follow the world contract.
 
-3. **`override_rationale`** in the `extensions.world_forge.style_override` object is non-empty and structural (not stylistic). The Editor hard-fails empty rationales and vague rationales like "feels better" or "preferred style".
+The metadata field has two valid states:
 
-When all three hold, the Editor's contamination scan exempts perspective and narration-marker phrases ONLY inside the `<style_override>` block. Outside the block, the standard hard-fail rules still apply for ALL engine-level content including perspective and formatting.
-
-Cards that do NOT need a style override (the vast majority) leave `extensions.world_forge.style_override` as `null` and write no `<style_override>` block. They are unchanged from the pre-style-contract pipeline.
-
-The `<style_override>` block follows this exact shape inside `system_prompt`:
-
-```
-{{original}}
-
-<style_override>
-NARRATIVE PERSPECTIVE: [perspective directive — one or two sentences. Reference {{char}} explicitly.]
-FORMATTING MARKERS: [narration marker directive — one or two sentences. State what *asterisks* delimit and what "double quotes" delimit for THIS card.]
-</style_override>
-
-[character-specific identity and content begins here]
-```
-
-The `<style_override>` block must be present in EVERY context window for the override to fire reliably; it lives inside `system_prompt` for that reason (system_prompt fires every turn). Do not move it to `post_history_instructions` or `depth_prompt`.
+- **Non-overriding card (the vast majority)**: `extensions.world_forge.style_override` is `null` (or the field is absent — both are equivalent).
+- **Overriding card**: `extensions.world_forge.style_override` is an object with three keys: `perspective_override`, `narration_marker_override`, `override_rationale`. At least one of the two override fields must be a non-null enum value (the other may be `null` to inherit the world default). The rationale must be non-empty and structural — vague or stylistic rationales like "feels better" or "preferred style" are hard-failed by the Editor.
 
 WHAT BELONGS IN THE CARD's system_prompt:
 - Identity statement covering the character's FULL arc journey (not just starting state)
@@ -144,6 +129,6 @@ For cards that DO declare a per-card style override (the rare case — typically
 }
 ```
 
-Allowed `perspective_override` values: `first`, `second`, `third_limited`, `third_omniscient`. Allowed `narration_marker_override` values: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose`. Setting either to `null` while the other is set means "override only this one field; inherit the world default for the other". The Editor cross-checks these structured fields against the `<style_override>` block in `system_prompt` and hard-fails on mismatch.
+Allowed `perspective_override` values: `first`, `second`, `third_limited`, `third_omniscient`. Allowed `narration_marker_override` values: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose`. Setting either to `null` while the other is set means "override only this one field; inherit the world default for the other". The Editor validates the structured fields directly (see Editor Step 5.6).
 
-The `world_forge` extensions namespace is pipeline-internal metadata. SillyTavern ignores unknown extension keys (per `Notes_On_functionality.md` Section 5.6 V3 card notes), so the field is inert at runtime — it exists solely so the Editor and Prompt Engineer can verify the card's `<style_override>` block is sanctioned.
+The `world_forge` extensions namespace is the canonical declaration of per-card style overrides. SillyTavern itself ignores unknown extension keys (per `Notes_On_functionality.md` Section 5.6 V3 card notes), so on stock ST the metadata is inert at runtime. A `world_forge`-aware ST extension reads the metadata and synthesizes the runtime injection — that's the path that turns the metadata into actual model-visible directives.

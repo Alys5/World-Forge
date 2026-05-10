@@ -140,6 +140,7 @@ The Architect takes the locked Master Design and authors every Markdown source t
 |---|---|
 | `Card_Anna.md` | Anna's character card content: description, personality, scenario, first message, example exchanges |
 | `Card_World_Director.md` | The World Director card: omniscient narrator content, NPC voice patterns |
+| `User.md` | The `{{user}}` Persona Description text (paste-ready, ≤150 words). Pairs with the Tier 2 Protagonist Lorebook to give `{{user}}` parity with `{{char}}` despite ST's missing persona import format. Voice and personality intentionally excluded — the human plays `{{user}}`. |
 | `Tier1_World_Entries.md` | All Tier 1 lorebook entries — world rules, factions, standing locations, species, concepts |
 | `Tier2_Anna_Entries.md` | Anna's permanent character lorebook: physical baseline, psychological core, relationships |
 | `Tier2_Andrei_Entries.md` | Protagonist lorebook for Andrei (`{{user}}`) |
@@ -296,6 +297,7 @@ For Lucifer, the audit ended `Status: COMPLETE`, so no Phase 5.5 was needed. The
 | How does a World Seed actually look when complete? | `Samples/World_Seed_Lucifer.md` |
 | How does the Refiner organize a world into tiers? | `Samples/Drafts/Master_Design.md` |
 | What does a fully-drafted character card look like? | `Samples/Drafts/Card_Anna.md`, `Samples/Drafts/Card_World_Director.md` |
+| What does a `User.md` persona description look like? | `Samples/Drafts/User.md` (Architect draft) → `Samples/Export/User.md` (final, paste-ready) |
 | How are Tier 1/2/3 lorebook entries structured? | `Samples/Drafts/Tier1_World_Entries.md`, `Samples/Drafts/Tier2_Anna_Entries.md`, `Samples/Drafts/Tier3_Arc1_Entries.md` |
 | What is the difference between Tier 2 Intimacy Profile and Tier 3 Intimacy Register? | `Samples/Drafts/Tier2_Anna_Intimacy_Profile.md` vs. `Samples/Drafts/Tier3_Arc1_Intimacy_Register.md` |
 | How does the Editor flag and resolve issues? | `Samples/Drafts/Editor_Critique_Round1.md` (failures) → `Round3.md` (clean sign-off) |
@@ -304,7 +306,7 @@ For Lucifer, the audit ended `Status: COMPLETE`, so no Phase 5.5 was needed. The
 | What does the final Chat Completion Preset look like? | `Samples/Export/Lucifer_ChatPreset.json` |
 | How thorough is the runtime audit? | `Samples/Export/Prompt_Engineer_Audit.md` |
 
-For an additional view of how the same world looks under the **current pipeline's Style Contract feature**, see `Samples2/Export/`. The same Lucifer world's character cards and chat preset are regenerated to show the `<style_contract>` block in the Main Prompt and the World Director's `<style_override>` block (Lucifer is multi-perspective: Anna third-person limited, Director third-person omniscient). The unchanged Lorebook JSONs are not duplicated.
+For an additional view of how the same world looks under the **Style Contract feature**, see `Samples2/Export/`. The same Lucifer world's character cards and chat preset are regenerated to show the `<style_contract>` block in the Main Prompt and the World Director's `extensions.world_forge.style_override` metadata (Lucifer is multi-perspective: Anna third-person limited, Director third-person omniscient). The unchanged Lorebook JSONs are not duplicated.
 
 ---
 
@@ -314,10 +316,16 @@ Once your `Export/` directory is ready:
 
 1. Import each `*.json` lorebook through SillyTavern's **World Info** panel. Import each character card through the **Character Management** panel. Import the chat preset through **API settings → Chat Completion Presets → Import**.
 2. In the World Info panel, enable the **World Lorebook** group and all **Character Lorebook** groups permanently. **Arc lorebooks** are swap-in: enable Arc 1 to start; switch to Arc 2 when the story's exit trigger fires (e.g., for Lucifer, when Anna sleeps through her first night without withdrawal); and so on. **Only one arc lorebook should be active at a time.** The same applies to Arc Intimacy Registers when present.
-3. Link the **Protagonist Lorebook** to your active Persona in **User Settings → Persona Management** so it scans only when that persona is active. For Lucifer this means linking `Andrei_Lorebook.json` to a persona named Andrei Petrov.
+3. Wire up the `{{user}}` persona. SillyTavern provides no structured import for personas, so this step is manual but quick:
+   - Open **User Settings → Persona Management** and create (or select) the persona for this world. Use the in-world name from the top of `Export/User.md` (for Lucifer, `Andrei Petrov`).
+   - Open `Export/User.md`. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` and paste it into the persona's **Description** field.
+   - In the same persona editor, link `[ProtagonistName]_Lorebook.json` (for Lucifer, `Andrei_Lorebook.json`) in the persona's **Lorebook** field. The persona description is the always-on identity floor (≤150 words, injected every turn); the lorebook fires on keys for fuller detail.
+   - Activate this persona before starting the chat.
 4. Select the world's Chat Completion Preset (e.g., `Lucifer_ChatPreset.json`) in the API settings panel.
 
 You are ready to roleplay.
+
+> Note: `User.md` deliberately does **not** contain voice, personality, or speech patterns for `{{user}}`. The human plays `{{user}}` and writes their own dialogue and actions — those are the human's domain, not the LLM's. `User.md` is reference data the LLM uses to react *to* `{{user}}` correctly.
 
 ---
 
@@ -327,6 +335,7 @@ You are ready to roleplay.
 - **Phase 3 looped three times without improvement.** The Editor escalates to you. The problem is usually in the Master Design, not the Architect's execution. Re-examine the Master Design's relevant section.
 - **Auditor flagged a Critical failure that ties to the Master Design itself.** Sometimes the bug is structural — an arc's exit trigger doesn't causally connect to the next arc's entry; a character's substrate forbids a behavior the world wants in scene. The fix is to update the Master Design and re-run from Phase 2, not to patch the symptom in the drafts.
 - **Phase 5 audit ended "AUDIT COMPLETE — N manual corrections required."** Phase 5.5 is not optional in this case. Open each Export/ file named in the audit, apply the recommended corrections, save. Only then is the world ready.
+- **Forgot to paste `User.md` into the persona Description field.** SillyTavern will run the world without it, but NPCs will react oddly to `{{user}}` in opening turns until a Tier 2 keyword fires. Always paste the persona description before starting a chat.
 - **Unfamiliar files in Samples/.** Lucifer's Drafts/ has 27 files because the world has four arcs, two character cards, full intimacy specification, and went through three Editor rounds and two rounds for each auditor. A simpler world produces fewer files. The structure is the same; the volume scales with the world.
 
 ---
@@ -339,3 +348,4 @@ You are ready to roleplay.
 - `Notes_On_functionality.md` — authoritative reference for SillyTavern's runtime behavior (position values, lorebook scanning, prompt assembly, override mechanics)
 - `CLAUDE.md` — standing context for AI agents working on the repo itself; useful if you want to extend or modify the pipeline
 - `templates/World_Seed_Template.md` — the blank template you fill in for a new world (or that the Interviewer fills in for you)
+- `templates/User_Persona_template.md` — the structural reference for `User.md`

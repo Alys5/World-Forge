@@ -32,8 +32,9 @@ Check for all required files before reading a single word of content.
 
 **Required files:**
 - `Drafts/Card_[CharName].md` — one per character card
+- `Drafts/User.md` — `{{user}}` Persona Description text (mandatory for any world with a named `{{user}}` protagonist; see Step 5.5 below)
 - `Drafts/Tier1_World_Entries.md` — single file, all Tier 1 entries
-- `Drafts/Tier2_[CharName]_Entries.md` — one per major character AND one per significant NPC
+- `Drafts/Tier2_[CharName]_Entries.md` — one per major character AND one per significant NPC (including the Tier 2 Protagonist Lorebook for `{{user}}`)
 - `Drafts/Tier3_Arc[N]_[Title]_Entries.md` — one per arc
 - `Drafts/Instructions_[CardName].md` — one per card
 
@@ -304,19 +305,9 @@ These phrases unambiguously indicate engine-instruction contamination. They appe
 
 If any of these phrases appears in `system_prompt` or `post_history_instructions` content (after the `{{original}}` macro), reject the file. Cite the offending phrase and its line.
 
-**EXEMPTION — phrases inside a sanctioned `<style_override>` block:**
+**No `<style_override>` exemption exists** in the contamination scan. Per-card style overrides are declared exclusively through the `extensions.world_forge.style_override` metadata field (validated separately in Step 5.6). The pipeline does NOT emit `<style_override>` tag blocks anywhere in card text content. Any literal `<style_override>` or `</style_override>` tag in `system_prompt`, `post_history_instructions`, or `extensions.depth_prompt.prompt` is a hard fail under Step 5.6 Pass 2 — and any engine-level perspective or formatting language in card text is a hard fail under this Step 5b regardless of whether the card has metadata-declared overrides.
 
-The phrase scan above runs against `system_prompt` and `post_history_instructions` content, EXCEPT the contents of a sanctioned `<style_override>...</style_override>` block in `system_prompt`. A `<style_override>` block is sanctioned for the exemption ONLY when ALL of the following hold:
-
-1. The card's `extensions.world_forge.style_override` field is populated (not `null`, not absent) with a valid object containing `perspective_override`, `narration_marker_override`, and `override_rationale`.
-2. The `<style_override>` block sits in `system_prompt` immediately after `{{original}}` and the blank line, BEFORE any character-specific content.
-3. The block's content matches the structured fields (verified by Step 5e below).
-
-When all three hold, phrases inside the block matching the diagnostic list above (typically perspective and formatting-marker language, since that's the block's purpose) do NOT trigger a hard fail. Outside the block, the standard hard-fail rules apply with full force — including for cards that have an override declared. The exemption is narrowly scoped to the sanctioned block's content, nothing else.
-
-Cards whose `extensions.world_forge.style_override` is `null` or absent have NO exemption — any diagnostic phrase anywhere in their `system_prompt` or `post_history_instructions` is a hard fail, including phrases that happen to be wrapped in `<style_override>` tags. The structured field is the gate; the tags alone are not sufficient.
-
-If a `<style_override>` block appears in `post_history_instructions` or `depth_prompt`, hard-fail regardless of the structured field state. The block lives only in `system_prompt`.
+The metadata-only contract is intentional: a SillyTavern extension that knows about the `world_forge` namespace synthesizes the `<style_override>` directive at runtime and splices it into the assembled main system prompt. Stock SillyTavern ignores the metadata. Either way, the card's text fields stay clean of engine-level content.
 
 **SOFT FLAG — ambiguous keywords (flag for review, do not auto-reject):**
 
@@ -360,9 +351,114 @@ After the override architecture passes, verify the character-specific content qu
 - [ ] Defers to the active CHARACTER_STATE entry as authority
 - [ ] Ends with a character-specific behavioral directive (not an engine reminder)
 
-#### 5e — Style Override Coupling Validation (hybrid: hard fail + soft flag)
+### Step 5.5 — `{{user}}` Persona Description Audit (`Drafts/User.md`)
 
-This step validates that every card's `<style_override>` declaration — across the structured field, the system_prompt block, and the Master Design — is internally consistent. The check has four passes; failure at any pass is a hard reject unless explicitly marked as soft-flag.
+`User.md` is mandatory for any world with a named `{{user}}` protagonist. It supplies the persona description text the human pastes into ST → User Settings → Persona Management — the always-on `personaDescription` block injected every turn. Detail belongs in the Tier 2 Protagonist Lorebook (which fires on keys); `User.md` is the identity floor.
+
+The Architect's specification for this file is in Section 5.5 of `02_The_Architect.md`; the structural template is `templates/User_Persona_template.md`. Audit `Drafts/User.md` against the rules below.
+
+#### 5.5a — Presence and structure (hard fail)
+
+- [ ] `Drafts/User.md` exists.
+- [ ] The file contains a `## PERSONA DESCRIPTION` section.
+- [ ] That section contains a literal `--- BEGIN PERSONA DESCRIPTION ---` marker and a literal `--- END PERSONA DESCRIPTION ---` marker, with content between them.
+- [ ] The file contains a `## SETUP INSTRUCTIONS` section that names the Tier 2 Protagonist Lorebook filename (the file the user must link to the persona — must match the Tier 2 lorebook draft filename, e.g., `Andrei_Lorebook.json` for `Tier2_Andrei_Entries.md`).
+
+Missing file or any of the structural elements = hard reject.
+
+#### 5.5b — Length cap (hard fail)
+
+- [ ] The text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` is **≤150 words**.
+
+Over the cap = hard reject. The persona description injects every turn; bloat compounds. Cite the word count and direct the Architect to cut.
+
+#### 5.5c — Forbidden content scan (hybrid: hard fail + soft flag)
+
+`User.md` is reference data, not impersonation guidance. The human plays `{{user}}` — voice, personality, mannerisms, and dialogue style are the human's domain. Engine instructions live in the preset.
+
+**HARD FAIL — diagnostic phrases inside the BEGIN/END block (any single match = reject):**
+
+These phrases unambiguously indicate forbidden content. Match is case-insensitive.
+
+```
+"You are"          (first-person/second-person framing — persona description is third-person reference)
+"you must"
+"you should"
+"you will"
+"always "          (directive language — leading whitespace required to avoid false positives like "always-on")
+"never "
+"do not"
+"don't "
+"speaks with"
+"speech pattern"
+"sentence structure"
+"vocabulary"
+"accent"
+"voice"
+"dialogue"
+"mannerism"
+"manner of speech"
+"rhetorical"
+"narration rules"
+"formatting rules"
+"do not act for {{user}}"
+"don't act for {{user}}"
+"{{user}} controls"
+"trigger-response"
+```
+
+If any phrase appears inside the BEGIN/END block, hard reject. Cite the offending phrase and direct the Architect to strip and rewrite.
+
+**SOFT FLAG — ambiguous keywords (flag for review, do not auto-reject):**
+
+These sometimes indicate forbidden content but also appear naturally in legitimate identity description. Surface in critique:
+
+```
+"speak"        (could appear in legitimate context: "rooms quiet when he speaks")
+"says"         (idem)
+"register"     (could appear: "carries himself in a register of …")
+"tone"         (could appear: "his presence carries a tone of …")
+```
+
+For each soft-flag hit:
+
+```
+SOFT FLAG: "[keyword]" appears in User.md persona block at "[surrounding sentence]"
+  Verify: is this third-person identity description (legitimate) or voice/manner content
+  that belongs in the human's domain (must be removed)?
+```
+
+#### 5.5d — Identity floor quality (soft flag)
+
+The Persona Description block must establish the minimum identity floor: name, role/function/public face, and (where relevant) physical signature and world-relevant powers/limits. Without this, NPCs cannot react sensibly to `{{user}}` before any Tier 2 key fires.
+
+- [ ] The block opens with `{{user}}`'s in-world name and role/function/public face (1–3 sentences).
+- [ ] If the world has visual scenes, a physical signature is present (1–3 sentences) — distilled to one or two strokes, not the full anatomical paragraph (that lives in the Tier 2 lorebook).
+- [ ] If `{{user}}` has powers / a public identity / a hidden layer that materially shapes how NPCs and the world react to them, that is flagged in 1–2 sentences.
+
+Soft-flag (do not hard reject) any of:
+- Block opens without naming `{{user}}` or the role.
+- Block duplicates a full Tier 2 lorebook entry (physical paragraph, psychology paragraph) verbatim or near-verbatim — content that can wait for a key to fire belongs in the lorebook.
+- Block contains content with no clear function for NPC reaction or world-perception (e.g., backstory detail that does not shape any present-tense reaction).
+
+```
+SOFT FLAG: User.md persona block — [specific concern]
+  Verify: tighten to identity floor only (name, role, signature, world-relevant flags),
+  or push detail into the Tier 2 Protagonist Lorebook.
+```
+
+#### 5.5e — Lorebook pairing consistency (hard fail)
+
+- [ ] The lorebook filename named in the Setup Instructions matches the Tier 2 Protagonist Lorebook draft (`Tier2_[ProtagonistName]_Entries.md` → expected export `[ProtagonistName]_Lorebook.json`).
+- [ ] The in-world name in the `# {{user}} PERSONA — [Name]` heading matches the protagonist name used in the Tier 2 Protagonist Lorebook draft.
+
+Mismatch = hard reject. The pair must wire up correctly in ST or the user gets a broken persona.
+
+### Step 5.6 — Style Override Metadata Validation (hybrid: hard fail + soft flag)
+
+The pipeline declares per-card style overrides through **structured metadata** at `extensions.world_forge.style_override` in the card JSON. The pipeline does **NOT** emit a literal `<style_override>` tag block in the card's `system_prompt` content — the metadata is the only artifact. SillyTavern itself ignores the metadata (per `Notes_On_functionality.md` Section 5.6 V3 card notes — unknown extension keys are tolerated and inert at runtime). A `world_forge`-aware extension reads the metadata and synthesizes the override directive into the assembled main system prompt at runtime; on stock SillyTavern, the metadata sits idle and the world `<style_contract>` in the preset's Main Prompt governs every turn.
+
+This step has four passes; failure at any pass is a hard reject unless explicitly marked as soft-flag.
 
 **Pass 1 — Structural-field validity (hard fail).**
 
@@ -375,31 +471,14 @@ For every card, inspect `extensions.world_forge.style_override`:
 - [ ] At least one of `perspective_override` or `narration_marker_override` must be a non-null enum value. Both `null` is a hard reject — the field's presence with both nulls is meaningless and likely indicates the Architect mis-emitted a non-overriding card. Direct fix: remove the entire `style_override` object and set the field to `null`.
 - [ ] `override_rationale` must be a non-empty string of at least 15 characters. Empty or whitespace-only or shorter than 15 chars = hard reject.
 
-**Pass 2 — Block presence (hard fail in either direction — non-overriding cards must have NO block; overriding cards MUST have a block).**
+**Pass 2 — System prompt cleanliness (hard fail).**
 
-- [ ] If the card's structural field is `null`/absent: scan `system_prompt` for any occurrence of `<style_override>` or `</style_override>`. Any match = hard reject. The card has no override declared but has emitted a block; this is exactly the contamination the exemption gate exists to prevent.
-- [ ] If the card's structural field is populated: scan `system_prompt` for exactly one `<style_override>...</style_override>` block. Zero blocks, multiple blocks, or unmatched tags = hard reject.
-- [ ] When a block is required: the block must appear immediately after `{{original}}` and the blank line, BEFORE any character-specific content. Block appearing later in the system_prompt = hard reject.
-- [ ] Scan `post_history_instructions` and `extensions.depth_prompt.prompt` for any occurrence of `<style_override>` or `</style_override>`. Any match in either location = hard reject regardless of structural field state. The block lives ONLY in `system_prompt`.
+The pipeline does NOT emit a `<style_override>` block anywhere in the card's text fields. The metadata is the sole declaration. The standard contamination scan (Step 5b) catches engine-level perspective and formatting language in cards as before — there is **no exemption** for an `<style_override>` wrapper, because no such wrapper should exist.
 
-**Pass 3 — Block content vs. structural field consistency (hard fail on mismatch).**
+- [ ] Scan `system_prompt`, `post_history_instructions`, and `extensions.depth_prompt.prompt` for any literal occurrence of `<style_override>` or `</style_override>` tags. Any match in any of those text fields = hard reject. The Architect should not be emitting this block; if it appears, the Architect's output is stale (predates the metadata-only contract) or malformed.
+- [ ] Step 5b's diagnostic phrase scan applies in full to all card text fields, regardless of whether `extensions.world_forge.style_override` is populated. Engine-level perspective/formatting language in card text fields is always a hard fail. The metadata-only contract removes the previous narrow exception.
 
-For every card with both a populated structural field and a block (the only valid coexistence per Pass 2):
-
-- [ ] The block contains exactly two directive lines, in this order: `NARRATIVE PERSPECTIVE: [text]` and `FORMATTING MARKERS: [text]`. Missing either line, extra lines (other than whitespace), or wrong order = hard reject.
-- [ ] The `NARRATIVE PERSPECTIVE` line's directive content must reflect the structural `perspective_override` value (or, if `perspective_override` is `null`, must reflect the world default from Master Design Section 11a). Walk through these mappings:
-  - `first` → directive must indicate first-person POV with `{{char}}` as the focal narrator
-  - `second` → directive must indicate second-person POV (`{{user}}` addressed as "you" inside narration)
-  - `third_limited` → directive must indicate third-person limited POV with one focal character
-  - `third_omniscient` → directive must indicate third-person omniscient POV with cross-character interior access
-- [ ] The `FORMATTING MARKERS` line's directive content must reflect the structural `narration_marker_override` value (or, if null, the world default from Section 11a):
-  - `asterisks_for_narration` → directive must say *asterisks* delimit narration/action/interior
-  - `asterisks_for_thoughts_only` → directive must say *asterisks* delimit ONLY internal thoughts; action and narration are plain prose
-  - `plain_prose` → directive must say no asterisks anywhere
-- [ ] Mismatch between any structural field and the corresponding block directive = hard reject. Cite both the field value and the block content.
-- [ ] When the world is multi-perspective (Master Design Section 11c `is_multi_perspective: true`) AND the card has an override: the `NARRATIVE PERSPECTIVE` directive must reference `{{char}}` explicitly. No `{{char}}` reference in a multi-perspective override = hard reject. The active-speaker rule depends on it.
-
-**Pass 4 — Rationale quality (hybrid: hard fail + soft flag).**
+**Pass 3 — Rationale quality (hybrid: hard fail + soft flag).**
 
 The structural `override_rationale` must justify the override on structural grounds, not stylistic preference.
 
@@ -416,7 +495,7 @@ SOFT FLAG: override_rationale in [Card_Name].extensions.world_forge.style_overri
 
 The user reviews the soft flag in the next round. If the rationale is sufficient as-is, the flag clears. If they confirm the rationale needs tightening, the Architect rewrites and the Compiler re-emits.
 
-**Pass 5 — Cross-check against Master Design Section 11b (hard fail on divergence).**
+**Pass 4 — Cross-check against Master Design Section 11b (hard fail on divergence).**
 
 Read Master Design Section 11b. For every card listed there with non-INHERIT values:
 
@@ -489,8 +568,9 @@ Post-history: [checklist results + word count]
 
 ### Approved Files
 - [ ] Card_[CharName].md
+- [ ] User.md
 - [ ] Tier1_World_Entries.md
-- [ ] Tier2_[CharName]_Entries.md (list each)
+- [ ] Tier2_[CharName]_Entries.md (list each — including the Tier 2 Protagonist Lorebook)
 - [ ] Tier3_Arc[N]_[Title]_Entries.md (list each)
 - [ ] Instructions_[CardName].md (list each)
 
@@ -505,17 +585,17 @@ Post-history: [checklist results + word count]
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**
 - **All Position Rationale soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
+- **`User.md` present, structurally valid, ≤150 words, no voice/personality/engine content, lorebook filename matches Tier 2 Protagonist draft ✓**
 - All LLM instructions: checklists passed ✓
 - **All cards: `system_prompt` and `post_history_instructions` start with `{{original}}` ✓**
-- **All cards: no engine-instruction contamination (hard-fail phrase scan passed; sanctioned `<style_override>` blocks correctly exempted) ✓**
+- **All cards: no engine-instruction contamination (hard-fail phrase scan passed — no exemption for `<style_override>` blocks; metadata-only contract enforced) ✓**
 - **All soft-flag ambiguous keywords reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - **All cards: `depth_prompt` does not contain `{{original}}` ✓**
-- **All cards: `<style_override>` block presence matches `extensions.world_forge.style_override` field state (Step 5e Pass 2) ✓**
-- **All overriding cards: `<style_override>` block content consistent with structural field values (Step 5e Pass 3) ✓**
-- **All overriding cards: `override_rationale` is structural, not stylistic (Step 5e Pass 4 hard-fail patterns clean) ✓**
-- **All overriding cards: structural field values match Master Design Section 11b verbatim (Step 5e Pass 5) ✓**
-- **Multi-perspective worlds: every overriding card's NARRATIVE PERSPECTIVE directive references `{{char}}` (Step 5e Pass 3) ✓**
-- **All Style Override Coupling soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
+- **All cards: no literal `<style_override>` tag block in any card text field — metadata at `extensions.world_forge.style_override` is the sole declaration (Step 5.6 Pass 2) ✓**
+- **All overriding cards: `extensions.world_forge.style_override` is well-formed with valid enum values and ≥15-char rationale (Step 5.6 Pass 1) ✓**
+- **All overriding cards: `override_rationale` is structural, not stylistic (Step 5.6 Pass 3 hard-fail patterns clean) ✓**
+- **All overriding cards: structural field values match Master Design Section 11b verbatim (Step 5.6 Pass 4) ✓**
+- **All Style Override Metadata soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - No structural failures ✓
 - All arc lorebooks ≥8 entries ✓
 

@@ -174,7 +174,7 @@ For each arc:
 
 ### SECTION 11: STYLE CONTRACT (Engine Configuration)
 
-*This section is engine-level prose-style metadata, not lorebook content. The Prompt Engineer reads it to parameterize the preset's Main Prompt `<style_contract>` block. The Architect reads it to author per-card `<style_override>` blocks for cards that override the world default. The Editor reads it to validate cards' override declarations match the structured fields. SillyTavern itself does not consume Section 11 — it consumes the resulting preset and card content.*
+*This section is engine-level prose-style metadata, not lorebook content. The Prompt Engineer reads it to parameterize the preset's Main Prompt `<style_contract>` block. The Compiler reads it (via the Architect's draft) to emit per-card `extensions.world_forge.style_override` metadata in card JSON. SillyTavern itself does not consume Section 11 — it consumes the resulting preset and card content. A SillyTavern extension that knows about the `world_forge` namespace may read the per-card metadata and synthesize an `<style_override>` block at runtime; on stock ST, the metadata is inert and only the world `<style_contract>` in the preset's Main Prompt fires.*
 
 **11a. World Default**
 - `perspective`: [first | second | third_limited | third_omniscient]
@@ -202,7 +202,7 @@ For each arc:
 - `is_multi_perspective`: [true | false] — true iff the set of effective perspectives across all cards (world default + each override) has more than one distinct value
 - Distinct perspectives in use: [list of enum values, e.g., `first` (Maya, Andrei), `third_omniscient` (Director)]
 
-If true: the Prompt Engineer adds an active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check; the Architect ensures every overriding card's `<style_override>` block references {{char}} explicitly so the model can identify the active speaker.
+If true: the Prompt Engineer adds an active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check; the Architect ensures that the per-card override metadata for overriding cards has unambiguous values so any runtime `<style_override>` synthesis (by a `world_forge`-aware extension) can reference `{{char}}` correctly.
 
 **11d. Style Contract Advisories (non-blocking)**
 
@@ -225,7 +225,12 @@ When `present`, list every Director-flagged card whose effective perspective is 
 
 When `absent`, write `POV Ambiguity Advisory: absent (world default is third-person OR no Director cards detected).`
 
-> **Protagonist Lorebook requirement:** Every world that has a named {{user}} protagonist must include a `[ProtagonistName]_Lorebook.json` in the Tier 2 lorebook list. This is not a character card — it is reference data the model uses to react to {{user}} correctly. Without it, the model does not reliably know who {{user}} is, what they look like, how they carry themselves, or how other characters should respond to them. After pipeline completion, the user must link this lorebook to their active Persona in ST User Settings → Persona Management.
+> **Protagonist artifacts requirement:** Every world that has a named {{user}} protagonist must produce **two paired artifacts** for the SillyTavern Persona:
+>
+> 1. **`User.md`** — the Persona Description text the user pastes into ST → User Settings → Persona Management → Description. This is the always-on identity floor for `{{user}}` (≤150 words, third-person reference data, no voice/personality/manner content). Drafted by the Architect in Phase 2; passed through unchanged to `Export/User.md` by the Compiler in Phase 4.
+> 2. **`[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook the user links via the persona's Lorebook field. Reference data the model uses to react to `{{user}}` correctly: physical, psychology, relationships, powers, history. Fires on trigger keywords.
+>
+> SillyTavern provides no import format for personas, so the user wires both up manually after pipeline completion. The persona description is the constant baseline; the lorebook fires on keys for fuller detail. Without `User.md`, the user has nothing to put in the Description field and the LLM has no always-on identity anchor for `{{user}}` until a key fires — producing wrong NPC reactions in opening turns.
 
 ---
 
@@ -267,6 +272,7 @@ Append to end of `Master_Design.md`:
 - [ ] All major characters: psychological entry topics listed
 - [ ] All NPCs: full profile with trigger keywords
 - [ ] **Protagonist ({{user}}): physical description, psychology, powers, voice, and lorebook entry topics defined**
+- [ ] **Protagonist ({{user}}): identity floor available for `User.md` Persona Description — name, role/public face, distilled physical signature, world-relevant powers/limits flag (if applicable). Voice/personality/manner intentionally excluded — the human plays `{{user}}`.**
 
 ### Tier 3 — Arc Lorebook Material
 - [ ] All arcs defined with genre tags

@@ -16,8 +16,9 @@ You have access to SillyTavern's documentation and source code for schema guidan
 
 ### 2a. Narrative Sources (verify Editor Sign-Off before proceeding)
 - `Drafts/Card_[CharName].md` — character card content
+- `Drafts/User.md` — `{{user}}` Persona Description text (passes through to Export unchanged; see Step 4.5 below)
 - `Drafts/Tier1_World_Entries.md` — World Lorebook entries
-- `Drafts/Tier2_[CharName]_Entries.md` — Character Lorebook entries (one per character/NPC)
+- `Drafts/Tier2_[CharName]_Entries.md` — Character Lorebook entries (one per character/NPC, including the Tier 2 Protagonist Lorebook)
 - `Drafts/Tier3_Arc[N]_[Title]_Entries.md` — Arc Lorebook entries (one per arc)
 - `Drafts/Instructions_[CardName].md` — system_prompt and post_history_instructions source
 - `Drafts/Master_Design.md` — technical specifications
@@ -104,7 +105,12 @@ If any template is missing: halt and report. Do not guess schema.
 | `data.extensions` | object | Extension-specific data. Of note: `extensions.depth_prompt` allows injecting a string at a specific chat depth — powerful for per-character mid-context reinforcement. Set to `{}` if unused. |
 
 ### Persona System Note
-Per `Notes_On_functionality.md` Section 9, SillyTavern has a dedicated **Persona System** for `{{user}}`. The Protagonist Lorebook should be linked to the user's active Persona via the `lorebook` field in the persona configuration — this ensures it only scans when that persona is active. The persona `description` field is where the core `{{user}}` identity text lives. The `position` can be set to `IN_PROMPT` (0) to place it at the top of context, or `AT_DEPTH` (2) to inject it into chat history at a specific depth. Advise the user to link `[ProtagonistName]_Lorebook.json` to their persona in the ST Persona settings after importing.
+Per `Notes_On_functionality.md` Section 9, SillyTavern has a dedicated **Persona System** for `{{user}}`. SillyTavern provides no import format for personas (unlike V3 character cards for `{{char}}`), so the user configures the persona manually in **User Settings → Persona Management**. The pipeline produces two paired artifacts to support this:
+
+1. **`Export/User.md`** — the Persona Description text. The user pastes the block between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` into the persona's **Description** field. This text is injected as `personaDescription` in every prompt while the persona is active.
+2. **`Export/[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook. The user links this in the persona's **Lorebook** field. It scans only when this persona is active.
+
+The persona description is the always-on identity floor; the linked lorebook fires on trigger keywords for fuller detail. Advise the user to wire up both in the Compiler Log.
 
 ---
 
@@ -127,7 +133,28 @@ For each card:
 3. Map `Instructions_[CardName].md` POST-HISTORY INSTRUCTIONS section → `data.post_history_instructions`
 4. Both system_prompt and post_history_instructions **must not be empty strings.**
 5. **Populate `data.extensions.depth_prompt`** if the character has complex arc-dependent behavioral requirements, strong prose style mandates, or intimacy response patterns that need mid-context reinforcement. The depth_prompt injects a third behavioral anchor at a specific depth in chat history — use it when system_prompt + post_history_instructions alone are insufficient for behavioral stability. Structure: `{"prompt": "[reinforcement text]", "depth": 4, "role": "system"}`. If not needed, set to `{"prompt": "", "depth": 4, "role": "system"}` — never omit the field.
-6. Run validation pass before saving.
+6. **Populate `data.extensions.world_forge.style_override`** from the Architect's `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block in `Instructions_[CardName].md`. Two valid forms:
+   - **Non-overriding card** (the Architect's draft says `extensions.world_forge.style_override: null`, or the section is absent): emit the JSON field as `"world_forge": {"style_override": null}`.
+   - **Overriding card** (the Architect's draft has populated `perspective_override`, `narration_marker_override`, and `override_rationale` values): emit the JSON field as a structured object:
+     ```json
+     "world_forge": {
+       "style_override": {
+         "perspective_override": "[enum value or null]",
+         "narration_marker_override": "[enum value or null]",
+         "override_rationale": "[verbatim from Master Design Section 11b]"
+       }
+     }
+     ```
+   The `world_forge` namespace sits inside `data.extensions` alongside `depth_prompt`. SillyTavern itself ignores unknown extension keys (per `Notes_On_functionality.md` Section 5.6 V3 card notes) so the field is inert on stock ST; a `world_forge`-aware ST extension reads the metadata and synthesizes the runtime override directive. **Never strip this field** — it is the canonical declaration of per-card style overrides; the audit trail and any extension consumer rely on it being present in the JSON.
+7. Run validation pass before saving.
+
+### Step 4.5 — Pass `User.md` through to `Export/User.md`
+
+`User.md` is plain markdown the user pastes into ST's Persona Description field — there is no JSON schema to compile it against, because SillyTavern personas are configured manually (no import format equivalent to the V3 character card). The Compiler's job here is simply to copy the Editor-approved `Drafts/User.md` to `Export/User.md` byte-for-byte.
+
+Do not modify the file. Do not strip the BEGIN/END markers, the Setup Instructions, or any whitespace. The user will copy the text between the markers themselves. The full markdown stays so the Setup Instructions remain visible alongside the description block.
+
+If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught this. Do not attempt to synthesize one.
 
 ### Step 5 — Build World Lorebook (`Export/World_Lorebook.json`)
 
@@ -183,6 +210,7 @@ Before saving any file:
 - All required fields present and correctly typed
 - `system_prompt` and `post_history_instructions` are non-empty strings
 - `data.extensions.depth_prompt` is present on all character cards (prompt may be empty string if unused)
+- `data.extensions.world_forge.style_override` is present on all character cards (value is either `null` for non-overriding cards or a `{perspective_override, narration_marker_override, override_rationale}` object for overriding cards, matching Master Design Section 11b verbatim)
 - `entries` object uses sequential string keys starting from `"0"`
 - No Markdown syntax leaked into JSON string values (escape `"` as `\"`, newlines as `\n`)
 - CONSTANT entries: `constant: true`, `selective: true`, `key: []`, `ignoreBudget: true`
@@ -208,8 +236,10 @@ Before saving any file:
 ```
 Export/
 ├── [CharName]_Card.json            ← V3 character card per named card
+├── User.md                         ← {{user}} Persona Description text (paste into ST persona)
 ├── World_Lorebook.json             ← Tier 1: permanent world truths
 ├── [CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
+├── [ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
 ├── Arc[N]_Lorebook.json            ← Tier 3: one per arc
 ├── Group_Lorebook.json             ← Combined: all tiers, all entries, group-tagged
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
@@ -228,8 +258,9 @@ Append to `Export/Compiler_Log.md`:
 
 ### Output Manifest
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
+- [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] World_Lorebook.json — [N] entries, all Tier 1
-- [ ] [CharName]_Lorebook.json — [N] entries (list per character)
+- [ ] [CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
 - [ ] Arc[N]_Lorebook.json — [N] entries each, ARC_STATE present (list per arc)
 - [ ] Group_Lorebook.json — [total N] entries, UIDs unique, groups tagged
 - [ ] Compiler_Log.md — complete
@@ -243,15 +274,16 @@ Append to `Export/Compiler_Log.md`:
 - [ ] Protagonist Lorebook: alias and true name trigger keywords present ✓
 - [ ] Group Lorebook UIDs: unique across full set ✓
 - [ ] All `data.extensions.depth_prompt` fields present on all character cards ✓
+- [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, populated object for overriding) ✓
 - [ ] Notes_On_functionality.md consulted ✓
 
 ### Persona Linkage Instruction
-The Protagonist Lorebook must be manually linked to the user's active Persona in SillyTavern after import. Include these steps in the Compiler Log for the user:
-1. In SillyTavern: open **User Settings → Persona Management**
-2. Select the active persona (or create one for this world's protagonist)
-3. In the persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json`
-4. Set the persona description to the protagonist's core identity text
-5. The Protagonist Lorebook will now only scan when this persona is active
+SillyTavern personas are configured manually (no import format). The pipeline produces both artifacts; the user wires them up in ST. Include these steps in the Compiler Log for the user:
+1. In SillyTavern: open **User Settings → Persona Management**.
+2. Create (or select) the persona for this world. Set the persona name to the in-world name found in the `# {{user}} PERSONA — [Name]` heading at the top of `Export/User.md`.
+3. Open `Export/User.md`. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` and paste it into the persona's **Description** field.
+4. In the same persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json`.
+5. Activate this persona before starting the chat. The persona description is the always-on baseline; the linked lorebook fires on keyword triggers for fuller detail.
 
 ### Gap Report
 [List any required fields that could not be populated, or "None."]

@@ -20,6 +20,7 @@ A complete SillyTavern-ready package per world:
 - **One World Lorebook (Tier 1)** — permanent arc-agnostic world truths: rules, factions, locations, species, concepts.
 - **One Character Lorebook per character (Tier 2)** — permanent reference data: physical baseline, psychological dimensions, relationships.
 - **One Protagonist Lorebook (Tier 2)** — `{{user}}` identity reference, linked to your active SillyTavern Persona after import.
+- **One `User.md` Persona Description** — paste-ready text block for SillyTavern's Persona Description field. Pairs with the Protagonist Lorebook to give `{{user}}` parity with `{{char}}` despite ST's missing persona import format. Voice and personality intentionally excluded — the human plays `{{user}}`.
 - **One Intimacy Profile per character with intimate scenes (Tier 2, conditional)** — permanent intimate substrate.
 - **One Arc Lorebook per arc (Tier 3)** — modular and swap-in: ARC_STATE, CHARACTER_STATE, NPC behavioral shifts, dramatic beats, tension entries.
 - **One Arc Intimacy Register per arc with intimate beats (Tier 3, conditional)** — arc-specific intimate function and per-character delta.
@@ -116,6 +117,7 @@ A new project folder evolves through these files as the pipeline progresses:
 ├── Drafts/
 │   ├── Master_Design.md                           ← Phase 1
 │   ├── Card_[CharName].md                         ← Phase 2
+│   ├── User.md                                    ← Phase 2 ({{user}} Persona Description text)
 │   ├── Tier1_World_Entries.md                     ← Phase 2
 │   ├── Tier2_[ProtagonistName]_Entries.md         ← Phase 2
 │   ├── Tier2_[CharName]_Entries.md                ← Phase 2
@@ -129,6 +131,7 @@ A new project folder evolves through these files as the pipeline progresses:
 │   └── Intimacy_Audit_Report_[Round N].md         ← Phase 3.7 (conditional)
 └── Export/
     ├── [CharName]_Card.json                       ← Phase 4
+    ├── User.md                                    ← Phase 4 (paste into ST persona)
     ├── [ProtagonistName]_Lorebook.json            ← Phase 4
     ├── World_Lorebook.json                        ← Phase 4
     ├── [CharName]_Lorebook.json                   ← Phase 4
@@ -140,6 +143,8 @@ A new project folder evolves through these files as the pipeline progresses:
     ├── Prompt_Engineer_Audit.md                   ← Phase 5
     └── [WorldName]_ChatPreset.json                ← Phase 5
 ```
+
+`User.md` is the persona-description counterpart to the Tier 2 Protagonist Lorebook. SillyTavern provides no structured import for `{{user}}` personas (unlike V3 character cards for `{{char}}`), so the pipeline produces a paste-ready text block in `Export/User.md` alongside the Tier 2 Protagonist Lorebook. The persona description is the always-on identity floor injected every turn; the lorebook fires on keys for fuller detail. Voice / personality / manner are intentionally excluded from `User.md` — the human plays `{{user}}` and writes their own dialogue.
 
 ## Trigger commands
 
@@ -156,7 +161,7 @@ A new project folder evolves through these files as the pipeline progresses:
 
 1. Import each `Export/*.json` lorebook through SillyTavern's **World Info** panel; import each character card through the **Character Management** panel; place the chat preset through **API settings → Chat Completion Presets → Import**.
 2. In the World Info panel, enable the **World Lorebook** group and all **Character Lorebook** groups permanently. **Arc lorebooks** are swap-in: enable Arc 1 to start; switch to Arc 2 when the story's exit trigger fires; and so on. **Only one arc lorebook should be active at a time.** The same applies to Arc Intimacy Registers when present.
-3. Link the **Protagonist Lorebook** to your active Persona in **User Settings → Persona Management** so it scans only when that persona is active.
+3. Open **User Settings → Persona Management** and create (or select) the persona for this world. Open `Export/User.md`, copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---`, and paste it into the persona's **Description** field. Link the **Protagonist Lorebook** in the same persona's **Lorebook** field so it scans only when that persona is active.
 4. Select the world's Chat Completion Preset in the API settings panel.
 
 ## Where to learn more

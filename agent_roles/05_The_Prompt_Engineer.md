@@ -378,7 +378,7 @@ The block library above describes what each block is *for*. The requirements bel
 
     Combine with the dialogue_marker and emphasis_marker directives in the same line.
   - `ACTIVE-SPEAKER RULE:` — **include only when Master Design Section 11c reports `is_multi_perspective: true`.** Verbatim text:
-    > `The active card's style contract governs the current turn. If a card declares its own <style_override>, that override replaces this contract for that card's turns only. Do not blend perspectives or marker conventions within a single turn.`
+    > `The active card's style contract governs the current turn. If a card declares its own <style_override>, the directives inside that block override the corresponding directives in this <style_contract> for that card's turns. Directives this <style_override> does NOT include continue to follow this <style_contract> — the override is field-level inheritance, not full-block replacement. Do not blend perspectives or marker conventions within a single turn.`
 
   The `<style_contract>` block is the **single authoritative source for marker conventions** in the entire preset. The Formatting Enforcement block defers to it; per-card `<style_override>` blocks structurally mirror it. Inside the block: ONLY perspective + tense + marker directives. No character-specific content, no narration discipline, no spatial mandates, no sensory rules.
 

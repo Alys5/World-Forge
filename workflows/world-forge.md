@@ -124,13 +124,14 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 **Input:** `Drafts/Master_Design.md` with REFINER SIGN-OFF
 **Output:** All draft files in `Drafts/`
 
-**Mandatory outputs (all six required):**
+**Mandatory outputs (all seven required):**
 1. `Card_[CharName].md` — character card content per card
-2. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
-3. `Tier1_World_Entries.md` — all Tier 1 entries
-4. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC
-5. `Tier3_Arc[N]_[Title]_Entries.md` — Tier 3 entries per arc
-6. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
+2. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
+3. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
+4. `Tier1_World_Entries.md` — all Tier 1 entries
+5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC
+6. `Tier3_Arc[N]_[Title]_Entries.md` — Tier 3 entries per arc
+7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
 
@@ -251,6 +252,7 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 **Builds:**
 - Character Card JSON per card (`system_prompt`, `post_history_instructions`, and `data.extensions.depth_prompt` mandatory fields, never empty)
+- `User.md` — `{{user}}` Persona Description text (passed through from `Drafts/User.md` unchanged; paste-ready for ST persona)
 - `[ProtagonistName]_Lorebook.json` — Tier 2, {{user}} identity reference
 - `World_Lorebook.json` — Tier 1, all entries at `position: 0`
 - `[CharName]_Lorebook.json` — Tier 2, one per character/NPC, all entries at `position: 1`
@@ -261,7 +263,7 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
 
-In SillyTavern: import `Group_Lorebook.json`, enable World + character groups + character intimacy profile groups permanently, swap arc groups (including arc intimacy register groups) as the story advances. Link Protagonist Lorebook to active Persona in User Settings → Persona Management.
+In SillyTavern: import `Group_Lorebook.json`, enable World + character groups + character intimacy profile groups permanently, swap arc groups (including arc intimacy register groups) as the story advances. In **User Settings → Persona Management**, create the persona for this world, paste the Persona Description block from `Export/User.md` into the Description field, and link `[ProtagonistName]_Lorebook.json` in the Lorebook field.
 
 ---
 
@@ -327,6 +329,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 ├── Drafts/
 │   ├── Master_Design.md
 │   ├── Card_[CharName].md
+│   ├── User.md                                     ⭐ {{user}} Persona Description (Phase 2)
 │   ├── Tier1_World_Entries.md
 │   ├── Tier2_[ProtagonistName]_Entries.md
 │   ├── Tier2_[CharName]_Entries.md
@@ -342,9 +345,11 @@ For users who find manual application onerous on large worlds, a future pipeline
 │   ├── Char_Card_creation.md
 │   ├── Lorebook_creation.md
 │   ├── Group_lorebook_template.md
+│   ├── User_Persona_template.md                   ⭐ {{user}} Persona structural reference
 │   └── Chat_Completion_Preset_template.json   ⭐ new (Phase 5 structural reference)
 └── Export/
     ├── [CharName]_Card.json
+    ├── User.md                                     ⭐ {{user}} Persona Description (Phase 4 passthrough)
     ├── [ProtagonistName]_Lorebook.json
     ├── World_Lorebook.json
     ├── [CharName]_Lorebook.json
