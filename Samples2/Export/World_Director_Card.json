@@ -41,8 +41,12 @@
       "world_forge": {
         "style_override": {
           "perspective_override": "third_omniscient",
+          "tense_override": null,
           "narration_marker_override": null,
-          "override_rationale": "World Director card handling NPCs and scene-setting from outside any single character's interior; the world default's third-person limited focal-character constraint is structurally wrong for this narrator role. Narration marker matches the world default (asterisks_for_narration), so only perspective is overridden."
+          "directives": [
+            "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
+          ],
+          "override_rationale": "World Director card handling NPCs and scene-setting from outside any single character's interior; the world default's third-person limited focal-character constraint is structurally wrong for this narrator role."
         }
       }
     }

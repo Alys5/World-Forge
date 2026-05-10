@@ -53,22 +53,29 @@ Read the World Seed and classify every piece of information:
 
 The World Seed's Section 1.5 declares engine-level prose conventions: perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register. This is NOT lore content and does NOT belong to any lorebook tier. It is engine configuration that downstream agents (Architect, Editor, Prompt Engineer) consume directly.
 
-Do this in three passes:
+Do this in four passes (plus the POV advisory):
 
 **Pass 1 — Validate the world default.** Confirm Section 1.5a has values for all six fields. If a field reads `DEFAULTS` or is empty, fill in the legacy convention (`third_limited` / `past` / `asterisks_for_narration` / `double_quotes` / `double_asterisks` / `standard`) and note in your output that the default was applied. Confirm the values are valid enum members. If a value is not a valid enum member (e.g., user wrote "third person" instead of `third_limited`), normalize it to the closest enum and note the normalization. If normalization is ambiguous, log to `UNRESOLVED_QUESTIONS.md`.
 
-**Pass 2 — Aggregate per-card overrides.** Walk every character entry in Section 4 of the World Seed. For each card, read the Card Style Override subsection. Cards with both fields set to `INHERIT` are non-overriding (the common case); record nothing for those. Cards with at least one field non-INHERIT are overriding. For each overriding card, capture: card name, perspective override value, narration marker override value, override rationale.
+**Pass 2 — Aggregate per-card overrides.** Walk every character entry in Section 4 of the World Seed. For each card, read the Card Style Override subsection. Cards with all three override fields set to `INHERIT` are non-overriding (the common case); record nothing for those. Cards with at least one field non-INHERIT are overriding. For each overriding card, capture: card name, perspective override value, tense override value, narration marker override value, override rationale.
 
 Validate each override:
-- The non-INHERIT field values must be valid enum members. Normalize if ambiguous.
+- The non-INHERIT field values must be valid enum members:
+  - `perspective_override`: `first` | `second` | `third_limited` | `third_omniscient`
+  - `tense_override`: `past` | `present`
+  - `narration_marker_override`: `asterisks_for_narration` | `asterisks_for_thoughts_only` | `plain_prose`
+- Normalize ambiguous user input where possible (e.g., "first person" → `first`).
 - The rationale must be non-empty. Empty rationale → log to `UNRESOLVED_QUESTIONS.md` with the card name.
 - The rationale must be structural, not stylistic. If the rationale reads like preference ("I prefer third-person", "feels more natural"), log to `UNRESOLVED_QUESTIONS.md` with the card name and ask the user for the structural reason. The Editor will hard-fail empty or stylistic rationales downstream; surfacing it now saves a round-trip.
 
-**Pass 3 — Multi-perspective detection.** Compute the set of distinct effective perspective values across all cards (world default + each override). If the set has more than one element (e.g., world default is `first` and one card overrides to `third_omniscient`), this world is multi-perspective. Record the multi-perspective flag in Master Design Section 11. Downstream consequences:
-- The Prompt Engineer adds an active-speaker rule to the world's Main Prompt `<style_contract>` block.
-- The Voice Auditor (Phase 3.5) runs an extra perspective-bleed check.
+**Pass 3 — Multi-axis detection.** Two independent flags drive downstream behavior:
 
-A world where every card inherits the world default is single-perspective. A world where every card declares the same override (which would be a sign that the user has the world default wrong) is also single-perspective by effective value, but flag it for user review — they probably want the world default changed instead.
+- `is_multi_perspective`: compute the set of distinct *effective* perspective values across all cards (each card's `perspective_override` if set, else the world default). If the set has more than one element (e.g., world default is `first` and one card overrides to `third_omniscient`), this world is multi-perspective.
+- `is_multi_tense`: compute the set of distinct *effective* tense values across all cards. If the set has more than one element (e.g., world default is `past` and one card overrides to `present`), this world is multi-tense.
+
+Either flag being `true` triggers the active-speaker rule in the world's Main Prompt `<style_contract>` block (the rule is the same; both axes are addressed by it). Either flag also triggers the Voice Auditor's perspective-bleed check (Phase 3.5 Step 3H).
+
+A world where every card inherits the world default on every axis is single-perspective and single-tense. A world where every card declares the same override (a sign that the user has the world default wrong) is single-axis by effective value — flag it for user review; they probably want the world default changed instead of authoring identical overrides on every card.
 
 **Pass 4 — POV ambiguity advisory (non-blocking).** When the world default `perspective` is `first` or `second`, scan every card for Director/Narrator/NPC-handler indicators. A card is flagged as a Director if either of the following holds:
 - The card's "The Card's Function" field in World Seed Section 4 contains any of: `Director`, `Narrator`, `NPC controller`, `NPC handler`, `NPC manager`, `World Director`, or close variants (case-insensitive).
@@ -193,16 +200,19 @@ For each arc:
 ```
 - card_name: [CARD_NAME]
   perspective_override: [enum value | INHERIT]
+  tense_override: [enum value | INHERIT]
   narration_marker_override: [enum value | INHERIT]
   override_rationale: [verbatim from World Seed Section 4]
   rationale_validated: [true | false] — true if Refiner Pass 2 deemed the rationale structural; false if logged to UNRESOLVED_QUESTIONS.md
 ```
 
-**11c. Multi-Perspective Flag**
+**11c. Multi-Axis Flags**
 - `is_multi_perspective`: [true | false] — true iff the set of effective perspectives across all cards (world default + each override) has more than one distinct value
+- `is_multi_tense`: [true | false] — true iff the set of effective tenses across all cards has more than one distinct value
 - Distinct perspectives in use: [list of enum values, e.g., `first` (Maya, Andrei), `third_omniscient` (Director)]
+- Distinct tenses in use: [list of enum values, e.g., `past` (Anna), `present` (World Director)]
 
-If true: the Prompt Engineer adds an active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check; the Architect ensures that the per-card override metadata for overriding cards has unambiguous values so any runtime `<style_override>` synthesis (by a `world_forge`-aware extension) can reference `{{char}}` correctly.
+If either flag is true: the Prompt Engineer adds the active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check (Phase 3.5 Step 3H, which now also checks for tense bleed when `is_multi_tense` is true); the Architect ensures the per-card override metadata for overriding cards has unambiguous values so any runtime `<style_override>` synthesis (by a `world_forge`-aware extension) can reference `{{char}}` correctly.
 
 **11d. Style Contract Advisories (non-blocking)**
 
@@ -291,7 +301,7 @@ Append to end of `Master_Design.md`:
 - [ ] Section 11a: All values normalized to valid enum members
 - [ ] Section 11b: Every card's override status recorded (overriding or non-overriding)
 - [ ] Section 11b: Every overriding card's rationale validated (structural, not stylistic) — or unstructured rationales logged to UNRESOLVED_QUESTIONS.md
-- [ ] Section 11c: Multi-perspective flag computed and distinct perspectives enumerated
+- [ ] Section 11c: Multi-perspective AND multi-tense flags computed; distinct perspectives and distinct tenses enumerated
 - [ ] Section 11d: POV ambiguity advisory computed (present or absent); if present, affected cards listed and advisory text included verbatim
 
 **Status: LOCKED — Proceed to Phase 2 (The Architect)**

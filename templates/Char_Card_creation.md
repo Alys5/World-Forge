@@ -38,19 +38,21 @@ These all live in the preset Main Prompt and are spliced in via `{{original}}`. 
 
 ⭐ STYLE OVERRIDE — METADATA ONLY
 
-A card may declare a per-card override of the world's perspective and narration marker (and ONLY those two engine concerns) when it is structurally incompatible with the world default — typically a Director/Narrator card sitting alongside companion cards in a single-character-perspective world.
+A card may declare a per-card override of the world's **perspective**, **tense**, and **narration marker** (and ONLY those three engine concerns) when it is structurally incompatible with the world default — typical cases: a Director/Narrator card alongside companion cards in a single-character-perspective world; a group chat where one card narrates in present tense and another in past.
 
 **The override is declared exclusively through structured metadata at `extensions.world_forge.style_override`.** No `<style_override>` tag block appears in the card's `system_prompt`, `post_history_instructions`, or `depth_prompt` content. The "no engine-level content in cards" rule applies in full to all card text fields — there is no in-text exception.
 
 How the override fires at runtime:
 
 - **Stock SillyTavern**: ignores `extensions.world_forge.style_override` (it's an unknown extension key, tolerated per `Notes_On_functionality.md` Section 5.6 V3 card notes). The world `<style_contract>` block in the preset's Main Prompt governs every turn for every card. The override is inert.
-- **`world_forge`-aware extension** (e.g., a SillyTavern extension that consumes the `world_forge` namespace): reads the metadata at runtime, synthesizes an `<style_override>` directive from the `perspective_override` and `narration_marker_override` fields, and splices it into the assembled main system prompt immediately after `</style_contract>` for the active card's turns. Per the active-speaker rule in the preset's `<style_contract>`, the directives in the synthesized override replace the corresponding directives in the world contract for that card's turns; directives the override does not include continue to follow the world contract.
+- **`world_forge`-aware extension** (a SillyTavern extension that consumes the `world_forge` namespace): reads the metadata at runtime, splices a `<style_override>` block built from the metadata's `directives` array directly into the assembled main system prompt, immediately after `</style_contract>` for the active card's turns. Per the active-speaker rule in the preset's `<style_contract>`, the directives in the synthesized override replace the corresponding directives in the world contract for that card's turns; directives the override does not include continue to follow the world contract (field-level inheritance).
 
 The metadata field has two valid states:
 
 - **Non-overriding card (the vast majority)**: `extensions.world_forge.style_override` is `null` (or the field is absent — both are equivalent).
-- **Overriding card**: `extensions.world_forge.style_override` is an object with three keys: `perspective_override`, `narration_marker_override`, `override_rationale`. At least one of the two override fields must be a non-null enum value (the other may be `null` to inherit the world default). The rationale must be non-empty and structural — vague or stylistic rationales like "feels better" or "preferred style" are hard-failed by the Editor.
+- **Overriding card**: `extensions.world_forge.style_override` is an object with five keys: `perspective_override`, `tense_override`, `narration_marker_override`, `directives`, `override_rationale`. The first three are enum values (or `null` to inherit on that axis); at least one must be non-null (otherwise the card isn't actually overriding). `directives` is the resolved prose array the runtime extension consumes — see the schema below. `override_rationale` must be non-empty and structural — vague or stylistic rationales like "feels better" or "preferred style" are hard-failed by the Editor.
+
+The split between **enum fields** and **`directives` array** is intentional. The enum fields exist for tooling — the Editor validates them, the Refiner cross-checks them against the Master Design, future agents can introspect them. The `directives` array exists for runtime — the extension reads it and splices, no string-table lookup, no hardcoded prose, no drift between pipeline and extension. The Architect populates BOTH at compile time using the canonical prose templates documented in the Prompt Engineer spec (Section 5a-detail).
 
 WHAT BELONGS IN THE CARD's system_prompt:
 - Identity statement covering the character's FULL arc journey (not just starting state)
@@ -117,18 +119,33 @@ Please fill out this exact SillyTavern V3 Character Card JSON structure:
   }
 }
 
-For cards that DO declare a per-card style override (the rare case — typically a Director/Narrator card alongside companion cards), `extensions.world_forge.style_override` is populated as follows:
+For cards that DO declare a per-card style override (the rare case — typically a Director/Narrator card alongside companion cards, or a group chat with mixed-tense cards), `extensions.world_forge.style_override` is populated as follows:
 
 ```json
 "world_forge": {
   "style_override": {
     "perspective_override": "third_omniscient",
-    "narration_marker_override": "asterisks_for_narration",
+    "tense_override": null,
+    "narration_marker_override": null,
+    "directives": [
+      "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
+    ],
     "override_rationale": "One sentence stating the structural reason this card cannot use the world default. Stylistic preference is not sufficient."
   }
 }
 ```
 
-Allowed `perspective_override` values: `first`, `second`, `third_limited`, `third_omniscient`. Allowed `narration_marker_override` values: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose`. Setting either to `null` while the other is set means "override only this one field; inherit the world default for the other". The Editor validates the structured fields directly (see Editor Step 5.6).
+**Allowed enum values:**
+- `perspective_override`: `first`, `second`, `third_limited`, `third_omniscient` (or `null` to inherit world default)
+- `tense_override`: `past`, `present` (or `null` to inherit)
+- `narration_marker_override`: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose` (or `null` to inherit)
+- At least one of the three must be non-null on an overriding card (otherwise the entire `style_override` field should be `null`).
+
+**The `directives` array:** an ordered list of strings, each formatted as `LABEL: directive prose`. The runtime extension joins them with newlines and wraps the result in `<style_override>...</style_override>` tags. The Architect populates this array at compile time using the canonical prose templates in the Prompt Engineer spec (Section 5a-detail). One directive line per affected axis pair:
+
+- **NARRATIVE PERSPECTIVE** — emitted when `perspective_override` OR `tense_override` is non-null. The directive line names *both* perspective and tense, using the override values where set and the world default for the unchanged axis. (E.g., a card that overrides only tense from `past` to `present` while inheriting world's `third_limited` perspective produces `"NARRATIVE PERSPECTIVE: Narrate in third-person limited present tense, focal on {{char}} this turn..."`.)
+- **FORMATTING MARKERS** — emitted when `narration_marker_override` is non-null. The directive line names what `*asterisks*` delimit for this card. Dialogue and emphasis markers come from the world contract (those are not per-card overridable).
+
+The Editor validates that the `directives` array is consistent with the enum values (Editor Step 5.6 Pass 2): every non-null override has a corresponding directive line, and the directive content reflects the enum's documented prose template.
 
 The `world_forge` extensions namespace is the canonical declaration of per-card style overrides. SillyTavern itself ignores unknown extension keys (per `Notes_On_functionality.md` Section 5.6 V3 card notes), so on stock ST the metadata is inert at runtime. A `world_forge`-aware ST extension reads the metadata and synthesizes the runtime injection — that's the path that turns the metadata into actual model-visible directives.

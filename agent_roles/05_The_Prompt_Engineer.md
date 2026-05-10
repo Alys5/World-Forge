@@ -365,22 +365,34 @@ The block library above describes what each block is *for*. The requirements bel
 - Narration rules: proactive writing, show-don't-tell, step-by-step pacing without fast-forwarding
 - Spatial awareness mandate: character positions, height differences, environmental anchors (generic — specific character heights belong in Spatial Awareness block, not here)
 - Generic character embodiment principles: authentic portrayal, character agency, internal monologue stays in monologue
-- **`<style_contract>...</style_contract>` block — REQUIRED, parameterized from Master Design Section 11a.** Contains exactly two directive lines (or three when multi-perspective), in this order:
-  - `NARRATIVE PERSPECTIVE:` — translate the world default `perspective` and `tense` enum values into directive prose. Reference `{{char}}` when the perspective is single-character (`first`, `second`, `third_limited`). Examples by enum:
-    - `first` + `past` → `Narrate in first-person past tense from {{char}}'s POV. {{char}} narrates their own experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.`
-    - `second` + `present` → `Narrate in second-person present tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.`
-    - `third_limited` + `past` → `Narrate in third-person limited past tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior but not other characters'.`
-    - `third_omniscient` + `past` → `Narrate in third-person omniscient past tense. The narrator may render any character's interior as the scene requires.`
-  - `FORMATTING MARKERS:` — translate the world default `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values into directive prose. State what `*asterisks*` delimit, what dialogue marker delimits dialogue, and what emphasis marker delimits emphasis. Examples by `narration_marker`:
-    - `asterisks_for_narration` → `*Asterisks* delimit narration, action, and interior glimpses.`
-    - `asterisks_for_thoughts_only` → `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue. Action and narration are plain prose.`
-    - `plain_prose` → `No asterisks anywhere. Narration, action, and thought are all plain prose.`
+- **`<style_contract>...</style_contract>` block — REQUIRED, parameterized from Master Design Section 11a.** Contains exactly two directive lines (or three when the world has any per-card overrides per Section 11c), in this order:
+  - `NARRATIVE PERSPECTIVE:` — translate the world default `perspective` and `tense` enum values into directive prose using the canonical templates below. Reference `{{char}}` when the perspective is single-character (`first`, `second`, `third_limited`). The templates below are also used by the Architect when generating per-card override `directives` arrays — the Architect uses the same enum→directive map but with the card's *effective* values (override where set, world default otherwise). Keep these tables in sync if either is edited.
 
-    Combine with the dialogue_marker and emphasis_marker directives in the same line.
-  - `ACTIVE-SPEAKER RULE:` — **include only when Master Design Section 11c reports `is_multi_perspective: true`.** Verbatim text:
+    | Perspective | Tense | Directive content |
+    |---|---|---|
+    | `first` | `past` | `Narrate in first-person past tense from {{char}}'s POV. {{char}} narrates their own experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.` |
+    | `first` | `present` | `Narrate in first-person present tense from {{char}}'s POV. {{char}} narrates their own immediate experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.` |
+    | `second` | `past` | `Narrate in second-person past tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.` |
+    | `second` | `present` | `Narrate in second-person present tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.` |
+    | `third_limited` | `past` | `Narrate in third-person limited past tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior — their thoughts, sensations, and immediate reactions — but not other characters' interiors. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.` |
+    | `third_limited` | `present` | `Narrate in third-person limited present tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior but not other characters'. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.` |
+    | `third_omniscient` | `past` | `Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
+    | `third_omniscient` | `present` | `Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
+
+  - `FORMATTING MARKERS:` — translate the world default `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values into directive prose. The Architect's per-card override `directives` reuses only the `narration_marker` half of this template (dialogue and emphasis markers are not per-card overridable). Templates by `narration_marker`:
+
+    | Narration marker | Directive (narration portion) |
+    |---|---|
+    | `asterisks_for_narration` | `*Asterisks* delimit narration, action, and interior glimpses.` |
+    | `asterisks_for_thoughts_only` | `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue. Action and narration are plain prose.` |
+    | `plain_prose` | `No asterisks anywhere. Narration, action, and thought are all plain prose. Spoken dialogue still uses double quotes per the world contract.` |
+
+    The world `<style_contract>` block combines the narration directive with the dialogue and emphasis marker directives in the same line. Per-card override `directives` use only the narration portion (dialogue/emphasis carry through from the world contract via field-level inheritance).
+
+  - `ACTIVE-SPEAKER RULE:` — **include only when Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`** (any per-card override on either axis triggers the rule). Verbatim text:
     > `The active card's style contract governs the current turn. If a card declares its own <style_override>, the directives inside that block override the corresponding directives in this <style_contract> for that card's turns. Directives this <style_override> does NOT include continue to follow this <style_contract> — the override is field-level inheritance, not full-block replacement. Do not blend perspectives or marker conventions within a single turn.`
 
-  The `<style_contract>` block is the **single authoritative source for marker conventions** in the entire preset. The Formatting Enforcement block defers to it; per-card `<style_override>` blocks structurally mirror it. Inside the block: ONLY perspective + tense + marker directives. No character-specific content, no narration discipline, no spatial mandates, no sensory rules.
+  The `<style_contract>` block is the **single authoritative source for marker conventions** in the entire preset. The Formatting Enforcement block defers to it; per-card `<style_override>` blocks (synthesized at runtime by the `world_forge` extension from card metadata `directives` arrays) structurally mirror it. Inside the block: ONLY perspective + tense + marker directives. No character-specific content, no narration discipline, no spatial mandates, no sensory rules.
 
 - Paragraph register directive (outside the `<style_contract>` block): translate Master Design Section 11a `paragraph_register` enum into a one-sentence directive. `terse` → short paragraphs / dense action; `standard` → mixed paragraph lengths; `dwelling` → long paragraphs / sensory detail accumulates / time slows.
 - Style notes (outside the `<style_contract>` block): if Master Design Section 11a `style_notes` is non-empty, append as one or two clarifying sentences. If `none` or blank, omit.
@@ -695,8 +707,8 @@ The Main Prompt's `<style_contract>` block is the single authoritative source fo
 - [ ] The `<style_contract>` block contains a `NARRATIVE PERSPECTIVE:` line and a `FORMATTING MARKERS:` line, in that order. Missing either line, extra unrecognized lines (other than the conditional ACTIVE-SPEAKER RULE), or wrong order = hard fail.
 - [ ] The `NARRATIVE PERSPECTIVE:` line's directive content reflects Master Design Section 11a `perspective` and `tense` enum values. Walk through the enum-to-directive mapping (see Section 5a-detail Main Prompt requirements). Mismatch between the enum value and the directive's content = hard fail.
 - [ ] The `FORMATTING MARKERS:` line's directive content reflects Master Design Section 11a `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values. Mismatch = hard fail.
-- [ ] When Master Design Section 11c reports `is_multi_perspective: true`: the `<style_contract>` block contains the `ACTIVE-SPEAKER RULE:` line with the verbatim text from Section 5a-detail. Missing line = hard fail.
-- [ ] When Master Design Section 11c reports `is_multi_perspective: false`: the `<style_contract>` block does NOT contain the `ACTIVE-SPEAKER RULE:` line. Spurious line = hard fail (the rule is meaningful only when there are multiple effective perspectives in play).
+- [ ] When Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`: the `<style_contract>` block contains the `ACTIVE-SPEAKER RULE:` line with the verbatim text from Section 5a-detail. Missing line = hard fail.
+- [ ] When Master Design Section 11c reports BOTH `is_multi_perspective: false` AND `is_multi_tense: false`: the `<style_contract>` block does NOT contain the `ACTIVE-SPEAKER RULE:` line. Spurious line = hard fail (the rule is meaningful only when there are per-card overrides in play on at least one axis).
 - [ ] No content inside the `<style_contract>` block beyond the required two or three lines. Specifically: no narration discipline phrases, no spatial mandates, no sensory rules, no character embodiment language, no character names, no arc names. Hard fail any extra content.
 - [ ] Main Prompt content OUTSIDE the `<style_contract>` block does NOT contain hardcoded marker characters as authoritative declarations. Specifically: no occurrences of the literal substring "*asterisks*" or "*single asterisks*" used as a directive ("use *asterisks* for X"); no occurrences of "**double asterisks**" used as a directive; no occurrences of `\"double quotes\"` (the JSON-escaped form) used as a directive. Marker characters appearing inside example sentences inside the `<style_contract>` block are fine; marker characters appearing in directive form outside the block are a hard fail because they compete with the contract.
 
@@ -888,7 +900,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 ### Chat Template — Style Contract Validation (paired with override architecture)
 - [ ] Main Prompt contains exactly one `<style_contract>...</style_contract>` block with NARRATIVE PERSPECTIVE and FORMATTING MARKERS lines
 - [ ] `<style_contract>` content matches Master Design Section 11a enums (perspective, tense, narration_marker, dialogue_marker, emphasis_marker)
-- [ ] ACTIVE-SPEAKER RULE line present iff Master Design Section 11c `is_multi_perspective: true`
+- [ ] ACTIVE-SPEAKER RULE line present iff Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`
 - [ ] No content inside `<style_contract>` beyond the required two or three lines (no narration discipline, no spatial mandates, no character names, no arc names)
 - [ ] Main Prompt outside `<style_contract>` does NOT contain hardcoded marker directive substrings (`*asterisks*`, `*single asterisks*`, `**double asterisks**`, escaped double-quote directives)
 - [ ] Formatting block content does NOT contain hardcoded marker characters as directives

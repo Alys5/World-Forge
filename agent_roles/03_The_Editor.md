@@ -458,32 +458,48 @@ Mismatch = hard reject. The pair must wire up correctly in ST or the user gets a
 
 The pipeline declares per-card style overrides through **structured metadata** at `extensions.world_forge.style_override` in the card JSON. The pipeline does **NOT** emit a literal `<style_override>` tag block in the card's `system_prompt` content — the metadata is the only artifact. SillyTavern itself ignores the metadata (per `Notes_On_functionality.md` Section 5.6 V3 card notes — unknown extension keys are tolerated and inert at runtime). A `world_forge`-aware extension reads the metadata and synthesizes the override directive into the assembled main system prompt at runtime; on stock SillyTavern, the metadata sits idle and the world `<style_contract>` in the preset's Main Prompt governs every turn.
 
-This step has four passes; failure at any pass is a hard reject unless explicitly marked as soft-flag.
+This step has five passes; failure at any pass is a hard reject unless explicitly marked as soft-flag.
 
 **Pass 1 — Structural-field validity (hard fail).**
 
 For every card, inspect `extensions.world_forge.style_override`:
 
 - [ ] If the field is absent or `null`: the card is non-overriding. Move to Pass 2.
-- [ ] If the field is populated: it must be an object containing exactly three keys: `perspective_override`, `narration_marker_override`, `override_rationale`. Missing any key, extra unrecognized keys, or wrong types = hard reject. Cite the card and the malformed field.
+- [ ] If the field is populated: it must be an object containing exactly five keys: `perspective_override`, `tense_override`, `narration_marker_override`, `directives`, `override_rationale`. Missing any key, extra unrecognized keys, or wrong types = hard reject. Cite the card and the malformed field.
 - [ ] `perspective_override` must be one of: `first`, `second`, `third_limited`, `third_omniscient`, or `null`. Any other value = hard reject.
+- [ ] `tense_override` must be one of: `past`, `present`, or `null`. Any other value = hard reject.
 - [ ] `narration_marker_override` must be one of: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose`, or `null`. Any other value = hard reject.
-- [ ] At least one of `perspective_override` or `narration_marker_override` must be a non-null enum value. Both `null` is a hard reject — the field's presence with both nulls is meaningless and likely indicates the Architect mis-emitted a non-overriding card. Direct fix: remove the entire `style_override` object and set the field to `null`.
+- [ ] At least one of the three enum override fields must be a non-null enum value. All three `null` is a hard reject — the field's presence with all nulls is meaningless and likely indicates the Architect mis-emitted a non-overriding card. Direct fix: remove the entire `style_override` object and set the field to `null`.
+- [ ] `directives` must be an array of strings. Empty array is allowed only when all three enum overrides are `null` (which itself is a hard fail per the previous check). Each string must match the format `LABEL: prose`, with `LABEL` being one of `NARRATIVE PERSPECTIVE` or `FORMATTING MARKERS`. Other labels = hard reject. Cite the offending element.
 - [ ] `override_rationale` must be a non-empty string of at least 15 characters. Empty or whitespace-only or shorter than 15 chars = hard reject.
 
-**Pass 2 — System prompt cleanliness (hard fail).**
+**Pass 2 — `directives` consistency with enums (hard fail).**
+
+The `directives` array is the runtime extension's input. It must agree with the enum override values; the enum side is the audit trail and the directive side is the runtime payload — they must not diverge.
+
+For every overriding card:
+
+- [ ] If `perspective_override` OR `tense_override` is non-null: `directives` must contain exactly one element with the `NARRATIVE PERSPECTIVE:` label. Missing line = hard reject. Multiple lines with the same label = hard reject.
+- [ ] If both `perspective_override` AND `tense_override` are `null`: `directives` must NOT contain a `NARRATIVE PERSPECTIVE:` line. Spurious line = hard reject (it indicates the Architect emitted an unjustified directive).
+- [ ] If `narration_marker_override` is non-null: `directives` must contain exactly one element with the `FORMATTING MARKERS:` label. Missing line = hard reject.
+- [ ] If `narration_marker_override` is `null`: `directives` must NOT contain a `FORMATTING MARKERS:` line. Spurious line = hard reject.
+- [ ] When the `NARRATIVE PERSPECTIVE:` line is present, its prose content must match the canonical template for the card's *effective* perspective/tense pair (effective = override value if set, else world default from Master Design Section 11a). Use the directive-generation tables in Architect Section 9 as the source of truth. Mismatch = hard reject; cite the expected template and the actual content.
+- [ ] When the `FORMATTING MARKERS:` line is present, its prose content must match the canonical template for the card's *effective* narration marker (override value if set, else world default). Mismatch = hard reject.
+- [ ] Every directive line must reference `{{char}}` literally (the macro is required for the runtime extension to produce per-card prose; missing it = static directives that don't adapt to the active card). The exception is `plain_prose` narration marker, which doesn't need to reference `{{char}}`.
+
+**Pass 3 — System prompt cleanliness (hard fail).**
 
 The pipeline does NOT emit a `<style_override>` block anywhere in the card's text fields. The metadata is the sole declaration. The standard contamination scan (Step 5b) catches engine-level perspective and formatting language in cards as before — there is **no exemption** for an `<style_override>` wrapper, because no such wrapper should exist.
 
 - [ ] Scan `system_prompt`, `post_history_instructions`, and `extensions.depth_prompt.prompt` for any literal occurrence of `<style_override>` or `</style_override>` tags. Any match in any of those text fields = hard reject. The Architect should not be emitting this block; if it appears, the Architect's output is stale (predates the metadata-only contract) or malformed.
 - [ ] Step 5b's diagnostic phrase scan applies in full to all card text fields, regardless of whether `extensions.world_forge.style_override` is populated. Engine-level perspective/formatting language in card text fields is always a hard fail. The metadata-only contract removes the previous narrow exception.
 
-**Pass 3 — Rationale quality (hybrid: hard fail + soft flag).**
+**Pass 4 — Rationale quality (hybrid: hard fail + soft flag).**
 
 The structural `override_rationale` must justify the override on structural grounds, not stylistic preference.
 
 - [ ] **HARD FAIL** if the rationale matches any of these patterns (case-insensitive substring or close paraphrase): `"feels better"`, `"prefer"`, `"more natural"`, `"sounds better"`, `"reads better"`, `"my style"`, `"liked it"`, `"chose it"`, `"wanted to try"`, `"thought it would"`. These read as preference, not structural necessity.
-- [ ] **HARD FAIL** if the rationale does not name a structural feature of the card that makes the world default wrong. Structural features include: card function (Director/Narrator/NPC handler), card scope (manages multiple NPCs vs. single character), POV ambiguity in the world default for this card type, scene-setting role distinct from in-character action.
+- [ ] **HARD FAIL** if the rationale does not name a structural feature of the card that makes the world default wrong. Structural features include: card function (Director/Narrator/NPC handler), card scope (manages multiple NPCs vs. single character), POV ambiguity in the world default for this card type, scene-setting role distinct from in-character action, mixed-tense group chat with another card on the opposite tense.
 - [ ] **SOFT FLAG** if the rationale mentions a structural feature but does so vaguely (e.g., "This card is a Director and needs different style"). Surface in the critique report:
 
 ```
@@ -495,12 +511,13 @@ SOFT FLAG: override_rationale in [Card_Name].extensions.world_forge.style_overri
 
 The user reviews the soft flag in the next round. If the rationale is sufficient as-is, the flag clears. If they confirm the rationale needs tightening, the Architect rewrites and the Compiler re-emits.
 
-**Pass 4 — Cross-check against Master Design Section 11b (hard fail on divergence).**
+**Pass 5 — Cross-check against Master Design Section 11b (hard fail on divergence).**
 
 Read Master Design Section 11b. For every card listed there with non-INHERIT values:
 
 - [ ] The card's `extensions.world_forge.style_override` field is populated (not `null`).
 - [ ] The card's `perspective_override` value matches Section 11b verbatim.
+- [ ] The card's `tense_override` value matches Section 11b verbatim.
 - [ ] The card's `narration_marker_override` value matches Section 11b verbatim.
 - [ ] The card's `override_rationale` matches Section 11b verbatim (or is a textually equivalent paraphrase the user signed off on — direct verbatim is the safer pattern).
 
@@ -591,10 +608,11 @@ Post-history: [checklist results + word count]
 - **All cards: no engine-instruction contamination (hard-fail phrase scan passed — no exemption for `<style_override>` blocks; metadata-only contract enforced) ✓**
 - **All soft-flag ambiguous keywords reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - **All cards: `depth_prompt` does not contain `{{original}}` ✓**
-- **All cards: no literal `<style_override>` tag block in any card text field — metadata at `extensions.world_forge.style_override` is the sole declaration (Step 5.6 Pass 2) ✓**
-- **All overriding cards: `extensions.world_forge.style_override` is well-formed with valid enum values and ≥15-char rationale (Step 5.6 Pass 1) ✓**
-- **All overriding cards: `override_rationale` is structural, not stylistic (Step 5.6 Pass 3 hard-fail patterns clean) ✓**
-- **All overriding cards: structural field values match Master Design Section 11b verbatim (Step 5.6 Pass 4) ✓**
+- **All cards: no literal `<style_override>` tag block in any card text field — metadata at `extensions.world_forge.style_override` is the sole declaration (Step 5.6 Pass 3) ✓**
+- **All overriding cards: `extensions.world_forge.style_override` is well-formed with five keys (perspective_override, tense_override, narration_marker_override, directives, override_rationale), valid enum values, ≥15-char rationale (Step 5.6 Pass 1) ✓**
+- **All overriding cards: `directives` array is consistent with the enum values — NARRATIVE PERSPECTIVE line iff perspective_override OR tense_override is non-null; FORMATTING MARKERS line iff narration_marker_override is non-null; directive prose matches canonical templates for effective values (Step 5.6 Pass 2) ✓**
+- **All overriding cards: `override_rationale` is structural, not stylistic (Step 5.6 Pass 4 hard-fail patterns clean) ✓**
+- **All overriding cards: enum values match Master Design Section 11b verbatim, including tense_override (Step 5.6 Pass 5) ✓**
 - **All Style Override Metadata soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - No structural failures ✓
 - All arc lorebooks ≥8 entries ✓

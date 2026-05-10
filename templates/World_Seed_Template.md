@@ -84,7 +84,7 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 ### 1.5b. Active-Speaker Rule (auto-generated; do not edit)
 
-*This rule is added to the world's Main Prompt automatically by the Prompt Engineer when at least one card declares a style override. It tells the model that the active card's style governs the current turn and forbids perspective bleed within a single turn. You do not write this — it is mechanical output of the pipeline.*
+*This rule is added to the world's Main Prompt automatically by the Prompt Engineer when the world has more than one distinct narrative perspective OR more than one distinct tense in play across its cards (world default plus per-card overrides). The rule tells the model that the active card's style contract governs the current turn and that per-card `<style_override>` directives override the contract field-by-field, with unstated fields inheriting from the world contract. You do not write this — it is mechanical output of the pipeline.*
 
 ### 1.5c. Per-Card Style Overrides
 
@@ -222,13 +222,14 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 **Voice Pattern:** [How do they speak? Sentence length, vocabulary level, verbal tics, what they never say directly, how they express strong emotion. Give the AI enough to write them distinctly.]
 
-**Card Style Override:** **[OPTIONAL — leave as `INHERIT` for the vast majority of cards]**
+**Card Style Override:** **[OPTIONAL — leave all fields as `INHERIT` for the vast majority of cards]**
 
-*This card may override the world's perspective and narration marker (Section 1.5a) for its own turns. Override only when the card is structurally incompatible with the world default — typically a Director/Narrator card sitting alongside companion cards in a 1st-person world, or a confessional companion card in an otherwise 3rd-person world. Do NOT override for stylistic preference; that's what the world default is for. Tense, dialogue marker, emphasis marker, and paragraph register are world-coherence settings and cannot be overridden per card.*
+*This card may override the world's perspective, tense, and narration marker (Section 1.5a) for its own turns. Override only when the card is structurally incompatible with the world default — typical cases: a Director/Narrator card sitting alongside companion cards in a single-character-perspective world; a confessional companion card in an otherwise third-person world; group chats where one card narrates in present tense and another in past. Do NOT override for stylistic preference; that's what the world default is for. Dialogue marker, emphasis marker, and paragraph register remain world-coherence settings and cannot be overridden per card.*
 
 - **Perspective override:** [`INHERIT` (default — uses world Section 1.5a value) | `first` | `second` | `third_limited` | `third_omniscient`]
+- **Tense override:** [`INHERIT` (default — uses world Section 1.5a value) | `past` | `present`]
 - **Narration marker override:** [`INHERIT` (default) | `asterisks_for_narration` | `asterisks_for_thoughts_only` | `plain_prose`]
-- **Override rationale:** [REQUIRED if either override is not INHERIT. One sentence explaining the structural reason this card cannot use the world default. Stylistic preference is not a structural reason. Example: "Director card handling NPC voices and scene-setting from outside any character's POV; world-default first-person is structurally wrong for this role." The Editor hard-fails any non-INHERIT override with an empty or vague rationale.]
+- **Override rationale:** [REQUIRED if any override is not INHERIT. One sentence explaining the structural reason this card cannot use the world default. Stylistic preference is not a structural reason. Examples: "Director card handling NPC voices and scene-setting from outside any character's POV; world-default first-person is structurally wrong for this role." / "Companion card narrates in present tense for immediacy; world default is past for the broader narrative pace." The Editor hard-fails any non-INHERIT override with an empty or vague rationale.]
 
 **Opening Scenario:** [Where are they when the story starts? What is their situation and immediate goal?]
 

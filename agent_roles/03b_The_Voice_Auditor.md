@@ -24,7 +24,7 @@ If you flag failures, the pipeline returns to the Architect for revision, then b
 
 ## 3. INPUT
 - All Editor-approved files in `Drafts/`
-- `Drafts/Master_Design.md` — the narrative truth being verified against. **Read Section 11 (Style Contract) specifically — Section 11c's `is_multi_perspective` flag determines whether the perspective-bleed check (Step 3H below) fires.**
+- `Drafts/Master_Design.md` — the narrative truth being verified against. **Read Section 11 (Style Contract) specifically — Section 11c's `is_multi_perspective` and `is_multi_tense` flags determine whether the perspective-bleed check (Step 3H below) fires. Either flag being true triggers the check.**
 - `World_Seed.md` Section 7b — the test scenarios the user provided
 
 If Section 7b is missing because the user did not provide test scenarios, generate three representative scenarios yourself based on the Master Design's arc beats, but flag this in the report so the user knows their pipeline is being verified against scenarios you invented rather than scenarios they intended to play.
@@ -43,7 +43,7 @@ For each AI-played character, generate this matrix:
 
 Generate at least three test scenarios per character per arc. For a five-arc world with two characters, you produce a minimum of thirty test scenarios. Coverage is more important than brevity here — the audit only catches what it tests.
 
-**For multi-perspective worlds (Master Design Section 11c `is_multi_perspective: true`):** add at least one cross-perspective scenario per arc. A cross-perspective scenario places at least two cards with differing perspectives in the same scene context — typically the focal-perspective card and an overriding card (e.g., a 1st-person companion card and a 3rd-person Director card co-occurring). These scenarios are the only ones that exercise the perspective-bleed check (Step 3H). Single-perspective worlds skip this requirement.
+**For worlds with per-card overrides (Master Design Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`):** add at least one cross-axis scenario per arc. A cross-axis scenario places at least two cards with differing styles in the same scene context — typically the world-default card and an overriding card (e.g., a 1st-person companion card and a 3rd-person Director card; or a past-tense companion and a present-tense companion in a group chat). These scenarios are the only ones that exercise the perspective/tense-bleed check (Step 3H). Single-axis worlds (no overrides) skip this requirement.
 
 ### Step 2 — Generate sample dialogue
 
@@ -102,14 +102,15 @@ For each NPC that appears in the dialogue, verify their voice matches the NPC pr
 **G. The "model would invent this" check**
 For each meaningful character detail in the dialogue, ask: was this detail provided in the drafts, or did I invent it to fill a gap? If you invented it because the drafts were silent, the drafts have a coverage gap. The model running this material would also invent something there, and what it invents will not be consistent with what you invented.
 
-**H. Perspective Bleed Check (multi-perspective worlds only — runs when Master Design Section 11c `is_multi_perspective: true`)**
+**H. Perspective / Tense Bleed Check (axis-mixed worlds only — runs when Master Design Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`)**
 
-This check fires only for worlds where at least two cards have differing effective perspectives (world default + per-card overrides). For each test scenario in the matrix, verify perspective integrity per turn:
+This check fires for worlds where at least two cards have differing effective perspective OR differing effective tense (world default + per-card overrides on either axis). For each test scenario in the matrix, verify per-turn integrity on both axes:
 
 - **Active speaker's perspective is the only perspective rendered in that turn.** When the focal card is 1st-person, the entire turn is 1st-person from that card's POV — no 3rd-person glimpses, no omniscient narrator commentary, no "she did not yet know" interjections from outside the focal POV. When the focal card is 3rd-person omniscient, the entire turn is 3rd-person omniscient — no surprise 1st-person "I" appearing in narration.
-- **No cross-card perspective bleed within a single turn.** The Director card's omniscient narrator voice does not leak into a companion card's 1st-person turn. The companion card's intimate "I" register does not leak into the Director's 3rd-person scene-setting.
+- **Active speaker's tense is the only tense rendered in that turn.** When the focal card is past-tense, the entire turn is past-tense — no slip into present-tense narration. When the focal card is present-tense, the entire turn stays in present — no past-tense paragraphs leaking in from the world default or another card's register.
+- **No cross-card perspective or tense bleed within a single turn.** The Director card's omniscient narrator voice does not leak into a companion card's 1st-person turn. The past-tense companion's register does not leak into the present-tense card's turn. Each card's effective style is hermetic for its own turns.
 - **Marker convention matches the active card's narration_marker.** A turn from a card with `asterisks_for_thoughts_only` does not start using asterisks for narration. A turn from a card with `asterisks_for_narration` does not start hiding its narration in plain prose.
-- **Active-speaker reference is unambiguous.** Multi-perspective worlds rely on `{{char}}` to signal the active card. Verify that nothing in the generated turn refers to the active card by another character's pronoun frame (e.g., a turn from the 1st-person companion accidentally rendering that companion as "she" because the Director's omniscient register bled in).
+- **Active-speaker reference is unambiguous.** Axis-mixed worlds rely on `{{char}}` to signal the active card. Verify that nothing in the generated turn refers to the active card by another character's pronoun frame (e.g., a turn from the 1st-person companion accidentally rendering that companion as "she" because the Director's omniscient register bled in).
 
 Specific failure patterns to watch for, in roughly increasing severity:
 
@@ -120,7 +121,7 @@ Specific failure patterns to watch for, in roughly increasing severity:
 
 When a perspective-bleed failure is found, trace it to source per the Diagnosis table below — most cases are a card-side or preset-side fix, not an in-scene narrative issue.
 
-For single-perspective worlds (`is_multi_perspective: false`): skip Step 3H entirely. There is no perspective bleed to audit when all cards share one effective perspective.
+For worlds with no per-card overrides on either axis (`is_multi_perspective: false` AND `is_multi_tense: false`): skip Step 3H entirely. There is no perspective or tense bleed to audit when all cards share one effective perspective AND one effective tense.
 
 ### Step 4 — Diagnose the source of any failure
 
@@ -217,7 +218,7 @@ If no failures → sign off cleanly.
 - [ ] All trigger-response pairs from cards exercised in test scenarios
 - [ ] All NPCs voiced in test scenarios
 - [ ] User test scenarios from Section 7b included (or generated equivalents flagged)
-- [ ] **Multi-perspective worlds: at least one cross-perspective scenario per arc included; OR confirmed `is_multi_perspective: false` in Master Design Section 11c and Step 3H skipped**
+- [ ] **Axis-mixed worlds (`is_multi_perspective: true` OR `is_multi_tense: true`): at least one cross-axis scenario per arc included; OR confirmed both flags `false` in Master Design Section 11c and Step 3H skipped**
 
 ### Behavioral Fidelity
 - [ ] No Critical failures remain
