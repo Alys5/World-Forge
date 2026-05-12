@@ -220,6 +220,7 @@ Maintain `group` field values — this is how users manage tiers in ST.
 Before saving any file:
 - JSON is syntactically valid (balanced braces, correct commas, no trailing commas)
 - All required fields present and correctly typed
+- **No metadata fields outside the schema.** The JSON content contains ONLY schema-defined fields (those documented for V3 character cards and ST lorebook entries; see `Notes_On_functionality.md` and the Char Card / Lorebook templates). Do NOT add: `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, or any other "where this came from" metadata. The destination filename is a **tool argument** passed to your write-file tool — it tells the tool harness where to save the file, but it does NOT belong inside the file's JSON content. If your write-file tool takes `{path, content}` as separate arguments, the path goes into the tool's `path` argument and the JSON goes into the tool's `content` argument; the path must not also appear inside the content. This rule exists because some models (notably some DeepSeek and Gemini variants) have a documented habit of echoing the write-tool's `path` argument back into the JSON content, producing malformed files. The JSON-validity check below will catch the malformation, but the prevention is to never emit a non-schema field in the first place.
 - `system_prompt` and `post_history_instructions` are non-empty strings
 - `data.extensions.depth_prompt` is present on all character cards (prompt may be empty string if unused)
 - `data.extensions.world_forge.style_override` is present on all character cards (value is either `null` for non-overriding cards or a `{perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale}` seven-key object for overriding cards, matching Master Design Section 11b and the Architect's directive draft verbatim)
@@ -287,6 +288,7 @@ Append to `Export/Compiler_Log.md`:
 - [ ] Group Lorebook UIDs: unique across full set ✓
 - [ ] All `data.extensions.depth_prompt` fields present on all character cards ✓
 - [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, seven-key object for overriding: perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale) ✓
+- [ ] **No non-schema metadata fields in any JSON content** — no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, or similar. The destination filename is a tool argument, not a content field. Scan every emitted JSON for unknown top-level keys and reject if any are present. ✓
 - [ ] Notes_On_functionality.md consulted ✓
 
 ### Persona Linkage Instruction
