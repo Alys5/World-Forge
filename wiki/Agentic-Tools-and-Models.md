@@ -104,6 +104,7 @@ The pipeline is unusually demanding of the underlying LLM. Most phases are *lite
 - **Claude Sonnet 4.6** — the best price/quality balance for the bulk of the run. The pipeline was authored against Sonnet-class models and works well end-to-end on it.
 - **GPT-5** — strong literary capability, very long context. Slightly more "instructed" feel than Claude in prose registers; sometimes over-explains.
 - **Gemini 2.5 Pro** — excellent at long-context cross-reference work (useful for the Editor's cross-tier validation). Prose register is acceptable but tends toward neutral; pair with explicit tonal directives.
+- **DeepSeek 4 Pro** — strong literary register and characterization at a materially lower price point than the frontier proprietary models. Solid instruction adherence on long agent specs; a viable alternative for cost-sensitive runs where you still want creative-phase quality. Verify your agentic tool's provider list supports it (Roo Code, Cline, and Kilo Code all do via OpenAI-compatible endpoints or OpenRouter).
 
 **Acceptable for utility phases (Refiner classification, Compiler JSON transformation, Prompt Engineer block assembly):**
 - Claude Haiku 4.5 — cheap and fast, sufficient for structured-output transformations where literary judgment is not required.
@@ -113,6 +114,7 @@ The pipeline is unusually demanding of the underlying LLM. Most phases are *lite
 - Small open-weights models (7B–13B) — context handling and instruction adherence are insufficient for the multi-phase orchestration.
 - Coding-tuned model variants — same failure mode as Claude Code (see below): voice flattens, characterization gets generic.
 - Models without ~200K usable context — you will hit context limits in Phase 3.
+- **Flash-tier / fast-tier models for Phase 4 (Compiler) and Phase 2 (Architect).** Reported failure mode on **Gemini 3.1 Flash**: the model produced sparse, structurally incomplete JSON in Phase 4 and dropped load-bearing fields from character cards — including the mandatory `{{original}}` macro at the top of `system_prompt` and `post_history_instructions`. That macro is the linchpin of the [Override Architecture](../CLAUDE.md#2-the-override-architecture-paired-contract); dropping it causes the card to silently replace the preset's Main Prompt at runtime, breaking engine-level rules. Flash-tier models in general appear to "summarize" structured output rather than emit it verbatim, which is exactly the wrong behavior for the Compiler. Use a Pro-tier or frontier-tier model for any phase that produces JSON or that must reproduce specific literal strings (macros, position values, sign-off blocks).
 
 ### 3.3 Mixing models across phases
 
@@ -175,6 +177,7 @@ These are not the recommended path but come up often enough to be worth a senten
 | Voice is flat, generic, "AI-assistant" register | Wrong model tier or wrong tool harness. | Switch to Sonnet 4.6 or Opus 4.7. If already on those models via Claude Code, switch tools to Roo Code or Cline. |
 | Editor passes everything on round 1 | Model is being sycophantic (often a small or coding-tuned model). | Switch to a stronger creative model. Verify the Editor agent spec is being loaded. |
 | Context-window errors in Phase 3+ | Model has insufficient context. | Use a 200K+ context model. Verify the tool isn't loading every file in the workspace by default (some tools auto-include too much). |
+| Phase 4 JSON output is sparse, missing fields, or omits literal strings like `{{original}}` from `system_prompt` / `post_history_instructions` | Flash-tier or summarization-prone model used for the Compiler. Observed on **Gemini 3.1 Flash**. | Switch the Compiler (and ideally the Architect) to a Pro-tier or frontier-tier model. The Compiler must emit verbatim content; summarizing models silently drop macros and break the [Override Architecture](../CLAUDE.md#2-the-override-architecture-paired-contract). |
 
 ---
 
