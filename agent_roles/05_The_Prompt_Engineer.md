@@ -3,6 +3,23 @@
 
 ---
 
+## ⭐ FOUNDATIONAL HARD-FAIL RULES — VERIFY BEFORE SAVING THE PRESET
+
+These rules are pre-save gates for the Chat Completion Preset JSON you author in Workstream B. If any one fails, the preset is wrong. **Re-read `templates/Chat_Completion_Preset_template.json` and rebuild from it. Strip nothing. Replace placeholders.**
+
+1. **Output is the Full Chat Completion Preset shape, NOT the PromptManager-export envelope.** The file must have ≥30 top-level keys. If your output has only `prompts` and `prompt_order` (or those wrapped in a `{"version": 1, "type": "full", "data": {...}}` envelope), it is the wrong shape and the user cannot import it as a preset. Section 5.0 documents the distinction.
+2. **All 8 standard marker blocks present in the `prompts` array with `marker: true`**: `worldInfoBefore`, `worldInfoAfter`, `charDescription`, `charPersonality`, `scenario`, `personaDescription`, `chatHistory`, `dialogueExamples`. Missing any of these = the lorebooks, character card fields, persona description, or chat history will NOT inject at runtime. Without `worldInfoBefore`/`worldInfoAfter`, no lorebook entries fire. Without `chatHistory`, the conversation itself is not sent. This is the single most catastrophic failure mode of this phase.
+3. **All custom blocks AND all marker blocks present in `prompt_order` for every character_id entry.** `prompt_order` is an array of objects, each containing `character_id` (number) and `order` (array of `{identifier, enabled}`). NOT a flat string array. Markers in `prompts` that are not in `prompt_order` do not inject.
+4. **`forbid_overrides: false` on both `main` and `jailbreak` blocks.** If either is `true`, character card `system_prompt` / `post_history_instructions` overrides are silently disabled and `{{original}}` becomes inert. This breaks every card in the world.
+5. **World `<style_contract>` block present in Main block content.** Parameterized from Master Design Section 11a (perspective, tense, narration_marker, dialogue_marker, emphasis_marker) using the canonical templates in `agent_roles/SHARED_Style_Contract_Reference.md` §3. ACTIVE-SPEAKER RULE included iff Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`.
+6. **Formatting block is slim deferral.** Content references both `<style_contract>` and `<style_override>` by tag name; contains NO hardcoded marker characters as directives (no `*asterisks*`, `**double asterisks**`, or `\"double quotes\"` used as directive substrings). Marker conventions live exclusively in the Main block's `<style_contract>`.
+7. **No character names, arc names, or character-specific psychology language in Main or jailbreak block content.** Main is engine-only; jailbreak is generic no-restrictions framing. Both are halves of the override contract with cards — contaminating them breaks `{{original}}`.
+8. **Pass 1 + Pass 2 self-validation run before saving** (Section 5f). Skipping these is the failure pattern this section exists to prevent. Read your candidate output and check every box.
+
+If any fails, do not write the file. Diagnose the gap, fix the source, re-run validation.
+
+---
+
 ## 1. OBJECTIVE
 
 You are **The Prompt Engineer**. You are the final quality gate before the player loads this world into SillyTavern.
@@ -366,50 +383,12 @@ The block library above describes what each block is *for*. The requirements bel
 - Spatial awareness mandate: character positions, height differences, environmental anchors (generic — specific character heights belong in Spatial Awareness block, not here)
 - Generic character embodiment principles: authentic portrayal, character agency, internal monologue stays in monologue
 - **`<style_contract>...</style_contract>` block — REQUIRED, parameterized from Master Design Section 11a.** Contains exactly two directive lines (or three when the world has any per-card overrides per Section 11c), in this order:
-  - `NARRATIVE PERSPECTIVE:` — translate the world default `perspective` and `tense` enum values into directive prose using the canonical templates below. Reference `{{char}}` when the perspective is single-character (`first`, `second`, `third_limited`). The templates below are also used by the Architect when generating per-card override `directives` arrays — the Architect uses the same enum→directive map but with the card's *effective* values (override where set, world default otherwise). Keep these tables in sync if either is edited.
 
-    | Perspective | Tense | Directive content |
-    |---|---|---|
-    | `first` | `past` | `Narrate in first-person past tense from {{char}}'s POV. {{char}} narrates their own experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.` |
-    | `first` | `present` | `Narrate in first-person present tense from {{char}}'s POV. {{char}} narrates their own immediate experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.` |
-    | `second` | `past` | `Narrate in second-person past tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.` |
-    | `second` | `present` | `Narrate in second-person present tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.` |
-    | `third_limited` | `past` | `Narrate in third-person limited past tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior — their thoughts, sensations, and immediate reactions — but not other characters' interiors. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.` |
-    | `third_limited` | `present` | `Narrate in third-person limited present tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior but not other characters'. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.` |
-    | `third_omniscient` | `past` | `Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
-    | `third_omniscient` | `present` | `Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
+  - `NARRATIVE PERSPECTIVE:` — look up the directive prose in `agent_roles/SHARED_Style_Contract_Reference.md` §3a using the world default `perspective` and `tense` values. The Architect uses the same table for per-card overrides with effective values.
 
-  - `FORMATTING MARKERS:` — compose three sub-clauses (narration + dialogue + emphasis) into a single sentence using the world default `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values. The Architect's per-card override `directives` use the same three sub-clause tables when ANY of the marker axes is overridden (the entire FORMATTING MARKERS line is emitted with all three sub-clauses, using effective values — override where set, world default where inherited).
+  - `FORMATTING MARKERS:` — compose three sub-clauses from SHARED §3b using the world default `narration_marker`, `dialogue_marker`, and `emphasis_marker` values. Format: `FORMATTING MARKERS: <narration>. <dialogue>. <emphasis>. No other formatting conventions apply.`
 
-    **Narration marker sub-clause:**
-
-    | Value | Sub-clause |
-    |---|---|
-    | `asterisks_for_narration` | `*Asterisks* delimit narration, action, and interior glimpses` |
-    | `asterisks_for_thoughts_only` | `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue; narration and action are plain prose` |
-    | `plain_prose` | `No asterisks anywhere — narration, action, and thought are all plain prose` |
-
-    **Dialogue marker sub-clause:**
-
-    | Value | Sub-clause |
-    |---|---|
-    | `double_quotes` | `"Double quotes" delimit spoken dialogue` |
-    | `single_quotes` | `'Single quotes' delimit spoken dialogue` |
-    | `em_dash` | `An em-dash (—) precedes spoken dialogue with no closing marker` |
-    | `unmarked` | `Spoken dialogue runs into the prose without delimiters` |
-
-    **Emphasis marker sub-clause:**
-
-    | Value | Sub-clause |
-    |---|---|
-    | `double_asterisks` | `**Double asterisks** delimit emphasis` |
-    | `italics_underscore` | `_Italics-underscore_ delimits emphasis` |
-    | `none` | `No emphasis marker — the prose carries its own weight` |
-
-    Compose as: `FORMATTING MARKERS: <narration sub-clause>. <dialogue sub-clause>. <emphasis sub-clause>. No other formatting conventions apply.`
-
-  - `ACTIVE-SPEAKER RULE:` — **include only when Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`** (any per-card override on either axis triggers the rule). Verbatim text:
-    > `The active card's style contract governs the current turn. If a card declares its own <style_override>, the directives inside that block override the corresponding directives in this <style_contract> for that card's turns. Directives this <style_override> does NOT include continue to follow this <style_contract> — the override is field-level inheritance, not full-block replacement. Do not blend perspectives or marker conventions within a single turn.`
+  - `ACTIVE-SPEAKER RULE:` — **include only when Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`**. Verbatim text per SHARED §3c.
 
   The `<style_contract>` block is the **single authoritative source for marker conventions** in the entire preset. The Formatting Enforcement block defers to it; per-card `<style_override>` blocks (synthesized at runtime by the `world_forge` extension from card metadata `directives` arrays) structurally mirror it. Inside the block: ONLY perspective + tense + marker directives. No character-specific content, no narration discipline, no spatial mandates, no sensory rules.
 

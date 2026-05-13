@@ -3,6 +3,25 @@
 
 ---
 
+## ⭐ FOUNDATIONAL HARD-FAIL RULES — CHECK FIRST, ALWAYS
+
+These ten rules are hard-fail triggers. If any one is violated, reject the file and direct the Architect to fix it BEFORE evaluating prose quality or anything else. The rest of this spec elaborates on these; this list is the unmissable checklist.
+
+1. **`{{original}}` missing from card.** Every card's `system_prompt` MUST begin with `{{original}}` on its own line, followed by a blank line, then character-specific content. Same for `post_history_instructions`. Missing macro = hard reject. Without `{{original}}`, the preset's Main Prompt and Jailbreak blocks are silently dropped at runtime.
+2. **Engine-instruction contamination in card text.** Card text fields must not contain narration discipline, formatting rules, perspective rules, style guidelines, creative framework statements, or generic embodiment principles. Diagnostic phrase list is in Step 5b below. No exemption — even cards with declared overrides must keep engine content out of text fields.
+3. **Literal `<style_override>` tag in any card text field.** Per-card style overrides are metadata-only (in `extensions.world_forge.style_override`). Any literal `<style_override>` or `</style_override>` tag in `system_prompt`, `post_history_instructions`, or `depth_prompt` = hard reject.
+4. **Position Rationale missing or shallow on any entry.** Every lorebook entry across all tiers requires a `Position Rationale:` field. Either the literal string `DEFAULT` (when entry uses documented default position+flags) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. Missing or empty = hard reject; shallow ("voice quirks are important") = hard reject (see Step 4.5).
+5. **ARC_STATE missing the two-subsection structure.** Every ARC_STATE entry's content field MUST contain `**Dramatic Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` with 4–8 directive bullets in imperative language. See Step 4a.
+6. **Tier contamination.** Arc-specific content in Tier 1 or Tier 2 = hard reject. Baseline profile content in Tier 3 NPC_SHIFT (which should be delta only) = hard reject.
+7. **Required files missing.** All six output files must be present per the file list in Step 1. Including `Drafts/User.md` for any world with a named `{{user}}` protagonist.
+8. **Override metadata schema malformed.** When `extensions.world_forge.style_override` is populated, it must have all seven keys (perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale), valid enum values per `agent_roles/SHARED_Style_Contract_Reference.md` §1 and §3, and the `directives` array consistent with the enum values per Step 5.6 Pass 2.
+9. **`override_rationale` is stylistic, not structural.** Hard-fail patterns: `"feels better"`, `"prefer"`, `"more natural"`, `"sounds better"`, `"reads better"`, `"my style"`, `"liked it"`, `"chose it"`, `"wanted to try"`, `"thought it would"`. Override must name a structural feature of the card.
+10. **Cross-arc inconsistency.** A behavioral mandate in a card that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, etc.). `post_history_instructions` must not hardcode an early-arc register as permanent; it must defer to the active CHARACTER_STATE entry. See Step 5e (Cross-Arc Consistency).
+
+If all ten pass, proceed to the full audit (Step 3 onward) for prose quality, lorebook quality, and remaining checks.
+
+---
+
 ## 1. OBJECTIVE
 You are **The Editor**. You are a ruthless literary critic and a meticulous structural auditor. You evaluate three distinct layers of the Architect's output — and all three must pass before you issue sign-off.
 
@@ -64,14 +83,13 @@ Missing files = hard block. Return to Architect to complete the set.
 - System prompt contains no character-specific trigger-response pairs → Reject.
 - Post-history instructions content (after `{{original}}`) exceeds 150 words → Reject.
 
-**Override architecture failures (NEW — hard rejects):**
+**Override architecture failures (hard rejects):**
 
-The character card's `system_prompt` and `post_history_instructions` operate under SillyTavern's override mechanic — they REPLACE the preset's Main Prompt and Jailbreak block respectively unless the `{{original}}` macro is used to splice the preset's content back in. The pipeline mandates `{{original}}` at the start of both fields, with the character-specific content AFTER the macro. The pipeline also mandates that engine-level instructions live in the preset and character-specific content lives in the card. Violations:
-
-- `system_prompt` does not begin with `{{original}}` on its own line, followed by a blank line → Reject. Without `{{original}}`, the preset's engine instructions are silently dropped at runtime.
-- `post_history_instructions` does not begin with `{{original}}` on its own line, followed by a blank line → Reject.
-- `depth_prompt` (when populated) contains `{{original}}` → Reject. `depth_prompt` is not an override field; it is a separate injection. Using `{{original}}` here is structurally wrong.
-- **Engine-instruction contamination** in `system_prompt` or `post_history_instructions` content — see the Hybrid Validation section below for the diagnostic phrase list and the hard-fail vs. soft-flag protocol.
+Per Foundational Rules #1 and #2 above:
+- `system_prompt` does not begin with `{{original}}` on its own line + blank line → Reject.
+- `post_history_instructions` does not begin with `{{original}}` on its own line + blank line → Reject.
+- `depth_prompt.prompt` (when populated) contains `{{original}}` → Reject (depth_prompt is a separate injection, not an override field).
+- Engine-instruction contamination in `system_prompt` or `post_history_instructions` content — see Step 5b for the diagnostic phrase list.
 
 ### Step 3 — Prose Quality Audit (character cards and NPC entries)
 Score each criterion 1–3. Pass threshold: all ≥2, at least three = 3.
@@ -251,22 +269,13 @@ Flag for review when 4+ entries share a non-default position. The user reviews a
 
 ### Step 5 — LLM Instruction Audit (Hybrid Validation Protocol)
 
-#### 5a — `{{original}}` placement check (hard fail)
+#### 5a — `{{original}}` placement check (hard fail; see Foundational Rule #1)
 
-Verify exactly:
+- `card.data.system_prompt` starts with the literal `{{original}}` on its own line, followed by blank line, then character-specific content.
+- `card.data.post_history_instructions` follows the same pattern.
+- `card.data.extensions.depth_prompt.prompt` does NOT contain `{{original}}` anywhere (depth_prompt is a separate injection, not an override field).
 
-```
-[card.data.system_prompt] starts with the literal string "{{original}}" 
-followed by exactly one newline, optionally followed by another newline 
-(blank line), followed by character-specific content.
-
-[card.data.post_history_instructions] follows the same pattern.
-
-[card.data.extensions.depth_prompt.prompt] does NOT contain "{{original}}" 
-anywhere.
-```
-
-Any violation = hard reject. The Architect must fix `{{original}}` placement before any other validation proceeds.
+Any violation = hard reject. The Architect must fix `{{original}}` placement before any other Step 5 validation proceeds.
 
 #### 5b — Engine-instruction contamination scan (hybrid: hard fail + soft flag)
 
@@ -456,7 +465,7 @@ Mismatch = hard reject. The pair must wire up correctly in ST or the user gets a
 
 ### Step 5.6 — Style Override Metadata Validation (hybrid: hard fail + soft flag)
 
-The pipeline declares per-card style overrides through **structured metadata** at `extensions.world_forge.style_override` in the card JSON. The pipeline does **NOT** emit a literal `<style_override>` tag block in the card's `system_prompt` content — the metadata is the only artifact. SillyTavern itself ignores the metadata (per `Notes_On_functionality.md` Section 5.6 V3 card notes — unknown extension keys are tolerated and inert at runtime). A `world_forge`-aware extension reads the metadata and synthesizes the override directive into the assembled main system prompt at runtime; on stock SillyTavern, the metadata sits idle and the world `<style_contract>` in the preset's Main Prompt governs every turn.
+Per-card style overrides are declared exclusively through `extensions.world_forge.style_override` metadata. The pipeline does NOT emit `<style_override>` tag blocks in card text. See `agent_roles/SHARED_Style_Contract_Reference.md` §1 for the seven-key schema, §2 for the runtime model, and §3 for the canonical directive templates that the `directives` array must match.
 
 This step has five passes; failure at any pass is a hard reject unless explicitly marked as soft-flag.
 
@@ -464,30 +473,27 @@ This step has five passes; failure at any pass is a hard reject unless explicitl
 
 For every card, inspect `extensions.world_forge.style_override`:
 
-- [ ] If the field is absent or `null`: the card is non-overriding. Move to Pass 2.
-- [ ] If the field is populated: it must be an object containing exactly seven keys: `perspective_override`, `tense_override`, `narration_marker_override`, `dialogue_marker_override`, `emphasis_marker_override`, `directives`, `override_rationale`. Missing any key, extra unrecognized keys, or wrong types = hard reject. Cite the card and the malformed field.
-- [ ] `perspective_override` must be one of: `first`, `second`, `third_limited`, `third_omniscient`, or `null`. Any other value = hard reject.
-- [ ] `tense_override` must be one of: `past`, `present`, or `null`. Any other value = hard reject.
-- [ ] `narration_marker_override` must be one of: `asterisks_for_narration`, `asterisks_for_thoughts_only`, `plain_prose`, or `null`. Any other value = hard reject.
-- [ ] `dialogue_marker_override` must be one of: `double_quotes`, `single_quotes`, `em_dash`, `unmarked`, or `null`. Any other value = hard reject.
-- [ ] `emphasis_marker_override` must be one of: `double_asterisks`, `italics_underscore`, `none`, or `null`. Any other value = hard reject.
-- [ ] At least one of the five enum override fields must be a non-null enum value. All five `null` is a hard reject — the field's presence with all nulls is meaningless and likely indicates the Architect mis-emitted a non-overriding card. Direct fix: remove the entire `style_override` object and set the field to `null`.
-- [ ] `directives` must be an array of strings. Empty array is allowed only when all five enum overrides are `null` (which itself is a hard fail per the previous check). Each string must match the format `LABEL: prose`, with `LABEL` being one of `NARRATIVE PERSPECTIVE` or `FORMATTING MARKERS`. Other labels = hard reject. Cite the offending element.
-- [ ] `override_rationale` must be a non-empty string of at least 15 characters. Empty or whitespace-only or shorter than 15 chars = hard reject.
+- [ ] If absent or `null`: card is non-overriding. Move to Pass 2.
+- [ ] If populated: must be an object with exactly seven keys (`perspective_override`, `tense_override`, `narration_marker_override`, `dialogue_marker_override`, `emphasis_marker_override`, `directives`, `override_rationale`). Missing/extra keys or wrong types = hard reject.
+- [ ] Each enum override field must be `null` or a valid enum value per SHARED §1. Reject any non-null value not in the allowed enum list.
+- [ ] At least one of the five enum override fields must be non-null. All-null = hard reject.
+- [ ] `directives` must be an array of strings, each matching `LABEL: prose` with LABEL ∈ {`NARRATIVE PERSPECTIVE`, `FORMATTING MARKERS`}. Other labels = hard reject.
+- [ ] `override_rationale` ≥15 chars. Empty or shorter = hard reject.
 
 **Pass 2 — `directives` consistency with enums (hard fail).**
 
-The `directives` array is the runtime extension's input. It must agree with the enum override values; the enum side is the audit trail and the directive side is the runtime payload — they must not diverge.
+The `directives` array must agree with the enum override values; enums are the audit trail, directives are the runtime payload — they must not diverge.
 
-For every overriding card:
+Trigger rules (hard reject on violation):
+- `perspective_override` OR `tense_override` non-null ⇒ exactly one `NARRATIVE PERSPECTIVE:` line in `directives` (missing or duplicated = reject).
+- Both `null` ⇒ NO `NARRATIVE PERSPECTIVE:` line (spurious line = reject).
+- ANY of the three marker overrides non-null ⇒ exactly one `FORMATTING MARKERS:` line in `directives`.
+- ALL three marker overrides `null` ⇒ NO `FORMATTING MARKERS:` line.
 
-- [ ] If `perspective_override` OR `tense_override` is non-null: `directives` must contain exactly one element with the `NARRATIVE PERSPECTIVE:` label. Missing line = hard reject. Multiple lines with the same label = hard reject.
-- [ ] If both `perspective_override` AND `tense_override` are `null`: `directives` must NOT contain a `NARRATIVE PERSPECTIVE:` line. Spurious line = hard reject (it indicates the Architect emitted an unjustified directive).
-- [ ] If ANY of `narration_marker_override`, `dialogue_marker_override`, or `emphasis_marker_override` is non-null: `directives` must contain exactly one element with the `FORMATTING MARKERS:` label. Missing line = hard reject.
-- [ ] If ALL of `narration_marker_override`, `dialogue_marker_override`, AND `emphasis_marker_override` are `null`: `directives` must NOT contain a `FORMATTING MARKERS:` line. Spurious line = hard reject.
-- [ ] When the `NARRATIVE PERSPECTIVE:` line is present, its prose content must match the canonical template for the card's *effective* perspective/tense pair (effective = override value if set, else world default from Master Design Section 11a). Use the directive-generation tables in Architect Section 9 as the source of truth. Mismatch = hard reject; cite the expected template and the actual content.
-- [ ] When the `FORMATTING MARKERS:` line is present, it must contain THREE sub-clauses (narration, dialogue, emphasis), each matching the canonical template for the card's *effective* value on that axis (override if set, else world default). The line must end with `No other formatting conventions apply.` Mismatch on any sub-clause = hard reject; cite the axis and the expected/actual content.
-- [ ] Every directive line that references a focal character must include `{{char}}` literally (the macro is required for the runtime extension to produce per-card prose; missing it = static directives that don't adapt to the active card). Exceptions: `plain_prose` narration sub-clause, `unmarked` dialogue sub-clause, and `none` emphasis sub-clause do not need to reference `{{char}}`.
+Content rules (hard reject on mismatch; use SHARED §3 as source of truth):
+- The `NARRATIVE PERSPECTIVE:` line's prose must match SHARED §3a for the card's *effective* perspective/tense pair (effective = override if set, else world default per Master Design Section 11a).
+- The `FORMATTING MARKERS:` line must contain three sub-clauses (narration + dialogue + emphasis) matching SHARED §3b for the card's effective values on each axis. The line must end with `No other formatting conventions apply.`
+- Every directive line that references a focal character must literally include `{{char}}`. Exceptions: `plain_prose`, `unmarked`, and `none` sub-clauses don't need `{{char}}`.
 
 **Pass 3 — System prompt cleanliness (hard fail).**
 
