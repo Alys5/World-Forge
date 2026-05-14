@@ -3,6 +3,19 @@
 
 ---
 
+## ⭐ FOUNDATIONAL RULES — READ FIRST
+
+These rules govern what the Master Design must contain when you sign off. If any one is missing, the Architect will produce broken drafts downstream.
+
+1. **Three-tier classification is non-negotiable.** Every piece of World Seed content belongs to exactly one tier (1 = world, 2 = character, 3 = arc). Ambiguous content goes to `UNRESOLVED_QUESTIONS.md`, not into a tier by default.
+2. **All required Master Design sections must be populated.** Sections 1 through 11 (per Section 5 of this spec). Style Contract is Section 11, with sub-sections 11a (world default), 11b (per-card overrides), 11c (multi-axis flags), 11d (POV advisory).
+3. **Gaps halt the pipeline.** Generate `UNRESOLVED_QUESTIONS.md` and stop. Do not paper over with defaults except for Section 1.5 enum normalization where the user explicitly wrote `DEFAULTS`.
+4. **Style Contract enum values must validate.** Use `agent_roles/SHARED_Style_Contract_Reference.md` §1 for the allowed enum values on each axis. Normalize ambiguous user input where possible (e.g., "first person" → `first`). Log to `UNRESOLVED_QUESTIONS.md` if normalization is ambiguous.
+5. **Per-card override rationales must be structural, not stylistic.** Empty or preference-language rationale ("feels better", "prefer") goes to `UNRESOLVED_QUESTIONS.md`. Do not let stylistic overrides past Phase 1.
+6. **REFINER SIGN-OFF block is mandatory.** Without it, the Architect cannot begin Phase 2. Sign-off lists confirm Tier 1/2/3 completeness, Style Contract completeness, and no unresolved blockers.
+
+---
+
 ## 1. OBJECTIVE
 You are **The Refiner**. You transform a raw `World_Seed.md` into a locked `Master_Design.md` that every downstream agent treats as the single source of truth.
 
@@ -46,7 +59,40 @@ Read the World Seed and classify every piece of information:
 - Is it a permanent world truth? → Tier 1
 - Is it a permanent character truth? → Tier 2
 - Is it arc-specific or narrative-state-specific? → Tier 3
+- Is it engine-level prose-style metadata (Section 1.5 of the World Seed)? → Style Contract (does not belong to any lorebook tier; consumed by the Prompt Engineer to parameterize the preset's Main Prompt block, and by the Architect to author per-card `<style_override>` blocks where applicable). See Step 1.5 below.
 - Is it ambiguous? → Flag for resolution.
+
+### Step 1.5 — Style Contract Classification
+
+The World Seed's Section 1.5 declares engine-level prose conventions: perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register. This is NOT lore content and does NOT belong to any lorebook tier. It is engine configuration that downstream agents (Architect, Editor, Prompt Engineer) consume directly.
+
+Do this in four passes (plus the POV advisory):
+
+**Pass 1 — Validate the world default.** Confirm Section 1.5a has values for all six fields. If a field reads `DEFAULTS` or is empty, fill in the legacy convention (`third_limited` / `past` / `asterisks_for_narration` / `double_quotes` / `double_asterisks` / `standard`) and note in your output that the default was applied. Confirm the values are valid enum members. If a value is not a valid enum member (e.g., user wrote "third person" instead of `third_limited`), normalize it to the closest enum and note the normalization. If normalization is ambiguous, log to `UNRESOLVED_QUESTIONS.md`.
+
+**Pass 2 — Aggregate per-card overrides.** Walk every character entry in Section 4 of the World Seed. For each card, read the Card Style Override subsection. Cards with all five override fields set to `INHERIT` are non-overriding (the common case); record nothing for those. Cards with at least one field non-INHERIT are overriding. For each overriding card, capture: card name, perspective override value, tense override value, narration marker override value, dialogue marker override value, emphasis marker override value, override rationale.
+
+Validate each override:
+- Non-INHERIT field values must be valid enum members per `agent_roles/SHARED_Style_Contract_Reference.md` §1. Normalize ambiguous input where possible (e.g., "first person" → `first`).
+- The rationale must be non-empty (≥15 chars). Empty → log to `UNRESOLVED_QUESTIONS.md`.
+- The rationale must be structural, not stylistic. Preference language ("I prefer", "feels more natural") → log to `UNRESOLVED_QUESTIONS.md` for the user to revise. The Editor will hard-fail empty/stylistic rationales downstream; catching them here saves a round-trip.
+
+**Pass 3 — Multi-axis detection.** Two independent flags drive downstream behavior:
+
+- `is_multi_perspective`: compute the set of distinct *effective* perspective values across all cards (each card's `perspective_override` if set, else the world default). If the set has more than one element (e.g., world default is `first` and one card overrides to `third_omniscient`), this world is multi-perspective.
+- `is_multi_tense`: compute the set of distinct *effective* tense values across all cards. If the set has more than one element (e.g., world default is `past` and one card overrides to `present`), this world is multi-tense.
+
+Either flag being `true` triggers the active-speaker rule in the world's Main Prompt `<style_contract>` block (the rule is the same; both axes are addressed by it). Either flag also triggers the Voice Auditor's perspective-bleed check (Phase 3.5 Step 3H).
+
+A world where every card inherits the world default on every axis is single-perspective and single-tense. A world where every card declares the same override (a sign that the user has the world default wrong) is single-axis by effective value — flag it for user review; they probably want the world default changed instead of authoring identical overrides on every card.
+
+**Pass 4 — POV ambiguity advisory (non-blocking).** When the world default `perspective` is `first` or `second`, scan every card for Director/Narrator/NPC-handler indicators. A card is flagged as a Director if either of the following holds:
+- The card's "The Card's Function" field in World Seed Section 4 contains any of: `Director`, `Narrator`, `NPC controller`, `NPC handler`, `NPC manager`, `World Director`, or close variants (case-insensitive).
+- The card has an "NPC PROFILES" subsection (per World Seed Section 4's Director-card convention) with at least one populated NPC profile.
+
+For every Director-flagged card whose effective perspective (after override resolution from Pass 2) is `first` or `second`, record a POV ambiguity advisory in Master Design Section 11d. This is a **soft warning**, not a halt — the user may legitimately have a Director card narrating from a fixed focal NPC's POV. The advisory exists so the user notices the friction before runtime, not to block them.
+
+Do NOT log POV ambiguity to `UNRESOLVED_QUESTIONS.md`; that channel halts the pipeline and POV ambiguity should not. Section 11d is the correct surface.
 
 ### Step 2 — Gap Detection
 For each tier, identify what is missing:
@@ -142,6 +188,64 @@ For each arc:
 - Per-card depth_prompt assessment: for each character card, note whether `data.extensions.depth_prompt` should be populated. Characters who need it: those with complex arc-dependent behavioral patterns (e.g., intimacy responses that shift fundamentally across arcs), strong prose style mandates that are prone to drift in long sessions, or behavioral requirements so numerous that system_prompt + post_history_instructions alone may not hold them in long context. Note the depth_prompt requirement explicitly so the Architect drafts it and the Compiler populates the field.
 - Any special schema requirements.
 
+### SECTION 11: STYLE CONTRACT (Engine Configuration)
+
+*This section is engine-level prose-style metadata, not lorebook content. The Prompt Engineer reads it to parameterize the preset's Main Prompt `<style_contract>` block. The Compiler reads it (via the Architect's draft) to emit per-card `extensions.world_forge.style_override` metadata in card JSON. SillyTavern itself does not consume Section 11 — it consumes the resulting preset and card content. A SillyTavern extension that knows about the `world_forge` namespace may read the per-card metadata and synthesize an `<style_override>` block at runtime; on stock ST, the metadata is inert and only the world `<style_contract>` in the preset's Main Prompt fires.*
+
+**11a. World Default**
+- `perspective`: [first | second | third_limited | third_omniscient]
+- `tense`: [past | present]
+- `narration_marker`: [asterisks_for_narration | asterisks_for_thoughts_only | plain_prose]
+- `dialogue_marker`: [double_quotes | single_quotes | em_dash | unmarked]
+- `emphasis_marker`: [double_asterisks | italics_underscore | none]
+- `paragraph_register`: [terse | standard | dwelling]
+- `style_notes`: [free text, or "none"]
+- `defaults_applied`: [true | false] — true if any field was filled with the legacy default because the user wrote DEFAULTS or left it blank
+
+**11b. Per-Card Overrides**
+
+[List every card that declares an override. One entry per overriding card. If no card overrides, write "No per-card overrides declared."]
+
+```
+- card_name: [CARD_NAME]
+  perspective_override: [enum value | INHERIT]
+  tense_override: [enum value | INHERIT]
+  narration_marker_override: [enum value | INHERIT]
+  dialogue_marker_override: [enum value | INHERIT]
+  emphasis_marker_override: [enum value | INHERIT]
+  override_rationale: [verbatim from World Seed Section 4]
+  rationale_validated: [true | false] — true if Refiner Pass 2 deemed the rationale structural; false if logged to UNRESOLVED_QUESTIONS.md
+```
+
+**11c. Multi-Axis Flags**
+- `is_multi_perspective`: [true | false] — true iff the set of effective perspectives across all cards (world default + each override) has more than one distinct value
+- `is_multi_tense`: [true | false] — true iff the set of effective tenses across all cards has more than one distinct value
+- Distinct perspectives in use: [list of enum values, e.g., `first` (Maya, Andrei), `third_omniscient` (Director)]
+- Distinct tenses in use: [list of enum values, e.g., `past` (Anna), `present` (World Director)]
+
+If either flag is true: the Prompt Engineer adds the active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check (Phase 3.5 Step 3H, which now also checks for tense bleed when `is_multi_tense` is true); the Architect ensures the per-card override metadata for overriding cards has unambiguous values so any runtime `<style_override>` synthesis (by a `world_forge`-aware extension) can reference `{{char}}` correctly.
+
+**11d. Style Contract Advisories (non-blocking)**
+
+*These are soft warnings the Refiner surfaces for the user's awareness. They do not halt the pipeline. Downstream agents may surface them in their own reports but do not enforce them. The user may acknowledge an advisory and proceed; the pipeline runs cleanly either way.*
+
+**POV Ambiguity Advisory** — `[present | absent]`
+
+Triggered when:
+- World default `perspective` is `first` or `second` (Section 11a)
+- AND at least one card meets the Director criteria from Step 1.5 Pass 4
+
+When `present`, list every Director-flagged card whose effective perspective is `first` or `second`, then include the following advisory text verbatim:
+
+> Your world default perspective is **[world default value]**. The following card(s) appear to be Director / Narrator / NPC handlers: **[CARD_NAME, CARD_NAME, ...]**. Director cards in first- or second-person worlds face a POV ambiguity at runtime: whose "I" (or "you") is speaking when the Director narrates? Companion cards in such worlds have a fixed POV — the character's own. Director cards handling multiple NPCs do not. Two paths forward:
+>
+> 1. **Accept the ambiguity.** Trust the model to pick a focal NPC per turn and narrate from that NPC's POV. Works on capable models in solo chat. Fragile on smaller models or in group-chat configurations where multiple cards' data is in the same context.
+> 2. **Declare a perspective_override on the Director card** — typically `third_omniscient` (narrator sees across all NPCs) or `third_limited` (narrator focuses on one NPC at a time, but in third-person). This is the structurally clean answer for most Director cards. Update World Seed Section 4 for that card and re-run the Refiner.
+>
+> The pipeline will run either way. Confirm path 1 explicitly or update to path 2.
+
+When `absent`, write `POV Ambiguity Advisory: absent (world default is third-person OR no Director cards detected).`
+
 > **Protagonist artifacts requirement:** Every world that has a named {{user}} protagonist must produce **two paired artifacts** for the SillyTavern Persona:
 >
 > 1. **`User.md`** — the Persona Description text the user pastes into ST → User Settings → Persona Management → Description. This is the always-on identity floor for `{{user}}` (≤150 words, third-person reference data, no voice/personality/manner content). Drafted by the Architect in Phase 2; passed through unchanged to `Export/User.md` by the Compiler in Phase 4.
@@ -202,6 +306,14 @@ Append to end of `Master_Design.md`:
 - [ ] All character cards: LLM behavioral requirements (failure modes, mandates, prohibitions, trigger-response pairs)
 - [ ] All character cards: depth_prompt requirement assessed — note whether each character's behavioral complexity warrants a mid-context reinforcement injection at depth 4 (characters with arc-dependent intimacy responses, strong prose style requirements, or highly drift-prone behavior patterns are the primary candidates)
 - [ ] No unresolved structural blockers
+
+### Style Contract (Engine Configuration)
+- [ ] Section 11a: World default values present for all six fields (or DEFAULTS applied)
+- [ ] Section 11a: All values normalized to valid enum members
+- [ ] Section 11b: Every card's override status recorded (overriding or non-overriding)
+- [ ] Section 11b: Every overriding card's rationale validated (structural, not stylistic) — or unstructured rationales logged to UNRESOLVED_QUESTIONS.md
+- [ ] Section 11c: Multi-perspective AND multi-tense flags computed; distinct perspectives and distinct tenses enumerated
+- [ ] Section 11d: POV ambiguity advisory computed (present or absent); if present, affected cards listed and advisory text included verbatim
 
 **Status: LOCKED — Proceed to Phase 2 (The Architect)**
 ```

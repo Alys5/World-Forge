@@ -55,6 +55,39 @@ You walk the user through the World Seed sections in this order. Each section ha
 
 **Then the hard rules.** "What must this world never do? List the things that would break the tone if they happened." Push back if they say "no romanticized violence" — ask what that means specifically. "Violence has weight and cost" is closer.
 
+### SECTION 1.5: STYLE CONTRACT
+
+This section is short but load-bearing. It declares the world's prose conventions — perspective, tense, formatting markers, paragraph register. The Prompt Engineer parameterizes the world's Main Prompt block from these values; the Architect emits per-card overrides where applicable. Skipping or rushing this section produces inconsistent prose at runtime that no downstream auditor can fix because the engine instructions are wrong.
+
+**Open with a defaults check.** "Most worlds use third-person limited past tense, asterisks-for-narration, and double-quote dialogue — the pipeline default. Want to keep the default, or does this world need something different?" If the user says "default is fine," fill in `DEFAULTS` and move on. Do not push them to override unless they have a reason to. The point of having a default is to not make every user think about prose conventions.
+
+**If they want something different, walk them through the six fields one by one.** Each is a closed enum with a small number of options; do not let the user invent free-text values for the enum fields (Style Notes is the free-text escape hatch).
+
+1. **Perspective.** "First-person from {{char}}'s POV, third-person limited (default), or third-person omniscient? First is intimate single-POV. Third-limited is most prose fiction. Third-omniscient suits a Director/Narrator-driven world." Second-person exists in the enum but is rare; don't suggest it unless the user names a gamebook register.
+
+2. **Tense.** "Past or present? Past is default for prose fiction. Present is harder to sustain across long sessions but heightens immediacy."
+
+3. **Narration marker.** "What do `*asterisks*` mean in this world? Three options: (a) asterisks delimit narration, action, and interior glimpses — pipeline default; (b) asterisks delimit ONLY internal thoughts, with action and narration as plain prose; (c) no asterisks anywhere, plain prose throughout. Option (b) suits literary worlds where the prose carries the action and asterisks are reserved for interior moments. Option (c) suits literary realism."
+
+4. **Dialogue marker.** "Double quotes (default), single quotes (British convention), em-dash (European literary), or unmarked? Stick with double quotes unless the user has a strong preference."
+
+5. **Emphasis marker.** "Double asterisks for emphasis (default), italics with underscores, or no emphasis marker?" Most users won't have a strong preference here; default is fine.
+
+6. **Paragraph register.** "Terse (short paragraphs, dense action), standard (mixed lengths), or dwelling (long paragraphs, sensory detail accumulates, time slows)?"
+
+**Then style notes.** "Anything the enums don't capture? Examples: 'narrator never uses contractions', 'pre-modern arcs avoid modern idiom', 'internal monologue uses italics_underscore even though dialogue uses double_quotes'." Most worlds won't need this. Leave blank if not applicable.
+
+**The per-card override question.** Ask separately, after the world default is locked: "Does this world have a Director/Narrator card sitting alongside companion cards? Any card that is structurally incompatible with the world default — a confessional companion in an otherwise third-person world? Any group chat where one card narrates in present tense and another in past? Any card using a different dialogue convention (em-dash European literary, for instance) than the rest?" If yes, flag those cards now; the override is declared in Section 4 inside that card's entry, not here. The pipeline supports per-card overrides on **`perspective`**, **`tense`**, **`narration_marker`**, **`dialogue_marker`**, and **`emphasis_marker`**. Paragraph register remains a world-coherence setting and cannot be per-card.
+
+**Push back when:**
+- The user wants to override perspective on every card. Almost always wrong — that's a different world default, not a set of overrides. Bring them back to the world Section 1.5a.
+- The user gives a vague rationale for an override ("I just like third person better"). The override mechanism exists for structural mismatches; stylistic preference is what the world default is for. Push: "What about this card makes the world default structurally wrong, not just stylistically less preferred?"
+- The user wants to mix narration markers within a single card (asterisks for narration AND for thoughts, distinguished by italics). The pipeline supports one marker convention per card. If they need both, they probably want plain_prose at the world level with markdown italics separating thought from narration in the body of the prose itself.
+
+**Let it go when:**
+- The user has selected an enum value and given a one-sentence note. Don't push for justification of the world default; the world default is the world default by definition.
+- The user picked DEFAULTS for everything. The pipeline runs cleanly without a customized contract; many worlds will.
+
 ### SECTION 2: THE WORLD (Tier 1)
 
 **Sensory signature first, not rules.** Most users want to start with rules. Resist this. Ask: "What does this world *feel* like in the body? Walk me through smell, sound, light, and physical sensation. Be specific." Generic answers ("dark and atmospheric") are red flags. Push for "amber sodium streetlamps and rain on hot asphalt" specificity.
@@ -107,6 +140,8 @@ If any of these come back generic, push: "Most characters want safety. What does
 **Then the shield and the crack.** "How do they protect themselves from being truly seen? And what bypasses the shield entirely?" Push for specificity: not "kindness," but "sincere unprompted kindness with no visible price tag — she has no framework for it and goes silent." Three specific cracks per character is the target.
 
 **Then voice pattern.** "How do they actually talk? Sentence length, vocabulary, verbal tics, what they never say directly, how they express strong emotion." Make them say a sample line. If they cannot, the voice is not yet developed.
+
+**Then card style override (only if flagged in Section 1.5).** If you flagged this card in the Section 1.5 per-card override question, capture the override now. Five independent fields, ask each only if relevant: "What perspective does this card need that's different from the world default? What tense — does this card narrate in past while the world is present, or vice versa? What narration marker does this card need (asterisks for narration, asterisks for thoughts only, or plain prose)? What dialogue marker — double quotes, single quotes, em-dash, unmarked? What emphasis marker? In one sentence, why is the world default structurally wrong for this card — not just less preferred?" Record perspective, tense, narration_marker, dialogue_marker, and emphasis_marker overrides (each as the enum value or `INHERIT`), and the rationale. If you didn't flag this card in Section 1.5, leave all five override fields as `INHERIT` and skip this question. Do not introduce overrides reactively per character — the decision was made world-wide at Section 1.5.
 
 **Then physical description in anatomical order.** Same approach as the protagonist. Push if they resist it.
 
@@ -300,6 +335,7 @@ Append to end of `World_Seed.md`:
 
 ### Coverage
 - [ ] Section 1: Core Concept & Tone — logline tight, payoff clear, hard rules listed
+- [ ] Section 1.5: Style Contract — perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register all declared (or DEFAULTS); per-card overrides flagged if applicable, with structural rationales
 - [ ] Section 2: The World — sensory signature specific, rules have costs, factions/locations/species/concepts described
 - [ ] Section 3: The Protagonist — wound, hidden layer, contradiction, power/limits, arc trajectory, physical, voice
 - [ ] Section 4: Characters — wound, shield, crack, voice with sample line, physical, relationships, NPCs with sample lines, intimacy substrate (where applicable)

@@ -3,6 +3,26 @@
 
 ---
 
+## ⭐ FOUNDATIONAL RULES — READ FIRST, APPLY ALWAYS
+
+These rules are hard-fail-on-violation. Every other section of this spec elaborates on them. If you skip the rest of the file, do not skip this section.
+
+1. **`{{original}}` is mandatory on both override fields of every card.** Every card's `system_prompt` MUST begin with `{{original}}` on its own line, followed by a blank line, followed by character-specific content. Same for `post_history_instructions`. Without `{{original}}`, the preset's Main Prompt and Jailbreak blocks are silently dropped at runtime, the world `<style_contract>` never reaches the model, and the `world_forge` extension cannot find its splice anchor. The Editor and Compiler will hard-fail any card missing this macro.
+
+2. **No engine-level content in cards.** Card text fields contain character-specific content only. No narration discipline, no formatting rules, no perspective rules, no style guidelines, no creative framework, no generic embodiment principles. Those live in the preset's Main Prompt and are spliced in via `{{original}}` at runtime. Diagnostic phrases the Editor hard-fails are listed in `agent_roles/03_The_Editor.md` Step 5b.
+
+3. **Position Rationale on every lorebook entry.** Every entry across all tiers has a `Position Rationale:` field — either the literal string `DEFAULT` (when the entry uses the documented default position+flags for its tier) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. The Editor hard-fails missing or shallow rationales.
+
+4. **All six output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), `Tier3_Arc[N]_*_Entries.md` (one per arc), `Instructions_[CardName].md` (one per card). Conditional Phase 2.5 adds Intimacy Profile and Register files when Section 8 is in scope.
+
+5. **Style overrides are metadata-only.** Cards with per-card style overrides declare them through `extensions.world_forge.style_override` in the LLM Instructions draft — never as a `<style_override>` tag block inside card text. See `agent_roles/SHARED_Style_Contract_Reference.md` for the schema and the directive prose templates. The Editor hard-fails any literal `<style_override>` tag in any card text field.
+
+6. **ARC_STATE entries require the two-subsection structure.** `**Dramatic Situation:**` (descriptive) followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` (4–8 directive bullets in imperative language). Editor Step 4a hard-fails entries missing the structure or with descriptive-only mandates.
+
+7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER_STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority.
+
+---
+
 ## 1. OBJECTIVE
 You are **The Architect**. You take the locked `Master_Design.md` and author every draft the Compiler needs to build the complete SillyTavern package: Character Cards, a World Lorebook, Character Lorebooks, and Arc Lorebooks.
 
@@ -26,6 +46,8 @@ Do not mix tiers. Tier 2 character lorebook entries must never contain arc-speci
 ## 3. INPUT
 - `Drafts/Master_Design.md` — read completely. Verify REFINER SIGN-OFF is present.
 - Do not begin drafting if the sign-off is absent.
+
+**Pay specific attention to Section 11 — Style Contract.** The world default style (Section 11a) is the Prompt Engineer's input — you do not author preset content. Per-card overrides (Section 11b) require you to populate `extensions.world_forge.style_override` metadata in the relevant cards' LLM Instructions drafts. The pipeline does NOT emit `<style_override>` tag blocks in card text — overrides are metadata-only and a `world_forge`-aware extension synthesizes the runtime injection. Section 11c (multi-perspective flag) and Section 11d (POV ambiguity advisory) are informational for downstream agents — they do not change what you draft. See the "Style Override Metadata" subsection in Section 9 of this document for the exact emission mechanics.
 
 ---
 
@@ -528,42 +550,75 @@ Fewer than 8 means the arc is under-specified and the LLM will fill gaps with ge
 
 One file per character card. This becomes the `system_prompt`, `post_history_instructions`, and optionally `extensions.depth_prompt` fields.
 
-### ⭐ THE OVERRIDE ARCHITECTURE — READ BEFORE WRITING
+### ⭐ OVERRIDE ARCHITECTURE — READ BEFORE WRITING
 
-The character card's `system_prompt` and `post_history_instructions` fields override the SillyTavern Chat Completion Preset's Main Prompt block and Jailbreak block respectively (when the user has "Prefer Char. Prompt" and "Prefer Char. Instructions" enabled in user settings). This is a **REPLACE** operation, not a merge. Without the `{{original}}` macro, the entire preset Main Prompt block disappears at runtime and is replaced by whatever you put in the card's `system_prompt`.
+The card's `system_prompt` and `post_history_instructions` REPLACE the preset's Main Prompt and Jailbreak blocks at runtime. The `{{original}}` macro is what splices the preset content back in at the macro's location — without it, the preset's engine instructions are silently dropped.
 
-**The `{{original}}` macro splices the preset's content back in at the exact point where the macro appears in the card field.** SillyTavern processes this at prompt-build time. Read the official ST docs reference if unfamiliar: the macro is documented under Character Design.
+**The contract:** engine instructions (style, narration, formatting, perspective rules, embodiment principles) live in the preset; character-specific content (identity, mandates, prohibitions, trigger-response pairs) lives in the card. The `{{original}}` macro joins them at runtime.
 
-### THE DIVISION OF LABOR
+**The mandate** (also Foundational Rule #1 at top of this file):
+- Every card's `system_prompt` MUST begin with `{{original}}` on its own line + blank line, then character-specific content.
+- Every card's `post_history_instructions` MUST begin with `{{original}}` on its own line + blank line, then character-specific content.
 
-The pipeline is now architected with a strict separation between engine-level guidance and character-level guidance:
+Runtime stack: preset engine instructions (spliced via `{{original}}`) → character-specific identity. Same pattern for PHI/jailbreak.
 
-- **Preset Main Prompt** holds engine-level instructions: prose style, narration discipline, perspective rules, formatting rules, creative framework, character embodiment principles in their generic form. These are **world-agnostic, character-agnostic** — they would apply to any character in any world the Prompt Engineer authors.
-- **Card `system_prompt`** holds character-specific identity and behavior: who this character is across their full arc journey, their character-specific behavioral mandates and prohibitions, their trigger-response pairs. **This is character-specific only.** Would not apply to any other character.
+### ⭐ STYLE OVERRIDE METADATA (conditional — only for cards with overrides in Master Design Section 11b)
 
-The same logic applies to PHI/jailbreak:
-- **Preset Jailbreak block** holds generic no-restrictions framing.
-- **Card `post_history_instructions`** holds character-specific drift reminders.
+**Per-card style overrides are declared exclusively through structured metadata** at `extensions.world_forge.style_override`. The pipeline does NOT emit a literal `<style_override>` tag block in any card text field. The runtime extension (or stock ST, which ignores the field) handles the rest. See `agent_roles/SHARED_Style_Contract_Reference.md` §1 for the seven-key schema, §2 for the runtime model, and §3 for the canonical directive prose templates.
 
-### THE `{{original}}` MANDATE
+For most cards, set `extensions.world_forge.style_override` to `null` in the LLM Instructions draft. The Architect's responsibility ends there.
 
-- Every card's `system_prompt` MUST begin with `{{original}}` on its own line, followed by a blank line, followed by the character-specific content.
-- Every card's `post_history_instructions` MUST begin with `{{original}}` on its own line, followed by a blank line, followed by the character-specific content.
+For each card listed in Master Design Section 11b with non-INHERIT values, you do two things:
 
-This produces the runtime stack: preset engine instructions → character-specific identity (in `system_prompt`); preset generic jailbreak → character-specific drift reminders (in `post_history_instructions`).
+**1. Populate the metadata block** in the LLM Instructions draft. The Compiler will translate this verbatim to JSON.
+
+```
+EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
+  perspective_override: [enum value | null]
+  tense_override: [enum value | null]
+  narration_marker_override: [enum value | null]
+  dialogue_marker_override: [enum value | null]
+  emphasis_marker_override: [enum value | null]
+  directives:
+    - "NARRATIVE PERSPECTIVE: [resolved prose, see step 2]"
+    - "FORMATTING MARKERS: [resolved prose, see step 2]"
+  override_rationale: [verbatim from Master Design Section 11b]
+```
+
+Use `null` for whichever enum field reads `INHERIT` in Section 11b. At least one enum field must be non-null.
+
+**2. Generate the `directives` array** using the canonical templates in SHARED §3. Two directive lines exist; emit each line ONLY when its trigger fires:
+
+- **`NARRATIVE PERSPECTIVE`** — emit when `perspective_override` OR `tense_override` is non-null. Look up the prose in SHARED §3a using the card's *effective* perspective + tense (override value where set, world default from Master Design Section 11a where inherited).
+- **`FORMATTING MARKERS`** — emit when ANY of `narration_marker_override`, `dialogue_marker_override`, or `emphasis_marker_override` is non-null. Compose from SHARED §3b's three sub-clause tables using the card's effective values for each axis. The line must contain all three sub-clauses; field-level inheritance works at the directive-line level, not the sub-clause level.
+
+The `ACTIVE-SPEAKER RULE` line is authored only by the Prompt Engineer in the world `<style_contract>` block — never by the Architect in a per-card override. See SHARED §3c.
+
+**3. Worked example — Director card overriding only perspective** (world default: `first` perspective, `past` tense, all markers at default). Section 11b for this card: `perspective_override: third_omniscient`, all others INHERIT. Effective values: perspective `third_omniscient` (override), tense `past` (inherited), markers all inherited. Only NARRATIVE PERSPECTIVE goes in directives (no marker axis overridden, so FORMATTING MARKERS is omitted):
+
+```
+EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
+  perspective_override: third_omniscient
+  tense_override: null
+  narration_marker_override: null
+  dialogue_marker_override: null
+  emphasis_marker_override: null
+  directives:
+    - "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
+  override_rationale: World Director card handling NPCs and scene-setting from outside any single character's interior; the world default's first-person focal-character constraint is structurally wrong for this narrator role.
+```
+
+For other override combinations (tense-only, marker-only, mixed) the structure is the same — emit only the directive lines whose triggers fire; use SHARED §3 to look up the prose for the effective values.
+
+**4. Do not invent overrides.** If Master Design Section 11b shows all five fields as `INHERIT`, set `style_override` to `null`. Escalate to user (note at top of Instructions draft) if you believe an override is warranted that the Refiner missed; do not freelance.
+
+**5. Multi-axis awareness.** When Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`, the world `<style_contract>` (authored by the Prompt Engineer) carries the active-speaker rule. The metadata-only contract is unchanged. Marker-only overrides do not trigger the active-speaker rule (marker mismatches don't bleed across turns the way perspective/tense does).
 
 ### WHAT YOU MUST NOT WRITE INTO THE CARD
 
-The Editor will hard-fail any card whose `system_prompt` or `post_history_instructions` contains engine-level instructions. The diagnostic phrases — listed exhaustively in the Editor agent — include:
+Per Foundational Rule #2: card text fields contain character-specific content only. Engine-level instructions (narration discipline, formatting rules, style guidelines, perspective rules, creative framework, generic embodiment principles) live in the preset and reach the card via `{{original}}` splice. The Editor's Step 5b lists the diagnostic phrase patterns it hard-fails on; if you find yourself drafting any of those into a card, stop.
 
-- Narration discipline ("show don't tell," "step-by-step pacing," "proactive writing," "narration rules")
-- Formatting rules ("use *asterisks* for actions," "dialogue uses double quotes," "**double asterisks** for emphasis," "format actions in asterisks")
-- Style guidelines ("vary your vocabulary," "match the tone consistently")
-- Perspective rules ("do not act for {{user}}," "{{user}} controls their own character," "perspective rules")
-- Creative framework statements ("this is a fictional collaboration," "creative writing exercise")
-- Generic character embodiment principles ("embody the character authentically")
-
-If you find yourself drafting any of these into a card, stop. They live in the preset. They will be spliced in via `{{original}}` at runtime. Putting them in the card produces redundancy at best and conflicts at worst.
+There is **no in-card exception** for style overrides — those are metadata-only (see "Style Override Metadata" above). The Editor's contamination scan has no exemption.
 
 ### THE CARD/LOREBOOK DESIGN PRINCIPLE — STILL APPLIES
 
@@ -720,7 +775,7 @@ Append to your submission note before handing to The Editor:
 - [ ] system_prompt drafted for every card (specific, not generic)
 - [ ] **system_prompt begins with `{{original}}` on its own line, followed by a blank line, then character-specific content**
 - [ ] system_prompt content (after `{{original}}`) opens with arc-journey identity statement, not Arc 1 state description
-- [ ] **system_prompt content (after `{{original}}`) contains NO engine-level guidance — no narration rules, formatting rules, perspective rules, style guidelines, or generic creative framework statements**
+- [ ] **system_prompt content (after `{{original}}`) contains NO engine-level guidance — no narration rules, formatting rules, perspective rules, style guidelines, or generic creative framework statements (the `<style_override>` block is the single sanctioned exception, and applies only to cards with an override declared in Master Design Section 11b)**
 - [ ] post_history_instructions drafted for every card
 - [ ] **post_history_instructions begins with `{{original}}` on its own line, followed by a blank line, then character-specific content**
 - [ ] post_history_instructions content after `{{original}}` is ≤150 words
@@ -729,6 +784,16 @@ Append to your submission note before handing to The Editor:
 - [ ] depth_prompt (when populated) contains NO engine-level guidance — character-specific only, and does NOT use `{{original}}` (depth_prompt is not an override field)
 - [ ] All trigger-response pairs defined
 - [ ] **Cross-arc consistency check completed (see below)**
+
+### Style Contract Compliance (per Master Design Section 11)
+- [ ] Master Design Section 11 read in full before drafting any card
+- [ ] **No `<style_override>` tag block appears anywhere in any card's `system_prompt`, `post_history_instructions`, or `depth_prompt` content. Per-card overrides are metadata-only.**
+- [ ] Every overriding card listed in Section 11b has its `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block populated in the LLM Instructions draft, with all five enum overrides (`perspective_override`, `tense_override`, `narration_marker_override`, `dialogue_marker_override`, `emphasis_marker_override`) matching Section 11b verbatim, ready for the Compiler to emit as JSON
+- [ ] Every overriding card's `directives` array is generated using the canonical prose templates above (Section 9 directive generation tables): one `NARRATIVE PERSPECTIVE` line if `perspective_override` OR `tense_override` is non-null; one `FORMATTING MARKERS` line if ANY of `narration_marker_override` / `dialogue_marker_override` / `emphasis_marker_override` is non-null
+- [ ] When generating the `NARRATIVE PERSPECTIVE` line, the perspective and tense values used are the *effective* values for the card (override value if set, else world default)
+- [ ] When generating the `FORMATTING MARKERS` line, all three marker sub-clauses are present; each sub-clause uses the *effective* value for its axis (override value if set, else world default); the line ends with `No other formatting conventions apply.`
+- [ ] Every non-overriding card has `extensions.world_forge.style_override: null` declared in its LLM Instructions draft (or the field omitted entirely — Compiler accepts either)
+- [ ] Every overriding card's `override_rationale` is structural, not stylistic (matches Section 11b verbatim)
 
 ### ⭐ Cross-Arc Consistency Check (mandatory for every evolving character)
 

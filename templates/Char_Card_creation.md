@@ -36,6 +36,19 @@ WHAT MUST NOT APPEAR IN THE CARD'S system_prompt OR post_history_instructions:
 
 These all live in the preset Main Prompt and are spliced in via `{{original}}`. Duplicating them in the card produces redundant guidance that wastes tokens and can produce subtle conflicts when the preset is updated independently of the cards.
 
+⭐ STYLE OVERRIDE — METADATA ONLY
+
+A card may declare a per-card override of the world's **perspective**, **tense**, and the **marker triplet** (narration / dialogue / emphasis) when structurally incompatible with the world default — typical cases: a Director/Narrator card alongside companion cards in a single-character-perspective world; a group chat where one card narrates in present tense and another in past; a card using em-dash dialogue convention while the world uses double quotes. Paragraph register remains world-coherent and is not per-card overridable.
+
+**The override is declared exclusively through structured metadata at `extensions.world_forge.style_override`.** No `<style_override>` tag block appears in any card text field. The "no engine-level content in cards" rule applies in full — no in-text exception.
+
+The metadata schema, runtime model, and canonical directive prose templates are in `agent_roles/SHARED_Style_Contract_Reference.md`. Specifically:
+- **§1** documents the seven-key schema and the two valid metadata states (`null` for non-overriding cards; a populated object for overriding cards).
+- **§2** documents how stock SillyTavern (ignores the field) and a `world_forge`-aware extension (reads `directives`, splices a synthesized `<style_override>` block after `</style_contract>` at runtime) consume the metadata.
+- **§3** is the canonical prose template tables that the Architect uses to fill the `directives` array at compile time.
+
+The split between **enum fields** and **`directives` array** is intentional. The enum fields exist for tooling (Editor validates, Refiner cross-checks). The `directives` array exists for runtime (extension splices verbatim, no lookup tables, no drift). The Architect populates both at compile time.
+
 WHAT BELONGS IN THE CARD's system_prompt:
 - Identity statement covering the character's FULL arc journey (not just starting state)
 - Behavioral mandates SPECIFIC to this character, with arc-range qualifiers where they don't apply universally (use "Arc 1–2 only:", "All arcs:", "Arc 3+:")
@@ -93,7 +106,32 @@ Please fill out this exact SillyTavern V3 Character Card JSON structure:
         "prompt": "",
         "depth": 4,
         "role": "system"
+      },
+      "world_forge": {
+        "style_override": null
       }
     }
   }
 }
+
+For cards that DO declare a per-card style override (typically a Director/Narrator card, a group chat with mixed-tense cards, or a card using a different dialogue convention), `extensions.world_forge.style_override` is populated as a seven-key object. Compact example (Director card overriding only perspective):
+
+```json
+"world_forge": {
+  "style_override": {
+    "perspective_override": "third_omniscient",
+    "tense_override": null,
+    "narration_marker_override": null,
+    "dialogue_marker_override": null,
+    "emphasis_marker_override": null,
+    "directives": [
+      "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
+    ],
+    "override_rationale": "One sentence stating the structural reason this card cannot use the world default. Stylistic preference is not sufficient."
+  }
+}
+```
+
+Allowed enum values for each axis, the directive line triggers, and the canonical prose templates: `agent_roles/SHARED_Style_Contract_Reference.md` §1 and §3. The Editor validates schema, enum values, and `directives`/enum consistency (Step 5.6).
+
+The `world_forge` extensions namespace is the canonical declaration of per-card style overrides. SillyTavern itself ignores unknown extension keys (per `Notes_On_functionality.md` Section 5.6 V3 card notes), so on stock ST the metadata is inert at runtime. A `world_forge`-aware ST extension reads the metadata and synthesizes the runtime injection — that's the path that turns the metadata into actual model-visible directives.
