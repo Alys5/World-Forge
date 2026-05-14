@@ -306,8 +306,6 @@ For Lucifer, the audit ended `Status: COMPLETE`, so no Phase 5.5 was needed. The
 | What does the final Chat Completion Preset look like? | `Samples/Export/Lucifer_ChatPreset.json` |
 | How thorough is the runtime audit? | `Samples/Export/Prompt_Engineer_Audit.md` |
 
-For an additional view of how the same world looks under the **Style Contract feature**, see `Samples2/Export/`. The same Lucifer world's character cards and chat preset are regenerated to show the `<style_contract>` block in the Main Prompt and the World Director's `extensions.world_forge.style_override` metadata (Lucifer is multi-perspective: Anna third-person limited, Director third-person omniscient). The unchanged Lorebook JSONs are not duplicated.
-
 ---
 
 ## 5. After SillyTavern import
