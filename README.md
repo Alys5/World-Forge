@@ -6,6 +6,8 @@ World-Forge takes you from a raw idea to a complete, runtime-ready world package
 
 The repository **is** the pipeline. There is no application code to compile, no service to deploy, no dependencies. The agents are markdown specifications consumed at runtime by an agentic IDE extension (typically [Roo Code](https://github.com/RooCodeInc/Roo-Code) in Orchestrator mode) running inside VS Code. When you invoke `/worldforge start`, the orchestrator reads these specifications and dispatches each phase.
 
+A companion SillyTavern fork — [AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern) — is maintained alongside this repository. It is optional but recommended when running World-Forge worlds at scale: it relaxes some of stock SillyTavern's constraints that World-Forge outputs would otherwise bump into (notably allowing more than one matching lorebook entry to fire in a scene, which World Director cards rely on) and ships a small `world-forge` ST extension that wires style-override runtime support. See [Companion SillyTavern fork](#companion-sillytavern-fork-optional) below.
+
 ## What this is NOT
 
 - **Not a SillyTavern fork.** SillyTavern is the runtime that consumes World-Forge's outputs. World-Forge does not modify SillyTavern.
@@ -73,6 +75,8 @@ The pipeline pauses for user input under specific conditions:
 ## Quick start
 
 You need: VS Code with [Roo Code](https://github.com/RooCodeInc/Roo-Code) (or an equivalent agentic extension) configured with an LLM API key.
+
+**A note on model choice.** The agent specs in `agent_roles/` and the orchestrator in `workflows/world-forge.md` are deliberately long and prescriptive — each phase loads several thousand tokens of structural rules, validation checks, hard-fail conditions, and cross-references. To get the full benefit of the pipeline (and not silent skipping of validation steps or drift in tier discipline), use a model with strong long-context attention and a high tolerance for following dense, multi-step instructions. From the testing done so far, **DeepSeek 4 Pro** has held up well across the full pipeline. **Grok** failed during a run, though it is not yet clear whether the failure was the model itself or the way Roo Code drove it — treat this as a caveat, not a verdict. If you run the pipeline against a model not listed here and it succeeds (or fails in an interesting way), reports are welcome.
 
 1. Clone this repository and open it as a VS Code workspace.
 2. Open Roo Code and switch to **Orchestrator mode**.
@@ -163,6 +167,21 @@ A new project folder evolves through these files as the pipeline progresses:
 2. In the World Info panel, enable the **World Lorebook** group and all **Character Lorebook** groups permanently. **Arc lorebooks** are swap-in: enable Arc 1 to start; switch to Arc 2 when the story's exit trigger fires; and so on. **Only one arc lorebook should be active at a time.** The same applies to Arc Intimacy Registers when present.
 3. Open **User Settings → Persona Management** and create (or select) the persona for this world. Open `Export/User.md`, copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---`, and paste it into the persona's **Description** field. Link the **Protagonist Lorebook** in the same persona's **Lorebook** field so it scans only when that persona is active.
 4. Select the world's Chat Completion Preset in the API settings panel.
+
+## Companion SillyTavern fork (optional)
+
+World-Forge produces world packages that target stock SillyTavern. Worlds will run on upstream ST without modification. That said, a few World-Forge patterns push against stock-ST defaults, and a companion fork — **[AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern)** — exists to smooth those edges. It is a separate project from this repository (this repository is **not** a fork; see [What this is NOT](#what-this-is-not) above), maintained alongside the pipeline so that the runtime keeps pace with patterns the pipeline produces.
+
+What the fork changes, relative to stock SillyTavern:
+
+- **Multi-entry lorebook firing per scene.** Stock SillyTavern's world-info scanner tends to converge on a single matching entry per group when keys overlap. World-Forge's Tier 3 design — ARC_STATE plus CHARACTER_STATE plus NPC_SHIFT plus DRAMATIC_BEAT all potentially firing in the same response — and World Director cards (which route off-roster NPC dialogue through a dedicated card) both assume that multiple matching entries can land in a single turn. The fork relaxes this so the full set of relevant entries is injected when their keys match, rather than collapsing to one.
+- **Group chat routing for World Director cards.** Adjustments to the group reply strategy so a Director card handles off-roster NPC names cleanly and stops monologuing past the main cast. This pairs with the pipeline's World Director card pattern.
+- **`world-forge` ST extension.** Ships in `public/scripts/extensions/world-forge/` in the fork. Provides runtime support for the structured `<style_override>` blocks that the Architect emits — macro substitution and a v2 directives array — so per-card style overrides resolve correctly at prompt-assembly time.
+- **`prompt-viewer` ST extension (debugging).** Wand-menu extension for inspecting the outgoing prompt and, optionally, dumping it server-side. Useful when diagnosing whether a Tier 3 entry actually fired, whether `{{original}}` spliced as expected, or whether a style override resolved.
+
+**You do not need the fork to use World-Forge.** Stock SillyTavern will run a World-Forge world; you may just notice that Tier 3 layering is less rich than designed when multiple ARC_STATE-adjacent entries are competing for a single slot, and that any `<style_override>` blocks are inert without the extension. If you find yourself running multi-arc worlds with Director cards or per-card style overrides, the fork is the smoother path.
+
+Installation, branch policy, and update cadence are documented in the fork's own README.
 
 ## Where to learn more
 
