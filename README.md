@@ -76,6 +76,8 @@ The pipeline pauses for user input under specific conditions:
 
 You need: VS Code with [Roo Code](https://github.com/RooCodeInc/Roo-Code) (or an equivalent agentic extension) configured with an LLM API key.
 
+**A note on model choice.** The agent specs in `agent_roles/` and the orchestrator in `workflows/world-forge.md` are deliberately long and prescriptive — each phase loads several thousand tokens of structural rules, validation checks, hard-fail conditions, and cross-references. To get the full benefit of the pipeline (and not silent skipping of validation steps or drift in tier discipline), use a model with strong long-context attention and a high tolerance for following dense, multi-step instructions. From the testing done so far, **DeepSeek 4 Pro** has held up well across the full pipeline. **Grok** failed during a run, though it is not yet clear whether the failure was the model itself or the way Roo Code drove it — treat this as a caveat, not a verdict. If you run the pipeline against a model not listed here and it succeeds (or fails in an interesting way), reports are welcome.
+
 1. Clone this repository and open it as a VS Code workspace.
 2. Open Roo Code and switch to **Orchestrator mode**.
 3. In the chat, type:
