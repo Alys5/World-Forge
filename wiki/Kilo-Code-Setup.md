@@ -154,7 +154,7 @@ Neither file is required to run the pipeline.
    ```
    /worldforge start
    ```
-3. The orchestrator should respond as the Interviewer. If it instead asks something like *"what would you like to build?"*, see [§9 Troubleshooting](#9-troubleshooting).
+3. The orchestrator should respond as the Interviewer. If it instead asks something like *"what would you like to build?"*, see [§10 Troubleshooting](#10-troubleshooting).
 4. Answer the Interviewer's questions. Phase 0 takes the most user time of any phase — 30–60 minutes for a fresh world. Five minutes of friction here saves an hour of debugging at the runtime stage (see the [README quick start](../README.md#quick-start)).
 5. Subsequent phases dispatch automatically, pausing at the [pause gates documented in the README](../README.md#pause-gates).
 6. When Phase 5 completes, your `Export/` directory contains SillyTavern-importable JSON. If `Prompt_Engineer_Audit.md` lists recommendations, apply them manually per `workflows/world-forge.md` Phase 5.5 before importing.
@@ -173,7 +173,32 @@ You can also scope auto-approval per agent in `kilo.jsonc` if your build support
 
 ---
 
-## 9. Troubleshooting
+## 9. MCP servers — none required
+
+Kilo Code supports Model Context Protocol servers, and it is tempting to install one or more on the assumption that World-Forge will benefit. **It will not.** The pipeline is deliberately self-contained in markdown: it reads agent specs, writes drafts and JSON outputs, and does not hit the web, execute code, query databases, or talk to external services. Built-in file edit tools cover the entire surface.
+
+Adding MCP servers imports complexity for no documented benefit and creates new failure modes (prompt drift from extra tool descriptions, version skew, opaque debugging when validation suddenly stops firing).
+
+**Specifically not recommended:**
+
+- **Iron Manus MCP** ([`dnnyngyen/iron-manus-mcp`](https://github.com/dnnyngyen/iron-manus-mcp)) is sometimes suggested because it brands itself as a multi-phase orchestrator with role-based agents — superficially similar to World-Forge's shape. In practice it is a wrong fit: it is **archived as of February 2026** (no longer maintained), it is built around web-API discovery (`APITaskAgent`) and Python execution (`PythonComputationalTool`) which the pipeline does not use, and its 8-phase FSM duplicates the orchestration already encoded in `workflows/world-forge.md`. Two orchestrators competing for control is worse than one.
+
+**Other MCP categories and how they fit:**
+
+| MCP type | Verdict | Reason |
+|---|---|---|
+| Filesystem MCP | Skip | Kilo's built-in file tools already cover read/write/diff. |
+| Memory or knowledge-graph MCP (e.g., mem0) | Skip | The pipeline uses files as memory by design (`Master_Design.md`, `Drafts/`, audit reports). A separate store competes with that. |
+| Sequential-thinking MCP | Skip | Opus 4.7 and Sonnet 4.6 already produce structured reasoning natively on long agent specs. Adds latency for marginal gain. |
+| Web fetch / search MCP | Marginal | Useful for *you* during Phase 0 worldbuilding research, but unused once the pipeline runs. Install standalone if you want it for personal use, not as a World-Forge dependency. |
+| Git MCP | Marginal | Nice-to-have for committing between phases. The VS Code terminal `git` command already does this. |
+| SQLite / Postgres / API integration MCPs | Skip | Out of scope. |
+
+If a future MCP server emerges that genuinely fits the pipeline's shape (for example, a SillyTavern-import validator that round-trips `Export/*.json` against ST's actual loader), this page will be updated. Until then, the answer is: install none.
+
+---
+
+## 10. Troubleshooting
 
 | Symptom | Cause | Fix |
 |---|---|---|
@@ -186,7 +211,7 @@ You can also scope auto-approval per agent in `kilo.jsonc` if your build support
 
 ---
 
-## 10. Where to next
+## 11. Where to next
 
 - [`Agentic-Tools-and-Models.md`](./Agentic-Tools-and-Models.md) — tool comparison, model selection per phase, why Claude Code is not currently recommended.
 - [`../tutorial.md`](../tutorial.md) — full pipeline walkthrough using the Lucifer worked example.

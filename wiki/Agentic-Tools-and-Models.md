@@ -16,7 +16,7 @@ World-Forge is not application code. It is a set of markdown agent specification
 4. **Per-phase persona or mode switching** — each agent in `agent_roles/` is a *different* persona with different rules. Tools that can swap system prompts or modes mid-run handle this cleanly.
 5. **A trigger-command convention** — the pipeline is driven by `/worldforge start`, `/worldforge resume phase[N]`, etc. The tool needs to let you type free-form instructions that the executing agent interprets against `workflows/world-forge.md`.
 
-You do **not** need: code execution, terminal automation, build/test integration, or git automation. Nothing in the pipeline runs code.
+You do **not** need: code execution, terminal automation, build/test integration, git automation, or any MCP servers. Nothing in the pipeline runs code, and built-in file edit tools cover the entire workload — adding MCP servers imports complexity for no documented benefit. See the [MCP servers section in the Kilo Code setup page](./Kilo-Code-Setup.md#9-mcp-servers--none-required) for category-by-category guidance and a specific note on Iron Manus MCP, which is sometimes suggested but is the wrong fit.
 
 ---
 
