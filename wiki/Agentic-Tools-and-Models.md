@@ -16,7 +16,7 @@ World-Forge is not application code. It is a set of markdown agent specification
 4. **Per-phase persona or mode switching** — each agent in `agent_roles/` is a *different* persona with different rules. Tools that can swap system prompts or modes mid-run handle this cleanly.
 5. **A trigger-command convention** — the pipeline is driven by `/worldforge start`, `/worldforge resume phase[N]`, etc. The tool needs to let you type free-form instructions that the executing agent interprets against `workflows/world-forge.md`.
 
-You do **not** need: code execution, terminal automation, build/test integration, or git automation. Nothing in the pipeline runs code.
+You do **not** need: code execution, terminal automation, build/test integration, git automation, or any MCP servers. Nothing in the pipeline runs code, and built-in file edit tools cover the entire workload — adding MCP servers imports complexity for no documented benefit. See the [MCP servers section in the Kilo Code setup page](./Kilo-Code-Setup.md#9-mcp-servers--none-required) for category-by-category guidance and a specific note on Iron Manus MCP, which is sometimes suggested but is the wrong fit.
 
 ---
 
@@ -63,18 +63,19 @@ You do **not** need: code execution, terminal automation, build/test integration
 
 ### 2.3 Kilo Code
 
-[Kilo Code](https://github.com/Kilo-Org/kilocode) is an open-source fork that merges features from Roo Code and Cline. It has Orchestrator-equivalent functionality and the same file-edit tools.
+[Kilo Code](https://github.com/Kilo-Org/kilocode) is an open-source fork that merges features from Roo Code and Cline. It has the same file-edit toolchain and supports custom personas with per-persona model selection.
 
 **Why consider it:**
 - Open source under a permissive license — useful if you want to audit or extend the tool itself.
-- Feature-compatible with Roo Code for the pipeline's purposes (modes, orchestration, file edits).
+- Feature-compatible with Roo Code for the pipeline's purposes (custom personas, subagent delegation, file edits, per-persona model selection).
 - Active development cadence and rapid uptake of new model APIs.
 
 **Tradeoffs:**
 - Smaller community than Roo Code or Cline, so fewer third-party guides and prompts.
 - If you encounter a bug, you may be filing it upstream rather than finding an existing issue.
+- **April 2026 rebuild caveat:** Kilo renamed "Modes" to **Agents** and **deprecated the dedicated Orchestrator mode** — subagent delegation is now built into the default Code / Plan / Debug agents. Older Roo-style tutorials that say "switch to Orchestrator mode" do not map directly; use the **Code** agent as the entry point and pin custom subagents per phase.
 
-**Setup:** Same shape as Roo Code — install, configure provider, switch to its orchestrator-equivalent mode, run `/worldforge start`.
+**Setup:** See the dedicated [Kilo Code Setup tutorial](./Kilo-Code-Setup.md) for step-by-step install, provider configuration, custom-agent definition, and a first-run smoke test. Short version: install the `kilocode.Kilo-Code` extension, configure your provider via the sidebar gear icon, open the World-Forge workspace, select the **Code** agent, and type `/worldforge start`.
 
 ### 2.4 Compatibility summary
 
@@ -82,7 +83,7 @@ You do **not** need: code execution, terminal automation, build/test integration
 |---|---|---|---|---|
 | **Roo Code** | Yes (Orchestrator) | Yes | Yes | Production runs, long pipelines, repeat users |
 | **Cline** | No (single-mode) | Yes | No | First-time users, simpler runs |
-| **Kilo Code** | Yes (orchestrator-equivalent) | Yes | Yes | Users who want an open-source Roo Code alternative |
+| **Kilo Code** | Yes (subagent delegation from Code/Plan/Debug; Orchestrator mode deprecated) | Yes | Yes | Users who want an open-source Roo Code alternative |
 
 ---
 
@@ -131,6 +132,8 @@ If your agentic tool supports per-mode model configuration (Roo Code and Kilo Co
 | Phase 5 (Prompt Engineer) | Sonnet 4.6 |
 
 Spend the most where the literary judgment is most load-bearing (Architect, Editor, Auditors). Save on structural transformation phases.
+
+**Aggregator routing note.** The model names above are display names. If you route through OpenRouter or Nano-GPT rather than direct provider accounts, the model strings you actually configure are provider-prefixed in the aggregator's catalog format (e.g., `anthropic/claude-opus-4-7`, `deepseek/deepseek-chat-v4`). For Kilo Code specifically, the per-agent `"model"` field in `kilo.jsonc` then doubles the prefix as `openrouter/anthropic/claude-opus-4-7` — see the [Kilo Code setup page §5.2](./Kilo-Code-Setup.md#52-a-minimal-world-forge-agent-set) for the exact form and a known caching caveat on the OpenRouter → Anthropic path.
 
 ---
 
