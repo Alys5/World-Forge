@@ -133,6 +133,8 @@ If your agentic tool supports per-mode model configuration (Roo Code and Kilo Co
 
 Spend the most where the literary judgment is most load-bearing (Architect, Editor, Auditors). Save on structural transformation phases.
 
+**Aggregator routing note.** The model names above are display names. If you route through OpenRouter or Nano-GPT rather than direct provider accounts, the model strings you actually configure are provider-prefixed in the aggregator's catalog format (e.g., `anthropic/claude-opus-4-7`, `deepseek/deepseek-chat-v4`). For Kilo Code specifically, the per-agent `"model"` field in `kilo.jsonc` then doubles the prefix as `openrouter/anthropic/claude-opus-4-7` — see the [Kilo Code setup page §5.2](./Kilo-Code-Setup.md#52-a-minimal-world-forge-agent-set) for the exact form and a known caching caveat on the OpenRouter → Anthropic path.
+
 ---
 
 ## 4. Why Claude Code is a poor fit (currently)
