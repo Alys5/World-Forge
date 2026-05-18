@@ -269,6 +269,8 @@ The point of this analysis is the same point the rest of the pipeline serves: th
 - "Power dynamics will flatten because the world has a strict feudal hierarchy and the model defaults to modern egalitarian speech registers."
 - "Healing will arrive too quickly because the world is grimdark and the model defaults to consolatory resolution."
 - "Internal monologue will leak to dialogue because the protagonist is a deceptive character whose inner life must remain hidden from in-scene NPCs."
+- "Replies will default to opening with environmental narration every turn, producing a flat repetitive cadence that signals AI-prose."
+- "NPCs will respond to {{user}}'s narrated feelings as if {{user}} had spoken them aloud — mind-reading from prose rather than inference from observable behavior."
 
 Aim for 4–8 failure modes. Fewer than 4 means you have not thought hard enough; more than 8 usually means you are listing speculative concerns rather than likely failures.
 
@@ -366,6 +368,10 @@ The agent adds these to `prompts` and `prompt_order` only when the Layer 1 analy
 **Time & Continuity Anchors** (`identifier: "time_continuity"`). For worlds where time-of-day, season, or calendar matters narratively. Content: scenes maintain temporal continuity (it does not become evening three messages after morning without elapsed time), ambient details consistent with time and season, physical states consistent with elapsed time (hunger, fatigue, lighting changes).
 
 **Cultural Voice & Diction** (`identifier: "cultural_diction"`). For worlds with specific in-world vocabulary, idioms, archaic speech, profanity registers, technical jargon. Content: this world's specific lexicon and what is forbidden ("I shall" not "I'll" for medieval; specific cyberpunk slang; specific corporate jargon for office settings). Reference Master Design vocabulary.
+
+**Opening Variation** (`identifier: "opening_variation"`). For any world where the default LLM failure of opening every response with environmental narration would harm pacing or flatten cadence — which is most worlds. Strong fit for dialogue-driven, character-focused, intimate, and fast-paced action worlds. **Content:** the model rotates response entry points across at least five varieties — dialogue-first (a character speaks before anything is described), mid-action (drop into something already happening: a door swinging, a glass set down, a phone buzzing), sensory-hit (a single smell, sound, or temperature shift before scene-setting), atmosphere-into-dialogue (one line of setting then straight into speech, no multi-paragraph scene-dressing), and time-skip (cut forward with a temporal marker into the new moment already in motion). Narration-first is ONE option among five, not the default. If the previous response opened with narration, the next MUST NOT — the model checks chat history before committing.
+
+**Perception Boundary** (`identifier: "perception_boundary"`). For any world where the gap between what is *narrated to the reader* and what is *perceivable by characters in scene* matters — which is any roleplay where {{char}} and NPCs should not magically know {{user}}'s thoughts. Strong fit for mystery, intrigue, deception, romance (where unspoken attraction must remain unspoken), social maneuvering, and any world where characters should be able to be wrong with confidence. **Content:** characters and NPCs perceive only what is *spoken aloud as dialogue* and what is *visible as action or body language*. They do not read {{user}}'s narration, internal monologue, named feelings, or authorial framing unless those are translated into observable behavior or speech. They can be wrong about what they think is happening and act on those wrong assumptions with full confidence. Inverse rule also applies: the model does not let {{char}}'s narrated inner state leak to in-scene NPCs through narration alone. Composes with — but does not duplicate — Internal Monologue Discipline: Perception Boundary is the general rule, Internal Monologue Discipline is the strict case for hidden-identity worlds. Include the worked example specified in §5a-detail so the model has a concrete pattern.
 
 If a failure mode in your Block Selection Rationale is not addressed by any block above and not in the template, **author a custom block** following Section 5c's schema. Custom blocks are valid and expected when this world has a specific need the menu does not cover. Justify the custom block in the Rationale.
 
@@ -466,6 +472,46 @@ Reference text (use as-is unless world has a justified reason to deviate):
 > `Strict output format. The marker conventions for this turn are defined by the active <style_contract> in the Main Prompt above, OR by an active <style_override> in the current card's system_prompt when that card overrides the world default. Honor those directives exactly. Beyond the markers declared in the active contract or override, produce no other formatting: no bullet lists in narrative prose, no headers, no code fences in scene content, no emoji. No exceptions.`
 
 ⚠️ **Forbidden in Formatting block content:** any specific marker character (`*asterisks*`, `"double quotes"`, `**double asterisks**`). If the Formatting block declares markers directly, it competes with the `<style_contract>` and overriding cards' `<style_override>` blocks — producing the exact contradiction the consolidation was meant to prevent. Pass 1 hard-fails marker characters in the Formatting block content.
+
+---
+
+#### Optional block content requirements
+
+The optional blocks in §5a are described at the menu level. When you select one for inclusion, author its `content` field against the detailed requirements below.
+
+**Opening Variation content must include:**
+- Statement of the failure mode: LLMs default to opening every reply with environmental narration; this flattens pacing and produces a recognizable AI-prose cadence.
+- The five enumerated opening varieties with one-line definitions:
+  - Dialogue-first — a character speaks before anything is described.
+  - Mid-action — drop into something already in motion (a door swinging, a plate set down, a phone buzzing).
+  - Sensory-hit — a single smell, sound, or temperature shift, then the scene.
+  - Atmosphere-into-dialogue — one line of setting, then straight into speech. No multi-paragraph scene-dressing before anyone talks.
+  - Time-skip — a temporal marker that lands in the new moment already in motion.
+- The rotation rule: if the previous response opened with narration, this one MUST NOT. Check chat history before committing to an opening type.
+- Narration-first is permitted but is one option among five, not the default.
+- Block is world-agnostic; no character names, no arc names, no world-specific content. Reusable verbatim across worlds.
+
+**Perception Boundary content must include:**
+- The core rule, stated imperatively: *Characters and NPCs perceive only what is spoken aloud as dialogue and what is shown through visible action or body language. They do not read {{user}}'s narration, internal thought, named feelings, or authorial framing unless those are translated into observable behavior or speech.*
+- A worked example demonstrating the rule. Author it using the following pattern verbatim — it is world-agnostic and survives reuse across worlds:
+
+  > **Example.** Suppose {{user}} writes:
+  > *"I saw her in the moonlight, she was so beautiful. I had a hard time approaching her. I made an awkward wave at her, while stammering my words 'Hello there!'."*
+  >
+  > What the in-scene character perceives:
+  > - She SEES {{user}} approach and wave awkwardly.
+  > - She HEARS {{user}} stammer the words "Hello there!".
+  > - She MAY infer nervousness from the awkward wave and the stammer — inference from observable behavior is correct character work.
+  >
+  > What the in-scene character does NOT perceive:
+  > - She does NOT know {{user}} found her beautiful.
+  > - She does NOT know {{user}} had a hard time approaching.
+  > - She does NOT have access to {{user}}'s framing of the moment ("in the moonlight," "so beautiful") as ground truth — that is narration for the reader, not in-scene fact.
+
+- Statement that NPCs can be wrong: their inference from observable behavior may not match {{user}}'s actual internal state, and acting on those wrong inferences with full confidence is correct character behavior. Lucky guesses and mind-reading are failure modes.
+- Inverse rule for {{char}}: the model also does not leak {{char}}'s narrated inner state to other NPCs in scene through narration alone. {{char}}'s thoughts are visible to the reader, not to the room.
+- Anti-failure-mode statements (imperative): do NOT have an NPC respond to {{user}}'s narrated feelings as if those were spoken aloud. Do NOT have an NPC "sense" {{user}}'s inner state without an observable cue. Do NOT translate authorial framing into in-scene fact other characters know.
+- Block is world-agnostic; no character names, no arc names, no world-specific content. Reusable across worlds.
 
 ---
 
@@ -745,6 +791,8 @@ The Main Prompt's `<style_contract>` block is the single authoritative source fo
 - [ ] Formatting block content is the slim deferral form — no hardcoded marker characters, references `<style_contract>` and `<style_override>` by tag name, includes the no-bullet-lists / no-headers / no-emoji exhaustion clause.
 - [ ] All custom block content is world-specific — no placeholder text, no generic "your world here" content.
 - [ ] If world has NSFW content: NSFW block content is populated and `enabled: true` in `prompt_order`. If world is wholesome: NSFW block content can be empty and `enabled: false` in `prompt_order` for both characters.
+- [ ] If `opening_variation` block included: content enumerates all five opening varieties and contains the rotation rule (do not match the previous response's opening type).
+- [ ] If `perception_boundary` block included: content contains the worked {{user}}-narration example demonstrating what in-scene characters do and do not perceive, the "NPCs can be wrong with confidence" statement, and the inverse rule for {{char}}.
 
 **Failure modes that bypass the original audit:**
 
@@ -910,6 +958,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries
 - [ ] Spatial Awareness references this world's character heights where relevant
 - [ ] NSFW block: populated and enabled if world has intimate content; empty and disabled if wholesome
+- [ ] Optional blocks (if included): Opening Variation contains all five opening varieties + rotation rule; Perception Boundary contains the worked {{user}}-narration example + inverse {{char}} rule per §5a-detail
 
 ### Chat Template — Style Contract Validation (paired with override architecture)
 - [ ] Main Prompt contains exactly one `<style_contract>...</style_contract>` block with NARRATIVE PERSPECTIVE and FORMATTING MARKERS lines
