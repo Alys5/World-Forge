@@ -12,6 +12,7 @@
 3. **You never delete an entry without explicit instruction in the cascade.** A revision that asks for an entry to be removed must spell it out in the cascade. By default, all existing entries survive. If a Tier 2 entry needs deletion (e.g., the user is removing a character — but that scope isn't in the matrix; full pipeline is needed for removals), this is a halt condition.
 4. **Group_Lorebook.json must be regenerated.** Combining all current tiers into a single group lorebook. UIDs in Group_Lorebook are independent of per-lorebook UIDs (assigned at group-build time). Group_Lorebook is the file the user re-imports into ST after the revision lands.
 5. **You produce a "what changes when" report.** Tells the user which JSON files they need to re-import in their running SillyTavern session, which can be hot-reloaded automatically, and whether any current chat state is at risk.
+6. **You maintain `Export/REVISED_FILES.md` — the cumulative revision manifest.** This is the at-a-glance index of which Export files have ever been touched by a revision and when. You never rename an Export file to mark it revised (renaming breaks ST imports, breaks Group_Lorebook references, and defeats the UID preservation this agent exists to provide) and you never add a `_revised`-style field inside the JSON (parent rule 3 forbids any field outside the ST schema). The manifest is the only revision marker on the Export side.
 
 ---
 
@@ -102,6 +103,45 @@ If any fails on any file, do not write that file. Diagnose and surface. Most fai
 
 For each file the validation passed, write to `Export/`. Existing files are overwritten with the new content. UIDs in the new content preserve what was in the old content for unchanged entries.
 
+### Step R4.5b — Update the cumulative revision manifest
+
+Maintain `Export/REVISED_FILES.md` — a single, always-current index of every Export file that has ever been touched by a revision. This is the user's at-a-glance answer to "of my 15 export files, which ones were edited and when?"
+
+**Read the existing manifest if present.** If `Export/REVISED_FILES.md` exists, read it and preserve its rows. If it doesn't exist (this is the world's first revision), create it.
+
+**Update rows for files touched in this revision (R[N]):**
+- For each Export file you wrote in Step R4.5, upsert its row:
+  - If the file already has a row (touched in a prior revision) → update `Last revised in`, `Date`, and `Change summary` to reflect R[N], and append R[N] to its `Revision history` cell.
+  - If the file is newly touched → add a new row.
+- Files you did NOT touch this revision keep their existing rows verbatim.
+- The manifest is cumulative: it never shrinks. A file touched in R3 and again in R7 shows R7 as `Last revised in` with `R3, R7` in its history.
+
+**Format** (`Export/REVISED_FILES.md`):
+
+```
+# Revised Files — Cumulative Manifest
+
+> Maintained automatically by the mini-Compiler (Phase R4) on every revision.
+> Lists every Export/ file ever touched by the revision pipeline. Files NOT
+> listed here are exactly as the original full pipeline produced them.
+> Export filenames are never renamed to mark revisions — this manifest is the
+> sole revision marker on the Export side, so ST imports and UID references
+> stay stable.
+
+| File | Last revised in | Date | Change summary | Revision history |
+|---|---|---|---|---|
+| Anna_Card.json | R3 | 2026-05-23 | Voice calibration — snarkier register | R3 |
+| Arc2_Lorebook.json | R5 | 2026-06-01 | ARC_STATE Tonal Mandate heavier on dread | R2, R5 |
+| Marcus_Lorebook.json | R4 | 2026-05-28 | Created — new NPC | R4 |
+| Group_Lorebook.json | R5 | 2026-06-01 | Regenerated (always regenerated per revision) | R2, R3, R4, R5 |
+```
+
+The `Change summary` is one line drawn from the Revision Log entry's intent for R[N] — what changed in *this* file, not the whole revision. If a single revision touched a file for different reasons than the headline intent (rare), summarize the file-specific change.
+
+`Group_Lorebook.json` is regenerated on every revision (Step R4.3), so its row updates every time with the full revision history accumulating in its history cell.
+
+`Export/REVISED_FILES.md` is documentation, not a SillyTavern import artifact — it never gets imported into ST and has no schema constraints. It lives in Export/ (not Drafts/) specifically so it sits alongside the files it indexes.
+
 ### Step R4.6 — "What changes when" report
 
 For the user, generate a report at the end of `Drafts/Revise_R[N]_Compile_Log.md`:
@@ -157,6 +197,7 @@ Append summary to `Drafts/Revision_R[N]_Report.md` under "Phase R4 — Mini-Comp
 
 - Updated `Export/` files (only those touched)
 - Regenerated `Export/Group_Lorebook.json`
+- `Export/REVISED_FILES.md` — cumulative revision manifest, created or updated
 - `Drafts/Revise_R[N]_Compile_Log.md` with "what changes when" report
 - `Drafts/Revision_R[N]_Report.md` updated with Phase R4 summary
 - Revision Log entry advanced
@@ -196,6 +237,12 @@ Append to the Revision Log entry:
 ### User Report
 - [ ] "What Changes When" report produced
 - [ ] Risk assessment included for running chats
+
+### Revision Manifest
+- [ ] Export/REVISED_FILES.md created (first revision) or updated (subsequent)
+- [ ] Every file touched this revision has an upserted row (file, last-revised R[N], date, change summary, accumulated history)
+- [ ] Files touched in prior revisions retain their rows (manifest is cumulative)
+- [ ] No Export file renamed to mark it revised; no in-JSON revision field added
 
 **Status: R4_COMPLETE — Proceed to Phase R5 (mini-Prompt-Engineer)**
 ```

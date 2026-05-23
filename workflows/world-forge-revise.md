@@ -208,12 +208,14 @@ Generates sample intimate scenes for the affected character or arc only. Voice f
 ## PHASE R4: IMPLEMENTATION — THE COMPILER (MINI)
 
 **Invoke:** `@agent_roles/revise/04_The_Compiler_mini.md`
-**Input:** Approved touched drafts + `Notes_On_functionality.md` + existing `Export/` JSON files for UID continuity
-**Output:** Updated `Export/` files (only those touched) + regenerated `Export/Group_Lorebook.json` + `Drafts/Revise_R[N]_Compile_Log.md` + "what changes when" user report
+**Input:** Approved touched drafts + `Notes_On_functionality.md` + existing `Export/` JSON files for UID continuity + existing `Export/REVISED_FILES.md` (if present)
+**Output:** Updated `Export/` files (only those touched) + regenerated `Export/Group_Lorebook.json` + updated `Export/REVISED_FILES.md` (cumulative manifest) + `Drafts/Revise_R[N]_Compile_Log.md` + "what changes when" user report
 
 **Operationally different from the full Compiler.** Append + dedupe + UID preservation, not build-fresh. Reads each Export file before rewriting it: new entries get the next free UID, existing entries keep their UIDs, deleted entries are flagged (mini-Compiler does not delete by default — user confirms via the audit report).
 
 The "what changes when" report tells the user which lorebooks need re-import in their running ST session, which can be hot-reloaded, and whether any chat states are at risk.
+
+**Revision marking.** Export filenames are never renamed and the JSON gets no extra fields — both would break ST imports / UID references or violate the Compiler's schema rule. Instead the mini-Compiler maintains `Export/REVISED_FILES.md`, a cumulative manifest listing every Export file ever touched by a revision (file, last-revised revision ID, date, one-line change summary, accumulated revision history). It is the single at-a-glance index of what has changed across all revisions, sitting alongside the files it indexes.
 
 ---
 
@@ -276,7 +278,8 @@ Same semantics as the full pipeline's Phase 5.5. User opens each named file, app
 │   ├── Revise_R[N]_Compile_Log.md                        ⭐ mini-Compiler's log + "what changes when" report
 │   └── Revise_R[N]_Prompt_Engineer_Audit.md              ⭐ mini-Prompt Engineer's audit
 └── Export/
-    └── (existing files surgically updated; UIDs preserved)
+    ├── (existing files surgically updated; UIDs preserved)
+    └── REVISED_FILES.md                                   ⭐ cumulative revision manifest (maintained by mini-Compiler)
 ```
 
 The `Drafts/Revision_R[N]_Report.md` is the single source of truth for what happened in revision R[N]. Each mini appends its work to it. Cross-references the Revision Log entry in Master_Design.md by ID.
