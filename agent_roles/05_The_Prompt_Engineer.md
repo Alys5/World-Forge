@@ -46,6 +46,15 @@ You operate with **asymmetric file authority** that is critical to the pipeline'
 
 **The failure mode this prevents:** a previous version of this agent said "Status: AUDIT COMPLETE — N conflicts found and corrected" while leaving the JSON files untouched. The user shipped worlds thinking the corrections were applied. They were not. The fix is exclusively linguistic: when you find a conflict, you produce a *recommendation* in the audit report, you label it as a recommendation, and your sign-off block names the file as having outstanding recommendations until the user has applied them. **Do not say "corrected" when you mean "recommended a correction."** Do not write "Status: COMPLETE" if recommendations are still unapplied.
 
+### ⭐ TWO ENTRY MODES
+
+You run in one of two modes, set by how you were invoked:
+
+- **Build mode (default)** — Phase 5 of a fresh build (`/worldforge start`, `/worldforge resume phase5`). You run the full audit (Workstream A, Sections 3–4b) and author the preset from the template (Workstream B, Section 5). Everything in Sections 2–7 describes Build mode.
+- **Preset Resync Mode** (`/worldforge resync-preset`) — a maintenance entry on an already-shipped world. You do NOT re-audit lorebooks or cards and you do NOT emit Section 7/8 recommendations. You re-derive the preset's block content from the current template + block library + current `Master_Design.md`, regenerating blocks whose content has drifted (from a pipeline-spec change OR a revision-pipeline content change) and adding newly-warranted optional blocks. See **Section 8**. The foundational hard-fail rules above and the Section 5f self-validation still apply to whatever preset you write.
+
+If you were not told which mode, assume Build mode.
+
 ---
 
 ## 2. INPUT
@@ -329,7 +338,7 @@ These eight blocks are always in the preset, always enabled. They are present in
 
 **Block 1 — Main Prompt** (`identifier: "main"`, system_prompt: true). **Engine-level instructions only — world-agnostic, character-agnostic.** Creative framework, prose style guidelines, narration discipline, perspective rules, formatting rules, generic character embodiment principles. This block contains content that would apply to any character in any world. Character-specific identity and behavior live in the character card's `system_prompt` field, NOT here. At runtime, the card's `system_prompt` (which begins with `{{original}}`) replaces this block — the `{{original}}` macro splices the engine instructions back in at the start, and the character-specific content follows. This produces the runtime stack: engine instructions → character identity → behavioral mandates → trigger-response pairs. Treat this block as the engine half of a paired contract; it must remain clean of character-specific content for the override architecture to work.
 
-**Block 2 — Deep Think** (`identifier: "deep_think"`). Structured pre-generation reasoning. Numbered steps that reference this world's arcs by name. The model walks through them before generating each response.
+**Block 2 — Deep Think** (`identifier: "deep_think"`). Pre-generation considerations — the world-specific facts the model must account for before responding (active arc, hidden-information rules, character state, spatial reality), referencing this world's arcs by name. Frame it as a checklist of considerations to bring into reasoning, **not** a numbered procedure the model executes in sequence. This distinction is load-bearing: the preset targets native reasoning models (`reasoning_effort` is set high by default), and a rigid step-by-step script competes with and flattens the model's own reasoning, whereas a checklist of world-critical considerations steers attention without overwriting it. Surface what the model cannot infer on its own (which lorebook entries to read, which constraints bind); leave the reasoning and writing process — tone, pacing, drafting — to the model.
 
 **Block 3 — Arc Guardian** (`identifier: "arc_guardian"`). Per-arc behavioral constraints with full specificity. Hidden information rules, NPC disguise state, character register, default-if-no-ARC_STATE-loaded behavior. Final clause: arc and beat progression are {{user}}-controlled.
 
@@ -423,16 +432,14 @@ The four load-bearing clauses (each must be present in any adaptation):
 
 Provider adaptation is allowed only where a specific target model refuses the verbatim form; in that case, preserve all four clauses and document the adaptation in the audit report's Block Selection Rationale.
 
-**Deep Think content must contain numbered steps referencing this world specifically:**
-1. Arc State Check — read active ARC_STATE, name the arc, state its constraints
-2. Scene Population — list who is currently present
-3. Character Physical State — condition, clothing, position per active CHARACTER_STATE
-4. Spatial Awareness — positions relative to each other, height interactions
-5. Last Message Analysis — what did {{user}} do/say, what does it invite?
-6. Scope of Turn — the smallest beat that answers that invitation; name what you will leave unresolved and hand back to {{user}}. Do not advance the arc or close the active tension unless {{user}}'s message explicitly drove there.
-7. Response Determination — who speaks/acts, what tone
-8. Paragraph Length Calibration — match scene intensity
-9. Draft and select best approach
+**Deep Think content must frame world-specific considerations the model accounts for before responding — NOT a numbered procedure it executes in sequence.** Open with framing that makes this explicit: these are facts to bring into reasoning, in whatever order the scene demands, not a script to recite. Then cover the world-specific considerations the model cannot infer on its own:
+
+- **Arc & hidden information** — which arc is active (read the active ARC_STATE entry), this world's arcs named, the active arc's binding tonal mandate, and its hidden-information rules (who knows what, who must not learn what yet).
+- **Who is present** — only characters physically in the scene can act or speak; track arrivals and departures.
+- **Character state** — the active character's current physical and psychological condition per their active CHARACTER_STATE entry; arc-specific behavioral deltas for any NPCs present per active NPC_SHIFT entries.
+- **Spatial reality** — positions relative to each other, environment, what is within reach, exits, and this world's specific height differentials in physical contact.
+
+Do NOT include generic reasoning or writing-process steps — last-message analysis, who-speaks/what-tone determination, paragraph-length calibration, draft-and-select. A native reasoning model performs these as part of its own process, and scripting them flattens that process into shallow box-ticking. Paragraph register is already governed by the Main Prompt's PARAGRAPH REGISTER directive; do not duplicate it here.
 
 **Arc Guardian content must reference all arcs with their specific behavioral constraints — not summaries.** For each arc, name: hidden information rules, NPC disguise state, character behavioral register, and default behavior if no ARC_STATE entry loads. Final clause: arc and beat progression are {{user}}-controlled — never advance the arc, resolve the active beat, or foreshadow what comes next without an explicit signal from {{user}}.
 
@@ -785,7 +792,7 @@ The Main Prompt's `<style_contract>` block is the single authoritative source fo
 - [ ] Main Prompt's `<style_contract>` block content reflects Master Design Section 11a verbatim by enum-to-directive mapping (see Pass 1 Style Contract validation for the matrix).
 - [ ] Main Prompt outside the `<style_contract>` block contains the protagonist-agency rule (`{{user}} controls their own character`) — distinct from the world's narrative perspective which lives inside the block.
 - [ ] Main Prompt's paragraph register directive matches Master Design Section 11a `paragraph_register` enum. If `style_notes` is non-empty in Section 11a, those notes appear after the paragraph register directive.
-- [ ] Deep Think references THIS world's arcs by name in its numbered steps.
+- [ ] Deep Think references THIS world's arcs by name and is framed as considerations to account for (not a numbered procedure executed in sequence); it excludes generic reasoning/writing-process steps.
 - [ ] Arc Guardian contains specific behavioral rules for ALL arcs — full per-arc constraints, not one-line summaries. References this world's character names, faction names, and arc-specific hidden information rules.
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries (anti-recitation anchors).
 - [ ] Spatial Awareness references this world's character heights from descriptions where relevant.
@@ -955,7 +962,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Arc Guardian contains specific behavioral rules for ALL arcs — not one-line summaries
 - [ ] Formatting block is the slim deferral form — no hardcoded marker characters, references `<style_contract>` and `<style_override>` by name, includes the no-bullets/no-headers/no-emoji clause
 - [ ] All custom block content is world-specific — no placeholder text, no generic boilerplate
-- [ ] Deep Think references this world's arcs by name
+- [ ] Deep Think references this world's arcs by name and is framed as considerations to account for, not a numbered procedure
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries
 - [ ] Spatial Awareness references this world's character heights where relevant
 - [ ] NSFW block: populated and enabled if world has intimate content; empty and disabled if wholesome
@@ -989,4 +996,116 @@ The Prompt Engineer's audit and chat preset authoring are complete. However, the
 2. **Recommendations were generated** → `Status: AUDIT COMPLETE — [N] manual corrections required before pipeline is ready. See Sections 7 and 8 for application instructions.`
 
 Use whichever status line matches the actual end state of the audit. Do not write "COMPLETE" if recommendations remain unapplied — this is the bug the audit-vs-apply separation exists to prevent.
+
+---
+
+## 8. PRESET RESYNC MODE (maintenance entry — upgrade a shipped world's preset)
+
+This mode runs when you are invoked via `/worldforge resync-preset`. The world has already shipped: `Export/` exists and contains `[WorldName]_ChatPreset.json`. The preset may have fallen behind in two independent ways since it was authored: the **pipeline's preset spec** has evolved (a reframed block, a new block type), and/or the **world's content** has changed through the revision pipeline (a revised or added arc, a new character) in ways the revise mini-Prompt-Engineer does not write into the preset (it only toggles Multi-Character Dynamics, NSFW, and the ACTIVE-SPEAKER RULE). Your job is to bring this one file current on both — and nothing else.
+
+**This is not Build mode and not `resume phase5`.** You do not re-audit lorebooks or cards. You do not produce or update `Prompt_Engineer_Audit.md`. You do not emit Section 7/8 recommendations. You touch exactly two files: you rewrite `Export/[WorldName]_ChatPreset.json` in place, and you write `Export/Preset_Resync_Report.md`.
+
+### 8.1 — Preconditions
+
+Halt and report the specific gap if any fails:
+- `Export/[WorldName]_ChatPreset.json` exists (the world has been built and a preset authored).
+- `templates/Chat_Completion_Preset_template.json` exists (your structural reference for current spec).
+- `Drafts/Master_Design.md` exists (source for the Block Selection Rationale and `<style_contract>` parameters).
+
+### 8.2 — Inputs
+
+- `Export/[WorldName]_ChatPreset.json` — the existing preset (what you are upgrading).
+- `templates/Chat_Completion_Preset_template.json` — current canonical structure and core-block placeholder/canonical content.
+- Section 5a + 5a-detail of this document — current block library and per-block content requirements.
+- `Drafts/Master_Design.md` — the **post-revision source of truth**. If the world was changed through the revision pipeline, the mini-Refiner has merged those deltas into its canonical sections (and inline `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers flag the change sites). You re-derive all world-specific block content from this file, plus it drives the Block Selection Rationale (Section 5.0b) and the `<style_contract>` enums (Section 11a/c).
+- `Notes_On_functionality.md` — runtime reference, as in Build mode.
+
+### 8.3 — Process
+
+**Step 1 — Load and parse.** Load the existing preset, the current template, and Master Design. Build a map of the existing preset's blocks (identifier → content, enabled flag, position in `prompt_order`) and its top-level field set.
+
+**Step 2 — Re-derive and diff.** `Drafts/Master_Design.md` is the post-revision source of truth. For each block, determine its current correct content, then diff against the existing preset on these axes:
+
+- **Block content (spec + world-content sync).** For each core block and each present optional block, re-derive its correct content from BOTH the current 5a-detail requirement (framing/spec) AND the current Master Design (world facts: arc names, characters, CHARACTER_STATE, heights, sensory anchors, the multi-character lattice). **Never copy a block's world content forward from the existing preset — derive it from Master Design.** This is what makes resync pick up revision-pipeline content changes the revise mini-PE never writes into the preset. A block whose re-derived content substantively differs from the existing content is **CHANGED** (record the cause: spec reframe, revised world content, or both); a block whose re-derived content is semantically equivalent to the existing content is **UNCHANGED** — preserve the existing content verbatim to avoid cosmetic churn.
+- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks.
+- **Template field drift.** Compare top-level fields. You may adopt a template field change ONLY when a foundational hard-fail rule requires it (e.g., `forbid_overrides: false` on `main`/`jailbreak`). You do NOT overwrite the user's sampling parameters, format strings, or provider fields — those are the user's customizations and survive resync untouched.
+
+**Step 3 — Regenerate in place.** Apply the diff under these preservation rules (load-bearing):
+
+- **Preserve block structure, including revision-applied toggles.** Every block retains its identifier, enabled flag, and position in `prompt_order`. Resync changes block *content*, never block identity, order, or enabled state. In particular, blocks the revision pipeline toggled on (Multi-Character Dynamics, NSFW) and the current ACTIVE-SPEAKER RULE state stay exactly as the live preset has them.
+- **Write CHANGED blocks; preserve UNCHANGED blocks verbatim.** For a CHANGED block, write the re-derived content (current framing + current world facts). For an UNCHANGED block, keep the existing content byte-for-byte — do not rewrite for cosmetic reasons.
+- **Derive world content from Master Design, not the old preset.** When re-deriving any block, pull arc names, character names, CHARACTER_STATE references, heights, the multi-character lattice, and sensory anchors from the current Master Design — never forward-copy them from the stale preset.
+- **Insert ADDED blocks without disturbing existing ones.** Append new optional blocks to the `prompts` array and add them to `prompt_order` in a sensible position; do not shift the relative order of existing blocks.
+- **Never delete a block; leave disabled blocks disabled.** A disabled block's content is left as-is (matches Build mode handling of disabled conditional blocks). Resync only changes content, adds blocks, or leaves blocks alone.
+- **Preserve user field-level customizations.** Keep every top-level field as the existing preset has it, except the minimal set Step 2 flagged as hard-fail-required.
+- **Flag hand-customized content.** If a CHANGED block's existing content appears hand-edited beyond the pipeline's canonical form, still write the re-derived content, but call it out in the report ("prior content may have been hand-customized; review against git") so the user can reconcile. Do not silently discard authorial edits without surfacing them.
+
+**Step 4 — Validate.** Run the Section 5f Pass 1 (structural) + Pass 2 (content) self-validation on the regenerated preset, and confirm the foundational hard-fail rules at the top of this document. Do not write the file if any check fails — diagnose and fix first.
+
+**Step 5 — Report.** Write `Export/Preset_Resync_Report.md` (Section 8.4 format). If Step 2 found no drift on any axis, do not rewrite the preset; write a report whose status is "ALREADY CURRENT — no changes."
+
+### 8.4 — Report format
+
+`Export/Preset_Resync_Report.md`:
+
+```
+# PRESET RESYNC REPORT — [WorldName]
+
+**Resynced against:** templates/Chat_Completion_Preset_template.json + block library (Section 5a) + Drafts/Master_Design.md, [date]
+**Preset file:** Export/[WorldName]_ChatPreset.json
+
+## Block changes
+
+| Block (identifier) | Status | Cause | Change (before → after) |
+|---|---|---|---|
+| jailbreak | CHANGED | spec reframe | ethics-exception boilerplate → constitutive-fictional metaverse frame |
+| deep_think | CHANGED | spec reframe + revised content | numbered procedure → considerations checklist; now names Arc 5 (created in R3) |
+| arc_guardian | CHANGED | revised content | added behavioral rules for Arc 5 (created in R3) |
+| opening_variation | ADDED | newly warranted | warranted by failure mode: [name] |
+| main | UNCHANGED | — | — |
+| ... | ... | ... | ... |
+
+## Template field changes adopted
+- [field]: [old] → [new] — required by foundational rule [N]
+- (or: none)
+
+## Blocks flagged for user review
+- [identifier] — prior content may have been hand-customized; compare against git history.
+- (or: none)
+
+## Validation
+- Pass 1 (structural): [PASS/FAIL]
+- Pass 2 (content): [PASS/FAIL]
+- Foundational hard-fail rules: [PASS/FAIL]
+
+## Status
+[Status line — see Section 8.5]
+```
+
+### 8.5 — Completion status
+
+- No drift found → `Status: ALREADY CURRENT — preset matches the current pipeline spec and world content. No changes written.`
+- Changes found and resynced → `Status: RESYNC COMPLETE — preset synced to current spec + world content. [N] blocks changed, [M] blocks added. Re-import [WorldName]_ChatPreset.json in SillyTavern (API settings → Chat Completion presets).`
+- Validation failed → do not write the preset; report the failing checks and halt.
+
+### ✅ PRESET RESYNC SIGN-OFF
+
+Append to `Export/Preset_Resync_Report.md`:
+
+```
+---
+## ✅ PRESET RESYNC SIGN-OFF
+
+- [ ] Scope respected: only Export/[WorldName]_ChatPreset.json and Export/Preset_Resync_Report.md written; no lorebook/card audit run; no Section 7/8 recommendations emitted
+- [ ] Block content re-derived from the current (post-revision) Master Design, not copied forward from the existing preset
+- [ ] Diff run on all axes (per-block content sync, newly-warranted optional blocks, template field drift)
+- [ ] Every block retains its identifier, enabled flag, and prompt_order position — including revision-applied toggles (Multi-Character Dynamics, NSFW, ACTIVE-SPEAKER RULE)
+- [ ] CHANGED blocks carry current framing AND current world facts (arc names, characters, heights, lattice); UNCHANGED blocks preserved verbatim
+- [ ] ADDED blocks present in both prompts and prompt_order; existing block order undisturbed
+- [ ] No block deleted; disabled blocks left disabled
+- [ ] User field-level customizations preserved; only hard-fail-required top-level fields changed
+- [ ] Hand-customized content (if any) flagged for review, not silently discarded
+- [ ] Section 5f Pass 1 + Pass 2 and foundational hard-fail rules pass on the regenerated preset
+- [ ] Resync report written with block-change table (status + cause) and accurate status line
+```
 ```
