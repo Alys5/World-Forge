@@ -539,7 +539,7 @@ Content: What this beat is. What triggers it. What the LLM should do when it occ
 **Order Priority:** 90
 **Position Rationale:** DEFAULT
 
-Content: The active stakes. What is at risk. What the consequences of failure are. What time pressure exists. Write to create narrative urgency.
+Content: The active stakes — what is at risk, what failure would cost, and any in-world deadline or closing window. Frame this as a standing condition the prose keeps live and present every turn, not a countdown for the model to run down: sustain the pressure, never relieve or resolve it on your own initiative. Only {{user}}'s choices escalate or release it.
 
 **Minimum entry count per arc lorebook: 8 entries.**
 Fewer than 8 means the arc is under-specified and the LLM will fill gaps with generic behavior.
