@@ -64,8 +64,7 @@ World-Forge/
 │   ├── char_template.json            ← Raw V3 character-card JSON schema exemplar
 │   ├── Lorebook_Template.json        ← Raw lorebook JSON schema exemplar
 │   ├── Group_lorebook_template.json  ← Raw group lorebook JSON schema exemplar
-│   ├── Chat_Completion_Preset_template.json   ← Preset JSON structure (Prompt Engineer target)
-│   └── Group_chat_completion.json    ← Group-chat preset JSON exemplar
+│   └── Chat_Completion_Preset_template.json   ← Preset JSON structure (Prompt Engineer target)
 ├── workflows/                        ← Pipeline orchestration
 │   ├── world-forge.md                ← Main pipeline (initial build, Phase 0–5.5; also PRESET RESYNC)
 │   └── world-forge-revise.md         ← Revision fork (surgical post-launch edits, Phase R0–R5.5)
