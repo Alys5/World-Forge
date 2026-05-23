@@ -329,7 +329,7 @@ These eight blocks are always in the preset, always enabled. They are present in
 
 **Block 1 — Main Prompt** (`identifier: "main"`, system_prompt: true). **Engine-level instructions only — world-agnostic, character-agnostic.** Creative framework, prose style guidelines, narration discipline, perspective rules, formatting rules, generic character embodiment principles. This block contains content that would apply to any character in any world. Character-specific identity and behavior live in the character card's `system_prompt` field, NOT here. At runtime, the card's `system_prompt` (which begins with `{{original}}`) replaces this block — the `{{original}}` macro splices the engine instructions back in at the start, and the character-specific content follows. This produces the runtime stack: engine instructions → character identity → behavioral mandates → trigger-response pairs. Treat this block as the engine half of a paired contract; it must remain clean of character-specific content for the override architecture to work.
 
-**Block 2 — Deep Think** (`identifier: "deep_think"`). Structured pre-generation reasoning. Numbered steps that reference this world's arcs by name. The model walks through them before generating each response.
+**Block 2 — Deep Think** (`identifier: "deep_think"`). Pre-generation considerations — the world-specific facts the model must account for before responding (active arc, hidden-information rules, character state, spatial reality), referencing this world's arcs by name. Frame it as a checklist of considerations to bring into reasoning, **not** a numbered procedure the model executes in sequence. This distinction is load-bearing: the preset targets native reasoning models (`reasoning_effort` is set high by default), and a rigid step-by-step script competes with and flattens the model's own reasoning, whereas a checklist of world-critical considerations steers attention without overwriting it. Surface what the model cannot infer on its own (which lorebook entries to read, which constraints bind); leave the reasoning and writing process — tone, pacing, drafting — to the model.
 
 **Block 3 — Arc Guardian** (`identifier: "arc_guardian"`). Per-arc behavioral constraints with full specificity. Hidden information rules, NPC disguise state, character register, default-if-no-ARC_STATE-loaded behavior. Final clause: arc progression is {{user}}-controlled.
 
@@ -423,15 +423,14 @@ The four load-bearing clauses (each must be present in any adaptation):
 
 Provider adaptation is allowed only where a specific target model refuses the verbatim form; in that case, preserve all four clauses and document the adaptation in the audit report's Block Selection Rationale.
 
-**Deep Think content must contain numbered steps referencing this world specifically:**
-1. Arc State Check — read active ARC_STATE, name the arc, state its constraints
-2. Scene Population — list who is currently present
-3. Character Physical State — condition, clothing, position per active CHARACTER_STATE
-4. Spatial Awareness — positions relative to each other, height interactions
-5. Last Message Analysis — what did {{user}} do/say, what does it invite?
-6. Response Determination — who speaks/acts, what tone
-7. Paragraph Length Calibration — match scene intensity
-8. Draft and select best approach
+**Deep Think content must frame world-specific considerations the model accounts for before responding — NOT a numbered procedure it executes in sequence.** Open with framing that makes this explicit: these are facts to bring into reasoning, in whatever order the scene demands, not a script to recite. Then cover the world-specific considerations the model cannot infer on its own:
+
+- **Arc & hidden information** — which arc is active (read the active ARC_STATE entry), this world's arcs named, the active arc's binding tonal mandate, and its hidden-information rules (who knows what, who must not learn what yet).
+- **Who is present** — only characters physically in the scene can act or speak; track arrivals and departures.
+- **Character state** — the active character's current physical and psychological condition per their active CHARACTER_STATE entry; arc-specific behavioral deltas for any NPCs present per active NPC_SHIFT entries.
+- **Spatial reality** — positions relative to each other, environment, what is within reach, exits, and this world's specific height differentials in physical contact.
+
+Do NOT include generic reasoning or writing-process steps — last-message analysis, who-speaks/what-tone determination, paragraph-length calibration, draft-and-select. A native reasoning model performs these as part of its own process, and scripting them flattens that process into shallow box-ticking. Paragraph register is already governed by the Main Prompt's PARAGRAPH REGISTER directive; do not duplicate it here.
 
 **Arc Guardian content must reference all arcs with their specific behavioral constraints — not summaries.** For each arc, name: hidden information rules, NPC disguise state, character behavioral register, and default behavior if no ARC_STATE entry loads. Final clause: arc progression is {{user}}-controlled — never advance or foreshadow without explicit signal.
 
@@ -784,7 +783,7 @@ The Main Prompt's `<style_contract>` block is the single authoritative source fo
 - [ ] Main Prompt's `<style_contract>` block content reflects Master Design Section 11a verbatim by enum-to-directive mapping (see Pass 1 Style Contract validation for the matrix).
 - [ ] Main Prompt outside the `<style_contract>` block contains the protagonist-agency rule (`{{user}} controls their own character`) — distinct from the world's narrative perspective which lives inside the block.
 - [ ] Main Prompt's paragraph register directive matches Master Design Section 11a `paragraph_register` enum. If `style_notes` is non-empty in Section 11a, those notes appear after the paragraph register directive.
-- [ ] Deep Think references THIS world's arcs by name in its numbered steps.
+- [ ] Deep Think references THIS world's arcs by name and is framed as considerations to account for (not a numbered procedure executed in sequence); it excludes generic reasoning/writing-process steps.
 - [ ] Arc Guardian contains specific behavioral rules for ALL arcs — full per-arc constraints, not one-line summaries. References this world's character names, faction names, and arc-specific hidden information rules.
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries (anti-recitation anchors).
 - [ ] Spatial Awareness references this world's character heights from descriptions where relevant.
@@ -954,7 +953,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Arc Guardian contains specific behavioral rules for ALL arcs — not one-line summaries
 - [ ] Formatting block is the slim deferral form — no hardcoded marker characters, references `<style_contract>` and `<style_override>` by name, includes the no-bullets/no-headers/no-emoji clause
 - [ ] All custom block content is world-specific — no placeholder text, no generic boilerplate
-- [ ] Deep Think references this world's arcs by name
+- [ ] Deep Think references this world's arcs by name and is framed as considerations to account for, not a numbered procedure
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries
 - [ ] Spatial Awareness references this world's character heights where relevant
 - [ ] NSFW block: populated and enabled if world has intimate content; empty and disabled if wholesome
