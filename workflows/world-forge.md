@@ -380,6 +380,20 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge resume phase4` | Re-run Compiler |
 | `/worldforge resume phase5` | Re-run Prompt Engineer |
 | `/worldforge status` | Report current phase, round, open blockers |
-| `/worldforge skip phase0` | Begin from Phase 1 (user has written World_Seed.md manually) |
+| `/worldforge skip phase0` | Begin from Phase 1 (user has written World_Seed.md manually, OR resuming after a Section 1/11 revision bounced from the revise pipeline) |
 | `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content in this world) |
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content in this world) |
+| `/worldforge revise` | Begin the revision pipeline for surgical changes to an already-built world (see `workflows/world-forge-revise.md`) |
+| `/worldforge revise --freeform` | Revision pipeline with freeform intent input (paste a description, Reviser structures) |
+| `/worldforge revise --target [path]` | Revision pipeline with known target file/entry (skips diagnostic narrowing) |
+| `/worldforge revise status` | Show all Revision Log entries and their statuses |
+| `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
+| `/worldforge revise cancel R[N]` | Cancel a pending revision and mark CANCELLED |
+
+---
+
+## POST-LAUNCH REVISIONS
+
+Once a world has completed Phase 5.5 (pipeline complete, Export/ ready, world in play), surgical changes use the **revision pipeline** — a parallel fork that runs mini-versions of the agents above with read-mostly authority and UID-preserving compilation. See `workflows/world-forge-revise.md` for the full revise pipeline.
+
+The bright line is **Master Design Section 1 (Core Concept & Tone) and Section 11a (Style Contract world defaults)**. Revisions that don't touch these stay in the revision pipeline (faster, surgical, preserves running ST chat states). Revisions that touch them require a full re-run from Phase 1 via `/worldforge skip phase0` — the existing `World_Seed.md` is reused, the Interviewer is skipped, and Phases 1–5 rebuild from scratch. The Reviser performs this classification and bounces out-of-scope revisions automatically.

@@ -41,7 +41,19 @@ World-Forge/
 │   ├── 03d_The_Intimacy_Auditor.md
 │   ├── 04_The_Compiler.md
 │   ├── 05_The_Prompt_Engineer.md
-│   └── 06_The_Intimacy_Architect.md
+│   ├── 06_The_Intimacy_Architect.md
+│   ├── SHARED_Style_Contract_Reference.md
+│   └── revise/                       ← Revision-pipeline mini-agents (surgical post-launch edits)
+│       ├── 00_The_Reviser.md
+│       ├── 01_The_Refiner_mini.md
+│       ├── 02_The_Architect_mini.md
+│       ├── 02b_The_Intimacy_Architect_mini.md
+│       ├── 03_The_Editor_mini.md
+│       ├── 03b_The_Voice_Auditor_mini.md
+│       ├── 03c_The_Arc_Transition_Auditor_mini.md
+│       ├── 03d_The_Intimacy_Auditor_mini.md
+│       ├── 04_The_Compiler_mini.md
+│       └── 05_The_Prompt_Engineer_mini.md
 ├── templates/                        ← Structural references the pipeline produces output against
 │   ├── Char_Card_creation.md
 │   ├── Lorebook_creation.md
@@ -49,7 +61,8 @@ World-Forge/
 │   ├── Chat_Completion_Preset_template.json
 │   └── World_Seed_Template.md
 ├── workflows/                        ← Pipeline orchestration
-│   └── world-forge.md
+│   ├── world-forge.md                ← Main pipeline (initial world build, Phase 0–5.5)
+│   └── world-forge-revise.md         ← Revision fork (surgical post-launch edits, Phase R0–R5.5)
 └── Samples/                          ← Example world outputs for reference
 ```
 
@@ -116,7 +129,22 @@ The Tonal Mandate must contain 4-8 bullets covering active register, prose dwell
 
 This structure exists because un-split ARC_STATE entries get interpreted as world-description rather than as binding directives, causing the model to default to its own tonal disposition rather than the arc's specified register.
 
-### 6. Notes_On_functionality.md is the SillyTavern source of truth
+### 6. Revision Pipeline (Post-Launch Surgical Edits)
+
+Once a world has shipped (Phase 5.5 complete), surgical changes use the **revision pipeline** in `workflows/world-forge-revise.md` — a parallel fork running mini-agents under `agent_roles/revise/`. The minis are smaller, scope-locked counterparts of their initial-build parents.
+
+**The bright line:** any revision that requires changes to Master Design Section 1 (Core Concept & Tone) or Section 11a (Style Contract world defaults) is **out of scope for the revision pipeline**. The Reviser (Phase R0) classifies and bounces these to a full pipeline re-run via `/worldforge skip phase0`, reusing the existing `World_Seed.md`. Per-card overrides in Section 11b stay in revision scope; only world-default changes bounce.
+
+**Load-bearing properties of the revise pipeline:**
+- **Cascade scope.** Mini-agents touch only files listed in the Revision Log entry's confirmed cascade. Silent scope expansion is forbidden — cross-references the user did not flag are surfaced for confirmation, not silently widened.
+- **UID preservation.** The mini-Compiler reads existing Export/ JSON before rewriting, preserves UIDs on unchanged entries, assigns next-free UIDs to new entries, and never deletes unless cascade explicitly says so. This keeps running SillyTavern chat states viable across revisions.
+- **Inline revision markers.** Every change site in Master_Design.md and Drafts/ gets a `<!-- REVISED IN R[N] -->` or `<!-- CREATED IN R[N] -->` marker. These are the canonical audit trail at the change site; the per-revision report in `Drafts/Revision_R[N]_Report.md` is the durable detail. On the Export/ side, where filenames can't be renamed and JSON can't carry extra fields, the mini-Compiler maintains `Export/REVISED_FILES.md` — a cumulative manifest of every export file ever touched by a revision (file, latest revision, date, summary). It is the sole revision marker on the Export side.
+- **Audit/apply separation preserved.** The mini-Editor and mini-auditors are read-only on drafts; the mini-Prompt-Engineer is read-only on Export/ JSON except for the Chat Completion Preset, which it may modify only under narrow triggers (Multi-Character Dynamics block toggle, NSFW block toggle, Style Contract ACTIVE-SPEAKER RULE toggle).
+- **Single revision at a time.** A revise invocation captures one logical concern. Multiple unrelated changes run as separate sequential revisions; overlapping PENDING entries are forbidden.
+
+When editing any `agent_roles/revise/*` file, the parent agent's foundational rules still apply — the mini documents only the deltas. Cross-reference the parent before adding rules that should already inherit.
+
+### 7. Notes_On_functionality.md is the SillyTavern source of truth
 
 This file is the authoritative reference for SillyTavern's runtime behavior — prompt assembly, world info scanning, position values, lorebook flag effects, group chat field combination. When editing pipeline files, if you need to reference SillyTavern behavior, consult this file. If a position value, flag effect, or runtime mechanic appears to be wrong in this file, verify against the official SillyTavern source (https://github.com/SillyTavern/SillyTavern) before editing — this file has been corrected before for outdated content, and getting it right matters because every agent consults it.
 
@@ -144,6 +172,8 @@ These pairs of files must stay in sync. When editing one, check the other.
 | `Notes_On_functionality.md` (position table) | All agent files referencing positions — they cite this table |
 | Any agent spec (sign-off block) | `workflows/world-forge.md` (phase descriptions) — phase outputs feed handoffs |
 | `agent_roles/06_The_Intimacy_Architect.md` | `agent_roles/03d_The_Intimacy_Auditor.md` — auditor validates what architect produces |
+| Any parent agent in `agent_roles/*.md` | Its mini counterpart in `agent_roles/revise/*_mini.md` — the mini inherits parent's foundational rules, so changing the parent may require updating the mini's delta list |
+| `workflows/world-forge-revise.md` (routing matrix) | `agent_roles/revise/00_The_Reviser.md` (scope types) — both must enumerate the same eleven scope types |
 
 ---
 
