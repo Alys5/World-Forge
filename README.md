@@ -160,6 +160,8 @@ A new project folder evolves through these files as the pipeline progresses:
 | `/worldforge skip phase0` | Begin from Phase 1 (you wrote the World Seed manually) |
 | `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content) |
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content) |
+| `/worldforge revise` | Post-launch: make a surgical change to a shipped world through the revision pipeline (UID-preserving, scope-locked) |
+| `/worldforge resync-preset` | Post-launch: regenerate a shipped world's Chat Completion Preset against the current template and block library — preset only, no content changes |
 
 ## After SillyTavern import
 
@@ -167,6 +169,13 @@ A new project folder evolves through these files as the pipeline progresses:
 2. In the World Info panel, enable the **World Lorebook** group and all **Character Lorebook** groups permanently. **Arc lorebooks** are swap-in: enable Arc 1 to start; switch to Arc 2 when the story's exit trigger fires; and so on. **Only one arc lorebook should be active at a time.** The same applies to Arc Intimacy Registers when present.
 3. Open **User Settings → Persona Management** and create (or select) the persona for this world. Open `Export/User.md`, copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---`, and paste it into the persona's **Description** field. Link the **Protagonist Lorebook** in the same persona's **Lorebook** field so it scans only when that persona is active.
 4. Select the world's Chat Completion Preset in the API settings panel.
+
+## Post-launch: revising and resyncing
+
+A shipped world is not frozen. Two maintenance paths keep a world current without rebuilding it from scratch:
+
+- **`/worldforge revise`** runs the revision pipeline — a parallel fork that makes surgical, scope-locked content changes (revise an arc, add a character, adjust a relationship) through mini-versions of the build agents. It preserves the UIDs on your existing lorebook entries, so running SillyTavern chat states survive the change. The one bright line: revisions that touch the world's core concept/tone or its Style Contract world defaults are bounced to a full re-run (reusing your existing `World_Seed.md`). See [`workflows/world-forge-revise.md`](./workflows/world-forge-revise.md).
+- **`/worldforge resync-preset`** refreshes only the Chat Completion Preset, bringing it current with pipeline improvements and any content changes that surface inside preset blocks. It makes no content changes and, because a preset is a global settings profile rather than UID-bearing world info, re-importing it does not disturb running chats.
 
 ## Companion SillyTavern fork (optional)
 

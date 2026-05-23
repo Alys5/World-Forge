@@ -30,6 +30,7 @@ World-Forge/
 ├── README.md                         ← Human-facing project description
 ├── tutorial.md                       ← Usage tutorial
 ├── Notes_On_functionality.md         ← Authoritative reference: how SillyTavern works internally
+├── LICENSE
 ├── .gitignore
 ├── agent_roles/                      ← Phase-specific agent specifications
 │   ├── 00_The_Interviewer.md
@@ -55,14 +56,23 @@ World-Forge/
 │       ├── 04_The_Compiler_mini.md
 │       └── 05_The_Prompt_Engineer_mini.md
 ├── templates/                        ← Structural references the pipeline produces output against
-│   ├── Char_Card_creation.md
-│   ├── Lorebook_creation.md
-│   ├── Group_lorebook_template.md
-│   ├── Chat_Completion_Preset_template.json
-│   └── World_Seed_Template.md
+│   ├── World_Seed_Template.md        ← Phase 0 authoring guide
+│   ├── Char_Card_creation.md         ← Card field-by-field authoring guide
+│   ├── Lorebook_creation.md          ← Lorebook entry authoring guide
+│   ├── Group_lorebook_template.md    ← Group lorebook authoring guide
+│   ├── User_Persona_template.md      ← {{user}} persona description (User.md) authoring guide
+│   ├── char_template.json            ← Raw V3 character-card JSON schema exemplar
+│   ├── Lorebook_Template.json        ← Raw lorebook JSON schema exemplar
+│   ├── Group_lorebook_template.json  ← Raw group lorebook JSON schema exemplar
+│   ├── Chat_Completion_Preset_template.json   ← Preset JSON structure (Prompt Engineer target)
+│   └── Group_chat_completion.json    ← Group-chat preset JSON exemplar
 ├── workflows/                        ← Pipeline orchestration
-│   ├── world-forge.md                ← Main pipeline (initial world build, Phase 0–5.5)
+│   ├── world-forge.md                ← Main pipeline (initial build, Phase 0–5.5; also PRESET RESYNC)
 │   └── world-forge-revise.md         ← Revision fork (surgical post-launch edits, Phase R0–R5.5)
+├── wiki/                             ← Setup & tooling guides (linked from README/tutorial)
+│   ├── README.md                     ← Wiki index
+│   ├── Agentic-Tools-and-Models.md   ← Roo/Kilo/Cline + model comparison
+│   └── Kilo-Code-Setup.md            ← Dedicated Kilo Code setup walkthrough
 └── Samples/                          ← Example world outputs for reference
 ```
 
@@ -106,7 +116,7 @@ If you find yourself moving content between cards and preset, verify which side 
 
 The Editor (Phase 3), Voice Auditor (3.5), Arc Transition Auditor (3.6), Intimacy Auditor (3.7), and Prompt Engineer (5) are **read-only on draft and export files**. They produce critique reports, audit reports, and recommendations — they do not modify the files they audit.
 
-The Architect (Phase 2) and Intimacy Architect (Phase 2.5) are the **only agents with write authority on drafts**. The Compiler (Phase 4) is the only agent with write authority on `Export/` JSON files.
+The Architect (Phase 2) and Intimacy Architect (Phase 2.5) are the **only agents with write authority on drafts**. The Compiler (Phase 4) is the only agent with write authority on `Export/` JSON files — with one narrow, post-launch exception: the Prompt Engineer gains write authority on the single `Export/[WorldName]_ChatPreset.json` file (and only that file) under Preset Resync Mode, and the mini-Prompt-Engineer may toggle three preset blocks under the revise pipeline. See principle #8. Both exceptions are preset-only; neither touches lorebook or card JSON.
 
 The Prompt Engineer's audit recommendations (Sections 7 and 8 of `Prompt_Engineer_Audit.md`) require **manual user application** — see Phase 5.5 in `workflows/world-forge.md`. This is intentional: it preserves audit reviewability and prevents self-validating corrections.
 
@@ -158,6 +168,20 @@ This file is the authoritative reference for SillyTavern's runtime behavior — 
 - 6: EMBottom (Example Messages Bottom — appended to dialogueExamples)
 - 7: outlet
 
+### 8. Preset Resync (Post-Launch Preset Refresh)
+
+There are three distinct operating modes, not two: the **initial build** (`/worldforge start`, Phases 0–5.5), the **revision pipeline** (`/worldforge revise`, principle #6), and **preset resync** (`/worldforge resync-preset`). Resync exists because a shipped world's `Export/[WorldName]_ChatPreset.json` can fall behind in two independent ways: the pipeline's preset spec evolves (a reframed core block, a new optional block, a changed template flag), and/or the world's content changes through the revise pipeline in ways that surface inside preset blocks (Deep Think names the arcs, the multi-character lattice names characters) but that the revise mini-Prompt-Engineer never writes.
+
+It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Prompt_Engineer.md` Section 8). The agent re-derives each block's content from the current `templates/Chat_Completion_Preset_template.json` + block library + the post-revision `Drafts/Master_Design.md`; writes only the blocks whose content has drifted and adds newly-warranted optional blocks; **preserves** block identifiers, `prompt_order`, revision-applied toggles, and the user's field-level customizations; re-runs the Section 5f Pass 1 + Pass 2 self-validation; and writes `Export/Preset_Resync_Report.md`.
+
+**Load-bearing properties:**
+- **Preset-only write authority.** This is the one place the Prompt Engineer writes to `Export/` (see principle #3). It touches the Chat Completion Preset and nothing else — no lorebook or card JSON.
+- **Makes no content changes.** Resync reflects already-applied content and spec changes into the preset. The revise pipeline *makes* surgical content changes; resync makes none. A world can be resynced without ever entering revise, and revised worlds can be resynced afterward.
+- **Distinct from `resume phase5`.** `resume phase5` re-runs the full Phase-5 audit during an in-progress build; resync is a maintenance op on an already-shipped world that only refreshes the preset.
+- **Low risk.** A Chat Completion Preset is a global SillyTavern settings profile, not UID-bearing world info, so re-importing a resynced preset does not disturb running chat states. Git is the rollback path.
+
+See the **PRESET RESYNC** section of `workflows/world-forge.md` for the full operation.
+
 ---
 
 ## Cross-file consistency requirements
@@ -168,7 +192,9 @@ These pairs of files must stay in sync. When editing one, check the other.
 |---|---|
 | `agent_roles/02_The_Architect.md` (entry templates) | `agent_roles/03_The_Editor.md` (validation rules) — they validate what the Architect produces |
 | `agent_roles/02_The_Architect.md` (card structure) | `templates/Char_Card_creation.md` — both define card field requirements |
+| `agent_roles/02_The_Architect.md` / `agent_roles/03_The_Editor.md` (User.md persona) | `templates/User_Persona_template.md` — both define the `{{user}}` persona-description structure |
 | `agent_roles/05_The_Prompt_Engineer.md` (block library) | `templates/Chat_Completion_Preset_template.json` — agent must produce against template structure |
+| `agent_roles/05_The_Prompt_Engineer.md` Section 8 (Preset Resync Mode) | `workflows/world-forge.md` PRESET RESYNC section — both define the `/worldforge resync-preset` operation |
 | `Notes_On_functionality.md` (position table) | All agent files referencing positions — they cite this table |
 | Any agent spec (sign-off block) | `workflows/world-forge.md` (phase descriptions) — phase outputs feed handoffs |
 | `agent_roles/06_The_Intimacy_Architect.md` | `agent_roles/03d_The_Intimacy_Auditor.md` — auditor validates what architect produces |
