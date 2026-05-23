@@ -389,6 +389,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge revise status` | Show all Revision Log entries and their statuses |
 | `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
 | `/worldforge revise cancel R[N]` | Cancel a pending revision and mark CANCELLED |
+| `/worldforge resync-preset` | Regenerate a shipped world's Chat Completion Preset against the current template + block library, picking up pipeline changes made since the world was built (see PRESET RESYNC below). Preset-only; does not re-audit lorebooks or cards. |
 
 ---
 
@@ -397,3 +398,17 @@ For users who find manual application onerous on large worlds, a future pipeline
 Once a world has completed Phase 5.5 (pipeline complete, Export/ ready, world in play), surgical changes use the **revision pipeline** — a parallel fork that runs mini-versions of the agents above with read-mostly authority and UID-preserving compilation. See `workflows/world-forge-revise.md` for the full revise pipeline.
 
 The bright line is **Master Design Section 1 (Core Concept & Tone) and Section 11a (Style Contract world defaults)**. Revisions that don't touch these stay in the revision pipeline (faster, surgical, preserves running ST chat states). Revisions that touch them require a full re-run from Phase 1 via `/worldforge skip phase0` — the existing `World_Seed.md` is reused, the Interviewer is skipped, and Phases 1–5 rebuild from scratch. The Reviser performs this classification and bounces out-of-scope revisions automatically.
+
+---
+
+## PRESET RESYNC (post-launch preset upgrade)
+
+When the pipeline's preset spec evolves after a world has shipped — a reframed core block, a new optional block, a changed template flag — that world's `Export/[WorldName]_ChatPreset.json` falls behind the current spec. `/worldforge resync-preset` brings it forward without touching world content.
+
+It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Prompt_Engineer.md` Section 8). The agent diffs the existing preset against the current `templates/Chat_Completion_Preset_template.json` and block library (Section 5a), regenerates only the drifted core blocks and newly-warranted optional blocks, preserves block identifiers + `prompt_order` and the user's field-level customizations, re-runs the Section 5f Pass 1 + Pass 2 self-validation, and writes `Export/Preset_Resync_Report.md` documenting every block changed, added, or preserved.
+
+**Scope and boundaries:**
+- **Preset only.** Resync regenerates the Chat Completion Preset — the one Export/ file the Prompt Engineer authors. It does NOT re-audit lorebooks or cards and does NOT emit Section 7/8 manual-apply recommendations. World content (lorebooks, cards, drafts) is untouched.
+- **Distinct from `resume phase5`.** `resume phase5` re-runs the full Phase-5 audit during an in-progress build. `resync-preset` is a maintenance op on an already-shipped world that only refreshes the preset against the latest spec.
+- **Distinct from the revise pipeline.** The revise pipeline makes surgical *content* changes (a character, an arc, an entry). Resync makes no content changes — it upgrades the preset to the current pipeline version. A world can be resynced without ever entering revise.
+- **Low risk.** A Chat Completion Preset is a global SillyTavern settings profile, not UID-bearing world info, so re-importing a resynced preset does not disturb running chat states. Git is the rollback path if the user wants the prior preset back.
