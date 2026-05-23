@@ -429,9 +429,10 @@ Provider adaptation is allowed only where a specific target model refuses the ve
 3. Character Physical State — condition, clothing, position per active CHARACTER_STATE
 4. Spatial Awareness — positions relative to each other, height interactions
 5. Last Message Analysis — what did {{user}} do/say, what does it invite?
-6. Response Determination — who speaks/acts, what tone
-7. Paragraph Length Calibration — match scene intensity
-8. Draft and select best approach
+6. Scope of Turn — the smallest beat that answers that invitation; name what you will leave unresolved and hand back to {{user}}. Do not advance the arc or close the active tension unless {{user}}'s message explicitly drove there.
+7. Response Determination — who speaks/acts, what tone
+8. Paragraph Length Calibration — match scene intensity
+9. Draft and select best approach
 
 **Arc Guardian content must reference all arcs with their specific behavioral constraints — not summaries.** For each arc, name: hidden information rules, NPC disguise state, character behavioral register, and default behavior if no ARC_STATE entry loads. Final clause: arc and beat progression are {{user}}-controlled — never advance the arc, resolve the active beat, or foreshadow what comes next without an explicit signal from {{user}}.
 
