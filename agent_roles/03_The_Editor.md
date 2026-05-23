@@ -127,7 +127,7 @@ Score each criterion 1–3. Pass threshold: all ≥2, at least three = 3.
 | **ARC_STATE Completeness** | See Step 4a below — this criterion now has structural sub-checks that don't fit in a table cell. |
 | **NPC_SHIFT Delta Integrity** | Entry contains only behavioral change, not repeated full profile. |
 | **DRAMATIC_BEAT Specificity** | Does the entry tell the LLM what to do when this beat occurs, not just that it exists? |
-| **TENSION Urgency** | Does the TENSION entry actually create narrative pressure, or just describe a situation? |
+| **TENSION Sustained Pressure** | Does the entry frame a standing pressure the prose keeps live every turn — not flat description, and not a countdown the model should resolve on its own? |
 
 ### Step 4a — ARC_STATE Structural Validation (hard fail criteria)
 

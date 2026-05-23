@@ -340,7 +340,7 @@ These eight blocks are always in the preset, always enabled. They are present in
 
 **Block 2 — Deep Think** (`identifier: "deep_think"`). Pre-generation considerations — the world-specific facts the model must account for before responding (active arc, hidden-information rules, character state, spatial reality), referencing this world's arcs by name. Frame it as a checklist of considerations to bring into reasoning, **not** a numbered procedure the model executes in sequence. This distinction is load-bearing: the preset targets native reasoning models (`reasoning_effort` is set high by default), and a rigid step-by-step script competes with and flattens the model's own reasoning, whereas a checklist of world-critical considerations steers attention without overwriting it. Surface what the model cannot infer on its own (which lorebook entries to read, which constraints bind); leave the reasoning and writing process — tone, pacing, drafting — to the model.
 
-**Block 3 — Arc Guardian** (`identifier: "arc_guardian"`). Per-arc behavioral constraints with full specificity. Hidden information rules, NPC disguise state, character register, default-if-no-ARC_STATE-loaded behavior. Final clause: arc progression is {{user}}-controlled.
+**Block 3 — Arc Guardian** (`identifier: "arc_guardian"`). Per-arc behavioral constraints with full specificity. Hidden information rules, NPC disguise state, character register, default-if-no-ARC_STATE-loaded behavior. Final clause: arc and beat progression are {{user}}-controlled.
 
 **Block 4 — Lore Integration** (`identifier: "lore_integration"`). Anti-recitation guidance. Synthesize don't recite. Show through action. Contextual relevance filter. Anti-repetition tracking with this world's specific anchors.
 
@@ -394,7 +394,7 @@ The block library above describes what each block is *for*. The requirements bel
 - Creative framework statement: fictional, collaborative, character-driven, no content restrictions
 - Style guidelines: tone matching, tense consistency, prose quality, varied vocabulary
 - Perspective rules: {{user}} controls their own character — model does not act for them. (This is the *protagonist agency* rule, separate from the world's narrative perspective which lives in the `<style_contract>` block below.)
-- Narration rules: proactive writing, show-don't-tell, step-by-step pacing without fast-forwarding
+- Narration rules: proactive writing, show-don't-tell, step-by-step pacing without fast-forwarding. Treat each turn as one move in an ongoing scene, not a task to finish: advance a single beat, render the present moment, hand the turn back. Beats are checkpoints the scene builds toward over many exchanges, not objectives to deliver in one — do not resolve, conclude, or time-skip a scene's central tension on your own initiative. {{user}} sets the pace and decides when the story moves forward.
 - Spatial awareness mandate: character positions, height differences, environmental anchors (generic — specific character heights belong in Spatial Awareness block, not here)
 - Generic character embodiment principles: authentic portrayal, character agency, internal monologue stays in monologue
 - **`<style_contract>...</style_contract>` block — REQUIRED, parameterized from Master Design Section 11a.** Contains exactly two directive lines (or three when the world has any per-card overrides per Section 11c), in this order:
@@ -441,7 +441,7 @@ Provider adaptation is allowed only where a specific target model refuses the ve
 
 Do NOT include generic reasoning or writing-process steps — last-message analysis, who-speaks/what-tone determination, paragraph-length calibration, draft-and-select. A native reasoning model performs these as part of its own process, and scripting them flattens that process into shallow box-ticking. Paragraph register is already governed by the Main Prompt's PARAGRAPH REGISTER directive; do not duplicate it here.
 
-**Arc Guardian content must reference all arcs with their specific behavioral constraints — not summaries.** For each arc, name: hidden information rules, NPC disguise state, character behavioral register, and default behavior if no ARC_STATE entry loads. Final clause: arc progression is {{user}}-controlled — never advance or foreshadow without explicit signal.
+**Arc Guardian content must reference all arcs with their specific behavioral constraints — not summaries.** For each arc, name: hidden information rules, NPC disguise state, character behavioral register, and default behavior if no ARC_STATE entry loads. Final clause: arc and beat progression are {{user}}-controlled — never advance the arc, resolve the active beat, or foreshadow what comes next without an explicit signal from {{user}}.
 
 **Lore Integration content must include:**
 - Synthesize, don't recite: lore entries are facts to know, not phrases to repeat
