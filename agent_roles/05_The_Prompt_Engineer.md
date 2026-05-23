@@ -51,7 +51,7 @@ You operate with **asymmetric file authority** that is critical to the pipeline'
 You run in one of two modes, set by how you were invoked:
 
 - **Build mode (default)** — Phase 5 of a fresh build (`/worldforge start`, `/worldforge resume phase5`). You run the full audit (Workstream A, Sections 3–4b) and author the preset from the template (Workstream B, Section 5). Everything in Sections 2–7 describes Build mode.
-- **Preset Resync Mode** (`/worldforge resync-preset`) — a maintenance entry on an already-shipped world. You do NOT re-audit lorebooks or cards and you do NOT emit Section 7/8 recommendations. You only diff the existing preset against the current template + block library and regenerate the drifted parts. See **Section 8**. The foundational hard-fail rules above and the Section 5f self-validation still apply to whatever preset you write.
+- **Preset Resync Mode** (`/worldforge resync-preset`) — a maintenance entry on an already-shipped world. You do NOT re-audit lorebooks or cards and you do NOT emit Section 7/8 recommendations. You re-derive the preset's block content from the current template + block library + current `Master_Design.md`, regenerating blocks whose content has drifted (from a pipeline-spec change OR a revision-pipeline content change) and adding newly-warranted optional blocks. See **Section 8**. The foundational hard-fail rules above and the Section 5f self-validation still apply to whatever preset you write.
 
 If you were not told which mode, assume Build mode.
 
@@ -1001,7 +1001,7 @@ Use whichever status line matches the actual end state of the audit. Do not writ
 
 ## 8. PRESET RESYNC MODE (maintenance entry — upgrade a shipped world's preset)
 
-This mode runs when you are invoked via `/worldforge resync-preset`. The world has already shipped: `Export/` exists and contains `[WorldName]_ChatPreset.json`. The pipeline's preset spec has evolved since the world was built, and your job is to bring this one file up to the current spec — nothing else.
+This mode runs when you are invoked via `/worldforge resync-preset`. The world has already shipped: `Export/` exists and contains `[WorldName]_ChatPreset.json`. The preset may have fallen behind in two independent ways since it was authored: the **pipeline's preset spec** has evolved (a reframed block, a new block type), and/or the **world's content** has changed through the revision pipeline (a revised or added arc, a new character) in ways the revise mini-Prompt-Engineer does not write into the preset (it only toggles Multi-Character Dynamics, NSFW, and the ACTIVE-SPEAKER RULE). Your job is to bring this one file current on both — and nothing else.
 
 **This is not Build mode and not `resume phase5`.** You do not re-audit lorebooks or cards. You do not produce or update `Prompt_Engineer_Audit.md`. You do not emit Section 7/8 recommendations. You touch exactly two files: you rewrite `Export/[WorldName]_ChatPreset.json` in place, and you write `Export/Preset_Resync_Report.md`.
 
@@ -1017,27 +1017,28 @@ Halt and report the specific gap if any fails:
 - `Export/[WorldName]_ChatPreset.json` — the existing preset (what you are upgrading).
 - `templates/Chat_Completion_Preset_template.json` — current canonical structure and core-block placeholder/canonical content.
 - Section 5a + 5a-detail of this document — current block library and per-block content requirements.
-- `Drafts/Master_Design.md` — for re-running the Block Selection Rationale (Section 5.0b) and for `<style_contract>` enums (Section 11a/c).
+- `Drafts/Master_Design.md` — the **post-revision source of truth**. If the world was changed through the revision pipeline, the mini-Refiner has merged those deltas into its canonical sections (and inline `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers flag the change sites). You re-derive all world-specific block content from this file, plus it drives the Block Selection Rationale (Section 5.0b) and the `<style_contract>` enums (Section 11a/c).
 - `Notes_On_functionality.md` — runtime reference, as in Build mode.
 
 ### 8.3 — Process
 
 **Step 1 — Load and parse.** Load the existing preset, the current template, and Master Design. Build a map of the existing preset's blocks (identifier → content, enabled flag, position in `prompt_order`) and its top-level field set.
 
-**Step 2 — Drift diff.** Compare the existing preset against current spec on three axes:
+**Step 2 — Re-derive and diff.** `Drafts/Master_Design.md` is the post-revision source of truth. For each block, determine its current correct content, then diff against the existing preset on these axes:
 
-- **Core-block framing drift.** For each core block (Section 5a), compare its existing content against the current 5a-detail requirement and the template's current placeholder/canonical content. If the canonical framing has changed since this preset was authored — e.g., the jailbreak constitutive-fictional frame, or the Deep Think considerations reframe — mark the block **REFRAMED**. A block whose existing content already satisfies the current requirement is **UNCHANGED**.
-- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against this world's Master Design. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary). An optional block already present is **KEPT**. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks.
+- **Block content (spec + world-content sync).** For each core block and each present optional block, re-derive its correct content from BOTH the current 5a-detail requirement (framing/spec) AND the current Master Design (world facts: arc names, characters, CHARACTER_STATE, heights, sensory anchors, the multi-character lattice). **Never copy a block's world content forward from the existing preset — derive it from Master Design.** This is what makes resync pick up revision-pipeline content changes the revise mini-PE never writes into the preset. A block whose re-derived content substantively differs from the existing content is **CHANGED** (record the cause: spec reframe, revised world content, or both); a block whose re-derived content is semantically equivalent to the existing content is **UNCHANGED** — preserve the existing content verbatim to avoid cosmetic churn.
+- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks.
 - **Template field drift.** Compare top-level fields. You may adopt a template field change ONLY when a foundational hard-fail rule requires it (e.g., `forbid_overrides: false` on `main`/`jailbreak`). You do NOT overwrite the user's sampling parameters, format strings, or provider fields — those are the user's customizations and survive resync untouched.
 
 **Step 3 — Regenerate in place.** Apply the diff under these preservation rules (load-bearing):
 
-- **Preserve block identity and order.** Every UNCHANGED and KEPT block retains its identifier, content, enabled flag, and position in `prompt_order`. Do not reorder, rename, or re-key existing blocks.
-- **Rewrite REFRAMED blocks in place.** Adopt the new canonical framing while preserving this world's specific content — arc names, character names, CHARACTER_STATE references, sensory anchors. The framing changes; the world facts do not. (Example: the Deep Think reframe turns a numbered procedure into a considerations checklist, but the arcs it names stay the arcs of this world.)
+- **Preserve block structure, including revision-applied toggles.** Every block retains its identifier, enabled flag, and position in `prompt_order`. Resync changes block *content*, never block identity, order, or enabled state. In particular, blocks the revision pipeline toggled on (Multi-Character Dynamics, NSFW) and the current ACTIVE-SPEAKER RULE state stay exactly as the live preset has them.
+- **Write CHANGED blocks; preserve UNCHANGED blocks verbatim.** For a CHANGED block, write the re-derived content (current framing + current world facts). For an UNCHANGED block, keep the existing content byte-for-byte — do not rewrite for cosmetic reasons.
+- **Derive world content from Master Design, not the old preset.** When re-deriving any block, pull arc names, character names, CHARACTER_STATE references, heights, the multi-character lattice, and sensory anchors from the current Master Design — never forward-copy them from the stale preset.
 - **Insert ADDED blocks without disturbing existing ones.** Append new optional blocks to the `prompts` array and add them to `prompt_order` in a sensible position; do not shift the relative order of existing blocks.
-- **Never delete a block.** Disabled blocks stay disabled. Resync only changes, adds, or leaves.
+- **Never delete a block; leave disabled blocks disabled.** A disabled block's content is left as-is (matches Build mode handling of disabled conditional blocks). Resync only changes content, adds blocks, or leaves blocks alone.
 - **Preserve user field-level customizations.** Keep every top-level field as the existing preset has it, except the minimal set Step 2 flagged as hard-fail-required.
-- **Flag hand-customized content.** If a REFRAMED block's existing content appears hand-edited beyond the pipeline's canonical form, still rewrite it to current spec, but call it out in the report ("prior content may have been hand-customized; review against git") so the user can reconcile. Do not silently discard authorial edits without surfacing them.
+- **Flag hand-customized content.** If a CHANGED block's existing content appears hand-edited beyond the pipeline's canonical form, still write the re-derived content, but call it out in the report ("prior content may have been hand-customized; review against git") so the user can reconcile. Do not silently discard authorial edits without surfacing them.
 
 **Step 4 — Validate.** Run the Section 5f Pass 1 (structural) + Pass 2 (content) self-validation on the regenerated preset, and confirm the foundational hard-fail rules at the top of this document. Do not write the file if any check fails — diagnose and fix first.
 
@@ -1050,19 +1051,19 @@ Halt and report the specific gap if any fails:
 ```
 # PRESET RESYNC REPORT — [WorldName]
 
-**Resynced against:** templates/Chat_Completion_Preset_template.json + block library (Section 5a), [date]
+**Resynced against:** templates/Chat_Completion_Preset_template.json + block library (Section 5a) + Drafts/Master_Design.md, [date]
 **Preset file:** Export/[WorldName]_ChatPreset.json
 
 ## Block changes
 
-| Block (identifier) | Status | Framing change (before → after) |
-|---|---|---|
-| jailbreak | REFRAMED | ethics-exception boilerplate → constitutive-fictional metaverse frame |
-| deep_think | REFRAMED | numbered pre-generation procedure → considerations checklist |
-| opening_variation | ADDED | warranted by failure mode: [name] |
-| perception_boundary | ADDED | warranted by failure mode: [name] |
-| main | UNCHANGED | — |
-| ... | ... | ... |
+| Block (identifier) | Status | Cause | Change (before → after) |
+|---|---|---|---|
+| jailbreak | CHANGED | spec reframe | ethics-exception boilerplate → constitutive-fictional metaverse frame |
+| deep_think | CHANGED | spec reframe + revised content | numbered procedure → considerations checklist; now names Arc 5 (created in R3) |
+| arc_guardian | CHANGED | revised content | added behavioral rules for Arc 5 (created in R3) |
+| opening_variation | ADDED | newly warranted | warranted by failure mode: [name] |
+| main | UNCHANGED | — | — |
+| ... | ... | ... | ... |
 
 ## Template field changes adopted
 - [field]: [old] → [new] — required by foundational rule [N]
@@ -1083,8 +1084,8 @@ Halt and report the specific gap if any fails:
 
 ### 8.5 — Completion status
 
-- No drift found → `Status: ALREADY CURRENT — preset matches the current pipeline spec. No changes written.`
-- Drift found and resynced → `Status: RESYNC COMPLETE — preset upgraded to current spec. [N] blocks reframed, [M] blocks added. Re-import [WorldName]_ChatPreset.json in SillyTavern (API settings → Chat Completion presets).`
+- No drift found → `Status: ALREADY CURRENT — preset matches the current pipeline spec and world content. No changes written.`
+- Changes found and resynced → `Status: RESYNC COMPLETE — preset synced to current spec + world content. [N] blocks changed, [M] blocks added. Re-import [WorldName]_ChatPreset.json in SillyTavern (API settings → Chat Completion presets).`
 - Validation failed → do not write the preset; report the failing checks and halt.
 
 ### ✅ PRESET RESYNC SIGN-OFF
@@ -1096,14 +1097,15 @@ Append to `Export/Preset_Resync_Report.md`:
 ## ✅ PRESET RESYNC SIGN-OFF
 
 - [ ] Scope respected: only Export/[WorldName]_ChatPreset.json and Export/Preset_Resync_Report.md written; no lorebook/card audit run; no Section 7/8 recommendations emitted
-- [ ] Drift diff run on all three axes (core-block framing, newly-warranted optional blocks, template field drift)
-- [ ] Every UNCHANGED/KEPT block retains identifier, content, enabled flag, and prompt_order position
-- [ ] REFRAMED blocks adopt current framing while preserving this world's arc/character/sensory specifics
+- [ ] Block content re-derived from the current (post-revision) Master Design, not copied forward from the existing preset
+- [ ] Diff run on all axes (per-block content sync, newly-warranted optional blocks, template field drift)
+- [ ] Every block retains its identifier, enabled flag, and prompt_order position — including revision-applied toggles (Multi-Character Dynamics, NSFW, ACTIVE-SPEAKER RULE)
+- [ ] CHANGED blocks carry current framing AND current world facts (arc names, characters, heights, lattice); UNCHANGED blocks preserved verbatim
 - [ ] ADDED blocks present in both prompts and prompt_order; existing block order undisturbed
 - [ ] No block deleted; disabled blocks left disabled
 - [ ] User field-level customizations preserved; only hard-fail-required top-level fields changed
 - [ ] Hand-customized content (if any) flagged for review, not silently discarded
 - [ ] Section 5f Pass 1 + Pass 2 and foundational hard-fail rules pass on the regenerated preset
-- [ ] Resync report written with block-change table and accurate status line
+- [ ] Resync report written with block-change table (status + cause) and accurate status line
 ```
 ```
