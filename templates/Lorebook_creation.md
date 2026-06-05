@@ -21,18 +21,25 @@ ENTRY TYPE → CORRECT POSITION:
 - Character physical descriptions, psychology, NPC profiles → position: 1
 - Arc state (ARC_STATE), dramatic beats, NPC behavioral shifts → position: 1
 - TENSION entries (narrative urgency, active stakes) → position: 4, depth: 2-4
+
+SANDBOX-MODE ENTRY TYPES (worlds with no narrative arc — one always-active Sandbox Lorebook instead of per-arc lorebooks):
+- SANDBOX_STATE (the ARC_STATE analog — standing world-state + tonal mandate + aliveness contract) → position: 1, constant: true, selective: true, ignoreBudget: true
+- WORLD_PULSE (the TENSION analog — a sustained "the world is alive and reactive" directive, never a countdown) → position: 4, depth: 2-4
+- Roster NPC compact stat block (essence / presence / unique voice fingerprint / signature line / stance / hook) → position: 0 or 1 (same as other NPC profiles)
+- Sandbox standing intimacy: INTIMACY_FUNCTION (no arc suffix) → position: 1, constant: true, ignoreBudget: true
+- A sandbox world has NO CHARACTER_STATE, NPC_SHIFT, DRAMATIC_BEAT, or arc-trigger entries — there is no arc.
 - Tone/atmosphere directives → position: 2 or 3
 
 KEY FIELD RULES:
 - "uid": unique integer per entry, sequential from 0, never duplicated within a lorebook.
 - "key": primary activation keywords. Empty array [] for CONSTANT entries only.
-- "constant": true = fires every context window regardless of keywords. Must also have selective: true and ignoreBudget: true. Use for ARC_STATE and CHARACTER_STATE entries.
+- "constant": true = fires every context window regardless of keywords. Must also have selective: true and ignoreBudget: true. Use for ARC_STATE and CHARACTER_STATE entries (arc mode), or SANDBOX_STATE and the standing INTIMACY_FUNCTION (sandbox mode).
 - "selective": true on ALL entries including CONSTANT ones.
 - "selectiveLogic": 0 = AND ANY (fires if any secondary key present), 1 = NOT ALL, 2 = NOT ANY (fires only if no secondary keys match), 3 = AND ALL.
 - "useProbability": false for entries that should always fire when triggered. true only for stochastic entries where probability < 100.
-- "ignoreBudget": true for ARC_STATE and critical CONSTANT entries that must never be omitted. false for standard entries.
+- "ignoreBudget": true for ARC_STATE / SANDBOX_STATE and critical CONSTANT entries that must never be omitted. false for standard entries.
 - "disable": false for all active entries. Do NOT use "enabled: true" — the correct field is "disable: false".
-- "group": use to group entries by tier for ST lorebook editor management (e.g., "World", "Anna", "Arc1").
+- "group": use to group entries by tier for ST lorebook editor management (e.g., "World", "Anna", "Arc1" for arc worlds; "Sandbox" for the single always-active sandbox lorebook).
 - "depth": only relevant when position = 4. How many messages from the bottom of chat history to inject.
 
 {
