@@ -78,6 +78,32 @@ description: A workflow to build worlds for player to roleplay in.
 
 ---
 
+## WORLD MODE: ARC vs. SANDBOX
+
+Every world is built in one of two modes, declared in World Seed Section 1 (`World Mode: arc | sandbox`) and recorded by the Refiner at the top of `Master_Design.md`. **`arc` is the default and the legacy behavior** — every existing world is an arc world, and arc-world behavior is unchanged. **`sandbox`** is for open-ended worlds with no narrative arc: power-fantasy, world-director, and life-sim worlds anchored by a standing world-state rather than a progression of arcs.
+
+Sandbox mode is a **branch through this same pipeline, not a separate fork.** The same phases and agents run; sandbox mode changes only the Tier 3 spine and the large-cast NPC format. `/worldforge start --sandbox` pre-sets the World Seed field; the field itself is the source of truth, so a hand-written seed or a `skip phase0` run carries the signal.
+
+**What sandbox mode changes, phase by phase:**
+
+| Phase | Arc mode | Sandbox mode |
+|---|---|---|
+| 0 Interviewer | Section 5 walks the arcs | Section 5 becomes the **Sandbox Charter** (standing situation, tonal mandate + aliveness contract, world pulse, live scene types, NPC roster split) |
+| 1 Refiner | Master Design §9 = Narrative Arc Structure | Master Design §9 = **Sandbox Charter (9B)**; NPCs classified principal vs. roster |
+| 2 Architect | One Arc Lorebook per arc (§8); full NPC profiles (§7.D) | One always-active **Sandbox Lorebook** `Tier3_Sandbox_Entries.md` (§8S: `SANDBOX_STATE` + `WORLD_PULSE`); principals §7.D + roster §7.E |
+| 3 Editor | ARC_STATE validation, ≥8 entries/arc, cross-arc qualifiers | **SANDBOX_STATE validation (Step 4a-S)**; no 8-entry floor; no cross-arc qualifiers; roster fingerprint check |
+| 3.5 Voice Auditor | Arc register checks | Standing register vs. SANDBOX_STATE + **Distinctiveness Matrix (Step 3I)** across the roster |
+| 3.6 Arc Transition Auditor | Runs | **Skipped** (no arc seams) |
+| 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8 (unchanged); a sandbox world's `INTIMACY_FUNCTION` register folds into the single Sandbox Lorebook as a standing entry |
+| 4 Compiler | One `Arc[N]_Lorebook.json` per arc | One `Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
+| 5 Prompt Engineer | Arc Guardian / Deep Think name the arcs | Same blocks; they reference the standing sandbox state rather than arcs (Multi-Character Dynamics still applies for a Director + roster) |
+
+**The aliveness contract** is the load-bearing idea of sandbox mode: with no arc carrying tone and momentum, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry are what keep the world feeling alive — NPCs pursuing their own agendas and initiating, the world reacting to and remembering `{{user}}`, the cast rotating in and out rather than sitting inert until summoned. The **roster NPC format** (§7.E) with its uniqueness rule, plus the Voice Auditor's **Distinctiveness Matrix**, are what keep a large cast from collapsing into one generic voice.
+
+> **Revise pipeline:** `workflows/world-forge-revise.md` is **not yet sandbox-aware.** Revising a shipped sandbox world (surgical edits to `SANDBOX_STATE`, `WORLD_PULSE`, or the roster) through the mini-agents is deferred future work. For now, revise a sandbox world via a targeted re-run of the relevant phases. This is flagged here so it is not assumed to work silently.
+
+---
+
 ## PHASE 0: DISCOVERY — THE INTERVIEWER
 
 **Invoke:** `@agent_roles/00_The_Interviewer.md`
@@ -129,8 +155,8 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 2. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
 3. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
 4. `Tier1_World_Entries.md` — all Tier 1 entries
-5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC
-6. `Tier3_Arc[N]_[Title]_Entries.md` — Tier 3 entries per arc
+5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
+6. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
 7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
@@ -206,6 +232,8 @@ IF no failures → VOICE AUDITOR SIGN-OFF
 **Invoke:** `@agent_roles/03c_The_Arc_Transition_Auditor.md`
 **Input:** All Editor-approved `Drafts/Tier3_*` files + `Drafts/Tier2_*` files + `Drafts/Master_Design.md`
 **Output:** `Drafts/Arc_Transition_Audit_[Round N].md`
+
+**Conditional phase.** Runs only in **arc** mode. In **sandbox** mode there are no consecutive arcs and no arc seams to audit — this phase is skipped (exactly as Phase 3.7 is skipped without intimacy), and Phases 3.5 + 3.7 (if applicable) proceed without it.
 
 Verifies continuity across every consecutive arc pair: trigger continuity, CHARACTER_STATE continuity, NPC behavioral shift continuity, world state continuity, hidden information rule continuity, dramatic beat sequence, tone register continuity.
 
@@ -334,7 +362,8 @@ For users who find manual application onerous on large worlds, a future pipeline
 │   ├── Tier2_[ProtagonistName]_Entries.md
 │   ├── Tier2_[CharName]_Entries.md
 │   ├── Tier2_[CharName]_Intimacy_Profile.md       ⭐ new (Phase 2.5)
-│   ├── Tier3_Arc[N]_[Title]_Entries.md
+│   ├── Tier3_Arc[N]_[Title]_Entries.md             ← arc mode
+│   ├── Tier3_Sandbox_Entries.md                    ← sandbox mode (single, replaces arc files)
 │   ├── Tier3_Arc[N]_Intimacy_Register.md          ⭐ new (Phase 2.5)
 │   ├── Instructions_[CardName].md
 │   ├── Editor_Critique_[Round N].md
@@ -354,7 +383,8 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── World_Lorebook.json
     ├── [CharName]_Lorebook.json
     ├── [CharName]_Intimacy_Profile.json           ⭐ new (Phase 4, conditional)
-    ├── Arc[N]_Lorebook.json
+    ├── Arc[N]_Lorebook.json                        ← arc mode
+    ├── Sandbox_Lorebook.json                       ← sandbox mode (single, always active)
     ├── Arc[N]_Intimacy_Register.json              ⭐ new (Phase 4, conditional)
     ├── Group_Lorebook.json
     ├── Compiler_Log.md
@@ -368,7 +398,8 @@ For users who find manual application onerous on large worlds, a future pipeline
 
 | Command | Action |
 |---|---|
-| `/worldforge start` | Begin from Phase 0 (the Interviewer) |
+| `/worldforge start` | Begin from Phase 0 (the Interviewer) — arc mode by default |
+| `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** (no narrative arcs; standing world-state + large NPC roster). Pre-sets the World Seed `World Mode` field; see SANDBOX MODE below |
 | `/worldforge resume phase0` | Resume the interview from the last completed section |
 | `/worldforge resume phase1` | Re-run Refiner with answered questions |
 | `/worldforge resume phase2` | Re-run Architect |
@@ -382,6 +413,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge status` | Report current phase, round, open blockers |
 | `/worldforge skip phase0` | Begin from Phase 1 (user has written World_Seed.md manually, OR resuming after a Section 1/11 revision bounced from the revise pipeline) |
 | `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content in this world) |
+| `/worldforge skip phase3.6` | Skip Arc Transition Auditor (auto-skipped in sandbox mode — no arc seams to audit) |
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content in this world) |
 | `/worldforge revise` | Begin the revision pipeline for surgical changes to an already-built world (see `workflows/world-forge-revise.md`) |
 | `/worldforge revise --freeform` | Revision pipeline with freeform intent input (paste a description, Reviser structures) |

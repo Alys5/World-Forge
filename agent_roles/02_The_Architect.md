@@ -13,13 +13,15 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 3. **Position Rationale on every lorebook entry.** Every entry across all tiers has a `Position Rationale:` field — either the literal string `DEFAULT` (when the entry uses the documented default position+flags for its tier) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. The Editor hard-fails missing or shallow rationales.
 
-4. **All six output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), `Tier3_Arc[N]_*_Entries.md` (one per arc), `Instructions_[CardName].md` (one per card). Conditional Phase 2.5 adds Intimacy Profile and Register files when Section 8 is in scope.
+4. **All six output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
 
 5. **Style overrides are metadata-only.** Cards with per-card style overrides declare them through `extensions.world_forge.style_override` in the LLM Instructions draft — never as a `<style_override>` tag block inside card text. See `agent_roles/SHARED_Style_Contract_Reference.md` for the schema and the directive prose templates. The Editor hard-fails any literal `<style_override>` tag in any card text field.
 
-6. **ARC_STATE entries require the two-subsection structure.** `**Dramatic Situation:**` (descriptive) followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` (4–8 directive bullets in imperative language). Editor Step 4a hard-fails entries missing the structure or with descriptive-only mandates.
+6. **ARC_STATE entries require the two-subsection structure.** `**Dramatic Situation:**` (descriptive) followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` (4–8 directive bullets in imperative language). Editor Step 4a hard-fails entries missing the structure or with descriptive-only mandates. **In sandbox mode** the `SANDBOX_STATE` entry inherits the same rule, with `**Standing Situation:**` replacing `**Dramatic Situation:**` — see Section 8S.
 
-7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER_STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority.
+7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER_STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority. *(Arc mode only — sandbox worlds have no arcs or CHARACTER_STATE; cards carry their full standing range and defer to `SANDBOX_STATE`.)*
+
+8. **World Mode governs Tier 3 and the NPC format.** Read Master Design Section 9's title. `arc` → author one Arc Lorebook per arc (Section 8) and use full NPC profiles (Section 7.D). `sandbox` → author the single always-active Sandbox Lorebook (Section 8S) instead, with NO `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries, and split a large NPC cast into principals (Section 7.D) + roster (Section 7.E). Do not mix: a sandbox world has no arc lorebooks; an arc world has no sandbox lorebook.
 
 ---
 
@@ -58,7 +60,7 @@ Draft in this sequence to prevent cross-contamination:
 2. `User.md` — `{{user}}` Persona Description text (paired with the Tier 2 Protagonist Lorebook)
 3. World Lorebook entries (Tier 1)
 4. Character Lorebook entries (Tier 2, one file per character — including the Tier 2 Protagonist Lorebook for `{{user}}`)
-5. Arc Lorebook entries (Tier 3, one file per arc)
+5. Tier 3 lorebook entries — *arc mode:* one file per arc (Section 8); *sandbox mode:* one `Tier3_Sandbox_Entries.md` (Section 8S)
 6. LLM Instruction drafts (system_prompt + post_history_instructions per card)
 
 ---
@@ -310,8 +312,8 @@ Write the physical description in this order, as continuous prose (not a list):
 - Character's relationship with each other named character they interact with
 - Character's relationship with significant abstract things (religion, money, sex, trust, family, their past — whatever is relevant to this specific character)
 
-### D. NPC-Specific Entry (for NPCs rather than card characters)
-Since NPCs live in the lorebook rather than on a card, their entry must be comprehensive enough for the model to portray them fully:
+### D. NPC-Specific Entry — Principal NPCs (full profile)
+Since NPCs live in the lorebook rather than on a card, a **principal** NPC's entry must be comprehensive enough for the model to portray them fully. Use this format for principal NPCs (the handful {{user}} orbits most closely). Master Design Section 8 classifies each NPC as principal or roster; for roster NPCs use the compact format in Section 7.E instead.
 
 ```
 ### ENTRY: NPC — [Name]
@@ -333,9 +335,39 @@ Since NPCs live in the lorebook rather than on a card, their entry must be compr
 - What makes them dangerous / useful / complicated]
 ```
 
+### E. NPC-Specific Entry — Roster NPCs (compact stat block)
+
+For large casts (especially **sandbox** World-Director worlds with 15–30 NPCs), authoring a full §7.D profile for every NPC bloats the lorebook and — the real failure mode — lets the voices blur into one generic register. Author the non-principal NPCs as compact roster stat blocks instead. The format is fixed and deliberately terse, but engineered so brevity does not cost distinctiveness: the **voice fingerprint** field is the load-bearing one.
+
+```
+### ENTRY: NPC — [Name]
+**Category:** NPC (Roster)
+**Trigger Keys:** [name variants, role title, descriptor]
+**Selective Logic:** 0 (OR — any key triggers)
+**Constant:** No
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention, same as §7.D)
+**Order Priority:** [70–89 — below principals]
+**Position Rationale:** DEFAULT
+[Mark DEFAULT when using the position-0 NPC convention with constant:false. Justify only if you deviate.]
+
+**Content:**
+- **Essence:** [who they are + the one thing they want — one line]
+- **Presence:** [body/sensory cue, how they enter a room — one line]
+- **Voice fingerprint:** [three concrete, UNIQUE speech markers — cadence, diction, a verbal tic — that no other roster NPC shares]
+- **Signature line:** "[one sample line only this NPC would say]"
+- **Stance toward {{user}}:** [deference / rivalry / desire / fear / transaction / curiosity — one line]
+- **Hook:** [what pulls them into a scene, or what they offer the sandbox — one line]
+```
+
+**The distinctiveness rule (binding):** before finishing the roster, read the `Voice fingerprint` and `Signature line` of every roster NPC side by side. If any two could be swapped without notice, they are not yet distinct — sharpen one until a single line of dialogue would identify the speaker. The Voice Auditor runs a blind-line test across the roster (Step 3I) and will flag overlaps; produce a roster that passes it.
+
+> Roster NPCs are still Tier 2 permanent reference data. In **sandbox** mode they do not get arc states (there are no arcs). In **arc** mode you can use the roster format for minor NPCs and reserve §7.D for principals; arc-specific behavior for any roster NPC who shifts across arcs still goes in that arc's NPC_SHIFT entry.
+
 ---
 
-## 8. ARC LOREBOOK ENTRIES — `Drafts/Tier3_Arc[N]_[Title]_Entries.md`
+## 8. ARC LOREBOOK ENTRIES — `Drafts/Tier3_Arc[N]_[Title]_Entries.md` — *arc mode*
+
+> **Mode gate.** Author this section only when Master Design `World Mode` is `arc`. When it is `sandbox`, skip to **Section 8S** and author the single Sandbox Lorebook instead — do not produce per-arc files, CHARACTER_STATE, NPC_SHIFT, or DRAMATIC_BEAT entries.
 
 One file per arc. These entries define the active narrative state when this arc is loaded.
 
@@ -546,6 +578,71 @@ Fewer than 8 means the arc is under-specified and the LLM will fill gaps with ge
 
 ---
 
+## 8S. SANDBOX LOREBOOK ENTRIES — `Drafts/Tier3_Sandbox_Entries.md` — *sandbox mode*
+
+> **Mode gate.** Author this section only when Master Design `World Mode` is `sandbox`. It replaces Section 8 entirely. There is exactly **one** Sandbox Lorebook, always active (never swapped). It anchors the standing world-state the way an Arc Lorebook anchors an arc — but there is no progression, so there are no CHARACTER_STATE, NPC_SHIFT, DRAMATIC_BEAT, or arc-trigger entries.
+
+Source the content from Master Design Section 9B (Sandbox Charter). The Sandbox Lorebook contains:
+
+### A. SANDBOX_STATE Entry (mandatory, exactly 1)
+**Constant:** YES — fires every context window, no trigger key needed
+**Selective:** YES
+**ignoreBudget:** YES
+**Injection Position:** 1 (After Char Def — same default as Tier 3 ARC_STATE per Notes 3.3.1)
+**Order Priority:** 100 (highest — this is the master standing directive)
+**Position Rationale:** DEFAULT
+
+#### ⭐ SANDBOX_STATE CONTENT STRUCTURE — MANDATORY TWO-SUBSECTION FORMAT
+
+`SANDBOX_STATE` is the sandbox analog of `ARC_STATE` and inherits its two-subsection structure (Foundational Rule #6). The only change is the first header. Without the split, the descriptive register dominates and the model reads behavioral cues as world-facts rather than as binding directives.
+
+**Subsection 1: Standing Situation** (descriptive — what is persistently true about this world)
+
+Header: `**Standing Situation:**`
+
+Content:
+- The world's premise and genre tag, in the present-continuous (what the world *is*, not a story moving through it)
+- {{user}}'s standing and power — who they are here and what the world lets them do
+- The power-fantasy / experience contract — how the world treats {{user}} by default (deference, fear, desire, opportunity, danger) and the standing feeling the sandbox delivers
+- This is the scene-setting paragraph the model uses to understand the world's resting state. It is description, not instruction.
+
+**Subsection 2: Tonal Mandate** (directive — how the model must write, every response)
+
+Header: `**Tonal Mandate (binding behavioral directive — applies to every response):**`
+
+Content: 4–8 imperative bullets (same imperative-language standard as ARC_STATE: resist, dominates, never default to, dwells on, elides, do not, must, never, always). Cover, where relevant:
+
+- **Active register:** the dominant register every response defaults to.
+- **Prose dwells on / Prose elides:** the standing atmospheric and behavioral anchors to linger on or skip.
+- **Live scene types:** the sandbox menu — the kinds of scenes the model should bias toward and be ready to enter (negotiations, intimate evenings, displays of authority, domestic quiet, sudden threats, etc.).
+- **Power-fantasy contract:** how NPCs and the world treat {{user}} by default — the directive form of the Standing Situation's contract.
+- **Aliveness directives (mandatory — this is what keeps a sandbox from feeling like a vending machine):** NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; off-screen life continues and time passes; never freeze the world waiting for {{user}}; rotate NPCs in and out so the cast feels populated, not summoned.
+- **Hard prohibitions:** what the model must never do — e.g., never strip {{user}}'s agency or power without an in-world cause the player set in motion; never reset NPC attitudes to neutral between scenes; never flatten the cast to a single voice.
+
+> The Editor (Step 4a, sandbox variant) hard-fails a `SANDBOX_STATE` entry missing either subsection, missing the aliveness directives, or whose Tonal Mandate has fewer than 4 imperative bullets.
+
+### B. WORLD_PULSE Entry (mandatory, 1–2)
+**Trigger Keys:** [none if constant; otherwise topic keywords for the ambient pressures]
+**Constant:** No (recency-injected at depth, like TENSION) — OR Yes if the pulse must fire every turn; justify in rationale if constant
+**Injection Position:** 4 (At Depth — same default as Tier 3 TENSION per Notes 3.3.4; inject inside chat history at `depth: 2–4` for maximum recency)
+**Depth:** 2–4
+**Role:** system
+**Order Priority:** 90
+**Position Rationale:** DEFAULT
+
+Content: The sandbox analog of TENSION. Instead of a stakes-countdown, this is the standing **aliveness pulse** — what is always in motion at the edges: ambient pressures and opportunities, who wants what from {{user}}, what the world is doing in the background while {{user}} acts, reputation preceding {{user}} into rooms. Frame it as a standing condition the prose keeps live every turn — sustained, never relieved or resolved on the model's own initiative. Keep it short and present-tense; it injects close to generation.
+
+### C. LOCATION Entries (sandbox standing locations, as needed)
+**Injection Position:** 1 (After Char Def — Tier 3 default per Notes 3.3.1)
+**Order Priority:** 70–80
+**Position Rationale:** DEFAULT
+
+Only sandbox-specific "active space" locations belong here. Permanent world locations already live in Tier 1 (do not duplicate). If Tier 1 carries all the locations, this category can be empty.
+
+**Minimum Sandbox Lorebook content: `SANDBOX_STATE` + at least one `WORLD_PULSE`.** There is no 8-entry floor — that floor is an arc-coverage heuristic and does not apply to a single standing context. Add LOCATION entries and additional WORLD_PULSE entries as the world warrants, but do not pad.
+
+---
+
 ## 9. LLM INSTRUCTION DRAFTS — `Drafts/Instructions_[CardName].md`
 
 One file per character card. This becomes the `system_prompt`, `post_history_instructions`, and optionally `extensions.depth_prompt` fields.
@@ -753,11 +850,20 @@ Append to your submission note before handing to The Editor:
 - [ ] Physical description entry for every major character (anatomical order)
 - [ ] Psychological core entry for every major character
 - [ ] Relational entries: all major relationships covered
-- [ ] NPC comprehensive entries: all NPCs covered
+- [ ] NPC entries: principals as full §7.D profiles; roster NPCs (large casts) as compact §7.E stat blocks
+- [ ] **Roster NPC voice fingerprints are unique — no two roster NPCs swappable from a single line (distinctiveness rule)**
 - [ ] All entries have trigger keys
 - [ ] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
 
-### Tier 3 — Arc Lorebook Entries
+### Tier 3 — Sandbox Lorebook Entries (sandbox mode only — skip if arc mode)
+- [ ] Exactly one `Tier3_Sandbox_Entries.md`, no per-arc files
+- [ ] **SANDBOX_STATE entry (CONSTANT, no key) uses the two-subsection structure: `**Standing Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response):**`**
+- [ ] **SANDBOX_STATE Tonal Mandate has 4–8 imperative bullets and includes the aliveness directives (NPCs act on their own, world reacts/remembers, never freezes, rotate the cast)**
+- [ ] At least one WORLD_PULSE entry (position 4, sustained, never resolved)
+- [ ] No CHARACTER_STATE / NPC_SHIFT / DRAMATIC_BEAT / arc-trigger entries present
+- [ ] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
+
+### Tier 3 — Arc Lorebook Entries (arc mode only — skip if sandbox mode)
 - [ ] ARC_STATE entry for every arc (CONSTANT, no key)
 - [ ] **ARC_STATE content uses the mandatory two-subsection structure: `**Dramatic Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**`**
 - [ ] **ARC_STATE Tonal Mandate contains 4–8 bulleted directives using imperative language (resist, dominates, never default to, dwells on, elides, do not, must, never, always)**

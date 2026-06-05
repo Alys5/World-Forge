@@ -11,12 +11,14 @@ These ten rules are hard-fail triggers. If any one is violated, reject the file 
 2. **Engine-instruction contamination in card text.** Card text fields must not contain narration discipline, formatting rules, perspective rules, style guidelines, creative framework statements, or generic embodiment principles. Diagnostic phrase list is in Step 5b below. No exemption — even cards with declared overrides must keep engine content out of text fields.
 3. **Literal `<style_override>` tag in any card text field.** Per-card style overrides are metadata-only (in `extensions.world_forge.style_override`). Any literal `<style_override>` or `</style_override>` tag in `system_prompt`, `post_history_instructions`, or `depth_prompt` = hard reject.
 4. **Position Rationale missing or shallow on any entry.** Every lorebook entry across all tiers requires a `Position Rationale:` field. Either the literal string `DEFAULT` (when entry uses documented default position+flags) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. Missing or empty = hard reject; shallow ("voice quirks are important") = hard reject (see Step 4.5).
-5. **ARC_STATE missing the two-subsection structure.** Every ARC_STATE entry's content field MUST contain `**Dramatic Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` with 4–8 directive bullets in imperative language. See Step 4a.
+5. **ARC_STATE / SANDBOX_STATE missing the two-subsection structure.** Every ARC_STATE entry's content field MUST contain `**Dramatic Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` with 4–8 directive bullets in imperative language. In **sandbox** mode the single SANDBOX_STATE entry MUST contain `**Standing Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response):**` and the aliveness directives. See Step 4a.
 6. **Tier contamination.** Arc-specific content in Tier 1 or Tier 2 = hard reject. Baseline profile content in Tier 3 NPC_SHIFT (which should be delta only) = hard reject.
 7. **Required files missing.** All six output files must be present per the file list in Step 1. Including `Drafts/User.md` for any world with a named `{{user}}` protagonist.
 8. **Override metadata schema malformed.** When `extensions.world_forge.style_override` is populated, it must have all seven keys (perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale), valid enum values per `agent_roles/SHARED_Style_Contract_Reference.md` §1 and §3, and the `directives` array consistent with the enum values per Step 5.6 Pass 2.
 9. **`override_rationale` is stylistic, not structural.** Hard-fail patterns: `"feels better"`, `"prefer"`, `"more natural"`, `"sounds better"`, `"reads better"`, `"my style"`, `"liked it"`, `"chose it"`, `"wanted to try"`, `"thought it would"`. Override must name a structural feature of the card.
-10. **Cross-arc inconsistency.** A behavioral mandate in a card that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, etc.). `post_history_instructions` must not hardcode an early-arc register as permanent; it must defer to the active CHARACTER_STATE entry. See Step 5e (Cross-Arc Consistency).
+10. **Cross-arc inconsistency.** A behavioral mandate in a card that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, etc.). `post_history_instructions` must not hardcode an early-arc register as permanent; it must defer to the active CHARACTER_STATE entry. See Step 5e (Cross-Arc Consistency). *(Arc mode only — sandbox worlds have no arcs and no CHARACTER_STATE; cards carry their full standing range and defer to SANDBOX_STATE. Do not require arc-range qualifiers in sandbox mode.)*
+
+**World Mode gate:** Read Master Design Section 9's title before applying the rules above. In **sandbox** mode, rules referencing arcs (ARC_STATE → read as SANDBOX_STATE per #5; the ≥8-entries-per-arc floor in Step 2 does not apply; cross-arc #10 does not apply) shift to their sandbox equivalents documented in Step 4a (sandbox variant) and Step 2. Everything else (override architecture, contamination, Position Rationale, tier integrity) applies identically in both modes.
 
 If all ten pass, proceed to the full audit (Step 3 onward) for prose quality, lorebook quality, and remaining checks.
 
@@ -54,7 +56,7 @@ Check for all required files before reading a single word of content.
 - `Drafts/User.md` — `{{user}}` Persona Description text (mandatory for any world with a named `{{user}}` protagonist; see Step 5.5 below)
 - `Drafts/Tier1_World_Entries.md` — single file, all Tier 1 entries
 - `Drafts/Tier2_[CharName]_Entries.md` — one per major character AND one per significant NPC (including the Tier 2 Protagonist Lorebook for `{{user}}`)
-- `Drafts/Tier3_Arc[N]_[Title]_Entries.md` — one per arc
+- Tier 3 lorebook — *arc mode:* `Drafts/Tier3_Arc[N]_[Title]_Entries.md`, one per arc; *sandbox mode:* a single `Drafts/Tier3_Sandbox_Entries.md` (and NO per-arc files)
 - `Drafts/Instructions_[CardName].md` — one per card
 
 Missing files = hard block. Return to Architect to complete the set.
@@ -66,16 +68,22 @@ Missing files = hard block. Return to Architect to complete the set.
 - Baseline character profile content in Tier 3 NPC_SHIFT entries → Reject (NPC_SHIFT is delta only).
 - Timeline events or arc-specific states in character card description → Reject.
 
-**ARC_STATE failures:**
+**ARC_STATE failures (arc mode):**
 - ARC_STATE entry is missing from any arc lorebook → Reject.
 - ARC_STATE does not contain explicit hidden information rules → Reject. The hidden information rules are mandatory. If the LLM doesn't know what to hide, it won't hide it.
 - ARC_STATE does not name the dramatic goals of the arc → Reject.
 
+**SANDBOX_STATE failures (sandbox mode):**
+- SANDBOX_STATE entry is missing from the Sandbox Lorebook → Reject.
+- SANDBOX_STATE missing either subsection (`**Standing Situation:**` / `**Tonal Mandate:**`) or the aliveness directives → Reject (see Step 4a sandbox variant).
+- Sandbox Lorebook missing a WORLD_PULSE entry → Reject.
+- Any per-arc / CHARACTER_STATE / NPC_SHIFT / DRAMATIC_BEAT / arc-trigger content present in a sandbox world → Reject (mode contamination — there is no arc).
+
 **Entry structure failures:**
 - Any entry missing trigger keys (unless CONSTANT) → Reject.
 - Any entry missing injection position → Reject.
-- Any arc lorebook with fewer than 8 entries → Reject, list missing entry types.
-- NPC comprehensive entry missing dialogue samples → Reject.
+- *Arc mode:* any arc lorebook with fewer than 8 entries → Reject, list missing entry types. *(The 8-entry floor does not apply to the sandbox lorebook; its floor is SANDBOX_STATE + at least one WORLD_PULSE.)*
+- Principal NPC (§7.D) comprehensive entry missing dialogue samples → Reject. Roster NPC (§7.E) entry missing the Voice fingerprint or Signature line field → Reject.
 
 **LLM instruction failures:**
 - `system_prompt` section is blank or generic boilerplate → Reject.
@@ -185,6 +193,19 @@ Beyond the structural validation above, the original ARC_STATE Completeness chec
 
 These can appear in either the Dramatic Situation or Tonal Mandate subsections as appropriate — hidden information rules typically in Dramatic Situation, pacing in Tonal Mandate.
 
+#### 4a-S — SANDBOX_STATE Structural Validation (sandbox mode — replaces 4a-1…4a-5)
+
+When `World Mode` is `sandbox`, the Tier 3 lorebook has no ARC_STATE. Validate the single `SANDBOX_STATE` entry instead, applying the same rigor:
+
+- [ ] The `content` field contains a literal `**Standing Situation:**` header, then a literal `**Tonal Mandate (binding behavioral directive — applies to every response):**` header, in that order. Missing either, or wrong order = hard reject.
+- [ ] Standing Situation describes the world's persistent premise + genre tag, {{user}}'s standing/power, and the power-fantasy/experience contract (how the world treats {{user}} by default). Missing any = hard reject.
+- [ ] Tonal Mandate contains 4–8 bulleted directives, each using imperative language (resist, dominates, never default to, dwells on, elides, do not, must, never, always). Fewer than 4, or descriptive-only bullets = hard reject.
+- [ ] Tonal Mandate includes the **aliveness directives** — at minimum: NPCs pursue their own agendas / may initiate, the world reacts to and remembers {{user}}, and the world is never frozen waiting for {{user}}. Missing the aliveness contract = hard reject (a sandbox without it plays as an inert menu).
+- [ ] Tonal Mandate names the **live scene types** (the model's bias menu). Missing = hard reject.
+- [ ] Exactly one SANDBOX_STATE entry exists (not multiple, not zero). At least one WORLD_PULSE entry exists at position 4. Otherwise = hard reject.
+
+Soft-flag (per the 4a-4 pattern): Tonal Mandate bullets that are vague ("keep it alive") rather than specific, or that merely restate a character card's content.
+
 ### Step 4.5 — Position Rationale Audit
 
 Every lorebook entry across all tiers must have a `Position Rationale:` field per the Architect's Position Rationale Requirement (Section 6 of `02_The_Architect.md`). The rationale is either the literal string "DEFAULT" (for entries using the documented default position and flags for their tier and entry type) or a one-sentence justification for any non-default choice.
@@ -208,11 +229,12 @@ For every entry whose Position Rationale is marked "DEFAULT", verify the entry a
 |---|---|
 | Tier 1 (any) | `position: 0`, `constant: false` |
 | Tier 2 standard (Physical, Psychology, Relational) | `position: 1`, `constant: false` |
-| Tier 2 NPC-Specific entries | Architect-documented as `position: 0` (loaded before card) — if used, this is the documented default for NPC entries specifically |
+| Tier 2 NPC-Specific entries (principal §7.D and roster §7.E) | Architect-documented as `position: 0` (loaded before card) — if used, this is the documented default for NPC entries specifically |
 | Tier 2 Intimacy Profile entries | `position: 1`, `constant: false` |
 | Tier 3 ARC_STATE / CHARACTER_STATE | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
+| Tier 3 SANDBOX_STATE (sandbox mode) | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
 | Tier 3 LOCATION / NPC_SHIFT / DRAMATIC_BEAT | `position: 1`, `constant: false` |
-| Tier 3 TENSION | `position: 4`, `depth: 2–4`, `role: "system"` |
+| Tier 3 TENSION / WORLD_PULSE (sandbox mode) | `position: 4`, `depth: 2–4`, `role: "system"` |
 | Tier 3 INTIMACY_FUNCTION_Arc[N] | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
 | Tier 3 [CHAR]_INTIMATE_REGISTER_Arc[N] | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
 | Tier 3 INTIMATE_SCENE_TYPES / INTIMATE_HARD_RULES | `position: 1`, `constant: false` |
@@ -598,16 +620,17 @@ Post-history: [checklist results + word count]
 - [ ] User.md
 - [ ] Tier1_World_Entries.md
 - [ ] Tier2_[CharName]_Entries.md (list each — including the Tier 2 Protagonist Lorebook)
-- [ ] Tier3_Arc[N]_[Title]_Entries.md (list each)
+- [ ] Tier 3: arc mode — Tier3_Arc[N]_[Title]_Entries.md (list each); sandbox mode — Tier3_Sandbox_Entries.md (single)
 - [ ] Instructions_[CardName].md (list each)
 
 ### Quality Certification
 - All prose: criteria ≥2, at least three = 3 ✓
 - All Tier 1 entries: quality criteria met ✓
 - All Tier 2 entries: quality criteria met, arc isolation verified ✓
-- All Tier 3 entries: ARC_STATE complete with hidden info rules ✓
-- **All ARC_STATE entries: two-subsection structure present (Dramatic Situation + Tonal Mandate) ✓**
-- **All ARC_STATE Tonal Mandates: 4–8 directive bullets using imperative language ✓**
+- All Tier 3 entries: arc mode — ARC_STATE complete with hidden info rules; sandbox mode — SANDBOX_STATE complete ✓
+- **Arc mode: all ARC_STATE entries: two-subsection structure (Dramatic Situation + Tonal Mandate), 4–8 imperative directive bullets ✓**
+- **Sandbox mode: SANDBOX_STATE has Standing Situation + Tonal Mandate (4–8 imperative bullets incl. aliveness directives + live scene types); ≥1 WORLD_PULSE; no arc/CHARACTER_STATE/NPC_SHIFT/DRAMATIC_BEAT contamination (Step 4a-S) ✓**
+- **Roster NPCs (§7.E): each has Voice fingerprint + Signature line; fingerprints distinct across the roster ✓**
 - **All entries: Position Rationale present (DEFAULT or justified) ✓**
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**
@@ -625,7 +648,7 @@ Post-history: [checklist results + word count]
 - **All overriding cards: enum values match Master Design Section 11b verbatim, including tense_override (Step 5.6 Pass 5) ✓**
 - **All Style Override Metadata soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
 - No structural failures ✓
-- All arc lorebooks ≥8 entries ✓
+- Arc mode: all arc lorebooks ≥8 entries ✓ — OR — Sandbox mode: Sandbox Lorebook has SANDBOX_STATE + ≥1 WORLD_PULSE ✓
 
 **Status: APPROVED — Proceed to Phase 4 (The Compiler)**
 ```

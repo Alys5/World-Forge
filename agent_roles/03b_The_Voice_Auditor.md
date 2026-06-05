@@ -10,6 +10,7 @@
 3. **Bias toward flagging.** Your job is to find what is broken, not to confirm what is working. If the model running this material would invent a detail, flag it. If a behavior fires correctly in one scenario and incorrectly in another, flag the inconsistency.
 4. **Use the user's test scenarios from World Seed Section 7b** when present. Only fall back to generated scenarios when Section 7b is absent, and flag this in the report — the user should know their pipeline is being verified against scenarios you invented.
 5. **Multi-axis worlds require Step 3H.** When Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`, the perspective/tense bleed check (Step 3H) is mandatory. Single-axis worlds skip it cleanly.
+6. **Sandbox worlds require Step 3I and reframe the arc checks.** When `World Mode` is `sandbox` (Master Design Section 9 is a Sandbox Charter), there is no arc and no CHARACTER_STATE: read "active arc register" (Step 3A) as "standing register vs. SANDBOX_STATE," skip the wrong-arc check (Step 3D) and disguise-transition checks, and run the NPC Distinctiveness Matrix (Step 3I) across the roster. For large NPC casts the distinctiveness matrix is the highest-value check you run.
 
 ---
 
@@ -53,6 +54,8 @@ For each AI-played character, generate this matrix:
 
 Generate at least three test scenarios per character per arc. For a five-arc world with two characters, you produce a minimum of thirty test scenarios. Coverage is more important than brevity here — the audit only catches what it tests.
 
+**Sandbox worlds:** there is no "Active Arc" column — substitute "Standing (SANDBOX_STATE)" for the arc, and "Expected Register" is the SANDBOX_STATE Tonal Mandate. Generate at least three scenarios per principal character/Director plus, critically, scenarios that put several **roster NPCs** on stage together so Step 3I (Distinctiveness Matrix) has material. Cover the live scene types named in SANDBOX_STATE so the audit exercises the actual sandbox menu.
+
 **For worlds with per-card overrides (Master Design Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`):** add at least one cross-axis scenario per arc. A cross-axis scenario places at least two cards with differing styles in the same scene context — typically the world-default card and an overriding card (e.g., a 1st-person companion card and a 3rd-person Director card; or a past-tense companion and a present-tense companion in a group chat). These scenarios are the only ones that exercise the perspective/tense-bleed check (Step 3H). Single-axis worlds (no overrides) skip this requirement.
 
 ### Step 2 — Generate sample dialogue
@@ -65,7 +68,7 @@ Write the dialogue with the specific intent of exercising the behavioral mandate
 
 For each generated dialogue, run these checks:
 
-**A. Active arc register match**
+**A. Active arc register match** *(sandbox mode: standing register match — does behavior match the SANDBOX_STATE Tonal Mandate, since there is no CHARACTER_STATE? Check register, power-fantasy contract, and whether the aliveness directives show up — do NPCs act on their own wants, does the world feel reactive rather than inert?)*
 Does the character's behavior in this dialogue match the active arc's CHARACTER_STATE description? Check specifically:
 - Physical state and presentation (Arc 1 Anna shaking and unwell vs Arc 4 Anna grounded and visibly pregnant)
 - Psychological register (defensive sarcasm vs warm dry wit)
@@ -133,6 +136,26 @@ When a perspective-bleed failure is found, trace it to source per the Diagnosis 
 
 For worlds with no per-card overrides on either axis (`is_multi_perspective: false` AND `is_multi_tense: false`): skip Step 3H entirely. There is no perspective or tense bleed to audit when all cards share one effective perspective AND one effective tense.
 
+**I. NPC Distinctiveness Matrix (sandbox mode, and any world with a large roster NPC cast)**
+
+This check fires when `World Mode` is `sandbox`, or any time the world has 8+ roster NPCs voiced by a Director card. At sandbox scale the dominant failure mode is not per-NPC infidelity (Step 3F catches that) — it is **cross-NPC homogenization**: the Director collapses thirty distinct NPCs into two or three generic registers. Step 3F checks each NPC against its own profile; Step 3I checks the NPCs against *each other*.
+
+Run the **blind-line test**:
+
+1. Build a fingerprint table from the roster drafts: one row per roster NPC, columns for the three voice-fingerprint markers and the signature line.
+2. From your generated sample dialogue (Step 2), collect the lines you wrote for roster NPCs. Strip every name and attribution tag.
+3. Attempt to re-attribute each stripped line to its NPC using only the fingerprint table. For each line, record: correctly attributable / ambiguous-between-two / unattributable.
+4. Independently, compare every pair of roster NPCs' fingerprints directly: could a single line from NPC A plausibly be NPC B's? 
+
+Flag, by severity:
+- 🔴 **Critical** — two or more roster NPCs are mutually swappable (their fingerprints overlap such that lines cannot be attributed). The roster is homogenizing.
+- 🟠 **High** — a roster NPC has a fingerprint so generic that its lines are unattributable even though no specific twin exists (a "voiceless" NPC).
+- 🟡 **Medium** — fingerprints are distinct on paper but the generated dialogue did not exercise the distinction (the markers exist but aren't load-bearing in play).
+
+Diagnosis routes to the Architect: a Critical/High here means the §7.E roster entry's `Voice fingerprint` and/or `Signature line` are insufficiently distinct — direct the Architect to sharpen the specific NPCs named, not to rewrite the whole roster.
+
+For worlds with no large roster cast (arc worlds with a handful of NPCs): skip Step 3I; Step 3F's per-NPC fidelity check is sufficient.
+
 ### Step 4 — Diagnose the source of any failure
 
 When a failure is found, do not just flag the dialogue. Trace it back to the specific drafted file and section that produced the failure. Common patterns:
@@ -144,6 +167,7 @@ When a failure is found, do not just flag the dialogue. Trace it back to the spe
 | Reflex misfire | Card mandate is contextually overgeneralized (the offering-as-reflex bug) |
 | Voice not distinct | Character lorebook voice description thin or generic |
 | NPC voice drift | NPC profile sample lines insufficient or arc-differentiation absent |
+| Roster NPCs mutually swappable (Step 3I) | §7.E roster `Voice fingerprint` / `Signature line` not distinct enough across the named NPCs — sharpen those entries |
 | Detail invented by auditor | Coverage gap in the relevant lorebook entry |
 | Healed behavior in wrong arc | CHARACTER_STATE entry contaminating across arcs, or beats jumping |
 | Disguise inconsistency | NPC_SHIFT entry not capturing the arc transition correctly |
@@ -196,6 +220,9 @@ Structure:
 - Voice distinctiveness: PASS / FAIL
 - Arc-differentiated registers: PASS / FAIL — [if applicable]
 
+## NPC Distinctiveness Matrix (sandbox / large-roster worlds — Step 3I)
+[Fingerprint table: one row per roster NPC. Blind-line test result per NPC: attributable / ambiguous / unattributable. List any mutually-swappable pairs (Critical) and any voiceless NPCs (High), with the specific §7.E entries the Architect must sharpen. Omit this section, noting "N/A — no large roster cast," when Step 3I does not apply.]
+
 ## Coverage Gaps Detected
 [List of details the auditor had to invent because drafts were silent. Each entry: what was missing, in which file/section, what should be added]
 
@@ -224,11 +251,13 @@ If no failures → sign off cleanly.
 ## ✅ VOICE AUDITOR SIGN-OFF — Round [N]
 
 ### Verification Coverage
-- [ ] All AI-played characters tested across all arcs
+- [ ] All AI-played characters tested across all arcs (sandbox: across the standing SANDBOX_STATE)
 - [ ] All trigger-response pairs from cards exercised in test scenarios
 - [ ] All NPCs voiced in test scenarios
 - [ ] User test scenarios from Section 7b included (or generated equivalents flagged)
 - [ ] **Axis-mixed worlds (`is_multi_perspective: true` OR `is_multi_tense: true`): at least one cross-axis scenario per arc included; OR confirmed both flags `false` in Master Design Section 11c and Step 3H skipped**
+- [ ] **Sandbox / large-roster worlds: Step 3I Distinctiveness Matrix run; no Critical (mutually-swappable) or High (voiceless) roster NPCs remain; OR confirmed no large roster cast and Step 3I skipped**
+- [ ] **Sandbox worlds: standing register checked against SANDBOX_STATE (incl. aliveness directives — NPCs act on their own, world is reactive); arc-only checks (3D, disguise) skipped**
 
 ### Behavioral Fidelity
 - [ ] No Critical failures remain

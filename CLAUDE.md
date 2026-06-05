@@ -181,6 +181,23 @@ It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Pr
 
 See the **PRESET RESYNC** section of `workflows/world-forge.md` for the full operation.
 
+### 9. World Mode: Arc vs. Sandbox
+
+A world is built in one of two **modes**, declared in World Seed Section 1 (`World Mode: arc | sandbox`) and recorded by the Refiner. `arc` is the default and the legacy behavior — every existing world is an arc world, and nothing about arc worlds changes. `sandbox` exists for worlds that have **no narrative arc**: open-ended power-fantasy / world-director / life-sim worlds where the experience is anchored by a standing world-state rather than a progression of arcs with entry/exit triggers and dramatic beats.
+
+The mode is a branch *through* the existing pipeline, **not a parallel fork.** The same Interviewer, Refiner, Architect, Editor, Voice Auditor, Compiler, and Prompt Engineer run; sandbox mode swaps the Tier 3 spine and the large-cast NPC format. `/worldforge start --sandbox` is a convenience that pre-sets the Interviewer; the World Seed field is the source of truth (so a hand-written seed or a `skip phase0` run carries the signal).
+
+**What sandbox mode changes (load-bearing):**
+- **Tier 3 becomes one always-active Sandbox lorebook**, not *N* swappable arc lorebooks. It contains a `SANDBOX_STATE` entry (the `ARC_STATE` analog — same constant / `ignoreBudget` / position-1 mechanics and the same mandatory two-subsection structure from principle #5, with `**Standing Situation:**` replacing `**Dramatic Situation:**`) and at least one `WORLD_PULSE` entry (the `TENSION` analog at position 4 — a sustained "the world is alive and reactive" directive rather than a stakes countdown). Standing `LOCATION` entries as needed. There are no `CHARACTER_STATE`, `NPC_SHIFT`, `DRAMATIC_BEAT`, or arc-trigger entries, because there is no arc.
+- **The SANDBOX_STATE Tonal Mandate carries the aliveness contract**: NPCs pursue their own agendas, initiate scenes, and carry off-screen continuity; the world reacts to and remembers `{{user}}`'s actions; it never freezes waiting for `{{user}}`. This is what anchors tone when no arc is carrying it.
+- **Large casts use a two-tier NPC model** (Architect §7): a few **principal NPCs** keep the full §7.D profile; the rest are **roster NPCs** authored as a compact, fixed-schema stat block engineered for differentiation at scale. The binding rule: every roster NPC's **voice fingerprint must be unique across the roster.** This is the structural defense against the homogenization that swallows large NPC casts in sandbox play.
+- **The Voice Auditor adds a distinctiveness lens** (sandbox-only Step 3I): a blind-line test across the roster that flags any two NPCs whose voices could be swapped. The arc-register checks reframe to "standing register vs. `SANDBOX_STATE`."
+- **Phase 3.6 (Arc Transition Auditor) is skipped** in sandbox mode — there are no arc seams to audit, exactly as Phase 3.7 is skipped without intimacy. Cross-arc consistency qualifiers and the ≥8-entries-per-arc floor do not apply.
+
+**Boundaries:** Sandbox mode does not touch SillyTavern, the override architecture (#2), audit/apply separation (#3), Position Rationale (#4), or the preset contract — it only repoints what Tier 3 contains and how a large NPC cast is authored. Intimacy (Section 8) stays orthogonal: a sandbox world with intimate content folds its `INTIMACY_FUNCTION` register into the single Sandbox lorebook as a standing entry rather than per-arc. The **revise pipeline is not yet sandbox-aware** — making it so is deferred future work, flagged in `workflows/world-forge.md`.
+
+See the **SANDBOX MODE** section of `workflows/world-forge.md` for the full operation.
+
 ---
 
 ## Cross-file consistency requirements
@@ -199,6 +216,8 @@ These pairs of files must stay in sync. When editing one, check the other.
 | `agent_roles/06_The_Intimacy_Architect.md` | `agent_roles/03d_The_Intimacy_Auditor.md` — auditor validates what architect produces |
 | Any parent agent in `agent_roles/*.md` | Its mini counterpart in `agent_roles/revise/*_mini.md` — the mini inherits parent's foundational rules, so changing the parent may require updating the mini's delta list |
 | `workflows/world-forge-revise.md` (routing matrix) | `agent_roles/revise/00_The_Reviser.md` (scope types) — both must enumerate the same eleven scope types |
+| `agent_roles/02_The_Architect.md` (sandbox lorebook + Roster NPC §7.E) | `agent_roles/03_The_Editor.md` (sandbox validation) and `agent_roles/03b_The_Voice_Auditor.md` (distinctiveness lens) — Editor validates `SANDBOX_STATE`/`WORLD_PULSE`/roster format; Voice Auditor tests roster fingerprint uniqueness |
+| World Mode handling in any one of Interviewer / Refiner / Architect / Editor / Voice Auditor | The other four + `workflows/world-forge.md` SANDBOX MODE section + `templates/World_Seed_Template.md` (§1 `World Mode`, §5 conditional) — the arc/sandbox branch must read consistently end-to-end |
 
 ---
 
@@ -224,7 +243,9 @@ These are mistakes that have been made before and produce subtle bugs:
 - **Using lorebook position values without consulting Notes_On_functionality.md.** Position 5 is EMTop (prepended), not "Before Example Messages" or "After Example Dialogue" — verify before writing.
 - **Marking an entry "DEFAULT" in Position Rationale when it isn't actually using defaults.** The Editor's 4.5b check catches this; produce honest rationales.
 - **Writing audit/recommendation content as if the auditor will apply it.** Auditor agents are read-only on the files they audit. Use "recommend" language consistently.
-- **Conflating ARC_STATE descriptive content with directive content.** Use the two-subsection structure; don't merge them.
+- **Conflating ARC_STATE descriptive content with directive content.** Use the two-subsection structure; don't merge them. The sandbox `SANDBOX_STATE` entry inherits the same rule (`**Standing Situation:**` descriptive, `**Tonal Mandate:**` directive).
+- **Authoring a sandbox NPC roster with overlapping voice fingerprints.** At sandbox scale the failure mode is cross-NPC homogenization, not per-NPC infidelity. Every roster NPC's voice fingerprint must be distinct enough that the Voice Auditor's blind-line test (Step 3I) can tell them apart.
+- **Forcing a sandbox world through arc machinery.** Don't author `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc triggers for a `World Mode: sandbox` world — Tier 3 is the single Sandbox lorebook (`SANDBOX_STATE` + `WORLD_PULSE`). Conversely, don't apply the sandbox format to an arc world.
 - **Editing `Notes_On_functionality.md` based on memory of how SillyTavern works.** Always verify against the official ST source if changing this file.
 - **Adding a new pipeline phase or agent without updating `workflows/world-forge.md`.** Orchestration is the source of truth for what runs when.
 

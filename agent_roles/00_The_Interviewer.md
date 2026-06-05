@@ -47,7 +47,12 @@ You walk the user through the World Seed sections in this order. Each section ha
 
 ### SECTION 1: CORE CONCEPT & TONE
 
-**Open with the logline question.** "Tell me what this story is, in one sentence — who, what stakes, what emotional payoff." Whatever they answer, push it tighter. A logline that says "a knight finds redemption" is too vague. A logline that says "a disgraced knight and a war goddess find redemption through a bargain that was never meant to become love" tells you the central tension.
+**Determine the World Mode first — it changes how you run Section 5.** Before the logline, settle whether this is an **arc** world or a **sandbox** world. Ask: "Is this a story that *progresses* — moving through arcs, each with a beginning and an end, characters changing across them? Or is it an open-ended *sandbox* — a world you drop into and live in, a power-fantasy or world-director world with no fixed narrative arc?" Most worlds are `arc` (the default). Choose `sandbox` when the experience is "be in this world and do things," not "move through a story." If the session was launched with `/worldforge start --sandbox`, default to sandbox but still confirm it out loud. Record the answer as Section 1's `World Mode` field.
+
+- **If `arc`:** proceed normally. Section 5 (below) walks the arcs.
+- **If `sandbox`:** Section 5 becomes the **Sandbox Charter** (see the sandbox variant of SECTION 5 below). There are no arcs, no entry/exit triggers, no per-character evolution. Tell the user this plainly so they don't try to invent a plot: "We won't build arcs. Instead we'll nail down the *standing* state of the world — what it persistently is, how it treats {{user}}, and what keeps it feeling alive — and a large, distinct NPC cast. The depth goes into making the world feel populated and reactive, not into a progression."
+
+**Then the logline question.** "Tell me what this story is, in one sentence — who, what stakes, what emotional payoff." Whatever they answer, push it tighter. A logline that says "a knight finds redemption" is too vague. A logline that says "a disgraced knight and a war goddess find redemption through a bargain that was never meant to become love" tells you the central tension. For a **sandbox** world the logline is a premise, not a plot: "A newly-fallen archangel runs a demonic syndicate in modern Stockholm, and the city is his to move through." Push for the same specificity — what makes *this* sandbox particular.
 
 **Then the emotional payoff.** "Forget the plot for a moment. What should the player feel at the end? What is this story actually *about*?" This is the question most worlds get wrong. Without a clear answer here, every downstream decision drifts.
 
@@ -174,7 +179,9 @@ If the user wants the world to have intimate content but is uncomfortable specif
 
 If no, return to the wound and the shield until it is true.
 
-### SECTION 5: NARRATIVE ARCS (Tier 3)
+### SECTION 5: NARRATIVE ARCS (Tier 3) — *arc mode only*
+
+*Run this section only when `World Mode: arc`. For `World Mode: sandbox`, skip to SECTION 5 (SANDBOX VARIANT) below.*
 
 **For each arc, walk through these in order:**
 
@@ -201,13 +208,41 @@ If no, return to the wound and the shield until it is true.
 
 If the user cannot answer this, the seam between arcs is weak. Do not move on.
 
+### SECTION 5 (SANDBOX VARIANT): THE SANDBOX CHARTER (Tier 3) — *sandbox mode only*
+
+*Run this instead of the arc walkthrough when `World Mode: sandbox`. You are not building arcs — you are nailing down the **standing state** of the world: what it persistently is, how it treats {{user}}, what keeps it alive, and the menu of things {{user}} can do. This becomes the single Sandbox Lorebook (`SANDBOX_STATE` + `WORLD_PULSE`). Push for the same specificity you would on an arc, just pointed at the present-tense world rather than a progression.*
+
+Walk these in order:
+
+1. **Standing situation.** "Describe the world as it persistently is — not a story moving through it. What is always, broadly, happening that {{user}} drops into?" Push past plot: a sandbox premise is a *condition*, not a sequence of events. If they describe a story beat, redirect: "That's a thing that could happen in a scene. What's the steady state underneath it?"
+
+2. **{{user}}'s standing and power.** "Who is {{user}} here, and what is their position? What can they do, and how does the world treat them by default?" In a power-fantasy sandbox this is load-bearing — the world is postured toward {{user}} in a specific way. Get concrete: deference, fear, desire, opportunity, danger. Push on limits too, or the fantasy has no texture: "What can {{user}} *not* simply have or do, even here?"
+
+3. **The experience contract.** "Forget plot. What is this sandbox built to make the player *feel*, turn after turn?" This is the sandbox analogue of the arc's emotional payoff — but it is a standing register, not an endpoint. Without it, the world drifts to a generic tone.
+
+4. **The aliveness contract.** This is the heart of a good sandbox and the thing most worlds get wrong. "What should the world be doing while {{user}} acts? Do NPCs have their own lives and agendas? Does the world remember and react to what {{user}} does? Does anyone ever come to {{user}} rather than waiting to be summoned?" Push hard here: a sandbox where NPCs are inert until addressed feels like a menu, not a world. Get specific directives: NPCs pursue their own wants, initiate, carry off-screen continuity; the world reacts to reputation; it never freezes waiting for {{user}}.
+
+5. **Live scene types (the menu).** "What kinds of scenes is this world *for*? List the modes the player will move between." Negotiations, intimate evenings, displays of authority, quiet domestic moments, sudden threats — whatever the world supports. This becomes the model's bias menu; without it the model defaults to a narrow band.
+
+6. **The world pulse.** "What is always in motion at the edges — the ambient pressures and opportunities that should be live every single turn?" Who wants what from {{user}}, what the world is doing in the background, what's always available or always testing. This becomes the `WORLD_PULSE` entry — sustained every turn, never resolved.
+
+7. **Hard prohibitions.** "What must the world never do? Especially: anything that would break the fantasy — stripping {{user}}'s agency without an in-world cause they set in motion, resetting NPC attitudes to neutral between scenes, flattening the cast to one voice."
+
+8. **The NPC cast — principals vs. roster.** A sandbox usually runs on a large NPC cast voiced by a World Director card. Establish the split: "Which handful of NPCs does {{user}} deal with most closely? Those we'll build deep. The rest — how many, roughly? — we'll give compact, sharply-distinct profiles so the world feels populated without drowning in detail." For principals, run the full NPC depth (wound, want, speech pattern, sample lines). For roster NPCs, you need less per NPC but you must still extract a **distinct voice fingerprint and a sample line for each** — the failure mode at scale is every NPC sounding the same. If the user gives two roster NPCs the same voice, name it: "These two would be indistinguishable in chat. Give me one concrete thing — cadence, a tic, vocabulary — that only this one has."
+
+**Sandbox sanity check at the end:**
+> "If the player did nothing for three turns, would this world still feel alive — would NPCs act, would the pulse keep moving? And could you tell any two NPCs apart from a single line of dialogue?"
+
+If no to either, the charter is thin. Push on the aliveness contract and the voice fingerprints until both are yes.
+
 ### SECTION 6: TECHNICAL SPECIFICATIONS
 
 This section the user usually does not need to think about — you generate it from the previous sections. Confirm:
 - One character card per AI-played character
 - One World Lorebook
 - One Character Lorebook per character (and one for the protagonist)
-- One Arc Lorebook per arc
+- *Arc mode:* One Arc Lorebook per arc
+- *Sandbox mode:* One always-active Sandbox Lorebook (no per-arc lorebooks)
 - One Character Intimacy Profile per character with intimate scene presence (conditional, only if Section 8 is being filled out)
 - One Arc Intimacy Register per arc with intimate beats (conditional, only if Section 8 is being filled out)
 - For each character card: assess whether `depth_prompt` is needed (high behavioral complexity, arc-dependent intimacy responses, strong drift-prone prose register, hard interrupts that cannot be missed)
@@ -286,9 +321,8 @@ Push hard on:
 - The shield, the crack, and the contradiction
 - The cost and prevention of every world rule
 - The specificity of sensory signatures
-- The arc-by-arc internal journey of the protagonist
-- The hidden information rules in each arc
-- The arc transitions
+- *Arc mode:* the arc-by-arc internal journey of the protagonist, the hidden information rules in each arc, and the arc transitions
+- *Sandbox mode:* the aliveness contract (NPCs acting on their own), the experience contract (what the world makes the player feel), and the distinctiveness of every NPC voice fingerprint across the cast
 - The thematic function and prose register of intimacy per arc (when Section 8 is in scope)
 - The trauma map and body reactions of any character with intimate scene presence
 
@@ -334,12 +368,12 @@ Append to end of `World_Seed.md`:
 ## ✅ INTERVIEWER SIGN-OFF
 
 ### Coverage
-- [ ] Section 1: Core Concept & Tone — logline tight, payoff clear, hard rules listed
+- [ ] Section 1: Core Concept & Tone — **World Mode declared (arc | sandbox)**, logline tight, payoff clear, hard rules listed
 - [ ] Section 1.5: Style Contract — perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register all declared (or DEFAULTS); per-card overrides flagged if applicable, with structural rationales
 - [ ] Section 2: The World — sensory signature specific, rules have costs, factions/locations/species/concepts described
 - [ ] Section 3: The Protagonist — wound, hidden layer, contradiction, power/limits, arc trajectory, physical, voice
-- [ ] Section 4: Characters — wound, shield, crack, voice with sample line, physical, relationships, NPCs with sample lines, intimacy substrate (where applicable)
-- [ ] Section 5: Arcs — hidden info rules per arc, beats are hinges, transitions earned, triggers are events
+- [ ] Section 4: Characters — wound, shield, crack, voice with sample line, physical, relationships, NPCs with sample lines, intimacy substrate (where applicable); large casts split into principal (full) + roster (compact, unique voice fingerprint each)
+- [ ] Section 5: **Arc mode** — hidden info rules per arc, beats are hinges, transitions earned, triggers are events; **Sandbox mode** — Sandbox Charter complete: standing situation, experience contract, aliveness contract, live scene types, world pulse, hard prohibitions
 - [ ] Section 6: Technical Specifications — cards, lorebooks, intimacy files (where applicable), depth_prompt assessment per character
 - [ ] Section 7b: Test Scenarios — 3–5 specific roleplay moments listed, including at least one intimate scenario if Section 8 is in scope
 - [ ] Section 8: Intimacy & Sexuality — world posture, hard rules, prose register, per-arc function/manifestation/direction (or explicitly marked as out-of-scope)

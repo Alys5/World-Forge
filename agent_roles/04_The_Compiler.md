@@ -13,7 +13,7 @@ These rules are pre-save guards. If any check fails, do NOT write the file. Fix 
 4. **`data.extensions.depth_prompt` present on every card.** Field is mandatory; prompt may be empty string. Never omit the structure.
 5. **`data.extensions.world_forge.style_override` present on every card.** Either `null` (non-overriding) or a seven-key object per SHARED §1. See Step 4 Section A6 for the JSON shape and SHARED §3 for the canonical directive prose.
 6. **All sign-offs verified.** Phase 3 Editor + Phase 3.5 Voice Auditor + Phase 3.6 Arc Transition Auditor + Phase 3.7 Intimacy Auditor (when applicable) must all have signed off. If any sign-off is missing, do NOT compile.
-7. **Position fields correct.** World Lorebook entries `position: 0`; character lorebook entries `position: 1`; ARC_STATE `position: 1` with `ignoreBudget: true`; TENSION `position: 4` with `depth: 2–4`. No Tier 1 or Tier 2 entry at `position: 2` or `3` (those are Author's Note slots for tone directives only).
+7. **Position fields correct.** World Lorebook entries `position: 0`; character lorebook entries `position: 1`; ARC_STATE / SANDBOX_STATE `position: 1` with `ignoreBudget: true`; TENSION / WORLD_PULSE `position: 4` with `depth: 2–4`. No Tier 1 or Tier 2 entry at `position: 2` or `3` (those are Author's Note slots for tone directives only).
 8. **All entries have Position Rationale.** Either the literal string `DEFAULT` (when entry uses documented default position+flags) or a one-sentence justification per the Architect's spec. This survives compilation.
 
 If all eight pass, write the file. If any fails, the file is wrong — fix the source.
@@ -36,7 +36,7 @@ You have access to SillyTavern's documentation and source code for schema guidan
 - `Drafts/User.md` — `{{user}}` Persona Description text (passes through to Export unchanged; see Step 4.5 below)
 - `Drafts/Tier1_World_Entries.md` — World Lorebook entries
 - `Drafts/Tier2_[CharName]_Entries.md` — Character Lorebook entries (one per character/NPC, including the Tier 2 Protagonist Lorebook)
-- `Drafts/Tier3_Arc[N]_[Title]_Entries.md` — Arc Lorebook entries (one per arc)
+- Tier 3 source — *arc mode:* `Drafts/Tier3_Arc[N]_[Title]_Entries.md` (one per arc); *sandbox mode:* `Drafts/Tier3_Sandbox_Entries.md` (single)
 - `Drafts/Instructions_[CardName].md` — system_prompt and post_history_instructions source
 - `Drafts/Master_Design.md` — technical specifications
 
@@ -185,7 +185,11 @@ One lorebook file per character/NPC. Include all relational and psychological en
 - NPC comprehensive entries: `order: 90`, `position: 1`.
 - Set `group: "[CharName]"` on all entries.
 
-### Step 7 — Build Arc Lorebooks (`Export/Arc[N]_Lorebook.json`)
+### Step 7 — Build the Tier 3 Lorebook(s)
+
+**Read Master Design `World Mode` first.** Arc mode → Step 7A (one Arc Lorebook per arc). Sandbox mode → Step 7B (one always-active Sandbox Lorebook). Never both.
+
+#### Step 7A — Build Arc Lorebooks (`Export/Arc[N]_Lorebook.json`) — *arc mode*
 
 Source: `Drafts/Tier3_Arc[N]_[Title]_Entries.md`
 
@@ -197,6 +201,17 @@ One lorebook file per arc.
 - TENSION entries: `order: 90`, `position: 4`, `depth: 2–4` (injects inside chat history at depth from the end — maximum recency for immediate model awareness of active stakes).
 - LOCATION entries: `order: 70–79`, `position: 1`.
 - Set `group: "Arc[N]"` on all entries.
+
+#### Step 7B — Build the Sandbox Lorebook (`Export/Sandbox_Lorebook.json`) — *sandbox mode*
+
+Source: `Drafts/Tier3_Sandbox_Entries.md`
+
+Exactly **one** lorebook file, always active (the user never swaps it). It is the structural twin of an Arc Lorebook — same flag mechanics — minus the arc machinery.
+- **SANDBOX_STATE entry: `constant: true`, `selective: true`, `key: []`, `order: 100`, `position: 1`, `ignoreBudget: true`.** Same placement rationale as ARC_STATE — position 1, never displaced by budget. This is the master standing directive.
+- **WORLD_PULSE entries: `order: 90`, `position: 4`, `depth: 2–4`** (recency-injected, the TENSION analog). If a WORLD_PULSE entry is authored CONSTANT in the draft, set `constant: true`, `key: []`, `ignoreBudget: true`; otherwise `constant: false`, `selective: true` with its trigger keys.
+- LOCATION entries: `order: 70–79`, `position: 1`, `constant: false`, `selective: true`.
+- There are no NPC_SHIFT, DRAMATIC_BEAT, or CHARACTER_STATE entries in a sandbox lorebook.
+- Set `group: "Sandbox"` on all entries.
 
 ### Step 8 — Build Group Lorebook (`Export/Group_Lorebook.json`)
 
@@ -228,10 +243,11 @@ Before saving any file (per Foundational Rules at top of this file):
   - Character Lorebook (Tier 2) entries: `position: 1` ✓
   - Arc Lorebook (Tier 3) ARC_STATE, NPC_SHIFT, DRAMATIC_BEAT, LOCATION entries: `position: 1` ✓
   - Arc Lorebook TENSION entries: `position: 4` ✓
+  - Sandbox Lorebook (Tier 3) SANDBOX_STATE, LOCATION entries: `position: 1` ✓; WORLD_PULSE entries: `position: 4` ✓
   - No Tier 1 or Tier 2 entry uses `position: 2` or `position: 3` (those are Author's Note slots — for tone directives only)
-  - ARC_STATE is never at `position: 2` — it must be at `position: 1` with `ignoreBudget: true`
-- All arc lorebooks have ≥8 entries
-- ARC_STATE entries have `ignoreBudget: true` — these must never be omitted due to token budget
+  - ARC_STATE / SANDBOX_STATE is never at `position: 2` — it must be at `position: 1` with `ignoreBudget: true`
+- *Arc mode:* all arc lorebooks have ≥8 entries. *Sandbox mode:* the Sandbox Lorebook has SANDBOX_STATE + ≥1 WORLD_PULSE (no 8-entry floor)
+- ARC_STATE / SANDBOX_STATE entries have `ignoreBudget: true` — these must never be omitted due to token budget
 - Group Lorebook UIDs are unique across entire combined set
 - Files saved as `.json`, not embedded in Markdown
 
@@ -246,7 +262,8 @@ Export/
 ├── World_Lorebook.json             ← Tier 1: permanent world truths
 ├── [CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
 ├── [ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
-├── Arc[N]_Lorebook.json            ← Tier 3: one per arc
+├── Arc[N]_Lorebook.json            ← Tier 3 (arc mode): one per arc
+├── Sandbox_Lorebook.json           ← Tier 3 (sandbox mode): single, always active
 ├── Group_Lorebook.json             ← Combined: all tiers, all entries, group-tagged
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
 └── Compiler_Log.md                 ← Build log with field mapping and validation results
@@ -267,15 +284,15 @@ Append to `Export/Compiler_Log.md`:
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] World_Lorebook.json — [N] entries, all Tier 1
 - [ ] [CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
-- [ ] Arc[N]_Lorebook.json — [N] entries each, ARC_STATE present (list per arc)
+- [ ] Tier 3: arc mode — Arc[N]_Lorebook.json, [N] entries each, ARC_STATE present (list per arc); sandbox mode — Sandbox_Lorebook.json, SANDBOX_STATE + ≥1 WORLD_PULSE present
 - [ ] Group_Lorebook.json — [total N] entries, UIDs unique, groups tagged
 - [ ] Compiler_Log.md — complete
 
 ### Critical Field Verification
 - [ ] All system_prompt fields: non-empty ✓
 - [ ] All post_history_instructions fields: non-empty ✓
-- [ ] All arc lorebooks ≥8 entries ✓
-- [ ] All ARC_STATE entries: constant=true, selective=true, key=[], ignoreBudget=true ✓
+- [ ] Arc mode: all arc lorebooks ≥8 entries ✓ — OR — Sandbox mode: Sandbox_Lorebook.json has SANDBOX_STATE + ≥1 WORLD_PULSE ✓
+- [ ] All ARC_STATE / SANDBOX_STATE entries: constant=true, selective=true, key=[], ignoreBudget=true ✓
 - [ ] No entries use `enabled` field — all use `disable: false` ✓
 - [ ] Protagonist Lorebook: alias and true name trigger keywords present ✓
 - [ ] Group Lorebook UIDs: unique across full set ✓
