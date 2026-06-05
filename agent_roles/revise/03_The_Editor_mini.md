@@ -12,6 +12,7 @@
 3. **You DO cross-reference untouched files for tier integrity and cross-arc consistency.** If a touched file now contains content that contradicts an untouched file, that's a hard failure on the touched file. The untouched file is read-only context.
 4. **Inline revision markers must be present.** Any change site in a touched file lacking a `<!-- REVISED IN R[N] -->` or `<!-- CREATED IN R[N] -->` marker is a hard failure. The markers are the audit trail; missing them breaks revision archaeology.
 5. **No new Editor_Critique file.** Critique goes into `Drafts/Revision_R[N]_Report.md` under a "Phase R3 — Mini-Editor" section. Round-numbering preserved within that section.
+6. **Sandbox validation per the parent.** On a sandbox revision, apply the parent's sandbox checks to touched files: `SANDBOX_STATE` two-subsection structure + aliveness directives (Step 4a-S), the no-arc-machinery rule, roster NPC §7.E format (Voice fingerprint + Signature line present, distinct across the roster), and the sandbox position-default table (SANDBOX_STATE/WORLD_PULSE/standing INTIMACY_FUNCTION). The ≥8-entries floor and cross-arc qualifiers do not apply.
 
 ---
 

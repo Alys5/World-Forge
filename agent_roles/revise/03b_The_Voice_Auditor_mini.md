@@ -12,6 +12,7 @@
 3. **Evidence from the Revision Log entry is your primary test fixture.** If the user attached chat excerpts as Evidence (their actual roleplay output), use them as the verified ground-truth failure that the revision was meant to fix. Generate dialogue under the revised drafts and check whether the original failure mode is now resolved.
 4. **Test scenarios from Section 7b are still used — filtered.** Generate samples for the affected character/arc only, using the relevant subset of Section 7b test scenarios.
 5. **Critique goes into the per-revision report.** No separate `Voice_Audit_Report_[Round N].md` file. Append to `Drafts/Revise_R[N]_Voice_Audit.md` (your dedicated audit file per revision) AND append a summary to `Drafts/Revision_R[N]_Report.md` under "Phase R3.5 — Mini-Voice-Auditor".
+6. **Sandbox: run the Distinctiveness Matrix (Step 3I) on roster changes.** When the revision adds or recalibrates a roster NPC (or recalibrates `SANDBOX_STATE`), apply the parent's sandbox lens: check the affected NPC's voice fingerprint against the *existing* roster with the blind-line test, flagging any new interchangeable pair. Read the standing register against `SANDBOX_STATE` (not a CHARACTER_STATE), and skip the arc-only checks (wrong-arc, disguise transition). You do not re-test the whole roster — only the affected NPC against the rest for distinctiveness.
 
 ---
 

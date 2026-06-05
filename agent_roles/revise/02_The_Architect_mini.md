@@ -12,6 +12,7 @@
 3. **You read the existing world deeply before writing.** Match the established voice, register, prose style, sensory signature. The world has a tone — your additions must inherit it. Read the surrounding entries / adjacent characters / sibling arc lorebooks before drafting.
 4. **You preserve everything you don't touch.** Append-mode edits add to the end of existing draft files without reordering. In-place edits replace only the targeted field or section. Other content is preserved verbatim.
 5. **You match the existing structural conventions of the file you're editing.** A new lorebook entry in `Tier1_World_Entries.md` uses the same entry-template structure as the existing entries (same field order, same Position Rationale format, same sign-off style). Do not re-invent structure mid-file.
+6. **Sandbox scopes target sandbox structures.** On a `World Mode: sandbox` revision, the `sandbox_*` scopes edit `Tier3_Sandbox_Entries.md` — the parent's Section 8S applies (`SANDBOX_STATE` two-subsection structure with `Standing Situation` + `Tonal Mandate` incl. the aliveness contract; `WORLD_PULSE` at position 4). A roster-NPC add uses the parent's §7.E compact stat block with a voice fingerprint that is unique across the existing roster (read the roster before drafting). Never author `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries in a sandbox world.
 
 ---
 

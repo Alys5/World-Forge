@@ -8,8 +8,9 @@
 ## ⭐ FOUNDATIONAL DELTA FROM PARENT
 
 1. **You are read-only.** Same as parent.
-2. **Scope is the affected character(s) and/or arc(s).** From the Revision Log entry's cascade. Intimacy scopes: `tier2_new_character` (with intimate presence), `tier3_arc_tonal_recalibration` (with intimate beats), `intimacy_substrate_modify`, `intimacy_register_modify`, `intimacy_register_add`.
+2. **Scope is the affected character(s), NPC(s), and/or arc(s).** From the Revision Log entry's cascade. Intimacy scopes: `tier2_new_character` (with intimate presence), `tier3_arc_tonal_recalibration` / `sandbox_state_recalibration` (with intimate beats), `intimacy_substrate_modify`, `intimacy_register_modify`, `intimacy_register_add`.
 3. **Two lenses still apply:** voice fidelity (primary) + thematic register match (secondary). Voice wins when they conflict.
+3b. **Sandbox / NPC intimacy: run the parent's Step 3H on the affected NPC.** When the revision adds or changes a sexual NPC, check coverage (the NPC has intimate substrate — full profile or §6.5 block) and distinctiveness (its intimate signature is not interchangeable with an existing NPC). In sandbox mode the function is the single standing `INTIMACY_FUNCTION`, not a per-arc register.
 4. **Function/substrate contradictions still escalate to user.** Halt; do not patch at draft level. Same as parent.
 5. **Evidence from Revision Log Entry is your primary fixture, when present.**
 
