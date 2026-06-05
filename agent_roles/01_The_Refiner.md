@@ -54,6 +54,11 @@ Read completely before generating anything.
 
 ## 4. PROCESS
 
+### Step 0 — Read the World Mode
+Read Section 1's `World Mode` field (`arc` or `sandbox`). If absent or blank, default to `arc` and note the default was applied. This flag governs Section 9 of your Master Design and the Tier 3 gap pass:
+- **`arc`:** Tier 3 is one Arc Lorebook per arc; Section 9 is the Narrative Arc Structure (unchanged).
+- **`sandbox`:** Tier 3 is a single always-active Sandbox Lorebook; Section 9 becomes the **Sandbox Charter** (see Section 5 of this spec). There are no arcs, arc triggers, CHARACTER_STATE evolution, NPC_SHIFT, or DRAMATIC_BEAT entries to classify. Record the mode prominently at the top of the Master Design so every downstream agent sees it.
+
 ### Step 1 — Tier Classification Pass
 Read the World Seed and classify every piece of information:
 - Is it a permanent world truth? → Tier 1
@@ -101,7 +106,9 @@ For each tier, identify what is missing:
 
 **Tier 2 gaps:** Does every major character have enough relational and psychological material for a rich lorebook? Is the physical description ordered correctly (face → hair → eyes → body → intimate areas)? Are all key relationships (character to character, character to {{user}}) defined?
 
-**Tier 3 gaps:** Is every arc's hidden information explicitly stated? ("What does `{{char}}` NOT know this arc? What are the NPCs concealing, and from whom?") Note: hidden information rules govern `{{char}}` and NPC behavior — `{{user}}` is the player directing the story, not a character whose knowledge the LLM manages (unless the world seed explicitly defines a mystery mechanic where discovery is the player's experience). Is the arc entry trigger and exit trigger clear? Are the dramatic beats sufficient to give the LLM narrative direction?
+**Tier 3 gaps (arc mode):** Is every arc's hidden information explicitly stated? ("What does `{{char}}` NOT know this arc? What are the NPCs concealing, and from whom?") Note: hidden information rules govern `{{char}}` and NPC behavior — `{{user}}` is the player directing the story, not a character whose knowledge the LLM manages (unless the world seed explicitly defines a mystery mechanic where discovery is the player's experience). Is the arc entry trigger and exit trigger clear? Are the dramatic beats sufficient to give the LLM narrative direction?
+
+**Tier 3 gaps (sandbox mode):** Is the Standing Situation concrete (premise, {{user}}'s standing/power, the experience contract)? Does the Tonal Mandate have enough directive material for 4–8 imperative bullets, including an **aliveness contract** (NPCs pursue their own agendas, initiate, carry off-screen continuity; the world reacts and remembers; never freezes)? Are the live scene types named? Is there enough for a `WORLD_PULSE` entry (what is always in motion at the edges)? Is the NPC cast split into principals (full) and roster (compact), and does every roster NPC have a distinct voice fingerprint + sample line? A sandbox with inert NPCs or interchangeable voices is a Tier 3 gap — flag it.
 
 Gaps requiring user input → log in `UNRESOLVED_QUESTIONS.md` and halt. Do not proceed to Phase 2 until resolved.
 
@@ -159,16 +166,30 @@ For each major character:
 - LLM behavioral requirements: failure modes, mandates, prohibitions, trigger-response pairs.
 
 ### SECTION 8: NPC ROSTER (Tier 2 Source — secondary characters)
-For each named NPC:
+
+**Classify each NPC as principal or roster, and say so explicitly per NPC.** Large casts (especially sandbox World-Director worlds) split into a few principals authored deep and many roster NPCs authored compact. The Architect uses this classification to choose between the full §7.D profile and the compact §7.E roster stat block. A small cast (≈≤6) can be all principals.
+
+**Principal NPCs** — for each:
 - Role and narrative function.
 - Full physical and sensory description.
 - Psychological profile: motivation, fear, behavior pattern.
 - Speech pattern with 2–3 sample lines.
 - Relationship to {{user}}, to primary characters, and to other NPCs.
 - Trigger keyword candidates (2–4 words).
-- Arc presence map (which arcs, what changes).
+- Arc presence map (which arcs, what changes) — *arc mode only*.
 
-### SECTION 9: NARRATIVE ARC STRUCTURE (Tier 3 Source)
+**Roster NPCs** — for each, the compact set the Architect needs for the §7.E stat block:
+- Essence (who + the one thing they want), presence cue, **a distinct voice fingerprint** (three concrete, unique speech markers), one signature sample line, stance toward {{user}}, and a hook.
+- Trigger keyword candidates (2–4 words).
+- **Distinctiveness gate:** confirm no two roster NPCs share a voice fingerprint. If the World Seed gives two NPCs interchangeable voices, log it to `UNRESOLVED_QUESTIONS.md` (the Voice Auditor will hard-flag it downstream; catching it here saves a round-trip).
+
+**NPC intimacy routing (when Section 8 is in scope).** For each NPC with sexual presence, route their intimate substrate to the Intimacy Architect (Phase 2.5): principal NPCs to a full Intimacy Profile, roster NPCs to a §6.5 compact intimate stat block. Note the principal/roster intimacy classification per sexual NPC. Apply the same distinctiveness gate to intimate signatures — two NPCs interchangeable in an intimate scene is the intimate version of the voice-fingerprint collision; log to `UNRESOLVED_QUESTIONS.md` if the seed leaves them indistinct. Sandbox worlds carry the world's intimacy posture (Section 8a) as a *standing* function, not per-arc.
+
+### SECTION 9: NARRATIVE ARC STRUCTURE (Tier 3 Source) — *arc mode* — or — SANDBOX CHARTER — *sandbox mode*
+
+*Fill 9A when `World Mode: arc`; fill 9B when `World Mode: sandbox`. Title the section to match the mode so the Architect reads the right one.*
+
+#### 9A — NARRATIVE ARC STRUCTURE (arc mode)
 For each arc:
 - Genre tag.
 - What the arc is about in 1–2 sentences.
@@ -181,6 +202,17 @@ For each arc:
 - Arc-specific locations (first appearance or arc-only).
 - Arc entry trigger and exit trigger.
 - Tone and pacing directive.
+
+#### 9B — SANDBOX CHARTER (sandbox mode)
+
+The single source for the always-active Sandbox Lorebook. Provide:
+- **Standing Situation** (descriptive — feeds `SANDBOX_STATE` `**Standing Situation:**`): the persistent premise/status quo; {{user}}'s standing and power; the power-fantasy / experience contract (how the world treats {{user}} by default and what it is built to make the player feel).
+- **Tonal Mandate material** (directive — feeds `SANDBOX_STATE` `**Tonal Mandate:**`, 4–8 bullets): default/active register, prose dwells-on / elides, **live scene types** (the model's bias menu), the **aliveness contract** (NPCs pursue agendas, initiate, carry off-screen continuity; world reacts to and remembers {{user}}; never freezes waiting; rotate the cast), and hard prohibitions.
+- **World Pulse** (feeds the `WORLD_PULSE` entry): what is always in motion at the edges — ambient pressures/opportunities, who wants what from {{user}}, what the world does in the background — framed as a standing condition sustained every turn, never resolved.
+- **Standing locations** specific to the sandbox (only those not already Tier 1 standing locations).
+- **NPC presence map:** which NPCs are principals (deep) vs. roster (compact); standing dynamics among the cast the Director keeps live regardless of scene.
+
+There are no arc entry/exit triggers, no per-character evolution states, and no dramatic beats in sandbox mode — do not invent them.
 
 ### SECTION 10: TECHNICAL SPECIFICATIONS
 - Character card names and functions.
@@ -291,16 +323,15 @@ Append to end of `Master_Design.md`:
 - [ ] All major characters: physical description in anatomical order
 - [ ] All major characters: relationship map complete
 - [ ] All major characters: psychological entry topics listed
-- [ ] All NPCs: full profile with trigger keywords
+- [ ] All NPCs: classified principal vs. roster; principals have full profiles with trigger keywords; roster NPCs have essence/presence/voice fingerprint/signature line/stance/hook with trigger keywords
+- [ ] **No two roster NPCs share a voice fingerprint (distinctiveness gate) — or interchangeable voices logged to UNRESOLVED_QUESTIONS.md**
 - [ ] **Protagonist ({{user}}): physical description, psychology, powers, voice, and lorebook entry topics defined**
 - [ ] **Protagonist ({{user}}): identity floor available for `User.md` Persona Description — name, role/public face, distilled physical signature, world-relevant powers/limits flag (if applicable). Voice/personality/manner intentionally excluded — the human plays `{{user}}`.**
 
-### Tier 3 — Arc Lorebook Material
-- [ ] All arcs defined with genre tags
-- [ ] All arcs: hidden information rules explicitly stated
-- [ ] All arcs: dramatic beats listed
-- [ ] All arcs: NPC behavioral shifts named and causally explained
-- [ ] All arcs: entry and exit triggers defined
+### Tier 3 — Arc Lorebook Material (arc mode) / Sandbox Charter (sandbox mode)
+- [ ] **World Mode recorded at top of Master Design (arc | sandbox); Section 9 titled to match**
+- [ ] *Arc mode:* all arcs defined with genre tags; hidden information rules explicitly stated; dramatic beats listed; NPC behavioral shifts named and causally explained; entry and exit triggers defined
+- [ ] *Sandbox mode:* Sandbox Charter (9B) complete — Standing Situation (premise, {{user}} standing/power, experience contract); Tonal Mandate material (register, dwells/elides, live scene types, aliveness contract, prohibitions); World Pulse; NPC presence map (principals vs. roster). No arcs/triggers/beats invented.
 
 ### LLM Instruction Material
 - [ ] All character cards: LLM behavioral requirements (failure modes, mandates, prohibitions, trigger-response pairs)

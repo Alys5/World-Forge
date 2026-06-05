@@ -324,6 +324,17 @@ The analysis goes in your audit report as a new section before the chat preset i
 - [ ] Every block included is justified by at least one failure mode (no decorative inclusions)
 ```
 
+#### Sandbox-mode block guidance (when Master Design `World Mode` is `sandbox`)
+
+A sandbox world is an open-ended, NPC-populated experience with no arc carrying tone or momentum. That changes which runtime failures are likely, so the Block Selection Rationale should, by default (justify any departure):
+
+- **Enable Multi-Character Dynamics** — a Director voicing a roster is a multi-character world by definition.
+- **Include `npc_ensemble`** — NPC-to-NPC dialogue, ensemble prose scaling, and organic enrichment are core to a living sandbox; predict the matching failure modes (hub-and-spoke NPC dialogue, ensemble compression, a lean roster feeling thin) and map them to this block.
+- **Weight Sensory Embodiment high** and name "sensory engagement flattening to vision in a standing world with no arc pressure" as a failure mode (§5a-detail sandbox emphasis).
+- **Arc Guardian** still ships, but its content reframes to the standing `SANDBOX_STATE` (there are no arcs to guard between); its final {{user}}-control clause still applies.
+
+These are defaults, not mandates — the analysis still drives selection. But a sandbox preset that omits `npc_ensemble` or disables Multi-Character Dynamics should carry an explicit justification in Step 4 (Block Omissions).
+
 If the agent skips this analysis, the audit report is incomplete and sign-off cannot be issued.
 
 ---
@@ -356,7 +367,7 @@ These eight blocks are always in the preset, always enabled. They are present in
 
 These are in the template but get `enabled: false` in `prompt_order` if the world doesn't warrant them.
 
-**Block 9 — Multi-Character Dynamics** (`identifier: "multi_character_dynamics"`). **Enabled when:** the world has 2+ AI character cards in typical scenes, OR a Director/Narrator card managing NPCs. **Disabled when:** the world has only one AI card and {{user}}. Content: cross-talk encouragement (characters address each other not just {{user}}), turn budget mechanics (after 2-4 turns of cross-character exchange, find a natural beat that invites {{user}} back), character agency (each character has their own goals in scene). Include a 3-4 turn lattice example using this world's specific characters showing correct cross-talk pattern.
+**Block 9 — Multi-Character Dynamics** (`identifier: "multi_character_dynamics"`). **Enabled when:** the world has 2+ AI character cards in typical scenes, OR a Director/Narrator card managing NPCs. **Disabled when:** the world has only one AI card and {{user}}. Content: cross-talk encouragement (characters address each other not just {{user}}), turn budget mechanics (after 2-4 turns of cross-character exchange, find a natural beat that invites {{user}} back), character agency (each character has their own goals in scene). Include a 3-4 turn lattice example using this world's specific characters showing correct cross-talk pattern. **For Director-voiced NPC rosters (especially sandbox worlds), pair this with the optional `npc_ensemble` block** (§5a) — Multi-Character Dynamics is framed around AI *cards*, while `npc_ensemble` carries the NPC-to-NPC cross-talk, ensemble prose scaling, and organic enrichment for a lorebook-driven cast voiced by one Director card.
 
 **Block 10 — NSFW** (`identifier: "nsfw"`). **Enabled when:** World Seed Section 8 is in scope (intimate content with craft fidelity). **Disabled when:** wholesome world or no intimate content. Content has five required subsections per the template placeholder: Thematic Function Discipline (references active INTIMACY_FUNCTION_Arc[N]), Voice & Sound Register (onomatopoeia mapped to body reactions, slurred/muffled speech mechanics, voice register shifts), Body Coordination (pre-scene retrieval of physical facts, multi-body geometry mapping, narrated adaptation when geometry doesn't work natively, persistent constraints), Hard Limits (the substrate's limits hold), World Hard Rules (Section 8a + active arc INTIMATE_HARD_RULES_Arc[N]).
 
@@ -381,6 +392,8 @@ The agent adds these to `prompts` and `prompt_order` only when the Layer 1 analy
 **Opening Variation** (`identifier: "opening_variation"`). For any world where the default LLM failure of opening every response with environmental narration would harm pacing or flatten cadence — which is most worlds. Strong fit for dialogue-driven, character-focused, intimate, and fast-paced action worlds. **Content:** the model rotates response entry points across at least five varieties — dialogue-first (a character speaks before anything is described), mid-action (drop into something already happening: a door swinging, a glass set down, a phone buzzing), sensory-hit (a single smell, sound, or temperature shift before scene-setting), atmosphere-into-dialogue (one line of setting then straight into speech, no multi-paragraph scene-dressing), and time-skip (cut forward with a temporal marker into the new moment already in motion). Narration-first is ONE option among five, not the default. If the previous response opened with narration, the next MUST NOT — the model checks chat history before committing.
 
 **Perception Boundary** (`identifier: "perception_boundary"`). For any world where the gap between what is *narrated to the reader* and what is *perceivable by characters in scene* matters — which is any roleplay where {{char}} and NPCs should not magically know {{user}}'s thoughts. Strong fit for mystery, intrigue, deception, romance (where unspoken attraction must remain unspoken), social maneuvering, and any world where characters should be able to be wrong with confidence. **Content:** characters and NPCs perceive only what is *spoken aloud as dialogue* and what is *visible as action or body language*. They do not read {{user}}'s narration, internal monologue, named feelings, or authorial framing unless those are translated into observable behavior or speech. They can be wrong about what they think is happening and act on those wrong assumptions with full confidence. Inverse rule also applies: the model does not let {{char}}'s narrated inner state leak to in-scene NPCs through narration alone. Composes with — but does not duplicate — Internal Monologue Discipline: Perception Boundary is the general rule, Internal Monologue Discipline is the strict case for hidden-identity worlds. Include the worked example specified in §5a-detail so the model has a concrete pattern.
+
+**NPC Ensemble & Enrichment** (`identifier: "npc_ensemble"`). For worlds with a populated NPC cast voiced by a Director/Narrator card — **default-include in sandbox worlds**, and a strong fit for any large-ensemble world where scenes routinely hold several NPCs. It is the Director-voiced complement to Multi-Character Dynamics (which is framed around multiple AI *cards*); here the ensemble lives in the lorebook and is voiced by one Director card. Addresses three failure modes that intensify in an open sandbox: NPC dialogue collapsing into a hub-and-spoke around {{user}}, ensemble scenes getting compressed into a single spokesperson, and a lean roster feeling thin because the model treats absent-from-lorebook detail as forbidden rather than improvisable. **Content (three parts):** (1) **NPC-to-NPC dialogue** — NPCs address and answer *each other*, not only {{user}}; {{user}} may observe an exchange they are not part of. (2) **Ensemble prose scaling** — when several NPCs share a scene, the response expands to give each present NPC a distinct beat rather than collapsing the group; longer multi-voice prose is correct for ensemble moments (composes with Spatial Awareness for tracking who is present). (3) **Organic NPC enrichment** — NPCs may grow traits, mannerisms, opinions, and minor history not in the lorebook, surfacing organically in play, *provided* they stay consistent with the NPC's established essence and voice and never contradict the lorebook or world rules; once established in the chat log, treat the detail as canon. This is the NPC-roster extension of the `enhanceDefinitions` enhancer (which does the same for {{char}}). See §5a-detail for the full content requirements and guardrails.
 
 If a failure mode in your Block Selection Rationale is not addressed by any block above and not in the template, **author a custom block** following Section 5c's schema. Custom blocks are valid and expected when this world has a specific need the menu does not cover. Justify the custom block in the Rationale.
 
@@ -467,6 +480,7 @@ Do NOT include generic reasoning or writing-process steps — last-message analy
 - Per-scene questions the model should ask: what does the air smell like here? what is the temperature against skin? what is the ambient sound layer? what does the environment feel underfoot or against the body?
 - Reference this world's specific sensory anchors from World Seed Section 2 (sensory signature)
 - Anti-failure-mode: do not write scenes that engage only sight; do not let smell/touch/sound default to silence; do not invent sensory details that contradict the world's established register
+- **Sandbox-mode emphasis (when `World Mode: sandbox`):** sensory grounding carries extra weight because no arc momentum is carrying the scene — the standing world has to feel physically present every turn for the sandbox to read as alive rather than abstract. Strengthen the directive: every scene establishes at least one non-visual sensory anchor before it resolves, and recurring sandbox locations carry a consistent sensory signature the model returns to. The Section 5.0b Block Selection Rationale should weight Sensory Embodiment as a high-priority block for sandbox worlds and name "sensory engagement flattening to vision in a standing world with no arc pressure" as an explicit failure mode.
 
 **Formatting Enforcement content (slim, marker-agnostic, defers to active style contract):**
 
@@ -522,6 +536,27 @@ The optional blocks in §5a are described at the menu level. When you select one
 - Inverse rule for {{char}}: the model also does not leak {{char}}'s narrated inner state to other NPCs in scene through narration alone. {{char}}'s thoughts are visible to the reader, not to the room.
 - Anti-failure-mode statements (imperative): do NOT have an NPC respond to {{user}}'s narrated feelings as if those were spoken aloud. Do NOT have an NPC "sense" {{user}}'s inner state without an observable cue. Do NOT translate authorial framing into in-scene fact other characters know.
 - Block is world-agnostic; no character names, no arc names, no world-specific content. Reusable across worlds.
+
+**NPC Ensemble & Enrichment content must include (three parts — keep each as a labeled sub-section in the block):**
+
+*Part 1 — NPC-to-NPC dialogue (imperative):*
+- When two or more NPCs share a scene, they talk to *each other*, not only to {{user}}. Render NPCs reacting to, agreeing with, interrupting, and contradicting one another.
+- {{user}} is not the hub every line routes through. {{user}} can watch an exchange they are not part of; not every NPC line is addressed to {{user}} or waiting on {{user}}'s reply.
+- NPCs hold their own goals in a scene and pursue them in dialogue with each other — alliances, friction, and side-conversations are correct.
+
+*Part 2 — Ensemble prose scaling (imperative):*
+- Scale the response to the number of NPCs present. A scene with several NPCs gets longer, multi-voice prose; do not compress an ensemble into a single spokesperson or a one-line summary of "the group."
+- Give each NPC physically present a distinct beat — a line, an action, or a reaction — rather than dropping NPCs who are hard to juggle. (Track presence per Spatial Awareness; an NPC in the scene does not silently vanish.)
+- This scaling overrides the instinct to keep every reply uniform in length; it does not override the world's paragraph register — dwell vs. terse still governs *how* each beat is written.
+
+*Part 3 — Organic NPC enrichment (imperative, with explicit guardrails):*
+- NPCs may develop traits, mannerisms, preferences, opinions, and minor personal history that are **not** written in the lorebook, surfacing organically in play. A lean roster profile is an invitation to flesh the NPC out, not a hard ceiling.
+- **Guardrails (binding):** invented detail must stay consistent with the NPC's established essence, voice fingerprint, and stance; it must never contradict the lorebook, the world rules, or anything already established in the chat log. Enrichment is additive texture and minor characterization — it does **not** extend to inventing load-bearing plot facts, world rules, or contradicting established character behavior.
+- Once an enriched detail is established in play, treat it as canon and keep it consistent thereafter (composes with the jailbreak block's "the chat log itself is binding" clause).
+- This is the NPC-cast analogue of the `enhanceDefinitions` enhancer's rule for {{char}}: *enhance, but keep the established definitions absolute.*
+- Block is world-agnostic; no character names, no arc names, no world-specific content. Reusable across worlds.
+
+> **Reconciliation with the audit philosophy:** the Voice Auditor's "model would invent this" check (Phase 3.5 Step 3G) flags invention that fills a *coverage gap in load-bearing material* — a missing trait the drafts should have specified. This block licenses the opposite case: additive, non-contradicting texture on an intentionally-lean roster. The two coexist because the guardrails above forbid exactly what the audit guards against (contradiction, load-bearing invention) while permitting what a living sandbox needs (consistent minor enrichment).
 
 ---
 
@@ -739,7 +774,7 @@ EXTENSIONS:      extensions (object, may be empty)
 - [ ] All standard markers present in `prompts` with `marker: true`: `worldInfoBefore`, `worldInfoAfter`, `charDescription`, `charPersonality`, `scenario`, `personaDescription`, `chatHistory`, `dialogueExamples`
 - [ ] All 8 core custom blocks present in `prompts` with non-placeholder content: `main`, `deep_think`, `arc_guardian`, `lore_integration`, `spatial_awareness`, `sensory_embodiment`, `formatting`, `jailbreak`
 - [ ] Conditional core blocks present in `prompts` with appropriate enabled state in `prompt_order`: `multi_character_dynamics` (enabled iff 2+ AI cards or Director NPC card), `nsfw` (enabled iff Section 8 in scope)
-- [ ] Any optional blocks added (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction) or custom blocks have their `identifier` registered in both `prompts` array and `prompt_order` for every character
+- [ ] Any optional blocks added (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks have their `identifier` registered in both `prompts` array and `prompt_order` for every character
 - [ ] **`forbid_overrides: false` on the `main` and `jailbreak` blocks.** Hard fail if either is `true` — that silently disables card-level system_prompt and post_history_instructions overrides.
 - [ ] **No `[REPLACE` substring anywhere in the output.** Run a string scan on the serialized JSON. Every placeholder from the template must have been replaced with world-specific content. Hard fail if any remain.
 
@@ -968,7 +1003,8 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries
 - [ ] Spatial Awareness references this world's character heights where relevant
 - [ ] NSFW block: populated and enabled if world has intimate content; empty and disabled if wholesome
-- [ ] Optional blocks (if included): Opening Variation contains all five opening varieties + rotation rule; Perception Boundary contains the worked {{user}}-narration example + inverse {{char}} rule per §5a-detail
+- [ ] Optional blocks (if included): Opening Variation contains all five opening varieties + rotation rule; Perception Boundary contains the worked {{user}}-narration example + inverse {{char}} rule per §5a-detail; NPC Ensemble & Enrichment contains all three labeled parts (NPC-to-NPC dialogue, ensemble prose scaling, organic enrichment with its guardrails) per §5a-detail
+- [ ] Sandbox worlds: Multi-Character Dynamics enabled, `npc_ensemble` included, Sensory Embodiment weighted high — or each omission justified in the Block Selection Rationale (Step 4)
 
 ### Chat Template — Style Contract Validation (paired with override architecture)
 - [ ] Main Prompt contains exactly one `<style_contract>...</style_contract>` block with NARRATIVE PERSPECTIVE and FORMATTING MARKERS lines
@@ -1029,7 +1065,7 @@ Halt and report the specific gap if any fails:
 **Step 2 — Re-derive and diff.** `Drafts/Master_Design.md` is the post-revision source of truth. For each block, determine its current correct content, then diff against the existing preset on these axes:
 
 - **Block content (spec + world-content sync).** For each core block and each present optional block, re-derive its correct content from BOTH the current 5a-detail requirement (framing/spec) AND the current Master Design (world facts: arc names, characters, CHARACTER_STATE, heights, sensory anchors, the multi-character lattice). **Never copy a block's world content forward from the existing preset — derive it from Master Design.** This is what makes resync pick up revision-pipeline content changes the revise mini-PE never writes into the preset. A block whose re-derived content substantively differs from the existing content is **CHANGED** (record the cause: spec reframe, revised world content, or both); a block whose re-derived content is semantically equivalent to the existing content is **UNCHANGED** — preserve the existing content verbatim to avoid cosmetic churn.
-- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks.
+- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary, or — for a world now in or converted to sandbox mode — NPC Ensemble & Enrichment). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks. *(Note: the Section 5.0b sandbox-mode block guidance applies here too — resyncing a sandbox world should surface `npc_ensemble` and the sandbox Sensory Embodiment weighting if the live preset predates them.)*
 - **Template field drift.** Compare top-level fields. You may adopt a template field change ONLY when a foundational hard-fail rule requires it (e.g., `forbid_overrides: false` on `main`/`jailbreak`). You do NOT overwrite the user's sampling parameters, format strings, or provider fields — those are the user's customizations and survive resync untouched.
 
 **Step 3 — Regenerate in place.** Apply the diff under these preservation rules (load-bearing):

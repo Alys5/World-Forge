@@ -25,7 +25,13 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 ## 1. CORE CONCEPT & TONE **[REQUIRED]**
 
-**Logline:** [One sentence. The story in its most compressed form: who, what stakes, what emotional payoff. Example: "A disgraced knight and a war goddess find redemption through a bargain that was never meant to become love."]
+**World Mode:** [Pick one — `arc` (default) or `sandbox`. This governs how Section 5 works and what Tier 3 lorebook the pipeline builds.]
+- `arc` — The world progresses through **narrative arcs** with entry/exit triggers, dramatic beats, and per-character evolution. Section 5 defines one arc block per arc; the pipeline builds one swappable Tier 3 Arc Lorebook per arc. This is the default; leave it `arc` unless your world is open-ended.
+- `sandbox` — The world has **no narrative arc**. It is open-ended: a power-fantasy, world-director, or life-sim world anchored by a standing world-state rather than a progression of arcs. Section 5 becomes a single **Sandbox Charter** instead of a list of arcs; the pipeline builds one always-active Tier 3 Sandbox Lorebook (`SANDBOX_STATE` + `WORLD_PULSE`). Choose this when the experience is "live in this world and do things," not "move through a story." (`/worldforge start --sandbox` pre-sets this field, but the field is the source of truth.)
+
+*If `sandbox`: in the prompts below, read "across the arcs" as "across the whole experience," and skip the per-arc breakdowns — the relevant detail goes in the Sandbox Charter (Section 5, sandbox variant).*
+
+**Logline:** [One sentence. The story in its most compressed form: who, what stakes, what emotional payoff. Example: "A disgraced knight and a war goddess find redemption through a bargain that was never meant to become love." For a sandbox world, the logline is the premise rather than a plot: "A newly-fallen archangel runs a demonic syndicate in modern Stockholm, and the city is his to move through."]
 
 **Genre & Tone:** [What genres are active? How does the tone shift across arcs? Name the emotional register for each phase of the story. Example: "Begins as grimdark political intrigue, transitions into reluctant romance, culminates in mythic tragedy with a bittersweet resolution."]
 
@@ -387,7 +393,15 @@ Trigger keywords: [sex, intimacy, touch, desire, arousal, etc.]
 
 *Each NPC profile becomes a Tier 2 lorebook entry in the WorldDirector NPC Lorebook.*
 
-**NPC: [Name]**
+> **Two-tier NPC model — required for large casts (especially sandbox worlds).** When a World Director voices many NPCs, full profiles for all of them bloat the lorebook and — worse — let the voices blur into one generic register. Split the cast:
+> - **Principal NPCs** (the handful {{user}} orbits most): use the **full profile** format directly below. Author them deep.
+> - **Roster NPCs** (everyone else): use the **compact roster stat block** further below. Lighter to author and token-cheaper, but structured specifically so every voice stays distinct.
+>
+> A small cast (≈≤6 NPCs) can make everyone a principal. A large cast (a sandbox World Director with 15–30 NPCs) should keep principals to a handful and put the rest on the roster. The binding rule for the roster: **every NPC's voice fingerprint must be unique** — no two roster NPCs should be confusable from a line of dialogue alone.
+
+##### Principal NPC — full profile
+
+**NPC: [Name]** — *Principal*
 Trigger keywords: [name variants, role descriptors, ways they'd be referenced in chat]
 
 [Physical description: height, build, appearance, what makes them physically distinctive. Sensory signature.]
@@ -396,19 +410,46 @@ Trigger keywords: [name variants, role descriptors, ways they'd be referenced in
 
 [Speech pattern: how do they talk? Sentence structure, vocabulary, verbal tics, what they never say directly. Give the AI enough to write them distinctly from every other NPC.]
 
-**Arc progression:**
+**Arc progression:** *(arc mode only — omit in sandbox worlds)*
 *[Arc N] — [Role this arc]:* [How do they behave in this arc? What is their relationship to the main characters? What do they want?]
 
 **Sample lines:**
 - "[A line of dialogue that captures their voice precisely]" *([context — when would they say this?])*
 - "[Another sample line]" *([context])*
 
-**NPC: [Name]**
-[Same format — repeat for each NPC]
+**Intimacy (only if this NPC has sexual presence — feeds the Intimacy Architect):** [For a principal NPC, sketch the same substrate you would for a character: baseline sexuality, any trauma map, body/sound signature, voice in intimacy, hard limits and hard yeses. Leave blank if the NPC has no sexual presence.]
+
+**NPC: [Name]** — *Principal*
+[Same format — repeat for each principal NPC]
+
+##### Roster NPC — compact stat block
+
+*Use for the rest of a large cast. Each becomes a lean Tier 2 lorebook entry. Fill every field in one line — the format is engineered so brevity does not cost distinctiveness.*
+
+**NPC: [Name]** — *Roster*
+Trigger keywords: [name variants, role descriptors]
+- **Essence:** [who they are + the one thing they want — one line]
+- **Presence:** [body/sensory cue, how they enter a room — one line]
+- **Voice fingerprint:** [three concrete, UNIQUE speech markers — cadence, diction, a verbal tic — that no other roster NPC shares]
+- **Signature line:** "[one sample line only this NPC would say]"
+- **Stance toward {{user}}:** [deference / rivalry / desire / fear / transaction / curiosity — one line on how they treat {{user}}]
+- **Hook:** [what pulls them into a scene, or what they offer the sandbox — one line]
+- **Intimacy (only if this NPC has sexual presence):** [one or two lines of compact sexual context — how they are in sex + what they want, a distinct body/sound or voice-in-intimacy cue, one hard limit/yes. This becomes the Intimacy Architect's §6.5 compact stat block. Keep it distinct from every other NPC. Leave blank if no sexual presence.]
+
+**NPC: [Name]** — *Roster*
+[Same format — repeat for each roster NPC]
 
 ---
 
-## 5. NARRATIVE ARCS
+## 5. NARRATIVE ARCS — or — SANDBOX CHARTER
+
+> **Which one you fill depends on Section 1 `World Mode`.**
+> - `World Mode: arc` → fill **Section 5A (Narrative Arcs)** below; skip 5B.
+> - `World Mode: sandbox` → fill **Section 5B (Sandbox Charter)**; skip 5A entirely. The pipeline builds one always-active Sandbox Lorebook instead of per-arc lorebooks.
+
+---
+
+## 5A. NARRATIVE ARCS **[arc mode]**
 
 *Each arc section becomes the source material for one Tier 3 Arc Lorebook.*
 *The arc lorebook contains: ARC_STATE (CONSTANT), CHARACTER_STATE entries (CONSTANT), location variants, NPC behavioral shifts, dramatic beats, tension entries.*
@@ -456,6 +497,56 @@ Trigger keywords: [name variants, role descriptors, ways they'd be referenced in
 
 ### ARC [N+1]: [Arc Title]
 [Same format — repeat for each arc]
+
+---
+
+## 5B. SANDBOX CHARTER **[sandbox mode]**
+
+*Fill this instead of Section 5A when `World Mode: sandbox`. It becomes the source material for the single always-active Tier 3 **Sandbox Lorebook** (`SANDBOX_STATE` constant entry + one or more `WORLD_PULSE` entries + standing location entries). There are no arcs, no entry/exit triggers, no per-character evolution states, and no dramatic beats — the experience is anchored by a standing world-state, not a progression.*
+
+### 5B.1 — Standing Situation
+
+*This becomes the `**Standing Situation:**` subsection of `SANDBOX_STATE` (the descriptive register). Describe the world as it persistently is, not a story moving through it.*
+
+**Premise & status quo:** [What is the persistent state of this world? What is happening, broadly and continuously, that the player drops into? Example: "Lucifer, newly at peace, runs the Black Hand syndicate from a Stockholm penthouse. The city's underworld answers to him; the supernatural world watches warily; daily life proceeds."]
+
+**{{user}}'s standing & power:** [Who is {{user}} in this world and what is their position/power? In a power-fantasy sandbox this is central — the world is postured toward them in a specific way. Be concrete about what {{user}} can do and how the world treats them by default.]
+
+**The power-fantasy / experience contract:** [How does the world treat {{user}} by default — deference, fear, desire, opportunity, danger? What is the *feeling* the sandbox is built to deliver? This sets how NPCs and the world react before any specific scene.]
+
+### 5B.2 — Tonal Mandate (how the world must be played)
+
+*This becomes the `**Tonal Mandate:**` subsection of `SANDBOX_STATE` (the binding directive register). Give 4–8 directives. These are imperatives, not description.*
+
+**Default / active register:** [What register dominates every response when nothing else is pressing? e.g., "wry, controlled, unhurried — the register of someone who owns the room."]
+
+**Prose dwells on / elides:** [What should the prose linger on? What should it skip or de-emphasize?]
+
+**Live scene types (the sandbox menu):** [What kinds of scenes are active and available in this world? List them — this is the menu the model biases toward. e.g., "negotiations with rival powers, intimate evenings, displays of authority, quiet domestic moments, sudden threats handled with ease."]
+
+**Aliveness directives:** [The contract that keeps the world feeling alive. Default suggestions — adapt: "NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; time passes and off-screen life continues; never freeze the world waiting for {{user}} to act; rotate NPCs in and out so the cast feels populated, not summoned."]
+
+**Hard prohibitions:** [What must the model never do in this world? e.g., "never strip {{user}} of agency or power without an in-world cause the player set in motion; never reset NPC attitudes to neutral between scenes."]
+
+### 5B.3 — World Pulse
+
+*This becomes the `WORLD_PULSE` entry (the standing, recency-injected aliveness directive — the sandbox analog of an arc's TENSION). It is sustained every turn, never "resolved." Keep it short and present-tense.*
+
+**The standing pulse:** [One short paragraph the model keeps live every turn: the world is populated and proactive; specify the ambient pressures or opportunities that should always be in motion — what's happening at the edges, who wants what from {{user}}, what the world is doing while {{user}} acts. Example: "The syndicate always has business in motion; rivals test boundaries; the city offers and demands. NPCs act on their own wants between {{user}}'s moves. Reputation precedes {{user}} into every room."]
+
+### 5B.4 — Standing Locations (sandbox)
+
+*Locations the player moves between in the sandbox. If a location is already a Tier 1 standing location (Section 2d), don't repeat it — only add sandbox locations here that are arc-3-style "active space" entries rather than permanent world facts. Often this can be left light, with Section 2d carrying the locations.*
+
+**Location: [Name]** — [sensory description, who/what is there, what {{user}} does here]
+
+### 5B.5 — NPC presence (sandbox)
+
+*Sandbox worlds typically run on a large NPC cast voiced by a World Director card. Define the cast in Section 4 using the two-tier split: a few **principal NPCs** with full profiles, the rest as **roster NPCs** (compact stat blocks). See Section 4's NPC PROFILES guidance. Here, just note which NPCs are principals (deep) vs. roster (light), and any standing relationships among them the Director should keep live.*
+
+**Principal NPCs (full profile):** [list]
+**Roster NPCs (compact):** [list]
+**Standing dynamics among the cast:** [any persistent rivalries, alliances, or hierarchies the Director keeps live regardless of scene]
 
 ---
 
@@ -532,6 +623,8 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 
 *For each arc that contains intimate beats, specify what intimacy is for in that arc. Skip arcs that do not contain intimate scenes.*
 
+*__Sandbox mode:__ skip the per-arc breakdown — there are no arcs. Section 8a (world-level posture, hard rules, prose register) IS your standing intimacy spec; it feeds the single standing `INTIMACY_FUNCTION` register. Specify the world's standing intimate scene types and the sexual context of your NPC cast (in Section 4's NPC intimacy fields) instead of per-arc functions.*
+
 #### ARC [N] Intimacy
 
 **Active thematic function(s) — pick from this list, ranked by primacy if multiple apply:**
@@ -590,13 +683,19 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 - NPC profiles (in WorldDirector lorebook)
 - Protagonist identity lorebook
 
-### TIER 3 (Arc Lorebooks — active only during their arc)
+### TIER 3 — arc mode (Arc Lorebooks — active only during their arc)
 - ARC_STATE: genre, tone, narrative state, goals, hidden information rules (CONSTANT)
 - CHARACTER_STATE: physical and psychological state this arc (CONSTANT)
 - Location variants: how a standing location looks/feels this arc
 - NPC_SHIFT: how NPCs behave differently this arc (delta from baseline only)
 - DRAMATIC_BEAT: entries that fire when specific story moments are triggered
 - TENSION: what is at stake, what the clock is, what failure looks like
+
+### TIER 3 — sandbox mode (one always-active Sandbox Lorebook)
+- SANDBOX_STATE: standing situation + tonal mandate + aliveness contract (CONSTANT) — the `ARC_STATE` analog
+- WORLD_PULSE: the sustained "the world is alive and reactive" directive (recency-injected) — the `TENSION` analog
+- Standing location entries (only sandbox-specific ones; permanent locations stay in Tier 1)
+- *No CHARACTER_STATE / NPC_SHIFT / DRAMATIC_BEAT — there is no arc*
 - INTIMACY_FUNCTION: what intimacy is for in this arc — thematic function, prose register, direction (CONSTANT, conditional)
 - CHARACTER_INTIMATE_REGISTER: per-character arc-specific intimate behavioral delta (CONSTANT, conditional)
 - INTIMATE_SCENE_TYPES, INTIMATE_HARD_RULES: arc-specific intimate scene framing (conditional)
@@ -652,13 +751,14 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 - [ ] Every AI-played character has: psychological core, shield, crack, voice pattern, opening scenario, first message, example exchanges
 - [ ] Every character has a physical baseline description
 - [ ] Every character has a state entry per arc
-- [ ] Every NPC has a profile with speech pattern and arc behavior
+- [ ] Every NPC has a profile — principals as full profiles, roster NPCs as compact stat blocks (large casts); roster voice fingerprints are unique
 - [ ] LLM behavioral instructions written for each card (with arc-range qualifiers)
 - [ ] For characters with intimate scene presence: substrate (trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits) and arc-specific evolution filled out
 
-**Section 5 — Arcs:**
-- [ ] Every arc has: genre tag, thematic description, dramatic beats, hidden information rules, NPC shifts, entry and exit triggers
-- [ ] Arc entry and exit triggers are specific events, not states
+**Section 5 — Arcs (arc mode) / Sandbox Charter (sandbox mode):**
+- [ ] `World Mode` declared in Section 1 (`arc` or `sandbox`)
+- [ ] *Arc mode:* every arc has genre tag, thematic description, dramatic beats, hidden information rules, NPC shifts, entry and exit triggers; triggers are specific events, not states
+- [ ] *Sandbox mode:* Sandbox Charter (5B) filled — Standing Situation, Tonal Mandate (4–8 directives incl. aliveness), World Pulse; arc blocks (5A) left empty
 
 **Section 6 — Technical:**
 - [ ] Lorebook structure matches actual content (including intimacy profile and register files where applicable)

@@ -5,7 +5,7 @@ description: A workflow to build worlds for player to roleplay in.
 # THE WORLD FORGE PIPELINE
 *Orchestrator v7 — Universal Roleplay World Building & SillyTavern Export*
 
-**Produces:** Character Cards + World Lorebook (Tier 1, permanent) + Character Lorebooks (Tier 2, permanent) + Character Intimacy Profiles (Tier 2, permanent, where applicable) + Arc Lorebooks (Tier 3, modular, one active at a time) + Arc Intimacy Registers (Tier 3, modular, where applicable) + Group Lorebook (all tiers combined) + Chat Completion Preset. Works for any world, any number of arcs or characters.
+**Produces:** Character Cards + World Lorebook (Tier 1, permanent) + Character & NPC Lorebooks (Tier 2, permanent) + Character/NPC Intimacy Profiles (Tier 2, permanent, where applicable) + Tier 3 lorebook (arc mode: Arc Lorebooks, one active at a time; sandbox mode: a single always-active Sandbox Lorebook) + Intimacy Registers (Tier 3: per-arc in arc mode, a single standing register in sandbox mode, where applicable) + Group Lorebook (all tiers combined) + Chat Completion Preset. Works for any world — arc or sandbox, any number of arcs, characters, or NPCs.
 
 ---
 
@@ -78,6 +78,33 @@ description: A workflow to build worlds for player to roleplay in.
 
 ---
 
+## WORLD MODE: ARC vs. SANDBOX
+
+Every world is built in one of two modes, declared in World Seed Section 1 (`World Mode: arc | sandbox`) and recorded by the Refiner at the top of `Master_Design.md`. **`arc` is the default and the legacy behavior** — every existing world is an arc world, and arc-world behavior is unchanged. **`sandbox`** is for open-ended worlds with no narrative arc: power-fantasy, world-director, and life-sim worlds anchored by a standing world-state rather than a progression of arcs.
+
+Sandbox mode is a **branch through this same pipeline, not a separate fork.** The same phases and agents run; sandbox mode changes only the Tier 3 spine and the large-cast NPC format. `/worldforge start --sandbox` pre-sets the World Seed field; the field itself is the source of truth, so a hand-written seed or a `skip phase0` run carries the signal.
+
+**What sandbox mode changes, phase by phase:**
+
+| Phase | Arc mode | Sandbox mode |
+|---|---|---|
+| 0 Interviewer | Section 5 walks the arcs | Section 5 becomes the **Sandbox Charter** (standing situation, tonal mandate + aliveness contract, world pulse, live scene types, NPC roster split) |
+| 1 Refiner | Master Design §9 = Narrative Arc Structure | Master Design §9 = **Sandbox Charter (9B)**; NPCs classified principal vs. roster |
+| 2 Architect | One Arc Lorebook per arc (§8); full NPC profiles (§7.D) | One always-active **Sandbox Lorebook** `Tier3_Sandbox_Entries.md` (§8S: `SANDBOX_STATE` + `WORLD_PULSE`); principals §7.D + roster §7.E |
+| 3 Editor | ARC_STATE validation, ≥8 entries/arc, cross-arc qualifiers | **SANDBOX_STATE validation (Step 4a-S)**; no 8-entry floor; no cross-arc qualifiers; roster fingerprint check |
+| 3.5 Voice Auditor | Arc register checks | Standing register vs. SANDBOX_STATE + **Distinctiveness Matrix (Step 3I)** across the roster |
+| 3.6 Arc Transition Auditor | Runs | **Skipped** (no arc seams) |
+| 2.5 Intimacy Architect | Per-character profiles + per-arc registers | Profiles **+ NPC intimacy** (principal full / roster compact §6.5); a single standing `Sandbox_Intimacy_Register` (no per-arc) |
+| 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8; audits the standing `INTIMACY_FUNCTION` + **NPC intimate coverage & distinctiveness** (Step 3H) across the sexual NPC cast |
+| 4 Compiler | One `Arc[N]_Lorebook.json` per arc | One `Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
+| 5 Prompt Engineer | Arc Guardian / Deep Think name the arcs | Blocks reference the standing sandbox state rather than arcs; defaults to **Multi-Character Dynamics** + the optional **NPC Ensemble & Enrichment** block (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment) + **high-weighted Sensory Embodiment** |
+
+**The aliveness contract** is the load-bearing idea of sandbox mode: with no arc carrying tone and momentum, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry are what keep the world feeling alive — NPCs pursuing their own agendas and initiating, the world reacting to and remembering `{{user}}`, the cast rotating in and out rather than sitting inert until summoned. The **roster NPC format** (§7.E) with its uniqueness rule, plus the Voice Auditor's **Distinctiveness Matrix**, are what keep a large cast from collapsing into one generic voice.
+
+> **Revise pipeline:** `workflows/world-forge-revise.md` is **not yet sandbox-aware.** Revising a shipped sandbox world (surgical edits to `SANDBOX_STATE`, `WORLD_PULSE`, or the roster) through the mini-agents is deferred future work. For now, revise a sandbox world via a targeted re-run of the relevant phases. This is flagged here so it is not assumed to work silently.
+
+---
+
 ## PHASE 0: DISCOVERY — THE INTERVIEWER
 
 **Invoke:** `@agent_roles/00_The_Interviewer.md`
@@ -129,8 +156,8 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 2. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
 3. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
 4. `Tier1_World_Entries.md` — all Tier 1 entries
-5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC
-6. `Tier3_Arc[N]_[Title]_Entries.md` — Tier 3 entries per arc
+5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
+6. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
 7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
@@ -146,8 +173,8 @@ If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architec
 **Conditional phase.** Runs if and only if the World Seed Section 8 contains material — i.e., the world includes intimate scenes meaningful enough to warrant craft fidelity. For wholesome or low-intimacy worlds where Section 8 was deliberately left empty by the user, this phase is skipped and the pipeline proceeds directly from Phase 2 to Phase 3.
 
 **Mandatory outputs when phase runs:**
-1. `Tier2_[CharName]_Intimacy_Profile.md` — one per character with intimate scene presence in any arc. Permanent substrate: trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits and hard yeses.
-2. `Tier3_Arc[N]_Intimacy_Register.md` — one per arc that contains intimate beats. Delta only: arc thematic function, per-character arc-specific behavioral notes, live scene types, arc-specific hard rules.
+1. `Tier2_[CharName]_Intimacy_Profile.md` — one per character with intimate scene presence. Permanent substrate: trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits and hard yeses. **Extends to NPCs:** principal NPCs get full profiles; roster NPCs get compact intimate stat blocks (Intimacy Architect §6.5) — load-bearing for sandbox worlds, which usually carry sexual material across a large NPC cast.
+2. Tier 3 register — *arc mode:* `Tier3_Arc[N]_Intimacy_Register.md` per arc (delta only: arc thematic function, per-character notes, live scene types, arc hard rules). *Sandbox mode:* a single `Tier3_Sandbox_Intimacy_Register.md` (standing `INTIMACY_FUNCTION`, `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc deltas).
 
 **Failure conditions:**
 - Section 8 is missing material the agent needs → produces `UNRESOLVED_INTIMACY.md`, halts pipeline.
@@ -172,7 +199,8 @@ Validates four layers: prose quality, tier integrity + lorebook entry quality, L
 - Arc lorebook with fewer than 8 entries = rejection
 - Tier 2 Intimacy Profile containing arc-specific content = immediate rejection
 - Tier 3 Intimacy Register restating substrate already in Tier 2 = immediate rejection
-- INTIMACY_FUNCTION_Arc[N] entry missing thematic function name or prose register specification = rejection
+- INTIMACY_FUNCTION entry (per-arc `INTIMACY_FUNCTION_Arc[N]` in arc mode, or the standing `INTIMACY_FUNCTION` in sandbox mode) missing thematic function name or prose register specification = rejection
+- Sexual NPC with no intimate substrate (no full profile and no §6.5 compact stat block) = rejection (coverage gap)
 
 ```
 LOOP:
@@ -206,6 +234,8 @@ IF no failures → VOICE AUDITOR SIGN-OFF
 **Invoke:** `@agent_roles/03c_The_Arc_Transition_Auditor.md`
 **Input:** All Editor-approved `Drafts/Tier3_*` files + `Drafts/Tier2_*` files + `Drafts/Master_Design.md`
 **Output:** `Drafts/Arc_Transition_Audit_[Round N].md`
+
+**Conditional phase.** Runs only in **arc** mode. In **sandbox** mode there are no consecutive arcs and no arc seams to audit — this phase is skipped (exactly as Phase 3.7 is skipped without intimacy), and Phases 3.5 + 3.7 (if applicable) proceed without it.
 
 Verifies continuity across every consecutive arc pair: trigger continuity, CHARACTER_STATE continuity, NPC behavioral shift continuity, world state continuity, hidden information rule continuity, dramatic beat sequence, tone register continuity.
 
@@ -256,9 +286,9 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `[ProtagonistName]_Lorebook.json` — Tier 2, {{user}} identity reference
 - `World_Lorebook.json` — Tier 1, all entries at `position: 0`
 - `[CharName]_Lorebook.json` — Tier 2, one per character/NPC, all entries at `position: 1`
-- `[CharName]_Intimacy_Profile.json` — Tier 2, one per character with intimate presence, all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
-- `Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`)
-- `Arc[N]_Intimacy_Register.json` — Tier 3, one per arc with intimate beats, INTIMACY_FUNCTION entry CONSTANT with `ignoreBudget: true`, character intimate registers CONSTANT. Compiled from Phase 2.5 drafts when present.
+- `[CharName]_Intimacy_Profile.json` — Tier 2, one per character/NPC with intimate presence (principal full profiles; roster NPC compact stat blocks may share `NPC_Intimacy_Roster.json`), all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
+- `Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
+- Tier 3 intimacy register — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
 - `Group_Lorebook.json` — all tiers combined, group-tagged for ST lorebook editor management
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
@@ -277,7 +307,7 @@ In SillyTavern: import `Group_Lorebook.json`, enable World + character groups + 
 
 **Workstream A — Audit (read-only against Export/):** Reviews every lorebook entry (including intimacy profiles and registers) for position correctness, injection order, keyword coverage, token budget risk. Reviews every character card for `system_prompt`, `post_history_instructions`, and `depth_prompt`. Produces audit report with **recommended corrections** for any issues found. The Prompt Engineer does NOT modify Export/ JSON files — recommendations are surfaced in Sections 7 and 8 of the audit report as plain-text instructions for the user to apply manually. The audit report's status line distinguishes "COMPLETE — pipeline ready" (no recommendations generated) from "AUDIT COMPLETE — N manual corrections required" (recommendations outstanding).
 
-**Workstream B — Chat Preset:** Begins with the Section 5.0b Block Selection Rationale — an analytical write-up that names this world's archetype, predicts 4-8 specific runtime failure modes, and maps each failure mode to the block(s) that address it. Block selection is the *outcome* of this analysis, not a checklist. The agent then starts from `templates/Chat_Completion_Preset_template.json` and authors content for the 8 core blocks (Main, Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Formatting, Jailbreak), enables/disables the 2 conditional core blocks (Multi-Character Dynamics for 2+ AI cards or Director NPC; NSFW for Section 8 in scope), and adds optional blocks from the menu (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction) or custom blocks as the Rationale warrants. **The Main Prompt's `<style_contract>` block is parameterized from Master Design Section 11a (perspective, tense, marker enums); the active-speaker rule is included only when Section 11c reports `is_multi_perspective: true`; the Formatting block is the slim deferral form referencing both `<style_contract>` and `<style_override>` by name.** NSFW when enabled covers thematic function discipline, voice & sound register (onomatopoeia mapped to body reactions, slurred speech mechanics, voice register shifts), body coordination (pre-scene retrieval of physical facts, multi-body geometry mapping, narrated adaptation when geometry doesn't work natively), hard limits, and world hard rules. Verifies `forbid_overrides: false` on `main` and `jailbreak`. Runs the Section 5f Pass 1 + Pass 2 self-validation before saving. Produces `[WorldName]_ChatPreset.json` ready for ST import.
+**Workstream B — Chat Preset:** Begins with the Section 5.0b Block Selection Rationale — an analytical write-up that names this world's archetype, predicts 4-8 specific runtime failure modes, and maps each failure mode to the block(s) that address it. Block selection is the *outcome* of this analysis, not a checklist. The agent then starts from `templates/Chat_Completion_Preset_template.json` and authors content for the 8 core blocks (Main, Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Formatting, Jailbreak), enables/disables the 2 conditional core blocks (Multi-Character Dynamics for 2+ AI cards or Director NPC; NSFW for Section 8 in scope), and adds optional blocks from the menu (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks as the Rationale warrants. **Sandbox worlds** default to enabling Multi-Character Dynamics, including NPC Ensemble & Enrichment (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment within guardrails), and weighting Sensory Embodiment high — see the Section 5.0b sandbox-mode block guidance. **The Main Prompt's `<style_contract>` block is parameterized from Master Design Section 11a (perspective, tense, marker enums); the active-speaker rule is included only when Section 11c reports `is_multi_perspective: true`; the Formatting block is the slim deferral form referencing both `<style_contract>` and `<style_override>` by name.** NSFW when enabled covers thematic function discipline, voice & sound register (onomatopoeia mapped to body reactions, slurred speech mechanics, voice register shifts), body coordination (pre-scene retrieval of physical facts, multi-body geometry mapping, narrated adaptation when geometry doesn't work natively), hard limits, and world hard rules. Verifies `forbid_overrides: false` on `main` and `jailbreak`. Runs the Section 5f Pass 1 + Pass 2 self-validation before saving. Produces `[WorldName]_ChatPreset.json` ready for ST import.
 
 Appends SIGN-OFF to audit file.
 
@@ -334,8 +364,11 @@ For users who find manual application onerous on large worlds, a future pipeline
 │   ├── Tier2_[ProtagonistName]_Entries.md
 │   ├── Tier2_[CharName]_Entries.md
 │   ├── Tier2_[CharName]_Intimacy_Profile.md       ⭐ new (Phase 2.5)
-│   ├── Tier3_Arc[N]_[Title]_Entries.md
-│   ├── Tier3_Arc[N]_Intimacy_Register.md          ⭐ new (Phase 2.5)
+│   ├── Tier2_NPC_Intimacy_Roster.md                ← roster NPC compact intimacy (Phase 2.5, sexual NPC cast)
+│   ├── Tier3_Arc[N]_[Title]_Entries.md             ← arc mode
+│   ├── Tier3_Sandbox_Entries.md                    ← sandbox mode (single, replaces arc files)
+│   ├── Tier3_Arc[N]_Intimacy_Register.md          ⭐ arc mode (Phase 2.5)
+│   ├── Tier3_Sandbox_Intimacy_Register.md          ← sandbox mode (single, Phase 2.5)
 │   ├── Instructions_[CardName].md
 │   ├── Editor_Critique_[Round N].md
 │   ├── Voice_Audit_Report_[Round N].md
@@ -354,8 +387,11 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── World_Lorebook.json
     ├── [CharName]_Lorebook.json
     ├── [CharName]_Intimacy_Profile.json           ⭐ new (Phase 4, conditional)
-    ├── Arc[N]_Lorebook.json
-    ├── Arc[N]_Intimacy_Register.json              ⭐ new (Phase 4, conditional)
+    ├── NPC_Intimacy_Roster.json                    ← roster NPC compact intimacy (Phase 4, conditional)
+    ├── Arc[N]_Lorebook.json                        ← arc mode
+    ├── Sandbox_Lorebook.json                       ← sandbox mode (single, always active)
+    ├── Arc[N]_Intimacy_Register.json              ⭐ arc mode (Phase 4, conditional)
+    ├── Sandbox_Intimacy_Register.json              ← sandbox mode (single, Phase 4, conditional)
     ├── Group_Lorebook.json
     ├── Compiler_Log.md
     ├── Prompt_Engineer_Audit.md
@@ -368,7 +404,8 @@ For users who find manual application onerous on large worlds, a future pipeline
 
 | Command | Action |
 |---|---|
-| `/worldforge start` | Begin from Phase 0 (the Interviewer) |
+| `/worldforge start` | Begin from Phase 0 (the Interviewer) — arc mode by default |
+| `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** (no narrative arcs; standing world-state + large NPC roster). Pre-sets the World Seed `World Mode` field; see SANDBOX MODE below |
 | `/worldforge resume phase0` | Resume the interview from the last completed section |
 | `/worldforge resume phase1` | Re-run Refiner with answered questions |
 | `/worldforge resume phase2` | Re-run Architect |
@@ -382,6 +419,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge status` | Report current phase, round, open blockers |
 | `/worldforge skip phase0` | Begin from Phase 1 (user has written World_Seed.md manually, OR resuming after a Section 1/11 revision bounced from the revise pipeline) |
 | `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content in this world) |
+| `/worldforge skip phase3.6` | Skip Arc Transition Auditor (auto-skipped in sandbox mode — no arc seams to audit) |
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content in this world) |
 | `/worldforge revise` | Begin the revision pipeline for surgical changes to an already-built world (see `workflows/world-forge-revise.md`) |
 | `/worldforge revise --freeform` | Revision pipeline with freeform intent input (paste a description, Reviser structures) |
