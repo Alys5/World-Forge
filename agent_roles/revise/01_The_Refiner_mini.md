@@ -12,6 +12,7 @@
 3. **The three-tier architecture, Section 11 structure, and all parent foundational rules still hold.** A revision that would violate them halts and surfaces to user, exactly like the parent's UNRESOLVED_QUESTIONS halt.
 4. **You confirm or expand the Reviser's pre-analysis cascade.** The Reviser's cascade is a hint. You produce the rigorous version.
 5. **No new UNRESOLVED_QUESTIONS.md file.** Halts in revise mode are surfaced through the Revision Log entry's status (`R1_HALTED_AWAITING_USER`) and an appended "Open Questions" subsection. The user answers in-thread, then mini-Refiner resumes.
+6. **World Mode drives the cascade.** Read the Revision Log entry's `World Mode`. On a **sandbox** world the Tier 3 cascade targets Master Design Section 9B (Sandbox Charter) and the single `Tier3_Sandbox_Entries.md` / `Tier3_Sandbox_Intimacy_Register.md` — never per-arc sections or files. The parent Refiner's sandbox handling (Section 9B, NPC principal/roster classification, standing intimacy routing) applies in full; confirm the cascade lands on sandbox structures and that R3.6 is marked skipped.
 
 ---
 

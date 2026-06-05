@@ -7,7 +7,9 @@ description: A surgical-revision workflow for worlds that have already been buil
 
 **When to use:** the world has been built (Phase 0–5 complete, Export/ exists), is in active play or post-launch, and needs a surgical change — a new NPC, a voice calibration, an arc tonal recalibration, an entry tweak. The minis read existing Drafts/ and Export/, make targeted insertions or edits, preserve UIDs, regenerate Group_Lorebook, and audit only the touched surfaces.
 
-**When NOT to use:** any change that touches Master Design Section 1 (Core Concept & Tone) or Section 11a (Style Contract world defaults). Those require a full pipeline re-run from Phase 1, with the existing World_Seed.md reused and the Interviewer skipped (`/worldforge skip phase0`).
+**When NOT to use:** any change that touches Master Design Section 1 (Core Concept & Tone) or Section 11a (Style Contract world defaults). Those require a full pipeline re-run from Phase 1, with the existing World_Seed.md reused and the Interviewer skipped (`/worldforge skip phase0`). **Flipping `World Mode` (arc↔sandbox) is a Section 1 change** — it bounces out of the revise pipeline to a full rebuild, exactly like a tonal-rule change. The revise pipeline edits a world *within* its mode; it does not convert between modes.
+
+**Sandbox worlds are supported.** A `World Mode: sandbox` world is revised through the same minis, using the `sandbox_*` scope types for its single always-active Sandbox Lorebook and the mode-aware NPC/intimacy scopes for its roster. The only structural difference: the Arc Transition Auditor (R3.6) never fires, because there are no arc seams.
 
 ---
 
@@ -100,15 +102,23 @@ Always-fire phases: **R0 (Reviser), R1 (Refiner-mini), R3 (Editor-mini), R4 (Com
 | `tier3_arc_tonal_recalibration` | ✓ | conditional³ | ✓ | ✓ | conditional³ |
 | `tier3_arc_entry_modify` | ✓ | — | conditional² | conditional⁴ | — |
 | `tier3_arc_entry_add` | ✓ | — | conditional² | ✓ | — |
+| `sandbox_state_recalibration` | ✓ | conditional³ | ✓ | — | conditional³ |
+| `sandbox_entry_modify` | ✓ | — | conditional² | — | — |
+| `sandbox_entry_add` | ✓ | — | conditional² | — | — |
 | `intimacy_substrate_modify` | — | ✓ | — | — | ✓ |
 | `intimacy_register_modify` | — | ✓ | — | — | ✓ |
 | `intimacy_register_add` | — | ✓ | — | conditional⁴ | ✓ |
 
 Footnotes:
 1. The new character has intimate scene presence in any arc → Intimacy Architect-mini drafts the profile + register; Intimacy Auditor-mini audits.
-2. The modified field is voice-bearing (`personality`, `mes_example`, `post_history_instructions`, CHARACTER_STATE_Arc[N], voice-related Tier 2 entry) → Voice Auditor-mini fires.
-3. The arc has intimate beats → Intimacy register may need re-tuning; Intimacy Auditor re-audits.
-4. The change touches an entry that participates in arc-seam continuity (CHARACTER_STATE, NPC_SHIFT, hidden information rules, ARC_STATE Tonal Mandate) → Arc Transition Auditor-mini fires.
+2. The modified field is voice-bearing (`personality`, `mes_example`, `post_history_instructions`, CHARACTER_STATE_Arc[N] / SANDBOX_STATE Tonal Mandate, voice-related Tier 2 entry, roster NPC voice fingerprint) → Voice Auditor-mini fires.
+3. The arc / sandbox has intimate beats → Intimacy register may need re-tuning; Intimacy Auditor re-audits.
+4. The change touches an entry that participates in arc-seam continuity (CHARACTER_STATE, NPC_SHIFT, hidden information rules, ARC_STATE Tonal Mandate) → Arc Transition Auditor-mini fires. **This footnote never applies in sandbox mode** — a sandbox world has no arc seams, so R3.6 never fires for the `sandbox_*` scope types (or for any scope on a `World Mode: sandbox` world).
+
+**World Mode awareness (load-bearing):** the Reviser reads `World Mode` from the Master Design before classifying. On an **arc** world, use the `tier1_*` / `tier2_*` / `tier3_arc_*` / `intimacy_*` rows. On a **sandbox** world, the `tier3_arc_*` rows are replaced by the three `sandbox_*` rows (there are no arcs to revise), and the NPC + intimacy scopes are **mode-aware**:
+- `tier2_new_character` / `tier2_character_voice_calibration` classify the NPC as **principal** (full profile) or **roster** (compact §7.E stat block). A roster NPC add or voice change fires R3.5, which runs the **Distinctiveness Matrix (Step 3I)** across the roster.
+- `intimacy_*` scopes target the single standing `Sandbox_Intimacy_Register` and NPC intimacy (principal full profile / roster §6.5 compact block) — never a per-arc register.
+- **R3.6 (Arc Transition Auditor) is never invoked on a sandbox world.**
 
 If a scope type isn't in the matrix, escalate to the user; the Reviser misclassified.
 
@@ -120,7 +130,7 @@ If a scope type isn't in the matrix, escalate to the user; the Reviser misclassi
 **Input:** User intent + existing `Drafts/Master_Design.md` + existing `Drafts/` + existing `Export/`
 **Output:** Revision Log entry in `Drafts/Master_Design.md` (status `PENDING`) + `Drafts/Revision_R[N]_Report.md`
 
-Captures the user's intent (interview by default; `--freeform` for direct paste; `--target` for known-target mode). Classifies into one of the eleven scope types. Runs the Section 1/11 bright-line check; if hit, refuses and bounces to full pipeline. Otherwise writes the Revision Log entry and signs off.
+Captures the user's intent (interview by default; `--freeform` for direct paste; `--target` for known-target mode). Reads `World Mode` and classifies into one of the fourteen scope types (the three `sandbox_*` types apply only to `World Mode: sandbox` worlds; the `tier3_arc_*` types only to arc worlds). Runs the Section 1/11 bright-line check — a World Mode flip (arc↔sandbox) is a Section 1 change and bounces to full pipeline. Otherwise writes the Revision Log entry and signs off.
 
 ---
 
@@ -193,6 +203,8 @@ Generates sample dialogue for the affected character or arc only. Audits against
 
 Verifies that the changed arc still transitions cleanly to its predecessor and successor. Other arc-seams not touching the change are not re-audited.
 
+**Never fires on a sandbox world.** A `World Mode: sandbox` world has no arcs and no seams; the `sandbox_*` scope types route R3.6 to skipped unconditionally, mirroring Phase 3.6 being skipped in the initial sandbox build.
+
 ---
 
 ## PHASE R3.7: INTIMATE SCENE FIDELITY — THE INTIMACY AUDITOR (MINI)
@@ -229,8 +241,9 @@ Audits new/changed entries only (read-only on Export/). Recommends manual correc
 
 Preset modification is conditional and tightly scoped:
 - New AI card or Director NPC added that triggers Multi-Character Dynamics block (was disabled) → enables block
-- Intimacy register added when no other arc had intimate content → enables NSFW block
+- Intimacy register added when no other arc/register had intimate content → enables NSFW block
 - A per-card style override changed that affects the multi-perspective / multi-tense flags → updates Style Contract ACTIVE-SPEAKER RULE line
+- **Sandbox roster grows and the preset lacks the `npc_ensemble` block** (e.g., the world predates it) → flag in the audit that `/worldforge resync-preset` should add NPC Ensemble & Enrichment; the mini does not author the block itself (block authoring is a full-Phase-5 / resync concern, not a surgical toggle)
 - Otherwise: preset is untouched
 
 If the audit produces recommendations in its Sections 7/8, proceed to R5.5 manual apply.

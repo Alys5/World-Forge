@@ -13,6 +13,34 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-05 — Sandbox-aware revise pipeline
+
+The post-launch revision pipeline (`/worldforge revise`) now handles sandbox
+worlds, closing the gap flagged when Sandbox Mode shipped.
+
+### Added
+- Three sandbox revision **scope types** (taxonomy 11 → 14): `sandbox_state_recalibration`
+  (the `SANDBOX_STATE` / aliveness-contract analog of `tier3_arc_tonal_recalibration`),
+  `sandbox_entry_modify`, and `sandbox_entry_add`. The Reviser reads `World Mode` and
+  uses these in place of the `tier3_arc_*` types on sandbox worlds.
+- Mode-aware NPC and intimacy scopes: `tier2_new_character` / `tier2_character_voice_calibration`
+  classify principal vs. roster NPCs (roster changes fire the Voice Auditor's
+  Distinctiveness Matrix); `intimacy_*` scopes target the single standing
+  `Sandbox_Intimacy_Register` and NPC intimacy (principal profile / roster §6.5 block).
+
+### Changed
+- The **Arc Transition Auditor (R3.6) never fires** on a sandbox revision — no arc seams.
+- Thin sandbox deltas threaded through every revise mini (they inherit their now
+  sandbox-aware parents); routing matrix, Reviser scope table, and the deferral notes
+  in CLAUDE.md / the orchestrator / the tutorial updated accordingly.
+
+### Notes
+- *Flipping* a world between arc and sandbox stays out of revise scope — a Section 1
+  `World Mode` change bounces to a full rebuild (`skip phase0`). An automated
+  arc→sandbox converter remains the one deferred piece.
+
+---
+
 ## 2026-06-05 — Sandbox Mode
 
 A first-class alternative to arc-driven worlds, for open-ended experiences that
@@ -51,9 +79,9 @@ anchored by a standing world-state and a large NPC cast.
   arc seams to audit. The ≥8-entries-per-arc floor and cross-arc qualifiers do not apply.
 
 ### Notes
-- Pipeline-only; no existing worlds were modified. The revise pipeline is not yet
-  sandbox-aware, and an automated arc→sandbox converter is intentionally deferred —
-  both flagged as future work.
+- Pipeline-only; no existing worlds were modified. *(The revise pipeline was made
+  sandbox-aware in a follow-up — see the entry above; an automated arc→sandbox
+  converter remains deferred future work.)*
 
 ---
 

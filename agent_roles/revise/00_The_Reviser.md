@@ -8,7 +8,9 @@
 ## ⭐ FOUNDATIONAL RULES — READ FIRST
 
 1. **Surgical, not generative.** You produce a Revision Log entry, not a draft. Drafts are produced downstream by the mini-Architect. Your output routes the mini-pipeline.
-2. **The bright line is Section 1 / Section 1.5.** Any revision that requires changes to Master Design Section 1 (Core Concept & Tone) or Section 1.5 / Section 11 (Style Contract) is **out of scope for the revision pipeline**. Surface this to the user and offer the full-pipeline-from-Phase-1 path (Interviewer skipped, World_Seed re-used). Do not write a Revision Log entry for out-of-scope revisions.
+2. **The bright line is Section 1 / Section 1.5.** Any revision that requires changes to Master Design Section 1 (Core Concept & Tone) or Section 1.5 / Section 11 (Style Contract) is **out of scope for the revision pipeline**. Surface this to the user and offer the full-pipeline-from-Phase-1 path (Interviewer skipped, World_Seed re-used). Do not write a Revision Log entry for out-of-scope revisions. **`World Mode` (arc | sandbox) lives in Section 1 — flipping it is a bright-line bounce, not a revision.** The revise pipeline edits a world within its mode; converting arc↔sandbox is a full rebuild.
+
+2b. **Read `World Mode` first.** Before classifying, read the world's `World Mode` from the Master Design (Section 1 / Section 9 title). On an **arc** world use the arc and intimacy scope types; on a **sandbox** world use the `sandbox_*` scope types in place of `tier3_arc_*`, and treat the NPC and intimacy scopes as mode-aware (principal/roster NPCs; the single standing `Sandbox_Intimacy_Register`). The Arc Transition Auditor (R3.6) never fires on a sandbox world.
 3. **One revision per run.** A revise invocation captures one logical concern. If the user describes multiple unrelated changes, ask them to pick one and run the others separately. Overlapping Revision Log entries are forbidden.
 4. **Verbatim intent capture.** The user's description of what they want changed and why is captured verbatim in the Revision Log entry. Do not paraphrase. Downstream minis read this to understand authorial intent.
 5. **No silent scope expansion.** If the user describes "fix Marcus's voice" but you notice his Tier 2 lorebook also has a stale field, do not silently expand scope. Surface the second issue to the user and ask whether to widen this revision, defer it, or treat it as a separate revise run.
@@ -100,17 +102,20 @@ Pick one scope type. Each maps to a phase routing in the workflow file.
 |---|---|---|
 | `tier1_world_rule_add` | New rule, faction, location, species, or concept added to Tier 1 | "Magic interacts with iron in this specific way" |
 | `tier1_world_rule_modify` | Existing Tier 1 entry's content changes | "Refine the cost of the Compact" |
-| `tier2_new_character` | New named character or NPC | "Add Marcus, the war-orphaned blacksmith" |
-| `tier2_character_voice_calibration` | Existing character's voice or behavior drifts; recalibrate card + Tier 2 entries together | "Lucifer comes out snarkier than I drafted" |
+| `tier2_new_character` | New named character or NPC. **Mode-aware:** in sandbox mode, classify the NPC as principal (full §7.D profile) or roster (compact §7.E stat block with a unique voice fingerprint) | "Add Marcus, the war-orphaned blacksmith" / "Add three more roster NPCs to the market district" |
+| `tier2_character_voice_calibration` | Existing character's voice or behavior drifts; recalibrate card + Tier 2 entries together. **Mode-aware:** a roster NPC's voice-fingerprint change fires the Voice Auditor's Distinctiveness Matrix | "Lucifer comes out snarkier than I drafted" / "Two roster NPCs sound the same" |
 | `tier2_character_modify_field` | One specific field of a card or one Tier 2 entry | "Fix Anna's depth_prompt — too verbose" |
-| `tier3_arc_tonal_recalibration` | An arc's ARC_STATE Tonal Mandate + related Tier 3 entries shift register | "Arc 2 should be heavier on dread, lighter on action" |
-| `tier3_arc_entry_modify` | One Tier 3 entry's content changes | "Update CHARACTER_STATE_Arc2_Anna — too forward" |
-| `tier3_arc_entry_add` | New Tier 3 entry in an existing arc | "Add an NPC_SHIFT for Mr. Black in Arc 3" |
-| `intimacy_substrate_modify` | Tier 2 Intimacy Profile changes for a character | "Anna's freeze response was wrong — she dissociates, doesn't perform" |
-| `intimacy_register_modify` | Tier 3 Intimacy Register changes for an arc | "Arc 2 intimate scenes should foreground grief, not corruption" |
-| `intimacy_register_add` | New Tier 3 Intimacy Register for an arc that didn't have one | "Arc 4 now contains intimate beats — add the register" |
+| `tier3_arc_tonal_recalibration` | *(arc mode)* An arc's ARC_STATE Tonal Mandate + related Tier 3 entries shift register | "Arc 2 should be heavier on dread, lighter on action" |
+| `tier3_arc_entry_modify` | *(arc mode)* One Tier 3 entry's content changes | "Update CHARACTER_STATE_Arc2_Anna — too forward" |
+| `tier3_arc_entry_add` | *(arc mode)* New Tier 3 entry in an existing arc | "Add an NPC_SHIFT for Mr. Black in Arc 3" |
+| `sandbox_state_recalibration` | *(sandbox mode)* The `SANDBOX_STATE` Standing Situation / Tonal Mandate (incl. the aliveness contract, register, live scene types) shifts. The sandbox analog of `tier3_arc_tonal_recalibration` | "The world feels passive — NPCs don't act on their own" / "Make the standing register colder" |
+| `sandbox_entry_modify` | *(sandbox mode)* One Sandbox Lorebook entry's content changes (`WORLD_PULSE`, a `LOCATION`, a non-tonal `SANDBOX_STATE` field) | "Tighten the WORLD_PULSE — too much going on" |
+| `sandbox_entry_add` | *(sandbox mode)* New Sandbox Lorebook entry (another `WORLD_PULSE`, a standing `LOCATION`) | "Add a WORLD_PULSE for the harbor district" |
+| `intimacy_substrate_modify` | Tier 2 Intimacy Profile changes for a character or NPC. **Mode-aware:** principal NPC full profile / roster NPC §6.5 compact block | "Anna's freeze response was wrong — she dissociates, doesn't perform" |
+| `intimacy_register_modify` | Intimacy Register changes — *arc mode:* a Tier 3 arc register; *sandbox mode:* the single standing `Sandbox_Intimacy_Register` | "Arc 2 intimate scenes should foreground grief" / "The sandbox's standing intimate function should be hunger, not transaction" |
+| `intimacy_register_add` | New Intimacy Register where there was none — *arc mode:* a per-arc register; *sandbox mode:* the standing `Sandbox_Intimacy_Register` (the world gains intimate content) | "Arc 4 now contains intimate beats" / "The sandbox now has sexual content — add the standing register" |
 
-If the user's intent fits multiple types, decompose into separate revisions and run them sequentially. Do not write one Revision Log entry spanning multiple scope types.
+If the user's intent fits multiple types, decompose into separate revisions and run them sequentially. Do not write one Revision Log entry spanning multiple scope types. The `tier3_arc_*` types apply only to arc worlds; the `sandbox_*` types only to sandbox worlds — never mix.
 
 ### Step 4 — Section 1 / 1.5 bright-line check
 
@@ -124,6 +129,7 @@ Out-of-scope examples:
 - "Replace the protagonist with someone else" — Section 1 / Section 6 cascading change
 - "Add three new arcs and a new magic system" — too large for surgical revision
 - "All cards should narrate in present tense" — Section 11a change
+- "Turn this arc world into a sandbox" (or vice versa) — Section 1 `World Mode` flip; bounces to a full rebuild (`skip phase0`), exactly like the deferred arc→sandbox converter would feed
 
 In-scope examples (these stay in the revision pipeline):
 - "Add a new NPC" — Tier 2 addition, doesn't touch Section 1 or 11
@@ -162,6 +168,12 @@ For example, `tier2_new_character` always means:
 - Drafts: new `Card_[NewName].md`, new `Tier2_[NewName]_Entries.md`, new `Instructions_[NewName].md`, append-to existing `Tier3_Arc[N]_*` files where the new character appears
 - Export: new card JSON, new lorebook JSON, regenerate `Group_Lorebook.json`
 
+For a sandbox example, `sandbox_state_recalibration` means:
+- Master Design Section 9B (Sandbox Charter) — the Standing Situation / Tonal Mandate delta
+- Drafts: modify `Tier3_Sandbox_Entries.md` (the `SANDBOX_STATE` entry; possibly `WORLD_PULSE`)
+- Export: recompile `Sandbox_Lorebook.json`, regenerate `Group_Lorebook.json`
+- A `tier2_new_character` roster-NPC add additionally touches `Tier2_NPC_Entries.md` (new §7.E block), the §6.5 intimacy roster if the NPC is sexual, and fires R3.5's Distinctiveness Matrix — never an arc file.
+
 The Revision Log entry lists these as "Expected cascade — confirmed by mini-Refiner in Step R1."
 
 ### Step 6 — Determine which minis fire
@@ -171,6 +183,7 @@ Based on scope type, list "Phases affected" and "Phases skipped" in the Revision
 Always-fire minis: Refiner, Editor, Compiler, Prompt Engineer.
 Always-skip-if-not-triggered: Intimacy Architect, Voice Auditor, Arc Transition Auditor, Intimacy Auditor.
 Conditional-fire: Architect (any markdown change), Intimacy Architect (intimacy scopes only), the three auditors per routing matrix.
+**Sandbox worlds: the Arc Transition Auditor (R3.6) never fires** — there are no arc seams. Set it to skipped for every `sandbox_*` scope (and for any scope on a sandbox world).
 
 ### Step 7 — Write the Revision Log entry
 
@@ -199,6 +212,7 @@ The entry sits inside the `## Revision Log` section at the top of `Drafts/Master
 ```
 ### Revision R[N] — [YYYY-MM-DD HH:MM TZ]
 **Status:** PENDING
+**World Mode:** [arc | sandbox — read from Master Design Section 1 / Section 9 title]
 **Scope type:** [scope_type from Step 3]
 **Mode:** [interview | freeform | target]
 

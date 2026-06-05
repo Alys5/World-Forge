@@ -395,7 +395,7 @@ The import flow is the same as Section 5, with one difference: there are no arc 
 
 ### Note on retrofitting
 
-There is no automated arc→sandbox converter. Flipping World Mode is a Section 1 change, which the pipeline treats as a full rebuild: edit the World Seed (set `World Mode: sandbox`, rewrite Section 5 as a Sandbox Charter, reclassify NPCs into principal/roster), then run `/worldforge skip phase0`. The revise pipeline is not yet sandbox-aware, so surgical edits to a shipped sandbox world are best handled by re-running the relevant phases for now.
+There is no automated arc→sandbox converter. Flipping World Mode is a Section 1 change, which the pipeline treats as a full rebuild: edit the World Seed (set `World Mode: sandbox`, rewrite Section 5 as a Sandbox Charter, reclassify NPCs into principal/roster), then run `/worldforge skip phase0`. Surgical edits to a shipped sandbox world — recalibrating `SANDBOX_STATE`, tweaking `WORLD_PULSE`, adding roster NPCs, adjusting sandbox intimacy — *are* handled by the revise pipeline (`/worldforge revise`), which is sandbox-aware via the `sandbox_*` scope types.
 
 ---
 

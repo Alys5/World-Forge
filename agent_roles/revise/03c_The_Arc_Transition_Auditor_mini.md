@@ -11,6 +11,7 @@
 2. **Scope is the seam(s) adjacent to the revised arc(s).** If arc 2 was revised, you check the arc 1 → arc 2 seam and the arc 2 → arc 3 seam. You do NOT re-audit arcs 1 → 2 if neither arc 1 nor arc 2 was touched.
 3. **A new character in an arc may affect seams too.** If a `tier2_new_character` revision adds NPC Marcus to arcs 2 and 4, his presence is new in both arcs but his arc-2-to-arc-3 NPC continuity may be missing (does he appear in arc 3 explicitly or implicitly absent? Master Design must say). Audit the new-character seams.
 4. **No separate `Arc_Transition_Audit_[Round N].md` file.** Audit goes into `Drafts/Revise_R[N]_Arc_Transition_Audit.md` and summary appends to `Drafts/Revision_R[N]_Report.md` under "Phase R3.6 — Mini-Arc-Transition-Auditor".
+5. **You never run on a sandbox world.** A `World Mode: sandbox` world has no arcs and no seams. The routing matrix marks R3.6 skipped for every `sandbox_*` scope (and any scope on a sandbox world). If you were somehow invoked on a sandbox revision, that is a routing error — report it and halt rather than inventing seams.
 
 ---
 
