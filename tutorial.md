@@ -81,12 +81,16 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 
 | Command | Action |
 |---|---|
-| `/worldforge start` | Begin from Phase 0 |
+| `/worldforge start` | Begin from Phase 0 (arc mode by default) |
+| `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** — an open-ended world with no narrative arc (see Section 7) |
 | `/worldforge skip phase0` | Begin from Phase 1 (you authored the World Seed manually — Lucifer's path) |
 | `/worldforge resume phase[N]` | Resume from a specific phase after a pause gate |
 | `/worldforge status` | Report current phase, round, and open blockers |
 | `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content) |
+| `/worldforge skip phase3.6` | Skip Arc Transition Auditor (auto-skipped in sandbox mode — no arc seams) |
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content) |
+
+> The Lucifer case study below is an **arc world** — it progresses through four arcs. If you are building an open-ended, NPC-populated world with no narrative arc (a power-fantasy, world-director, or life-sim world), read this case study first to learn the pipeline, then see **Section 7 — Sandbox worlds** for what changes.
 
 ---
 
@@ -338,7 +342,64 @@ You are ready to roleplay.
 
 ---
 
-## 7. Where to learn more
+## 7. Sandbox worlds (an alternative World Mode)
+
+Lucifer is an **arc world**: it moves through a fixed progression of arcs, each with entry/exit triggers, dramatic beats, and per-character evolution. Some worlds have no arc at all — open-ended power-fantasy, world-director, and life-sim worlds where the experience is "live in this world and do things," not "move through a story." Those run in **sandbox mode**.
+
+Sandbox mode is **not a separate pipeline** — it is a branch *through* the same phases you just read. The same Interviewer, Refiner, Architect, Editor, Voice Auditor, Compiler, and Prompt Engineer run. Only the Tier 3 spine and the large-cast NPC format change.
+
+### Declaring sandbox mode
+
+Mode is declared in **World Seed Section 1** (`World Mode: arc | sandbox`). `arc` is the default; every existing world is an arc world. To build a sandbox world:
+
+```
+/worldforge start --sandbox
+```
+
+This pre-sets the Interviewer, but the World Seed field is the source of truth — a hand-written seed or a `skip phase0` run carries the signal too. When sandbox mode is set, the Interviewer walks a **Sandbox Charter** (World Seed Section 5B) instead of the arc questions.
+
+### What changes vs. an arc world
+
+| Aspect | Arc world (Lucifer) | Sandbox world |
+|---|---|---|
+| **Tier 3** | One Arc Lorebook per arc, swapped in/out | **One always-active Sandbox Lorebook** — never swapped |
+| **Standing anchor** | `ARC_STATE` per arc (Dramatic Situation + Tonal Mandate) | `SANDBOX_STATE` (Standing Situation + Tonal Mandate, with an **aliveness contract**) + a `WORLD_PULSE` entry |
+| **Per-arc entries** | `CHARACTER_STATE`, `NPC_SHIFT`, `DRAMATIC_BEAT`, arc triggers | none — there is no arc |
+| **NPC cast** | Full profiles per NPC | **Principal/roster split** — a few deep principals, the rest as compact roster stat blocks with unique voice fingerprints |
+| **Phase 3.6** | Arc Transition Auditor runs | Skipped (no arc seams) |
+| **Phase 3.5** | Arc-register checks | Standing-register checks **+ NPC Distinctiveness Matrix** (a blind-line test across the roster) |
+| **Preset** | Standard blocks | Adds the **NPC Ensemble & Enrichment** block and weights Sensory Embodiment high |
+
+### The aliveness contract
+
+The single most important thing a sandbox world needs is the thing an arc carries for free: momentum and tone. With no arc driving the experience, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry carry an **aliveness contract** — NPCs pursue their own agendas and initiate scenes, the world reacts to and remembers `{{user}}`'s actions and reputation, off-screen life continues, and the world never freezes waiting for `{{user}}`. This is what keeps a sandbox from playing like an inert menu of NPCs that only exist when summoned.
+
+### Keeping a large NPC cast distinct
+
+A sandbox usually runs on a big cast voiced by a World Director card. The failure mode at that scale is not per-NPC infidelity — it is **homogenization**: thirty NPCs collapsing into two or three generic voices. Two mechanisms defend against it:
+
+- **Roster NPC stat blocks** (Architect §7.E) — each roster NPC gets a compact block whose load-bearing field is a **voice fingerprint**: three concrete, unique speech markers no other NPC shares. The binding rule is that no two roster NPCs are confusable from a single line of dialogue.
+- **The NPC Ensemble & Enrichment preset block** (`npc_ensemble`) — encourages NPC-to-NPC dialogue (not just hub-and-spoke around `{{user}}`), scales prose up when several NPCs share a scene, and lets NPCs grow organic detail *not* in the lorebook, within guardrails (consistent with their established voice, never contradicting the lorebook, treated as canon once established).
+
+### Intimacy in a sandbox
+
+Sandbox worlds usually carry sexual material across the NPC cast. The intimacy infrastructure threads the same way:
+
+- The Tier 3 intimacy register folds into a single standing **`Sandbox_Intimacy_Register`** (a standing `INTIMACY_FUNCTION`, not per-arc).
+- **NPC intimacy follows the principal/roster split** — principal NPCs get full Tier 2 Intimacy Profiles; roster NPCs get compact §6.5 intimate stat blocks (intimate essence, body & sound signature, voice in intimacy, a limit/yes, stance), with the same uniqueness rule: no two NPCs interchangeable in an intimate scene.
+- The Intimacy Auditor adds an **NPC intimate coverage & distinctiveness check** (Step 3H): every sexual NPC has substrate, and no two read as the same in bed.
+
+### After SillyTavern import (sandbox)
+
+The import flow is the same as Section 5, with one difference: there are no arc lorebooks to swap. Enable the **World Lorebook**, all **Character/NPC Lorebook** groups, and the single **Sandbox Lorebook** group permanently — and leave them on. The `SANDBOX_STATE` entry is constant and `ignoreBudget`, so it fires every turn. If the world has intimate content, enable the **Sandbox Intimacy Register** group the same way.
+
+### Note on retrofitting
+
+There is no automated arc→sandbox converter. Flipping World Mode is a Section 1 change, which the pipeline treats as a full rebuild: edit the World Seed (set `World Mode: sandbox`, rewrite Section 5 as a Sandbox Charter, reclassify NPCs into principal/roster), then run `/worldforge skip phase0`. The revise pipeline is not yet sandbox-aware, so surgical edits to a shipped sandbox world are best handled by re-running the relevant phases for now.
+
+---
+
+## 8. Where to learn more
 
 - `README.md` — high-level overview of what the pipeline produces and how the architecture is organized
 - `workflows/world-forge.md` — full phase-by-phase orchestrator definition with pause gates and trigger commands

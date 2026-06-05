@@ -20,7 +20,7 @@ KEY FIELD RULES:
 - "selectiveLogic": 0 = AND ANY (fires if any key present — use for individual character entries), 3 = AND ALL (fires only if ALL keys present — use when you want lore to fire only when two specific characters are interacting).
 - "useProbability": false for standard entries that always fire when triggered.
 - "disable": false for all active entries. Do NOT use "enabled: true".
-- "group": use to group related entries for ST lorebook editor management.
+- "group": use to group related entries for ST lorebook editor management. In an arc world the Tier 3 groups are per-arc ("Arc1", "Arc2", …) and swapped in/out as the story advances. In a **sandbox world** there is a single always-active Tier 3 group ("Sandbox") that is never swapped — its SANDBOX_STATE entry is constant + ignoreBudget and fires every turn.
 
 {
   "name": "Group_Dynamics_Lorebook",

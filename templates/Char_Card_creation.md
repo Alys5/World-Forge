@@ -63,6 +63,11 @@ WHAT BELONGS IN THE CARD's post_history_instructions:
 - Arc-agnostic OR explicit deferral to the active CHARACTER_STATE entry as authority
 - Never hardcode early-arc behaviors as permanent
 
+SANDBOX-MODE CARDS (worlds with `World Mode: sandbox` — no narrative arc):
+- There are no arcs and no CHARACTER_STATE entries. Drop the arc-range qualifiers ("Arc 1–2 only:", etc.) — they have nothing to qualify against.
+- The card carries the character's FULL standing range directly (the whole self, not an early-arc snapshot), and defers to the standing **SANDBOX_STATE** entry as the authoritative current register instead of CHARACTER_STATE.
+- Everything else is identical: `{{original}}` on its own line, character-specific content only, no engine instructions. A sandbox World Director card still voices the NPC roster; its NPC profiles live in the lorebook (principal full profiles + roster compact stat blocks), not in the card.
+
 ---
 
 - system_prompt: MANDATORY — never leave empty. Must begin with `{{original}}` on its own line. After `{{original}}`, write character-specific content per "WHAT BELONGS IN THE CARD's system_prompt" above. Do not include any engine-level instructions — those come from the preset via `{{original}}`.
