@@ -5,7 +5,7 @@ description: A workflow to build worlds for player to roleplay in.
 # THE WORLD FORGE PIPELINE
 *Orchestrator v7 — Universal Roleplay World Building & SillyTavern Export*
 
-**Produces:** Character Cards + World Lorebook (Tier 1, permanent) + Character Lorebooks (Tier 2, permanent) + Character Intimacy Profiles (Tier 2, permanent, where applicable) + Arc Lorebooks (Tier 3, modular, one active at a time) + Arc Intimacy Registers (Tier 3, modular, where applicable) + Group Lorebook (all tiers combined) + Chat Completion Preset. Works for any world, any number of arcs or characters.
+**Produces:** Character Cards + World Lorebook (Tier 1, permanent) + Character & NPC Lorebooks (Tier 2, permanent) + Character/NPC Intimacy Profiles (Tier 2, permanent, where applicable) + Tier 3 lorebook (arc mode: Arc Lorebooks, one active at a time; sandbox mode: a single always-active Sandbox Lorebook) + Intimacy Registers (Tier 3: per-arc in arc mode, a single standing register in sandbox mode, where applicable) + Group Lorebook (all tiers combined) + Chat Completion Preset. Works for any world — arc or sandbox, any number of arcs, characters, or NPCs.
 
 ---
 
@@ -94,7 +94,8 @@ Sandbox mode is a **branch through this same pipeline, not a separate fork.** Th
 | 3 Editor | ARC_STATE validation, ≥8 entries/arc, cross-arc qualifiers | **SANDBOX_STATE validation (Step 4a-S)**; no 8-entry floor; no cross-arc qualifiers; roster fingerprint check |
 | 3.5 Voice Auditor | Arc register checks | Standing register vs. SANDBOX_STATE + **Distinctiveness Matrix (Step 3I)** across the roster |
 | 3.6 Arc Transition Auditor | Runs | **Skipped** (no arc seams) |
-| 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8 (unchanged); a sandbox world's `INTIMACY_FUNCTION` register folds into the single Sandbox Lorebook as a standing entry |
+| 2.5 Intimacy Architect | Per-character profiles + per-arc registers | Profiles **+ NPC intimacy** (principal full / roster compact §6.5); a single standing `Sandbox_Intimacy_Register` (no per-arc) |
+| 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8; audits the standing `INTIMACY_FUNCTION` + **NPC intimate coverage & distinctiveness** (Step 3H) across the sexual NPC cast |
 | 4 Compiler | One `Arc[N]_Lorebook.json` per arc | One `Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
 | 5 Prompt Engineer | Arc Guardian / Deep Think name the arcs | Blocks reference the standing sandbox state rather than arcs; defaults to **Multi-Character Dynamics** + the optional **NPC Ensemble & Enrichment** block (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment) + **high-weighted Sensory Embodiment** |
 
@@ -172,8 +173,8 @@ If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architec
 **Conditional phase.** Runs if and only if the World Seed Section 8 contains material — i.e., the world includes intimate scenes meaningful enough to warrant craft fidelity. For wholesome or low-intimacy worlds where Section 8 was deliberately left empty by the user, this phase is skipped and the pipeline proceeds directly from Phase 2 to Phase 3.
 
 **Mandatory outputs when phase runs:**
-1. `Tier2_[CharName]_Intimacy_Profile.md` — one per character with intimate scene presence in any arc. Permanent substrate: trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits and hard yeses.
-2. `Tier3_Arc[N]_Intimacy_Register.md` — one per arc that contains intimate beats. Delta only: arc thematic function, per-character arc-specific behavioral notes, live scene types, arc-specific hard rules.
+1. `Tier2_[CharName]_Intimacy_Profile.md` — one per character with intimate scene presence. Permanent substrate: trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits and hard yeses. **Extends to NPCs:** principal NPCs get full profiles; roster NPCs get compact intimate stat blocks (Intimacy Architect §6.5) — load-bearing for sandbox worlds, which usually carry sexual material across a large NPC cast.
+2. Tier 3 register — *arc mode:* `Tier3_Arc[N]_Intimacy_Register.md` per arc (delta only: arc thematic function, per-character notes, live scene types, arc hard rules). *Sandbox mode:* a single `Tier3_Sandbox_Intimacy_Register.md` (standing `INTIMACY_FUNCTION`, `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc deltas).
 
 **Failure conditions:**
 - Section 8 is missing material the agent needs → produces `UNRESOLVED_INTIMACY.md`, halts pipeline.
@@ -198,7 +199,8 @@ Validates four layers: prose quality, tier integrity + lorebook entry quality, L
 - Arc lorebook with fewer than 8 entries = rejection
 - Tier 2 Intimacy Profile containing arc-specific content = immediate rejection
 - Tier 3 Intimacy Register restating substrate already in Tier 2 = immediate rejection
-- INTIMACY_FUNCTION_Arc[N] entry missing thematic function name or prose register specification = rejection
+- INTIMACY_FUNCTION entry (per-arc `INTIMACY_FUNCTION_Arc[N]` in arc mode, or the standing `INTIMACY_FUNCTION` in sandbox mode) missing thematic function name or prose register specification = rejection
+- Sexual NPC with no intimate substrate (no full profile and no §6.5 compact stat block) = rejection (coverage gap)
 
 ```
 LOOP:
@@ -284,9 +286,9 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `[ProtagonistName]_Lorebook.json` — Tier 2, {{user}} identity reference
 - `World_Lorebook.json` — Tier 1, all entries at `position: 0`
 - `[CharName]_Lorebook.json` — Tier 2, one per character/NPC, all entries at `position: 1`
-- `[CharName]_Intimacy_Profile.json` — Tier 2, one per character with intimate presence, all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
-- `Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`)
-- `Arc[N]_Intimacy_Register.json` — Tier 3, one per arc with intimate beats, INTIMACY_FUNCTION entry CONSTANT with `ignoreBudget: true`, character intimate registers CONSTANT. Compiled from Phase 2.5 drafts when present.
+- `[CharName]_Intimacy_Profile.json` — Tier 2, one per character/NPC with intimate presence (principal full profiles; roster NPC compact stat blocks may share `NPC_Intimacy_Roster.json`), all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
+- `Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
+- Tier 3 intimacy register — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
 - `Group_Lorebook.json` — all tiers combined, group-tagged for ST lorebook editor management
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
@@ -362,9 +364,11 @@ For users who find manual application onerous on large worlds, a future pipeline
 │   ├── Tier2_[ProtagonistName]_Entries.md
 │   ├── Tier2_[CharName]_Entries.md
 │   ├── Tier2_[CharName]_Intimacy_Profile.md       ⭐ new (Phase 2.5)
+│   ├── Tier2_NPC_Intimacy_Roster.md                ← roster NPC compact intimacy (Phase 2.5, sexual NPC cast)
 │   ├── Tier3_Arc[N]_[Title]_Entries.md             ← arc mode
 │   ├── Tier3_Sandbox_Entries.md                    ← sandbox mode (single, replaces arc files)
-│   ├── Tier3_Arc[N]_Intimacy_Register.md          ⭐ new (Phase 2.5)
+│   ├── Tier3_Arc[N]_Intimacy_Register.md          ⭐ arc mode (Phase 2.5)
+│   ├── Tier3_Sandbox_Intimacy_Register.md          ← sandbox mode (single, Phase 2.5)
 │   ├── Instructions_[CardName].md
 │   ├── Editor_Critique_[Round N].md
 │   ├── Voice_Audit_Report_[Round N].md
@@ -383,9 +387,11 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── World_Lorebook.json
     ├── [CharName]_Lorebook.json
     ├── [CharName]_Intimacy_Profile.json           ⭐ new (Phase 4, conditional)
+    ├── NPC_Intimacy_Roster.json                    ← roster NPC compact intimacy (Phase 4, conditional)
     ├── Arc[N]_Lorebook.json                        ← arc mode
     ├── Sandbox_Lorebook.json                       ← sandbox mode (single, always active)
-    ├── Arc[N]_Intimacy_Register.json              ⭐ new (Phase 4, conditional)
+    ├── Arc[N]_Intimacy_Register.json              ⭐ arc mode (Phase 4, conditional)
+    ├── Sandbox_Intimacy_Register.json              ← sandbox mode (single, Phase 4, conditional)
     ├── Group_Lorebook.json
     ├── Compiler_Log.md
     ├── Prompt_Engineer_Audit.md

@@ -417,6 +417,8 @@ Trigger keywords: [name variants, role descriptors, ways they'd be referenced in
 - "[A line of dialogue that captures their voice precisely]" *([context — when would they say this?])*
 - "[Another sample line]" *([context])*
 
+**Intimacy (only if this NPC has sexual presence — feeds the Intimacy Architect):** [For a principal NPC, sketch the same substrate you would for a character: baseline sexuality, any trauma map, body/sound signature, voice in intimacy, hard limits and hard yeses. Leave blank if the NPC has no sexual presence.]
+
 **NPC: [Name]** — *Principal*
 [Same format — repeat for each principal NPC]
 
@@ -432,6 +434,7 @@ Trigger keywords: [name variants, role descriptors]
 - **Signature line:** "[one sample line only this NPC would say]"
 - **Stance toward {{user}}:** [deference / rivalry / desire / fear / transaction / curiosity — one line on how they treat {{user}}]
 - **Hook:** [what pulls them into a scene, or what they offer the sandbox — one line]
+- **Intimacy (only if this NPC has sexual presence):** [one or two lines of compact sexual context — how they are in sex + what they want, a distinct body/sound or voice-in-intimacy cue, one hard limit/yes. This becomes the Intimacy Architect's §6.5 compact stat block. Keep it distinct from every other NPC. Leave blank if no sexual presence.]
 
 **NPC: [Name]** — *Roster*
 [Same format — repeat for each roster NPC]
@@ -619,6 +622,8 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 ### 8b. Per-Arc Intimacy Specification
 
 *For each arc that contains intimate beats, specify what intimacy is for in that arc. Skip arcs that do not contain intimate scenes.*
+
+*__Sandbox mode:__ skip the per-arc breakdown — there are no arcs. Section 8a (world-level posture, hard rules, prose register) IS your standing intimacy spec; it feeds the single standing `INTIMACY_FUNCTION` register. Specify the world's standing intimate scene types and the sexual context of your NPC cast (in Section 4's NPC intimacy fields) instead of per-arc functions.*
 
 #### ARC [N] Intimacy
 

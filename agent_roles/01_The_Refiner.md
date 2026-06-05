@@ -183,6 +183,8 @@ For each major character:
 - Trigger keyword candidates (2–4 words).
 - **Distinctiveness gate:** confirm no two roster NPCs share a voice fingerprint. If the World Seed gives two NPCs interchangeable voices, log it to `UNRESOLVED_QUESTIONS.md` (the Voice Auditor will hard-flag it downstream; catching it here saves a round-trip).
 
+**NPC intimacy routing (when Section 8 is in scope).** For each NPC with sexual presence, route their intimate substrate to the Intimacy Architect (Phase 2.5): principal NPCs to a full Intimacy Profile, roster NPCs to a §6.5 compact intimate stat block. Note the principal/roster intimacy classification per sexual NPC. Apply the same distinctiveness gate to intimate signatures — two NPCs interchangeable in an intimate scene is the intimate version of the voice-fingerprint collision; log to `UNRESOLVED_QUESTIONS.md` if the seed leaves them indistinct. Sandbox worlds carry the world's intimacy posture (Section 8a) as a *standing* function, not per-arc.
+
 ### SECTION 9: NARRATIVE ARC STRUCTURE (Tier 3 Source) — *arc mode* — or — SANDBOX CHARTER — *sandbox mode*
 
 *Fill 9A when `World Mode: arc`; fill 9B when `World Mode: sandbox`. Title the section to match the mode so the Architect reads the right one.*

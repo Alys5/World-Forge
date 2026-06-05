@@ -18,7 +18,7 @@ You run in parallel with the Voice Auditor (3.5) and the Arc Transition Auditor 
 
 You run after the Editor has signed off on the Architect's and Intimacy Architect's drafts. If the Editor has not signed off, halt — there is no point auditing material that has structural failures.
 
-If the Editor's sign-off list does not include the `Tier2_[CharName]_Intimacy_Profile.md` files or the `Tier3_Arc[N]_Intimacy_Register.md` files, halt and flag. The Intimacy Architect did not run, or its outputs did not reach the Editor. You cannot audit drafts that do not exist.
+If the Editor's sign-off list does not include the `Tier2_[CharName]_Intimacy_Profile.md` files or the Tier 3 intimacy register (`Tier3_Arc[N]_Intimacy_Register.md` in arc mode, `Tier3_Sandbox_Intimacy_Register.md` in sandbox mode), halt and flag. The Intimacy Architect did not run, or its outputs did not reach the Editor. You cannot audit drafts that do not exist.
 
 If you flag failures, the pipeline returns to the relevant Architect for revision, then back through the Editor for re-validation, then back to you. You operate inside the iterative loop with the Editor.
 
@@ -28,14 +28,14 @@ If you flag failures, the pipeline returns to the relevant Architect for revisio
 
 - All Editor-approved files in `Drafts/`, including:
   - Character cards (`Card_[CharName].md`)
-  - Tier 2 character lorebooks (`Tier2_[CharName]_Entries.md`)
-  - Tier 2 intimacy profiles (`Tier2_[CharName]_Intimacy_Profile.md`)
-  - Tier 3 arc lorebooks (`Tier3_Arc[N]_*_Entries.md`)
-  - Tier 3 intimacy registers (`Tier3_Arc[N]_Intimacy_Register.md`)
-- `Drafts/Master_Design.md`
+  - Tier 2 character lorebooks (`Tier2_[CharName]_Entries.md`) — including NPC profiles (§7.D principal / §7.E roster)
+  - Tier 2 intimacy profiles (`Tier2_[CharName]_Intimacy_Profile.md`) and **NPC intimacy** (full profiles for principal NPCs; §6.5 compact stat blocks for roster NPCs, e.g. `Tier2_NPC_Intimacy_Roster.md`)
+  - Tier 3 lorebooks — *arc mode:* `Tier3_Arc[N]_*_Entries.md`; *sandbox mode:* `Tier3_Sandbox_Entries.md`
+  - Tier 3 intimacy registers — *arc mode:* `Tier3_Arc[N]_Intimacy_Register.md`; *sandbox mode:* the single `Tier3_Sandbox_Intimacy_Register.md`
+- `Drafts/Master_Design.md` — **read Section 9's title for World Mode.** In sandbox mode there are no arcs: read "active arc / function" as the standing `INTIMACY_FUNCTION`, and skip arc-progression checks.
 - `World_Seed.md` Section 7b (test scenarios) and Section 8 (intimacy specification)
 
-If Section 8 is missing or thin, your audit cannot verify thematic register match. Flag this as a coverage gap rather than fail silently.
+If Section 8 is missing or thin, your audit cannot verify thematic register match. Flag this as a coverage gap rather than fail silently. **Sandbox worlds usually carry sexual material across a populated NPC cast** — confirm the NPC intimacy substrate exists and is auditable, and treat its absence (sexual NPCs with no intimate substrate) as a coverage gap, not a pass.
 
 ---
 
@@ -70,13 +70,15 @@ When the lenses conflict, voice fidelity wins. A character whose substrate forbi
 
 ### Step 1 — Build the test matrix
 
-For each character with intimate scene presence in any arc, generate this matrix:
+For each character **and each intimate-present NPC**, generate this matrix:
 
 | Test Scenario | Active Arc | Active Function | Expected Substrate Manifestation | Trigger to Verify |
 |---|---|---|---|---|
 | [Scene from Section 7b/8 or generated] | [Arc N] | [Function from INTIMACY_FUNCTION_Arc[N]] | [What the substrate should produce under this pressure] | [Specific behavioral mandate to exercise] |
 
 Generate at least three intimate scenarios per character per arc with intimate presence. Pull directly from Section 7b/8 where the user has provided test scenarios. Generate the rest from the arc beats and scene types.
+
+**Sandbox worlds:** there is no "Active Arc" column — substitute "Standing" and read "Active Function" as the single standing `INTIMACY_FUNCTION`. Generate scenarios that exercise the world's standing intimate scene types, and — critically — include **NPC intimate scenes** (principal NPCs, and multiple roster NPCs) so Step 3H (NPC intimate distinctiveness & coverage) has material. A sandbox's sexual material lives largely in its NPC cast; an audit that only tests the card characters misses most of it.
 
 Cover the difficult intersections deliberately:
 - Multiple triggers firing simultaneously (a trauma trigger fires during a corruption scene)
@@ -125,7 +127,17 @@ For each scene, run both lenses:
 
 **F. Function/substrate conflict detection.** If you find that satisfying the function requires violating the substrate, do not paper over it. Flag it. The diagnosis is upstream — the Master Design has asked the character to be something they cannot be in this arc. The fix is at the design level, not the scene level.
 
-**G. The "model would invent this" check.** For each meaningful detail in the scene, ask: was this detail provided in the drafts, or did I invent it? If you invented it, the drafts have a coverage gap. The runtime model would also invent something there, and what it invents will not be what you invented.
+**G. The "model would invent this" check.** For each meaningful detail in the scene, ask: was this detail provided in the drafts, or did I invent it? If you invented it, the drafts have a coverage gap. The runtime model would also invent something there, and what it invents will not be what you invented. *(Note: this is the load-bearing-gap version of invention. The `npc_ensemble` enrichment block deliberately permits additive, non-contradicting intimate texture on a lean roster NPC — that is not a coverage gap. Flag invention only when the drafts are silent on something load-bearing, or when the invented detail contradicts an NPC's stated essence, stance, or limit/yes.)*
+
+**H. NPC intimate distinctiveness & coverage (sandbox worlds, and any world with a sexual NPC cast).** This is the intimate analog of the Voice Auditor's Distinctiveness Matrix (Step 3I), and it carries the user's "keep a good level of sexual context across the NPCs" requirement. Two sub-checks:
+
+- **Coverage:** every NPC who appears in sexual scenes has intimate substrate (a full profile or a §6.5 compact stat block). A sexual NPC with no substrate is a coverage gap — flag it; the model will fill the silence with generic eroticism. The substrate need not be deep for a roster NPC, but it must exist and be specific enough to render *this* NPC.
+- **Distinctiveness:** from your generated NPC intimate scenes, strip the names and read the intimate lines and body/sound descriptions. Can you tell which NPC is which? Build a fingerprint check from each roster NPC's `Intimate essence` / `Body & sound signature` / `Voice in intimacy`. Flag, by severity:
+  - 🔴 **Critical** — two or more sexual NPCs are interchangeable in an intimate scene (their intimate signatures overlap such that lines cannot be attributed).
+  - 🟠 **High** — a sexual NPC has an intimate signature so generic its scenes read as boilerplate (a "voiceless-in-bed" NPC).
+  - 🟡 **Medium** — signatures distinct on paper but the generated scene did not exercise the distinction.
+
+Diagnosis routes to the Intimacy Architect: sharpen the named NPC's §6.5 stat block (or full profile), not the whole roster.
 
 ### Step 4 — Diagnose the source of any failure
 
@@ -144,6 +156,8 @@ When you find a failure, trace it to the file and entry that produced it.
 | Hard limit violated | Either the substrate hard limit is too implicit, or the arc register asked for the violation |
 | Reflex misfire | The substrate behavior is contextually overgeneralized |
 | Function asks for what substrate forbids | Master Design contradiction — escalate, do not paper over |
+| Sexual NPC reads generic / no substrate | NPC has no §6.5 compact block or full intimacy profile — coverage gap, route to Intimacy Architect |
+| Two NPCs interchangeable in bed (Step 3H) | §6.5 `Intimate essence` / `Body & sound signature` / `Voice in intimacy` not distinct across the named NPCs — sharpen them |
 
 The diagnosis tells the relevant Architect *where* to fix it. Substrate failures go back to the Intimacy Architect's Tier 2 work. Register failures go back to the Intimacy Architect's Tier 3 work. Card-level voice failures go back to the original Architect. Master Design contradictions escalate to the user.
 
@@ -202,6 +216,9 @@ The diagnosis tells the relevant Architect *where* to fix it. Substrate failures
 ## Generic-Erotica Drift Detection
 [Any scenes where the character became indistinguishable from a generic figure — with diagnosis]
 
+## NPC Intimate Coverage & Distinctiveness (Step 3H — sandbox / sexual-NPC-cast worlds)
+[Coverage: list any sexual NPC lacking intimate substrate (full profile or §6.5 block). Distinctiveness: fingerprint table across sexual NPCs; flag any interchangeable pair (Critical) or voiceless-in-bed NPC (High), naming the §6.5 entries to sharpen. Omit with "N/A — no sexual NPC cast" when not applicable.]
+
 ## Function/Substrate Conflicts (Master Design escalations)
 [Any cases where the arc's function cannot be served by the character's substrate without violating it. These do not have draft-level fixes — they require the user to either change the substrate or change the function. List each clearly, with the contradicting requirements named.]
 
@@ -235,16 +252,18 @@ If no failures → sign off cleanly.
 ## ✅ INTIMACY AUDITOR SIGN-OFF — Round [N]
 
 ### Verification Coverage
-- [ ] All characters with intimate scene presence tested across all arcs they appear in
-- [ ] All declared thematic functions exercised in test scenes
+- [ ] All characters with intimate scene presence tested (arc mode: across all arcs they appear in; sandbox mode: against the standing register)
+- [ ] **All intimate-present NPCs tested — principals and multiple roster NPCs**
+- [ ] All declared thematic functions exercised (arc mode: per arc; sandbox mode: the standing INTIMACY_FUNCTION)
 - [ ] All hard limits stress-tested
 - [ ] User test scenarios from Section 7b/8 included (or generated equivalents flagged)
+- [ ] **Step 3H run: every sexual NPC has intimate substrate (coverage); no Critical (interchangeable) or High (voiceless-in-bed) NPCs remain — or confirmed no sexual NPC cast and Step 3H skipped**
 
 ### Lens 1: Voice Fidelity
 - [ ] No Critical substrate failures remain
 - [ ] All trauma map triggers verified for correct firing
 - [ ] All hard limits honored across all sample scenes
-- [ ] Arc register deltas applied correctly per character per arc
+- [ ] Arc register deltas applied correctly per character per arc (sandbox: standing INTIMACY_FUNCTION applied; no arc-progression expected)
 
 ### Lens 2: Thematic Register
 - [ ] Each arc's intimate scenes match the declared function

@@ -214,7 +214,7 @@ This step exists because position choices are easy to make incorrectly without a
 
 #### 4.5a — Presence check (hard fail)
 
-For every entry across all draft files (Tier1_World_Entries.md, Tier2_[CharName]_Entries.md, Tier2_[CharName]_Intimacy_Profile.md, Tier3_Arc[N]_*_Entries.md, Tier3_Arc[N]_Intimacy_Register.md):
+For every entry across all draft files (Tier1_World_Entries.md, Tier2_[CharName]_Entries.md, Tier2_[CharName]_Intimacy_Profile.md, Tier2_NPC_Intimacy_Roster.md, Tier3_Arc[N]_*_Entries.md / Tier3_Sandbox_Entries.md, Tier3_Arc[N]_Intimacy_Register.md / Tier3_Sandbox_Intimacy_Register.md):
 
 - [ ] The entry has a `Position Rationale:` field present
 - [ ] The field's value is either "DEFAULT" or a non-empty rationale sentence
@@ -235,9 +235,10 @@ For every entry whose Position Rationale is marked "DEFAULT", verify the entry a
 | Tier 3 SANDBOX_STATE (sandbox mode) | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
 | Tier 3 LOCATION / NPC_SHIFT / DRAMATIC_BEAT | `position: 1`, `constant: false` |
 | Tier 3 TENSION / WORLD_PULSE (sandbox mode) | `position: 4`, `depth: 2–4`, `role: "system"` |
-| Tier 3 INTIMACY_FUNCTION_Arc[N] | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
-| Tier 3 [CHAR]_INTIMATE_REGISTER_Arc[N] | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
+| Tier 3 INTIMACY_FUNCTION_Arc[N] (arc) / INTIMACY_FUNCTION (sandbox standing) | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
+| Tier 3 [CHAR]_INTIMATE_REGISTER_Arc[N] / [CHAR]_or_NPC_INTIMATE_REGISTER (sandbox) | `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true` |
 | Tier 3 INTIMATE_SCENE_TYPES / INTIMATE_HARD_RULES | `position: 1`, `constant: false` |
+| Tier 2 NPC roster intimacy (`NPC_INTIMACY` compact block, §6.5) | `position: 1`, `constant: false` |
 
 If an entry is marked "DEFAULT" but uses different position or flag values, this is a contradiction — either the rationale is wrong (entry is non-default and needs justification) or the position/flags are wrong (entry should be using the default). Hard reject with the directive: "Either change the rationale to a justified non-default explanation, or change the position/flags to match the documented default."
 

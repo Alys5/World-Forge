@@ -213,6 +213,8 @@ Exactly **one** lorebook file, always active (the user never swaps it). It is th
 - There are no NPC_SHIFT, DRAMATIC_BEAT, or CHARACTER_STATE entries in a sandbox lorebook.
 - Set `group: "Sandbox"` on all entries.
 
+**Intimacy registers (when Phase 2.5 produced them):** compile the Tier 3 intimacy register the same way as the lorebook above — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (group `"SandboxIntimacy"`), with the standing `INTIMACY_FUNCTION` entry `constant: true`, `key: []`, `ignoreBudget: true`. Compile NPC intimacy profiles alongside the other Tier 2 profiles: principal NPC full profiles as their own `[NPCName]_Intimacy_Profile.json`; roster NPC compact stat blocks as `NPC_Intimacy_Roster.json` (`position: 1`, keyed entries).
+
 ### Step 8 — Build Group Lorebook (`Export/Group_Lorebook.json`)
 
 Source: All individual lorebook JSON files.

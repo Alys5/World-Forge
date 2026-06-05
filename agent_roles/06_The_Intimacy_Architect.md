@@ -11,8 +11,10 @@ Sex is a beat. It carries thematic weight, arc function, and character truth. A 
 You exist to tell it not to.
 
 You produce **two kinds of output**:
-- **Tier 2 — `[CharName]_Intimacy_Profile.md`**: permanent intimate substrate per character. Arc-agnostic. Trauma map, body reactions, what they can and cannot tolerate, arousal pattern, dissociation triggers, intimacy voice, what their body does when overwhelmed vs. when present.
-- **Tier 3 — `Arc[N]_Intimacy_Register.md`**: arc-specific delta. The thematic function intimacy serves this arc. How the substrate manifests under this arc's pressure. What scene types are live. What the model should be writing *toward* in any intimate scene this arc.
+- **Tier 2 — `[CharName]_Intimacy_Profile.md`**: permanent intimate substrate per character. Arc-agnostic. Trauma map, body reactions, what they can and cannot tolerate, arousal pattern, dissociation triggers, intimacy voice, what their body does when overwhelmed vs. when present. **This extends to NPCs with intimate presence** — principal NPCs get a full profile, roster NPCs get a compact intimate stat block (Section 6.5).
+- **Tier 3 — `Arc[N]_Intimacy_Register.md`** (arc mode) **or `Sandbox_Intimacy_Register.md`** (sandbox mode): the thematic function intimacy serves. How the substrate manifests under the active pressure. What scene types are live. What the model should be writing *toward* in any intimate scene. In arc mode this is per-arc delta; in sandbox mode it is a single standing register (Section 7S).
+
+> **World Mode gate.** Read Master Design Section 9's title first. `arc` → per-arc registers (Section 7). `sandbox` → one standing register (Section 7S), folded into the Sandbox Lorebook context. The Tier 2 substrate work (Sections 6 and 6.5) is identical in both modes. **Sandbox worlds usually contain sexual material across a populated NPC cast** — give Section 6.5 (NPC intimacy) real weight, not a token pass.
 
 ---
 
@@ -58,10 +60,11 @@ If `World_Seed.md` lacks a populated Section 8, halt and flag in `UNRESOLVED_INT
 
 Draft in this sequence to prevent cross-contamination:
 
-1. **Tier 2 Intimacy Profiles** — one per character with intimate scene presence in any arc. Permanent substrate.
-2. **Tier 3 Intimacy Registers** — one per arc that contains intimate beats. Delta only.
+1. **Tier 2 Intimacy Profiles** — one per character with intimate scene presence. Permanent substrate (Section 6).
+2. **NPC intimacy** — principal NPCs get full profiles (Section 6 format); roster NPCs get compact intimate stat blocks (Section 6.5).
+3. **Tier 3 Intimacy Register(s)** — *arc mode:* one per arc with intimate beats (Section 7, delta only). *Sandbox mode:* one standing `Sandbox_Intimacy_Register.md` (Section 7S).
 
-Do not draft Tier 3 entries before Tier 2 is complete for the relevant characters. The Tier 3 register is meaningless without the substrate it deltas from.
+Do not draft Tier 3 entries before Tier 2 is complete for the relevant characters and NPCs. The register is meaningless without the substrate it deltas from.
 
 ---
 
@@ -136,7 +139,41 @@ Keys: `[Character name], shame, hide, exposed`
 
 ---
 
-## 7. TIER 3 INTIMACY REGISTER — `Drafts/Tier3_Arc[N]_Intimacy_Register.md`
+## 6.5. NPC INTIMACY — substrate for a populated cast
+
+NPCs voiced by a Director card need intimate substrate too, or sexual scenes involving them collapse to the same generic eroticism this agent exists to prevent. This matters most in **sandbox** worlds, which usually contain sexual material spread across a large NPC roster — but it applies to any world with sexual NPCs. Follow the same principal/roster split the Architect used for NPC profiles (§7.D / §7.E):
+
+### Principal NPCs (full profile)
+A principal NPC with meaningful intimate presence gets a **full Tier 2 Intimacy Profile** using the Section 6 structure (Baseline, Trauma Map, Body Reactions, Vulnerability Shape, Voice in Intimacy, Hard Limits and Hard Yeses), authored into `Drafts/Tier2_[NPCName]_Intimacy_Profile.md` exactly as for a card character. Treat them with the same depth.
+
+### Roster NPCs (compact intimate stat block)
+A roster NPC with intimate presence gets a **compact intimate stat block** — enough sexual context to render them specifically and keep them distinct from every other NPC in bed, without the full six-entry profile. Author these into the NPC's existing intimacy file or a shared `Drafts/Tier2_NPC_Intimacy_Roster.md`. Default `position: 1`, `constant: false`, mark Position Rationale "DEFAULT".
+
+```
+### ENTRY: NPC_INTIMACY — [Name]
+**Category:** NPC Intimacy (Roster)
+**Trigger Keys:** [name, intimacy, sex, desire, plus name-specific keys]
+**Injection Position:** 1 (After Char Def — Tier 2 default)
+**Order Priority:** [70–89, below principals]
+**Position Rationale:** DEFAULT
+
+**Content:**
+- **Intimate essence:** [how this NPC is in sex + what they actually want from it — one line]
+- **Body & sound signature:** [the distinct thing this body does; the sounds they make vs. suppress — one line]
+- **Voice in intimacy:** "[one intimate-register line only this NPC would say]"
+- **Limit / yes:** [one hard limit + one hard yes — substrate-level, not scene-level]
+- **Stance in intimacy toward {{user}}:** [appetite / restraint / dominance / submission / transaction / tenderness — one line]
+```
+
+**The intimate-distinctiveness rule (binding):** before finishing, read the `Intimate essence`, `Body & sound signature`, and `Voice in intimacy` of every roster NPC side by side. If any two NPCs would be interchangeable in an intimate scene, they are not yet distinct — sharpen one. This mirrors the §7.E voice-fingerprint uniqueness rule into the intimate register; the Intimacy Auditor runs an NPC intimate-distinctiveness check (Step 3H) and will flag overlaps.
+
+> The compact block is intentionally lean. It composes with the preset's NPC Ensemble & Enrichment block (`npc_ensemble`): the model may enrich an NPC's intimate behavior organically in play, *provided* it stays consistent with the substrate this block establishes and never contradicts a stated limit/yes. The substrate is the floor a roster NPC's intimacy is built up from, not a ceiling.
+
+---
+
+## 7. TIER 3 INTIMACY REGISTER — `Drafts/Tier3_Arc[N]_Intimacy_Register.md` — *arc mode*
+
+> **Mode gate.** Author this section only when `World Mode` is `arc`. In `sandbox` mode there are no arcs — author the single standing register in **Section 7S** instead.
 
 One file per arc that contains intimate beats. Delta only — never restate the substrate. The model has the substrate from the Tier 2 profile; this entry tells it what the substrate is doing *under this arc's pressure*.
 
@@ -215,6 +252,37 @@ For specific intimate beats that are dramatic hinges (not just scene types), dra
 
 ---
 
+## 7S. SANDBOX INTIMACY REGISTER — `Drafts/Tier3_Sandbox_Intimacy_Register.md` — *sandbox mode*
+
+> **Mode gate.** Author this section only when `World Mode` is `sandbox`. It replaces Section 7 entirely. There is exactly **one** register, always active, folded into the Sandbox Lorebook context (the intimacy analog of `SANDBOX_STATE`). The function is *standing*, not per-arc — drop the `_Arc[N]` suffixes.
+
+Source the content from World Seed Section 8 (which, for a sandbox world, specifies the world's standing intimacy posture rather than per-arc functions). Delta only — never restate the Tier 2 substrate or the per-NPC stat blocks.
+
+#### Entry 1 — `INTIMACY_FUNCTION`
+**Constant entry.** `position: 1`, `constant: true`, `selective: true`, `ignoreBudget: true`. Fires every turn.
+**Position Rationale:** DEFAULT
+
+What intimacy is *for* in this world, persistently (pick from the thematic-function menu in Section 7, ranked by primacy, or write a custom one). Then specify how the function manifests in prose, and what intimate scenes should write *toward* as a standing register. In a sandbox the function is the world's default intimate register, not an arc's — frame it as "intimacy in this world is X" rather than "intimacy in this arc is X."
+
+Keys: empty (constant entry).
+
+#### Entry 2 — `INTIMATE_SCENE_TYPES`
+The live intimate scene-type menu for the whole sandbox — the kinds of intimate scenes the world supports, one sentence each on what each is doing. This is the standing intimate complement to the `SANDBOX_STATE` live-scene-types list.
+
+Keys: `intimate, sex, scene` plus world keys.
+
+#### Entry 3 — `INTIMATE_HARD_RULES`
+The world-level intimate prohibitions (from World Seed Section 8a). These are standing, not arc-specific.
+
+Keys: `intimate, sex, scene`.
+
+#### Optional — `[CHAR]_INTIMATE_REGISTER` / `NPC_INTIMATE_REGISTER`
+A standing per-character or per-NPC intimate delta, only when a character/NPC's intimate behavior needs a standing note beyond their Tier 2 substrate (e.g., a permanent relationship-specific shape). Often the Tier 2 substrate + the §6.5 NPC stat block is enough in a sandbox and these are unnecessary — do not pad. CONSTANT if used, same flags as Entry 1.
+
+> A sandbox intimacy register has no `INTIMATE_BEAT` entries (those are arc-hinge entries) and no arc-progression deltas. If you find yourself writing "as the relationship progresses…," that is emergent in-play texture (handled by the `npc_ensemble` enrichment directive and the chat log), not a register entry.
+
+---
+
 ## 8. CROSS-REFERENCE WITH EXISTING DRAFTS
 
 Before you sign off, run these consistency checks against the Architect's existing drafts:
@@ -223,9 +291,11 @@ Before you sign off, run these consistency checks against the Architect's existi
 
 **Tier 2 substrate consistency.** Your Tier 2 entries must trace cleanly to the character's psychological core in the existing `Tier2_[CharName]_Entries.md`. Anna's intimate trauma map must connect to Anna's general trauma. If the character's wound is "abandonment," her intimate trauma map should reflect abandonment-shaped responses, not unrelated trauma.
 
-**Arc state consistency.** Your `[CHAR]_INTIMATE_REGISTER_Arc[N]` must align with the arc's existing `[CHAR]_STATE` entry. If the arc state says Anna is in withdrawal and shaking, her intimate register cannot describe her as physically composed. Cross-check.
+**Arc state consistency (arc mode).** Your `[CHAR]_INTIMATE_REGISTER_Arc[N]` must align with the arc's existing `[CHAR]_STATE` entry. If the arc state says Anna is in withdrawal and shaking, her intimate register cannot describe her as physically composed. Cross-check. *(Sandbox mode: there is no CHARACTER_STATE; instead cross-check the standing `INTIMACY_FUNCTION` against `SANDBOX_STATE`'s register and power-fantasy contract — the intimate register cannot contradict the standing tone.)*
 
-**Beat consistency.** If the arc has dramatic beats that involve intimacy, your `INTIMATE_BEAT` entries should reference the same beats by name. If you find an intimate beat in the Master Design that has no corresponding `DRAMATIC_BEAT` entry in the existing arc lorebook, flag it — the Architect missed it.
+**NPC intimacy consistency.** Each NPC's intimate substrate (full profile or §6.5 compact block) must trace to that NPC's Tier 2 profile (§7.D / §7.E). A roster NPC's `Intimate essence` and `Stance in intimacy` cannot contradict their non-intimate essence, voice fingerprint, or stance toward {{user}}. The intimate self is the same self, in bed.
+
+**Beat consistency (arc mode).** If the arc has dramatic beats that involve intimacy, your `INTIMATE_BEAT` entries should reference the same beats by name. If you find an intimate beat in the Master Design that has no corresponding `DRAMATIC_BEAT` entry in the existing arc lorebook, flag it — the Architect missed it. *(Sandbox mode: no intimate beats — skip.)*
 
 ---
 
@@ -255,26 +325,27 @@ Append to the end of your final output file:
 ---
 ## ✅ INTIMACY ARCHITECT SIGN-OFF
 
-### Tier 2 — Permanent Substrate
+### Tier 2 — Permanent Substrate (characters and NPCs)
 - [ ] Every character with intimate scene presence has an `Intimacy_Profile.md`
-- [ ] Each profile contains all required entries (Baseline, Trauma Map, Body Reactions, Vulnerability Shape, Voice in Intimacy, Hard Limits and Hard Yeses)
+- [ ] Each full profile contains all required entries (Baseline, Trauma Map, Body Reactions, Vulnerability Shape, Voice in Intimacy, Hard Limits and Hard Yeses)
+- [ ] **Principal NPCs with intimate presence have full Intimacy Profiles; roster NPCs with intimate presence have §6.5 compact intimate stat blocks (Intimate essence, Body & sound signature, Voice in intimacy, Limit/yes, Stance)**
+- [ ] **No two roster NPCs are interchangeable in an intimate scene (intimate-distinctiveness rule) — sharpen overlaps**
 - [ ] No arc-specific content in any Tier 2 entry
-- [ ] All entries cross-checked against existing Tier 2 character lorebooks for substrate consistency
+- [ ] All entries cross-checked against existing Tier 2 character/NPC lorebooks for substrate consistency
 - [ ] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
 
-### Tier 3 — Arc Register Deltas
-- [ ] Every arc with intimate beats has an `Arc[N]_Intimacy_Register.md`
-- [ ] Each register contains a CONSTANT `INTIMACY_FUNCTION_Arc[N]` entry naming the thematic function and prose register
-- [ ] Each register contains a CONSTANT `[CHAR]_INTIMATE_REGISTER_Arc[N]` entry per character with intimate scene presence this arc
-- [ ] Each register names the live scene types and arc-specific hard rules
+### Tier 3 — Register (arc mode: per-arc deltas / sandbox mode: single standing register)
+- [ ] *Arc mode:* every arc with intimate beats has an `Arc[N]_Intimacy_Register.md` with a CONSTANT `INTIMACY_FUNCTION_Arc[N]`, a CONSTANT `[CHAR]_INTIMATE_REGISTER_Arc[N]` per character with intimate presence this arc, live scene types, and arc-specific hard rules
+- [ ] *Sandbox mode:* one `Sandbox_Intimacy_Register.md` with a CONSTANT standing `INTIMACY_FUNCTION` (no arc suffix), `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc-progression deltas or INTIMATE_BEAT entries
 - [ ] No substrate restatement in any Tier 3 entry
-- [ ] All registers cross-checked against existing arc lorebook ARC_STATE and CHARACTER_STATE for arc consistency
+- [ ] *Arc mode:* registers cross-checked against ARC_STATE and CHARACTER_STATE; *Sandbox mode:* `INTIMACY_FUNCTION` cross-checked against `SANDBOX_STATE`
 - [ ] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
 
 ### Cross-Reference Verification
 - [ ] No conflict between Tier 2 profiles and existing character card `description` intimacy sections
-- [ ] No contradiction between any character's substrate and any arc's required scene types
-- [ ] All intimate beats in Master Design are reflected in DRAMATIC_BEAT or INTIMATE_BEAT entries
+- [ ] No contradiction between any character's/NPC's substrate and any required scene type
+- [ ] Each NPC's intimate substrate traces to their §7.D / §7.E profile (intimate self = same self)
+- [ ] *Arc mode:* all intimate beats in Master Design are reflected in DRAMATIC_BEAT or INTIMATE_BEAT entries
 
 **Status: APPROVED — Proceed to Phase 3 (The Editor)**
 ```
