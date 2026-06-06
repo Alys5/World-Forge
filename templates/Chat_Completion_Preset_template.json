@@ -360,6 +360,10 @@
                     "enabled": true
                 },
                 {
+                    "identifier": "personaDescription",
+                    "enabled": true
+                },
+                {
                     "identifier": "charDescription",
                     "enabled": true
                 },

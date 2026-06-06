@@ -676,7 +676,9 @@ Add `"quiet"` to `injection_trigger` for Arc Guardian — it should enforce cons
 ]
 ```
 
-Add additional `character_id` objects for each additional character card. `character_id` values correspond to ST's internal character identifiers (typically sequential integers starting at 100000). If the exact IDs are unknown at generation time, use placeholder values — the user can update them in ST's UI after import.
+**Use exactly these two fixed entries — `character_id: 100000` and `character_id: 100001` — and do NOT add a third entry per character card.** This mirrors the two entries SillyTavern ships in its own default presets and is load-bearing: ST's PromptManager defaults to the **`global` order strategy** (`dummyId: 100000`), under which the single `prompt_order` entry whose `character_id` is `100000` governs block ordering for *every* character in the world. The `100001` entry is the historical second entry ST's default presets carry; it is only consulted under the non-default `character` strategy, which this pipeline does not use. Per-character prompt orders are therefore not a thing here — **block order is global; the same order applies to every character in this world.** Do not invent sequential per-card IDs (`100002`, `100003`, …) and do not key entries to specific character cards. There are exactly two entries, always `100000` and `100001`.
+
+**Keep the two entries in sync.** Because `100000` is the entry ST actually reads under the default global strategy, any block you enable, disable, add, or reorder must be applied **identically** to both `order` arrays. A common past failure was authoring the real configuration into `100001` (or into invented per-card entries) and leaving `100000` stale — under the global strategy ST reads only `100000`, so those edits silently never load. The two `order` arrays must be identical in their identifiers, order, and `enabled` flags.
 
 ---
 
@@ -769,12 +771,14 @@ EXTENSIONS:      extensions (object, may be empty)
 
 - [ ] `prompts` is a non-empty array
 - [ ] `prompt_order` is an array of objects, each containing `character_id` (number) and `order` (array). NOT a flat string array.
+- [ ] **`prompt_order` contains exactly two entries — `character_id: 100000` and `character_id: 100001` — and no invented per-card entries.** ST's default global strategy reads the `100000` entry for every character; per-card IDs are not used by this pipeline.
+- [ ] **The `100000` and `100001` `order` arrays are identical** (same identifiers, same sequence, same `enabled` flags). Under the global strategy ST reads only `100000`, so any divergence means the other entry's config silently never loads.
 - [ ] Every identifier in every `prompt_order.order[].identifier` has a corresponding entry in `prompts`
 - [ ] Every entry in `prompts` is either a custom block (with `content` field populated) or a marker block (with `marker: true`)
 - [ ] All standard markers present in `prompts` with `marker: true`: `worldInfoBefore`, `worldInfoAfter`, `charDescription`, `charPersonality`, `scenario`, `personaDescription`, `chatHistory`, `dialogueExamples`
 - [ ] All 8 core custom blocks present in `prompts` with non-placeholder content: `main`, `deep_think`, `arc_guardian`, `lore_integration`, `spatial_awareness`, `sensory_embodiment`, `formatting`, `jailbreak`
 - [ ] Conditional core blocks present in `prompts` with appropriate enabled state in `prompt_order`: `multi_character_dynamics` (enabled iff 2+ AI cards or Director NPC card), `nsfw` (enabled iff Section 8 in scope)
-- [ ] Any optional blocks added (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks have their `identifier` registered in both `prompts` array and `prompt_order` for every character
+- [ ] Any optional blocks added (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks have their `identifier` registered in the `prompts` array and in both `prompt_order` entries (`100000` and `100001`, identically)
 - [ ] **`forbid_overrides: false` on the `main` and `jailbreak` blocks.** Hard fail if either is `true` — that silently disables card-level system_prompt and post_history_instructions overrides.
 - [ ] **No `[REPLACE` substring anywhere in the output.** Run a string scan on the serialized JSON. Every placeholder from the template must have been replaced with world-specific content. Hard fail if any remain.
 
@@ -981,6 +985,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Top-level key count: ____ (must be ≥ 30)
 - [ ] All required top-level keys present (sampling, context, behavioral, format strings, provider, prompts, prompt_order, extensions — see Section 5f for the full enumerated list)
 - [ ] prompt_order is array of objects with character_id + order fields (NOT flat string array)
+- [ ] prompt_order has exactly two entries (character_id 100000 and 100001), no invented per-card IDs, and both order arrays are identical
 - [ ] Every identifier in prompt_order has a corresponding entry in prompts
 - [ ] All 8 standard marker blocks present in prompts with marker: true (worldInfoBefore, worldInfoAfter, charDescription, charPersonality, scenario, personaDescription, chatHistory, dialogueExamples)
 - [ ] All 8 core custom blocks present with non-placeholder content (main, deep_think, arc_guardian, lore_integration, spatial_awareness, sensory_embodiment, formatting, jailbreak)
