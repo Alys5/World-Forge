@@ -12,7 +12,7 @@ These rules are pre-save guards. If any check fails, do NOT write the file. Fix 
 3. **No metadata fields outside the schema.** The JSON content contains ONLY schema-defined fields. Do NOT add: `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, or any other "where this came from" metadata. The destination filename is a **tool argument** passed to your write-file tool — it tells the tool harness where to save, but does NOT belong inside the JSON content. Some models echo the write-tool's `path` argument back into content; this is the pattern to actively prevent.
 4. **`data.extensions.depth_prompt` present on every card.** Field is mandatory; prompt may be empty string. Never omit the structure.
 5. **`data.extensions.world_forge.style_override` present on every card.** Either `null` (non-overriding) or a seven-key object per SHARED §1. See Step 4 Section A6 for the JSON shape and SHARED §3 for the canonical directive prose.
-6. **All sign-offs verified.** Phase 3 Editor + Phase 3.5 Voice Auditor + Phase 3.6 Arc Transition Auditor + Phase 3.7 Intimacy Auditor (when applicable) must all have signed off. If any sign-off is missing, do NOT compile.
+6. **All sign-offs verified via the Pipeline State Ledger.** Read the Pipeline State Ledger at the top of `Drafts/Master_Design.md`. Every required phase must be `COMPLETE`; conditional phases (2.5, 3.6, 3.7) must be `COMPLETE` or `SKIPPED` with a reason. Phase 3 Editor + Phase 3.5 Voice Auditor + Phase 3.6 Arc Transition Auditor + Phase 3.7 Intimacy Auditor (when applicable) must all have signed off. Cross-check that the ledger's `world_mode` matches Master Design Section 1, and that `status` is neither `BLOCKED` nor `ESCALATED`. If any required sign-off is missing, a row is still `PENDING`/`IN_PROGRESS`, `world_mode` disagrees, or the run is blocked/escalated, do NOT compile.
 7. **Position fields correct.** World Lorebook entries `position: 0`; character lorebook entries `position: 1`; ARC_STATE / SANDBOX_STATE `position: 1` with `ignoreBudget: true`; TENSION / WORLD_PULSE `position: 4` with `depth: 2–4`. No Tier 1 or Tier 2 entry at `position: 2` or `3` (those are Author's Note slots for tone directives only).
 8. **All entries have Position Rationale.** Either the literal string `DEFAULT` (when entry uses documented default position+flags) or a one-sentence justification per the Architect's spec. This survives compilation.
 
@@ -134,7 +134,7 @@ The persona description is the always-on identity floor; the linked lorebook fir
 ## 4. PROCESS
 
 ### Step 1 — Verify Sign-Off
-Check for EDITOR SIGN-OFF in the latest `Drafts/Editor_Critique_[Round N].md`. If absent, halt.
+Check for EDITOR SIGN-OFF in the latest `Drafts/Editor_Critique_[Round N].md`. If absent, halt. Then read the Pipeline State Ledger at the top of `Drafts/Master_Design.md` and confirm every required phase row is `COMPLETE` (conditional phases 2.5 / 3.6 / 3.7 may be `SKIPPED` with a reason), the ledger's `world_mode` matches Master Design Section 1, and `status` is neither `BLOCKED` nor `ESCALATED`. Halt on any mismatch (Foundational Rule 6).
 
 ### Step 2 — Read Templates
 Read all three template files. Extract exact key names, required fields, and any field-specific rules. Note any discrepancies between templates and this document — templates take precedence for project-specific rules.
@@ -301,6 +301,7 @@ Append to `Export/Compiler_Log.md`:
 - [ ] All `data.extensions.depth_prompt` fields present on all character cards ✓
 - [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, seven-key object for overriding: perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale) ✓
 - [ ] **No non-schema metadata fields in any JSON content** — no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, or similar. The destination filename is a tool argument, not a content field. Scan every emitted JSON for unknown top-level keys and reject if any are present. ✓
+- [ ] **Pipeline State Ledger checked: all required phases COMPLETE (conditional 2.5/3.6/3.7 COMPLETE or SKIPPED); `world_mode` matches Section 1; status not BLOCKED/ESCALATED (Foundational Rule 6) ✓**
 - [ ] Notes_On_functionality.md consulted ✓
 
 ### Persona Linkage Instruction

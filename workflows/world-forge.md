@@ -105,6 +105,44 @@ Sandbox mode is a **branch through this same pipeline, not a separate fork.** Th
 
 ---
 
+## PIPELINE STATE LEDGER
+
+Loop state — which phase is live, what round it is on, which sign-offs are in — must survive a context summary or a session restart, not live only in the runtime agent's memory. The **Pipeline State Ledger** is a machine-managed block the Refiner writes at the top of `Master_Design.md` (directly under the `World Mode` line, alongside the Revision Log) and that the orchestrator updates at every phase boundary and loop return. It is the single on-disk source of truth for `/worldforge status` and for every `round > N → escalate` gate. The sign-off blocks remain the detailed certification record; the ledger is the index over them.
+
+**Schema** (the Refiner initializes it; the orchestrator advances it):
+
+```
+<!-- PIPELINE STATE LEDGER — machine-managed. Do not hand-edit mid-run. -->
+## 🔧 PIPELINE STATE LEDGER
+- world_mode: arc            # validated ∈ {arc, sandbox} by the Refiner; never silently defaulted on a typo
+- intimacy_in_scope: true    # World Seed Section 8 has material → Phases 2.5 / 3.7 run
+- current_phase: 3.5
+- status: IN_PROGRESS         # IN_PROGRESS | PAUSED | BLOCKED | COMPLETE
+
+| Phase | Status | Round | Sign-off anchor |
+|---|---|---|---|
+| 1 Refiner            | COMPLETE | —  | REFINER SIGN-OFF |
+| 2 Architect          | PENDING  | —  | PRE-SUBMISSION CHECKLIST |
+| 2.5 Intimacy Arch.   | PENDING  | —  | (SKIPPED when intimacy_in_scope: false) |
+| 3 Editor             | PENDING  | 0  | EDITOR SIGN-OFF |
+| 3.5 Voice Auditor    | PENDING  | 0  | VOICE AUDITOR SIGN-OFF |
+| 3.6 Arc Transition   | PENDING  | 0  | ARC TRANSITION AUDITOR SIGN-OFF (SKIPPED in sandbox mode) |
+| 3.7 Intimacy Auditor | PENDING  | 0  | INTIMACY AUDITOR SIGN-OFF (SKIPPED when intimacy_in_scope: false) |
+| 4 Compiler           | PENDING  | —  | COMPILER SIGN-OFF |
+| 5 Prompt Engineer    | PENDING  | —  | PROMPT ENGINEER SIGN-OFF |
+```
+
+**Per-phase status values:** `PENDING` (not started), `IN_PROGRESS` (running or mid-loop), `COMPLETE` (signed off), `SKIPPED` (conditional phase that did not run — record why in the anchor cell), `BLOCKED` (a pause/blocker file was generated), `ESCALATED` (round ceiling hit — awaiting user).
+
+**Contract:**
+- **The Refiner initializes the ledger** at Phase 1 sign-off: `world_mode` validated, `intimacy_in_scope` set from World Seed Section 8, the `1 Refiner` row `COMPLETE`, every later row `PENDING`, loop-phase `Round` at `0`, and the conditional rows pre-marked `SKIPPED` where they will not run (3.6 in sandbox mode; 2.5 and 3.7 when intimacy is out of scope).
+- **The orchestrator advances the ledger** — on entering a phase it sets that row `IN_PROGRESS` and updates top-level `current_phase`; on a sign-off it sets the row `COMPLETE`; on a loop return it increments that phase's `Round`; on a pause it sets `BLOCKED`; on a round-ceiling escalation it sets `ESCALATED`. These are file writes, not memory.
+- **`round > N` gates read the ledger**, not the conversation. The ceiling is `3` for every loop phase (Editor 3, and auditors 3.5 / 3.6 / 3.7).
+- **`/worldforge status` and every `resume` command read the ledger** to report and to re-enter the correct phase and round.
+- **The Compiler verifies the ledger** before compiling: every required phase `COMPLETE` (conditional phases `COMPLETE` or `SKIPPED`), `world_mode` consistent with Master Design Section 1, and `status` not `BLOCKED`/`ESCALATED`.
+
+---
+
 ## PHASE 0: DISCOVERY — THE INTERVIEWER
 
 **Invoke:** `@agent_roles/00_The_Interviewer.md`
@@ -203,11 +241,11 @@ Validates four layers: prose quality, tier integrity + lorebook entry quality, L
 - Sexual NPC with no intimate substrate (no full profile and no §6.5 compact stat block) = rejection (coverage gap)
 
 ```
-LOOP:
+LOOP:  (each return increments the ledger's `3 Editor` Round)
   IF files missing → return to relevant Architect (Architect or Intimacy Architect)
   IF hard failures → return affected files to relevant Architect
   IF quality below threshold → return with directives
-  IF round > 3, no improvement → ⏸ PAUSE, escalate to user
+  IF round > 3 (per ledger), no improvement → ⏸ PAUSE, escalate to user (ledger → ESCALATED)
   IF all pass → EDITOR SIGN-OFF → Phase 3.5 + 3.6 + 3.7
 ```
 
@@ -222,7 +260,8 @@ LOOP:
 Generates sample regular dialogue using the drafts as runtime context, audits against character spec for trigger-response fidelity, voice distinctiveness, arc register integrity, reflex misfires, and NPC voice drift.
 
 ```
-IF Critical or High failures → return to Architect with rewrite directives
+IF Critical or High failures → return to Architect with rewrite directives (increment ledger `3.5` Round)
+IF round > 3 (per ledger), no improvement → ⏸ PAUSE, escalate to user (ledger → ESCALATED)
 IF only Medium failures → may sign off with notes
 IF no failures → VOICE AUDITOR SIGN-OFF
 ```
@@ -240,7 +279,8 @@ IF no failures → VOICE AUDITOR SIGN-OFF
 Verifies continuity across every consecutive arc pair: trigger continuity, CHARACTER_STATE continuity, NPC behavioral shift continuity, world state continuity, hidden information rule continuity, dramatic beat sequence, tone register continuity.
 
 ```
-IF Critical failures → return to Architect
+IF Critical failures → return to Architect (increment ledger `3.6` Round)
+IF round > 3 (per ledger), no improvement → ⏸ PAUSE, escalate to user (ledger → ESCALATED)
 IF only Medium failures → may sign off with notes
 IF no failures → ARC TRANSITION AUDITOR SIGN-OFF
 ```
@@ -262,8 +302,9 @@ Generates sample intimate scenes using the drafts as runtime context, audits aga
 When the lenses conflict, voice fidelity wins. Function/substrate contradictions at the Master Design level are escalated to the user, not patched at the draft level.
 
 ```
-IF Critical or High failures → return to relevant Architect (Architect for cards, Intimacy Architect for intimacy entries)
+IF Critical or High failures → return to relevant Architect (Architect for cards, Intimacy Architect for intimacy entries) (increment ledger `3.7` Round)
 IF function/substrate conflicts found → escalate to user
+IF round > 3 (per ledger), no improvement → ⏸ PAUSE, escalate to user (ledger → ESCALATED)
 IF only Medium failures → may sign off with notes
 IF no failures → INTIMACY AUDITOR SIGN-OFF
 ```
@@ -338,10 +379,10 @@ For users who find manual application onerous on large worlds, a future pipeline
 | **Phase 0 Pause** | User wants time to think on a section | Save partial seed, resume with `/worldforge resume phase0` |
 | **Phase 1 Blocker** | `UNRESOLVED_QUESTIONS.md` generated | Answer questions, then `/worldforge resume phase1` |
 | **Phase 2.5 Blocker** | `UNRESOLVED_INTIMACY.md` generated | Populate Section 8 material, then `/worldforge resume phase2.5` |
-| **Phase 3 Stall** | 3+ rounds without improvement | Review flagged files and advise |
-| **Phase 3.5 Critical** | Voice Auditor flags Critical failures | Architect revises, re-runs through Editor and Voice Auditor |
-| **Phase 3.6 Critical** | Arc Transition Auditor flags Critical failures | Architect revises, re-runs through Editor and Arc Transition Auditor |
-| **Phase 3.7 Critical** | Intimacy Auditor flags Critical failures | Relevant Architect revises, re-runs through Editor and Intimacy Auditor |
+| **Phase 3 Stall** | Ledger `3 Editor` Round > 3 without improvement | Review flagged files and advise |
+| **Phase 3.5 Critical / Stall** | Voice Auditor flags Critical failures, or ledger `3.5` Round > 3 | Architect revises, re-runs through Editor and Voice Auditor |
+| **Phase 3.6 Critical / Stall** | Arc Transition Auditor flags Critical failures, or ledger `3.6` Round > 3 | Architect revises, re-runs through Editor and Arc Transition Auditor |
+| **Phase 3.7 Critical / Stall** | Intimacy Auditor flags Critical failures, or ledger `3.7` Round > 3 | Relevant Architect revises, re-runs through Editor and Intimacy Auditor |
 | **Phase 3.7 Conflict** | Function/substrate contradiction found | User decides: change substrate, change function, or accept the failure |
 | **Phase 4 Missing Templates** | Template file not found | Add to `templates/`, then `/worldforge resume phase4` |
 | **Phase 5 Audit Recommendations** | Sections 7/8 of `Prompt_Engineer_Audit.md` contain corrections | Open named Export/ files, apply each recommendation manually, save. Pipeline is COMPLETE only after all recommendations are applied. |
@@ -416,7 +457,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge resume phase3.7` | Re-run Intimacy Auditor |
 | `/worldforge resume phase4` | Re-run Compiler |
 | `/worldforge resume phase5` | Re-run Prompt Engineer |
-| `/worldforge status` | Report current phase, round, open blockers |
+| `/worldforge status` | Report current phase, round, open blockers — read from the Pipeline State Ledger at the top of `Master_Design.md`, not reconstructed from memory |
 | `/worldforge skip phase0` | Begin from Phase 1 (user has written World_Seed.md manually, OR resuming after a Section 1/11 revision bounced from the revise pipeline) |
 | `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content in this world) |
 | `/worldforge skip phase3.6` | Skip Arc Transition Auditor (auto-skipped in sandbox mode — no arc seams to audit) |

@@ -55,7 +55,7 @@ Read completely before generating anything.
 ## 4. PROCESS
 
 ### Step 0 — Read the World Mode
-Read Section 1's `World Mode` field (`arc` or `sandbox`). If absent or blank, default to `arc` and note the default was applied. This flag governs Section 9 of your Master Design and the Tier 3 gap pass:
+Read Section 1's `World Mode` field (`arc` or `sandbox`). If **absent or blank**, default to `arc` and note the default was applied. If a value **is present but is not `arc` or `sandbox`** after trimming whitespace and lowercasing (e.g., a typo like `arcs`, `Arc Mode`, or `sandbox-mode`), do **NOT** default — log it to `UNRESOLVED_QUESTIONS.md` and halt. A silent default on a typo silently mis-routes every mode-aware branch downstream (the Tier 3 spine, the 3.6 skip, the NPC roster format), so an unrecognized value is a blocker, not a default. The validated value is what you write to `world_mode` in the Pipeline State Ledger (Section 5). This flag governs Section 9 of your Master Design and the Tier 3 gap pass:
 - **`arc`:** Tier 3 is one Arc Lorebook per arc; Section 9 is the Narrative Arc Structure (unchanged).
 - **`sandbox`:** Tier 3 is a single always-active Sandbox Lorebook; Section 9 becomes the **Sandbox Charter** (see Section 5 of this spec). There are no arcs, arc triggers, CHARACTER_STATE evolution, NPC_SHIFT, or DRAMATIC_BEAT entries to classify. Record the mode prominently at the top of the Master Design so every downstream agent sees it.
 
@@ -120,6 +120,20 @@ Author the `Master_Design.md` using the structure in Section 5.
 ## 5. OUTPUT: `Drafts/Master_Design.md`
 
 Structure the Master Design with these exact sections:
+
+---
+
+### TOP OF FILE — PIPELINE STATE LEDGER
+
+Before SECTION 1, immediately under the `World Mode` line, emit the **Pipeline State Ledger** block (full schema and contract in `workflows/world-forge.md` → PIPELINE STATE LEDGER). This is the on-disk source of truth for `/worldforge status` and for every `round > N` escalation gate, so it must exist before Phase 2 begins. Initialize it as follows:
+
+- `world_mode`: the value you validated in Step 0 (`arc` or `sandbox`) — never the raw, unvalidated field.
+- `intimacy_in_scope`: `true` if World Seed Section 8 contains material the Intimacy Architect will need, else `false`.
+- `current_phase: 2`, `status: IN_PROGRESS`.
+- Phase rows: set `1 Refiner` to `COMPLETE`; every later row to `PENDING`; loop-phase `Round` (3, 3.5, 3.6, 3.7) to `0`.
+- Pre-mark conditional rows that will not run as `SKIPPED`, with the reason in the anchor cell: row `3.6` when `world_mode: sandbox`; rows `2.5` and `3.7` when `intimacy_in_scope: false`.
+
+You author this block once. The orchestrator advances it from here; do not re-emit it on a `resume`.
 
 ---
 
@@ -345,6 +359,12 @@ Append to end of `Master_Design.md`:
 - [ ] Section 11b: Every overriding card's rationale validated (structural, not stylistic) — or unstructured rationales logged to UNRESOLVED_QUESTIONS.md
 - [ ] Section 11c: Multi-perspective AND multi-tense flags computed; distinct perspectives and distinct tenses enumerated
 - [ ] Section 11d: POV ambiguity advisory computed (present or absent); if present, affected cards listed and advisory text included verbatim
+
+### Pipeline State Ledger
+- [ ] Pipeline State Ledger emitted at the top of Master Design, under the World Mode line
+- [ ] `world_mode` written from the Step 0 validated value (∈ {arc, sandbox}); an unrecognized value was logged to UNRESOLVED_QUESTIONS.md, not silently defaulted
+- [ ] `intimacy_in_scope` set from World Seed Section 8; rows 2.5 and 3.7 pre-marked SKIPPED when false; row 3.6 pre-marked SKIPPED when world_mode is sandbox
+- [ ] All later phase rows PENDING; loop-phase Round (3, 3.5, 3.6, 3.7) at 0; `1 Refiner` row set COMPLETE; current_phase = 2
 
 **Status: LOCKED — Proceed to Phase 2 (The Architect)**
 ```

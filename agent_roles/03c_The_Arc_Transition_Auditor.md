@@ -173,6 +173,8 @@ Structure:
 
 ## 6. SIGN-OFF
 
+**Bounded loop.** Each return to the Architect increments this phase's `Round` in the Pipeline State Ledger (`workflows/world-forge.md` → PIPELINE STATE LEDGER). If `Round` exceeds 3 with no improvement, do not loop again — halt and escalate to the user (ledger `status` → `ESCALATED`), the same ceiling the Editor loop uses.
+
 ```
 ---
 ## ✅ ARC TRANSITION AUDITOR SIGN-OFF — Round [N]

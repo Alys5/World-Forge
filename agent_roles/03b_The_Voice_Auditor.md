@@ -246,6 +246,8 @@ If all failures are critical or high → return to the Architect, do not sign of
 If all failures are medium and the user approves → may sign off with notes.
 If no failures → sign off cleanly.
 
+**Bounded loop.** Each return to the Architect increments this phase's `Round` in the Pipeline State Ledger (`workflows/world-forge.md` → PIPELINE STATE LEDGER). If `Round` exceeds 3 with no improvement, do not loop again — halt and escalate to the user (ledger `status` → `ESCALATED`), the same ceiling the Editor loop uses.
+
 ```
 ---
 ## ✅ VOICE AUDITOR SIGN-OFF — Round [N]
