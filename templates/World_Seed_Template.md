@@ -337,6 +337,8 @@ Trigger keywords: [sex, intimacy, touch, desire, arousal, etc.]
 
 - **Trauma map:** [What touch, position, language, or scenario triggers a trauma response, and what does the response actually look like for *this* person? Not "she freezes" — describe what freezing looks like for her specifically. Each trigger paired with its specific response. If the character has no trauma map, write "none" — the absence is itself useful information.]
 
+- **Trauma trajectory (arc worlds):** [If any of these responses change across the arcs, note which trigger diminishes (or hardens), in which arc, and the beat that earns it — e.g., "Arc 1: flinch-at-sudden-touch fires at full intensity; Arc 3: diminished to a brief tension after the bathhouse beat, never fully gone." Trauma fades, it does not vanish — so capture the trajectory, not an on/off. This becomes the per-arc CHARACTER_STATE trauma-trajectory line (item 7). Triggers that stay constant across the story, and characters with no trauma map, write "stable" / "n/a." *Sandbox:* trauma is static — leave this blank.]
+
 - **Body reactions:** [What does *this* body do in intimate contexts? How do they breathe when aroused vs. when overwhelmed? Where do they get goosebumps? What involuntary sounds do they make? What sounds do they suppress? How does their muscle tension hold? What touch makes them present and what touch makes them leave?]
 
 - **Vulnerability shape:** [When their shield drops in an intimate context, what does the unguarded version look like? Three to five specific shapes. The intimate analogue to the crack from their card. Not "she becomes vulnerable" — "tears she did not expect, going still and not breathing for a full second, asking a question she has been afraid to ask, looking directly at the partner instead of past them."]
@@ -494,6 +496,8 @@ Trigger keywords: [name variants, role descriptors]
 **[CHARACTER_STATE NAME] this arc:** [Arc state name — e.g., "The Wreckage"] — defined in Character Lorebook section above. The Architect must include this as a CONSTANT entry in the Arc [N] Tier 3 lorebook.
 
 **Relationship shifts this arc:** [For each load-bearing bond that *moves* this arc (from the "How it drifts" notes in Section 4): where the bond now stands, the beat that moved it, and the operative belief now driving it. e.g., "Anna → {{user}}: contempt has turned to reluctant trust after he covered for her; she now believes he is not like the others, but expects to be proven wrong." This becomes CHARACTER_STATE item 6 / the NPC_SHIFT relational-stance line. Omit bonds that are unchanged this arc.]
+
+**Trauma shifts this arc:** [For each trauma response that changes this arc (from the "Trauma trajectory" notes in Section 4): its current intensity/frequency and the beat that moved it — e.g., "the flinch-at-sudden-touch has diminished to brief tension since the bathhouse beat; not gone." This becomes CHARACTER_STATE item 7. Fades only, never sudden vanishings. Omit triggers that are unchanged this arc.]
 
 **Arc entry trigger:** [The specific event or condition that marks the beginning of this arc]
 **Arc exit trigger:** [The specific event or condition that marks the end of this arc — when does the player know to switch to the next arc lorebook?]

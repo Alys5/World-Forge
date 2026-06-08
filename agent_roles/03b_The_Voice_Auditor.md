@@ -75,7 +75,7 @@ Does the character's behavior in this dialogue match the active arc's CHARACTER_
 - Physical state and presentation (Arc 1 Anna shaking and unwell vs Arc 4 Anna grounded and visibly pregnant)
 - Psychological register (defensive sarcasm vs warm dry wit)
 - Vocabulary and sentence structure (clipped vs flowing)
-- Trauma response patterns (active and immediate vs faded and dormant)
+- Trauma response patterns (active and immediate vs faded and dormant) — match the dialogue against CHARACTER_STATE item 7 (trauma trajectory) where present: a trigger marked diminishing/dormant this arc must not fire at full Arc-1 intensity, and one still marked active must not be silently absent
 
 If the dialogue shows Arc 1 register in an Arc 3 scenario, that is drift. The card or the CHARACTER_STATE entry has a contamination problem.
 

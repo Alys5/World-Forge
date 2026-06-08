@@ -164,6 +164,8 @@ If any of these come back generic, push: "Most characters want safety. What does
 
 - "What touch, position, language, or scenario triggers a trauma response in this character — and what does the response actually look like for *her* specifically?" Push hard on the specificity: "she freezes" is insufficient. Make them describe what freezing looks like for this person. Does her breath shorten? Does she go silent? Does she perform compliance to end the scene faster? Does she dissociate and watch from the ceiling? Each trauma trigger paired with its specific response.
 
+- *(Arc worlds, if the character heals or hardens over the story.)* "Do any of these trauma responses change across the arcs — does a trigger lose its grip, or shift to a milder response, and what *earns* that change?" Trauma fades, it does not vanish: capture the trajectory (which trigger, which arc it diminishes in, the beat that moves it), not just an on/off. This feeds the per-arc CHARACTER_STATE trauma-trajectory line, and the Arc Transition Auditor checks the fade is shown rather than abrupt. Triggers that stay fully active across the whole story need no trajectory — say so.
+
 - "What does this body do, that other bodies don't? How does she breathe when aroused vs. when overwhelmed? Where does she get goosebumps? What sounds escape her, what sounds does she suppress, what sounds does she perform?" The antidote to generic "moaned softly" prose.
 
 - "When her shield drops in an intimate context, what does the unguarded version look like? Three to five specific shapes." This is the intimate analogue to the crack. Same specificity standard.

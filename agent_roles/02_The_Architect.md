@@ -534,11 +534,12 @@ The Tier 2 physical baseline entry provides permanent anatomical truth (bone str
 4. What the LLM is working toward — the narrative goals of this arc
 5. The pacing and atmosphere mandate
 6. The character's current relational stance — for each load-bearing relationship that has CHANGED since the previous arc: where the bond stands now, what shifted and (briefly) the beat that moved it, the operative belief the character now holds about the other party or about {{user}} (e.g., "believes {{user}} chose to spare her brother"), and how that belief shapes their behavior this arc. Only relationships that drift — do not restate the static Tier 2 relationship baseline.
+7. Trauma trajectory this arc — for each trauma trigger from the character's Tier 2 trauma map that is CHANGING: its current intensity and frequency this arc (active and immediate / diminishing / modified response / dormant) and the beat or healing that moved it. Trauma fades, it does not vanish — never drop a previously-active response to nothing without a prior arc showing it diminish. Triggers that remain fully active, and characters with no trauma map, need no line.
 
 Write it as a director's briefing. Specific, imperative, unambiguous.]
 ```
 
-**Relational stance is delta, not restatement (item 6).** The permanent shape of a relationship lives in the Tier 2 §7.C relational entry; item 6 carries only what has *moved* this arc and the belief now driving it. If a relationship is unchanged from the prior arc, omit it. The Arc Transition Auditor (Check 3b) reads these lines across consecutive arcs to verify bonds and beliefs evolve only through earned beats, never teleporting or silently resetting.
+**Items 6 and 7 are delta, not restatement.** The permanent shape of a relationship lives in the Tier 2 §7.C relational entry; the permanent trauma map lives in the Tier 2 psychological / Intimacy Profile substrate. Item 6 carries only the bond/belief that has *moved* this arc; item 7 carries only the trauma response whose intensity has *changed* this arc. Omit anything unchanged. The Arc Transition Auditor reads item 6 across arcs (Check 3b — bonds/beliefs evolve only through earned beats, never teleporting or resetting) and item 7 across arcs (Check 2 trauma-response continuity — fades are shown, never sudden vanishings). Intimate-context trauma de-escalation rides the per-arc Intimacy Register (Phase 2.5) and the Intimacy Auditor; item 7 covers the general behavioral trauma surfaced in ordinary scenes.
 
 ### B. LOCATION Entries (one per arc-relevant location)
 **Trigger Keys:** [location name, common descriptors]
@@ -883,6 +884,7 @@ Append to your submission note before handing to The Editor:
 - [ ] ARC_STATE contains {{char}} and NPC knowledge rules (not {{user}} knowledge restrictions)
 - [ ] ARC_STATE names dramatic goals
 - [ ] CHARACTER_STATE item 6 (relational stance) present for each character whose load-bearing relationship drifts this arc — current stance + the beat that moved it + the operative belief; static relationships not restated
+- [ ] CHARACTER_STATE item 7 (trauma trajectory) present for each character whose trauma intensity changes this arc — current intensity/frequency + the beat that moved it; fades shown, never sudden vanishings; fully-active triggers and trauma-less characters need no line
 - [ ] Location entries for arc-relevant locations
 - [ ] NPC_SHIFT entries for all active NPCs (delta only, not baseline); active goal this arc stated where an NPC's Standing Goal shifts or is newly active; relational stance/belief delta stated where the NPC's stance toward {{user}} or another character changes
 - [ ] DRAMATIC_BEAT entries for major story moments

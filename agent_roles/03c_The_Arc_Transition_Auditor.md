@@ -51,7 +51,7 @@ Compare the CHARACTER_STATE entry at the end of Arc N with the CHARACTER_STATE e
 
 **Psychological continuity.** Does the Arc N+1 register flow from the Arc N register? If Arc 2 ends with Anna in theological terror and Arc 3 starts with Anna grounded and certain, what happened in between? An arc cannot resolve fear that the previous arc just installed without showing the work.
 
-**Trauma response continuity.** Trauma responses fade, they do not vanish. If a trauma trigger was active in Arc 1 and has disappeared by Arc 3, the Arc 2 state should show it diminishing. Sudden absences are flags.
+**Trauma response continuity.** Trauma responses fade, they do not vanish. Read the **trauma trajectory** line (CHARACTER_STATE item 7) across the seam: a trigger that was active in Arc N should, by a later arc, be marked diminishing / modified / dormant with the beat that moved it — never silently absent. If Arc N+1's state drops a previously-active trauma response to nothing and no item-7 line (and no beat) accounts for the fade, that is a continuity failure. A sudden re-activation of a dormant trauma response equally needs a triggering cause. Where item 7 is missing for a character whose trauma is visibly changing across arcs, flag the coverage gap — the fade is happening off-page and the model will render it inconsistently.
 
 **Skill and capability continuity.** New behaviors should be earned. If a character could not handle X in Arc 2 and handles X with confidence in Arc 3, there should be a beat or shift in Arc 2 or early Arc 3 that accounts for the change.
 
@@ -198,6 +198,7 @@ Structure:
 ### Continuity Verification
 - [ ] All consecutive arc pairs audited
 - [ ] All character states verified across all transitions
+- [ ] **Trauma trajectories (CHARACTER_STATE item 7) verified across transitions (Check 2): fades are shown and beat-accounted, never sudden vanishings or un-caused re-activations; off-page fades flagged for coverage**
 - [ ] All NPC shifts verified for middle-state coverage
 - [ ] **All evolving relationships/beliefs verified for continuity (Check 3b): no teleporting bonds, un-caused belief flips, silent memory resets, or off-page drift; every shift traces to a beat**
 - [ ] All hidden information rules trace cleanly across transitions
