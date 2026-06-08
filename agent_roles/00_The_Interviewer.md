@@ -154,6 +154,8 @@ If any of these come back generic, push: "Most characters want safety. What does
 
 **Then NPCs.** For each NPC: "Speech pattern, two or three sample lines, what they want, what they are afraid of." Sample lines are not optional — they anchor the voice. If the user cannot write a sample line in the NPC's actual voice, the NPC is not real yet.
 
+**Then, for principal NPCs, the standing goal.** "What is this NPC actively pursuing in the world right now — not a vague want, an objective — and what do they *do* to chase it, on-screen and off-screen, when {{user}} isn't the focus?" This is what keeps the NPC acting on their own instead of waiting to be addressed. Push past passive wants ("she wants respect") to active pursuit ("she's maneuvering to take the harbor contract, and she'll lean on anyone in {{user}}'s orbit to get it"). Roster NPCs get a lighter version — their one-line hook is enough; the standing goal is a principal-NPC depth.
+
 **Then the per-character intimacy substrate (only for characters with intimate scene presence).** This produces the Tier 2 Intimacy Profile that the Intimacy Architect will draft against. Walk through:
 
 - "What is this character's sexuality when nothing is pressing on it? What attracts them, what does intimate contact mean to them as a category?" This is the calm-water version. Most users will skip to the trauma — bring them back to the baseline first.
@@ -374,7 +376,7 @@ Append to end of `World_Seed.md`:
 - [ ] Section 1.5: Style Contract — perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register all declared (or DEFAULTS); per-card overrides flagged if applicable, with structural rationales
 - [ ] Section 2: The World — sensory signature specific, rules have costs, factions/locations/species/concepts described
 - [ ] Section 3: The Protagonist — wound, hidden layer, contradiction, power/limits, arc trajectory, physical, voice
-- [ ] Section 4: Characters — wound, shield, crack, voice with sample line, physical, relationships, NPCs with sample lines, intimacy substrate (where applicable); large casts split into principal (full) + roster (compact, unique voice fingerprint each)
+- [ ] Section 4: Characters — wound, shield, crack, voice with sample line, physical, relationships, NPCs with sample lines, intimacy substrate (where applicable); large casts split into principal (full) + roster (compact, unique voice fingerprint each); **principal NPCs have a standing goal (active objective + how they pursue it)**
 - [ ] Section 5: **Arc mode** — hidden info rules per arc, beats are hinges, transitions earned, triggers are events; **Sandbox mode** — Sandbox Charter complete: standing situation, experience contract, aliveness contract, live scene types, world pulse, hard prohibitions
 - [ ] Section 6: Technical Specifications — cards, lorebooks, intimacy files (where applicable), depth_prompt assessment per character
 - [ ] Section 7b: Test Scenarios — 3–5 specific roleplay moments listed, including at least one intimate scenario if Section 8 is in scope

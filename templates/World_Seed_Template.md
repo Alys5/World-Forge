@@ -408,6 +408,8 @@ Trigger keywords: [name variants, role descriptors, ways they'd be referenced in
 
 [Psychological truth: who are they really? What drives them? What are they afraid of? What do they want that they won't admit?]
 
+**Standing Goal:** [The active objective this NPC is pursuing in the world right now — concrete, not a vague want — plus what they *do* to advance it, on-screen and off-screen, when {{user}} isn't the focus. This is what keeps them acting on their own instead of waiting to be addressed; the pipeline's activity-cadence directive acts on it. e.g., "Maneuvering to take the harbor contract; leans on anyone in {{user}}'s orbit, plants rumors, calls in old debts."]
+
 [Speech pattern: how do they talk? Sentence structure, vocabulary, verbal tics, what they never say directly. Give the AI enough to write them distinctly from every other NPC.]
 
 **Arc progression:** *(arc mode only — omit in sandbox worlds)*
@@ -483,7 +485,7 @@ Trigger keywords: [name variants, role descriptors]
 - [Threat name]: [What is this threat, how does it manifest, what does it want?]
 
 **NPC behavioral shifts this arc:**
-- [NPC name]: [How do they behave in this arc? What is specific to this arc that differs from their baseline?]
+- [NPC name]: [How do they behave in this arc? What is specific to this arc that differs from their baseline? If their Standing Goal shifts, intensifies, or is newly active this arc, state the active goal this arc and how they pursue it.]
 - [NPC name]: [Same format]
 
 **[CHARACTER_STATE NAME] this arc:** [Arc state name — e.g., "The Wreckage"] — defined in Character Lorebook section above. The Architect must include this as a CONSTANT entry in the Arc [N] Tier 3 lorebook.
@@ -524,7 +526,7 @@ Trigger keywords: [name variants, role descriptors]
 
 **Live scene types (the sandbox menu):** [What kinds of scenes are active and available in this world? List them — this is the menu the model biases toward. e.g., "negotiations with rival powers, intimate evenings, displays of authority, quiet domestic moments, sudden threats handled with ease."]
 
-**Aliveness directives:** [The contract that keeps the world feeling alive. Default suggestions — adapt: "NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; time passes and off-screen life continues; never freeze the world waiting for {{user}} to act; rotate NPCs in and out so the cast feels populated, not summoned."]
+**Aliveness directives:** [The contract that keeps the world feeling alive. Default suggestions — adapt: "NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; time passes and off-screen life continues; never freeze the world waiting for {{user}} to act; rotate NPCs in and out so the cast feels populated, not summoned." Make it concrete: name that principal NPCs advance their Standing Goals (defined in Section 4) on their own initiative — when a scene lulls or {{user}} is passive, a present or off-screen NPC acts toward its goal.]
 
 **Hard prohibitions:** [What must the model never do in this world? e.g., "never strip {{user}} of agency or power without an in-world cause the player set in motion; never reset NPC attitudes to neutral between scenes."]
 
@@ -532,7 +534,7 @@ Trigger keywords: [name variants, role descriptors]
 
 *This becomes the `WORLD_PULSE` entry (the standing, recency-injected aliveness directive — the sandbox analog of an arc's TENSION). It is sustained every turn, never "resolved." Keep it short and present-tense.*
 
-**The standing pulse:** [One short paragraph the model keeps live every turn: the world is populated and proactive; specify the ambient pressures or opportunities that should always be in motion — what's happening at the edges, who wants what from {{user}}, what the world is doing while {{user}} acts. Example: "The syndicate always has business in motion; rivals test boundaries; the city offers and demands. NPCs act on their own wants between {{user}}'s moves. Reputation precedes {{user}} into every room."]
+**The standing pulse:** [One short paragraph the model keeps live every turn: the world is populated and proactive; specify the ambient pressures or opportunities that should always be in motion — what's happening at the edges, who wants what from {{user}}, the principals' Standing Goals currently in motion, what the world is doing while {{user}} acts. Example: "The syndicate always has business in motion; rivals test boundaries; the city offers and demands. NPCs act on their own wants between {{user}}'s moves. Reputation precedes {{user}} into every room."]
 
 ### 5B.4 — Standing Locations (sandbox)
 
@@ -751,7 +753,7 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 - [ ] Every AI-played character has: psychological core, shield, crack, voice pattern, opening scenario, first message, example exchanges
 - [ ] Every character has a physical baseline description
 - [ ] Every character has a state entry per arc
-- [ ] Every NPC has a profile — principals as full profiles, roster NPCs as compact stat blocks (large casts); roster voice fingerprints are unique
+- [ ] Every NPC has a profile — principals as full profiles, roster NPCs as compact stat blocks (large casts); roster voice fingerprints are unique; principal NPCs have a Standing Goal (active objective + how they pursue it)
 - [ ] LLM behavioral instructions written for each card (with arc-range qualifiers)
 - [ ] For characters with intimate scene presence: substrate (trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits) and arc-specific evolution filled out
 

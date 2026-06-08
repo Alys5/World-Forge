@@ -106,9 +106,9 @@ For each tier, identify what is missing:
 
 **Tier 2 gaps:** Does every major character have enough relational and psychological material for a rich lorebook? Is the physical description ordered correctly (face → hair → eyes → body → intimate areas)? Are all key relationships (character to character, character to {{user}}) defined?
 
-**Tier 3 gaps (arc mode):** Is every arc's hidden information explicitly stated? ("What does `{{char}}` NOT know this arc? What are the NPCs concealing, and from whom?") Note: hidden information rules govern `{{char}}` and NPC behavior — `{{user}}` is the player directing the story, not a character whose knowledge the LLM manages (unless the world seed explicitly defines a mystery mechanic where discovery is the player's experience). Is the arc entry trigger and exit trigger clear? Are the dramatic beats sufficient to give the LLM narrative direction?
+**Tier 3 gaps (arc mode):** Is every arc's hidden information explicitly stated? ("What does `{{char}}` NOT know this arc? What are the NPCs concealing, and from whom?") Note: hidden information rules govern `{{char}}` and NPC behavior — `{{user}}` is the player directing the story, not a character whose knowledge the LLM manages (unless the world seed explicitly defines a mystery mechanic where discovery is the player's experience). Is the arc entry trigger and exit trigger clear? Are the dramatic beats sufficient to give the LLM narrative direction? For arcs with active principal NPCs, is there material for the ARC_STATE **activity cadence** directive — i.e., does each active NPC have a pursuable Standing Goal so the model can have them act in a lull? A principal NPC with no goal the arc can point at is a Tier 3 gap.
 
-**Tier 3 gaps (sandbox mode):** Is the Standing Situation concrete (premise, {{user}}'s standing/power, the experience contract)? Does the Tonal Mandate have enough directive material for 4–8 imperative bullets, including an **aliveness contract** (NPCs pursue their own agendas, initiate, carry off-screen continuity; the world reacts and remembers; never freezes)? Are the live scene types named? Is there enough for a `WORLD_PULSE` entry (what is always in motion at the edges)? Is the NPC cast split into principals (full) and roster (compact), and does every roster NPC have a distinct voice fingerprint + sample line? A sandbox with inert NPCs or interchangeable voices is a Tier 3 gap — flag it.
+**Tier 3 gaps (sandbox mode):** Is the Standing Situation concrete (premise, {{user}}'s standing/power, the experience contract)? Does the Tonal Mandate have enough directive material for 4–8 imperative bullets, including an **aliveness contract** (NPCs pursue their own agendas, initiate, carry off-screen continuity; the world reacts and remembers; never freezes)? Are the live scene types named? Is there enough for a `WORLD_PULSE` entry (what is always in motion at the edges)? Is the NPC cast split into principals (full) and roster (compact), and does every roster NPC have a distinct voice fingerprint + sample line? Does every principal NPC have a pursuable **Standing Goal** for the aliveness/cadence directive to act on? A sandbox with inert NPCs, interchangeable voices, or principals with no standing goal is a Tier 3 gap — flag it.
 
 Gaps requiring user input → log in `UNRESOLVED_QUESTIONS.md` and halt. Do not proceed to Phase 2 until resolved.
 
@@ -187,6 +187,7 @@ For each major character:
 - Role and narrative function.
 - Full physical and sensory description.
 - Psychological profile: motivation, fear, behavior pattern.
+- **Standing Goal:** the active objective the NPC pursues in the world + the concrete moves that advance it (on-screen and off-screen). This is the arc-agnostic baseline drive the Architect records in the §7.D profile and the ARC_STATE / SANDBOX_STATE activity-cadence directive acts on. If the World Seed gives only a passive want, flag it — the Architect needs an active, pursuable objective.
 - Speech pattern with 2–3 sample lines.
 - Relationship to {{user}}, to primary characters, and to other NPCs.
 - Trigger keyword candidates (2–4 words).
@@ -337,7 +338,7 @@ Append to end of `Master_Design.md`:
 - [ ] All major characters: physical description in anatomical order
 - [ ] All major characters: relationship map complete
 - [ ] All major characters: psychological entry topics listed
-- [ ] All NPCs: classified principal vs. roster; principals have full profiles with trigger keywords; roster NPCs have essence/presence/voice fingerprint/signature line/stance/hook with trigger keywords
+- [ ] All NPCs: classified principal vs. roster; principals have full profiles with trigger keywords **and a Standing Goal (active objective + pursuit moves)**; roster NPCs have essence/presence/voice fingerprint/signature line/stance/hook with trigger keywords
 - [ ] **No two roster NPCs share a voice fingerprint (distinctiveness gate) — or interchangeable voices logged to UNRESOLVED_QUESTIONS.md**
 - [ ] **Protagonist ({{user}}): physical description, psychology, powers, voice, and lorebook entry topics defined**
 - [ ] **Protagonist ({{user}}): identity floor available for `User.md` Persona Description — name, role/public face, distilled physical signature, world-relevant powers/limits flag (if applicable). Voice/personality/manner intentionally excluded — the human plays `{{user}}`.**

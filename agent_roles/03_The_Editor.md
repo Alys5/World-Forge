@@ -133,7 +133,7 @@ Score each criterion 1–3. Pass threshold: all ≥2, at least three = 3.
 | Criterion | Standard |
 |---|---|
 | **ARC_STATE Completeness** | See Step 4a below — this criterion now has structural sub-checks that don't fit in a table cell. |
-| **NPC_SHIFT Delta Integrity** | Entry contains only behavioral change, not repeated full profile. |
+| **NPC_SHIFT Delta Integrity** | Entry contains only behavioral change, not repeated full profile. An "active goal this arc" line (a shifted or newly-active Standing Goal) is legitimate delta, not baseline restatement. |
 | **DRAMATIC_BEAT Specificity** | Does the entry tell the LLM what to do when this beat occurs, not just that it exists? |
 | **TENSION Sustained Pressure** | Does the entry frame a standing pressure the prose keeps live every turn — not flat description, and not a countdown the model should resolve on its own? |
 
@@ -163,10 +163,16 @@ Missing any of these = hard reject. Cite the gap.
 
 - [ ] The Tonal Mandate contains 4–8 bulleted directives
 - [ ] Each bullet uses imperative/directive language (resist, dominates, never default to, dwells on, elides, do not, must, never, always, etc.) — descriptive language alone is insufficient
-- [ ] At minimum these categories are covered (where relevant to the arc): active register, prose dwells on, prose elides, hard prohibitions
+- [ ] At minimum these categories are covered (where relevant to the arc): active register, prose dwells on, prose elides, hard prohibitions, and activity cadence (the latter mandatory when the arc has active principal NPCs — see 4a-3b)
 - [ ] If the world has had prior playtesting and observed failure modes (model softens openings, model warms cruel characters, model skips trauma responses), those failure modes are explicitly anchored as prohibitions
 
 Fewer than 4 directive bullets, or bullets that are purely descriptive without imperative verbs, or missing required category coverage = hard reject. Cite the deficiency per bullet.
+
+#### 4a-3b — Activity cadence (conditional hard fail)
+
+If the arc has one or more active principal NPCs (i.e., NPC_SHIFT entries are present for this arc), the Tonal Mandate MUST include an **activity cadence** directive: NPCs advance their Standing Goals on their own initiative, and when a scene lulls or {{user}} is passive a present or off-screen NPC acts toward its goal rather than the scene freezing to wait on {{user}}. Missing this directive when active NPCs exist = hard reject. Solo / two-hander arcs with no acting NPC cast legitimately omit it — do not fail those.
+
+Then verify the directive is not dangling: every objective the cadence points at must be locatable as an NPC's Tier 2 §7.D **Standing Goal**, or an NPC_SHIFT "active goal this arc" where it shifts. A cadence directive pointing at goals no active NPC actually has, or an active principal NPC with no Standing Goal anywhere = hard reject.
 
 #### 4a-4 — Soft-flag check: Tonal Mandate quality
 
@@ -202,6 +208,7 @@ When `World Mode` is `sandbox`, the Tier 3 lorebook has no ARC_STATE. Validate t
 - [ ] Tonal Mandate contains 4–8 bulleted directives, each using imperative language (resist, dominates, never default to, dwells on, elides, do not, must, never, always). Fewer than 4, or descriptive-only bullets = hard reject.
 - [ ] Tonal Mandate includes the **aliveness directives** — at minimum: NPCs pursue their own agendas / may initiate, the world reacts to and remembers {{user}}, and the world is never frozen waiting for {{user}}. Missing the aliveness contract = hard reject (a sandbox without it plays as an inert menu).
 - [ ] Tonal Mandate names the **live scene types** (the model's bias menu). Missing = hard reject.
+- [ ] Every principal NPC has a §7.D **Standing Goal** for the aliveness/cadence directive to act on. A principal NPC with no Standing Goal anywhere = hard reject (the directive has nothing to point at). Whether the aliveness directive names the goals concretely (referencing Standing Goals + the lull-trigger) vs. abstractly is a 4a-4-style soft flag, not a hard fail.
 - [ ] Exactly one SANDBOX_STATE entry exists (not multiple, not zero). At least one WORLD_PULSE entry exists at position 4. Otherwise = hard reject.
 
 Soft-flag (per the 4a-4 pattern): Tonal Mandate bullets that are vague ("keep it alive") rather than specific, or that merely restate a character card's content.
@@ -630,6 +637,8 @@ Post-history: [checklist results + word count]
 - All Tier 2 entries: quality criteria met, arc isolation verified ✓
 - All Tier 3 entries: arc mode — ARC_STATE complete with hidden info rules; sandbox mode — SANDBOX_STATE complete ✓
 - **Arc mode: all ARC_STATE entries: two-subsection structure (Dramatic Situation + Tonal Mandate), 4–8 imperative directive bullets ✓**
+- **Arc mode: arcs with active principal NPCs have an ARC_STATE activity-cadence directive (Step 4a-3b); it is not dangling — every objective maps to an NPC §7.D Standing Goal or NPC_SHIFT active-goal line ✓**
+- **Principal NPCs (both modes): each §7.D profile carries a Standing Goal ✓**
 - **Sandbox mode: SANDBOX_STATE has Standing Situation + Tonal Mandate (4–8 imperative bullets incl. aliveness directives + live scene types); ≥1 WORLD_PULSE; no arc/CHARACTER_STATE/NPC_SHIFT/DRAMATIC_BEAT contamination (Step 4a-S) ✓**
 - **Roster NPCs (§7.E): each has Voice fingerprint + Signature line; fingerprints distinct across the roster ✓**
 - **All entries: Position Rationale present (DEFAULT or justified) ✓**
