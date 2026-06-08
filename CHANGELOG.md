@@ -13,6 +13,81 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-08 — Character & world realism mechanics
+
+Three mechanics that turn NPCs and characters from static descriptions into
+persistent agents — the world acts on its own, remembers what `{{user}}` did, and
+lets wounds heal visibly — authored as auditable state rather than prose the
+runtime model is merely trusted to honor (#23).
+
+### Added
+- **NPC agency — standing goals + activity cadence** (both modes). Each principal
+  NPC carries a **Standing Goal** (Architect §7.D — an active objective + the moves
+  that advance it), and the `ARC_STATE` / `SANDBOX_STATE` Tonal Mandate gains an
+  **activity-cadence** directive: when a scene lulls, a present or off-screen NPC
+  advances its goal rather than the world freezing on `{{user}}`. The Editor adds a
+  conditional hard-fail (Step 4a-3b — arcs with active NPCs need the directive, and
+  it must not be dangling); the Voice Auditor adds **Step 3J** (initiative +
+  goal-trace in a lull). The generic engine half already lived preset-side
+  (`npc_ensemble`); only the world-specific goals live in Tier 3.
+- **Relationship & belief state** (arc mode). `CHARACTER_STATE` gains item 6 and
+  `NPC_SHIFT` its counterpart — a per-arc **relational-stance delta**: where a
+  load-bearing bond now stands, the beat that moved it, and the operative belief
+  driving behavior ("believes `{{user}}` spared her brother"). The Arc Transition
+  Auditor's new **Check 3b** verifies the drift is earned — no teleporting bonds,
+  un-caused belief flips, or silent memory resets. In sandbox mode the equivalent is
+  the standing accumulation the aliveness contract already carries (the world
+  remembers; attitudes never reset between scenes).
+- **Trauma de-escalation tracking** (arc mode). `CHARACTER_STATE` gains item 7 — a
+  per-arc **trauma-trajectory delta** (a trigger's current intensity + the beat that
+  moved it). The Arc Transition Auditor's trauma-continuity check (Check 2) and the
+  Voice Auditor's active-vs-dormant check (Step 3A) now verify against the *authored*
+  fade rather than inferring it: fades are shown, never sudden vanishings.
+  Intimate-context trauma continues to ride the per-arc Intimacy Register.
+
+### Notes
+- All three are authored as **per-arc delta only** — no new entry types, no
+  per-dyad-per-arc explosion; only relationships/triggers that actually change get a
+  line, and static Tier 2 baselines are never restated. Each is elicited by the
+  Interviewer, recorded by the Refiner, and fielded in the World Seed template, with
+  consistency-table rows in `CLAUDE.md`. Agency is genuinely cross-mode; memory and
+  trauma de-escalation are arc-centric (sandbox has no seam to audit). The revise
+  minis inherit the parent rules, and existing scope types cover their revision.
+
+---
+
+## 2026-06-08 — Pipeline reliability: durable loop state
+
+Loop state (current phase, round count, sign-offs) lived only in the runtime
+agent's memory, so a context summary or session restart could silently reset a
+round counter or mis-route a mode-aware branch. Both pipelines now keep that state
+on disk (#23).
+
+### Added
+- **Pipeline State Ledger** — a machine-managed block at the top of
+  `Master_Design.md` (validated `world_mode`, `intimacy_in_scope`, `current_phase`,
+  and a per-phase status + round table). It is the single on-disk source of truth for
+  `/worldforge status` and for every `round > N` escalation. The Refiner initializes
+  it and now **hard-validates `World Mode`** — an unrecognized value blocks instead of
+  silently defaulting to `arc`. The Compiler verifies the ledger before compiling.
+- **Bounded auditor loops** — the Voice / Arc Transition / Intimacy auditors
+  (Phases 3.5 / 3.6 / 3.7) gain the `round > 3 → escalate` ceiling the Editor loop
+  already had; they previously looped with no bound.
+
+### Changed
+- **Revise pipeline durable rounds** — the Revision Log entry gains a `Rounds:`
+  counter line, and the mini-auditors (R3.5 / R3.6 / R3.7) gain the round-ceiling
+  escalation (`R3.x_STALLED`) the mini-Editor already had. The revise pipeline keeps
+  its existing Revision Log as its state record — no second ledger.
+
+### Notes
+- Additive and documentation-only; no behavior removed, and the tier model and
+  override contract are untouched. The orchestrator is the single writer of ledger
+  rows, so durability comes from file writes at phase boundaries rather than trusted
+  memory.
+
+---
+
 ## 2026-06-05 — Sandbox-aware revise pipeline
 
 The post-launch revision pipeline (`/worldforge revise`) now handles sandbox

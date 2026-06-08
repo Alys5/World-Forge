@@ -51,8 +51,8 @@ Each phase is run by a specialized agent. The orchestrator dispatches them in or
 | 2 | The Architect | Drafts every Markdown source: character cards, all lorebook entries, system_prompt and post_history_instructions per card, optional depth prompts. Emits `<style_override>` blocks for cards with declared overrides. |
 | 2.5 | The Intimacy Architect *(conditional)* | Drafts Tier 2 Intimacy Profiles and Tier 3 Intimacy Registers from Section 8 of the World Seed. Skipped if Section 8 is empty. |
 | 3 | The Editor | Iteratively validates prose quality, tier integrity, lorebook entry quality, the override architecture, and the style override coupling. Returns directives until all checks pass. |
-| 3.5 | The Voice Auditor | Generates sample dialogue from the drafts and audits behavioral fidelity, voice distinctiveness, trigger-response correctness, and (in multi-perspective worlds) cross-card perspective bleed. |
-| 3.6 | The Arc Transition Auditor | Verifies continuity across consecutive arc seams: state, NPC behavior, world conditions, hidden-information rules. |
+| 3.5 | The Voice Auditor | Generates sample dialogue from the drafts and audits behavioral fidelity, voice distinctiveness, trigger-response correctness, NPC agency (in a lull, do NPCs act on their own standing goals?), and (in multi-perspective worlds) cross-card perspective bleed. |
+| 3.6 | The Arc Transition Auditor | Verifies continuity across consecutive arc seams: character state, trauma de-escalation, NPC behavior, relationship & belief drift, world conditions, hidden-information rules. |
 | 3.7 | The Intimacy Auditor *(conditional)* | Generates sample intimate scenes and audits them for voice fidelity (does each character behave like themselves during sex?) and thematic register match (does the scene serve its declared function?). |
 | 4 | The Compiler | Translates the approved Markdown drafts into SillyTavern-ready JSON files. |
 | 5 | The Prompt Engineer | Audits Phase 4's output for runtime risks (read-only on `Export/`) and authors the Chat Completion Preset. Recommendations for any conflicts found are surfaced as plain-text instructions for manual application. |
