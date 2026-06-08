@@ -428,6 +428,8 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
 | `/worldforge revise cancel R[N]` | Cancel a pending revision and mark CANCELLED |
 | `/worldforge resync-preset` | Regenerate a shipped world's Chat Completion Preset against the current template + block library, picking up pipeline changes made since the world was built (see PRESET RESYNC below). Preset-only; does not re-audit lorebooks or cards. |
+| `/worldforge convert <source> <target>` | Reframe a shipped world into a new build (different protagonist, different World Mode, different Style Contract, different Core Concept). Produces a new `World_Seed.md` in `<target>`, then hands off to `/worldforge skip phase0`. See `workflows/world-forge-convert.md`. Read-only on `<source>`. |
+| `/worldforge convert <source> <target> --brief <path>` | Same as above, but driven by a pre-authored Convert Brief (`templates/Convert_Brief_Template.md`). Converter validates the brief against the source and interviews only on gaps. |
 
 ---
 
@@ -436,6 +438,26 @@ For users who find manual application onerous on large worlds, a future pipeline
 Once a world has completed Phase 5.5 (pipeline complete, Export/ ready, world in play), surgical changes use the **revision pipeline** — a parallel fork that runs mini-versions of the agents above with read-mostly authority and UID-preserving compilation. See `workflows/world-forge-revise.md` for the full revise pipeline.
 
 The bright line is **Master Design Section 1 (Core Concept & Tone) and Section 11a (Style Contract world defaults)**. Revisions that don't touch these stay in the revision pipeline (faster, surgical, preserves running ST chat states). Revisions that touch them require a full re-run from Phase 1 via `/worldforge skip phase0` — the existing `World_Seed.md` is reused, the Interviewer is skipped, and Phases 1–5 rebuild from scratch. The Reviser performs this classification and bounces out-of-scope revisions automatically.
+
+**When the rebuild is also a reframe — different protagonist, different World Mode, different tonal register — use `/worldforge convert` instead** (see CONVERT below). Convert is the legitimate path for the exact change-categories the revise pipeline bounces: it reads the shipped world's `Master_Design.md` (read-only), captures keep/modify/regenerate decisions, and produces a new `World_Seed.md` in a fresh target folder, then hands off to `/worldforge skip phase0`. Convert preserves the structural world-building work that a from-scratch `/worldforge start` would discard.
+
+---
+
+## CONVERT (reframe a shipped world into a new build)
+
+A shipped world's `Master_Design.md` carries substantial structural work — world rules, factions, cosmology, NPCs — that survives a protagonist swap, a World Mode flip, or a Style Contract change even though the revise pipeline cannot. `/worldforge convert` is the operation that captures the reuse: it reads the source's `Master_Design.md` (read-only), walks the user through a preservation matrix (keep / modify / drop / regenerate, per source section), surfaces role reassignments explicitly (the old protagonist becoming an NPC, a source NPC becoming the new `{{user}}`, power-tier shifts), and authors a new `World_Seed.md` in a target project folder.
+
+It invokes the Converter (`agent_roles/Converter/00_The_Converter.md`) as a single phase (C0). The Converter does not replace any pipeline phase; it produces the input to Phase 1. After C0 completes, the user runs `/worldforge skip phase0` against the target folder and the standard pipeline (Phases 1–5.5) builds the new world end-to-end.
+
+**Load-bearing properties:**
+- **Read-only on source.** The Converter never modifies any file in the source project. Hard rule.
+- **Write-only on target's `World_Seed.md`.** Does not write `Drafts/`, `Export/`, or any other file in the target project — those are the standard pipeline's job.
+- **Overlap floor refusal.** If the conversion replaces 3 or 4 of (setting, protagonist, factions, tone), the Converter refuses. That's a fresh build inspired by the source — `/worldforge start` is the right path. Borderline (2 axes replaced) gets surfaced for explicit user confirmation.
+- **Single source.** No mashups. Mashing two worlds together is out of scope; run Convert once, use revise later if you want to splice content from a third source.
+- **Always-regenerated content.** Section 3 (`{{user}}`), Section 5 (arcs / Sandbox Charter), Section 7b (test scenarios), per-arc/standing intimate functions, and per-card style overrides are always regenerated downstream. These are protagonist-shaped or downstream-derived, so they cannot transfer mechanically. The Converter does not let the user mark them `keep`.
+- **Convert Brief support.** Users can pre-author the keep/modify/regenerate decisions in a `Convert_Brief.md` (against `templates/Convert_Brief_Template.md`) for version-controllable, reviewable conversions. The Converter validates the brief against the source and interviews only on gaps. Pure interview mode also works for ad-hoc conversions.
+
+See the **CONVERT** workflow at `workflows/world-forge-convert.md` for the full operation, the Conversion Manifest format, and the role-reassignment cases.
 
 ---
 

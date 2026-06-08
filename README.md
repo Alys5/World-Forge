@@ -162,6 +162,7 @@ A new project folder evolves through these files as the pipeline progresses:
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content) |
 | `/worldforge revise` | Post-launch: make a surgical change to a shipped world through the revision pipeline (UID-preserving, scope-locked) |
 | `/worldforge resync-preset` | Post-launch: regenerate a shipped world's Chat Completion Preset against the current template and block library — preset only, no content changes |
+| `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build (different protagonist, World Mode, Style Contract, or Core Concept). Produces a new `World_Seed.md` in `<target>`; hand off to `/worldforge skip phase0`. Read-only on `<source>`. |
 
 ## After SillyTavern import
 
@@ -176,6 +177,7 @@ A shipped world is not frozen. Two maintenance paths keep a world current withou
 
 - **`/worldforge revise`** runs the revision pipeline — a parallel fork that makes surgical, scope-locked content changes (revise an arc, add a character, adjust a relationship) through mini-versions of the build agents. It preserves the UIDs on your existing lorebook entries, so running SillyTavern chat states survive the change. The one bright line: revisions that touch the world's core concept/tone or its Style Contract world defaults are bounced to a full re-run (reusing your existing `World_Seed.md`). See [`workflows/world-forge-revise.md`](./workflows/world-forge-revise.md).
 - **`/worldforge resync-preset`** refreshes only the Chat Completion Preset, bringing it current with pipeline improvements and any content changes that surface inside preset blocks. It makes no content changes and, because a preset is a global settings profile rather than UID-bearing world info, re-importing it does not disturb running chats.
+- **`/worldforge convert <source> <target>`** reframes a shipped world into a new build — different protagonist, different World Mode (arc ↔ sandbox), different tonal register, or different Style Contract world defaults — while preserving the structural work (world rules, factions, cosmology, NPCs) that would otherwise be discarded by a from-scratch `/worldforge start`. The Converter reads the source's `Master_Design.md` read-only, walks you through a preservation matrix (keep / modify / drop / regenerate, per source section), surfaces role reassignments explicitly (the old protagonist becoming an NPC, a source NPC becoming the new `{{user}}`, power-tier shifts), and writes a new `World_Seed.md` to your target folder. You then run `/worldforge skip phase0` against the target and the standard pipeline builds the new world end-to-end. Pure reskins (replacing setting + protagonist + factions + tone all at once) are refused — at that scale you're building a new world inspired by the source, not converting it; use `/worldforge start` fresh. See [`workflows/world-forge-convert.md`](./workflows/world-forge-convert.md).
 
 ## Companion SillyTavern fork (optional)
 
