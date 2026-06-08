@@ -173,7 +173,7 @@ You author this block once. The orchestrator advances it from here; do not re-em
 For each major character:
 - Surface want, deep want, central fear, central contradiction.
 - The shield and the crack.
-- Relationship map: how they relate to every other named character and to {{user}}.
+- Relationship map: how they relate to every other named character and to {{user}}. **For each load-bearing relationship, note whether it evolves across arcs and in which arcs it shifts** (with the beat that causes each shift), plus any load-bearing **belief** the character holds about another party or about {{user}} and what would overturn it. This tells the Architect which arcs need a CHARACTER_STATE/NPC_SHIFT relational-stance line and gives the Arc Transition Auditor the trajectory to check continuity against. *Sandbox mode:* relationships do not drift per-arc; record standing stances/beliefs that persist and accumulate instead.
 - Physical description structured for the Architect: face & lips → hair → eyes → body (chest, waist, hips, legs) → intimate areas (if applicable) → movement & posture → sensory signature.
 - Psychological dimensions requiring lorebook entries (list each as a topic, e.g.: "[Character] / religion", "[Character] / their child", "[Character] / intimacy and trust", "[Character] / their past", etc. — use whatever dimensions are relevant to this specific character)
 - Voice characteristics for the character card.

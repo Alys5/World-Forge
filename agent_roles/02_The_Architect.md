@@ -533,9 +533,12 @@ The Tier 2 physical baseline entry provides permanent anatomical truth (bone str
      NPCs must not behave in ways that reveal [X] to her."
 4. What the LLM is working toward — the narrative goals of this arc
 5. The pacing and atmosphere mandate
+6. The character's current relational stance — for each load-bearing relationship that has CHANGED since the previous arc: where the bond stands now, what shifted and (briefly) the beat that moved it, the operative belief the character now holds about the other party or about {{user}} (e.g., "believes {{user}} chose to spare her brother"), and how that belief shapes their behavior this arc. Only relationships that drift — do not restate the static Tier 2 relationship baseline.
 
 Write it as a director's briefing. Specific, imperative, unambiguous.]
 ```
+
+**Relational stance is delta, not restatement (item 6).** The permanent shape of a relationship lives in the Tier 2 §7.C relational entry; item 6 carries only what has *moved* this arc and the belief now driving it. If a relationship is unchanged from the prior arc, omit it. The Arc Transition Auditor (Check 3b) reads these lines across consecutive arcs to verify bonds and beliefs evolve only through earned beats, never teleporting or silently resetting.
 
 ### B. LOCATION Entries (one per arc-relevant location)
 **Trigger Keys:** [location name, common descriptors]
@@ -556,6 +559,8 @@ Content: Full sensory description. Who controls it. What happens here in this sp
 Content: ONLY the behavioral delta from baseline. Example: "In this arc, [NPC name] maintains full professional coldness — no warmth, no care, pure evaluation." Do not repeat baseline profile (that's in Tier 2). Only describe what has changed or what is specifically constrained this arc.
 
 If this NPC's **Standing Goal** (Tier 2 §7.D) shifts, intensifies, or is newly active this arc, state the **active goal this arc** and how they pursue it in one line — this is the concrete objective the ARC_STATE activity-cadence directive points the model at when a scene lulls. If the goal is unchanged from baseline, do not restate it.
+
+Likewise, if the NPC's **relational stance or belief** has changed this arc — their stance toward {{user}} or another character, or what they now believe {{user}} did — state the delta in one line, with the beat or {{user}} action that caused it (e.g., "now believes {{user}} betrayed the syndicate after the dock job; treats him with cold suspicion until he proves otherwise"). This is the NPC-side counterpart of CHARACTER_STATE item 6, and the Arc Transition Auditor (Check 3b) reads it for continuity. Unchanged stance → do not restate it.
 
 ### D. DRAMATIC_BEAT Entries (one per major narrative event)
 **Trigger Keys:** [keywords related to the event — what would someone type when approaching this beat]
@@ -624,6 +629,8 @@ Content: 4–8 imperative bullets (same imperative-language standard as ARC_STAT
 - **Hard prohibitions:** what the model must never do — e.g., never strip {{user}}'s agency or power without an in-world cause the player set in motion; never reset NPC attitudes to neutral between scenes; never flatten the cast to a single voice.
 
 > The Editor (Step 4a, sandbox variant) hard-fails a `SANDBOX_STATE` entry missing either subsection, missing the aliveness directives, or whose Tonal Mandate has fewer than 4 imperative bullets.
+
+> **Relationship & belief memory in sandbox.** Sandbox has no arcs, so there is no per-arc CHARACTER_STATE/NPC_SHIFT relational drift (the arc-mode mechanism). Its equivalent is *standing accumulation*: the aliveness directives above already require the world to react to and **remember** {{user}}'s actions and reputation and to **never reset NPC attitudes to neutral between scenes**. That is the sandbox relationship-state contract — attitudes and beliefs persist and compound across play rather than resetting. Keep any standing stances among principals (and toward {{user}}) in the principal §7.D profiles; do not invent per-arc state.
 
 ### B. WORLD_PULSE Entry (mandatory, 1–2)
 **Trigger Keys:** [none if constant; otherwise topic keywords for the ambient pressures]
@@ -875,8 +882,9 @@ Append to your submission note before handing to The Editor:
 - [ ] **ARC_STATE Tonal Mandate covers active register, prose dwells on, prose elides, live scene types, activity cadence (when principal NPCs are active in the arc), and hard prohibitions where relevant**
 - [ ] ARC_STATE contains {{char}} and NPC knowledge rules (not {{user}} knowledge restrictions)
 - [ ] ARC_STATE names dramatic goals
+- [ ] CHARACTER_STATE item 6 (relational stance) present for each character whose load-bearing relationship drifts this arc — current stance + the beat that moved it + the operative belief; static relationships not restated
 - [ ] Location entries for arc-relevant locations
-- [ ] NPC_SHIFT entries for all active NPCs (delta only, not baseline); active goal this arc stated where an NPC's Standing Goal shifts or is newly active
+- [ ] NPC_SHIFT entries for all active NPCs (delta only, not baseline); active goal this arc stated where an NPC's Standing Goal shifts or is newly active; relational stance/belief delta stated where the NPC's stance toward {{user}} or another character changes
 - [ ] DRAMATIC_BEAT entries for major story moments
 - [ ] TENSION entries (1–2 per arc)
 - [ ] Minimum 8 entries per arc lorebook

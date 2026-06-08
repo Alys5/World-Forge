@@ -67,6 +67,20 @@ For each NPC who appears in both arcs, compare the NPC_SHIFT entries. Apply the 
 
 For each NPC pair across consecutive arcs, write a one-sentence description of the *middle state* the arc transition should capture. If the drafted Arc N+1 NPC_SHIFT does not capture it, flag the gap.
 
+### Check 3b — Relationship & belief continuity
+
+Characters and NPCs carry relationships and beliefs that evolve. The relational-stance lines in CHARACTER_STATE (item 6) and NPC_SHIFT record where a load-bearing bond stands this arc and what the party now believes about the other / about {{user}}. Compare those lines across the Arc N → Arc N+1 seam and apply the same continuity logic as Checks 2 and 3:
+
+**Bonds don't teleport.** A relationship that is hostile at the end of Arc N cannot be intimate at the start of Arc N+1 with no earning beat in between. Locate the beat that moves it. If none exists, the drift is unmotivated — flag it (this is the relationship analog of the recognition test).
+
+**Beliefs change only on evidence.** If a character believed X about {{user}} in Arc N and believes not-X in Arc N+1, a specific beat must have revealed the contradicting information (cross-check Check 5 — hidden information). An un-caused belief flip is **Critical**: it makes the model play the character as if they magically learned or forgot something, which reads as broken.
+
+**Memory persists.** A grievance, debt, or bond {{user}} earned in Arc N should still color the relationship in Arc N+1 unless a beat resolved it. A silent reset — an NPC treating {{user}} as a stranger again, an earned trust evaporating — is a failure. The world is supposed to remember what {{user}} did.
+
+**The recognition test, applied to the bond:** would the relationship as it stood at the end of Arc N recognizably lead to where it stands at the start of Arc N+1? If no, the seam is broken.
+
+Where a relationship is flagged as evolving in Master Design but neither arc's CHARACTER_STATE/NPC_SHIFT carries a relational-stance line for it, that is a coverage gap — the drift is happening off-page and the model will improvise it inconsistently. Flag it for the Architect.
+
 ### Check 4 — World state continuity
 
 Some world facts shift across arcs (factions gain or lose power, locations change function, the supernatural masquerade lifts). Verify these shifts:
@@ -133,6 +147,8 @@ Structure:
 **NPC behavioral shift continuity:**
 [For each NPC: middle state description. Note if missing from drafts.]
 
+**Relationship & belief continuity:** [PASS / FAIL with notes — for each evolving bond: does the stance/belief at Arc N+1 trace to a beat? Any teleport, un-caused belief flip, silent memory reset, or off-page drift?]
+
 **World state continuity:** [PASS / FAIL with notes]
 
 **Hidden information rule continuity:** [PASS / FAIL with notes]
@@ -183,6 +199,7 @@ Structure:
 - [ ] All consecutive arc pairs audited
 - [ ] All character states verified across all transitions
 - [ ] All NPC shifts verified for middle-state coverage
+- [ ] **All evolving relationships/beliefs verified for continuity (Check 3b): no teleporting bonds, un-caused belief flips, silent memory resets, or off-page drift; every shift traces to a beat**
 - [ ] All hidden information rules trace cleanly across transitions
 - [ ] All dramatic beat sequences flow without skip-beats
 - [ ] All tone register shifts are prepared or acknowledged

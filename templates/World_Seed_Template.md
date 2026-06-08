@@ -318,6 +318,9 @@ Trigger keywords: [their relationship, how they feel about X, X and Y, etc.]
 
 [Describe this relationship across its full arc. How does it start? What drives it? What changes? What does it reveal about each person? Be specific about what each character wants from the other and what they are afraid to want.]
 
+**How it drifts (arc worlds):** [If this bond changes across arcs, say where and what beat causes each shift — e.g., "Arc 1 hostile → Arc 2 he covers for her with the syndicate → Arc 3 reluctant trust." This becomes the per-arc CHARACTER_STATE / NPC_SHIFT relational-stance line and is what the Arc Transition Auditor checks for continuity. If the bond is static across the story, write "stable." *Sandbox:* note standing stance instead — it persists and accumulates, it does not drift per-arc.]
+**Operative belief:** [Any load-bearing belief one party holds about the other or about {{user}} that drives how they treat them, and the single event that would overturn it — e.g., "believes {{user}} got her brother killed; would change only if she learns he tried to stop it."]
+
 **[Character] / [Other Character Name]**
 [Same format — repeat for each significant relationship]
 
@@ -489,6 +492,8 @@ Trigger keywords: [name variants, role descriptors]
 - [NPC name]: [Same format]
 
 **[CHARACTER_STATE NAME] this arc:** [Arc state name — e.g., "The Wreckage"] — defined in Character Lorebook section above. The Architect must include this as a CONSTANT entry in the Arc [N] Tier 3 lorebook.
+
+**Relationship shifts this arc:** [For each load-bearing bond that *moves* this arc (from the "How it drifts" notes in Section 4): where the bond now stands, the beat that moved it, and the operative belief now driving it. e.g., "Anna → {{user}}: contempt has turned to reluctant trust after he covered for her; she now believes he is not like the others, but expects to be proven wrong." This becomes CHARACTER_STATE item 6 / the NPC_SHIFT relational-stance line. Omit bonds that are unchanged this arc.]
 
 **Arc entry trigger:** [The specific event or condition that marks the beginning of this arc]
 **Arc exit trigger:** [The specific event or condition that marks the end of this arc — when does the player know to switch to the next arc lorebook?]
@@ -753,6 +758,7 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 - [ ] Every AI-played character has: psychological core, shield, crack, voice pattern, opening scenario, first message, example exchanges
 - [ ] Every character has a physical baseline description
 - [ ] Every character has a state entry per arc
+- [ ] Load-bearing relationships note how they drift across arcs (with the causing beat) and any operative belief; arc blocks carry a "Relationship shifts this arc" line where a bond moves (or "stable" / sandbox standing stance)
 - [ ] Every NPC has a profile — principals as full profiles, roster NPCs as compact stat blocks (large casts); roster voice fingerprints are unique; principal NPCs have a Standing Goal (active objective + how they pursue it)
 - [ ] LLM behavioral instructions written for each card (with arc-range qualifiers)
 - [ ] For characters with intimate scene presence: substrate (trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits) and arc-specific evolution filled out

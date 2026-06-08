@@ -276,7 +276,7 @@ IF no failures → VOICE AUDITOR SIGN-OFF
 
 **Conditional phase.** Runs only in **arc** mode. In **sandbox** mode there are no consecutive arcs and no arc seams to audit — this phase is skipped (exactly as Phase 3.7 is skipped without intimacy), and Phases 3.5 + 3.7 (if applicable) proceed without it.
 
-Verifies continuity across every consecutive arc pair: trigger continuity, CHARACTER_STATE continuity, NPC behavioral shift continuity, world state continuity, hidden information rule continuity, dramatic beat sequence, tone register continuity.
+Verifies continuity across every consecutive arc pair: trigger continuity, CHARACTER_STATE continuity, NPC behavioral shift continuity, relationship & belief continuity (Check 3b — bonds and beliefs drift only through earned beats, never teleporting or silently resetting), world state continuity, hidden information rule continuity, dramatic beat sequence, tone register continuity.
 
 ```
 IF Critical failures → return to Architect (increment ledger `3.6` Round)
