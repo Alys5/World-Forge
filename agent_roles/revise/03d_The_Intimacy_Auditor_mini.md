@@ -89,10 +89,12 @@ If `intimacy_register_add` (new register for a previously-non-intimate arc):
 
 ### Step R3.7.7 — Severity classification & return loop
 
-Critical or High → Return to Intimacy-Architect-mini (or Architect-mini for card-level issues) with directives, status `R3.7_RETURN_TO_R2.5` or `R3.7_RETURN_TO_R2`.
-Function/substrate conflict → `R3.7_HALTED_FUNCTION_SUBSTRATE_CONFLICT`, escalate.
+Critical or High → Return to Intimacy-Architect-mini (or Architect-mini for card-level issues) with directives, status `R3.7_RETURN_TO_R2.5` or `R3.7_RETURN_TO_R2`; increment R3.7 in the Revision Log entry's `**Rounds:**` line.
+Function/substrate conflict → `R3.7_HALTED_FUNCTION_SUBSTRATE_CONFLICT`, escalate immediately (regardless of round).
 Medium → Sign off with notes, `R3.7_COMPLETE_WITH_NOTES`.
 No failures → Sign off, `R3.7_COMPLETE`.
+
+**Bounded loop.** If after 3 rounds (per the Revision Log `**Rounds:**` line) the same failures persist, do not loop again — set status `R3.7_STALLED`, append a stall summary, and surface to the user. Same ceiling as the mini-Editor's `R3_STALLED`. (Function/substrate conflicts escalate immediately, independent of this ceiling.)
 
 ### Step R3.7.8 — Append audit
 
@@ -140,5 +142,5 @@ Append to the Revision Log entry:
 - Medium: [count]
 - Function/substrate conflicts: [count]
 
-**Status: R3.7_COMPLETE / R3.7_COMPLETE_WITH_NOTES / R3.7_RETURN_TO_R2.5 / R3.7_RETURN_TO_R2 / R3.7_HALTED_FUNCTION_SUBSTRATE_CONFLICT**
+**Status: R3.7_COMPLETE / R3.7_COMPLETE_WITH_NOTES / R3.7_RETURN_TO_R2.5 / R3.7_RETURN_TO_R2 / R3.7_STALLED / R3.7_HALTED_FUNCTION_SUBSTRATE_CONFLICT**
 ```

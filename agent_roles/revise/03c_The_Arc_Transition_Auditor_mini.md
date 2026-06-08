@@ -87,9 +87,11 @@ Write full audit to `Drafts/Revise_R[N]_Arc_Transition_Audit.md`. Append summary
 
 ### Step R3.6.6 — Return loop
 
-Critical-fail or High-fail → Return to Architect-mini with directives, status `R3.6_RETURN_TO_R2`.
+Critical-fail or High-fail → Return to Architect-mini with directives, status `R3.6_RETURN_TO_R2`; increment R3.6 in the Revision Log entry's `**Rounds:**` line.
 Medium-fail → Sign off with notes, status `R3.6_COMPLETE_WITH_NOTES`.
 No failures → Sign off, status `R3.6_COMPLETE`.
+
+**Bounded loop.** If after 3 rounds (per the Revision Log `**Rounds:**` line) the same failures persist, do not loop again — set status `R3.6_STALLED`, append a stall summary, and surface to the user. Same ceiling as the mini-Editor's `R3_STALLED`.
 
 ---
 
@@ -125,5 +127,5 @@ Append to the Revision Log entry:
 - High: [count]
 - Medium: [count]
 
-**Status: R3.6_COMPLETE / R3.6_COMPLETE_WITH_NOTES / R3.6_RETURN_TO_R2**
+**Status: R3.6_COMPLETE / R3.6_COMPLETE_WITH_NOTES / R3.6_RETURN_TO_R2 / R3.6_STALLED**
 ```

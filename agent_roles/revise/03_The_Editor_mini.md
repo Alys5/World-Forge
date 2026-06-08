@@ -116,9 +116,10 @@ Mismatches between Master Design and drafts = hard fail on the draft side.
 If hard failures are found:
 - Append findings to `Drafts/Revision_R[N]_Report.md` under "Phase R3 — Mini-Editor — Round [N]"
 - Set Revision Log entry status to `R3_RETURN_TO_R2` (or `R3_RETURN_TO_R2.5` if intimacy)
+- Increment R3 in the Revision Log entry's `**Rounds:**` line
 - Return to Architect-mini (or Intimacy-Architect-mini) with directives
 
-If after 3 rounds the same failures persist:
+If after 3 rounds (per the Revision Log `**Rounds:**` line) the same failures persist:
 - Set status `R3_STALLED`
 - Append a stall summary to the report
 - Surface to user — same pause-gate logic as parent Editor

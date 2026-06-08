@@ -107,8 +107,11 @@ Append a summary to `Drafts/Revision_R[N]_Report.md` under "Phase R3.5 — Mini-
 
 If Critical or High failures:
 - Set Revision Log entry status `R3.5_RETURN_TO_R2` (or `R3.5_RETURN_TO_R2.5` for intimacy-related voice issues)
+- Increment R3.5 in the Revision Log entry's `**Rounds:**` line
 - Provide rewrite directives in the audit file
 - Architect-mini revises, mini-Editor re-validates, you re-audit
+
+**Bounded loop.** If after 3 rounds (per the Revision Log `**Rounds:**` line) the same failures persist, do not loop again — set status `R3.5_STALLED`, append a stall summary, and surface to the user. Same ceiling as the mini-Editor's `R3_STALLED`.
 
 If only Medium failures:
 - Append sign-off with notes
@@ -154,5 +157,5 @@ Append to the Revision Log entry:
 - High: [count]
 - Medium: [count]
 
-**Status: R3.5_COMPLETE / R3.5_COMPLETE_WITH_NOTES / R3.5_RETURN_TO_R2 / R3.5_RETURN_TO_R2.5**
+**Status: R3.5_COMPLETE / R3.5_COMPLETE_WITH_NOTES / R3.5_RETURN_TO_R2 / R3.5_RETURN_TO_R2.5 / R3.5_STALLED**
 ```
