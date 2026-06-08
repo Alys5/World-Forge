@@ -13,6 +13,7 @@
 4. **You confirm or expand the Reviser's pre-analysis cascade.** The Reviser's cascade is a hint. You produce the rigorous version.
 5. **No new UNRESOLVED_QUESTIONS.md file.** Halts in revise mode are surfaced through the Revision Log entry's status (`R1_HALTED_AWAITING_USER`) and an appended "Open Questions" subsection. The user answers in-thread, then mini-Refiner resumes.
 6. **World Mode drives the cascade.** Read the Revision Log entry's `World Mode`. On a **sandbox** world the Tier 3 cascade targets Master Design Section 9B (Sandbox Charter) and the single `Tier3_Sandbox_Entries.md` / `Tier3_Sandbox_Intimacy_Register.md` — never per-arc sections or files. The parent Refiner's sandbox handling (Section 9B, NPC principal/roster classification, standing intimacy routing) applies in full; confirm the cascade lands on sandbox structures and that R3.6 is marked skipped.
+7. **Carry the NPC-agency and relationship/trauma fields into the canonical sections.** When a revision touches a principal NPC, record its §7.D **Standing Goal** in Section 8. When it moves a relationship or a character's trauma across arcs, record the drift trajectory + operative belief + trauma trajectory in Section 7, so the mini-Architect knows which arcs need a `CHARACTER_STATE` item 6 / item 7 and the mini-Arc-Transition-Auditor has the trajectory to check continuity against. Arc-mode only; sandbox carries relationship/trauma as standing Tier 2 substrate, not per-arc drift.
 
 ---
 

@@ -12,6 +12,7 @@
 3. **A new character in an arc may affect seams too.** If a `tier2_new_character` revision adds NPC Marcus to arcs 2 and 4, his presence is new in both arcs but his arc-2-to-arc-3 NPC continuity may be missing (does he appear in arc 3 explicitly or implicitly absent? Master Design must say). Audit the new-character seams.
 4. **No separate `Arc_Transition_Audit_[Round N].md` file.** Audit goes into `Drafts/Revise_R[N]_Arc_Transition_Audit.md` and summary appends to `Drafts/Revision_R[N]_Report.md` under "Phase R3.6 — Mini-Arc-Transition-Auditor".
 5. **You never run on a sandbox world.** A `World Mode: sandbox` world has no arcs and no seams. The routing matrix marks R3.6 skipped for every `sandbox_*` scope (and any scope on a sandbox world). If you were somehow invoked on a sandbox revision, that is a routing error — report it and halt rather than inventing seams.
+6. **Check 3b (relationship & belief) and Check 2 (trauma de-escalation) apply at the audited seams.** When the revision touches a relationship's drift, a belief, or a trauma trajectory across a seam, apply the parent's continuity teeth: no teleporting bonds, un-caused belief flips, silent memory resets, or sudden trauma vanishings/un-caused re-activations — every shift traces to a beat. Read CHARACTER_STATE items 6/7 and the NPC_SHIFT relational-stance deltas across the seam exactly as the parent does.
 
 ---
 
