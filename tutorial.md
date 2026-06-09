@@ -226,13 +226,13 @@ Builds a test matrix: every AI-played character × every arc × at least three s
 | A2a | Anna clean, pre-revelation; {{user}} offers gentle touch unexpectedly | Arc 2 pre-rev | The Becoming | Unexpected gentle touch; warmth-then-deflect |
 | ... | (eight more scenarios) | | | |
 
-For each scenario, the auditor generates a 4–6 exchange dialogue sample as if it were the model running on Anna's drafted material, then checks: does the dialogue match the active arc's CHARACTER_STATE? Do triggers fire correctly? Is voice distinct? Does behavior bleed across arcs?
+For each scenario, the auditor generates a 4–6 exchange dialogue sample as if it were the model running on Anna's drafted material, then checks: does the dialogue match the active arc's CHARACTER_STATE (including the trauma-trajectory line — a faded trigger must not fire at full intensity)? Do triggers fire correctly? Is voice distinct? Does behavior bleed across arcs? And in a lull, do NPCs act on their own standing goals rather than the scene freezing to wait on `{{user}}` (Step 3J)?
 
 For Lucifer, Round 1 flagged behavioral fidelity issues that traced back to specific draft files. Round 2 verified the fixes. Sign-off issued.
 
 #### Phase 3.6: Arc Transition Auditor — `Arc_Transition_Audit_Round[N].md`
 
-Verifies continuity across consecutive arc seams. For each arc pair, checks: trigger continuity, CHARACTER_STATE continuity, NPC behavioral shift continuity, world state continuity, hidden-information rule continuity, dramatic-beat sequence, tone-register continuity.
+Verifies continuity across consecutive arc seams. For each arc pair, checks: trigger continuity, CHARACTER_STATE continuity (including trauma de-escalation — fades are shown, never sudden vanishings), NPC behavioral shift continuity, relationship & belief continuity (bonds and beliefs drift only through earned beats — no teleporting bonds, un-caused belief flips, or silent memory resets), world state continuity, hidden-information rule continuity, dramatic-beat sequence, tone-register continuity.
 
 For Lucifer, Round 1 found Critical failures at the Arc 1 → Arc 2 seam: the Arc 1 exit trigger (Jack's forces making first contact with the Black Hand) did not causally connect to the Arc 2 entry trigger (Anna's first night sleeping through without withdrawal). The structural bridge — Black Hand's response, the cooling-off period, Anna's recovery process — was missing from the Tier 3 Arc 1 file. The Architect drafted the missing bridge content; Round 2 verified.
 
@@ -376,6 +376,8 @@ This pre-sets the Interviewer, but the World Seed field is the source of truth �
 ### The aliveness contract
 
 The single most important thing a sandbox world needs is the thing an arc carries for free: momentum and tone. With no arc driving the experience, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry carry an **aliveness contract** — NPCs pursue their own agendas and initiate scenes, the world reacts to and remembers `{{user}}`'s actions and reputation, off-screen life continues, and the world never freezes waiting for `{{user}}`. This is what keeps a sandbox from playing like an inert menu of NPCs that only exist when summoned.
+
+The contract is made concrete by **per-NPC standing goals**: each principal NPC carries an active objective and the moves that advance it (Architect §7.D), and the cadence directive tells the model to have a present or off-screen NPC advance its goal when a scene lulls. The Voice Auditor's Step 3J tests exactly this — that NPCs take initiative and that each move traces to a stated goal. (The same goal/cadence mechanic runs in arc worlds through the `ARC_STATE` activity-cadence directive; NPCs exist in both modes, so it is mode-agnostic.)
 
 ### Keeping a large NPC cast distinct
 

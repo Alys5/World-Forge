@@ -54,6 +54,8 @@ For each AI-played character, generate this matrix:
 
 Generate at least three test scenarios per character per arc. For a five-arc world with two characters, you produce a minimum of thirty test scenarios. Coverage is more important than brevity here — the audit only catches what it tests.
 
+**When the world has principal NPCs (either mode), include at least one "lull" scenario** — {{user}} passive, saying little, handing the turn back without a prompt — so Step 3J (NPC Agency & Goal-Following) has material to test whether NPCs take initiative.
+
 **Sandbox worlds:** there is no "Active Arc" column — substitute "Standing (SANDBOX_STATE)" for the arc, and "Expected Register" is the SANDBOX_STATE Tonal Mandate. Generate at least three scenarios per principal character/Director plus, critically, scenarios that put several **roster NPCs** on stage together so Step 3I (Distinctiveness Matrix) has material. Cover the live scene types named in SANDBOX_STATE so the audit exercises the actual sandbox menu.
 
 **For worlds with per-card overrides (Master Design Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`):** add at least one cross-axis scenario per arc. A cross-axis scenario places at least two cards with differing styles in the same scene context — typically the world-default card and an overriding card (e.g., a 1st-person companion card and a 3rd-person Director card; or a past-tense companion and a present-tense companion in a group chat). These scenarios are the only ones that exercise the perspective/tense-bleed check (Step 3H). Single-axis worlds (no overrides) skip this requirement.
@@ -73,7 +75,7 @@ Does the character's behavior in this dialogue match the active arc's CHARACTER_
 - Physical state and presentation (Arc 1 Anna shaking and unwell vs Arc 4 Anna grounded and visibly pregnant)
 - Psychological register (defensive sarcasm vs warm dry wit)
 - Vocabulary and sentence structure (clipped vs flowing)
-- Trauma response patterns (active and immediate vs faded and dormant)
+- Trauma response patterns (active and immediate vs faded and dormant) — match the dialogue against CHARACTER_STATE item 7 (trauma trajectory) where present: a trigger marked diminishing/dormant this arc must not fire at full Arc-1 intensity, and one still marked active must not be silently absent
 
 If the dialogue shows Arc 1 register in an Arc 3 scenario, that is drift. The card or the CHARACTER_STATE entry has a contamination problem.
 
@@ -156,6 +158,18 @@ Diagnosis routes to the Architect: a Critical/High here means the §7.E roster e
 
 For worlds with no large roster cast (arc worlds with a handful of NPCs): skip Step 3I; Step 3F's per-NPC fidelity check is sufficient.
 
+### Step 3J — NPC Agency & Goal-Following (both modes; runs when the world has principal NPCs)
+
+The aliveness contract (sandbox) and the ARC_STATE activity-cadence directive (arc) are only real if the NPCs actually act on their own. This step tests that, using the "lull" scenario from Step 1 (or generate one now: {{user}} passive, handing the turn back without a prompt). Check:
+
+- **Initiative:** does a present or off-screen NPC act on its own — advancing a goal, starting something, acting on remembered events — rather than the scene freezing to wait on {{user}}? A scene that idles until {{user}} drives it is an aliveness failure (Critical in sandbox, High in arc).
+- **Goal-trace:** does each acting NPC's move trace to a stated objective — its Tier 2 §7.D Standing Goal, or an NPC_SHIFT active-goal-this-arc line? An NPC acting at random with no connection to any stated goal means the goal is missing/thin or the cadence directive isn't landing.
+- **No user-puppeting:** the NPC advances its *own* agenda without narrating or deciding {{user}}'s actions.
+
+Diagnosis routes to the Architect: an initiative miss points at the SANDBOX_STATE/ARC_STATE cadence directive (missing or abstract); a goal-trace miss points at a thin/absent §7.D Standing Goal. Name the specific NPC and entry.
+
+For worlds with no principal NPC cast (solo / two-hander arcs): skip Step 3J.
+
 ### Step 4 — Diagnose the source of any failure
 
 When a failure is found, do not just flag the dialogue. Trace it back to the specific drafted file and section that produced the failure. Common patterns:
@@ -171,6 +185,7 @@ When a failure is found, do not just flag the dialogue. Trace it back to the spe
 | Detail invented by auditor | Coverage gap in the relevant lorebook entry |
 | Healed behavior in wrong arc | CHARACTER_STATE entry contaminating across arcs, or beats jumping |
 | Disguise inconsistency | NPC_SHIFT entry not capturing the arc transition correctly |
+| World idles until {{user}} acts; NPC acts with no goal-trace (Step 3J) | SANDBOX_STATE / ARC_STATE activity-cadence directive missing or abstract, OR principal NPC §7.D Standing Goal thin or absent |
 | Marker drift in a turn | World Main `<style_contract>` content wrong, OR Formatting block content contradicting the contract — surface to Prompt Engineer |
 | Pronoun bleed within a turn | Overriding card's `<style_override>` block missing `{{char}}` reference, OR block directive language not strong enough — surface to Architect |
 | Omniscient interjection in 1st-person turn | World Main missing the active-speaker rule, OR cross-card context contamination from group-chat assembly — surface to Prompt Engineer |
@@ -246,6 +261,8 @@ If all failures are critical or high → return to the Architect, do not sign of
 If all failures are medium and the user approves → may sign off with notes.
 If no failures → sign off cleanly.
 
+**Bounded loop.** Each return to the Architect increments this phase's `Round` in the Pipeline State Ledger (`workflows/world-forge.md` → PIPELINE STATE LEDGER). If `Round` exceeds 3 with no improvement, do not loop again — halt and escalate to the user (ledger `status` → `ESCALATED`), the same ceiling the Editor loop uses.
+
 ```
 ---
 ## ✅ VOICE AUDITOR SIGN-OFF — Round [N]
@@ -258,6 +275,7 @@ If no failures → sign off cleanly.
 - [ ] **Axis-mixed worlds (`is_multi_perspective: true` OR `is_multi_tense: true`): at least one cross-axis scenario per arc included; OR confirmed both flags `false` in Master Design Section 11c and Step 3H skipped**
 - [ ] **Sandbox / large-roster worlds: Step 3I Distinctiveness Matrix run; no Critical (mutually-swappable) or High (voiceless) roster NPCs remain; OR confirmed no large roster cast and Step 3I skipped**
 - [ ] **Sandbox worlds: standing register checked against SANDBOX_STATE (incl. aliveness directives — NPCs act on their own, world is reactive); arc-only checks (3D, disguise) skipped**
+- [ ] **Worlds with principal NPCs: Step 3J run — in a lull, NPCs take initiative and their moves trace to stated Standing Goals; OR confirmed no principal NPC cast and Step 3J skipped**
 
 ### Behavioral Fidelity
 - [ ] No Critical failures remain

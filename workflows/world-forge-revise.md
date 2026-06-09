@@ -177,9 +177,9 @@ Surgical inserts and edits only. New file creation when the scope adds a new cha
 Same hard-fail rules as the parent Editor. Scope is narrowed: only the files in the Revision Log entry's cascade. Cross-arc checks run against existing untouched arcs as read-only references.
 
 ```
-LOOP:
+LOOP:  (each return increments R3 in the Revision Log entry's Rounds line)
   IF hard failures in touched files → return to R2/R2.5
-  IF round > 3, no improvement → ⏸ PAUSE, escalate to user
+  IF round > 3 (per Revision Log Rounds), no improvement → ⏸ PAUSE, escalate to user (status R3_STALLED)
   IF all pass → MINI-EDITOR SIGN-OFF → Phase R3.5/R3.6/R3.7 (per matrix)
 ```
 
@@ -214,6 +214,12 @@ Verifies that the changed arc still transitions cleanly to its predecessor and s
 **Output:** `Drafts/Revise_R[N]_Intimacy_Audit.md`
 
 Generates sample intimate scenes for the affected character or arc only. Voice fidelity + thematic register lenses, same as parent.
+
+---
+
+## BOUNDED LOOP (R3.5 / R3.6 / R3.7)
+
+The three mini-auditors share the parent's failure handling: a Critical (or High, for Voice/Intimacy) failure returns the touched files to the relevant Architect-mini, then re-runs Editor-mini and the auditor. Each return increments that phase's counter in the Revision Log entry's `**Rounds:**` line, so the ceiling survives a context summary or restart. If a counter exceeds 3 with no improvement, do **not** loop again — ⏸ PAUSE and escalate to the user (status `R3.5_STALLED` / `R3.6_STALLED` / `R3.7_STALLED`), the same ceiling the R3 mini-Editor loop uses. R3.7 function/substrate conflicts escalate immediately, regardless of round.
 
 ---
 
@@ -272,8 +278,8 @@ Same semantics as the full pipeline's Phase 5.5. User opens each named file, app
 | **R0 Pending Conflict** | Prior revision still `PENDING` | Halt; complete or cancel prior revision first |
 | **R0 Cascade Surprise** | Reviser surfaces a cross-reference user did not flag | User confirms whether to widen scope, defer it, or treat as separate revise |
 | **R1 Cascade Expansion** | mini-Refiner finds cascade exceeds scope type | User confirms widening, narrows the revision, or cancels |
-| **R3 Stall** | 3+ Editor-mini rounds without improvement | Review flagged files and advise |
-| **R3.5/R3.6/R3.7 Critical** | Any auditor flags Critical | Architect-mini revises, re-runs through Editor-mini and the auditor |
+| **R3 Stall** | Revision Log `Rounds:` R3 > 3 without improvement | Review flagged files and advise |
+| **R3.5/R3.6/R3.7 Critical / Stall** | Any auditor flags Critical, or its Revision Log `Rounds:` counter > 3 | Architect-mini revises, re-runs through Editor-mini and the auditor; on Stall, escalate to user |
 | **R5 Audit Recommendations** | Audit report Sections 7/8 contain corrections | User applies manually, then `/worldforge revise status` to mark APPLIED |
 
 ---

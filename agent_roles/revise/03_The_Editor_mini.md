@@ -13,6 +13,7 @@
 4. **Inline revision markers must be present.** Any change site in a touched file lacking a `<!-- REVISED IN R[N] -->` or `<!-- CREATED IN R[N] -->` marker is a hard failure. The markers are the audit trail; missing them breaks revision archaeology.
 5. **No new Editor_Critique file.** Critique goes into `Drafts/Revision_R[N]_Report.md` under a "Phase R3 — Mini-Editor" section. Round-numbering preserved within that section.
 6. **Sandbox validation per the parent.** On a sandbox revision, apply the parent's sandbox checks to touched files: `SANDBOX_STATE` two-subsection structure + aliveness directives (Step 4a-S), the no-arc-machinery rule, roster NPC §7.E format (Voice fingerprint + Signature line present, distinct across the roster), and the sandbox position-default table (SANDBOX_STATE/WORLD_PULSE/standing INTIMACY_FUNCTION). The ≥8-entries floor and cross-arc qualifiers do not apply.
+7. **The parent's NPC-agency and relationship/trauma checks apply to touched files.** Step 4a-3b activity-cadence (an arc with active NPCs needs a non-dangling cadence directive — every objective maps to a §7.D Standing Goal or NPC_SHIFT active-goal line); relational-stance (CHARACTER_STATE item 6 / NPC_SHIFT) and trauma-trajectory (item 7) delta-integrity + coverage soft-flags. Validate these on any touched `CHARACTER_STATE`/`NPC_SHIFT`/`ARC_STATE`/`SANDBOX_STATE`/principal-NPC file exactly as the parent does.
 
 ---
 
@@ -116,9 +117,10 @@ Mismatches between Master Design and drafts = hard fail on the draft side.
 If hard failures are found:
 - Append findings to `Drafts/Revision_R[N]_Report.md` under "Phase R3 — Mini-Editor — Round [N]"
 - Set Revision Log entry status to `R3_RETURN_TO_R2` (or `R3_RETURN_TO_R2.5` if intimacy)
+- Increment R3 in the Revision Log entry's `**Rounds:**` line
 - Return to Architect-mini (or Intimacy-Architect-mini) with directives
 
-If after 3 rounds the same failures persist:
+If after 3 rounds (per the Revision Log `**Rounds:**` line) the same failures persist:
 - Set status `R3_STALLED`
 - Append a stall summary to the report
 - Surface to user — same pause-gate logic as parent Editor

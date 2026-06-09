@@ -152,13 +152,19 @@ If any of these come back generic, push: "Most characters want safety. What does
 
 **Then relationships.** For every other character this person interacts with: "What does this person want from the other? What do they fear from the other? What is unresolved between them?" Relationships that are described without specifying these are decorative.
 
+**Then how each relationship moves.** *(Arc worlds especially.)* "Does this bond change over the course of the story — and if so, where, and what *causes* the change?" Push for the specific beat: not "they grow closer," but "after he covers for her with the syndicate in Arc 2, her contempt starts turning into reluctant trust." Also surface the load-bearing **beliefs**: "What does each believe about the other — or about {{user}} — that drives how they treat them, and what single event would overturn that belief?" These feed the per-arc CHARACTER_STATE / NPC_SHIFT relational-stance lines, and the Arc Transition Auditor checks that the drift is earned. A relationship that changes with no causing beat is the seam that breaks worlds.
+
 **Then NPCs.** For each NPC: "Speech pattern, two or three sample lines, what they want, what they are afraid of." Sample lines are not optional — they anchor the voice. If the user cannot write a sample line in the NPC's actual voice, the NPC is not real yet.
+
+**Then, for principal NPCs, the standing goal.** "What is this NPC actively pursuing in the world right now — not a vague want, an objective — and what do they *do* to chase it, on-screen and off-screen, when {{user}} isn't the focus?" This is what keeps the NPC acting on their own instead of waiting to be addressed. Push past passive wants ("she wants respect") to active pursuit ("she's maneuvering to take the harbor contract, and she'll lean on anyone in {{user}}'s orbit to get it"). Roster NPCs get a lighter version — their one-line hook is enough; the standing goal is a principal-NPC depth.
 
 **Then the per-character intimacy substrate (only for characters with intimate scene presence).** This produces the Tier 2 Intimacy Profile that the Intimacy Architect will draft against. Walk through:
 
 - "What is this character's sexuality when nothing is pressing on it? What attracts them, what does intimate contact mean to them as a category?" This is the calm-water version. Most users will skip to the trauma — bring them back to the baseline first.
 
 - "What touch, position, language, or scenario triggers a trauma response in this character — and what does the response actually look like for *her* specifically?" Push hard on the specificity: "she freezes" is insufficient. Make them describe what freezing looks like for this person. Does her breath shorten? Does she go silent? Does she perform compliance to end the scene faster? Does she dissociate and watch from the ceiling? Each trauma trigger paired with its specific response.
+
+- *(Arc worlds, if the character heals or hardens over the story.)* "Do any of these trauma responses change across the arcs — does a trigger lose its grip, or shift to a milder response, and what *earns* that change?" Trauma fades, it does not vanish: capture the trajectory (which trigger, which arc it diminishes in, the beat that moves it), not just an on/off. This feeds the per-arc CHARACTER_STATE trauma-trajectory line, and the Arc Transition Auditor checks the fade is shown rather than abrupt. Triggers that stay fully active across the whole story need no trajectory — say so.
 
 - "What does this body do, that other bodies don't? How does she breathe when aroused vs. when overwhelmed? Where does she get goosebumps? What sounds escape her, what sounds does she suppress, what sounds does she perform?" The antidote to generic "moaned softly" prose.
 
@@ -374,7 +380,7 @@ Append to end of `World_Seed.md`:
 - [ ] Section 1.5: Style Contract — perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register all declared (or DEFAULTS); per-card overrides flagged if applicable, with structural rationales
 - [ ] Section 2: The World — sensory signature specific, rules have costs, factions/locations/species/concepts described
 - [ ] Section 3: The Protagonist — wound, hidden layer, contradiction, power/limits, arc trajectory, physical, voice
-- [ ] Section 4: Characters — wound, shield, crack, voice with sample line, physical, relationships, NPCs with sample lines, intimacy substrate (where applicable); large casts split into principal (full) + roster (compact, unique voice fingerprint each)
+- [ ] Section 4: Characters — wound, shield, crack, voice with sample line, physical, relationships, NPCs with sample lines, intimacy substrate (where applicable); large casts split into principal (full) + roster (compact, unique voice fingerprint each); **principal NPCs have a standing goal (active objective + how they pursue it)**
 - [ ] Section 5: **Arc mode** — hidden info rules per arc, beats are hinges, transitions earned, triggers are events; **Sandbox mode** — Sandbox Charter complete: standing situation, experience contract, aliveness contract, live scene types, world pulse, hard prohibitions
 - [ ] Section 6: Technical Specifications — cards, lorebooks, intimacy files (where applicable), depth_prompt assessment per character
 - [ ] Section 7b: Test Scenarios — 3–5 specific roleplay moments listed, including at least one intimate scenario if Section 8 is in scope

@@ -13,6 +13,7 @@
 4. **Test scenarios from Section 7b are still used — filtered.** Generate samples for the affected character/arc only, using the relevant subset of Section 7b test scenarios.
 5. **Critique goes into the per-revision report.** No separate `Voice_Audit_Report_[Round N].md` file. Append to `Drafts/Revise_R[N]_Voice_Audit.md` (your dedicated audit file per revision) AND append a summary to `Drafts/Revision_R[N]_Report.md` under "Phase R3.5 — Mini-Voice-Auditor".
 6. **Sandbox: run the Distinctiveness Matrix (Step 3I) on roster changes.** When the revision adds or recalibrates a roster NPC (or recalibrates `SANDBOX_STATE`), apply the parent's sandbox lens: check the affected NPC's voice fingerprint against the *existing* roster with the blind-line test, flagging any new interchangeable pair. Read the standing register against `SANDBOX_STATE` (not a CHARACTER_STATE), and skip the arc-only checks (wrong-arc, disguise transition). You do not re-test the whole roster — only the affected NPC against the rest for distinctiveness.
+7. **Run Step 3J (NPC agency) on NPC / state scopes.** When the revision adds or modifies a principal NPC, or recalibrates `ARC_STATE`/`SANDBOX_STATE`, include a lull scenario and apply the parent's Step 3J: in a lull, does the affected NPC act on its **Standing Goal**, and does the move trace to a stated goal? Also match any touched CHARACTER_STATE against its item 7 (trauma trajectory) per parent Step 3A — a faded trigger must not fire at full Arc-1 intensity, nor an active one be silently absent.
 
 ---
 
@@ -107,8 +108,11 @@ Append a summary to `Drafts/Revision_R[N]_Report.md` under "Phase R3.5 — Mini-
 
 If Critical or High failures:
 - Set Revision Log entry status `R3.5_RETURN_TO_R2` (or `R3.5_RETURN_TO_R2.5` for intimacy-related voice issues)
+- Increment R3.5 in the Revision Log entry's `**Rounds:**` line
 - Provide rewrite directives in the audit file
 - Architect-mini revises, mini-Editor re-validates, you re-audit
+
+**Bounded loop.** If after 3 rounds (per the Revision Log `**Rounds:**` line) the same failures persist, do not loop again — set status `R3.5_STALLED`, append a stall summary, and surface to the user. Same ceiling as the mini-Editor's `R3_STALLED`.
 
 If only Medium failures:
 - Append sign-off with notes
@@ -154,5 +158,5 @@ Append to the Revision Log entry:
 - High: [count]
 - Medium: [count]
 
-**Status: R3.5_COMPLETE / R3.5_COMPLETE_WITH_NOTES / R3.5_RETURN_TO_R2 / R3.5_RETURN_TO_R2.5**
+**Status: R3.5_COMPLETE / R3.5_COMPLETE_WITH_NOTES / R3.5_RETURN_TO_R2 / R3.5_RETURN_TO_R2.5 / R3.5_STALLED**
 ```

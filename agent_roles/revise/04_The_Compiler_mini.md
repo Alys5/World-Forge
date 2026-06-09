@@ -14,6 +14,7 @@
 5. **You produce a "what changes when" report.** Tells the user which JSON files they need to re-import in their running SillyTavern session, which can be hot-reloaded automatically, and whether any current chat state is at risk.
 6. **You maintain `Export/REVISED_FILES.md` — the cumulative revision manifest.** This is the at-a-glance index of which Export files have ever been touched by a revision and when. You never rename an Export file to mark it revised (renaming breaks ST imports, breaks Group_Lorebook references, and defeats the UID preservation this agent exists to provide) and you never add a `_revised`-style field inside the JSON (parent rule 3 forbids any field outside the ST schema). The manifest is the only revision marker on the Export side.
 7. **Sandbox targets the sandbox Export files.** On a sandbox revision the touched Tier 3 files are `Sandbox_Lorebook.json` (one, always active — `SANDBOX_STATE` constant + ignoreBudget at position 1, `WORLD_PULSE` at position 4) and, if intimacy is in scope, `Sandbox_Intimacy_Register.json` and the NPC intimacy roster — never per-arc files. UID preservation matters here too: a sandbox world's running chat references these UIDs, so new entries get next-free UIDs and existing entries keep theirs, exactly as in arc mode. The parent Compiler's Step 7B (sandbox) governs the flag values.
+8. **Write UTF-8; never round-trip JSON through PowerShell (parent's encoding guard, doubly so here).** You read existing Export files — full of em-dashes (—), curly quotes, accented names — and rewrite them, so encoding integrity is at risk on every file you touch, including bytes you didn't mean to change. Read and write as UTF-8 via your file tool or a **Python/Node** script; never use PowerShell `Out-File` / `Set-Content` / `>` redirection, which re-encodes and corrupts em-dashes into mojibake (`—` → `â€"`). The corruption passes `JSON.parse`, so it won't trip guard 1 — after writing each touched file, re-read it and confirm existing non-ASCII survived (grep for `â€` / `Ã`, expect zero matches). Silently mojibaking an entry during rewrite is a regression that breaks the running world's text; preserve bytes faithfully.
 
 ---
 
@@ -224,6 +225,7 @@ Append to the Revision Log entry:
 - [ ] All required sign-offs verified
 - [ ] Position fields correct
 - [ ] All entries have Position Rationale
+- [ ] Every written file is UTF-8 — non-ASCII intact (em-dashes, curly quotes, accented names), existing text not mojibaked on rewrite; no `â€`/`Ã` markers; not authored through PowerShell
 
 ### UID Continuity
 - [ ] Existing entries keep their UIDs across all touched lorebooks

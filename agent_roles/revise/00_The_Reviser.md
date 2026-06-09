@@ -235,6 +235,8 @@ The entry sits inside the `## Revision Log` section at the top of `Drafts/Master
 **Phases affected:** [Refiner, Architect, Editor, Voice Auditor, Compiler, Prompt Engineer, ...]
 **Phases skipped:** [Intimacy Architect, Arc Transition Auditor, Intimacy Auditor, ...]
 
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0   <!-- loop-phase round counters; downstream minis increment a counter on each return so the round>3 ceiling survives a restart. Skipped phases stay 0. -->
+
 **Cross-references the user should be aware of:**
 - [List anything you noticed in step 2 that the user did not directly flag but that may interact with the change. These are surfaced for awareness — they do not silently expand scope. If they should expand scope, the user explicitly widens this revision; otherwise they are noted as candidate future revisions.]
 
