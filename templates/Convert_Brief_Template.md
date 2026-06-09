@@ -102,6 +102,12 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 **If a source NPC becomes the new protagonist**, mark them `drop from Tier 2` and write the new protagonist's full psychological frame in Section 5 below. The source character's Tier 2 entries will be starting material for the new Section 3 but get reauthored as protagonist-shaped content downstream.
 
+**Reminders for what gets handled automatically inside Section 4 (you do not declare these here):**
+- **`Standing Goal`** per principal NPC carries across **only if** the goal doesn't cite the old protagonist or depend on the old protagonist's role / power tier. Protagonist-coupled goals (e.g., "to corrupt {{user}}") get stripped with a reauthor marker; the new build will populate them once the new protagonist's Section 3 lands.
+- **`How it drifts (arc worlds)`** per relationship is arc-coupled and always stripped — arcs are being regenerated downstream, so the drift trajectory will be authored fresh.
+- **`Operative belief`** per relationship carries across **only** when it's between two preserved characters AND doesn't reference `{{user}}`. Beliefs about `{{user}}` get stripped (`{{user}}` has changed); beliefs between preserved characters whose dynamic shifted because the protagonist changed get surfaced for your decision during the Converter's interview.
+- **`Trauma trajectory (arc worlds)`** per intimate character is arc-coupled and always stripped. The base `Trauma map` (trigger + response, no trajectory) carries across normally. Sandbox sources never had a trajectory authored, so this rule is a no-op for sandbox preservation.
+
 ### 4f. Section 1 — Core Concept & Tone
 
 - **Logline:** [almost always new — the protagonist usually drives the logline. Write the new logline here, or write `new — to be authored in interview` if you'd rather discuss it with the Converter interactively.]
