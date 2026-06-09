@@ -13,6 +13,23 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-08 — Compiler encoding guard (PowerShell mojibake)
+
+### Fixed
+- **Em-dash / non-ASCII corruption in Export JSON** (#23). Agents running on
+  Windows (notably Kilo Code) tended to write JSON through PowerShell, whose
+  `Out-File` / `Set-Content` / `>` redirection re-encodes to UTF-16 / Windows-1252
+  and silently mangles em-dashes (—), curly quotes, and accented names into mojibake
+  (`—` → `â€"`). Because the mangled file still parses as valid JSON, the Compiler's
+  "JSON parses" guard never caught it. The **Compiler** and **mini-Compiler** now
+  carry an explicit **FILE-WRITING & ENCODING guard**: write UTF-8 via the file tool
+  or a Python / Node script (never PowerShell), and after each write verify non-ASCII
+  survived (grep for `â€` / `Ã`, expect zero) — with matching sign-off checks and a
+  `CLAUDE.md` common-failure-mode note. The mini-Compiler guard is doubly load-bearing
+  since it reads existing non-ASCII content and rewrites it.
+
+---
+
 ## 2026-06-08 — Character & world realism mechanics
 
 Three mechanics that turn NPCs and characters from static descriptions into

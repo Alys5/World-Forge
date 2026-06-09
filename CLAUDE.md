@@ -254,6 +254,7 @@ These are mistakes that have been made before and produce subtle bugs:
 - **Forcing a sandbox world through arc machinery.** Don't author `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc triggers for a `World Mode: sandbox` world — Tier 3 is the single Sandbox lorebook (`SANDBOX_STATE` + `WORLD_PULSE`). Conversely, don't apply the sandbox format to an arc world.
 - **Editing `Notes_On_functionality.md` based on memory of how SillyTavern works.** Always verify against the official ST source if changing this file.
 - **Adding a new pipeline phase or agent without updating `workflows/world-forge.md`.** Orchestration is the source of truth for what runs when.
+- **Writing Export JSON through PowerShell (Compiler / mini-Compiler).** Windows PowerShell `Out-File` / `Set-Content` / `>` re-encode to UTF-16 / Windows-1252 and corrupt the em-dashes (—), curly quotes, and accented names that fill lorebook and card content into mojibake (`—` → `â€"`). The mangled file still passes `JSON.parse`, so the "JSON parses" guard never catches it. Write JSON as UTF-8 via the file-write tool directly or a **Python / Node** script, and after writing grep for `â€` / `Ã` (expect zero). See the Compiler's FILE-WRITING & ENCODING guard.
 
 ---
 

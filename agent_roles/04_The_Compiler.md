@@ -18,6 +18,8 @@ These rules are pre-save guards. If any check fails, do NOT write the file. Fix 
 
 If all eight pass, write the file. If any fails, the file is wrong — fix the source.
 
+> **⚠️ FILE-WRITING & ENCODING — write UTF-8, never through PowerShell.** Lorebook and card content is dense with non-ASCII: em-dashes (—), curly quotes (" " ' '), ellipses (…), accented names. Write every JSON file as UTF-8 — use your file-write tool directly, or a **Python or Node** script (`json.dump(obj, f, ensure_ascii=False)` / `fs.writeFileSync(path, text, 'utf8')`). **Do NOT write JSON through PowerShell** (`Out-File`, `Set-Content`, `>` redirection): Windows PowerShell re-encodes to UTF-16 / Windows-1252 and silently corrupts em-dashes and curly quotes into mojibake (`—` → `â€"`, `'` → `â€™`). This corruption **still passes `JSON.parse`** — the file is valid JSON with garbled text — so guard 1 above will not catch it. After writing each file, verify: re-read it and confirm a known em-dash or accented name is intact, or grep for the mojibake markers `â€` and `Ã` and confirm zero matches. If anything was corrupted, rewrite with a UTF-8-safe tool before sign-off.
+
 ---
 
 ## 1. OBJECTIVE
@@ -302,6 +304,7 @@ Append to `Export/Compiler_Log.md`:
 - [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, seven-key object for overriding: perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale) ✓
 - [ ] **No non-schema metadata fields in any JSON content** — no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, or similar. The destination filename is a tool argument, not a content field. Scan every emitted JSON for unknown top-level keys and reject if any are present. ✓
 - [ ] **Pipeline State Ledger checked: all required phases COMPLETE (conditional 2.5/3.6/3.7 COMPLETE or SKIPPED); `world_mode` matches Section 1; status not BLOCKED/ESCALATED (Foundational Rule 6) ✓**
+- [ ] **All JSON written as UTF-8 — non-ASCII intact (em-dashes, curly quotes, accented names); no mojibake (`â€`, `Ã`) introduced by a shell write; not authored through PowerShell ✓**
 - [ ] Notes_On_functionality.md consulted ✓
 
 ### Persona Linkage Instruction
