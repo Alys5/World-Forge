@@ -44,6 +44,8 @@ World-Forge/
 │   ├── 05_The_Prompt_Engineer.md
 │   ├── 06_The_Intimacy_Architect.md
 │   ├── SHARED_Style_Contract_Reference.md
+│   ├── Converter/                    ← Convert-pipeline agent (reframe a shipped world into a new build)
+│   │   └── 00_The_Converter.md
 │   └── revise/                       ← Revision-pipeline mini-agents (surgical post-launch edits)
 │       ├── 00_The_Reviser.md
 │       ├── 01_The_Refiner_mini.md
@@ -61,13 +63,15 @@ World-Forge/
 │   ├── Lorebook_creation.md          ← Lorebook entry authoring guide
 │   ├── Group_lorebook_template.md    ← Group lorebook authoring guide
 │   ├── User_Persona_template.md      ← {{user}} persona description (User.md) authoring guide
+│   ├── Convert_Brief_Template.md     ← Convert pipeline input (preservation matrix as a fillable brief)
 │   ├── char_template.json            ← Raw V3 character-card JSON schema exemplar
 │   ├── Lorebook_Template.json        ← Raw lorebook JSON schema exemplar
 │   ├── Group_lorebook_template.json  ← Raw group lorebook JSON schema exemplar
 │   └── Chat_Completion_Preset_template.json   ← Preset JSON structure (Prompt Engineer target)
 ├── workflows/                        ← Pipeline orchestration
-│   ├── world-forge.md                ← Main pipeline (initial build, Phase 0–5.5; also PRESET RESYNC)
-│   └── world-forge-revise.md         ← Revision fork (surgical post-launch edits, Phase R0–R5.5)
+│   ├── world-forge.md                ← Main pipeline (initial build, Phase 0–5.5; also PRESET RESYNC and CONVERT pointers)
+│   ├── world-forge-revise.md         ← Revision fork (surgical post-launch edits, Phase R0–R5.5)
+│   └── world-forge-convert.md        ← Convert fork (reframe a shipped world into a new build, Phase C0)
 ├── wiki/                             ← Setup & tooling guides (linked from README/tutorial)
 │   ├── README.md                     ← Wiki index
 │   ├── Agentic-Tools-and-Models.md   ← Roo/Kilo/Cline + model comparison
@@ -197,9 +201,26 @@ The mode is a branch *through* the existing pipeline, **not a parallel fork.** T
 - **Phase 3.6 (Arc Transition Auditor) is skipped** in sandbox mode — there are no arc seams to audit, exactly as Phase 3.7 is skipped without intimacy. Cross-arc consistency qualifiers and the ≥8-entries-per-arc floor do not apply.
 - **The Prompt Engineer defaults sandbox presets** to enabling Multi-Character Dynamics, including the optional **NPC Ensemble & Enrichment** block (`npc_ensemble`: NPC-to-NPC dialogue, ensemble prose scaling, and organic NPC enrichment within guardrails — the NPC-roster analogue of the `enhanceDefinitions` enhancer), and weighting Sensory Embodiment high. These are runtime engine directives in the preset, so they live on the preset side of the override contract (#2) — never in cards.
 
-**Boundaries:** Sandbox mode does not touch SillyTavern, the override architecture (#2), audit/apply separation (#3), Position Rationale (#4), or the preset contract — it only repoints what Tier 3 contains and how a large NPC cast is authored. Intimacy (Section 8) stays orthogonal but is mode- and cast-aware: a sandbox world folds its `INTIMACY_FUNCTION` register into a single standing `Sandbox_Intimacy_Register` (no per-arc registers), and **NPC intimacy follows the principal/roster split** — principal NPCs get full Tier 2 Intimacy Profiles, roster NPCs get compact §6.5 intimate stat blocks with the same uniqueness rule (no two NPCs interchangeable in an intimate scene). The Intimacy Auditor checks NPC intimate coverage and distinctiveness (Step 3H). The **revise pipeline is sandbox-aware** (see #6): sandbox worlds are revised through the same minis using the `sandbox_*` scope types, with R3.6 never firing. *Flipping* a world between arc and sandbox remains out of scope (a Section 1 `World Mode` change bounces to a full rebuild); an automated arc→sandbox converter is the remaining deferred future work.
+**Boundaries:** Sandbox mode does not touch SillyTavern, the override architecture (#2), audit/apply separation (#3), Position Rationale (#4), or the preset contract — it only repoints what Tier 3 contains and how a large NPC cast is authored. Intimacy (Section 8) stays orthogonal but is mode- and cast-aware: a sandbox world folds its `INTIMACY_FUNCTION` register into a single standing `Sandbox_Intimacy_Register` (no per-arc registers), and **NPC intimacy follows the principal/roster split** — principal NPCs get full Tier 2 Intimacy Profiles, roster NPCs get compact §6.5 intimate stat blocks with the same uniqueness rule (no two NPCs interchangeable in an intimate scene). The Intimacy Auditor checks NPC intimate coverage and distinctiveness (Step 3H). The **revise pipeline is sandbox-aware** (see #6): sandbox worlds are revised through the same minis using the `sandbox_*` scope types, with R3.6 never firing. *Flipping* a world between arc and sandbox is a Section 1 `World Mode` change and bounces out of the revise pipeline — but this is one of the canonical cases the **Convert pipeline** (#10) is built for, alongside protagonist swaps and Style Contract changes.
 
 See the **SANDBOX MODE** section of `workflows/world-forge.md` for the full operation.
+
+### 10. Convert Pipeline (Reframe-Only)
+
+There is a fourth operating mode alongside initial-build / revise / preset-resync: **`/worldforge convert`** (`workflows/world-forge-convert.md`). It reframes a shipped world into a new build with a different protagonist, World Mode, Core Concept, or Style Contract world defaults — exactly the change-categories principle #6 explicitly bounces out of revise. The Converter (`agent_roles/Converter/00_The_Converter.md`) is a single phase (C0): it reads the source's `Master_Design.md` (read-only), captures the user's keep/modify/regenerate decisions per source section (interview or pre-authored Convert Brief), and writes a new `World_Seed.md` to a target project folder. The user then runs `/worldforge skip phase0` against the target; the standard pipeline (Phases 1–5.5) builds the new world end-to-end.
+
+**Load-bearing properties:**
+- **Read-only on the source project.** The Converter never modifies any file in the source folder. Period.
+- **Write-only on the target's `World_Seed.md`.** Does not write `Drafts/`, `Export/`, `Master_Design.md`, or any other target file. The standard pipeline produces those. Convert is upstream of the standard pipeline, not parallel to it — no downstream agent needs special handling for a converted world; the new seed and Master Design are first-class Phase 0/1 outputs.
+- **Overlap floor refusal (the reskin refusal).** If the conversion replaces three or four of (setting, protagonist, factions, tone), the Converter refuses with an explicit bounce to `/worldforge start`. Borderline (two replaced) gets surfaced for explicit user confirmation. **Pure reskin is intentionally out of scope** — at three-axes-replaced, the source is creative reference, not a structural source.
+- **Always-regenerated content.** Section 3 (`{{user}}`), Section 5 (arcs / Sandbox Charter), Section 7b (test scenarios), per-arc / standing intimate functions, and per-card style overrides are always regenerated downstream — they are protagonist-shaped or downstream-derived. The Converter does not let the user mark them `keep`.
+- **Role reassignment surfacing.** Five canonical cases (old protagonist → NPC; source NPC → new protagonist; power-tier shift on `{{user}}`; character dropped; role shift not involving the protagonist) are surfaced explicitly to the user and confirmed before the seed is written. Source content carries forward where it can; relationship-to-`{{user}}` content is always reauthored downstream and gets a marker comment in the seed.
+- **Single source.** No mashups. The Converter accepts exactly one source world per conversion.
+- **Conversion Manifest at top of seed.** Records source, intent (verbatim), overlap floor classification, per-section preservation decisions, role reassignments, and cross-references the user should be aware of. The Refiner reads this at Phase 1 to route accordingly.
+
+**Boundaries:** Convert does not touch SillyTavern, the override architecture (#2), audit/apply separation (#3), Position Rationale (#4), or any other architectural principle. It is purely an upstream seed-production operation. It is *the* legitimate path for the change-categories revise bounces (Section 1, Section 11a, World Mode flips), preserving structural world-building that `/worldforge start` from scratch would discard.
+
+See the **CONVERT** section of `workflows/world-forge.md` and the full operation in `workflows/world-forge-convert.md`.
 
 ---
 
@@ -224,6 +245,9 @@ These pairs of files must stay in sync. When editing one, check the other.
 | Relationship/belief state: Architect CHARACTER_STATE item 6 + NPC_SHIFT relational-stance delta (arc); standing accumulation via SANDBOX_STATE aliveness (sandbox) | `agent_roles/03c_The_Arc_Transition_Auditor.md` (Check 3b — continuity teeth: no teleporting bonds, un-caused belief flips, or silent memory resets), `agent_roles/03_The_Editor.md` (relational-stance delta-integrity + coverage soft-flag), `agent_roles/00_The_Interviewer.md` + `01_The_Refiner.md` (elicit/record the drift trajectory + operative belief), `templates/World_Seed_Template.md` (§4 "How it drifts"/"Operative belief" + arc "Relationship shifts this arc") — drift is authored per-arc as delta only, and Check 3b verifies it is earned; arc-mode only (sandbox has no seam) |
 | Trauma de-escalation: Architect CHARACTER_STATE item 7 (trauma trajectory delta, arc) | `agent_roles/03c_The_Arc_Transition_Auditor.md` (Check 2 trauma-response continuity — fades shown, never sudden vanishings/un-caused re-activations), `agent_roles/03b_The_Voice_Auditor.md` (Step 3A active-vs-dormant match against item 7), `agent_roles/03_The_Editor.md` (trauma-trajectory delta-integrity + coverage soft-flag), `agent_roles/00_The_Interviewer.md` + `01_The_Refiner.md` (elicit/record which trigger fades in which arc), `templates/World_Seed_Template.md` (§4 "Trauma trajectory" + arc "Trauma shifts this arc") — authored per-arc as delta; intimate-context trauma rides the per-arc Intimacy Register instead; arc-mode only (sandbox trauma is static Tier 2 substrate) |
 | World Mode handling in any one of Interviewer / Refiner / Architect / Editor / Voice Auditor / Intimacy Architect / Intimacy Auditor / Compiler / Prompt Engineer | The others + `workflows/world-forge.md` SANDBOX MODE section + `templates/World_Seed_Template.md` (§1 `World Mode`, §5 conditional, §4 NPC intimacy) — the arc/sandbox branch (incl. the standing Sandbox Intimacy Register and NPC principal/roster intimacy) must read consistently end-to-end |
+| `agent_roles/Converter/00_The_Converter.md` (preservation matrix, Conversion Manifest format) | `templates/Convert_Brief_Template.md` (Sections 4a–4h mirror the matrix row-for-row) + `workflows/world-forge-convert.md` (operating modes, overlap floor, role reassignment cases) + `templates/World_Seed_Template.md` (the seed structure the Converter writes against — section numbering, required fields, conventions) — Convert is a three-file contract; changing any one requires checking the others |
+| NPC agency / relationship-belief state / trauma-trajectory machinery (Architect §7.D `Standing Goal`, World Seed §4 `How it drifts` + `Operative belief` + `Trauma trajectory`, Refiner/Architect/Editor/Voice-Auditor/Arc-Transition-Auditor rules) | `agent_roles/Converter/00_The_Converter.md` (Section 4 carry-across rules + preservation matrix) and `templates/Convert_Brief_Template.md` (Section 4e reminders) — these four Section 4 fields couple to the regenerated parts of a converted seed (Section 3 protagonist + Section 5 arcs). The Converter's carry-across rules (preserve / strip / mark-for-reauthor) must stay consistent with how the parents author the fields; if the field set changes, update the Converter's Section 4 handling at the same time |
+| `agent_roles/00_The_Interviewer.md` (Section 3 protagonist questioning) | `agent_roles/Converter/00_The_Converter.md` (Step 4 question 7 reuses the Interviewer's Section 3 depth standard) — Convert authors a new protagonist with Interviewer-grade depth; if the Interviewer's Section 3 questioning evolves, the Converter inherits |
 
 ---
 

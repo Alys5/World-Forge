@@ -13,6 +13,96 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-09 — Convert pipeline (reframe a shipped world into a new build)
+
+A fourth operating mode alongside initial-build / revise / preset-resync,
+landing the "deferred arc→sandbox converter" called out in the Sandbox Mode
+entries below — and broader in scope than just mode flips. The Convert pipeline
+is the legitimate path for the change-categories the revise pipeline explicitly
+bounces: a different protagonist, a `World Mode` flip (arc ↔ sandbox), a
+different Style Contract at the world level, or a different Core Concept &
+Tone (Master Design Section 1). It preserves the structural world-building
+work (Tier 1 rules / factions / locations / cosmology, most of Tier 2
+characters) that a from-scratch `/worldforge start` would discard (#24).
+
+### Added
+- **`/worldforge convert <source> <target>`** — a single-phase pipeline (C0)
+  driven by the new **Converter** agent (`agent_roles/Converter/00_The_Converter.md`).
+  Reads the source world's `Drafts/Master_Design.md` **read-only**, walks the
+  user through a preservation matrix (keep / modify / drop / regenerate per
+  source section), surfaces role reassignments explicitly (old protagonist
+  becoming an NPC, source NPC becoming the new `{{user}}`, power-tier shifts),
+  and writes a new `World_Seed.md` to the target project folder. The user then
+  runs `/worldforge skip phase0` against the target and the standard pipeline
+  (Phases 1–5.5) builds the new world end-to-end. Convert is **upstream** of
+  the standard pipeline, not parallel to it — no downstream agent needs special
+  handling for a converted world.
+- **Overlap floor refusal (the reskin refusal).** The Converter classifies
+  conversion intent against four axes — setting, protagonist, factions, tone —
+  and refuses outright if three or four are replaced. At that scale the source
+  is creative reference, not a structural source; the user is bounced to
+  `/worldforge start` fresh. Borderline (two axes replaced) is surfaced for
+  explicit user confirmation. Single source only — no mashups.
+- **Convert Brief** (`templates/Convert_Brief_Template.md`) — an optional
+  pre-authored brief mirroring the preservation matrix row-for-row. The
+  brief-driven mode (`--brief <path>`) validates the brief against the source
+  and interviews only on gaps / ambiguities, making non-trivial conversions
+  version-controllable and reviewable.
+- **Conversion Manifest** at the top of every converted seed — records source
+  path, intent verbatim, overlap floor classification, per-section preservation
+  decisions, role reassignments, and cross-references the user should be aware
+  of. The Refiner reads it at Phase 1 to route accordingly. HTML-comment
+  markers throughout the seed (`<!-- CONVERTED FROM ... -->`,
+  `<!-- RELATIONSHIP TO {{user}} TO BE REAUTHORED FOR NEW PROTAGONIST -->`,
+  `<!-- WAS SOURCE PROTAGONIST — TIER 2 BLOCK REAUTHORED ... -->`) make
+  provenance traceable for both downstream agents and human readers.
+- **Section 4 carry-across rules** for the four mechanics added in PR #23
+  (NPC `Standing Goal`, relationship `How it drifts (arc worlds)`,
+  `Operative belief`, intimacy `Trauma trajectory (arc worlds)`). Each field
+  couples to the regenerated parts of a converted seed (Section 3 protagonist
+  + Section 5 arcs), so carrying them naively produces a seed that mentions
+  arcs that don't exist yet and a protagonist who doesn't exist yet. Rules:
+  Standing Goal preserves if protagonist-agnostic else strips with a reauthor
+  marker; drift always strips (arcs regenerate); Operative belief preserves
+  only between two preserved characters AND not about `{{user}}`; Trauma
+  trajectory always strips (arc-coupled). The base Trauma map (trigger +
+  response, no trajectory) carries through normally.
+- **CLAUDE.md principle #10 (Convert Pipeline)**, repo-structure tree updates,
+  and three new cross-file consistency rows (Convert three-file contract;
+  Interviewer Section 3 ↔ Converter Step 4 protagonist authoring; NPC agency
+  / relationship-belief / trauma-trajectory machinery ↔ Converter Section 4
+  carry-across).
+- **`workflows/world-forge-convert.md`** — the convert orchestrator (phase
+  outline, role reassignment surfacing for the five canonical cases, handoff
+  semantics, pause gates, file structure, trigger commands, relationship to
+  other pipeline operations).
+- **Tutorial Section 8** — worked example (Lucifer → God): how the Converter
+  walks the preservation matrix, what carries forward verbatim, what gets
+  reauthored downstream, and how the four new Section 4 fields are handled
+  automatically.
+
+### Notes
+- **Always-regenerated content** is not user-overridable: Section 3 (`{{user}}`),
+  Section 5 (arcs / Sandbox Charter), Section 7b (test scenarios), per-arc /
+  standing intimate functions, per-card style overrides, and every preserved
+  Tier 2 character's relationship-to-`{{user}}`. These are protagonist-shaped
+  or downstream-derived and cannot transfer mechanically; the downstream
+  Refiner / Architect produces them in the new build.
+- **Boundaries.** Convert does not touch SillyTavern, the override architecture
+  (CLAUDE.md #2), audit/apply separation (#3), Position Rationale (#4), or any
+  other architectural principle. It is purely an upstream seed-production
+  operation. The Pipeline State Ledger (this same date, below) is unaffected —
+  it lives at the top of `Master_Design.md`, written by the Refiner; the
+  Converter writes only `World_Seed.md`.
+- Older changelog entries that reference "an automated arc→sandbox converter
+  remains deferred" (Sandbox Mode and Sandbox-aware revise pipeline entries
+  below) describe the gap that this change closes. The remaining out-of-scope
+  case is **pure reskin** (replacing setting + protagonist + factions + tone
+  at once); that is intentionally bounced to `/worldforge start` fresh and
+  will not be added as a Convert mode.
+
+---
+
 ## 2026-06-08 — Compiler encoding guard (PowerShell mojibake)
 
 ### Fixed

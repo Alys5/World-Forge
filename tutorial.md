@@ -89,6 +89,9 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 | `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content) |
 | `/worldforge skip phase3.6` | Skip Arc Transition Auditor (auto-skipped in sandbox mode — no arc seams) |
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content) |
+| `/worldforge revise` | Post-launch surgical edits to a shipped world (UID-preserving, scope-locked) |
+| `/worldforge resync-preset` | Post-launch: refresh a shipped world's Chat Completion Preset against the current template + block library |
+| `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build — different protagonist, World Mode, Style Contract, or Core Concept (see Section 8) |
 
 > The Lucifer case study below is an **arc world** — it progresses through four arcs. If you are building an open-ended, NPC-populated world with no narrative arc (a power-fantasy, world-director, or life-sim world), read this case study first to learn the pipeline, then see **Section 7 — Sandbox worlds** for what changes.
 
@@ -397,16 +400,90 @@ The import flow is the same as Section 5, with one difference: there are no arc 
 
 ### Note on retrofitting
 
-There is no automated arc→sandbox converter. Flipping World Mode is a Section 1 change, which the pipeline treats as a full rebuild: edit the World Seed (set `World Mode: sandbox`, rewrite Section 5 as a Sandbox Charter, reclassify NPCs into principal/roster), then run `/worldforge skip phase0`. Surgical edits to a shipped sandbox world — recalibrating `SANDBOX_STATE`, tweaking `WORLD_PULSE`, adding roster NPCs, adjusting sandbox intimacy — *are* handled by the revise pipeline (`/worldforge revise`), which is sandbox-aware via the `sandbox_*` scope types.
+Flipping World Mode is a Section 1 change, which the revise pipeline bounces. There are two paths: a from-scratch rebuild via hand-editing the World Seed (`World Mode: sandbox`, rewrite Section 5 as a Sandbox Charter, reclassify NPCs into principal/roster) and running `/worldforge skip phase0`; or the **Convert pipeline** (Section 8 below), which is the structured path for arc↔sandbox flips and other big reframings — it reads the source world's `Master_Design.md` read-only, walks you through what to keep and what to regenerate, and writes a new seed in a fresh project folder. Convert is usually the right choice for a mode flip because it preserves the Tier 1 work (rules, factions, locations) and most of Tier 2 (characters) — `start --sandbox` from scratch would make you rebuild all of that. Surgical edits to a shipped sandbox world — recalibrating `SANDBOX_STATE`, tweaking `WORLD_PULSE`, adding roster NPCs, adjusting sandbox intimacy — *are* handled by the revise pipeline (`/worldforge revise`), which is sandbox-aware via the `sandbox_*` scope types.
 
 ---
 
-## 8. Where to learn more
+## 8. Converting a shipped world (`/worldforge convert`)
+
+Sometimes a shipped world's world-building is worth reusing under a different angle. The Lucifer world (Section 3) is a four-arc grimdark story with a mortal `{{user}}` who becomes Lucifer's confessional foil. Suppose you've finished Anna's story and you want to play through the same world — same modern Stockholm, same Black Hand of God, same cosmology, same Lucifer — but as God instead, doing field work on Earth and running into Lucifer's syndicate from the other side. Or suppose you want the same world but as a sandbox: drop into Lucifer's Stockholm with no fixed arc, just live the city's pressures.
+
+Both are exactly what the **Convert pipeline** is for. It is the third post-launch operation alongside revise and resync-preset, and it is the legitimate path for the change-categories the revise pipeline bounces: a different protagonist, a `World Mode` flip (arc ↔ sandbox), a different Style Contract at the world level, or a different Core Concept & Tone (Master Design Section 1).
+
+### What Convert does and does not do
+
+| What it does | What it doesn't do |
+|---|---|
+| Reads the source world's `Master_Design.md` read-only | Modifies the source project (never) |
+| Walks a preservation matrix with you (keep / modify / drop / regenerate per source section) | Writes anything other than the new `World_Seed.md` |
+| Surfaces role reassignments explicitly (old protagonist → NPC, source NPC → new `{{user}}`, power-tier shifts) | Replace `/worldforge start` for fully fresh worlds |
+| Writes a new `World_Seed.md` in your target folder | Replace `/worldforge revise` for surgical edits |
+| Hands off to `/worldforge skip phase0` for the standard build | Merge two source worlds (single source only) |
+
+The Converter is one phase (C0). After it finishes, you run the standard pipeline (Phase 1 onward) against the target folder, exactly as if you had hand-written the new seed.
+
+### Invocation
+
+```
+# Interactive: the Converter interviews you through the preservation matrix
+/worldforge convert path/to/lucifer-project path/to/lucifer-as-god
+
+# Brief-driven: fill in templates/Convert_Brief_Template.md first, then
+/worldforge convert path/to/lucifer-project path/to/lucifer-as-god --brief path/to/Convert_Brief.md
+```
+
+The Brief is recommended for non-trivial conversions because it is version-controllable and reviewable. The brief-driven mode still interviews you — but only on gaps and ambiguities in the brief.
+
+### The overlap floor refusal
+
+Convert is **Reframe-only**. If you are replacing setting + protagonist + factions + tone all at once, the Converter refuses with an explicit bounce to `/worldforge start`. At that scale, the source is creative reference, not a structural source — pretending otherwise produces a Frankenstein seed that the downstream pipeline cannot build cleanly. The Converter classifies your intent against four axes (setting, protagonist, factions, tone), counts how many are being replaced, and:
+
+- **0 or 1 replaced** — well-shaped conversion; proceed
+- **2 replaced** — borderline ("half a new world"); surface to you, proceed on explicit confirm
+- **3 or 4 replaced** — refuse; run `/worldforge start` against the target folder, use the source's `Master_Design.md` as creative reference during Phase 0
+
+This refusal is intentional and not configurable. "I'm building a Greek mythology version of the Lucifer world" is usually a four-axes-replaced ask: new setting, new protagonist, new factions, new tone. That's a new world inspired by Lucifer, not Lucifer converted.
+
+### The Lucifer → God worked example
+
+Suppose you want to reframe the Lucifer world to play as God. You'd run:
+
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-as-God
+```
+
+The Converter reads `path/to/Lucifer/Drafts/Master_Design.md` and walks you through:
+
+- **Overlap floor.** Setting (modern Stockholm with grimdark cosmology) — *kept*. Factions (Black Hand of God, etc.) — *kept*. Tone (grimdark, morally weighted) — *kept* or possibly modified (playing God may shift the moral lens). Protagonist (mortal → deity) — *replaced*. Result: 1 axis replaced — well-shaped. Proceed.
+- **Tier 1.** Most of Section 2 carries forward verbatim — the supernatural rules, the location descriptions, the species/cosmology entries. The factions carry forward by name and capability, but **their relationship to `{{user}}` will be reauthored downstream** — the new protagonist is God, not Anna's POV, so the Black Hand's framing shifts from "Lucifer's syndicate on Earth seen from the outside" to "Lucifer's earthly operation that you, God, are observing or intervening in." The Converter flags this; the Architect rewrites the relationship at Phase 2.
+- **Tier 2.** Anna stays as a Tier 2 character (she's not a protagonist in the new world; she's a person God interacts with). Lucifer stays as a Tier 2 character. The source `{{user}}` (the original protagonist) is dropped — there was no separate Tier 2 entry for them; they were the protagonist. The new `{{user}}` (God) does not exist as a source Tier 2 entry, so they are authored fresh in Section 3.
+- **Section 4 fields the Converter handles automatically.** Anna's `Standing Goal` carries across if it's protagonist-agnostic (e.g., "stay clean and get her brother out of the syndicate") or is stripped + marked for reauthoring if it cites the old protagonist. Every relationship's `How it drifts (arc worlds)` line is stripped — the arcs are being regenerated, so the drift trajectory will be authored fresh downstream. `Operative belief` lines carry across only between two preserved characters and only when they don't mention `{{user}}` — beliefs about `{{user}}` (the most common case) get stripped because `{{user}}` has changed. `Trauma trajectory` per intimate character is stripped for the same arc-coupled reason; the base `Trauma map` (the trigger + response substrate) carries through. You don't declare any of this in the Convert Brief — it happens inside the Converter's Section 4 carry-across pass.
+- **Section 3 (new protagonist).** This is always new. The Converter runs Interviewer-grade Section 3 questioning on God — wound (an ancient one, possibly), hidden layer, contradiction, power and limits (this is critical — a deity protagonist has a different power tier than Anna's mortal `{{user}}`, and the world's hard rules must be examined for whether they still constrain or whether God transcends them), physical description (incarnate? voice-only? both?), voice and manner.
+- **Section 5 (arcs).** Regenerated. The arc spine is protagonist-shaped, and the protagonist has changed. The Converter leaves Section 5 as a structured stub; the Refiner surfaces it as a Phase 1 gap. You answer (probably: "field-work arcs investigating Lucifer's operations, culminating in a confrontation"), Phase 1 proceeds.
+- **Section 7b (test scenarios).** New. Three to five scenes you intend to play as God — say, a first meeting with Lucifer where the power asymmetry is the entire scene; a quiet moment observing the city's suffering and choosing not to intervene; a confrontation with the Black Hand in a public setting.
+- **Section 8 (intimacy).** If the source had intimacy and the new world will too, world-level posture and hard rules carry across. Per-character substrate carries across for preserved characters. Per-arc intimate functions are regenerated downstream because the arcs are regenerated.
+
+After Step 6 (write the seed) and Step 7 (sign-off), the Converter outputs the hand-off instruction. You run `/worldforge skip phase0 path/to/Lucifer-as-God` and the standard pipeline builds the new world.
+
+### What survives, what doesn't (rule of thumb)
+
+- **Survives:** world rules, factions (without the relationship to `{{user}}`), locations, species, concepts, preserved Tier 2 characters' wounds/voices/physical descriptions, Style Contract world defaults (if kept), world-level intimacy posture (if kept).
+- **Reauthored downstream:** every preserved character's *relationship to `{{user}}`*, behavioral mandates that depended on the old protagonist, per-card style overrides, faction-to-`{{user}}` relationships.
+- **Always regenerated:** Section 3 (new `{{user}}`), Section 5 (arcs or Sandbox Charter — protagonist-shaped), Section 7b (test scenarios), per-arc / standing intimate functions.
+
+The Converter's job is to **surface every transition explicitly** in the Conversion Manifest at the top of the new seed and in HTML-comment markers throughout. The downstream pipeline treats the seed as a normal Phase 0 output and builds against it.
+
+---
+
+## 9. Where to learn more
 
 - `README.md` — high-level overview of what the pipeline produces and how the architecture is organized
 - `workflows/world-forge.md` — full phase-by-phase orchestrator definition with pause gates and trigger commands
+- `workflows/world-forge-revise.md` — the revise pipeline (surgical post-launch edits, R0–R5.5)
+- `workflows/world-forge-convert.md` — the convert pipeline (reframe a shipped world into a new build, C0)
 - `agent_roles/*.md` — the actual specification each agent runs against (read these if you want to know what an agent will or will not do)
 - `Notes_On_functionality.md` — authoritative reference for SillyTavern's runtime behavior (position values, lorebook scanning, prompt assembly, override mechanics)
 - `CLAUDE.md` — standing context for AI agents working on the repo itself; useful if you want to extend or modify the pipeline
 - `templates/World_Seed_Template.md` — the blank template you fill in for a new world (or that the Interviewer fills in for you)
 - `templates/User_Persona_template.md` — the structural reference for `User.md`
+- `templates/Convert_Brief_Template.md` — the preservation matrix as a fillable brief, for brief-driven conversions
