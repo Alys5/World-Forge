@@ -247,6 +247,8 @@ If function/substrate conflicts exist → escalate to user, do not sign off.
 If only Medium failures remain and the user approves → may sign off with notes.
 If no failures → sign off cleanly.
 
+**Bounded loop.** Each return to an Architect increments this phase's `Round` in the Pipeline State Ledger (`workflows/world-forge.md` → PIPELINE STATE LEDGER). If `Round` exceeds 3 with no improvement, do not loop again — halt and escalate to the user (ledger `status` → `ESCALATED`), the same ceiling the Editor loop uses. (Function/substrate conflicts escalate immediately, regardless of round.)
+
 ```
 ---
 ## ✅ INTIMACY AUDITOR SIGN-OFF — Round [N]

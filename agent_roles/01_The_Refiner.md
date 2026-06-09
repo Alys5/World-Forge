@@ -55,7 +55,7 @@ Read completely before generating anything.
 ## 4. PROCESS
 
 ### Step 0 — Read the World Mode
-Read Section 1's `World Mode` field (`arc` or `sandbox`). If absent or blank, default to `arc` and note the default was applied. This flag governs Section 9 of your Master Design and the Tier 3 gap pass:
+Read Section 1's `World Mode` field (`arc` or `sandbox`). If **absent or blank**, default to `arc` and note the default was applied. If a value **is present but is not `arc` or `sandbox`** after trimming whitespace and lowercasing (e.g., a typo like `arcs`, `Arc Mode`, or `sandbox-mode`), do **NOT** default — log it to `UNRESOLVED_QUESTIONS.md` and halt. A silent default on a typo silently mis-routes every mode-aware branch downstream (the Tier 3 spine, the 3.6 skip, the NPC roster format), so an unrecognized value is a blocker, not a default. The validated value is what you write to `world_mode` in the Pipeline State Ledger (Section 5). This flag governs Section 9 of your Master Design and the Tier 3 gap pass:
 - **`arc`:** Tier 3 is one Arc Lorebook per arc; Section 9 is the Narrative Arc Structure (unchanged).
 - **`sandbox`:** Tier 3 is a single always-active Sandbox Lorebook; Section 9 becomes the **Sandbox Charter** (see Section 5 of this spec). There are no arcs, arc triggers, CHARACTER_STATE evolution, NPC_SHIFT, or DRAMATIC_BEAT entries to classify. Record the mode prominently at the top of the Master Design so every downstream agent sees it.
 
@@ -106,9 +106,9 @@ For each tier, identify what is missing:
 
 **Tier 2 gaps:** Does every major character have enough relational and psychological material for a rich lorebook? Is the physical description ordered correctly (face → hair → eyes → body → intimate areas)? Are all key relationships (character to character, character to {{user}}) defined?
 
-**Tier 3 gaps (arc mode):** Is every arc's hidden information explicitly stated? ("What does `{{char}}` NOT know this arc? What are the NPCs concealing, and from whom?") Note: hidden information rules govern `{{char}}` and NPC behavior — `{{user}}` is the player directing the story, not a character whose knowledge the LLM manages (unless the world seed explicitly defines a mystery mechanic where discovery is the player's experience). Is the arc entry trigger and exit trigger clear? Are the dramatic beats sufficient to give the LLM narrative direction?
+**Tier 3 gaps (arc mode):** Is every arc's hidden information explicitly stated? ("What does `{{char}}` NOT know this arc? What are the NPCs concealing, and from whom?") Note: hidden information rules govern `{{char}}` and NPC behavior — `{{user}}` is the player directing the story, not a character whose knowledge the LLM manages (unless the world seed explicitly defines a mystery mechanic where discovery is the player's experience). Is the arc entry trigger and exit trigger clear? Are the dramatic beats sufficient to give the LLM narrative direction? For arcs with active principal NPCs, is there material for the ARC_STATE **activity cadence** directive — i.e., does each active NPC have a pursuable Standing Goal so the model can have them act in a lull? A principal NPC with no goal the arc can point at is a Tier 3 gap.
 
-**Tier 3 gaps (sandbox mode):** Is the Standing Situation concrete (premise, {{user}}'s standing/power, the experience contract)? Does the Tonal Mandate have enough directive material for 4–8 imperative bullets, including an **aliveness contract** (NPCs pursue their own agendas, initiate, carry off-screen continuity; the world reacts and remembers; never freezes)? Are the live scene types named? Is there enough for a `WORLD_PULSE` entry (what is always in motion at the edges)? Is the NPC cast split into principals (full) and roster (compact), and does every roster NPC have a distinct voice fingerprint + sample line? A sandbox with inert NPCs or interchangeable voices is a Tier 3 gap — flag it.
+**Tier 3 gaps (sandbox mode):** Is the Standing Situation concrete (premise, {{user}}'s standing/power, the experience contract)? Does the Tonal Mandate have enough directive material for 4–8 imperative bullets, including an **aliveness contract** (NPCs pursue their own agendas, initiate, carry off-screen continuity; the world reacts and remembers; never freezes)? Are the live scene types named? Is there enough for a `WORLD_PULSE` entry (what is always in motion at the edges)? Is the NPC cast split into principals (full) and roster (compact), and does every roster NPC have a distinct voice fingerprint + sample line? Does every principal NPC have a pursuable **Standing Goal** for the aliveness/cadence directive to act on? A sandbox with inert NPCs, interchangeable voices, or principals with no standing goal is a Tier 3 gap — flag it.
 
 Gaps requiring user input → log in `UNRESOLVED_QUESTIONS.md` and halt. Do not proceed to Phase 2 until resolved.
 
@@ -120,6 +120,20 @@ Author the `Master_Design.md` using the structure in Section 5.
 ## 5. OUTPUT: `Drafts/Master_Design.md`
 
 Structure the Master Design with these exact sections:
+
+---
+
+### TOP OF FILE — PIPELINE STATE LEDGER
+
+Before SECTION 1, immediately under the `World Mode` line, emit the **Pipeline State Ledger** block (full schema and contract in `workflows/world-forge.md` → PIPELINE STATE LEDGER). This is the on-disk source of truth for `/worldforge status` and for every `round > N` escalation gate, so it must exist before Phase 2 begins. Initialize it as follows:
+
+- `world_mode`: the value you validated in Step 0 (`arc` or `sandbox`) — never the raw, unvalidated field.
+- `intimacy_in_scope`: `true` if World Seed Section 8 contains material the Intimacy Architect will need, else `false`.
+- `current_phase: 2`, `status: IN_PROGRESS`.
+- Phase rows: set `1 Refiner` to `COMPLETE`; every later row to `PENDING`; loop-phase `Round` (3, 3.5, 3.6, 3.7) to `0`.
+- Pre-mark conditional rows that will not run as `SKIPPED`, with the reason in the anchor cell: row `3.6` when `world_mode: sandbox`; rows `2.5` and `3.7` when `intimacy_in_scope: false`.
+
+You author this block once. The orchestrator advances it from here; do not re-emit it on a `resume`.
 
 ---
 
@@ -159,9 +173,10 @@ Structure the Master Design with these exact sections:
 For each major character:
 - Surface want, deep want, central fear, central contradiction.
 - The shield and the crack.
-- Relationship map: how they relate to every other named character and to {{user}}.
+- Relationship map: how they relate to every other named character and to {{user}}. **For each load-bearing relationship, note whether it evolves across arcs and in which arcs it shifts** (with the beat that causes each shift), plus any load-bearing **belief** the character holds about another party or about {{user}} and what would overturn it. This tells the Architect which arcs need a CHARACTER_STATE/NPC_SHIFT relational-stance line and gives the Arc Transition Auditor the trajectory to check continuity against. *Sandbox mode:* relationships do not drift per-arc; record standing stances/beliefs that persist and accumulate instead.
 - Physical description structured for the Architect: face & lips → hair → eyes → body (chest, waist, hips, legs) → intimate areas (if applicable) → movement & posture → sensory signature.
 - Psychological dimensions requiring lorebook entries (list each as a topic, e.g.: "[Character] / religion", "[Character] / their child", "[Character] / intimacy and trust", "[Character] / their past", etc. — use whatever dimensions are relevant to this specific character)
+- **Trauma trajectory (arc worlds):** if any trauma response changes across arcs, note which trigger fades (or hardens) in which arc and the beat that earns it. This tells the Architect which arcs need a CHARACTER_STATE trauma-trajectory line (item 7) and gives the Arc Transition Auditor the fade to verify. Triggers that stay constant, and characters with no trauma map, need nothing here. *Sandbox:* trauma is static substrate (no per-arc fade) — record it in Tier 2 only.
 - Voice characteristics for the character card.
 - LLM behavioral requirements: failure modes, mandates, prohibitions, trigger-response pairs.
 
@@ -173,6 +188,7 @@ For each major character:
 - Role and narrative function.
 - Full physical and sensory description.
 - Psychological profile: motivation, fear, behavior pattern.
+- **Standing Goal:** the active objective the NPC pursues in the world + the concrete moves that advance it (on-screen and off-screen). This is the arc-agnostic baseline drive the Architect records in the §7.D profile and the ARC_STATE / SANDBOX_STATE activity-cadence directive acts on. If the World Seed gives only a passive want, flag it — the Architect needs an active, pursuable objective.
 - Speech pattern with 2–3 sample lines.
 - Relationship to {{user}}, to primary characters, and to other NPCs.
 - Trigger keyword candidates (2–4 words).
@@ -323,7 +339,7 @@ Append to end of `Master_Design.md`:
 - [ ] All major characters: physical description in anatomical order
 - [ ] All major characters: relationship map complete
 - [ ] All major characters: psychological entry topics listed
-- [ ] All NPCs: classified principal vs. roster; principals have full profiles with trigger keywords; roster NPCs have essence/presence/voice fingerprint/signature line/stance/hook with trigger keywords
+- [ ] All NPCs: classified principal vs. roster; principals have full profiles with trigger keywords **and a Standing Goal (active objective + pursuit moves)**; roster NPCs have essence/presence/voice fingerprint/signature line/stance/hook with trigger keywords
 - [ ] **No two roster NPCs share a voice fingerprint (distinctiveness gate) — or interchangeable voices logged to UNRESOLVED_QUESTIONS.md**
 - [ ] **Protagonist ({{user}}): physical description, psychology, powers, voice, and lorebook entry topics defined**
 - [ ] **Protagonist ({{user}}): identity floor available for `User.md` Persona Description — name, role/public face, distilled physical signature, world-relevant powers/limits flag (if applicable). Voice/personality/manner intentionally excluded — the human plays `{{user}}`.**
@@ -345,6 +361,12 @@ Append to end of `Master_Design.md`:
 - [ ] Section 11b: Every overriding card's rationale validated (structural, not stylistic) — or unstructured rationales logged to UNRESOLVED_QUESTIONS.md
 - [ ] Section 11c: Multi-perspective AND multi-tense flags computed; distinct perspectives and distinct tenses enumerated
 - [ ] Section 11d: POV ambiguity advisory computed (present or absent); if present, affected cards listed and advisory text included verbatim
+
+### Pipeline State Ledger
+- [ ] Pipeline State Ledger emitted at the top of Master Design, under the World Mode line
+- [ ] `world_mode` written from the Step 0 validated value (∈ {arc, sandbox}); an unrecognized value was logged to UNRESOLVED_QUESTIONS.md, not silently defaulted
+- [ ] `intimacy_in_scope` set from World Seed Section 8; rows 2.5 and 3.7 pre-marked SKIPPED when false; row 3.6 pre-marked SKIPPED when world_mode is sandbox
+- [ ] All later phase rows PENDING; loop-phase Round (3, 3.5, 3.6, 3.7) at 0; `1 Refiner` row set COMPLETE; current_phase = 2
 
 **Status: LOCKED — Proceed to Phase 2 (The Architect)**
 ```

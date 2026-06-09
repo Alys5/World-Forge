@@ -318,6 +318,9 @@ Trigger keywords: [their relationship, how they feel about X, X and Y, etc.]
 
 [Describe this relationship across its full arc. How does it start? What drives it? What changes? What does it reveal about each person? Be specific about what each character wants from the other and what they are afraid to want.]
 
+**How it drifts (arc worlds):** [If this bond changes across arcs, say where and what beat causes each shift — e.g., "Arc 1 hostile → Arc 2 he covers for her with the syndicate → Arc 3 reluctant trust." This becomes the per-arc CHARACTER_STATE / NPC_SHIFT relational-stance line and is what the Arc Transition Auditor checks for continuity. If the bond is static across the story, write "stable." *Sandbox:* note standing stance instead — it persists and accumulates, it does not drift per-arc.]
+**Operative belief:** [Any load-bearing belief one party holds about the other or about {{user}} that drives how they treat them, and the single event that would overturn it — e.g., "believes {{user}} got her brother killed; would change only if she learns he tried to stop it."]
+
 **[Character] / [Other Character Name]**
 [Same format — repeat for each significant relationship]
 
@@ -333,6 +336,8 @@ Trigger keywords: [sex, intimacy, touch, desire, arousal, etc.]
 - **Baseline:** [When nothing is pressing on them, what is this character's sexuality? What attracts them? What does intimate contact mean to them as a category? This is the calm-water version — what they would be if their wound were healed.]
 
 - **Trauma map:** [What touch, position, language, or scenario triggers a trauma response, and what does the response actually look like for *this* person? Not "she freezes" — describe what freezing looks like for her specifically. Each trigger paired with its specific response. If the character has no trauma map, write "none" — the absence is itself useful information.]
+
+- **Trauma trajectory (arc worlds):** [If any of these responses change across the arcs, note which trigger diminishes (or hardens), in which arc, and the beat that earns it — e.g., "Arc 1: flinch-at-sudden-touch fires at full intensity; Arc 3: diminished to a brief tension after the bathhouse beat, never fully gone." Trauma fades, it does not vanish — so capture the trajectory, not an on/off. This becomes the per-arc CHARACTER_STATE trauma-trajectory line (item 7). Triggers that stay constant across the story, and characters with no trauma map, write "stable" / "n/a." *Sandbox:* trauma is static — leave this blank.]
 
 - **Body reactions:** [What does *this* body do in intimate contexts? How do they breathe when aroused vs. when overwhelmed? Where do they get goosebumps? What involuntary sounds do they make? What sounds do they suppress? How does their muscle tension hold? What touch makes them present and what touch makes them leave?]
 
@@ -407,6 +412,8 @@ Trigger keywords: [name variants, role descriptors, ways they'd be referenced in
 [Physical description: height, build, appearance, what makes them physically distinctive. Sensory signature.]
 
 [Psychological truth: who are they really? What drives them? What are they afraid of? What do they want that they won't admit?]
+
+**Standing Goal:** [The active objective this NPC is pursuing in the world right now — concrete, not a vague want — plus what they *do* to advance it, on-screen and off-screen, when {{user}} isn't the focus. This is what keeps them acting on their own instead of waiting to be addressed; the pipeline's activity-cadence directive acts on it. e.g., "Maneuvering to take the harbor contract; leans on anyone in {{user}}'s orbit, plants rumors, calls in old debts."]
 
 [Speech pattern: how do they talk? Sentence structure, vocabulary, verbal tics, what they never say directly. Give the AI enough to write them distinctly from every other NPC.]
 
@@ -483,10 +490,14 @@ Trigger keywords: [name variants, role descriptors]
 - [Threat name]: [What is this threat, how does it manifest, what does it want?]
 
 **NPC behavioral shifts this arc:**
-- [NPC name]: [How do they behave in this arc? What is specific to this arc that differs from their baseline?]
+- [NPC name]: [How do they behave in this arc? What is specific to this arc that differs from their baseline? If their Standing Goal shifts, intensifies, or is newly active this arc, state the active goal this arc and how they pursue it.]
 - [NPC name]: [Same format]
 
 **[CHARACTER_STATE NAME] this arc:** [Arc state name — e.g., "The Wreckage"] — defined in Character Lorebook section above. The Architect must include this as a CONSTANT entry in the Arc [N] Tier 3 lorebook.
+
+**Relationship shifts this arc:** [For each load-bearing bond that *moves* this arc (from the "How it drifts" notes in Section 4): where the bond now stands, the beat that moved it, and the operative belief now driving it. e.g., "Anna → {{user}}: contempt has turned to reluctant trust after he covered for her; she now believes he is not like the others, but expects to be proven wrong." This becomes CHARACTER_STATE item 6 / the NPC_SHIFT relational-stance line. Omit bonds that are unchanged this arc.]
+
+**Trauma shifts this arc:** [For each trauma response that changes this arc (from the "Trauma trajectory" notes in Section 4): its current intensity/frequency and the beat that moved it — e.g., "the flinch-at-sudden-touch has diminished to brief tension since the bathhouse beat; not gone." This becomes CHARACTER_STATE item 7. Fades only, never sudden vanishings. Omit triggers that are unchanged this arc.]
 
 **Arc entry trigger:** [The specific event or condition that marks the beginning of this arc]
 **Arc exit trigger:** [The specific event or condition that marks the end of this arc — when does the player know to switch to the next arc lorebook?]
@@ -524,7 +535,7 @@ Trigger keywords: [name variants, role descriptors]
 
 **Live scene types (the sandbox menu):** [What kinds of scenes are active and available in this world? List them — this is the menu the model biases toward. e.g., "negotiations with rival powers, intimate evenings, displays of authority, quiet domestic moments, sudden threats handled with ease."]
 
-**Aliveness directives:** [The contract that keeps the world feeling alive. Default suggestions — adapt: "NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; time passes and off-screen life continues; never freeze the world waiting for {{user}} to act; rotate NPCs in and out so the cast feels populated, not summoned."]
+**Aliveness directives:** [The contract that keeps the world feeling alive. Default suggestions — adapt: "NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; time passes and off-screen life continues; never freeze the world waiting for {{user}} to act; rotate NPCs in and out so the cast feels populated, not summoned." Make it concrete: name that principal NPCs advance their Standing Goals (defined in Section 4) on their own initiative — when a scene lulls or {{user}} is passive, a present or off-screen NPC acts toward its goal.]
 
 **Hard prohibitions:** [What must the model never do in this world? e.g., "never strip {{user}} of agency or power without an in-world cause the player set in motion; never reset NPC attitudes to neutral between scenes."]
 
@@ -532,7 +543,7 @@ Trigger keywords: [name variants, role descriptors]
 
 *This becomes the `WORLD_PULSE` entry (the standing, recency-injected aliveness directive — the sandbox analog of an arc's TENSION). It is sustained every turn, never "resolved." Keep it short and present-tense.*
 
-**The standing pulse:** [One short paragraph the model keeps live every turn: the world is populated and proactive; specify the ambient pressures or opportunities that should always be in motion — what's happening at the edges, who wants what from {{user}}, what the world is doing while {{user}} acts. Example: "The syndicate always has business in motion; rivals test boundaries; the city offers and demands. NPCs act on their own wants between {{user}}'s moves. Reputation precedes {{user}} into every room."]
+**The standing pulse:** [One short paragraph the model keeps live every turn: the world is populated and proactive; specify the ambient pressures or opportunities that should always be in motion — what's happening at the edges, who wants what from {{user}}, the principals' Standing Goals currently in motion, what the world is doing while {{user}} acts. Example: "The syndicate always has business in motion; rivals test boundaries; the city offers and demands. NPCs act on their own wants between {{user}}'s moves. Reputation precedes {{user}} into every room."]
 
 ### 5B.4 — Standing Locations (sandbox)
 
@@ -751,7 +762,8 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 - [ ] Every AI-played character has: psychological core, shield, crack, voice pattern, opening scenario, first message, example exchanges
 - [ ] Every character has a physical baseline description
 - [ ] Every character has a state entry per arc
-- [ ] Every NPC has a profile — principals as full profiles, roster NPCs as compact stat blocks (large casts); roster voice fingerprints are unique
+- [ ] Load-bearing relationships note how they drift across arcs (with the causing beat) and any operative belief; arc blocks carry a "Relationship shifts this arc" line where a bond moves (or "stable" / sandbox standing stance)
+- [ ] Every NPC has a profile — principals as full profiles, roster NPCs as compact stat blocks (large casts); roster voice fingerprints are unique; principal NPCs have a Standing Goal (active objective + how they pursue it)
 - [ ] LLM behavioral instructions written for each card (with arc-range qualifiers)
 - [ ] For characters with intimate scene presence: substrate (trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits) and arc-specific evolution filled out
 

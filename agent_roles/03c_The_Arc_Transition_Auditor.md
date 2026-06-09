@@ -51,7 +51,7 @@ Compare the CHARACTER_STATE entry at the end of Arc N with the CHARACTER_STATE e
 
 **Psychological continuity.** Does the Arc N+1 register flow from the Arc N register? If Arc 2 ends with Anna in theological terror and Arc 3 starts with Anna grounded and certain, what happened in between? An arc cannot resolve fear that the previous arc just installed without showing the work.
 
-**Trauma response continuity.** Trauma responses fade, they do not vanish. If a trauma trigger was active in Arc 1 and has disappeared by Arc 3, the Arc 2 state should show it diminishing. Sudden absences are flags.
+**Trauma response continuity.** Trauma responses fade, they do not vanish. Read the **trauma trajectory** line (CHARACTER_STATE item 7) across the seam: a trigger that was active in Arc N should, by a later arc, be marked diminishing / modified / dormant with the beat that moved it — never silently absent. If Arc N+1's state drops a previously-active trauma response to nothing and no item-7 line (and no beat) accounts for the fade, that is a continuity failure. A sudden re-activation of a dormant trauma response equally needs a triggering cause. Where item 7 is missing for a character whose trauma is visibly changing across arcs, flag the coverage gap — the fade is happening off-page and the model will render it inconsistently.
 
 **Skill and capability continuity.** New behaviors should be earned. If a character could not handle X in Arc 2 and handles X with confidence in Arc 3, there should be a beat or shift in Arc 2 or early Arc 3 that accounts for the change.
 
@@ -66,6 +66,20 @@ For each NPC who appears in both arcs, compare the NPC_SHIFT entries. Apply the 
 **Fail:** Arc 1 Bubbles is "indifferent." Arc 3 Bubbles is "approaches her like a dog deciding to trust, attempts catastrophic acts of domestic care." If Arc 2 does not capture the middle state, the shift is unmotivated.
 
 For each NPC pair across consecutive arcs, write a one-sentence description of the *middle state* the arc transition should capture. If the drafted Arc N+1 NPC_SHIFT does not capture it, flag the gap.
+
+### Check 3b — Relationship & belief continuity
+
+Characters and NPCs carry relationships and beliefs that evolve. The relational-stance lines in CHARACTER_STATE (item 6) and NPC_SHIFT record where a load-bearing bond stands this arc and what the party now believes about the other / about {{user}}. Compare those lines across the Arc N → Arc N+1 seam and apply the same continuity logic as Checks 2 and 3:
+
+**Bonds don't teleport.** A relationship that is hostile at the end of Arc N cannot be intimate at the start of Arc N+1 with no earning beat in between. Locate the beat that moves it. If none exists, the drift is unmotivated — flag it (this is the relationship analog of the recognition test).
+
+**Beliefs change only on evidence.** If a character believed X about {{user}} in Arc N and believes not-X in Arc N+1, a specific beat must have revealed the contradicting information (cross-check Check 5 — hidden information). An un-caused belief flip is **Critical**: it makes the model play the character as if they magically learned or forgot something, which reads as broken.
+
+**Memory persists.** A grievance, debt, or bond {{user}} earned in Arc N should still color the relationship in Arc N+1 unless a beat resolved it. A silent reset — an NPC treating {{user}} as a stranger again, an earned trust evaporating — is a failure. The world is supposed to remember what {{user}} did.
+
+**The recognition test, applied to the bond:** would the relationship as it stood at the end of Arc N recognizably lead to where it stands at the start of Arc N+1? If no, the seam is broken.
+
+Where a relationship is flagged as evolving in Master Design but neither arc's CHARACTER_STATE/NPC_SHIFT carries a relational-stance line for it, that is a coverage gap — the drift is happening off-page and the model will improvise it inconsistently. Flag it for the Architect.
 
 ### Check 4 — World state continuity
 
@@ -133,6 +147,8 @@ Structure:
 **NPC behavioral shift continuity:**
 [For each NPC: middle state description. Note if missing from drafts.]
 
+**Relationship & belief continuity:** [PASS / FAIL with notes — for each evolving bond: does the stance/belief at Arc N+1 trace to a beat? Any teleport, un-caused belief flip, silent memory reset, or off-page drift?]
+
 **World state continuity:** [PASS / FAIL with notes]
 
 **Hidden information rule continuity:** [PASS / FAIL with notes]
@@ -173,6 +189,8 @@ Structure:
 
 ## 6. SIGN-OFF
 
+**Bounded loop.** Each return to the Architect increments this phase's `Round` in the Pipeline State Ledger (`workflows/world-forge.md` → PIPELINE STATE LEDGER). If `Round` exceeds 3 with no improvement, do not loop again — halt and escalate to the user (ledger `status` → `ESCALATED`), the same ceiling the Editor loop uses.
+
 ```
 ---
 ## ✅ ARC TRANSITION AUDITOR SIGN-OFF — Round [N]
@@ -180,7 +198,9 @@ Structure:
 ### Continuity Verification
 - [ ] All consecutive arc pairs audited
 - [ ] All character states verified across all transitions
+- [ ] **Trauma trajectories (CHARACTER_STATE item 7) verified across transitions (Check 2): fades are shown and beat-accounted, never sudden vanishings or un-caused re-activations; off-page fades flagged for coverage**
 - [ ] All NPC shifts verified for middle-state coverage
+- [ ] **All evolving relationships/beliefs verified for continuity (Check 3b): no teleporting bonds, un-caused belief flips, silent memory resets, or off-page drift; every shift traces to a beat**
 - [ ] All hidden information rules trace cleanly across transitions
 - [ ] All dramatic beat sequences flow without skip-beats
 - [ ] All tone register shifts are prepared or acknowledged
