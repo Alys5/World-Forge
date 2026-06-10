@@ -15,7 +15,7 @@ You need:
 
 That is the entire setup. The pipeline is markdown specifications — there is nothing to build or install.
 
-**Two settings worth getting right before a long run:** which model runs which phase ([`wiki/Agentic-Tools-and-Models.md` §3.3](./wiki/Agentic-Tools-and-Models.md#33-mixing-models-across-phases) — spend the most on the Editor and Auditors), and sampling temperature per phase ([§3.5](./wiki/Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase) — creative seats hot, the Compiler near zero). Kilo Code users get both preconfigured: the repo ships a `.kilo/kilo.jsonc` with per-phase agents, and [`wiki/Kilo-Code-Setup.md` §5.4](./wiki/Kilo-Code-Setup.md#54-per-phase-temperature-via-api-configuration-profiles) covers the temperature profiles.
+**Two settings worth getting right before a long run:** which model runs which phase ([`wiki/Agentic-Tools-and-Models.md` §3.3](./wiki/Agentic-Tools-and-Models.md#33-mixing-models-across-phases) — spend the most on the Editor and Auditors), and sampling temperature per phase ([§3.5](./wiki/Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase) — creative seats hot, the Compiler near zero). Kilo Code users get both preconfigured: the repo ships a `.kilo/kilo.jsonc` with per-phase agents, and [`wiki/Kilo-Code-Setup.md` §5.4](./wiki/Kilo-Code-Setup.md#54-per-phase-temperature) covers the temperature settings (already baked into the shipped `.kilo/kilo.jsonc`).
 
 ### Repository structure (what you cloned)
 

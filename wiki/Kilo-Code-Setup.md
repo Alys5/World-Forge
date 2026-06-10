@@ -119,146 +119,67 @@ Kilo reads agent definitions from a JSONC config:
 
 Project-scoped wins when both exist, so put the World-Forge agent set in the project file.
 
-> **World-Forge ships a preconfigured `./.kilo/kilo.jsonc`** — all twelve agents (the ten initial-build phases plus the Reviser and Converter entry points), pinned to their `agent_roles/` specs, with DeepSeek 4 Pro on the drafting/utility seats and `deepseek-reasoner` on the Editor + Auditor seats, all routed through **OpenRouter**. If that matches your provider, it loads with zero steps the moment you open the folder. If you use a different provider or want different models, edit the `"model"` strings — the file's header comment explains the prefix rules, and the sections below remain the reference for alternative flavors. API keys are never read from this file.
+> **World-Forge ships a preconfigured `./.kilo/kilo.jsonc`** — all twelve agents (the ten initial-build phases plus the Reviser and Converter entry points), pinned to their `agent_roles/` specs via `{file:...}` prompt references, with DeepSeek 4 Pro on the drafting/utility seats (per-phase temperatures baked in — see §5.4) and `deepseek-reasoner` on the Editor + Auditor seats, all routed through **OpenRouter**. If that matches your provider, it loads with zero steps the moment you open the folder. If you use a different provider or want different models, edit the `"model"` strings — the file's header comment explains the prefix rules, and the sections below remain the reference for alternative flavors. API keys are never read from this file.
 
 ### 5.2 A minimal World-Forge agent set
 
-If you are writing your own instead of using the shipped file: create `./.kilo/kilo.jsonc` with one entry per pipeline phase. Each agent points at its corresponding `agent_roles/` markdown file as its system prompt and references a provider-prefixed model ID.
+If you are writing your own instead of using the shipped file: create `./.kilo/kilo.jsonc` with one entry per pipeline phase in the `"agent"` section. The schema is documented at [kilo.ai/docs/customize/custom-subagents](https://kilo.ai/docs/customize/custom-subagents); the fields World-Forge uses:
 
-**Important:** The `"model"` field requires the **provider-prefixed** form (`<provider_id>/<model_id>`) — bare IDs are silently rejected. The exact `provider_id` is whatever Kilo assigned when you saved your provider in §3 (`anthropic` for direct Anthropic, `openrouter` for OpenRouter, `nano-gpt` for Nano-GPT, `ollama` / `lmstudio` / `openai-compatible` for local). The example below shows two flavors — pick the one that matches your §3 provider, or remix.
+- **`prompt`** — the agent's system prompt. Use the `{file:...}` reference form to pin it to the phase's `agent_roles/` spec instead of inlining 50 KB of markdown. **Paths resolve relative to the config file's directory**, so from `.kilo/kilo.jsonc` the specs are `{file:../agent_roles/...}`.
+- **`model`** — provider-prefixed (`<provider_id>/<model_id>`); bare IDs are rejected. OpenRouter catalog IDs are themselves provider-prefixed, so the full string carries two slashes: `openrouter/deepseek/deepseek-chat-v4`, `openrouter/anthropic/claude-opus-4-7`. This format is confirmed by [Kilo's OpenRouter docs](https://kilo.ai/docs/ai-providers/openrouter).
+- **`mode`** — `"all"` makes an agent both user-selectable in the picker and dispatchable as a subagent via the Task tool; that is what the orchestrator's phase handoffs want.
+- **`temperature`** — per-agent sampling, 0.0–1.0. Apply the [models page §3.5 values](./Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase) directly here; omit it on reasoner-model seats (they ignore sampling parameters).
+- **`description`** — one line; shown in the picker and used by the Task tool to choose dispatch targets.
 
-**Direct Anthropic flavor** — simplest, no aggregator caching risk:
+**Direct Anthropic flavor** (abridged — same shape for the remaining phases):
 
 ```jsonc
 {
+  "$schema": "https://app.kilo.ai/config.json",
   "agent": {
     "WorldForge-Interviewer": {
-      "systemPromptFile": "agent_roles/00_The_Interviewer.md",
-      "model": "anthropic/claude-sonnet-4-6"
-    },
-    "WorldForge-Refiner": {
-      "systemPromptFile": "agent_roles/01_The_Refiner.md",
-      "model": "anthropic/claude-sonnet-4-6"
+      "description": "Phase 0 — World Seed interview",
+      "mode": "all",
+      "model": "anthropic/claude-sonnet-4-6",
+      "temperature": 0.8,
+      "prompt": "{file:../agent_roles/00_The_Interviewer.md}"
     },
     "WorldForge-Architect": {
-      "systemPromptFile": "agent_roles/02_The_Architect.md",
-      "model": "anthropic/claude-opus-4-7"
+      "description": "Phase 2 — drafts cards and lorebooks",
+      "mode": "all",
+      "model": "anthropic/claude-opus-4-7",
+      "temperature": 0.8,
+      "prompt": "{file:../agent_roles/02_The_Architect.md}"
     },
     "WorldForge-Editor": {
-      "systemPromptFile": "agent_roles/03_The_Editor.md",
-      "model": "anthropic/claude-opus-4-7"
-    },
-    "WorldForge-VoiceAuditor": {
-      "systemPromptFile": "agent_roles/03b_The_Voice_Auditor.md",
-      "model": "anthropic/claude-opus-4-7"
-    },
-    "WorldForge-ArcAuditor": {
-      "systemPromptFile": "agent_roles/03c_The_Arc_Transition_Auditor.md",
-      "model": "anthropic/claude-opus-4-7"
-    },
-    "WorldForge-IntimacyAuditor": {
-      "systemPromptFile": "agent_roles/03d_The_Intimacy_Auditor.md",
-      "model": "anthropic/claude-opus-4-7"
+      "description": "Phase 3 — hard-fail validation of drafts",
+      "mode": "all",
+      "model": "anthropic/claude-opus-4-7",
+      "temperature": 0.3,
+      "prompt": "{file:../agent_roles/03_The_Editor.md}"
     },
     "WorldForge-Compiler": {
-      "systemPromptFile": "agent_roles/04_The_Compiler.md",
-      "model": "anthropic/claude-sonnet-4-6"
-    },
-    "WorldForge-PromptEngineer": {
-      "systemPromptFile": "agent_roles/05_The_Prompt_Engineer.md",
-      "model": "anthropic/claude-sonnet-4-6"
-    },
-    "WorldForge-IntimacyArchitect": {
-      "systemPromptFile": "agent_roles/06_The_Intimacy_Architect.md",
-      "model": "anthropic/claude-opus-4-7"
+      "description": "Phase 4 — verbatim JSON transcription",
+      "mode": "all",
+      "model": "anthropic/claude-sonnet-4-6",
+      "temperature": 0.1,
+      "prompt": "{file:../agent_roles/04_The_Compiler.md}"
     }
+    // ... Refiner, IntimacyArchitect, three Auditors, PromptEngineer,
+    //     Reviser, Converter — same shape; see the shipped file.
   }
 }
 ```
 
-**OpenRouter flavor** — same structure, OpenRouter model IDs (which are themselves provider-prefixed in OpenRouter's catalog, so the final `"model"` string contains two slashes — `openrouter/<openrouter_catalog_id>`):
-
-```jsonc
-{
-  "agent": {
-    "WorldForge-Interviewer": {
-      "systemPromptFile": "agent_roles/00_The_Interviewer.md",
-      "model": "openrouter/anthropic/claude-sonnet-4-6"
-    },
-    "WorldForge-Architect": {
-      "systemPromptFile": "agent_roles/02_The_Architect.md",
-      "model": "openrouter/anthropic/claude-opus-4-7"
-    },
-    "WorldForge-Editor": {
-      "systemPromptFile": "agent_roles/03_The_Editor.md",
-      "model": "openrouter/anthropic/claude-opus-4-7"
-    },
-    "WorldForge-Compiler": {
-      "systemPromptFile": "agent_roles/04_The_Compiler.md",
-      "model": "openrouter/deepseek/deepseek-chat-v4"
-    }
-    // ... etc.
-  }
-}
-```
-
-The exact double-prefix concatenation Kilo uses for OpenRouter (`openrouter/<catalog_id>` vs `openrouter/anthropic/claude-opus-4-7` as a single token) can differ slightly between Kilo builds. After saving, open the Kilo agent picker — if your `WorldForge-*` agents show "Unknown model" or fall back to Auto Free, the prefix concatenation is wrong; click the model field in the agent panel and copy the literal string Kilo shows for that model when you select it manually, then paste that back into `kilo.jsonc`.
-
-**DeepSeek / GLM budget flavor** — all phases on DeepSeek 4 / GLM 5 through OpenRouter, with the strongest affordable model on the audit seats (the one place these models underperform — see the [models page §3.4](./Agentic-Tools-and-Models.md#34-context-discipline-on-deepseek-and-glm)):
-
-```jsonc
-{
-  "agent": {
-    "WorldForge-Interviewer": {
-      "systemPromptFile": "agent_roles/00_The_Interviewer.md",
-      "model": "openrouter/deepseek/deepseek-chat-v4"   // or openrouter/z-ai/glm-5
-    },
-    "WorldForge-Refiner": {
-      "systemPromptFile": "agent_roles/01_The_Refiner.md",
-      "model": "openrouter/deepseek/deepseek-chat-v4"
-    },
-    "WorldForge-Architect": {
-      "systemPromptFile": "agent_roles/02_The_Architect.md",
-      "model": "openrouter/deepseek/deepseek-chat-v4"
-    },
-    "WorldForge-IntimacyArchitect": {
-      "systemPromptFile": "agent_roles/06_The_Intimacy_Architect.md",
-      "model": "openrouter/deepseek/deepseek-chat-v4"
-    },
-    // Audit seats: sycophancy is the failure mode — spend up here if you can.
-    "WorldForge-Editor": {
-      "systemPromptFile": "agent_roles/03_The_Editor.md",
-      "model": "openrouter/anthropic/claude-opus-4-7"   // or deepseek-reasoner / glm-5 thinking variant on a strict budget
-    },
-    "WorldForge-VoiceAuditor": {
-      "systemPromptFile": "agent_roles/03b_The_Voice_Auditor.md",
-      "model": "openrouter/anthropic/claude-opus-4-7"
-    },
-    "WorldForge-ArcAuditor": {
-      "systemPromptFile": "agent_roles/03c_The_Arc_Transition_Auditor.md",
-      "model": "openrouter/anthropic/claude-opus-4-7"
-    },
-    "WorldForge-IntimacyAuditor": {
-      "systemPromptFile": "agent_roles/03d_The_Intimacy_Auditor.md",
-      "model": "openrouter/anthropic/claude-opus-4-7"
-    },
-    "WorldForge-Compiler": {
-      "systemPromptFile": "agent_roles/04_The_Compiler.md",
-      "model": "openrouter/deepseek/deepseek-chat-v4"   // fine here — but run tools/validate_export.py after Phase 4
-    },
-    "WorldForge-PromptEngineer": {
-      "systemPromptFile": "agent_roles/05_The_Prompt_Engineer.md",
-      "model": "openrouter/deepseek/deepseek-chat-v4"
-    }
-  }
-}
-```
+**DeepSeek / GLM budget flavor** — this is what the shipped `./.kilo/kilo.jsonc` contains (OpenRouter throughout; DeepSeek 4 Pro on drafting/utility seats with per-phase temperatures, `deepseek-reasoner` on the Editor + Auditor seats with no temperature, since reasoner endpoints ignore sampling). Open the shipped file rather than copying from here — it is the maintained version. To spend up on the audit seats, swap their `"model"` to `openrouter/anthropic/claude-opus-4-7` and give the Editor `"temperature": 0.3`.
 
 DeepSeek's API applies automatic prefix caching, so reloading a large agent spec each phase is cheap by default — the OpenRouter→Anthropic caching caveat from §3.2 does not apply to the DeepSeek-routed agents.
 
 **Mixing providers per agent.** You can route different agents to different providers in the same file — e.g., creative phases on direct Anthropic for cache reliability, the Compiler on OpenRouter's cheaper DeepSeek route — by giving each agent a `"model"` string with its own provider prefix. Both providers must be registered in your global Kilo settings first.
 
-The orchestrator (`workflows/world-forge.md`) will dispatch the right persona at the right time as long as the agent names are discoverable to Kilo's top-level Code agent. If your Kilo build uses a different schema key (e.g., `subagents` instead of `agent`, or `system_prompt` instead of `systemPromptFile`), the docs page **Settings → Agent Behaviour → Agents** in your Kilo install is the authoritative reference — the structure above is the conceptual shape, not a guaranteed schema.
+The orchestrator (`workflows/world-forge.md`) will dispatch the right persona at the right time as long as the agent names are discoverable to Kilo's top-level Code agent. The `"$schema": "https://app.kilo.ai/config.json"` line gives you field-name validation in VS Code as you edit.
+
+**Alternative: markdown agent files.** Instead of JSON entries, Kilo also reads per-agent markdown files from `.kilo/agents/` (filename = agent name, YAML frontmatter for `description`/`mode`/`model`/`temperature`/`permission`, body = system prompt). World-Forge ships the JSON form because the system prompts already live in `agent_roles/` and `{file:...}` avoids duplicating them — but if you prefer per-agent files, the markdown route works identically.
 
 ### 5.3 Verify the agents loaded
 
@@ -269,18 +190,16 @@ After saving `kilo.jsonc`:
 
 If they do not appear, the JSONC is likely malformed — Kilo silently ignores invalid entries. Validate the file with a JSONC linter before debugging further.
 
-### 5.4 Per-phase temperature via API configuration profiles
+### 5.4 Per-phase temperature
 
-The shipped `kilo.jsonc` deliberately carries no temperature settings — sampling parameters live in Kilo's **API configuration profiles**, and the per-agent `"model"` schema varies enough between builds that embedding them there is fragile. The recommended per-phase values and the reasoning behind them are on the models page ([§3.5](./Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase)); here is how to wire them in Kilo:
+`temperature` is a **first-class per-agent field** in `kilo.jsonc` (0.0–1.0), and the shipped config already carries the recommended values — creative seats at 0.8, the Compiler at 0.1, the Refiner / Prompt Engineer in between. The full per-phase table and the reasoning behind it are on the models page ([§3.5](./Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase)).
 
-1. Open the Kilo sidebar → gear icon → your provider settings. The profile selector at the top lets you **save multiple named configurations** for the same provider.
-2. Create two profiles on your OpenRouter (or other) provider:
-   - **`DeepSeek-creative`** — temperature ≈ 0.8. For the Interviewer, Architect, and Intimacy Architect.
-   - **`DeepSeek-precise`** — temperature ≈ 0.2. For the Refiner, Compiler, and Prompt Engineer. The Compiler is the single seat where a wrong temperature costs the most: it transcribes drafts to JSON verbatim, and sampling creativity there means paraphrased content and dropped macros.
-3. Assign a profile per agent: open each `WorldForge-*` agent in the Kilo agent panel and select the API configuration it should use. Builds that support a per-agent `"apiConfiguration"` key in `kilo.jsonc` can pin it there instead — check **Settings → Agent Behaviour → Agents** for your build's field name.
-4. The four audit seats in the shipped config (Editor, Voice / Arc / Intimacy Auditors) run `deepseek-reasoner`, which **ignores sampling parameters** — no profile assignment needed there. If you move any of them to a chat-tuned model instead, give the Editor the precise profile (consistent validation verdicts) and the three Auditors a middle one (~0.6): auditors generate sample dialogue before judging it, and a flat simulation masks the failure modes they exist to catch.
+What to know when adjusting:
 
-If a per-agent assignment doesn't survive your build's config reload, the fallback is manual: switch the active API profile at the Phase 2→3 and Phase 3.7→4 boundaries — the two transitions where the temperature regime changes.
+- **The reasoner seats set no temperature on purpose.** The Editor and the three Auditors run `deepseek-reasoner`, and reasoner endpoints ignore sampling parameters. If you move any of them to a chat-tuned model, add a temperature: ~0.3 for the Editor (consistent validation verdicts), ~0.6 for the three Auditors (they generate sample dialogue before judging it — a flat simulation masks the failure modes they exist to catch).
+- **The Compiler's 0.1 is load-bearing.** It transcribes drafts to JSON verbatim; sampling creativity there means paraphrased content and dropped macros.
+- **`top_p` is also available per agent** if you prefer nucleus sampling; set one or the other, not both.
+- Temperature set here applies to the pipeline-running agent. It is unrelated to the `temperature` field inside the Chat Completion Preset the Prompt Engineer authors — that one governs the roleplay model at runtime in SillyTavern.
 
 ---
 
@@ -316,7 +235,7 @@ If you trust the pipeline to write files without per-write confirmation prompts,
 - **Edit / Write** — scope to the workspace folder. World-Forge writes to `Drafts/`, `Export/`, `UNRESOLVED_QUESTIONS.md`, `UNRESOLVED_INTIMACY.md`, and audit-report files. Pipeline files (`agent_roles/`, `templates/`, `workflows/`, `Notes_On_functionality.md`) are read-only at runtime — if Kilo asks to edit one of those, **deny** and surface the request: it indicates an agent went off-script.
 - **Bash / Terminal** — leave off, with one exception worth allowlisting if your build supports per-command rules: `python tools/validate_export.py` — the read-only Export/ validator the Compiler phase recommends running after Phase 4 (it checks JSON parse, encoding mojibake, `{{original}}` presence, and position enums; it never modifies files). Everything else the pipeline does goes through the file tools.
 
-You can also scope auto-approval per agent in `kilo.jsonc` if your build supports it.
+You can also scope tool access per agent in `kilo.jsonc` via each agent's `permission` field (`allow` / `ask` / `deny` per tool, with glob support for bash commands) — see the [custom-subagents docs](https://kilo.ai/docs/customize/custom-subagents).
 
 ---
 
@@ -351,7 +270,7 @@ If a future MCP server emerges that genuinely fits the pipeline's shape (for exa
 |---|---|---|
 | Agent ignores `/worldforge start` and asks "what would you like to build?" | Kilo did not read `workflows/world-forge.md` — usually the workspace root is wrong, or the file is excluded by `.kilocodeignore`. | Verify the workspace root contains `workflows/world-forge.md`. Check `.kilocodeignore` for accidental coverage. |
 | Custom `WorldForge-*` agents do not appear in the agent picker | `./.kilo/kilo.jsonc` is malformed (Kilo silently drops invalid entries) **or** the schema keys do not match your Kilo build. | Validate the JSONC. Open **Settings → Agent Behaviour → Agents** to see the canonical field names for your version, and adjust. |
-| Editor and Auditors agree with the Architect on round 1 | The custom agents are pointing at the wrong `systemPromptFile` (a frequent copy-paste mistake), or your Editor model is too small or sycophantic. | Open the agent in Kilo's agent panel and verify the loaded system prompt is the right `agent_roles/*.md` file. Bump the Editor and Auditor models to Opus 4.7 if not already. |
+| Editor and Auditors agree with the Architect on round 1 | The custom agents' `prompt` field points at the wrong `{file:../agent_roles/...}` spec (a frequent copy-paste mistake), or your Editor model is too small or sycophantic. | Open the agent in Kilo's agent panel and verify the loaded system prompt is the right `agent_roles/*.md` file. Bump the Editor and Auditor models to Opus 4.7 if not already. |
 | Phase 4 JSON output is sparse, missing the `{{original}}` macro from `system_prompt` / `post_history_instructions` | A flash-tier model is being used for the Compiler. | Switch `WorldForge-Compiler` to Sonnet 4.6, DeepSeek 4, or better. The Compiler emits verbatim content; summarization-prone models silently drop macros and break the override architecture. See [§3.2 Not recommended](./Agentic-Tools-and-Models.md#32-recommended-tiers). Run `python tools/validate_export.py Export/` to catch this deterministically — it flags missing `{{original}}` macros, mojibake, and bad positions read-only. |
 | Persona bleed: the Editor sounds like the Architect | The top-level Code agent ran the phases inline instead of dispatching subagents. | Define custom agents per phase (§5 above) and re-run from the affected phase with `/worldforge resume phase[N]`. |
 | Context-window errors in Phase 3+ | The model has < 200K context, or Kilo is auto-including too many workspace files. | Verify the shipped `.kilocodeignore` is intact (it already excludes `Samples/`, `wiki/`, and the maintenance docs). Use per-phase custom agents (§5) so each phase starts with a clean window — effectively mandatory on 200K-and-below windows (GLM 5) for large worlds — and ensure each agent honors its spec's `📂 CONTEXT MANIFEST`. See the [models page §3.4](./Agentic-Tools-and-Models.md#34-context-discipline-on-deepseek-and-glm). |
