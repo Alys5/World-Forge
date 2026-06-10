@@ -26,6 +26,14 @@ numbers. Newest first.
   users edit the `"model"` prefixes per the header comment. Wiki §5 updated to
   document the shipped file; the hand-written walkthrough remains as reference
   for alternative flavors.
+- **Sampling-temperature guidance for the pipeline agents.** Models wiki gains
+  §3.5 — a per-phase temperature table (creative seats 0.7–0.9, auditors mid,
+  Editor low, Compiler ~0) with the two-temperatures scope note (agent sampling
+  vs. the runtime preset's `temperature` field) and the reasoner caveat
+  (reasoner endpoints ignore sampling parameters, so the shipped audit seats
+  need no profile). Kilo setup gains §5.4 — wiring the values via API
+  configuration profiles, with a two-profile collapse for low-maintenance
+  setups. Tutorial §1 points at both.
 
 ---
 

@@ -28,8 +28,10 @@
 // wiki/Kilo-Code-Setup.md §5.3 for troubleshooting.
 //
 // Temperature note: keep this file schema-minimal. Per-phase temperature (low for
-// the Compiler / Prompt Engineer, default for creative seats) is better handled via
-// a second saved API configuration profile — see wiki/Kilo-Code-Setup.md §5.
+// the Compiler / Prompt Engineer, hot for the creative seats) is handled via saved
+// API configuration profiles — recommended values in
+// wiki/Agentic-Tools-and-Models.md §3.5, Kilo wiring in wiki/Kilo-Code-Setup.md §5.4.
+// The reasoner-based audit seats below ignore sampling parameters entirely.
 {
   "agent": {
     // ── Initial build (Phases 0–5) ──

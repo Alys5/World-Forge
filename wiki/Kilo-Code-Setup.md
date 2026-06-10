@@ -269,6 +269,19 @@ After saving `kilo.jsonc`:
 
 If they do not appear, the JSONC is likely malformed — Kilo silently ignores invalid entries. Validate the file with a JSONC linter before debugging further.
 
+### 5.4 Per-phase temperature via API configuration profiles
+
+The shipped `kilo.jsonc` deliberately carries no temperature settings — sampling parameters live in Kilo's **API configuration profiles**, and the per-agent `"model"` schema varies enough between builds that embedding them there is fragile. The recommended per-phase values and the reasoning behind them are on the models page ([§3.5](./Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase)); here is how to wire them in Kilo:
+
+1. Open the Kilo sidebar → gear icon → your provider settings. The profile selector at the top lets you **save multiple named configurations** for the same provider.
+2. Create two profiles on your OpenRouter (or other) provider:
+   - **`DeepSeek-creative`** — temperature ≈ 0.8. For the Interviewer, Architect, and Intimacy Architect.
+   - **`DeepSeek-precise`** — temperature ≈ 0.2. For the Refiner, Compiler, and Prompt Engineer. The Compiler is the single seat where a wrong temperature costs the most: it transcribes drafts to JSON verbatim, and sampling creativity there means paraphrased content and dropped macros.
+3. Assign a profile per agent: open each `WorldForge-*` agent in the Kilo agent panel and select the API configuration it should use. Builds that support a per-agent `"apiConfiguration"` key in `kilo.jsonc` can pin it there instead — check **Settings → Agent Behaviour → Agents** for your build's field name.
+4. The four audit seats in the shipped config (Editor, Voice / Arc / Intimacy Auditors) run `deepseek-reasoner`, which **ignores sampling parameters** — no profile assignment needed there. If you move any of them to a chat-tuned model instead, give the Editor the precise profile (consistent validation verdicts) and the three Auditors a middle one (~0.6): auditors generate sample dialogue before judging it, and a flat simulation masks the failure modes they exist to catch.
+
+If a per-agent assignment doesn't survive your build's config reload, the fallback is manual: switch the active API profile at the Phase 2→3 and Phase 3.7→4 boundaries — the two transitions where the temperature regime changes.
+
 ---
 
 ## 6. (Optional) Workspace hints for Kilo
