@@ -65,14 +65,22 @@ The user asked you to change agent specs, templates, workflows, or documentation
 
 ---
 
-## Small-context models (DeepSeek, GLM, anything ≤128K)
+## Context discipline (all models — not a hard window limit)
 
-This pipeline was sized against 200K-context models. If you are running on a 128K-class
-model:
+This pipeline was sized against 200K-context frontier models. Nominal windows vary
+widely (DeepSeek 4 Pro: 1M; GLM 5: 200K; others differ) — do not treat any fixed number
+as the constraint. The real constraint is that **effective recall and instruction
+adherence degrade well before nominal limits on every current model**, and what degrades
+first is exactly what this pipeline depends on: hard-fail rules mid-spec, position
+tables, sign-off checklists. So:
 
-- **Per-phase custom agents are required, not optional** — context accumulated across
-  phases will overflow the window. See `wiki/Kilo-Code-Setup.md` §5.
+- **Use per-phase custom agents** — strongly recommended on any model (clean window per
+  phase + persona isolation so the Editor stays strict), and effectively mandatory on
+  200K-and-below windows for large worlds, where inline runs genuinely overflow by
+  Phase 3. See `wiki/Kilo-Code-Setup.md` §5.
 - The shipped `.kilocodeignore` keeps `Samples/` and maintenance docs out of
   auto-included context. Do not remove entries from it to "be thorough."
 - The `📂 CONTEXT MANIFEST` blocks exist primarily for you. When a manifest says "load on
-  demand," that means *do not preload* — open the file at the step that needs it.
+  demand," that means *do not preload* — open the file at the step that needs it. A
+  bigger window is headroom for the *world's* drafts and history, not an invitation to
+  preload reference material the phase does not need.

@@ -16,9 +16,12 @@ numbers. Newest first.
 ## 2026-06-10 — Agentic-friendliness: context discipline for small-context models
 
 The pipeline was sized against 200K-context frontier models; this change makes it run
-well on 128K-class models (DeepSeek 4, GLM 5) under Kilo Code / Roo Code by controlling
-*what gets loaded per phase* rather than shrinking any spec content. No behavioral rule
-of any agent changed except where reading mandates were scoped (see Changed).
+well on non-frontier models (DeepSeek 4, GLM 5) under Kilo Code / Roo Code by controlling
+*what gets loaded per phase* rather than shrinking any spec content. The discipline is
+framed as quality-and-cost engineering, not a hard window ceiling — nominal windows vary
+(DeepSeek 4 Pro 1M, GLM 5 200K), but effective recall degrades well before nominal
+limits on every model. No behavioral rule of any agent changed except where reading
+mandates were scoped (see Changed).
 
 ### Added
 - **`AGENTS.md`** — standing instructions for agentic tools (Kilo reads this, not
@@ -50,9 +53,10 @@ of any agent changed except where reading mandates were scoped (see Changed).
   UID uniqueness, and preset `prompts`/`prompt_order` resolution. An explicit, documented
   exception to the repo's no-code rule (approved 2026-06-10); it modifies nothing and
   exists as a deterministic backstop for the Compiler's pre-save guards.
-- **Wiki: models page §3.4** — running on 128K-class models (DeepSeek, GLM): per-phase
-  agents become mandatory, where to spend a frontier seat (Editor/Auditors — sycophancy
-  under audit is these models' weak spot, not prose), DeepSeek automatic prefix caching,
+- **Wiki: models page §3.4** — context discipline on DeepSeek/GLM: per-phase agents
+  strongly recommended everywhere and effectively mandatory on 200K-and-below windows
+  for large worlds, where to spend a frontier seat (Editor/Auditors — sycophancy under
+  audit is these models' weak spot, not prose), DeepSeek automatic prefix caching,
   GLM 5 added to the recommended tiers. **Kilo setup page** — DeepSeek/GLM `kilo.jsonc`
   flavor, shipped `AGENTS.md`/`.kilocodeignore` documentation, validator allowlisting
   note, updated troubleshooting rows.
