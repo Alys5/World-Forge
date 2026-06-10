@@ -119,9 +119,11 @@ Kilo reads agent definitions from a JSONC config:
 
 Project-scoped wins when both exist, so put the World-Forge agent set in the project file.
 
+> **World-Forge ships a preconfigured `./.kilo/kilo.jsonc`** — all twelve agents (the ten initial-build phases plus the Reviser and Converter entry points), pinned to their `agent_roles/` specs, with DeepSeek 4 Pro on the drafting/utility seats and `deepseek-reasoner` on the Editor + Auditor seats, all routed through **OpenRouter**. If that matches your provider, it loads with zero steps the moment you open the folder. If you use a different provider or want different models, edit the `"model"` strings — the file's header comment explains the prefix rules, and the sections below remain the reference for alternative flavors. API keys are never read from this file.
+
 ### 5.2 A minimal World-Forge agent set
 
-Create `./.kilo/kilo.jsonc` with one entry per pipeline phase. Each agent points at its corresponding `agent_roles/` markdown file as its system prompt and references a provider-prefixed model ID.
+If you are writing your own instead of using the shipped file: create `./.kilo/kilo.jsonc` with one entry per pipeline phase. Each agent points at its corresponding `agent_roles/` markdown file as its system prompt and references a provider-prefixed model ID.
 
 **Important:** The `"model"` field requires the **provider-prefixed** form (`<provider_id>/<model_id>`) — bare IDs are silently rejected. The exact `provider_id` is whatever Kilo assigned when you saved your provider in §3 (`anthropic` for direct Anthropic, `openrouter` for OpenRouter, `nano-gpt` for Nano-GPT, `ollama` / `lmstudio` / `openai-compatible` for local). The example below shows two flavors — pick the one that matches your §3 provider, or remix.
 
