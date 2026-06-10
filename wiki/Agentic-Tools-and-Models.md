@@ -149,6 +149,27 @@ DeepSeek 4 Pro (1M nominal context) and GLM 5 (200K nominal) are genuinely viabl
 
 A workable budget assignment, all through OpenRouter: DeepSeek 4 (`deepseek/deepseek-chat-v4`) or GLM 5 (`z-ai/glm-5`) for Phases 0, 1, 2, 2.5, 4, and 5; the strongest model you can afford (frontier if possible, otherwise the larger reasoning variant of the same family) for Phases 3 and 3.5–3.7.
 
+### 3.5 Sampling temperature by phase
+
+> **Scope note — two unrelated temperatures.** This section is about the temperature of the **pipeline-running agents** in your agentic tool's API settings. It has nothing to do with the `temperature` field inside the Chat Completion Preset that the Prompt Engineer authors — that one governs the *roleplay model at runtime* in SillyTavern and is set by the pipeline itself.
+
+The pipeline's phases split cleanly into prose seats (where sampling variety is the point), judgment seats (where the same input should produce the same verdict), and transcription seats (where creativity is a bug). One temperature for all of them leaves quality on the table at both ends:
+
+| Phase | Seat | Temperature | Why |
+|---|---|---|---|
+| 0 | Interviewer | 0.7–0.9 | Creative partnership — varied, probing questions; a cold Interviewer asks the template instead of following threads. |
+| 1 | Refiner | 0.3–0.5 | Tier classification and structure, not prose. Consistency over flair. |
+| 2 / 2.5 | Architect, Intimacy Architect | 0.7–0.9 | The craft seats. Prose drafting wants the model's full sampling range. |
+| 3 | Editor | 0.2–0.4 | Rule application. The same draft should fail the same checks on a re-run; a hot Editor is an inconsistent gate. |
+| 3.5–3.7 | Auditors | 0.5–0.7 | A deliberate middle: auditors *generate* sample dialogue and scenes before judging them. Too cold and the simulation is flat, masking the failure modes they exist to catch; too hot and the verdicts get noisy. |
+| 4 | Compiler | 0.0–0.2 | Verbatim transcription to JSON — literal macros, exact position values. Any creativity here is a defect. |
+| 5 | Prompt Engineer | 0.2–0.4 | Runtime judgments plus structured JSON authoring. |
+| R0 / C0 | Reviser, Converter | 0.4–0.6 | Classification plus interview — between the Refiner and the Interviewer. |
+
+**Reasoning-model caveat:** reasoner-class endpoints (e.g. `deepseek/deepseek-reasoner`) generally ignore sampling parameters — temperature has no effect. If your audit seats run a reasoner (the shipped `.kilo/kilo.jsonc` default), they need no temperature profile at all; the table's audit rows apply only when those seats run a chat-tuned model.
+
+If maintaining four temperature bands is more fiddling than you want, collapse to two: a **creative** profile (~0.8) for Phases 0, 2, 2.5 and the auditors, and a **precise** profile (~0.2) for Phases 1, 3, 4, 5 — the Compiler and Editor are the two seats where getting this wrong costs the most. Kilo Code users: per-agent profile assignment mechanics are in [Kilo setup §5.4](./Kilo-Code-Setup.md#54-per-phase-temperature-via-api-configuration-profiles).
+
 ---
 
 ## 4. Why Claude Code is a poor fit (currently)

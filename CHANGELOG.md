@@ -13,6 +13,30 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-10 — Preconfigured Kilo Code project config
+
+### Added
+- **`.kilo/kilo.jsonc`** — project-scoped Kilo Code agent definitions, auto-loaded
+  when the workspace opens (takes precedence over the global config). Twelve
+  agents: the ten initial-build phases plus the Reviser and Converter entry
+  points, each pinned to its `agent_roles/` spec as the system prompt. Models
+  route through OpenRouter — DeepSeek 4 Pro on drafting/utility seats,
+  `deepseek-reasoner` on the Editor + Auditor seats (the sycophancy defense from
+  the models wiki §3.4). API keys are never read from this file; non-OpenRouter
+  users edit the `"model"` prefixes per the header comment. Wiki §5 updated to
+  document the shipped file; the hand-written walkthrough remains as reference
+  for alternative flavors.
+- **Sampling-temperature guidance for the pipeline agents.** Models wiki gains
+  §3.5 — a per-phase temperature table (creative seats 0.7–0.9, auditors mid,
+  Editor low, Compiler ~0) with the two-temperatures scope note (agent sampling
+  vs. the runtime preset's `temperature` field) and the reasoner caveat
+  (reasoner endpoints ignore sampling parameters, so the shipped audit seats
+  need no profile). Kilo setup gains §5.4 — wiring the values via API
+  configuration profiles, with a two-profile collapse for low-maintenance
+  setups. Tutorial §1 points at both.
+
+---
+
 ## 2026-06-10 — Agentic-friendliness: context discipline for small-context models
 
 The pipeline was sized against 200K-context frontier models; this change makes it run

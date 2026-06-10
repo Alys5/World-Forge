@@ -105,6 +105,7 @@ World-Forge/
 ├── Notes_On_functionality.md     ← Authoritative reference for SillyTavern's runtime behavior
 ├── Notes_Quick_Reference.md      ← Compact distillation of the above (agents consult it first)
 ├── .kilocodeignore               ← Keeps samples + maintenance docs out of runtime agent context
+├── .kilo/kilo.jsonc              ← Preconfigured Kilo Code per-phase agents (auto-loaded; OpenRouter flavor)
 ├── tools/
 │   └── validate_export.py        ← Read-only validator for Export/ JSON (run after Phase 4)
 ├── agent_roles/                  ← Per-phase agent specifications (one .md per agent)

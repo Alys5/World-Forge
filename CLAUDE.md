@@ -35,6 +35,8 @@ World-Forge/
 ├── LICENSE
 ├── .gitignore
 ├── .kilocodeignore                   ← Keeps Samples/ + maintenance docs out of runtime agent context
+├── .kilo/
+│   └── kilo.jsonc                    ← Preconfigured Kilo Code per-phase agents (OpenRouter DeepSeek flavor; auto-loaded)
 ├── tools/
 │   └── validate_export.py            ← Read-only Export/ JSON validator (explicit exception to the no-code rule; see Out of scope)
 ├── agent_roles/                      ← Phase-specific agent specifications (each opens with a 📂 CONTEXT MANIFEST)

@@ -119,9 +119,11 @@ Kilo reads agent definitions from a JSONC config:
 
 Project-scoped wins when both exist, so put the World-Forge agent set in the project file.
 
+> **World-Forge ships a preconfigured `./.kilo/kilo.jsonc`** — all twelve agents (the ten initial-build phases plus the Reviser and Converter entry points), pinned to their `agent_roles/` specs, with DeepSeek 4 Pro on the drafting/utility seats and `deepseek-reasoner` on the Editor + Auditor seats, all routed through **OpenRouter**. If that matches your provider, it loads with zero steps the moment you open the folder. If you use a different provider or want different models, edit the `"model"` strings — the file's header comment explains the prefix rules, and the sections below remain the reference for alternative flavors. API keys are never read from this file.
+
 ### 5.2 A minimal World-Forge agent set
 
-Create `./.kilo/kilo.jsonc` with one entry per pipeline phase. Each agent points at its corresponding `agent_roles/` markdown file as its system prompt and references a provider-prefixed model ID.
+If you are writing your own instead of using the shipped file: create `./.kilo/kilo.jsonc` with one entry per pipeline phase. Each agent points at its corresponding `agent_roles/` markdown file as its system prompt and references a provider-prefixed model ID.
 
 **Important:** The `"model"` field requires the **provider-prefixed** form (`<provider_id>/<model_id>`) — bare IDs are silently rejected. The exact `provider_id` is whatever Kilo assigned when you saved your provider in §3 (`anthropic` for direct Anthropic, `openrouter` for OpenRouter, `nano-gpt` for Nano-GPT, `ollama` / `lmstudio` / `openai-compatible` for local). The example below shows two flavors — pick the one that matches your §3 provider, or remix.
 
@@ -266,6 +268,19 @@ After saving `kilo.jsonc`:
 2. Open the Kilo sidebar and check the agent picker — your `WorldForge-*` agents should appear alongside Code / Plan / Debug.
 
 If they do not appear, the JSONC is likely malformed — Kilo silently ignores invalid entries. Validate the file with a JSONC linter before debugging further.
+
+### 5.4 Per-phase temperature via API configuration profiles
+
+The shipped `kilo.jsonc` deliberately carries no temperature settings — sampling parameters live in Kilo's **API configuration profiles**, and the per-agent `"model"` schema varies enough between builds that embedding them there is fragile. The recommended per-phase values and the reasoning behind them are on the models page ([§3.5](./Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase)); here is how to wire them in Kilo:
+
+1. Open the Kilo sidebar → gear icon → your provider settings. The profile selector at the top lets you **save multiple named configurations** for the same provider.
+2. Create two profiles on your OpenRouter (or other) provider:
+   - **`DeepSeek-creative`** — temperature ≈ 0.8. For the Interviewer, Architect, and Intimacy Architect.
+   - **`DeepSeek-precise`** — temperature ≈ 0.2. For the Refiner, Compiler, and Prompt Engineer. The Compiler is the single seat where a wrong temperature costs the most: it transcribes drafts to JSON verbatim, and sampling creativity there means paraphrased content and dropped macros.
+3. Assign a profile per agent: open each `WorldForge-*` agent in the Kilo agent panel and select the API configuration it should use. Builds that support a per-agent `"apiConfiguration"` key in `kilo.jsonc` can pin it there instead — check **Settings → Agent Behaviour → Agents** for your build's field name.
+4. The four audit seats in the shipped config (Editor, Voice / Arc / Intimacy Auditors) run `deepseek-reasoner`, which **ignores sampling parameters** — no profile assignment needed there. If you move any of them to a chat-tuned model instead, give the Editor the precise profile (consistent validation verdicts) and the three Auditors a middle one (~0.6): auditors generate sample dialogue before judging it, and a flat simulation masks the failure modes they exist to catch.
+
+If a per-agent assignment doesn't survive your build's config reload, the fallback is manual: switch the active API profile at the Phase 2→3 and Phase 3.7→4 boundaries — the two transitions where the temperature regime changes.
 
 ---
 

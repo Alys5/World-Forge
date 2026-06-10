@@ -1,0 +1,91 @@
+// .kilo/kilo.jsonc — project-scoped Kilo Code configuration for World-Forge.
+//
+// Kilo loads this automatically when the workspace is opened; it takes precedence
+// over the global ~/.config/kilo/kilo.jsonc. It defines one custom agent per
+// pipeline phase, each pinned to its agent_roles/ spec as the system prompt, so the
+// orchestrator (workflows/world-forge.md) can dispatch a clean persona per phase
+// instead of running everything inline from the Code agent.
+//
+// ── Provider assumption ──────────────────────────────────────────────────────
+// Model strings below assume an OpenRouter provider registered in your global Kilo
+// settings (provider id "openrouter"). If you use a different provider, replace the
+// prefix on every "model" value — e.g. direct Anthropic = "anthropic/<model>",
+// Nano-GPT = "nano-gpt/<catalog_id>". API keys are NEVER read from this file; they
+// live in Kilo's global provider settings.
+//
+// ── Model rationale (see wiki/Agentic-Tools-and-Models.md §3.4) ──────────────
+// Drafting/utility seats run DeepSeek 4 Pro. The Editor and the three Auditors run
+// deepseek-reasoner: sycophancy under audit — agreeing with the Architect instead of
+// hunting failures — is where chat-tuned models underperform in this pipeline, and
+// the audit seats are where strictness pays. Upgrade those four to a frontier model
+// (e.g. "openrouter/anthropic/claude-opus-4-7") for the strongest audits.
+//
+// ── Verify after editing ─────────────────────────────────────────────────────
+// Reload VS Code and check the Kilo agent picker: the WorldForge-* agents should
+// appear alongside Code / Plan / Debug. If they are absent, the JSONC is malformed
+// (Kilo silently drops invalid entries) or your build uses different schema keys —
+// see Settings → Agent Behaviour → Agents for the canonical field names, and
+// wiki/Kilo-Code-Setup.md §5.3 for troubleshooting.
+//
+// Temperature note: keep this file schema-minimal. Per-phase temperature (low for
+// the Compiler / Prompt Engineer, hot for the creative seats) is handled via saved
+// API configuration profiles — recommended values in
+// wiki/Agentic-Tools-and-Models.md §3.5, Kilo wiring in wiki/Kilo-Code-Setup.md §5.4.
+// The reasoner-based audit seats below ignore sampling parameters entirely.
+{
+  "agent": {
+    // ── Initial build (Phases 0–5) ──
+    "WorldForge-Interviewer": {
+      "systemPromptFile": "agent_roles/00_The_Interviewer.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    "WorldForge-Refiner": {
+      "systemPromptFile": "agent_roles/01_The_Refiner.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    "WorldForge-Architect": {
+      "systemPromptFile": "agent_roles/02_The_Architect.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    "WorldForge-IntimacyArchitect": {
+      "systemPromptFile": "agent_roles/06_The_Intimacy_Architect.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    // Audit seats — reasoning model on purpose; see header note.
+    "WorldForge-Editor": {
+      "systemPromptFile": "agent_roles/03_The_Editor.md",
+      "model": "openrouter/deepseek/deepseek-reasoner"
+    },
+    "WorldForge-VoiceAuditor": {
+      "systemPromptFile": "agent_roles/03b_The_Voice_Auditor.md",
+      "model": "openrouter/deepseek/deepseek-reasoner"
+    },
+    "WorldForge-ArcAuditor": {
+      "systemPromptFile": "agent_roles/03c_The_Arc_Transition_Auditor.md",
+      "model": "openrouter/deepseek/deepseek-reasoner"
+    },
+    "WorldForge-IntimacyAuditor": {
+      "systemPromptFile": "agent_roles/03d_The_Intimacy_Auditor.md",
+      "model": "openrouter/deepseek/deepseek-reasoner"
+    },
+    "WorldForge-Compiler": {
+      "systemPromptFile": "agent_roles/04_The_Compiler.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    "WorldForge-PromptEngineer": {
+      "systemPromptFile": "agent_roles/05_The_Prompt_Engineer.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    // ── Post-launch entry points ──
+    // The revise minis (agent_roles/revise/*) are dispatched by the Reviser per the
+    // revise workflow and need no standing agent definitions here.
+    "WorldForge-Reviser": {
+      "systemPromptFile": "agent_roles/revise/00_The_Reviser.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    "WorldForge-Converter": {
+      "systemPromptFile": "agent_roles/Converter/00_The_Converter.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    }
+  }
+}
