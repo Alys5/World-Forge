@@ -100,8 +100,13 @@ What you get when you clone:
 World-Forge/
 ├── README.md                     ← This file
 ├── tutorial.md                   ← Extended usage walkthrough
+├── AGENTS.md                     ← Standing instructions for agentic tools (Kilo/Roo/Cline)
 ├── CLAUDE.md                     ← Standing context for AI coding agents working on the repo
 ├── Notes_On_functionality.md     ← Authoritative reference for SillyTavern's runtime behavior
+├── Notes_Quick_Reference.md      ← Compact distillation of the above (agents consult it first)
+├── .kilocodeignore               ← Keeps samples + maintenance docs out of runtime agent context
+├── tools/
+│   └── validate_export.py        ← Read-only validator for Export/ JSON (run after Phase 4)
 ├── agent_roles/                  ← Per-phase agent specifications (one .md per agent)
 ├── templates/                    ← Structural references (World Seed, character card, lorebook, preset)
 ├── workflows/

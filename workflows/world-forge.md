@@ -316,10 +316,10 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 ## PHASE 4: IMPLEMENTATION — THE COMPILER
 
 **Invoke:** `@agent_roles/04_The_Compiler.md`
-**Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_On_functionality.md`
+**Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand)
 **Output:** `Export/` directory
 
-**Read `Notes_On_functionality.md` first** — it is the authoritative ST runtime reference. Where it contradicts templates or this document, it takes precedence.
+**Read `Notes_Quick_Reference.md` first**, then the `Notes_On_functionality.md` schema sections the Compiler spec's Context Manifest names (§5.1b V3 card, §5.2 World Info file, §6 gotchas). `Notes_On_functionality.md` is the authoritative ST runtime reference — where it contradicts the quick reference, templates, or this document, it takes precedence.
 
 **Builds:**
 - Character Card JSON per card (`system_prompt`, `post_history_instructions`, and `data.extensions.depth_prompt` mandatory fields, never empty)
@@ -334,6 +334,8 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
 
+**Post-compile check (read-only):** if a Python runtime is available, run `python tools/validate_export.py Export/` after the last file is written. It verifies UTF-8 integrity (mojibake markers), strict JSON parse, `{{original}}` presence on both card override fields, position enum range, and UID uniqueness — the exact failure modes of the Compiler's pre-save guards, checked deterministically. It never modifies files. Failures mean the source is wrong: fix and re-compile; do not hand-edit Export/ JSON.
+
 In SillyTavern: import `Group_Lorebook.json`, enable World + character groups + character intimacy profile groups permanently, swap arc groups (including arc intimacy register groups) as the story advances. In **User Settings → Persona Management**, create the persona for this world, paste the Persona Description block from `Export/User.md` into the Description field, and link `[ProtagonistName]_Lorebook.json` in the Lorebook field.
 
 ---
@@ -341,10 +343,10 @@ In SillyTavern: import `Group_Lorebook.json`, enable World + character groups + 
 ## PHASE 5: RUNTIME VALIDATION — THE PROMPT ENGINEER
 
 **Invoke:** `@agent_roles/05_The_Prompt_Engineer.md`
-**Input:** All `Export/` files + `Notes_On_functionality.md` + `templates/Chat_Completion_Preset_template.json` + `Drafts/Master_Design.md`
+**Input:** All `Export/` files + `Notes_Quick_Reference.md` + `Notes_On_functionality.md` (§5.2, §5.10, §8 mandatory) + `templates/Chat_Completion_Preset_template.json` + `agent_roles/05a_Block_Library.md` (Workstream B only) + `Drafts/Master_Design.md`
 **Output:** `Export/Prompt_Engineer_Audit.md` + `Export/[WorldName]_ChatPreset.json`
 
-**Read `Notes_On_functionality.md` completely before beginning. Load `templates/Chat_Completion_Preset_template.json` as the structural reference for Workstream B — do not author the preset from scratch.**
+**Read `Notes_Quick_Reference.md` plus `Notes_On_functionality.md` §5.2 / §5.10 / §8 completely before beginning (rest of the file on demand). For Workstream B, load `templates/Chat_Completion_Preset_template.json` as the structural reference and `agent_roles/05a_Block_Library.md` as the block library — do not author the preset from scratch.**
 
 **Workstream A — Audit (read-only against Export/):** Reviews every lorebook entry (including intimacy profiles and registers) for position correctness, injection order, keyword coverage, token budget risk. Reviews every character card for `system_prompt`, `post_history_instructions`, and `depth_prompt`. Produces audit report with **recommended corrections** for any issues found. The Prompt Engineer does NOT modify Export/ JSON files — recommendations are surfaced in Sections 7 and 8 of the audit report as plain-text instructions for the user to apply manually. The audit report's status line distinguishes "COMPLETE — pipeline ready" (no recommendations generated) from "AUDIT COMPLETE — N manual corrections required" (recommendations outstanding).
 
@@ -506,7 +508,7 @@ See the **CONVERT** workflow at `workflows/world-forge-convert.md` for the full 
 
 A shipped world's `Export/[WorldName]_ChatPreset.json` can fall behind in two independent ways: the **pipeline's preset spec** evolves (a reframed core block, a new optional block, a changed template flag), and/or the **world's content** changes through the revision pipeline (a revised or added arc, a new character) in ways that surface inside preset blocks (Deep Think names the arcs, Arc Guardian references them, the multi-character lattice names characters) but that the revise mini-Prompt-Engineer never writes — it only toggles Multi-Character Dynamics, NSFW, and the ACTIVE-SPEAKER RULE. `/worldforge resync-preset` brings the preset current on both, without touching world content.
 
-It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Prompt_Engineer.md` Section 8). The agent re-derives each block's content from the current `templates/Chat_Completion_Preset_template.json` + block library (Section 5a) + the post-revision `Drafts/Master_Design.md`, writes the blocks whose content has drifted (from a spec change, a revision content change, or both) and adds newly-warranted optional blocks, preserves block identifiers + `prompt_order` + revision-applied toggles + the user's field-level customizations, re-runs the Section 5f Pass 1 + Pass 2 self-validation, and writes `Export/Preset_Resync_Report.md` documenting every block changed (with cause), added, or preserved.
+It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Prompt_Engineer.md` Section 8). The agent re-derives each block's content from the current `templates/Chat_Completion_Preset_template.json` + block library (`agent_roles/05a_Block_Library.md`) + the post-revision `Drafts/Master_Design.md`, writes the blocks whose content has drifted (from a spec change, a revision content change, or both) and adds newly-warranted optional blocks, preserves block identifiers + `prompt_order` + revision-applied toggles + the user's field-level customizations, re-runs the Section 5f Pass 1 + Pass 2 self-validation, and writes `Export/Preset_Resync_Report.md` documenting every block changed (with cause), added, or preserved.
 
 **Scope and boundaries:**
 - **Preset only.** Resync regenerates the Chat Completion Preset — the one Export/ file the Prompt Engineer authors. It does NOT re-audit lorebooks or cards and does NOT emit Section 7/8 manual-apply recommendations. World content (lorebooks, cards, drafts) is untouched.

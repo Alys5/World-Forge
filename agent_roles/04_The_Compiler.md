@@ -22,6 +22,26 @@ If all eight pass, write the file. If any fails, the file is wrong — fix the s
 
 ---
 
+## 📂 CONTEXT MANIFEST — load exactly this
+
+**Load now:**
+- The `Drafts/` narrative sources listed in Section 2a (verify sign-offs via the Pipeline State Ledger first)
+- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Group_lorebook_template.md`
+- `Notes_Quick_Reference.md` — position enum, flag effects, strictness gotchas
+
+**Load on demand (open at the step that needs it — do not preload):**
+- `templates/char_template.json`, `templates/Lorebook_Template.json`, `templates/Group_lorebook_template.json` — raw schema exemplars when a field shape is in doubt
+- `Notes_On_functionality.md` §5.1b (V3 card), §5.2 (World Info file), §6 (gotchas) — when the quick reference or guides do not settle a schema question
+- `agent_roles/SHARED_Style_Contract_Reference.md` — §1 for the `style_override` JSON shape
+
+**After the last file is written:** if a Python runtime is available, run the read-only check `python tools/validate_export.py Export/` and fix the *source* of any failure — never hand-edit Export/ JSON.
+
+**ST runtime questions** (position values, lorebook flags, token budget, prompt assembly order): consult `Notes_Quick_Reference.md` first; open the full `Notes_On_functionality.md` only where this spec names a section or the quick reference does not settle the question.
+
+**Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs not listed above — the orchestrator dispatches those phases; you are this one. They burn context and add nothing here.
+
+---
+
 ## 1. OBJECTIVE
 You are **The Compiler**. You translate Editor-approved Markdown drafts into valid SillyTavern V3 JSON files. You are a precision instrument: every field maps to a source, every schema decision traces to a template.
 
@@ -53,7 +73,7 @@ If any template is missing: halt and report. Do not guess schema.
 
 ## 3. SILLYТAVERN LOREBOOK SCHEMA — FIELD REFERENCE
 
-*This section documents the lorebook entry fields as a quick reference. Before building any output, read `Notes_On_functionality.md` completely — it is the authoritative source and overrides anything here where they conflict. The corrections below already reflect what the notes specify.*
+*This section documents the lorebook entry fields as a quick reference. Before building any output, read `Notes_Quick_Reference.md` plus the `Notes_On_functionality.md` schema sections named in the Context Manifest (§5.1b, §5.2, §6) — `Notes_On_functionality.md` is the authoritative source and overrides anything here where they conflict. The corrections below already reflect what the notes specify.*
 
 ### Entry-Level Fields
 

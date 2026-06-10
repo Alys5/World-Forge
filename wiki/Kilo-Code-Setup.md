@@ -108,6 +108,8 @@ You *can* run the entire pipeline from Kilo's default **Code** agent — it will
 
 Custom agents pin a specific system-prompt file per persona, so the persona is reset cleanly when the orchestrator dispatches the next phase. This is the Kilo equivalent of Roo's per-mode pinning.
 
+> **On 128K-class models (DeepSeek 4, GLM 5) this section is not optional.** Per-phase custom agents are **required**: context accumulated across phases will overflow a 128K window by Phase 3, and mid-context recall on these models degrades well before the hard limit. See [§3.4 of the models page](./Agentic-Tools-and-Models.md#34-running-on-128k-class-models-deepseek-glm) for the full small-context discipline (shipped `.kilocodeignore`, per-spec `📂 CONTEXT MANIFEST` blocks, where to spend a frontier seat).
+
 ### 5.1 Where custom agents are defined
 
 Kilo reads agent definitions from a JSONC config:
@@ -200,6 +202,58 @@ Create `./.kilo/kilo.jsonc` with one entry per pipeline phase. Each agent points
 
 The exact double-prefix concatenation Kilo uses for OpenRouter (`openrouter/<catalog_id>` vs `openrouter/anthropic/claude-opus-4-7` as a single token) can differ slightly between Kilo builds. After saving, open the Kilo agent picker — if your `WorldForge-*` agents show "Unknown model" or fall back to Auto Free, the prefix concatenation is wrong; click the model field in the agent panel and copy the literal string Kilo shows for that model when you select it manually, then paste that back into `kilo.jsonc`.
 
+**DeepSeek / GLM budget flavor** — all phases on 128K-class models through OpenRouter, with the strongest affordable model on the audit seats (the one place these models underperform — see the [models page §3.4](./Agentic-Tools-and-Models.md#34-running-on-128k-class-models-deepseek-glm)):
+
+```jsonc
+{
+  "agent": {
+    "WorldForge-Interviewer": {
+      "systemPromptFile": "agent_roles/00_The_Interviewer.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"   // or openrouter/z-ai/glm-5
+    },
+    "WorldForge-Refiner": {
+      "systemPromptFile": "agent_roles/01_The_Refiner.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    "WorldForge-Architect": {
+      "systemPromptFile": "agent_roles/02_The_Architect.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    "WorldForge-IntimacyArchitect": {
+      "systemPromptFile": "agent_roles/06_The_Intimacy_Architect.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    },
+    // Audit seats: sycophancy is the failure mode — spend up here if you can.
+    "WorldForge-Editor": {
+      "systemPromptFile": "agent_roles/03_The_Editor.md",
+      "model": "openrouter/anthropic/claude-opus-4-7"   // or deepseek-reasoner / glm-5 thinking variant on a strict budget
+    },
+    "WorldForge-VoiceAuditor": {
+      "systemPromptFile": "agent_roles/03b_The_Voice_Auditor.md",
+      "model": "openrouter/anthropic/claude-opus-4-7"
+    },
+    "WorldForge-ArcAuditor": {
+      "systemPromptFile": "agent_roles/03c_The_Arc_Transition_Auditor.md",
+      "model": "openrouter/anthropic/claude-opus-4-7"
+    },
+    "WorldForge-IntimacyAuditor": {
+      "systemPromptFile": "agent_roles/03d_The_Intimacy_Auditor.md",
+      "model": "openrouter/anthropic/claude-opus-4-7"
+    },
+    "WorldForge-Compiler": {
+      "systemPromptFile": "agent_roles/04_The_Compiler.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"   // fine here — but run tools/validate_export.py after Phase 4
+    },
+    "WorldForge-PromptEngineer": {
+      "systemPromptFile": "agent_roles/05_The_Prompt_Engineer.md",
+      "model": "openrouter/deepseek/deepseek-chat-v4"
+    }
+  }
+}
+```
+
+DeepSeek's API applies automatic prefix caching, so reloading a large agent spec each phase is cheap by default — the OpenRouter→Anthropic caching caveat from §3.2 does not apply to the DeepSeek-routed agents.
+
 **Mixing providers per agent.** You can route different agents to different providers in the same file — e.g., creative phases on direct Anthropic for cache reliability, the Compiler on OpenRouter's cheaper DeepSeek route — by giving each agent a `"model"` string with its own provider prefix. Both providers must be registered in your global Kilo settings first.
 
 The orchestrator (`workflows/world-forge.md`) will dispatch the right persona at the right time as long as the agent names are discoverable to Kilo's top-level Code agent. If your Kilo build uses a different schema key (e.g., `subagents` instead of `agent`, or `system_prompt` instead of `systemPromptFile`), the docs page **Settings → Agent Behaviour → Agents** in your Kilo install is the authoritative reference — the structure above is the conceptual shape, not a guaranteed schema.
@@ -217,18 +271,11 @@ If they do not appear, the JSONC is likely malformed — Kilo silently ignores i
 
 ## 6. (Optional) Workspace hints for Kilo
 
-Kilo reads two optional files from the workspace root:
+Kilo reads two optional files from the workspace root. **World-Forge now ships both** — you do not need to create them:
 
-- **`AGENTS.md`** — project-level instructions that apply across all agents. World-Forge already ships `CLAUDE.md` which serves the same purpose for Anthropic-aligned tooling. If you want Kilo to honor the same standing context, you can symlink or copy `CLAUDE.md` to `AGENTS.md`, or write a short `AGENTS.md` that points at it:
+- **`AGENTS.md`** — project-level instructions that apply across all agents. The shipped file routes the agent by session type: a pipeline *run* goes to `workflows/world-forge.md` with the runtime read-only rules and context discipline; pipeline *maintenance* goes to `CLAUDE.md`. It deliberately does **not** mirror the full `CLAUDE.md` — that file is maintenance context, and carrying ~10K tokens of it on every runtime request actively hurts smaller-context models.
 
-  ```markdown
-  # Project AGENTS.md
-  See CLAUDE.md for the full project context, architectural principles, and editing protocol. All of it applies here.
-  ```
-
-- **`.kilocodeignore`** — file-access denylist (glob patterns, gitignore-style). World-Forge does not currently require any specific entries. If you maintain a `.gitignore` already, Kilo will not honor it automatically — duplicate any patterns you want Kilo to respect.
-
-Neither file is required to run the pipeline.
+- **`.kilocodeignore`** — file-access denylist (glob patterns, gitignore-style). The shipped file keeps `Samples/` (>1 MB of example output), `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, and `tutorial.md` out of auto-included context. Leave it intact for pipeline runs; if you do pipeline *maintenance* from inside Kilo, temporarily comment out the `CLAUDE.md` / `CHANGELOG.md` lines (the file says so in its header). Kilo does not honor `.gitignore` automatically — duplicate any additional patterns you want respected.
 
 ---
 
@@ -252,7 +299,7 @@ If you trust the pipeline to write files without per-write confirmation prompts,
 
 - **Read** — safe to auto-approve broadly.
 - **Edit / Write** — scope to the workspace folder. World-Forge writes to `Drafts/`, `Export/`, `UNRESOLVED_QUESTIONS.md`, `UNRESOLVED_INTIMACY.md`, and audit-report files. Pipeline files (`agent_roles/`, `templates/`, `workflows/`, `Notes_On_functionality.md`) are read-only at runtime — if Kilo asks to edit one of those, **deny** and surface the request: it indicates an agent went off-script.
-- **Bash / Terminal** — leave off. The pipeline never executes shell commands.
+- **Bash / Terminal** — leave off, with one exception worth allowlisting if your build supports per-command rules: `python tools/validate_export.py` — the read-only Export/ validator the Compiler phase recommends running after Phase 4 (it checks JSON parse, encoding mojibake, `{{original}}` presence, and position enums; it never modifies files). Everything else the pipeline does goes through the file tools.
 
 You can also scope auto-approval per agent in `kilo.jsonc` if your build supports it.
 
@@ -290,9 +337,9 @@ If a future MCP server emerges that genuinely fits the pipeline's shape (for exa
 | Agent ignores `/worldforge start` and asks "what would you like to build?" | Kilo did not read `workflows/world-forge.md` — usually the workspace root is wrong, or the file is excluded by `.kilocodeignore`. | Verify the workspace root contains `workflows/world-forge.md`. Check `.kilocodeignore` for accidental coverage. |
 | Custom `WorldForge-*` agents do not appear in the agent picker | `./.kilo/kilo.jsonc` is malformed (Kilo silently drops invalid entries) **or** the schema keys do not match your Kilo build. | Validate the JSONC. Open **Settings → Agent Behaviour → Agents** to see the canonical field names for your version, and adjust. |
 | Editor and Auditors agree with the Architect on round 1 | The custom agents are pointing at the wrong `systemPromptFile` (a frequent copy-paste mistake), or your Editor model is too small or sycophantic. | Open the agent in Kilo's agent panel and verify the loaded system prompt is the right `agent_roles/*.md` file. Bump the Editor and Auditor models to Opus 4.7 if not already. |
-| Phase 4 JSON output is sparse, missing the `{{original}}` macro from `system_prompt` / `post_history_instructions` | A flash-tier model is being used for the Compiler. | Switch `WorldForge-Compiler` to Sonnet 4.6 or better. The Compiler emits verbatim content; summarization-prone models silently drop macros and break the override architecture. See [§3.2 Not recommended](./Agentic-Tools-and-Models.md#32-recommended-tiers). |
+| Phase 4 JSON output is sparse, missing the `{{original}}` macro from `system_prompt` / `post_history_instructions` | A flash-tier model is being used for the Compiler. | Switch `WorldForge-Compiler` to Sonnet 4.6, DeepSeek 4, or better. The Compiler emits verbatim content; summarization-prone models silently drop macros and break the override architecture. See [§3.2 Not recommended](./Agentic-Tools-and-Models.md#32-recommended-tiers). Run `python tools/validate_export.py Export/` to catch this deterministically — it flags missing `{{original}}` macros, mojibake, and bad positions read-only. |
 | Persona bleed: the Editor sounds like the Architect | The top-level Code agent ran the phases inline instead of dispatching subagents. | Define custom agents per phase (§5 above) and re-run from the affected phase with `/worldforge resume phase[N]`. |
-| Context-window errors in Phase 3+ | The model has < 200K context, or Kilo is auto-including too many workspace files. | Use a 200K+ model. Reduce auto-included files via `.kilocodeignore` for paths that are noise (e.g., `Samples/` if you do not want them in scope). |
+| Context-window errors in Phase 3+ | The model has < 200K context, or Kilo is auto-including too many workspace files. | Verify the shipped `.kilocodeignore` is intact (it already excludes `Samples/`, `wiki/`, and the maintenance docs). On a 128K-class model (DeepSeek, GLM), per-phase custom agents (§5) are mandatory, and each agent must honor its spec's `📂 CONTEXT MANIFEST`. See the [models page §3.4](./Agentic-Tools-and-Models.md#34-running-on-128k-class-models-deepseek-glm). |
 | Costs much higher than expected on OpenRouter; OpenRouter dashboard shows 0% cache hits despite long stable system prompts | Anthropic prompt-cache markers are not round-tripping cleanly through OpenRouter to the upstream. Known ecosystem issue with no Kilo-specific fix as of May 2026. | Verify cache-hit rate on the OpenRouter dashboard after the first 2–3 phases. If it stays at 0%, switch the affected agents from `openrouter/anthropic/...` to direct `anthropic/...` (§3.1) — you keep Kilo and the same models, just lose the OpenRouter wallet abstraction. |
 | `WorldForge-*` agents show "Unknown model" or fall back to Auto Free in the picker | Wrong `provider_id/model_id` concatenation in `kilo.jsonc` (especially for OpenRouter, where the catalog ID is itself provider-prefixed). | Open the agent in Kilo's panel, click the model field, manually select your intended model, and copy the literal string Kilo displays. Paste that exact string into the `"model"` field in `kilo.jsonc`. |
 | Reasoning Effort / Tool Call Style toggles missing on Nano-GPT | Known open Kilo bug ([#4451](https://github.com/Kilo-Org/kilocode/issues/4451)). Not a configuration error on your end. | The pipeline does not require these toggles. If you need them, switch the affected agents to a different provider until the bug is fixed upstream. |

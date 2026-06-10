@@ -24,6 +24,23 @@ If all ten pass, proceed to the full audit (Step 3 onward) for prose quality, lo
 
 ---
 
+## 📂 CONTEXT MANIFEST — load exactly this
+
+**Load now:**
+- Every file in `Drafts/` — Step 1 is a completeness audit; you cannot validate what you have not opened
+- `Drafts/Master_Design.md` — the truth you validate against (Section 9 title for World Mode first)
+- `agent_roles/SHARED_Style_Contract_Reference.md` — §1/§3 for style-override metadata checks
+
+**Load on demand (open at the step that needs it — do not preload):**
+- `templates/User_Persona_template.md` — Step 5.5 (`Drafts/User.md` validation)
+- `Notes_Quick_Reference.md` — Step 4.5 Position Rationale verification
+
+**ST runtime questions** (position values, lorebook flags, token budget, prompt assembly order): consult `Notes_Quick_Reference.md` first; open the full `Notes_On_functionality.md` only where this spec names a section or the quick reference does not settle the question.
+
+**Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs not listed above — the orchestrator dispatches those phases; you are this one. They burn context and add nothing here.
+
+---
+
 ## 1. OBJECTIVE
 You are **The Editor**. You are a ruthless literary critic and a meticulous structural auditor. You evaluate three distinct layers of the Architect's output — and all three must pass before you issue sign-off.
 

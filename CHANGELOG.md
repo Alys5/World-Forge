@@ -13,6 +13,65 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-10 — Agentic-friendliness: context discipline for small-context models
+
+The pipeline was sized against 200K-context frontier models; this change makes it run
+well on 128K-class models (DeepSeek 4, GLM 5) under Kilo Code / Roo Code by controlling
+*what gets loaded per phase* rather than shrinking any spec content. No behavioral rule
+of any agent changed except where reading mandates were scoped (see Changed).
+
+### Added
+- **`AGENTS.md`** — standing instructions for agentic tools (Kilo reads this, not
+  `CLAUDE.md`). Routes sessions by type: pipeline *runs* go to `workflows/world-forge.md`
+  with the runtime read-only rules; pipeline *maintenance* goes to `CLAUDE.md`. Carries
+  the hard invariants compressed to one line each.
+- **`.kilocodeignore`** — shipped denylist keeping `Samples/` (>1 MB), `wiki/`,
+  `CLAUDE.md`, `CHANGELOG.md`, and `tutorial.md` out of auto-included runtime context.
+- **`📂 CONTEXT MANIFEST` blocks** at the top of all eleven main agent specs — an
+  explicit "load now / load on demand / do NOT load" read-set per phase, derived from
+  each spec's INPUT section. Smaller models over-read or under-read without this; the
+  manifests also document each spec's true dependencies. New editing-protocol rule:
+  manifests must stay in sync with INPUT sections.
+- **`Notes_Quick_Reference.md`** — a ~5 KB DERIVED distillation of
+  `Notes_On_functionality.md` (position enum + routing, `{{original}}` override
+  mechanics, prompt assembly order, behavior-bearing lorebook flags, strictness/provider
+  gotchas). Agents consult it first; the full Notes file remains the sole authority and
+  the quick reference must be regenerated when it changes (new cross-file consistency
+  row).
+- **`agent_roles/05a_Block_Library.md`** — the Prompt Engineer's Section 5a block
+  library (~37 KB, half the spec) split into its own file. The audit workstream never
+  needed it; now it loads only for preset authoring and Preset Resync. Section numbering
+  (5a / 5a-detail) preserved so existing cross-references resolve. Parent spec drops
+  from 114 KB to 78 KB.
+- **`tools/validate_export.py`** — a stdlib-only, strictly **read-only** validator for
+  `Export/` JSON: strict UTF-8 decode, mojibake markers (the PowerShell re-encode
+  signature that passes `JSON.parse`), parse validity, `{{original}}` at the top of both
+  card override fields, `depth_prompt` / `style_override` structure, position enum 0–7,
+  UID uniqueness, and preset `prompts`/`prompt_order` resolution. An explicit, documented
+  exception to the repo's no-code rule (approved 2026-06-10); it modifies nothing and
+  exists as a deterministic backstop for the Compiler's pre-save guards.
+- **Wiki: models page §3.4** — running on 128K-class models (DeepSeek, GLM): per-phase
+  agents become mandatory, where to spend a frontier seat (Editor/Auditors — sycophancy
+  under audit is these models' weak spot, not prose), DeepSeek automatic prefix caching,
+  GLM 5 added to the recommended tiers. **Kilo setup page** — DeepSeek/GLM `kilo.jsonc`
+  flavor, shipped `AGENTS.md`/`.kilocodeignore` documentation, validator allowlisting
+  note, updated troubleshooting rows.
+
+### Changed
+- **Prompt Engineer reading mandate scoped.** "Read `Notes_On_functionality.md`
+  completely before any audit" became: quick reference in full + Notes §5.2 / §5.10 / §8
+  completely (the sections runtime judgments rest on), rest on demand. The Compiler's
+  "read Notes first" similarly routes through the quick reference + targeted schema
+  sections. No validation rule weakened — only the reading path to the same facts.
+- **Phase 4 post-compile check** added to the orchestrator: run
+  `python tools/validate_export.py Export/` (read-only) when a Python runtime is
+  available; failures mean fix the source and re-compile, never hand-edit Export/ JSON.
+- `CLAUDE.md` — repository tree, file authority levels, cross-file consistency table
+  (four new/updated rows), editing protocol (manifest-sync rule), and the out-of-scope
+  exceptions updated to match all of the above.
+
+---
+
 ## 2026-06-09 — Convert pipeline (reframe a shipped world into a new build)
 
 A fourth operating mode alongside initial-build / revise / preset-resync,

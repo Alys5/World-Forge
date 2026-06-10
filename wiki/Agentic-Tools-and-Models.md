@@ -105,7 +105,8 @@ The pipeline is unusually demanding of the underlying LLM. Most phases are *lite
 - **Claude Sonnet 4.6** — the best price/quality balance for the bulk of the run. The pipeline was authored against Sonnet-class models and works well end-to-end on it.
 - **GPT-5** — strong literary capability, very long context. Slightly more "instructed" feel than Claude in prose registers; sometimes over-explains.
 - **Gemini 2.5 Pro** — excellent at long-context cross-reference work (useful for the Editor's cross-tier validation). Prose register is acceptable but tends toward neutral; pair with explicit tonal directives.
-- **DeepSeek 4 Pro** — strong literary register and characterization at a materially lower price point than the frontier proprietary models. Solid instruction adherence on long agent specs; a viable alternative for cost-sensitive runs where you still want creative-phase quality. Verify your agentic tool's provider list supports it (Roo Code, Cline, and Kilo Code all do via OpenAI-compatible endpoints or OpenRouter).
+- **DeepSeek 4 Pro** — strong literary register and characterization at a materially lower price point than the frontier proprietary models. Solid instruction adherence on long agent specs; a viable alternative for cost-sensitive runs where you still want creative-phase quality. Verify your agentic tool's provider list supports it (Roo Code, Cline, and Kilo Code all do via OpenAI-compatible endpoints or OpenRouter). Read [§3.4](#34-running-on-128k-class-models-deepseek-glm) before committing a full run to it — context, not quality, is the binding constraint.
+- **GLM 5** — capable literary register and good structured-output discipline at DeepSeek-class pricing; a solid pick for the drafting phases on a budget run. Same 128K-class context caveats as DeepSeek ([§3.4](#34-running-on-128k-class-models-deepseek-glm)). Available via OpenRouter (`z-ai/glm-5`) and OpenAI-compatible endpoints.
 
 **Acceptable for utility phases (Refiner classification, Compiler JSON transformation, Prompt Engineer block assembly):**
 - Claude Haiku 4.5 — cheap and fast, sufficient for structured-output transformations where literary judgment is not required.
@@ -134,6 +135,19 @@ If your agentic tool supports per-mode model configuration (Roo Code and Kilo Co
 Spend the most where the literary judgment is most load-bearing (Architect, Editor, Auditors). Save on structural transformation phases.
 
 **Aggregator routing note.** The model names above are display names. If you route through OpenRouter or Nano-GPT rather than direct provider accounts, the model strings you actually configure are provider-prefixed in the aggregator's catalog format (e.g., `anthropic/claude-opus-4-7`, `deepseek/deepseek-chat-v4`). For Kilo Code specifically, the per-agent `"model"` field in `kilo.jsonc` then doubles the prefix as `openrouter/anthropic/claude-opus-4-7` — see the [Kilo Code setup page §5.2](./Kilo-Code-Setup.md#52-a-minimal-world-forge-agent-set) for the exact form and a known caching caveat on the OpenRouter → Anthropic path.
+
+### 3.4 Running on 128K-class models (DeepSeek, GLM)
+
+DeepSeek 4 and GLM 5 are genuinely viable for this pipeline — but they are **~128K-context models whose mid-context recall degrades well before the window fills**, and the pipeline was originally sized against 200K-context frontier models. A Phase 5 run loads the Prompt Engineer spec + the ST reference material + the Master Design + Export JSON; without context discipline that approaches the whole window before the model writes a word. The repository now ships that discipline — use all of it:
+
+- **Per-phase custom agents are REQUIRED, not recommended** ([Kilo setup §5](./Kilo-Code-Setup.md#5-recommended-define-custom-agents-per-phase)). Running phases inline from one Code agent accumulates context across phases and will overflow by Phase 3. Each phase must start with a clean window holding only its own spec.
+- **Keep the shipped `.kilocodeignore` intact.** It keeps `Samples/` (>1 MB) and maintenance docs out of auto-included context.
+- **Honor the `📂 CONTEXT MANIFEST`** at the top of every agent spec. "Load on demand" means *do not preload*. The manifests exist precisely so a smaller model never carries the full 67 KB `Notes_On_functionality.md` when the 5 KB `Notes_Quick_Reference.md` answers the question.
+- **Spend your strongest model on the Editor and Auditor seats.** The known weak spot of DeepSeek/GLM-class models in this pipeline is not prose — it is *sycophancy under audit*: agreeing with the Architect's framing instead of hunting for failures. If you can afford one frontier seat, make it the Editor (Phase 3); the Auditors (3.5–3.7) are next. Drafting (Architect, Intimacy Architect) and the Interviewer tolerate DeepSeek/GLM well.
+- **The Compiler is fine on DeepSeek/GLM** — they emit verbatim structured output reliably, unlike flash-tier models — but always run the read-only check `python tools/validate_export.py Export/` after Phase 4. It deterministically catches the silent failure modes (dropped `{{original}}` macros, encoding mojibake, out-of-range positions) that no model-side vigilance fully prevents.
+- **Caching is a non-issue on DeepSeek.** DeepSeek's API applies automatic context caching to repeated prefixes, so the per-phase reload of a large agent spec is cheap by default — none of the OpenRouter→Anthropic `cache_control` round-trip anxiety documented in the [Kilo setup §3.2](./Kilo-Code-Setup.md#32-aggregators) applies.
+
+A workable budget assignment, all through OpenRouter: DeepSeek 4 (`deepseek/deepseek-chat-v4`) or GLM 5 (`z-ai/glm-5`) for Phases 0, 1, 2, 2.5, 4, and 5; the strongest model you can afford (frontier if possible, otherwise the larger reasoning variant of the same family) for Phases 3 and 3.5–3.7.
 
 ---
 
