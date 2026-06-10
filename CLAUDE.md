@@ -29,10 +29,15 @@ The pipeline is designed to run inside an agentic VS Code extension (typically R
 World-Forge/
 ├── README.md                         ← Human-facing project description
 ├── tutorial.md                       ← Usage tutorial
+├── AGENTS.md                         ← Standing instructions for agentic tools (Kilo/Roo/Cline); routes run-vs-maintenance sessions
 ├── Notes_On_functionality.md         ← Authoritative reference: how SillyTavern works internally
+├── Notes_Quick_Reference.md          ← DERIVED ~5KB distillation of Notes (position enum, flags, assembly); agents consult it first
 ├── LICENSE
 ├── .gitignore
-├── agent_roles/                      ← Phase-specific agent specifications
+├── .kilocodeignore                   ← Keeps Samples/ + maintenance docs out of runtime agent context
+├── tools/
+│   └── validate_export.py            ← Read-only Export/ JSON validator (explicit exception to the no-code rule; see Out of scope)
+├── agent_roles/                      ← Phase-specific agent specifications (each opens with a 📂 CONTEXT MANIFEST)
 │   ├── 00_The_Interviewer.md
 │   ├── 01_The_Refiner.md
 │   ├── 02_The_Architect.md
@@ -42,6 +47,7 @@ World-Forge/
 │   ├── 03d_The_Intimacy_Auditor.md
 │   ├── 04_The_Compiler.md
 │   ├── 05_The_Prompt_Engineer.md
+│   ├── 05a_Block_Library.md          ← Preset block library (split from 05; loaded only for preset authoring/resync)
 │   ├── 06_The_Intimacy_Architect.md
 │   ├── SHARED_Style_Contract_Reference.md
 │   ├── Converter/                    ← Convert-pipeline agent (reframe a shipped world into a new build)
@@ -80,7 +86,7 @@ World-Forge/
 ```
 
 **File authority levels:**
-- **READ-ONLY for the user's project work** but writable here in the pipeline repo: all `agent_roles/`, `templates/`, `workflows/`, and `Notes_On_functionality.md`. These are the pipeline definition.
+- **READ-ONLY for the user's project work** but writable here in the pipeline repo: all `agent_roles/`, `templates/`, `workflows/`, `tools/`, `Notes_On_functionality.md`, and `Notes_Quick_Reference.md`. These are the pipeline definition.
 - **Generated at runtime** in the user's project folder (NOT in this repo): `Drafts/`, `Export/`, `World_Seed.md`, audit reports. These never appear in this repo unless they are explicit samples in `Samples/`.
 
 ---
@@ -177,7 +183,7 @@ This file is the authoritative reference for SillyTavern's runtime behavior — 
 
 There are three distinct operating modes, not two: the **initial build** (`/worldforge start`, Phases 0–5.5), the **revision pipeline** (`/worldforge revise`, principle #6), and **preset resync** (`/worldforge resync-preset`). Resync exists because a shipped world's `Export/[WorldName]_ChatPreset.json` can fall behind in two independent ways: the pipeline's preset spec evolves (a reframed core block, a new optional block, a changed template flag), and/or the world's content changes through the revise pipeline in ways that surface inside preset blocks (Deep Think names the arcs, the multi-character lattice names characters) but that the revise mini-Prompt-Engineer never writes.
 
-It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Prompt_Engineer.md` Section 8). The agent re-derives each block's content from the current `templates/Chat_Completion_Preset_template.json` + block library + the post-revision `Drafts/Master_Design.md`; writes only the blocks whose content has drifted and adds newly-warranted optional blocks; **preserves** block identifiers, `prompt_order`, revision-applied toggles, and the user's field-level customizations; re-runs the Section 5f Pass 1 + Pass 2 self-validation; and writes `Export/Preset_Resync_Report.md`.
+It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Prompt_Engineer.md` Section 8). The agent re-derives each block's content from the current `templates/Chat_Completion_Preset_template.json` + block library (`agent_roles/05a_Block_Library.md`) + the post-revision `Drafts/Master_Design.md`; writes only the blocks whose content has drifted and adds newly-warranted optional blocks; **preserves** block identifiers, `prompt_order`, revision-applied toggles, and the user's field-level customizations; re-runs the Section 5f Pass 1 + Pass 2 self-validation; and writes `Export/Preset_Resync_Report.md`.
 
 **Load-bearing properties:**
 - **Preset-only write authority.** This is the one place the Prompt Engineer writes to `Export/` (see principle #3). It touches the Chat Completion Preset and nothing else — no lorebook or card JSON.
@@ -233,7 +239,10 @@ These pairs of files must stay in sync. When editing one, check the other.
 | `agent_roles/02_The_Architect.md` (entry templates) | `agent_roles/03_The_Editor.md` (validation rules) — they validate what the Architect produces |
 | `agent_roles/02_The_Architect.md` (card structure) | `templates/Char_Card_creation.md` — both define card field requirements |
 | `agent_roles/02_The_Architect.md` / `agent_roles/03_The_Editor.md` (User.md persona) | `templates/User_Persona_template.md` — both define the `{{user}}` persona-description structure |
-| `agent_roles/05_The_Prompt_Engineer.md` (block library) | `templates/Chat_Completion_Preset_template.json` — agent must produce against template structure |
+| `agent_roles/05a_Block_Library.md` (block library, split from 05) | `agent_roles/05_The_Prompt_Engineer.md` (Sections 5b–5f reference §5a/§5a-detail; Resync Mode re-derives from it) and `templates/Chat_Completion_Preset_template.json` — agent must produce against template structure |
+| `Notes_On_functionality.md` (any correction or content change) | `Notes_Quick_Reference.md` — it is a DERIVED distillation (position enum, flags, assembly order, gotchas); regenerate the affected fact, never let the two disagree |
+| `agent_roles/04_The_Compiler.md` (pre-save guards) | `tools/validate_export.py` — the validator deterministically re-checks the same failure modes (UTF-8/mojibake, parse, `{{original}}`, position enum, UID uniqueness); changing a guard may require updating the script and vice versa |
+| Any agent spec's INPUT section | The same spec's `📂 CONTEXT MANIFEST` block at the top — the manifest is the load-discipline restatement of the inputs; they must list the same files |
 | `agent_roles/05_The_Prompt_Engineer.md` Section 8 (Preset Resync Mode) | `workflows/world-forge.md` PRESET RESYNC section — both define the `/worldforge resync-preset` operation |
 | `Notes_On_functionality.md` (position table) | All agent files referencing positions — they cite this table |
 | Any agent spec (sign-off block) | `workflows/world-forge.md` (phase descriptions) — phase outputs feed handoffs |
@@ -260,7 +269,8 @@ When making changes to pipeline files, follow this order:
 3. **Preserve sign-off blocks.** Each agent ends with a `## ✅ [AGENT] SIGN-OFF` block listing certification items. When adding new validation requirements, add corresponding sign-off items.
 4. **Preserve step numbering.** The Editor uses step numbers like 1, 2, 3, 4, 4a, 4.5, 5, 6, 7. New steps insert with sub-numbering (e.g., 4a) rather than renumbering existing steps.
 5. **For markdown documents, validate code fence balance after editing** (every ``` must have a closing ```).
-6. **Use git aggressively.** Commit before architectural changes. Branch for experiments. The pipeline has gotten complex enough that "what did we decide three weeks ago and why" is a real question; git history is the answer.
+6. **Keep each agent's `📂 CONTEXT MANIFEST` in sync with its INPUT section.** Every main agent spec opens with a manifest telling the runtime agent exactly what to load (small-context models depend on it). If your edit changes what an agent reads — a new input file, a new template, a section moved to another file — update the manifest in the same edit.
+7. **Use git aggressively.** Commit before architectural changes. Branch for experiments. The pipeline has gotten complex enough that "what did we decide three weeks ago and why" is a real question; git history is the answer.
 
 ---
 
@@ -278,7 +288,7 @@ These are mistakes that have been made before and produce subtle bugs:
 - **Forcing a sandbox world through arc machinery.** Don't author `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc triggers for a `World Mode: sandbox` world — Tier 3 is the single Sandbox lorebook (`SANDBOX_STATE` + `WORLD_PULSE`). Conversely, don't apply the sandbox format to an arc world.
 - **Editing `Notes_On_functionality.md` based on memory of how SillyTavern works.** Always verify against the official ST source if changing this file.
 - **Adding a new pipeline phase or agent without updating `workflows/world-forge.md`.** Orchestration is the source of truth for what runs when.
-- **Writing Export JSON through PowerShell (Compiler / mini-Compiler).** Windows PowerShell `Out-File` / `Set-Content` / `>` re-encode to UTF-16 / Windows-1252 and corrupt the em-dashes (—), curly quotes, and accented names that fill lorebook and card content into mojibake (`—` → `â€"`). The mangled file still passes `JSON.parse`, so the "JSON parses" guard never catches it. Write JSON as UTF-8 via the file-write tool directly or a **Python / Node** script, and after writing grep for `â€` / `Ã` (expect zero). See the Compiler's FILE-WRITING & ENCODING guard.
+- **Writing Export JSON through PowerShell (Compiler / mini-Compiler).** Windows PowerShell `Out-File` / `Set-Content` / `>` re-encode to UTF-16 / Windows-1252 and corrupt the em-dashes (—), curly quotes, and accented names that fill lorebook and card content into mojibake (`—` → `â€"`). The mangled file still passes `JSON.parse`, so the "JSON parses" guard never catches it. Write JSON as UTF-8 via the file-write tool directly or a **Python / Node** script, and after writing grep for `â€` / `Ã` (expect zero). See the Compiler's FILE-WRITING & ENCODING guard. `python tools/validate_export.py Export/` checks for exactly this corruption (plus parse, `{{original}}`, and position-enum failures) read-only — run it after every compile.
 
 ---
 
@@ -299,12 +309,12 @@ The project owner (Andrei) has a specific working style that produces good outco
 Do not, without explicit instruction:
 
 - Modify SillyTavern itself (this repo produces inputs for ST, not changes to ST)
-- Add language-specific code (Python, JavaScript, etc.) — the pipeline is pure markdown/JSON
+- Add language-specific code (Python, JavaScript, etc.) — the pipeline is pure markdown/JSON. **One standing exception, explicitly approved 2026-06-10:** `tools/validate_export.py`, a stdlib-only, strictly read-only validator for Export/ JSON (UTF-8/mojibake, parse, `{{original}}`, position enum, UID uniqueness). It is a deterministic backstop for the Compiler's guards, not a replacement for them. Do not extend it into anything that modifies files, and do not add further scripts without the same explicit approval.
 - Add CI/CD, test frameworks, or build configuration — there is nothing to compile or deploy
 - Add dependencies of any kind
 - Refactor file paths or folder structure (every agent references specific paths)
 - Generate world content (worlds are produced by running the pipeline against a user's World Seed; this repo defines the pipeline, not specific worlds — except for `Samples/`)
-- Add automated linting that modifies files (validation logic belongs in agent specs, not as separate tooling)
+- Add automated linting that modifies files (validation logic belongs in agent specs, not as separate tooling; the read-only `tools/validate_export.py` is the one sanctioned exception precisely because it modifies nothing)
 
 ---
 

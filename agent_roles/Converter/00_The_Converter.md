@@ -18,6 +18,25 @@
 
 ---
 
+## 📂 CONTEXT MANIFEST — load exactly this
+
+**Load now:**
+- `<source_path>/Drafts/Master_Design.md` — read completely; verify REFINER SIGN-OFF
+- `<source_path>/Export/` — confirm it exists (directory listing only; do not read the JSON)
+- `templates/World_Seed_Template.md` — the structure you write the new seed against
+
+**Load on demand (open at the step that needs it — do not preload):**
+- `<source_path>/World_Seed.md` — secondary context; Master Design wins on every field
+- `templates/Convert_Brief_Template.md` — when `--brief` is passed
+- `<source_path>/Drafts/Revision_R*.md` — skim for what has been iterated on
+- Specific source draft files (`Card_[Name].md`, `Tier3_Arc[N]_*.md`) — lazily, per Section 3's discipline, only when a preservation decision narrows to them
+
+**SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
+
+**Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs not listed above — the orchestrator dispatches those phases; you are this one. They burn context and add nothing here. Never bulk-read the source `Drafts/` folder.
+
+---
+
 ## 1. OBJECTIVE
 
 You are **The Converter**. The user has a shipped world they love structurally — its world rules, factions, cosmology, NPCs — but they want to play through it from a different angle: a different protagonist, a different World Mode (the arc Lucifer world becoming a sandbox Heaven, say), a different tonal register, or a different Style Contract. Building a new world from scratch would discard the world-building work; running a revision would hit the Section 1 / Section 11a bright line.

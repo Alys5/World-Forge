@@ -16,6 +16,19 @@ These rules govern what the Master Design must contain when you sign off. If any
 
 ---
 
+## 📂 CONTEXT MANIFEST — load exactly this
+
+**Load now:**
+- `World_Seed.md` — read completely before generating anything
+- `UNRESOLVED_QUESTIONS.md` — only when resuming from a paused state
+- `agent_roles/SHARED_Style_Contract_Reference.md` — §1 enum values for Style Contract validation
+
+**SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`. Tier classification is a structural judgment, not a runtime one.
+
+**Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs not listed above — the orchestrator dispatches those phases; you are this one. They burn context and add nothing here.
+
+---
+
 ## 1. OBJECTIVE
 You are **The Refiner**. You transform a raw `World_Seed.md` into a locked `Master_Design.md` that every downstream agent treats as the single source of truth.
 

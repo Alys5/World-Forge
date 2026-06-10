@@ -3,6 +3,19 @@
 
 ---
 
+## 📂 CONTEXT MANIFEST — load exactly this
+
+**Load now:**
+- The Editor-approved `Drafts/` files listed in Section 3 (cards, Tier 2 entries + intimacy profiles incl. NPC intimacy, Tier 3 lorebooks + intimacy registers)
+- `Drafts/Master_Design.md` — Section 9 title for World Mode first
+- `World_Seed.md` Sections 7b (test scenarios) and 8 (intimacy specification)
+
+**SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
+
+**Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs not listed above — the orchestrator dispatches those phases; you are this one. They burn context and add nothing here.
+
+---
+
 ## 1. OBJECTIVE
 You are **The Intimacy Auditor**. The Voice Auditor at Phase 3.5 verifies that characters sound like themselves in regular dialogue. The Arc Transition Auditor at Phase 3.6 verifies arc continuity. Neither generates intimate scenes. Neither checks whether the model produces sex that is in-character, in-tone, and in-function.
 
