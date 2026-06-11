@@ -134,7 +134,7 @@ If your agentic tool supports per-mode model configuration (Roo Code and Kilo Co
 
 Spend the most where the literary judgment is most load-bearing (Architect, Editor, Auditors). Save on structural transformation phases.
 
-**Aggregator routing note.** The model names above are display names. If you route through OpenRouter or Nano-GPT rather than direct provider accounts, the model strings you actually configure are provider-prefixed in the aggregator's catalog format (e.g., `anthropic/claude-opus-4-7`, `deepseek/deepseek-chat-v4`). For Kilo Code specifically, the per-agent `"model"` field in `kilo.jsonc` then doubles the prefix as `openrouter/anthropic/claude-opus-4-7` — see the [Kilo Code setup page §5.2](./Kilo-Code-Setup.md#52-a-minimal-world-forge-agent-set) for the exact form and a known caching caveat on the OpenRouter → Anthropic path.
+**Aggregator routing note.** The model names above are display names. If you route through OpenRouter or Nano-GPT rather than direct provider accounts, the model strings you actually configure are provider-prefixed in the aggregator's catalog format (e.g., `anthropic/claude-opus-4-7`, `deepseek/deepseek-v4-pro`). For Kilo Code specifically, the per-agent `"model"` field in `kilo.jsonc` then doubles the prefix as `openrouter/anthropic/claude-opus-4-7` — see the [Kilo Code setup page §5.2](./Kilo-Code-Setup.md#52-a-minimal-world-forge-agent-set) for the exact form and a known caching caveat on the OpenRouter → Anthropic path.
 
 ### 3.4 Context discipline on DeepSeek and GLM
 
@@ -147,7 +147,7 @@ DeepSeek 4 Pro (1M nominal context) and GLM 5 (200K nominal) are genuinely viabl
 - **The Compiler is fine on DeepSeek/GLM** — they emit verbatim structured output reliably, unlike flash-tier models — but always run the read-only check `python tools/validate_export.py Export/` after Phase 4. It deterministically catches the silent failure modes (dropped `{{original}}` macros, encoding mojibake, out-of-range positions) that no model-side vigilance fully prevents.
 - **Caching is a non-issue on DeepSeek.** DeepSeek's API applies automatic context caching to repeated prefixes, so the per-phase reload of a large agent spec is cheap by default — none of the OpenRouter→Anthropic `cache_control` round-trip anxiety documented in the [Kilo setup §3.2](./Kilo-Code-Setup.md#32-aggregators) applies.
 
-A workable budget assignment, all through OpenRouter: DeepSeek 4 (`deepseek/deepseek-chat-v4`) or GLM 5 (`z-ai/glm-5`) for Phases 0, 1, 2, 2.5, 4, and 5; the strongest model you can afford (frontier if possible, otherwise the larger reasoning variant of the same family) for Phases 3 and 3.5–3.7.
+A workable budget assignment, all through OpenRouter: DeepSeek 4 Pro (`deepseek/deepseek-v4-pro`) or GLM 5 (`z-ai/glm-5`) for Phases 0, 1, 2, 2.5, 4, and 5; the strongest model you can afford (frontier if possible, otherwise the larger reasoning variant of the same family) for Phases 3 and 3.5–3.7.
 
 ### 3.5 Sampling temperature by phase
 
@@ -166,7 +166,7 @@ The pipeline's phases split cleanly into prose seats (where sampling variety is 
 | 5 | Prompt Engineer | 0.2–0.4 | Runtime judgments plus structured JSON authoring. |
 | R0 / C0 | Reviser, Converter | 0.4–0.6 | Classification plus interview — between the Refiner and the Interviewer. |
 
-**Reasoning-model caveat:** reasoner-class endpoints (e.g. `deepseek/deepseek-reasoner`) generally ignore sampling parameters — temperature has no effect. If your audit seats run a reasoner (the shipped `.kilo/kilo.jsonc` default), they need no temperature profile at all; the table's audit rows apply only when those seats run a chat-tuned model.
+**Reasoning-model caveat:** reasoner-class endpoints (e.g. `deepseek/deepseek-r1`) generally ignore sampling parameters — temperature has no effect. If your audit seats run a reasoner (the shipped `.kilo/kilo.jsonc` default), they need no temperature profile at all; the table's audit rows apply only when those seats run a chat-tuned model.
 
 If maintaining four temperature bands is more fiddling than you want, collapse to two: a **creative** profile (~0.8) for Phases 0, 2, 2.5 and the auditors, and a **precise** profile (~0.2) for Phases 1, 3, 4, 5 — the Compiler and Editor are the two seats where getting this wrong costs the most. Kilo Code users: `temperature` is a per-agent field in `kilo.jsonc`, and the shipped World-Forge config already carries these values — see [Kilo setup §5.4](./Kilo-Code-Setup.md#54-per-phase-temperature).
 

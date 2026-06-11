@@ -20,11 +20,10 @@
 // ── Model + temperature rationale ────────────────────────────────────────────
 // Drafting/utility seats run DeepSeek 4 Pro with per-phase temperatures from
 // wiki/Agentic-Tools-and-Models.md §3.5 (creative seats hot, Compiler near zero).
-// The Editor and the three Auditors run deepseek-reasoner: sycophancy under audit
-// is where chat-tuned models underperform in this pipeline. Reasoner endpoints
-// ignore sampling parameters, so those seats set no temperature. Upgrade them to
-// a frontier model (e.g. "openrouter/anthropic/claude-opus-4-7") for the
-// strongest audits.
+// The Editor and the three Auditors now also run DeepSeek 4 Pro with per-phase
+// temperatures configured (Editor at 0.3, Auditors at 0.6) instead of R1.
+// Upgrade them to a frontier reasoning model (e.g. "openrouter/anthropic/claude-opus-4-7")
+// or R1 ("openrouter/deepseek/deepseek-r1") for the strongest audits.
 //
 // ── Verify after editing ─────────────────────────────────────────────────────
 // Reload VS Code and check the agent picker: the WorldForge-* agents should appear.
@@ -37,68 +36,72 @@
     "WorldForge-Interviewer": {
       "description": "Phase 0 — interviews the user through the World Seed Template; creative partner, pushes back on thin material",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.8,
       "prompt": "{file:../agent_roles/00_The_Interviewer.md}"
     },
     "WorldForge-Refiner": {
       "description": "Phase 1 — classifies the World Seed into Tiers 1/2/3 and produces the locked Master Design",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.4,
       "prompt": "{file:../agent_roles/01_The_Refiner.md}"
     },
     "WorldForge-Architect": {
       "description": "Phase 2 — drafts all cards, persona, and Tier 1/2/3 lorebook content from the Master Design",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.8,
       "prompt": "{file:../agent_roles/02_The_Architect.md}"
     },
     "WorldForge-IntimacyArchitect": {
       "description": "Phase 2.5 (conditional) — drafts Tier 2 intimacy profiles and Tier 3 intimacy registers",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.8,
       "prompt": "{file:../agent_roles/06_The_Intimacy_Architect.md}"
     },
-    // Audit seats — reasoning model on purpose; sampling params are ignored by
-    // reasoner endpoints, so no temperature is set. See header note.
+    // Audit seats — run DeepSeek 4 Pro with per-phase temperatures (0.3 for Editor,
+    // 0.6 for Auditors) to maintain audit discipline under a chat-tuned model.
     "WorldForge-Editor": {
       "description": "Phase 3 — validates drafts against the hard-fail rules; read-only on drafts, writes critique reports",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-reasoner",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.3,
       "prompt": "{file:../agent_roles/03_The_Editor.md}"
     },
     "WorldForge-VoiceAuditor": {
       "description": "Phase 3.5 — simulates dialogue and audits behavioral fidelity; read-only on drafts, writes audit reports",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-reasoner",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/03b_The_Voice_Auditor.md}"
     },
     "WorldForge-ArcAuditor": {
       "description": "Phase 3.6 (arc mode only) — audits continuity across arc seams; read-only on drafts, writes audit reports",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-reasoner",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/03c_The_Arc_Transition_Auditor.md}"
     },
     "WorldForge-IntimacyAuditor": {
       "description": "Phase 3.7 (conditional) — audits intimate-scene fidelity and register; read-only on drafts, writes audit reports",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-reasoner",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/03d_The_Intimacy_Auditor.md}"
     },
     "WorldForge-Compiler": {
       "description": "Phase 4 — transcribes approved drafts to SillyTavern JSON verbatim; near-zero temperature on purpose",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.1,
       "prompt": "{file:../agent_roles/04_The_Compiler.md}"
     },
     "WorldForge-PromptEngineer": {
       "description": "Phase 5 — audits Export/ for runtime correctness and authors the Chat Completion Preset",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.3,
       "prompt": "{file:../agent_roles/05_The_Prompt_Engineer.md}"
     },
@@ -108,14 +111,14 @@
     "WorldForge-Reviser": {
       "description": "Phase R0 — classifies a post-launch revision request and routes it through the revise pipeline",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.5,
       "prompt": "{file:../agent_roles/revise/00_The_Reviser.md}"
     },
     "WorldForge-Converter": {
       "description": "Phase C0 — reframes a shipped world into a new World Seed (protagonist / mode / tone changes)",
       "mode": "all",
-      "model": "openrouter/deepseek/deepseek-chat-v4",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.6,
       "prompt": "{file:../agent_roles/Converter/00_The_Converter.md}"
     }

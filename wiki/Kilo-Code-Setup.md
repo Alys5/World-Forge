@@ -53,7 +53,7 @@ Model picks for World-Forge: see [§3.2 of the tools wiki page](./Agentic-Tools-
 
 1. **API Provider** → `OpenRouter`.
 2. Paste your OpenRouter API key.
-3. Kilo auto-fetches the OpenRouter model catalog and presents a searchable dropdown. Model IDs are provider-prefixed in OpenRouter's native format (e.g., `anthropic/claude-opus-4-7`, `openai/gpt-5`, `deepseek/deepseek-chat-v4`).
+3. Kilo auto-fetches the OpenRouter model catalog and presents a searchable dropdown. Model IDs are provider-prefixed in OpenRouter's native format (e.g., `anthropic/claude-opus-4-7`, `openai/gpt-5`, `deepseek/deepseek-v4-pro`).
 4. Under **Provider Routing**, configure sort preference (default / lower price / higher throughput / lower latency), an explicit preferred-provider order, and allow/deny lists if you care about which upstream serves a given request. World-Forge has no specific routing requirement, but if you enable **Zero Data Retention (ZDR)** here, be aware Kilo's docs warn this **disables Anthropic and OpenAI upstreams** — verify your preferred models are still available before relying on this setting.
 5. **Prompt-caching caveat (cost-material for World-Forge).** OpenRouter forwards Anthropic `cache_control` markers to the upstream and uses sticky routing for cache hits. In practice this usually works, but there are open ecosystem reports of cache misses through OpenRouter SDK paths ([OpenRouterTeam/ai-sdk-provider#35](https://github.com/OpenRouterTeam/ai-sdk-provider/issues/35)). Because the pipeline reloads several thousand tokens of agent specs per phase, a broken cache materially affects cost. On your first run, watch the OpenRouter dashboard's cache-hit metrics; if you see 0% cache hits on Anthropic models with long system prompts, route direct to Anthropic instead.
 
@@ -119,14 +119,14 @@ Kilo reads agent definitions from a JSONC config:
 
 Project-scoped wins when both exist, so put the World-Forge agent set in the project file.
 
-> **World-Forge ships a preconfigured `./.kilo/kilo.jsonc`** — all twelve agents (the ten initial-build phases plus the Reviser and Converter entry points), pinned to their `agent_roles/` specs via `{file:...}` prompt references, with DeepSeek 4 Pro on the drafting/utility seats (per-phase temperatures baked in — see §5.4) and `deepseek-reasoner` on the Editor + Auditor seats, all routed through **OpenRouter**. If that matches your provider, it loads with zero steps the moment you open the folder. If you use a different provider or want different models, edit the `"model"` strings — the file's header comment explains the prefix rules, and the sections below remain the reference for alternative flavors. API keys are never read from this file.
+> **World-Forge ships a preconfigured `./.kilo/kilo.jsonc`** — all twelve agents (the ten initial-build phases plus the Reviser and Converter entry points), pinned to their `agent_roles/` specs via `{file:...}` prompt references, with DeepSeek 4 Pro on the drafting/utility seats (per-phase temperatures baked in — see §5.4) and `deepseek-r1` on the Editor + Auditor seats, all routed through **OpenRouter**. If that matches your provider, it loads with zero steps the moment you open the folder. If you use a different provider or want different models, edit the `"model"` strings — the file's header comment explains the prefix rules, and the sections below remain the reference for alternative flavors. API keys are never read from this file.
 
 ### 5.2 A minimal World-Forge agent set
 
 If you are writing your own instead of using the shipped file: create `./.kilo/kilo.jsonc` with one entry per pipeline phase in the `"agent"` section. The schema is documented at [kilo.ai/docs/customize/custom-subagents](https://kilo.ai/docs/customize/custom-subagents); the fields World-Forge uses:
 
 - **`prompt`** — the agent's system prompt. Use the `{file:...}` reference form to pin it to the phase's `agent_roles/` spec instead of inlining 50 KB of markdown. **Paths resolve relative to the config file's directory**, so from `.kilo/kilo.jsonc` the specs are `{file:../agent_roles/...}`.
-- **`model`** — provider-prefixed (`<provider_id>/<model_id>`); bare IDs are rejected. OpenRouter catalog IDs are themselves provider-prefixed, so the full string carries two slashes: `openrouter/deepseek/deepseek-chat-v4`, `openrouter/anthropic/claude-opus-4-7`. This format is confirmed by [Kilo's OpenRouter docs](https://kilo.ai/docs/ai-providers/openrouter).
+- **`model`** — provider-prefixed (`<provider_id>/<model_id>`); bare IDs are rejected. OpenRouter catalog IDs are themselves provider-prefixed, so the full string carries two slashes: `openrouter/deepseek/deepseek-v4-pro`, `openrouter/anthropic/claude-opus-4-7`. This format is confirmed by [Kilo's OpenRouter docs](https://kilo.ai/docs/ai-providers/openrouter).
 - **`mode`** — `"all"` makes an agent both user-selectable in the picker and dispatchable as a subagent via the Task tool; that is what the orchestrator's phase handoffs want.
 - **`temperature`** — per-agent sampling, 0.0–1.0. Apply the [models page §3.5 values](./Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase) directly here; omit it on reasoner-model seats (they ignore sampling parameters).
 - **`description`** — one line; shown in the picker and used by the Task tool to choose dispatch targets.
@@ -171,7 +171,7 @@ If you are writing your own instead of using the shipped file: create `./.kilo/k
 }
 ```
 
-**DeepSeek / GLM budget flavor** — this is what the shipped `./.kilo/kilo.jsonc` contains (OpenRouter throughout; DeepSeek 4 Pro on drafting/utility seats with per-phase temperatures, `deepseek-reasoner` on the Editor + Auditor seats with no temperature, since reasoner endpoints ignore sampling). Open the shipped file rather than copying from here — it is the maintained version. To spend up on the audit seats, swap their `"model"` to `openrouter/anthropic/claude-opus-4-7` and give the Editor `"temperature": 0.3`.
+**DeepSeek / GLM budget flavor** — this is what the shipped `./.kilo/kilo.jsonc` contains (OpenRouter throughout; DeepSeek 4 Pro on drafting/utility seats with per-phase temperatures, `deepseek-r1` on the Editor + Auditor seats with no temperature, since reasoner endpoints ignore sampling). Open the shipped file rather than copying from here — it is the maintained version. To spend up on the audit seats, swap their `"model"` to `openrouter/anthropic/claude-opus-4-7` and give the Editor `"temperature": 0.3`.
 
 DeepSeek's API applies automatic prefix caching, so reloading a large agent spec each phase is cheap by default — the OpenRouter→Anthropic caching caveat from §3.2 does not apply to the DeepSeek-routed agents.
 
@@ -196,7 +196,7 @@ If they do not appear, the JSONC is likely malformed — Kilo silently ignores i
 
 What to know when adjusting:
 
-- **The reasoner seats set no temperature on purpose.** The Editor and the three Auditors run `deepseek-reasoner`, and reasoner endpoints ignore sampling parameters. If you move any of them to a chat-tuned model, add a temperature: ~0.3 for the Editor (consistent validation verdicts), ~0.6 for the three Auditors (they generate sample dialogue before judging it — a flat simulation masks the failure modes they exist to catch).
+- **The reasoner seats set no temperature on purpose.** The Editor and the three Auditors run `deepseek-r1`, and reasoner endpoints ignore sampling parameters. If you move any of them to a chat-tuned model, add a temperature: ~0.3 for the Editor (consistent validation verdicts), ~0.6 for the three Auditors (they generate sample dialogue before judging it — a flat simulation masks the failure modes they exist to catch).
 - **The Compiler's 0.1 is load-bearing.** It transcribes drafts to JSON verbatim; sampling creativity there means paraphrased content and dropped macros.
 - **`top_p` is also available per agent** if you prefer nucleus sampling; set one or the other, not both.
 - Temperature set here applies to the pipeline-running agent. It is unrelated to the `temperature` field inside the Chat Completion Preset the Prompt Engineer authors — that one governs the roleplay model at runtime in SillyTavern.
