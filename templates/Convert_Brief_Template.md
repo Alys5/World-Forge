@@ -13,6 +13,8 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 **When NOT to use the Converter:** if you are changing **setting + protagonist + factions + tone** all at once, you are not converting — you are building a new world that takes inspiration from the source. Use `/worldforge start` against a fresh project folder instead. The Converter will refuse a four-axes-replaced Brief.
 
+**Rebaseline mode:** if you are changing *nothing structural* — same protagonist, same World Mode, same tone — and want to consolidate accumulated revisions into a clean rebuild (optionally adding new mechanics), declare `Operating mode: rebaseline` in Section 1 and invoke with `--rebaseline`. Rebaseline flips this Brief's defaults: Sections 5 and 6 are *kept from the source* instead of authored fresh, and the Section 4e auto-strip reminders invert to carry. See `agent_roles/Converter/00_The_Converter.md` Section 9. The per-section notes below say "*Rebaseline:*" where the rules differ.
+
 ---
 
 ## 1. SOURCE & TARGET **[REQUIRED]**
@@ -25,15 +27,19 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 **Target project path:** [Absolute or workspace-relative path to the new project folder. Should be empty or non-existent; if it contains a `World_Seed.md` already, the Converter will refuse to overwrite without explicit confirmation.]
 
-**Target World Mode:** [`arc` | `sandbox` | `unchanged` — flipping is one of the load-bearing cases the Converter exists for. If flipping, read the SANDBOX MODE section of `workflows/world-forge.md` to understand what that means.]
+**Target World Mode:** [`arc` | `sandbox` | `unchanged` — flipping is one of the load-bearing cases the Converter exists for. If flipping, read the SANDBOX MODE section of `workflows/world-forge.md` to understand what that means. *Rebaseline:* must be `unchanged`.]
+
+**Operating mode:** [`reframe` (default) | `rebaseline` — must match the invocation flag. `rebaseline` requires zero axes replaced in Section 3, protagonist included.]
 
 ---
 
 ## 2. CONVERSION INTENT **[REQUIRED]**
 
-**In one or two sentences, what is this conversion?** [Example: "Same Lucifer world, but I want to play as God instead of a mortal — same factions, same cosmology, but the moral lens flips." Example: "Keep the modern-Stockholm syndicate world, but rebuild it as a sandbox instead of a four-arc narrative — same cast, same setting, no progression." Capture verbatim what you want; the Converter does not paraphrase.]
+**In one or two sentences, what is this conversion?** [Example: "Same Lucifer world, but I want to play as God instead of a mortal — same factions, same cosmology, but the moral lens flips." Example: "Keep the modern-Stockholm syndicate world, but rebuild it as a sandbox instead of a four-arc narrative — same cast, same setting, no progression." Rebaseline example: "Six revisions in, the world has drifted from its seed — consolidate everything into a clean rebuild and add the new corruption-economy mechanic." Capture verbatim what you want; the Converter does not paraphrase.]
 
 > [Your intent statement here.]
+
+**New mechanics (rebaseline only):** [What new mechanics or structural content are you introducing in the rebuild — or write `none — pure consolidation`. New material is authored into the seed marked `<!-- NEW IN REBASELINE -->`; the Converter will surface any couplings to existing arcs, characters, or factions. If the new mechanics are big enough to replace an axis, this is a reframe conversion, not a rebaseline.]
 
 ---
 
@@ -53,6 +59,8 @@ Fill in every section below. Delete instructional text in brackets before submit
 *If you wrote 3 or 4: do not run the Converter. Run `/worldforge start` against the target folder fresh and use the source as creative reference during the Interviewer session.*
 
 *If you wrote 2: this is borderline. The Converter will flag it and ask you to confirm before proceeding.*
+
+*Rebaseline: the count must be 0 — protagonist included. Any replaced axis reclassifies the run as a regular (reframe) conversion; the Converter will announce it and ask.*
 
 ---
 
@@ -108,6 +116,8 @@ Fill in every section below. Delete instructional text in brackets before submit
 - **`Operative belief`** per relationship carries across **only** when it's between two preserved characters AND doesn't reference `{{user}}`. Beliefs about `{{user}}` get stripped (`{{user}}` has changed); beliefs between preserved characters whose dynamic shifted because the protagonist changed get surfaced for your decision during the Converter's interview.
 - **`Trauma trajectory (arc worlds)`** per intimate character is arc-coupled and always stripped. The base `Trauma map` (trigger + response, no trajectory) carries across normally. Sandbox sources never had a trajectory authored, so this rule is a no-op for sandbox preservation.
 
+***Rebaseline:* all four auto-strip rules above invert to carry** — the protagonist and arc spine are unchanged, so Standing Goals, drift trajectories, operative beliefs, and trauma trajectories transfer verbatim from the post-revision Master Design. Relationship-to-`{{user}}` content also carries (same `{{user}}`). The only strip: drift/trauma lines referencing an arc you are dropping or restructuring via new mechanics.
+
 ### 4f. Section 1 — Core Concept & Tone
 
 - **Logline:** [almost always new — the protagonist usually drives the logline. Write the new logline here, or write `new — to be authored in interview` if you'd rather discuss it with the Converter interactively.]
@@ -139,9 +149,11 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 ---
 
-## 5. THE NEW PROTAGONIST (`{{user}}`) **[REQUIRED]**
+## 5. THE NEW PROTAGONIST (`{{user}}`) **[REQUIRED — reframe mode]**
 
-*This section is always new. The Converter will not transfer protagonist content from the source. Even if you are "playing as the source's antagonist" or "playing as a previously-minor character," the protagonist frame must be authored fresh — the Refiner will treat it as Phase 0 Section 3 material.*
+*Rebaseline: skip this section — write `rebaseline — protagonist unchanged, carried from post-revision Master Design` and leave the fields blank. The Converter distills Section 3 from the source.*
+
+*Reframe mode: this section is always new. The Converter will not transfer protagonist content from the source. Even if you are "playing as the source's antagonist" or "playing as a previously-minor character," the protagonist frame must be authored fresh — the Refiner will treat it as Phase 0 Section 3 material.*
 
 *Walk through these with at least one or two sentences each. The Converter will ask follow-up questions in interview mode for any you leave thin; in pure brief mode, thin answers become Refiner gaps in `UNRESOLVED_QUESTIONS.md` downstream.*
 
@@ -163,9 +175,11 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 ---
 
-## 6. TEST SCENARIOS (Section 7b) **[REQUIRED]**
+## 6. TEST SCENARIOS (Section 7b) **[REQUIRED — reframe mode]**
 
-*Always new — even if the source had test scenarios, those were for the source's protagonist. Write three to five specific roleplay scenes you intend to play through in the **new** world.*
+*Rebaseline: the source's scenarios carry by default — write `keep` here, or list replacement scenes if the new mechanics warrant them (the Converter will offer a refresh either way).*
+
+*Reframe mode: always new — even if the source had test scenarios, those were for the source's protagonist. Write three to five specific roleplay scenes you intend to play through in the **new** world.*
 
 1. [Scene 1 — be specific. "Tense first meeting with [preserved NPC] in the new protagonist's role" is more useful than "first meeting."]
 2. [Scene 2]
@@ -193,11 +207,12 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 - [ ] Source path verified to contain a shipped world (Master Design with REFINER SIGN-OFF, Export/ present)
 - [ ] Target path verified to be empty (no World_Seed.md to overwrite)
-- [ ] Overlap floor check filled in honestly (count of replaced axes recorded)
+- [ ] Overlap floor check filled in honestly (count of replaced axes recorded; rebaseline: 0)
 - [ ] Preservation decisions made for every Section 4a–4h row
 - [ ] Major characters: each one's disposition decided (no "TBD" entries)
-- [ ] New protagonist (Section 5) authored with at least one sentence per field
-- [ ] Test scenarios (Section 6) — three to five written
+- [ ] New protagonist (Section 5) authored with at least one sentence per field — *or marked `rebaseline — protagonist unchanged`*
+- [ ] Test scenarios (Section 6) — three to five written, *or `keep` in rebaseline mode*
+- [ ] Rebaseline only: Operating mode declared in Section 1; new mechanics declared in Section 2 (or `none — pure consolidation`); fresh-UID cost understood (running ST chats do not migrate to the rebuild)
 - [ ] Notes for the Converter (Section 7) — filled in or explicitly left blank
 
 **When ready, invoke:**

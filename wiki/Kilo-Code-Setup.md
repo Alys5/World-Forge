@@ -196,7 +196,7 @@ If they do not appear, the JSONC is likely malformed — Kilo silently ignores i
 
 What to know when adjusting:
 
-- **The reasoner seats set no temperature on purpose.** The Editor and the three Auditors run `deepseek-r1`, and reasoner endpoints ignore sampling parameters. If you move any of them to a chat-tuned model, add a temperature: ~0.3 for the Editor (consistent validation verdicts), ~0.6 for the three Auditors (they generate sample dialogue before judging it — a flat simulation masks the failure modes they exist to catch).
+- **Every seat carries a temperature.** The Editor and the three Auditors run chat-tuned DeepSeek 4 Pro, so they need one: 0.3 for the Editor (consistent validation verdicts), 0.6 for the three Auditors (they generate sample dialogue before judging it — a flat simulation masks the failure modes they exist to catch). If you upgrade any seat to a reasoner-class model (e.g. `deepseek-r1`), remove its `temperature` field — reasoner endpoints ignore sampling parameters.
 - **The Compiler's 0.1 is load-bearing.** It transcribes drafts to JSON verbatim; sampling creativity there means paraphrased content and dropped macros.
 - **`top_p` is also available per agent** if you prefer nucleus sampling; set one or the other, not both.
 - Temperature set here applies to the pipeline-running agent. It is unrelated to the `temperature` field inside the Chat Completion Preset the Prompt Engineer authors — that one governs the roleplay model at runtime in SillyTavern.

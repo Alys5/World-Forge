@@ -1,11 +1,13 @@
 ---
-description: A workflow to reframe an existing shipped world into a new build — different protagonist, different World Mode, different Style Contract, different Core Concept. Produces a new World Seed; the standard pipeline runs from Phase 1 onward.
+description: A workflow to reframe an existing shipped world into a new build — different protagonist, different World Mode, different Style Contract, different Core Concept — or, in Rebaseline mode, to consolidate a revised world into a clean rebuild of itself. Produces a new World Seed; the standard pipeline runs from Phase 1 onward.
 ---
 
 # THE WORLD FORGE CONVERSION PIPELINE
 *Orchestrator (convert fork) — Reframing Shipped Worlds Into New Builds*
 
 **When to use:** an existing shipped world (Phases 0–5.5 complete, Export/ ready, in play or post-launch) has structural content — world rules, factions, cosmology, NPCs — worth reusing under a new protagonist, a new World Mode, a new tonal register, or a new Style Contract. The Converter reads the source's `Master_Design.md`, captures the user's keep/modify/regenerate decisions, and authors a new `World_Seed.md` in a fresh target project folder. The regular pipeline (`/worldforge skip phase0`) then builds the new world end-to-end.
+
+**Also use for consolidation:** a world that has accumulated enough revisions (R1…R[N]) that rebuilding clean beats another surgical edit — especially when new mechanics are coming. That is **Rebaseline mode** (`--rebaseline`, see REBASELINE MODE below): same world, same protagonist, rebuilt fresh from its post-revision state.
 
 **When NOT to use:**
 - **Pure reskin** — if the user is replacing setting + protagonist + factions + tone all at once, the Converter refuses (see Phase C1 overlap floor below). That's a new world inspired by the source; run `/worldforge start` fresh and use the source as creative reference.
@@ -85,6 +87,7 @@ Today the revise pipeline tells users to run a full rebuild for any of these. Th
 | **Interview** | `/worldforge convert <source> <target>` | First-time conversion, complex preservation decisions, user wants creative-partner pushback |
 | **Brief-driven** | `/worldforge convert <source> <target> --brief <path>` | User has written a Convert Brief; Converter validates + asks clarifying questions only |
 | **Brief + interview** | (automatic; same as brief-driven when the Brief has gaps) | The brief-driven path automatically interviews on missing or ambiguous fields |
+| **Rebaseline** | `/worldforge convert <source> <target> --rebaseline` (combines with `--brief`) | Same world, same protagonist — consolidate accumulated revisions into a clean rebuild, optionally folding in new mechanics. See REBASELINE MODE below |
 
 The Brief is recommended for non-trivial conversions because it is version-controllable and reviewable. The Converter spec (`agent_roles/Converter/00_The_Converter.md` Section 2) explains both modes in detail.
 
@@ -130,6 +133,22 @@ All reassignments are confirmed with the user before the seed is written. The Co
 
 ---
 
+## REBASELINE MODE (consolidating a revised world into a clean rebuild)
+
+`/worldforge convert <source> <target> --rebaseline` is the **zero-axes-replaced conversion, formalized**: same protagonist, same World Mode, same tone, same factions. It exists for the world whose accumulated revisions (R1…R[N]) have layered `Master_Design.md` and `Drafts/` with revision markers and left `World_Seed.md` N revisions stale — and whose next change is structural enough (new mechanics, say) that another surgical revision feels wrong. The full mode spec is `agent_roles/Converter/00_The_Converter.md` Section 9; the load-bearing deltas from a regular (reframe) conversion:
+
+- **The always-regenerate rules invert.** Every "regenerate (always)" disposition derives from the protagonist or arc spine changing; in rebaseline neither changes, so Section 3 (protagonist), Section 5 (arcs / Sandbox Charter), Section 7b (test scenarios), per-arc/standing intimate functions, per-card style overrides, and relationship-to-`{{user}}` content all **keep** — distilled from the *post-revision* Master Design. The four Section 4 strip rules (Standing Goal / drift / belief / trauma trajectory) invert to carry.
+- **Zero-axes gate instead of the overlap floor.** Replacing any axis reclassifies the run as a regular conversion (announced, not refused). A rebaseline with no applied revisions and no new mechanics is flagged as a no-op copy and proceeds only on explicit confirmation.
+- **Revision reports become required reading.** `Drafts/Revision_R*.md` + `Export/REVISED_FILES.md` are read in full; the revision high-water mark is recorded in the Conversion Manifest; and an integrity check verifies every reported revision is visible in the current Master Design (halt and flag if not — a drifted source would silently lose a revision).
+- **Distill, don't dump.** Master Design content is design-grade; the seed gets seed-grade distillations and the downstream pipeline re-derives the rest. No entry-level (`CHARACTER_STATE`/`NPC_SHIFT`) content in the seed.
+- **Clean means marker-free.** Revision *content* carries; `<!-- REVISED IN R[N] -->` markers do not. Provenance lives in `<!-- REBASELINED FROM ... -->` comments and the manifest. The new project's revision counter restarts at R1.
+- **New mechanics enter at seed level**, marked `<!-- NEW IN REBASELINE -->`, with couplings surfaced under the no-silent-expansion rule.
+- **The honest cost: chat states.** The rebuild compiles fresh UIDs — running SillyTavern chats against the source do **not** migrate. Revise preserves UIDs precisely to avoid this; rebaseline trades it for cleanliness. The Converter states this at hand-off and records the acknowledgment in the manifest. The source package stays playable as-is.
+
+**Choosing between revise and rebaseline:** if the change is surgical and you want running chats to survive, revise. If the world needs consolidation, the seed is badly stale, or the next change is structural — rebaseline, and accept the fresh start. Flipping protagonist / World Mode / tone on the way out is regular convert, not rebaseline.
+
+---
+
 ## HAND-OFF TO THE STANDARD PIPELINE
 
 After the Converter writes the seed and outputs its sign-off message, the user runs:
@@ -160,6 +179,9 @@ From Phase 2 onward, the conversion is invisible to the rest of the pipeline. Th
 | **C0 Brief Validation** | `--brief` mode and the brief's preservation decisions don't match the source (e.g., names a faction that doesn't exist) | Converter halts and flags the discrepancy. User edits the brief and re-invokes. |
 | **C0 Role Reassignment Confirm** | Before writing the seed | Converter echoes role reassignments; user confirms `y/edit/cancel`. |
 | **C0 Target Overwrite** | `<target_path>/World_Seed.md` already exists | Converter halts and asks for explicit confirmation. Never overwrites silently. |
+| **C0 Rebaseline Reclassify** | `--rebaseline` and any axis classifies as Replaced | Converter announces the reclassification to a regular (reframe) conversion; user confirms reframe or narrows back to rebaseline. |
+| **C0 Rebaseline No-Op** | `--rebaseline`, source has no applied revisions, and no new mechanics named | Converter flags the no-op copy; proceeds only on explicit confirmation. |
+| **C0 Rebaseline Source Integrity** | A `Revision_R*.md` report records a change not visible in the current Master Design | Converter halts and flags; user reconciles the source (usually re-running that revision's R1 merge) and re-invokes. |
 
 After Phase C0 completes, all subsequent pause gates are the standard pipeline's (Phase 1 blocker → `UNRESOLVED_QUESTIONS.md`, etc.).
 
@@ -198,6 +220,7 @@ After the user runs `/worldforge skip phase0` against the target, the standard p
 |---|---|
 | `/worldforge convert <source> <target>` | Begin from C0 in interview mode |
 | `/worldforge convert <source> <target> --brief <path>` | Begin from C0 in brief-driven mode (the Convert Brief is validated against the source; the Converter interviews on gaps and ambiguities) |
+| `/worldforge convert <source> <target> --rebaseline` | Begin from C0 in **Rebaseline mode** — same world, same protagonist; consolidate accumulated revisions into a clean rebuild. Combines with `--brief` (the Brief must declare `Operating mode: rebaseline`) |
 
 After Converter completes, switch to the standard pipeline's commands against the target folder (`/worldforge skip phase0`, `/worldforge resume phase1`, etc.).
 
@@ -213,5 +236,6 @@ After Converter completes, switch to the standard pipeline's commands against th
 | `/worldforge revise` | Surgical edit to a shipped world | shipped project | modified files in same project | partial — mini-pipeline runs |
 | `/worldforge resync-preset` | Refresh a shipped world's Chat Completion Preset | shipped project | one updated JSON in same project | preset only |
 | `/worldforge convert <source> <target>` | **Reframe a shipped world into a new build** | **shipped project (read-only)** | **new World_Seed.md in target project** | **upstream — produces seed, then hands off to `skip phase0`** |
+| `/worldforge convert <source> <target> --rebaseline` | **Consolidate a revised world into a clean rebuild** (same protagonist; revisions carried, markers dropped; fresh UIDs — running chats do not migrate) | **shipped project (read-only)** | **new World_Seed.md in target project** | **upstream — produces seed, then hands off to `skip phase0`** |
 
 The Converter is positioned **upstream** of the standard pipeline. It does not replace any phase; it produces the input to Phase 1.

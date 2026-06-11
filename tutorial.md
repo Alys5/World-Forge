@@ -94,6 +94,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 | `/worldforge revise` | Post-launch surgical edits to a shipped world (UID-preserving, scope-locked) |
 | `/worldforge resync-preset` | Post-launch: refresh a shipped world's Chat Completion Preset against the current template + block library |
 | `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build — different protagonist, World Mode, Style Contract, or Core Concept (see Section 8) |
+| `/worldforge convert <source> <target> --rebaseline` | Post-launch: consolidate a revised world into a clean rebuild — same protagonist, revisions carried, markers dropped (see Section 8) |
 
 > The Lucifer case study below is an **arc world** — it progresses through four arcs. If you are building an open-ended, NPC-populated world with no narrative arc (a power-fantasy, world-director, or life-sim world), read this case study first to learn the pipeline, then see **Section 7 — Sandbox worlds** for what changes.
 
@@ -438,7 +439,7 @@ The Brief is recommended for non-trivial conversions because it is version-contr
 
 ### The overlap floor refusal
 
-Convert is **Reframe-only**. If you are replacing setting + protagonist + factions + tone all at once, the Converter refuses with an explicit bounce to `/worldforge start`. At that scale, the source is creative reference, not a structural source — pretending otherwise produces a Frankenstein seed that the downstream pipeline cannot build cleanly. The Converter classifies your intent against four axes (setting, protagonist, factions, tone), counts how many are being replaced, and:
+Convert is **reframe or rebaseline, never reskin**. If you are replacing setting + protagonist + factions + tone all at once, the Converter refuses with an explicit bounce to `/worldforge start`. At that scale, the source is creative reference, not a structural source — pretending otherwise produces a Frankenstein seed that the downstream pipeline cannot build cleanly. The Converter classifies your intent against four axes (setting, protagonist, factions, tone), counts how many are being replaced, and:
 
 - **0 or 1 replaced** — well-shaped conversion; proceed
 - **2 replaced** — borderline ("half a new world"); surface to you, proceed on explicit confirm
@@ -474,6 +475,18 @@ After Step 6 (write the seed) and Step 7 (sign-off), the Converter outputs the h
 - **Always regenerated:** Section 3 (new `{{user}}`), Section 5 (arcs or Sandbox Charter — protagonist-shaped), Section 7b (test scenarios), per-arc / standing intimate functions.
 
 The Converter's job is to **surface every transition explicitly** in the Conversion Manifest at the top of the new seed and in HTML-comment markers throughout. The downstream pipeline treats the seed as a normal Phase 0 output and builds against it.
+
+### Rebaseline: consolidating a revised world (`--rebaseline`)
+
+There is one conversion where *nothing* is replaced: your world has been through enough revisions (R1…R6, say) that the Master Design and drafts are layered with `<!-- REVISED IN R[N] -->` markers, the original `World_Seed.md` is six revisions stale, and the next thing you want to add is structural enough that another surgical revision feels wrong. That is **Rebaseline mode**:
+
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline
+```
+
+Same world, same protagonist. The Converter reads the *post-revision* `Master_Design.md` plus every `Revision_R*.md` report, and writes a seed where everything — including Section 3 (protagonist), Section 5 (arcs), and the test scenarios that a regular conversion always regenerates — carries forward, distilled to seed grade. Revision *content* carries; revision *markers* don't. New mechanics you're introducing go in at seed level, marked `<!-- NEW IN REBASELINE -->`. Then `/worldforge skip phase0` rebuilds the world clean, and the new project's revision counter starts over at R1.
+
+**The one real cost:** the rebuild compiles fresh UIDs, so running SillyTavern chats against the old package don't migrate — the old Export/ stays playable as-is, but the rebuilt world is a fresh import with fresh chat state. If you want running chats to survive, stay with `/worldforge revise`. Full mode spec: `agent_roles/Converter/00_The_Converter.md` Section 9.
 
 ---
 
