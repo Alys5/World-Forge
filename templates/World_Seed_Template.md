@@ -415,6 +415,8 @@ Trigger keywords: [name variants, role descriptors, ways they'd be referenced in
 
 **Standing Goal:** [The active objective this NPC is pursuing in the world right now — concrete, not a vague want — plus what they *do* to advance it, on-screen and off-screen, when {{user}} isn't the focus. This is what keeps them acting on their own instead of waiting to be addressed; the pipeline's activity-cadence directive acts on it. e.g., "Maneuvering to take the harbor contract; leans on anyone in {{user}}'s orbit, plants rumors, calls in old debts."]
 
+**Escalation Ladder (optional — only when the Standing Goal is subplot-shaped):** [2–4 ordered stages that turn the goal into a subplot the model *executes* rather than invents. Per stage: what the NPC does on-screen, what off-screen evidence surfaces, and an in-fiction observable advance condition — an event, a {{user}} action or inaction, a world reaction. Never "after N turns" (the model can't count turns) and never "when dramatically appropriate" (invites rushing). End with a stated **endpoint** (the ladder resolves — it's a subplot, not a treadmill) and a one-line **collision** (where it intersects {{user}} or the main story; a subplot that never touches the protagonist is set dressing). Most NPCs don't need one — a flat Standing Goal is the default; more than ~3 laddered NPCs per world dilutes them all.]
+
 [Speech pattern: how do they talk? Sentence structure, vocabulary, verbal tics, what they never say directly. Give the AI enough to write them distinctly from every other NPC.]
 
 **Arc progression:** *(arc mode only — omit in sandbox worlds)*
@@ -764,6 +766,7 @@ N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 - [ ] Every character has a state entry per arc
 - [ ] Load-bearing relationships note how they drift across arcs (with the causing beat) and any operative belief; arc blocks carry a "Relationship shifts this arc" line where a bond moves (or "stable" / sandbox standing stance)
 - [ ] Every NPC has a profile — principals as full profiles, roster NPCs as compact stat blocks (large casts); roster voice fingerprints are unique; principal NPCs have a Standing Goal (active objective + how they pursue it)
+- [ ] Escalation Ladders (where used): 2–4 ordered stages, each with an in-fiction observable advance condition; a stated endpoint; a stated {{user}}/main-story collision; no more than ~3 laddered NPCs in the world
 - [ ] LLM behavioral instructions written for each card (with arc-range qualifiers)
 - [ ] For characters with intimate scene presence: substrate (trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits) and arc-specific evolution filled out
 
