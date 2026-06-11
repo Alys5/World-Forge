@@ -52,13 +52,32 @@ protagonist and arc spine (losing them too). Rebaseline closes the gap.
     so running SillyTavern chats do not migrate (revise preserves UIDs precisely
     to avoid this; rebaseline trades it for cleanliness). The Converter prints
     this at hand-off and records the acknowledgment in the manifest.
+- **`--then-interview` hand-off + the Interviewer's seed-revision posture.**
+  `/worldforge convert <source> <target> --rebaseline --then-interview` chains
+  the consolidation directly into **Phase 0** for when the rebaseline is a
+  staging step for major changes: instead of `skip phase0`, the C0 hand-off
+  dispatches the Interviewer in the new **seed-revision posture**
+  (`agent_roles/00_The_Interviewer.md` Section 9) — read the complete
+  consolidated seed + Conversion Manifest, play the world back, interview *only
+  the user's changes* at full Phase 0 depth, re-elicit the cascade on coupled
+  fields (changed arcs drag drift / trauma-trajectory / intimate-function lines;
+  a changed protagonist drags relationship-to-`{{user}}` content, with an honest
+  pointer that reframe conversion automates those strips), mark changed sections
+  `<!-- CHANGED IN SEED-REVISION INTERVIEW -->`, append a dated note to the
+  Conversion Manifest, sign off, and hand to Phase 1. The flag requires
+  `--rebaseline`; in reframe mode the C0 interview already does this work. The
+  posture is also dispatchable standalone against any complete pre-build seed.
 
 ### Changed
 - **`agent_roles/Converter/00_The_Converter.md`** — header + rule 8 carve-out,
-  `--rebaseline` invocation, Step 2 / Step 3 / matrix touch-points, manifest
-  fields (`Operating mode`, revision high-water mark, rebaseline manifest
-  variant), sign-off gains a rebaseline checklist + Operating Mode block, context
-  manifest notes the rebaseline-required reads.
+  `--rebaseline` / `--then-interview` invocations, Step 2 / Step 3 / matrix
+  touch-points, manifest fields (`Operating mode`, revision high-water mark,
+  rebaseline manifest variant), Section 9 Step H hand-off variant, sign-off
+  gains a rebaseline checklist + Operating Mode block, context manifest notes
+  the rebaseline-required reads.
+- **`agent_roles/00_The_Interviewer.md`** — new Section 9 (seed-revision
+  posture); context manifest now loads the existing `World_Seed.md` in that
+  posture as well as on resume.
 - **`templates/Convert_Brief_Template.md`** — Section 1 gains `Operating mode:
   reframe | rebaseline`; Section 2 gains the new-mechanics field; per-section
   *Rebaseline:* notes mirror the Section 9 inversions (Sections 5/6 become

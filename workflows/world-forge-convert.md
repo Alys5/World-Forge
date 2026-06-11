@@ -88,6 +88,7 @@ Today the revise pipeline tells users to run a full rebuild for any of these. Th
 | **Brief-driven** | `/worldforge convert <source> <target> --brief <path>` | User has written a Convert Brief; Converter validates + asks clarifying questions only |
 | **Brief + interview** | (automatic; same as brief-driven when the Brief has gaps) | The brief-driven path automatically interviews on missing or ambiguous fields |
 | **Rebaseline** | `/worldforge convert <source> <target> --rebaseline` (combines with `--brief`) | Same world, same protagonist — consolidate accumulated revisions into a clean rebuild, optionally folding in new mechanics. See REBASELINE MODE below |
+| **Rebaseline + interview** | `/worldforge convert <source> <target> --rebaseline --then-interview` | Consolidate first, then go straight into the Interviewer (seed-revision posture) to make major changes against the clean seed before Phase 1. Requires `--rebaseline` |
 
 The Brief is recommended for non-trivial conversions because it is version-controllable and reviewable. The Converter spec (`agent_roles/Converter/00_The_Converter.md` Section 2) explains both modes in detail.
 
@@ -145,7 +146,9 @@ All reassignments are confirmed with the user before the seed is written. The Co
 - **New mechanics enter at seed level**, marked `<!-- NEW IN REBASELINE -->`, with couplings surfaced under the no-silent-expansion rule.
 - **The honest cost: chat states.** The rebuild compiles fresh UIDs — running SillyTavern chats against the source do **not** migrate. Revise preserves UIDs precisely to avoid this; rebaseline trades it for cleanliness. The Converter states this at hand-off and records the acknowledgment in the manifest. The source package stays playable as-is.
 
-**Choosing between revise and rebaseline:** if the change is surgical and you want running chats to survive, revise. If the world needs consolidation, the seed is badly stale, or the next change is structural — rebaseline, and accept the fresh start. Flipping protagonist / World Mode / tone on the way out is regular convert, not rebaseline.
+- **`--then-interview` chains consolidation into redesign.** With the flag, the C0 hand-off dispatches **Phase 0 — the Interviewer in seed-revision posture** (`agent_roles/00_The_Interviewer.md` Section 9) against the consolidated seed instead of `skip phase0`. The Interviewer plays the world back, interviews only the user's changes at full Phase 0 depth (cascading through coupled fields — changed arcs drag drift/trauma/intimacy lines, a changed protagonist drags relationship-to-`{{user}}` content), marks changed sections `<!-- CHANGED IN SEED-REVISION INTERVIEW -->`, appends a dated note to the Conversion Manifest, signs off, and hands to Phase 1. Use it when the rebaseline is a staging step for something bigger. Without the flag, you can still get the same flow later by dispatching the Interviewer in seed-revision posture against the target before running `skip phase0`. The flag requires `--rebaseline` — in reframe mode the C0 interview already authors the new material.
+
+**Choosing between revise and rebaseline:** if the change is surgical and you want running chats to survive, revise. If the world needs consolidation, the seed is badly stale, or the next change is structural — rebaseline, and accept the fresh start. If you know changes are coming right after the consolidation, add `--then-interview`. Flipping protagonist / World Mode / tone on the way out is regular convert, not rebaseline.
 
 ---
 
@@ -157,7 +160,7 @@ After the Converter writes the seed and outputs its sign-off message, the user r
 /worldforge skip phase0
 ```
 
-…against the target project folder. From the standard pipeline's perspective (`workflows/world-forge.md`), this is the normal `skip phase0` flow — the user wrote a `World_Seed.md` and wants Phase 1 to pick it up. The Refiner reads the Conversion Manifest at the top and routes accordingly:
+…against the target project folder. (Exception: a `--rebaseline --then-interview` run inserts Phase 0 first — the Interviewer in seed-revision posture captures the user's post-consolidation changes, signs off, and *then* the flow below proceeds from Phase 1 unchanged.) From the standard pipeline's perspective (`workflows/world-forge.md`), this is the normal `skip phase0` flow — the user wrote a `World_Seed.md` and wants Phase 1 to pick it up. The Refiner reads the Conversion Manifest at the top and routes accordingly:
 
 - **Preserved sections** (marked with `<!-- CONVERTED FROM ... -->` comments): the Refiner treats these as confirmed Phase 0 content. No gap surfaced.
 - **Reauthored content markers** (relationship-to-`{{user}}`, role-shift Tier 2 blocks): the Refiner notes them. The Architect handles the reauthoring at Phase 2.
@@ -221,6 +224,7 @@ After the user runs `/worldforge skip phase0` against the target, the standard p
 | `/worldforge convert <source> <target>` | Begin from C0 in interview mode |
 | `/worldforge convert <source> <target> --brief <path>` | Begin from C0 in brief-driven mode (the Convert Brief is validated against the source; the Converter interviews on gaps and ambiguities) |
 | `/worldforge convert <source> <target> --rebaseline` | Begin from C0 in **Rebaseline mode** — same world, same protagonist; consolidate accumulated revisions into a clean rebuild. Combines with `--brief` (the Brief must declare `Operating mode: rebaseline`) |
+| `/worldforge convert <source> <target> --rebaseline --then-interview` | Rebaseline, then hand off into **Phase 0 (Interviewer, seed-revision posture)** to make major changes against the consolidated seed before Phase 1. Requires `--rebaseline` |
 
 After Converter completes, switch to the standard pipeline's commands against the target folder (`/worldforge skip phase0`, `/worldforge resume phase1`, etc.).
 

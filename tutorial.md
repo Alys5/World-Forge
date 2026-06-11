@@ -95,6 +95,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 | `/worldforge resync-preset` | Post-launch: refresh a shipped world's Chat Completion Preset against the current template + block library |
 | `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build — different protagonist, World Mode, Style Contract, or Core Concept (see Section 8) |
 | `/worldforge convert <source> <target> --rebaseline` | Post-launch: consolidate a revised world into a clean rebuild — same protagonist, revisions carried, markers dropped (see Section 8) |
+| `/worldforge convert <source> <target> --rebaseline --then-interview` | Same, then go directly into the Interviewer to make major changes against the clean seed before the rebuild (see Section 8) |
 
 > The Lucifer case study below is an **arc world** — it progresses through four arcs. If you are building an open-ended, NPC-populated world with no narrative arc (a power-fantasy, world-director, or life-sim world), read this case study first to learn the pipeline, then see **Section 7 — Sandbox worlds** for what changes.
 
@@ -487,6 +488,14 @@ There is one conversion where *nothing* is replaced: your world has been through
 Same world, same protagonist. The Converter reads the *post-revision* `Master_Design.md` plus every `Revision_R*.md` report, and writes a seed where everything — including Section 3 (protagonist), Section 5 (arcs), and the test scenarios that a regular conversion always regenerates — carries forward, distilled to seed grade. Revision *content* carries; revision *markers* don't. New mechanics you're introducing go in at seed level, marked `<!-- NEW IN REBASELINE -->`. Then `/worldforge skip phase0` rebuilds the world clean, and the new project's revision counter starts over at R1.
 
 **The one real cost:** the rebuild compiles fresh UIDs, so running SillyTavern chats against the old package don't migrate — the old Export/ stays playable as-is, but the rebuilt world is a fresh import with fresh chat state. If you want running chats to survive, stay with `/worldforge revise`. Full mode spec: `agent_roles/Converter/00_The_Converter.md` Section 9.
+
+**If the rebaseline is a staging step** — you're consolidating *because* something bigger is coming — add `--then-interview`:
+
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-interview
+```
+
+After writing the consolidated seed, the Converter hands off into the **Interviewer in seed-revision posture** instead of `skip phase0`: it plays the world back to you, asks what you want to change, and interviews just those changes at full Phase 0 depth — including the cascade (rework an arc and it will re-elicit that arc's relationship drift, trauma trajectory, and intimate function lines). Changed sections get marked, the Interviewer signs off below the Converter, and the standard pipeline proceeds from Phase 1.
 
 ---
 

@@ -474,6 +474,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge convert <source> <target>` | Reframe a shipped world into a new build (different protagonist, different World Mode, different Style Contract, different Core Concept). Produces a new `World_Seed.md` in `<target>`, then hands off to `/worldforge skip phase0`. See `workflows/world-forge-convert.md`. Read-only on `<source>`. |
 | `/worldforge convert <source> <target> --brief <path>` | Same as above, but driven by a pre-authored Convert Brief (`templates/Convert_Brief_Template.md`). Converter validates the brief against the source and interviews only on gaps. |
 | `/worldforge convert <source> <target> --rebaseline` | **Rebaseline mode** — same world, same protagonist: consolidate a world's accumulated revisions into a clean rebuild, optionally folding in new mechanics. Inverts the Converter's always-regenerate rules (Section 3/5/7b carry from the post-revision Master Design). Fresh UIDs — running chats do not migrate. Combines with `--brief`. See `agent_roles/Converter/00_The_Converter.md` Section 9. |
+| `/worldforge convert <source> <target> --rebaseline --then-interview` | Rebaseline, then go directly into **Phase 0 (the Interviewer, seed-revision posture** — `agent_roles/00_The_Interviewer.md` Section 9**)** to make major changes against the consolidated seed before Phase 1 runs. Requires `--rebaseline`. |
 
 ---
 
