@@ -16,6 +16,11 @@ The user typed `/worldforge start`, `/worldforge revise`, `/worldforge resync-pr
 - **Open `workflows/world-forge.md` and follow it.** It is the orchestrator and the
   source of truth for what runs when. Revise runs live in `workflows/world-forge-revise.md`,
   convert runs in `workflows/world-forge-convert.md`.
+- **Kilo Code Subagent Delegation:** If you are the top-level Kilo Code agent, do not run the pipeline commands inline. Instead, use your subagent delegation tool (e.g., the `task` tool) to route the command to the correct custom subagent:
+  - `/worldforge start` or `/world-forge start` → Dispatch to `WorldForge-Interviewer`
+  - `/worldforge revise` or `/world-forge revise` (with `--freeform`, `--target`, etc.) → Dispatch to `WorldForge-Reviser`
+  - `/worldforge convert` or `/world-forge convert` → Dispatch to `WorldForge-Converter`
+  - `/worldforge resume phase[N]` → Dispatch to the custom agent defined for Phase N (e.g., `WorldForge-Editor` for Phase 3)
 - **Pipeline files are READ-ONLY at runtime:** everything under `agent_roles/`,
   `templates/`, `workflows/`, plus `Notes_On_functionality.md` and
   `Notes_Quick_Reference.md`. You write only to the world project's `Drafts/`, `Export/`,

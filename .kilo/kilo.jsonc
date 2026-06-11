@@ -106,14 +106,77 @@
       "prompt": "{file:../agent_roles/05_The_Prompt_Engineer.md}"
     },
     // ── Post-launch entry points ──
-    // The revise minis (agent_roles/revise/*) are dispatched by the Reviser per the
-    // revise workflow and need no standing agent definitions here.
     "WorldForge-Reviser": {
       "description": "Phase R0 — classifies a post-launch revision request and routes it through the revise pipeline",
       "mode": "all",
       "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.5,
       "prompt": "{file:../agent_roles/revise/00_The_Reviser.md}"
+    },
+    // The revise minis (agent_roles/revise/*) are defined here so the top-level Code agent
+    // can delegate subtasks to them using Kilo's subagent tools.
+    "WorldForge-Refiner-mini": {
+      "description": "Phase R1 — merges the revision delta into the canonical Master Design",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.4,
+      "prompt": "{file:../agent_roles/revise/01_The_Refiner_mini.md}"
+    },
+    "WorldForge-Architect-mini": {
+      "description": "Phase R2 — drafts surgical edits/inserts to touched files within the cascade",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.8,
+      "prompt": "{file:../agent_roles/revise/02_The_Architect_mini.md}"
+    },
+    "WorldForge-IntimacyArchitect-mini": {
+      "description": "Phase R2.5 (conditional) — drafts surgical edits/inserts to touched intimacy files",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.8,
+      "prompt": "{file:../agent_roles/revise/02b_The_Intimacy_Architect_mini.md}"
+    },
+    "WorldForge-Editor-mini": {
+      "description": "Phase R3 — validates touched files against the Editor's hard-fail rules",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.3,
+      "prompt": "{file:../agent_roles/revise/03_The_Editor_mini.md}"
+    },
+    "WorldForge-VoiceAuditor-mini": {
+      "description": "Phase R3.5 — simulates dialogue and audits voice fidelity on touched files",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.6,
+      "prompt": "{file:../agent_roles/revise/03b_The_Voice_Auditor_mini.md}"
+    },
+    "WorldForge-ArcAuditor-mini": {
+      "description": "Phase R3.6 — audits continuity on touched arc-seam neighbors",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.6,
+      "prompt": "{file:../agent_roles/revise/03c_The_Arc_Transition_Auditor_mini.md}"
+    },
+    "WorldForge-IntimacyAuditor-mini": {
+      "description": "Phase R3.7 — audits intimate-scene fidelity on touched files",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.6,
+      "prompt": "{file:../agent_roles/revise/03d_The_Intimacy_Auditor_mini.md}"
+    },
+    "WorldForge-Compiler-mini": {
+      "description": "Phase R4 — compiles touched files and updates cumulative manifest",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.1,
+      "prompt": "{file:../agent_roles/revise/04_The_Compiler_mini.md}"
+    },
+    "WorldForge-PromptEngineer-mini": {
+      "description": "Phase R5 — audits compile output and updates runtime preset",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.3,
+      "prompt": "{file:../agent_roles/revise/05_The_Prompt_Engineer_mini.md}"
     },
     "WorldForge-Converter": {
       "description": "Phase C0 — reframes a shipped world into a new World Seed (protagonist / mode / tone changes)",
