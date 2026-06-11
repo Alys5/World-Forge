@@ -166,7 +166,7 @@ The pipeline's phases split cleanly into prose seats (where sampling variety is 
 | 5 | Prompt Engineer | 0.2–0.4 | Runtime judgments plus structured JSON authoring. |
 | R0 / C0 | Reviser, Converter | 0.4–0.6 | Classification plus interview — between the Refiner and the Interviewer. |
 
-**Reasoning-model caveat:** reasoner-class endpoints (e.g. `deepseek/deepseek-r1`) generally ignore sampling parameters — temperature has no effect. If your audit seats run a reasoner (the shipped `.kilo/kilo.jsonc` default), they need no temperature profile at all; the table's audit rows apply only when those seats run a chat-tuned model.
+**Reasoning-model caveat:** reasoner-class endpoints (e.g. `deepseek/deepseek-r1`) generally ignore sampling parameters — temperature has no effect. The shipped `.kilo/kilo.jsonc` runs every seat — audit seats included — on chat-tuned DeepSeek 4 Pro with per-phase temperatures, so the table applies as-is. If you upgrade an audit seat to a reasoner, drop its `temperature` field; it would be silently ignored.
 
 If maintaining four temperature bands is more fiddling than you want, collapse to two: a **creative** profile (~0.8) for Phases 0, 2, 2.5 and the auditors, and a **precise** profile (~0.2) for Phases 1, 3, 4, 5 — the Compiler and Editor are the two seats where getting this wrong costs the most. Kilo Code users: `temperature` is a per-agent field in `kilo.jsonc`, and the shipped World-Forge config already carries these values — see [Kilo setup §5.4](./Kilo-Code-Setup.md#54-per-phase-temperature).
 

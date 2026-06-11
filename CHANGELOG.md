@@ -13,6 +13,122 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-11 — Convert Rebaseline mode: consolidate a revised world into a clean rebuild
+
+A world that has been through several revisions (R1…R[N]) accumulates `<!-- REVISED
+IN R[N] -->` markers across `Master_Design.md` and `Drafts/`, while its
+`World_Seed.md` stays frozen at Phase 0 — revisions never back-propagate to the
+seed. Until now there was no consolidation path: `skip phase0` rebuilds from the
+stale seed (losing every revision), and regular Convert always regenerates the
+protagonist and arc spine (losing them too). Rebaseline closes the gap.
+
+### Added
+- **Rebaseline mode** (`/worldforge convert <source> <target> --rebaseline`;
+  combines with `--brief`) — the zero-axes-replaced conversion, formalized: same
+  world, same protagonist, rebuilt clean from the *post-revision* Master Design,
+  optionally folding in new mechanics at seed level. Spec lives in
+  `agent_roles/Converter/00_The_Converter.md` **Section 9**; operation in the
+  new **REBASELINE MODE** section of `workflows/world-forge-convert.md`.
+  Load-bearing properties:
+  - **The always-regenerate rules invert.** Foundational rule 8's premise ("the
+    protagonist has changed by definition") is absent, so Sections 3 / 5 / 7b,
+    per-arc/standing intimate functions, per-card style overrides,
+    relationship-to-`{{user}}` content, and the four Section 4 strip rules
+    (Standing Goal / drift / operative belief / trauma trajectory) all flip to
+    keep/carry — distilled from the post-revision Master Design at **seed grade**
+    (distill, never dump; no entry-level content in the seed).
+  - **Zero-axes gate** replaces the overlap floor: any replaced axis reclassifies
+    the run as a regular (reframe) conversion — announced, not refused. A
+    rebaseline with no revisions and no new mechanics is flagged as a no-op copy.
+  - **Revision reports become required reading** (`Drafts/Revision_R*.md` +
+    `Export/REVISED_FILES.md`), with a source-integrity check: every reported
+    change must be visible in the current Master Design, else halt — a drifted
+    source would silently lose a revision. The revision high-water mark is
+    recorded in the Conversion Manifest.
+  - **Clean means marker-free.** Revision content carries; `REVISED IN R[N]`
+    markers do not. Provenance moves to `<!-- REBASELINED FROM ... -->` comments
+    + the manifest. The new project's revision counter restarts at R1.
+  - **The honest cost is stated, not implied:** the rebuild compiles fresh UIDs,
+    so running SillyTavern chats do not migrate (revise preserves UIDs precisely
+    to avoid this; rebaseline trades it for cleanliness). The Converter prints
+    this at hand-off and records the acknowledgment in the manifest.
+- **`--then-interview` hand-off + the Interviewer's seed-revision posture.**
+  `/worldforge convert <source> <target> --rebaseline --then-interview` chains
+  the consolidation directly into **Phase 0** for when the rebaseline is a
+  staging step for major changes: instead of `skip phase0`, the C0 hand-off
+  dispatches the Interviewer in the new **seed-revision posture**
+  (`agent_roles/00_The_Interviewer.md` Section 9) — read the complete
+  consolidated seed + Conversion Manifest, play the world back, interview *only
+  the user's changes* at full Phase 0 depth, re-elicit the cascade on coupled
+  fields (changed arcs drag drift / trauma-trajectory / intimate-function lines;
+  a changed protagonist drags relationship-to-`{{user}}` content, with an honest
+  pointer that reframe conversion automates those strips), mark changed sections
+  `<!-- CHANGED IN SEED-REVISION INTERVIEW -->`, append a dated note to the
+  Conversion Manifest, sign off, and hand to Phase 1. The flag requires
+  `--rebaseline`; in reframe mode the C0 interview already does this work. The
+  posture is also dispatchable standalone against any complete pre-build seed.
+
+### Changed
+- **`agent_roles/Converter/00_The_Converter.md`** — header + rule 8 carve-out,
+  `--rebaseline` / `--then-interview` invocations, Step 2 / Step 3 / matrix
+  touch-points, manifest fields (`Operating mode`, revision high-water mark,
+  rebaseline manifest variant), Section 9 Step H hand-off variant, sign-off
+  gains a rebaseline checklist + Operating Mode block, context manifest notes
+  the rebaseline-required reads.
+- **`agent_roles/00_The_Interviewer.md`** — new Section 9 (seed-revision
+  posture); context manifest now loads the existing `World_Seed.md` in that
+  posture as well as on resume.
+- **`templates/Convert_Brief_Template.md`** — Section 1 gains `Operating mode:
+  reframe | rebaseline`; Section 2 gains the new-mechanics field; per-section
+  *Rebaseline:* notes mirror the Section 9 inversions (Sections 5/6 become
+  keep-from-source); sign-off updated. The Brief remains row-for-row consistent
+  with the preservation matrix.
+- **`workflows/world-forge-convert.md`** — operating-modes table, REBASELINE MODE
+  section, three new pause gates (Reclassify / No-Op / Source Integrity), trigger
+  commands, and the operations-comparison table.
+- **`workflows/world-forge.md`** — CONVERT section and trigger commands document
+  the mode; the "always-regenerated content" property is now reframe-scoped.
+- **`CLAUDE.md`** — principle #10 retitled "Convert Pipeline (Reframe +
+  Rebaseline)" with the mode's load-bearing properties; principle #6 points
+  accumulated-revision consolidation at Rebaseline; cross-file consistency row
+  updated. `tutorial.md` §8 gains a Rebaseline subsection + trigger-table row;
+  the Converter's `kilo.jsonc` description mentions the mode.
+
+No downstream agent changes: a rebaselined seed is a maximally-preserved
+converted seed with Section 5 populated — the normal hand-written-seed path the
+Refiner already handles.
+
+---
+
+## 2026-06-11 — Kilo config: DeepSeek 4 Pro on every seat; revise minis as subagents
+
+Catch-up entry for two config changes shipped without changelog entries, plus
+the documentation drift they left behind.
+
+### Changed
+- **`.kilo/kilo.jsonc` — all seats now run `deepseek/deepseek-v4-pro`** (via
+  OpenRouter). The Editor and the three Auditors previously ran `deepseek-r1`
+  with no temperature (reasoner endpoints ignore sampling parameters); as
+  chat-tuned seats they now carry explicit temperatures — Editor 0.3, Auditors
+  0.6 — alongside the existing per-phase values (creative seats 0.8, Refiner 0.4,
+  Compiler 0.1, Prompt Engineer 0.3, Reviser 0.5, Converter 0.6). All 21 agents
+  verified against the models wiki §3.5 ranges. The header comment documents the
+  optional upgrade path back to a reasoning model for the strongest audits.
+- **`.kilo/kilo.jsonc` — the nine revise minis (`agent_roles/revise/*`) are now
+  defined as agents**, so the top-level Code agent can dispatch them as subagents
+  per `AGENTS.md`'s delegation instructions. Temperatures mirror their parents.
+
+### Fixed
+- **Stale reasoner references in the wikis.** `Agentic-Tools-and-Models.md` §3.5
+  claimed the shipped `kilo.jsonc` runs audit seats on a reasoner ("they need no
+  temperature profile"), and `Kilo-Code-Setup.md` §5.4 still said "the Editor and
+  the three Auditors run `deepseek-r1`" with no temperature set. Both rewritten
+  to match the shipped config (chat-tuned DeepSeek 4 Pro with temperatures
+  everywhere; drop the `temperature` field only if you upgrade a seat to a
+  reasoner-class model).
+
+---
+
 ## 2026-06-10 — Preconfigured Kilo Code project config
 
 ### Added

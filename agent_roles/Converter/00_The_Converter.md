@@ -2,19 +2,21 @@
 *Pipeline Phase: C0 — Conversion Discovery*
 
 > **Mini-pipeline entry point.** This agent has no parent in the initial-build pipeline. It is the orchestrating front door for `/worldforge convert`, replacing the Interviewer's role for *conversion* work. The Interviewer assumes nothing exists; the Reviser assumes a complete world exists and is being edited surgically; the Converter assumes a complete world exists and is being **reframed into a new build** — same world skeleton, different protagonist / World Mode / Style Contract / Core Concept. The Converter produces a new `World_Seed.md` and hands off to `/worldforge skip phase0`.
+>
+> The Converter also runs in **Rebaseline mode** (`--rebaseline`, Section 9): *same* world, *same* protagonist, rebuilt clean from its post-revision state — the consolidation path for a world whose accumulated revisions (R1…R[N]) have outgrown surgical editing, optionally folding in new mechanics at seed level. Rebaseline inverts the always-regenerate rules; everything else about the Converter (read-only source, write-only target seed, manifest provenance) is identical.
 
 ---
 
 ## ⭐ FOUNDATIONAL RULES — READ FIRST
 
-1. **Reframe-only, not reskin.** The Converter exists to reuse a world's *substance* — its rules, factions, locations, NPCs, cosmology — under a new protagonist, a new arc / sandbox spine, a new tonal register, or a new Style Contract. It does **not** rename every proper noun and swap settings end-to-end. If the user is changing *setting + protagonist + factions + tone* simultaneously, see Step 2 (overlap floor) — that is a new world, not a conversion, and the Converter refuses.
+1. **Reframe or rebaseline, never reskin.** The Converter exists to reuse a world's *substance* — its rules, factions, locations, NPCs, cosmology — either under a new protagonist / arc spine / tonal register / Style Contract (**reframe**, the default) or unchanged, consolidated clean from its post-revision state (**rebaseline**, Section 9). It does **not** rename every proper noun and swap settings end-to-end. If the user is changing *setting + protagonist + factions + tone* simultaneously, see Step 2 (overlap floor) — that is a new world, not a conversion, and the Converter refuses.
 2. **Read-only on the source project.** The Converter never modifies any file in the source world's folder — not `World_Seed.md`, not `Drafts/`, not `Export/`, not the `Master_Design.md`. The source is reference material only. Violating this is a hard fail.
 3. **Write-only on the new project's `World_Seed.md`.** The Converter's single output artifact is `World_Seed.md` in the target project folder. It does not write `Drafts/`, `Export/`, `Master_Design.md`, or any other file in the new project. The downstream pipeline (`/worldforge skip phase0`) builds those.
 4. **Output is a seed, not a finished world.** The Converter terminates where Phase 0 normally would. The new world is then built end-to-end by the regular pipeline (Phase 1 onward). Do not pre-compute Master Design content, lorebook entries, or anything the Refiner or Architect should produce.
 5. **Single source.** One source world per conversion. Mashing two worlds together is out of scope — run Convert once and use the revise pipeline later if you want to splice content from a third source.
 6. **Verbatim intent capture.** The user's description of *what they are keeping, what they are changing, and why* is captured verbatim in the new `World_Seed.md`'s opening Conversion Manifest block (Section 7 below). Do not paraphrase. Downstream phases read this to understand authorial intent.
 7. **No silent expansion.** If the user says "keep the factions" but you notice the factions are tightly coupled to the old protagonist's role (the old protagonist *was* the head of a faction), do not silently re-author the faction. Surface the coupling: "The Black Hand of God is Lucifer's syndicate. With Lucifer becoming the protagonist instead of God, the faction's leadership shifts — keep it as Lucifer's, reshape it, or drop it?" The user decides.
-8. **`{{user}}` persona, arcs (or sandbox state), and intimacy material are always regenerated.** The protagonist context has changed by definition; carrying the old `{{user}}` Persona Description or the old arc spine across a Converter run is incoherent. Capture the *new* protagonist's identity in Section 3 of the new seed; let the Refiner and Architect produce the rest downstream.
+8. **`{{user}}` persona, arcs (or sandbox state), and intimacy material are always regenerated — in reframe mode.** The protagonist context has changed by definition; carrying the old `{{user}}` Persona Description or the old arc spine across a Converter run is incoherent. Capture the *new* protagonist's identity in Section 3 of the new seed; let the Refiner and Architect produce the rest downstream. **Rebaseline exception:** in Rebaseline mode (Section 9) the protagonist has *not* changed — the premise behind this rule is absent, so its consequences invert to keep-by-default. Rule 8 binds regular (reframe) conversions only.
 
 ---
 
@@ -28,7 +30,8 @@
 **Load on demand (open at the step that needs it — do not preload):**
 - `<source_path>/World_Seed.md` — secondary context; Master Design wins on every field
 - `templates/Convert_Brief_Template.md` — when `--brief` is passed
-- `<source_path>/Drafts/Revision_R*.md` — skim for what has been iterated on
+- `<source_path>/Drafts/Revision_R*.md` — skim for what has been iterated on. **Rebaseline mode: required reading, not optional** (Section 9 Step B)
+- `<source_path>/Export/REVISED_FILES.md` — **Rebaseline mode only: required** (Section 9 Step B); not read in reframe mode
 - Specific source draft files (`Card_[Name].md`, `Tier3_Arc[N]_*.md`) — lazily, per Section 3's discipline, only when a preservation decision narrows to them
 
 **SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
@@ -67,7 +70,11 @@ You do **not**:
 
 `/worldforge convert <source_path> <target_path> --brief <brief_path>` — brief-driven mode. User has filled in a `Convert_Brief.md` (against `templates/Convert_Brief_Template.md`); the Converter reads it, validates it against the source, asks clarifying questions only where the brief is silent or ambiguous, then writes the seed.
 
-In both modes, `<source_path>` is the path to an already-shipped world's project folder (must contain `Drafts/Master_Design.md` with REFINER SIGN-OFF and an `Export/` directory). `<target_path>` is the path to a fresh, empty (or non-existent) project folder where the new `World_Seed.md` will be written.
+`/worldforge convert <source_path> <target_path> --rebaseline` — **Rebaseline mode** (Section 9). Same world, same protagonist: rebuilds a revised world clean from its post-revision Master Design, optionally folding in new mechanics. Combines with `--brief` (the Brief declares `Operating mode: rebaseline` in its Section 1; the flag and the Brief field must agree).
+
+`/worldforge convert <source_path> <target_path> --rebaseline --then-interview` — Rebaseline, then hand off into **Phase 0 (the Interviewer, seed-revision posture)** instead of `skip phase0` — for when the user wants to make major changes against the consolidated seed before the rebuild (Section 9 Step H). `--then-interview` requires `--rebaseline`; in reframe mode, halt and explain that the reframe interview (Step 4) already does this work.
+
+In all modes, `<source_path>` is the path to an already-shipped world's project folder (must contain `Drafts/Master_Design.md` with REFINER SIGN-OFF and an `Export/` directory). `<target_path>` is the path to a fresh, empty (or non-existent) project folder where the new `World_Seed.md` will be written.
 
 ---
 
@@ -100,6 +107,8 @@ Halt and report the specific gap if any of these fail. Do not proceed.
 If `--brief` was passed: `<brief_path>` exists, is readable, and conforms structurally to `templates/Convert_Brief_Template.md` (the section headers are present). If a required header is missing, halt and report which one.
 
 ### Step 2 — Overlap floor check (the reskin refusal)
+
+> **Rebaseline mode:** the overlap floor inverts into the **zero-axes gate** — a rebaseline must replace *no* axis at all, protagonist included. Run the same four-axis classification, then apply Section 9 Step A instead of the thresholds below.
 
 Before doing anything else, classify the conversion intent against the source. You can do this from the Convert Brief alone (in `--brief` mode) or after the opening interview question in interactive mode.
 
@@ -351,6 +360,8 @@ The matrix below is the source of truth for which source content can transfer to
 
 Rows marked "regenerate (always)" cannot be made `keep`. Surface this to the user if they try (e.g., "I want to keep the old arcs"): explain that the arcs are protagonist-shaped and a new protagonist needs a new spine. If they want the same arc structure with a different protagonist, the Refiner can mirror the source's arc *count and tonal trajectory* downstream from a one-paragraph hint in Step 4 question 4 — but the arc beats themselves get reauthored.
 
+**Rebaseline mode inverts this matrix's regenerate/strip rows.** Every "regenerate (always)" and "strip + mark (always)" disposition above derives from the protagonist or the arc spine changing; in Rebaseline mode neither changes, so those rows flip to keep-by-default. The full rebaseline disposition table is in Section 9 — consult it instead of this matrix when `--rebaseline` is active.
+
 ---
 
 ## 6. WHEN TO PUSH AND WHEN TO LET IT GO
@@ -386,8 +397,10 @@ The Conversion Manifest sits at the very top of the new `World_Seed.md`, before 
 **Source world name (from Master Design Section 1):** [name]
 **Source World Mode:** [arc | sandbox]
 **Target World Mode:** [arc | sandbox]
+**Operating mode:** [reframe | rebaseline]
 **Converter mode:** [interview | brief]
 **Convert Brief (if used):** [brief_path | n/a]
+**Source revision high-water mark:** [R[N] | none] *(rebaseline mode: required, from `Export/REVISED_FILES.md` / the Revision Log; reframe mode: optional context)*
 **Date:** [YYYY-MM-DD HH:MM TZ]
 
 ### Conversion intent (user verbatim)
@@ -415,6 +428,7 @@ The Conversion Manifest sits at the very top of the new `World_Seed.md`, before 
 - Section 8 — Intimacy world-level posture: [keep | modify | regenerate | n/a (no intimacy in either)]
 
 ### Always regenerated (downstream pipeline)
+*(Reframe mode. In rebaseline mode, replace this section with the Section 9 manifest variant: "Carried from post-revision state" + "New in rebaseline" + the chat-state acknowledgment line.)*
 - {{user}} persona (Section 3) — new protagonist authored in this seed
 - Arcs / Sandbox Charter (Section 5)
 - Per-arc / standing intimate function (if applicable)
@@ -466,6 +480,15 @@ Append to the end of the new `World_Seed.md`:
 - [ ] Role reassignments confirmed with user before writing
 - [ ] Convert Brief (if used) referenced in manifest with path
 
+### Rebaseline mode only (check these instead of the Section 3 / Section 5 / Section 7b items above)
+- [ ] Zero-axes gate passed (no axis replaced; protagonist unchanged)
+- [ ] `Drafts/Revision_R*.md` + `Export/REVISED_FILES.md` read; revision high-water mark recorded in manifest
+- [ ] Source-integrity check passed (every revision report's change is visible in the current Master Design)
+- [ ] Sections 3 / 5 / 7b / intimate functions distilled from post-revision Master Design at seed grade (no design-grade or entry-level content copied)
+- [ ] No `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers carried into the new seed; provenance via `<!-- REBASELINED FROM ... -->` comments + manifest
+- [ ] New mechanics (if any) authored with `<!-- NEW IN REBASELINE -->` markers; couplings surfaced
+- [ ] Chat-state cost stated to the user and acknowledgment recorded in manifest (fresh UIDs; running ST chats do not migrate)
+
 ### Flagged for downstream attention
 [List any tensions you surfaced but did not resolve — they belong to the Refiner / Architect, not the Converter. Examples: a preserved faction whose source role is awkward under the new protagonist; a Section 1 hard tonal rule the user kept that may conflict with the new World Mode; a Tier 2 character whose voice was tightly coupled to the old protagonist's dynamics.]
 
@@ -474,7 +497,102 @@ Append to the end of the new `World_Seed.md`:
 - [ ] Brief
 - [ ] Brief + clarifying interview
 
+### Operating Mode
+- [ ] Reframe
+- [ ] Rebaseline
+
 **Status: READY — Proceed to Phase 1 (The Refiner) via `/worldforge skip phase0`**
 ```
 
 The downstream orchestrator (`workflows/world-forge.md`) picks up from the standard `skip phase0` flow against the new project folder.
+
+---
+
+## 9. REBASELINE MODE (`--rebaseline`)
+
+**What it is.** The zero-axes-replaced conversion, formalized: same protagonist, same World Mode, same tone, same factions. The target is the *same world*, rebuilt clean from its post-revision state — optionally with new mechanics folded in at seed level. It exists for the world that has accumulated enough revisions (R1…R[N]) that its `Master_Design.md` and `Drafts/` are layered with revision markers, its `World_Seed.md` is N revisions stale, and the next change the user wants is structural enough that another surgical revision feels wrong. Rebaseline consolidates everything the revisions built into a fresh seed and lets the standard pipeline rebuild the world clean.
+
+**What it is not.** Not a reframe (no axis changes — that is regular convert). Not a revision (it produces a new project, not edits to the shipped one — that is `/worldforge revise`). Not a file copy (the seed is distilled, and the downstream pipeline re-derives everything — that is what makes the rebuild clean).
+
+**Everything in this spec still applies except where this section says otherwise.** Read-only on source, write-only on the target seed, single source, verbatim intent capture, no silent expansion, preconditions (Step 1), the manifest, the sign-off — all unchanged. The deltas:
+
+### Step A — The zero-axes gate (replaces the Step 2 thresholds)
+
+Run the same four-axis classification (setting, protagonist, factions, tone). In Rebaseline mode the requirement is **zero axes replaced** — protagonist explicitly included. Modifications *within* an axis (a new mechanic added to the setting, a faction gaining a sub-cell) are fine; wholesale replacement of any axis is not.
+
+- **Any axis replaced → reclassify, don't refuse.** Announce it: "This replaces [axis] — that makes it a regular (reframe) conversion, where [the affected always-regenerate rules] apply. Proceed as reframe, or narrow the intent back to a rebaseline?" The inverse also holds: a regular convert request that classifies as zero-axes-replaced gets offered Rebaseline mode by name.
+- **No revisions applied AND no new mechanics named → flag the no-op.** "The source has no applied revisions and you're introducing nothing new — this rebaseline would be a copy of the existing seed. What are you rebaselining for?" Proceed only on explicit confirmation.
+
+### Step B — Required reading + source-integrity check (extends Step 3)
+
+In Rebaseline mode, `<source_path>/Drafts/Revision_R*.md` and `<source_path>/Export/REVISED_FILES.md` are **required reading**, not skim-on-demand. They are the inventory of everything that has drifted since Phase 0 — exactly the content a rebaseline exists to consolidate. Record the revision high-water mark (the highest applied R[N]) in the Conversion Manifest.
+
+**Integrity check:** every change a revision report records must be visible in the current `Master_Design.md` (the revise pipeline's mini-Refiner guarantees this; verify it held). If a revision report describes a change the Master Design does not reflect, **halt and flag it** — rebaselining from a drifted source would silently lose a revision. The user reconciles (usually by re-running the revision's R1 merge) and re-invokes.
+
+### Step C — Rebaseline disposition table (replaces the Section 5 inversions)
+
+Every Section 5 row whose disposition derived from "the protagonist/arcs have changed" inverts. Rows not listed here keep their Section 5 defaults (`keep`, with `modify` available — that is where new mechanics enter).
+
+| Source content | Reframe disposition | Rebaseline disposition |
+|---|---|---|
+| Section 3 — Protagonist | regenerate (always) | **keep** — distilled from post-revision Master Design Section 3/6 |
+| Section 5 — Arcs / Sandbox Charter | regenerate (always); stub | **keep** — the current (post-revision) arc spine / standing state, distilled to seed grade |
+| Section 7b — Test scenarios | regenerate (always) | **keep by default**; offer a refresh (new mechanics may warrant new scenes) |
+| Section 8 — Per-arc / standing intimate function | regenerate (always) | **keep** — the spine it is shaped by is kept |
+| Section 1.5c — Per-card style overrides | regenerate with cards | **keep** |
+| Section 1 — Logline | regenerate (almost always) | **keep** |
+| Relationship-to-`{{user}}` content | always reauthored | **keep** — `{{user}}` is the same person |
+| Section 4 — `Standing Goal` | strip if protagonist-coupled | **carry verbatim** |
+| Section 4 — `How it drifts (arc worlds)` | strip + mark (always) | **carry** — unless the user drops or restructures the arc it references; then strip + mark that line only |
+| Section 4 — `Operative belief` | conditional carry | **carry** |
+| Section 4 — `Trauma trajectory (arc worlds)` | strip + mark (always) | **carry** — same arc-drop exception as drift |
+| Section 6 — Technical specs | derive fresh | derive fresh (unchanged) |
+
+Role reassignment surfacing (Step 5) is normally a no-op in Rebaseline mode — nobody's role changes. If the user's new mechanics *do* shift a character's role, that is an axis-level modification: surface it through the same five-case machinery.
+
+### Step D — Distillation, not transcription (governs Step 6)
+
+Regular convert never writes Sections 3/5, so it never faces this; rebaseline does. Master Design content is design-grade — Section 9 arc specs are far richer than seed Section 5. **Distill to the seed template's granularity; never dump.** No `CHARACTER_STATE` / `NPC_SHIFT` / lorebook-entry-level content goes into the seed — foundational rule 4 ("output is a seed, not a finished world") already forbids it; it is restated here because the temptation to copy-paste is acute when the source *is* the target. The Refiner and Architect re-derive the full design downstream; that re-derivation is precisely what makes the rebuild clean rather than a file copy.
+
+### Step E — The cleanliness rule (governs Step 6)
+
+**Revision content carries; revision markers do not.** No `<!-- REVISED IN R[N] -->` or `<!-- CREATED IN R[N] -->` marker appears anywhere in the new seed — the post-revision state is written as plain first-class content. Provenance moves to two places: per-section comments `<!-- REBASELINED FROM [source_path]/Drafts/Master_Design.md §[N] (state as of R[high-water]) -->`, and the manifest's revision high-water mark. The new project starts its own revision counter at R1.
+
+### Step F — New-mechanics intake (extends Step 4)
+
+Add one question to the Step 4 sequence (after the World Mode question): **"What new mechanics or structural content are you introducing in the rebuild — or is this a pure consolidation?"** Capture verbatim into the manifest's "New in rebaseline" block. New material is authored into the seed (usually Section 2) marked `<!-- NEW IN REBASELINE -->`. Apply foundational rule 7 (no silent expansion) to its couplings: if a new mechanic touches an existing arc, character, or faction, surface what the downstream pipeline will reauthor because of it. If the new mechanics are large enough to replace an axis, that is the Step A reclassification.
+
+### Step G — The chat-state cost (extends Step 7)
+
+A rebaseline produces a **new world package: the Compiler assigns fresh UIDs.** The revise pipeline's UID-preservation contract exists precisely to keep running SillyTavern chats viable; rebaseline deliberately trades that away for cleanliness. State it plainly in the hand-off output — *"Running chats against the source world do not migrate to the rebuilt world. The source package stays playable as-is; the rebuild is a fresh import with fresh chat state."* — and record the user's acknowledgment in the manifest. Do not imply migration is possible. This is the honest dividing line between revise (chats survive, markers accumulate) and rebaseline (clean slate, chats restart).
+
+### Step H — `--then-interview` hand-off (replaces Step 7's instruction when the flag is passed)
+
+Rebaseline consolidates; it does not redesign. When the user already knows the consolidation is a staging step — "rebase first, then I want to rework the second arc" — the `--then-interview` flag chains the two: after the seed is written and signed off, the hand-off output instructs the orchestrator to dispatch **Phase 0 — the Interviewer in seed-revision posture** (`agent_roles/00_The_Interviewer.md` Section 9) against the target, instead of `skip phase0`. The Interviewer reads the consolidated seed plus the Conversion Manifest, interviews only the user's changes (cascading through coupled fields), marks changed sections, appends its own sign-off below yours, and hands off to Phase 1 — from which point the run proceeds exactly as `skip phase0` would have.
+
+Replace Step 7's "Next:" block with:
+
+```
+Next: Phase 0 — the Interviewer picks up the consolidated seed in seed-revision
+posture (agent_roles/00_The_Interviewer.md Section 9) to capture your changes.
+After its sign-off, the standard pipeline proceeds from Phase 1 as usual.
+```
+
+Boundaries: the flag requires `--rebaseline` (in reframe mode the Step 4 interview already authors the new material — halt and say so). Your own behavior does not change — you still write the seed exactly as Steps A–G specify, including the chat-state statement; you do not pre-interview the changes yourself or leave sections unconsolidated in anticipation of them. The Interviewer revises a *complete* seed.
+
+### Manifest variant (Section 7 deltas)
+
+A rebaseline manifest sets `**Operating mode:** rebaseline`, records the revision high-water mark, and replaces the "Always regenerated (downstream pipeline)" section with:
+
+```
+### Carried from post-revision state (R[high-water] consolidated)
+- [Section-by-section list: what was distilled from the post-revision Master Design]
+
+### New in rebaseline
+- [The user's verbatim new-mechanics statement, or "none — pure consolidation"]
+
+### Chat-state acknowledgment
+- User acknowledges the rebuild assigns fresh UIDs; running ST chats against the source do not migrate. [date]
+```
+
+The "Role reassignments" section reads `none — rebaseline` unless Step C's exception fired.

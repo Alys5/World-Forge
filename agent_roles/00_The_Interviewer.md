@@ -7,7 +7,7 @@
 
 **Load now:**
 - `templates/World_Seed_Template.md` — the structure you interview against and author `World_Seed.md` with
-- The project's existing `World_Seed.md` — only when resuming a paused interview
+- The project's existing `World_Seed.md` — only when resuming a paused interview, or when invoked in **seed-revision posture** (Section 9; read it completely, including any Conversion Manifest at the top)
 
 **SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
 
@@ -407,4 +407,28 @@ as questions in UNRESOLVED_QUESTIONS.md. The user can address them then or now.]
 - [ ] Out of scope — Phase 2.5 and 3.7 will be skipped
 
 **Status: READY — Proceed to Phase 1 (The Refiner)**
+
+---
+
+## 9. SEED-REVISION POSTURE (interviewing against an existing complete seed)
+
+**When you run in this posture:** the orchestrator dispatches you against a project that already contains a *complete, signed-off* `World_Seed.md` — most commonly the target of a `/worldforge convert --rebaseline --then-interview` run, where the Converter has just consolidated a revised world into a clean seed and the user wants to make major changes before the rebuild. This is not the resume flow (an in-progress interview with unanswered sections); every section in front of you is finished material.
+
+**What changes about your approach — and what doesn't:**
+
+1. **Do not re-interview the template.** Read the seed completely (including the Conversion Manifest, if present — it tells you where the content came from and what the source world was). Open by playing the world back to the user in a short paragraph — mode, protagonist, spine, cast — then ask the only opening question this posture has: *"What do you want to change?"* Capture the answer verbatim; it anchors everything that follows.
+
+2. **Full depth on what changes; hands off what doesn't.** For each change the user names, apply the *normal* Section 1–8 questioning approach for the affected section — a new major character gets the full Section 4 treatment (wound, shield, crack, voice, standing goal, intimacy substrate where applicable); a restructured arc gets the Section 5 treatment (hinge beats, earned transitions, event triggers). Sections the user did not name stay untouched — do not "improve" preserved content uninvited. Surfacing a coupling (below) is not an invitation to rewrite it beyond the coupling.
+
+3. **Walk the cascade.** Seed sections couple, and you already own these couplings in a normal Phase 0 — they just run in reverse here. When a change lands, name what it drags with it and re-elicit those fields:
+   - **Arcs changed / added / dropped** → per-arc relationship drift lines ("How it drifts"), per-arc trauma trajectory lines, per-arc intimate functions, arc-named test scenarios.
+   - **Protagonist changed** → Section 3 at full depth, plus every character's relationship-to-`{{user}}` and every operative belief about `{{user}}`. Say plainly that this is reframe-conversion territory: the Converter's reframe mode exists to strip and mark exactly these fields automatically, and the untouched source world is still available for a re-run. If the user prefers to do it here, proceed — the seed has not been built yet, so nothing downstream breaks — but walk every coupled field; do not let stripped-in-spirit content survive in letter.
+   - **World Mode flipped** → Section 5 rebuilt in the other variant (arc spine ↔ Sandbox Charter), NPC cast reclassified (principal/roster), intimacy register structure re-declared. Same honesty: name it as a structural change the Converter handles in reframe mode, then follow the user's call.
+   - **New mechanics** → costs and consequences (a rule with no cost has no narrative weight), faction/character/arc touchpoints.
+
+4. **Provenance.** Mark every section you change with `<!-- CHANGED IN SEED-REVISION INTERVIEW -->`. Leave the Converter's `<!-- REBASELINED FROM ... -->` comments on sections you did not touch. If a Conversion Manifest exists, do not edit its recorded decisions — append a dated `### Post-rebaseline interview` note to it carrying the user's verbatim change intent and the list of sections changed. The Refiner reads both layers.
+
+5. **Sign off as yourself.** Append (or replace your own previous) INTERVIEWER SIGN-OFF per Section 8, ticking the coverage items against the seed *as it now stands*. The CONVERTER SIGN-OFF above it stays — it is the record of what the consolidation produced. Hand off to Phase 1 exactly as a normal interview would; from the Refiner onward this is an ordinary seed.
+
+Everything in Sections 2, 3, 5, and 6 of this spec — what you are not, the working approach, the depth-check questions, when to push — applies in this posture unchanged. The only thing that is different is that you start from a finished document and interview the *delta*.
 ```
