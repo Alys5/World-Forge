@@ -13,6 +13,68 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-12 — Lorebook export schema: entry key/UID parity + camelCase entry fields
+
+Both fixes verified against the official SillyTavern source (`world-info.js`,
+release branch, 2026-06-12) before any file was edited, per the
+`Notes_On_functionality.md` editing rule.
+
+### Fixed
+- **Lorebook entries invisible after import — entry object key must equal
+  `String(uid)`** (#31, reported by mrzando-lastone). SillyTavern stores and
+  looks up world-info entries as `entries[uid]` (`createWorldInfoEntry` /
+  `getFreeWorldEntryUid`, and every editor read/write), so an entry keyed `"1"`
+  with `"uid": 20` imports without error and then **never renders in the World
+  Info editor**. The spec previously said only "sequential string keys starting
+  from `"0"`", which is safe when UIDs are sequential but left the door open for
+  exactly this drift. The **Compiler** gains **Foundational Rule 9** (key ==
+  `String(uid)`, hard-fail), a Group-Lorebook re-key note (re-sequenced UIDs get
+  re-keyed), Step 9 validation checks, and sign-off items; the **mini-Compiler**
+  inherits it with the preserved-UID case called out (a preserved UID 20 keeps
+  key `"20"` — never re-key survivors to sequential positions).
+- **snake_case alias fields in the lorebook templates.**
+  `templates/Lorebook_Template.json`, `templates/Group_lorebook_template.json`,
+  and both authoring guides carried `case_sensitive` / `match_whole_words` /
+  `use_regex` and the legacy `characterFilterNames` / `characterFilterExclude`
+  pair. Those names belong to the embedded `character_book` card format
+  (Notes §5.1b) — in a standalone World Info file ST stores them but the GUI
+  reads only the camelCase fields, so the values were silently dead. Replaced
+  with the canonical nullable overrides (`scanDepth`, `caseSensitive`,
+  `matchWholeWords`, `useGroupScoring`) plus `displayIndex`, and enforced as
+  Compiler **Foundational Rule 10** (no snake_case aliases, hard-fail).
+
+### Changed
+- **`agent_roles/04_The_Compiler.md`** — Foundational Rules 9 + 10 (ten guards
+  total), entry field-table rows for the new fields, lorebook-level `entries`
+  description rewritten around the key==uid invariant, Step 8 re-key note,
+  Step 9 checks, sign-off items.
+- **`agent_roles/revise/04_The_Compiler_mini.md`** — guard count 8 → 10, key
+  parity in the UID-continuity step, sign-off items.
+- **`tools/validate_export.py`** — deterministically re-checks both failure
+  modes (key/UID parity, snake_case alias fields); still strictly read-only.
+- **`Notes_On_functionality.md`** — key==uid mechanics in §3.2 / §5.2 / §6
+  gotchas, camelCase-vs-`character_book` field-name note, `displayIndex` added
+  to the §5.2 exemplar, `characterFilter` quick-reference row.
+- **`Notes_Quick_Reference.md`** — affected facts regenerated (key parity,
+  camelCase field names, `displayIndex` fallback).
+- **`agent_roles/05_The_Prompt_Engineer.md`** (+ mini) — stale
+  `match_whole_words` reference → `matchWholeWords`; mini's "eight pre-save
+  gates" pointer updated.
+- **`CLAUDE.md`** — validator check lists updated; new common-failure-mode
+  bullet (keying entries by sequential position instead of by UID).
+
+### Notes
+- Two corrections to the fix proposed in #31, both from the ST source:
+  `characterFilter` is **optional** (ST's own editor deletes the empty object —
+  the templates omit it rather than mandating it), and `displayIndex` falls
+  back to `uid` when missing (the pipeline sets it equal to `uid`, resolving
+  the proposal's "sequential 0-based" vs "matching uid" ambiguity).
+- `Samples/Export/*.json` still carry the inert snake_case alias fields from
+  the old template (their keys/UIDs are consistent, so they render fine in ST);
+  left untouched, flagged for a separate migration pass.
+
+---
+
 ## 2026-06-11 — Convert Rebaseline mode: consolidate a revised world into a clean rebuild
 
 A world that has been through several revisions (R1…R[N]) accumulates `<!-- REVISED
