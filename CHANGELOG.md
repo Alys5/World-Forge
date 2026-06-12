@@ -64,6 +64,13 @@ the subplot; the model recognizes stated conditions and runs the next authored s
 - `agent_roles/revise/00_The_Reviser.md` — no new scope types; stage bumps route
   through `tier3_arc_entry_modify` (arc) / `sandbox_state_recalibration`
   (sandbox); examples added.
+- `agent_roles/05_The_Prompt_Engineer.md` — ladder-aware block hint in the
+  Section 5.0b selection analysis: arc worlds with Escalation Ladders weight
+  `npc_ensemble` for inclusion (laddered subplots render through NPC-to-NPC
+  dialogue and off-screen evidence surfacing; predicted failure mode: "subplot
+  starves because all dialogue routes through {{user}}"), with a matching
+  self-validation checklist line. A hint feeding the analysis, not a mandate —
+  omission stays legitimate with a Step 4 justification.
 
 ### Unchanged on purpose
 - No new entry types, positions, flags, phases, or scope types; no Compiler or
