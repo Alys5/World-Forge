@@ -132,7 +132,7 @@ Apply this analysis framework per entry:
 
 **Step 2 — False positive risk:** Are the keywords so broad that the entry fires constantly, injecting irrelevant content and consuming token budget? A keyword of "love" on a romance entry will fire in nearly every scene. A keyword of "Anna's feelings about love" will be far more targeted.
 
-**Step 3 — Word boundary behavior:** Remember from `Notes_On_functionality.md` that single-word keywords with `match_whole_words: true` use regex boundary matching — "cat" will not trigger on "scatter." Multi-word keywords use `.includes()` — meaning "Black Hand" will match any message containing that substring regardless of surrounding characters. Flag any multi-word keyword that might produce unintended substring matches.
+**Step 3 — Word boundary behavior:** Remember from `Notes_On_functionality.md` that single-word keywords with `matchWholeWords: true` use regex boundary matching — "cat" will not trigger on "scatter." Multi-word keywords use `.includes()` — meaning "Black Hand" will match any message containing that substring regardless of surrounding characters. Flag any multi-word keyword that might produce unintended substring matches.
 
 **Step 4 — Variant coverage:** Characters and places may be referenced by multiple names. Andrei = Andrei Petrov = Lucifer = the Devil = Morningstar. Anna = Anna Johansson = her = the woman. Mr. Black = Black = the tall one. Verify that trigger arrays cover the realistic vocabulary of how these subjects get mentioned in chat, not just their canonical names.
 

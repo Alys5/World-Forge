@@ -32,6 +32,9 @@ SANDBOX-MODE ENTRY TYPES (worlds with no narrative arc — one always-active San
 
 KEY FIELD RULES:
 - "uid": unique integer per entry, sequential from 0, never duplicated within a lorebook.
+- ENTRY OBJECT KEYS MUST EQUAL UIDs: each entry's string key in "entries" must equal String(uid) — entry with "uid": 5 is keyed "5". SillyTavern stores and looks up entries as entries[uid]; a file whose keys don't match its UIDs imports without error but its entries never render in the World Info editor.
+- "scanDepth" / "caseSensitive" / "matchWholeWords" / "useGroupScoring": per-entry overrides, camelCase exactly as written, set to null to inherit the lorebook/global defaults. Do NOT use the snake_case variants ("case_sensitive", "match_whole_words", "use_regex") or "characterFilterNames"/"characterFilterExclude" — those belong to the embedded character_book card format and are ignored in a standalone lorebook file.
+- "displayIndex": integer editor sort position; set it equal to the entry's uid.
 - "key": primary activation keywords. Empty array [] for CONSTANT entries only.
 - "constant": true = fires every context window regardless of keywords. Must also have selective: true and ignoreBudget: true. Use for ARC_STATE and CHARACTER_STATE entries (arc mode), or SANDBOX_STATE and the standing INTIMACY_FUNCTION (sandbox mode).
 - "selective": true on ALL entries including CONSTANT ones.
@@ -69,14 +72,13 @@ KEY FIELD RULES:
       "disable": false,
       "ignoreBudget": false,
       "vectorized": false,
-      "case_sensitive": false,
-      "match_whole_words": true,
-      "use_regex": false,
       "group": "",
       "groupOverride": false,
       "groupWeight": 100,
-      "characterFilterNames": [],
-      "characterFilterExclude": false,
+      "scanDepth": null,
+      "caseSensitive": null,
+      "matchWholeWords": null,
+      "useGroupScoring": null,
       "excludeRecursion": false,
       "preventRecursion": false,
       "delayUntilRecursion": false,
@@ -89,6 +91,7 @@ KEY FIELD RULES:
       "sticky": 0,
       "cooldown": 0,
       "delay": 0,
+      "displayIndex": 0,
       "outletName": "",
       "automationId": "",
       "triggers": []
@@ -96,6 +99,6 @@ KEY FIELD RULES:
   }
 }
 
-Add sequential entries ("1", "2", "3") under "entries" following the exact same field structure.
+Add sequential entries ("1", "2", "3") under "entries" following the exact same field structure — every entry's string key must equal String(uid), and "displayIndex" matches the uid.
 "order": higher numbers inject first (appear higher in context). Default 100. Use 90 for NPC shifts, 85 for dramatic beats, 70-80 for locations.
 "role": 0 = System (use this for all world/arc/character entries), 1 = User, 2 = Assistant.

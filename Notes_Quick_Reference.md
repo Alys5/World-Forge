@@ -84,8 +84,11 @@ Source: Notes §5.2 key-meanings table.
   conflict resolution among co-activated entries.
 - `sticky` / `cooldown` / `delay` — temporal effects across message turns.
 - `uid` — stable identity; chat state tracking depends on it (revise pipeline preserves
-  UIDs on unchanged entries).
-- `comment` / `addMemo` / `displayIndex` — editor metadata only, no model effect.
+  UIDs on unchanged entries). The entry's object key in `entries` must equal
+  `String(uid)` — ST looks entries up as `entries[uid]`, so a mismatched key imports
+  fine but the entry never renders in the World Info editor.
+- `comment` / `addMemo` / `displayIndex` — editor metadata only, no model effect
+  (`displayIndex` falls back to `uid` when missing; the pipeline sets it equal to `uid`).
 
 ## 5. Strictness and provider gotchas
 
@@ -96,6 +99,14 @@ Source: Notes §6 and §8 Step 6.
   `tools/validate_export.py`.)
 - Lorebook import only validates that root `entries` exists; field defaults are enforced
   client-side. Don't rely on the importer to catch a bad field.
+- **Entry object key == `String(uid)`.** ST stores and looks up entries as
+  `entries[uid]`; a lorebook whose keys diverge from its UIDs imports without error but
+  shows no entries in the World Info editor.
+- **Native World Info entry fields are camelCase** (`caseSensitive`, `matchWholeWords`,
+  `scanDepth`, `useGroupScoring`, optional `characterFilter` object). The snake_case
+  variants (`case_sensitive`, `match_whole_words`, `use_regex`) and
+  `characterFilterNames`/`characterFilterExclude` belong to the embedded
+  `character_book` card format and are silently ignored in a standalone lorebook file.
 - **Claude / Google via ST:** `use_sysprompt: true` is required for leading system
   messages to reach the provider's system channel; with it false, system prompts degrade
   to user-role messages.

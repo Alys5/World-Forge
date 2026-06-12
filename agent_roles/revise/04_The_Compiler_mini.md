@@ -7,7 +7,7 @@
 
 ## ⭐ FOUNDATIONAL DELTA FROM PARENT
 
-1. **The parent's eight pre-save guards apply to every file you write.** JSON parses; `{{original}}` preserved on cards; no metadata fields outside the schema; `data.extensions.depth_prompt` and `data.extensions.world_forge.style_override` present on every card; all sign-offs (R0–R3, plus applicable R3.5/R3.6/R3.7) verified; position fields correct; Position Rationale present on every entry.
+1. **The parent's ten pre-save guards apply to every file you write.** JSON parses; `{{original}}` preserved on cards; no metadata fields outside the schema; `data.extensions.depth_prompt` and `data.extensions.world_forge.style_override` present on every card; all sign-offs (R0–R3, plus applicable R3.5/R3.6/R3.7) verified; position fields correct; Position Rationale present on every entry; entry object keys equal `String(uid)`; entry fields camelCase per the ST schema (no `case_sensitive`/`match_whole_words`/`use_regex`/`characterFilterNames`/`characterFilterExclude`).
 2. **You do not build fresh.** You read each Export file before rewriting it. New entries get the next free UID. Existing entries keep their UIDs. Modified entries keep their UIDs and have their content replaced.
 3. **You never delete an entry without explicit instruction in the cascade.** A revision that asks for an entry to be removed must spell it out in the cascade. By default, all existing entries survive. If a Tier 2 entry needs deletion (e.g., the user is removing a character — but that scope isn't in the matrix; full pipeline is needed for removals), this is a halt condition.
 4. **Group_Lorebook.json must be regenerated.** Combining all current tiers into a single group lorebook. UIDs in Group_Lorebook are independent of per-lorebook UIDs (assigned at group-build time). Group_Lorebook is the file the user re-imports into ST after the revision lands.
@@ -56,6 +56,8 @@ For every Export file you will touch, read the existing JSON and build a map: en
 
 **This is the operational core of the mini-Compiler.** UID preservation is what keeps running ST chat states viable.
 
+UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) acute here: when you rewrite a lorebook, every entry's object key must equal `String(uid)` of the UID you preserved or assigned — a preserved UID 20 keeps key `"20"`, a new UID 21 gets key `"21"`. Never re-key surviving entries to sequential positions; ST cannot render an entry whose key diverges from its `uid`.
+
 ### Step R4.3 — Re-compile per file type
 
 **For each touched card (`Card_[Name].md` + `Instructions_[Name].md`):**
@@ -89,7 +91,7 @@ For every Export file you will touch, read the existing JSON and build a map: en
 
 ### Step R4.4 — Pre-save validation
 
-For each file you are about to write, run the parent's eight pre-save guards:
+For each file you are about to write, run the parent's ten pre-save guards:
 1. JSON parses
 2. `{{original}}` preserved on every card
 3. No metadata fields outside schema
@@ -98,6 +100,8 @@ For each file you are about to write, run the parent's eight pre-save guards:
 6. All sign-offs verified (already done in R4.1)
 7. Position fields correct
 8. All entries have Position Rationale
+9. Entry object keys equal `String(uid)` — including preserved UIDs and Group_Lorebook's re-assigned UIDs
+10. Entry fields camelCase per the ST schema — no snake_case aliases or legacy `characterFilterNames`/`characterFilterExclude`
 
 If any fails on any file, do not write that file. Diagnose and surface. Most failures should have been caught by mini-Editor; if they reach you, the upstream pipeline broke and you halt — `R4_HALTED_PRE_SAVE_FAIL`.
 
@@ -216,7 +220,7 @@ Append to the Revision Log entry:
 ### Files Compiled
 - [list with per-file UID counts: N existing preserved, N new, N modified]
 
-### Pre-Save Guards (parent rules 1–8)
+### Pre-Save Guards (parent rules 1–10)
 - [ ] JSON parses on every written file
 - [ ] {{original}} preserved on every touched card
 - [ ] No metadata fields outside schema
@@ -225,6 +229,8 @@ Append to the Revision Log entry:
 - [ ] All required sign-offs verified
 - [ ] Position fields correct
 - [ ] All entries have Position Rationale
+- [ ] Every entry's object key equals String(uid) — preserved and new UIDs alike
+- [ ] Entry fields camelCase per ST schema — no snake_case aliases or legacy characterFilter pair
 - [ ] Every written file is UTF-8 — non-ASCII intact (em-dashes, curly quotes, accented names), existing text not mojibaked on rewrite; no `â€`/`Ã` markers; not authored through PowerShell
 
 ### UID Continuity

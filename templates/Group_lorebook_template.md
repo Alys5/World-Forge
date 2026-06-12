@@ -17,6 +17,9 @@ POSITION VALUES:
 
 KEY FIELD RULES:
 - "uid": unique integer per entry, sequential from 0, never duplicated.
+- ENTRY OBJECT KEYS MUST EQUAL UIDs: each entry's string key in "entries" must equal String(uid) — entry with "uid": 5 is keyed "5". SillyTavern stores and looks up entries as entries[uid]; mismatched keys import without error but the entries never render in the World Info editor.
+- "scanDepth" / "caseSensitive" / "matchWholeWords" / "useGroupScoring": per-entry overrides, camelCase exactly as written, set to null to inherit defaults. Do NOT use the snake_case variants ("case_sensitive", "match_whole_words", "use_regex") or "characterFilterNames"/"characterFilterExclude" — those belong to the embedded character_book card format and are ignored in a standalone lorebook file.
+- "displayIndex": integer editor sort position; set it equal to the entry's uid.
 - "selectiveLogic": 0 = AND ANY (fires if any key present — use for individual character entries), 3 = AND ALL (fires only if ALL keys present — use when you want lore to fire only when two specific characters are interacting).
 - "useProbability": false for standard entries that always fire when triggered.
 - "disable": false for all active entries. Do NOT use "enabled: true".
@@ -49,14 +52,13 @@ KEY FIELD RULES:
       "disable": false,
       "ignoreBudget": false,
       "vectorized": false,
-      "case_sensitive": false,
-      "match_whole_words": true,
-      "use_regex": false,
       "group": "",
       "groupOverride": false,
       "groupWeight": 100,
-      "characterFilterNames": [],
-      "characterFilterExclude": false,
+      "scanDepth": null,
+      "caseSensitive": null,
+      "matchWholeWords": null,
+      "useGroupScoring": null,
       "excludeRecursion": false,
       "preventRecursion": false,
       "delayUntilRecursion": false,
@@ -69,6 +71,7 @@ KEY FIELD RULES:
       "sticky": 0,
       "cooldown": 0,
       "delay": 0,
+      "displayIndex": 0,
       "outletName": "",
       "automationId": "",
       "triggers": []
@@ -76,6 +79,6 @@ KEY FIELD RULES:
   }
 }
 
-Add sequential entries ("1", "2", "3") under "entries" following the exact same field structure.
+Add sequential entries ("1", "2", "3") under "entries" following the exact same field structure — every entry's string key must equal String(uid), and "displayIndex" matches the uid.
 "role": 0 = System (use this — the model treats group dynamics as absolute fact).
 "order": higher numbers inject first. Default 100.
