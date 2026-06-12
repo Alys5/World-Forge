@@ -210,7 +210,7 @@ Preset files are mostly pass-through JSON configs loaded at startup/request time
 ### Native ST format
 
 - Root must contain entries.
-- entries is an object keyed by UID (stringified integer typically).
+- entries is an object keyed by UID — each entry's object key must equal String(entry.uid). The editor creates and looks entries up as entries[uid] (see §6); keys that diverge from UIDs import without error but the entries never render in the GUI.
 
 ### Import conversions
 
@@ -652,11 +652,14 @@ Practical rule for V3 authors:
       "sticky": null,
       "cooldown": null,
       "delay": null,
+      "displayIndex": 0,
       "triggers": []
     }
   }
 }
 ```
+
+Field-name note: the camelCase names above are the native World Info schema (per world-info.js newWorldInfoEntryDefinition). The snake_case lookalikes — case_sensitive, match_whole_words, use_regex — and the characterFilterNames/characterFilterExclude pair belong to the embedded character_book format (§5.1/5.1b) and are NOT read by the World Info GUI in a standalone file. Character filtering in a native file is the optional characterFilter object ({"isExclude": false, "names": [], "tags": []}); the editor deletes it when empty, so omit it when unused. displayIndex is editor sort order only and falls back to uid when missing.
 
 ### world_info_position enum values
 
@@ -674,7 +677,7 @@ Practical rule for V3 authors:
 Core structure keys:
 
 - entries: dictionary of lore entries; each entry is independently evaluated for activation.
-- uid: stable entry identifier used for editing/timing/state tracking.
+- uid: stable entry identifier used for editing/timing/state tracking. The entry's object key in entries must equal String(uid) — world-info.js creates entries as entries[uid] (createWorldInfoEntry / getFreeWorldEntryUid) and every editor lookup is entries[uid], so a key/uid mismatch makes the entry invisible and uneditable in the GUI even though the file imports cleanly.
 - comment/addMemo: editor/display metadata; no direct model effect.
 
 Activation matching keys:
@@ -781,7 +784,8 @@ Vector/search-related key:
 | entries.<uid>.outletName | string | Named outlet target when position=outlet. | Sends lore to nonstandard injection channel. |
 | entries.<uid>.automationId | string | Automation integration identifier. | Extension-driven behavior hook. |
 | entries.<uid>.vectorized | boolean | Vector pipeline marker. | Effect depends on enabled vector extension stack. |
-| entries.<uid>.comment/addMemo/displayIndex | mixed metadata | Editor/display organization. | No direct LLM effect. |
+| entries.<uid>.characterFilter | object (optional) | None directly; gates activation per character. | Shape {isExclude, names, tags}; editor deletes it when empty — omit when unused. Replaces legacy characterFilterNames/characterFilterExclude. |
+| entries.<uid>.comment/addMemo/displayIndex | mixed metadata | Editor/display organization. | No direct LLM effect. displayIndex falls back to uid when missing. |
 
 ## 5.3 Instruct preset JSON (complete modern key set)
 
@@ -1243,6 +1247,8 @@ The `prompts` and `prompt_order` arrays stored in `oai_settings` (preset JSON se
 - JSON must be strict. Many imports use direct JSON.parse with no leniency.
 - Character import logic is permissive across multiple legacy shapes, but normalizes to V2-style data.
 - World info import only validates root entries existence server-side. Field-level defaults and behavior are largely enforced client-side in world-info.js templates and editor logic.
+- World info entry object keys must equal String(uid). world-info.js stores entries as entries[uid] (createWorldInfoEntry) and every editor read/write is an entries[uid] lookup; a file whose keys diverge from its uids (e.g., sequential "0"/"1" keys with non-sequential uids) imports without error but its entries never render in the World Info editor.
+- Native World Info entry fields are camelCase (caseSensitive, matchWholeWords, scanDepth, useGroupScoring, displayIndex, optional characterFilter object). The snake_case variants (case_sensitive, match_whole_words, use_regex) and characterFilterNames/characterFilterExclude come from the embedded character_book spec; in a standalone World Info file they are stored but ignored by the GUI, which reads only the camelCase names.
 - Author's Note augmentation with ANTop/ANBottom only occurs when shouldWIAddPrompt is true (insertion interval logic in authors-note.js).
 - Prompt order behavior for OpenAI-style flows is strongly affected by prompt_order and enabled markers in preset JSON.
 

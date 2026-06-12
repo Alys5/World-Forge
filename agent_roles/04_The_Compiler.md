@@ -15,8 +15,10 @@ These rules are pre-save guards. If any check fails, do NOT write the file. Fix 
 6. **All sign-offs verified via the Pipeline State Ledger.** Read the Pipeline State Ledger at the top of `Drafts/Master_Design.md`. Every required phase must be `COMPLETE`; conditional phases (2.5, 3.6, 3.7) must be `COMPLETE` or `SKIPPED` with a reason. Phase 3 Editor + Phase 3.5 Voice Auditor + Phase 3.6 Arc Transition Auditor + Phase 3.7 Intimacy Auditor (when applicable) must all have signed off. Cross-check that the ledger's `world_mode` matches Master Design Section 1, and that `status` is neither `BLOCKED` nor `ESCALATED`. If any required sign-off is missing, a row is still `PENDING`/`IN_PROGRESS`, `world_mode` disagrees, or the run is blocked/escalated, do NOT compile.
 7. **Position fields correct.** World Lorebook entries `position: 0`; character lorebook entries `position: 1`; ARC_STATE / SANDBOX_STATE `position: 1` with `ignoreBudget: true`; TENSION / WORLD_PULSE `position: 4` with `depth: 2–4`. No Tier 1 or Tier 2 entry at `position: 2` or `3` (those are Author's Note slots for tone directives only).
 8. **All entries have Position Rationale.** Either the literal string `DEFAULT` (when entry uses documented default position+flags) or a one-sentence justification per the Architect's spec. This survives compilation.
+9. **Entry object keys equal entry UIDs.** SillyTavern stores and looks up world-info entries as `entries[uid]` — every editor read and write goes through that lookup, so an entry whose string key does not equal `String(entry.uid)` imports without error and then **never renders in the World Info editor**. Every entry's object key MUST equal its `uid`: entry with `"uid": 20` is keyed `"20"`. Never key entries by sequential indices that diverge from the UIDs.
+10. **Entry fields use ST's canonical camelCase names.** Per-entry override fields are `scanDepth`, `caseSensitive`, `matchWholeWords`, `useGroupScoring` (nullable, `null` = inherit defaults). NEVER emit the snake_case aliases `case_sensitive` / `match_whole_words` / `use_regex`, nor the legacy `characterFilterNames` / `characterFilterExclude` pair — those names belong to the embedded `character_book` card format (`Notes_On_functionality.md` §5.1b), not standalone World Info files; ST imports them without error but the GUI reads only the camelCase fields, so the values are silently dead. Character filtering, when actually needed, is the optional `characterFilter` object (`{"isExclude": false, "names": [], "tags": []}`) — omit it entirely when unused.
 
-If all eight pass, write the file. If any fails, the file is wrong — fix the source.
+If all ten pass, write the file. If any fails, the file is wrong — fix the source.
 
 > **⚠️ FILE-WRITING & ENCODING — write UTF-8, never through PowerShell.** Lorebook and card content is dense with non-ASCII: em-dashes (—), curly quotes (" " ' '), ellipses (…), accented names. Write every JSON file as UTF-8 — use your file-write tool directly, or a **Python or Node** script (`json.dump(obj, f, ensure_ascii=False)` / `fs.writeFileSync(path, text, 'utf8')`). **Do NOT write JSON through PowerShell** (`Out-File`, `Set-Content`, `>` redirection): Windows PowerShell re-encodes to UTF-16 / Windows-1252 and silently corrupts em-dashes and curly quotes into mojibake (`—` → `â€"`, `'` → `â€™`). This corruption **still passes `JSON.parse`** — the file is valid JSON with garbled text — so guard 1 above will not catch it. After writing each file, verify: re-read it and confirm a known em-dash or accented name is intact, or grep for the mojibake markers `â€` and `Ã` and confirm zero matches. If anything was corrupted, rewrite with a UTF-8-safe tool before sign-off.
 
@@ -79,7 +81,7 @@ If any template is missing: halt and report. Do not guess schema.
 
 | Field | Type | Description |
 |---|---|---|
-| `uid` | integer | Sequential unique ID starting from 0. Never duplicate within a lorebook. |
+| `uid` | integer | Sequential unique ID starting from 0. Never duplicate within a lorebook. The entry's object key in `entries` must equal `String(uid)` (Foundational Rule 9). |
 | `comment` | string | Human-readable label. Visible in the ST lorebook editor. Not sent to the LLM. |
 | `key` | array of strings | Primary trigger keywords. Empty array `[]` for CONSTANT entries. |
 | `keysecondary` | array of strings | Secondary keys used with selectiveLogic. |
@@ -107,6 +109,12 @@ If any template is missing: halt and report. Do not guess schema.
 | `matchCreatorNotes` | boolean | If `true`, keys are scanned against the creator_notes field. Set `false` for standard entries. |
 | `outletName` | string | When `position: 7` (outlet), sends content to a named outlet channel instead of standard before/after blocks. Leave empty `""` for standard entries. |
 | `automationId` | string | Extension/automation integration identifier. Leave empty `""` unless using automation extensions. |
+| `scanDepth` | integer or null | Per-entry scan-depth override. Set `null` to inherit the lorebook-level default. |
+| `caseSensitive` | boolean or null | Per-entry case-sensitivity override. Set `null` to inherit the global setting. Never the snake_case alias `case_sensitive` (Foundational Rule 10). |
+| `matchWholeWords` | boolean or null | Per-entry whole-word-matching override. Set `null` to inherit the global setting. Never the snake_case alias `match_whole_words` (Foundational Rule 10). |
+| `useGroupScoring` | boolean or null | Per-entry group-scoring override. Set `null` to inherit the global setting. |
+| `displayIndex` | integer | Editor sort position; no prompt effect. Set equal to the entry's `uid` (ST falls back to `uid` when the field is missing). |
+| `characterFilter` | object (OPTIONAL) | `{"isExclude": false, "names": [], "tags": []}` — restricts the entry to (or away from) named characters. **Omit entirely when unused** — ST's own editor deletes the empty object. Never the legacy `characterFilterNames`/`characterFilterExclude` pair (Foundational Rule 10). |
 | `triggers` | array | Generation-type trigger filters — restricts activation to specific generation types. Leave as `[]` for entries that should fire on all generation types. |
 
 ### Lorebook-Level Fields
@@ -119,7 +127,7 @@ If any template is missing: halt and report. Do not guess schema.
 | `token_budget` | integer | Maximum tokens active entries can consume per context window. |
 | `recursive_scanning` | boolean | Whether triggered entries can in turn trigger other entries. `false` for standard use. |
 | `extensions` | object | ST extension data. Set to `{}` unless extensions require it. |
-| `entries` | object | String-keyed object with sequential integer keys: `"0"`, `"1"`, `"2"`, etc. |
+| `entries` | object | String-keyed object where **each key equals `String(entry.uid)`** — ST stores and looks up entries by UID (Foundational Rule 9). With UIDs assigned sequentially from 0 the keys come out `"0"`, `"1"`, `"2"`, … — but the invariant is key == uid, never "sequential position in the file". |
 
 ### Character Card Fields (V3 spec)
 
@@ -243,7 +251,7 @@ Source: All individual lorebook JSON files.
 
 The Group Lorebook combines all entries from all lorebooks into a single importable file. In SillyTavern, users can then enable/disable individual groups (World, CharName, Arc1, Arc2, etc.) to control which lorebook tier is active.
 
-**Important:** When combining, re-sequence all UIDs from 0 across the combined set. Do not reuse UIDs.
+**Important:** When combining, re-sequence all UIDs from 0 across the combined set. Do not reuse UIDs. Re-key every combined entry so its object key equals its **new** UID (Foundational Rule 9) — never carry over the source lorebook's key alongside a re-sequenced UID.
 
 Maintain `group` field values — this is how users manage tiers in ST.
 
@@ -256,7 +264,8 @@ Before saving any file (per Foundational Rules at top of this file):
 - `system_prompt` and `post_history_instructions` are non-empty strings beginning with `{{original}}` (Foundational Rule #2)
 - `data.extensions.depth_prompt` present on all character cards (prompt may be empty string) — Foundational Rule #4
 - `data.extensions.world_forge.style_override` present on all character cards — Foundational Rule #5 (schema per SHARED §1)
-- `entries` object uses sequential string keys starting from `"0"`
+- **Entry key/UID parity check (Foundational Rule #9):** every entry's object key in `entries` equals `String(entry.uid)` — no sequential-index keys that diverge from UIDs
+- **Entry field-name check (Foundational Rule #10):** per-entry overrides are camelCase (`scanDepth`, `caseSensitive`, `matchWholeWords`, `useGroupScoring`); no entry contains `case_sensitive`, `match_whole_words`, `use_regex`, `characterFilterNames`, or `characterFilterExclude`; `displayIndex` present and equal to the entry's `uid`; `characterFilter`, if present, is the `{"isExclude", "names", "tags"}` object
 - No Markdown syntax leaked into JSON string values (escape `"` as `\"`, newlines as `\n`)
 - CONSTANT entries: `constant: true`, `selective: true`, `key: []`, `ignoreBudget: true`
 - Keyed entries: `constant: false`, `selective: true`, key array non-empty
@@ -320,6 +329,8 @@ Append to `Export/Compiler_Log.md`:
 - [ ] No entries use `enabled` field — all use `disable: false` ✓
 - [ ] Protagonist Lorebook: alias and true name trigger keywords present ✓
 - [ ] Group Lorebook UIDs: unique across full set ✓
+- [ ] **Every lorebook entry's object key equals `String(uid)` — no key/UID mismatch in any lorebook, including the re-sequenced Group Lorebook (Foundational Rule 9) ✓**
+- [ ] **All entry fields camelCase per the ST schema — no `case_sensitive` / `match_whole_words` / `use_regex` / `characterFilterNames` / `characterFilterExclude` anywhere; `displayIndex` matches `uid` (Foundational Rule 10) ✓**
 - [ ] All `data.extensions.depth_prompt` fields present on all character cards ✓
 - [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, seven-key object for overriding: perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale) ✓
 - [ ] **No non-schema metadata fields in any JSON content** — no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, or similar. The destination filename is a tool argument, not a content field. Scan every emitted JSON for unknown top-level keys and reject if any are present. ✓

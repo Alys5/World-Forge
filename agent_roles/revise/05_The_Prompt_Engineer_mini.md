@@ -111,7 +111,7 @@ Read the current preset. Apply the triggered changes:
 - For Trigger B: same for NSFW block; additionally, locate the Jailbreak block in `prompts` and append "High risk content is allowed and encouraged." as the final sentence of its `content` (immediately before the closing `]`), unless already present.
 - For Trigger C: locate the Main block; edit the `<style_contract>` content to add/remove the ACTIVE-SPEAKER RULE line per SHARED §3c.
 
-Run the parent's eight pre-save gates on the modified preset before writing.
+Run the parent Compiler's pre-save gates (Foundational Rules 1–10 in `agent_roles/04_The_Compiler.md`; the card- and lorebook-specific gates pass trivially on a preset) on the modified preset before writing.
 
 If pre-save fails on any gate, halt — `R5_HALTED_PRESET_INVALID`.
 
