@@ -266,7 +266,7 @@ Before saving any file (per Foundational Rules at top of this file):
 - `data.extensions.world_forge.style_override` present on all character cards — Foundational Rule #5 (schema per SHARED §1)
 - **Entry key/UID parity check (Foundational Rule #9):** every entry's object key in `entries` equals `String(entry.uid)` — no sequential-index keys that diverge from UIDs
 - **Entry field-name check (Foundational Rule #10):** per-entry overrides are camelCase (`scanDepth`, `caseSensitive`, `matchWholeWords`, `useGroupScoring`); no entry contains `case_sensitive`, `match_whole_words`, `use_regex`, `characterFilterNames`, or `characterFilterExclude`; `displayIndex` present and equal to the entry's `uid`; `characterFilter`, if present, is the `{"isExclude", "names", "tags"}` object
-- No Markdown syntax leaked into JSON string values (escape `"` as `\"`, newlines as `\n`)
+- No Markdown *structure* leaked into JSON string values (escape `"` as `\"`, newlines as `\n`; no code fences, no stray headers wrapping the JSON). **Draft content itself transfers verbatim, including intentional markdown emphasis** — never strip `**bold**`/`*italic*` markers from entry content; ARC_STATE / SANDBOX_STATE depend on their literal `**Dramatic Situation:**` / `**Standing Situation:**` / `**Tonal Mandate:**` labels
 - CONSTANT entries: `constant: true`, `selective: true`, `key: []`, `ignoreBudget: true`
 - Keyed entries: `constant: false`, `selective: true`, key array non-empty
 - No entry uses `enabled` field — use `disable: false` instead

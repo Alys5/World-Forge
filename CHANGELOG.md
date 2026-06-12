@@ -62,6 +62,16 @@ release branch, 2026-06-12) before any file was edited, per the
   gates" pointer updated.
 - **`CLAUDE.md`** — validator check lists updated; new common-failure-mode
   bullet (keying entries by sequential position instead of by UID).
+- **`agent_roles/04_The_Compiler.md` Step 9** — the "No Markdown syntax leaked
+  into JSON string values" check clarified to target structural leakage
+  (unescaped quotes/newlines, code fences, headers wrapping the JSON), with an
+  explicit mandate that draft content transfers **verbatim including markdown
+  emphasis** — never strip `**bold**` markers from entry content, since
+  ARC_STATE / SANDBOX_STATE depend on their literal `**Dramatic Situation:**` /
+  `**Tonal Mandate:**` labels. Found via a cold-context compliance test of the
+  rewritten spec (a fresh small-model Compiler run passed Rules 9/10 on its
+  first write but read the old wording as license to strip bold markers from
+  ARC_STATE content).
 
 ### Notes
 - Two corrections to the fix proposed in #31, both from the ST source:
