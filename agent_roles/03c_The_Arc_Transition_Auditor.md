@@ -92,6 +92,8 @@ Characters and NPCs carry relationships and beliefs that evolve. The relational-
 
 **The recognition test, applied to the bond:** would the relationship as it stood at the end of Arc N recognizably lead to where it stands at the start of Arc N+1? If no, the seam is broken.
 
+**Escalation Ladders advance only on their stated conditions.** Where an NPC carries a §7.D Escalation Ladder, compare the active-ladder-stage lines (NPC_SHIFT) across the seam with the same teeth as the bond checks: the stage is **monotonic** across arcs — Stage 2 at the end of Arc N cannot be Stage 1 at the start of Arc N+1 unless a stated setback causes the regression — and any between-arc advancement must trace to a beat or a stated off-screen event that satisfies the stage's authored advance condition. A stage that teleports forward with no satisfying event is the subplot analog of the un-caused belief flip (flag it the same way); a silent reset to an earlier stage is a memory-reset failure. Also verify the endpoint wasn't crossed off-page: if Arc N+1 opens with the ladder resolved, an Arc N beat must have resolved it with {{user}} having had the chance to interfere.
+
 Where a relationship is flagged as evolving in Master Design but neither arc's CHARACTER_STATE/NPC_SHIFT carries a relational-stance line for it, that is a coverage gap — the drift is happening off-page and the model will improvise it inconsistently. Flag it for the Architect.
 
 ### Check 4 — World state continuity
@@ -214,6 +216,7 @@ Structure:
 - [ ] **Trauma trajectories (CHARACTER_STATE item 7) verified across transitions (Check 2): fades are shown and beat-accounted, never sudden vanishings or un-caused re-activations; off-page fades flagged for coverage**
 - [ ] All NPC shifts verified for middle-state coverage
 - [ ] **All evolving relationships/beliefs verified for continuity (Check 3b): no teleporting bonds, un-caused belief flips, silent memory resets, or off-page drift; every shift traces to a beat**
+- [ ] **Escalation Ladders (where authored) verified across transitions (Check 3b): stages monotonic, every between-arc advancement satisfies the stage's stated condition via a beat or stated off-screen event, no off-page endpoint resolution**
 - [ ] All hidden information rules trace cleanly across transitions
 - [ ] All dramatic beat sequences flow without skip-beats
 - [ ] All tone register shifts are prepared or acknowledged

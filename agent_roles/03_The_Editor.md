@@ -144,7 +144,8 @@ Score each criterion 1–3. Pass threshold: all ≥2, at least three = 3.
 |---|---|
 | **Physical Entry Completeness** | Does the physical description entry cover all required anatomical sections in order? |
 | **Relationship Entry Depth** | Does each relational entry describe specific behavioral manifestations, not just "she feels X about Y"? |
-| **Arc Isolation** | Zero arc-specific content. |
+| **Arc Isolation** | Zero arc-specific content. (Exception: a §7.D Escalation Ladder's stages are permanent authored content and belong here; only the *active stage* is arc state and lives in Tier 3.) |
+| **Escalation Ladder Integrity (conditional)** | See Step 4a-3c — laddered §7.D Standing Goals have structural sub-checks that don't fit in a table cell. |
 
 **Tier 3 entry quality:**
 | Criterion | Standard |
@@ -193,6 +194,26 @@ If the arc has one or more active principal NPCs (i.e., NPC_SHIFT entries are pr
 
 Then verify the directive is not dangling: every objective the cadence points at must be locatable as an NPC's Tier 2 §7.D **Standing Goal**, or an NPC_SHIFT "active goal this arc" where it shifts. A cadence directive pointing at goals no active NPC actually has, or an active principal NPC with no Standing Goal anywhere = hard reject.
 
+#### 4a-3c — Escalation Ladders (conditional — runs only when one or more NPCs carry a §7.D Escalation Ladder)
+
+**Ladder format integrity (hard fail), per laddered NPC's Tier 2 §7.D entry:**
+
+- [ ] 2–4 stages, strictly ordered
+- [ ] Each stage states on-screen moves, off-screen moves with surfaceable evidence, and an advance condition that is in-fiction observable (an event, a {{user}} action/inaction, a world reaction). A turn-count condition or "when dramatically appropriate" = hard reject — the model cannot count turns, and vague conditions invite rushing to the endgame.
+- [ ] An endpoint is stated (the ladder resolves)
+- [ ] A collision line is stated (where the ladder intersects {{user}} or the main spine). Missing collision = hard reject — a subplot that cannot touch the protagonist is set dressing.
+
+**Stage-named cadence (hard fail), per arc with an active laddered NPC:**
+
+- [ ] The ARC_STATE cadence bullet names that NPC's currently active stage
+- [ ] The bullet carries the progression discipline: advance only when the stated condition occurs in-fiction; never skip a stage; never resolve the endpoint without {{user}} having had the chance to interfere. Missing any of the three clauses = hard reject — without them the model treats the ladder as flavor and either ignores it or jumps to the resolution.
+
+**Dangling-stage extension (hard fail):** every stage the cadence (or an NPC_SHIFT active-ladder-stage line) names must exist in that NPC's §7.D ladder, and NPC_SHIFT stage lines must follow the delta rule (stated only on change or first activation).
+
+**Soft flags:** more than 3 laddered NPCs in the world (competing subplots dilute each other — surface for the user to prioritize, do not block); a ladder whose collision is never acknowledged where it intersects an arc's spine (the subplot and the main story will collide unchoreographed).
+
+Worlds with no laddered NPCs skip this step entirely — a flat Standing Goal is the default and fully valid.
+
 #### 4a-4 — Soft-flag check: Tonal Mandate quality
 
 For each bullet in the Tonal Mandate, evaluate:
@@ -228,6 +249,7 @@ When `World Mode` is `sandbox`, the Tier 3 lorebook has no ARC_STATE. Validate t
 - [ ] Tonal Mandate includes the **aliveness directives** — at minimum: NPCs pursue their own agendas / may initiate, the world reacts to and remembers {{user}}, and the world is never frozen waiting for {{user}}. Missing the aliveness contract = hard reject (a sandbox without it plays as an inert menu).
 - [ ] Tonal Mandate names the **live scene types** (the model's bias menu). Missing = hard reject.
 - [ ] Every principal NPC has a §7.D **Standing Goal** for the aliveness/cadence directive to act on. A principal NPC with no Standing Goal anywhere = hard reject (the directive has nothing to point at). Whether the aliveness directive names the goals concretely (referencing Standing Goals + the lull-trigger) vs. abstractly is a 4a-4-style soft flag, not a hard fail.
+- [ ] Laddered principals (if any): the aliveness bullet names each active ladder stage and carries the progression discipline (advance only on stated condition, never skip, never self-resolve the endpoint), and a WORLD_PULSE entry names the in-motion stages. Missing = hard reject (sandbox stage-state is soft — these two anchors are all that holds it). Ladder format integrity itself is checked per Step 4a-3c, which applies in both modes.
 - [ ] Exactly one SANDBOX_STATE entry exists (not multiple, not zero). At least one WORLD_PULSE entry exists at position 4. Otherwise = hard reject.
 
 Soft-flag (per the 4a-4 pattern): Tonal Mandate bullets that are vague ("keep it alive") rather than specific, or that merely restate a character card's content.
@@ -657,6 +679,7 @@ Post-history: [checklist results + word count]
 - All Tier 3 entries: arc mode — ARC_STATE complete with hidden info rules; sandbox mode — SANDBOX_STATE complete ✓
 - **Arc mode: all ARC_STATE entries: two-subsection structure (Dramatic Situation + Tonal Mandate), 4–8 imperative directive bullets ✓**
 - **Arc mode: arcs with active principal NPCs have an ARC_STATE activity-cadence directive (Step 4a-3b); it is not dangling — every objective maps to an NPC §7.D Standing Goal or NPC_SHIFT active-goal line ✓**
+- **Escalation Ladders (both modes, where authored): format integrity passed (ordered 2–4 stages, observable conditions, endpoint, collision); cadence/aliveness names the active stage + progression discipline; no dangling stages (Step 4a-3c); >3 laddered NPCs soft-flagged ✓**
 - **Arc mode: relational-stance lines (CHARACTER_STATE item 6 / NPC_SHIFT) are delta not restatement; Master-Design-flagged evolving relationships have stance-line coverage in the arcs where they drift (or the gap is soft-flagged) ✓**
 - **Arc mode: trauma-trajectory lines (CHARACTER_STATE item 7) are delta not restatement; characters whose trauma evolves have item-7 coverage in the arcs where it fades (or the gap is soft-flagged) ✓**
 - **Principal NPCs (both modes): each §7.D profile carries a Standing Goal ✓**

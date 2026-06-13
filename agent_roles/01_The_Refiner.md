@@ -202,6 +202,7 @@ For each major character:
 - Full physical and sensory description.
 - Psychological profile: motivation, fear, behavior pattern.
 - **Standing Goal:** the active objective the NPC pursues in the world + the concrete moves that advance it (on-screen and off-screen). This is the arc-agnostic baseline drive the Architect records in the §7.D profile and the ARC_STATE / SANDBOX_STATE activity-cadence directive acts on. If the World Seed gives only a passive want, flag it — the Architect needs an active, pursuable objective.
+- **Escalation Ladder (only where the seed authored one):** record it intact under the Standing Goal — 2–4 ordered stages (on-screen moves, off-screen evidence, in-fiction observable advance condition each), the endpoint, and the collision line. Verify structural integrity here: a stage with a turn-count or "when dramatic" condition, a missing endpoint, or a missing collision goes to `UNRESOLVED_QUESTIONS.md` (the Editor hard-fails these downstream; catching it here saves a round-trip). In arc mode, cross-check the collision against Section 5: if the ladder's collision or its stage timing intersects an arc's spine, note the intersection in that arc's block so the Architect can place the active stage in NPC_SHIFT and the stage-transition beats deliberately. More than 3 laddered NPCs = soft-flag (note it; do not block).
 - Speech pattern with 2–3 sample lines.
 - Relationship to {{user}}, to primary characters, and to other NPCs.
 - Trigger keyword candidates (2–4 words).
@@ -353,6 +354,7 @@ Append to end of `Master_Design.md`:
 - [ ] All major characters: relationship map complete
 - [ ] All major characters: psychological entry topics listed
 - [ ] All NPCs: classified principal vs. roster; principals have full profiles with trigger keywords **and a Standing Goal (active objective + pursuit moves)**; roster NPCs have essence/presence/voice fingerprint/signature line/stance/hook with trigger keywords
+- [ ] Escalation Ladders (where the seed authored them): recorded intact (2–4 ordered stages with observable conditions, endpoint, collision); structural gaps logged to UNRESOLVED_QUESTIONS.md; arc-mode collisions cross-noted in Section 5 arc blocks; >3 laddered NPCs soft-flagged
 - [ ] **No two roster NPCs share a voice fingerprint (distinctiveness gate) — or interchangeable voices logged to UNRESOLVED_QUESTIONS.md**
 - [ ] **Protagonist ({{user}}): physical description, psychology, powers, voice, and lorebook entry topics defined**
 - [ ] **Protagonist ({{user}}): identity floor available for `User.md` Persona Description — name, role/public face, distilled physical signature, world-relevant powers/limits flag (if applicable). Voice/personality/manner intentionally excluded — the human plays `{{user}}`.**

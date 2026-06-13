@@ -352,6 +352,10 @@ A sandbox world is an open-ended, NPC-populated experience with no arc carrying 
 
 These are defaults, not mandates — the analysis still drives selection. But a sandbox preset that omits `npc_ensemble` or disables Multi-Character Dynamics should carry an explicit justification in Step 4 (Block Omissions).
 
+#### Ladder-aware block hint (arc mode, when any NPC carries a §7.D Escalation Ladder)
+
+Sandbox worlds include `npc_ensemble` by default (above); arc worlds normally reach it only through the failure-mode analysis. When the Master Design shows one or more **Escalation Ladders** (§7.D), weight `npc_ensemble` for inclusion in arc mode too: a laddered subplot renders through exactly what the block licenses — NPC-to-NPC scheming dialogue, and off-screen evidence surfacing as enrichment texture — and without it the model routes every line hub-and-spoke through {{user}}, starving the subplot of screen time. Predict **"subplot starves because all dialogue routes through {{user}}"** as the matching failure mode and map it to this block. This is a hint feeding the analysis, not a mandate — a near-solo arc world whose only ladder advances off-screen may legitimately omit the block with a Step 4 justification.
+
 If the agent skips this analysis, the audit report is incomplete and sign-off cannot be issued.
 
 ---
@@ -814,6 +818,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] NSFW block: populated and enabled if world has intimate content; empty and disabled if wholesome
 - [ ] Optional blocks (if included): Opening Variation contains all five opening varieties + rotation rule; Perception Boundary contains the worked {{user}}-narration example + inverse {{char}} rule per §5a-detail; NPC Ensemble & Enrichment contains all three labeled parts (NPC-to-NPC dialogue, ensemble prose scaling, organic enrichment with its guardrails) per §5a-detail
 - [ ] Sandbox worlds: Multi-Character Dynamics enabled, `npc_ensemble` included, Sensory Embodiment weighted high — or each omission justified in the Block Selection Rationale (Step 4)
+- [ ] Arc worlds with Escalation Ladders (§7.D): `npc_ensemble` included per the ladder-aware block hint — or the omission justified in the Block Selection Rationale (Step 4)
 
 ### Chat Template — Style Contract Validation (paired with override architecture)
 - [ ] Main Prompt contains exactly one `<style_contract>...</style_contract>` block with NARRATIVE PERSPECTIVE and FORMATTING MARKERS lines

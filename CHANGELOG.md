@@ -115,6 +115,73 @@ release branch, 2026-06-12) before any file was edited, per the
 
 ---
 
+## 2026-06-11 — Escalation Ladders: NPC-driven subplots from wants, desires, and goals
+
+The pipeline mechanized NPC *initiative* (§7.D Standing Goals + the activity-cadence
+directive) but not *progression* — a Standing Goal is a flat drive with no stages,
+complications, or resolution. Mid-tier runtime models (DeepSeek/GLM class) won't
+invent coherent multi-session subplots, but they reliably *execute* authored plans.
+The Escalation Ladder closes the gap on that division of labor: the author stages
+the subplot; the model recognizes stated conditions and runs the next authored stage.
+
+### Added
+- **Escalation Ladder** — optional extension of the §7.D Standing Goal
+  (`agent_roles/02_The_Architect.md`): 2–4 ordered stages (on-screen moves,
+  off-screen moves with surfaceable evidence, an in-fiction observable advance
+  condition each), a stated **endpoint** (ladders resolve; standing pressure stays
+  TENSION/WORLD_PULSE's job), and a stated **collision** with `{{user}}` or the
+  main spine (missing collision = Editor hard fail). Opt-in per NPC; >3 laddered
+  NPCs per world is a soft flag. Seed field in `templates/World_Seed_Template.md`;
+  elicitation in the Interviewer; recording + integrity pre-check in the Refiner.
+- **Stage state, per mode.** Arc mode gets hard state: an optional
+  `Active ladder stage this arc` delta line in NPC_SHIFT, named by the ARC_STATE
+  cadence bullet, with stage transitions as optional keyed DRAMATIC_BEATs.
+  Sandbox mode gets soft state: the stage is named in the SANDBOX_STATE aliveness
+  bullet and anchored by WORLD_PULSE's depth-2–4 recency injection, with the
+  revise pipeline's `sandbox_state_recalibration` as the manual ratchet when play
+  moves past the named stage.
+- **Progression discipline** in the cadence/aliveness directive: named current
+  stage, advance only when the stated condition occurs in-fiction, never skip a
+  stage, never resolve the endpoint without `{{user}}` having had the chance to
+  interfere.
+- **Audit teeth.** Editor Step 4a-3c (ladder format integrity, stage-named
+  cadence, dangling-stage extension — hard fails; >3 ladders + unchoreographed
+  collisions — soft flags). Voice Auditor Step 3J extensions (stage-trace: lull
+  moves belong to the *active* stage; a "temptation" scenario probes that the
+  model holds the stage instead of jumping to the endgame). Arc Transition
+  Auditor Check 3b extension (stages monotonic across seams, advancement
+  satisfies the authored condition via a beat or stated off-screen event, no
+  off-page endpoint resolution).
+
+### Changed
+- `agent_roles/05a_Block_Library.md` — one clarifying sentence in the
+  `npc_ensemble` enrichment guardrail: executing an authored ladder (including
+  surfacing its stated off-screen evidence) is goal-following, not
+  enrichment-invention; inventing stages/conditions/resolutions remains forbidden.
+- `agent_roles/Converter/00_The_Converter.md` + `templates/Convert_Brief_Template.md`
+  — the ladder rides the Standing Goal carry-across rule, with per-stage and
+  collision audits (protagonist-coupled parts strip + mark); active stage never
+  carries (it is Tier 3 state). Rebaseline carries the ladder verbatim with the
+  rebuild starting at the post-revision high-water stage.
+- `agent_roles/revise/00_The_Reviser.md` — no new scope types; stage bumps route
+  through `tier3_arc_entry_modify` (arc) / `sandbox_state_recalibration`
+  (sandbox); examples added.
+- `agent_roles/05_The_Prompt_Engineer.md` — ladder-aware block hint in the
+  Section 5.0b selection analysis: arc worlds with Escalation Ladders weight
+  `npc_ensemble` for inclusion (laddered subplots render through NPC-to-NPC
+  dialogue and off-screen evidence surfacing; predicted failure mode: "subplot
+  starves because all dialogue routes through {{user}}"), with a matching
+  self-validation checklist line. A hint feeding the analysis, not a mandate —
+  omission stays legitimate with a Step 4 justification.
+
+### Unchanged on purpose
+- No new entry types, positions, flags, phases, or scope types; no Compiler or
+  `tools/validate_export.py` changes; no preset content changes. Flat Standing
+  Goals remain the default and fully valid — every new check is conditional on a
+  ladder existing, so existing worlds are unaffected.
+
+---
+
 ## 2026-06-11 — Convert Rebaseline mode: consolidate a revised world into a clean rebuild
 
 A world that has been through several revisions (R1…R[N]) accumulates `<!-- REVISED

@@ -67,7 +67,7 @@ For each AI-played character, generate this matrix:
 
 Generate at least three test scenarios per character per arc. For a five-arc world with two characters, you produce a minimum of thirty test scenarios. Coverage is more important than brevity here — the audit only catches what it tests.
 
-**When the world has principal NPCs (either mode), include at least one "lull" scenario** — {{user}} passive, saying little, handing the turn back without a prompt — so Step 3J (NPC Agency & Goal-Following) has material to test whether NPCs take initiative.
+**When the world has principal NPCs (either mode), include at least one "lull" scenario** — {{user}} passive, saying little, handing the turn back without a prompt — so Step 3J (NPC Agency & Goal-Following) has material to test whether NPCs take initiative. **When any NPC carries a §7.D Escalation Ladder, also include one "temptation" scenario** — a scene that invites jumping to the ladder's endgame (e.g., the laddered NPC alone with exactly what they ultimately want, undefended) — so Step 3J's stage-discipline probe has material to test that the model holds the current stage.
 
 **Sandbox worlds:** there is no "Active Arc" column — substitute "Standing (SANDBOX_STATE)" for the arc, and "Expected Register" is the SANDBOX_STATE Tonal Mandate. Generate at least three scenarios per principal character/Director plus, critically, scenarios that put several **roster NPCs** on stage together so Step 3I (Distinctiveness Matrix) has material. Cover the live scene types named in SANDBOX_STATE so the audit exercises the actual sandbox menu.
 
@@ -176,10 +176,11 @@ For worlds with no large roster cast (arc worlds with a handful of NPCs): skip S
 The aliveness contract (sandbox) and the ARC_STATE activity-cadence directive (arc) are only real if the NPCs actually act on their own. This step tests that, using the "lull" scenario from Step 1 (or generate one now: {{user}} passive, handing the turn back without a prompt). Check:
 
 - **Initiative:** does a present or off-screen NPC act on its own — advancing a goal, starting something, acting on remembered events — rather than the scene freezing to wait on {{user}}? A scene that idles until {{user}} drives it is an aliveness failure (Critical in sandbox, High in arc).
-- **Goal-trace:** does each acting NPC's move trace to a stated objective — its Tier 2 §7.D Standing Goal, or an NPC_SHIFT active-goal-this-arc line? An NPC acting at random with no connection to any stated goal means the goal is missing/thin or the cadence directive isn't landing.
+- **Goal-trace:** does each acting NPC's move trace to a stated objective — its Tier 2 §7.D Standing Goal, or an NPC_SHIFT active-goal-this-arc line? An NPC acting at random with no connection to any stated goal means the goal is missing/thin or the cadence directive isn't landing. **For a laddered NPC (§7.D Escalation Ladder), the trace tightens to the *active stage*:** the move must belong to the stage the cadence/aliveness directive names, not an arbitrary stage. A Stage-1 NPC making Stage-3 moves is a stage-trace failure even though the move traces to the goal.
+- **Stage discipline (laddered NPCs only):** run the temptation scenario from Step 1 — a scene that invites the endgame. The model should hold the current stage: pursue it in-register, surface stage-appropriate evidence, and *not* advance or resolve the ladder absent its stated condition. Jumping stages or self-resolving the endpoint = High (the progression discipline isn't binding).
 - **No user-puppeting:** the NPC advances its *own* agenda without narrating or deciding {{user}}'s actions.
 
-Diagnosis routes to the Architect: an initiative miss points at the SANDBOX_STATE/ARC_STATE cadence directive (missing or abstract); a goal-trace miss points at a thin/absent §7.D Standing Goal. Name the specific NPC and entry.
+Diagnosis routes to the Architect: an initiative miss points at the SANDBOX_STATE/ARC_STATE cadence directive (missing or abstract); a goal-trace miss points at a thin/absent §7.D Standing Goal; a stage-trace or stage-discipline miss points at the cadence/aliveness bullet not naming the active stage or missing one of the three discipline clauses (advance only on stated condition / never skip / never self-resolve). Name the specific NPC and entry.
 
 For worlds with no principal NPC cast (solo / two-hander arcs): skip Step 3J.
 
@@ -199,6 +200,7 @@ When a failure is found, do not just flag the dialogue. Trace it back to the spe
 | Healed behavior in wrong arc | CHARACTER_STATE entry contaminating across arcs, or beats jumping |
 | Disguise inconsistency | NPC_SHIFT entry not capturing the arc transition correctly |
 | World idles until {{user}} acts; NPC acts with no goal-trace (Step 3J) | SANDBOX_STATE / ARC_STATE activity-cadence directive missing or abstract, OR principal NPC §7.D Standing Goal thin or absent |
+| Laddered NPC jumps stages or self-resolves its subplot (Step 3J stage discipline) | Cadence/aliveness bullet not naming the active stage, OR missing a progression-discipline clause (advance only on stated condition / never skip / never self-resolve) — point the Architect at the specific bullet |
 | Marker drift in a turn | World Main `<style_contract>` content wrong, OR Formatting block content contradicting the contract — surface to Prompt Engineer |
 | Pronoun bleed within a turn | Overriding card's `<style_override>` block missing `{{char}}` reference, OR block directive language not strong enough — surface to Architect |
 | Omniscient interjection in 1st-person turn | World Main missing the active-speaker rule, OR cross-card context contamination from group-chat assembly — surface to Prompt Engineer |
@@ -289,6 +291,7 @@ If no failures → sign off cleanly.
 - [ ] **Sandbox / large-roster worlds: Step 3I Distinctiveness Matrix run; no Critical (mutually-swappable) or High (voiceless) roster NPCs remain; OR confirmed no large roster cast and Step 3I skipped**
 - [ ] **Sandbox worlds: standing register checked against SANDBOX_STATE (incl. aliveness directives — NPCs act on their own, world is reactive); arc-only checks (3D, disguise) skipped**
 - [ ] **Worlds with principal NPCs: Step 3J run — in a lull, NPCs take initiative and their moves trace to stated Standing Goals; OR confirmed no principal NPC cast and Step 3J skipped**
+- [ ] **Worlds with laddered NPCs: stage-trace verified (moves belong to the named active stage) and the temptation scenario run (model holds the stage, no jumping or self-resolving); OR confirmed no Escalation Ladders authored**
 
 ### Behavioral Fidelity
 - [ ] No Critical failures remain

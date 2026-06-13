@@ -346,6 +346,12 @@ Since NPCs live in the lorebook rather than on a card, a **principal** NPC's ent
 - How they enter a room / how they present
 - What they want and what they fear
 - **Standing Goal:** the active objective this NPC is pursuing in the world right now — concrete, not a vague want — plus the specific things they *do* to advance it (on-screen moves and off-screen actions). This is what they pursue when a scene lulls instead of waiting on {{user}}. It is arc-agnostic baseline drive; the ARC_STATE / SANDBOX_STATE **activity cadence** directive is what makes the model act on it, and an arc's NPC_SHIFT states any per-arc shift.
+- **Escalation Ladder (optional — only when the Standing Goal is subplot-shaped; Master Design will say so):** 2–4 ordered stages that turn the goal into a subplot the model *executes* — it is never asked to decide what happens next, only to recognize a stated condition and run the next authored stage. Format rules (binding; the Editor's Step 4a-3c validates them):
+  1. Each stage states **on-screen moves**, **off-screen moves with surfaceable evidence** (what {{user}} could notice), and an **advance condition** that is in-fiction observable — an event, a {{user}} action or inaction, a world reaction. Never "after N turns", never "when dramatically appropriate".
+  2. Stages are strictly ordered, 2–4 of them.
+  3. The ladder ends in a stated **endpoint** — it resolves. Standing never-resolving pressure is TENSION / WORLD_PULSE's job, not the ladder's.
+  4. One **collision** line — where the ladder intersects {{user}} or the main spine, whether or not {{user}} engages. Missing collision = Editor hard fail (a subplot that can't touch the protagonist is set dressing).
+  The ladder lives here in Tier 2 as permanent authored content; the *active stage* is Tier 3 state — named per-arc in NPC_SHIFT (arc mode) or anchored in SANDBOX_STATE/WORLD_PULSE (sandbox mode). More than ~3 laddered NPCs in a world is a soft flag — competing subplots dilute each other on exactly the model class the ladder is built for.
 - How they speak: sentence structure, vocabulary, what they never say
 - 2–3 sample lines of dialogue
 - How they relate to {{user}} and to the primary character
@@ -424,7 +430,7 @@ Content: A bulleted list of 4–8 behavioral directives. Every bullet must use i
 - **Prose dwells on:** what the prose should linger on (specific atmospheric anchors, character behaviors, sensory details).
 - **Prose elides:** what the prose should skip or de-emphasize (redemptive hope in a grimdark arc, comforting tenderness in a survival arc, external concerns in a claustrophobic arc).
 - **Live scene types:** what scene types are active in this arc (so the model knows what kinds of scenes to bias toward).
-- **Activity cadence (include when principal NPCs are active in this arc):** NPCs advance their Standing Goals on their own initiative — when a scene lulls or {{user}} is passive, a present or off-screen NPC acts toward its goal rather than the scene freezing to wait on {{user}}. Reference the arc's active NPCs by the goals they pursue this arc (see the NPC_SHIFT entries). Omit this bullet for solo / two-hander arcs with no acting NPC cast.
+- **Activity cadence (include when principal NPCs are active in this arc):** NPCs advance their Standing Goals on their own initiative — when a scene lulls or {{user}} is passive, a present or off-screen NPC acts toward its goal rather than the scene freezing to wait on {{user}}. Reference the arc's active NPCs by the goals they pursue this arc (see the NPC_SHIFT entries). Omit this bullet for solo / two-hander arcs with no acting NPC cast. **When an active NPC has an Escalation Ladder (§7.D), the cadence bullet must additionally name the currently active stage and carry the progression discipline**, in the same imperative register — e.g.: "Mira's ladder is at **Stage 1 (quiet groundwork)**: in lulls she probes and plants rumors; surface off-screen evidence of the rumor spreading. Advance to Stage 2 ONLY when its stated condition occurs in-fiction; never skip a stage; never resolve the endpoint without {{user}} having had the chance to interfere." The three clauses — named current stage, advance only on stated condition, never skip / never self-resolve — are what keep the model executing the authored subplot instead of inventing or rushing one.
 - **Hard prohibitions:** specific behaviors the model must never produce in this arc (e.g., "do not write the women as enthusiastically initiating from desire — they initiate from duty under time pressure").
 - **Failure mode anchors:** if you have observed specific failure modes in playtesting (model softens openings, model warms cruel characters, model skips trauma responses), name them explicitly as prohibitions.
 
@@ -577,6 +583,8 @@ Content: ONLY the behavioral delta from baseline. Example: "In this arc, [NPC na
 
 If this NPC's **Standing Goal** (Tier 2 §7.D) shifts, intensifies, or is newly active this arc, state the **active goal this arc** and how they pursue it in one line — this is the concrete objective the ARC_STATE activity-cadence directive points the model at when a scene lulls. If the goal is unchanged from baseline, do not restate it.
 
+If this NPC has an **Escalation Ladder** (§7.D), state the **active ladder stage this arc** in one line — `**Active ladder stage this arc:** Stage N (label)` — following the same delta rule: state it only when the stage changes from the previous arc or the ladder first activates; an unchanged stage is not restated. This line is the hard state the ARC_STATE cadence bullet names. Between-arc stage advancement must trace to a beat or a stated off-screen event (the Arc Transition Auditor's Check 3b verifies it); regression is legitimate only with a stated setback.
+
 Likewise, if the NPC's **relational stance or belief** has changed this arc — their stance toward {{user}} or another character, or what they now believe {{user}} did — state the delta in one line, with the beat or {{user}} action that caused it (e.g., "now believes {{user}} betrayed the syndicate after the dock job; treats him with cold suspicion until he proves otherwise"). This is the NPC-side counterpart of CHARACTER_STATE item 6, and the Arc Transition Auditor (Check 3b) reads it for continuity. Unchanged stance → do not restate it.
 
 ### D. DRAMATIC_BEAT Entries (one per major narrative event)
@@ -587,6 +595,8 @@ Likewise, if the NPC's **relational stance or belief** has changed this arc — 
 **Position Rationale:** DEFAULT
 
 Content: What this beat is. What triggers it. What the LLM should do when it occurs. What changes after it. What the emotional register of the moment is.
+
+**Escalation Ladder stage transitions are natural DRAMATIC_BEAT material** — when a laddered NPC's stage transition happens *inside* this arc (its advance condition can occur mid-arc rather than at an arc seam), author a keyed beat for it: the trigger keys are the advance condition's observable signs, "what changes after it" is the new active stage. Recommended when the transition is a major story moment; not mandatory for every laddered NPC — minor transitions can ride the cadence directive alone.
 
 ### E. TENSION Entries (1–2 per arc)
 **Trigger Keys:** [topic keywords related to the pressure of this arc]
@@ -642,7 +652,7 @@ Content: 4–8 imperative bullets (same imperative-language standard as ARC_STAT
 - **Prose dwells on / Prose elides:** the standing atmospheric and behavioral anchors to linger on or skip.
 - **Live scene types:** the sandbox menu — the kinds of scenes the model should bias toward and be ready to enter (negotiations, intimate evenings, displays of authority, domestic quiet, sudden threats, etc.).
 - **Power-fantasy contract:** how NPCs and the world treat {{user}} by default — the directive form of the Standing Situation's contract.
-- **Aliveness directives (mandatory — this is what keeps a sandbox from feeling like a vending machine):** NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; off-screen life continues and time passes; never freeze the world waiting for {{user}}; rotate NPCs in and out so the cast feels populated, not summoned. Make this concrete: **principal NPCs advance their Standing Goals (§7.D) on their own initiative — when a scene lulls or {{user}} is passive, a present or off-screen NPC acts toward its goal** rather than the world idling.
+- **Aliveness directives (mandatory — this is what keeps a sandbox from feeling like a vending machine):** NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; off-screen life continues and time passes; never freeze the world waiting for {{user}}; rotate NPCs in and out so the cast feels populated, not summoned. Make this concrete: **principal NPCs advance their Standing Goals (§7.D) on their own initiative — when a scene lulls or {{user}} is passive, a present or off-screen NPC acts toward its goal** rather than the world idling. **When a principal has an Escalation Ladder (§7.D), name its currently active stage here and carry the progression discipline**: advance to the next stage ONLY when its stated condition occurs in-fiction (on-screen or via surfaced evidence); never skip a stage; never resolve the ladder's endpoint without {{user}} having had the chance to interfere. (Sandbox has no swappable arc state, so the named stage here and in WORLD_PULSE is the stage's anchor; for long-running sandboxes where play has moved past the named stage, the revise pipeline's `sandbox_state_recalibration` scope is the ratchet that updates it.)
 - **Hard prohibitions:** what the model must never do — e.g., never strip {{user}}'s agency or power without an in-world cause the player set in motion; never reset NPC attitudes to neutral between scenes; never flatten the cast to a single voice.
 
 > The Editor (Step 4a, sandbox variant) hard-fails a `SANDBOX_STATE` entry missing either subsection, missing the aliveness directives, or whose Tonal Mandate has fewer than 4 imperative bullets.
@@ -658,7 +668,7 @@ Content: 4–8 imperative bullets (same imperative-language standard as ARC_STAT
 **Order Priority:** 90
 **Position Rationale:** DEFAULT
 
-Content: The sandbox analog of TENSION. Instead of a stakes-countdown, this is the standing **aliveness pulse** — what is always in motion at the edges: ambient pressures and opportunities, who wants what from {{user}}, the principals' Standing Goals currently in motion, what the world is doing in the background while {{user}} acts, reputation preceding {{user}} into rooms. Frame it as a standing condition the prose keeps live every turn — sustained, never relieved or resolved on the model's own initiative. Keep it short and present-tense; it injects close to generation.
+Content: The sandbox analog of TENSION. Instead of a stakes-countdown, this is the standing **aliveness pulse** — what is always in motion at the edges: ambient pressures and opportunities, who wants what from {{user}}, the principals' Standing Goals currently in motion — **including the active stage of any Escalation Ladder, named explicitly** (the depth-2–4 injection keeps the current stage in the freshest context, which is what holds soft stage-state steady in long chats) — what the world is doing in the background while {{user}} acts, reputation preceding {{user}} into rooms. Frame it as a standing condition the prose keeps live every turn — sustained, never relieved or resolved on the model's own initiative. Keep it short and present-tense; it injects close to generation.
 
 ### C. LOCATION Entries (sandbox standing locations, as needed)
 **Injection Position:** 1 (After Char Def — Tier 3 default per Notes 3.3.1)
@@ -880,6 +890,7 @@ Append to your submission note before handing to The Editor:
 - [ ] Relational entries: all major relationships covered
 - [ ] NPC entries: principals as full §7.D profiles; roster NPCs (large casts) as compact §7.E stat blocks
 - [ ] **Principal NPCs (§7.D): each has a Standing Goal — an active objective plus the concrete moves that advance it**
+- [ ] **Escalation Ladders (where authored): 2–4 ordered stages, each with on-screen moves + surfaceable off-screen evidence + an in-fiction observable advance condition; endpoint stated; collision line present; >3 laddered NPCs soft-flagged**
 - [ ] **Roster NPC voice fingerprints are unique — no two roster NPCs swappable from a single line (distinctiveness rule)**
 - [ ] All entries have trigger keys
 - [ ] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
@@ -888,6 +899,7 @@ Append to your submission note before handing to The Editor:
 - [ ] Exactly one `Tier3_Sandbox_Entries.md`, no per-arc files
 - [ ] **SANDBOX_STATE entry (CONSTANT, no key) uses the two-subsection structure: `**Standing Situation:**` followed by `**Tonal Mandate (binding behavioral directive — applies to every response):**`**
 - [ ] **SANDBOX_STATE Tonal Mandate has 4–8 imperative bullets and includes the aliveness directives (NPCs act on their own, world reacts/remembers, never freezes, rotate the cast), made concrete by referencing principal Standing Goals + the lull-trigger (when a scene lulls, an NPC advances its goal)**
+- [ ] **Laddered principals (sandbox): SANDBOX_STATE aliveness bullet names each active ladder stage + carries the progression discipline (advance only on stated condition, never skip, never self-resolve the endpoint); WORLD_PULSE names the in-motion stages**
 - [ ] At least one WORLD_PULSE entry (position 4, sustained, never resolved)
 - [ ] No CHARACTER_STATE / NPC_SHIFT / DRAMATIC_BEAT / arc-trigger entries present
 - [ ] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
@@ -903,6 +915,7 @@ Append to your submission note before handing to The Editor:
 - [ ] CHARACTER_STATE item 7 (trauma trajectory) present for each character whose trauma intensity changes this arc — current intensity/frequency + the beat that moved it; fades shown, never sudden vanishings; fully-active triggers and trauma-less characters need no line
 - [ ] Location entries for arc-relevant locations
 - [ ] NPC_SHIFT entries for all active NPCs (delta only, not baseline); active goal this arc stated where an NPC's Standing Goal shifts or is newly active; relational stance/belief delta stated where the NPC's stance toward {{user}} or another character changes
+- [ ] **Laddered NPCs (arc): NPC_SHIFT carries the active-ladder-stage line where the stage changes or first activates (delta only); the arc's cadence bullet names that stage + the progression discipline; between-arc stage advancement traces to a beat or stated off-screen event**
 - [ ] DRAMATIC_BEAT entries for major story moments
 - [ ] TENSION entries (1–2 per arc)
 - [ ] Minimum 8 entries per arc lorebook
