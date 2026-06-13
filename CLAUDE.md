@@ -8,7 +8,7 @@
 
 World Forge is a **multi-agent pipeline for building immersive roleplay worlds for SillyTavern**. It is not application code in the traditional sense — it is a curated collection of agent specifications (markdown), templates (markdown and JSON), and orchestration logic (markdown) that together define a structured creative writing pipeline.
 
-The pipeline is designed to run inside an agentic VS Code extension (typically Roo Code in Orchestrator mode). When invoked, it walks a user from a raw idea through 5+ phases of structured drafting and validation, producing a complete SillyTavern-ready world package.
+The pipeline is designed to run inside an agentic VS Code extension (typically Kilo Code; the formerly-recommended Roo Code was retired May 15, 2026). When invoked, it walks a user from a raw idea through 5+ phases of structured drafting and validation, producing a complete SillyTavern-ready world package.
 
 **The repository is the pipeline itself.** Editing files here changes how the pipeline behaves on its next run. There is no compilation step, no test suite, no deployment — files are read directly by the runtime agent.
 
@@ -17,7 +17,7 @@ The pipeline is designed to run inside an agentic VS Code extension (typically R
 ## What this repository is NOT
 
 - **Not a SillyTavern fork or extension.** SillyTavern is the runtime environment that consumes the pipeline's outputs. This repo produces files for SillyTavern; it does not modify SillyTavern itself.
-- **Not a runtime engine.** The pipeline does not execute — it is consumed by an agentic IDE extension (Roo Code) that orchestrates LLM calls. Do not add execution logic, build steps, or deployment configuration.
+- **Not a runtime engine.** The pipeline does not execute — it is consumed by an agentic IDE extension (Kilo Code) that orchestrates LLM calls. Do not add execution logic, build steps, or deployment configuration.
 - **Not a code project.** The "code" here is markdown agent specifications. Treat them as you would treat carefully-versioned prose documents, not as source code.
 - **Not for editing during pipeline runs.** When a user is actively running `/worldforge start`, the pipeline files are being read by the runtime agent. Editing them mid-run produces undefined behavior.
 
@@ -29,7 +29,7 @@ The pipeline is designed to run inside an agentic VS Code extension (typically R
 World-Forge/
 ├── README.md                         ← Human-facing project description
 ├── tutorial.md                       ← Usage tutorial
-├── AGENTS.md                         ← Standing instructions for agentic tools (Kilo/Roo/Cline); routes run-vs-maintenance sessions
+├── AGENTS.md                         ← Standing instructions for agentic tools (Kilo/Cline); routes run-vs-maintenance sessions
 ├── Notes_On_functionality.md         ← Authoritative reference: how SillyTavern works internally
 ├── Notes_Quick_Reference.md          ← DERIVED ~5KB distillation of Notes (position enum, flags, assembly); agents consult it first
 ├── LICENSE
@@ -82,7 +82,7 @@ World-Forge/
 │   └── world-forge-convert.md        ← Convert fork (reframe a shipped world into a new build, Phase C0)
 ├── wiki/                             ← Setup & tooling guides (linked from README/tutorial)
 │   ├── README.md                     ← Wiki index
-│   ├── Agentic-Tools-and-Models.md   ← Roo/Kilo/Cline + model comparison
+│   ├── Agentic-Tools-and-Models.md   ← Kilo/Cline + model comparison (incl. Roo Code retirement note)
 │   └── Kilo-Code-Setup.md            ← Dedicated Kilo Code setup walkthrough
 └── Samples/                          ← Example world outputs for reference
 ```
@@ -245,7 +245,7 @@ These pairs of files must stay in sync. When editing one, check the other.
 | `agent_roles/02_The_Architect.md` / `agent_roles/03_The_Editor.md` (User.md persona) | `templates/User_Persona_template.md` — both define the `{{user}}` persona-description structure |
 | `agent_roles/05a_Block_Library.md` (block library, split from 05) | `agent_roles/05_The_Prompt_Engineer.md` (Sections 5b–5f reference §5a/§5a-detail; Resync Mode re-derives from it) and `templates/Chat_Completion_Preset_template.json` — agent must produce against template structure |
 | `Notes_On_functionality.md` (any correction or content change) | `Notes_Quick_Reference.md` — it is a DERIVED distillation (position enum, flags, assembly order, gotchas); regenerate the affected fact, never let the two disagree |
-| `agent_roles/04_The_Compiler.md` (pre-save guards) | `tools/validate_export.py` — the validator deterministically re-checks the same failure modes (UTF-8/mojibake, parse, `{{original}}`, position enum, UID uniqueness); changing a guard may require updating the script and vice versa |
+| `agent_roles/04_The_Compiler.md` (pre-save guards) | `tools/validate_export.py` — the validator deterministically re-checks the same failure modes (UTF-8/mojibake, parse, `{{original}}`, position enum, UID uniqueness, entry-key/UID parity, snake_case alias fields); changing a guard may require updating the script and vice versa |
 | Any agent spec's INPUT section | The same spec's `📂 CONTEXT MANIFEST` block at the top — the manifest is the load-discipline restatement of the inputs; they must list the same files |
 | `agent_roles/05_The_Prompt_Engineer.md` Section 8 (Preset Resync Mode) | `workflows/world-forge.md` PRESET RESYNC section — both define the `/worldforge resync-preset` operation |
 | `Notes_On_functionality.md` (position table) | All agent files referencing positions — they cite this table |
@@ -290,6 +290,7 @@ These are mistakes that have been made before and produce subtle bugs:
 - **Conflating ARC_STATE descriptive content with directive content.** Use the two-subsection structure; don't merge them. The sandbox `SANDBOX_STATE` entry inherits the same rule (`**Standing Situation:**` descriptive, `**Tonal Mandate:**` directive).
 - **Authoring a sandbox NPC roster with overlapping voice fingerprints.** At sandbox scale the failure mode is cross-NPC homogenization, not per-NPC infidelity. Every roster NPC's voice fingerprint must be distinct enough that the Voice Auditor's blind-line test (Step 3I) can tell them apart.
 - **Forcing a sandbox world through arc machinery.** Don't author `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc triggers for a `World Mode: sandbox` world — Tier 3 is the single Sandbox lorebook (`SANDBOX_STATE` + `WORLD_PULSE`). Conversely, don't apply the sandbox format to an arc world.
+- **Keying lorebook entries by sequential position instead of by UID.** ST stores and looks up world-info entries as `entries[uid]`; an entry keyed `"1"` with `"uid": 20` imports without error and then never renders in the World Info editor (GitHub issue #31). Every entry's object key must equal `String(uid)` — Compiler Foundational Rule 9, deterministically re-checked by `tools/validate_export.py`. The same issue covered the snake_case alias fields (`case_sensitive`, `match_whole_words`, `use_regex`, `characterFilterNames`/`characterFilterExclude`) — those belong to the embedded `character_book` card format, not standalone lorebooks (Rule 10).
 - **Editing `Notes_On_functionality.md` based on memory of how SillyTavern works.** Always verify against the official ST source if changing this file.
 - **Adding a new pipeline phase or agent without updating `workflows/world-forge.md`.** Orchestration is the source of truth for what runs when.
 - **Writing Export JSON through PowerShell (Compiler / mini-Compiler).** Windows PowerShell `Out-File` / `Set-Content` / `>` re-encode to UTF-16 / Windows-1252 and corrupt the em-dashes (—), curly quotes, and accented names that fill lorebook and card content into mojibake (`—` → `â€"`). The mangled file still passes `JSON.parse`, so the "JSON parses" guard never catches it. Write JSON as UTF-8 via the file-write tool directly or a **Python / Node** script, and after writing grep for `â€` / `Ã` (expect zero). See the Compiler's FILE-WRITING & ENCODING guard. `python tools/validate_export.py Export/` checks for exactly this corruption (plus parse, `{{original}}`, and position-enum failures) read-only — run it after every compile.
@@ -313,7 +314,7 @@ The project owner (Andrei) has a specific working style that produces good outco
 Do not, without explicit instruction:
 
 - Modify SillyTavern itself (this repo produces inputs for ST, not changes to ST)
-- Add language-specific code (Python, JavaScript, etc.) — the pipeline is pure markdown/JSON. **One standing exception, explicitly approved 2026-06-10:** `tools/validate_export.py`, a stdlib-only, strictly read-only validator for Export/ JSON (UTF-8/mojibake, parse, `{{original}}`, position enum, UID uniqueness). It is a deterministic backstop for the Compiler's guards, not a replacement for them. Do not extend it into anything that modifies files, and do not add further scripts without the same explicit approval.
+- Add language-specific code (Python, JavaScript, etc.) — the pipeline is pure markdown/JSON. **One standing exception, explicitly approved 2026-06-10:** `tools/validate_export.py`, a stdlib-only, strictly read-only validator for Export/ JSON (UTF-8/mojibake, parse, `{{original}}`, position enum, UID uniqueness, entry-key/UID parity, snake_case alias fields). It is a deterministic backstop for the Compiler's guards, not a replacement for them. Do not extend it into anything that modifies files, and do not add further scripts without the same explicit approval.
 - Add CI/CD, test frameworks, or build configuration — there is nothing to compile or deploy
 - Add dependencies of any kind
 - Refactor file paths or folder structure (every agent references specific paths)

@@ -14,6 +14,11 @@ Checks the failure modes that slip past "the JSON parses":
   lorebooks   - every entry's position is an integer in 0..7
               - atDepth (position 4) entries carry an integer depth
               - uid values unique within the file
+              - every entry's object key equals String(uid) (ST renders entries via
+                entries[uid]; mismatched keys import but never show in the GUI)
+              - no snake_case/legacy alias fields (case_sensitive, match_whole_words,
+                use_regex, characterFilterNames, characterFilterExclude) - native World
+                Info uses camelCase and the characterFilter object
   presets     - prompts array and prompt_order present; every enabled prompt_order
                 identifier resolves to a prompt
 
@@ -32,6 +37,10 @@ import sys
 from pathlib import Path
 
 MOJIBAKE_MARKERS = ("â€", "Ã©", "Ã¨", "Ã±", "Â ")
+FORBIDDEN_ENTRY_FIELDS = (
+    "case_sensitive", "match_whole_words", "use_regex",
+    "characterFilterNames", "characterFilterExclude",
+)
 STYLE_OVERRIDE_KEYS = {
     "perspective_override", "tense_override", "narration_marker_override",
     "dialogue_marker_override", "emphasis_marker_override", "directives",
@@ -85,6 +94,14 @@ def check_lorebook(data, fail):
             fail(f"entry '{label}': uid {uid!r} duplicates entry '{seen_uids[uid]}'")
         else:
             seen_uids[uid] = label
+        if str(uid) != key:
+            fail(f"entry '{label}': object key {key!r} != String(uid) {str(uid)!r} - "
+                 "ST looks entries up via entries[uid]; this entry imports but never renders in the GUI")
+        aliases = [field for field in FORBIDDEN_ENTRY_FIELDS if field in entry]
+        if aliases:
+            fail(f"entry '{label}': snake_case/legacy alias field(s) {aliases} - native World Info "
+                 "uses camelCase (caseSensitive, matchWholeWords, scanDepth, useGroupScoring) "
+                 "and the optional characterFilter object")
 
 
 def check_preset(data, fail):
