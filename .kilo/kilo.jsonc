@@ -32,6 +32,14 @@
 {
   "$schema": "https://app.kilo.ai/config.json",
   "agent": {
+    // ── Ideation (optional, upstream of Phase 0) ──
+    "WorldForge-Brainstormer": {
+      "description": "Phase 0-pre (optional) — divergent ideation partner; helps a user with only a vibe find a premise, then writes informal Brainstorm_Notes.md. Writes no World Seed.",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.9,
+      "prompt": "{file:../agent_roles/Brainstormer/00_The_Brainstormer.md}"
+    },
     // ── Initial build (Phases 0–5) ──
     "WorldForge-Interviewer": {
       "description": "Phase 0 — interviews the user through the World Seed Template; creative partner, pushes back on thin material",

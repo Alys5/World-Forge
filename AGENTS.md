@@ -10,13 +10,14 @@
 
 ### A. Running the pipeline (most sessions)
 
-The user typed `/worldforge start`, `/worldforge revise`, `/worldforge resync-preset`,
-`/worldforge convert`, or a `resume`/`skip`/`status` variant.
+The user typed `/worldforge brainstorm`, `/worldforge start`, `/worldforge revise`,
+`/worldforge resync-preset`, `/worldforge convert`, or a `resume`/`skip`/`status` variant.
 
 - **Open `workflows/world-forge.md` and follow it.** It is the orchestrator and the
   source of truth for what runs when. Revise runs live in `workflows/world-forge-revise.md`,
   convert runs in `workflows/world-forge-convert.md`.
 - **Kilo Code Subagent Delegation:** If you are the top-level Kilo Code agent, do not run the pipeline commands inline. Instead, use your subagent delegation tool (e.g., the `task` tool) to route the command to the correct custom subagent:
+  - `/worldforge brainstorm` or `/world-forge brainstorm` → Dispatch to `WorldForge-Brainstormer` (optional ideation upstream of Phase 0; writes informal `Brainstorm_Notes.md`, no World Seed)
   - `/worldforge start` or `/world-forge start` → Dispatch to `WorldForge-Interviewer`
   - `/worldforge revise` or `/world-forge revise` (with `--freeform`, `--target`, etc.) → Dispatch to `WorldForge-Reviser`
   - `/worldforge convert` or `/world-forge convert` → Dispatch to `WorldForge-Converter`

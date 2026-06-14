@@ -74,6 +74,8 @@ You do **not**:
 
 `/worldforge convert <source_path> <target_path> --rebaseline --then-interview` — Rebaseline, then hand off into **Phase 0 (the Interviewer, seed-revision posture)** instead of `skip phase0` — for when the user wants to make major changes against the consolidated seed before the rebuild (Section 9 Step H). `--then-interview` requires `--rebaseline`; in reframe mode, halt and explain that the reframe interview (Step 4) already does this work.
 
+`/worldforge convert <source_path> <target_path> --rebaseline --then-brainstorm` — Rebaseline, then hand off into the **Brainstormer in improvement posture** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8) *before* the Interviewer — for when the user knows they want to change the consolidated world but wants to explore *what* first. The Brainstormer reads the clean seed, diverges on improvement directions, writes `Brainstorm_Notes.md`, and the chain continues into the Interviewer (seed-revision posture), which reads those notes as proposals (Section 9 Step H). `--then-brainstorm` requires `--rebaseline` and **supersedes `--then-interview`** (the interview always follows the brainstorm — passing both is the same as passing `--then-brainstorm` alone); in reframe mode, halt with the same explanation.
+
 In all modes, `<source_path>` is the path to an already-shipped world's project folder (must contain `Drafts/Master_Design.md` with REFINER SIGN-OFF and an `Export/` directory). `<target_path>` is the path to a fresh, empty (or non-existent) project folder where the new `World_Seed.md` will be written.
 
 ---
@@ -567,11 +569,13 @@ Add one question to the Step 4 sequence (after the World Mode question): **"What
 
 A rebaseline produces a **new world package: the Compiler assigns fresh UIDs.** The revise pipeline's UID-preservation contract exists precisely to keep running SillyTavern chats viable; rebaseline deliberately trades that away for cleanliness. State it plainly in the hand-off output — *"Running chats against the source world do not migrate to the rebuilt world. The source package stays playable as-is; the rebuild is a fresh import with fresh chat state."* — and record the user's acknowledgment in the manifest. Do not imply migration is possible. This is the honest dividing line between revise (chats survive, markers accumulate) and rebaseline (clean slate, chats restart).
 
-### Step H — `--then-interview` hand-off (replaces Step 7's instruction when the flag is passed)
+### Step H — `--then-interview` / `--then-brainstorm` hand-off (replaces Step 7's instruction when either flag is passed)
 
 Rebaseline consolidates; it does not redesign. When the user already knows the consolidation is a staging step — "rebase first, then I want to rework the second arc" — the `--then-interview` flag chains the two: after the seed is written and signed off, the hand-off output instructs the orchestrator to dispatch **Phase 0 — the Interviewer in seed-revision posture** (`agent_roles/00_The_Interviewer.md` Section 9) against the target, instead of `skip phase0`. The Interviewer reads the consolidated seed plus the Conversion Manifest, interviews only the user's changes (cascading through coupled fields), marks changed sections, appends its own sign-off below yours, and hands off to Phase 1 — from which point the run proceeds exactly as `skip phase0` would have.
 
-Replace Step 7's "Next:" block with:
+`--then-brainstorm` inserts one more step ahead of the Interviewer, for when the user wants to change the world but hasn't decided *what*. The hand-off dispatches the **Brainstormer in improvement posture** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8) first: it reads the consolidated seed + Conversion Manifest, diverges on improvement directions, and writes `Brainstorm_Notes.md` (informal — it never edits the seed). The chain then continues into the Interviewer in seed-revision posture exactly as above; the Interviewer reads those notes as *proposed changes*, leads with them, and interviews the endorsed ones at full depth. `--then-brainstorm` supersedes `--then-interview` — the interview always follows the brainstorm.
+
+Replace Step 7's "Next:" block with — for `--then-interview`:
 
 ```
 Next: Phase 0 — the Interviewer picks up the consolidated seed in seed-revision
@@ -579,7 +583,17 @@ posture (agent_roles/00_The_Interviewer.md Section 9) to capture your changes.
 After its sign-off, the standard pipeline proceeds from Phase 1 as usual.
 ```
 
-Boundaries: the flag requires `--rebaseline` (in reframe mode the Step 4 interview already authors the new material — halt and say so). Your own behavior does not change — you still write the seed exactly as Steps A–G specify, including the chat-state statement; you do not pre-interview the changes yourself or leave sections unconsolidated in anticipation of them. The Interviewer revises a *complete* seed.
+…or for `--then-brainstorm`:
+
+```
+Next: the Brainstormer (improvement posture, agent_roles/Brainstormer/00_The_Brainstormer.md
+Section 8) picks up the consolidated seed to brainstorm improvements, writing
+Brainstorm_Notes.md. Then the Interviewer (seed-revision posture) reads those notes
+as proposals and captures your changes. After its sign-off, the standard pipeline
+proceeds from Phase 1 as usual.
+```
+
+Boundaries: either flag requires `--rebaseline` (in reframe mode the Step 4 interview already authors the new material — halt and say so). Your own behavior does not change — you still write the seed exactly as Steps A–G specify, including the chat-state statement; you do not pre-interview or pre-brainstorm the changes yourself, and you do not leave sections unconsolidated in anticipation of them. Both the Brainstormer and the Interviewer work against a *complete* seed.
 
 ### Manifest variant (Section 7 deltas)
 
