@@ -154,6 +154,7 @@ It invokes the **Brainstormer** (`agent_roles/Brainstormer/00_The_Brainstormer.m
 - **Upstream of the pipeline, not a phase of it.** It does not classify tiers, advance the Pipeline State Ledger, or invoke any downstream agent. It is a standalone optional entry point, like a pre-`start`.
 - **Hands off to `/worldforge start`.** The Interviewer reads `Brainstorm_Notes.md` if present (its Context Manifest lists it under "Load if present") as raw starting material, then runs the full interview — pushing for exactly the specificity the Brainstormer deliberately left open, and confirming (not inheriting) the notes' non-binding World Mode leaning.
 - **Optional and skippable.** A user with a developed concept skips brainstorm entirely and goes straight to `/worldforge start` or `/worldforge skip phase0`. Nothing downstream depends on a brainstorm having happened.
+- **Two postures.** The default (Brainstormer Sections 1–7) is the fresh start above. The **improvement posture** (Section 8) brainstorms *changes to an existing, consolidated world* — it reads the world's `World_Seed.md` and diverges on what to add, rework, or deepen. This is what `/worldforge convert --rebaseline --then-brainstorm` invokes: after a rebaseline consolidates a revised world, the Brainstormer explores improvements, writes `Brainstorm_Notes.md`, and the chain continues into the Interviewer in seed-revision posture (which reads those notes as proposals). See the CONVERT section and `workflows/world-forge-convert.md`.
 
 ---
 
@@ -493,6 +494,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge convert <source> <target> --brief <path>` | Same as above, but driven by a pre-authored Convert Brief (`templates/Convert_Brief_Template.md`). Converter validates the brief against the source and interviews only on gaps. |
 | `/worldforge convert <source> <target> --rebaseline` | **Rebaseline mode** — same world, same protagonist: consolidate a world's accumulated revisions into a clean rebuild, optionally folding in new mechanics. Inverts the Converter's always-regenerate rules (Section 3/5/7b carry from the post-revision Master Design). Fresh UIDs — running chats do not migrate. Combines with `--brief`. See `agent_roles/Converter/00_The_Converter.md` Section 9. |
 | `/worldforge convert <source> <target> --rebaseline --then-interview` | Rebaseline, then go directly into **Phase 0 (the Interviewer, seed-revision posture** — `agent_roles/00_The_Interviewer.md` Section 9**)** to make major changes against the consolidated seed before Phase 1 runs. Requires `--rebaseline`. |
+| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Rebaseline, then go into the **Brainstormer (improvement posture** — `agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8**)** to brainstorm *what* to change against the consolidated seed, **then** the Interviewer (seed-revision posture) reads those notes as proposals. For when changes are wanted but undecided. Requires `--rebaseline`; supersedes `--then-interview`. |
 
 ---
 

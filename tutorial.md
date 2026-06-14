@@ -97,6 +97,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 | `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build — different protagonist, World Mode, Style Contract, or Core Concept (see Section 8) |
 | `/worldforge convert <source> <target> --rebaseline` | Post-launch: consolidate a revised world into a clean rebuild — same protagonist, revisions carried, markers dropped (see Section 8) |
 | `/worldforge convert <source> <target> --rebaseline --then-interview` | Same, then go directly into the Interviewer to make major changes against the clean seed before the rebuild (see Section 8) |
+| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Same, but brainstorm *what* to change first (Brainstormer improvement posture), then the Interviewer reads those notes as proposals (see Section 8) |
 
 > The Lucifer case study below is an **arc world** — it progresses through four arcs. If you are building an open-ended, NPC-populated world with no narrative arc (a power-fantasy, world-director, or life-sim world), read this case study first to learn the pipeline, then see **Section 7 — Sandbox worlds** for what changes.
 
@@ -499,6 +500,14 @@ Same world, same protagonist. The Converter reads the *post-revision* `Master_De
 ```
 
 After writing the consolidated seed, the Converter hands off into the **Interviewer in seed-revision posture** instead of `skip phase0`: it plays the world back to you, asks what you want to change, and interviews just those changes at full Phase 0 depth — including the cascade (rework an arc and it will re-elicit that arc's relationship drift, trauma trajectory, and intimate function lines). Changed sections get marked, the Interviewer signs off below the Converter, and the standard pipeline proceeds from Phase 1.
+
+**If you know you want to change the world but not yet *what*,** use `--then-brainstorm` instead:
+
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-brainstorm
+```
+
+This inserts the **Brainstormer in improvement posture** ahead of the Interviewer. It reads the consolidated seed, plays the world back, and brainstorms improvement directions *with* you — a new mechanic, an arc rework, a character to deepen, a tonal turn — generating options the way it does for a fresh world, but pointed at the world you already have. It writes informal `Brainstorm_Notes.md` (never the seed), and the chain continues into the seed-revision Interviewer, which reads those notes as *proposals*: it leads with them, you refine them in discussion, and the endorsed ones get interviewed into seed edits at full depth. The Brainstormer keeps you honest about scope — an idea that would flip the World Mode, swap the protagonist, or overturn the core concept is a *reframe* (a regular `/worldforge convert`), not a rebaseline improvement, and it'll say so. `--then-brainstorm` requires `--rebaseline` and supersedes `--then-interview` (the interview always follows the brainstorm).
 
 ---
 
