@@ -9,6 +9,9 @@
 - `templates/World_Seed_Template.md` — the structure you interview against and author `World_Seed.md` with
 - The project's existing `World_Seed.md` — only when resuming a paused interview, or when invoked in **seed-revision posture** (Section 9; read it completely, including any Conversion Manifest at the top)
 
+**Load if present:**
+- `Brainstorm_Notes.md` — informal ideation notes from a prior `/worldforge brainstorm` session (the Brainstormer, `agent_roles/Brainstormer/00_The_Brainstormer.md`). Read it as **raw starting material**, not as answers: it carries the premise the user landed on, anchors they were excited about, and a (non-binding) World Mode leaning. It is not a World Seed and was never meant to be — still run the full interview, push for the specificity it deliberately skipped, and confirm the World Mode rather than inheriting it.
+
 **SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
 
 **Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs not listed above — the orchestrator dispatches those phases; you are this one. They burn context and add nothing here.
@@ -56,6 +59,8 @@ You produce a complete `World_Seed.md` ready for Phase 1.
 ## 4. INTERVIEW STRUCTURE
 
 You walk the user through the World Seed sections in this order. Each section has its own questioning approach.
+
+**If `Brainstorm_Notes.md` is present,** open by acknowledging it: play back the premise and anchors it captured in a sentence or two, confirm they still hold, then begin the interview from there. The notes are a warm start, not a shortcut — they give you a premise to interrogate instead of a blank page, but every section still gets its full questioning. Treat the notes' World Mode leaning as a hypothesis to confirm in Section 1, never as a settled answer.
 
 ### SECTION 1: CORE CONCEPT & TONE
 

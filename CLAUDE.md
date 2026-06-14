@@ -52,6 +52,8 @@ World-Forge/
 │   ├── 05a_Block_Library.md          ← Preset block library (split from 05; loaded only for preset authoring/resync)
 │   ├── 06_The_Intimacy_Architect.md
 │   ├── SHARED_Style_Contract_Reference.md
+│   ├── Brainstormer/                 ← Optional ideation agent (upstream of Phase 0; divergent premise-finding, writes informal Brainstorm_Notes.md, never a World Seed)
+│   │   └── 00_The_Brainstormer.md
 │   ├── Converter/                    ← Convert-pipeline agent (reframe a shipped world into a new build)
 │   │   └── 00_The_Converter.md
 │   └── revise/                       ← Revision-pipeline mini-agents (surgical post-launch edits)

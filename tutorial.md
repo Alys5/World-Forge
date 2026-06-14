@@ -83,6 +83,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 
 | Command | Action |
 |---|---|
+| `/worldforge brainstorm` | Optional, upstream of Phase 0: divergent ideation when you have only a vibe — generates premise directions, writes informal `Brainstorm_Notes.md`, no World Seed (the Interviewer reads the notes on the next `start`) |
 | `/worldforge start` | Begin from Phase 0 (arc mode by default) |
 | `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** — an open-ended world with no narrative arc (see Section 7) |
 | `/worldforge skip phase0` | Begin from Phase 1 (you authored the World Seed manually — Lucifer's path) |
@@ -114,6 +115,8 @@ For Lucifer, Phase 0 was skipped. The user authored `Samples/World_Seed_Lucifer.
 ```
 
 This is a valid path when you already have a fully-formed concept and want to write the World Seed yourself. The Interviewer is most useful for users whose ideas are still forming or who need pushback on thin material — for a fully-developed world like Lucifer, the manual path is faster.
+
+If your idea is *less* than forming — just a vibe, an image, a single character with no world around them yet — there is an optional step further upstream: `/worldforge brainstorm`. The Brainstormer is the Interviewer's divergent counterpart. Instead of walking the template and pushing for specificity, it generates premise directions, follows whatever you light up on, and helps a concept find its shape. When something has a pulse, it writes informal `Brainstorm_Notes.md` (explicitly *not* a World Seed) and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and runs the full interview. Brainstorm is entirely optional — skip it whenever you already know what you're building.
 
 The completed World Seed contains nine sections: core concept and tone (Section 1), the world (Section 2 — sensory signature, rules, factions, locations, species, concepts), the protagonist (Section 3), characters and their lorebook material (Section 4), narrative arcs (Section 5), technical specifications (Section 6), test scenarios (Section 7b), and the conditional intimacy specification (Section 8). The current pipeline also includes a Section 1.5 Style Contract (perspective, tense, formatting markers); Lucifer's seed predates this section and runs cleanly under the pipeline's defaults pathway.
 

@@ -84,7 +84,7 @@ You need: VS Code with an agentic extension — [Kilo Code](https://github.com/K
    ```
    /worldforge start
    ```
-4. The Interviewer takes over. Answer its questions; it will push back when material is thin. Five minutes of friction here saves an hour of debugging at the runtime stage.
+4. The Interviewer takes over. Answer its questions; it will push back when material is thin. Five minutes of friction here saves an hour of debugging at the runtime stage. (If you arrive with only a vibe and no premise yet, run `/worldforge brainstorm` first — a divergent ideation partner that helps a concept find its shape and drops informal `Brainstorm_Notes.md` for the Interviewer to pick up. It writes no World Seed; the Interviewer still runs the full interview.)
 5. Subsequent phases run automatically, pausing only at the gates listed above.
 6. When Phase 5 finishes, your `Export/` directory contains SillyTavern-importable JSON. If `Prompt_Engineer_Audit.md` lists recommendations, apply them manually before importing.
 
@@ -160,6 +160,7 @@ A new project folder evolves through these files as the pipeline progresses:
 
 | Command | Action |
 |---|---|
+| `/worldforge brainstorm` | Optional, before Phase 0: divergent ideation for when you have only a vibe. Generates premise directions, then writes informal `Brainstorm_Notes.md`. Produces no World Seed; hand off to `/worldforge start` |
 | `/worldforge start` | Begin from Phase 0 |
 | `/worldforge resume phase[N]` | Resume from a specific phase (`phase0`, `phase1`, `phase2`, `phase2.5`, `phase3`, `phase3.5`, `phase3.6`, `phase3.7`, `phase4`, `phase5`) |
 | `/worldforge status` | Report the current phase, round, and open blockers |

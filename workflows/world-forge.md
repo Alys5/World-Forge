@@ -143,6 +143,20 @@ Loop state — which phase is live, what round it is on, which sign-offs are in 
 
 ---
 
+## BRAINSTORM (optional ideation, upstream of Phase 0)
+
+Some users arrive with a fully-formed concept; the Interviewer is built for them. Others arrive with only a vibe — an image, a mood, a single character, a "what if" — and nothing solid enough for the Interviewer's structured, specificity-demanding questions to land. `/worldforge brainstorm` is the optional front porch for that state.
+
+It invokes the **Brainstormer** (`agent_roles/Brainstormer/00_The_Brainstormer.md`) as a single standalone step (Phase 0-pre). Where the Interviewer is **convergent** (walks the template, pushes for depth, refuses weak material), the Brainstormer is **divergent**: it generates multiple premise directions, yes-ands the user's instincts, follows the spark, and helps an idea find its shape. When a premise has a pulse — a central tension, a feel, and at least one anchor the user is excited about — it reflects that back and hands off.
+
+**Load-bearing properties:**
+- **Writes only `Brainstorm_Notes.md`.** Informal, unstructured ideation notes in the project folder — explicitly *not* a World Seed. The Brainstormer never authors or edits `World_Seed.md`, never writes `Drafts/` or `Export/`, and never touches structural pipeline material. Seed authorship belongs to the Interviewer alone.
+- **Upstream of the pipeline, not a phase of it.** It does not classify tiers, advance the Pipeline State Ledger, or invoke any downstream agent. It is a standalone optional entry point, like a pre-`start`.
+- **Hands off to `/worldforge start`.** The Interviewer reads `Brainstorm_Notes.md` if present (its Context Manifest lists it under "Load if present") as raw starting material, then runs the full interview — pushing for exactly the specificity the Brainstormer deliberately left open, and confirming (not inheriting) the notes' non-binding World Mode leaning.
+- **Optional and skippable.** A user with a developed concept skips brainstorm entirely and goes straight to `/worldforge start` or `/worldforge skip phase0`. Nothing downstream depends on a brainstorm having happened.
+
+---
+
 ## PHASE 0: DISCOVERY — THE INTERVIEWER
 
 **Invoke:** `@agent_roles/00_The_Interviewer.md`
@@ -165,6 +179,8 @@ The Interviewer asks about:
 If the user resists developing a section, the Interviewer adds an explicit note in the document marking it for Refiner review rather than silently filling gaps.
 
 **This phase exists because the World Seed is hardest to write well the first time.** A weak World Seed propagates through every subsequent phase. Five minutes of pushback at this stage saves an hour of debugging at the runtime stage.
+
+**Optional upstream step.** Users who arrive with only a vibe — no premise solid enough to interview against — can run `/worldforge brainstorm` first (see BRAINSTORM below). It is a divergent ideation partner that produces informal `Brainstorm_Notes.md`, which the Interviewer then reads as starting material. The Interviewer still runs the full interview; the notes are a warm start, not a substitute.
 
 ---
 
@@ -395,6 +411,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 
 ```
 [project-name]/
+├── Brainstorm_Notes.md                            ← Optional (the Brainstormer, upstream of Phase 0)
 ├── World_Seed.md                                  ← Produced by Phase 0
 ├── UNRESOLVED_QUESTIONS.md                        ← Conditional (Phase 1)
 ├── UNRESOLVED_INTIMACY.md                         ← Conditional (Phase 2.5)
@@ -447,7 +464,8 @@ For users who find manual application onerous on large worlds, a future pipeline
 
 | Command | Action |
 |---|---|
-| `/worldforge start` | Begin from Phase 0 (the Interviewer) — arc mode by default |
+| `/worldforge brainstorm` | **Optional, upstream of Phase 0.** Divergent ideation with the Brainstormer for users who arrive with only a vibe — generates premise directions, then writes informal `Brainstorm_Notes.md`. Produces no World Seed; hand off to `/worldforge start`. See BRAINSTORM below. |
+| `/worldforge start` | Begin from Phase 0 (the Interviewer) — arc mode by default. If `Brainstorm_Notes.md` is present, the Interviewer reads it as starting material. |
 | `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** (no narrative arcs; standing world-state + large NPC roster). Pre-sets the World Seed `World Mode` field; see SANDBOX MODE below |
 | `/worldforge resume phase0` | Resume the interview from the last completed section |
 | `/worldforge resume phase1` | Re-run Refiner with answered questions |
