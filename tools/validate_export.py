@@ -196,4 +196,10 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    sys.exit(main(sys.argv))
+    try:
+        sys.exit(main(sys.argv))
+    except BrokenPipeError:
+        # Output was piped into a reader that closed early (e.g. `| head`);
+        # exit quietly like other Unix CLIs instead of dumping a traceback.
+        sys.stderr.close()
+        sys.exit(1)
