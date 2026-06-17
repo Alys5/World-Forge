@@ -169,7 +169,7 @@ A new project folder evolves through these files as the pipeline progresses:
 | `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content) |
 | `/worldforge revise` | Post-launch: make a surgical change to a shipped world through the revision pipeline (UID-preserving, scope-locked) |
 | `/worldforge resync-preset` | Post-launch: regenerate a shipped world's Chat Completion Preset against the current template and block library — preset only, no content changes |
-| `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build (different protagonist, World Mode, Style Contract, or Core Concept). Produces a new `World_Seed.md` in `<target>`; hand off to `/worldforge skip phase0`. Read-only on `<source>`. |
+| `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build (different protagonist, World Mode, Style Contract, or Core Concept). Produces a new `World_Seed.md` in `<target>`; hand off to `/worldforge skip phase0`. Read-only on `<source>`. (Additional modes and flags — `--brief`, `--rebaseline`, `--then-interview`/`--then-brainstorm` — in [tutorial §8](./tutorial.md#8-converting-a-shipped-world-worldforge-convert).) |
 
 ## After SillyTavern import
 
