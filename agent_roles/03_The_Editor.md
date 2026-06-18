@@ -338,6 +338,25 @@ For each non-default position used in this world, count how many entries use it.
 
 Flag for review when 4+ entries share a non-default position. The user reviews and confirms whether the pattern is intentional or symptomatic.
 
+### Step 4.6 — NPC / Character Identity Integrity (NPC Memory Contract)
+
+The Compiler emits an NPC Memory Manifest (Compiler Step 7.7; CLAUDE.md principle #12) keyed by a **stable id derived from each character's canonical name**, so the manifest is only correct if naming is disciplined per the Architect's **NPC/Character Identity Convention** (Section 7 box). Validate it here across every Tier 2 character/NPC draft (`Tier2_[CharName]_Entries.md`, the NPC intimacy roster) and any aggregated NPC lorebook draft. First build the NPC list: for each entry comment, strip a leading `NPC — ` and any trailing ` (…)` parenthetical or ` — <Aspect>` suffix to recover the **canonical name**, and group entries by it.
+
+**HARD FAIL on any of:**
+- **Comment form.** An NPC/character entry whose comment is not one of `NPC — <Name>`, `NPC — <Name> (<Facet>)`, or `<Name> — <Aspect>`, or that uses a hyphen (`-`) or en-dash (`–`) instead of the em-dash (`—`) as the separator. Quote the offending comment.
+- **Name inconsistency within one character.** Two entries that describe the same character but carry different name strings in the comment's name slot (e.g. `NPC — Anna Larsson (Physical Description)` alongside `NPC — Anna (Standing Goal)`). One character, one canonical name, used verbatim — direct the fix to the full form.
+- **Slug collision.** Two distinct characters whose canonical names reduce to the same id (lowercase, non-alphanumerics → `_`, collapsed, trimmed). Direct: disambiguate with a surname or title.
+- **Unmarked multi-person entry.** An entry comment naming two or more people (joined by `&`, `and`, `+`, or `/`) that is not marked `**Shared roster entry**`. Either split into one entry per person, or — only if they are genuinely interchangeable — mark it as a shared roster entry with one shared canonical name.
+- **Mislabeled shared entry.** An entry marked `**Shared roster entry**` whose members are NOT interchangeable — any member has its own Standing Goal, a distinct relationship, a distinct voice fingerprint, or individual arc behavior. Split it.
+- **Protagonist as NPC.** Any `NPC — <{{user}}'s name>` entry. The protagonist is a persona, never an npc — reject.
+
+**SOFT FLAG (report, do not block):**
+- A `Relationship to X` entry whose `X` matches no canonical name in the cast (X may be off-screen/abstract — confirm it is not a misspelling of a cast member's name, which would silently lose the relationship edge).
+- A facet parenthetical that is none of the controlled labels (`Physical Description`, `Psychological Core`, `Physical & Psychological`, `Standing Goal`, `Relationship to …`) — legitimate for idiosyncratic content, but it will not be memory-mapped, so confirm it is not a misspelled durable facet.
+- A near-duplicate canonical-name pair that does not collide on slug but is easily confused (e.g. `Elena Novak` / `Elena Vasquez`) — confirm they are intentionally distinct people.
+
+Read-only like the rest of the Editor: direct the Architect to fix the source; do not edit entries.
+
 ### Step 5 — LLM Instruction Audit (Hybrid Validation Protocol)
 
 #### 5a — `{{original}}` placement check (hard fail; see Foundational Rule #1)
@@ -685,6 +704,7 @@ Post-history: [checklist results + word count]
 - **Principal NPCs (both modes): each §7.D profile carries a Standing Goal ✓**
 - **Sandbox mode: SANDBOX_STATE has Standing Situation + Tonal Mandate (4–8 imperative bullets incl. aliveness directives + live scene types); ≥1 WORLD_PULSE; no arc/CHARACTER_STATE/NPC_SHIFT/DRAMATIC_BEAT contamination (Step 4a-S) ✓**
 - **Roster NPCs (§7.E): each has Voice fingerprint + Signature line; fingerprints distinct across the roster ✓**
+- **NPC/Character Identity Integrity (Step 4.6): comment form + em-dash valid; one canonical name per character used verbatim; no slug collisions; multi-person entries split or marked `Shared roster entry` (interchangeable only); `{{user}}` not authored as an NPC; relationship-target + facet-label soft flags resolved ✓**
 - **All entries: Position Rationale present (DEFAULT or justified) ✓**
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**

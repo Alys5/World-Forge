@@ -321,6 +321,13 @@ The combined `Group_Lorebook.json` gets ONE manifest (7.7i).
 
 **7.7i — Group lorebook re-derivation (do not skip).** Step 8 re-sequences every UID from 0 across the combined set, so a manifest's `facets`/`scenes` uids are **wrong** if copied verbatim. When you build Group_Lorebook.json: (1) **drop the per-file `[[NPC_MANIFEST]]` entries** from the combined set — do not carry N source manifests through; (2) emit a single combined manifest (`kind: "group"`) covering every npc and scene, with `facets[*]` and `scenes[*].uid` recomputed against the **new** Group uids. Slug `id`s never change between the per-file and combined manifests — that is the whole point of stable ids.
 
+**7.7j — Alias hygiene.** Populate `aliases` with names the narration would use to *refer to the character* — the canonical name, nicknames, epithets, role-titles (`Anna`, `Mrs. Larsson`, `Andrei's mom`). Do NOT include the query-phrase trigger keys that pad many entries (`her appearance`, `what she looks like`, `describe her`, `who she is`) — those are scan triggers, not names, and would cause the consumer's narration matcher to mis-attribute lines. When in doubt, an alias must be a noun phrase that *names* the person.
+
+**7.7k — Defensive derivation (halt on ambiguity — last guard before writing).** The Architect's Identity Convention and the Editor's Step 4.6 should guarantee clean identity, but you are the final guard before a corrupt manifest reaches `Export/`:
+- **Slug collision.** If two distinct characters derive the same `id`, do **not** emit the manifest — halt and surface (the Editor missed a collision; it must be disambiguated upstream). Never silently merge two characters into one memory store.
+- **Shared roster entries.** An entry marked `**Shared roster entry**` (interchangeable extras, per §7 of the Architect) is **one** npc: use its shared canonical name for `id`/`displayName` and include every member's name in `aliases`. This is the one intended many-people-to-one-id case.
+- **Unresolved facet/relationship.** A facet label outside the controlled vocabulary is simply not added to `facets` (the entry still exists as world-info); a `Relationship to X` whose `X` resolves to no canonical name is skipped, not guessed.
+
 ### Step 8 — Build Group Lorebook (`Export/Group_Lorebook.json`)
 
 Source: All individual lorebook JSON files.
@@ -434,6 +441,7 @@ SillyTavern personas are configured manually (no import format). The pipeline pr
 - [ ] `facets` use only reserved durable keys (`physical`/`psychological`/`standingGoal`/`combined`) and point at correct source uids; no invented keys for durable backstory (Step 7.7e) ✓
 - [ ] `relationships[]` edges resolve `to` a slug of a named character; `scenes[]` (arc mode) built from `BEAT —` entries with stable ids (Step 7.7f–7.7g) ✓
 - [ ] Per-file manifests carry file-local uids; the Group manifest is re-derived with re-sequenced Group uids and the per-file manifests are dropped from the combined set (Step 7.7h–7.7i) ✓
+- [ ] `id`s unique across the manifest — no two characters collide on one slug (halted upstream if so); `aliases` are names, not query-phrase keys; `Shared roster entry` collapses interchangeable extras to one id (Step 7.7j–7.7k) ✓
 - [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass ✓
 
 ### Gap Report

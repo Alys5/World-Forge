@@ -107,6 +107,7 @@ def check_manifest(entry, valid_uids, fail):
         return
     if not isinstance(payload.get("schema"), int):
         fail("[[NPC_MANIFEST]] payload missing integer 'schema'")
+    seen_ids = set()
     for i, npc in enumerate(payload.get("npcs") or []):
         if not isinstance(npc, dict):
             fail(f"[[NPC_MANIFEST]] npcs[{i}] is not an object")
@@ -114,6 +115,11 @@ def check_manifest(entry, valid_uids, fail):
         nid = npc.get("id")
         if not isinstance(nid, str) or not SLUG_RE.match(nid):
             fail(f"[[NPC_MANIFEST]] npc id {nid!r} is not a valid slug (lowercase, _-separated)")
+        elif nid in seen_ids:
+            fail(f"[[NPC_MANIFEST]] duplicate npc id {nid!r} - two characters collide on one "
+                 "memory key; canonical names must disambiguate")
+        else:
+            seen_ids.add(nid)
         if not npc.get("displayName"):
             fail(f"[[NPC_MANIFEST]] npc {nid!r} missing displayName")
         facets = npc.get("facets")
