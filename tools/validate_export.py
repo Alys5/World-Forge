@@ -19,6 +19,10 @@ Checks the failure modes that slip past "the JSON parses":
               - no snake_case/legacy alias fields (case_sensitive, match_whole_words,
                 use_regex, characterFilterNames, characterFilterExclude) - native World
                 Info uses camelCase and the characterFilter object
+              - any [[NPC_MANIFEST]] entry (NPC Memory Contract): at most one per file;
+                carrier has disable:true / key:[]; content parses as a JSON object with
+                an integer schema; every npc has a valid slug id + displayName; every
+                facet/scene uid resolves to an entry in the same file
   presets     - prompts array and prompt_order present; every enabled prompt_order
                 identifier resolves to a prompt
 
@@ -33,8 +37,13 @@ Exit status: 0 = all checks passed, 1 = at least one failure, 2 = usage error.
 """
 
 import json
+import re
 import sys
 from pathlib import Path
+
+# NPC Memory Contract slug rule (section 4): lowercase, _-separated, no leading/trailing/double _.
+SLUG_RE = re.compile(r"^[a-z0-9]+(_[a-z0-9]+)*$")
+NPC_MANIFEST_MARKER = "[[NPC_MANIFEST]]"
 
 MOJIBAKE_MARKERS = ("â€", "Ã©", "Ã¨", "Ã±", "Â ")
 FORBIDDEN_ENTRY_FIELDS = (
@@ -76,12 +85,63 @@ def check_card(data, fail):
                 fail("style_override is populated but does not have exactly the 7 required keys")
 
 
+def check_manifest(entry, valid_uids, fail):
+    """Validate an [[NPC_MANIFEST]] carrier and its JSON payload (NPC Memory Contract).
+
+    valid_uids is the set of uids present in this lorebook file; facet/scene uids
+    must resolve against it (per-file manifests carry file-local uids; the Group
+    manifest carries re-sequenced uids - both resolve within their own file).
+    """
+    if entry.get("disable") is not True:
+        fail("[[NPC_MANIFEST]] carrier must have disable: true (it must never reach the prompt)")
+    if entry.get("key") not in (None, []):
+        fail("[[NPC_MANIFEST]] carrier should have key: [] (it never activates)")
+    content = entry.get("content")
+    try:
+        payload = json.loads(content) if isinstance(content, str) else None
+    except json.JSONDecodeError as exc:
+        fail(f"[[NPC_MANIFEST]] content is not valid JSON: {exc}")
+        return
+    if not isinstance(payload, dict):
+        fail("[[NPC_MANIFEST]] content must be a single JSON object")
+        return
+    if not isinstance(payload.get("schema"), int):
+        fail("[[NPC_MANIFEST]] payload missing integer 'schema'")
+    for i, npc in enumerate(payload.get("npcs") or []):
+        if not isinstance(npc, dict):
+            fail(f"[[NPC_MANIFEST]] npcs[{i}] is not an object")
+            continue
+        nid = npc.get("id")
+        if not isinstance(nid, str) or not SLUG_RE.match(nid):
+            fail(f"[[NPC_MANIFEST]] npc id {nid!r} is not a valid slug (lowercase, _-separated)")
+        if not npc.get("displayName"):
+            fail(f"[[NPC_MANIFEST]] npc {nid!r} missing displayName")
+        facets = npc.get("facets")
+        if isinstance(facets, dict):
+            for fkey, fuid in facets.items():
+                if fuid not in valid_uids:
+                    fail(f"[[NPC_MANIFEST]] npc {nid!r} facet {fkey!r} -> uid {fuid!r} "
+                         "not found in this lorebook")
+    for i, scene in enumerate(payload.get("scenes") or []):
+        if not isinstance(scene, dict):
+            fail(f"[[NPC_MANIFEST]] scenes[{i}] is not an object")
+            continue
+        sid = scene.get("id")
+        if not isinstance(sid, str) or not SLUG_RE.match(sid):
+            fail(f"[[NPC_MANIFEST]] scene id {sid!r} is not a valid slug")
+        suid = scene.get("uid")
+        if suid is not None and suid not in valid_uids:
+            fail(f"[[NPC_MANIFEST]] scene {sid!r} -> uid {suid!r} not found in this lorebook")
+
+
 def check_lorebook(data, fail):
     entries = data.get("entries")
     if not isinstance(entries, dict):
         fail("lorebook root has no entries dictionary")
         return
+    valid_uids = {e.get("uid") for e in entries.values() if isinstance(e, dict)}
     seen_uids = {}
+    manifests = []
     for key, entry in entries.items():
         label = entry.get("comment") or key
         position = entry.get("position")
@@ -102,6 +162,12 @@ def check_lorebook(data, fail):
             fail(f"entry '{label}': snake_case/legacy alias field(s) {aliases} - native World Info "
                  "uses camelCase (caseSensitive, matchWholeWords, scanDepth, useGroupScoring) "
                  "and the optional characterFilter object")
+        if str(entry.get("comment") or "").startswith(NPC_MANIFEST_MARKER):
+            manifests.append(entry)
+    if len(manifests) > 1:
+        fail(f"{len(manifests)} [[NPC_MANIFEST]] entries in one lorebook - the contract allows at most one")
+    for entry in manifests:
+        check_manifest(entry, valid_uids, fail)
 
 
 def check_preset(data, fail):

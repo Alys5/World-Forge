@@ -348,6 +348,7 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
 - Tier 3 intimacy register — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
 - `Group_Lorebook.json` — all tiers combined, group-tagged for ST lorebook editor management
+- An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook (and one re-derived for the Group lorebook) — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
 

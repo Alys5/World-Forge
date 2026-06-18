@@ -245,6 +245,77 @@ Exactly **one** lorebook file, always active (the user never swaps it). It is th
 
 **Intimacy registers (when Phase 2.5 produced them):** compile the Tier 3 intimacy register the same way as the lorebook above — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (group `"SandboxIntimacy"`), with the standing `INTIMACY_FUNCTION` entry `constant: true`, `key: []`, `ignoreBudget: true`. Compile NPC intimacy profiles alongside the other Tier 2 profiles: principal NPC full profiles as their own `[NPCName]_Intimacy_Profile.json`; roster NPC compact stat blocks as `NPC_Intimacy_Roster.json` (`position: 1`, keyed entries).
 
+### Step 7.7 — Emit NPC Memory Manifest entries
+
+World Forge is the **producer** side of the **NPC Memory Contract** (`schema: 1`) — a shared spec with the `npc-memory` SillyTavern extension. The extension attaches per-NPC memory keyed by a **stable id** instead of a volatile UID, and reads its index from a machine-readable World Info entry called the **manifest**, embedded in the lorebooks you already build. This step is purely additive: it changes no existing entry, emits no new file, and a world without it still works (the extension falls back to prose parsing). Emit it on every full compile.
+
+**7.7a — The carrier.** The manifest is a normal World Info entry identified by BOTH of:
+- `comment` begins with the literal token `[[NPC_MANIFEST]]` (e.g. `"[[NPC_MANIFEST]] NPC Memory index"`)
+- `disable: true`
+
+`disable: true` keeps it out of every prompt while leaving it in the loaded world-info data, where the extension reads it directly. Set `key: []`, `constant: false`, `selective: true`, `position: 1`, `order: 0`, `useProbability: false`, and the standard inert boolean flags. It never activates and never reaches the model. It still obeys Foundational Rule 9 (object key equals `String(uid)`) and Rule 10 (camelCase fields only). At most one manifest per lorebook.
+
+**7.7b — The payload.** The entry's `content` is a single JSON object (UTF-8, no surrounding prose, no code fences) of this shape:
+
+```jsonc
+{
+  "schema": 1,
+  "lorebook": { "name": "<this lorebook's name>", "kind": "npc" },  // kind ∈ npc | arc | world | group | director
+  "personas": {
+    "user": { "name": "<protagonist in-world name>", "aliases": ["<name>", "{{user}}", "..."] }
+  },
+  "npcs": [
+    {
+      "id": "anna_larsson",            // stable slug — see 7.7c
+      "displayName": "Anna Larsson",
+      "aliases": ["Anna", "Anna Larsson", "Anna L."],
+      "facets": { "physical": 11, "psychological": 12, "standingGoal": 17 },  // facet key → source entry uid
+      "relationships": [ { "to": "katherine_carr", "kind": "rival", "note": "old grudge" } ],
+      "tags": ["student"]
+    }
+  ],
+  "scenes": [
+    { "id": "arc1_beat1", "uid": 6, "arc": "Arc1", "seq": 1, "title": "Anna Arrives at the Penthouse" }
+  ]
+}
+```
+
+Required: `schema`, and each npc's `id` + `displayName`. Recommended: `aliases`, `personas.user`. Optional: `facets`, `relationships`, `tags`, `scenes`. Omit empty optional fields entirely — never emit `null` or `[]` placeholders. Unknown future fields are ignored by the consumer, so never repurpose these names.
+
+**7.7c — Stable id derivation (load-bearing).** Stored memory is keyed by `id`, so ids must survive re-exports. Derive each `id` once from the NPC's canonical display name by the slug rule: lowercase → replace every run of non-alphanumeric characters with a single `_` → trim leading/trailing `_`. Examples: `Anna Larsson` → `anna_larsson`; `Mr. Black` → `mr_black`; `God (The Almighty)` → `god_the_almighty`. The same rule must yield the same id from the same name on every run. **Never key on the entry UID** — UIDs renumber on re-export; ids must not. Scene ids follow `<arc>_beat<seq>` lowercased (e.g. `arc1_beat1`).
+
+**7.7d — Who is an NPC vs. a persona.** The protagonist (`{{user}}`) is **not** an npc — they populate `personas.user` (name + aliases drawn from the protagonist's persona description and trigger keys). Every *other* character with persistent identity is an npc:
+- **Major characters** (their own Tier 2 `[CharName]_Lorebook.json`, authored as several `[CharName] — [Aspect]` entries) → one npc whose `facets` point at those entries' uids.
+- **Roster / WorldDirector NPCs** (single `NPC — [Name]` entries) → one npc with `facets: { "combined": <uid> }`.
+
+> Note: our comment convention is `[CharName] — [Aspect]` for major characters and `NPC — [Name]` for roster NPCs — major-character entries do **not** start with `NPC —`, so the consumer's prose fallback would miss them. The manifest is what makes every character discoverable; populate it for all of them, not just the `NPC —` ones.
+
+**7.7e — Facet typing.** Map each character's source entries to reserved facet keys by aspect:
+
+| Source entry aspect | Facet key | Nature |
+|---|---|---|
+| Physical Description / appearance | `physical` | durable |
+| Psychology / Psychological Core | `psychological` | durable |
+| Standing Goal | `standingGoal` | durable-ish |
+| a single combined NPC entry | `combined` | durable |
+
+Reserved keys are `physical`, `psychological`, `standingGoal`, `relationship`, `combined`, `volatile`. The consumer treats any **unrecognised** facet key as `volatile` (consumer-owned, never seeded over). So do NOT invent facet keys for durable backstory entries (religion, addiction, history, intimacy substrate) — leave those out of the `facets` map; they remain ordinary world-info entries either way. Map only the durable identity facets above. Relationships are carried by `relationships[]` (7.7f), not by the facet map.
+
+**7.7f — Relationships.** For each relational entry a character owns (`[CharName] — [other party]`, e.g. `Anna — Her Son Timmy`), add a directed edge to that npc's `relationships`: `to` = slug of the *other party's* canonical name (`timmy_johansson`), `kind` = a short label inferred from the relation when unambiguous (`parent`, `child`, `sibling`, `rival`, `ally`, `lover`, `mentor`, …) else omit `kind`, `note` optional and usually omitted. Emit an edge only when `to` resolves to a named character/NPC in the world; skip vague or one-off references.
+
+**7.7g — Scenes (arc mode only).** In each Arc lorebook's manifest, build `scenes[]` from that arc's `BEAT — [Title]` entries: `id` = `<arc>_beat<n>` by author order, `uid` = the BEAT entry's uid, `arc` = the arc label, `seq` = the 1-based order index, `title` = the beat title. Sandbox worlds have no beats — omit `scenes`.
+
+**7.7h — Where manifests go.** Emit one manifest in each lorebook that carries NPC or scene structure, with that file's **file-local uids**:
+- each Tier 2 `[CharName]_Lorebook.json` → manifest with that one npc (+ `personas`), `kind: "npc"`;
+- the WorldDirector / roster lorebook, if the world has one → manifest with all roster npcs, `kind: "director"`;
+- the protagonist's Tier 2 lorebook → manifest with `personas` only (`npcs: []`), `kind: "npc"`;
+- each Arc lorebook → manifest with `scenes` for that arc (+ `personas`), `kind: "arc"`;
+- the World lorebook and the intimacy registers → no manifest.
+
+The combined `Group_Lorebook.json` gets ONE manifest (7.7i).
+
+**7.7i — Group lorebook re-derivation (do not skip).** Step 8 re-sequences every UID from 0 across the combined set, so a manifest's `facets`/`scenes` uids are **wrong** if copied verbatim. When you build Group_Lorebook.json: (1) **drop the per-file `[[NPC_MANIFEST]]` entries** from the combined set — do not carry N source manifests through; (2) emit a single combined manifest (`kind: "group"`) covering every npc and scene, with `facets[*]` and `scenes[*].uid` recomputed against the **new** Group uids. Slug `id`s never change between the per-file and combined manifests — that is the whole point of stable ids.
+
 ### Step 8 — Build Group Lorebook (`Export/Group_Lorebook.json`)
 
 Source: All individual lorebook JSON files.
@@ -254,6 +325,8 @@ The Group Lorebook combines all entries from all lorebooks into a single importa
 **Important:** When combining, re-sequence all UIDs from 0 across the combined set. Do not reuse UIDs. Re-key every combined entry so its object key equals its **new** UID (Foundational Rule 9) — never carry over the source lorebook's key alongside a re-sequenced UID.
 
 Maintain `group` field values — this is how users manage tiers in ST.
+
+**NPC Memory Manifest:** Do NOT combine the per-file `[[NPC_MANIFEST]]` entries — drop them, then emit one fresh combined manifest (`kind: "group"`) whose `facets`/`scenes` uids point at the **re-sequenced** Group UIDs (Step 7.7i). Slug `id`s carry over unchanged.
 
 ### Step 9 — Validation Pass
 
@@ -282,6 +355,7 @@ Before saving any file (per Foundational Rules at top of this file):
 - *Arc mode:* all arc lorebooks have ≥8 entries. *Sandbox mode:* the Sandbox Lorebook has SANDBOX_STATE + ≥1 WORLD_PULSE (no 8-entry floor)
 - ARC_STATE / SANDBOX_STATE entries have `ignoreBudget: true` — these must never be omitted due to token budget
 - Group Lorebook UIDs are unique across entire combined set
+- **NPC Memory Manifest (Step 7.7):** each NPC/scene-bearing lorebook has exactly one `[[NPC_MANIFEST]]` entry (`disable: true`, `key: []`); its `content` parses as JSON with `schema: 1`; every npc `id` is a valid slug; every `facets`/`scenes` uid resolves to a real entry **in the same file**; the Group manifest's uids are re-sequenced, not copied
 - Files saved as `.json`, not embedded in Markdown
 
 ---
@@ -301,6 +375,8 @@ Export/
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
 └── Compiler_Log.md                 ← Build log with field mapping and validation results
 ```
+
+Each NPC/scene-bearing lorebook additionally embeds one inert `[[NPC_MANIFEST]]` entry (NPC Memory Contract, schema 1 — Step 7.7). It is not a separate file; it rides inside the lorebook JSON.
 
 ---
 
@@ -345,6 +421,15 @@ SillyTavern personas are configured manually (no import format). The pipeline pr
 3. Open `Export/User.md`. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` and paste it into the persona's **Description** field.
 4. In the same persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json`.
 5. Activate this persona before starting the chat. The persona description is the always-on baseline; the linked lorebook fires on keyword triggers for fuller detail.
+
+### NPC Memory Manifest (NPC Memory Contract, schema 1)
+- [ ] One inert `[[NPC_MANIFEST]]` entry per NPC/scene-bearing lorebook — `disable: true`, `key: []`, `content` a single JSON object (Step 7.7a–7.7b) ✓
+- [ ] Every npc has a stable slug `id` (lowercase, non-alphanumerics → `_`, collapsed, trimmed) and `displayName`; ids derive from the canonical name, never from UID (Step 7.7c) ✓
+- [ ] Protagonist is in `personas.user`, not `npcs`; every other persistent character is an npc (major characters from their Tier 2 lorebook, roster NPCs as `combined`) (Step 7.7d) ✓
+- [ ] `facets` use only reserved durable keys (`physical`/`psychological`/`standingGoal`/`combined`) and point at correct source uids; no invented keys for durable backstory (Step 7.7e) ✓
+- [ ] `relationships[]` edges resolve `to` a slug of a named character; `scenes[]` (arc mode) built from `BEAT —` entries with stable ids (Step 7.7f–7.7g) ✓
+- [ ] Per-file manifests carry file-local uids; the Group manifest is re-derived with re-sequenced Group uids and the per-file manifests are dropped from the combined set (Step 7.7h–7.7i) ✓
+- [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass ✓
 
 ### Gap Report
 [List any required fields that could not be populated, or "None."]
