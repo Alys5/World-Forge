@@ -284,22 +284,27 @@ Required: `schema`, and each npc's `id` + `displayName`. Recommended: `aliases`,
 
 **7.7c — Stable id derivation (load-bearing).** Stored memory is keyed by `id`, so ids must survive re-exports. Derive each `id` once from the NPC's canonical display name by the slug rule: lowercase → replace every run of non-alphanumeric characters with a single `_` → trim leading/trailing `_`. Examples: `Anna Larsson` → `anna_larsson`; `Mr. Black` → `mr_black`; `God (The Almighty)` → `god_the_almighty`. The same rule must yield the same id from the same name on every run. **Never key on the entry UID** — UIDs renumber on re-export; ids must not. Scene ids follow `<arc>_beat<seq>` lowercased (e.g. `arc1_beat1`).
 
-**7.7d — Who is an NPC vs. a persona.** The protagonist (`{{user}}`) is **not** an npc — they populate `personas.user` (name + aliases drawn from the protagonist's persona description and trigger keys). Every *other* character with persistent identity is an npc:
-- **Major characters** (their own Tier 2 `[CharName]_Lorebook.json`, authored as several `[CharName] — [Aspect]` entries) → one npc whose `facets` point at those entries' uids.
-- **Roster / WorldDirector NPCs** (single `NPC — [Name]` entries) → one npc with `facets: { "combined": <uid> }`.
+**7.7d — Who is an NPC vs. a persona.** The protagonist (`{{user}}`) is **not** an npc — they populate `personas.user` (name + aliases drawn from the protagonist's persona description and trigger keys). Every *other* character with persistent identity is an npc — **one per distinct character, no matter how many entries describe them.**
 
-> Note: our comment convention is `[CharName] — [Aspect]` for major characters and `NPC — [Name]` for roster NPCs — major-character entries do **not** start with `NPC —`, so the consumer's prose fallback would miss them. The manifest is what makes every character discoverable; populate it for all of them, not just the `NPC —` ones.
+Two comment conventions appear in practice; normalize both to the same npc:
+- **Aggregated NPC lorebooks** (the common sandbox case) name every entry `NPC — <Name> (<Facet>)` — e.g. `NPC — Anna Larsson (Physical Description)`, `NPC — Viktor Novak (Physical & Psychological)`.
+- **Per-character Tier 2 lorebooks** may instead name entries `<Name> — <Aspect>` — e.g. `Anna — Physical Description`.
 
-**7.7e — Facet typing.** Map each character's source entries to reserved facet keys by aspect:
+Derive the grouping key (the **canonical name**) from each comment: strip a leading `NPC — ` if present, then drop any trailing ` (…)` parenthetical or ` — <Aspect>` suffix. Every entry that reduces to the same canonical name is one npc; slug that name for `id` (7.7c). A character with one combined entry still becomes one npc.
 
-| Source entry aspect | Facet key | Nature |
+> The consumer's prose fallback keys on `^NPC —`, so it catches the aggregated form but misses the `<Name> — <Aspect>` form. The manifest is what makes every character discoverable and unambiguous regardless of convention — populate it for all of them.
+
+**7.7e — Facet typing.** For each npc, map its entries to reserved facet keys by their aspect (the parenthetical in `NPC — Name (Aspect)`, or the text after the dash in `Name — Aspect`):
+
+| Aspect text | Facet key | Nature |
 |---|---|---|
-| Physical Description / appearance | `physical` | durable |
-| Psychology / Psychological Core | `psychological` | durable |
-| Standing Goal | `standingGoal` | durable-ish |
-| a single combined NPC entry | `combined` | durable |
+| `Physical Description` / appearance | `physical` | durable |
+| `Psychological Core` / psychology | `psychological` | durable |
+| `Standing Goal` | `standingGoal` | durable-ish |
+| `Physical & Psychological` (single combined entry) | `combined` | durable |
+| `Relationship to X` | → a `relationships[]` edge (7.7f), not a facet | — |
 
-Reserved keys are `physical`, `psychological`, `standingGoal`, `relationship`, `combined`, `volatile`. The consumer treats any **unrecognised** facet key as `volatile` (consumer-owned, never seeded over). So do NOT invent facet keys for durable backstory entries (religion, addiction, history, intimacy substrate) — leave those out of the `facets` map; they remain ordinary world-info entries either way. Map only the durable identity facets above. Relationships are carried by `relationships[]` (7.7f), not by the facet map.
+When an npc has a single combined entry, map `combined`; when facet-split, map each recognized aspect to its uid. Reserved keys are `physical`, `psychological`, `standingGoal`, `relationship`, `combined`, `volatile`. The consumer treats any **unrecognised** key as `volatile` (consumer-owned, never seeded over). So do NOT invent facet keys for the idiosyncratic durable entries these casts carry (e.g. `Casual Racism`, `Incest Fetish`, `Mean Girl Squad`, addiction/religion backstory) — leave them out of the `facets` map; they remain ordinary world-info entries. Map only the durable identity facets above; relationships go in `relationships[]` (7.7f).
 
 **7.7f — Relationships.** For each relational entry a character owns (`[CharName] — [other party]`, e.g. `Anna — Her Son Timmy`), add a directed edge to that npc's `relationships`: `to` = slug of the *other party's* canonical name (`timmy_johansson`), `kind` = a short label inferred from the relation when unambiguous (`parent`, `child`, `sibling`, `rival`, `ally`, `lover`, `mentor`, …) else omit `kind`, `note` optional and usually omitted. Emit an edge only when `to` resolves to a named character/NPC in the world; skip vague or one-off references.
 

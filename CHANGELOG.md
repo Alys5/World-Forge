@@ -13,6 +13,54 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-18 — NPC Memory Manifest: producer side of the npc-memory contract
+
+World Forge becomes the **producer** side of the **NPC Memory Contract**
+(`schema 1`), a spec shared with the `npc-memory` SillyTavern extension (which
+lives in the ST fork, not this repo). The extension attaches per-NPC memory
+keyed by a **stable slug id** instead of a volatile UID; World Forge's
+obligation is to emit a machine-readable index — the **manifest** — as an inert
+World Info entry embedded in the lorebooks the Compiler already builds. The
+feature is purely additive: it changes no existing entry, emits no new file, and
+a world without it still works via the extension's prose fallback.
+
+### Added
+- **`agent_roles/04_The_Compiler.md`** — **Step 7.7** (Emit NPC Memory Manifest
+  entries): carrier format (`comment` begins `[[NPC_MANIFEST]]`, `disable: true`,
+  `key: []`), JSON payload shape, the slug-id rule (`Anna Larsson` →
+  `anna_larsson`, derived from the canonical name, never the UID), persona-vs-npc
+  split, facet typing (normalizing both the `NPC — Name (Facet)` and
+  `Name — Aspect` comment conventions to one npc per character), `relationships[]`
+  edges, arc `scenes[]` from `BEAT —` entries, per-file vs. Group placement, and
+  the Group re-derivation against re-sequenced UIDs. Step 9 validation lines and a
+  sign-off subsection added.
+- **`agent_roles/revise/04_The_Compiler_mini.md`** — foundational delta: regenerate
+  a touched lorebook's manifest against preserved + new UIDs (slug ids stay
+  stable, so a running memory store stays attached across revisions); Group
+  re-derivation; sign-off lines.
+- **`tools/validate_export.py`** — read-only `check_manifest` backstop: at most one
+  `[[NPC_MANIFEST]]` per file, carrier flags, JSON-parse, slug validity, and
+  facet/scene uid resolution within the same file.
+- **`NPC_Memory_Seed_Proposal.md`** (new; `.kilocodeignore`'d as maintenance doc) —
+  a coordination draft proposing a `schema 2` per-NPC starting-memory `seed` field
+  (the "NPC was just finishing the laundry" warm-start), with seed-once/no-clobber
+  semantics and open questions for the extension maintainer. Not implemented;
+  awaiting consumer-side agreement.
+
+### Changed
+- **`CLAUDE.md`** — new architectural **principle #12** (NPC Memory Manifest),
+  a cross-file consistency row (Compiler Step 7.7 ↔ mini-Compiler ↔ validator), and
+  a common-failure bullet (never key memory by UID; never copy per-file manifest
+  uids into the Group lorebook).
+- **`workflows/world-forge.md`** — Phase 4 build list notes the embedded manifest.
+
+### Deferred
+- The contract's optional per-message **turn tag** (`<!--npcmem:{...}-->`, runtime
+  lever) is not implemented on the producer side — a separate preset/card-level
+  change if pursued.
+
+---
+
 ## 2026-06-12 — Roo Code retirement: Kilo Code becomes the reference tool
 
 Roo Code — the agentic extension the pipeline was originally authored against —
