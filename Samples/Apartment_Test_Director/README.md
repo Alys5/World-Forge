@@ -26,7 +26,17 @@ No plot, no arcs — sandbox.
 | `Apartment_World_Lorebook.json` | Tier 1 — setting (position 0) | No |
 | `Apartment_NPC_Lorebook.json` | Tier 2 — **all 3 NPCs aggregated** (`NPC — Name (Facet)`) | **Yes** — one manifest, 3 npcs |
 | `Sandbox_Lorebook.json` | Tier 3 — `SANDBOX_STATE` + `WORLD_PULSE` | No |
+| `Apartment5C_ChatPreset.json` | Chat Completion Preset (Prompt Engineer output) | — |
+| `Prompt_Engineer_Audit.md` | Block-selection rationale + Pass 1/2 results | — |
 | `User.md` | `{{user}}` persona (Sam) | — |
+
+> **Preset.** `Apartment5C_ChatPreset.json` is a **sandbox** preset and the counterpart
+> to sample 1's: `arc_guardian` and `nsfw` disabled, `multi_character_dynamics` enabled,
+> and — the key difference — **`npc_ensemble` enabled** (the sandbox default for a
+> Director-voiced lorebook roster: NPC-to-NPC dialogue, ensemble prose scaling, organic
+> enrichment). The world-default perspective is third-limited; the World Director card
+> **overrides** it to third-omniscient via its `<style_override>` — the intended
+> demonstration of the override contract. See `Prompt_Engineer_Audit.md`.
 
 ## The aggregated manifest
 
@@ -63,7 +73,8 @@ fallback also recognizes, with the manifest making facets/relationships explicit
    `Sandbox_Lorebook`. Link them to the World Director card (or set them as active world
    info) so they load in the chat.
 3. **Persona:** create a persona named **Sam**, paste `User.md`, activate it.
-4. Start a normal (single-character) chat with the World Director and let the flat run.
+4. **Preset:** import `Apartment5C_ChatPreset.json` as a Chat Completion preset and select it.
+5. Start a normal (single-character) chat with the World Director and let the flat run.
 
 ## How to verify the NPC Memory extension
 

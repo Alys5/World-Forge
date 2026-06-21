@@ -20,7 +20,15 @@ to ship a thesis). No plot, no arcs — just everyday cohabitation. Both roommat
 | `Marcus_Lorebook.json` | Tier 2 — Marcus | **Yes** — `kind: "npc"`, npc `marcus_reyes` |
 | `Devon_Lorebook.json` | Tier 2 — Devon | **Yes** — `kind: "npc"`, npc `devon_park` |
 | `Sandbox_Lorebook.json` | Tier 3 — `SANDBOX_STATE` + `WORLD_PULSE` | No (sandbox has no scenes) |
+| `Apartment4B_ChatPreset.json` | Chat Completion Preset (Prompt Engineer output) | — |
+| `Prompt_Engineer_Audit.md` | Block-selection rationale + Pass 1/2 results | — |
 | `User.md` | `{{user}}` persona (Sam) | — (persona, configured manually) |
+
+> **Preset.** `Apartment4B_ChatPreset.json` is a **sandbox** preset: `arc_guardian` and
+> `nsfw` disabled, `multi_character_dynamics` **enabled** (two AI cards), `npc_ensemble`
+> **not** included (no Director/lorebook roster), Sensory Embodiment weighted high. The
+> Main Prompt is engine-only; perspective is second-person. See
+> `Prompt_Engineer_Audit.md` for the full rationale.
 
 > **No `Group_Lorebook.json`.** The consolidated group lorebook is deprecated
 > (issue #40). The post-deprecation model — used here — is that each Tier 2 lorebook
@@ -62,11 +70,12 @@ extension keys on.
    `Marcus_Lorebook`, `Devon_Lorebook`, `Sandbox_Lorebook`.
 3. **Persona:** create a persona named **Sam**, paste `User.md`'s description block in,
    and activate it.
-4. **Group chat:** create a group with Marcus and Devon. Attach the four lorebooks
+4. **Preset:** import `Apartment4B_ChatPreset.json` as a Chat Completion preset and select it.
+5. **Group chat:** create a group with Marcus and Devon. Attach the four lorebooks
    (either as the group's world info, or link the per-character lorebooks to each card
    and the world/sandbox lorebooks globally — both work; the extension reads all loaded
    world-info either way).
-5. Start chatting and let the roommates run.
+6. Start chatting and let the roommates run.
 
 ## How to verify the NPC Memory extension
 
