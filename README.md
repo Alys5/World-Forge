@@ -26,7 +26,7 @@ What it does instead: **you tell it.** Prose conventions — perspective, tense,
 
 ### On effort and intent
 
-World-Forge is **not a card generator.** It does not produce characters *on your behalf*, and it will not invent a random anime cast from a scrap of lore and feed you what it thinks is good. There is no "give me a cool character" button, and that is deliberate. The output is one tight, integrated world package — not a stack of disconnected cards.
+World-Forge is **not a card generator.** It does not produce characters *on your behalf*, and it will not spin up a generic cast from a one-line prompt and feed you whatever it guesses is good. There is no "give me a cool character" button, and that is deliberate. The output is one tight, integrated world package — not a stack of disconnected cards.
 
 The pipeline is built around **what you actually want to roleplay with**, not what it decides you should roleplay with. That requires effort from you: the Interviewer pushes for specificity precisely because the world is meant to be *yours*. The friction up front is the point — it is how the pipeline learns your intent instead of substituting its own taste. If you want characters and a world generated for you with no input, this is the wrong tool. If you want a package that faithfully realizes a world *you* have in mind, the effort you put into the interview is exactly what makes that possible.
 
@@ -35,7 +35,7 @@ The pipeline is built around **what you actually want to roleplay with**, not wh
 - **Not a SillyTavern fork.** SillyTavern is the runtime that consumes World-Forge's outputs. World-Forge does not modify SillyTavern.
 - **Not a runtime engine.** The pipeline does not execute on its own — it is consumed by an agentic IDE extension that orchestrates LLM calls.
 - **Not application code.** Editing files here is editing markdown specs, not source code. There is nothing to build or deploy.
-- **Not a card generator.** World-Forge does not crank out characters on your behalf. It will not invent a random anime cast from a scrap of lore and hand you what it guesses is "good." The output is a tight, integrated world package, not a pile of cards. See [On effort and intent](#on-effort-and-intent) below.
+- **Not a card generator.** World-Forge does not crank out characters on your behalf. It will not spin up a generic cast from a one-line prompt and hand you what it guesses is "good." The output is a tight, integrated world package, not a pile of cards. See [On effort and intent](#on-effort-and-intent) above.
 
 ## What it produces
 
