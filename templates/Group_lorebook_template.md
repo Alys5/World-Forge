@@ -1,3 +1,5 @@
+> ⚠️ **DEPRECATED — marked for removal (GitHub #40).** The consolidated Group lorebook (`Export/Group_Lorebook.json`) this template targets is deprecated. Per-character and per-tier lorebooks are the supported delivery format; SillyTavern group chats load those (+ the protagonist persona lorebook) directly, so the merged-everything artifact is redundant. This template (and `Group_lorebook_template.json`) is retained only for backward compatibility and will be retired by the removal PR. Do not author new worlds assuming it is permanent.
+
 I need you to generate a world lorebook tailored for a multi-character group chat in a text-based roleplaying game.
 Please output the result strictly as a valid JSON file using the exact structure provided below. Do not include markdown formatting errors, and do not include any comments in the final JSON output.
 
