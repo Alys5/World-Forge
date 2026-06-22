@@ -8,6 +8,22 @@ The repository **is** the pipeline. There is no application code to compile, no 
 
 A companion SillyTavern fork — [AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern) — is maintained alongside this repository. It is optional but recommended when running World-Forge worlds at scale: it relaxes some of stock SillyTavern's constraints that World-Forge outputs would otherwise bump into (notably allowing more than one matching lorebook entry to fire in a scene, which World Director cards rely on) and ships a small `world-forge` ST extension that wires style-override runtime support. See [Companion SillyTavern fork](#companion-sillytavern-fork-optional) below.
 
+## ⚠️ Please read before you change anything
+
+World-Forge produces a **single integrated package**, not a grab-bag of parts. The character card, the three-tier lorebook system, and the Chat Completion Preset are co-designed against each other and against how SillyTavern actually assembles prompts at runtime (see [Core architectural ideas](#core-architectural-ideas)). Pull a piece out or swap a piece in and the contract breaks. The most common ways users break it — and then report a bug:
+
+- **Running a generated world with your own preset.** The card's `system_prompt` and `post_history_instructions` are written to splice the *pipeline's* preset back in via `{{original}}` and then layer character-specific content on top (the override architecture). Point the card at a different preset and the engine-level half of the contract — narration discipline, perspective rules, formatting, the creative framework — is gone or contradicted. Things will feel "off," and that is expected.
+- **Using the character card but deleting the lorebooks.** The card is deliberately thin on world/state content because that content lives in the tiered lorebooks by design. Strip Tier 1/2/3 and the character has no world, no standing state, and no arc context to draw on. This is not a broken card; it is half a package.
+- **Editing the pipeline and then finding it "eats all the tokens."** The agent specs are long and prescriptive *on purpose* — each phase loads several thousand tokens of structural rules and validation so the runtime model doesn't silently skip steps or drift on tier discipline. If you trim, merge, or rewire the specs without understanding which rules are load-bearing, you can blow up context usage or quietly disable the checks that make the output coherent.
+
+**You are welcome to change anything** — it's your world and your workflow. But these files are tightly coupled, and the coupling is mostly invisible until it breaks at runtime. Unless you understand a given piece in full detail, expect that modifying it, removing it, or substituting your own will produce issues — and those issues are a consequence of the change, not a defect in the pipeline. If you want to understand the coupling before you cut, start with [Core architectural ideas](#core-architectural-ideas), then `CLAUDE.md` and the agent specs.
+
+### On prose quality and "slop"
+
+World-Forge does **not** do "slop removal," and it does not decide what counts as good prose versus "slop." It has no opinion about your style. The pipeline does not impose a house voice on your world.
+
+What it does instead: **you tell it.** Prose conventions — perspective, tense, register, formatting, what the prose should dwell on and what it should elide, what reads as overwrought to *you* — are captured up front when you talk to the Interviewer (Phase 0) and recorded in your World Seed's Style Contract. That is the right place to instruct the pipeline on your style and preferences. If the output doesn't read the way you want, the fix is to give the Interviewer clearer direction (or revise the Style Contract), not to expect the pipeline to have stripped "slop" it was never told to recognize.
+
 ## What this is NOT
 
 - **Not a SillyTavern fork.** SillyTavern is the runtime that consumes World-Forge's outputs. World-Forge does not modify SillyTavern.
