@@ -273,7 +273,6 @@ This section the user usually does not need to think about — you generate it f
 - One Character Intimacy Profile per character with intimate scene presence (conditional, only if Section 8 is being filled out)
 - One Arc Intimacy Register per arc with intimate beats (conditional, only if Section 8 is being filled out)
 - For each character card: assess whether `depth_prompt` is needed (high behavioral complexity, arc-dependent intimacy responses, strong drift-prone prose register, hard interrupts that cannot be missed)
-- Group Lorebook generation: yes by default unless user opts out
 
 ### SECTION 7: TEST SCENARIOS (Section 7b)
 

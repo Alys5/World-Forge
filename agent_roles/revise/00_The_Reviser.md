@@ -173,12 +173,12 @@ For example, `tier2_new_character` always means:
 - Master Design Section 7 (Character Foundations) or Section 8 (NPC Roster) — new subsection
 - Possibly Master Design Section 9 (per-arc) — note the new character's presence in arcs where they appear
 - Drafts: new `Card_[NewName].md`, new `Tier2_[NewName]_Entries.md`, new `Instructions_[NewName].md`, append-to existing `Tier3_Arc[N]_*` files where the new character appears
-- Export: new card JSON, new lorebook JSON, regenerate `Group_Lorebook.json`
+- Export: new card JSON, new lorebook JSON
 
 For a sandbox example, `sandbox_state_recalibration` means:
 - Master Design Section 9B (Sandbox Charter) — the Standing Situation / Tonal Mandate delta
 - Drafts: modify `Tier3_Sandbox_Entries.md` (the `SANDBOX_STATE` entry; possibly `WORLD_PULSE`)
-- Export: recompile `Sandbox_Lorebook.json`, regenerate `Group_Lorebook.json`
+- Export: recompile `Sandbox_Lorebook.json`
 - A `tier2_new_character` roster-NPC add additionally touches `Tier2_NPC_Entries.md` (new §7.E block), the §6.5 intimacy roster if the NPC is sexual, and fires R3.5's Distinctiveness Matrix — never an arc file.
 
 The Revision Log entry lists these as "Expected cascade — confirmed by mini-Refiner in Step R1."
@@ -236,7 +236,6 @@ The entry sits inside the `## Revision Log` section at the top of `Drafts/Master
 - Drafts files to create: [list, or "none"]
 - Drafts files to modify: [list, or "none"]
 - Export files to recompile: [list, or "none"]
-- Group_Lorebook.json regen required: [yes | no]
 - Chat preset changes: [yes | no | conditional on architecture impact]
 
 **Phases affected:** [Refiner, Architect, Editor, Voice Auditor, Compiler, Prompt Engineer, ...]

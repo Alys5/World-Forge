@@ -1,7 +1,7 @@
 # AGENT ROLE: THE COMPILER (MINI / REVISION-MODE)
 *Pipeline Phase: R4 — Surgical Implementation*
 
-> **Mini agent.** Revision counterpart of `agent_roles/04_The_Compiler.md`. The parent builds the full `Export/` from scratch. This mini operates differently: append, dedupe, preserve existing UIDs, regenerate Group_Lorebook, and report "what changes when" to the user. Read the parent's foundational rules — most apply. This file documents the deltas, which are larger here than in any other mini because the operational model is genuinely different.
+> **Mini agent.** Revision counterpart of `agent_roles/04_The_Compiler.md`. The parent builds the full `Export/` from scratch. This mini operates differently: append, dedupe, preserve existing UIDs, and report "what changes when" to the user. Read the parent's foundational rules — most apply. This file documents the deltas, which are larger here than in any other mini because the operational model is genuinely different.
 
 ---
 
@@ -10,14 +10,13 @@
 1. **The parent's ten pre-save guards apply to every file you write.** JSON parses; `{{original}}` preserved on cards; no metadata fields outside the schema; `data.extensions.depth_prompt` and `data.extensions.world_forge.style_override` present on every card; all sign-offs (R0–R3, plus applicable R3.5/R3.6/R3.7) verified; position fields correct; Position Rationale present on every entry; entry object keys equal `String(uid)`; entry fields camelCase per the ST schema (no `case_sensitive`/`match_whole_words`/`use_regex`/`characterFilterNames`/`characterFilterExclude`).
 2. **You do not build fresh.** You read each Export file before rewriting it. New entries get the next free UID. Existing entries keep their UIDs. Modified entries keep their UIDs and have their content replaced.
 3. **You never delete an entry without explicit instruction in the cascade.** A revision that asks for an entry to be removed must spell it out in the cascade. By default, all existing entries survive. If a Tier 2 entry needs deletion (e.g., the user is removing a character — but that scope isn't in the matrix; full pipeline is needed for removals), this is a halt condition.
-4. **Group_Lorebook.json must be regenerated.** Combining all current tiers into a single group lorebook. UIDs in Group_Lorebook are independent of per-lorebook UIDs (assigned at group-build time). Group_Lorebook is the file the user re-imports into ST after the revision lands.
-5. **You produce a "what changes when" report.** Tells the user which JSON files they need to re-import in their running SillyTavern session, which can be hot-reloaded automatically, and whether any current chat state is at risk.
-6. **You maintain `Export/REVISED_FILES.md` — the cumulative revision manifest.** This is the at-a-glance index of which Export files have ever been touched by a revision and when. You never rename an Export file to mark it revised (renaming breaks ST imports, breaks Group_Lorebook references, and defeats the UID preservation this agent exists to provide) and you never add a `_revised`-style field inside the JSON (parent rule 3 forbids any field outside the ST schema). The manifest is the only revision marker on the Export side.
-7. **Sandbox targets the sandbox Export files.** On a sandbox revision the touched Tier 3 files are `Sandbox_Lorebook.json` (one, always active — `SANDBOX_STATE` constant + ignoreBudget at position 1, `WORLD_PULSE` at position 4) and, if intimacy is in scope, `Sandbox_Intimacy_Register.json` and the NPC intimacy roster — never per-arc files. UID preservation matters here too: a sandbox world's running chat references these UIDs, so new entries get next-free UIDs and existing entries keep theirs, exactly as in arc mode. The parent Compiler's Step 7B (sandbox) governs the flag values.
-8. **Regenerate the NPC Memory Manifest on any lorebook you rewrite (parent Step 7.7).** A lorebook you touch may have an inert `[[NPC_MANIFEST]]` entry. After you finalise the entry set (preserved UIDs + new UIDs), regenerate that manifest's `facets`/`scenes` uids to match — they point at uids and your re-compile may have added or renumbered entries. **Slug `id`s never change as long as the canonical name is unchanged** (they derive from the name, not the UID — this is exactly the stability the contract and your UID preservation both protect, so a running memory store stays attached across the revision). Add npcs/edges/scenes for newly created entries; drop them for cascade-deleted ones. Regenerate the Group_Lorebook's combined manifest with re-sequenced uids (parent Step 7.7i). If a touched lorebook never had a manifest, do not add one — that is a full-compile/resync concern, not a surgical edit.
+4. **You produce a "what changes when" report.** Tells the user which JSON files they need to re-import in their running SillyTavern session, which can be hot-reloaded automatically, and whether any current chat state is at risk.
+5. **You maintain `Export/REVISED_FILES.md` — the cumulative revision manifest.** This is the at-a-glance index of which Export files have ever been touched by a revision and when. You never rename an Export file to mark it revised (renaming breaks ST imports and defeats the UID preservation this agent exists to provide) and you never add a `_revised`-style field inside the JSON (parent rule 3 forbids any field outside the ST schema). The manifest is the only revision marker on the Export side.
+6. **Sandbox targets the sandbox Export files.** On a sandbox revision the touched Tier 3 files are `Sandbox_Lorebook.json` (one, always active — `SANDBOX_STATE` constant + ignoreBudget at position 1, `WORLD_PULSE` at position 4) and, if intimacy is in scope, `Sandbox_Intimacy_Register.json` and the NPC intimacy roster — never per-arc files. UID preservation matters here too: a sandbox world's running chat references these UIDs, so new entries get next-free UIDs and existing entries keep theirs, exactly as in arc mode. The parent Compiler's Step 7B (sandbox) governs the flag values.
+7. **Regenerate the NPC Memory Manifest on any lorebook you rewrite (parent Step 7.7).** A lorebook you touch may have an inert `[[NPC_MANIFEST]]` entry. After you finalise the entry set (preserved UIDs + new UIDs), regenerate that manifest's `facets`/`scenes` uids to match — they point at uids and your re-compile may have added or renumbered entries. **Slug `id`s never change as long as the canonical name is unchanged** (they derive from the name, not the UID — this is exactly the stability the contract and your UID preservation both protect, so a running memory store stays attached across the revision). Add npcs/edges/scenes for newly created entries; drop them for cascade-deleted ones. If a touched lorebook never had a manifest, do not add one — that is a full-compile/resync concern, not a surgical edit.
 
    **Rename = memory-orphaning — flag loudly, do not silently ship.** Compare the regenerated manifest's slug `id`s against the prior export's. If a revision **renamed** a character (an old `id` disappears and a new one appears for the same entry), the running memory store keyed on the old id is **orphaned** — the NPC restarts with no memory. World Forge does not persist ids across renames (NPC Memory Contract §4 notes this as the producer's known limitation). Do not treat a rename as a routine re-derive: call it out explicitly in the "What Changes When" report (Step R4.6) under a **Memory impact** line, and surface it for user confirmation before sign-off. A name *correction* the user wants is fine — but it must be a conscious choice, not a silent side effect.
-9. **Write UTF-8; never round-trip JSON through PowerShell (parent's encoding guard, doubly so here).** You read existing Export files — full of em-dashes (—), curly quotes, accented names — and rewrite them, so encoding integrity is at risk on every file you touch, including bytes you didn't mean to change. Read and write as UTF-8 via your file tool or a **Python/Node** script; never use PowerShell `Out-File` / `Set-Content` / `>` redirection, which re-encodes and corrupts em-dashes into mojibake (`—` → `â€"`). The corruption passes `JSON.parse`, so it won't trip guard 1 — after writing each touched file, re-read it and confirm existing non-ASCII survived (grep for `â€` / `Ã`, expect zero matches). Silently mojibaking an entry during rewrite is a regression that breaks the running world's text; preserve bytes faithfully.
+8. **Write UTF-8; never round-trip JSON through PowerShell (parent's encoding guard, doubly so here).** You read existing Export files — full of em-dashes (—), curly quotes, accented names — and rewrite them, so encoding integrity is at risk on every file you touch, including bytes you didn't mean to change. Read and write as UTF-8 via your file tool or a **Python/Node** script; never use PowerShell `Out-File` / `Set-Content` / `>` redirection, which re-encodes and corrupts em-dashes into mojibake (`—` → `â€"`). The corruption passes `JSON.parse`, so it won't trip guard 1 — after writing each touched file, re-read it and confirm existing non-ASCII survived (grep for `â€` / `Ã`, expect zero matches). Silently mojibaking an entry during rewrite is a regression that breaks the running world's text; preserve bytes faithfully.
 
 ---
 
@@ -31,9 +30,8 @@ You are **The Compiler (mini)**. Approved drafts are ready. You translate the to
 
 - All touched draft files in `Drafts/` (approved by Editor-mini and applicable auditors)
 - All existing `Export/` JSON files corresponding to the touched drafts — read for UID assignment continuity
-- `Export/Group_Lorebook.json` — read; you will regenerate it
 - `Notes_On_functionality.md` — schema authority
-- `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Group_lorebook_template.md` — schema templates
+- `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md` — schema templates
 - `Drafts/Master_Design.md` — Revision Log entry to verify all required sign-offs
 - `Drafts/Revision_R[N]_Report.md` — cascade for confirmation of which files to re-compile
 
@@ -83,12 +81,6 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
   - If markdown was edited in append/in-place mode (the common case) → keep the existing JSON entry untouched
 - Validate the resulting JSON against the schema and parent hard-fail rules
 
-**For Group_Lorebook.json:**
-- Always regenerate
-- Read every current per-lorebook JSON (all tiers, all characters, all arcs, all intimacy profiles, all intimacy registers)
-- Combine entries into a single lorebook with group-level UID numbering
-- Preserve group-tag metadata so the ST lorebook editor's group view continues to work as before
-
 **For Export/User.md:**
 - Pass-through from `Drafts/User.md` if it was touched (revision could touch the persona description — rare; usually only when a character revision affects the protagonist)
 
@@ -103,7 +95,7 @@ For each file you are about to write, run the parent's ten pre-save guards:
 6. All sign-offs verified (already done in R4.1)
 7. Position fields correct
 8. All entries have Position Rationale
-9. Entry object keys equal `String(uid)` — including preserved UIDs and Group_Lorebook's re-assigned UIDs
+9. Entry object keys equal `String(uid)` — including preserved UIDs and newly assigned UIDs
 10. Entry fields camelCase per the ST schema — no snake_case aliases or legacy `characterFilterNames`/`characterFilterExclude`
 
 If any fails on any file, do not write that file. Diagnose and surface. Most failures should have been caught by mini-Editor; if they reach you, the upstream pipeline broke and you halt — `R4_HALTED_PRE_SAVE_FAIL`.
@@ -142,12 +134,9 @@ Maintain `Export/REVISED_FILES.md` — a single, always-current index of every E
 | Anna_Card.json | R3 | 2026-05-23 | Voice calibration — snarkier register | R3 |
 | Arc2_Lorebook.json | R5 | 2026-06-01 | ARC_STATE Tonal Mandate heavier on dread | R2, R5 |
 | Marcus_Lorebook.json | R4 | 2026-05-28 | Created — new NPC | R4 |
-| Group_Lorebook.json | R5 | 2026-06-01 | Regenerated (always regenerated per revision) | R2, R3, R4, R5 |
 ```
 
 The `Change summary` is one line drawn from the Revision Log entry's intent for R[N] — what changed in *this* file, not the whole revision. If a single revision touched a file for different reasons than the headline intent (rare), summarize the file-specific change.
-
-`Group_Lorebook.json` is regenerated on every revision (Step R4.3), so its row updates every time with the full revision history accumulating in its history cell.
 
 `Export/REVISED_FILES.md` is documentation, not a SillyTavern import artifact — it never gets imported into ST and has no schema constraints. It lives in Export/ (not Drafts/) specifically so it sits alongside the files it indexes.
 
@@ -168,9 +157,6 @@ Your running SillyTavern session is affected by this revision as follows:
 - [Path]: [Field(s) changed]. Re-import via ST → Character Management → Import.
   WARNING: existing chat states with this character will continue using the old
   card data until you start a new chat or reload — ST does not hot-reload cards.
-
-### Group_Lorebook.json (always re-import after any revision)
-- Re-import to refresh group view in the lorebook editor.
 
 ### Persona Description (User.md)
 - [Changed / unchanged]. If changed, copy text from `Export/User.md` into ST →
@@ -198,7 +184,6 @@ Your running SillyTavern session is affected by this revision as follows:
 Write `Drafts/Revise_R[N]_Compile_Log.md`:
 - Files written (full paths)
 - Per-file: existing UID count, new UIDs assigned, modified UIDs, unchanged UIDs
-- Group_Lorebook.json: total entry count, sources combined
 - Pre-save validation results per file
 - The "What Changes When" report
 
@@ -209,7 +194,6 @@ Append summary to `Drafts/Revision_R[N]_Report.md` under "Phase R4 — Mini-Comp
 ## 4. OUTPUT
 
 - Updated `Export/` files (only those touched)
-- Regenerated `Export/Group_Lorebook.json`
 - `Export/REVISED_FILES.md` — cumulative revision manifest, created or updated
 - `Drafts/Revise_R[N]_Compile_Log.md` with "what changes when" report
 - `Drafts/Revision_R[N]_Report.md` updated with Phase R4 summary
@@ -245,14 +229,8 @@ Append to the Revision Log entry:
 - [ ] New entries assigned next-free UIDs without collision
 - [ ] No entries deleted that weren't explicitly in the cascade as deletions
 
-### Group_Lorebook.json
-- [ ] Regenerated from all current per-lorebook sources
-- [ ] Group-tag metadata preserved
-- [ ] Total entry count matches sum of per-lorebook entries (deduplicated as applicable)
-
 ### NPC Memory Manifest (parent Step 7.7)
 - [ ] Every rewritten lorebook that had a `[[NPC_MANIFEST]]` entry has it regenerated — `facets`/`scenes` uids match the final (preserved + new) UID set; slug `id`s unchanged
-- [ ] Group_Lorebook combined manifest re-derived with re-sequenced uids; per-file manifests not carried through
 - [ ] No manifest added to a lorebook that never had one (full-compile/resync concern, not surgical)
 - [ ] Slug `id`s compared against the prior export; any rename (id change) flagged as memory-orphaning in the "What Changes When" report and confirmed by the user — never shipped silently
 

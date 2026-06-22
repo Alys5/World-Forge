@@ -89,8 +89,8 @@ def check_manifest(entry, valid_uids, fail):
     """Validate an [[NPC_MANIFEST]] carrier and its JSON payload (NPC Memory Contract).
 
     valid_uids is the set of uids present in this lorebook file; facet/scene uids
-    must resolve against it (per-file manifests carry file-local uids; the Group
-    manifest carries re-sequenced uids - both resolve within their own file).
+    must resolve against it (each manifest is a per-file carrier whose uids are
+    file-local).
     """
     if entry.get("disable") is not True:
         fail("[[NPC_MANIFEST]] carrier must have disable: true (it must never reach the prompt)")

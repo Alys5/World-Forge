@@ -285,7 +285,6 @@ For Lucifer, the Compiler produced 17 JSON files plus the log:
 - 1 Anna Intimacy Profile (Tier 2)
 - 4 Arc Lorebooks (Tier 3)
 - 4 Arc Intimacy Registers (Tier 3)
-- 1 Group Lorebook (all tiers combined)
 
 The Compiler Log includes a **Persona Linkage Instruction** because the Protagonist Lorebook needs to be manually linked to the active SillyTavern Persona after import — this is documented inline in `Samples/Export/Compiler_Log.md`.
 

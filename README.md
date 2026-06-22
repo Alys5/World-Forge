@@ -26,7 +26,6 @@ A complete SillyTavern-ready package per world:
 - **One Intimacy Profile per character with intimate scenes (Tier 2, conditional)** — permanent intimate substrate.
 - **Tier 3, by World Mode:** *arc worlds* get **one Arc Lorebook per arc** — modular and swap-in: ARC_STATE, CHARACTER_STATE, NPC behavioral shifts, dramatic beats, tension entries. *Sandbox worlds* (open-ended power-fantasy / world-director worlds, run with `/worldforge start --sandbox`) get **one always-active Sandbox Lorebook** instead — SANDBOX_STATE (standing situation + tonal mandate + an aliveness contract) plus a WORLD_PULSE entry — and author large NPC casts as a principal/roster split with a per-NPC voice-fingerprint uniqueness rule.
 - **One Arc Intimacy Register per arc with intimate beats (Tier 3, conditional)** — arc-specific intimate function and per-character delta.
-- **One Group Lorebook** — all tiers combined and group-tagged for ST's lorebook editor.
 - **One Chat Completion Preset** — the model's prompt blocks, injection order, and behavioral framework, parameterized for this world's prose conventions.
 - **One audit report** — runtime risks identified by the Prompt Engineer, with recommended corrections for the user to apply manually.
 
@@ -148,7 +147,6 @@ A new project folder evolves through these files as the pipeline progresses:
     ├── [CharName]_Intimacy_Profile.json           ← Phase 4 (conditional)
     ├── Arc[N]_Lorebook.json                       ← Phase 4
     ├── Arc[N]_Intimacy_Register.json              ← Phase 4 (conditional)
-    ├── Group_Lorebook.json                        ← Phase 4
     ├── Compiler_Log.md                            ← Phase 4
     ├── Prompt_Engineer_Audit.md                   ← Phase 5
     └── [WorldName]_ChatPreset.json                ← Phase 5
