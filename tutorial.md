@@ -100,6 +100,8 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 | `/worldforge convert <source> <target> --rebaseline --then-interview` | Same, then go directly into the Interviewer to make major changes against the clean seed before the rebuild (see Section 8) |
 | `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Same, but brainstorm *what* to change first (Brainstormer improvement posture), then the Interviewer reads those notes as proposals (see Section 8) |
 
+> This table is a quick subset. **Section 10** is the full command reference — every trigger and flag with an example invocation and the *why* behind it.
+
 > The Lucifer case study below is an **arc world** — it progresses through four arcs. If you are building an open-ended, NPC-populated world with no narrative arc (a power-fantasy, world-director, or life-sim world), read this case study first to learn the pipeline, then see **Section 7 — Sandbox worlds** for what changes.
 
 ---
@@ -567,7 +569,164 @@ It respects the same bright line as the Reviser: if the thing that's "off" turns
 
 ---
 
-## 10. Where to learn more
+## 10. Command reference — every trigger, by example
+
+This section collects every `/worldforge` command in one place, each with an example invocation, what it does, and *why* you would reach for it. The examples reuse the Lucifer project (Section 3) for continuity. Two conventions throughout:
+
+- **Paths point at project folders** — the directory that holds `World_Seed.md`, `Drafts/`, and `Export/` — not at individual files, except where a flag explicitly takes a file (`--brief`, `--target`).
+- **You type these in your agentic extension's chat** (the **Code** agent in Kilo Code, or the default agent in Cline), with the World-Forge repo open as the workspace.
+
+A run moves left-to-right through a lifecycle: *(optional) brainstorm → start/skip → resume/skip while building → ship → revise / resync-preset / convert after launch.*
+
+### 10.1 Starting a build
+
+**`/worldforge brainstorm`** — *optional, before everything*
+```
+/worldforge brainstorm
+```
+Divergent ideation for when you have only a vibe. Generates premise directions, reaches for touchstones, sketches excerpts, and pulls in the four domain lenses (Section 9). Writes informal `Brainstorm_Notes.md` and stops — it never writes a World Seed.
+**Why:** use it when you can't yet answer the Interviewer's "what's the central wound?" because the idea has no shape. Skip it when you already know what you're building.
+
+**`/worldforge start`** — *the normal entry*
+```
+/worldforge start
+```
+Begins at Phase 0 (the Interviewer) in **arc mode** — the default. The Interviewer walks the World Seed Template, pushes back on thin material, and produces `World_Seed.md`. If `Brainstorm_Notes.md` is present it's read as a warm start.
+**Why:** the standard path for nearly every new world.
+
+**`/worldforge start --sandbox`** — *open-ended worlds*
+```
+/worldforge start --sandbox
+```
+Same as `start`, but pre-sets **sandbox mode** (Section 7): no narrative arcs, a single always-active Sandbox Lorebook, and a large principal/roster NPC cast. The `World Mode: sandbox` field in the seed is the real source of truth, so this flag just pre-seeds it for the Interviewer.
+**Why:** power-fantasy, world-director, and life-sim worlds where you "live in" the world rather than move through a story.
+
+**`/worldforge skip phase0`** — *you wrote the seed yourself*
+```
+/worldforge skip phase0
+```
+Begins at Phase 1 (the Refiner), assuming you authored `World_Seed.md` by hand against `templates/World_Seed_Template.md` — the way the Lucifer sample was built.
+**Why:** you have a fully-formed concept and prefer writing the seed directly to being interviewed — or you're resuming after a Section 1 / 11a revision bounced out of the revise pipeline.
+
+### 10.2 Controlling a run in flight
+
+**`/worldforge status`**
+```
+/worldforge status
+```
+Reports the current phase, round, and any open blockers, read from the Pipeline State Ledger at the top of `Master_Design.md` (not reconstructed from memory).
+**Why:** any time you're unsure where a paused run actually stands.
+
+**`/worldforge resume phase[N]`**
+```
+/worldforge resume phase1      # after answering UNRESOLVED_QUESTIONS.md
+/worldforge resume phase2.5    # after filling in Section 8 intimacy detail
+/worldforge resume phase3      # re-enter the Editor loop
+/worldforge resume phase5      # re-run the Prompt Engineer audit
+```
+Resumes from a specific phase after a pause gate. Valid phases: `phase0, phase1, phase2, phase2.5, phase3, phase3.5, phase3.6, phase3.7, phase4, phase5`.
+**Why:** continue after you've resolved whatever caused a pause — a Refiner gap, an Editor stall, an intimacy blocker.
+
+**`/worldforge skip phase2.5` · `skip phase3.6` · `skip phase3.7`**
+```
+/worldforge skip phase2.5   # no intimate content — skip the Intimacy Architect
+/worldforge skip phase3.7   # no intimate content — skip the Intimacy Auditor
+/worldforge skip phase3.6   # arc-seam auditor; auto-skipped in sandbox mode anyway
+```
+Tells the orchestrator a conditional phase doesn't apply, instead of letting it ask. The two intimacy phases (2.5 and 3.7) are skipped together for worlds with no intimate content; the Arc Transition Auditor (3.6) is auto-skipped in sandbox mode.
+**Why:** declare up front that a conditional phase is irrelevant to this world.
+
+### 10.3 Post-launch: surgical edits (`/worldforge revise`)
+
+Once a world has shipped (Export/ exists), the revision pipeline makes small, scope-locked changes. It preserves UIDs, so running SillyTavern chats survive the edit. The bright line: anything touching the world's Core Concept / tone (Master Design Section 1) or Style Contract world defaults (Section 11a) — including an arc↔sandbox flip — bounces to a full re-run or a `convert`.
+
+**`/worldforge revise`** — *interview mode (default)*
+```
+/worldforge revise
+```
+The Reviser asks what feels off, narrows it to one concern, classifies the scope, runs the bright-line check, and writes a Revision Log entry.
+**Why:** you know roughly what's wrong and want to be walked through pinning it down.
+
+**`/worldforge revise --freeform`** — *you'll describe it yourself*
+```
+/worldforge revise --freeform
+```
+You paste a description of the change; the Reviser structures and classifies it, then echoes its interpretation back for confirmation.
+**Why:** you can state the change in a sentence or two and don't need the interview.
+
+**`/worldforge revise --target [path]`** — *you know the file*
+```
+/worldforge revise --target Drafts/Tier2_Anna_Entries.md
+```
+Skips diagnostic narrowing and goes straight to "what's wrong with this file, and what should it become?"
+**Why:** you've already located the exact draft entry to change.
+
+**`/worldforge revise --brainstorm`** — *something feels off, but you can't name it*
+```
+/worldforge revise --brainstorm
+```
+Runs the Brainstormer's revision-diagnostic posture (Section 9) first: it reads `Master_Design.md` read-only, plays the world back, diagnoses divergently with the lenses, and writes one primary concern to `Brainstorm_Notes.md` — which the Reviser then picks up and scopes.
+**Why:** play feels wrong but you have no starting noun to hand the interview.
+
+**`/worldforge revise status` · `resume R[N]` · `cancel R[N]`**
+```
+/worldforge revise status        # list all revisions and their statuses
+/worldforge revise resume R3     # continue pending revision R3 from its last phase
+/worldforge revise cancel R3     # cancel R3, roll back its draft edits, mark CANCELLED
+```
+Manage in-flight or past revisions. `R[N]` is the revision id from the Revision Log (R1 is the first revision; the initial build is unnumbered).
+**Why:** `status` checks for a pending revision (only one runs at a time); `resume` continues after a pause; `cancel` abandons one cleanly.
+
+### 10.4 Post-launch: refresh the preset (`/worldforge resync-preset`)
+
+```
+/worldforge resync-preset
+```
+Regenerates a shipped world's `Export/[WorldName]_ChatPreset.json` against the current preset template and block library, picking up pipeline improvements and any content changes that surface inside preset blocks. It makes **no content changes** and touches only the preset — re-importing it does not disturb running chats, because a preset is a global settings profile, not UID-bearing world info.
+**Why:** the pipeline's preset spec has evolved since you built the world, or revisions changed content that should reflect in preset blocks. This is *not* `resume phase5` — that re-runs the full Phase-5 audit during an in-progress build; resync is a maintenance op on an already-shipped world.
+
+### 10.5 Post-launch: reframe or consolidate (`/worldforge convert`)
+
+Convert reads a shipped world read-only and writes a *new* `World_Seed.md` to a target folder — the legitimate path for the big changes the revise pipeline bounces (different protagonist, World Mode flip, Style Contract or Core Concept change). The full walkthrough is Section 8; here are the invocations side by side.
+
+**`/worldforge convert <source> <target>`** — *reframe (interactive)*
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-as-God
+```
+Interviews you through the preservation matrix (keep / modify / drop / regenerate per source section), surfaces role reassignments, and writes the new seed. You then run `/worldforge skip phase0` against the target.
+**Why:** play the same world from a different angle — e.g., Lucifer's world as God instead of Anna's foil. (Replacing setting + protagonist + factions + tone all at once is refused — that's a new world, use `start`.)
+
+**`--brief <path>`** — *reframe (brief-driven)*
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-as-God --brief path/to/Convert_Brief.md
+```
+Drives the conversion from a pre-filled `templates/Convert_Brief_Template.md` instead of a live interview; it still interviews you on gaps and ambiguities.
+**Why:** non-trivial conversions you want version-controlled and reviewable.
+
+**`--rebaseline`** — *consolidate a revised world*
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline
+```
+Same world, same protagonist: rebuilds a clean seed from the *post-revision* Master Design when accumulated revisions have made surgical editing unwieldy. Revision content carries; revision markers don't. Combines with `--brief`.
+**Why:** a world is layered with `<!-- REVISED IN R[N] -->` markers and the next change feels too big for another surgical revision. **Trade-off:** the rebuild compiles fresh UIDs, so running chats don't migrate — that's the price of a clean baseline; `revise` is the UID-preserving alternative.
+
+**`--rebaseline --then-interview`** — *consolidate, then change a lot*
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-interview
+```
+After writing the consolidated seed, hands straight into the Interviewer (seed-revision posture) to interview your changes at full depth before Phase 1, instead of `skip phase0`. Requires `--rebaseline`.
+**Why:** the consolidation is a staging step and you already know what you want to change.
+
+**`--rebaseline --then-brainstorm`** — *consolidate, then decide what to change*
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-brainstorm
+```
+Inserts the Brainstormer (improvement posture) ahead of that Interviewer: it brainstorms *what* to change against the consolidated world, writes `Brainstorm_Notes.md`, and the seed-revision Interviewer reads those as proposals. Requires `--rebaseline`; supersedes `--then-interview`.
+**Why:** you want to evolve the world but haven't decided how.
+
+---
+
+## 11. Where to learn more
 
 - `README.md` — high-level overview of what the pipeline produces and how the architecture is organized
 - `workflows/world-forge.md` — full phase-by-phase orchestrator definition with pause gates and trigger commands
