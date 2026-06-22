@@ -38,6 +38,7 @@ You do **not**:
 `/worldforge revise` — interview mode (default)
 `/worldforge revise --freeform` — freeform mode (user describes the change in their own words; you structure it)
 `/worldforge revise --target [path]` — target mode (user already knows the file/entry to revise; you skip diagnostic questions)
+`/worldforge revise --brainstorm` — diagnostic mode (the user can't name what's wrong). Runs the Brainstormer in its revision-diagnostic posture (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 9) first; you then read its `Brainstorm_Notes.md` and capture the diagnosed primary concern as this revision's intent.
 
 ---
 
@@ -46,6 +47,8 @@ You do **not**:
 - `Drafts/Master_Design.md` — read completely. Verify REFINER SIGN-OFF is present (the world must have been initially built). Read the existing `## Revision Log` section if any.
 - `Drafts/` directory — list all files. Build a mental map of what exists.
 - `Export/` directory — list all files. Confirm Export exists (the world has been compiled at least once). If Export is missing, the world is still in initial build — refuse the revise invocation and direct the user to complete the original pipeline first.
+
+- `Brainstorm_Notes.md` (project folder) — **read if present.** When a `/worldforge revise --brainstorm` run produced it, it holds a diagnosed *primary concern* (and candidate future concerns). Treat the primary concern as the user's verbatim intent for this revision, and the candidate future concerns as Step 7 cross-references — do not silently act on them. In other invocations this file may be absent; do not require it.
 
 Do not read the contents of every Drafts/ file. Read them lazily as the user's intent narrows on a target.
 
@@ -62,6 +65,10 @@ Do not read the contents of every Drafts/ file. Read them lazily as the user's i
 If any precondition fails, halt and report the specific gap. Do not proceed.
 
 ### Step 2 — Discover intent (interview or freeform)
+
+**If `Brainstorm_Notes.md` from a `--brainstorm` run is present:** read its primary concern and use it as the captured intent for sub-step 1 below — it is already in the user's words, so confirm it back rather than re-eliciting from scratch, fold any play evidence into the Evidence field, and carry the candidate future concerns into the Step 7 cross-references. Then continue from sub-step 4 (classify).
+
+**If the user genuinely can't name what's wrong** (the opening question yields only "something feels off, I don't know what"), don't grind through diagnostic narrowing — offer the divergent off-ramp: *"Let's find it first. Run `/worldforge revise --brainstorm` and the Brainstormer will help you locate the concern, then bring its notes back here."* That posture is built for the pre-articulation case; you are built for a concern that can already be pointed at.
 
 **Interview mode (default):**
 

@@ -127,10 +127,12 @@ If a scope type isn't in the matrix, escalate to the user; the Reviser misclassi
 ## PHASE R0: DISCOVERY — THE REVISER
 
 **Invoke:** `@agent_roles/revise/00_The_Reviser.md`
-**Input:** User intent + existing `Drafts/Master_Design.md` + existing `Drafts/` + existing `Export/`
+**Input:** User intent + existing `Drafts/Master_Design.md` + existing `Drafts/` + existing `Export/` + `Brainstorm_Notes.md` if a `--brainstorm` run produced one
 **Output:** Revision Log entry in `Drafts/Master_Design.md` (status `PENDING`) + `Drafts/Revision_R[N]_Report.md`
 
 Captures the user's intent (interview by default; `--freeform` for direct paste; `--target` for known-target mode). Reads `World Mode` and classifies into one of the fourteen scope types (the three `sandbox_*` types apply only to `World Mode: sandbox` worlds; the `tier3_arc_*` types only to arc worlds). Runs the Section 1/11 bright-line check — a World Mode flip (arc↔sandbox) is a Section 1 change and bounces to full pipeline. Otherwise writes the Revision Log entry and signs off.
+
+**Diagnostic front door (`--brainstorm`).** For the pre-articulation case — something feels off but the user can't name what to revise — `/worldforge revise --brainstorm` runs the **Brainstormer in its revision-diagnostic posture** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 9) first. It reads `Drafts/Master_Design.md` read-only, diagnoses divergently (the four domain lenses are its diagnostic vocabulary; the "where does it sag" move is its primary instrument), converges on one primary concern plus candidate future concerns, and writes them to `Brainstorm_Notes.md` — informal notes, no Master Design edits, no scope classification. The Reviser then reads that file and captures the primary concern as this revision's intent, exactly as it would a typed-in concern. The Brainstormer respects the same Section 1 / 11a / World Mode bright line and flags any out-of-scope diagnosis as a bounce rather than a revision.
 
 ---
 
@@ -312,6 +314,7 @@ The `Drafts/Revision_R[N]_Report.md` is the single source of truth for what happ
 | `/worldforge revise` | Begin from R0 (interview mode) |
 | `/worldforge revise --freeform` | Begin from R0 (freeform mode — paste a description, Reviser structures) |
 | `/worldforge revise --target [path]` | Begin from R0 (target mode — skip diagnostic narrowing) |
+| `/worldforge revise --brainstorm` | Begin from R0 in **diagnostic mode** — for when something feels off but you can't name it. Runs the Brainstormer (revision-diagnostic posture, Section 9) to locate the concern, then the Reviser reads its `Brainstorm_Notes.md` and classifies as normal |
 | `/worldforge revise status` | Show all Revision Log entries, their statuses, any pending |
 | `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
 | `/worldforge revise cancel R[N]` | Cancel a pending revision (rolls back any draft edits, marks CANCELLED) |
