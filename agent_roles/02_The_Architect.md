@@ -294,6 +294,32 @@ One file per major character (both primary characters and significant NPCs). The
 
 > **Position Rationale required for every entry.** See Section 6's "Position Rationale Requirement" block. Tier 2 default is `position: 1`; entries using that default mark rationale as "DEFAULT". Any entry deviating from the default position or default flags must include a one-sentence rationale referencing Notes_On_functionality and explaining why the default fails this entry.
 
+### ⭐ NPC / Character Identity Convention (binding — the NPC Memory Contract depends on it)
+
+Every Tier 2 character/NPC entry (and every entry in an aggregated NPC lorebook) feeds the **NPC Memory Manifest** the Compiler emits (CLAUDE.md principle #12; Compiler Step 7.7), which the `npc-memory` extension uses to attach per-character memory keyed by a **stable id derived from the canonical name**. That derivation only stays correct if naming is disciplined. These rules are binding; the Editor hard-fails violations.
+
+1. **One canonical name per character.** Pick the character's full display name (e.g. `Anna Larsson`) as their **canonical name** and use that *exact* string in **every** entry comment that describes them. Never vary it between entries — `NPC — Anna Larsson` in one entry and `NPC — Anna` in another splits one character into two memory stores. Name variants and nicknames go in **Trigger Keys**, never in the comment's name slot.
+2. **Canonical names are unique across the cast.** No two characters may share a canonical name, nor be so close they collapse to the same id (id = lowercase, non-alphanumerics → `_`, collapsed, trimmed). `Elena Novak` and `Ms. Elena Vasquez` are fine; two bare `Elena`s are not — disambiguate with the surname.
+3. **Comment form.** Each entry's comment is exactly one of:
+   - `NPC — <Canonical Name>` — a single combined entry;
+   - `NPC — <Canonical Name> (<Facet>)` — one of several facet-split entries for the same character;
+   - `<Canonical Name> — <Aspect>` — the per-character-lorebook style used by entries A/B/C below.
+   Use the **em-dash (—)**, never a hyphen (`-`) or en-dash (`–`) — the extension's prose fallback keys on the em-dash.
+4. **Facet vocabulary.** When an entry carries a recognized durable identity facet, label it with the controlled spelling so the manifest maps it:
+
+   | Facet label (in the parenthetical, or after the dash) | Maps to |
+   |---|---|
+   | `Physical Description` | physical |
+   | `Psychological Core` | psychological |
+   | `Physical & Psychological` (one combined entry) | combined |
+   | `Standing Goal` | standingGoal |
+   | `Relationship to <Other Canonical Name>` | a relationship edge |
+
+   Idiosyncratic content entries may use a free-form label (`Casual Racism`, `Mean Girl Squad`, addiction/religion backstory) — these stay ordinary world-info entries and are simply not memory-mapped. A `Relationship to X` entry MUST name the other party by **their** canonical name so the edge resolves.
+5. **One character per entry.** Each entry describes exactly one character. The sole exception is a set of genuinely **interchangeable** background extras (identical function, no individual standing goal, relationship, or arc): they may share one entry, which must be marked `**Shared roster entry**` and given a single shared canonical name (e.g. `The Willson Twins`) — it becomes one shared memory id by design. The moment a member needs to be addressed, tracked, or remembered individually, they get their own entry. The Editor hard-fails an unmarked combined entry, and a "shared" entry whose members are not actually interchangeable.
+
+> The `{{user}}` protagonist is a **persona**, never an NPC — never give `{{user}}` an `NPC —` entry.
+
 **Every character lorebook must contain these entry types:**
 
 ### A. Physical Description Entry
@@ -330,6 +356,8 @@ Write the physical description in this order, as continuous prose (not a list):
 
 ### D. NPC-Specific Entry — Principal NPCs (full profile)
 Since NPCs live in the lorebook rather than on a card, a **principal** NPC's entry must be comprehensive enough for the model to portray them fully. Use this format for principal NPCs (the handful {{user}} orbits most closely). Master Design Section 8 classifies each NPC as principal or roster; for roster NPCs use the compact format in Section 7.E instead.
+
+> A principal NPC may be authored as **one combined entry** (`NPC — <Canonical Name>`, all content below in one block) or **facet-split** across several entries that share the canonical name (`NPC — <Canonical Name> (Physical Description)`, `(Psychological Core)`, `(Standing Goal)`, `(Relationship to <Other>)`, …) — per the Identity Convention above. Either way, the canonical name is identical across the set and the facet labels use the controlled vocabulary.
 
 ```
 ### ENTRY: NPC — [Name]
@@ -892,6 +920,7 @@ Append to your submission note before handing to The Editor:
 - [ ] **Principal NPCs (§7.D): each has a Standing Goal — an active objective plus the concrete moves that advance it**
 - [ ] **Escalation Ladders (where authored): 2–4 ordered stages, each with on-screen moves + surfaceable off-screen evidence + an in-fiction observable advance condition; endpoint stated; collision line present; >3 laddered NPCs soft-flagged**
 - [ ] **Roster NPC voice fingerprints are unique — no two roster NPCs swappable from a single line (distinctiveness rule)**
+- [ ] **NPC/Character Identity Convention upheld (NPC Memory Contract): one canonical name per character used verbatim in every comment; canonical names unique across the cast (no slug collision); em-dash comment form; recognized facets use the controlled vocabulary; one character per entry (interchangeable extras marked `Shared roster entry`); `{{user}}` never authored as an NPC**
 - [ ] All entries have trigger keys
 - [ ] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
 

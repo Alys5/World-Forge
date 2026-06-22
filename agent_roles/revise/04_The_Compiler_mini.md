@@ -14,7 +14,10 @@
 5. **You produce a "what changes when" report.** Tells the user which JSON files they need to re-import in their running SillyTavern session, which can be hot-reloaded automatically, and whether any current chat state is at risk.
 6. **You maintain `Export/REVISED_FILES.md` — the cumulative revision manifest.** This is the at-a-glance index of which Export files have ever been touched by a revision and when. You never rename an Export file to mark it revised (renaming breaks ST imports, breaks Group_Lorebook references, and defeats the UID preservation this agent exists to provide) and you never add a `_revised`-style field inside the JSON (parent rule 3 forbids any field outside the ST schema). The manifest is the only revision marker on the Export side.
 7. **Sandbox targets the sandbox Export files.** On a sandbox revision the touched Tier 3 files are `Sandbox_Lorebook.json` (one, always active — `SANDBOX_STATE` constant + ignoreBudget at position 1, `WORLD_PULSE` at position 4) and, if intimacy is in scope, `Sandbox_Intimacy_Register.json` and the NPC intimacy roster — never per-arc files. UID preservation matters here too: a sandbox world's running chat references these UIDs, so new entries get next-free UIDs and existing entries keep theirs, exactly as in arc mode. The parent Compiler's Step 7B (sandbox) governs the flag values.
-8. **Write UTF-8; never round-trip JSON through PowerShell (parent's encoding guard, doubly so here).** You read existing Export files — full of em-dashes (—), curly quotes, accented names — and rewrite them, so encoding integrity is at risk on every file you touch, including bytes you didn't mean to change. Read and write as UTF-8 via your file tool or a **Python/Node** script; never use PowerShell `Out-File` / `Set-Content` / `>` redirection, which re-encodes and corrupts em-dashes into mojibake (`—` → `â€"`). The corruption passes `JSON.parse`, so it won't trip guard 1 — after writing each touched file, re-read it and confirm existing non-ASCII survived (grep for `â€` / `Ã`, expect zero matches). Silently mojibaking an entry during rewrite is a regression that breaks the running world's text; preserve bytes faithfully.
+8. **Regenerate the NPC Memory Manifest on any lorebook you rewrite (parent Step 7.7).** A lorebook you touch may have an inert `[[NPC_MANIFEST]]` entry. After you finalise the entry set (preserved UIDs + new UIDs), regenerate that manifest's `facets`/`scenes` uids to match — they point at uids and your re-compile may have added or renumbered entries. **Slug `id`s never change as long as the canonical name is unchanged** (they derive from the name, not the UID — this is exactly the stability the contract and your UID preservation both protect, so a running memory store stays attached across the revision). Add npcs/edges/scenes for newly created entries; drop them for cascade-deleted ones. Regenerate the Group_Lorebook's combined manifest with re-sequenced uids (parent Step 7.7i). If a touched lorebook never had a manifest, do not add one — that is a full-compile/resync concern, not a surgical edit.
+
+   **Rename = memory-orphaning — flag loudly, do not silently ship.** Compare the regenerated manifest's slug `id`s against the prior export's. If a revision **renamed** a character (an old `id` disappears and a new one appears for the same entry), the running memory store keyed on the old id is **orphaned** — the NPC restarts with no memory. World Forge does not persist ids across renames (NPC Memory Contract §4 notes this as the producer's known limitation). Do not treat a rename as a routine re-derive: call it out explicitly in the "What Changes When" report (Step R4.6) under a **Memory impact** line, and surface it for user confirmation before sign-off. A name *correction* the user wants is fine — but it must be a conscious choice, not a silent side effect.
+9. **Write UTF-8; never round-trip JSON through PowerShell (parent's encoding guard, doubly so here).** You read existing Export files — full of em-dashes (—), curly quotes, accented names — and rewrite them, so encoding integrity is at risk on every file you touch, including bytes you didn't mean to change. Read and write as UTF-8 via your file tool or a **Python/Node** script; never use PowerShell `Out-File` / `Set-Content` / `>` redirection, which re-encodes and corrupts em-dashes into mojibake (`—` → `â€"`). The corruption passes `JSON.parse`, so it won't trip guard 1 — after writing each touched file, re-read it and confirm existing non-ASCII survived (grep for `â€` / `Ã`, expect zero matches). Silently mojibaking an entry during rewrite is a regression that breaks the running world's text; preserve bytes faithfully.
 
 ---
 
@@ -180,6 +183,10 @@ Your running SillyTavern session is affected by this revision as follows:
 ### Risk to running chats
 - Lorebook UIDs preserved: yes — existing chats reference UIDs and will pick up
   the new content on next scan with no break in state.
+- Memory impact (NPC Memory Contract): [No NPC renamed — all memory ids stable.
+  / WARNING: NPC "[old name]" renamed to "[new name]" — memory id changes from
+  `old_slug` to `new_slug`; the npc-memory extension treats this as a NEW NPC and
+  the accumulated memory keyed on `old_slug` is orphaned. Confirm this is intended.]
 - Card data: cards reload only on new chat. Existing chats keep old card data.
 - Hidden information rules: [list any arc whose hidden-info rules changed —
   these are runtime-active and may produce inconsistent NPC behavior in chats
@@ -242,6 +249,12 @@ Append to the Revision Log entry:
 - [ ] Regenerated from all current per-lorebook sources
 - [ ] Group-tag metadata preserved
 - [ ] Total entry count matches sum of per-lorebook entries (deduplicated as applicable)
+
+### NPC Memory Manifest (parent Step 7.7)
+- [ ] Every rewritten lorebook that had a `[[NPC_MANIFEST]]` entry has it regenerated — `facets`/`scenes` uids match the final (preserved + new) UID set; slug `id`s unchanged
+- [ ] Group_Lorebook combined manifest re-derived with re-sequenced uids; per-file manifests not carried through
+- [ ] No manifest added to a lorebook that never had one (full-compile/resync concern, not surgical)
+- [ ] Slug `id`s compared against the prior export; any rename (id change) flagged as memory-orphaning in the "What Changes When" report and confirmed by the user — never shipped silently
 
 ### User Report
 - [ ] "What Changes When" report produced
