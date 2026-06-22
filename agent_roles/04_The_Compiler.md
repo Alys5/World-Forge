@@ -28,11 +28,11 @@ If all ten pass, write the file. If any fails, the file is wrong — fix the sou
 
 **Load now:**
 - The `Drafts/` narrative sources listed in Section 2a (verify sign-offs via the Pipeline State Ledger first)
-- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Group_lorebook_template.md`
+- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`
 - `Notes_Quick_Reference.md` — position enum, flag effects, strictness gotchas
 
 **Load on demand (open at the step that needs it — do not preload):**
-- `templates/char_template.json`, `templates/Lorebook_Template.json`, `templates/Group_lorebook_template.json` — raw schema exemplars when a field shape is in doubt
+- `templates/char_template.json`, `templates/Lorebook_Template.json` — raw schema exemplars when a field shape is in doubt
 - `Notes_On_functionality.md` §5.1b (V3 card), §5.2 (World Info file), §6 (gotchas) — when the quick reference or guides do not settle a schema question
 - `agent_roles/SHARED_Style_Contract_Reference.md` — §1 for the `style_override` JSON shape
 
@@ -67,7 +67,6 @@ You have access to SillyTavern's documentation and source code for schema guidan
 ### 2b. Schema Sources (read before generating any output)
 - `templates/Char_Card_creation.md`
 - `templates/Lorebook_creation.md`
-- `templates/Group_lorebook_template.md`
 
 If any template is missing: halt and report. Do not guess schema.
 
@@ -317,32 +316,14 @@ When an npc has a single combined entry, map `combined`; when facet-split, map e
 - each Arc lorebook → manifest with `scenes` for that arc (+ `personas`), `kind: "arc"`;
 - the World lorebook and the intimacy registers → no manifest.
 
-The combined `Group_Lorebook.json` gets ONE manifest (7.7i).
+**7.7i — Alias hygiene.** Populate `aliases` with names the narration would use to *refer to the character* — the canonical name, nicknames, epithets, role-titles (`Anna`, `Mrs. Larsson`, `Andrei's mom`). Do NOT include the query-phrase trigger keys that pad many entries (`her appearance`, `what she looks like`, `describe her`, `who she is`) — those are scan triggers, not names, and would cause the consumer's narration matcher to mis-attribute lines. When in doubt, an alias must be a noun phrase that *names* the person.
 
-**7.7i — Group lorebook re-derivation (do not skip).** ⚠️ *Part of the deprecated Group_Lorebook.json path (Step 8, GitHub #40); slated for removal alongside it.* Step 8 re-sequences every UID from 0 across the combined set, so a manifest's `facets`/`scenes` uids are **wrong** if copied verbatim. When you build Group_Lorebook.json: (1) **drop the per-file `[[NPC_MANIFEST]]` entries** from the combined set — do not carry N source manifests through; (2) emit a single combined manifest (`kind: "group"`) covering every npc and scene, with `facets[*]` and `scenes[*].uid` recomputed against the **new** Group uids. Slug `id`s never change between the per-file and combined manifests — that is the whole point of stable ids.
-
-**7.7j — Alias hygiene.** Populate `aliases` with names the narration would use to *refer to the character* — the canonical name, nicknames, epithets, role-titles (`Anna`, `Mrs. Larsson`, `Andrei's mom`). Do NOT include the query-phrase trigger keys that pad many entries (`her appearance`, `what she looks like`, `describe her`, `who she is`) — those are scan triggers, not names, and would cause the consumer's narration matcher to mis-attribute lines. When in doubt, an alias must be a noun phrase that *names* the person.
-
-**7.7k — Defensive derivation (halt on ambiguity — last guard before writing).** The Architect's Identity Convention and the Editor's Step 4.6 should guarantee clean identity, but you are the final guard before a corrupt manifest reaches `Export/`:
+**7.7j — Defensive derivation (halt on ambiguity — last guard before writing).** The Architect's Identity Convention and the Editor's Step 4.6 should guarantee clean identity, but you are the final guard before a corrupt manifest reaches `Export/`:
 - **Slug collision.** If two distinct characters derive the same `id`, do **not** emit the manifest — halt and surface (the Editor missed a collision; it must be disambiguated upstream). Never silently merge two characters into one memory store.
 - **Shared roster entries.** An entry marked `**Shared roster entry**` (interchangeable extras, per §7 of the Architect) is **one** npc: use its shared canonical name for `id`/`displayName` and include every member's name in `aliases`. This is the one intended many-people-to-one-id case.
 - **Unresolved facet/relationship.** A facet label outside the controlled vocabulary is simply not added to `facets` (the entry still exists as world-info); a `Relationship to X` whose `X` resolves to no canonical name is skipped, not guessed.
 
-### Step 8 — Build Group Lorebook (`Export/Group_Lorebook.json`)
-
-> ⚠️ **DEPRECATED — marked for removal (GitHub #40).** The consolidated `Group_Lorebook.json` is deprecated. Per-character and per-tier lorebooks are the supported delivery format; SillyTavern group chats load those (+ the protagonist persona lorebook) directly, so the merged-everything artifact is redundant at runtime. It also re-sequences every UID from 0, which forces the bug-prone combined-manifest re-derivation in Step 7.7i. **Do not treat this artifact as permanent**; a future removal PR will drop this step and Step 7.7i, leaving only the file-local per-lorebook manifests (7.7h). Until then it is still built for backward compatibility, but no new world should be designed assuming it exists.
-
-Source: All individual lorebook JSON files.
-
-The Group Lorebook combines all entries from all lorebooks into a single importable file. In SillyTavern, users can then enable/disable individual groups (World, CharName, Arc1, Arc2, etc.) to control which lorebook tier is active.
-
-**Important:** When combining, re-sequence all UIDs from 0 across the combined set. Do not reuse UIDs. Re-key every combined entry so its object key equals its **new** UID (Foundational Rule 9) — never carry over the source lorebook's key alongside a re-sequenced UID.
-
-Maintain `group` field values — this is how users manage tiers in ST.
-
-**NPC Memory Manifest:** Do NOT combine the per-file `[[NPC_MANIFEST]]` entries — drop them, then emit one fresh combined manifest (`kind: "group"`) whose `facets`/`scenes` uids point at the **re-sequenced** Group UIDs (Step 7.7i). Slug `id`s carry over unchanged.
-
-### Step 9 — Validation Pass
+### Step 8 — Validation Pass
 
 Before saving any file (per Foundational Rules at top of this file):
 - JSON is syntactically valid (balanced braces, correct commas, no trailing commas) — Foundational Rule #1
@@ -368,8 +349,7 @@ Before saving any file (per Foundational Rules at top of this file):
   - ARC_STATE / SANDBOX_STATE is never at `position: 2` — it must be at `position: 1` with `ignoreBudget: true`
 - *Arc mode:* all arc lorebooks have ≥8 entries. *Sandbox mode:* the Sandbox Lorebook has SANDBOX_STATE + ≥1 WORLD_PULSE (no 8-entry floor)
 - ARC_STATE / SANDBOX_STATE entries have `ignoreBudget: true` — these must never be omitted due to token budget
-- Group Lorebook UIDs are unique across entire combined set
-- **NPC Memory Manifest (Step 7.7):** each NPC/scene-bearing lorebook has exactly one `[[NPC_MANIFEST]]` entry (`disable: true`, `key: []`); its `content` parses as JSON with `schema: 1`; every npc `id` is a valid slug; every `facets`/`scenes` uid resolves to a real entry **in the same file**; the Group manifest's uids are re-sequenced, not copied
+- **NPC Memory Manifest (Step 7.7):** each NPC/scene-bearing lorebook has exactly one `[[NPC_MANIFEST]]` entry (`disable: true`, `key: []`); its `content` parses as JSON with `schema: 1`; every npc `id` is a valid slug; every `facets`/`scenes` uid resolves to a real entry **in the same file**
 - Files saved as `.json`, not embedded in Markdown
 
 ---
@@ -385,7 +365,6 @@ Export/
 ├── [ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
 ├── Arc[N]_Lorebook.json            ← Tier 3 (arc mode): one per arc
 ├── Sandbox_Lorebook.json           ← Tier 3 (sandbox mode): single, always active
-├── Group_Lorebook.json             ← ⚠️ DEPRECATED (GitHub #40) — combined: all tiers, all entries, group-tagged; slated for removal
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
 └── Compiler_Log.md                 ← Build log with field mapping and validation results
 ```
@@ -408,7 +387,6 @@ Append to `Export/Compiler_Log.md`:
 - [ ] World_Lorebook.json — [N] entries, all Tier 1
 - [ ] [CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
 - [ ] Tier 3: arc mode — Arc[N]_Lorebook.json, [N] entries each, ARC_STATE present (list per arc); sandbox mode — Sandbox_Lorebook.json, SANDBOX_STATE + ≥1 WORLD_PULSE present
-- [ ] Group_Lorebook.json — [total N] entries, UIDs unique, groups tagged
 - [ ] Compiler_Log.md — complete
 
 ### Critical Field Verification
@@ -418,8 +396,7 @@ Append to `Export/Compiler_Log.md`:
 - [ ] All ARC_STATE / SANDBOX_STATE entries: constant=true, selective=true, key=[], ignoreBudget=true ✓
 - [ ] No entries use `enabled` field — all use `disable: false` ✓
 - [ ] Protagonist Lorebook: alias and true name trigger keywords present ✓
-- [ ] Group Lorebook UIDs: unique across full set ✓
-- [ ] **Every lorebook entry's object key equals `String(uid)` — no key/UID mismatch in any lorebook, including the re-sequenced Group Lorebook (Foundational Rule 9) ✓**
+- [ ] **Every lorebook entry's object key equals `String(uid)` — no key/UID mismatch in any lorebook (Foundational Rule 9) ✓**
 - [ ] **All entry fields camelCase per the ST schema — no `case_sensitive` / `match_whole_words` / `use_regex` / `characterFilterNames` / `characterFilterExclude` anywhere; `displayIndex` matches `uid` (Foundational Rule 10) ✓**
 - [ ] All `data.extensions.depth_prompt` fields present on all character cards ✓
 - [ ] All `data.extensions.world_forge.style_override` fields present on all character cards (null for non-overriding, seven-key object for overriding: perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale) ✓
@@ -442,8 +419,8 @@ SillyTavern personas are configured manually (no import format). The pipeline pr
 - [ ] Protagonist is in `personas.user`, not `npcs`; every other persistent character is an npc (major characters from their Tier 2 lorebook, roster NPCs as `combined`) (Step 7.7d) ✓
 - [ ] `facets` use only reserved durable keys (`physical`/`psychological`/`standingGoal`/`combined`) and point at correct source uids; no invented keys for durable backstory (Step 7.7e) ✓
 - [ ] `relationships[]` edges resolve `to` a slug of a named character; `scenes[]` (arc mode) built from `BEAT —` entries with stable ids (Step 7.7f–7.7g) ✓
-- [ ] Per-file manifests carry file-local uids; the Group manifest is re-derived with re-sequenced Group uids and the per-file manifests are dropped from the combined set (Step 7.7h–7.7i) ✓
-- [ ] `id`s unique across the manifest — no two characters collide on one slug (halted upstream if so); `aliases` are names, not query-phrase keys; `Shared roster entry` collapses interchangeable extras to one id (Step 7.7j–7.7k) ✓
+- [ ] Per-file manifests carry file-local uids; each `facets`/`scenes` uid resolves within its own lorebook (Step 7.7h) ✓
+- [ ] `id`s unique across the manifest — no two characters collide on one slug (halted upstream if so); `aliases` are names, not query-phrase keys; `Shared roster entry` collapses interchangeable extras to one id (Step 7.7i–7.7j) ✓
 - [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass ✓
 
 ### Gap Report

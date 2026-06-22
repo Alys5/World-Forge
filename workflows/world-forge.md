@@ -5,7 +5,7 @@ description: A workflow to build worlds for player to roleplay in.
 # THE WORLD FORGE PIPELINE
 *Orchestrator v7 — Universal Roleplay World Building & SillyTavern Export*
 
-**Produces:** Character Cards + World Lorebook (Tier 1, permanent) + Character & NPC Lorebooks (Tier 2, permanent) + Character/NPC Intimacy Profiles (Tier 2, permanent, where applicable) + Tier 3 lorebook (arc mode: Arc Lorebooks, one active at a time; sandbox mode: a single always-active Sandbox Lorebook) + Intimacy Registers (Tier 3: per-arc in arc mode, a single standing register in sandbox mode, where applicable) + Group Lorebook (all tiers combined) + Chat Completion Preset. Works for any world — arc or sandbox, any number of arcs, characters, or NPCs.
+**Produces:** Character Cards + World Lorebook (Tier 1, permanent) + Character & NPC Lorebooks (Tier 2, permanent) + Character/NPC Intimacy Profiles (Tier 2, permanent, where applicable) + Tier 3 lorebook (arc mode: Arc Lorebooks, one active at a time; sandbox mode: a single always-active Sandbox Lorebook) + Intimacy Registers (Tier 3: per-arc in arc mode, a single standing register in sandbox mode, where applicable) + Chat Completion Preset. Works for any world — arc or sandbox, any number of arcs, characters, or NPCs.
 
 ---
 
@@ -347,14 +347,13 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `[CharName]_Intimacy_Profile.json` — Tier 2, one per character/NPC with intimate presence (principal full profiles; roster NPC compact stat blocks may share `NPC_Intimacy_Roster.json`), all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
 - `Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
 - Tier 3 intimacy register — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
-- `Group_Lorebook.json` — all tiers combined, group-tagged for ST lorebook editor management
-- An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook (and one re-derived for the Group lorebook) — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
+- An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
 
 **Post-compile check (read-only):** if a Python runtime is available, run `python tools/validate_export.py Export/` after the last file is written. It verifies UTF-8 integrity (mojibake markers), strict JSON parse, `{{original}}` presence on both card override fields, position enum range, and UID uniqueness — the exact failure modes of the Compiler's pre-save guards, checked deterministically. It never modifies files. Failures mean the source is wrong: fix and re-compile; do not hand-edit Export/ JSON.
 
-In SillyTavern: import `Group_Lorebook.json`, enable World + character groups + character intimacy profile groups permanently, swap arc groups (including arc intimacy register groups) as the story advances. In **User Settings → Persona Management**, create the persona for this world, paste the Persona Description block from `Export/User.md` into the Description field, and link `[ProtagonistName]_Lorebook.json` in the Lorebook field.
+In SillyTavern: import the individual lorebooks — `World_Lorebook.json` and the per-character lorebooks (plus character intimacy profiles) stay enabled permanently; swap the arc lorebooks (including arc intimacy registers) in and out as the story advances. In **User Settings → Persona Management**, create the persona for this world, paste the Persona Description block from `Export/User.md` into the Description field, and link `[ProtagonistName]_Lorebook.json` in the Lorebook field.
 
 ---
 
@@ -439,7 +438,6 @@ For users who find manual application onerous on large worlds, a future pipeline
 ├── templates/
 │   ├── Char_Card_creation.md
 │   ├── Lorebook_creation.md
-│   ├── Group_lorebook_template.md
 │   ├── User_Persona_template.md                   ⭐ {{user}} Persona structural reference
 │   └── Chat_Completion_Preset_template.json   ⭐ new (Phase 5 structural reference)
 └── Export/
@@ -454,7 +452,6 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── Sandbox_Lorebook.json                       ← sandbox mode (single, always active)
     ├── Arc[N]_Intimacy_Register.json              ⭐ arc mode (Phase 4, conditional)
     ├── Sandbox_Intimacy_Register.json              ← sandbox mode (single, Phase 4, conditional)
-    ├── Group_Lorebook.json
     ├── Compiler_Log.md
     ├── Prompt_Engineer_Audit.md
     └── [WorldName]_ChatPreset.json

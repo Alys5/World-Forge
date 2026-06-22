@@ -68,7 +68,6 @@ Use this matrix as your starting point. The Reviser may have a narrower list; wi
 - Master Design Section 1 (world laws) OR Section 2 (factions) OR Section 3 (locations) OR Section 4 (species) OR Section 5 (concepts), as applicable
 - Drafts: `Tier1_World_Entries.md` — append new entry OR edit existing entry
 - Export: `World_Lorebook.json` — append or edit
-- Group_Lorebook: regen required
 - Other: cross-check whether the new rule contradicts any existing character ability or arc beat. If yes, halt.
 
 **For `tier2_new_character`:**
@@ -78,7 +77,6 @@ Use this matrix as your starting point. The Reviser may have a narrower list; wi
 - Master Design Section 11b — if the new card requires a per-card style override, add the override entry; if not, record `INHERIT` across all fields
 - Drafts: new `Card_[NewName].md`, new `Tier2_[NewName]_Entries.md`, new `Instructions_[NewName].md`; append to `Tier3_Arc[N]_*_Entries.md` for arcs where the character appears
 - Export: new `[NewName]_Card.json`, new `[NewName]_Lorebook.json`; append to existing `Arc[N]_Lorebook.json` for arc presences
-- Group_Lorebook: regen required
 - If new character has intimate scene presence in any arc: cascade also touches `Tier2_[NewName]_Intimacy_Profile.md` and any arc's `Tier3_Arc[N]_Intimacy_Register.md` (R2.5 fires)
 - Chat preset: regen condition — if this is the second AI card or the first Director/Narrator, Multi-Character Dynamics block needs enabling
 
@@ -86,20 +84,17 @@ Use this matrix as your starting point. The Reviser may have a narrower list; wi
 - Master Design Section 7 — edit the character's voice description, LLM behavioral requirements, failure modes
 - Drafts: edit `Card_[Name].md` (description voice section, mes_example, personality); edit `Tier2_[Name]_Entries.md` (voice-bearing entries); edit `Instructions_[Name].md` (system_prompt voice rules, post_history_instructions if applicable)
 - Export: re-compile the affected card and lorebook
-- Group_Lorebook: regen required (Tier 2 entries change)
 - No new entries, no new files
 
 **For `tier2_character_modify_field`:**
 - Master Design Section 7 — edit the specific subsection of that character
 - Drafts: edit the specific file/field
 - Export: re-compile that file only
-- Group_Lorebook: regen only if a Tier 2 entry's content changed (not if the card's `description` changed without entry-level changes)
 
 **For `tier3_arc_tonal_recalibration`:**
 - Master Design Section 9, the specific arc subsection — edit tone/pacing directive, possibly hidden information rules if the recalibration shifts what's revealed, possibly dramatic beats
 - Drafts: edit `Tier3_Arc[N]_*_Entries.md` — especially ARC_STATE Tonal Mandate, possibly TENSION, possibly DRAMATIC_BEAT entries
 - Export: re-compile that arc's lorebook
-- Group_Lorebook: regen required
 - If arc has intimate beats: `Tier3_Arc[N]_Intimacy_Register.md` may need re-tuning (R2.5 fires)
 - Arc seam check: this arc's transitions to neighbors may have shifted — R3.6 fires
 
@@ -107,21 +102,18 @@ Use this matrix as your starting point. The Reviser may have a narrower list; wi
 - Master Design Section 9 — edit or append the entry's source description
 - Drafts: edit `Tier3_Arc[N]_*_Entries.md` — surgical to one entry
 - Export: re-compile that arc's lorebook
-- Group_Lorebook: regen required
 - Arc seam check fires if entry is a CHARACTER_STATE / NPC_SHIFT / hidden-info entry
 
 **For `intimacy_substrate_modify`:**
 - Master Design Section 7, the character's intimacy substrate fields — edit
 - Drafts: edit `Tier2_[CharName]_Intimacy_Profile.md`
 - Export: re-compile that character's intimacy profile JSON
-- Group_Lorebook: regen required (Tier 2 entries change)
 - Cross-check: does this substrate change contradict any arc's intimate register? If yes, the register may also need updating — flag this; widen the revision if user confirms.
 
 **For `intimacy_register_modify` / `intimacy_register_add`:**
 - Master Design Section 9, the arc's intimacy specification — edit or append
 - Drafts: edit or create `Tier3_Arc[N]_Intimacy_Register.md`
 - Export: re-compile that arc's intimacy register JSON (or create new)
-- Group_Lorebook: regen required
 - Cross-check: does the new register reference characters who lack a Tier 2 Intimacy Profile? If yes, halt — those profiles must exist first (widen revision or create them in a prior revise run).
 
 ### Step R1.4 — Cross-tier cascade flags

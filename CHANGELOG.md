@@ -13,6 +13,53 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-22 — Remove the consolidated Group lorebook (#40)
+
+The consolidated **Group lorebook** (`Export/Group_Lorebook.json`) — the single
+file the Compiler built by merging every Tier 1/2/3 entry with re-sequenced UIDs
+— is **removed**. Per-character and per-tier lorebooks are the supported delivery
+format; SillyTavern group chats load those (plus the protagonist persona
+lorebook) directly, so the merged-everything artifact was redundant at runtime.
+It also re-sequenced every UID from 0, which forced a bug-prone parallel set of
+rules — most acutely the NPC Memory Manifest re-derivation against the new UIDs.
+Removing it simplifies the manifest to **per-file carriers only**. This follows
+the deprecation tracked in #40.
+
+### Removed
+- **`agent_roles/04_The_Compiler.md`** — Step 8 (Build Group Lorebook) and Step
+  7.7i (Group combined-manifest re-derivation); the subsequent sub-steps and the
+  Validation Pass renumber/shed their Group lines; OUTPUT MANIFEST and sign-off
+  Group entries dropped; the two Group template references removed from the
+  Context Manifest and Schema Sources.
+- **`templates/Group_lorebook_template.md`** and
+  **`templates/Group_lorebook_template.json`** — retired.
+- **`agent_roles/05_The_Prompt_Engineer.md`** — the Group Lorebook Structural
+  Audit (§3e), its report section, and its sign-off line.
+
+### Changed
+- **`agent_roles/revise/04_The_Compiler_mini.md`** — drops the "regenerate
+  Group_Lorebook" operational model; the mini now recompiles only the touched
+  individual lorebooks. The "what changes when" report and `REVISED_FILES.md`
+  manifest no longer reference the Group file.
+- **`agent_roles/revise/01_The_Refiner_mini.md`**,
+  **`agent_roles/revise/00_The_Reviser.md`** — cascade rows no longer flag
+  Group_Lorebook regeneration; the Revision Log entry drops its Group regen field.
+- **`agent_roles/00_The_Interviewer.md`**, **`workflows/world-forge.md`**,
+  **`workflows/world-forge-revise.md`**, **`templates/World_Seed_Template.md`**,
+  **`README.md`**, **`tutorial.md`** — output lists, repo trees, and ST import
+  instructions updated; users now import the individual lorebooks (re-importing
+  only the lorebooks a revision touched).
+- **`CLAUDE.md`** — repo-structure listing, principle #12 manifest notes, the
+  failure-mode bullet, and the NPC-manifest cross-file consistency row updated to
+  the per-file-only model.
+- **`tools/validate_export.py`** — `check_manifest` docstring updated (no Group
+  re-derivation); logic unchanged (it validates whatever lorebook files exist).
+
+### Notes
+- The Lucifer sample (`Samples/`) retains its historical
+  `Lucifer-Group_Lorebook.json` and references as a dated snapshot of the prior
+  pipeline output; it is intentionally left unregenerated.
+
 ## 2026-06-18 — NPC Memory Manifest: producer side of the npc-memory contract
 
 World Forge becomes the **producer** side of the **NPC Memory Contract**

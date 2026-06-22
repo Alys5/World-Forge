@@ -1,6 +1,6 @@
 # 🌍 WORLD SEED: [WORLD NAME]
 *Input document for the World Forge pipeline.*
-*Generates: [N] Character Cards + World Lorebook + Character Lorebooks + [N] Arc Lorebooks + Group Lorebook.*
+*Generates: [N] Character Cards + World Lorebook + Character Lorebooks + [N] Arc Lorebooks.*
 
 ---
 
@@ -580,7 +580,6 @@ Trigger keywords: [name variants, role descriptors]
 7. `Arc2_Lorebook.json` — Tier 3: Arc 2 state, beats, NPC shifts
 8. `Arc2_Intimacy_Register.json` — Tier 3: Arc 2 intimate function and per-character delta (only if Arc 2 has intimate beats)
 [Continue for each arc, intimacy files conditional]
-N. `Group_Lorebook.json` — All tiers combined, group-tagged for ST management
 
 **Scan depth:** 50 for all lorebooks
 **Token budget:** 2048 for arc lorebooks; 3000 for world and character lorebooks

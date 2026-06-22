@@ -154,15 +154,6 @@ Review the combined token load of entries likely to fire simultaneously. Identif
 - Which entries are missing `ignoreBudget: true` that should have it (ARC_STATE entries especially)
 - Whether any non-critical entries should have reduced content to preserve budget for critical entries
 
-### 3e. Group Lorebook Structural Audit
-
-Review `Group_Lorebook.json` specifically:
-
-- Are all group tags consistent with the intended tier management (World, Anna, Andrei, Arc1, Arc2, etc.)?
-- Are UIDs unique across the entire combined set?
-- Are entries from different tiers correctly segregated into their groups so the player can enable/disable tiers independently in ST?
-- Is the Protagonist Lorebook group tag distinct and clearly named?
-
 ---
 
 ## 4. CHARACTER CARD AUDIT
@@ -689,9 +680,6 @@ If your candidate output fails any Pass 1 check, the cause is almost always one 
 ## Section 4: Budget and Token Risk
 [List any budget risks, missing ignoreBudget flags, or "No budget risks identified."]
 
-## Section 5: Group Lorebook Structural Audit
-[List any structural issues, or "Group Lorebook structure correct."]
-
 ## Section 6: Character Card Audit
 [Per-card assessment: system_prompt, post_history_instructions, depth_prompt recommendation]
 
@@ -773,7 +761,6 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] All keyword arrays reviewed for coverage, false positives, boundary behavior, and variant names
 - [ ] All ARC_STATE entries confirmed: ignoreBudget=true
 - [ ] Token budget risk assessed
-- [ ] Group Lorebook structure verified
 
 ### Character Card Audit
 - [ ] system_prompt: non-empty, non-generic, verified for each card

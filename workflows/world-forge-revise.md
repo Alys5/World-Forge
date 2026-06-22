@@ -5,7 +5,7 @@ description: A surgical-revision workflow for worlds that have already been buil
 # THE WORLD FORGE REVISION PIPELINE
 *Orchestrator (revise fork) — Surgical Revisions to Built Worlds*
 
-**When to use:** the world has been built (Phase 0–5 complete, Export/ exists), is in active play or post-launch, and needs a surgical change — a new NPC, a voice calibration, an arc tonal recalibration, an entry tweak. The minis read existing Drafts/ and Export/, make targeted insertions or edits, preserve UIDs, regenerate Group_Lorebook, and audit only the touched surfaces.
+**When to use:** the world has been built (Phase 0–5 complete, Export/ exists), is in active play or post-launch, and needs a surgical change — a new NPC, a voice calibration, an arc tonal recalibration, an entry tweak. The minis read existing Drafts/ and Export/, make targeted insertions or edits, preserve UIDs, and audit only the touched surfaces.
 
 **When NOT to use:** any change that touches Master Design Section 1 (Core Concept & Tone) or Section 11a (Style Contract world defaults). Those require a full pipeline re-run from Phase 1, with the existing World_Seed.md reused and the Interviewer skipped (`/worldforge skip phase0`). **Flipping `World Mode` (arc↔sandbox) is a Section 1 change** — it bounces out of the revise pipeline to a full rebuild, exactly like a tonal-rule change. The revise pipeline edits a world *within* its mode; it does not convert between modes.
 
@@ -67,7 +67,7 @@ description: A surgical-revision workflow for worlds that have already been buil
       v
  PHASE R4: THE COMPILER (mini)
  Re-compiles ONLY touched files. Preserves UIDs in unchanged entries.
- Appends new entries with next free UIDs. Regenerates Group_Lorebook.json.
+ Appends new entries with next free UIDs.
  Outputs "what changes when" report (effects on running ST chat states).
       |
       v
@@ -229,7 +229,7 @@ The three mini-auditors share the parent's failure handling: a Critical (or High
 
 **Invoke:** `@agent_roles/revise/04_The_Compiler_mini.md`
 **Input:** Approved touched drafts + `Notes_On_functionality.md` + existing `Export/` JSON files for UID continuity + existing `Export/REVISED_FILES.md` (if present)
-**Output:** Updated `Export/` files (only those touched) + regenerated `Export/Group_Lorebook.json` + updated `Export/REVISED_FILES.md` (cumulative manifest) + `Drafts/Revise_R[N]_Compile_Log.md` + "what changes when" user report
+**Output:** Updated `Export/` files (only those touched) + updated `Export/REVISED_FILES.md` (cumulative manifest) + `Drafts/Revise_R[N]_Compile_Log.md` + "what changes when" user report
 
 **Operationally different from the full Compiler.** Append + dedupe + UID preservation, not build-fresh. Reads each Export file before rewriting it: new entries get the next free UID, existing entries keep their UIDs, deleted entries are flagged (mini-Compiler does not delete by default — user confirms via the audit report).
 
