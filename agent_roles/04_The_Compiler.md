@@ -319,7 +319,7 @@ When an npc has a single combined entry, map `combined`; when facet-split, map e
 
 The combined `Group_Lorebook.json` gets ONE manifest (7.7i).
 
-**7.7i — Group lorebook re-derivation (do not skip).** Step 8 re-sequences every UID from 0 across the combined set, so a manifest's `facets`/`scenes` uids are **wrong** if copied verbatim. When you build Group_Lorebook.json: (1) **drop the per-file `[[NPC_MANIFEST]]` entries** from the combined set — do not carry N source manifests through; (2) emit a single combined manifest (`kind: "group"`) covering every npc and scene, with `facets[*]` and `scenes[*].uid` recomputed against the **new** Group uids. Slug `id`s never change between the per-file and combined manifests — that is the whole point of stable ids.
+**7.7i — Group lorebook re-derivation (do not skip).** ⚠️ *Part of the deprecated Group_Lorebook.json path (Step 8, GitHub #40); slated for removal alongside it.* Step 8 re-sequences every UID from 0 across the combined set, so a manifest's `facets`/`scenes` uids are **wrong** if copied verbatim. When you build Group_Lorebook.json: (1) **drop the per-file `[[NPC_MANIFEST]]` entries** from the combined set — do not carry N source manifests through; (2) emit a single combined manifest (`kind: "group"`) covering every npc and scene, with `facets[*]` and `scenes[*].uid` recomputed against the **new** Group uids. Slug `id`s never change between the per-file and combined manifests — that is the whole point of stable ids.
 
 **7.7j — Alias hygiene.** Populate `aliases` with names the narration would use to *refer to the character* — the canonical name, nicknames, epithets, role-titles (`Anna`, `Mrs. Larsson`, `Andrei's mom`). Do NOT include the query-phrase trigger keys that pad many entries (`her appearance`, `what she looks like`, `describe her`, `who she is`) — those are scan triggers, not names, and would cause the consumer's narration matcher to mis-attribute lines. When in doubt, an alias must be a noun phrase that *names* the person.
 
@@ -329,6 +329,8 @@ The combined `Group_Lorebook.json` gets ONE manifest (7.7i).
 - **Unresolved facet/relationship.** A facet label outside the controlled vocabulary is simply not added to `facets` (the entry still exists as world-info); a `Relationship to X` whose `X` resolves to no canonical name is skipped, not guessed.
 
 ### Step 8 — Build Group Lorebook (`Export/Group_Lorebook.json`)
+
+> ⚠️ **DEPRECATED — marked for removal (GitHub #40).** The consolidated `Group_Lorebook.json` is deprecated. Per-character and per-tier lorebooks are the supported delivery format; SillyTavern group chats load those (+ the protagonist persona lorebook) directly, so the merged-everything artifact is redundant at runtime. It also re-sequences every UID from 0, which forces the bug-prone combined-manifest re-derivation in Step 7.7i. **Do not treat this artifact as permanent**; a future removal PR will drop this step and Step 7.7i, leaving only the file-local per-lorebook manifests (7.7h). Until then it is still built for backward compatibility, but no new world should be designed assuming it exists.
 
 Source: All individual lorebook JSON files.
 
@@ -383,7 +385,7 @@ Export/
 ├── [ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
 ├── Arc[N]_Lorebook.json            ← Tier 3 (arc mode): one per arc
 ├── Sandbox_Lorebook.json           ← Tier 3 (sandbox mode): single, always active
-├── Group_Lorebook.json             ← Combined: all tiers, all entries, group-tagged
+├── Group_Lorebook.json             ← ⚠️ DEPRECATED (GitHub #40) — combined: all tiers, all entries, group-tagged; slated for removal
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
 └── Compiler_Log.md                 ← Build log with field mapping and validation results
 ```
