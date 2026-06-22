@@ -60,6 +60,60 @@ the deprecation tracked in #40.
   `Lucifer-Group_Lorebook.json` and references as a dated snapshot of the prior
   pipeline output; it is intentionally left unregenerated.
 
+## 2026-06-22 — Brainstormer: domain lenses + revision-diagnostic posture (#46)
+
+The Brainstormer (introduced #37, below) gains craft grounding and a third
+entry mode. Four on-demand **domain lenses** load only when a brainstorm turns
+toward their domain, and a new **revision-diagnostic posture** serves the
+post-launch "something feels off but I can't name what to revise" case. All of
+it stays non-prescriptive — reference shelves for the Brainstormer's own
+riffing, never separate voices, never scorers or feasibility-checkers.
+
+### Added
+- **Four domain lenses** (`agent_roles/Brainstormer/lenses/`), loaded on demand
+  to preserve context budget: **Intimacy & Dynamics** (kink-as-character, not
+  bolt-on), **Appearance & Style** (looks derived from role / activity / genre
+  rather than reflexive defaults), **Realism** (consequence / constraint /
+  expertise as a tool, deferring to genre register), and **Character Psychology
+  & Motivation** (want / need / fear, humanizing contradictions, lines a
+  character won't cross). Each carries a "bright line" section restating what the
+  Brainstormer does NOT do (author, classify tiers, impose constraints).
+- **Revision-diagnostic posture** (third entry mode) — `/worldforge revise
+  --brainstorm` runs the Brainstormer against a shipped world's
+  `Drafts/Master_Design.md` (read-only), diagnoses the primary concern
+  divergently, and writes it to `Brainstorm_Notes.md`; the Reviser then reads
+  that as captured intent. Enforces the same Section 1 / 11a / World Mode bright
+  line and bounces an out-of-scope diagnosis rather than dressing it as a
+  revision.
+- **Expanded technique guidance** — sketching register via short prose excerpts,
+  creative touchstones to anchor tone, generating a cast when asked (not
+  deflecting), dodging clichés while still offering them as valid choices, and
+  the "where does it sag?" soft-spot move.
+
+### Changed
+- **`agent_roles/revise/00_The_Reviser.md`**, **`workflows/world-forge-revise.md`**
+  — the `--brainstorm` front door and the Reviser's read of a
+  revision-diagnostic `Brainstorm_Notes.md`.
+- **`CLAUDE.md`** — clarified that a `World Mode` (arc | sandbox) flip is out of
+  revise scope (full rebuild).
+- **Docs (#48):** `tutorial.md` Section 9 (the three postures, the four lenses
+  with example nudges, the `revise --brainstorm` flow) and `README.md` (the
+  `/worldforge revise --brainstorm` trigger row + a post-launch note).
+
+---
+
+## 2026-06-22 — Tutorial command reference (#49)
+
+### Added
+- **`tutorial.md` Section 10** — a single example-driven reference for every
+  `/worldforge` command and flag, organized by lifecycle (start, in-flight
+  control, revise, resync-preset, convert), each pairing an example invocation
+  with what it does and why you'd reach for it, using the Lucifer project for
+  continuity. "Where to learn more" renumbered to Section 11; a pointer added
+  from the Section 2 trigger table. Docs only.
+
+---
+
 ## 2026-06-18 — NPC Memory Manifest: producer side of the npc-memory contract
 
 World Forge becomes the **producer** side of the **NPC Memory Contract**
@@ -105,6 +159,65 @@ a world without it still works via the extension's prose fallback.
 - The contract's optional per-message **turn tag** (`<!--npcmem:{...}-->`, runtime
   lever) is not implemented on the producer side — a separate preset/card-level
   change if pursued.
+
+---
+
+## 2026-06-18 — validate_export: clean exit on SIGPIPE (#39)
+
+### Fixed
+- **`tools/validate_export.py`** — piping the validator into a reader that closes
+  early (e.g. `head`) ended a clean run with a `BrokenPipeError` traceback,
+  making a working diagnostic look like a crash and distorting the exit status
+  the shell sees. The `__main__` guard now catches `BrokenPipeError` and exits
+  quietly like other Unix CLIs. Output plumbing only — no validation behavior or
+  exit-code change for complete runs; stays within the file's stdlib-only,
+  read-only standing exception. Closes #32. (Reported and fixed by @SAY-5.)
+
+---
+
+## 2026-06-17 — Convert flags surfaced in the README (#38)
+
+### Changed
+- **`README.md`** — the `/worldforge convert` command-table entry now lists the
+  `--brief`, `--rebaseline`, and `--then-interview` / `--then-brainstorm` modes
+  (already supported in the pipeline) and links to tutorial §8 for the detailed
+  guidance. Docs only.
+
+---
+
+## 2026-06-14 — The Brainstormer: optional divergent ideation upstream of Phase 0 (#37)
+
+A new optional entry point for users who arrive with only a vibe or a fragment
+and nothing solid enough for the Interviewer's structured, specificity-demanding
+questions to land. The Brainstormer is the **divergent** counterpart to the
+convergent Interviewer — it generates premise directions, yes-ands instincts,
+and converges only when an idea has a pulse, then hands off to `/worldforge
+start`.
+
+### Added
+- **`agent_roles/Brainstormer/00_The_Brainstormer.md`** — generates multiple
+  directions and follows sparks; converges on a premise with a pulse (central
+  tension + feel + at least one anchor). Two entry modes at introduction:
+  fresh-start ideation and an improvement posture for brainstorming changes to an
+  already-consolidated world. **Load-bearing bright line:** it writes only
+  informal `Brainstorm_Notes.md`, never a `World_Seed.md` — seed authorship
+  belongs to the Interviewer alone. It advances no pipeline state and invokes no
+  downstream agent; it is a skippable front porch.
+- **`.kilo/kilo.jsonc`** — a `WorldForge-Brainstormer` seat (DeepSeek v4 Pro,
+  temperature 0.9 for divergent ideation).
+
+### Changed
+- **`agent_roles/00_The_Interviewer.md`** — Context Manifest loads
+  `Brainstorm_Notes.md` if present as raw starting material (not as answers; the
+  full interview still runs).
+- **`agent_roles/Converter/00_The_Converter.md`** — `--then-brainstorm` flag for
+  rebaseline chains (consolidate, brainstorm improvements, then the Interviewer
+  reworks the seed; Section 9 Step H).
+- **`workflows/world-forge.md`** (new BRAINSTORM section),
+  **`workflows/world-forge-convert.md`** (`--then-brainstorm` chaining),
+  **`tutorial.md`**, **`AGENTS.md`**, and **`CLAUDE.md`** (the new
+  `agent_roles/Brainstormer/` folder; role documented as upstream ideation, not a
+  pipeline phase).
 
 ---
 
@@ -207,6 +320,14 @@ release branch, 2026-06-12) before any file was edited, per the
 - `Samples/Export/*.json` still carry the inert snake_case alias fields from
   the old template (their keys/UIDs are consistent, so they render fine in ST);
   left untouched, flagged for a separate migration pass.
+
+---
+
+## 2026-06-12 — LICENSE: CC0 text removed (#35)
+
+### Removed
+- **`LICENSE`** — the Creative Commons CC0 1.0 Universal license text was deleted
+  from the file.
 
 ---
 
