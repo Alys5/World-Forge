@@ -178,7 +178,7 @@ For example, `tier2_new_character` always means:
 For a sandbox example, `sandbox_state_recalibration` means:
 - Master Design Section 9B (Sandbox Charter) — the Standing Situation / Tonal Mandate delta
 - Drafts: modify `Tier3_Sandbox_Entries.md` (the `SANDBOX_STATE` entry; possibly `WORLD_PULSE`)
-- Export: recompile `Sandbox_Lorebook.json`
+- Export: recompile `[WorldName]_Sandbox_Lorebook.json` (the world's existing on-disk name; pre-prefix worlds keep their legacy `Sandbox_Lorebook.json` — Compiler-mini delta 5)
 - A `tier2_new_character` roster-NPC add additionally touches `Tier2_NPC_Entries.md` (new §7.E block), the §6.5 intimacy roster if the NPC is sexual, and fires R3.5's Distinctiveness Matrix — never an arc file.
 
 The Revision Log entry lists these as "Expected cascade — confirmed by mini-Refiner in Step R1."

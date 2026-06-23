@@ -164,12 +164,12 @@ A new project folder evolves through these files as the pipeline progresses:
 └── Export/
     ├── [CharName]_Card.json                       ← Phase 4
     ├── User.md                                    ← Phase 4 (paste into ST persona)
-    ├── [ProtagonistName]_Lorebook.json            ← Phase 4
-    ├── World_Lorebook.json                        ← Phase 4
-    ├── [CharName]_Lorebook.json                   ← Phase 4
-    ├── [CharName]_Intimacy_Profile.json           ← Phase 4 (conditional)
-    ├── Arc[N]_Lorebook.json                       ← Phase 4
-    ├── Arc[N]_Intimacy_Register.json              ← Phase 4 (conditional)
+    ├── [WorldName]_[ProtagonistName]_Lorebook.json  ← Phase 4
+    ├── [WorldName]_World_Lorebook.json            ← Phase 4
+    ├── [WorldName]_[CharName]_Lorebook.json       ← Phase 4
+    ├── [WorldName]_[CharName]_Intimacy_Profile.json ← Phase 4 (conditional)
+    ├── [WorldName]_Arc[N]_Lorebook.json           ← Phase 4
+    ├── [WorldName]_Arc[N]_Intimacy_Register.json  ← Phase 4 (conditional)
     ├── Compiler_Log.md                            ← Phase 4
     ├── Prompt_Engineer_Audit.md                   ← Phase 5
     └── [WorldName]_ChatPreset.json                ← Phase 5

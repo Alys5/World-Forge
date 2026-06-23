@@ -461,7 +461,7 @@ The Architect's specification for this file is in Section 5.5 of `02_The_Archite
 - [ ] `Drafts/User.md` exists.
 - [ ] The file contains a `## PERSONA DESCRIPTION` section.
 - [ ] That section contains a literal `--- BEGIN PERSONA DESCRIPTION ---` marker and a literal `--- END PERSONA DESCRIPTION ---` marker, with content between them.
-- [ ] The file contains a `## SETUP INSTRUCTIONS` section that names the Tier 2 Protagonist Lorebook filename (the file the user must link to the persona — must match the Tier 2 lorebook draft filename, e.g., `Andrei_Lorebook.json` for `Tier2_Andrei_Entries.md`).
+- [ ] The file contains a `## SETUP INSTRUCTIONS` section that names the Tier 2 Protagonist Lorebook filename (the file the user must link to the persona — must match the Tier 2 lorebook the Compiler will emit, i.e. the draft name carried under the `[WorldName]_` prefix: `[WorldName]_Andrei_Lorebook.json` for `Tier2_Andrei_Entries.md` in a world named `[WorldName]`).
 
 Missing file or any of the structural elements = hard reject.
 
@@ -548,7 +548,7 @@ SOFT FLAG: User.md persona block — [specific concern]
 
 #### 5.5e — Lorebook pairing consistency (hard fail)
 
-- [ ] The lorebook filename named in the Setup Instructions matches the Tier 2 Protagonist Lorebook draft (`Tier2_[ProtagonistName]_Entries.md` → expected export `[ProtagonistName]_Lorebook.json`).
+- [ ] The lorebook filename named in the Setup Instructions matches the Tier 2 Protagonist Lorebook draft under the Compiler's `[WorldName]_` prefix (`Tier2_[ProtagonistName]_Entries.md` → expected export `[WorldName]_[ProtagonistName]_Lorebook.json`).
 - [ ] The in-world name in the `# {{user}} PERSONA — [Name]` heading matches the protagonist name used in the Tier 2 Protagonist Lorebook draft.
 
 Mismatch = hard reject. The pair must wire up correctly in ST or the user gets a broken persona.

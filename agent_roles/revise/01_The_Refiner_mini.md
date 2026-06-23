@@ -67,7 +67,7 @@ Use this matrix as your starting point. The Reviser may have a narrower list; wi
 **For `tier1_world_rule_add` / `tier1_world_rule_modify`:**
 - Master Design Section 1 (world laws) OR Section 2 (factions) OR Section 3 (locations) OR Section 4 (species) OR Section 5 (concepts), as applicable
 - Drafts: `Tier1_World_Entries.md` — append new entry OR edit existing entry
-- Export: `World_Lorebook.json` — append or edit
+- Export: `[WorldName]_World_Lorebook.json` — append or edit (use the world's existing on-disk lorebook name; pre-prefix worlds keep their legacy `World_Lorebook.json` — Compiler-mini delta 5)
 - Other: cross-check whether the new rule contradicts any existing character ability or arc beat. If yes, halt.
 
 **For `tier2_new_character`:**
@@ -76,7 +76,7 @@ Use this matrix as your starting point. The Reviser may have a narrower list; wi
 - Master Design Section 10 (technical specs) — add the new card to the card list and depth_prompt assessment
 - Master Design Section 11b — if the new card requires a per-card style override, add the override entry; if not, record `INHERIT` across all fields
 - Drafts: new `Card_[NewName].md`, new `Tier2_[NewName]_Entries.md`, new `Instructions_[NewName].md`; append to `Tier3_Arc[N]_*_Entries.md` for arcs where the character appears
-- Export: new `[NewName]_Card.json`, new `[NewName]_Lorebook.json`; append to existing `Arc[N]_Lorebook.json` for arc presences
+- Export: new `[NewName]_Card.json`, new `[WorldName]_[NewName]_Lorebook.json`; append to existing `[WorldName]_Arc[N]_Lorebook.json` for arc presences (new lorebooks match the world's existing prefix state — Compiler-mini delta 5)
 - If new character has intimate scene presence in any arc: cascade also touches `Tier2_[NewName]_Intimacy_Profile.md` and any arc's `Tier3_Arc[N]_Intimacy_Register.md` (R2.5 fires)
 - Chat preset: regen condition — if this is the second AI card or the first Director/Narrator, Multi-Character Dynamics block needs enabling
 

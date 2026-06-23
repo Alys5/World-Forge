@@ -120,7 +120,7 @@ If any template is missing: halt and report. Do not guess schema.
 
 | Field | Type | Description |
 |---|---|---|
-| `name` | string | Lorebook identifier. Use descriptive names matching the file name. |
+| `name` | string | Lorebook identifier. Set it to match the file name minus `.json` — including the `[WorldName]_` prefix (see the file-naming convention before Step 5). |
 | `description` | string | Human-readable description. Not sent to the LLM. |
 | `scan_depth` | integer | Default scan depth for all entries (overridden per-entry if set). |
 | `token_budget` | integer | Maximum tokens active entries can consume per context window. |
@@ -154,7 +154,7 @@ If any template is missing: halt and report. Do not guess schema.
 Per `Notes_On_functionality.md` Section 9, SillyTavern has a dedicated **Persona System** for `{{user}}`. SillyTavern provides no import format for personas (unlike V3 character cards for `{{char}}`), so the user configures the persona manually in **User Settings → Persona Management**. The pipeline produces two paired artifacts to support this:
 
 1. **`Export/User.md`** — the Persona Description text. The user pastes the block between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` into the persona's **Description** field. This text is injected as `personaDescription` in every prompt while the persona is active.
-2. **`Export/[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook. The user links this in the persona's **Lorebook** field. It scans only when this persona is active.
+2. **`Export/[WorldName]_[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook. The user links this in the persona's **Lorebook** field. It scans only when this persona is active.
 
 The persona description is the always-on identity floor; the linked lorebook fires on trigger keywords for fuller detail. Advise the user to wire up both in the Compiler Log.
 
@@ -190,7 +190,11 @@ Do not modify the file. Do not strip the BEGIN/END markers, the Setup Instructio
 
 If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught this. Do not attempt to synthesize one.
 
-### Step 5 — Build World Lorebook (`Export/World_Lorebook.json`)
+### Lorebook file-naming convention (applies to Steps 5, 6, 7, and the intimacy registers)
+
+**Every exported lorebook filename is prefixed with `[WorldName]_`** — the same world-name token already used for `[WorldName]_ChatPreset.json` (from Master Design Section 1; spaces → underscores). SillyTavern names a standalone World Info world by its **imported filename**, not by the internal `name` field (`Notes_On_functionality.md` §"world-info.js → importWorldInfo"), so the filename prefix is what makes a world's entire lorebook set sort and group together as one block in ST's alphabetical World Info list. Set each lorebook's internal `name` field to match its filename (minus `.json`), and the manifest `lorebook.name` (Step 7.7b) likewise. The prefix is the **only** change to these filenames — the rest of each name (`World_Lorebook`, `[CharName]_Lorebook`, `Arc[N]_Lorebook`, …) is unchanged. Cards, `User.md`, and logs are **not** prefixed; only lorebook/register JSON.
+
+### Step 5 — Build World Lorebook (`Export/[WorldName]_World_Lorebook.json`)
 
 Source: `Drafts/Tier1_World_Entries.md`
 
@@ -203,7 +207,7 @@ Source: `Drafts/Tier1_World_Entries.md`
 - Sort entries within the lorebook by Order Priority (highest first when listing).
 - Set `group: "World"` on all entries for easy identification in ST editor.
 
-### Step 6 — Build Character Lorebooks (`Export/[CharName]_Lorebook.json`)
+### Step 6 — Build Character Lorebooks (`Export/[WorldName]_[CharName]_Lorebook.json`)
 
 Source: `Drafts/Tier2_[CharName]_Entries.md`
 
@@ -218,7 +222,7 @@ One lorebook file per character/NPC. Include all relational and psychological en
 
 **Read Master Design `World Mode` first.** Arc mode → Step 7A (one Arc Lorebook per arc). Sandbox mode → Step 7B (one always-active Sandbox Lorebook). Never both.
 
-#### Step 7A — Build Arc Lorebooks (`Export/Arc[N]_Lorebook.json`) — *arc mode*
+#### Step 7A — Build Arc Lorebooks (`Export/[WorldName]_Arc[N]_Lorebook.json`) — *arc mode*
 
 Source: `Drafts/Tier3_Arc[N]_[Title]_Entries.md`
 
@@ -231,7 +235,7 @@ One lorebook file per arc.
 - LOCATION entries: `order: 70–79`, `position: 1`.
 - Set `group: "Arc[N]"` on all entries.
 
-#### Step 7B — Build the Sandbox Lorebook (`Export/Sandbox_Lorebook.json`) — *sandbox mode*
+#### Step 7B — Build the Sandbox Lorebook (`Export/[WorldName]_Sandbox_Lorebook.json`) — *sandbox mode*
 
 Source: `Drafts/Tier3_Sandbox_Entries.md`
 
@@ -242,7 +246,7 @@ Exactly **one** lorebook file, always active (the user never swaps it). It is th
 - There are no NPC_SHIFT, DRAMATIC_BEAT, or CHARACTER_STATE entries in a sandbox lorebook.
 - Set `group: "Sandbox"` on all entries.
 
-**Intimacy registers (when Phase 2.5 produced them):** compile the Tier 3 intimacy register the same way as the lorebook above — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (group `"SandboxIntimacy"`), with the standing `INTIMACY_FUNCTION` entry `constant: true`, `key: []`, `ignoreBudget: true`. Compile NPC intimacy profiles alongside the other Tier 2 profiles: principal NPC full profiles as their own `[NPCName]_Intimacy_Profile.json`; roster NPC compact stat blocks as `NPC_Intimacy_Roster.json` (`position: 1`, keyed entries).
+**Intimacy registers (when Phase 2.5 produced them):** compile the Tier 3 intimacy register the same way as the lorebook above (same `[WorldName]_` filename prefix) — *arc mode:* `[WorldName]_Arc[N]_Intimacy_Register.json` per arc; *sandbox mode:* a single `[WorldName]_Sandbox_Intimacy_Register.json` (group `"SandboxIntimacy"`), with the standing `INTIMACY_FUNCTION` entry `constant: true`, `key: []`, `ignoreBudget: true`. Compile NPC intimacy profiles alongside the other Tier 2 profiles: principal NPC full profiles as their own `[WorldName]_[NPCName]_Intimacy_Profile.json`; roster NPC compact stat blocks as `[WorldName]_NPC_Intimacy_Roster.json` (`position: 1`, keyed entries).
 
 ### Step 7.7 — Emit NPC Memory Manifest entries
 
@@ -310,7 +314,7 @@ When an npc has a single combined entry, map `combined`; when facet-split, map e
 **7.7g — Scenes (arc mode only).** In each Arc lorebook's manifest, build `scenes[]` from that arc's `BEAT — [Title]` entries: `id` = `<arc>_beat<n>` by author order, `uid` = the BEAT entry's uid, `arc` = the arc label, `seq` = the 1-based order index, `title` = the beat title. Sandbox worlds have no beats — omit `scenes`.
 
 **7.7h — Where manifests go.** Emit one manifest in each lorebook that carries NPC or scene structure, with that file's **file-local uids**:
-- each Tier 2 `[CharName]_Lorebook.json` → manifest with that one npc (+ `personas`), `kind: "npc"`;
+- each Tier 2 `[WorldName]_[CharName]_Lorebook.json` → manifest with that one npc (+ `personas`), `kind: "npc"`;
 - the WorldDirector / roster lorebook, if the world has one → manifest with all roster npcs, `kind: "director"`;
 - the protagonist's Tier 2 lorebook → manifest with `personas` only (`npcs: []`), `kind: "npc"`;
 - each Arc lorebook → manifest with `scenes` for that arc (+ `personas`), `kind: "arc"`;
@@ -360,11 +364,11 @@ Before saving any file (per Foundational Rules at top of this file):
 Export/
 ├── [CharName]_Card.json            ← V3 character card per named card
 ├── User.md                         ← {{user}} Persona Description text (paste into ST persona)
-├── World_Lorebook.json             ← Tier 1: permanent world truths
-├── [CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
-├── [ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
-├── Arc[N]_Lorebook.json            ← Tier 3 (arc mode): one per arc
-├── Sandbox_Lorebook.json           ← Tier 3 (sandbox mode): single, always active
+├── [WorldName]_World_Lorebook.json             ← Tier 1: permanent world truths
+├── [WorldName]_[CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
+├── [WorldName]_[ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
+├── [WorldName]_Arc[N]_Lorebook.json            ← Tier 3 (arc mode): one per arc
+├── [WorldName]_Sandbox_Lorebook.json           ← Tier 3 (sandbox mode): single, always active
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
 └── Compiler_Log.md                 ← Build log with field mapping and validation results
 ```
@@ -384,15 +388,16 @@ Append to `Export/Compiler_Log.md`:
 ### Output Manifest
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
-- [ ] World_Lorebook.json — [N] entries, all Tier 1
-- [ ] [CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
-- [ ] Tier 3: arc mode — Arc[N]_Lorebook.json, [N] entries each, ARC_STATE present (list per arc); sandbox mode — Sandbox_Lorebook.json, SANDBOX_STATE + ≥1 WORLD_PULSE present
+- [ ] [WorldName]_World_Lorebook.json — [N] entries, all Tier 1
+- [ ] [WorldName]_[CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
+- [ ] Tier 3: arc mode — [WorldName]_Arc[N]_Lorebook.json, [N] entries each, ARC_STATE present (list per arc); sandbox mode — [WorldName]_Sandbox_Lorebook.json, SANDBOX_STATE + ≥1 WORLD_PULSE present
+- [ ] **Every exported lorebook/register filename is `[WorldName]_`-prefixed, and each lorebook's internal `name` matches its filename (file-naming convention) ✓**
 - [ ] Compiler_Log.md — complete
 
 ### Critical Field Verification
 - [ ] All system_prompt fields: non-empty ✓
 - [ ] All post_history_instructions fields: non-empty ✓
-- [ ] Arc mode: all arc lorebooks ≥8 entries ✓ — OR — Sandbox mode: Sandbox_Lorebook.json has SANDBOX_STATE + ≥1 WORLD_PULSE ✓
+- [ ] Arc mode: all arc lorebooks ≥8 entries ✓ — OR — Sandbox mode: [WorldName]_Sandbox_Lorebook.json has SANDBOX_STATE + ≥1 WORLD_PULSE ✓
 - [ ] All ARC_STATE / SANDBOX_STATE entries: constant=true, selective=true, key=[], ignoreBudget=true ✓
 - [ ] No entries use `enabled` field — all use `disable: false` ✓
 - [ ] Protagonist Lorebook: alias and true name trigger keywords present ✓
@@ -410,7 +415,7 @@ SillyTavern personas are configured manually (no import format). The pipeline pr
 1. In SillyTavern: open **User Settings → Persona Management**.
 2. Create (or select) the persona for this world. Set the persona name to the in-world name found in the `# {{user}} PERSONA — [Name]` heading at the top of `Export/User.md`.
 3. Open `Export/User.md`. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` and paste it into the persona's **Description** field.
-4. In the same persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json`.
+4. In the same persona editor, find the **Lorebook** field and link `[WorldName]_[ProtagonistName]_Lorebook.json`.
 5. Activate this persona before starting the chat. The persona description is the always-on baseline; the linked lorebook fires on keyword triggers for fuller detail.
 
 ### NPC Memory Manifest (NPC Memory Contract, schema 1)

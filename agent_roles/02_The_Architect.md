@@ -165,7 +165,7 @@ This text is injected as a system message every turn while this persona is activ
 1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.
 2. Set the persona name to: `[In-World Name]`.
 3. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` above and paste it into the persona's **Description** field.
-4. In the same persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json` (the Tier 2 Protagonist Lorebook produced by the pipeline).
+4. In the same persona editor, find the **Lorebook** field and link `[WorldName]_[ProtagonistName]_Lorebook.json` (the Tier 2 Protagonist Lorebook produced by the pipeline).
 5. Activate this persona before starting the chat. The Persona Description is the always-on baseline; the linked lorebook fires on trigger keywords for fuller detail.
 ```
 
@@ -178,7 +178,7 @@ This text is injected as a system message every turn while this persona is activ
 5. Verify the assembled block is third-person reference, not directive ("`{{user}}` is …", not "You are …" or "Always …").
 6. Verify the block contains no voice/personality/manner/style content.
 7. **Count words.** The Persona Description block (the text between the BEGIN and END markers) MUST be ≤150 words. Hard cap. This text injects every turn for the entire chat — every word costs tokens on every generation. If it does not fit in 150 words, voice/personality has crept in, or the lorebook material is being duplicated. Strip and rewrite.
-8. Write the Setup Instructions section verbatim from the structure above, substituting the in-world name and the lorebook filename.
+8. Write the Setup Instructions section verbatim from the structure above, substituting the in-world name and the lorebook filename. The protagonist lorebook filename carries the `[WorldName]_` prefix the Compiler emits (`[WorldName]_[ProtagonistName]_Lorebook.json`; see the Compiler's file-naming convention) — use the world name from World Seed § 1.
 
 ### Special cases
 
@@ -187,7 +187,7 @@ This text is injected as a system message every turn while this persona is activ
 
 ### Cross-reference with the Tier 2 Protagonist Lorebook
 
-`User.md` and `[ProtagonistName]_Lorebook.json` are paired artifacts, not redundant ones. If content lives in both, prefer the lorebook. The persona description should be the smallest viable identity anchor — anything that can wait for a key to fire belongs in the lorebook.
+`User.md` and `[WorldName]_[ProtagonistName]_Lorebook.json` are paired artifacts, not redundant ones. If content lives in both, prefer the lorebook. The persona description should be the smallest viable identity anchor — anything that can wait for a key to fire belongs in the lorebook.
 
 | | Persona Description (in `User.md`) | Tier 2 Protagonist Lorebook |
 |---|---|---|
