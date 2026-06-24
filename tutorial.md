@@ -122,7 +122,7 @@ This is a valid path when you already have a fully-formed concept and want to wr
 
 If your idea is *less* than forming — just a vibe, an image, a single character with no world around them yet — there is an optional step further upstream: `/worldforge brainstorm`. The Brainstormer is the Interviewer's divergent counterpart. Instead of walking the template and pushing for specificity, it generates premise directions, follows whatever you light up on, and helps a concept find its shape. When something has a pulse, it writes informal `Brainstorm_Notes.md` (explicitly *not* a World Seed) and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and runs the full interview. Brainstorm is entirely optional — skip it whenever you already know what you're building. **Section 9** covers the Brainstormer in full: its proactive suggestion style, the four domain lenses, and its use as a revision diagnostic.
 
-The completed World Seed contains nine sections: core concept and tone (Section 1), the world (Section 2 — sensory signature, rules, factions, locations, species, concepts), the protagonist (Section 3), characters and their lorebook material (Section 4), narrative arcs (Section 5), technical specifications (Section 6), test scenarios (Section 7b), and the conditional intimacy specification (Section 8). The current pipeline also includes a Section 1.5 Style Contract (perspective, tense, formatting markers); Lucifer's seed predates this section and runs cleanly under the pipeline's defaults pathway.
+The completed World Seed contains nine sections: core concept and tone (Section 1), the world (Section 2 — sensory signature, rules, factions, locations, species, concepts), the protagonist (Section 3), characters and their lorebook material (Section 4), narrative arcs (Section 5), technical specifications (Section 6), test scenarios (Section 7b), and the conditional intimacy specification (Section 8). The current pipeline also includes a Section 1.5 Style Contract (perspective, tense, formatting markers); Lucifer's seed predates this section and runs cleanly under the pipeline's defaults pathway. For how to fill the Style Contract in — what `DEFAULTS` gives you, and worked examples from the literary default to a leaner "typical roleplay" register — see **Section 11 — Setting your prose style**.
 
 ### Phase 1: The Refiner — `Drafts/Master_Design.md`
 
@@ -725,7 +725,84 @@ Inserts the Brainstormer (improvement posture) ahead of that Interviewer: it bra
 
 ---
 
-## 11. Where to learn more
+## 11. Setting your prose style (the Style Contract)
+
+World Forge has no house voice. It does not decide what good prose is, and it does **not** strip "slop" — what reads as overwrought to one person is another's register. Instead, **you declare the world's prose conventions once**, in World Seed **Section 1.5 (the Style Contract)**, and every card in the world inherits them. (A Director/Narrator card can override perspective — Section 1.5c — but most worlds set the contract once and never override.)
+
+The Style Contract has six enum fields plus one free-text field:
+
+| Field | What it controls |
+|---|---|
+| **Perspective** | `first` / `second` / `third_limited` / `third_omniscient` |
+| **Tense** | `past` / `present` |
+| **Narration Marker** | what `*asterisks*` mean: narration+action, thoughts-only, or none |
+| **Dialogue Marker** | `double_quotes` / `single_quotes` / `em_dash` / `unmarked` |
+| **Emphasis Marker** | `double_asterisks` / `italics_underscore` / `none` |
+| **Paragraph Register** | `terse` / `standard` / `dwelling` |
+| **Style Notes** (free text) | anything the enums don't capture |
+
+The six enums pick the *mechanics* (POV, tense, what the markup means). The seventh — **Style Notes** — is where you steer the *feel*: contractions or not, modern idiom or not, and what you do or don't want the prose to do.
+
+### What `DEFAULTS` does
+
+If you don't care about prose style, write `DEFAULTS` for each field and the Refiner fills in the pipeline's legacy convention:
+
+```text
+Perspective:        third_limited      (only {{char}}'s interior is visible)
+Tense:              past
+Narration Marker:   asterisks_for_narration   (*asterisks* wrap narration + action)
+Dialogue Marker:    double_quotes      ("Like this.")
+Emphasis Marker:    double_asterisks   (**like this**)
+Paragraph Register: standard
+Style Notes:        (none)
+```
+
+This is the classic novelistic register — third-person limited, past tense, action and narration inside asterisks, dialogue in quotes. It's a safe default for most worlds and it's what the Lucifer sample runs under. A turn under this contract reads like:
+
+> *She set the cup down without looking at him, her shoulders held too still.* "I wasn't expecting you tonight."
+
+### Example: a more direct, "typical roleplay" register
+
+If you want prose that reads less like a literary novel and more like how chat roleplay usually looks — tighter, present-tense, less ornament — set the contract explicitly instead of taking `DEFAULTS`:
+
+```text
+Perspective:        second             (addresses you as "you" in the prose)
+Tense:              present
+Narration Marker:   asterisks_for_narration
+Dialogue Marker:    double_quotes
+Emphasis Marker:    double_asterisks
+Paragraph Register: terse              (short paragraphs, dense, fast)
+Style Notes:        Keep the prose direct and concrete. Prefer plain statements
+                    over poetic phrasing — "his hand is shaking" rather than "a
+                    tremor betrays the weight he carries." Avoid antithetical
+                    "X, not Y" / "not X but Y" constructions. No purple metaphor;
+                    one sensory detail per beat is enough.
+```
+
+That produces the punchy, second-person-present, action-in-asterisks style most roleplay uses, and the Style Notes steer it away from the literary tropes the enums can't express on their own:
+
+> *She sets the cup down and meets your eyes.* "You're early." *A beat. Her jaw tightens.* "What do you want?"
+
+### Tuning the feel with Style Notes
+
+The six enums can't capture everything about *voice*. **Style Notes is free text that flows into the world's Main Prompt**, so it's where you put preferences the enums miss:
+
+- **Plainness / anti-"slop":** *"Prefer concrete, factual phrasing over poetic abstraction; avoid 'X rather than Y' and 'with the X of someone who Y' constructions."*
+- **Register quirks:** *"The narrator never uses contractions."* · *"Prose avoids modern idiom in the pre-modern arcs."*
+- **Mixed markup:** *"Internal monologue uses `_italics-underscore_` even though dialogue uses `double_quotes`."*
+
+Two things worth knowing:
+
+- **This is the supported way to control "slop."** World Forge carries no opinion about tropes or clichés. If you want them avoided, *name them here* — the more concrete your examples, the better the model holds the line. There is no separate trope-removal pass by design; the contract is the lever.
+- **Style Notes governs runtime narration** — the prose the model generates as it plays. It's the knob for how your *sessions* read, not a cleanup pass over the lorebook text.
+
+### Where this gets applied
+
+You set the contract in Section 1.5 of the World Seed — the Interviewer asks for it in Phase 0, or you fill it in directly on a `skip phase0` build. From there the Refiner validates the enum values and records them in the Master Design, the Prompt Engineer parameterizes the preset's Main Prompt from them, and the Architect emits per-card overrides for any Director/Narrator card that declares one. By the time you import into SillyTavern, your style choices are baked into the preset that drives every turn.
+
+---
+
+## 12. Where to learn more
 
 - `README.md` — high-level overview of what the pipeline produces and how the architecture is organized
 - `workflows/world-forge.md` — full phase-by-phase orchestrator definition with pause gates and trigger commands
