@@ -570,7 +570,7 @@ Trigger keywords: [name variants, role descriptors]
 2. `[CharacterName]_Card.json` — [Role description]
 [Add one line per card]
 
-**Lorebook structure:**
+**Lorebook structure:** *(the Compiler prefixes every lorebook/register filename below with `[WorldName]_` so the world's set groups together in ST's World Info list — e.g. `[WorldName]_World_Lorebook.json`)*
 1. `World_Lorebook.json` — Tier 1: permanent world rules, factions, locations, species, concepts
 2. `[CharacterName]_Lorebook.json` — Tier 2: [character]'s physical, psychological, and relational entries
 3. `[CharacterName]_NPC_Lorebook.json` — Tier 2: NPC profiles

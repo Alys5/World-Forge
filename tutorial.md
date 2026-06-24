@@ -334,7 +334,7 @@ Once your `Export/` directory is ready:
 3. Wire up the `{{user}}` persona. SillyTavern provides no structured import for personas, so this step is manual but quick:
    - Open **User Settings → Persona Management** and create (or select) the persona for this world. Use the in-world name from the top of `Export/User.md` (for Lucifer, `Andrei Petrov`).
    - Open `Export/User.md`. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` and paste it into the persona's **Description** field.
-   - In the same persona editor, link `[ProtagonistName]_Lorebook.json` (for Lucifer, `Andrei_Lorebook.json`) in the persona's **Lorebook** field. The persona description is the always-on identity floor (≤150 words, injected every turn); the lorebook fires on keys for fuller detail.
+   - In the same persona editor, link `[WorldName]_[ProtagonistName]_Lorebook.json` (for Lucifer, `Lucifer_Andrei_Lorebook.json`) in the persona's **Lorebook** field. The persona description is the always-on identity floor (≤150 words, injected every turn); the lorebook fires on keys for fuller detail.
    - Activate this persona before starting the chat.
 4. Select the world's Chat Completion Preset (e.g., `Lucifer_ChatPreset.json`) in the API settings panel.
 

@@ -96,7 +96,7 @@ Sandbox mode is a **branch through this same pipeline, not a separate fork.** Th
 | 3.6 Arc Transition Auditor | Runs | **Skipped** (no arc seams) |
 | 2.5 Intimacy Architect | Per-character profiles + per-arc registers | Profiles **+ NPC intimacy** (principal full / roster compact §6.5); a single standing `Sandbox_Intimacy_Register` (no per-arc) |
 | 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8; audits the standing `INTIMACY_FUNCTION` + **NPC intimate coverage & distinctiveness** (Step 3H) across the sexual NPC cast |
-| 4 Compiler | One `Arc[N]_Lorebook.json` per arc | One `Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
+| 4 Compiler | One `[WorldName]_Arc[N]_Lorebook.json` per arc | One `[WorldName]_Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
 | 5 Prompt Engineer | Arc Guardian / Deep Think name the arcs | Blocks reference the standing sandbox state rather than arcs; defaults to **Multi-Character Dynamics** + the optional **NPC Ensemble & Enrichment** block (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment) + **high-weighted Sensory Embodiment** |
 
 **The aliveness contract** is the load-bearing idea of sandbox mode: with no arc carrying tone and momentum, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry are what keep the world feeling alive — NPCs pursuing their own agendas and initiating, the world reacting to and remembering `{{user}}`, the cast rotating in and out rather than sitting inert until summoned. It is made concrete by per-NPC **Standing Goals** (Architect §7.D): each principal carries an active objective, and the directive has an NPC advance its goal when a scene lulls. A subplot-shaped goal can optionally be staged as an **Escalation Ladder** (§7.D): 2–4 ordered stages with in-fiction advance conditions, an endpoint, and a stated collision with `{{user}}` — the directive then names the current stage and binds the progression discipline (advance only on stated condition, never skip, never self-resolve), so the model *executes* an authored subplot rather than inventing one. The Voice Auditor's **Step 3J** tests that NPCs actually take that initiative (and that laddered NPCs hold their current stage). The **roster NPC format** (§7.E) with its uniqueness rule, plus the Voice Auditor's **Distinctiveness Matrix**, are what keep a large cast from collapsing into one generic voice. The same NPC-agency mechanic runs in **arc mode** through the ARC_STATE activity-cadence directive — NPCs exist in both modes, so the goal/cadence pair is mode-agnostic.
@@ -341,19 +341,20 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 **Builds:**
 - Character Card JSON per card (`system_prompt`, `post_history_instructions`, and `data.extensions.depth_prompt` mandatory fields, never empty)
 - `User.md` — `{{user}}` Persona Description text (passed through from `Drafts/User.md` unchanged; paste-ready for ST persona)
-- `[ProtagonistName]_Lorebook.json` — Tier 2, {{user}} identity reference
-- `World_Lorebook.json` — Tier 1, all entries at `position: 0`
-- `[CharName]_Lorebook.json` — Tier 2, one per character/NPC, all entries at `position: 1`
-- `[CharName]_Intimacy_Profile.json` — Tier 2, one per character/NPC with intimate presence (principal full profiles; roster NPC compact stat blocks may share `NPC_Intimacy_Roster.json`), all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
-- `Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
-- Tier 3 intimacy register — *arc mode:* `Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
+- All lorebook/register files are prefixed with `[WorldName]_` (the world-name token, as in `[WorldName]_ChatPreset.json`) so a world's whole lorebook set groups together in ST's filename-sorted World Info list (Compiler file-naming convention before Step 5). Cards and `User.md` are not prefixed.
+- `[WorldName]_[ProtagonistName]_Lorebook.json` — Tier 2, {{user}} identity reference
+- `[WorldName]_World_Lorebook.json` — Tier 1, all entries at `position: 0`
+- `[WorldName]_[CharName]_Lorebook.json` — Tier 2, one per character/NPC, all entries at `position: 1`
+- `[WorldName]_[CharName]_Intimacy_Profile.json` — Tier 2, one per character/NPC with intimate presence (principal full profiles; roster NPC compact stat blocks may share `[WorldName]_NPC_Intimacy_Roster.json`), all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
+- `[WorldName]_Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
+- Tier 3 intimacy register — *arc mode:* `[WorldName]_Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `[WorldName]_Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
 - An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
 
 **Post-compile check (read-only):** if a Python runtime is available, run `python tools/validate_export.py Export/` after the last file is written. It verifies UTF-8 integrity (mojibake markers), strict JSON parse, `{{original}}` presence on both card override fields, position enum range, and UID uniqueness — the exact failure modes of the Compiler's pre-save guards, checked deterministically. It never modifies files. Failures mean the source is wrong: fix and re-compile; do not hand-edit Export/ JSON.
 
-In SillyTavern: import the individual lorebooks — `World_Lorebook.json` and the per-character lorebooks (plus character intimacy profiles) stay enabled permanently; swap the arc lorebooks (including arc intimacy registers) in and out as the story advances. In **User Settings → Persona Management**, create the persona for this world, paste the Persona Description block from `Export/User.md` into the Description field, and link `[ProtagonistName]_Lorebook.json` in the Lorebook field.
+In SillyTavern: import the individual lorebooks — `[WorldName]_World_Lorebook.json` and the per-character lorebooks (plus character intimacy profiles) stay enabled permanently; swap the arc lorebooks (including arc intimacy registers) in and out as the story advances. In **User Settings → Persona Management**, create the persona for this world, paste the Persona Description block from `Export/User.md` into the Description field, and link `[WorldName]_[ProtagonistName]_Lorebook.json` in the Lorebook field.
 
 ---
 

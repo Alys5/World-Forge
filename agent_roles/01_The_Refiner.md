@@ -311,7 +311,7 @@ When `absent`, write `POV Ambiguity Advisory: absent (world default is third-per
 > **Protagonist artifacts requirement:** Every world that has a named {{user}} protagonist must produce **two paired artifacts** for the SillyTavern Persona:
 >
 > 1. **`User.md`** — the Persona Description text the user pastes into ST → User Settings → Persona Management → Description. This is the always-on identity floor for `{{user}}` (≤150 words, third-person reference data, no voice/personality/manner content). Drafted by the Architect in Phase 2; passed through unchanged to `Export/User.md` by the Compiler in Phase 4.
-> 2. **`[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook the user links via the persona's Lorebook field. Reference data the model uses to react to `{{user}}` correctly: physical, psychology, relationships, powers, history. Fires on trigger keywords.
+> 2. **`[WorldName]_[ProtagonistName]_Lorebook.json`** — the Tier 2 Protagonist Lorebook the user links via the persona's Lorebook field. Reference data the model uses to react to `{{user}}` correctly: physical, psychology, relationships, powers, history. Fires on trigger keywords.
 >
 > SillyTavern provides no import format for personas, so the user wires both up manually after pipeline completion. The persona description is the constant baseline; the lorebook fires on keys for fuller detail. Without `User.md`, the user has nothing to put in the Description field and the LLM has no always-on identity anchor for `{{user}}` until a key fires — producing wrong NPC reactions in opening turns.
 

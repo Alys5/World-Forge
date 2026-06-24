@@ -13,6 +13,42 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-23 — Prefix exported lorebooks with the world name (#42)
+
+The Compiler now prefixes **every exported lorebook/register filename** with
+`[WorldName]_` — the same world-name token already used for
+`[WorldName]_ChatPreset.json`. So a world named *Crimson Harbor* now ships
+`CrimsonHarbor_World_Lorebook.json`, `CrimsonHarbor_Anna_Lorebook.json`,
+`CrimsonHarbor_Arc1_Lorebook.json`, and so on. SillyTavern names a standalone
+World Info world by its **imported filename** (not the internal `name` field),
+so the prefix makes a world's entire lorebook set sort and group together as one
+block in ST's alphabetical World Info list — the request in #42. Character cards
+and `User.md` are not prefixed. This is a filename-only change: no entry content,
+UID, position, or flag changes, so it does not disturb running chat state.
+
+### Changed
+- **`agent_roles/04_The_Compiler.md`** — new file-naming convention before Step 5;
+  Steps 5/6/7A/7B, the intimacy registers, the output manifest, the sign-off
+  checklist, and the persona-link instruction all carry the `[WorldName]_` prefix;
+  the lorebook `name` field is set to match the filename.
+- **`agent_roles/02_The_Architect.md`, `agent_roles/03_The_Editor.md`,
+  `templates/User_Persona_template.md`** — the protagonist-lorebook filename in the
+  persona Setup Instructions (authored by the Architect, validated by the Editor)
+  carries the prefix.
+- **`workflows/world-forge.md`, `agent_roles/01_The_Refiner.md`,
+  `agent_roles/05_The_Prompt_Engineer.md`, `templates/World_Seed_Template.md`** —
+  output descriptions updated to the prefixed convention.
+
+### Revision-pipeline safety
+- **`agent_roles/revise/04_The_Compiler_mini.md`** (+ Reviser and Refiner-mini
+  cascade notes) — the prefix is a **new-build** convention. The revise pipeline
+  never retro-renames a shipped world's Export files (renaming changes the ST world
+  name and orphans the user's links, exactly what UID preservation exists to avoid);
+  it matches the world's existing on-disk naming. Migrating an old world onto the
+  prefix is a Convert/Rebaseline concern, not a surgical revision.
+
+---
+
 ## 2026-06-22 — Remove the consolidated Group lorebook (#40)
 
 The consolidated **Group lorebook** (`Export/Group_Lorebook.json`) — the single

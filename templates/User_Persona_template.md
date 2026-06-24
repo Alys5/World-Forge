@@ -7,7 +7,7 @@
 
 `User.md` is the artifact that closes the asymmetry between `{{char}}` and `{{user}}` in SillyTavern. SillyTavern provides a structured import for `{{char}}` (the V3 character card JSON) but no equivalent import for `{{user}}` — the user's persona is configured manually in **User Settings → Persona Management**, where a persona is just a name, a free-text **Description** field, and an optional linked **Lorebook**.
 
-The pipeline already produces the lorebook side: `[ProtagonistName]_Lorebook.json` (Tier 2). What was missing was the **persona description text** — the always-on system block that tells the LLM who `{{user}}` is even before any Tier 2 lorebook trigger fires. `User.md` is that text, plus setup instructions for the user.
+The pipeline already produces the lorebook side: `[WorldName]_[ProtagonistName]_Lorebook.json` (Tier 2). What was missing was the **persona description text** — the always-on system block that tells the LLM who `{{user}}` is even before any Tier 2 lorebook trigger fires. `User.md` is that text, plus setup instructions for the user.
 
 Per `Notes_On_functionality.md`:
 - The persona description is injected as `personaDescription` in the prompt assembly (a `[system]` block, always present when the persona is active).
@@ -61,7 +61,7 @@ This text is injected as a system message every turn while this persona is activ
 1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.
 2. Set the persona name to: `[In-World Name]`.
 3. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` above and paste it into the persona's **Description** field.
-4. In the same persona editor, find the **Lorebook** field and link `[ProtagonistName]_Lorebook.json` (the Tier 2 protagonist lorebook produced by the pipeline).
+4. In the same persona editor, find the **Lorebook** field and link `[WorldName]_[ProtagonistName]_Lorebook.json` (the Tier 2 protagonist lorebook produced by the pipeline).
 5. Activate this persona before starting the chat. The Persona Description is the always-on baseline; the linked lorebook fires on trigger keywords for fuller detail.
 ```
 
@@ -130,7 +130,7 @@ The Refiner determines this case during Phase 1. If § 3 of the World Seed has n
 
 ## 8. RELATIONSHIP TO THE TIER 2 PROTAGONIST LOREBOOK
 
-`User.md` and `[ProtagonistName]_Lorebook.json` are **paired artifacts**. They are not redundant:
+`User.md` and `[WorldName]_[ProtagonistName]_Lorebook.json` are **paired artifacts**. They are not redundant:
 
 | | Persona Description (in User.md) | Tier 2 Protagonist Lorebook |
 |---|---|---|
