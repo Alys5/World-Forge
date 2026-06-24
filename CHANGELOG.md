@@ -13,7 +13,29 @@ numbers. Newest first.
 
 ---
 
-## 2026-06-23 — Prefix exported lorebooks with the world name (#42)
+## 2026-06-24 — Document how to set prose style via the Style Contract (#43)
+
+Issue #43 asked for a post-Phase-3 agent that hunts and removes "common tropes"
+(antithetical "X, not Y" constructions, poetic-over-factual phrasing) from the
+lore. The pipeline deliberately has no house voice and does no "slop removal"
+(README, *On prose quality and "slop"*); the supported lever already exists —
+the World Seed **Section 1.5 Style Contract**, whose free-text **Style Notes**
+field flows into the preset's Main Prompt and governs every turn. The gap was
+discoverability, not capability, so this adds a tutorial section showing how to
+use it rather than a new agent.
+
+### Added
+- **`tutorial.md`** — new **Section 11, "Setting your prose style (the Style
+  Contract)"**: the six enum fields plus Style Notes, what `DEFAULTS` expands to
+  (with a sample turn), a leaner "typical roleplay" register example (second-
+  person present, terse) including Style Notes that steer away from literary
+  tropes, a Style-Notes tuning guide that names the anti-"slop" use explicitly,
+  and where the contract gets applied across the pipeline.
+
+### Changed
+- **`tutorial.md`** — the Phase 0 case-study mention of Section 1.5 now points
+  forward to the new Section 11; the trailing **"Where to learn more"** section
+  renumbered from 11 to 12 (no inbound anchor links).
 
 The Compiler now prefixes **every exported lorebook/register filename** with
 `[WorldName]_` — the same world-name token already used for
