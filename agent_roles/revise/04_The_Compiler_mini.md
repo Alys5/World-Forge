@@ -17,6 +17,7 @@
 
    **Rename = memory-orphaning — flag loudly, do not silently ship.** Compare the regenerated manifest's slug `id`s against the prior export's. If a revision **renamed** a character (an old `id` disappears and a new one appears for the same entry), the running memory store keyed on the old id is **orphaned** — the NPC restarts with no memory. World Forge does not persist ids across renames (NPC Memory Contract §4 notes this as the producer's known limitation). Do not treat a rename as a routine re-derive: call it out explicitly in the "What Changes When" report (Step R4.6) under a **Memory impact** line, and surface it for user confirmation before sign-off. A name *correction* the user wants is fine — but it must be a conscious choice, not a silent side effect.
 8. **Write UTF-8; never round-trip JSON through PowerShell (parent's encoding guard, doubly so here).** You read existing Export files — full of em-dashes (—), curly quotes, accented names — and rewrite them, so encoding integrity is at risk on every file you touch, including bytes you didn't mean to change. Read and write as UTF-8 via your file tool or a **Python/Node** script; never use PowerShell `Out-File` / `Set-Content` / `>` redirection, which re-encodes and corrupts em-dashes into mojibake (`—` → `â€"`). The corruption passes `JSON.parse`, so it won't trip guard 1 — after writing each touched file, re-read it and confirm existing non-ASCII survived (grep for `â€` / `Ã`, expect zero matches). Silently mojibaking an entry during rewrite is a regression that breaks the running world's text; preserve bytes faithfully.
+9. **Strip inline revision markers when transcribing markdown → JSON.** The touched `Drafts/` cards and lorebooks carry inline `<!-- REVISED IN R[N] ... -->` and `<!-- CREATED IN R[N] ... -->` markers at every change site — the mini-Architect (R2.6) and mini-Intimacy-Architect place them, and the mini-Editor (R3) hard-fails their absence. They are the **Drafts-side** audit trail and **must never reach the Export JSON.** When you lift a draft's content into a JSON value (lorebook entry `content`, card `description` / `personality` / `scenario` / `first_mes` / `mes_example` / `system_prompt` / `post_history_instructions`, persona text), remove every `<!-- REVISED IN R[N] ... -->` / `<!-- CREATED IN R[N] ... -->` comment and clean up the whitespace they leave (no leading/trailing blank line, no doubled space mid-line). This is the same division of labor as Foundational Rule 5: the Export side's **sole** revision marker is `Export/REVISED_FILES.md`. A marker that bleeds into a `content` or `system_prompt` field renders verbatim into the SillyTavern prompt at runtime — it is a content corruption, not a harmless comment. The parent Compiler has no strip step because an initial build has no markers; this is a revision-only obligation and yours alone, because you are the only agent that crosses the Drafts→Export boundary.
 
 ---
 
@@ -61,6 +62,8 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 
 ### Step R4.3 — Re-compile per file type
 
+> **Before lifting any draft content into a JSON value, strip its inline revision markers (Foundational Rule 9).** Every `<!-- REVISED IN R[N] ... -->` and `<!-- CREATED IN R[N] ... -->` comment in the touched markdown is Drafts-side audit trail — remove it (and tidy the whitespace it leaves) so it never lands in a `content`, `description`, `system_prompt`, `post_history_instructions`, or any other JSON field. The Export side's only revision marker is `Export/REVISED_FILES.md` (Step R4.5b).
+
 **For each touched card (`Card_[Name].md` + `Instructions_[Name].md`):**
 - Build the V3 JSON per the parent Compiler's card schema (Section 4, but read the parent for full detail)
 - Preserve any extension fields the existing card had that aren't owned by this pipeline (e.g., user-edited fields outside `world_forge`)
@@ -97,6 +100,7 @@ For each file you are about to write, run the parent's ten pre-save guards:
 8. All entries have Position Rationale
 9. Entry object keys equal `String(uid)` — including preserved UIDs and newly assigned UIDs
 10. Entry fields camelCase per the ST schema — no snake_case aliases or legacy `characterFilterNames`/`characterFilterExclude`
+11. **(revision-only)** No inline revision marker survives in any JSON value. Grep each file you are about to write for `REVISED IN R` and `CREATED IN R` (and, more broadly, the literal `<!--`) across all string values — expect zero matches. A hit means a marker bled through from the draft (Foundational Rule 9); strip it and re-validate before writing.
 
 If any fails on any file, do not write that file. Diagnose and surface. Most failures should have been caught by mini-Editor; if they reach you, the upstream pipeline broke and you halt — `R4_HALTED_PRE_SAVE_FAIL`.
 
@@ -222,6 +226,7 @@ Append to the Revision Log entry:
 - [ ] All entries have Position Rationale
 - [ ] Every entry's object key equals String(uid) — preserved and new UIDs alike
 - [ ] Entry fields camelCase per ST schema — no snake_case aliases or legacy characterFilter pair
+- [ ] No inline revision marker (`<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->`) survives in any JSON value — markers stripped on the Drafts→Export transcription; grep for `REVISED IN R` / `CREATED IN R` / `<!--` returns zero across every written file
 - [ ] Every written file is UTF-8 — non-ASCII intact (em-dashes, curly quotes, accented names), existing text not mojibaked on rewrite; no `â€`/`Ã` markers; not authored through PowerShell
 
 ### UID Continuity
