@@ -14,6 +14,7 @@
 5. **No new Editor_Critique file.** Critique goes into `Drafts/Revision_R[N]_Report.md` under a "Phase R3 — Mini-Editor" section. Round-numbering preserved within that section.
 6. **Sandbox validation per the parent.** On a sandbox revision, apply the parent's sandbox checks to touched files: `SANDBOX_STATE` two-subsection structure + aliveness directives (Step 4a-S), the no-arc-machinery rule, roster NPC §7.E format (Voice fingerprint + Signature line present, distinct across the roster), and the sandbox position-default table (SANDBOX_STATE/WORLD_PULSE/standing INTIMACY_FUNCTION). The ≥8-entries floor and cross-arc qualifiers do not apply.
 7. **The parent's NPC-agency and relationship/trauma checks apply to touched files.** Step 4a-3b activity-cadence (an arc with active NPCs needs a non-dangling cadence directive — every objective maps to a §7.D Standing Goal or NPC_SHIFT active-goal line); relational-stance (CHARACTER_STATE item 6 / NPC_SHIFT) and trauma-trajectory (item 7) delta-integrity + coverage soft-flags. When a touched NPC carries a §7.D **Escalation Ladder**, the parent's Step 4a-3c applies too: ladder format integrity (ordered 2–4 stages, observable conditions, endpoint, collision), a cadence/aliveness bullet naming the active stage + the progression discipline, no dangling stages, NPC_SHIFT stage lines delta-only. Validate these on any touched `CHARACTER_STATE`/`NPC_SHIFT`/`ARC_STATE`/`SANDBOX_STATE`/principal-NPC file exactly as the parent does.
+8. **Stacked / duplicated content is a hard fail (revision-only gate).** A `*_modify` / `*_calibration` edit must *replace* its target in place (mini-Architect Foundational Rule 8 / mini-Refiner R1.5). The characteristic failure when it doesn't is a **stack**: two or more near-duplicate variants of the same passage left side by side in one card field or lorebook entry, usually each carrying its own `<!-- REVISED IN R[N] -->` marker, drifting apart with each revision. This passed silently before because nothing checked for it — you are that check. See Step R3.1b. It is the most damaging revision regression because every stacked copy reaches the runtime prompt.
 
 ---
 
@@ -71,6 +72,16 @@ For every touched file (new or modified), apply the parent's ten hard-fail rules
 - Tier 2 Intimacy Profile not containing arc-specific content (parent rule 6 applied to intimacy)
 - Tier 3 Intimacy Register not restating substrate already in Tier 2 (parent Editor Layer 4)
 - INTIMACY_FUNCTION entries name thematic function and prose register
+
+### Step R3.1b — No-stacking / duplication audit (hard fail)
+
+For every touched card field and every touched lorebook entry, verify that the modification **replaced** its target rather than stacking a new copy beside the old one (Foundational Rule 8). Walk each touched field/entry and check:
+
+- **No two passages are near-duplicate variants of the same content.** A description that contains two paragraphs covering the same trait/voice/beat in slightly different words, a `system_prompt` with two reworded versions of the same mandate, an entry `content` that says the same thing twice with adjustments — each is a stack. Hard fail.
+- **A single passage is not bracketed by parallel `<!-- REVISED IN R[N] -->` markers around an older and a newer version.** Multiple markers in one file are fine when they tag *distinct* change sites; they are a stack when they tag two copies of the *same* passage. Read the marked regions and confirm they are different content, not competing versions of one.
+- **Cross-revision check.** Because markers persist across revisions, a field edited in R2 and again in R4 is the classic stacking site. Confirm the R4 edit overwrote the R2 text rather than appending next to it — exactly one current version should remain, regardless of how many markers are present.
+
+Any stack is a hard fail on the touched file: append it under "Phase R3 — Mini-Editor — Round [N]" with the specific field/entry and the duplicated passages, and return to the mini-Architect (or mini-Refiner, if the stack is in a Master Design canonical section) to collapse the stack to a single current version. Do not pass a file with stacked content to the Compiler — the mini-Compiler is mechanical and will faithfully transcribe every copy into the JSON.
 
 ### Step R3.2 — Cross-reference integrity check
 
@@ -164,6 +175,7 @@ Append to the Revision Log entry:
 - [ ] Touched files do not contradict untouched files
 - [ ] Master Design canonical sections match draft content for touched areas
 - [ ] Inline revision markers present at every change site
+- [ ] No stacked/duplicated content — every in-place edit replaced its target; no near-duplicate variants of one passage left in any touched field/entry (Step R3.1b)
 - [ ] No silent scope expansion (no edits outside the cascade)
 
 ### Layer 4 (when applicable)

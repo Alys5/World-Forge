@@ -98,13 +98,13 @@ If a cross-cascade conflict is found, set status `R2.5_HALTED_CROSS_CASCADE_CONF
 
 For an edit to existing `Tier3_Arc[N]_Intimacy_Register.md`:
 
-Replace only the specified entries / fields. Preserve all others verbatim.
+Replace only the specified entries / fields **in place** — overwrite the prior version; never leave it beneath a reworded copy. Preserve all others verbatim. (mini-Architect Foundational Rule 8 — replace, don't stack — applies here in full; a stacked Intimacy Profile or Register is a hard fail at R3.)
 
 **Cross-cascade check**: does this register edit contradict the relevant Tier 2 Profile's substrate? Halt if yes (function/substrate contradiction — escalate to user).
 
 ### Step R2.5.7 — Inline revision markers
 
-Same as mini-Architect: every change site gets `<!-- REVISED IN R[N]: ... -->` or `<!-- CREATED IN R[N] (date): ... -->`.
+Same as mini-Architect: every change site gets `<!-- REVISED IN R[N]: ... -->` or `<!-- CREATED IN R[N] (date): ... -->`. The marker annotates the single current version of a passage — it never sits between an old and a reworded copy (Foundational Rule 8).
 
 ### Step R2.5.8 — Update the per-revision report
 

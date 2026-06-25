@@ -14,6 +14,7 @@
 5. **You match the existing structural conventions of the file you're editing.** A new lorebook entry in `Tier1_World_Entries.md` uses the same entry-template structure as the existing entries (same field order, same Position Rationale format, same sign-off style). Do not re-invent structure mid-file.
 6. **Sandbox scopes target sandbox structures.** On a `World Mode: sandbox` revision, the `sandbox_*` scopes edit `Tier3_Sandbox_Entries.md` — the parent's Section 8S applies (`SANDBOX_STATE` two-subsection structure with `Standing Situation` + `Tonal Mandate` incl. the aliveness contract; `WORLD_PULSE` at position 4). A roster-NPC add uses the parent's §7.E compact stat block with a voice fingerprint that is unique across the existing roster (read the roster before drafting). Never author `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries in a sandbox world.
 7. **NPC agency + relationship/trauma state deltas inherit on revisions.** When the cascade adds or modifies a **principal NPC**, author its §7.D **Standing Goal** (active objective + pursuit moves). When it adds or recalibrates `ARC_STATE`/`SANDBOX_STATE`, the Tonal Mandate carries the **activity-cadence** directive wherever active NPCs exist — naming the active stage + progression discipline for any laddered NPC (§7.D Escalation Ladder; a stage bump also updates the NPC_SHIFT stage line in arc mode, or the SANDBOX_STATE/WORLD_PULSE naming in sandbox). When the cascade moves a relationship or a character's trauma across an arc, author the `CHARACTER_STATE` item 6 (relational stance) / item 7 (trauma trajectory) and the matching `NPC_SHIFT` deltas — delta only, name the beat that moved it, never restate the Tier 2 baseline. These are parent rules (Architect §7.D / §8); they apply on revisions too.
+8. **REPLACE in place — never stack.** This is the load-bearing rule of in-place editing and the most common way a revision corrupts a world. A `*_modify` / `*_calibration` scope **replaces** the targeted text *where it already sits*: the previous version is overwritten and **must not survive anywhere in the field or entry.** You never leave the old passage in place and add a revised copy beneath it — that produces two near-duplicate variants (a "stack"), which compounds with every later revision until the field is several conflicting copies of the same content, and the model reads all of them at runtime. The inline marker (Step R2.6) **annotates the single current version of a passage; it never introduces a second, parallel copy.** Before you finish a file, re-read each change site and confirm exactly one version of the changed passage exists. If you find yourself appending a reworded paragraph next to the original, stop — that is the bug; delete the original and keep only the new text in its place. (Append mode, Step R2.4, is for genuinely *new* content — a new entry, a new NPC — never for a reworded version of existing content.)
 
 ---
 
@@ -81,6 +82,8 @@ When the cascade appends new content to an existing file:
 
 When the cascade modifies specific content:
 
+> **Replace in situ — do not stack (Foundational Rule 8).** Every edit below overwrites the targeted text where it already lives. The prior version is gone afterward — not preserved beneath a revised copy. If the file already carries an earlier revision's version of this passage (it may have an older `<!-- REVISED IN R[N-…] -->` marker), you replace *that* text too; you do not add a third copy. After editing, exactly one version of the changed passage exists in the field/entry.
+
 **Card field edit:** Replace only the specified field's content. If you're recalibrating a character's voice, edit the voice/manner section of `description`, possibly the `mes_example` blocks, possibly `personality`. Do not edit fields outside the cascade.
 
 **system_prompt / post_history_instructions edit:** `{{original}}` must remain on the first line. Edit only the character-specific content below it. Cross-arc consistency rule from the parent applies: any new behavioral mandate that would produce wrong behavior in a later arc must carry an arc-range qualifier.
@@ -104,6 +107,8 @@ For new entire files, add a header marker at the top:
 ```
 
 These markers parallel the ones mini-Refiner adds to Master_Design.md. They make revision history legible at the change site. Downstream auditors and future revisers see at a glance which parts of which files are new vs. original.
+
+**A marker tags the single current version of a passage — it never sits between two parallel copies of the same content.** If you can see both an "old" and a "new" version of a passage at a marked site, you stacked instead of replacing (Foundational Rule 8); fix it before moving on. The marker is removed at compile time (mini-Compiler Foundational Rule 9), so it lives only in `Drafts/` — it is an annotation, not content.
 
 ### Step R2.7 — Update the per-revision report
 
@@ -139,6 +144,7 @@ Append to the Revision Log entry in `Drafts/Master_Design.md`:
 - [ ] Every file in the cascade has been touched as specified
 - [ ] No file outside the cascade has been touched
 - [ ] All parent foundational rules upheld in new content ({{original}}, no engine content in cards, Position Rationale, ARC_STATE structure, style override metadata-only, cross-arc consistency)
+- [ ] Every in-place edit REPLACED in situ — exactly one version of each changed passage exists; no stacked/duplicated variants left beneath a revised copy (Foundational Rule 8)
 - [ ] Inline revision markers placed at every change site
 - [ ] Voice and register match existing world content
 - [ ] No new content references entries/characters/arcs that don't exist (or that aren't being created in this revision)

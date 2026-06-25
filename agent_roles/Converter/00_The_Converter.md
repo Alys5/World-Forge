@@ -532,6 +532,8 @@ In Rebaseline mode, `<source_path>/Drafts/Revision_R*.md` and `<source_path>/Exp
 
 **Integrity check:** every change a revision report records must be visible in the current `Master_Design.md` (the revise pipeline's mini-Refiner guarantees this; verify it held). If a revision report describes a change the Master Design does not reflect, **halt and flag it** — rebaselining from a drifted source would silently lose a revision. The user reconciles (usually by re-running the revision's R1 merge) and re-invokes.
 
+**Stacked-content check (sources revised before the replace-not-stack fix):** a world revised by an early version of the revise pipeline may carry *stacked* sections in `Master_Design.md` — two or more near-duplicate variants of the same passage left side by side by successive in-place edits that appended instead of replacing (the regression fixed by mini-Refiner R1.5 / mini-Architect Foundational Rule 8). When you read a section for distillation, if you find competing variants of the same content (often each with its own `<!-- REVISED IN R[N] -->` marker), **do not distill both into the seed.** Treat the **latest** revision's variant as canonical (highest R[N] marker), surface the stack to the user with the variants quoted, and confirm which to carry before writing. A rebaseline is the natural place to collapse these stacks — but the collapse is a confirmed user decision, never a silent pick.
+
 ### Step C — Rebaseline disposition table (replaces the Section 5 inversions)
 
 Every Section 5 row whose disposition derived from "the protagonist/arcs have changed" inverts. Rows not listed here keep their Section 5 defaults (`keep`, with `modify` available — that is where new mechanics enter).
