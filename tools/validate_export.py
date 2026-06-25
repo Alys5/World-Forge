@@ -7,6 +7,9 @@ Checks the failure modes that slip past "the JSON parses":
               - mojibake markers ("a-circumflex-euro" / stray "A-tilde" sequences left by
                 a Windows-1252 round-trip of em-dashes and curly quotes)
               - strict json.loads parse
+              - no inline revision marker (<!-- REVISED IN R[N] --> / <!-- CREATED IN
+                R[N] -->) leaked into a string value; those belong only in Drafts/, and
+                in an Export value they render into the SillyTavern prompt at runtime
   cards       - data.system_prompt and data.post_history_instructions begin with
                 {{original}} on its own line
               - data.extensions.depth_prompt structure present
@@ -44,6 +47,11 @@ from pathlib import Path
 # NPC Memory Contract slug rule (section 4): lowercase, _-separated, no leading/trailing/double _.
 SLUG_RE = re.compile(r"^[a-z0-9]+(_[a-z0-9]+)*$")
 NPC_MANIFEST_MARKER = "[[NPC_MANIFEST]]"
+# Inline revision markers belong only on the Drafts side; the Export side's sole
+# revision marker is REVISED_FILES.md. A marker that reached a JSON string value
+# leaked through the mini-Compiler (agent_roles/revise/04_The_Compiler_mini.md
+# Foundational Rule 9) and would render verbatim into the SillyTavern prompt.
+REVISION_MARKER_RE = re.compile(r"<!--\s*(?:REVISED|CREATED) IN R.*?-->")
 
 MOJIBAKE_MARKERS = ("â€", "Ã©", "Ã¨", "Ã±", "Â ")
 FORBIDDEN_ENTRY_FIELDS = (
@@ -227,6 +235,12 @@ def validate_file(path):
         if marker in unescaped:
             fail(f"mojibake marker {marker!r} found - em-dashes/curly quotes were corrupted by a re-encode")
             break
+
+    leaked = REVISION_MARKER_RE.findall(unescaped)
+    if leaked:
+        sample = leaked[0] if len(leaked) == 1 else f"{leaked[0]} (+{len(leaked) - 1} more)"
+        fail(f"inline revision marker leaked into a JSON value: {sample} - markers belong only in "
+             "Drafts/; strip them (mini-Compiler Foundational Rule 9). They render into the prompt at runtime")
 
     kind = classify(data)
     if kind == "card":
