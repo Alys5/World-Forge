@@ -130,7 +130,7 @@ Apply the cascade to Master_Design.md's canonical sections.
 
 **Append mode** (new content): insert at the end of the target subsection. New subsections (e.g., a new NPC) get the same structural shape as existing peers in the same section.
 
-**In-place edit mode** (modification): edit the target text directly. Preserve surrounding content.
+**In-place edit mode** (modification): edit the target text directly, **replacing it where it sits.** Preserve surrounding content. The prior version of the edited passage is overwritten — it **must not survive beneath the revision as a second, near-duplicate copy.** Leaving the old text in place and appending a reworded version stacks the section, and because these markers persist permanently this corruption compounds with every later revision and silently rots the canonical source-of-truth the mini-Architect (and any future Rebaseline) reads. After merging, exactly one version of the changed passage exists in the section. Use append mode only for genuinely new content (a new NPC subsection, a new world rule) — never for a reworded version of existing material.
 
 **For every merged change, add an inline marker:**
 
@@ -191,6 +191,7 @@ Append to the Revision Log entry:
 - [ ] Section 1 / 11 bright-line re-verified (no late hits)
 - [ ] Confirmed cascade is complete (all sections, drafts, exports listed)
 - [ ] All canonical Master Design merges applied with inline R[N] markers
+- [ ] Every in-place merge REPLACED the prior passage in situ — no stacked/near-duplicate copy left beneath the revision (Step R1.5)
 - [ ] Tier classification is correct for every affected entry
 - [ ] Routing (phases-affected) locked and matches confirmed cascade
 - [ ] No unresolved cross-tier, cross-arc, or contradiction flags
