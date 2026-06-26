@@ -13,6 +13,35 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-26 — Brainstormer overwrites a stale `Brainstorm_Notes.md` instead of requiring manual deletion
+
+`/worldforge revise --brainstorm` (and the other brainstorm entry points) left a
+single shared `Brainstorm_Notes.md` per project folder with no defined behavior
+when one already existed. A world in active play almost always still has the
+notes file from when it was first built, so running the revision-diagnostic
+brainstorm against it produced ambiguous/append behavior and the user had to
+delete the file by hand before each run. The consumers (Reviser, Interviewer)
+also read the file "if present" without checking which run produced it, so a
+stale wrong-posture file could be mistaken for the current one.
+
+### Changed
+- **`agent_roles/Brainstormer/00_The_Brainstormer.md`** — the notes file now
+  carries a stamped header (`Posture: fresh-start | improvement |
+  revision-diagnostic` + `Written:` date) and an explicit **overwrite-on-write**
+  rule: there is exactly one `Brainstorm_Notes.md` per project and every run
+  writes it fresh, replacing any prior file in full (never append/merge). The
+  Context Manifest notes a pre-existing notes file is a stale output to
+  overwrite, never an input. All three output sections (6, 8, 9) and the
+  sign-off checklist enforce the stamp + fresh-write discipline.
+- **`agent_roles/revise/00_The_Reviser.md`** — consumes `Brainstorm_Notes.md`
+  only on a `--brainstorm` run *and* only when its header reads
+  `Posture: revision-diagnostic`; a stale or wrong-posture file is ignored and
+  intent is discovered normally (INPUT + Step 2).
+- **`agent_roles/00_The_Interviewer.md`** — reads the notes as starting material
+  only when the `Posture:` stamp matches the entry point (`fresh-start` for
+  `/worldforge start`, `improvement` for a `--then-brainstorm` chain); a
+  mismatched/stale file is ignored (Context Manifest + Section 4 + Section 9).
+
 ## 2026-06-24 — Document how to set prose style via the Style Contract (#43)
 
 Issue #43 asked for a post-Phase-3 agent that hunts and removes "common tropes"

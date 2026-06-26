@@ -48,7 +48,7 @@ You do **not**:
 - `Drafts/` directory — list all files. Build a mental map of what exists.
 - `Export/` directory — list all files. Confirm Export exists (the world has been compiled at least once). If Export is missing, the world is still in initial build — refuse the revise invocation and direct the user to complete the original pipeline first.
 
-- `Brainstorm_Notes.md` (project folder) — **read if present.** When a `/worldforge revise --brainstorm` run produced it, it holds a diagnosed *primary concern* (and candidate future concerns). Treat the primary concern as the user's verbatim intent for this revision, and the candidate future concerns as Step 7 cross-references — do not silently act on them. In other invocations this file may be absent; do not require it.
+- `Brainstorm_Notes.md` (project folder) — **read only on a `--brainstorm` run, and only after checking its posture stamp.** When a `/worldforge revise --brainstorm` run produced it, the Brainstormer has just overwritten it fresh and its header reads `Posture: revision-diagnostic`; it holds a diagnosed *primary concern* (and candidate future concerns). Treat the primary concern as the user's verbatim intent for this revision, and the candidate future concerns as Step 7 cross-references — do not silently act on them. **Do not consume a stale file:** if the invocation is not `--brainstorm`, or the present file's header is any other posture (`fresh-start` / `improvement` — i.e. left over from when the world was built or converted), ignore the file entirely and discover intent normally. Never treat a stale brainstorm file as revision intent. In non-`--brainstorm` invocations this file may be absent or stale; either way do not require or read it.
 
 Do not read the contents of every Drafts/ file. Read them lazily as the user's intent narrows on a target.
 
@@ -66,7 +66,7 @@ If any precondition fails, halt and report the specific gap. Do not proceed.
 
 ### Step 2 — Discover intent (interview or freeform)
 
-**If `Brainstorm_Notes.md` from a `--brainstorm` run is present:** read its primary concern and use it as the captured intent for sub-step 1 below — it is already in the user's words, so confirm it back rather than re-eliciting from scratch, fold any play evidence into the Evidence field, and carry the candidate future concerns into the Step 7 cross-references. Then continue from sub-step 4 (classify).
+**If this is a `--brainstorm` run and a `Posture: revision-diagnostic` `Brainstorm_Notes.md` is present:** read its primary concern and use it as the captured intent for sub-step 1 below — it is already in the user's words, so confirm it back rather than re-eliciting from scratch, fold any play evidence into the Evidence field, and carry the candidate future concerns into the Step 7 cross-references. Then continue from sub-step 4 (classify). (If the present file carries a different posture stamp, it is stale — ignore it and discover intent normally per the modes below; do not capture stale brainstorm content as this revision's intent.)
 
 **If the user genuinely can't name what's wrong** (the opening question yields only "something feels off, I don't know what"), don't grind through diagnostic narrowing — offer the divergent off-ramp: *"Let's find it first. Run `/worldforge revise --brainstorm` and the Brainstormer will help you locate the concern, then bring its notes back here."* That posture is built for the pre-articulation case; you are built for a concern that can already be pointed at.
 
