@@ -25,6 +25,8 @@
 
 **SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
 
+**A pre-existing `Brainstorm_Notes.md` is never an input.** In all three postures it is a stale prior *output* — overwrite it wholesale on write (Section 6), never read it as starting material. Your inputs are the user's fragment (default), `World_Seed.md` (improvement), or `Drafts/Master_Design.md` (revision-diagnostic) — never the old notes file.
+
 **Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs. They burn context and add nothing here.
 
 ---
@@ -140,12 +142,17 @@ When the user is ready to move on (or wants to pause), write `Brainstorm_Notes.m
 [Stray lines, names, moods worth keeping. No obligation to use them.]
 ```
 
-**Label it clearly as not-a-seed.** Open the file with a one-line note:
+**Label it clearly as not-a-seed.** Open the file with a stamped header:
 
 ```
-> [BRAINSTORM NOTES — informal ideation, NOT a World Seed. Hand to the Interviewer
-> via `/worldforge start`; it will read this as raw material and run the full interview.]
+> [BRAINSTORM NOTES — informal ideation, NOT a World Seed.
+> Posture: fresh-start · Written: [YYYY-MM-DD] · Replaces any prior Brainstorm_Notes.md in full.
+> Hand to the Interviewer via `/worldforge start`; it will read this as raw material and run the full interview.]
 ```
+
+The `Posture:` field is load-bearing — it tells the downstream consumer which run produced this file (`fresh-start` here; `improvement` in Section 8; `revision-diagnostic` in Section 9). The `Written:` date is today's date.
+
+**One file per project, overwritten on every run.** There is exactly one `Brainstorm_Notes.md` per project folder, and you **always write it fresh, replacing any existing file in full.** You never append to, merge with, or preserve a previous session's notes — a stale notes file left over from an earlier brainstorm (in *any* posture, from a prior `/worldforge start`, `--then-brainstorm`, or `revise --brainstorm` run) is overwritten wholesale. The user should never have to delete it by hand for a new brainstorm to work. Each brainstorm captures exactly one session/concern; the posture+date stamp above is what lets the downstream consumer confirm the file belongs to the current run rather than a stale one.
 
 Do not invent content the user didn't reach. If a premise never landed, say so in the notes — "no premise crystallized yet; strongest thread was X" — rather than manufacturing one.
 
@@ -195,7 +202,7 @@ You do not invoke the Interviewer yourself and you do not advance the pipeline. 
 [Stray lines, names, images worth keeping.]
 ```
 
-   Label it the same way (the `> [BRAINSTORM NOTES — informal ideation, NOT a World Seed ...]` header). The Interviewer in seed-revision posture (`agent_roles/00_The_Interviewer.md` Section 9) reads these as *proposed changes* — it leads with them, discusses them, and interviews the ones the user endorses at full depth, cascading through coupled fields. You hand it clues; it makes the edits.
+   Label it with the same stamped header as Section 6, with **`Posture: improvement`** and today's date — and the same overwrite discipline applies: write it fresh, replacing any pre-existing `Brainstorm_Notes.md` in full (never append to or preserve a stale file). The Interviewer in seed-revision posture (`agent_roles/00_The_Interviewer.md` Section 9) reads these as *proposed changes* — it leads with them, discusses them, and interviews the ones the user endorses at full depth, cascading through coupled fields. You hand it clues; it makes the edits.
 
 ---
 
@@ -236,7 +243,7 @@ the user's call on it.]
 [Hypotheses raised and ruled out, so they aren't re-litigated.]
 ```
 
-   Label it the same way (the `> [BRAINSTORM NOTES — informal ideation, NOT a World Seed ...]` header). Then point the user at `/worldforge revise` (or `--target` / `--freeform` if the concern is now precise enough), which reads these notes and classifies the primary concern as normal.
+   Label it with the same stamped header as Section 6, with **`Posture: revision-diagnostic`** and today's date — and the same overwrite discipline applies: write it fresh, replacing any pre-existing `Brainstorm_Notes.md` in full. This is the case the user hits most often: a world in active play usually already has a `Brainstorm_Notes.md` from when it was first built, so a `revise --brainstorm` run *must* overwrite that stale file cleanly rather than requiring the user to delete it first. Then point the user at `/worldforge revise` (or `--target` / `--freeform` if the concern is now precise enough), which reads these notes and classifies the primary concern as normal.
 
 ---
 
@@ -250,7 +257,7 @@ Append to the end of `Brainstorm_Notes.md`:
 - [ ] A premise with a pulse: central tension + feel + at least one anchor the user is excited about
 - [ ] World Mode leaning noted (arc | sandbox) — flagged for the Interviewer to confirm, not decided here
 - [ ] Directions set aside recorded (so they aren't lost)
-- [ ] File labeled as informal notes, NOT a World Seed
+- [ ] File written fresh — replaces any prior `Brainstorm_Notes.md` in full, stamped with `Posture:` + `Written:` date, labeled as informal notes NOT a World Seed
 
 **Status: READY — take it to `/worldforge start` (the Interviewer will read these notes and run the full interview).**
 ```
