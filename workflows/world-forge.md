@@ -490,6 +490,8 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
 | `/worldforge revise cancel R[N]` | Cancel a pending revision and mark CANCELLED |
 | `/worldforge resync-preset` | Regenerate a shipped world's Chat Completion Preset against the current template + block library, picking up pipeline changes made since the world was built (see PRESET RESYNC below). Preset-only; does not re-audit lorebooks or cards. |
+| `/worldforge audition` | **On-demand behavioral probe (post-launch), read-only.** Hand the Auditioner one character, one scene, and the active conditions; it simulates how the character would behave and returns YES / NO / IT DEPENDS against your expectation, with a trace to the spec and (on a gap) a revise handle. Changes nothing. See AUDITION below. |
+| `/worldforge audition --save` | Same as above, but also writes the audition to `Drafts/Audition_[Char]_[slug].md` as a durable record. |
 | `/worldforge convert <source> <target>` | Reframe a shipped world into a new build (different protagonist, different World Mode, different Style Contract, different Core Concept). Produces a new `World_Seed.md` in `<target>`, then hands off to `/worldforge skip phase0`. See `workflows/world-forge-convert.md`. Read-only on `<source>`. |
 | `/worldforge convert <source> <target> --brief <path>` | Same as above, but driven by a pre-authored Convert Brief (`templates/Convert_Brief_Template.md`). Converter validates the brief against the source and interviews only on gaps. |
 | `/worldforge convert <source> <target> --rebaseline` | **Rebaseline mode** — same world, same protagonist: consolidate a world's accumulated revisions into a clean rebuild, optionally folding in new mechanics. Inverts the Converter's always-regenerate rules (Section 3/5/7b carry from the post-revision Master Design). Fresh UIDs — running chats do not migrate. Combines with `--brief`. See `agent_roles/Converter/00_The_Converter.md` Section 9. |
@@ -539,3 +541,23 @@ It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Pr
 - **Distinct from `resume phase5`.** `resume phase5` re-runs the full Phase-5 audit during an in-progress build. `resync-preset` is a maintenance op on an already-shipped world that only refreshes the preset.
 - **Distinct from the revise pipeline.** The revise pipeline *makes* surgical content changes. Resync makes none — it reflects already-applied content and spec changes into the preset. A world can be resynced without ever entering revise, and revised worlds can be resynced afterward to bring the preset fully current.
 - **Low risk.** A Chat Completion Preset is a global SillyTavern settings profile, not UID-bearing world info, so re-importing a resynced preset does not disturb running chat states. Git is the rollback path if the user wants the prior preset back.
+
+---
+
+## AUDITION (on-demand behavioral probe, post-launch)
+
+You are deep into playing a shipped world and a question surfaces that the personality is too complex to answer from memory: *would this character actually do this, in this moment, under these conditions?* Gambling a real scene to find out is expensive. `/worldforge audition` is the cheap, read-only way to find out first.
+
+It invokes **The Auditioner** (`agent_roles/Auditioner/00_The_Auditioner.md`) as a single standalone post-launch operation — **not** a numbered pipeline phase. The user hands it one focal character, one scene, the active conditions (which arc, or the standing sandbox state), and optionally the behavior they expect; the Auditioner loads that character's spec as runtime context, simulates the scene **as the model would run it**, and returns a verdict with a trace.
+
+It is the **single-scenario, user-driven cousin of the Voice Auditor** (Phase 3.5). Where the Voice Auditor runs at build time, generates its own systematic matrix across the whole cast and every arc, and feeds rewrite directives back to the Architect, the Auditioner runs whenever the user is curious mid-play, tests exactly the one situation the user names, and changes nothing. It reuses the Voice Auditor's simulation discipline and check vocabulary (Step 3) rather than re-deriving them, and applies the Intimacy Auditor's lens when the probed scene is intimate.
+
+**Load-bearing properties:**
+- **Read-only on the whole project.** The Auditioner modifies nothing — not `Drafts/`, not `Export/`, not `Master_Design.md`. It answers a question (audit/apply separation, CLAUDE.md principle #3). When it finds a real gap, it hands the user a **revise handle** (the file + element + kind of change) — it does not apply the change. The user decides; the revise pipeline applies.
+- **Three honest verdicts.** Every run resolves to **YES** (the spec reliably produces the expected behavior), **NO** (the spec drives a *different* behavior — the character is correct per spec, the spec just doesn't match the expectation), or **IT DEPENDS** (the spec is silent or self-conflicting here, so the outcome isn't determined — a latent coverage gap surfaced on demand). "Probably" is not a verdict.
+- **Mode- and intimacy-aware by inheritance.** Arc worlds load the user-named active arc's CHARACTER_STATE/NPC_SHIFT; sandbox worlds use the standing SANDBOX_STATE (and the user-named ladder stage where one exists). Intimate scenarios additionally pull the Intimacy Profile + active register and apply the intimacy lens. No new machinery — it reuses what the build-time auditors already define.
+- **World layer, not engine layer.** It simulates from the Drafts (the content spec the Voice Auditor reads), not the Chat Completion Preset (the engine layer). When real play diverges from a YES verdict, the cause may be the preset, and `/worldforge resync-preset` may be the fix — the Auditioner flags this rather than pretending to have simulated the engine.
+- **Not a phase.** It does not advance the Pipeline State Ledger, does not invoke any downstream agent, and produces no first-class pipeline artifact. The optional `--save` record (`Drafts/Audition_[Char]_[slug].md`) is an informal log, read by nothing downstream and deletable freely.
+- **Shipped-world precondition.** It is a post-launch tool. Against a mid-build world it declines and points the user at the Voice Auditor (Phase 3.5), the in-pipeline behavioral check.
+
+See the full operation in `agent_roles/Auditioner/00_The_Auditioner.md`.

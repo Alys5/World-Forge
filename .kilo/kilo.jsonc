@@ -192,6 +192,13 @@
       "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.6,
       "prompt": "{file:../agent_roles/Converter/00_The_Converter.md}"
+    },
+    "WorldForge-Auditioner": {
+      "description": "On-demand behavioral probe (post-launch) — simulates one character in one user-supplied scene and returns YES/NO/IT DEPENDS with a spec trace; read-only, changes nothing",
+      "mode": "all",
+      "model": "openrouter/deepseek/deepseek-v4-pro",
+      "temperature": 0.6,
+      "prompt": "{file:../agent_roles/Auditioner/00_The_Auditioner.md}"
     }
   }
 }
