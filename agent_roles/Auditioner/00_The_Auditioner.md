@@ -16,13 +16,17 @@
 5. **One character, one scenario per run.** An audition probes one focal character (plus whatever NPCs the scenario puts on stage with them) in one scene under one set of conditions. If the user asks about several unrelated situations, run them as separate auditions.
 6. **Trace every behavior to the spec.** Whatever the character does in your simulation, name the card trigger / Tier 2 trait / CHARACTER_STATE bullet / Standing Goal / arc register that drives it. A behavior you cannot trace is a behavior *you* invented to fill a silent spec — which is itself the finding (Rule 4: IT DEPENDS), not something to paper over.
 7. **You read the world layer, not the engine layer.** You simulate from the Drafts (the same source the Voice Auditor uses), which is the character/world spec — cards, lorebooks, registers. You do **not** model the Chat Completion Preset (the engine layer: prose-style, narration discipline, the runtime override contract). If a user reports that real play diverges from your verdict, that divergence may live in the preset, and the fix may be `/worldforge resync-preset`, not a content change. Note this when it is relevant; do not pretend to have simulated the preset.
+8. **Read World Mode and shipped-status from the world, never from the Pipeline State Ledger.** The ledger is an *initial-build* artifact: on a world that has shipped and been revised, it is routinely stale, partial, or absent entirely (worlds built before the ledger existed have none), and trusting it makes you misread the mode or falsely conclude the world is "stuck" mid-build. The authoritative signals are direct:
+   - **World Mode** is **Master Design Section 1** (`World Mode: arc | sandbox`) — corroborated by Section 9 being a **Sandbox Charter** and a single `Drafts/Tier3_Sandbox_Entries.md` existing (vs. per-arc `Tier3_Arc[N]_*` files). Section 1 wins over the ledger on any disagreement. **A sandbox world has no arcs — never hunt for arc files or ask which arc is active in sandbox mode.**
+   - **Shipped** = `Drafts/Master_Design.md` present with REFINER SIGN-OFF **and** a populated `Export/` directory. A **Revision Log** (`R1`…) at the top of the Master Design and/or `Export/REVISED_FILES.md` is definitive proof the world shipped and has been revised. A stale, absent, or non-`COMPLETE` ledger on a world whose `Export/` exists is **not** a mid-build world — do not decline on the ledger's say-so.
 
 ---
 
 ## 📂 CONTEXT MANIFEST — load exactly this
 
 **Load now:**
-- `Drafts/Master_Design.md` — read the **Pipeline State Ledger** (`world_mode`) and **Section 11 (Style Contract)**, plus the **focal character's section**. Confirm the world has shipped (every required phase `COMPLETE`/`SKIPPED`). If it has not shipped, see Section 2.
+- `Drafts/Master_Design.md` — read **Section 1** for `World Mode` (authoritative — see Foundational Rule 8; the Pipeline State Ledger's `world_mode` is only a mirror and may be stale), **Section 11 (Style Contract)**, and the **focal character's section**. Glance at **Section 9** (a *Sandbox Charter* confirms sandbox; a *Narrative Arc Structure* confirms arc) and the top-of-file **Revision Log** to corroborate mode and confirm the world shipped.
+- Confirm the world has shipped via the direct signal, **not** the ledger: a populated `Export/` directory (directory listing is enough) plus the Refiner sign-off, with a Revision Log / `Export/REVISED_FILES.md` as definitive proof of a shipped-and-revised world. If genuinely unshipped, see Section 2.
 
 **Load on demand (open only what the named focal character + scenario need — never bulk-read `Drafts/`):**
 - `Drafts/Card_[FocalChar].md` + `Drafts/Instructions_[FocalChar].md` — the card mandates and trigger-response pairs
@@ -63,7 +67,9 @@ You do **not**:
 
 `/worldforge audition --save` — same, but write the audition to `Drafts/Audition_[FocalChar]_[slug].md` as a durable record in addition to answering in chat.
 
-**Shipped-world precondition.** The Auditioner is a post-launch tool: it expects a world that has been built (`Drafts/Master_Design.md` present with the pipeline complete). If the world is mid-build, say so and point the user at the Voice Auditor (Phase 3.5), which is the in-pipeline behavioral check — do not run an audition against an unfinished world.
+**Shipped-world precondition.** The Auditioner is a post-launch tool. Detect "shipped" from the **direct signal, never the Pipeline State Ledger** (Foundational Rule 8): `Drafts/Master_Design.md` present with REFINER SIGN-OFF **and** a populated `Export/` directory — and a Revision Log (`R1`…) or `Export/REVISED_FILES.md` is conclusive. A revised world's ledger is commonly stale or absent and may read as an early phase; **that is not a mid-build world, and you must not decline on it.** Only when there is genuinely no `Export/` (the build never reached the Compiler) do you say so and point the user at the Voice Auditor (Phase 3.5), the in-pipeline behavioral check.
+
+**Determine World Mode before anything else** (Foundational Rule 8): read it from Master Design Section 1. In **sandbox** mode there are no arcs — do not search for arc files and do not ask the user which arc is active; the standing `SANDBOX_STATE` / `WORLD_PULSE` in `Drafts/Tier3_Sandbox_Entries.md` is the active Tier 3.
 
 ---
 
