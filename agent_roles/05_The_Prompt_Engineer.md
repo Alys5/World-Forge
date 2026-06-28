@@ -665,6 +665,7 @@ Hard-fail scan on the `main` block content and the `jailbreak` block content:
 The Main Prompt's `<style_contract>` block is the single authoritative source for marker conventions. Validate its presence, shape, and content against Master Design Section 11.
 
 - [ ] Main Prompt content contains exactly one `<style_contract>...</style_contract>` block (case-sensitive tag match). Zero blocks, multiple blocks, or unmatched tags = hard fail.
+- [ ] **The closing marker is the verbatim literal `</style_contract>` — no attributes, exact lowercase casing, exact spelling (`contracts/WORLD_FORGE_SYNC.md` §4).** The `world_forge` extension splices each card's `<style_override>` into the assembled system prompt by a plain substring search for the exact string `</style_contract>` (`injectStyleOverride()`); an attributed close tag (`<style_contract v="2">…`), different casing (`</Style_Contract>`), or a renamed tag makes the splice find nothing and the per-card override is dropped silently, reverting the card to the world default. Any deviation from the exact literal `</style_contract>` = hard fail. Treat it as a pinned cross-repo constant.
 - [ ] The `<style_contract>` block contains a `NARRATIVE PERSPECTIVE:` line and a `FORMATTING MARKERS:` line, in that order. Missing either line, extra unrecognized lines (other than the conditional ACTIVE-SPEAKER RULE), or wrong order = hard fail.
 - [ ] The `NARRATIVE PERSPECTIVE:` line's directive content reflects Master Design Section 11a `perspective` and `tense` enum values. Walk through the enum-to-directive mapping (see Section 5a-detail Main Prompt requirements). Mismatch between the enum value and the directive's content = hard fail.
 - [ ] The `FORMATTING MARKERS:` line's directive content reflects Master Design Section 11a `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values. Mismatch = hard fail.
@@ -866,6 +867,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 
 ### Chat Template — Style Contract Validation (paired with override architecture)
 - [ ] Main Prompt contains exactly one `<style_contract>...</style_contract>` block with NARRATIVE PERSPECTIVE and FORMATTING MARKERS lines
+- [ ] Closing marker is the verbatim literal `</style_contract>` — no attributes, exact casing (`contracts/WORLD_FORGE_SYNC.md` §4; the `world_forge` extension's `<style_override>` splice is a plain substring search for it)
 - [ ] `<style_contract>` content matches Master Design Section 11a enums (perspective, tense, narration_marker, dialogue_marker, emphasis_marker)
 - [ ] ACTIVE-SPEAKER RULE line present iff Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`
 - [ ] No content inside `<style_contract>` beyond the required two or three lines (no narration discipline, no spatial mandates, no character names, no arc names)

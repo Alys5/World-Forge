@@ -13,6 +13,44 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-28 — Shared design contracts made canonical; pipeline now guarantees the runtime seams
+
+World Forge is the **producer** in a contract it shares with the fork's
+`world-forge` + `npc-memory` SillyTavern extensions. Those contracts now live in
+this repo as the **canonical source of truth** (the fork mirrors them read-only
+and CI-checks byte-equality), and the pipeline is tightened so it *guarantees*
+the runtime seams `WORLD_FORGE_SYNC.md` §2–§4 describe instead of only happening
+to satisfy them in the hand-built `Samples/` world.
+
+### Added
+- `contracts/` directory: `MEMORY_CONTRACT.md` and `WORLD_FORGE_SYNC.md` (the
+  canonical copies, kept byte-identical to the fork's mirror) plus `README.md`
+  describing the canonical/mirror relationship.
+- `tools/validate_export.py`: deterministic backstops for the new seams —
+  manifest `lorebook.kind` enum check; per-npc **bare-first-name alias** check
+  (`WORLD_FORGE_SYNC` §3); and an export-set check that a `kind:"director"`
+  manifest is accompanied by a card carrying a recognized director tag
+  (`WORLD_FORGE_SYNC` §2, directory runs only). No new files written; still
+  read-only and stdlib-only.
+
+### Changed
+- `agent_roles/02_The_Architect.md` + `templates/Char_Card_creation.md` (§2):
+  a Director / NPC-host card MUST carry a recognized director tag
+  (`world-director` / `world director` / `npc-controller` / `npc controller` /
+  `director` / `npc`), declared in the card draft so it survives export and
+  agrees with the roster manifest's `kind:"director"`.
+- `agent_roles/04_The_Compiler.md`: Step 4 now carries the director tag through
+  to `data.tags` (§2); Step 7.7i now **requires** the bare first name + prose
+  nicknames in every multi-word npc's `aliases` (§3, previously only
+  recommended), because the Scene Tracker → npc-memory name round-trip depends
+  on it. Manifest sign-off checklist updated.
+- `agent_roles/05_The_Prompt_Engineer.md` + `agent_roles/05a_Block_Library.md`
+  (§4): the closing `</style_contract>` marker is pinned as a verbatim literal
+  (no attributes, exact casing) — the `world_forge` extension splices per-card
+  `<style_override>` by a plain substring search for it, so any deviation drops
+  the override silently. Added a Pass-1 hard-fail.
+- `CLAUDE.md`: `contracts/` added to the authoritative repository structure.
+
 ## 2026-06-28 — Author's Note suggestions: teach the player SillyTavern's transient steering lever (#61)
 
 The world package carries all *persistent* steering (cards, lorebooks, preset),

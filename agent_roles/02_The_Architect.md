@@ -112,6 +112,22 @@ Minimum 3 `<START>` blocks. Each demonstrates a different behavioral mode:
 2. Shield being triggered
 3. The crack — what bypasses the shield
 
+### tags — Director / NPC-host cards (binding; `contracts/WORLD_FORGE_SYNC.md` §2)
+
+If this card is a **Director / NPC-host card** — a card that voices the off-roster NPCs, narrates from outside any single character's interior, or acts as the world host (the sandbox World-Director card is the canonical case) — its `tags` array MUST carry **at least one recognized director tag**, from this exact set:
+
+```
+world-director · world director · npc-controller · npc controller · director · npc
+```
+
+This is not cosmetic. Two SillyTavern runtime features classify the host card **purely by tag membership** — never by name, manifest, or content: the group-chat router (`partitionByDirectorRole()`), which routes off-roster NPC names to the host, and the Scene Tracker (`isDirectorCharacter()`), which decides who voices the NPCs and emits the `<scene_state>` "World Director" framing. A Director card with no recognized tag mis-routes in group chats and loses its host framing — silently, with no error.
+
+- Prefer `world-director` and/or `npc-controller` for consistency with the Sample.
+- The tag MUST survive export — declare it here in the card draft so the Compiler emits it into `data.tags` (Compiler Step 4).
+- This MUST agree with the manifest's `lorebook.kind: "director"` the Compiler emits for the roster lorebook (Compiler Step 7.7h): the manifest declares the role for the memory layer, the **card tag is what the runtime reads**. A Director card whose roster lorebook manifest says `kind: "director"` but which carries no recognized tag is a contract violation.
+
+Non-host cards (ordinary `{{char}}` cards and principal-character cards) do not need a director tag; `tags` stays free for ordinary UI filtering.
+
 ---
 
 ## 5.5. `{{user}}` PERSONA DESCRIPTION — `Drafts/User.md`
@@ -892,6 +908,7 @@ Append to your submission note before handing to The Editor:
 - [ ] Card description: full physical + psychological, no arc content
 - [ ] scenario and first_mes: Arc 1 entry point only
 - [ ] mes_example: 3+ exchanges covering default, shield, crack
+- [ ] **Any Director / NPC-host card carries at least one recognized director tag (`world-director` / `world director` / `npc-controller` / `npc controller` / `director` / `npc`) in its `tags`, declared in the card draft so it survives export — agrees with the roster lorebook manifest's `kind: "director"` (`contracts/WORLD_FORGE_SYNC.md` §2)**
 
 ### `{{user}}` Persona Description — `Drafts/User.md`
 - [ ] File exists for any world with a named `{{user}}` protagonist

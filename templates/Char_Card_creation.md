@@ -67,6 +67,7 @@ SANDBOX-MODE CARDS (worlds with `World Mode: sandbox` — no narrative arc):
 - There are no arcs and no CHARACTER_STATE entries. Drop the arc-range qualifiers ("Arc 1–2 only:", etc.) — they have nothing to qualify against.
 - The card carries the character's FULL standing range directly (the whole self, not an early-arc snapshot), and defers to the standing **SANDBOX_STATE** entry as the authoritative current register instead of CHARACTER_STATE.
 - Everything else is identical: `{{original}}` on its own line, character-specific content only, no engine instructions. A sandbox World Director card still voices the NPC roster; its NPC profiles live in the lorebook (principal full profiles + roster compact stat blocks), not in the card.
+- **A Director / NPC-host card MUST carry a recognized director tag in `tags`** — one of `world-director` / `world director` / `npc-controller` / `npc controller` / `director` / `npc` (`contracts/WORLD_FORGE_SYNC.md` §2). SillyTavern's group-chat router and Scene Tracker classify the host card purely by tag membership, so without it the host silently loses NPC routing and its `<scene_state>` framing. Prefer `world-director` / `npc-controller`. This is the one case where `tags` is load-bearing rather than cosmetic UI filtering.
 
 ---
 
