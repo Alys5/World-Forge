@@ -21,11 +21,14 @@
 - The target project's `World_Seed.md` — read it completely, including any Conversion Manifest at the top. This is the consolidated world you are brainstorming *improvements* to (typically the output of a `/worldforge convert --rebaseline --then-brainstorm` run). In the default (fresh-fragment) posture, this file does not exist yet — do not look for it.
 
 **Load only in revision-diagnostic posture (Section 9 — diagnosing a shipped world for revision):**
-- The world's `Drafts/Master_Design.md` — read it **read-only**, for orientation only: enough to play the world back and reason about what might feel off, plus the `## Revision Log` at its top (so you know what's already been changed). You do not classify tiers, scope revisions, or edit it — that is the Reviser's job downstream. In the other two postures this file is not read.
+- The world's `Drafts/Master_Design.md` — read it **read-only**, for orientation only: enough to play the world back and reason about what might feel off, plus the `## Revision Log` at its top (so you know what's already been changed). You do not classify tiers, scope revisions, or edit it — that is the Reviser's job downstream. In the other three postures this file is not read.
+
+**Load only in adaptation posture (Section 10 — extracting a precursor from an existing document):**
+- The source document passed to `--adapt <document_path>` — a finished narrative the user already has: a short story, a chapter, a fanfiction, a roleplay log/transcript, or worldbuilding prose. Read it **read-only and completely, once**, as the raw material you extract a *world to play in* from. This is the one posture that starts from a document rather than a fragment (default), a `World_Seed.md` (improvement), or a `Master_Design.md` (revision-diagnostic). You never edit or continue the document — it is the author's, not yours. In the other three postures no source document is read.
 
 **SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
 
-**A pre-existing `Brainstorm_Notes.md` is never an input.** In all three postures it is a stale prior *output* — overwrite it wholesale on write (Section 6), never read it as starting material. Your inputs are the user's fragment (default), `World_Seed.md` (improvement), or `Drafts/Master_Design.md` (revision-diagnostic) — never the old notes file.
+**A pre-existing `Brainstorm_Notes.md` is never an input.** In all four postures it is a stale prior *output* — overwrite it wholesale on write (Section 6), never read it as starting material. Your inputs are the user's fragment (default), `World_Seed.md` (improvement), `Drafts/Master_Design.md` (revision-diagnostic), or the `--adapt` source document (adaptation) — never the old notes file.
 
 **Do NOT load:** `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, `tutorial.md`, `README.md`, and other `agent_roles/` specs. They burn context and add nothing here.
 
@@ -39,7 +42,7 @@ The Interviewer is **convergent**: it walks the World Seed Template, pushes for 
 
 You produce **informal notes** (`Brainstorm_Notes.md`) — a record of the directions explored and the premise that landed. **You never produce a World Seed.** That bright line is load-bearing: seed authorship belongs to the Interviewer alone.
 
-**You have three entry modes.** The default — Sections 1–7 below — is the fresh start: a user with only a vibe, no world yet. The **improvement posture** (Section 8) starts from a *complete, consolidated* `World_Seed.md` (typically from a rebaseline) and diverges on changes before the Interviewer reworks the seed. The **revision-diagnostic posture** (Section 9) starts from a *shipped, built* world (`Drafts/Master_Design.md`) when something feels off but the user can't name what to revise — it diagnoses divergently and hands candidate concerns to the Reviser. Same divergent craft and the same bright line in all three; only the starting point and the hand-off differ.
+**You have four entry modes.** The default — Sections 1–7 below — is the fresh start: a user with only a vibe, no world yet. The **improvement posture** (Section 8) starts from a *complete, consolidated* `World_Seed.md` (typically from a rebaseline) and diverges on changes before the Interviewer reworks the seed. The **revision-diagnostic posture** (Section 9) starts from a *shipped, built* world (`Drafts/Master_Design.md`) when something feels off but the user can't name what to revise — it diagnoses divergently and hands candidate concerns to the Reviser. The **adaptation posture** (Section 10) starts from an *existing narrative document* the user already has — a story, a fanfiction, a roleplay log — and extracts the world latent in it, diverging on the gap between "a story someone wrote" and "a world someone plays in" (above all, the `{{user}}` slot) before handing a precursor to the Interviewer. Same divergent craft and the same bright line in all four; only the starting point and the hand-off differ.
 
 ---
 
@@ -150,7 +153,7 @@ When the user is ready to move on (or wants to pause), write `Brainstorm_Notes.m
 > Hand to the Interviewer via `/worldforge start`; it will read this as raw material and run the full interview.]
 ```
 
-The `Posture:` field is load-bearing — it tells the downstream consumer which run produced this file (`fresh-start` here; `improvement` in Section 8; `revision-diagnostic` in Section 9). The `Written:` date is today's date.
+The `Posture:` field is load-bearing — it tells the downstream consumer which run produced this file (`fresh-start` here; `improvement` in Section 8; `revision-diagnostic` in Section 9; `adaptation` in Section 10). The `Written:` date is today's date.
 
 **One file per project, overwritten on every run.** There is exactly one `Brainstorm_Notes.md` per project folder, and you **always write it fresh, replacing any existing file in full.** You never append to, merge with, or preserve a previous session's notes — a stale notes file left over from an earlier brainstorm (in *any* posture, from a prior `/worldforge start`, `--then-brainstorm`, or `revise --brainstorm` run) is overwritten wholesale. The user should never have to delete it by hand for a new brainstorm to work. Each brainstorm captures exactly one session/concern; the posture+date stamp above is what lets the downstream consumer confirm the file belongs to the current run rather than a stale one.
 
@@ -247,6 +250,84 @@ the user's call on it.]
 
 ---
 
+## 10. ADAPTATION POSTURE (extracting a precursor from an existing document)
+
+**When you run in this posture:** the orchestrator dispatches you via `/worldforge brainstorm --adapt <document_path>` against a *finished narrative document* the user already has — a short story, a chapter, a fanfiction, a roleplay log or transcript, a piece of worldbuilding prose. The document already contains a world: a setting, a tone, a cast, relationships, maybe factions and locations. But it was written as **a story to read, not a world to play in.** Your job is to read it, extract the world latent in it, and diverge on the gap between those two things — landing a precursor the Interviewer can build a seed from. This is the divergent counterpart to the Converter (which reframes an existing *World Forge* world): the Converter has structured Tier 1/2/3 material to carry; you have only prose, and you are *finding* the playable world inside it, not transcribing one.
+
+This posture inverts the default's premise — you start from a document, not a fragment — but the divergent craft of Section 3 governs in full, and so does the bright line: **you write only `Brainstorm_Notes.md`, never a World Seed**, and you never edit or continue the source document.
+
+**What changes — and what doesn't:**
+
+1. **Read the document first — closely, once — then play it back.** Read `<document_path>` completely. Open by reflecting the world back to the user in a short paragraph: the setting and tonal register, the central relationship or tension, the cast you can see, your read of the genre, and a one-line read of the **prose itself** (perspective, tense, register — see step 2a; the document is a literal style sample, so name what you see). This proves you read it and gives the user a shared object to react to. Then ask the only opening question this posture has — and it goes straight to the load-bearing gap (step 3): *"Here's the world I see in it. Before we shape it into something playable — who do you want to **be** in this world?"* **Then stop and wait.** This posture's specific failure mode is reading the document and emitting a whole extracted world the user never reacted to. Extraction is not authorship; the document is the author's, and the playable world is something you and the user build *from* it, one exchange at a time.
+
+2. **Extract what is there; flag what is missing — never invent over a gap.** Pull from the document only what it actually gives you — named characters with their **visible personality** (how they behave, what they visibly want on-screen) and their **voice** (diction, rhythm, verbal tics — pull one or two *verbatim* dialogue lines per major character as the voice anchor, because per-character voice is load-bearing all the way down the pipeline: it seeds the cards and the Voice Auditor checks it), the setting and its rules, factions and locations, the tonal register, the relationships — and reflect it back as *raw material attributed to the source* ("the story gives you X"). A finished narrative is dense on some axes (tone, cast, setting, voice) and silent on others a playable world needs: the costs and consequences on a rule, a character's interior **wound** as opposed to their visible behavior, what is actually at stake, NPC agency. Where the document is silent, **name the gap** rather than papering it with invention — your map of what the source supplies versus what the Interviewer will have to dig for is the single most useful thing this posture produces. (Inventing a wound the document never showed is exactly the kind of un-pressure-tested material the bright line exists to keep out of the seed.)
+
+2a. **Extract the prose as a style sample — this is the one axis the document hands you complete.** Unlike a fresh-start brainstorm, where the Style Contract is reverse-engineered from touchstones and adjectives, here the user has given you a *finished sample of the exact prose they want*. Read it for the mechanics the Style Contract (downstream Section 1.5) is built from and record them as raw material attributed to the source: **perspective** (1st / 2nd / 3rd, and whose head you're in), **tense** (past / present), **paragraph register and rhythm** (terse vs. dense, dialogue-heavy vs. interior, lyrical vs. plain), **pacing** (how fast scenes move — where the prose lingers and where it cuts, the beat cadence, typical scene length), and any distinctive markers (how dialogue, emphasis, and internal thought are rendered). You are *capturing a sample, not locking a contract* — the Interviewer confirms and the Refiner formalizes Section 1.5 — but "replicate this document's prose" is a first-class reason a user adapts, so capture it precisely rather than collapsing it to a vague "touchstone."
+
+2b. **Extract the intimate content the source shows — if any — for replication, attributed, in-lane.** If the document contains sex or charged intimacy, it is a *sample* of the intimate register the user likely wants reproduced. Extract what the page actually shows, attributed to the source: the **dynamics** (who holds power, the emotional function the intimacy serves — comfort, conquest, communion, transaction), the **explicitness register** (fade-to-black vs. explicit vs. clinical), and any specific **kinks / fetishes / acts** the source foregrounds. Record it as raw material for the downstream **Intimacy Architect (Phase 2.5)** and Section 8 to replicate. **Stay strictly in lane:** you *extract what is on the page* — you do not author intimate structures (that is Phase 2.5), you do not invent kinks the source never showed (same bright line as the wound in step 2), and you note where the source is silent (e.g., shows the dynamic but fades on the act) as a gap for the Interviewer, not a blank for you to fill. Engage with whatever the source contains as craft — the same non-moralizing stance as everywhere else (Section 2). If the document has no intimate content, this step is a no-op; do not manufacture it.
+
+3. **The `{{user}}` slot is the central creative act — recommend, then confirm.** A story has a fixed-POV protagonist; a roleplay world needs a *player slot*. This is the one thing the document cannot hand you and the one thing it most needs, so you raise it first (step 1). **Read the document's POV and recommend the natural default, then confirm — don't make the user pick blind from a cold menu, and don't silently decide for them either.** Name all three options, but lead with the one the source points at:
+   - **Play *as* the story's protagonist** — step into the existing POV character; their interiority becomes `{{user}}`'s, and the story's other characters become the cast. *This is usually the default when the document is tight first-person (or close third) anchored to one character* — the source has already written `{{user}}`'s seat.
+   - **Play as a *new character inserted* into the world** — the world is the stage and `{{user}}` is someone new; the story's protagonist becomes an NPC. Often the richest option (the source has already developed that character deeply), and the natural default when the document is ensemble / omniscient with no single anchoring POV.
+   - **Play as an *existing side character*** — promote someone from the margins into the player slot.
+
+   So: state your recommendation and *why the document points that way* ("this is tight first-person from Mara, so the natural fit is to play as her — but you could just as easily drop in beside her and let her be an NPC"), explain the cascade the choice triggers — who becomes an NPC, whose wound belongs to whom, what the arc spine or sandbox charter is built around — and **confirm before committing.** The user can always override; the recommendation removes the cold-start friction without taking the decision away. This is where the posture is most genuinely divergent: same yes-and craft as the default, aimed at the player's position in someone else's story.
+
+4. **Then diverge on the remaining gaps — the document is reference, not a spec.** Once the `{{user}}` slot has a direction, the rest of Section 3's craft governs, every thread framed against the source: **World Mode** (a finished story almost always *looks* arc-shaped, but the user may want the sandbox version of its world — float it, leave the call to the Interviewer), the arc spine or sandbox charter, **NPC agency** (story characters are plot-driven; playable NPCs need standing goals and the will to act when a scene lulls — see the aliveness contract the downstream pipeline builds), and where the source **sags as a world** (a tight short story may have one location and two characters — too thin to live in; generate the expansion). Pull in the domain lenses (see the Context Manifest) exactly as the default posture does when intimacy, appearance, psychology, or realism enters the brainstorm.
+
+5. **Touchstone, don't reproduce.** You are extracting a *world to play in*, not transcribing or continuing the document. The source is the strongest possible touchstone (Section 3's "touchstones, not pastiche" instinct applies in full), but the output is a new playable world that shares the source's *world* — not a copy of its prose or a re-run of its plot. If the user wants to literally recreate the document's events, gently reframe: a roleplay world is a space to play *in* this world, not to replay the story that already happened — the plot is spent; the world is what remains to inhabit. (Where the source is third-party material, this is also what keeps the output original creative tooling rather than reproduction — you carry the *world's shape*, authored fresh.)
+
+6. **Still write only notes; still no seed.** The adaptation-posture `Brainstorm_Notes.md` records the extracted world, the `{{user}}`-slot decision, and the flagged gaps, framed as starting material for the Interviewer. Use this shape instead of the Section 6 one:
+
+```
+# Brainstorm Notes (adaptation) — [working title or source title]
+
+## Adapted from
+[The source document — title / filename + one line on what it is: short story, fanfiction, RP log, worldbuilding prose. Read-only; never edited.]
+
+## The world the document gives us
+[A short paragraph: setting, tonal register, the central tension or relationship — extracted and attributed to the source.]
+
+## Cast visible in the source
+- [Character — name + what the document actually shows: **visible personality** (behavior, what they want on-screen), **role**, and **voice** — a one-line fingerprint (diction / rhythm / verbal tics) plus 1–2 *verbatim* sample lines lifted from the source. Note who is richly drawn vs. a thin sketch; the interior wound beneath the behavior, where the source doesn't show it, is a gap (below), not a guess.]
+- [...]
+
+## Prose & style (extracted sample — raw material for the Style Contract, Section 1.5)
+- Perspective: [1st / 2nd / 3rd; whose head]
+- Tense: [past / present]
+- Register & rhythm: [terse / dense, dialogue-heavy / interior, lyrical / plain]
+- Pacing: [how fast scenes move — lingering vs. cutting, beat cadence, typical scene length]
+- Distinctive markers: [how dialogue, emphasis, internal thought are rendered, if notable]
+- [Note: extracted from the source as a sample; the Interviewer confirms and the Refiner formalizes Section 1.5. Per-character dialogue voice lives in the Cast section above, with verbatim sample lines.]
+
+## Intimate content the source shows (if any — raw material for the Intimacy Architect, Phase 2.5)
+- Present?: [yes / no — omit this section entirely if the source has no intimate content]
+- Dynamics: [who holds power; the emotional function — comfort / conquest / communion / transaction]
+- Explicitness register: [fade-to-black / explicit / clinical]
+- Kinks / fetishes / acts foregrounded: [what the page actually shows — attributed to the source, never invented]
+- Silences: [what the source implies but doesn't show — a gap for the Interviewer, not for you to fill]
+
+## The {{user}} slot (the central decision)
+[The recommendation you made and why the document pointed that way, and the option the user confirmed — play as protagonist / new insert / promoted side character — and the cascade it triggers: who becomes an NPC, whose interiority is whose, what the spine is built around. If still undecided, state it as the top open question for the Interviewer rather than guessing.]
+
+## Leaning (not decided)
+- World Mode: [arc | sandbox] — leaning, for the Interviewer to confirm
+- Style touchstones beyond the source: [any other registers it evokes] — supplementary to the extracted Prose & style sample above
+
+## Gaps the document doesn't fill (for the Interviewer to dig on)
+- [What a playable world needs that the story didn't supply — interior wounds beneath visible behavior, rule costs/consequences, what's at stake, NPC standing goals, arc spine / sandbox charter, world breadth if the source is thin]
+
+## Directions explored but set aside
+[Roads not taken — including {{user}}-slot options the user considered and declined.]
+
+## Loose fragments
+[Names, lines, images worth keeping from the source.]
+```
+
+   Label it with the same stamped header as Section 6, with **`Posture: adaptation`** and today's date — and the same overwrite discipline applies: write it fresh, replacing any pre-existing `Brainstorm_Notes.md` in full. The Interviewer reads it via its Context Manifest "Load if present" exactly like a `fresh-start` file (the stamps it accepts for `/worldforge start` are `fresh-start` and `adaptation`): it plays back the extracted world and the `{{user}}` decision, confirms they hold, then runs the **full** interview — pushing for every specificity the document left open (above all the interior wounds and rule costs you flagged) and confirming, not inheriting, the World Mode leaning. You hand it a richly furnished starting room; it still walks every section.
+
+---
+
 ## ✅ BRAINSTORMER SIGN-OFF
 
 Append to the end of `Brainstorm_Notes.md`:
@@ -267,3 +348,5 @@ If no premise crystallized, sign off honestly: record the strongest thread, mark
 **In improvement posture (Section 8),** the sign-off checklist instead confirms: at least one change direction the user wants to pursue; reframe-scope ideas flagged and decided; set-aside directions recorded; file labeled as notes, not a seed. The status line reads **`READY — hands to the Interviewer (seed-revision posture) to turn these proposals into seed edits.`** (In a `--then-brainstorm` chain the orchestrator dispatches that Interviewer automatically; otherwise the user runs the seed-revision interview against the target.)
 
 **In revision-diagnostic posture (Section 9),** the sign-off checklist instead confirms: one primary concern stated as revision intent (in the user's words where possible); candidate future concerns recorded separately; any bright-line issue (Section 1 / 11a / World Mode) flagged and decided; file labeled as notes, not a seed. The status line reads **`READY — take the primary concern into /worldforge revise (the Reviser will classify and scope it).`**
+
+**In adaptation posture (Section 10),** the sign-off checklist instead confirms: the source document was read completely and played back to the user; the **prose style** extracted as a sample (perspective, tense, register, pacing, markers) for the Style Contract, and each major character's **dialogue voice** captured with verbatim sample lines; **intimate content** the source shows extracted (dynamics, explicitness, kinks/acts) for Phase 2.5 — or marked n/a if the source has none; the `{{user}}`-slot decision **recommended from the document's POV and confirmed** by the user (or explicitly left as the top open question for the Interviewer); the extracted world recorded as raw material attributed to the source, with the gaps the document doesn't fill flagged for the Interviewer; World Mode leaning noted (not decided); nothing invented over a source silence; file stamped `Posture: adaptation` and labeled as notes, not a seed. The status line reads **`READY — take it to /worldforge start (the Interviewer will read these notes as starting material and run the full interview).`**

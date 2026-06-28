@@ -84,6 +84,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 | Command | Action |
 |---|---|
 | `/worldforge brainstorm` | Optional, upstream of Phase 0: divergent ideation when you have only a vibe — generates premise directions, writes informal `Brainstorm_Notes.md`, no World Seed (the Interviewer reads the notes on the next `start`) |
+| `/worldforge brainstorm --adapt <document>` | Optional, upstream of Phase 0: turn an existing story, fanfiction, or roleplay log into a precursor — extracts its world and helps you decide who `{{user}}` is, then writes an `adaptation`-stamped `Brainstorm_Notes.md` (no World Seed) |
 | `/worldforge start` | Begin from Phase 0 (arc mode by default) |
 | `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** — an open-ended world with no narrative arc (see Section 7) |
 | `/worldforge skip phase0` | Begin from Phase 1 (you authored the World Seed manually — Lucifer's path) |
@@ -546,13 +547,26 @@ When a brainstorm turns toward a domain where ideas reliably go generic, the Bra
 
 The appearance/realism nudge is a coherence check, not a rule: it surfaces the tension once, offers the resolutions, and drops it the moment you choose — "curvy and genetically gifted" is a complete answer.
 
-### Three postures
+### Four postures
 
-The Brainstormer runs in one of three modes depending on how it's invoked:
+The Brainstormer runs in one of four modes depending on how it's invoked:
 
 1. **Fresh start** (`/worldforge brainstorm`) — the default above: a blank page and a vibe.
 2. **Rebaseline improvement** (`/worldforge convert ... --rebaseline --then-brainstorm`) — brainstorming *changes* to an already-consolidated world before the Interviewer reworks the seed. Covered in [Section 8](#8-converting-a-shipped-world-worldforge-convert).
-3. **Revision diagnostic** (`/worldforge revise --brainstorm`) — the next subsection.
+3. **Revision diagnostic** (`/worldforge revise --brainstorm`) — the subsection after next.
+4. **Adaptation** (`/worldforge brainstorm --adapt <document>`) — turning an existing story, fanfiction, or roleplay log into a precursor for a world. The next subsection.
+
+### Turning a story into a world (`/worldforge brainstorm --adapt`)
+
+Sometimes you don't arrive with a vibe — you arrive with a *document*. A short story you wrote, a fanfiction you love, a transcript of a roleplay that went somewhere good. It already has a world in it: characters, a setting, a tone. What it doesn't have is a *you* — it was written as a story to read, not a world to play in.
+
+```
+/worldforge brainstorm --adapt ./my_story.md
+```
+
+This runs the Brainstormer in its **adaptation posture**. It reads the document once, plays the world back to you (setting, tone, cast, the central tension), and then goes straight to the question the document can't answer for you: **who do you want to *be* in this world?** A story has a fixed protagonist; a roleplay world needs a player slot. It reads the document's POV and *recommends the natural fit* — tight first-person from one character → play as them; an ensemble with no single anchor → drop in as someone new and let the old protagonist become an NPC (often the richest option, since they're already deeply drawn) — explains the cascade the choice triggers, and confirms with you. You can always override; the recommendation just removes the cold-start guesswork. From there it diverges on everything else the document left open: World Mode, the arc or sandbox shape, NPC agency, and anywhere the source is too thin to live in.
+
+Because the document is a *finished sample*, it also extracts the things you most likely want replicated: the **prose style** (perspective, tense, register, rhythm, and pacing — raw material for your Style Contract), **how each character speaks** (a voice fingerprint plus a verbatim sample line or two lifted straight from the text), and, if the source has sex, the **intimate register** (the dynamics, explicitness, and any kinks or fetishes the page actually shows — raw material for the Intimacy Architect in Phase 2.5). It extracts only what's on the page and *attributes it to the source* — it won't invent a hidden wound, or a kink, the story never showed; it flags those as gaps for the Interviewer to dig on instead. The output is an `adaptation`-stamped `Brainstorm_Notes.md`: the extracted world, the prose sample, the intimate register, your `{{user}}`-slot decision, and the list of gaps to fill. Hand it to `/worldforge start` exactly like any other brainstorm — the Interviewer reads it as a (richly furnished) warm start and still runs the full interview, leaning on the prose and intimate samples as confirmed starting points and pushing hardest on the interiority and stakes the document didn't supply. As always, it writes only notes, never a seed, and never edits or continues your document.
 
 ### "Something feels off but I can't name it" (`/worldforge revise --brainstorm`)
 
@@ -585,6 +599,13 @@ A run moves left-to-right through a lifecycle: *(optional) brainstorm → start/
 ```
 Divergent ideation for when you have only a vibe. Generates premise directions, reaches for touchstones, sketches excerpts, and pulls in the four domain lenses (Section 9). Writes informal `Brainstorm_Notes.md` and stops — it never writes a World Seed.
 **Why:** use it when you can't yet answer the Interviewer's "what's the central wound?" because the idea has no shape. Skip it when you already know what you're building.
+
+**`/worldforge brainstorm --adapt <document>`** — *optional, before everything; you have a story, not a vibe*
+```
+/worldforge brainstorm --adapt ./my_story.md
+```
+Reads an existing narrative document (a story, fanfiction, or roleplay log), extracts the world latent in it (cast, setting, tone), and diverges on the gap to a playable world — above all the `{{user}}` slot the document's fixed POV can't supply. Writes an `adaptation`-stamped `Brainstorm_Notes.md` the next `start` reads as a warm start; never writes a World Seed and never edits your document.
+**Why:** use it when the world you want already exists in something you've read or written, and you want to *play in* it rather than build from a blank page. See Section 9.
 
 **`/worldforge start`** — *the normal entry*
 ```
