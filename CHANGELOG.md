@@ -13,6 +13,38 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-28 — Author's Note suggestions: teach the player SillyTavern's transient steering lever (#61)
+
+The world package carries all *persistent* steering (cards, lorebooks, preset),
+but SillyTavern's **Author's Note** — a per-chat, ephemeral nudge the player
+sets by hand and that injects near the end of context — is the player's
+*transient* lever, and most players never learn to use it well. A true Author's
+Note is not shippable (it lives in per-chat metadata / global settings, not the
+card JSON), so the right move is not to bake one into the package but to hand
+the player a few ready-to-paste, world-tuned examples plus a short primer. The
+Prompt Engineer already had the right context (it has read the Master Design and
+reasons about runtime injection), so it gains one small player-facing output.
+This touches none of the load-bearing architecture: it is suggestions only, it
+writes a brand-new standalone file and modifies nothing else, so audit/apply
+separation (principle #3) is untouched.
+
+### Added
+- **`agent_roles/05_The_Prompt_Engineer.md`** — new **Section 4c, Author's Note
+  Suggestions**, a Build-mode-only deliverable. The Prompt Engineer writes a
+  standalone `Export/Authors_Note_Suggestions.md` containing: a mechanics primer
+  (the Author's Note is per-chat/ephemeral; recommended In-chat @ Depth 4, role
+  System); 3–5 world-tuned example notes across pace/scene-hold, tonal-register
+  dial, NPC-agency push, refocus, and (when intimate content is in scope)
+  intimacy-pacing categories; and a "transient steering only — permanent
+  steering belongs in the package" boundary note. Added a Tertiary Output entry
+  (Section 6) and sign-off items for it.
+
+### Changed
+- **`workflows/world-forge.md`** — Phase 5 output line, a Workstream note, and
+  the `Export/` deliverables tree now list `Authors_Note_Suggestions.md`.
+
+---
+
 ## 2026-06-28 — Adaptation posture: turn an existing story/fanfiction/RP into a world precursor (#62)
 
 World Forge had three upstream-of-Phase-0 entry points — the Brainstormer (from a

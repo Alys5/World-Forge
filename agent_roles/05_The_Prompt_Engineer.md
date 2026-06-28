@@ -238,6 +238,59 @@ Check that `post_history_instructions`:
 
 If `post_history_instructions` fails this check, recommend a corrected version that defers to the lorebook. The recommendation goes into Section 8 of the audit report as a manual-apply correction, not into the JSON file directly.
 
+## 4c. AUTHOR'S NOTE SUGGESTIONS (player-facing runtime steering)
+
+After the lorebook and card audit, produce one small standalone deliverable for the **player**: a short menu of example Author's Notes they can paste into SillyTavern during play to steer a scene in the moment, plus a brief primer on how the Author's Note works.
+
+**Why this exists.** The world package (cards, lorebooks, preset) carries all *persistent* steering. The Author's Note is the player's *transient* lever — a per-chat, ephemeral nudge that injects near the end of context (high salience) and that the player turns on and off themselves. It ships with nothing and is set by hand in the SillyTavern UI. Most players never learn to use it well; this file shows them how, tuned to this specific world.
+
+**This is suggestions, not applied configuration.** You author a brand-new standalone file. You modify nothing else — no card, no lorebook, no preset, no chat metadata. There is nothing to "apply" and no sign-off dependency: the file is reference material the player uses at their discretion. Creating it is fully inside your authority (you create the audit report the same way); the audit/apply separation is untouched because there is no audited file being changed.
+
+**Build mode only.** Produce this in Build mode. Preset Resync Mode (Section 8) does not touch it.
+
+### What to produce
+
+Write `Export/Authors_Note_Suggestions.md` with three parts.
+
+**Part 1 — the mechanics primer.** Reproduce the canonical primer block below (lightly adapt the wording, keep the settings values).
+
+**Part 2 — 3–5 world-tuned example notes.** Each example is keyed to a real steering need this world has, drawn from the Master Design. Cover a spread across these categories — pick the ones this world actually needs, do not pad:
+
+- **Pace / scene-hold** — slow a rushed model down; keep it in the present scene.
+- **Tonal register dial** — push the prose toward this world's register (pull the vocabulary from Section 11 Style Contract and the active arc's Tonal Mandate / the `SANDBOX_STATE` Tonal Mandate).
+- **NPC agency push** — have a named principal NPC act on their §7.D Standing Goal instead of waiting on `{{user}}` (name the NPC and the goal in the world's own terms).
+- **Refocus** — pull the scene back to the active arc objective / standing situation when it drifts.
+- **Intimacy pacing** — *only if Section 8 intimate content is in scope* — steer pacing or register **within** the world's already-established intimate boundaries; never widen them.
+
+Each example uses this format:
+
+```
+### [Use case — one short label]
+**When:** [one line — the in-play situation this note is for]
+**Paste this as your Author's Note:**
+[The note text — 1–2 sentences, directive, present tense, ≤40 words. World-tuned. {{char}}/{{user}} macros allowed.]
+```
+
+Illustrative shape (generic — replace every example with text tuned to this world's tone, arcs, and named NPCs):
+- Pace: `[Stay in this moment. Do not skip ahead or summarize — let the exchange play out beat by beat.]`
+- NPC agency: `[{{char}} is pursuing their own aim right now; have them act on it this scene rather than waiting on {{user}}.]`
+
+**Part 3 — a short "what not to use it for" note.** One paragraph: the Author's Note is for *transient* steering only. Anything the player wants to be permanent — a character's identity, a standing world rule, a persistent tonal mandate — belongs in the world package (and is already there), not in an Author's Note. A note that fights the cards or lorebooks just produces conflicting instructions and unpredictable behavior. Rewrite or clear the note when the moment passes.
+
+### Canonical primer block (reproduce in Part 1)
+
+> **Using the Author's Note to steer a scene**
+>
+> The Author's Note is a short instruction *you* add inside SillyTavern, separate from this world's files. It is temporary and per-chat — it is not part of the world package, and you turn it on, change it, or clear it whenever you like.
+>
+> **Where:** open the **Author's Note** panel (the Extensions menu, or the pushpin icon above the chat box).
+>
+> **Recommended settings:** Position **In-chat @ Depth**, Depth **4**, Role **System**. This drops the note in near the end of the context, where the model weights it heavily, on every turn. Push harder by lowering the depth toward **2**; soften a heavy-handed note by raising the **interval** so it only re-injects every few messages.
+>
+> **Keep it short and directive** — one or two present-tense sentences. Macros like `{{char}}` and `{{user}}` work. When the moment passes, rewrite or clear it.
+
+---
+
 After the audit, author the Chat Completion Preset JSON for this world. **Read `templates/Chat_Completion_Preset_template.json` before writing.** It is the structural ground truth — your output must match its top-level key set, its block schema, and its prompt_order shape. The Notes_On_functionality reference describes the format; the template is the executable specification of it.
 
 ---
@@ -745,6 +798,10 @@ A complete, valid, importable SillyTavern Chat Completion Preset JSON file. Read
 
 All custom block content must be fully written and specific to this world — not placeholder text. The Deep Think block must reference this world's arcs by name. The Arc Guardian must reference this world's specific characters and the arc structure. The Lore Integration block must use examples from this world's lorebook vocabulary. Multi-Character Dynamics (when enabled) must include a 3-4 turn lattice example using this world's specific characters. Sensory Embodiment must reference this world's specific sensory anchors from World Seed Section 2.
 
+### Tertiary Output: `Export/Authors_Note_Suggestions.md`
+
+A short, player-facing standalone file: the Author's Note mechanics primer plus 3–5 world-tuned example notes the player can paste into SillyTavern to steer a scene in the moment. Suggestions only — it modifies no other file and carries no manual-apply dependency. **Build mode only** (not produced in Preset Resync Mode). See Section 4c for the authoring spec.
+
 ---
 
 ## 7. PROMPT ENGINEER SIGN-OFF
@@ -815,6 +872,11 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Main Prompt outside `<style_contract>` does NOT contain hardcoded marker directive substrings (`*asterisks*`, `*single asterisks*`, `**double asterisks**`, escaped double-quote directives)
 - [ ] Formatting block content does NOT contain hardcoded marker characters as directives
 - [ ] Formatting block content references both `<style_contract>` and `<style_override>` by tag name in its deferral language
+
+### Author's Note Suggestions (Build mode only)
+- [ ] `Export/Authors_Note_Suggestions.md` written with the mechanics primer + 3–5 world-tuned example notes
+- [ ] Examples are tuned to this world (Style Contract register, active arc / SANDBOX_STATE situation, named NPC Standing Goals) — not generic boilerplate
+- [ ] Includes the "transient steering only — permanent steering belongs in the package" boundary note
 
 ### Files With Recommended Corrections (Manual Apply Required)
 

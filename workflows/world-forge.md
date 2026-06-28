@@ -362,13 +362,15 @@ In SillyTavern: import the individual lorebooks — `[WorldName]_World_Lorebook.
 
 **Invoke:** `@agent_roles/05_The_Prompt_Engineer.md`
 **Input:** All `Export/` files + `Notes_Quick_Reference.md` + `Notes_On_functionality.md` (§5.2, §5.10, §8 mandatory) + `templates/Chat_Completion_Preset_template.json` + `agent_roles/05a_Block_Library.md` (Workstream B only) + `Drafts/Master_Design.md`
-**Output:** `Export/Prompt_Engineer_Audit.md` + `Export/[WorldName]_ChatPreset.json`
+**Output:** `Export/Prompt_Engineer_Audit.md` + `Export/[WorldName]_ChatPreset.json` + `Export/Authors_Note_Suggestions.md`
 
 **Read `Notes_Quick_Reference.md` plus `Notes_On_functionality.md` §5.2 / §5.10 / §8 completely before beginning (rest of the file on demand). For Workstream B, load `templates/Chat_Completion_Preset_template.json` as the structural reference and `agent_roles/05a_Block_Library.md` as the block library — do not author the preset from scratch.**
 
 **Workstream A — Audit (read-only against Export/):** Reviews every lorebook entry (including intimacy profiles and registers) for position correctness, injection order, keyword coverage, token budget risk. Reviews every character card for `system_prompt`, `post_history_instructions`, and `depth_prompt`. Produces audit report with **recommended corrections** for any issues found. The Prompt Engineer does NOT modify Export/ JSON files — recommendations are surfaced in Sections 7 and 8 of the audit report as plain-text instructions for the user to apply manually. The audit report's status line distinguishes "COMPLETE — pipeline ready" (no recommendations generated) from "AUDIT COMPLETE — N manual corrections required" (recommendations outstanding).
 
 **Workstream B — Chat Preset:** Begins with the Section 5.0b Block Selection Rationale — an analytical write-up that names this world's archetype, predicts 4-8 specific runtime failure modes, and maps each failure mode to the block(s) that address it. Block selection is the *outcome* of this analysis, not a checklist. The agent then starts from `templates/Chat_Completion_Preset_template.json` and authors content for the 8 core blocks (Main, Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Formatting, Jailbreak), enables/disables the 2 conditional core blocks (Multi-Character Dynamics for 2+ AI cards or Director NPC; NSFW for Section 8 in scope), and adds optional blocks from the menu (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks as the Rationale warrants. **Sandbox worlds** default to enabling Multi-Character Dynamics, including NPC Ensemble & Enrichment (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment within guardrails), and weighting Sensory Embodiment high — see the Section 5.0b sandbox-mode block guidance. **The Main Prompt's `<style_contract>` block is parameterized from Master Design Section 11a (perspective, tense, marker enums); the active-speaker rule is included only when Section 11c reports `is_multi_perspective: true`; the Formatting block is the slim deferral form referencing both `<style_contract>` and `<style_override>` by name.** NSFW when enabled covers thematic function discipline, voice & sound register (onomatopoeia mapped to body reactions, slurred speech mechanics, voice register shifts), body coordination (pre-scene retrieval of physical facts, multi-body geometry mapping, narrated adaptation when geometry doesn't work natively), hard limits, and world hard rules. Verifies `forbid_overrides: false` on `main` and `jailbreak`. Runs the Section 5f Pass 1 + Pass 2 self-validation before saving. Produces `[WorldName]_ChatPreset.json` ready for ST import.
+
+**Author's Note suggestions (Build mode only):** alongside the audit and preset, the Prompt Engineer writes `Export/Authors_Note_Suggestions.md` — a small player-facing file with a primer on SillyTavern's Author's Note plus 3–5 world-tuned example notes the player can paste in to steer a scene transiently. Suggestions only; it modifies no other file (see agent Section 4c).
 
 Appends SIGN-OFF to audit file.
 
@@ -455,7 +457,8 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── Sandbox_Intimacy_Register.json              ← sandbox mode (single, Phase 4, conditional)
     ├── Compiler_Log.md
     ├── Prompt_Engineer_Audit.md
-    └── [WorldName]_ChatPreset.json
+    ├── [WorldName]_ChatPreset.json
+    └── Authors_Note_Suggestions.md
 ```
 
 ---
