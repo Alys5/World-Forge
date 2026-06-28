@@ -13,6 +13,57 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-28 — Adaptation posture: turn an existing story/fanfiction/RP into a world precursor (#62)
+
+World Forge had three upstream-of-Phase-0 entry points — the Brainstormer (from a
+fragment), the Converter (from a shipped World Forge world), and the Interviewer
+(cold) — but no way to start from an **existing narrative document** a user
+already had. This adds a fourth Brainstormer posture for exactly that: read a
+story, fanfiction, or roleplay log and extract the playable world latent in it,
+landing a precursor the Interviewer builds a seed from. It stays behind the
+load-bearing bright line (principle #11) — it writes only informal
+`Brainstorm_Notes.md`, never a World Seed, and it extracts what is on the page
+rather than inventing over the document's silences.
+
+### Added
+- **`agent_roles/Brainstormer/00_The_Brainstormer.md`** — new **Section 10,
+  the adaptation posture**, invoked by `/worldforge brainstorm --adapt
+  <document_path>`. It reads the document read-only and:
+  - extracts the **world** (cast, setting, tone, factions, locations,
+    relationships), attributed to the source;
+  - extracts the **prose style as a finished sample** for the Style Contract
+    (perspective, tense, register, rhythm, **pacing**, distinctive markers);
+  - extracts **per-character dialogue voice** — a voice fingerprint plus 1–2
+    *verbatim* sample lines lifted from the text (the anchor that seeds cards
+    and the Voice Auditor);
+  - extracts any **intimate register** the source shows (dynamics, explicitness,
+    kinks/fetishes/acts) as raw material for the Intimacy Architect (Phase 2.5);
+  - **recommends the `{{user}}` slot from the document's POV and confirms** —
+    play as the source's protagonist / a new insert / a promoted side character —
+    rather than presenting a cold menu or deciding silently;
+  - **flags what the document doesn't supply** (interior wounds, rule costs,
+    stakes, NPC goals) as gaps for the Interviewer, never inventing over them.
+
+  Writes an `adaptation`-stamped `Brainstorm_Notes.md` with dedicated slots for
+  the extracted world, prose/style sample, per-character voice, intimate register,
+  the `{{user}}` decision, and the gap list. Objective (four entry modes),
+  Context Manifest (the `--adapt` source input), and sign-off all updated.
+
+### Changed
+- **`agent_roles/00_The_Interviewer.md`** — accepts the `adaptation` stamp as a
+  `fresh-start`-equivalent for `/worldforge start`; reads the extracted prose
+  sample, per-character voice (with sample lines), and intimate register as
+  confirmed starting points feeding Section 1.5 / Section 5 / Section 8, while
+  still running the full interview and pushing hardest on the flagged gaps.
+- **`workflows/world-forge.md`** — BRAINSTORM section now documents four postures
+  and the `--adapt` invocation; new trigger-table row.
+- **`.kilo/kilo.jsonc`** — `WorldForge-Brainstormer` seat description notes the
+  adaptation posture.
+- **`CLAUDE.md`** — principle #11 and the Brainstormer cross-file-consistency
+  row updated to four postures incl. adaptation.
+- **`tutorial.md`** — Section 9 now lists four postures, adds a "Turning a story
+  into a world" walkthrough, and a command-reference entry for `--adapt`.
+
 ## 2026-06-26 — Brainstormer overwrites a stale `Brainstorm_Notes.md` instead of requiring manual deletion
 
 `/worldforge revise --brainstorm` (and the other brainstorm entry points) left a

@@ -308,6 +308,7 @@ When making changes to pipeline files, follow this order:
 5. **For markdown documents, validate code fence balance after editing** (every ``` must have a closing ```).
 6. **Keep each agent's `📂 CONTEXT MANIFEST` in sync with its INPUT section.** Every main agent spec opens with a manifest telling the runtime agent exactly what to load (small-context models depend on it). If your edit changes what an agent reads — a new input file, a new template, a section moved to another file — update the manifest in the same edit.
 7. **Use git aggressively.** Commit before architectural changes. Branch for experiments. The pipeline has gotten complex enough that "what did we decide three weeks ago and why" is a real question; git history is the answer.
+8. **Record the change in `CHANGELOG.md` — always, in the same change.** Every new feature, new agent/posture/mode, behavior change, or bug fix to the pipeline gets a `CHANGELOG.md` entry. Add it as part of the same edit/commit (and PR) that makes the change — never as an afterthought, and never leave it for "later." Use the existing format: newest entry first, `## YYYY-MM-DD — short title (#PR if there is one)`, a short context paragraph, then `### Added` / `### Changed` / `### Fixed` / `### Removed` sections naming the files touched. Pure typo or wording fixes that don't change how the pipeline behaves don't need an entry; anything that changes behavior, structure, or an agent's contract does. When in doubt, add one.
 
 ---
 
