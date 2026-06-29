@@ -14,6 +14,8 @@ Checks the failure modes that slip past "the JSON parses":
                 {{original}} on its own line
               - data.extensions.depth_prompt structure present
               - data.extensions.world_forge.style_override present (null or 7-key object)
+              - records whether any card carries a recognized Director tag (for the
+                export-set WORLD_FORGE_SYNC §2 check below)
   lorebooks   - every entry's position is an integer in 0..7
               - atDepth (position 4) entries carry an integer depth
               - uid values unique within the file
@@ -24,10 +26,14 @@ Checks the failure modes that slip past "the JSON parses":
                 Info uses camelCase and the characterFilter object
               - any [[NPC_MANIFEST]] entry (NPC Memory Contract): at most one per file;
                 carrier has disable:true / key:[]; content parses as a JSON object with
-                an integer schema; every npc has a valid slug id + displayName; every
-                facet/scene uid resolves to an entry in the same file
+                an integer schema; lorebook.kind in the allowed enum; every npc has a
+                valid slug id + displayName; every multi-word npc's aliases include the
+                bare first name (WORLD_FORGE_SYNC §3); every facet/scene uid resolves to
+                an entry in the same file
   presets     - prompts array and prompt_order present; every enabled prompt_order
                 identifier resolves to a prompt
+  export set  - WORLD_FORGE_SYNC §2: if any manifest declares kind:"director", at least
+                one exported card must carry a recognized director tag (directory runs only)
 
 This script NEVER modifies files. It exists as a deterministic backstop for the
 Compiler's pre-save guards (agent_roles/04_The_Compiler.md) and the manual checks in
@@ -42,6 +48,7 @@ Exit status: 0 = all checks passed, 1 = at least one failure, 2 = usage error.
 import json
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 # NPC Memory Contract slug rule (section 4): lowercase, _-separated, no leading/trailing/double _.
@@ -64,6 +71,44 @@ STYLE_OVERRIDE_KEYS = {
     "override_rationale",
 }
 
+# Manifest lorebook.kind enum (NPC Memory Contract / WORLD_FORGE_SYNC §2).
+LOREBOOK_KIND_ENUM = {"npc", "arc", "world", "group", "director"}
+
+# WORLD_FORGE_SYNC.md §2: the recognized Director / NPC-host card tag set, matched
+# case/accent-insensitively with hyphens, underscores, and spaces all equivalent.
+# Normalizing collapses "world-director"/"world director" and
+# "npc-controller"/"npc controller" to one form each.
+DIRECTOR_TAG_NAMES = {"director", "npc", "world director", "npc controller"}
+
+# Honorifics are not a "first name" for the WORLD_FORGE_SYNC §3 bare-first-name check.
+HONORIFICS = {
+    "mr", "mrs", "ms", "miss", "mx", "dr", "prof", "professor", "sir",
+    "madam", "madame", "lady", "lord", "st", "fr", "rev", "capt", "captain",
+    "col", "gen", "sgt", "lt", "maj",
+}
+
+
+def normalize_tag(value):
+    """Lowercase, strip accents, and collapse -/_/whitespace to single spaces."""
+    if not isinstance(value, str):
+        return ""
+    decomposed = unicodedata.normalize("NFKD", value)
+    stripped = "".join(c for c in decomposed if not unicodedata.combining(c))
+    return re.sub(r"[\s\-_]+", " ", stripped).strip().lower()
+
+
+def alias_token(value):
+    """Lowercase a name/alias and trim surrounding punctuation for comparison."""
+    if not isinstance(value, str):
+        return ""
+    return value.strip().strip(".,'\"").lower()
+
+
+def bare_first_name(display_name):
+    """The first non-honorific token of a multi-word display name, else None."""
+    tokens = [t for t in str(display_name or "").split() if alias_token(t) not in HONORIFICS]
+    return tokens[0] if len(tokens) > 1 else None
+
 
 def begins_with_original(text):
     """The field must start with {{original}} on its own line."""
@@ -73,8 +118,12 @@ def begins_with_original(text):
     return bool(lines) and lines[0].strip() == "{{original}}"
 
 
-def check_card(data, fail):
+def check_card(data, fail, info=None):
     card = data.get("data", {})
+    if info is not None:
+        tags = card.get("tags") or data.get("tags") or []
+        if any(normalize_tag(t) in DIRECTOR_TAG_NAMES for t in tags):
+            info["director_card_tag"] = True
     for field in ("system_prompt", "post_history_instructions"):
         value = card.get(field, "")
         if not begins_with_original(value):
@@ -115,6 +164,11 @@ def check_manifest(entry, valid_uids, fail):
         return
     if not isinstance(payload.get("schema"), int):
         fail("[[NPC_MANIFEST]] payload missing integer 'schema'")
+    lorebook = payload.get("lorebook")
+    kind = lorebook.get("kind") if isinstance(lorebook, dict) else None
+    if kind is not None and kind not in LOREBOOK_KIND_ENUM:
+        fail(f"[[NPC_MANIFEST]] lorebook.kind {kind!r} not in "
+             f"{sorted(LOREBOOK_KIND_ENUM)} (NPC Memory Contract / WORLD_FORGE_SYNC §2)")
     seen_ids = set()
     for i, npc in enumerate(payload.get("npcs") or []):
         if not isinstance(npc, dict):
@@ -128,8 +182,20 @@ def check_manifest(entry, valid_uids, fail):
                  "memory key; canonical names must disambiguate")
         else:
             seen_ids.add(nid)
-        if not npc.get("displayName"):
+        display_name = npc.get("displayName")
+        if not display_name:
             fail(f"[[NPC_MANIFEST]] npc {nid!r} missing displayName")
+        else:
+            # WORLD_FORGE_SYNC.md §3: a multi-word npc's aliases MUST include the bare
+            # first name, or the Scene Tracker round-trip slugifies "Anna" to a
+            # different id than "anna_larsson" and the NPC's memory silently splits.
+            first = bare_first_name(display_name)
+            if first is not None:
+                alias_tokens = {alias_token(a) for a in (npc.get("aliases") or [])}
+                if alias_token(first) not in alias_tokens:
+                    fail(f"[[NPC_MANIFEST]] npc {nid!r} aliases must include the bare first "
+                         f"name {first!r} of {display_name!r} (WORLD_FORGE_SYNC §3 - the "
+                         "Scene Tracker resolves prose first names to ids via aliases)")
         facets = npc.get("facets")
         if isinstance(facets, dict):
             for fkey, fuid in facets.items():
@@ -146,9 +212,10 @@ def check_manifest(entry, valid_uids, fail):
         suid = scene.get("uid")
         if suid is not None and suid not in valid_uids:
             fail(f"[[NPC_MANIFEST]] scene {sid!r} -> uid {suid!r} not found in this lorebook")
+    return kind
 
 
-def check_lorebook(data, fail):
+def check_lorebook(data, fail, info=None):
     entries = data.get("entries")
     if not isinstance(entries, dict):
         fail("lorebook root has no entries dictionary")
@@ -181,7 +248,9 @@ def check_lorebook(data, fail):
     if len(manifests) > 1:
         fail(f"{len(manifests)} [[NPC_MANIFEST]] entries in one lorebook - the contract allows at most one")
     for entry in manifests:
-        check_manifest(entry, valid_uids, fail)
+        kind = check_manifest(entry, valid_uids, fail)
+        if info is not None and kind == "director":
+            info["director_manifest"] = True
 
 
 def check_preset(data, fail):
@@ -212,7 +281,7 @@ def classify(data):
     return "other"
 
 
-def validate_file(path):
+def validate_file(path, info=None):
     failures = []
     fail = failures.append
 
@@ -244,9 +313,9 @@ def validate_file(path):
 
     kind = classify(data)
     if kind == "card":
-        check_card(data, fail)
+        check_card(data, fail, info)
     elif kind == "lorebook":
-        check_lorebook(data, fail)
+        check_lorebook(data, fail, info)
     elif kind == "preset":
         check_preset(data, fail)
     return failures
@@ -268,14 +337,30 @@ def main(argv):
         print(f"error: no .json files found in {target}")
         return 2
 
+    # Cross-file facts collected while validating individual files, used for the
+    # WORLD_FORGE_SYNC §2 export-set check below.
+    info = {"director_manifest": False, "director_card_tag": False}
+
     total_failures = 0
     for path in files:
-        failures = validate_file(path)
+        failures = validate_file(path, info)
         status = "PASS" if not failures else "FAIL"
         print(f"[{status}] {path.name}")
         for message in failures:
             print(f"       - {message}")
         total_failures += len(failures)
+
+    # WORLD_FORGE_SYNC §2: a Director-role world (a lorebook manifest with
+    # kind:"director") must ship a card carrying a recognized director tag, or the
+    # group-chat router and Scene Tracker have no host to bind to. Only checkable
+    # across a full export set, so skip it for single-file invocations.
+    if target.is_dir() and info["director_manifest"] and not info["director_card_tag"]:
+        msg = ("a manifest declares lorebook.kind:\"director\" but no exported card carries a "
+               "recognized director tag (world-director / npc-controller / director / npc); the "
+               "group-chat router and Scene Tracker classify the host card by tag alone "
+               "(WORLD_FORGE_SYNC §2)")
+        print(f"[FAIL] (export set)\n       - {msg}")
+        total_failures += 1
 
     print(f"\n{len(files)} file(s) checked, {total_failures} failure(s).")
     return 1 if total_failures else 0
