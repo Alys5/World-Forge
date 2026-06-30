@@ -154,6 +154,7 @@ You author this block once. The orchestrator advances it from here; do not re-em
 - All hard rules of the setting with costs, limits, and who bears them.
 - Sensory signature of the world, broken down by arc if the atmosphere changes significantly.
 - The forbidden: what cannot happen narratively.
+- **World Calendar (only if World Seed Section 2g is filled).** Record the calendar under a `**World Calendar (Scene Tracker seed):**` line, carrying the seed's values verbatim and normalized for the Architect: `start month` as a **0-indexed integer** (January = 0 … December = 11) + `start year`; `end month` (0-indexed) + `end year`, **or** `open-ended`; and `weekdayOfDay1` as a **0–6 integer** (Sunday = 0 … Saturday = 6) if a weekday was given. The Architect emits this as the `[[WORLD_CALENDAR]]` carrier (`contracts/WORLD_FORGE_SYNC.md` §5). If Section 2g is blank, omit this line entirely — it is optional and absent ⇒ no calendar carrier.
 
 ### SECTION 2: FACTIONS & POWER STRUCTURES (Tier 1 Source)
 - Every faction: what they are, who leads them, their position in the power structure, their relationship to {{user}}.

@@ -129,6 +129,12 @@ If the user gives a rule with no cost or no prevention, ask: "What goes wrong if
 
 If the user describes a faction as just "a criminal organization," ask what makes this one specific. The Black Hand of God is not "a criminal organization" — it is "Lucifer's earthly demonic syndicate disguised as crime." That specificity is the entire point.
 
+**When does it take place, and how long does it run?** Always ask the *era* — it's a setting fact that shapes tone, diction, and what counts as an anachronism: "When is this set — a real historical period, the present day, a specific year, a far-future or invented era?" Then ask the *horizon*, which is as much an intent question as a calendar one: "Is the story racing a deadline or pinned to a span of time — or is it open-ended, a world you just live in?" The answers tell you a lot about what the user wants to accomplish (a tight period thriller plays nothing like an endless life-sim), so let them run.
+
+Route the answers two ways:
+- The **era / period** is a Tier 1 world fact — fold it into the Setting (Section 2a "where and *when*"), where it informs prose register and anachronism rules whether or not a calendar is ever emitted.
+- If the user pins a **concrete date or a real time-limit**, also capture the machine-readable slice for **World Seed Section 2g** (the optional World Calendar): a **start month + year**, an **end month + year** *or* `open-ended`, and optionally the **weekday Day 1 falls on**. This seeds SillyTavern's Scene Tracker in-world date display. It is a convenience only — a vague era ("sometime medieval") or a timeless world needs no calendar; record the era as setting lore and leave 2g blank. Nothing downstream requires the calendar.
+
 ### SECTION 3: THE PROTAGONIST ({{user}})
 
 This section is critical. It is the section users most often write thinly. Push hardest here.

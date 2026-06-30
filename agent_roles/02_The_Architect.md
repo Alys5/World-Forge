@@ -302,6 +302,29 @@ If it's a mechanic/rule: what it is, what its cost is, what it prevents, how the
 **Entry content quality standard:**
 A good Tier 1 entry reads like a brief delivered to a novelist before they write a scene set in that location or involving that faction. A bad one reads like a Wikipedia summary. The difference: a brief tells you what it *feels like* to be there, what the people *do*, what the *dangers* are.
 
+### World Calendar carrier (conditional — `contracts/WORLD_FORGE_SYNC.md` §5)
+
+**Author this only if** Master Design Section 1 carries a `**World Calendar (Scene Tracker seed):**` line (the Refiner records it from World Seed Section 2g). If there is none, skip this entirely — the calendar is optional and absent ⇒ no carrier.
+
+When present, append one **carrier block** to the end of `Drafts/Tier1_World_Entries.md`. It is **not a narrative lorebook entry** — it is an inert data carrier the Compiler transcribes into the World Lorebook JSON (the same pattern as the NPC Memory Manifest). It carries no prose, no trigger keys, and **no Position Rationale** (it never activates, so the rationale requirement does not apply). Use this exact form so the Compiler can transcribe it verbatim:
+
+```
+### CARRIER: [[WORLD_CALENDAR]] (Scene Tracker date seed — not a narrative entry)
+**Comment:** [[WORLD_CALENDAR]] world calendar
+**Flags:** disable: false (ENABLED), key: [], constant: false, position: 0
+**Payload (single JSON object, emitted verbatim into `content`):**
+{"schema":1,"weekdayOfDay1":2,"start":{"month":5,"year":1},"end":{"month":11,"year":1}}
+```
+
+Build the payload from the Master Design values:
+- `schema`: always `1`.
+- `start`: `{"month": <0-indexed 0–11>, "year": <int>}`. Day 1 = the 1st of this month/year. Omit `start` only if the seed gave a weekday but no start month.
+- `end`: `{"month": <0–11>, "year": <int>}` for a fixed horizon; **omit `end` entirely or use `"infinite"`** when the seed says `open-ended`.
+- `weekdayOfDay1`: `<0–6, Sunday=0>` if the seed gave a Day 1 weekday; omit otherwise. It is independent of `start`.
+- Omit any field the seed did not supply — never emit `null` placeholders (except `end` may be the literal string `"infinite"`).
+
+> ⚠️ **The `disable: false` flag is load-bearing and the one place this carrier differs from the NPC Memory Manifest.** The Scene Tracker reads candidate entries from `getSortedEntries()` and rejects any with `disable: true`, so a disabled calendar carrier is silently skipped and the world seeds nothing. The entry stays inert anyway because `key: []` + `constant: false` means it never activates into the prompt. Months are **0-indexed** (January = 0). Emit the marker, the flag, and the month indexing exactly.
+
 ---
 
 ## 7. CHARACTER LOREBOOK ENTRIES — `Drafts/Tier2_[CharName]_Entries.md`
@@ -928,6 +951,7 @@ Append to your submission note before handing to The Editor:
 - [ ] All world concepts covered
 - [ ] All entries have trigger keys, injection position, order priority
 - [ ] **Every entry has a Position Rationale field — marked "DEFAULT" for default position+flags, or a one-sentence justification referencing Notes_On_functionality for any non-default choice**
+- [ ] **World Calendar carrier (only if Master Design Section 1 has a calendar): one `[[WORLD_CALENDAR]]` block, `disable: false` (ENABLED) + `key: []` + `constant: false`, 0-indexed months, payload built from the seed (`contracts/WORLD_FORGE_SYNC.md` §5)**
 
 ### Tier 2 — Character Lorebook Entries
 - [ ] Physical description entry for every major character (anatomical order)

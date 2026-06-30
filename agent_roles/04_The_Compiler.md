@@ -207,6 +207,7 @@ Source: `Drafts/Tier1_World_Entries.md`
 - Keyed entries: `constant: false`, `selective: true`, `key: [array of strings]`
 - Sort entries within the lorebook by Order Priority (highest first when listing).
 - Set `group: "World"` on all entries for easy identification in ST editor.
+- **If the draft carries a `### CARRIER: [[WORLD_CALENDAR]]` block, also embed the inert World Calendar carrier here (Step 7.8).** It rides inside this World Lorebook file — note its flags differ from the NPC manifest (`disable: false`, not `true`).
 
 ### Step 6 — Build Character Lorebooks (`Export/[WorldName]_[CharName]_Lorebook.json`)
 
@@ -332,6 +333,24 @@ This is the §3 round-trip requirement: the `world-forge` Scene Tracker extracts
 - **Shared roster entries.** An entry marked `**Shared roster entry**` (interchangeable extras, per §7 of the Architect) is **one** npc: use its shared canonical name for `id`/`displayName` and include every member's name in `aliases`. This is the one intended many-people-to-one-id case.
 - **Unresolved facet/relationship.** A facet label outside the controlled vocabulary is simply not added to `facets` (the entry still exists as world-info); a `Relationship to X` whose `X` resolves to no canonical name is skipped, not guessed.
 
+### Step 7.8 — Emit World Calendar carrier (conditional; `contracts/WORLD_FORGE_SYNC.md` §5)
+
+**Only if** `Drafts/Tier1_World_Entries.md` contains a `### CARRIER: [[WORLD_CALENDAR]]` block (the Architect authors it from the Master Design calendar; absent ⇒ skip — the calendar is optional). When present, transcribe it into the **World Lorebook** JSON (`Export/[WorldName]_World_Lorebook.json`, Step 5) as one inert World Info entry. It is purely additive — like the NPC Memory Manifest, it changes no other entry and a world without it still works (the Scene Tracker falls back to manual per-chat dates).
+
+**7.8a — The carrier entry.** A normal World Info entry whose `comment` begins with the literal token `[[WORLD_CALENDAR]]` (e.g. `"[[WORLD_CALENDAR]] world calendar"`). Set:
+- **`disable: false`** — **ENABLED. This is the one flag that differs from the `[[NPC_MANIFEST]]` carrier (which is `disable: true`), and the difference is load-bearing.** The `world-forge` Scene Tracker reads candidate entries from `getSortedEntries()` and rejects any with `disable: true`; a disabled calendar carrier is silently skipped and the world seeds nothing.
+- `key: []`, `constant: false` — keeps the enabled entry **inert**: with no keys and not constant it never activates into the prompt, yet stays visible to `getSortedEntries()`.
+- `selective: true`, `position: 0`, `order: 0`, `useProbability: false`, and the standard inert boolean flags. Obeys Foundational Rule 9 (object key equals `String(uid)`) and Rule 10 (camelCase fields only). At most one per world; it rides inside the World Lorebook, not a separate file.
+
+**7.8b — The payload.** The entry's `content` is the Architect's payload, emitted **verbatim** as a single JSON object (UTF-8, no surrounding prose, no code fences):
+
+```json
+{"schema":1,"weekdayOfDay1":2,"start":{"month":5,"year":1},"end":{"month":11,"year":1}}
+```
+
+- `month` is **0-indexed** (0 = January … 11 = December) — carry the Architect's value through unchanged; do not "fix" it to 1–12.
+- `end` may be the object form, omitted, or the literal string `"infinite"` (open-ended). `weekdayOfDay1` (0 = Sunday … 6 = Saturday) and `start` are each omitted when the Architect omitted them. Never emit `null` placeholders. Do not invent or reshape values the Architect did not provide — if the block is malformed, the Editor's Step 4.7 should have caught it; halt and surface rather than emit a guessed calendar.
+
 ### Step 8 — Validation Pass
 
 Before saving any file (per Foundational Rules at top of this file):
@@ -359,6 +378,7 @@ Before saving any file (per Foundational Rules at top of this file):
 - *Arc mode:* all arc lorebooks have ≥8 entries. *Sandbox mode:* the Sandbox Lorebook has SANDBOX_STATE + ≥1 WORLD_PULSE (no 8-entry floor)
 - ARC_STATE / SANDBOX_STATE entries have `ignoreBudget: true` — these must never be omitted due to token budget
 - **NPC Memory Manifest (Step 7.7):** each NPC/scene-bearing lorebook has exactly one `[[NPC_MANIFEST]]` entry (`disable: true`, `key: []`); its `content` parses as JSON with `schema: 1`; every npc `id` is a valid slug; every `facets`/`scenes` uid resolves to a real entry **in the same file**
+- **World Calendar carrier (Step 7.8; only if authored):** the World Lorebook has at most one `[[WORLD_CALENDAR]]` entry, **`disable: false`** (enabled — unlike the manifest) + `key: []` + `constant: false`; its `content` parses as a JSON object with 0-indexed months; `python tools/validate_export.py Export/` raises no `[WARN]` lines for it
 - Files saved as `.json`, not embedded in Markdown
 
 ---
@@ -432,7 +452,8 @@ SillyTavern personas are configured manually (no import format). The pipeline pr
 - [ ] Per-file manifests carry file-local uids; each `facets`/`scenes` uid resolves within its own lorebook (Step 7.7h) ✓
 - [ ] `id`s unique across the manifest — no two characters collide on one slug (halted upstream if so); `aliases` are names, not query-phrase keys; **every multi-word npc's `aliases` includes the bare first name + prose nicknames** (`contracts/WORLD_FORGE_SYNC.md` §3 — the Scene Tracker round-trip depends on it); `Shared roster entry` collapses interchangeable extras to one id (Step 7.7i–7.7j) ✓
 - [ ] Any Director / NPC-host card carries a recognized director tag in `data.tags`, agreeing with the roster lorebook manifest's `kind: "director"` (`contracts/WORLD_FORGE_SYNC.md` §2; Step 4 item 6b) ✓
-- [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass ✓
+- [ ] World Calendar carrier (only if the Architect authored one): one `[[WORLD_CALENDAR]]` entry in the World Lorebook, **`disable: false`** (enabled — not `true` like the manifest) + `key: []` + `constant: false`, payload verbatim with 0-indexed months (`contracts/WORLD_FORGE_SYNC.md` §5; Step 7.8) ✓
+- [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass, no `[WARN]` for the calendar carrier ✓
 
 ### Gap Report
 [List any required fields that could not be populated, or "None."]

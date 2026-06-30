@@ -13,6 +13,72 @@ numbers. Newest first.
 
 ---
 
+## 2026-06-30 — World Calendar seam: producer support for the Scene Tracker date seed
+
+The fork's `world-forge` Scene Tracker extension gained an in-world calendar
+(weekday tied to a day counter, anchored month/year, a `Day X of N` horizon, and
+open-ended mode) and can **seed** it on a fresh chat from an optional world-level
+`[[WORLD_CALENDAR]]` lorebook entry (ST PR #42). This adds the **producer** half:
+a new runtime seam in the canonical contract and end-to-end pipeline support so a
+World Seed that fixes an in-world start date emits the carrier. The seam is fully
+optional — absent ⇒ the Scene Tracker keeps its manual per-chat behavior and
+existing worlds are unaffected.
+
+The carrier's one load-bearing subtlety: unlike the `[[NPC_MANIFEST]]` carrier
+(emitted `disable: true`), the calendar carrier MUST be **enabled**
+(`disable: false`) because the Scene Tracker reads candidates from
+`getSortedEntries()` with a `!disable` filter and silently skips disabled ones;
+it stays inert via `key: []` + `constant: false`. Months are **0-indexed**
+(0 = January), matching the consumer.
+
+### Added
+- `contracts/WORLD_FORGE_SYNC.md` **§5 World calendar (Scene Tracker date seed)**;
+  document bumped **Version 1 → 2**. New §5 specifies the `[[WORLD_CALENDAR]]`
+  carrier (marker, the enabled-not-disabled flag, the JSON payload, 0-indexed
+  months, open-ended semantics) and the producer ask; §7 checklist and §8 table
+  updated; the consumer-direction / checklist / relationship sections renumbered
+  §5→§6, §6→§7, §7→§8.
+- `templates/World_Seed_Template.md` **§2g World Calendar** (optional): start
+  date, end/horizon-or-open-ended, Day 1 weekday; submission-checklist line added.
+- `tools/validate_export.py`: `check_world_calendar()` — **WARN-only** backstop
+  (the seam is optional and degrades gracefully) for >1 carrier, non-JSON content,
+  `start`/`end` month not 0–11, `weekdayOfDay1` not 0–6, bad `end` shape, and a
+  `disable: true` carrier the Scene Tracker would skip. Warnings never change exit
+  status; the summary line now reports a warning count. Still read-only, stdlib-only.
+
+### Changed
+- `agent_roles/00_The_Interviewer.md` (Section 2): asks *when* the world is set
+  (era/period/year) and its *horizon* (deadline-or-open-ended) as a setting +
+  intent question — era routes to the Setting lore (Section 2a), a concrete date +
+  horizon routes to the §2g calendar carrier.
+- `agent_roles/01_The_Refiner.md` (Master Design Section 1): records a
+  `World Calendar (Scene Tracker seed)` line with 0-indexed months / 0–6 weekday
+  when World Seed §2g is filled.
+- `agent_roles/02_The_Architect.md` (§6 + sign-off): authors the
+  `### CARRIER: [[WORLD_CALENDAR]]` block in the Tier 1 World draft (enabled +
+  inert, payload from the seed) when the Master Design has a calendar.
+- `agent_roles/03_The_Editor.md` (new **Step 4.7** + sign-off): validates the
+  carrier when present (enabled-not-disabled, parseable payload, months 0–11,
+  weekday 0–6, `end` object/omitted/`"infinite"`, no null placeholders).
+- `agent_roles/04_The_Compiler.md` (new **Step 7.8** + Step 5 note, validation
+  pass, output-manifest sign-off): transcribes the carrier verbatim into the
+  World Lorebook JSON with the enabled-but-inert flags.
+- `agent_roles/revise/04_The_Compiler_mini.md`: **preserves** an existing
+  `[[WORLD_CALENDAR]]` carrier through a World-lorebook rewrite (UID + flags +
+  payload), the same way it regenerates the NPC manifest; never drops it and never
+  adds one to a lorebook that lacked it. Editing the calendar is an ordinary
+  `tier1_world_rule_modify` — the mini-Architect/mini-Editor inherit the parent's
+  §6 authoring / Step 4.7 validation, so no new revise scope type.
+- Convert pipeline carries the seam: `agent_roles/Converter/00_The_Converter.md`
+  (preservation matrix row + Section 2 seed-writing) and
+  `templates/Convert_Brief_Template.md` (§4d) carry the calendar across a reframe
+  when the era is unchanged, regenerate/drop it when the setting's time period
+  differs, and keep it by default in rebaseline (it is not protagonist-coupled).
+- `CLAUDE.md`: contract description line + a new cross-file-consistency row for
+  the calendar seam (incl. the revise + convert cascade touchpoints).
+
+---
+
 ## 2026-06-28 — Shared design contracts made canonical; pipeline now guarantees the runtime seams
 
 World Forge is the **producer** in a contract it shares with the fork's

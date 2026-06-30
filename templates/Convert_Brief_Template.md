@@ -98,6 +98,10 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 - [`keep all` | per-entry disposition as above]
 
+**World Calendar (Section 2g) — optional:** [`keep` | `modify: <new start / end / weekday>` | `regenerate` | `drop` | `n/a — source has none`]
+
+[The Scene Tracker date seed (`contracts/WORLD_FORGE_SYNC.md` §5). Keep it if the era is unchanged; regenerate or drop if the new setting's time period differs. *Rebaseline:* keeps by default — it is not protagonist-coupled.]
+
 ### 4e. Major characters (Section 4 — Tier 2)
 
 [For each named character / NPC in the source, declare disposition. The most consequential row in the Brief — the role reassignments live here.]
