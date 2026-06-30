@@ -47,8 +47,10 @@ it stays inert via `key: []` + `constant: false`. Months are **0-indexed**
   status; the summary line now reports a warning count. Still read-only, stdlib-only.
 
 ### Changed
-- `agent_roles/00_The_Interviewer.md` (Section 2): optional one-shot calendar
-  elicitation (start/end-or-open-ended/weekday), no-push.
+- `agent_roles/00_The_Interviewer.md` (Section 2): asks *when* the world is set
+  (era/period/year) and its *horizon* (deadline-or-open-ended) as a setting +
+  intent question — era routes to the Setting lore (Section 2a), a concrete date +
+  horizon routes to the §2g calendar carrier.
 - `agent_roles/01_The_Refiner.md` (Master Design Section 1): records a
   `World Calendar (Scene Tracker seed)` line with 0-indexed months / 0–6 weekday
   when World Seed §2g is filled.

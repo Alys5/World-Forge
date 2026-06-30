@@ -179,6 +179,8 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 *If your story is anchored to a real calendar — it opens on a specific date, or it is meant to conclude by a certain month — declare it here. The pipeline emits it as an inert `[[WORLD_CALENDAR]]` entry in the World Lorebook, and SillyTavern's `world-forge` Scene Tracker extension seeds its in-world date tracking from it on a fresh chat (weekday, rolling month/year, and a "Day X of N" horizon). It is purely a convenience seed — leave this whole subsection blank and the Scene Tracker simply starts with no date until the player sets one by hand. Nothing else in the world depends on it.*
 
+*This subsection is the **machine-readable date** only. The broader era / time period of the world (historical, modern, far-future, invented) is a setting fact — record it in Section 2a ("where and when"), where it shapes tone and anachronism whether or not a calendar is declared here.*
+
 - **Start date:** [The 1st in-world day of the story. Give a **month** (the calendar opens on the 1st of it) and a **year**. Example: "June, Year 1" or "October 1804." Leave blank for no anchored calendar.]
 - **End / horizon:** [Pick one. A **month + year** the story is meant to conclude by (e.g. "December, Year 1") — the Scene Tracker shows a "Day X of N" countdown to its last day — **or** `open-ended` for an infinite roleplay with no horizon. Leave blank to inherit the start year with no fixed end.]
 - **Day 1 weekday:** [OPTIONAL. The weekday the first day falls on — `Sunday`…`Saturday` — so the tracker can render "Tuesday, Day 1" and derive every later weekday. Works even with a fictional calendar (you can set a weekday without a start month). Leave blank for no weekday.]
