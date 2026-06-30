@@ -30,10 +30,17 @@ Checks the failure modes that slip past "the JSON parses":
                 valid slug id + displayName; every multi-word npc's aliases include the
                 bare first name (WORLD_FORGE_SYNC §3); every facet/scene uid resolves to
                 an entry in the same file
+              - any [[WORLD_CALENDAR]] entry (WORLD_FORGE_SYNC §5) is WARN-only (the seam
+                is optional and degrades gracefully): at most one per file; carrier is
+                enabled (disable:false, unlike the manifest) so the Scene Tracker sees it;
+                content parses as a JSON object; start/end month is 0-11; weekdayOfDay1 is
+                0-6; end is an object, null, or "infinite"
   presets     - prompts array and prompt_order present; every enabled prompt_order
                 identifier resolves to a prompt
   export set  - WORLD_FORGE_SYNC §2: if any manifest declares kind:"director", at least
                 one exported card must carry a recognized director tag (directory runs only)
+
+Warnings (lines prefixed [WARN]) never change exit status; only failures do.
 
 This script NEVER modifies files. It exists as a deterministic backstop for the
 Compiler's pre-save guards (agent_roles/04_The_Compiler.md) and the manual checks in
@@ -54,6 +61,7 @@ from pathlib import Path
 # NPC Memory Contract slug rule (section 4): lowercase, _-separated, no leading/trailing/double _.
 SLUG_RE = re.compile(r"^[a-z0-9]+(_[a-z0-9]+)*$")
 NPC_MANIFEST_MARKER = "[[NPC_MANIFEST]]"
+WORLD_CALENDAR_MARKER = "[[WORLD_CALENDAR]]"
 # Inline revision markers belong only on the Drafts side; the Export side's sole
 # revision marker is REVISED_FILES.md. A marker that reached a JSON string value
 # leaked through the mini-Compiler (agent_roles/revise/04_The_Compiler_mini.md
@@ -215,7 +223,52 @@ def check_manifest(entry, valid_uids, fail):
     return kind
 
 
-def check_lorebook(data, fail, info=None):
+def check_world_calendar(entry, warn):
+    """Validate a [[WORLD_CALENDAR]] carrier (WORLD_FORGE_SYNC §5) — WARN-only.
+
+    The seam is optional and the Scene Tracker no-ops on anything malformed, so
+    nothing here is fatal; these warnings catch producer mistakes that would make
+    the date seed silently do nothing.
+    """
+    # Unlike [[NPC_MANIFEST]] (disable:true), the calendar carrier is read from
+    # getSortedEntries() with an explicit !disable filter, so a disabled entry is
+    # silently skipped and the world seeds nothing.
+    if entry.get("disable") is True:
+        warn("[[WORLD_CALENDAR]] carrier has disable:true; the Scene Tracker reads it with a "
+             "!disable filter and will skip it (WORLD_FORGE_SYNC §5.2) - emit it enabled with "
+             "key:[] and constant:false so it stays inert but visible")
+    content = entry.get("content")
+    try:
+        payload = json.loads(content) if isinstance(content, str) else None
+    except json.JSONDecodeError as exc:
+        warn(f"[[WORLD_CALENDAR]] content is not valid JSON: {exc}")
+        return
+    if not isinstance(payload, dict):
+        warn("[[WORLD_CALENDAR]] content must be a single JSON object")
+        return
+    schema = payload.get("schema")
+    if schema is not None and not isinstance(schema, int):
+        warn(f"[[WORLD_CALENDAR]] 'schema' should be an integer, got {schema!r}")
+    wd = payload.get("weekdayOfDay1")
+    if wd is not None and not (isinstance(wd, int) and 0 <= wd <= 6):
+        warn(f"[[WORLD_CALENDAR]] 'weekdayOfDay1' should be an integer 0-6 (0=Sun), got {wd!r}")
+    for which in ("start", "end"):
+        node = payload.get(which)
+        # `end` may legitimately be null or "infinite" (open-ended); `start` may be absent.
+        if node is None or (which == "end" and node == "infinite"):
+            continue
+        if not isinstance(node, dict):
+            suffix = ' (or null / "infinite")' if which == "end" else ""
+            warn(f"[[WORLD_CALENDAR]] '{which}' should be an object {{month, year}}{suffix}, "
+                 f"got {node!r}")
+            continue
+        month = node.get("month")
+        if not (isinstance(month, int) and 0 <= month <= 11):
+            warn(f"[[WORLD_CALENDAR]] '{which}.month' should be a 0-indexed integer 0-11 "
+                 f"(0=January, 11=December), got {month!r}")
+
+
+def check_lorebook(data, fail, info=None, warn=None):
     entries = data.get("entries")
     if not isinstance(entries, dict):
         fail("lorebook root has no entries dictionary")
@@ -223,6 +276,7 @@ def check_lorebook(data, fail, info=None):
     valid_uids = {e.get("uid") for e in entries.values() if isinstance(e, dict)}
     seen_uids = {}
     manifests = []
+    calendars = []
     for key, entry in entries.items():
         label = entry.get("comment") or key
         position = entry.get("position")
@@ -243,14 +297,23 @@ def check_lorebook(data, fail, info=None):
             fail(f"entry '{label}': snake_case/legacy alias field(s) {aliases} - native World Info "
                  "uses camelCase (caseSensitive, matchWholeWords, scanDepth, useGroupScoring) "
                  "and the optional characterFilter object")
-        if str(entry.get("comment") or "").startswith(NPC_MANIFEST_MARKER):
+        comment = str(entry.get("comment") or "")
+        if comment.startswith(NPC_MANIFEST_MARKER):
             manifests.append(entry)
+        if WORLD_CALENDAR_MARKER in comment:
+            calendars.append(entry)
     if len(manifests) > 1:
         fail(f"{len(manifests)} [[NPC_MANIFEST]] entries in one lorebook - the contract allows at most one")
     for entry in manifests:
         kind = check_manifest(entry, valid_uids, fail)
         if info is not None and kind == "director":
             info["director_manifest"] = True
+    if warn is not None:
+        if len(calendars) > 1:
+            warn(f"{len(calendars)} [[WORLD_CALENDAR]] entries in one lorebook - the Scene Tracker "
+                 "uses the first and ignores the rest (WORLD_FORGE_SYNC §5.2)")
+        for entry in calendars:
+            check_world_calendar(entry, warn)
 
 
 def check_preset(data, fail):
@@ -283,20 +346,22 @@ def classify(data):
 
 def validate_file(path, info=None):
     failures = []
+    warnings = []
     fail = failures.append
+    warn = warnings.append
 
     raw = path.read_bytes()
     try:
         text = raw.decode("utf-8", errors="strict")
     except UnicodeDecodeError as exc:
         fail(f"not valid UTF-8 ({exc}) - was this written through PowerShell?")
-        return failures
+        return failures, warnings
 
     try:
         data = json.loads(text)
     except json.JSONDecodeError as exc:
         fail(f"JSON parse error: {exc}")
-        return failures
+        return failures, warnings
 
     # Scan the decoded content, not the raw file: \u-escaped mojibake is still mojibake.
     unescaped = json.dumps(data, ensure_ascii=False)
@@ -315,10 +380,10 @@ def validate_file(path, info=None):
     if kind == "card":
         check_card(data, fail, info)
     elif kind == "lorebook":
-        check_lorebook(data, fail, info)
+        check_lorebook(data, fail, info, warn)
     elif kind == "preset":
         check_preset(data, fail)
-    return failures
+    return failures, warnings
 
 
 def main(argv):
@@ -342,13 +407,17 @@ def main(argv):
     info = {"director_manifest": False, "director_card_tag": False}
 
     total_failures = 0
+    total_warnings = 0
     for path in files:
-        failures = validate_file(path, info)
+        failures, warnings = validate_file(path, info)
         status = "PASS" if not failures else "FAIL"
         print(f"[{status}] {path.name}")
         for message in failures:
             print(f"       - {message}")
+        for message in warnings:
+            print(f"       [WARN] {message}")
         total_failures += len(failures)
+        total_warnings += len(warnings)
 
     # WORLD_FORGE_SYNC §2: a Director-role world (a lorebook manifest with
     # kind:"director") must ship a card carrying a recognized director tag, or the
@@ -362,7 +431,7 @@ def main(argv):
         print(f"[FAIL] (export set)\n       - {msg}")
         total_failures += 1
 
-    print(f"\n{len(files)} file(s) checked, {total_failures} failure(s).")
+    print(f"\n{len(files)} file(s) checked, {total_failures} failure(s), {total_warnings} warning(s).")
     return 1 if total_failures else 0
 
 

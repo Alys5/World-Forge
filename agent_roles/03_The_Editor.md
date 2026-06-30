@@ -357,6 +357,23 @@ The Compiler emits an NPC Memory Manifest (Compiler Step 7.7; CLAUDE.md principl
 
 Read-only like the rest of the Editor: direct the Architect to fix the source; do not edit entries.
 
+### Step 4.7 — World Calendar Carrier Validation (conditional; `contracts/WORLD_FORGE_SYNC.md` §5)
+
+Applies **only if** the Architect authored a `### CARRIER: [[WORLD_CALENDAR]]` block at the end of `Drafts/Tier1_World_Entries.md`. The carrier is entirely optional — its **absence is never a gap**, do not flag it. When it *is* present, the producer intends the Scene Tracker to seed from it, so a malformed carrier silently defeats its own purpose; validate it.
+
+**HARD FAIL on any of:**
+- **Disabled carrier.** The block's flags are not `disable: false`. The Scene Tracker reads candidate entries with a `!disable` filter, so a `disable: true` calendar is silently skipped and the world seeds nothing. (This is the one place the carrier flags differ from the NPC Memory Manifest, which is `disable: true` — do not copy the manifest's flag here.) The block must also be inert: `key: []`, `constant: false`.
+- **Unparseable payload.** The `**Payload**` line is not a single well-formed JSON object.
+- **Month out of range / wrong indexing.** `start.month` or `end.month` is not an integer **0–11** (0 = January … 11 = December). A 1–12 value is the common mistake — flag it as off-by-one.
+- **Weekday out of range.** `weekdayOfDay1` is present and not an integer **0–6** (0 = Sunday … 6 = Saturday).
+- **Bad `end` shape.** `end`, if present, is not one of: an object `{month, year}`, omitted, or the literal string `"infinite"` (open-ended). A bare label like `"December"` is wrong — it must be the `{month, year}` object.
+- **Null placeholders.** Any field emitted as `null` (omit absent fields entirely; the sole exception is `end: "infinite"`).
+
+**SOFT FLAG (report, do not block):**
+- A carrier present but the Master Design Section 1 `World Calendar` line is missing (or vice versa) — confirm the calendar is intentional and the values trace to the seed.
+
+Read-only: direct the Architect to fix the carrier; do not edit it.
+
 ### Step 5 — LLM Instruction Audit (Hybrid Validation Protocol)
 
 #### 5a — `{{original}}` placement check (hard fail; see Foundational Rule #1)
@@ -705,6 +722,7 @@ Post-history: [checklist results + word count]
 - **Sandbox mode: SANDBOX_STATE has Standing Situation + Tonal Mandate (4–8 imperative bullets incl. aliveness directives + live scene types); ≥1 WORLD_PULSE; no arc/CHARACTER_STATE/NPC_SHIFT/DRAMATIC_BEAT contamination (Step 4a-S) ✓**
 - **Roster NPCs (§7.E): each has Voice fingerprint + Signature line; fingerprints distinct across the roster ✓**
 - **NPC/Character Identity Integrity (Step 4.6): comment form + em-dash valid; one canonical name per character used verbatim; no slug collisions; multi-person entries split or marked `Shared roster entry` (interchangeable only); `{{user}}` not authored as an NPC; relationship-target + facet-label soft flags resolved ✓**
+- **World Calendar carrier (Step 4.7; only if present): `disable: false` + inert; payload parses; months 0-indexed 0–11; weekday 0–6; `end` is object/omitted/`"infinite"`; no null placeholders ✓**
 - **All entries: Position Rationale present (DEFAULT or justified) ✓**
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**

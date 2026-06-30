@@ -129,6 +129,8 @@ If the user gives a rule with no cost or no prevention, ask: "What goes wrong if
 
 If the user describes a faction as just "a criminal organization," ask what makes this one specific. The Black Hand of God is not "a criminal organization" — it is "Lucifer's earthly demonic syndicate disguised as crime." That specificity is the entire point.
 
+**World calendar (optional — ask once, do not push).** If time looks like it matters to this world — a story pinned to a real date, a deadline the plot is racing, a seasonal world — ask: "Does the story open on a specific in-world date, and is it meant to end by a certain point — or is it open-ended?" Capture a **start month + year**, an **end month + year** *or* `open-ended`, and optionally the **weekday Day 1 falls on**. This becomes World Seed Section 2g and seeds the Scene Tracker's in-world calendar. It is a convenience only — if the user is indifferent or the world is timeless, leave it blank and move on; nothing downstream requires it.
+
 ### SECTION 3: THE PROTAGONIST ({{user}})
 
 This section is critical. It is the section users most often write thinly. Push hardest here.
