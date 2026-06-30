@@ -82,6 +82,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 - For each existing entry in JSON not present in the touched markdown:
   - If markdown is the complete source-of-truth for this lorebook (touched in full by the revision) → entry is deleted (rare in revisions; usually only happens if cascade explicitly says so)
   - If markdown was edited in append/in-place mode (the common case) → keep the existing JSON entry untouched
+- **Inert carriers are preserved, never silently dropped.** If the existing JSON has a `[[WORLD_CALENDAR]]` entry (`contracts/WORLD_FORGE_SYNC.md` §5) or an `[[NPC_MANIFEST]]` entry (parent Step 7.7), carry it through the rewrite with its UID — even when the touched draft does not restate the carrier block (a Tier 1 entry edit usually won't). The calendar carrier keeps its enabled-but-inert flags verbatim (`disable: false`, `key: []`, `constant: false`) and its payload unless the revision explicitly changes the calendar; the manifest is regenerated against the final UID set (Step 7.7 / sign-off below). Do **not** add a carrier to a lorebook that never had one — that is a full-compile concern, not a surgical revision. A revision that edits the calendar itself is an ordinary `tier1_world_rule_modify`: the mini-Architect rewrites the carrier block (inheriting parent §6) and the mini-Editor revalidates it (inheriting parent Step 4.7).
 - Validate the resulting JSON against the schema and parent hard-fail rules
 
 **For Export/User.md:**
@@ -236,7 +237,8 @@ Append to the Revision Log entry:
 
 ### NPC Memory Manifest (parent Step 7.7)
 - [ ] Every rewritten lorebook that had a `[[NPC_MANIFEST]]` entry has it regenerated — `facets`/`scenes` uids match the final (preserved + new) UID set; slug `id`s unchanged
-- [ ] No manifest added to a lorebook that never had one (full-compile/resync concern, not surgical)
+- [ ] Any existing `[[WORLD_CALENDAR]]` carrier preserved through a World-lorebook rewrite — UID kept, flags still `disable: false` + `key: []` + `constant: false`, payload unchanged unless the revision targets the calendar (`contracts/WORLD_FORGE_SYNC.md` §5)
+- [ ] No manifest or calendar carrier added to a lorebook that never had one (full-compile/resync concern, not surgical)
 - [ ] Slug `id`s compared against the prior export; any rename (id change) flagged as memory-orphaning in the "What Changes When" report and confirmed by the user — never shipped silently
 
 ### User Report

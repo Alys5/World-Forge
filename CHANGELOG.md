@@ -63,8 +63,19 @@ it stays inert via `key: []` + `constant: false`. Months are **0-indexed**
 - `agent_roles/04_The_Compiler.md` (new **Step 7.8** + Step 5 note, validation
   pass, output-manifest sign-off): transcribes the carrier verbatim into the
   World Lorebook JSON with the enabled-but-inert flags.
+- `agent_roles/revise/04_The_Compiler_mini.md`: **preserves** an existing
+  `[[WORLD_CALENDAR]]` carrier through a World-lorebook rewrite (UID + flags +
+  payload), the same way it regenerates the NPC manifest; never drops it and never
+  adds one to a lorebook that lacked it. Editing the calendar is an ordinary
+  `tier1_world_rule_modify` — the mini-Architect/mini-Editor inherit the parent's
+  §6 authoring / Step 4.7 validation, so no new revise scope type.
+- Convert pipeline carries the seam: `agent_roles/Converter/00_The_Converter.md`
+  (preservation matrix row + Section 2 seed-writing) and
+  `templates/Convert_Brief_Template.md` (§4d) carry the calendar across a reframe
+  when the era is unchanged, regenerate/drop it when the setting's time period
+  differs, and keep it by default in rebaseline (it is not protagonist-coupled).
 - `CLAUDE.md`: contract description line + a new cross-file-consistency row for
-  the calendar seam.
+  the calendar seam (incl. the revise + convert cascade touchpoints).
 
 ---
 

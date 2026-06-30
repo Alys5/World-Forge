@@ -261,7 +261,7 @@ Author `<target_path>/World_Seed.md` against `templates/World_Seed_Template.md`.
 
 - **Section 1.5 (Style Contract):** If the user kept the world defaults, copy them across verbatim (mark with the same comment). If they changed any of the six fields, write the new values. Per-card overrides (Section 1.5c) — leave the placeholder language ("Refiner: list every override here..."); per-card overrides are regenerated when characters are regenerated, and the Refiner will populate this section from Section 4 declarations.
 
-- **Section 2 (The World — Tier 1):** Carry preserved Tier 1 content across — world rules, factions, locations, species, concepts — including their full descriptions. If the user modified specific entries, write the modified version with a `<!-- MODIFIED FROM SOURCE -->` comment. If they dropped a faction, do not write it. If they want a faction's relationship-to-`{{user}}` rewritten because the protagonist changed, write the new relationship; mark with `<!-- RELATIONSHIP REAUTHORED — protagonist changed -->`.
+- **Section 2 (The World — Tier 1):** Carry preserved Tier 1 content across — world rules, factions, locations, species, concepts — including their full descriptions. If the user modified specific entries, write the modified version with a `<!-- MODIFIED FROM SOURCE -->` comment. If they dropped a faction, do not write it. If they want a faction's relationship-to-`{{user}}` rewritten because the protagonist changed, write the new relationship; mark with `<!-- RELATIONSHIP REAUTHORED — protagonist changed -->`. **If the source seed has a Section 2g World Calendar, carry it across when the era is unchanged; regenerate it (or drop it) when the new setting's time period differs** — mark a changed calendar `<!-- CALENDAR REGENERATED — setting era changed -->`.
 
 - **Section 3 (The Protagonist):** *Always new content.* Write the new protagonist from the user's Step 4 question 7 answers. Do not carry across the old protagonist's content.
 
@@ -344,6 +344,7 @@ The matrix below is the source of truth for which source content can transfer to
 | Section 2 — Factions | keep | modify (per faction) / drop / regenerate | Relationship-to-`{{user}}` always reauthored |
 | Section 2 — Standing locations | keep | modify / drop / regenerate | Same logic as factions |
 | Section 2 — Species, concepts | keep | modify / regenerate | Usually carry as-is |
+| Section 2g — World Calendar (Scene Tracker date seed) | keep | modify / regenerate / drop | World-time metadata (`contracts/WORLD_FORGE_SYNC.md` §5). Carries if the era is unchanged; regenerate or drop if the new setting's time period differs. Not protagonist-coupled, so rebaseline keeps it by default |
 | Section 3 — Protagonist | regenerate (always) | — | Protagonist context has changed by definition |
 | Section 4 — Each Tier 2 character | keep / role-shift / drop | regenerate (rare) | Voice, wound, physical, voice carry; relationship-to-`{{user}}` always reauthored |
 | Section 4 — NPC `Standing Goal` (principals) | preserve if protagonist-agnostic | strip + mark for reauthor if protagonist-coupled | The activity-cadence directive substrate. Goal citing old protagonist or its role gets dropped with marker |
