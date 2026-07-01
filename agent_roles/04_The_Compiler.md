@@ -28,7 +28,7 @@ If all ten pass, write the file. If any fails, the file is wrong — fix the sou
 
 **Load now:**
 - The `Drafts/` narrative sources listed in Section 2a (verify sign-offs via the Pipeline State Ledger first)
-- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`
+- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Lorebook_Script.js`
 - `Notes_Quick_Reference.md` — position enum, flag effects, strictness gotchas
 
 **Load on demand (open at the step that needs it — do not preload):**
@@ -67,6 +67,8 @@ You have access to SillyTavern's documentation and source code for schema guidan
 ### 2b. Schema Sources (read before generating any output)
 - `templates/Char_Card_creation.md`
 - `templates/Lorebook_creation.md`
+- `templates/Janitor_Bot_Template.md`
+- `templates/Janitor_Lorebook_Script.js`
 
 If any template is missing: halt and report. Do not guess schema.
 
@@ -189,6 +191,13 @@ For each card:
 Do not modify the file. Do not strip the BEGIN/END markers, the Setup Instructions, or any whitespace. The user will copy the text between the markers themselves. The full markdown stays so the Setup Instructions remain visible alongside the description block.
 
 If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught this. Do not attempt to synthesize one.
+
+### Step 4B — Build JanitorAI Bot Profile (`Export/[CharName]_JanitorAI.txt`)
+For each character card built in Step 4, generate a paired JanitorAI Bot Profile using the JED template structure.
+- Read `templates/Janitor_Bot_Template.md`.
+- Map the drafted `Card_[CharName].md` content and `Instructions_[CharName].md` content to the fields in the Janitor template.
+- **Multi-Bots / Roster Cards**: If the drafted card represents a Sandbox Director or a group of multiple characters (e.g., `Card_WorldDirector.md`), do not create a single generic profile. Instead, identify the principal roster from the drafts and duplicate the character definition block within the JanitorAI template for *each* individual character in the roster, populating their specific details.
+- Save the resulting text file as `Export/[CharName]_JanitorAI.txt`. This is a plain-text markdown file intended for the user to copy-paste into JanitorAI's bot "Personality" field.
 
 ### Lorebook file-naming convention (applies to Steps 5, 6, 7, and the intimacy registers)
 
@@ -327,6 +336,16 @@ When an npc has a single combined entry, map `combined`; when facet-split, map e
 - **Shared roster entries.** An entry marked `**Shared roster entry**` (interchangeable extras, per §7 of the Architect) is **one** npc: use its shared canonical name for `id`/`displayName` and include every member's name in `aliases`. This is the one intended many-people-to-one-id case.
 - **Unresolved facet/relationship.** A facet label outside the controlled vocabulary is simply not added to `facets` (the entry still exists as world-info); a `Relationship to X` whose `X` resolves to no canonical name is skipped, not guessed.
 
+### Step 7.8 — Build JanitorAI Lorebook Script (`Export/[WorldName]_JanitorAI_Script.js`)
+
+JanitorAI supports ES6 scripts instead of standard lorebooks. Translate the World-Forge Tier 1-3 lorebook entries into an "Everything Lorebook" dynamic script.
+1. Read `templates/Janitor_Lorebook_Script.js`.
+2. Map Tier 1 (World rules) to the `world` array.
+3. Map Tier 2 (Character profiles) to the `people` array.
+4. Map Tier 3 (Arc or Sandbox State) to the `states` array.
+5. Map Tier 3 (TENSION or WORLD_PULSE) to the `events` array with appropriate message count triggers.
+6. Generate valid ES6 JavaScript and save as `Export/[WorldName]_JanitorAI_Script.js`.
+
 ### Step 8 — Validation Pass
 
 Before saving any file (per Foundational Rules at top of this file):
@@ -363,12 +382,14 @@ Before saving any file (per Foundational Rules at top of this file):
 ```
 Export/
 ├── [CharName]_Card.json            ← V3 character card per named card
+├── [CharName]_JanitorAI.txt        ← JanitorAI bot profile (Markdown format)
 ├── User.md                         ← {{user}} Persona Description text (paste into ST persona)
 ├── [WorldName]_World_Lorebook.json             ← Tier 1: permanent world truths
 ├── [WorldName]_[CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
 ├── [WorldName]_[ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
 ├── [WorldName]_Arc[N]_Lorebook.json            ← Tier 3 (arc mode): one per arc
 ├── [WorldName]_Sandbox_Lorebook.json           ← Tier 3 (sandbox mode): single, always active
+├── [WorldName]_JanitorAI_Script.js             ← JanitorAI dynamic lorebook ES6 script
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
 └── Compiler_Log.md                 ← Build log with field mapping and validation results
 ```
@@ -387,10 +408,12 @@ Append to `Export/Compiler_Log.md`:
 
 ### Output Manifest
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
+- [ ] [CharName]_JanitorAI.txt — JanitorAI JED format generated
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] [WorldName]_World_Lorebook.json — [N] entries, all Tier 1
 - [ ] [WorldName]_[CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
 - [ ] Tier 3: arc mode — [WorldName]_Arc[N]_Lorebook.json, [N] entries each, ARC_STATE present (list per arc); sandbox mode — [WorldName]_Sandbox_Lorebook.json, SANDBOX_STATE + ≥1 WORLD_PULSE present
+- [ ] [WorldName]_JanitorAI_Script.js — ES6 modular lorebook script generated
 - [ ] **Every exported lorebook/register filename is `[WorldName]_`-prefixed, and each lorebook's internal `name` matches its filename (file-naming convention) ✓**
 - [ ] Compiler_Log.md — complete
 

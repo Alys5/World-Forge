@@ -8,7 +8,7 @@
 
 World Forge is a **multi-agent pipeline for building immersive roleplay worlds for SillyTavern**. It is not application code in the traditional sense — it is a curated collection of agent specifications (markdown), templates (markdown and JSON), and orchestration logic (markdown) that together define a structured creative writing pipeline.
 
-The pipeline is designed to run inside an agentic VS Code extension (typically Kilo Code; the formerly-recommended Roo Code was retired May 15, 2026). When invoked, it walks a user from a raw idea through 5+ phases of structured drafting and validation, producing a complete SillyTavern-ready world package.
+The pipeline is designed to run inside an agentic VS Code extension (typically Kilo Code; the formerly-recommended Roo Code was retired May 15, 2026). When invoked, it walks a user from a raw idea through 5+ phases of structured drafting and validation, producing a complete dual-export world package (SillyTavern JSON and JanitorAI JED/JS formats).
 
 **The repository is the pipeline itself.** Editing files here changes how the pipeline behaves on its next run. There is no compilation step, no test suite, no deployment — files are read directly by the runtime agent.
 
@@ -127,7 +127,7 @@ If you find yourself moving content between cards and preset, verify which side 
 
 The Editor (Phase 3), Voice Auditor (3.5), Arc Transition Auditor (3.6), Intimacy Auditor (3.7), and Prompt Engineer (5) are **read-only on draft and export files**. They produce critique reports, audit reports, and recommendations — they do not modify the files they audit.
 
-The Architect (Phase 2) and Intimacy Architect (Phase 2.5) are the **only agents with write authority on drafts**. The Compiler (Phase 4) is the only agent with write authority on `Export/` JSON files — with one narrow, post-launch exception: the Prompt Engineer gains write authority on the single `Export/[WorldName]_ChatPreset.json` file (and only that file) under Preset Resync Mode, and the mini-Prompt-Engineer may toggle three preset blocks under the revise pipeline. See principle #8. Both exceptions are preset-only; neither touches lorebook or card JSON.
+The Architect (Phase 2) and Intimacy Architect (Phase 2.5) are the **only agents with write authority on drafts**. The Compiler (Phase 4) is the only agent with write authority on `Export/` artifacts (JSON files and JanitorAI TXT/JS exports) — with one narrow, post-launch exception: the Prompt Engineer gains write authority on the single `Export/[WorldName]_ChatPreset.json` file (and only that file) under Preset Resync Mode, and the mini-Prompt-Engineer may toggle three preset blocks under the revise pipeline. See principle #8. Both exceptions are preset-only; neither touches lorebook or card JSON.
 
 The Prompt Engineer's audit recommendations (Sections 7 and 8 of `Prompt_Engineer_Audit.md`) require **manual user application** — see Phase 5.5 in `workflows/world-forge.md`. This is intentional: it preserves audit reviewability and prevents self-validating corrections.
 

@@ -32,7 +32,7 @@ You are **The Compiler (mini)**. Approved drafts are ready. You translate the to
 - All touched draft files in `Drafts/` (approved by Editor-mini and applicable auditors)
 - All existing `Export/` JSON files corresponding to the touched drafts — read for UID assignment continuity
 - `Notes_On_functionality.md` — schema authority
-- `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md` — schema templates
+- `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Lorebook_Script.js` — schema templates
 - `Drafts/Master_Design.md` — Revision Log entry to verify all required sign-offs
 - `Drafts/Revision_R[N]_Report.md` — cascade for confirmation of which files to re-compile
 
@@ -72,6 +72,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 - `system_prompt` starts with `{{original}}` on its own line
 - `post_history_instructions` same
 - Validate against parent's hard-fail rules before writing
+- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.txt` based on the updated drafts and `templates/Janitor_Bot_Template.md`. Apply the Multi-Bot rule (duplicating the character block for each roster member) if the card represents a roster or Sandbox Director.
 
 **For each touched lorebook (`Tier[N]_*.md` → `*_Lorebook.json` or `Arc[N]_*Lorebook.json`):**
 - Read existing JSON
@@ -83,6 +84,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
   - If markdown is the complete source-of-truth for this lorebook (touched in full by the revision) → entry is deleted (rare in revisions; usually only happens if cascade explicitly says so)
   - If markdown was edited in append/in-place mode (the common case) → keep the existing JSON entry untouched
 - Validate the resulting JSON against the schema and parent hard-fail rules
+- **(JanitorAI)** Regenerate `Export/[WorldName]_JanitorAI_Script.js` incorporating the updated entries.
 
 **For Export/User.md:**
 - Pass-through from `Drafts/User.md` if it was touched (revision could touch the persona description — rare; usually only when a character revision affects the protagonist)
@@ -170,6 +172,10 @@ Your running SillyTavern session is affected by this revision as follows:
 - [Changed / unchanged]. If changed, re-import via ST → Settings → Connection
   Profiles / Chat Completion Settings → Import.
 
+### JanitorAI Export files updated
+- [Path]: [JanitorAI Bot Profile / JanitorAI Lorebook Script] regenerated. 
+  Re-import these into JanitorAI if you are using that platform.
+
 ### Risk to running chats
 - Lorebook UIDs preserved: yes — existing chats reference UIDs and will pick up
   the new content on next scan with no break in state.
@@ -228,6 +234,8 @@ Append to the Revision Log entry:
 - [ ] Entry fields camelCase per ST schema — no snake_case aliases or legacy characterFilter pair
 - [ ] No inline revision marker (`<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->`) survives in any JSON value — markers stripped on the Drafts→Export transcription; grep for `REVISED IN R` / `CREATED IN R` / `<!--` returns zero across every written file
 - [ ] Every written file is UTF-8 — non-ASCII intact (em-dashes, curly quotes, accented names), existing text not mojibaked on rewrite; no `â€`/`Ã` markers; not authored through PowerShell
+- [ ] JanitorAI Bot Profile (`[CharName]_JanitorAI.txt`) regenerated for touched cards
+- [ ] JanitorAI Lorebook Script (`[WorldName]_JanitorAI_Script.js`) regenerated for touched lorebooks
 
 ### UID Continuity
 - [ ] Existing entries keep their UIDs across all touched lorebooks

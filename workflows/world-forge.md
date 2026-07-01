@@ -60,11 +60,11 @@ description: A workflow to build worlds for player to roleplay in.
       |
       v
  PHASE 4: THE COMPILER
- Translates Markdown → SillyTavern JSON. Reads Notes_On_functionality.md first.
+ Translates Markdown → SillyTavern JSON and JanitorAI JED/JS. Reads Notes_On_functionality.md first.
       |
       |-- [Templates missing?] → ⏸ PAUSE → /worldforge resume phase4
       v
- Export/ [JSON package]
+ Export/ [JSON package + JanitorAI files]
       |
       v
  PHASE 5: THE PROMPT ENGINEER
@@ -349,6 +349,7 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `[WorldName]_Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
 - Tier 3 intimacy register — *arc mode:* `[WorldName]_Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `[WorldName]_Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
 - An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
+- **JanitorAI Target:** `[CharName]_JanitorAI.txt` (JED Bot Profile format) and `[WorldName]_JanitorAI_Script.js` (Modular Lorebook script). Character profiles automatically duplicate blocks for Roster setups.
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
 
