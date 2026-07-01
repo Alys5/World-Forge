@@ -13,6 +13,21 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-01 — Tutorial: document `/worldforge audition`
+
+`tutorial.md` never referenced the Auditioner (`/worldforge audition`), even
+though it's documented in `workflows/world-forge.md` and `CLAUDE.md`. No
+pipeline behavior changed; this closes the documentation gap.
+
+### Added
+- `tutorial.md`: `/worldforge audition` and `--save` rows in the Section 2
+  trigger-commands table; the audition step in the Section 10 lifecycle
+  sentence; a new **Section 10.6** walkthrough (verdicts, read-only scope,
+  the revise-handle hand-off, relation to the Voice Auditor); a pointer to
+  `agent_roles/Auditioner/00_The_Auditioner.md` in Section 12.
+
+---
+
 ## 2026-06-30 — World Calendar seam: producer support for the Scene Tracker date seed
 
 The fork's `world-forge` Scene Tracker extension gained an in-world calendar
