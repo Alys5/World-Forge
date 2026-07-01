@@ -192,11 +192,11 @@ Do not modify the file. Do not strip the BEGIN/END markers, the Setup Instructio
 
 If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught this. Do not attempt to synthesize one.
 
-### Step 4B — Build JanitorAI Bot Profile (`Export/[CharName]_JanitorAI.txt`)
+### Step 4B — Build JanitorAI Bot Profile (`Export/[Name]_JanitorAI.txt`)
 For each character card built in Step 4, compile the paired JanitorAI Bot Profile.
-- Read `Drafts/JanitorAI_Profile_[CharName].md` (produced by the Architect).
+- Read `Drafts/JanitorAI_Profile_[CharName].md` or `Drafts/JanitorAI_Profile_Group.md` (produced by the Architect). The Architect evaluates the ensemble proximity and may have generated a single unified Multi-Bot group profile instead of individual profiles.
 - Verify the file has Editor Sign-Off.
-- Pass the draft byte-for-byte to `Export/[CharName]_JanitorAI.txt` as plain text markdown. Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
+- Pass the draft byte-for-byte to `Export/[Name]_JanitorAI.txt` as plain text markdown (where `[Name]` is either the character's name or the group's name, matching the draft filename). Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
 
 ### Lorebook file-naming convention (applies to Steps 5, 6, 7, and the intimacy registers)
 
@@ -380,7 +380,7 @@ Before saving any file (per Foundational Rules at top of this file):
 ```
 Export/
 ├── [CharName]_Card.json            ← V3 character card per named card
-├── [CharName]_JanitorAI.txt        ← JanitorAI bot profile (Markdown format)
+├── [Name]_JanitorAI.txt            ← JanitorAI bot profile (Markdown format, single or group)
 ├── User.md                         ← {{user}} Persona Description text (paste into ST persona)
 ├── [WorldName]_World_Lorebook.json             ← Tier 1: permanent world truths
 ├── [WorldName]_[CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
@@ -406,7 +406,7 @@ Append to `Export/Compiler_Log.md`:
 
 ### Output Manifest
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
-- [ ] [CharName]_JanitorAI.txt — JanitorAI JED format generated
+- [ ] [Name]_JanitorAI.txt — JanitorAI JED format generated (individual or group)
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] [WorldName]_World_Lorebook.json — [N] entries, all Tier 1
 - [ ] [WorldName]_[CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)

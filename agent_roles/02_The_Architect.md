@@ -199,15 +199,21 @@ For the full structural specification, including the rationale for each section,
 
 ---
 
-## 5.6. JANITOR_AI BOT PROFILE DRAFTS — `Drafts/JanitorAI_Profile_[CharName].md`
+## 5.6. JANITOR_AI BOT PROFILE DRAFTS — `Drafts/JanitorAI_Profile_[Name].md`
 
-One file per character card. This draft maps the character's definition to the highly structured JanitorAI bot format. It must follow `templates/Janitor_Bot_Template.md` precisely.
+This draft maps the character's definition to the highly structured JanitorAI bot format. It must follow `templates/Janitor_Bot_Template.md` precisely.
+
+### Ensemble Proximity and Bot Output Format
+
+Before drafting, evaluate the **Ensemble Proximity** of the cast based on the World Seed:
+- **Unified Group Profile (Multi-Bot):** If the scenario centers around a tight-knit ensemble (e.g., a specific cast moving into dormitories together, a squad on a mission), generate a **single** unified profile (`Drafts/JanitorAI_Profile_Group.md` or `Drafts/JanitorAI_Profile_[GroupName].md`). Use the `[GROUP DYNAMICS AND RELATIONSHIPS]` section to summarize how the cast interacts, and map each principal character into their own `<CharName>` block.
+- **Individual Profiles (Single-Bot):** If the World Seed implies a sprawling sandbox where the protagonist encounters characters in isolation, default to generating individual profiles (`Drafts/JanitorAI_Profile_[CharName].md`) for each character to preserve token memory and prevent character bleeding.
 
 ### Drafting Workflow
 
-1. Map the core character details (from Section 5) into the `[APPEARANCE]`, `[BASIC_INFO]`, `[PERSONALITY_AND_TRAITS]`, `[SEXUALITY]`, and `[SPEECH]` blocks of the template.
-2. **Permanent Lore:** Include Tier 1 (World truths) and permanent Tier 2 (standing goals, permanent relationships) within the `[SETTING]` and `[LORE]` blocks of the template. *Do not leave these out under the assumption the script will handle them.* 
-3. **Keep it tight:** The JanitorAI template can easily bloat token counts. Be ruthless. Distill the prose from the main Character Card rather than copying it wholesale if it's too long.
+1. Map the core character details (from Section 5) into the `BASIC INFO AND APPEARANCE`, `PERSONALITY AND BEHAVIOR`, `SEXUALITY`, and `SPEECH AND ABILITIES` blocks of the template for each respective `<CharName>`.
+2. **Permanent Lore:** Include Tier 1 (World truths) and permanent Tier 2 (standing goals, permanent relationships) within the `[SETTING AND SCENARIO]` and `[CONDENSED LORE]` blocks of the template. *Do not leave these out under the assumption the script will handle them.* 
+3. **Keep it tight:** The JanitorAI template can easily bloat token counts, especially in Multi-Bot scenarios. Be ruthless. Distill the prose from the main Character Card rather than copying it wholesale if it's too long.
 4. **No Situational Events:** Do NOT put Arc States, tension modifiers, or situational / transient locations here. Those belong in the ES6 Script compiled in Phase 4.
 
 ---

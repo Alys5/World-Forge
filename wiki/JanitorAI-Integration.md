@@ -6,10 +6,10 @@ World-Forge now natively supports exporting character profiles and modular ES6 l
 
 The standard World-Forge pipeline produces V3 JSON cards for SillyTavern. For JanitorAI, the pipeline does the following:
 
-1. **Phase 2 (The Architect)**: The Architect drafts a dedicated `Drafts/JanitorAI_Profile_[CharName].md`. Permanent Tier 1 and Tier 2 lore (world rules, standing goals, permanent relationships) are placed directly into the `[SETTING]` and `[LORE]` blocks of this profile.
+1. **Phase 2 (The Architect)**: The Architect drafts a dedicated Janitor profile (`Drafts/JanitorAI_Profile_[Name].md`). The Architect evaluates the **Ensemble Proximity** of the cast to determine whether to generate a unified group profile (`Drafts/JanitorAI_Profile_Group.md`) for tight-knit ensembles (Multi-Bot) or individual profiles for expansive sandboxes (Single-Bot). Permanent Tier 1 and Tier 2 lore (world rules, standing goals, permanent relationships) are placed directly into the `[SETTING AND SCENARIO]` and `[CONDENSED LORE]` blocks of this profile.
 2. **Phase 3 (The Editor)**: The Editor validates this new draft specifically for JanitorAI formatting compliance and checks for "token bloat", enforcing concise bullet points over excessive prose. It also ensures that situational/transient elements are kept out of this profile.
 3. **Phase 4 (The Compiler)**: The Compiler produces two final artifacts:
-   - `Export/[CharName]_JanitorAI.txt` — This is the plain text JED profile ready to be copy-pasted into the JanitorAI "Personality" box.
+   - `Export/[Name]_JanitorAI.txt` — This is the plain text JED profile ready to be copy-pasted into the JanitorAI "Personality" box. It contains either the individual character or the unified multi-bot group profile.
    - `Export/[WorldName]_JanitorAI_Script.js` — This is an ES6 "Everything Lorebook" script. It handles keyword-triggered injection of **Situational** Tier 1/2 elements, and all Tier 3 progression (Arc States, Sandbox States, TENSION modifiers).
 
 ## ES6 Scripting Sandbox Restrictions
