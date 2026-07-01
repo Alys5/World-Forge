@@ -96,6 +96,8 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 | `/worldforge revise` | Post-launch surgical edits to a shipped world (UID-preserving, scope-locked) |
 | `/worldforge revise --brainstorm` | Post-launch diagnostic: when something feels off but you can't name what to revise — runs the Brainstormer to locate the concern first, then the Reviser scopes it (see Section 9) |
 | `/worldforge resync-preset` | Post-launch: refresh a shipped world's Chat Completion Preset against the current template + block library |
+| `/worldforge audition` | Post-launch, read-only: probe how one character would behave in one scene under named conditions — returns YES / NO / IT DEPENDS with a trace, changes nothing (see Section 10.6) |
+| `/worldforge audition --save` | Same as above, but also writes the result to `Drafts/Audition_[Char]_[slug].md` as a durable record |
 | `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build — different protagonist, World Mode, Style Contract, or Core Concept (see Section 8) |
 | `/worldforge convert <source> <target> --rebaseline` | Post-launch: consolidate a revised world into a clean rebuild — same protagonist, revisions carried, markers dropped (see Section 8) |
 | `/worldforge convert <source> <target> --rebaseline --then-interview` | Same, then go directly into the Interviewer to make major changes against the clean seed before the rebuild (see Section 8) |
@@ -589,7 +591,7 @@ This section collects every `/worldforge` command in one place, each with an exa
 - **Paths point at project folders** — the directory that holds `World_Seed.md`, `Drafts/`, and `Export/` — not at individual files, except where a flag explicitly takes a file (`--brief`, `--target`).
 - **You type these in your agentic extension's chat** (the **Code** agent in Kilo Code, or the default agent in Cline), with the World-Forge repo open as the workspace.
 
-A run moves left-to-right through a lifecycle: *(optional) brainstorm → start/skip → resume/skip while building → ship → revise / resync-preset / convert after launch.*
+A run moves left-to-right through a lifecycle: *(optional) brainstorm → start/skip → resume/skip while building → ship → revise / resync-preset / convert / audition after launch.*
 
 ### 10.1 Starting a build
 
@@ -744,6 +746,30 @@ After writing the consolidated seed, hands straight into the Interviewer (seed-r
 Inserts the Brainstormer (improvement posture) ahead of that Interviewer: it brainstorms *what* to change against the consolidated world, writes `Brainstorm_Notes.md`, and the seed-revision Interviewer reads those as proposals. Requires `--rebaseline`; supersedes `--then-interview`.
 **Why:** you want to evolve the world but haven't decided how.
 
+### 10.6 Post-launch: probe a character (`/worldforge audition`)
+
+You're mid-session in a shipped world and a question comes up that's too subtle to answer from memory: would this character actually *do* that, right now, given everything currently true about them? `/worldforge audition` answers it cheaply, without gambling a real scene to find out.
+
+```
+/worldforge audition
+```
+
+Invokes **the Auditioner** (`agent_roles/Auditioner/00_The_Auditioner.md`) — not a numbered pipeline phase, a standalone probe you can run any time after launch. You hand it one character, one scene, and the active conditions (which arc is live, or the standing sandbox state — plus the named ladder stage, if the NPC has one); it simulates the scene as the model would actually run it and returns one of three verdicts:
+
+- **YES** — the spec reliably produces the behavior you expected.
+- **NO** — the spec is fine, it just drives a *different* behavior than you expected.
+- **IT DEPENDS** — the spec is silent or self-conflicting here, so the outcome isn't determined. This is a coverage gap surfacing on demand.
+
+It is read-only end to end — it never touches `Drafts/`, `Export/`, or `Master_Design.md`. If it finds a real gap, it hands you a **revise handle** (the file, the element, the kind of change) rather than applying anything itself; you decide, and `/worldforge revise` is what actually makes the edit.
+
+```
+/worldforge audition --save
+```
+
+Same probe, but also writes the result to `Drafts/Audition_[Char]_[slug].md` as an informal, durable log — read by nothing downstream, safe to delete any time.
+
+**Why:** it's the single-scenario, on-demand cousin of the Voice Auditor (Phase 3.5) — same simulation discipline and check vocabulary, applied to exactly the one situation you're curious about instead of a systematic build-time matrix across the whole cast. Reach for it whenever play raises a "would they really..." question you don't want to answer by trial and error.
+
 ---
 
 ## 11. Setting your prose style (the Style Contract)
@@ -835,3 +861,4 @@ You set the contract in Section 1.5 of the World Seed — the Interviewer asks f
 - `templates/World_Seed_Template.md` — the blank template you fill in for a new world (or that the Interviewer fills in for you)
 - `templates/User_Persona_template.md` — the structural reference for `User.md`
 - `templates/Convert_Brief_Template.md` — the preservation matrix as a fillable brief, for brief-driven conversions
+- `agent_roles/Auditioner/00_The_Auditioner.md` — the on-demand behavioral probe invoked by `/worldforge audition` (Section 10.6)
