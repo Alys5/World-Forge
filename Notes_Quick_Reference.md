@@ -112,3 +112,15 @@ Source: Notes §6 and §8 Step 6.
   to user-role messages.
 - ANTop/ANBottom content only ships when the Author's Note itself fires (insertion
   interval logic) — another reason they are unsafe slots for permanent lore.
+
+## 6. JanitorAI Script Sandbox Limits & Lore Split
+
+Source: `guide_script.md` from JanitorAI docs.
+
+- **Sandbox restrictions:** No async (`fetch`, `setTimeout`), no DOM access (`document`), no global overwrites. Scripts must run quickly.
+- **Context guards:** Always wrap the main script logic in a `try...catch` block. Silent failures in JanitorAI scripts break the bot without UI warnings.
+- **Allowed modifications:** The script can ONLY mutate two fields: `context.character.personality` and `context.character.scenario`.
+- **Permanent vs Situational split:** 
+  - **Permanent Lore:** Tier 1 truths and permanent Tier 2 (standing goals, relationships) must go directly into the Bot Profile (`[SETTING]` / `[LORE]` blocks). Do NOT script them.
+  - **Situational Lore:** Transient events, Arc States, Tension, and conditionally active NPCs belong in the ES6 script.
+- **Token Bloat Prevention:** The script must explicitly clean or overwrite old events it injected into `context.character.scenario` to prevent context inflation as the chat progresses.

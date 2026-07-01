@@ -39,9 +39,10 @@ The pipeline is built around **what you actually want to roleplay with**, not wh
 
 ## What it produces
 
-A complete SillyTavern-ready package per world:
+A complete SillyTavern-ready package per world (and fully compatible JanitorAI formats):
 
 - **One Character Card per AI-played character** (V3 spec JSON) — psychology, voice, and behavioral mandates wired against the override architecture, with optional `depth_prompt` for mid-context reinforcement.
+- **One JanitorAI Bot Profile per character** (TXT) — an intensely structured JED-format markdown profile mapping permanent tier 1/2 lore directly into `[SETTING]`, `[APPEARANCE]`, `[LORE]`, etc., optimized for JanitorAI context limits.
 - **One World Lorebook (Tier 1)** — permanent arc-agnostic world truths: rules, factions, locations, species, concepts.
 - **One Character Lorebook per character (Tier 2)** — permanent reference data: physical baseline, psychological dimensions, relationships.
 - **One Protagonist Lorebook (Tier 2)** — `{{user}}` identity reference, linked to your active SillyTavern Persona after import.
@@ -50,6 +51,7 @@ A complete SillyTavern-ready package per world:
 - **Tier 3, by World Mode:** *arc worlds* get **one Arc Lorebook per arc** — modular and swap-in: ARC_STATE, CHARACTER_STATE, NPC behavioral shifts, dramatic beats, tension entries. *Sandbox worlds* (open-ended power-fantasy / world-director worlds, run with `/worldforge start --sandbox`) get **one always-active Sandbox Lorebook** instead — SANDBOX_STATE (standing situation + tonal mandate + an aliveness contract) plus a WORLD_PULSE entry — and author large NPC casts as a principal/roster split with a per-NPC voice-fingerprint uniqueness rule.
 - **One Arc Intimacy Register per arc with intimate beats (Tier 3, conditional)** — arc-specific intimate function and per-character delta.
 - **One Chat Completion Preset** — the model's prompt blocks, injection order, and behavioral framework, parameterized for this world's prose conventions.
+- **One JanitorAI Lorebook Script** (JS) — a dynamic, modular ES6 script that maps situational Tier 1/2 lore and Tier 3 event progression directly into `context.character.personality` and `context.character.scenario` based on keyword and message-count triggers, including `try...catch` guards and token bloat prevention logic.
 - **One audit report** — runtime risks identified by the Prompt Engineer, with recommended corrections for the user to apply manually.
 
 ## Core architectural ideas
@@ -76,7 +78,7 @@ Each phase is run by a specialized agent. The orchestrator dispatches them in or
 | 3.5 | The Voice Auditor | Generates sample dialogue from the drafts and audits behavioral fidelity, voice distinctiveness, trigger-response correctness, NPC agency (in a lull, do NPCs act on their own standing goals?), and (in multi-perspective worlds) cross-card perspective bleed. |
 | 3.6 | The Arc Transition Auditor | Verifies continuity across consecutive arc seams: character state, trauma de-escalation, NPC behavior, relationship & belief drift, world conditions, hidden-information rules. |
 | 3.7 | The Intimacy Auditor *(conditional)* | Generates sample intimate scenes and audits them for voice fidelity (does each character behave like themselves during sex?) and thematic register match (does the scene serve its declared function?). |
-| 4 | The Compiler | Translates the approved Markdown drafts into SillyTavern-ready JSON files. |
+| 4 | The Compiler | Translates the approved Markdown drafts into SillyTavern-ready JSON files, JanitorAI bot profiles, and ES6 lorebook scripts. |
 | 5 | The Prompt Engineer | Audits Phase 4's output for runtime risks (read-only on `Export/`) and authors the Chat Completion Preset. Recommendations for any conflicts found are surfaced as plain-text instructions for manual application. |
 | 5.5 | *(manual)* | If Phase 5 produced recommended corrections, you open each named file, apply the corrections, and save. The pipeline is complete only after this step. |
 

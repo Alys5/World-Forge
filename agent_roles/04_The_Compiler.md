@@ -193,11 +193,10 @@ Do not modify the file. Do not strip the BEGIN/END markers, the Setup Instructio
 If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught this. Do not attempt to synthesize one.
 
 ### Step 4B — Build JanitorAI Bot Profile (`Export/[CharName]_JanitorAI.txt`)
-For each character card built in Step 4, generate a paired JanitorAI Bot Profile using the JED template structure.
-- Read `templates/Janitor_Bot_Template.md`.
-- Map the drafted `Card_[CharName].md` content and `Instructions_[CharName].md` content to the fields in the Janitor template.
-- **Multi-Bots / Roster Cards**: If the drafted card represents a Sandbox Director or a group of multiple characters (e.g., `Card_WorldDirector.md`), do not create a single generic profile. Instead, identify the principal roster from the drafts and duplicate the character definition block within the JanitorAI template for *each* individual character in the roster, populating their specific details.
-- Save the resulting text file as `Export/[CharName]_JanitorAI.txt`. This is a plain-text markdown file intended for the user to copy-paste into JanitorAI's bot "Personality" field.
+For each character card built in Step 4, compile the paired JanitorAI Bot Profile.
+- Read `Drafts/JanitorAI_Profile_[CharName].md` (produced by the Architect).
+- Verify the file has Editor Sign-Off.
+- Pass the draft byte-for-byte to `Export/[CharName]_JanitorAI.txt` as plain text markdown. Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
 
 ### Lorebook file-naming convention (applies to Steps 5, 6, 7, and the intimacy registers)
 
@@ -338,13 +337,12 @@ When an npc has a single combined entry, map `combined`; when facet-split, map e
 
 ### Step 7.8 — Build JanitorAI Lorebook Script (`Export/[WorldName]_JanitorAI_Script.js`)
 
-JanitorAI supports ES6 scripts instead of standard lorebooks. Translate the World-Forge Tier 1-3 lorebook entries into an "Everything Lorebook" dynamic script.
+JanitorAI supports ES6 scripts instead of standard lorebooks. Translate the World-Forge Tier 1-3 situational lorebook entries into an "Everything Lorebook" dynamic script.
 1. Read `templates/Janitor_Lorebook_Script.js`.
-2. Map Tier 1 (World rules) to the `world` array.
-3. Map Tier 2 (Character profiles) to the `people` array.
-4. Map Tier 3 (Arc or Sandbox State) to the `states` array.
-5. Map Tier 3 (TENSION or WORLD_PULSE) to the `events` array with appropriate message count triggers.
-6. Generate valid ES6 JavaScript and save as `Export/[WorldName]_JanitorAI_Script.js`.
+2. Map **Situational** Tier 1 (World rules) to the `definitionalLore` array. Do NOT include permanent Tier 1 rules here (those go in the Bot Profile).
+3. Map **Situational** Tier 2 (Transient NPCs or condition-specific character behaviors) to the `relationalLore` array. Permanent character profiles belong in the Bot Profile.
+4. Map Tier 3 (Arc or Sandbox State and WORLD_PULSE/TENSION) to the `eventLore` array with appropriate message count triggers.
+5. Generate valid ES6 JavaScript and save as `Export/[WorldName]_JanitorAI_Script.js`. Ensure the generated JS safely cleans old states and uses `try...catch` as specified in the template.
 
 ### Step 8 — Validation Pass
 

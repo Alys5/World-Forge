@@ -357,6 +357,13 @@ The Compiler emits an NPC Memory Manifest (Compiler Step 7.7; CLAUDE.md principl
 
 Read-only like the rest of the Editor: direct the Architect to fix the source; do not edit entries.
 
+### Step 4.5 — JanitorAI Bot Profile Validation
+
+For every `Drafts/JanitorAI_Profile_[CharName].md`:
+- [ ] **Structural Check:** Ensure it follows the `templates/Janitor_Bot_Template.md` headers exactly (`[SETTING]`, `[APPEARANCE]`, etc.).
+- [ ] **Token Bloat Check:** Ensure the content is tight and concise. JanitorAI templates easily bloat. If a section is filled with redundant prose instead of condensed bullet points or short descriptions, **soft-flag** it for trimming.
+- [ ] **Permanent vs Situational Check:** Verify that Tier 1 (World rules) and permanent Tier 2 (standing goals, permanent relationships) are in the `[SETTING]` or `[LORE]` blocks. Ensure NO situational events (Arc States, tension, transient locations) are included in this profile (they belong in the ES6 script).
+
 ### Step 5 — LLM Instruction Audit (Hybrid Validation Protocol)
 
 #### 5a — `{{original}}` placement check (hard fail; see Foundational Rule #1)

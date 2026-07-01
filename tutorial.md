@@ -70,7 +70,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
       v
  PHASE 3.5 + 3.6 + 3.7            (parallel auditors)
       v
- PHASE 4 — The Compiler           → Export/*.json
+ PHASE 4 — The Compiler           → Export/*.json + JanitorAI files
       v
  PHASE 5 — The Prompt Engineer    → ChatPreset + audit report
       v

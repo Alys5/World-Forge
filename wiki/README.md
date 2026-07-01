@@ -6,6 +6,7 @@ This directory holds markdown source for pages that belong on the project's GitH
 
 - [`Agentic-Tools-and-Models.md`](./Agentic-Tools-and-Models.md) — Which agentic VS Code extensions can drive the pipeline (Kilo Code, Cline — plus a migration note on the retired Roo Code), why Claude Code is not currently recommended, and which underlying LLMs perform well in which phases.
 - [`Kilo-Code-Setup.md`](./Kilo-Code-Setup.md) — Dedicated step-by-step setup tutorial for users who want to drive the pipeline with Kilo Code. Covers install, provider configuration, per-phase custom agents, and Kilo-specific troubleshooting.
+- [`JanitorAI-Integration.md`](./JanitorAI-Integration.md) — Documentation on how the pipeline natively compiles highly structured character profiles and ES6 sandbox scripts for JanitorAI.
 
 ## Publishing a page to the wiki
 

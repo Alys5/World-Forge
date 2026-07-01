@@ -72,7 +72,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 - `system_prompt` starts with `{{original}}` on its own line
 - `post_history_instructions` same
 - Validate against parent's hard-fail rules before writing
-- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.txt` based on the updated drafts and `templates/Janitor_Bot_Template.md`. Apply the Multi-Bot rule (duplicating the character block for each roster member) if the card represents a roster or Sandbox Director.
+- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.txt` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`.
 
 **For each touched lorebook (`Tier[N]_*.md` → `*_Lorebook.json` or `Arc[N]_*Lorebook.json`):**
 - Read existing JSON
@@ -84,7 +84,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
   - If markdown is the complete source-of-truth for this lorebook (touched in full by the revision) → entry is deleted (rare in revisions; usually only happens if cascade explicitly says so)
   - If markdown was edited in append/in-place mode (the common case) → keep the existing JSON entry untouched
 - Validate the resulting JSON against the schema and parent hard-fail rules
-- **(JanitorAI)** Regenerate `Export/[WorldName]_JanitorAI_Script.js` incorporating the updated entries.
+- **(JanitorAI)** Regenerate `Export/[WorldName]_JanitorAI_Script.js` incorporating the updated situational entries into the `definitionalLore`, `relationalLore`, and `eventLore` arrays.
 
 **For Export/User.md:**
 - Pass-through from `Drafts/User.md` if it was touched (revision could touch the persona description — rare; usually only when a character revision affects the protagonist)

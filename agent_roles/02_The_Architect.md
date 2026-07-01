@@ -199,6 +199,19 @@ For the full structural specification, including the rationale for each section,
 
 ---
 
+## 5.6. JANITOR_AI BOT PROFILE DRAFTS — `Drafts/JanitorAI_Profile_[CharName].md`
+
+One file per character card. This draft maps the character's definition to the highly structured JanitorAI bot format. It must follow `templates/Janitor_Bot_Template.md` precisely.
+
+### Drafting Workflow
+
+1. Map the core character details (from Section 5) into the `[APPEARANCE]`, `[BASIC_INFO]`, `[PERSONALITY_AND_TRAITS]`, `[SEXUALITY]`, and `[SPEECH]` blocks of the template.
+2. **Permanent Lore:** Include Tier 1 (World truths) and permanent Tier 2 (standing goals, permanent relationships) within the `[SETTING]` and `[LORE]` blocks of the template. *Do not leave these out under the assumption the script will handle them.* 
+3. **Keep it tight:** The JanitorAI template can easily bloat token counts. Be ruthless. Distill the prose from the main Character Card rather than copying it wholesale if it's too long.
+4. **No Situational Events:** Do NOT put Arc States, tension modifiers, or situational / transient locations here. Those belong in the ES6 Script compiled in Phase 4.
+
+---
+
 ## 6. WORLD LOREBOOK ENTRIES — `Drafts/Tier1_World_Entries.md`
 
 ### ⭐ POSITION RATIONALE REQUIREMENT — READ BEFORE DRAFTING ANY ENTRY

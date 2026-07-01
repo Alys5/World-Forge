@@ -206,14 +206,15 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 **Input:** `Drafts/Master_Design.md` with REFINER SIGN-OFF
 **Output:** All draft files in `Drafts/`
 
-**Mandatory outputs (all seven required):**
+**Mandatory outputs (all eight required):**
 1. `Card_[CharName].md` — character card content per card
-2. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
-3. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
-4. `Tier1_World_Entries.md` — all Tier 1 entries
-5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
-6. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
-7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
+2. `JanitorAI_Profile_[CharName].md` — JanitorAI Bot Profile format per card (maps to `templates/Janitor_Bot_Template.md`)
+3. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
+4. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
+5. `Tier1_World_Entries.md` — all Tier 1 entries
+6. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
+7. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
+8. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
 
@@ -334,7 +335,7 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 **Invoke:** `@agent_roles/04_The_Compiler.md`
 **Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand)
-**Output:** `Export/` directory
+**Output:** `Export/` directory (JSON files + JanitorAI TXT/JS exports)
 
 **Read `Notes_Quick_Reference.md` first**, then the `Notes_On_functionality.md` schema sections the Compiler spec's Context Manifest names (§5.1b V3 card, §5.2 World Info file, §6 gotchas). `Notes_On_functionality.md` is the authoritative ST runtime reference — where it contradicts the quick reference, templates, or this document, it takes precedence.
 
