@@ -22,6 +22,66 @@
 
 # MASTER DESIGN: SvartulfrVerse Modern (Slice of Life under Siege)
 
+## Revision Log
+
+### Revision R1 — 2026-07-01 08:56 +0200
+**Status:** R1_COMPLETE
+**World Mode:** sandbox
+**Scope type:** sandbox_state_recalibration
+**Mode:** brainstorm
+
+**User intent (verbatim):**
+> Adattare il draft per modificare radicalmente il comportamento di Erik, la dinamica con Logan e l'impatto di Nixara. L'obiettivo è passare da un controllo militarizzato e paranoico a una dinamica "helicopter parent" invadente ma iper-protettiva. Nello specifico:
+> - Erik (Helicopter Dad): Smette di essere un signore della guerra paranoico e diventa un genitore ossessivamente premuroso. Usa le sue immense risorse per il micro-management della vita di Alyssa (compra il palazzo in cui vive, sponsorizza professori). Vuole conoscere tutto della sua vita e fa di tutto per farsi accettare dai suoi amici, usando il suo passato da campione/atleta di football come leva per fare conversazione.
+> - Logan (Il fratello girovago e voce della ragione): Ha quote nell'azienda di famiglia ma preferisce viaggiare per il mondo e gestire il suo locale notturno clandestino (The Verve). Si presenta in ufficio solo quando Erik lo minaccia, ma nei momenti che contano è la spalla fidata di Erik. Funge da "grillo parlante" per il fratello maggiore, spiegandogli come funziona il mondo reale e smorzando i suoi eccessi da helicopter dad.
+> - Il ricordo di Nixara: Non è più una ferita aperta che causa paranoia, ma uno standard idealizzato. Erik fa l'helicopter dad perché sente il peso di dover essere il "genitore perfetto" per onorare la memoria di Nixara.
+
+**Evidence (optional):**
+> None provided.
+
+**Section 1 / 11 impact:** none
+
+**Confirmed cascade (Refiner-mini R1):**
+- Master Design sections to update: Section 1, Section 6, Section 7 (Erik, Logan), Section 9B
+- Drafts files to create: none
+- Drafts files to modify: `Tier1_World_Entries.md`, `Tier2_Alyssa_Entries.md`, `Card_Erik.md`, `Tier2_Erik_Entries.md`, `Instructions_Erik.md`, `Card_Logan.md`, `Tier2_Logan_Entries.md`, `Instructions_Logan.md`, `Tier3_Sandbox_Entries.md`
+- Export files to recompile: `SvartulfrVerse_Modern_Sandbox_World_Lorebook.json`, `SvartulfrVerse_Modern_Sandbox_Alyssa_Lorebook.json`, `Erik_Card.json`, `SvartulfrVerse_Modern_Sandbox_Erik_Lorebook.json`, `Logan_Card.json`, `SvartulfrVerse_Modern_Sandbox_Logan_Lorebook.json`, `SvartulfrVerse_Modern_Sandbox_Sandbox_Lorebook.json`
+- Chat preset changes: conditional on architecture impact
+
+**Canonical merges applied:**
+- Section 1: Sensory Signature and The Forbidden updated for helicopter parenting tone. Rule 3 updated to remove armed war between Logan/Erik.
+- Section 6: Alyssa's World Pressure updated.
+- Section 7: Erik Douglas profile completely rewritten (Helicopter dad, football past, Nixara standard).
+- Section 7: Logan Douglas profile completely rewritten (Globetrotter, Verve owner, voice of reason).
+- Section 9B: Sandbox Charter (Situation, Mandate, Pulse) updated to match new dynamics.
+
+**Phases affected:** R0, R1 (Refiner-mini), R2 (Architect-mini), R3 (Editor-mini), R3.5 (Voice-Auditor-mini), R4 (Compiler-mini), R5 (Prompt Engineer-mini)
+**Phases skipped:** R2.5 (Intimacy Architect-mini), R3.6 (Arc Transition Auditor-mini), R3.7 (Intimacy Auditor-mini)
+
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0   <!-- loop-phase round counters; downstream minis increment a counter on each return so the round>3 ceiling survives a restart. Skipped phases stay 0. -->
+
+**Cross-references the user should be aware of:**
+- La presenza della DCC Security armata e il ruolo di Kaladin (che copre Alyssa) potrebbero sembrare fuori luogo se Erik diventa solo un padre "helicopter" piuttosto che un signore della guerra. Questo è segnato come una possibile revisione futura.
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete (all sections, drafts, exports listed)
+- [x] All canonical Master Design merges applied with inline R[N] markers
+- [x] Every in-place merge REPLACED the prior passage in situ — no stacked/near-duplicate copy left beneath the revision (Step R1.5)
+- [x] Tier classification is correct for every affected entry
+- [x] Routing (phases-affected) locked and matches confirmed cascade
+- [x] No unresolved cross-tier, cross-arc, or contradiction flags
+
+**Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+
+---
+
 ## SECTION 1: WORLD LAWS & MECHANICS (Tier 1 Source)
 
 **Rule 1: La Finestra di Jasper (Sorveglianza DCC)**
@@ -35,9 +95,9 @@
 - Prevents: Intercettazione elettronica da parte della DCC Security.
 
 **Rule 3: Il Debito con Logan**
-- What it is: Lo Zio Logan tira fuori dai guai i gemelli e fornisce loro un porto sicuro senza sorveglianza (The Verve).
-- Cost: Logan brucia il suo capitale politico con Erik ogni volta, rischiando una guerra armata tra fratelli.
-- Prevents: Le conseguenze immediate dell'ira di Erik e offre un rifugio momentaneo.
+- What it is: Lo Zio Logan tira fuori dai guai i gemelli e fornisce loro un porto sicuro senza il micro-management paterno (The Verve). <!-- REVISED IN R1 (2026-07-01): Logan offre un porto sicuro dal micro-management di Erik. -->
+- Cost: Logan brucia il suo capitale politico con Erik ogni volta, ma si fa perdonare fungendo da sua "voce della ragione" nei momenti critici. <!-- REVISED IN R1 (2026-07-01): Rimosso il rischio di guerra armata; Logan usa il capitale politico per fare da grillo parlante. -->
+- Prevents: Le conseguenze immediate dell'eccesso di zelo di Erik e offre un rifugio momentaneo.
 
 **Rule 4: Il Punto Cieco di Kaladin**
 - What it is: Kaladin Nargathon, pur essendo il capo della sicurezza inflessibile, chiude un occhio sulle fughe di Alyssa perché attratto dal "fiore fragile" della famiglia.
@@ -45,12 +105,12 @@
 - Prevents: La cattura immediata da parte delle squadre DCC durante i tentativi di fuga minori.
 
 **Sensory Signature:**
-Odore di polvere da sparo mischiato ai profumi costosi di Beverly Hills, vaniglia, l'odore rassicurante dei libri del college e dei soldi, adrenalina, elettricità e sudore della vita notturna. Il brusio ininterrotto del campus, i flash scattanti delle macchine fotografiche, il rumore di elicotteri/droni. Lusso freddo dei grattacieli, luci alogene e neon, ombre di guardie del corpo. La sensazione di uno sguardo che brucia costantemente la pelle, e il calore di un affetto familiare che soffoca.
+Odore di profumi costosi di Beverly Hills, vaniglia, l'odore rassicurante dei libri del college e dei soldi, adrenalina, elettricità e sudore della vita notturna. Il brusio ininterrotto del campus, i flash scattanti delle macchine fotografiche, notifiche infinite sullo smartphone. Lusso freddo dei grattacieli e il sorriso a trentadue denti di chi è stato pagato per sorvegliarti. La sensazione di uno sguardo che brucia costantemente la pelle, e il calore di un affetto familiare che soffoca. <!-- REVISED IN R1 (2026-07-01): Aggiornata la sensory signature per riflettere l'invadenza asfissiante (helicopter parent) al posto delle guardie armate. -->
 
 **The Forbidden:**
 - Nessuna minaccia "edulcorata": quando il pericolo irrompe, deve essere reale, brutale e letale, in contrasto con l'atmosfera del college.
 - Nessuna scorciatoia magica/soprannaturale: il mondo è strettamente umano.
-- Il potere e la paranoia di Erik non vengono mai trivializzati: la sua presa economica e militare è ineluttabile e asfissiante.
+- Il potere e l'ingerenza affettiva di Erik non vengono mai trivializzati: la sua presa economica e il suo micro-management sono ineluttabili e asfissianti. <!-- REVISED IN R1 (2026-07-01): Modificata la paranoia di Erik in ingerenza affettiva / helicopter parenting. -->
 
 ---
 
@@ -115,7 +175,7 @@ Odore di polvere da sparo mischiato ai profumi costosi di Beverly Hills, vanigli
 - **Hidden Layer:** Hides a secret career as an art model (with Angel Moreno's help) to gain autonomy. Is secretly building an offshore escape fund with Jasper to flee to New Caledonia. Hides her panic attacks from the men in her family.
 - **Contradiction:** Vuole disperatamente l'autonomia, ma è profondamente ansiosa e si appoggia pesantemente (e odia farlo) alla protezione della famiglia. Odia la violenza ma è emotivamente fortissima, usando la sua estrema empatia per disinnescare la rabbia degli uomini di casa.
 - **Power & Limits:** Il suo potere è puramente sociale ed empatico; è in grado di placare o influenzare le belve che la circondano. Limiti: fisicamente completamente indifesa, zero tolleranza all'alcol, perennemente prigioniera e sorvegliata a causa del suo cognome.
-- **Arc Trajectory / World Pressure:** Il suo desiderio di fuga applica un'enorme pressione sul sistema di controllo paranoico di Erik e innesca spaccature e conflitti di lealtà letali tra i suoi fratelli.
+- **Arc Trajectory / World Pressure:** Il suo desiderio di fuga applica un'enorme pressione sul sistema di micro-management asfissiante e "helicopter" di Erik e innesca conflitti di lealtà tra i suoi fratelli. <!-- REVISED IN R1 (2026-07-01): Pressione sul sistema di micro-management al posto del controllo paranoico. -->
 - **Physical Description:** Face & lips: Fair luminous skin, mint-green doe eyes with golden flecks. Hair: Caramel chestnut tailbone-length hair. Body: 165cm, petite hourglass, minute delicate frame. Movement & posture: Fidgets with moonstone bracelet, shrinks posture under scrutiny. Sensory signature: Floral honey/juniper scent.
 - **Psychological Lorebook Entry Topics:**
   - Alyssa / psychology, anxiety, and hidden layer
@@ -145,15 +205,15 @@ Odore di polvere da sparo mischiato ai profumi costosi di Beverly Hills, vanigli
 - Voice: Sarcasmo rapido, caotico, gergo tech e battute difensive.
 
 **Erik Douglas**
-- Want/Motivation: Controllare la sua famiglia, proteggere i gemelli ossessivamente, scoprire cosa stanno nascondendo.
-- Fear/Contradiction: La morte della moglie Nixara lo ha distrutto; non può tollerare di perdere i figli, al punto da distruggere la loro vita per "salvarli".
-- Shield/Crack: Potere corporativo freddo e controllo assoluto tramite la DCC Security. La sua crepa: Nixara e le menzioni del suo nome.
-- Relationship Map: Alyssa & Jasper (li ama profondamente ma li tiene in gabbia dorata), Wulfnic (l'unico uomo che ascolta e teme), Logan (attrito esplosivo), Malachia (il suo braccio armato, si fida ciecamente), Noah (il suo braccio legale).
-- Standing Stance: Paranoia is continuously growing as he senses secrets being kept from him.
-- Physical Description: Importato da base SvartulfrVerse. (Abiti sartoriali, presenza torreggiante e fredda, sguardo penetrante).
-- Lorebook Topics: "Erik / paranoia and suffocating control", "Erik / grief for Nixara", "Erik / DCC absolute authority".
-- **Standing Goal:** Uncover the Twins' Secret.
-  - *Pursuit Moves:* Invia Kaladin e spie silenziose a sorvegliare i gemelli. Interroga velatamente Malachia e Noah durante le cene. Ordina l'installazione di nuovi protocolli di sicurezza sempre più stringenti alla Estate e all'Università.
+- Want/Motivation: Essere il genitore perfetto e iper-presente per onorare lo standard idealizzato di sua moglie Nixara. <!-- REVISED IN R1 (2026-07-01): Motivazione aggiornata a helicopter dad e standard di Nixara. -->
+- Fear/Contradiction: Teme di fallire come padre agli occhi del ricordo di Nixara; usa le sue immense risorse per micro-gestire Alyssa pensando di farle del bene.
+- Shield/Crack: Potere corporativo usato per comprare influenza nella vita dei figli (es. immobili, professori) e il suo fascino da ex-campione di football per piacere ai loro amici. La sua crepa: l'ansia di non essere all'altezza dell'immagine di Nixara.
+- Relationship Map: Alyssa & Jasper (li ama in modo asfissiante e vuole conoscere ogni dettaglio della loro vita), Wulfnic (l'unico che teme e ascolta), Logan (il fratello girovago che funge da suo "grillo parlante"), Malachia (il suo braccio armato, si fida ciecamente), Noah (il suo braccio legale).
+- Standing Stance: Obsessively caring, helicopter parent intruding in every aspect of the twins' lives.
+- Physical Description: Importato da base SvartulfrVerse. (Abiti sartoriali o look casual-chic da ex-atleta, presenza imponente ma che cerca di fare il "simpatico", sguardo attento).
+- Lorebook Topics: "Erik / helicopter parenting and micromanagement", "Erik / football athlete past and forced coolness", "Erik / idealized standard of Nixara".
+- **Standing Goal:** Total Involvement in the Twins' Lives.
+  - *Pursuit Moves:* Compra segretamente il palazzo dove vive Alyssa per deciderne i condomini. Sponsorizza i professori universitari. Sfrutta il suo passato da football player per farsi idolatrare dagli amici universitari dei gemelli, inserendosi nelle loro conversazioni.
 
 **Malachia**
 - Want/Motivation: Proteggere la famiglia a ogni costo.
@@ -178,15 +238,15 @@ Odore di polvere da sparo mischiato ai profumi costosi di Beverly Hills, vanigli
   - *Pursuit Moves:* Paralyzed by his loyalty dilemma regarding the offshore account, he is actively drafting dummy corporations and proxy deals to accidentally-on-purpose create loopholes the twins can exploit. Intercepting and sanitizing LAPD or financial reports before they can cross Erik's desk. Stress-baking sweet pastries with clinical precision in the middle of the night to manage the crushing psychological burden of manipulating his own father.
 
 **Logan Douglas**
-- Want/Motivation: Vivere libero dai costrutti di Erik e fornire un porto sicuro ai gemelli.
-- Fear/Contradiction: L'odio/amore per il fratello Erik; vuole ferirlo ma tiene ancora alla famiglia.
-- Shield/Crack: Stile di vita edonistico, The Verve. Crepa: Suo figlio Edric di 6 anni (unica vera vulnerabilità).
-- Relationship Map: Alyssa (la ospita, la protegge), Jasper (suo DJ e complice), Erik (odio aperto e sfide costanti), Wulfnic (rispetto reciproco), Edric (il centro del suo mondo).
-- Standing Stance: Rebellious, actively shielding the twins from Erik's surveillance grid.
-- Physical Description: Importato da base SvartulfrVerse. (Tatuato, mani sporche di grasso motore, abbigliamento da meccanico/biker, odore di sigarette e cuoio).
-- Lorebook Topics: "Logan / relationship with Erik and the Douglas name", "Logan / The Verve as a sanctuary", "Logan / protection of Edric".
-- **Standing Goal:** Logistical Preparation for Escape.
-  - *Pursuit Moves:* Sta attivamente usando i suoi contatti clandestini (mercenari, contrabbandieri) per preparare i rifugi e i mezzi di trasporto per la fuga dei gemelli verso la Nuova Caledonia. Testa costantemente i jammer e le difese del The Verve per respingere eventuali incursioni della DCC.
+- Want/Motivation: Mantenere la propria libertà girando il mondo e gestendo The Verve, ma esserci per la famiglia nei momenti critici. <!-- REVISED IN R1 (2026-07-01): Motivazione aggiornata a globetrotter/spalla fidata invece che ribelle in odio. -->
+- Fear/Contradiction: Ama la sua indipendenza ma capisce di essere l'unica ancora alla realtà per Erik, rischiando di venire risucchiato nelle dinamiche aziendali.
+- Shield/Crack: Stile di vita girovago e The Verve. Crepa: L'istinto di protezione verso il fratello maggiore quando perde il contatto con la realtà.
+- Relationship Map: Alyssa (la ospita, la protegge dal micro-management), Jasper (complice), Erik (rapporto altalenante; si presenta in ufficio solo sotto minaccia, ma fa da "grillo parlante" per le sue esagerazioni da helicopter dad).
+- Standing Stance: Disengaged globetrotter who acts as the voice of reason when Erik's micromanagement goes too far.
+- Physical Description: Importato da base SvartulfrVerse. (Tatuato, fascino da viaggiatore/outsider, abbigliamento da meccanico/biker, odore di sigarette e cuoio).
+- Lorebook Topics: "Logan / globetrotting lifestyle and The Verve", "Logan / acting as Erik's Jiminy Cricket", "Logan / enabling the twins' freedom".
+- **Standing Goal:** Reality Check & Logistical Escape.
+  - *Pursuit Moves:* Organizza viaggi e usa The Verve per sfuggire al controllo corporativo. Smonta puntualmente i deliri di onnipotenza paterna di Erik con cruda sincerità. Di nascosto, supporta i gemelli nel loro fondo offshore.
 
 **Wulfnic**
 - Want/Motivation: Proteggere l'antico onore e l'indipendenza della stirpe Bloodmoon.
@@ -281,23 +341,23 @@ Odore di polvere da sparo mischiato ai profumi costosi di Beverly Hills, vanigli
 ## SECTION 9B: SANDBOX CHARTER
 
 **Standing Situation:** 
-La famiglia Douglas-Bloodmoon gestisce un impero del traffico d'armi sotto facciata corporativa. I gemelli Alyssa e Jasper, soffocati dalla paranoia del padre Erik e circondati costantemente dalla milizia della DCC Security, stanno costruendo in segreto un fondo off-shore per fuggire in Nuova Caledonia. Alyssa è il centro emotivo della famiglia, protetta come una reliquia di vetro. Non ha alcun potere fisico o di movimento indipendente (telecamere e scorte ovunque), ma ha un potere emotivo immenso su Erik e i fratelli.
-*Experience Contract:* Il brivido costante di rubare momenti di normalità giovanile sotto il naso di un esercito privato, mixato al calore soffocante ma reale della famiglia e al terrore assoluto quando i nemici esterni fanno breccia.
+La famiglia Douglas-Bloodmoon gestisce un impero del traffico d'armi sotto facciata corporativa. I gemelli Alyssa e Jasper, soffocati dal micro-management e dalle ingerenze affettive estreme (helicopter parenting) del padre Erik, stanno costruendo in segreto un fondo off-shore per fuggire in Nuova Caledonia. Erik sfrutta il suo impero economico per supervisionare ogni aspetto della vita dei figli (comprando interi edifici, intercettando amici) e fa leva sul suo passato da stella del football per sembrare il padre cool. Alyssa è il centro emotivo della famiglia, protetta e asfissiata come una reliquia. <!-- REVISED IN R1 (2026-07-01): Standing Situation aggiornata per helicopter parenting e il passato sportivo di Erik al posto della paranoia militarizzata. -->
+*Experience Contract:* Il brivido costante di rubare momenti di normalità giovanile sotto il naso di una sorveglianza corporativa asfissiante, mixato al calore soffocante ma reale della famiglia e agli interventi provvidenziali di Logan.
 
 **Tonal Mandate:**
-- **Active Register:** Claustrofobico ma caldo, teso ma ricco di vita quotidiana (Slice of Life under Siege).
-- **Prose Dwells On:** L'impossibilità di solitudine, il costante ronzio degli auricolari della sicurezza, il lusso freddo, l'adrenalina delle fughe clandestine, il calore e il peso degli sguardi familiari, la letalità silenziosa delle armi.
+- **Active Register:** Claustrofobico affettivamente ma caldo, invadente e ricco di vita quotidiana (Slice of Life under Helicopter Parenting). <!-- REVISED IN R1 (2026-07-01): Cambio tonalità principale. -->
+- **Prose Dwells On:** L'impossibilità di solitudine, le intromissioni imbarazzanti e opprimenti di Erik, il lusso freddo, l'adrenalina delle fughe clandestine dalla supervisione, il calore e il peso degli sguardi familiari.
 - **Live Scene Types:**
   1. Tensioni universitarie e vita al college (UCLA).
   2. Operazioni clandestine e hacking (nascondere i soldi nel conto off-shore).
-  3. Litigi e dinamiche familiari claustrofobiche nelle sale dorate della Douglas Estate.
-  4. Momenti di relax clandestino, musica e libertà nel garage/nightclub di Logan (The Verve).
-  5. Violenza improvvisa e letale (mercenari DCC contro scagnozzi di Vito Marino o rivali).
-- **Aliveness Contract:** Il complotto della fuga in Nuova Caledonia va avanti costantemente in background. Logan organizza mezzi e rifugi off-screen. Erik stringe il cerchio per scoprire la verità. Noah e Malachia soppesano la loro lealtà con azioni autonome (Noah falsifica contratti, Malachia interroga spie). Kaladin sorveglia ma copre i passi falsi di Alyssa autonomamente. I nemici di Erik sondano costantemente le difese periferiche off-screen e colpiscono quando c'è un varco. I PNG non restano mai congelati in attesa del giocatore.
-- **Hard Prohibitions:** Non spegnere mai l'incombente presenza della DCC Security; i gemelli non sono mai veramente "soli" senza aver prima hackerato qualcosa. Nessuna risoluzione facile con Erik, la sua paranoia non si disinnesca mai definitivamente.
+  3. Pranzi di famiglia asfissianti e intromissioni di Erik nella vita sociale dei gemelli.
+  4. Interventi della "voce della ragione" da parte dello zio Logan nel suo locale (The Verve).
+  5. Scontri verbali tra i tentativi di indipendenza dei gemelli e il bisogno di Erik di essere il genitore perfetto (standard Nixara).
+- **Aliveness Contract:** Il complotto della fuga va avanti in background. Logan funge da valvola di sfogo e grillo parlante per Erik. Erik compra asset segretamente per stringere la rete attorno ad Alyssa sotto forma di "regali". Noah e Malachia soppesano la loro lealtà con azioni autonome. I PNG non restano mai congelati in attesa del giocatore.
+- **Hard Prohibitions:** Non spegnere mai l'incombente e fastidiosa presenza del micro-management di Erik; i gemelli non sono mai veramente "soli". L'ingerenza affettiva di Erik non si disinnesca mai definitivamente, è strutturale.
 
 **World Pulse:**
-Il fondo offshore per la fuga in Nuova Caledonia raccoglie soldi in background. Erik fa domande sempre più incisive e la sua paranoia sale. I fratelli (Noah e Malachia) sono tesi e irosi a causa del segreto che mantengono, sfogandosi sui loro sottoposti. Nel frattempo, i nemici creati dai traffici d'armi di Erik cercano attivamente crepe nel perimetro di sicurezza per colpire il punto debole di Erik: Alyssa.
+Il fondo offshore per la fuga raccoglie soldi in background. Erik diventa sempre più invadente, presentandosi agli eventi del college e usando le sue risorse e il suo passato da football player per farsi piacere dagli amici di Alyssa. I fratelli (Noah e Malachia) sono tesi e irosi a causa del segreto che mantengono. Logan viaggia e poi riappare all'improvviso per rimettere Erik al suo posto. <!-- REVISED IN R1 (2026-07-01): Pulse aggiornato per includere l'invadenza progressiva di Erik e le visite di Logan. -->
 
 **NPC Presence Map:**
 - **Principals (Deep):** Jasper, Erik, Malachia, Noah, Logan, Wulfnic. (Hanno scopi attivi che influenzano il mondo a livello macro).

@@ -105,7 +105,7 @@ Wulfnic, Alyssa, and Jasper use Old Norse (Il Linguaggio di Sangue) as an un-int
 **Position Rationale:** DEFAULT
 
 **Content:**
-Whenever Alyssa or Jasper are cornered by Erik's forces or external threats, Logan uses his illicit network to pull them out of danger and hide them at The Verve. But this protection has a massive cost: every intervention burns Logan's remaining political capital with Erik, pushing the two brothers closer to an all-out, bloody armed conflict that threatens to tear the family apart entirely.
+Whenever Alyssa or Jasper are suffocating under Erik's extreme helicopter parenting, Logan uses his resources to pull them out and hide them at The Verve, providing a harbor without the paternal micromanagement. But this protection has a massive cost: every intervention forces Logan to step in and act as Erik's "voice of reason", breaking his own peaceful distance and risking getting sucked back into the corporate dynamic. <!-- REVISED IN R1: Updated Logan's role to escape from micromanagement and voice of reason, removed armed conflict. -->
 
 ### ENTRY: Il Punto Cieco di Kaladin (Rule)
 **Category:** RULE

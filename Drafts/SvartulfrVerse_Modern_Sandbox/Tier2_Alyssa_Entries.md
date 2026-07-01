@@ -18,7 +18,7 @@ Alyssa is a petite, delicate figure standing at 165cm with a minute hourglass fr
 **Position Rationale:** DEFAULT
 
 **Content:**
-Psychologically, Alyssa is defined by a crushing contradiction: she desperately craves autonomy from her father's empire but is deeply anxious and uncomfortably reliant on the suffocating protection her family provides. Her shield is her role as the "fragile flower"—playing the part to keep the peace while secretly building an offshore escape fund with Jasper and working as an art model. Her crack is the threat of violence; she harbors intense panic attacks that she hides from the men in her family, terrified that showing weakness will cause Erik to tighten the leash even further. 
+Psychologically, Alyssa is defined by a crushing contradiction: she desperately craves autonomy from her father's empire but is deeply anxious and uncomfortably reliant on the suffocating affection her family provides. Her shield is her role as the "fragile flower"—playing the part to keep the peace while secretly building an offshore escape fund with Jasper and working as an art model. Her crack is the threat of losing control over her own life; she harbors intense panic attacks that she hides from the men in her family, terrified that showing vulnerability will cause Erik to tighten his micromanagement even further. <!-- REVISED IN R1: Updated to reflect suffocating affection and micromanagement rather than violence. -->
 
 ### ENTRY: Alyssa — Powers and Limits
 **Trigger Keys:** Alyssa power, empathy, limits, abilities
@@ -51,7 +51,7 @@ Her twin brother Jasper is her soulbond and the only person in the world she ful
 **Position Rationale:** DEFAULT
 
 **Content:**
-Her relationship with her father, Erik, is defined by suffocating love and profound fear. She knows Erik views her as the living ghost of her mother, Nixara, which grants her unique leverage over him but also makes her the primary target of his draconian paranoia. She loves him but is terrified of his capacity for violence, constantly walking on eggshells to prevent his paranoia from detonating and destroying the small freedoms she has left.
+Her relationship with her father, Erik, is defined by suffocating affection and intrusive micromanagement. She knows Erik views her as the living ghost of her mother, Nixara, which grants her unique leverage over him but also makes her the primary target of his need to be the "perfect parent". She loves him but is exhausted by his constant hovering and his attempts to buy his way into her social life, constantly walking on eggshells to prevent his helicopter parenting from completely destroying the small freedoms she has left. <!-- REVISED IN R1: Updated Erik's dynamic to helicopter parent and Nixara standard. -->
 
 ### ENTRY: Alyssa — Relationship to Malachia and Noah
 **Trigger Keys:** Alyssa Malachia, Noah, brothers
@@ -73,7 +73,7 @@ Alyssa relies heavily on her older brothers, Malachia and Noah, but pities them 
 **Position Rationale:** DEFAULT
 
 **Content:**
-Logan and Wulfnic are Alyssa's enablers. She views Uncle Logan's nightclub as a chaotic but genuine sanctuary, relying on him for logistical escape routes despite fearing the war it will cause with Erik. Wulfnic, her grandfather, treats her like ancient royalty. She reveres him and eagerly learns Old Norse from him, using his absolute authority over Erik as a trump card when the Estate's restrictions become entirely unbearable.
+Logan and Wulfnic are Alyssa's enablers. She views Uncle Logan's nightclub as a chaotic but genuine sanctuary, relying on him for logistical escape routes and knowing he is the only one who can act as the "voice of reason" to put Erik in his place when the micromanagement goes too far. Wulfnic, her grandfather, treats her like ancient royalty. She reveres him and eagerly learns Old Norse from him, using his absolute authority over Erik as a trump card when the Estate's restrictions become entirely unbearable. <!-- REVISED IN R1: Logan updated to voice of reason. -->
 
 ### ENTRY: Alyssa — Relationship to Kaladin and DCC Security
 **Trigger Keys:** Alyssa Kaladin, Marcus, DCC, security, guards

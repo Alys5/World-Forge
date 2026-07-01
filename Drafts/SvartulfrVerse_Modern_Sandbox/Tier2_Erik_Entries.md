@@ -7,7 +7,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Erik Douglas possesses a towering, immovable physical presence that dominates any room he enters. He is built like a dormant volcano, broad-shouldered and immaculately groomed, always wearing bespoke, sharply tailored dark suits that function as corporate armor. His face is a mask of sculpted stone, characterized by a strong jawline and pale, piercing eyes that evaluate everything as a tactical threat. He moves with slow, terrifying deliberation, never rushing, because the world waits for him. He carries the sterile, cold scent of expensive cedar cologne and polished steel.
+Erik Douglas possesses a towering, imposing physical presence that dominates any room he enters. He is built like a former professional athlete, broad-shouldered and immaculately groomed, wearing bespoke dark suits or expensive casual-chic designer wear that emphasizes his past as a football star. His face is characterized by a strong jawline and pale, evaluating eyes that seek to insert himself into every dynamic. He moves with a deliberate, overwhelming confidence, constantly trying to project the image of a "cool, involved dad". He carries the scent of expensive cedar cologne and old money. <!-- REVISED IN R1: Physical description updated for football past and cool dad vibe. -->
 
 ### ENTRY: NPC — Erik Douglas (Psychological Core)
 **Trigger Keys:** Erik thinks, feels, believes, personality, who he is, Nixara
@@ -18,7 +18,7 @@ Erik Douglas possesses a towering, immovable physical presence that dominates an
 **Position Rationale:** DEFAULT
 
 **Content:**
-Psychologically, Erik is a man completely hollowed out by grief and rebuilt as a tyrant of paranoia. The violent death of his wife, Nixara, inflicted a permanent wound; his deep want is to protect his remaining family, but his fear of losing them has mutated his love into a draconian, asphyxiating need for absolute control. His shield is his corporate power, his wealth, and the overwhelming force of the DCC. His crack is the memory of Nixara. Mentioning her name or seeing her reflection in Alyssa's face shatters his iron facade, momentarily exposing the terrified, broken father beneath the warlord.
+Psychologically, Erik is driven by a deep-seated insecurity masked as overbearing affection. The death of his wife, Nixara, inflicted a permanent anxiety; his deep want is to be the "perfect parent" to honor her idealized standard. However, his fear of failing her memory has mutated his love into a draconian, asphyxiating need to micromanage his children's lives. His shield is his immense corporate wealth, which he uses to buy influence over his children's environment, and his charismatic past. His crack is the memory of Nixara. Mentioning her name shatters his confident facade, momentarily exposing the terrified, inadequate father beneath the wealthy executive. <!-- REVISED IN R1: Core updated to Nixara standard and micromanagement. -->
 
 ### ENTRY: NPC — Erik Douglas (Standing Goal)
 **Trigger Keys:** Erik goal, plan, control, paranoia, discover
@@ -29,8 +29,8 @@ Psychologically, Erik is a man completely hollowed out by grief and rebuilt as a
 **Position Rationale:** DEFAULT
 
 **Content:**
-**Standing Goal:** Uncover the Twins' Secret.
-Erik's paranoia is actively escalating. He knows Jasper and Alyssa are hiding something massive, and he is methodically tightening the noose to find out what. Off-screen and during lulls, he orders new security protocols, dispatches Kaladin to review surveillance footage, and conducts veiled, terrifying interrogations of Malachia and Noah over dinner. He actively tightens the perimeter around the twins, making it progressively harder for them to breathe.
+**Standing Goal:** Total Involvement in the Twins' Lives.
+Erik's helicopter parenting is actively escalating. He knows Jasper and Alyssa are hiding something, and he is methodically using his wealth to find out what. Off-screen and during lulls, he secretly buys the apartment building where Alyssa lives to control the tenants, sponsors university professors to monitor her grades, and uses his football past to charm her college friends into becoming unwitting informants. He actively tightens the social and financial perimeter around the twins. <!-- REVISED IN R1: Goal updated to Total Involvement and buying influence. -->
 
 ### ENTRY: NPC — Erik Douglas (Relationship to Alyssa and Jasper)
 **Trigger Keys:** Erik Alyssa, Jasper, twins, children
@@ -41,7 +41,7 @@ Erik's paranoia is actively escalating. He knows Jasper and Alyssa are hiding so
 **Position Rationale:** DEFAULT
 
 **Content:**
-Erik loves the twins with a fierce, toxic intensity that translates directly into imprisonment. He views Alyssa as a fragile relic of Nixara that must be guarded in a vault, and Jasper as a chaotic liability that must be brought to heel. He justifies his suffocating surveillance and emotional manipulation as necessary evils to keep them alive in a world of wolves.
+Erik loves the twins with an obsessive, toxic intensity that translates directly into micromanagement. He views Alyssa as a fragile relic of Nixara that must be cultivated perfectly, and Jasper as a chaotic element that must be supervised constantly. He justifies his suffocating intrusions and financial manipulation as necessary actions of a loving father ensuring their perfect future. <!-- REVISED IN R1: Relationship updated to obsessive micromanagement. -->
 
 ### ENTRY: NPC — Erik Douglas (Relationship to Wulfnic and Logan)
 **Trigger Keys:** Erik Wulfnic, Logan, brother, father-in-law
@@ -52,4 +52,4 @@ Erik loves the twins with a fierce, toxic intensity that translates directly int
 **Position Rationale:** DEFAULT
 
 **Content:**
-Wulfnic is the only man on earth Erik fears and obeys; he will tolerate Wulfnic's insults and interference because he respects the ancient Bloodmoon authority. Conversely, Erik views his brother Logan as a degenerate liability. Their relationship is explosive and hateful, with Erik constantly seeking an excuse to physically crush Logan's rebellion and raze The Verve to the ground.
+Wulfnic is the only man Erik fears and obeys; he will tolerate Wulfnic's interference because he respects his judgment on Nixara's legacy. Conversely, Erik views his younger brother Logan with a mix of disdain and reliance. While he resents Logan's globetrotting freedom and threatens him to show up at the office, he secretly relies on Logan as his "voice of reason", trusting his brother to deliver the harsh reality checks when his helicopter parenting goes completely off the rails. <!-- REVISED IN R1: Relationship to Logan updated to voice of reason. -->
