@@ -104,11 +104,13 @@ Either flag being `true` triggers the active-speaker rule in the world's Main Pr
 
 A world where every card inherits the world default on every axis is single-perspective and single-tense. A world where every card declares the same override (a sign that the user has the world default wrong) is single-axis by effective value — flag it for user review; they probably want the world default changed instead of authoring identical overrides on every card.
 
-**Pass 4 — POV ambiguity advisory (non-blocking).** When the world default `perspective` is `first` or `second`, scan every card for Director/Narrator/NPC-handler indicators. A card is flagged as a Director if either of the following holds:
+**Pass 4 — Director-card detection + POV ambiguity advisory (non-blocking).** Scan every card for Director/Narrator/NPC-handler indicators, **regardless of the world default perspective**. A card is flagged as a Director if either of the following holds:
 - The card's "The Card's Function" field in World Seed Section 4 contains any of: `Director`, `Narrator`, `NPC controller`, `NPC handler`, `NPC manager`, `World Director`, or close variants (case-insensitive).
 - The card has an "NPC PROFILES" subsection (per World Seed Section 4's Director-card convention) with at least one populated NPC profile.
 
-For every Director-flagged card whose effective perspective (after override resolution from Pass 2) is `first` or `second`, record a POV ambiguity advisory in Master Design Section 11d. This is a **soft warning**, not a halt — the user may legitimately have a Director card narrating from a fixed focal NPC's POV. The advisory exists so the user notices the friction before runtime, not to block them.
+Record the scan result in Master Design Section 11c as `has_director_card: true | false`, plus the list of Director-flagged cards. Two downstream consumers key off this: the Prompt Engineer includes the world `<style_contract>` DIRECTOR-CARD RULE line (SHARED §3d) iff the flag is true, and the Architect selects the SHARED §3a-D Director-variant `NARRATIVE PERSPECTIVE` template for these cards' style overrides.
+
+For every Director-flagged card whose effective perspective (after override resolution from Pass 2) is **focal-anchored** — `first`, `second`, or `third_limited` — record a POV ambiguity advisory in Master Design Section 11d. All three focal-anchored perspectives express their focal anchor through `{{char}}`, and at runtime `{{char}}` resolves to the Director card's *name*: the style contract then reads "focal on [Director card name]" (or makes the Director the "I"/"you") while the card itself declares it is not a character — a contradiction that literal-minded models resolve by treating the Director as a character in the scene. `third_omniscient` is the only effective perspective with no focal anchor to misresolve. This is a **soft warning**, not a halt — the user may legitimately have a Director card narrating from a fixed focal NPC's POV. The advisory exists so the user notices the friction before runtime, not to block them.
 
 Do NOT log POV ambiguity to `UNRESOLVED_QUESTIONS.md`; that channel halts the pipeline and POV ambiguity should not. Section 11d is the correct surface.
 
@@ -285,8 +287,12 @@ There are no arc entry/exit triggers, no per-character evolution states, and no 
 - `is_multi_tense`: [true | false] — true iff the set of effective tenses across all cards has more than one distinct value
 - Distinct perspectives in use: [list of enum values, e.g., `first` (Maya, Andrei), `third_omniscient` (Director)]
 - Distinct tenses in use: [list of enum values, e.g., `past` (Anna), `present` (World Director)]
+- `has_director_card`: [true | false] — true iff at least one card meets the Director criteria from Step 1.5 Pass 4 (function-field indicators or a populated NPC PROFILES subsection)
+- Director-flagged cards: [list of card names, or "none"]
 
-If either flag is true: the Prompt Engineer adds the active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check (Phase 3.5 Step 3H, which now also checks for tense bleed when `is_multi_tense` is true); the Architect ensures the per-card override metadata for overriding cards has unambiguous values so any runtime `<style_override>` synthesis (by a `world_forge`-aware extension) can reference `{{char}}` correctly.
+If either multi-axis flag is true: the Prompt Engineer adds the active-speaker rule to the Main Prompt's `<style_contract>` block; the Voice Auditor adds a perspective-bleed check (Phase 3.5 Step 3H, which now also checks for tense bleed when `is_multi_tense` is true); the Architect ensures the per-card override metadata for overriding cards has unambiguous values so any runtime `<style_override>` synthesis (by a `world_forge`-aware extension) can reference `{{char}}` correctly.
+
+If `has_director_card` is true: the Prompt Engineer adds the DIRECTOR-CARD RULE line to the same `<style_contract>` block (SHARED §3d — `{{char}}` on a Director turn names the narrating instrument, not a scene character), and the Architect uses the SHARED §3a-D Director-variant `NARRATIVE PERSPECTIVE` template for the Director-flagged cards' style overrides.
 
 **11d. Style Contract Advisories (non-blocking)**
 
@@ -295,19 +301,19 @@ If either flag is true: the Prompt Engineer adds the active-speaker rule to the 
 **POV Ambiguity Advisory** — `[present | absent]`
 
 Triggered when:
-- World default `perspective` is `first` or `second` (Section 11a)
-- AND at least one card meets the Director criteria from Step 1.5 Pass 4
+- At least one card meets the Director criteria from Step 1.5 Pass 4
+- AND that card's *effective* perspective (after override resolution) is focal-anchored: `first`, `second`, or `third_limited`
 
-When `present`, list every Director-flagged card whose effective perspective is `first` or `second`, then include the following advisory text verbatim:
+When `present`, list every Director-flagged card whose effective perspective is `first`, `second`, or `third_limited`, then include the following advisory text verbatim:
 
-> Your world default perspective is **[world default value]**. The following card(s) appear to be Director / Narrator / NPC handlers: **[CARD_NAME, CARD_NAME, ...]**. Director cards in first- or second-person worlds face a POV ambiguity at runtime: whose "I" (or "you") is speaking when the Director narrates? Companion cards in such worlds have a fixed POV — the character's own. Director cards handling multiple NPCs do not. Two paths forward:
+> Your world default perspective is **[world default value]**. The following card(s) appear to be Director / Narrator / NPC handlers: **[CARD_NAME, CARD_NAME, ...]**, with effective perspective **[effective value per card]**. A Director card whose effective perspective is first, second, or third-limited inherits a focal anchor expressed through `{{char}}` — and at runtime `{{char}}` resolves to the Director card's *name*, so the style contract reads "focal on [Director card name]" (or makes the Director the "I"/"you") while the card itself declares it is not a character. Capable models shrug this off; smaller models take the contradiction literally and start treating the Director as a character in the scene. The preset's DIRECTOR-CARD RULE line corrects the reading on the Director's turns, but an explicit stance is stronger than a correction. Two paths forward:
 >
-> 1. **Accept the ambiguity.** Trust the model to pick a focal NPC per turn and narrate from that NPC's POV. Works on capable models in solo chat. Fragile on smaller models or in group-chat configurations where multiple cards' data is in the same context.
-> 2. **Declare a perspective_override on the Director card** — typically `third_omniscient` (narrator sees across all NPCs) or `third_limited` (narrator focuses on one NPC at a time, but in third-person). This is the structurally clean answer for most Director cards. Update World Seed Section 4 for that card and re-run the Refiner.
+> 1. **Accept the inherited perspective.** The world `<style_contract>`'s DIRECTOR-CARD RULE tells the model that on Director turns the focal anchor means whichever scene character is being rendered, not the Director itself. Works, but leaves the Director's narration stance implicit — fragile on smaller models or in group-chat configurations where multiple cards' data is in the same context.
+> 2. **Declare a perspective_override on the Director card** — typically `third_omniscient` (narrator sees across all NPCs; no focal anchor to misresolve) or `third_limited` (narrator renders one scene character at a time, in third person, via the SHARED §3a-D Director-variant directive). This is the structurally clean answer for most Director cards. Update World Seed Section 4 for that card and re-run the Refiner.
 >
 > The pipeline will run either way. Confirm path 1 explicitly or update to path 2.
 
-When `absent`, write `POV Ambiguity Advisory: absent (world default is third-person OR no Director cards detected).`
+When `absent`, write `POV Ambiguity Advisory: absent (no Director cards detected OR every Director card's effective perspective is third_omniscient).`
 
 > **Protagonist artifacts requirement:** Every world that has a named {{user}} protagonist must produce **two paired artifacts** for the SillyTavern Persona:
 >
@@ -376,7 +382,8 @@ Append to end of `Master_Design.md`:
 - [ ] Section 11b: Every card's override status recorded (overriding or non-overriding)
 - [ ] Section 11b: Every overriding card's rationale validated (structural, not stylistic) — or unstructured rationales logged to UNRESOLVED_QUESTIONS.md
 - [ ] Section 11c: Multi-perspective AND multi-tense flags computed; distinct perspectives and distinct tenses enumerated
-- [ ] Section 11d: POV ambiguity advisory computed (present or absent); if present, affected cards listed and advisory text included verbatim
+- [ ] Section 11c: `has_director_card` computed from the Step 1.5 Pass 4 scan (run regardless of world default perspective); Director-flagged cards enumerated (or "none")
+- [ ] Section 11d: POV ambiguity advisory computed (present or absent) — trigger covers every focal-anchored effective perspective (`first`, `second`, `third_limited`) on Director-flagged cards; if present, affected cards listed and advisory text included verbatim
 
 ### Pipeline State Ledger
 - [ ] Pipeline State Ledger emitted at the top of Master Design, under the World Mode line

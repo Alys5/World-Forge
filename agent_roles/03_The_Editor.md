@@ -598,7 +598,7 @@ Trigger rules (hard reject on violation):
 - ALL three marker overrides `null` ⇒ NO `FORMATTING MARKERS:` line.
 
 Content rules (hard reject on mismatch; use SHARED §3 as source of truth):
-- The `NARRATIVE PERSPECTIVE:` line's prose must match SHARED §3a for the card's *effective* perspective/tense pair (effective = override if set, else world default per Master Design Section 11a).
+- The `NARRATIVE PERSPECTIVE:` line's prose must match SHARED §3a for the card's *effective* perspective/tense pair (effective = override if set, else world default per Master Design Section 11a) — **or SHARED §3a-D (Director variant) when the card is Director-flagged per Master Design Section 11c.** Template selection is itself a hard check: a Director-flagged card whose line uses the character-shaped §3a prose ("focal on {{char}}", "{{char}}'s interior", "{{char}} is the focal narrator") = hard reject — at runtime `{{char}}` resolves to the Director card's name and the directive tells the model the Director is a character in the scene. A non-Director card whose line uses §3a-D prose = hard reject.
 - The `FORMATTING MARKERS:` line must contain three sub-clauses (narration + dialogue + emphasis) matching SHARED §3b for the card's effective values on each axis. The line must end with `No other formatting conventions apply.`
 - Every directive line that references a focal character must literally include `{{char}}`. Exceptions: `plain_prose`, `unmarked`, and `none` sub-clauses don't need `{{char}}`.
 
@@ -735,7 +735,7 @@ Post-history: [checklist results + word count]
 - **All cards: `depth_prompt` does not contain `{{original}}` ✓**
 - **All cards: no literal `<style_override>` tag block in any card text field — metadata at `extensions.world_forge.style_override` is the sole declaration (Step 5.6 Pass 3) ✓**
 - **All overriding cards: `extensions.world_forge.style_override` is well-formed with seven keys (perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale), valid enum values, ≥15-char rationale (Step 5.6 Pass 1) ✓**
-- **All overriding cards: `directives` array is consistent with the enum values — NARRATIVE PERSPECTIVE line iff perspective_override OR tense_override is non-null; FORMATTING MARKERS line iff ANY of narration/dialogue/emphasis marker overrides is non-null; FORMATTING MARKERS line composes all three marker sub-clauses; directive prose matches canonical templates for effective values (Step 5.6 Pass 2) ✓**
+- **All overriding cards: `directives` array is consistent with the enum values — NARRATIVE PERSPECTIVE line iff perspective_override OR tense_override is non-null; FORMATTING MARKERS line iff ANY of narration/dialogue/emphasis marker overrides is non-null; FORMATTING MARKERS line composes all three marker sub-clauses; directive prose matches canonical templates for effective values, with Director-flagged cards on the SHARED §3a-D Director variant and non-Director cards on §3a (Step 5.6 Pass 2) ✓**
 - **All overriding cards: `override_rationale` is structural, not stylistic (Step 5.6 Pass 4 hard-fail patterns clean) ✓**
 - **All overriding cards: enum values match Master Design Section 11b verbatim, including tense_override (Step 5.6 Pass 5) ✓**
 - **All Style Override Metadata soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**

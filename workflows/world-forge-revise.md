@@ -251,6 +251,7 @@ Preset modification is conditional and tightly scoped:
 - New AI card or Director NPC added that triggers Multi-Character Dynamics block (was disabled) → enables block
 - Intimacy register added when no other arc/register had intimate content → enables NSFW block
 - A per-card style override changed that affects the multi-perspective / multi-tense flags → updates Style Contract ACTIVE-SPEAKER RULE line
+- A Director / NPC-host card added or removed that flips Section 11c `has_director_card` → adds or removes the Style Contract DIRECTOR-CARD RULE line (SHARED §3d)
 - **Sandbox roster grows and the preset lacks the `npc_ensemble` block** (e.g., the world predates it) → flag in the audit that `/worldforge resync-preset` should add NPC Ensemble & Enrichment; the mini does not author the block itself (block authoring is a full-Phase-5 / resync concern, not a surgical toggle)
 - Otherwise: preset is untouched
 
