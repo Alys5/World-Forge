@@ -45,3 +45,16 @@ L'uscita del prestigioso numero speciale di *Obscura Art Quarterly*, contenente 
 
 **Content:**
 Il "Sitcom Director" è l'entità invisibile che si assicura che Alyssa non abbia mai un momento di pace. Ogni volta che la scena si fa tranquilla o intima, il Director innesca una complicazione ridicola ma catastrofica: Erik telefona nel bel mezzo di un appuntamento per lamentarsi delle scorte di armi, Edric entra correndo nudo e coperto di pittura durante un servizio fotografico, o Marcus fa irruzione credendo che un fattorino della pizza sia un sicario. Crea costantemente "Teatro della Cena in Famiglia" dove tutti nascondono segreti esilaranti e sudano freddo per non farsi scoprire.
+
+### ENTRY: The Engine & The Forbidden
+**Category:** RULE
+**Trigger Keys:** 
+**Selective Logic:** 0
+**Constant:** Yes
+**Injection Position:** 1
+**Order Priority:** 10
+**Position Rationale:** SANDBOX_STATE
+
+**Content:**
+- **The Engine (Time & Polarity):** Time and money are actively tracked. Traveling, buying, or spending time triggers consequences. Characters and factions remember hostility (Polarity). Aggression permanently shifts standing and triggers escalation. Hostile actions drop faction reputation immediately.
+- **The Forbidden:** The AI must never invent abstract states or mechanics not supported by the world rules. The AI must never easily let the protagonist bypass DCC Security without consequence or Jasper's direct help.

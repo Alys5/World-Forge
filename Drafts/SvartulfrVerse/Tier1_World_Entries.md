@@ -157,3 +157,75 @@ Il mondo è un'ambientazione urban fantasy moderna dove gli esseri sovrannatural
 - **La Divisione della "Greek Row":** Al college (UCLA/SUCC), questa rivalità si traduce in una guerra fredda per influenza e reclutamento. Le confraternite e i dormitori prestigiosi si dividono in due blocchi netti. Le dinamiche di branco si scontrano apertamente con le élite vampiriche durante feste ed elezioni.
 - **Il Ruolo dei Demi-umani:** Essendo l'11.5%, i Demi-umani (kemonomimi, lamie, succubi) sono il gruppo cuscinetto vitale. Se le famiglie dei lupi riescono a portarli dalla loro parte tramite tratti ferini comuni, ottengono una schiacciante maggioranza.
 - **Gestione degli Umani:** Essenziali (35%). I vampiri si infiltrano nella burocrazia e nelle amministrazioni dei campus (compulsione/soldi). I lupi mannari dominano le squadre sportive, la sicurezza e la vita diurna, creando un netto contrasto tra le attività diurne solari e la spietata vita notturna.
+
+### ENTRY: Il Debito con Logan
+**Category:** CONCEPT
+**Trigger Keys:** Logan, debito, The Verve, zio, rifugio, aiuto
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 80
+**Position Rationale:** DEFAULT
+
+**Content:**
+Lo Zio Logan tira fuori dai guai i gemelli e fornisce loro un porto sicuro dal micro-management paterno al *The Verve*. Ogni volta che lo fa, Logan brucia il suo capitale politico con Erik, ma si fa perdonare fungendo da sua "voce della ragione" nei momenti critici. Questo meccanismo previene le conseguenze immediate dell'eccesso di zelo di Erik e offre un rifugio momentaneo ad Alyssa.
+
+### ENTRY: Il Punto Cieco di Kaladin
+**Category:** CONCEPT
+**Trigger Keys:** Kaladin, punto cieco, fuga, sicurezza, distrazione, fascino
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 80
+**Position Rationale:** DEFAULT
+
+**Content:**
+Kaladin Nargathon, pur essendo il capo della sicurezza inflessibile, chiude spesso un occhio sulle fughe e sui passi falsi di Alyssa perché è segretamente attratto dal "fiore fragile" della famiglia. Questa debolezza gli costa il rischio di un'accusa di insubordinazione, licenziamento o persino la morte per mano di Erik, ma previene la cattura immediata di Alyssa da parte delle squadre DCC durante i tentativi di fuga minori.
+
+### ENTRY: The Douglas-Bloodmoon Family
+**Category:** FACTION
+**Trigger Keys:** Douglas, Bloodmoon, famiglia, dinastia, branco
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 95
+**Position Rationale:** DEFAULT
+
+**Content:**
+La dinastia degli "Apex Predator" di Solarton. Lupi mannari purosangue che controllano il settore della sicurezza privata (DCC) e svariati settori corporativi dell'area di Los Angeles. Sono guidati da Erik Douglas (Patriarca), le cui paranoie sono fatte rispettare fisicamente da Malachia, tutelate legalmente da Noah, e radicate spiritualmente nell'oscurità da Wulfnic. Il loro tratto distintivo è un'iperprotezione asfissiante nei confronti di Alyssa.
+
+### ENTRY: Seven Hills Douglas Estate
+**Category:** LOCATION
+**Trigger Keys:** Estate, Seven Hills, villa, casa Douglas, prigione
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+La sconfinata, silente e ultra-sicura magione di famiglia che funge da gabbia dorata. È tempestata di scanner biometrici, pattuglie e telecamere. È la sede del potere della famiglia e della loro paranoia, in cui la privacy è un concetto inesistente. Il tavolo da pranzo è l'epicentro delle tensioni familiari e il palco delle bugie.
+
+### ENTRY: La Finestra di Jasper
+**Category:** MECHANIC
+**Trigger Keys:** finestra di Jasper, hack, buco sicurezza, libertà, evasione
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 80
+**Position Rationale:** DEFAULT
+
+**Content:**
+Jasper hackera i sistemi per far avere mezz'ora di libertà dalla sorveglianza alla sorella. Ogni volta che la sicurezza se ne accorge, il buco viene tappato per sempre, costringendo a manovre più rischiose in futuro. Questo impedisce una libertà totale e irrealistica: Alyssa e Jasper non sono mai liberi "per default".
+
+### ENTRY: Pureblood Werewolves
+**Category:** SPECIES
+**Trigger Keys:** Werewolf, wolf, pureblood, claws, tail, Enigma, purosangue
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 40
+**Position Rationale:** DEFAULT
+
+**Content:**
+I licantropi Purosangue (Pureblood Werewolves) sono gli apex predator della gerarchia sovrannaturale. Possiedono zanne da carnivoro, artigli retrattili, e tratti come code e orecchie ferine che sfuggono al loro controllo in base alle emozioni. I ceppi rarissimi "Enigma" (come Wulfnic) pretendono sottomissione biologica assoluta dagli altri lupi attraverso una schiacciante pressione carismatica.
