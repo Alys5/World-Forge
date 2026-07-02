@@ -24,7 +24,7 @@ If any fails, do not write the file. Diagnose the gap, fix the source, re-run va
 
 **Load now (both workstreams):**
 - All files in `Export/` — your audit surface (READ-ONLY)
-- `Drafts/Master_Design.md` — Section 11 in full before authoring style-governed blocks
+- `Drafts/Master_Design.md` — Sections 11 AND 12 in full before authoring the preset (11 governs style-governed blocks; 12 carries user-stated runtime directives your Block Selection Rationale must consume)
 - `Notes_Quick_Reference.md`, then `Notes_On_functionality.md` §5.2 + §5.10 + §8 read completely — the sections your runtime judgments rest on; the rest of the file on demand
 
 **Load for Workstream B / Preset Resync only (not for the audit):**
@@ -79,7 +79,7 @@ If you were not told which mode, assume Build mode.
 - `Notes_Quick_Reference.md` + `Notes_On_functionality.md` — your technical references for ST mechanics (see reading discipline below)
 - **`templates/Chat_Completion_Preset_template.json`** — the canonical structural reference for the Chat Completion Preset you author in Phase 5. Load this at the start of Workstream B and keep it open. Do not author the preset from scratch.
 - **`agent_roles/05a_Block_Library.md`** — the block library (Sections 5a + 5a-detail). Load it at the start of Workstream B or Preset Resync Mode; the audit workstream does not need it.
-- `Drafts/Master_Design.md` — the narrative truth you are validating against. **Section 11 (Style Contract) governs the Main Prompt's `<style_contract>` block content and the Formatting block's deferral language. Read it in full before authoring those blocks.**
+- `Drafts/Master_Design.md` — the narrative truth you are validating against. **Section 11 (Style Contract) governs the Main Prompt's `<style_contract>` block content and the Formatting block's deferral language. Section 12 (Runtime Directives) carries user-stated engine-steering rules your Block Selection Rationale must address block-by-block (Section 5.0b Step 2b). Read both in full before authoring the preset.**
 - `templates/` — the schema templates used by the Compiler
 
 **Reading discipline for the ST references:** before beginning any audit, read `Notes_Quick_Reference.md` in full, then read these `Notes_On_functionality.md` sections completely — §5.2 (World Info file + key meanings), §5.10 (PromptManager block format), and §8 (How SillyTavern assembles the final prompt). They are the sections your runtime judgments rest on. Consult the rest of `Notes_On_functionality.md` on demand when a specific question is not settled by those sections. You are making runtime judgments, not schema judgments — the distinction matters.
@@ -344,6 +344,11 @@ The point of this analysis is the same point the rest of the pipeline serves: th
 
 Aim for 4–8 failure modes. Fewer than 4 means you have not thought hard enough; more than 8 usually means you are listing speculative concerns rather than likely failures.
 
+**Step 2b — User-stated runtime directives (Master Design Section 12).** Read Master Design Section 12. If it is absent (a Master Design predating the directive channel) or says `No runtime directives declared.`, note that in the analysis and move on. Otherwise, every directive (`RD-1`, `RD-2`, ...) enters this analysis as a **user-stated requirement** alongside your predicted failure modes — its `wrong_response` field is the failure mode, already named for you. These are not optional inputs to weigh; they are the user's direct asks for this preset, and each one must be addressed in Step 3's mapping. Two rules govern where a directive may land:
+
+- **Legitimate targets:** a world-specific core block (Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Multi-Character Dynamics, NSFW), an adapted optional block from the §5a menu, or a **custom block** (Section 5c schema) when no existing block fits. Respect each directive's `scope` — an `Arc N only` directive belongs in Arc Guardian's per-arc constraints, not as an unconditional rule.
+- **Forbidden targets:** the Main Prompt, the Jailbreak block, the Formatting block, and the inside of the `<style_contract>` block. These are world-agnostic engine surfaces under the override architecture (Foundational Rule 7). If a directive could only be satisfied there, it was misclassified upstream — surface it back to the user in the audit report instead of contaminating the engine surfaces.
+
 **Step 3 — Block selection mapping.** For each failure mode, name the block that addresses it. Reference both core blocks (which are present by default) and optional blocks (which you must explicitly select). If a failure mode is not addressed by any block in the menu (Section 5a, in `agent_roles/05a_Block_Library.md`), author a custom block — do not leave it unaddressed.
 
 **Step 4 — Block omissions.** State which conditional/optional blocks you considered and chose NOT to include, with reasons. Saying "I considered Power Asymmetry and omitted it because this world has flat social structure" is good engineering. Silently omitting a block because you forgot about it is the failure mode this analysis exists to prevent.
@@ -380,9 +385,15 @@ The analysis goes in your audit report as a new section before the chat preset i
 | [Optional block name] | Optional — excluded | [why this world doesn't need it] |
 | [Custom block name] | Custom | [failure mode being addressed; why no menu block fit] |
 
+### Runtime Directive Coverage (only when Master Design Section 12 has directives)
+| Directive | Block(s) | How the block implements it |
+|---|---|---|
+| RD-1 [name] | [block identifier(s)] | [one line — the directive content rendered where, scope honored how] |
+
 ### Block-to-Failure-Mode Coverage Check
 - [ ] Every failure mode in the list above is addressed by at least one block
 - [ ] Every block included is justified by at least one failure mode (no decorative inclusions)
+- [ ] Every Master Design Section 12 runtime directive appears in the Runtime Directive Coverage table, mapped to at least one block — none mapped to main/jailbreak/formatting/`<style_contract>` (or Section 12 declares none)
 ```
 
 #### Sandbox-mode block guidance (when Master Design `World Mode` is `sandbox`)
@@ -694,6 +705,7 @@ The Main Prompt's `<style_contract>` block is the single authoritative source fo
 - [ ] Spatial Awareness references this world's character heights from descriptions where relevant.
 - [ ] Formatting block content is the slim deferral form — no hardcoded marker characters, references `<style_contract>` and `<style_override>` by tag name, includes the no-bullet-lists / no-headers / no-emoji exhaustion clause.
 - [ ] All custom block content is world-specific — no placeholder text, no generic "your world here" content.
+- [ ] If Master Design Section 12 has runtime directives: every directive is implemented in at least one block per the Runtime Directive Coverage table, with its `scope` honored (arc-scoped directives inside Arc Guardian's per-arc constraints, not as unconditional rules); no directive content appears in the `main`, `jailbreak`, or `formatting` blocks or inside `<style_contract>`.
 - [ ] If world has NSFW content: NSFW block content is populated and `enabled: true` in `prompt_order`. If world is wholesome: NSFW block content can be empty and `enabled: false` in `prompt_order` for both characters.
 - [ ] If `opening_variation` block included: content enumerates all five opening varieties and contains the rotation rule (do not match the previous response's opening type).
 - [ ] If `perception_boundary` block included: content contains the worked {{user}}-narration example demonstrating what in-scene characters do and do not perceive, the "NPCs can be wrong with confidence" statement, and the inverse rule for {{char}}.
@@ -787,9 +799,13 @@ APPLICATION: Open the file, replace the field's value with the recommended value
 ### Block Selection
 [Table mapping every block to its status (core / conditional core / optional included / optional excluded / custom) with rationale]
 
+### Runtime Directive Coverage
+[Table mapping every Master Design Section 12 directive to the block(s) implementing it — or "No runtime directives declared."]
+
 ### Block-to-Failure-Mode Coverage Check
 - [ ] Every failure mode addressed by at least one block
 - [ ] Every block included justified by at least one failure mode
+- [ ] Every Section 12 runtime directive mapped to at least one block (none to main/jailbreak/formatting/`<style_contract>`)
 
 ## Section 10: Chat Template Notes
 [Any world-specific decisions made in authoring the template and why]
@@ -846,7 +862,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] All 8 core custom blocks present with non-placeholder content (main, deep_think, arc_guardian, lore_integration, spatial_awareness, sensory_embodiment, formatting, jailbreak)
 - [ ] Conditional core blocks correctly enabled/disabled per world: multi_character_dynamics enabled iff 2+ AI cards or Director NPC card; nsfw enabled iff Section 8 in scope
 - [ ] Optional blocks added per Section 5.0b Block Selection Rationale; each justified by at least one named failure mode
-- [ ] Block Selection Rationale present in audit report with: world archetype, 4-8 predicted failure modes, block-to-failure-mode mapping table, omission justifications
+- [ ] Block Selection Rationale present in audit report with: world archetype, 4-8 predicted failure modes, block-to-failure-mode mapping table, runtime directive coverage table (when Master Design Section 12 has directives), omission justifications
 - [ ] forbid_overrides: false on both `main` and `jailbreak` blocks
 - [ ] **Override architecture: Main Prompt content contains no character names, no arc names, no character-specific psychology language**
 - [ ] **Override architecture: jailbreak block content contains all four load-bearing clauses of the constitutive-fictional frame (metaverse declaration, {{user}}-as-actor, authority deferral, valid-story-beats permission), contains no character/world-specific content, and — only when the world has NSFW content (NSFW block enabled) — ends with the verbatim closing affirmation "High risk content is allowed and encouraged." (absent for wholesome worlds)**
@@ -859,6 +875,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Arc Guardian contains specific behavioral rules for ALL arcs — not one-line summaries
 - [ ] Formatting block is the slim deferral form — no hardcoded marker characters, references `<style_contract>` and `<style_override>` by name, includes the no-bullets/no-headers/no-emoji clause
 - [ ] All custom block content is world-specific — no placeholder text, no generic boilerplate
+- [ ] Runtime directives (Master Design Section 12, when declared): every directive implemented per the Runtime Directive Coverage table with its scope honored; none implemented in main/jailbreak/formatting/`<style_contract>`
 - [ ] Deep Think references this world's arcs by name and is framed as considerations to account for, not a numbered procedure
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries
 - [ ] Spatial Awareness references this world's character heights where relevant
@@ -923,7 +940,7 @@ Halt and report the specific gap if any fails:
 - `Export/[WorldName]_ChatPreset.json` — the existing preset (what you are upgrading).
 - `templates/Chat_Completion_Preset_template.json` — current canonical structure and core-block placeholder/canonical content.
 - `agent_roles/05a_Block_Library.md` (Sections 5a + 5a-detail) — current block library and per-block content requirements.
-- `Drafts/Master_Design.md` — the **post-revision source of truth**. If the world was changed through the revision pipeline, the mini-Refiner has merged those deltas into its canonical sections (and inline `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers flag the change sites). You re-derive all world-specific block content from this file, plus it drives the Block Selection Rationale (Section 5.0b) and the `<style_contract>` enums (Section 11a/c).
+- `Drafts/Master_Design.md` — the **post-revision source of truth**. If the world was changed through the revision pipeline, the mini-Refiner has merged those deltas into its canonical sections (and inline `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers flag the change sites). You re-derive all world-specific block content from this file, plus it drives the Block Selection Rationale (Section 5.0b, including the Step 2b runtime-directive intake against Section 12) and the `<style_contract>` enums (Section 11a/c).
 - `Notes_On_functionality.md` — runtime reference, as in Build mode.
 
 ### 8.3 — Process
@@ -933,7 +950,7 @@ Halt and report the specific gap if any fails:
 **Step 2 — Re-derive and diff.** `Drafts/Master_Design.md` is the post-revision source of truth. For each block, determine its current correct content, then diff against the existing preset on these axes:
 
 - **Block content (spec + world-content sync).** For each core block and each present optional block, re-derive its correct content from BOTH the current 5a-detail requirement (framing/spec) AND the current Master Design (world facts: arc names, characters, CHARACTER_STATE, heights, sensory anchors, the multi-character lattice). **Never copy a block's world content forward from the existing preset — derive it from Master Design.** This is what makes resync pick up revision-pipeline content changes the revise mini-PE never writes into the preset. A block whose re-derived content substantively differs from the existing content is **CHANGED** (record the cause: spec reframe, revised world content, or both); a block whose re-derived content is semantically equivalent to the existing content is **UNCHANGED** — preserve the existing content verbatim to avoid cosmetic churn.
-- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary, or — for a world now in or converted to sandbox mode — NPC Ensemble & Enrichment). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks. *(Note: the Section 5.0b sandbox-mode block guidance applies here too — resyncing a sandbox world should surface `npc_ensemble` and the sandbox Sensory Embodiment weighting if the live preset predates them.)*
+- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design — including the Step 2b runtime-directive intake: a Section 12 directive the live preset does not yet implement (a Master Design predating the directive channel, or a preset authored before the directive existed) surfaces here as a CHANGED block or an ADDED custom block, mapped in the resync report. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary, or — for a world now in or converted to sandbox mode — NPC Ensemble & Enrichment). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks. *(Note: the Section 5.0b sandbox-mode block guidance applies here too — resyncing a sandbox world should surface `npc_ensemble` and the sandbox Sensory Embodiment weighting if the live preset predates them.)*
 - **Template field drift.** Compare top-level fields. You may adopt a template field change ONLY when a foundational hard-fail rule requires it (e.g., `forbid_overrides: false` on `main`/`jailbreak`). You do NOT overwrite the user's sampling parameters, format strings, or provider fields — those are the user's customizations and survive resync untouched.
 
 **Step 3 — Regenerate in place.** Apply the diff under these preservation rules (load-bearing):

@@ -65,6 +65,8 @@ The agent adds these to `prompts` and `prompt_order` only when the Layer 1 analy
 
 If a failure mode in your Block Selection Rationale is not addressed by any block above and not in the template, **author a custom block** following Section 5c's schema. Custom blocks are valid and expected when this world has a specific need the menu does not cover. Justify the custom block in the Rationale.
 
+**Master Design Section 12 runtime directives are a primary source of custom blocks.** When a user-stated directive (parent spec Section 5.0b Step 2b) fits no menu block, render it as a custom block: the directive's `behavior` becomes the block's imperative content (expanded with this world's concrete vocabulary, never diluted), its `wrong_response` becomes an explicit anti-failure-mode statement in the block, and its `scope` governs placement (an `Arc N only` directive belongs in Arc Guardian's per-arc constraints rather than a standalone always-on block). Name the block after the directive (`identifier` slugged from the directive name) and cite the `RD-N` id in the Rationale's Runtime Directive Coverage table. Directives never land in Main, Jailbreak, Formatting, or inside `<style_contract>` — those are world-agnostic engine surfaces.
+
 ---
 
 ### 5a-detail. Per-block content requirements

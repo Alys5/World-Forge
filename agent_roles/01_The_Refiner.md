@@ -78,6 +78,7 @@ Read the World Seed and classify every piece of information:
 - Is it a permanent character truth? → Tier 2
 - Is it arc-specific or narrative-state-specific? → Tier 3
 - Is it engine-level prose-style metadata (Section 1.5 of the World Seed)? → Style Contract (does not belong to any lorebook tier; consumed by the Prompt Engineer to parameterize the preset's Main Prompt block, and by the Architect to author per-card `<style_override>` blocks where applicable). See Step 1.5 below.
+- Is it a user-stated runtime behavior rule (Section 9 of the World Seed)? → Runtime Directive (does not belong to any lorebook tier; consumed by the Prompt Engineer's Block Selection Rationale to tune or author preset blocks). See Step 1.6 below.
 - Is it ambiguous? → Flag for resolution.
 
 ### Step 1.5 — Style Contract Classification
@@ -113,6 +114,23 @@ Record the scan result in Master Design Section 11c as `has_director_card: true 
 For every Director-flagged card whose effective perspective (after override resolution from Pass 2) is **focal-anchored** — `first`, `second`, or `third_limited` — record a POV ambiguity advisory in Master Design Section 11d. All three focal-anchored perspectives express their focal anchor through `{{char}}`, and at runtime `{{char}}` resolves to the Director card's *name*: the style contract then reads "focal on [Director card name]" (or makes the Director the "I"/"you") while the card itself declares it is not a character — a contradiction that literal-minded models resolve by treating the Director as a character in the scene. `third_omniscient` is the only effective perspective with no focal anchor to misresolve. This is a **soft warning**, not a halt — the user may legitimately have a Director card narrating from a fixed focal NPC's POV. The advisory exists so the user notices the friction before runtime, not to block them.
 
 Do NOT log POV ambiguity to `UNRESOLVED_QUESTIONS.md`; that channel halts the pipeline and POV ambiguity should not. Section 11d is the correct surface.
+
+### Step 1.6 — Runtime Directive Classification
+
+The World Seed's Section 9 (optional, empty for most worlds) declares **runtime directives** — user-stated engine-steering rules about how the model must behave turn-by-turn ("combat must feel slow and costly", "NPCs bargain — never volunteer information for free"). Like the Style Contract, these are NOT lore content and do NOT belong to any lorebook tier. They are consumed by the Prompt Engineer (Phase 5, Section 5.0b), which must address every one in the Chat Completion Preset.
+
+If World Seed Section 9 is empty or absent, write `No runtime directives declared.` in Master Design Section 12 and move on. Otherwise, for each directive:
+
+**Pass 1 — Validate shape.** A well-formed directive has three parts: an imperative, observable behavior; a "wrong response looks like" example; and a scope (`always` / `Arc N only` / a named scene type). A directive missing the wrong-response example is untestable — log it to `UNRESOLVED_QUESTIONS.md` rather than passing a vibe downstream.
+
+**Pass 2 — Reroute misplaced content.** The Interviewer routes at elicitation time, but hand-written seeds bypass that. Check each directive:
+- A world fact → move it to the appropriate Tier 1 section and note the move.
+- A single character's behavior → move it to that character's LLM behavioral requirements (Section 7 of your output) and note the move.
+- Prose style / perspective / markers → belongs in Section 11 (Style Contract); if it conflicts with Section 1.5's declared values, log to `UNRESOLVED_QUESTIONS.md`.
+- Arc-specific tone with no behavioral rule → fold into that arc's Tier 3 tone material and note the move.
+Only world-spanning, character-agnostic runtime behavior rules stay in Section 12.
+
+**Pass 3 — Record.** Normalize surviving directives into Master Design Section 12 (format below), preserving the user's intent verbatim where possible. Do not invent directives the user did not state, and do not pad an empty section.
 
 ### Step 2 — Gap Detection
 For each tier, identify what is missing:
@@ -322,6 +340,23 @@ When `absent`, write `POV Ambiguity Advisory: absent (no Director cards detected
 >
 > SillyTavern provides no import format for personas, so the user wires both up manually after pipeline completion. The persona description is the constant baseline; the lorebook fires on keys for fuller detail. Without `User.md`, the user has nothing to put in the Description field and the LLM has no always-on identity anchor for `{{user}}` until a key fires — producing wrong NPC reactions in opening turns.
 
+### SECTION 12: RUNTIME DIRECTIVES (Engine Steering)
+
+*This section is engine-level runtime-steering metadata, not lorebook content — the runtime-behavior analog of Section 11. It records the user's World Seed Section 9 directives (validated and rerouted per Step 1.6). The Prompt Engineer reads it in Section 5.0b and must address every directive in the Chat Completion Preset — by extending a world-specific core block, adapting an optional block, or authoring a custom block — and show the mapping in its Block Selection Rationale. Directives are never implemented in the preset's Main Prompt, Jailbreak, or Formatting blocks, or inside the `<style_contract>` — those are world-agnostic engine surfaces under the override architecture.*
+
+[If World Seed Section 9 is empty or absent, write exactly: `No runtime directives declared.`]
+
+```
+- directive_id: RD-1
+  name: [short name]
+  behavior: [imperative, observable runtime behavior — the user's intent, near-verbatim]
+  wrong_response: [what a failing response looks like — this is what makes the directive testable]
+  scope: [always | Arc N only | scene type]
+  source: [user verbatim | normalized from seed wording | rerouted from Section N of the seed]
+```
+
+[One record per directive, `RD-1`, `RD-2`, ... Typically 0–6; more suggests misrouting — recheck Step 1.6 Pass 2.]
+
 ---
 
 ## 6. CONDITIONAL OUTPUT: `UNRESOLVED_QUESTIONS.md`
@@ -384,6 +419,11 @@ Append to end of `Master_Design.md`:
 - [ ] Section 11c: Multi-perspective AND multi-tense flags computed; distinct perspectives and distinct tenses enumerated
 - [ ] Section 11c: `has_director_card` computed from the Step 1.5 Pass 4 scan (run regardless of world default perspective); Director-flagged cards enumerated (or "none")
 - [ ] Section 11d: POV ambiguity advisory computed (present or absent) — trigger covers every focal-anchored effective perspective (`first`, `second`, `third_limited`) on Director-flagged cards; if present, affected cards listed and advisory text included verbatim
+
+### Runtime Directives (Engine Steering)
+- [ ] Section 12 present — populated from World Seed Section 9, or `No runtime directives declared.`
+- [ ] Every recorded directive has behavior + wrong-response example + scope; untestable directives logged to UNRESOLVED_QUESTIONS.md instead
+- [ ] Misplaced content rerouted (world facts → Tier 1, character behavior → Section 7, style → Section 11, arc tone → Tier 3), with moves noted
 
 ### Pipeline State Ledger
 - [ ] Pipeline State Ledger emitted at the top of Master Design, under the World Mode line
