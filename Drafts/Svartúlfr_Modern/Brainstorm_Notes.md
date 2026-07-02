@@ -1,27 +1,42 @@
 > [BRAINSTORM NOTES — informal ideation, NOT a World Seed.
-> Posture: improvement · Written: 2026-07-01 · Replaces any prior Brainstorm_Notes.md in full.
-> Hand to the Interviewer via `/worldforge convert --rebaseline --then-interview`; it will read this as raw material and run the full interview.]
+> Posture: revision-diagnostic · Written: 2026-07-01 · Replaces any prior Brainstorm_Notes.md in full.
+> Hand to the Interviewer via `/worldforge start`; it will read this as raw material and run the full interview.]
 
-# Brainstorm Notes (improvement) — SvartulfrVerse Modern Sandbox
+# Brainstorm Notes (revision diagnostic) — Svartúlfr Modern Fluff Variants
 
-## Brainstormed against
-Target `World_Seed.md` from `Svartúlfr_Modern.md`
+## Diagnosed against
+Drafts/Svartúlfr_Modern/Master_Design.md, world in active play.
 
-## Changes the user wants to pursue
-- **Shift the Central Tension (The Rebellion is Visual/Physical):** Replace the abstract "offshore bank account" escape plan with Alyssa's secret art-modeling career. She is weaponizing her "fragile flower" image and her body—the exact relics Erik tries to protect and isolate—to claim her autonomy.
-- **Alyssa's Active Empathy:** She is no longer just a passive peacekeeper; she consciously manipulates the emotions of her family (Erik's insecurities, Jasper's devotion, Malachia's rage) to maintain her cover.
-- **The Brothers as Complicit Accomplices:** Malachia and Noah have discovered her secret and are forced accomplices. The stress is devouring them. Noah (the legal shield) frantically drafts NDAs and buys photo rights via shell companies to hide them from Erik; Malachia (the sword) uses physical intimidation to silence photographers.
-- **Jasper's Cyber Warfare:** Jasper shifts from money-laundering to digital illusionist. He scrubs EXIF data, loops CCTV, and spoofs GPS so Alyssa's tracker shows her at the library instead of under the studio lights.
-- **The Ticking Clock (Obscura Art Quarterly & Eidolon Creative):** Alyssa models for the avant-garde agency *Eidolon Creative* under the alias **"Lys Angel"**. The immediate threat is the upcoming winter issue of *Obscura Art Quarterly*, which features her in a massive centerfold spread. Physical copies are at the printers, and the brothers are fighting a losing battle to stop the digital rollout.
-- **The Geographic Safe Zone:** Angel Moreno's studio is in the Arts District, sharing an alley with Logan's nightclub (*The Verve*). Logan's military-grade signal jammers naturally bleed over, providing Jasper with the perfect, plausible excuse for Alyssa's tracker going "spotty" during her shoots.
-- **The Dinner Table Stage Play:** Family dinners are now a masterclass in claustrophobia and dramatic irony, where every sibling is acting out a part and lying to Erik ("the perfect helicopter dad") while sitting right next to him.
-- **Kaladin's Blind Spot:** DCC's supreme commander, Kaladin, closes a blind eye to Alyssa's "slip-ups" due to his secret attraction, creating a fatal flaw in Erik's perfect security grid.
+## The primary concern (take this into /worldforge revise)
+**N/A - FUORI SCOPO PER LA REVISIONE.**
+L'utente non vuole revisionare chirurgicamente il mondo originale, ma **creare due nuove varianti fluff** basate su di esso. Questo richiede l'uso di `/worldforge convert` (reframe conversion), non di `/worldforge revise`.
 
-## Explored but set aside
-- The offshore escape fund (ripped out and replaced entirely by the modeling career architecture).
+Le due varianti desiderate sono:
+- **Variante 1:** `{{user}}` prende il posto di Alyssa. Jasper è un NPC.
+- **Variante 2:** `{{user}}` prende il posto di Jasper. Alyssa è un NPC.
+
+## Candidate future concerns (separate revisions — not this one)
+N/A
 
 ## Out of scope (flagged)
-- No World Mode flip, core concept change, or protagonist swap. This is a deep structural shift of the existing sandbox's *Standing Goals* and *Pursuit Moves*, fitting perfectly within an improvement/rebaseline.
+**ATTENZIONE: CAMBIO DI PROTAGONISTA E DI TONO (WORLD MODE / CORE CONCEPT).**
+L'idea proposta è una trasformazione radicale e un **reframe totale** che altera il mandato tonale (Sezione 1) e la prospettiva del protagonista (Sezione 6).
 
-## Loose fragments
-- The alias "Lys Angel" is a lethal clue. If Malachia or Noah ever see a contract or hear a photographer use that name in the Arts District, the connection is instant and deadly.
+**Nuovo Tono / Core Concept per la conversione:**
+- **Slice-of-life Fluff & Caos Familiare:** I gemelli (Alyssa/Jasper/`{{user}}`) sono visti come i "cuccioli di casa". Le minacce letali spariscono e l'attenzione si sposta sulle dinamiche familiari e sulla commedia quotidiana.
+- **Erik:** Non più il CEO spietato, ma il padre esageratamente presente ed ex atleta di football che trascina tutta la famiglia allo stadio per il campionato universitario ad ogni occasione.
+- **Malachia:** Focus sulla sua carriera di pugile/MMA. La commedia nasce dal fatto che viene assediato dalle groupie/fan (che lui vede solo come ostacoli tra lui e la protezione dei gemelli), e la sua natura taciturna/fisica lo rende incapace di liberarsene in modo educato.
+- **Noah:** Diviso tra i compiti familiari a casa e i suoi fratelli di confraternita che lo trascinano a forza ai party universitari.
+
+## Set aside
+- La creazione di un mondo d'azione con minacce letali o drammi oscuri (il tono "under siege" originale viene escluso per fare spazio alla commedia familiare).
+
+---
+## ✅ BRAINSTORMER SIGN-OFF
+- [x] One primary concern stated as revision intent (in the user's words where possible) [N/A - Out of scope]
+- [x] Candidate future concerns recorded separately
+- [x] Any bright-line issue (Section 1 / 11a / World Mode) flagged and decided
+- [x] File written fresh — replaces any prior `Brainstorm_Notes.md` in full, stamped with `Posture:` + `Written:` date, labeled as informal notes NOT a World Seed
+
+**Status: READY — take the primary concern into /worldforge revise (the Reviser will classify and scope it).**
+*(Nota: Essendo un reframe fuori scopo, la revisione chirurgica si ferma qui. L'azione corretta è lanciare `/worldforge convert` per generare i nuovi mondi utilizzando queste note).*

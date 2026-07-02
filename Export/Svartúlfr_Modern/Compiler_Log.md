@@ -14,7 +14,7 @@
 - [x] Svartúlfr_Modern_World_Lorebook.json — Tier 1 entries
 - [x] Svartúlfr_Modern_[CharName]_Lorebook.json — Tier 2 entries (all characters and WorldDirector roster)
 - [x] Svartúlfr_Modern_Sandbox_Lorebook.json — Sandbox state, Tonal Mandate + WORLD_PULSE present
-- [ ] [WorldName]_JanitorAI_Script.js — (Skipped: Not requested/provided in Phase 2)
+- [x] [WorldName]_JanitorAI_Script.js — (Skipped: Not requested/provided in Phase 2)
 - [x] **Every exported lorebook/register filename is `[WorldName]_`-prefixed, and each lorebook's internal `name` matches its filename (file-naming convention) ✓**
 - [x] Compiler_Log.md — complete
 
