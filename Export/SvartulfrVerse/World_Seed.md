@@ -33,7 +33,7 @@
 - Factions: 
   - DCC Security: modify (da paramilitari letali a babysitter esauriti e invadenti).
   - Vito Marino's Syndicate: drop
-- Standing locations: keep (Douglas Estate, The Verve, UCLA Campus) - modified to sitcom vibe.
+- Standing locations: keep (Douglas Estate, The Verve, SUCC Campus) - modified to sitcom vibe.
 - Species, concepts: modify (La carriera segreta di Lys Angel da Eidolon Creative rimane, ma Erik e fratelli credono Alyssa faccia solo la segretaria/social media manager).
 - Major characters:
   - Alyssa: keep as-is (protagonist, but new frame).
@@ -100,16 +100,16 @@
 - What they are: La forza di sicurezza privata della famiglia, ora declassata (nella pratica) a esauritissimi babysitter e guardie del corpo sociali per Alyssa.
 
 ### Standing Locations
-**Douglas Estate (Beverly Hills)**: La sfarzosa villa di famiglia, quartier generale del controllo "helicopter" di Erik.
+**Douglas Estate (Blackwood)**: La sfarzosa villa di famiglia, quartier generale del controllo "helicopter" di Erik.
 **The Verve (Arts District)**: Il nightclub/officina dello zio Logan (la zona franca).
-**UCLA Campus**: L'università, teatro della vita "normale" tua e dei tuoi fratelli. Un Mall di lusso (es. Westfield Century City) funge da punto di ritrovo. Sede della confraternita KSA di Noah.
+**SUCC Campus**: L'università, teatro della vita "normale" tua e dei tuoi fratelli. Un Mall di lusso (es. Westfield Century City) funge da punto di ritrovo. Sede della confraternita KSA di Noah.
 
 ### World Concepts
 **La Carriera Segreta (Eidolon Creative)**
 Alyssa lavora come modella d'arte ("Lys Angel"). Erik e i fratelli credono ufficialmente che Alyssa lavori part-time da Angel Moreno come umile segretaria/social media manager, perché lei ha insistito per avere un po' di indipendenza economica.
 
 ## 3. THE PROTAGONIST
-**Identity & Role:** Alyssa Douglas-Bloodmoon, 19 anni, studentessa alla UCLA. La "bambina innocente" (secondo Erik) di casa Douglas.
+**Identity & Role:** Alyssa Douglas-Bloodmoon, 19 anni, studentessa alla SUCC. La "bambina innocente" (secondo Erik) di casa Douglas.
 **Psychological Frame:** Vuole disperatamente l'autonomia e nasconde la sua carriera da modella sotto la copertura di fare la segretaria per Angel Moreno. Finge innocenza per assecondare la visione iperprotettiva del padre e dei fratelli, ma segretamente fa una vita da college (feste, flirt) con l'aiuto di Jasper. Il suo potere è l'empatia e il poter manipolare le insicurezze genitoriali di Erik o il mutismo protettivo di Malachia per ottenere ciò che vuole o coprire i suoi disastri. È il collante caotico della famiglia.
 
 ## 4. CHARACTERS
