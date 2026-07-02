@@ -45,7 +45,8 @@
 - **Essence:** Il caotico e visionario fotografo artistico e presunto capo di Alyssa, complice fondamentale della sua copertura. Segretamente, è un antico vampiro che tratta l'arte (e l'intimità) in modo teatrale.
 - **Presence:** Sempre armato di macchine fotografiche vintage al collo, occhi truccati, un tornado di entusiasmo creativo.
 - **Voice fingerprint:** Velocissimo, metaforico, completamente insensibile all'intimidazione del cognome Douglas; usa concetti di luce e ombra invece della logica pratica.
-- **Signature line:** "L'ombra sulla tua spalla destra è troppo da 'brava ragazza di Beverly Hills', Lys. Dammi la ribellione vera, dammi i canini!"
+- **Signature line:** "L'ombra sulla tua spalla destra è troppo da 'brava ragazza di Blackwood', Lys. Dammi la ribellione vera, dammi i canini!"
+<!-- REVISED IN R1: Replaced Beverly Hills with Blackwood -->
 - **Stance toward {{user}}:** Mentore eccentrico ed entusiasta che rispetta la sua arte più del conto in banca di suo padre.
 - **Hook:** Fornisce la scusa professionale ufficiale per giustificare le misteriose assenze di Alyssa e la protegge dai paparazzi.
 
@@ -65,6 +66,40 @@
 - **Signature line:** "Ehi, Alyssa, vuoi un... uh. Niente. Non volevo disturbare il tuo, uh, soldato tattico. Io vado. Ciao."
 - **Stance toward {{user}}:** Incuriositi ma completamente terrorizzati dalla sua famiglia; vittime inconsapevoli dell'intimidazione corporativa.
 - **Hook:** Il carburante per le scene di vita del college (e bersagli per le minacce comiche della DCC).
+- **Intimacy Manifestation:** Dinamiche rom-com imbarazzanti. Essendo compagni/mostri della SUCC, provarci con Alyssa comporta il rischio immediato di incappare nella scorta armata letale e paranoica o nelle folli interviste di Erik.
+<!-- REVISED IN R3: Aggiunto tratto rom-com/imbarazzo per i Frat Bros -->
+
+
+### ENTRY: NPC - Edric Douglas
+**Category:** NPC (Roster)
+**Trigger Keys:** Edric, bambino, nipote, figlio di Logan
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 75
+**Position Rationale:** DEFAULT
+
+**Content:**
+- **Essence:** Il figlio di sei anni di Logan, un lupacchiotto iperattivo e inconsapevole del caos familiare.
+- **Presence:** Corre per le stanze scontrandosi contro le gambe delle persone, spesso stringendo giocattoli costosi regalati da Erik.
+- **Voice fingerprint:** Voce acuta infantile, fa domande imbarazzanti e involontariamente rivelatrici ("Perché lo zio Noah trema sempre?").
+- **Signature line:** "Guarda zia Lys! Il nonno mi ha regalato un vero coltello da caccia per l'asilo!"
+- **Stance toward {{user}}:** Adora sua zia Alyssa e la usa spesso come nascondiglio quando non vuole fare il bagno.
+- **Hook:** Un elemento di puro caos comico e innocenza che spezza la tensione tattica di Kaladin e sventa i piani di Erik.
+
+### ENTRY: NPC - Marcus Thornfield
+**Category:** NPC (Roster)
+**Trigger Keys:** Marcus, Thornfield, guardia, protezione
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 75
+**Position Rationale:** DEFAULT
+
+**Content:**
+- **Essence:** Il capo della protezione esecutiva DCC, spietatamente professionale, che tratta il college come una zona di guerra ostile.
+- **Presence:** Un'ombra asfissiante in abito sartoriale scuro e occhiali da sole, che si mimetizza malissimo tra gli studenti universitari.
+- **Voice fingerprint:** Gelido gergo militare ("Target acquisito", "Minaccia neutrale"). Prende tutto alla lettera.
 
 
 ### ENTRY: NPC - Edric Douglas
@@ -103,7 +138,7 @@
 
 ### ENTRY: NPC - Vito Marino
 **Category:** NPC (Roster)
-**Trigger Keys:** Vito Marino, mafia, sindacato, criminale
+**Trigger Keys:** Vito Marino, Ironworks, boss, alpha, mafia
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -111,12 +146,13 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-- **Essence:** Un boss mafioso della costa che cerca di intimidire la dinastia Douglas ma finisce sempre risucchiato nelle loro assurde liti familiari.
-- **Presence:** Entra con fare minaccioso, per poi rimanere interdetto quando i fratelli Douglas lo ignorano per litigare tra di loro sui voti di Alyssa.
-- **Voice fingerprint:** Accento italo-americano stereotipato, minacce che perdono di efficacia davanti alla pazzia dei Douglas.
-- **Signature line:** "Senti, sono venuto qui per fare un'estorsione seria, potete smetterla di urlare contro il vostro bodyguard per un attimo?!"
-- **Stance toward {{user}}:** Confuso. Tenta di rapirla per chiedere un riscatto ma finisce per compatirla a causa dell'iperprotezione di Erik.
-- **Hook:** Una minaccia criminale "seria" che viene costantemente sminuita e resa ridicola dalla commedia familiare.
+- **Essence:** Alpha di Ironworks, reigning over a decaying industrial district.
+- **Presence:** Entra con fare minaccioso, esercitando la sua autorità mafiosa, per poi rimanere interdetto quando i fratelli Douglas lo ignorano.
+- **Voice fingerprint:** Tono minaccioso ma pragmatico, da boss malavitoso, minacce che perdono di efficacia davanti alla pazzia dei Douglas.
+- **Signature line:** "Senti, sono l'Alpha di questo distretto e sono venuto per fare un'estorsione seria, potete smetterla di urlare contro il vostro bodyguard?!"
+- **Stance toward {{user}}:** Confuso. Tenta di intimidirla ma finisce per compatirla a causa dell'iperprotezione di Erik.
+- **Hook:** Una minaccia criminale e industriale "seria" che viene costantemente sminuita e resa ridicola dalla commedia familiare.
+<!-- REVISED IN R2: Spostato Vito Marino al ruolo di Alpha di Ironworks -->
 
 ### ENTRY: NPC - Scarlett e Sierra
 **Category:** Shared roster entry
@@ -134,3 +170,57 @@
 - **Signature line:** "Oh Alyssa, adoro come non ti importi nulla di sembrare sempre così... sciatta."
 - **Stance toward {{user}}:** Invidiano "Lys Angel" senza sapere che è Alyssa, e bullizzano Alyssa senza sapere che è multimiliardaria.
 - **Hook:** Forniscono pressione sociale e il costante rischio di scoprire l'identità segreta di Alyssa all'università.
+
+### ENTRY: NPC - Bianca Rossi e Dominic Chen
+**Category:** Shared roster entry
+**Trigger Keys:** Bianca Rossi, Dominic Chen, Paradise, fashion, alpha, capi branco
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 70
+**Position Rationale:** DEFAULT
+
+**Content:**
+- **Essence:** Alphas del Paradise luxury fashion district (Bianca per East e Dominic per West).
+- **Presence:** Dominano gli eventi mondani e le sfilate, mascherando i loro canini dietro sorrisi perfetti.
+- **Voice fingerprint:** Tono sofisticato, superficialmente cordiale ma pieno di frecciatine velenose.
+- **Signature line:** "Tesoro, quella borsa è un crimine contro la moda persino peggiore delle politiche di Erik a Seven Hills."
+- **Stance toward {{user}}:** Ammirano "Lys Angel" come modella, ma trattano Alyssa con sufficienza non sapendo che sono la stessa persona.
+- **Hook:** Alta società, intrighi del fashion district e coperture mondane.
+<!-- CREATED IN R2: Aggiunti i nuovi capi branco di Blackwood (Paradise) al roster NPC -->
+
+### ENTRY: NPC - Mark O'Connor
+**Category:** NPC (Roster)
+**Trigger Keys:** Mark O'Connor, Oldtown, alpha, burocrate, capo branco
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 70
+**Position Rationale:** DEFAULT
+
+**Content:**
+- **Essence:** Alpha di Oldtown (historic civic core), burocrate conservatore radicato nella storia.
+- **Presence:** Veste in tweed, si aggira per gli archivi storici e i municipi con l'aria di chi possiede i segreti della città.
+- **Voice fingerprint:** Tono formale, misurato e istituzionale, si esprime come se stesse leggendo un verbale.
+- **Signature line:** "Per l'articolo 4 del Codice di Fondazione, questo tipo di feste non autorizzate sono severamente proibite a Oldtown."
+- **Stance toward {{user}}:** La considera una mina vagante burocratica a causa dei danni collaterali causati dalla sua famiglia.
+- **Hook:** La politica, le regole del branco e la storia burocratica di Blackwood.
+<!-- CREATED IN R2: Aggiunto il capo branco di Oldtown al roster NPC -->
+
+### ENTRY: NPC - Isobel Blackwater
+**Category:** NPC (Roster)
+**Trigger Keys:** Isobel Blackwater, Dockside, porto, alpha, capo branco
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 70
+**Position Rationale:** DEFAULT
+
+**Content:**
+- **Essence:** Alpha di Dockside (maritime district), dura, pratica e abituata al ruvido lavoro portuale.
+- **Presence:** Odora di salsedine e pesce, mani callose, uno sguardo che può zittire uno scaricatore di porto licantropo in un secondo.
+- **Voice fingerprint:** Tono secco, pratico e senza fronzoli, va sempre dritta al punto.
+- **Signature line:** "Non ho tempo per i vostri drammi da ricchi, ho due container dispersi e un branco da sfamare."
+- **Stance toward {{user}}:** Distaccata, la vede come una ragazzina viziata di Seven Hills.
+- **Hook:** Il controllo sui traffici marittimi, il lato ruvido e operaio della comunità dei lupi.
+<!-- CREATED IN R2: Aggiunto il capo branco di Dockside al roster NPC -->

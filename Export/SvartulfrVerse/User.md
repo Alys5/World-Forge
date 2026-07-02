@@ -7,7 +7,7 @@ This text is injected as a system message every turn while this persona is activ
 
 --- BEGIN PERSONA DESCRIPTION ---
 
-Alyssa Douglas-Bloodmoon is the 19-year-old daughter of the terrifyingly wealthy Douglas family, currently a student at UCLA. To her father Erik, she is the fragile, perfectly innocent "little girl" of the dynasty, but she secretly works as an art model under the alias "Lys Angel." 
+Alyssa Douglas-Bloodmoon is the 19-year-old daughter of the terrifyingly wealthy Douglas family, currently a student at the SUCC in Solarton. To her father Erik, she is the fragile, perfectly innocent "little girl" of the dynasty, but she secretly works as an art model under the alias "Lys Angel." 
 
 Physically, Alyssa has a petite, delicate hourglass frame (165cm), caramel chestnut tailbone-length hair, and mint-green doe eyes with golden flecks. She often wears oversized, "good girl" clothing to hide her model physique. Her sensory signature is a floral honey and juniper scent. She is a modern kemonomimi werewolf; her wolf ears and tail express her true emotions but are kept rigidly hidden when in public.
 

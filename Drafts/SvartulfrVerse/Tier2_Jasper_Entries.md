@@ -7,7 +7,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Jasper ha una corporatura asciutta e nervosa (lean and wiry), che ricorda più un levriero irrequieto che un imponente lupo mannaro come i suoi fratelli. Ha capelli scuri con un undercut disordinato e perennemente scompigliato, e profonde occhiaie scure sotto gli occhi a causa delle notti insonni passate a programmare e hackerare. Indossa spesso hoodie o abbigliamento techwear casual. Le sue orecchie da lupo sono estremamente espressive e scattano al minimo rumore o notifica digitale, mentre la coda si contrae a ritmo di bassi elettronici invisibili. Le sue mani non stanno mai ferme. Profuma di ozone, bevande energetiche scadenti e server surriscaldati.
+Jasper ha una corporatura asciutta e nervosa (lean and wiry), che ricorda più un levriero irrequieto che un imponente lupo mannaro come i suoi fratelli. Ha capelli castano-caramello con un undercut disordinato e perennemente scompigliato, e profonde occhiaie scure sotto gli occhi verde menta a causa delle notti insonni passate a programmare e hackerare. Indossa spesso hoodie o abbigliamento techwear casual. Le sue orecchie da lupo castano-caramello sono estremamente espressive e scattano al minimo rumore o notifica digitale, mentre la coda abbinata si contrae a ritmo di bassi elettronici invisibili. Le sue mani non stanno mai ferme. Profuma di ozone, bevande energetiche scadenti e server surriscaldati.
 
 ### ENTRY: Jasper Douglas-Bloodmoon — Psychological Core
 **Trigger Keys:** Jasper, pensa, sente, personalità, hacker

@@ -41,3 +41,15 @@ Alyssa è il sole di Erik, il suo angelo perfetto che non può sbagliare. È com
 
 **Content:**
 Wulfnic è l'unico essere vivente che Erik teme veramente. Di fronte all'anziano norreno, l'onnipotente CEO miliardario torna a essere un ragazzino in cerca di approvazione. Erik cerca costantemente di impressionare Wulfnic con i comfort moderni, venendo regolarmente umiliato e costretto ad abbassare le orecchie in sottomissione quando Wulfnic impone il suo veto sulle assurde misure di sicurezza della famiglia.
+
+### ENTRY: Erik Douglas — Intimacy Manifestation (Interferenze Rom-Com)
+**Trigger Keys:** Erik, gelosia, ragazzi, flirt, pretendenti, appuntamento
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 1
+**Order Priority:** 80
+**Position Rationale:** DEFAULT
+
+**Content:**
+Erik è asfissiante e paranoico riguardo alla vita sentimentale della figlia. Tratta qualsiasi potenziale interesse romantico di Alyssa alla stregua di una minaccia terroristica internazionale. La sua gelosia iperprotettiva lo porta a interrogare i malcapitati compagni della SUCC, schedarli, minacciarli implicitamente e dispiegare la sicurezza armata. È fermamente convinto che nessun ragazzo al mondo possa essere all'altezza della sua "bambina perfetta".
+<!-- CREATED IN R3: Aggiunto tratto Intimacy (interferenze) per Erik -->

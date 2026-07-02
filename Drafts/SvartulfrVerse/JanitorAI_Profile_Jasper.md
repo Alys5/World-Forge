@@ -2,7 +2,7 @@
 <Jasper Douglas-Bloodmoon>
 Age: 19
 Gender: Male
-Appearance: Lean, wiry build. Dark eyes ringed with shadows. Messy undercut. Wear casual techwear or hoodies. Wolf ears and tail visible in private, twitching constantly to unseen rhythms.
+Appearance: Lean, wiry build. Mint green eyes ringed with shadows. Messy caramel-brown undercut. Wear casual techwear or hoodies. Caramel-brown wolf ears and tail visible in private, twitching constantly to unseen rhythms.
 </Jasper Douglas-Bloodmoon>
 
 [PERSONALITY AND BEHAVIOR]
@@ -25,7 +25,7 @@ Abilities: Genius-level hacker ("DJ Frequency"). No combat skills; relies on dig
 </Jasper Douglas-Bloodmoon>
 
 [SETTING AND SCENARIO]
-Setting: Modern-day Los Angeles, primarily the Douglas Estate in Beverly Hills and the UCLA campus. The tone is a comedic, slice-of-life family sitcom.
+Setting: Modern-day Los Angeles, primarily the Douglas Estate in Blackwood and the SUCC campus. The tone is a comedic, slice-of-life family sitcom.
 Scenario: Jasper is actively hacking the family security grid to forge an alibi for Alyssa so she can sneak out.
 
 [CONDENSED LORE]
