@@ -1,78 +1,722 @@
-// === CONTEXT GUARDS ===
-try {
-  context.character = context.character || {};
-  context.character.personality = context.character.personality || "";
-  context.character.scenario = context.character.scenario || "";
+/* ============================================================================
+   ADVANCED LORE BOOK SYSTEM v12
+   Author: Icehellionx
+   //#region HEADER
+   ==========================================================================
+   Inputs (read-only):  context.chat.last_message (or lastMessage), context.chat.message_count
+   Outputs (write-only): context.character.personality, context.character.scenario
 
-  var last = context.chat.last_message ? context.chat.last_message.toLowerCase() : "";
-  var padded = " " + last + " ";
-  var count = context.chat.message_count || 0;
+   AUTHOR CHEAT-SHEET (ASCII-safe):
+     - keywords: real user words/phrases; supports suffix wildcard "welcom*" -> welcome/welcomed/welcoming.
+     - tag: internal label for this entry (e.g., "base_open"); never matched against text.
+     - triggers: list of tags to emit when this entry hits (e.g., ["base_open"]).
 
-  // Clean old situational states to prevent token bloat
-  // We remove previous "==== ACTIVE SITUATION ====" blocks from the scenario
-  if (context.character.scenario.includes("==== ACTIVE SITUATION ====")) {
-    var parts = context.character.scenario.split("==== ACTIVE SITUATION ====");
-    context.character.scenario = parts[0].trim();
-  }
-  var activeSituation = "";
+   Text gates (any of these aliases are accepted):
+     - requireAny / andAny / requires: { any: [...] }
+     - requireAll / andAll / requires: { all: [...] }
+     - requireNone / notAny / block / requires: { none: [...] }
+     - notAll  // reject only if *all* listed words are present simultaneously
 
-  // === MODULAR LOREBOOK (THE EVERYTHING LOREBOOK FRAMEWORK) ===
-  var lorebook = {
-    definitionalLore: [
-      // [INSERT TIER 1 WORLD LOREBOOK ENTRIES HERE]
-      // Example: { keywords: ["city", "haven"], scenario: " The neon lights of Haven flicker in the rain." }
-    ],
-    relationalLore: [
-      // [INSERT SITUATIONAL TIER 2 CHARACTER LOREBOOK ENTRIES HERE]
-      // Note: Permanent Tier 1/2 lore should be in the Bot Profile's [LORE] block, not here.
-      // Example: { keywords: ["anna", "larsson"], personality: ", sarcastic and observant.", scenario: " Anna stands nearby, arms crossed." }
-    ],
-    eventLore: [
-      // [INSERT TIER 3 ARC_STATE OR SANDBOX_STATE ENTRIES HERE]
-      // Example: { trigger: count % 10 === 0, scenario: " A distant siren echoes through the streets." }
-    ]
-  };
+   Tag gates (cross-entry by fired tags):
+     - andAnyTags, andAllTags, notAnyTags, notAllTags
 
-  // --- PROCESS LOREBOOK ---
+   Time gates:
+     - minMessages / maxMessages
 
-  // Process Definitional Lore (Situational Tier 1)
-  for (var i = 0; i < lorebook.definitionalLore.length; i++) {
-    var entry = lorebook.definitionalLore[i];
-    for (var j = 0; j < entry.keywords.length; j++) {
-      if (padded.indexOf(" " + entry.keywords[j] + " ") !== -1) {
-        if (entry.personality) context.character.personality += entry.personality;
-        if (entry.scenario) activeSituation += entry.scenario;
-        break;
-      }
-    }
-  }
+   Name block:
+     - nameBlock: ["jamie"]  // blocks if active bot name equals any listed (case-insensitive)
 
-  // Process Relational Lore (Situational Tier 2)
-  for (var i = 0; i < lorebook.relationalLore.length; i++) {
-    var entry = lorebook.relationalLore[i];
-    for (var j = 0; j < entry.keywords.length; j++) {
-      if (padded.indexOf(" " + entry.keywords[j] + " ") !== -1) {
-        if (entry.personality) context.character.personality += entry.personality;
-        if (entry.scenario) activeSituation += entry.scenario;
-        break;
-      }
-    }
-  }
+   Priority and selection:
+     - priority: 1..5 (default 3; clamped)
+     - APPLY_LIMIT caps how many entries apply per turn (engine-level)
 
-  // Process Event Lore (Tier 3 Pulse/Beats/States)
-  for (var i = 0; i < lorebook.eventLore.length; i++) {
-    var entry = lorebook.eventLore[i];
-    if (entry.trigger) {
-      if (entry.personality) context.character.personality += entry.personality;
-      if (entry.scenario) activeSituation += entry.scenario;
-    }
-  }
+   Probability:
+     - probability: 0..1 or "40%" (both supported)
 
-  // Append situational text dynamically
-  if (activeSituation.trim() !== "") {
-    context.character.scenario += "\n==== ACTIVE SITUATION ====\n" + activeSituation.trim();
-  }
+   Shifts:
+     - optional sub-entries with same fields as entries; evaluated after the parent entry hits
 
-} catch (error) {
-  console.error("Lorebook Script Error:", error);
+   Multi-message window (engine behavior summary):
+     - Engine normalizes a joined window of recent messages (WINDOW_DEPTH) for keyword checks.
+     - Whole-word matching with optional suffix wildcard "stem*".
+     - Hyphen/underscore treated as spaces during normalization.
+
+   Output formatting:
+     - Engine prepends "\n\n" before each applied personality/scenario fragment.
+   ========================================================================== */
+
+
+/* ============================================================================
+   [SECTION] GLOBAL KNOBS
+   SAFE TO EDIT: Yes
+   ========================================================================== */
+//#region GLOBAL_KNOBS
+let DEBUG       = 0;     // 1 -> emit [DBG] lines inline in personality
+let APPLY_LIMIT = 6;     // cap applied entries per turn; higher priorities win
+
+/* ============================================================================
+   [SECTION] OUTPUT GUARDS
+   SAFE TO EDIT: Yes (keep behavior)
+   ========================================================================== */
+//#region OUTPUT_GUARDS
+context.character = context.character || {};
+context.character.personality = (typeof context.character.personality === "string")
+  ? context.character.personality : "";
+context.character.scenario = (typeof context.character.scenario === "string")
+  ? context.character.scenario : "";
+
+/* ============================================================================
+   [SECTION] INPUT NORMALIZATION
+   SAFE TO EDIT: Yes (tune WINDOW_DEPTH; keep normalization rules)
+   ========================================================================== */
+//#region INPUT_NORMALIZATION
+// --- How many recent messages to scan together (tune as needed) -------------
+const WINDOW_DEPTH = (function (n) {
+  n = parseInt(n, 10);
+  if (isNaN(n)) n = 5;
+  if (n < 1) n = 1;
+  if (n > 20) n = 20; // safety cap
+  return n;
+})(typeof WINDOW_DEPTH === "number" ? WINDOW_DEPTH : 5);
+
+// --- Utilities ---------------------------------------------------------------
+const _str = (x) => (x == null ? "" : String(x));
+const _normalizeText = (s) => {
+  s = _str(s).toLowerCase();
+  s = s.replace(/[^a-z0-9_\s-]/g, " "); // keep letters/digits/underscore/hyphen/space
+  s = s.replace(/[-_]+/g, " ");         // treat hyphen/underscore as spaces
+  s = s.replace(/\s+/g, " ").trim();    // collapse spaces
+  return s;
 }
+
+// --- Build multi-message window ---------------------------------------------
+const _lmArr = (context && context.chat && context.chat.last_messages && typeof context.chat.last_messages.length === "number")
+  ? context.chat.last_messages : null;
+
+let _joinedWindow = "";
+let _rawLastSingle = "";
+
+if (_lmArr && _lmArr.length > 0) {
+  let startIdx = Math.max(0, _lmArr.length - WINDOW_DEPTH);
+  const segs = [];
+  for (let i = startIdx; i < _lmArr.length; i++) {
+    let item = _lmArr[i];
+    let msg = (item && typeof item.message === "string") ? item.message : _str(item);
+    segs.push(_str(msg));
+  }
+  _joinedWindow = segs.join(" ");
+  let lastItem = _lmArr[_lmArr.length - 1];
+  _rawLastSingle = _str((lastItem && typeof lastItem.message === "string") ? lastItem.message : lastItem);
+} else {
+  let _lastMsgA = (context && context.chat && typeof context.chat.lastMessage === "string") ? context.chat.lastMessage : "";
+  let _lastMsgB = (context && context.chat && typeof context.chat.last_message === "string") ? context.chat.last_message : "";
+  _rawLastSingle = _str(_lastMsgA || _lastMsgB);
+  _joinedWindow = _rawLastSingle;
+}
+
+// --- Public struct + haystack ------------------------------------------------
+const CHAT_WINDOW = {
+  depth: WINDOW_DEPTH,
+  count_available: (_lmArr && _lmArr.length) ? _lmArr.length : (_rawLastSingle ? 1 : 0),
+  text_joined: _joinedWindow,
+  text_last_only: _rawLastSingle,
+  text_joined_norm: _normalizeText(_joinedWindow),
+  text_last_only_norm: _normalizeText(_rawLastSingle)
+};
+let last = " " + CHAT_WINDOW.text_joined_norm + " ";
+
+// --- Message count -----------------------------------------------------------
+let messageCount = 0;
+if (_lmArr && typeof _lmArr.length === "number") {
+  messageCount = _lmArr.length;
+} else if (context && context.chat && typeof context.chat.message_count === "number") {
+  messageCount = context.chat.message_count;
+} else if (typeof context_chat_message_count === "number") {
+  messageCount = context_chat_message_count;
+}
+
+// --- Active character name ---------------------------------------------------
+const activeName = _normalizeText(
+  (context && context.character && typeof context.character.name === "string")
+    ? context.character.name
+    : ""
+);
+
+/* ============================================================================
+   [SECTION] UTILITIES
+   SAFE TO EDIT: Yes
+   ========================================================================== */
+//#region UTILITIES
+const dbg = (msg) => {
+  try {
+    if (typeof DEBUG !== "undefined" && DEBUG) {
+      context.character.personality += "\n\n[DBG] " + String(msg);
+    }
+  } catch (e) {}
+}
+const arr = (x) => { return Array.isArray(x) ? x : (x == null ? [] : [x]); }
+const clamp01 = (v) => { v = +v; if (!isFinite(v)) return 0; return Math.max(0, Math.min(1, v)); }
+const parseProbability = (v) => {
+  if (v == null) return 1;
+  if (typeof v === "number") return clamp01(v);
+  let s = String(v).trim().toLowerCase();
+  let n = parseFloat(s.replace("%", ""));
+  if (!isFinite(n)) return 1;
+  return s.indexOf("%") !== -1 ? clamp01(n / 100) : clamp01(n);
+}
+const prio = (e) => {
+  let p = (e && isFinite(e.priority)) ? +e.priority : 3;
+  if (p < 1) p = 1;
+  if (p > 5) p = 5;
+  return p;
+}
+const getMin = (e) => { return (e && isFinite(e.minMessages)) ? +e.minMessages : -Infinity; }
+const getMax = (e) => { return (e && isFinite(e.maxMessages)) ? +e.maxMessages :  Infinity; }
+function getKW(e)  { return (e && Array.isArray(e.keywords)) ? e.keywords.slice(0) : []; }
+const getTrg = (e) => { return (e && Array.isArray(e.triggers)) ? e.triggers.slice(0) : []; }
+const getBlk = (e) => {
+  if (!e) return [];
+  if (Array.isArray(e.block)) return e.block.slice(0);
+  if (Array.isArray(e.Block)) return e.Block.slice(0);
+  return [];
+}
+const getNameBlock = (e) => { return (e && Array.isArray(e.nameBlock)) ? e.nameBlock.slice(0) : []; }
+const normName = (s) => { return _normalizeText(s); }
+const isNameBlocked = (e) => {
+  if (!activeName) return false;
+  let nb = getNameBlock(e);
+  for (let i = 0; i < nb.length; i++) {
+    let n = normName(nb[i]);
+    if (!n) continue;
+    if (n === activeName) return true;
+    if (activeName.indexOf(n) !== -1) return true;
+    if (n.indexOf(activeName + " ") === 0) return true;
+  }
+  return false;
+}
+const reEsc = (s) => { return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+
+const hasTerm = (hay, term) => {
+  let t = (term == null ? "" : String(term)).toLowerCase().trim();
+  if (!t) return false;
+  if (t.charAt(t.length - 1) === "*") {
+    let stem = reEsc(t.slice(0, -1));
+    let re1 = new RegExp("(?:^|\\s)" + stem + "[a-z]*?(?=\\s|$)");
+    return re1.test(hay);
+  }
+  let w = reEsc(t);
+  let re2 = new RegExp("(?:^|\\s)" + w + "(?=\\s|$)");
+  return re2.test(hay);
+}
+
+const collectWordGates = (e) => {
+  let r = (e && e.requires) ? e.requires : {};
+  let any  = [].concat(arr(e && e.requireAny),  arr(e && e.andAny),  arr(r.any));
+  let all  = [].concat(arr(e && e.requireAll),  arr(e && e.andAll),  arr(r.all));
+  let none = [].concat(arr(e && e.requireNone), arr(e && e.notAny),  arr(r.none), arr(getBlk(e)));
+  let nall = [].concat(arr(e && e.notAll));
+  return { any: any, all: all, none: none, nall: nall };
+}
+
+const wordGatesPass = (e) => {
+  let g = collectWordGates(e);
+  if (g.any.length  && !g.any.some(w => { return hasTerm(last, w); })) return false;
+  if (g.all.length  && !g.all.every(w => { return hasTerm(last, w); })) return false;
+  if (g.none.length &&  g.none.some(w => { return hasTerm(last, w); })) return false;
+  if (g.nall.length &&   g.nall.every(w => { return hasTerm(last, w); })) return false;
+  return true;
+}
+
+const tagsPass = (e, activeTagsSet) => {
+  let anyT  = arr(e && e.andAnyTags);
+  let allT  = arr(e && e.andAllTags);
+  let noneT = arr(e && e.notAnyTags);
+  let nallT = arr(e && e.notAllTags);
+  let hasT  = t => { return !!activeTagsSet && activeTagsSet[String(t)] === 1; };
+
+  if (anyT.length  && !anyT.some(hasT)) return false;
+  if (allT.length  && !allT.every(hasT)) return false;
+  if (noneT.length &&  noneT.some(hasT)) return false;
+  if (nallT.length &&   nallT.every(hasT)) return false;
+  return true;
+}
+
+const isAlwaysOn = (e) => {
+  let hasKW  = !!(e && e.keywords && e.keywords.length);
+  let hasTag = !!(e && e.tag);
+  let hasMin = (e && e.minMessages != null);
+  let hasMax = (e && e.maxMessages != null);
+  return !hasKW && !hasTag && !hasMin && !hasMax;
+}
+
+const entryPasses = (e, activeTagsSet) => {
+  if (!(messageCount >= getMin(e) && messageCount <= getMax(e))) return false;
+  if (isNameBlocked(e)) return false;
+  if (!wordGatesPass(e)) return false;
+  if (!tagsPass(e, activeTagsSet || {})) return false;
+  if (Math.random() > parseProbability(e && e.probability)) return false;
+  return true;
+}
+
+/* ============================================================================
+   [SECTION] AUTHOR ENTRIES
+   SAFE TO EDIT: Yes
+   ========================================================================== */
+//#region AUTHOR_ENTRIES
+const dynamicLore = [
+// 🟢🟢🟢 SAFE TO EDIT BELOW THIS LINE 🟢🟢🟢
+
+  /* L0 — Always-on demo
+     What it does: Fires every turn because there are no keywords, no time gates, and no tag.
+     Why use: Bootstrap a baseline voice or a harmless always-on nudge.
+  */
+  { personality: " This entry will always fire." },
+
+  /* L1 — Basics: greeting keywords
+     New tools: simple keyword list.
+     Why use: Straightforward mapping from "hello/hi/hey" to a friendly behavior.
+  */
+  {
+    keywords: ["hello", "hi", "hey"],
+    personality: " {{char}} is friendly and professional with customers and should say hello back."
+  },
+
+  /* L2a — Time-of-day greetings, with exclusion and trigger emission
+     New tools: priority bump (4), requireNone exclusion, triggers emission.
+     What it does: If welcome/good morning/etc appears and it's NOT a refund/complaint, greet and emit base_greeting.
+     Why use: Fan-out pattern—one keyword entry activates a cleaner follow-up via a tag.
+  */
+  {
+    keywords: ["welcome", "good morning", "good afternoon", "good evening"],
+    priority: 4,
+    triggers: ["base_greeting"],
+    requireNone: ["refund", "complaint"],
+    personality: " {{char}} should greet for the time of day and should ask how they can help."
+  },
+
+  /* L2b — Baseline greeting (trigger-only)
+     New tools: tag entry, higher priority (5).
+     What it does: Fires only if 'base_greeting' tag is present.
+     Why use: Keep layered structure tidy—separate core greeting confirmation from raw keyword hit.
+  */
+  {
+    tag: "base_greeting",
+    priority: 5,
+    personality: " {{char}} should confirm the customer's name if it was given and should restate the greeting clearly."
+  },
+
+  /* L2c — Courtesy echo: always-on gated by politeness signals
+     New tools: andAny (alias of requireAny), triggers emission.
+     What it does: If courtesy terms appear anywhere, mirror a polite tone and also emit base_greeting for cohesion.
+     Why use: Gentle tonal control that chains into your greeting stack without new keywords.
+  */
+  {
+    andAny: ["please", "thank", "thanks"],
+    priority: 3,
+    triggers: ["base_greeting"],
+    personality: " {{char}} acknowledges the courtesy and mirrors the polite tone."
+  },
+
+  /* L3a — Espresso request with block and requires
+     New tools: block (exclusion), andAny, triggers fan-out, explicit scenario.
+     What it does: For "espresso" and any of ["dial","grind"], unless blocked by "decaf-only", emit 'base_espresso'
+                   and output concrete personality+scenario steps.
+     Why use: Demonstrates negative gating and skill instruction (dial-in details).
+  */
+  {
+    keywords: ["espresso"],
+    priority: 4,
+    block: ["decaf-only"],
+    triggers: ["base_espresso"],
+    andAny: ["dial", "grind"],
+    personality: " {{char}} should state the target shot time and the grind adjustment before pulling the shot.",
+    scenario: " {{char}} times the shot to 25-30 seconds and states the exact grind change used."
+  },
+
+  /* L3b — Espresso baseline (trigger-only)
+     What it does: Ensures order clarifications are surfaced once 'base_espresso' is set.
+     Why use: Centralizes the common preflight questions for all espresso variants.
+  */
+  {
+    tag: "base_espresso",
+    priority: 5,
+    personality: " {{char}} should confirm single or double, desired volume or ratio, and for-here or to-go before preparing the shot."
+  },
+
+  /* L4a — Latte art with probability and nested requires
+     New tools: probability "40%", requires.any + requires.none, triggers.
+     What it does: If "latte art" or "art", and we have art/heart/design cues, and not in a rush,
+                   then sometimes (40%) propose art and emit base_latte_art.
+     Why use: Teaches controlled randomness and queue-aware behavior.
+  */
+  {
+    keywords: ["latte art", "art"],
+    priority: 4,
+    probability: "40%",
+    triggers: ["base_latte_art"],
+    requires: { any: ["art", "heart", "design"], none: ["rush", "busy"] },
+    personality: " {{char}} should check the queue length and should offer a simple heart if the line is short; otherwise {{char}} should explain that speed takes priority."
+  },
+
+  /* L4b — Base latte art (trigger-only)
+     What it does: Standardizes pre-art confirmations (cup size, milk).
+     Why use: Keeps your latte art flow consistent and centrally adjustable.
+  */
+  {
+    tag: "base_latte_art",
+    priority: 5,
+    personality: " {{char}} should confirm cup size and milk choice before attempting latte art."
+  },
+
+  /* L5a — Opening routine with time gating + exclusion
+     New tools: minMessages/maxMessages, notAny.
+     What it does: Only in the first 3 messages (0..3), if opening cues appear and not at night,
+                   emit base_open and list initial tasks.
+     Why use: Scenario-appropriate pacing—front-load opening steps early in a chat session.
+  */
+  {
+    keywords: ["opening", "open"],
+    minMessages: 0, maxMessages: 3,
+    priority: 4,
+    triggers: ["base_open"],
+    notAny: ["night"],
+    personality: " {{char}} should list the first three opening tasks they perform."
+  },
+
+  /* L5b — Base opening (trigger-only)
+     What it does: A fixed ordered checklist for consistency during open.
+     Why use: Enforces a canonical order of steps separate from detection logic.
+  */
+  {
+    tag: "base_open",
+    priority: 5,
+    personality: " {{char}} should calibrate the grinder, flush the group heads, and restock cups in that order."
+  },
+
+  /* L6a — Closing routine; requires(clean) and suffix wildcard
+     New tools: suffix wildcard "clos*", minMessages gate for later chat, andAll.
+     What it does: After at least 4 messages, if closing cues and "clean" are present, emit base_close and summarize.
+     Why use: Late-session operational wrap-up with explicit cleanliness requirement.
+  */
+  {
+    keywords: ["closing", "clos*"],
+    minMessages: 4,
+    priority: 4,
+    triggers: ["base_close"],
+    andAll: ["clean"],
+    personality: " {{char}} should summarize how they clean and how they log at the end of the day."
+  },
+
+  /* L6b — Base closing (trigger-only)
+     What it does: Standard close checklist.
+     Why use: Codifies the close routine that other entries can build on.
+  */
+  {
+    tag: "base_close",
+    priority: 5,
+    personality: " {{char}} should purge the steam wands, clean the drip trays, and record wastage before locking up."
+  },
+
+  /* L7a — Inventory with multiple triggers and nested requires
+     New tools: multiple triggers in one entry; requires.any + requires.none bundle.
+     What it does: When stock/inventory discussed, emit both 'base_inventory' and 'order_supplies';
+                   summarize levels and whether reorder is needed.
+     Why use: Forks into two coordinated flows: assessing stock then placing orders.
+  */
+  {
+    keywords: ["inventory", "stock"],
+    priority: 4,
+    triggers: ["base_inventory", "order_supplies"],
+    requires: { any: ["stock", "inventory"], none: ["audit-only"] },
+    personality: " {{char}} should state current bean and milk levels and should say whether a reorder is needed."
+  },
+
+  /* L7b — Base inventory (trigger-only)
+     What it does: Prompts a check and heuristic planning for tomorrow.
+     Why use: Keeps the inventory conversation concrete (logs, estimates, flags).
+  */
+  {
+    tag: "base_inventory",
+    priority: 5,
+    personality: " {{char}} should check the log, estimate tomorrow's usage, and flag low items."
+  },
+
+  /* L7c — Order supplies (trigger-only)
+     What it does: Converts assessment into explicit quantities and an action (PO).
+     Why use: Ensures conversations end with a clear operational decision.
+  */
+  {
+    tag: "order_supplies",
+    priority: 4,
+    personality: " {{char}} should specify exact quantities for beans and milk and should submit the purchase order."
+  },
+
+  /* L8a — Milk steaming with Shifts (branching refinements)
+     New tools: Shifts array (child entries), per-shift probability, per-shift gates including nameBlock, block, and andAny.
+     What it does: A base milk steaming behavior emits 'base_milk' and sets default technique outputs,
+                   while Shifts refine based on drink type and constraints.
+     Why use: Structured specialization—shared base plus targeted adjustments without duplicating the base rule.
+  */
+  {
+    keywords: ["milk", "steam"],
+    priority: 4,
+    triggers: ["base_milk"],
+    personality: " {{char}} should state the target texture based on the requested drink and should monitor milk temperature.",
+    scenario: " {{char}} sets the pitcher angle, finds a whirlpool, and stops at the correct temperature.",
+    Shifts: [
+      /* Shift 1 — Cappuccino (always if matched)
+         New tools: shift with its own keywords and probability.
+         Why use: Guarantees classic cappuccino foam profile when requested.
+      */
+      {
+        keywords: ["cappuccino"],
+        probability: 1.0,
+        personality: " {{char}} should create a drier foam suitable for a classic cappuccino.",
+        scenario: " {{char}} keeps the foam airy and maintains a stable cap."
+      },
+      /* Shift 2 — Latte (subsampled, avoids rush/busy)
+         New tools: probability 0.7, notAny exclusion inside a shift.
+         Why use: Offers microfoam and art if pace allows; defers when busy.
+      */
+      {
+        keywords: ["latte"],
+        probability: 0.7,
+        notAny: ["rush", "busy"],
+        personality: " {{char}} should create smooth microfoam suitable for a latte.",
+        scenario: " {{char}} aims for a glossy texture that allows simple latte art."
+      },
+      /* Shift 3 — Non-dairy handling with block and nameBlock
+         New tools: block ("sold out"), nameBlock (e.g., prevent cameo self-mentions from altering flow),
+                    andAny to catch non-dairy signals.
+         Why use: Precise constraints on alternative milks and a safe temperature tweak.
+      */
+      {
+        keywords: ["oat", "almond"],
+        block: ["sold out"],
+        nameBlock: ["jamie"],
+        andAny: ["oat", "almond", "non-dairy"],
+        personality: " {{char}} should reduce the final temperature slightly to prevent splitting for non-dairy milk.",
+        scenario: " {{char}} keeps the pitcher a few degrees cooler to avoid separation."
+      }
+    ]
+  },
+
+  /* L8b — Base milk (trigger-only)
+     What it does: Establishes the milk choice confirmation and adjusts approach accordingly.
+     Why use: Keeps milk handling consistent before any specific shift overrides.
+  */
+  {
+    tag: "base_milk",
+    priority: 5,
+    personality: " {{char}} should confirm dairy or non-dairy milk and should adjust the steaming approach accordingly."
+  },
+
+  /* L9a — Operations cameo with nameBlock and exclusion
+     New tools: nameBlock prevents self-referential loops if the character is "jamie".
+     What it does: If user mentions "jamie" or "manager" (but character named 'jamie' is blocked from acting on it),
+                   and not off-duty, emit base_ops and assign roles.
+     Why use: Avoids awkward self-cameo; still supports talking about someone else named Jamie.
+  */
+  {
+    keywords: ["jamie", "manager"],
+    nameBlock: ["jamie"],
+    priority: 4,
+    triggers: ["base_ops"],
+    notAny: ["off-duty"],
+    personality: " {{char}} should assign roles during peak hours and should confirm the plan."
+  },
+
+  /* L9b — Base ops (trigger-only)
+     What it does: Defines the stations and the handoff checkpoints.
+     Why use: Operational clarity during busy periods.
+  */
+  {
+    tag: "base_ops",
+    priority: 5,
+    personality: " {{char}} should assign register, bar, and runner positions and should confirm handoff points."
+  },
+
+  /* L10a — Inspection flow with multi-triggers and requires(all)
+     New tools: multiple triggers and andAll; chains into a health sub-flow.
+     What it does: For inspection/health with labels present, emit base_inspection and health_check.
+     Why use: Parallel checklists: sanitation and cold-chain checks in one pass.
+  */
+  {
+    keywords: ["inspection", "health"],
+    priority: 4,
+    triggers: ["base_inspection", "health_check"],
+    andAll: ["labels"],
+    personality: " {{char}} should confirm sanitizer strength and should verify that all milk jugs have current labels."
+  },
+
+  /* L10b — Base inspection (trigger-only)
+     What it does: Details the sanitizer and labeling checks.
+     Why use: Keeps inspectors’ expectations visible and precise.
+  */
+  {
+    tag: "base_inspection",
+    priority: 5,
+    personality: " {{char}} should verify sanitizer ppm, check date labels, and should note any required corrections."
+  },
+
+  /* L10c — Health check (trigger-only) with its own requires bundle
+     New tools: requires.none + requires.any in one object.
+     What it does: If not told to skip, and temperature/fridge/thermometer is in scope,
+                   record fridge temps and list corrective actions.
+     Why use: Encodes a simple HACCP-style gate without cluttering the parent entry.
+  */
+  {
+    tag: "health_check",
+    priority: 4,
+    requires: { none: ["skip"], any: ["temperature", "fridge", "thermometer"] },
+    personality: " {{char}} should record fridge temperatures and should list any corrective actions completed."
+  }
+
+// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
+];
+
+/* ============================================================================
+   [SECTION] COMPILATION
+   DO NOT EDIT: Behavior-sensitive
+   ========================================================================== */
+//#region COMPILATION
+const compileAuthorLore = (authorLore) => {
+  let src = Array.isArray(authorLore) ? authorLore : [];
+  let out = new Array(src.length);
+  for (let i = 0; i < src.length; i++) out[i] = normalizeEntry(src[i]);
+  return out;
+}
+const normalizeEntry = (e) => {
+  if (!e) return {};
+  let out = {};
+  for (let k in e) if (Object.prototype.hasOwnProperty.call(e, k)) out[k] = e[k];
+  out.keywords = Array.isArray(e.keywords) ? e.keywords.slice(0) : [];
+  if (Array.isArray(e.Shifts) && e.Shifts.length) {
+    let shArr = new Array(e.Shifts.length);
+    for (let i = 0; i < e.Shifts.length; i++) {
+      let sh = e.Shifts[i] || {};
+      let shOut = {};
+      for (let sk in sh) if (Object.prototype.hasOwnProperty.call(sh, sk)) shOut[sk] = sh[sk];
+      shOut.keywords = Array.isArray(sh.keywords) ? sh.keywords.slice(0) : [];
+      shArr[i] = shOut;
+    }
+    out.Shifts = shArr;
+  } else if (out.hasOwnProperty("Shifts")) {
+    delete out.Shifts;
+  }
+  return out;
+}
+const _ENGINE_LORE = compileAuthorLore(typeof dynamicLore !== "undefined" ? dynamicLore : []);
+
+/* ============================================================================
+   [SECTION] SELECTION PIPELINE
+   DO NOT EDIT: Behavior-sensitive
+   ========================================================================== */
+//#region SELECTION_PIPELINE
+// --- State -------------------------------------------------------------------
+const buckets = [null, [], [], [], [], []];
+const picked = new Array(_ENGINE_LORE.length);
+for (let __i = 0; __i < picked.length; __i++) picked[__i] = 0;
+
+const makeTagSet = () => Object.create(null);
+const trigSet = makeTagSet();
+const postShiftTrigSet = makeTagSet();
+
+const addTag = (set, key) => { set[String(key)] = 1; };
+const hasTag = (set, key) => set[String(key)] === 1;
+
+// --- 1) Direct pass ----------------------------------------------------------
+for (let i1 = 0; i1 < _ENGINE_LORE.length; i1++) {
+  let e1 = _ENGINE_LORE[i1];
+  let hit = isAlwaysOn(e1) || getKW(e1).some(kw => { return hasTerm(last, kw); });
+  if (!hit) continue;
+  if (!entryPasses(e1, undefined)) { dbg("filtered entry[" + i1 + "]"); continue; }
+  buckets[prio(e1)].push(i1);
+  picked[i1] = 1;
+  let trg1 = getTrg(e1);
+  for (let t1 = 0; t1 < trg1.length; t1++) addTag(trigSet, trg1[t1]);
+  dbg("hit entry[" + i1 + "] p=" + prio(e1));
+}
+
+// --- 2) Trigger pass ---------------------------------------------------------
+for (let i2 = 0; i2 < _ENGINE_LORE.length; i2++) {
+  if (picked[i2]) continue;
+  let e2 = _ENGINE_LORE[i2];
+  if (!(e2 && e2.tag && hasTag(trigSet, e2.tag))) continue;
+  if (!entryPasses(e2, trigSet)) { dbg("filtered triggered entry[" + i2 + "]"); continue; }
+  buckets[prio(e2)].push(i2);
+  picked[i2] = 1;
+  let trg2 = getTrg(e2);
+  for (let t2 = 0; t2 < trg2.length; t2++) addTag(trigSet, trg2[t2]);
+  dbg("triggered entry[" + i2 + "] p=" + prio(e2));
+}
+
+// --- 3) Priority selection (capped) -----------------------------------------
+const selected = [];
+let pickedCount = 0;
+let __APPLY_LIMIT = (typeof APPLY_LIMIT === "number" && APPLY_LIMIT >= 1) ? APPLY_LIMIT : 99999;
+
+for (let p = 5; p >= 1 && pickedCount < __APPLY_LIMIT; p--) {
+  let bucket = buckets[p];
+  for (let bi = 0; bi < bucket.length && pickedCount < __APPLY_LIMIT; bi++) {
+    selected.push(bucket[bi]);
+    pickedCount++;
+  }
+}
+if (pickedCount === __APPLY_LIMIT) dbg("APPLY_LIMIT reached");
+
+/* ============================================================================
+   [SECTION] APPLY + SHIFTS + POST-SHIFT
+   DO NOT EDIT: Behavior-sensitive
+   ========================================================================== */
+//#region APPLY_AND_SHIFTS
+let bufP = "";
+let bufS = "";
+
+for (let si = 0; si < selected.length; si++) {
+  let idx = selected[si];
+  let e3 = _ENGINE_LORE[idx];
+  if (e3 && e3.personality) bufP += "\n\n" + e3.personality;
+  if (e3 && e3.scenario)    bufS += "\n\n" + e3.scenario;
+  if (!(e3 && Array.isArray(e3.Shifts) && e3.Shifts.length)) continue;
+
+  for (let shI = 0; shI < e3.Shifts.length; shI++) {
+    let sh = e3.Shifts[shI];
+    let activated = isAlwaysOn(sh) || getKW(sh).some(kw => { return hasTerm(last, kw); });
+    if (!activated) continue;
+
+    let trgSh = getTrg(sh);
+    for (let tt = 0; tt < trgSh.length; tt++) addTag(postShiftTrigSet, trgSh[tt]);
+
+    if (!entryPasses(sh, trigSet)) { dbg("shift filtered"); continue; }
+
+    if (sh.personality) bufP += "\n\n" + sh.personality;
+    if (sh.scenario)    bufS += "\n\n" + sh.scenario;
+  }
+}
+
+// --- Post-shift triggers -----------------------------------------------------
+const unionTags = (() => {
+  let dst = makeTagSet(), k;
+  for (k in trigSet) if (trigSet[k] === 1) dst[k] = 1;
+  for (k in postShiftTrigSet) if (postShiftTrigSet[k] === 1) dst[k] = 1;
+  return dst;
+})();
+
+for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
+  if (picked[i3]) continue;
+  let e4 = _ENGINE_LORE[i3];
+  if (!(e4 && e4.tag && hasTag(postShiftTrigSet, e4.tag))) continue;
+  if (!entryPasses(e4, unionTags)) { dbg("post-filter entry[" + i3 + "]"); continue; }
+  if (e4.personality) bufP += "\n\n" + e4.personality;
+  if (e4.scenario)    bufS += "\n\n" + e4.scenario;
+  dbg("post-shift triggered entry[" + i3 + "] p=" + prio(e4));
+}
+
+/* ============================================================================
+   [SECTION] FLUSH
+   DO NOT EDIT: Behavior-sensitive
+   ========================================================================== */
+//#region FLUSH
+if (bufP) context.character.personality += bufP;
+if (bufS) context.character.scenario    += bufS;
