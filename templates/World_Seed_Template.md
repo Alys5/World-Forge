@@ -686,6 +686,31 @@ Trigger keywords: [name variants, role descriptors]
 
 ---
 
+## 9. RUNTIME DIRECTIVES **[OPTIONAL — leave blank unless this world needs runtime behavior the pipeline wouldn't predict]**
+
+*This section is your direct channel to the Chat Completion Preset. The Prompt Engineer (Phase 5) predicts this world's runtime failure modes on its own and selects preset blocks against them — but only you know the behaviors you care about that no analysis would infer. A runtime directive is an **engine-steering ask**: something about how the model should behave turn-by-turn when running this world. The Refiner records these in Master Design Section 12; the Prompt Engineer must address every one in the preset — by adapting an optional block, extending a world-specific core block, or authoring a custom block — and show the mapping in its Block Selection Rationale.*
+
+*Most worlds need none of these — the standard block library covers the common failure modes. Write a directive only when you have a specific runtime behavior in mind. More than ~6 directives usually means some of them belong elsewhere (see the routing note below).*
+
+**What belongs here vs. elsewhere (the Refiner will reroute misplaced content):**
+- A **world fact** ("the Church controls all magic") → Section 2 (Tier 1 lorebook material), not here.
+- A **character behavior** ("Anna deflects with sarcasm") → Section 4 LLM Behavioral Instructions (the card), not here.
+- **Prose style, perspective, markers** → Section 1.5 Style Contract, not here.
+- **Arc-specific tone** ("Arc 2 is dread-heavy") → Section 5 Tone & pacing, not here.
+- A **runtime behavior rule that spans the whole world and isn't tied to one character** ("combat must feel slow and costly — wounds accumulate, nobody shrugs off a hit", "NPCs bargain — they never volunteer information for free", "the nobility's honorific system is used in every address, and misuse is a social event the scene reacts to") → **here.**
+
+**Directive 1 — [Short name]:**
+- **The behavior:** [Imperative, observable. What must the model do (or never do) at runtime? Not a vibe — a behavior you could check a response against.]
+- **A wrong response looks like:** [One or two lines describing the failure this directive prevents. This is what makes the directive testable and tells the Prompt Engineer which failure mode it maps to.]
+- **Scope:** [`always` | `Arc N only` | a scene type — e.g., "combat scenes", "court scenes"]
+
+**Directive 2 — [Short name]:**
+[Same format — add as needed, typically 0–6 total]
+
+> ⚠️ **Boundary:** runtime directives are implemented in world-tunable preset blocks (Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, the optional block menu, or a custom block). They are never written into the preset's Main Prompt, Jailbreak, or Formatting blocks, or inside the `<style_contract>` — those are world-agnostic engine surfaces under the override architecture, and a directive that could only live there has been misclassified.
+
+---
+
 ## APPENDIX: QUICK REFERENCE — WHAT GOES WHERE
 
 *Use this as a checklist when filling out the World Seed. If you're unsure where something belongs, find its category here.*
@@ -801,3 +826,8 @@ Trigger keywords: [name variants, role descriptors]
 - [ ] World-level prose register described
 - [ ] Per-arc thematic function, prose manifestation, direction, and live scene types specified for every arc with intimate beats
 - [ ] Cross-arc intimacy trajectory described (recommended)
+
+**Section 9 — Runtime Directives (skip entirely if not needed):**
+- [ ] Each directive is an imperative, observable runtime behavior with a "wrong response looks like" example and a scope
+- [ ] No world facts, character behaviors, or style/marker content smuggled in (those belong in Sections 2, 4, and 1.5)
+- [ ] Kept to ~6 or fewer

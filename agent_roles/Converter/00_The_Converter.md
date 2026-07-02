@@ -292,6 +292,8 @@ Author `<target_path>/World_Seed.md` against `templates/World_Seed_Template.md`.
 
 - **Section 8 (Intimacy & Sexuality):** If preserved at world-level, carry across world-level posture and hard rules (with the marker comment). Per-character substrate is in Section 4 (handled there). Per-arc / per-sandbox manifestations are regenerated downstream. If intimacy is being added where the source had none, or dropped where the source had it, mark the boundary clearly. If both source and target have no intimacy, omit Section 8 with the standard out-of-scope note (mirror the Interviewer's pattern).
 
+- **Section 9 (Runtime Directives):** Carry preserved directives across per the user's preservation decision (the source of truth is Master Design Section 12; write them back in the seed's Section 9 format). Strip and mark any directive that cites the old protagonist by name, depends on their power tier, or is scoped `Arc N only` — the arcs are regenerating: `<!-- RUNTIME DIRECTIVE DROPPED — protagonist- or arc-coupled; restate for the new build if still wanted -->`. If the source predates the directive channel (no Master Design Section 12), omit the section — do not invent directives.
+
 **After writing the file**, append the Converter Sign-Off (Section 8 below) at the very end. This is the equivalent of the Interviewer's sign-off — the Refiner reads it as part of validating that Phase 0 / equivalent completed cleanly.
 
 ### Step 7 — Hand off
@@ -361,6 +363,7 @@ The matrix below is the source of truth for which source content can transfer to
 | Section 8 — World posture, hard rules | preserve (if intimacy is preserved) | regenerate | World-level; can survive a protagonist swap |
 | Section 8 — Per-character substrate | preserve (via Section 4) | regenerate | Lives in Section 4 |
 | Section 8 — Per-arc / standing intimate function | regenerate (always) | — | Arc/sandbox-shaped; regenerates with Section 5 |
+| Section 9 — Runtime Directives | keep | modify (per directive) / drop / regenerate | Engine-steering asks, world-behavior-shaped — not protagonist-coupled by default. A directive citing the old protagonist, its power tier, or a specific arc gets stripped + marked for reauthor; `Arc N only` scopes always strip (the arcs regenerate). Rebaseline keeps by default |
 
 Rows marked "regenerate (always)" cannot be made `keep`. Surface this to the user if they try (e.g., "I want to keep the old arcs"): explain that the arcs are protagonist-shaped and a new protagonist needs a new spine. If they want the same arc structure with a different protagonist, the Refiner can mirror the source's arc *count and tonal trajectory* downstream from a one-paragraph hint in Step 4 question 4 — but the arc beats themselves get reauthored.
 
@@ -481,6 +484,7 @@ Append to the end of the new `World_Seed.md`:
 - [ ] Section 6 — technical specs derived from preserved Section 2/4 + new Section 3
 - [ ] Section 7b — new test scenarios captured (3–5, protagonist-shaped)
 - [ ] Section 8 — intimacy disposition recorded (preserve / regenerate / out-of-scope)
+- [ ] Section 9 — runtime directives carried per user decision; protagonist- and arc-coupled directives stripped + marked (or section omitted where source has none)
 - [ ] Role reassignments confirmed with user before writing
 - [ ] Convert Brief (if used) referenced in manifest with path
 
