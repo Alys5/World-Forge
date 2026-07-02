@@ -13,6 +13,58 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-02 — Runtime Directives: a seed-level channel for world-tuned preset blocks
+
+The Chat Completion Preset's world-tuning was entirely inferred: the Prompt
+Engineer predicted a world's runtime failure modes from the Master Design at
+Phase 5, with no way for the *user* to state a runtime behavior they already
+knew they wanted ("combat must feel slow and costly", "NPCs bargain — never
+volunteer information for free"). If the analysis didn't predict the need, no
+block carried it. This adds **Runtime Directives** — an optional World Seed
+Section 9 that flows through Master Design Section 12 into the Block Selection
+Rationale, where every directive must be implemented in a world-tunable block
+(an extended world-specific core block, an adapted optional block, or a custom
+block) and shown in a new Runtime Directive Coverage table. Directives are
+explicitly forbidden from the world-agnostic engine surfaces (Main Prompt,
+Jailbreak, Formatting, `<style_contract>` interior) — the override architecture
+is untouched. The channel is fully optional: an empty or absent Section 9/12
+changes nothing, and existing worlds are unaffected.
+
+### Added
+- `templates/World_Seed_Template.md`: Section 9 (RUNTIME DIRECTIVES, optional)
+  — per-directive format (imperative behavior + "wrong response looks like"
+  example + scope), routing guardrails (world facts → §2, character behavior →
+  §4, style → §1.5, arc tone → §5), the forbidden-target boundary note, and a
+  submission-checklist block.
+- `agent_roles/00_The_Interviewer.md`: interview SECTION 9 — optional late-
+  interview elicitation, push-to-observable-behavior guidance, reroute rules,
+  sign-off coverage line.
+- `agent_roles/01_The_Refiner.md`: Step 1.6 (Runtime Directive Classification:
+  shape validation, reroute of misplaced content, `UNRESOLVED_QUESTIONS.md` for
+  untestable directives), Master Design SECTION 12 (`RD-N` record format), Step
+  1 classification bullet, sign-off section.
+- `agent_roles/05_The_Prompt_Engineer.md`: Section 5.0b Step 2b (directive
+  intake as requirements, legitimate vs. forbidden block targets), Runtime
+  Directive Coverage table in the Rationale format and audit-report Section 9,
+  Pass 2 content check, sign-off lines, and Preset Resync Step 2 re-derivation
+  (a directive the live preset doesn't implement surfaces as CHANGED/ADDED).
+- `templates/Convert_Brief_Template.md`: Section 4i (Runtime Directives
+  preservation decision).
+
+### Changed
+- `agent_roles/05a_Block_Library.md`: custom-block guidance names Master Design
+  Section 12 directives as a primary custom-block source (behavior → imperative
+  content, wrong_response → anti-failure-mode statement, scope → placement).
+- `workflows/world-forge.md`: Phase 0 interview list (item 10), Phase 1 Master
+  Design contents, Phase 5 Workstream B description.
+- `agent_roles/Converter/00_The_Converter.md`: preservation matrix row for
+  Section 9 (keep by default; protagonist- and arc-coupled directives strip +
+  mark), Step 6 seed-writing rule, sign-off coverage line.
+- `CLAUDE.md`: cross-file consistency table row for the Runtime Directives
+  channel.
+
+---
+
 ## 2026-07-01 — Tutorial: document `/worldforge audition`
 
 `tutorial.md` never referenced the Auditioner (`/worldforge audition`), even

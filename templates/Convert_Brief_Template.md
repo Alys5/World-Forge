@@ -152,6 +152,12 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 [If `drop`: the new seed omits Section 8 entirely. Phase 2.5 and Phase 3.7 will be skipped downstream.]
 
+### 4i. Section 9 — Runtime Directives
+
+[`n/a (source has none)` | `keep` | `modify: which directives change and how` | `drop` | `regenerate`]
+
+[Runtime directives are engine-steering asks recorded in the source's Master Design Section 12 — world-behavior-shaped, so they carry by default. The Converter strips any directive that cites the old protagonist, depends on their power tier, or is scoped `Arc N only` (the arcs regenerate), and marks it for restating. *Rebaseline:* keeps by default.]
+
 ---
 
 ## 5. THE NEW PROTAGONIST (`{{user}}`) **[REQUIRED — reframe mode]**
