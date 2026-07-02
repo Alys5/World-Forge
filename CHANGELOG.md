@@ -13,6 +13,72 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-02 — Director-card style coherence: stop models treating the World Director as a character
+
+Field report: on Director / NPC-host cards, some models (e.g. Kimi 2.7) burn
+reasoning on — or act out — a contradiction the pipeline itself ships. The
+style contract's `NARRATIVE PERSPECTIVE` templates anchor their focal clause
+on `{{char}}`, and at runtime SillyTavern resolves `{{char}}` to the active
+card's **name**: a Director turn in a `third_limited` world reads *"focal on
+[Director card name] this turn… the narrator sees [Director card name]'s
+interior"* while the card itself declares it is not a character. Three gaps
+compounded: the Refiner's Director scan only fired for `first`/`second` world
+defaults (so `third_limited` Director worlds shipped no override), the
+omniscient override template still framed the Director as *"the focal
+narrator"*, and on stock SillyTavern (no `world_forge` extension) per-card
+override metadata is inert, leaving the world contract as the only style
+authority on Director turns with no correction at all.
+
+### Added
+- `agent_roles/SHARED_Style_Contract_Reference.md`: **§3a-D Director-card
+  variant** of the `NARRATIVE PERSPECTIVE` templates (`third_omniscient` /
+  `third_limited` × tense) — states outright that `{{char}}` is not a
+  character in the scene but the world's narrating voice and NPC host, focal
+  on whichever scene character is being rendered; **§3d `DIRECTOR-CARD RULE`**
+  — a conditional, world-agnostic line in the world `<style_contract>`
+  (trigger: Master Design Section 11c `has_director_card: true`) that corrects
+  the reading of any focal-on-`{{char}}` directive on Director turns, covering
+  stock SillyTavern where overrides never splice; a §6 anti-pattern bullet
+  (never emit character-shaped §3a prose for a Director-flagged card, or
+  §3a-D prose for a character card).
+- `agent_roles/01_The_Refiner.md`: Section 11c `has_director_card` flag +
+  Director-flagged card list; sign-off items for the flag and the widened
+  advisory.
+- `agent_roles/05_The_Prompt_Engineer.md` + `agent_roles/05a_Block_Library.md`:
+  the conditional `DIRECTOR-CARD RULE` line in the Main Prompt's
+  `<style_contract>` (now two to four lines), Pass 1 presence/absence hard
+  checks (with a fallback derivation from the Director criteria for Master
+  Designs predating the flag), sign-off items, and resync handling (a
+  missing-but-warranted line is ordinary spec drift resync adds).
+- `templates/Char_Card_creation.md`: Director-card bullet pointing at the
+  §3a-D variant and the runtime `{{char}}`-resolves-to-name failure mode.
+- `CLAUDE.md`: cross-file consistency row for the Director-card style seam.
+
+### Changed
+- `agent_roles/01_The_Refiner.md`: Step 1.5 Pass 4 Director scan now runs
+  regardless of the world default perspective, and the Section 11d POV
+  ambiguity advisory triggers on every focal-anchored *effective* perspective
+  (`first`, `second`, **and `third_limited`**) on a Director-flagged card —
+  advisory text rewritten around the `{{char}}`-resolves-to-name mechanism.
+- `agent_roles/02_The_Architect.md`: Director-flagged cards' override
+  directives select SHARED §3a-D instead of §3a; worked example 3 updated to
+  the Director-variant prose; pre-submission checklist item added.
+- `agent_roles/03_The_Editor.md`: Step 5.6 Pass 2 makes template selection a
+  hard check — §3a prose on a Director-flagged card (or §3a-D prose on a
+  non-Director card) is a hard reject; sign-off updated.
+- `agent_roles/revise/05_The_Prompt_Engineer_mini.md`: Trigger C widened from
+  "multi-axis flag flip" to "Style Contract conditional-line flag flip" — a
+  revision that adds/removes a Director card and flips `has_director_card`
+  toggles the `DIRECTOR-CARD RULE` line, parallel to the ACTIVE-SPEAKER RULE.
+- `workflows/world-forge.md` (Phase 5 Workstream B, revise/resync notes) +
+  `workflows/world-forge-revise.md` (R5 preset triggers) + `CLAUDE.md`
+  (principles #3 and #6 mini-PE toggle wording): mirrored the new conditional
+  line end-to-end.
+
+`Samples/` intentionally not regenerated in this change (pipeline specs only).
+
+---
+
 ## 2026-07-02 — Runtime Directives: a seed-level channel for world-tuned preset blocks
 
 The Chat Completion Preset's world-tuning was entirely inferred: the Prompt

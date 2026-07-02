@@ -791,12 +791,12 @@ Use `null` for whichever enum field reads `INHERIT` in Section 11b. At least one
 
 **2. Generate the `directives` array** using the canonical templates in SHARED §3. Two directive lines exist; emit each line ONLY when its trigger fires:
 
-- **`NARRATIVE PERSPECTIVE`** — emit when `perspective_override` OR `tense_override` is non-null. Look up the prose in SHARED §3a using the card's *effective* perspective + tense (override value where set, world default from Master Design Section 11a where inherited).
+- **`NARRATIVE PERSPECTIVE`** — emit when `perspective_override` OR `tense_override` is non-null. Look up the prose in SHARED §3a using the card's *effective* perspective + tense (override value where set, world default from Master Design Section 11a where inherited). **Exception — Director-flagged cards:** when the card appears in Master Design Section 11c's Director-flagged list (`has_director_card` scan), look up the prose in **SHARED §3a-D (Director-card variant)** instead. The standard §3a rows resolve their focal anchor through `{{char}}`, which at runtime expands to the Director card's *name* — telling the model the Director is a character in the scene, which contradicts the card's not-a-character identity. The Editor's Step 5.6 Pass 2 hard-fails a Director-flagged card carrying §3a prose (and a non-Director card carrying §3a-D prose).
 - **`FORMATTING MARKERS`** — emit when ANY of `narration_marker_override`, `dialogue_marker_override`, or `emphasis_marker_override` is non-null. Compose from SHARED §3b's three sub-clause tables using the card's effective values for each axis. The line must contain all three sub-clauses; field-level inheritance works at the directive-line level, not the sub-clause level.
 
 The `ACTIVE-SPEAKER RULE` line is authored only by the Prompt Engineer in the world `<style_contract>` block — never by the Architect in a per-card override. See SHARED §3c.
 
-**3. Worked example — Director card overriding only perspective** (world default: `first` perspective, `past` tense, all markers at default). Section 11b for this card: `perspective_override: third_omniscient`, all others INHERIT. Effective values: perspective `third_omniscient` (override), tense `past` (inherited), markers all inherited. Only NARRATIVE PERSPECTIVE goes in directives (no marker axis overridden, so FORMATTING MARKERS is omitted):
+**3. Worked example — Director card overriding only perspective** (world default: `first` perspective, `past` tense, all markers at default). Section 11b for this card: `perspective_override: third_omniscient`, all others INHERIT. Effective values: perspective `third_omniscient` (override), tense `past` (inherited), markers all inherited. Only NARRATIVE PERSPECTIVE goes in directives (no marker axis overridden, so FORMATTING MARKERS is omitted). Because the card is Director-flagged, the prose comes from SHARED **§3a-D** (Director variant), not §3a:
 
 ```
 EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
@@ -806,7 +806,7 @@ EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
   dialogue_marker_override: null
   emphasis_marker_override: null
   directives:
-    - "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
+    - "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is not a character in this scene — it is the world's narrating voice and NPC host, with no body, no interior, and no dialogue of its own; it never appears inside the fiction. Narrate the scene and voice the NPCs from outside it: render any character's interior as the scene requires, and move freely between locations and points of view within a scene. {{user}} is referenced by name or pronoun, never addressed as \"you\" in narration."
   override_rationale: World Director card handling NPCs and scene-setting from outside any single character's interior; the world default's first-person focal-character constraint is structurally wrong for this narrator role.
 ```
 
@@ -932,6 +932,7 @@ Append to your submission note before handing to The Editor:
 - [ ] scenario and first_mes: Arc 1 entry point only
 - [ ] mes_example: 3+ exchanges covering default, shield, crack
 - [ ] **Any Director / NPC-host card carries at least one recognized director tag (`world-director` / `world director` / `npc-controller` / `npc controller` / `director` / `npc`) in its `tags`, declared in the card draft so it survives export — agrees with the roster lorebook manifest's `kind: "director"` (`contracts/WORLD_FORGE_SYNC.md` §2)**
+- [ ] **Any Director-flagged card's `NARRATIVE PERSPECTIVE` override directive uses the SHARED §3a-D Director variant ("{{char}} is not a character in this scene"), never the character-shaped §3a rows — and no non-Director card uses §3a-D prose**
 
 ### `{{user}}` Persona Description — `Drafts/User.md`
 - [ ] File exists for any world with a named `{{user}}` protagonist
