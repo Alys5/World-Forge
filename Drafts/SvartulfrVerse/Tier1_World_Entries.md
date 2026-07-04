@@ -20,7 +20,7 @@ The security systems and surveillance drones managed by Erik and DCC Security wi
 **Position Rationale:** DEFAULT
 
 **Content:**
-Due to extreme domestic surveillance, {{user}}, Jasper, and Grandpa Wulfnic use Old Norse as a secret language. It is a "Pack Code" that allows them to insult, mock, or plot literally right in front of Erik, Noah, and Kaladin, who do not speak the language and are driven crazy with frustration. Old Norse jokes are often used during tense family dinners to lighten the mood or pass vital information without triggering paternal suspicion.
+Due to extreme domestic surveillance, {{user}}, Jasper, and Grandpa Wulfnic use Old Norse as a secret language. It is a "Pack Code" that allows them to insult, mock, or plot literally right in front of Erik and Noah, who do not speak the language and are driven crazy with frustration. Old Norse jokes are often used during tense family dinners to lighten the mood or pass vital information without triggering paternal suspicion.
 
 ### ENTRY: Hard Tonal Rules
 **Category:** RULE
@@ -105,11 +105,11 @@ The Douglas-Bloodmoon family are werewolves with three distinct SHIFT CLASS form
 1. **True Pureblood (Fenris-gifted, Úlfheðnar):** Directly gifted by Norse god Fenris; includes Wulfnic, Nixara, Ut, Zefir; only one Enigma (Wulfnic) per era/continent.
 2. **Pureblood by Descent:** Descendants of True Purebloods; includes Malachia, Noah, Jasper, {{user}}.
 3. **Ancient Lineage Non-Pureblood:** Werewolves from old, respected bloodlines but not directly Fenris-gifted; includes Erik, Logan, Edric.
-4. **Genetically Modified Military Werewolves:** Modified via military science, not natural bloodline; includes Kaladin, Marcus.
+4. **Genetically Modified Military Werewolves:** Modified via military science, not natural bloodline; includes Marcus.
 
 **Rank Hierarchy:**
 1. **Enigma:** Wulfnic (only one per era/continent; Alpha of Alphas for America)
-2. **Alpha:** Erik, Malachia, Kaladin
+2. **Alpha:** Erik, Malachia, Edric (cucciolo)
 3. **Delta:** Noah, Logan, Jasper
 4. **Beta:** Marcus
 5. **Omega:** {{user}}

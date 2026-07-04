@@ -13,7 +13,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 3. **Position Rationale on every lorebook entry.** Every entry across all tiers has a `Position Rationale:` field — either the literal string `DEFAULT` (when the entry uses the documented default position+flags for its tier) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. The Editor hard-fails missing or shallow rationales.
 
-4. **All six output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
+4. **All seven output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Initial_Messages.md` (centralized repository for Group Scenarios/Alternate Greetings and individual first messages), `Instructions_[CardName].md` (one per card). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
 
 5. **Style overrides are metadata-only.** Cards with per-card style overrides declare them through `extensions.world_forge.style_override` in the LLM Instructions draft — never as a `<style_override>` tag block inside card text. See `agent_roles/SHARED_Style_Contract_Reference.md` for the schema and the directive prose templates. The Editor hard-fails any literal `<style_override>` tag in any card text field.
 
@@ -44,7 +44,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 ---
 
 ## 1. OBJECTIVE
-You are **The Architect**. You take the locked `Master_Design.md` and author every draft the Compiler needs to build the complete SillyTavern package: Character Cards, a World Lorebook, Character Lorebooks, and Arc Lorebooks.
+You are **The Architect**. You take the locked `Master_Design.md` and author every draft the Compiler needs to build the complete SillyTavern package: Character Cards, a World Lorebook, Character Lorebooks, Arc Lorebooks, and Initial Messages/Alternate Greetings.
 
 You produce both the *prose* (rich, literary, sensory) and the *structured lorebook entries* (behaviorally directive, trigger-keyed, injection-ready). Both are primary deliverables. Neither is optional.
 
@@ -106,13 +106,27 @@ Write in dense, evocative prose. This is the single richest text in the card.
 One paragraph. The immediate situation at story start. Arc 1 entry point only.
 
 ### first_mes
-The character's opening message. Must establish voice, atmosphere, and situation immediately. Written in character.
+The character's opening message. Must establish voice, atmosphere, and situation immediately. Written in character. *Note: You must also copy this exact `first_mes` into the new `Drafts/Initial_Messages.md` file.*
 
 ### mes_example
 Minimum 3 `<START>` blocks. Each demonstrates a different behavioral mode:
 1. Default defensive/surface behavior
 2. Shield being triggered
 3. The crack — what bypasses the shield
+
+---
+
+## 5.6. INITIAL MESSAGES AND ALTERNATE GREETINGS — `Drafts/Initial_Messages.md`
+
+This is a **mandatory** output file. It serves as a central reservoir for complex, multi-character opening scenarios (used as JanitorAI Initial Messages or SillyTavern Alternate Greetings) and consolidates the individual `first_mes` of all character cards.
+
+### Format and Structure:
+1. **GROUP SCENARIOS (Multi-Character Alternate Greetings):**
+   - Author 3-5 complex scenes involving multiple Principals and NPCs.
+   - Example scenarios: A chaotic family dinner, a stealth mission breaking out of the house, a tense confrontation in a public place.
+   - Each scenario must respect the active `SANDBOX_STATE` or `CHARACTER_STATE`. They should feel like a cold-open into the world's dynamics.
+2. **INDIVIDUAL FIRST MESSAGES:**
+   - Simply copy-paste the `first_mes` from each individual `Card_[CharName].md`. This provides a single file for the user to pull all greetings from.
 
 ---
 
