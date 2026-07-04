@@ -237,11 +237,13 @@ The bot card is a cover, not a manual. Think in terms of hooks, not history.
 
 ### Image Generation Prompts
 
-You must author tailored prompts for generating the visuals so the user can easily render them.
-**Crucial Reminder:** In each prompt, include a brief trailing note reminding the user to crop the image to the exact aspect ratio, apply rounded corners (if desired), and export as `.webp` via Photoshop before uploading, since Janitor AI strips CSS sizing.
-- **Main Portrait (1:1):** Square, polished portrait. Clean background, eye contact, consistent with the tone. Describe exact physical features, clothing, and aesthetic (e.g., "Cinematic portrait, modern fantasy, college student, kemonomimi, highly detailed wolf ears correctly positioned... [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]").
-- **Supporting Banner:** Wide shot (16:9 or 5:3) capturing the environment, mood, or setting. Include the Photoshop/WebP reminder.
-- **Roster Images:** 1:1 portraits for each roster member. Include the Photoshop/WebP reminder.
+You must author tailored Midjourney prompts for generating the visuals so the user can easily render them. Incorporate the world's established Visual Style (master tags, negative prompts, and parameters).
+**Crucial Reminder:** In each prompt, include a brief trailing note reminding the user to apply rounded corners (if desired) and export as `.webp` via Photoshop before uploading, since Janitor AI strips CSS sizing.
+**Age Extraction Rule:** When pulling a character's age from a detailed lorebook string (e.g., "50yo; human chronological age; transformation onset at 12; 38 years active"), **always use the chronological age (e.g. 50yo)**. Never use the "active years" as the subject's physical age.
+- **Main Portrait (1:1):** Include the global style tags, then the specific subject description. **You MUST extract and inject the exact physical appearance details (age, hair, eyes, body type, clothing, and specific non-human traits like tail/ears) directly from the character's card/lorebook into the prompt.** Do not write a generic description; use the lore-accurate details.
+  *(e.g., "MASTERPIECE, BEST QUALITY... A cinematic portrait of a 21-year-old college student, messy unstyled hair, sharp features, perpetual smirk, dressed in tech-wear and a dark hoodie, headphones around the neck, highly detailed wolf ears flattened in annoyance... --no mafia... --ar 1:1 --niji 6 --style raw [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]")*
+- **Supporting Banner:** Wide shot. Use the world's style tags + specific environment description + `--ar 16:9` or `--ar 5:3`. Include the Photoshop/WebP reminder.
+- **Roster Images:** 1:1 portraits for each roster member. Use the exact same rules as the Main Portrait (extract their detailed physical appearance from their profile). Include the Photoshop/WebP reminder.
 - **Infographic / Data-Graphic (Optional Strategy):** If the character has complex stats, a dense relationship web, or a power-scaling chart that would break in HTML, suggest in a comment that the user generate or design a *text-in-image infographic* instead of using HTML. This bypasses the HTML sanitizer entirely.
 ### JSON Structure
 

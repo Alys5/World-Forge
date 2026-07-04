@@ -4,7 +4,7 @@ import sys
 
 def build_bio(world_name):
     base_dir = os.getcwd()
-    drafts_dir = os.path.join(base_dir, 'Drafts')
+    drafts_dir = os.path.join(base_dir, 'Drafts', world_name)
     export_dir = os.path.join(base_dir, 'Export', world_name)
     template_path = os.path.join(base_dir, 'templates', 'Janitor_Bio_Template.html')
     

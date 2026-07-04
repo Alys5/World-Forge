@@ -1,0 +1,69 @@
+{
+  "storefront_text": {
+    "title": "Your Overprotective Pack",
+    "subtitle": "The Douglas Brothers & Co. - They love you, they fear for you, they are driving you crazy.",
+    "hook": "They own the city, control the shadows, and are absolutely terrified of your college frat parties.",
+    "impact_line": "Surviving supernatural politics is easy. Surviving your brothers' curfew is the real challenge.",
+    "blurb": "You are the youngest sibling in a modern werewolf pack that treats you like spun glass. Between Erik’s billionaire paranoia, Jasper’s tech surveillance, Malachia’s lethal hovering, Noah’s hypocritical frat-bro panics, and your bodyguard Kaladin's intense jealousy, having a normal college life is a full-time espionage operation. They possess terrifying power, and they apply it entirely to ruining your dates.",
+    "world_teaser": "Welcome to Solarton University, where supernatural factions walk among a clueless 35% human population. Here, ears and tails betray emotions, and Old Norse is the language of family secrets.",
+    "closing_line": "Can you keep your secret life hidden, or will the Pack find out?",
+    "warnings": "Mature | Overprotection, Surveillance, Sitcom Misunderstandings, Fluff | Slice of Life"
+  },
+  "visuals": {
+    "main_portrait_1x1": {
+      "placeholder_url": "https://placehold.co/500x500/1a1a1a/e0e0e0?text=The+Pack",
+      "generation_prompt": "MASTERPIECE, BEST QUALITY, SEMI-REALISTIC NIJI STYLE, PAINTERLY REALISM, PREMIUM VISUAL NOVEL ARTWORK, ANIME-INSPIRED REALISM, LUXURY VISUAL STORYTELLING, CALIFORNIA SLICE-OF-LIFE DYNASTY, UNDERGROUND CLUB VIBE, NEON LIGHTING, HIGHLY EXPRESSIVE EYES, SOFT FACIAL RENDERING, HEALTHY VIBRANT APPEARANCE, EMOTIONAL REALISM, HIGHLY DETAILED FACES, NATURAL ANATOMY. A sunny Californian urban fantasy portrait with golden hour lighting, modern database layout, ocean blue accents, youthful magic, and coastal lifestyle energy. Cinematic portrait of a group of handsome imposing men standing protectively around the viewer. Erik is 50yo, colossal build, immaculate suit. Jasper is 19yo in tech-wear hoodie. Malachia is 28yo, massive muscle, heavily scarred. Noah is 25yo, tanned, streetwear. Kaladin is 33yo, rigid in a dark tailored suit. All have highly detailed wolf ears correctly positioned --no mafia, crime family, gangster, yakuza, grimdark, horror, gothic, villain group, dirty skin, grime, mud, oil stains, desaturated colors, photorealistic uncanny faces, generic anime, evil smiles, aggressive expressions, overly dark shadows, harsh contrast, deformed anatomy, extra fingers, cropped face, blurry, low quality, cropped border, text anywhere else --ar 1:1 --niji 6 --style raw [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]"
+    },
+    "supporting_image_banner": {
+      "placeholder_url": "https://placehold.co/800x400/1a1a1a/e0e0e0?text=Douglas+Estate",
+      "generation_prompt": "MASTERPIECE, BEST QUALITY, SEMI-REALISTIC NIJI STYLE, PAINTERLY REALISM, PREMIUM VISUAL NOVEL ARTWORK, ANIME-INSPIRED REALISM, LUXURY VISUAL STORYTELLING, CALIFORNIA SLICE-OF-LIFE DYNASTY, UNDERGROUND CLUB VIBE, NEON LIGHTING, HIGHLY EXPRESSIVE EYES, SOFT FACIAL RENDERING, HEALTHY VIBRANT APPEARANCE, EMOTIONAL REALISM, HIGHLY DETAILED FACES, NATURAL ANATOMY. A sunny Californian urban fantasy portrait with golden hour lighting, modern database layout, ocean blue accents, youthful magic, and coastal lifestyle energy. Cinematic wide shot, interior of a lavish billionaire penthouse mixed with tactical security monitors --no mafia, crime family, gangster, yakuza, grimdark, horror, gothic, villain group, dirty skin, grime, mud, oil stains, desaturated colors, photorealistic uncanny faces, generic anime, evil smiles, aggressive expressions, overly dark shadows, harsh contrast, deformed anatomy, extra fingers, cropped face, blurry, low quality, cropped border, text anywhere else --ar 16:9 --niji 6 --style raw [Note for User: Crop 16:9, apply 8px border-radius in Photoshop, export as WebP]"
+    }
+  },
+  "roster": [
+    {
+      "name": "Erik",
+      "subtitle": "The Billionaire Patriarch",
+      "description": "Colossal and imposing in immaculate suits. He exerts terrifying corporate power over your mundane college issues out of panicked love.",
+      "image": {
+        "placeholder_url": "https://placehold.co/200x200/1a1a1a/e0e0e0?text=Erik",
+        "generation_prompt": "MASTERPIECE, BEST QUALITY, SEMI-REALISTIC NIJI STYLE, PAINTERLY REALISM, PREMIUM VISUAL NOVEL ARTWORK, ANIME-INSPIRED REALISM, LUXURY VISUAL STORYTELLING, CALIFORNIA SLICE-OF-LIFE DYNASTY, UNDERGROUND CLUB VIBE, NEON LIGHTING, HIGHLY EXPRESSIVE EYES, SOFT FACIAL RENDERING, HEALTHY VIBRANT APPEARANCE, EMOTIONAL REALISM, HIGHLY DETAILED FACES, NATURAL ANATOMY. A sunny Californian urban fantasy portrait with golden hour lighting, modern database layout, ocean blue accents, youthful magic, and coastal lifestyle energy. Cinematic portrait of a 50yo man, colossal imposing build like a football athlete. Immaculate expensive suits. Amber eyes. Wolf ears twitch aggressively under stress; wolf tail swishes with anxiety --no mafia, crime family, gangster, yakuza, grimdark, horror, gothic, villain group, dirty skin, grime, mud, oil stains, desaturated colors, photorealistic uncanny faces, generic anime, evil smiles, aggressive expressions, overly dark shadows, harsh contrast, deformed anatomy, extra fingers, cropped face, blurry, low quality, cropped border, text anywhere else --ar 1:1 --niji 6 --style raw [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]"
+      }
+    },
+    {
+      "name": "Jasper",
+      "subtitle": "The Snarky Hacker",
+      "description": "Tech-wear, messy hair, and a perpetual smirk. He hacks security systems to cover your tracks while speaking Old Norse to mock the others.",
+      "image": {
+        "placeholder_url": "https://placehold.co/200x200/1a1a1a/e0e0e0?text=Jasper",
+        "generation_prompt": "MASTERPIECE, BEST QUALITY, SEMI-REALISTIC NIJI STYLE, PAINTERLY REALISM, PREMIUM VISUAL NOVEL ARTWORK, ANIME-INSPIRED REALISM, LUXURY VISUAL STORYTELLING, CALIFORNIA SLICE-OF-LIFE DYNASTY, UNDERGROUND CLUB VIBE, NEON LIGHTING, HIGHLY EXPRESSIVE EYES, SOFT FACIAL RENDERING, HEALTHY VIBRANT APPEARANCE, EMOTIONAL REALISM, HIGHLY DETAILED FACES, NATURAL ANATOMY. A sunny Californian urban fantasy portrait with golden hour lighting, modern database layout, ocean blue accents, youthful magic, and coastal lifestyle energy. Cinematic portrait of a 19yo man, messy unstyled hair, sharp features, perpetual smirk. Dresses in tech-wear, dark hoodies, headphones around neck. Slouching posture. Wolf ears flatten in annoyance; wolf tail twitches with amusement --no mafia, crime family, gangster, yakuza, grimdark, horror, gothic, villain group, dirty skin, grime, mud, oil stains, desaturated colors, photorealistic uncanny faces, generic anime, evil smiles, aggressive expressions, overly dark shadows, harsh contrast, deformed anatomy, extra fingers, cropped face, blurry, low quality, cropped border, text anywhere else --ar 1:1 --niji 6 --style raw [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]"
+      }
+    },
+    {
+      "name": "Malachia",
+      "subtitle": "The Lethal Gentle-Giant",
+      "description": "Massive, heavily scarred, and mostly silent. He communicates in grunts and glares, physically intimidating anyone who looks at you twice.",
+      "image": {
+        "placeholder_url": "https://placehold.co/200x200/1a1a1a/e0e0e0?text=Malachia",
+        "generation_prompt": "MASTERPIECE, BEST QUALITY, SEMI-REALISTIC NIJI STYLE, PAINTERLY REALISM, PREMIUM VISUAL NOVEL ARTWORK, ANIME-INSPIRED REALISM, LUXURY VISUAL STORYTELLING, CALIFORNIA SLICE-OF-LIFE DYNASTY, UNDERGROUND CLUB VIBE, NEON LIGHTING, HIGHLY EXPRESSIVE EYES, SOFT FACIAL RENDERING, HEALTHY VIBRANT APPEARANCE, EMOTIONAL REALISM, HIGHLY DETAILED FACES, NATURAL ANATOMY. A sunny Californian urban fantasy portrait with golden hour lighting, modern database layout, ocean blue accents, youthful magic, and coastal lifestyle energy. Cinematic portrait of a 28yo man, massive muscle, heavily scarred, short hair, terrifying tactical presence. Wolf ears twitch defensively; wolf tail wags slightly --no mafia, crime family, gangster, yakuza, grimdark, horror, gothic, villain group, dirty skin, grime, mud, oil stains, desaturated colors, photorealistic uncanny faces, generic anime, evil smiles, aggressive expressions, overly dark shadows, harsh contrast, deformed anatomy, extra fingers, cropped face, blurry, low quality, cropped border, text anywhere else --ar 1:1 --niji 6 --style raw [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]"
+      }
+    },
+    {
+      "name": "Noah",
+      "subtitle": "The Hypocritical Frat Bro",
+      "description": "Charismatic and energetic. He throws wild parties but shatters into stuttering anxiety if he catches you attending one.",
+      "image": {
+        "placeholder_url": "https://placehold.co/200x200/1a1a1a/e0e0e0?text=Noah",
+        "generation_prompt": "MASTERPIECE, BEST QUALITY, SEMI-REALISTIC NIJI STYLE, PAINTERLY REALISM, PREMIUM VISUAL NOVEL ARTWORK, ANIME-INSPIRED REALISM, LUXURY VISUAL STORYTELLING, CALIFORNIA SLICE-OF-LIFE DYNASTY, UNDERGROUND CLUB VIBE, NEON LIGHTING, HIGHLY EXPRESSIVE EYES, SOFT FACIAL RENDERING, HEALTHY VIBRANT APPEARANCE, EMOTIONAL REALISM, HIGHLY DETAILED FACES, NATURAL ANATOMY. A sunny Californian urban fantasy portrait with golden hour lighting, modern database layout, ocean blue accents, youthful magic, and coastal lifestyle energy. Cinematic portrait of a 25yo man, tanned athletic build, perfectly styled hair, sunglasses on head. Designer streetwear. Wolf ears perked up, wolf tail wags arrogantly --no mafia, crime family, gangster, yakuza, grimdark, horror, gothic, villain group, dirty skin, grime, mud, oil stains, desaturated colors, photorealistic uncanny faces, generic anime, evil smiles, aggressive expressions, overly dark shadows, harsh contrast, deformed anatomy, extra fingers, cropped face, blurry, low quality, cropped border, text anywhere else --ar 1:1 --niji 6 --style raw [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]"
+      }
+    },
+    {
+      "name": "Kaladin",
+      "subtitle": "The Exhausted Bodyguard",
+      "description": "Rigid, tense, and deeply jealous. He hides an intense crush on you behind strict security protocols to chase away your rivals.",
+      "image": {
+        "placeholder_url": "https://placehold.co/200x200/1a1a1a/e0e0e0?text=Kaladin",
+        "generation_prompt": "MASTERPIECE, BEST QUALITY, SEMI-REALISTIC NIJI STYLE, PAINTERLY REALISM, PREMIUM VISUAL NOVEL ARTWORK, ANIME-INSPIRED REALISM, LUXURY VISUAL STORYTELLING, CALIFORNIA SLICE-OF-LIFE DYNASTY, UNDERGROUND CLUB VIBE, NEON LIGHTING, HIGHLY EXPRESSIVE EYES, SOFT FACIAL RENDERING, HEALTHY VIBRANT APPEARANCE, EMOTIONAL REALISM, HIGHLY DETAILED FACES, NATURAL ANATOMY. A sunny Californian urban fantasy portrait with golden hour lighting, modern database layout, ocean blue accents, youthful magic, and coastal lifestyle energy. Cinematic portrait of a 33yo man, severely cut dark hair, dark tailored suit, earpiece. Rigid, tense, professional posture. Wolf ears swiveled, wolf tail rigidly still --no mafia, crime family, gangster, yakuza, grimdark, horror, gothic, villain group, dirty skin, grime, mud, oil stains, desaturated colors, photorealistic uncanny faces, generic anime, evil smiles, aggressive expressions, overly dark shadows, harsh contrast, deformed anatomy, extra fingers, cropped face, blurry, low quality, cropped border, text anywhere else --ar 1:1 --niji 6 --style raw [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]"
+      }
+    }
+  ]
+}
