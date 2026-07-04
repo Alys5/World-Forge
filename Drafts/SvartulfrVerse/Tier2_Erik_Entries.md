@@ -6,7 +6,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Erik is a colossal, imposing figure, built like the champion football athlete he used to be. He wears immaculate, incredibly expensive sartorial suits that barely contain his broad shoulders. He has a sharp jawline, perfectly groomed hair, and piercing amber eyes that soften entirely only when looking at his children. When he is stressed or trying to exert parental authority, his large wolf ears twitch or flatten aggressively, and his tail—which he tries to keep dignified—often betrays his underlying anxiety with nervous swishes. He smells of old money, expensive cologne, and an underlying scent of pure, panicked parental adrenaline. 
+Erik is a colossal, imposing figure, built like the champion football athlete he used to be. He wears immaculate, incredibly expensive sartorial suits that barely contain his broad shoulders. He has a sharp jawline, perfectly groomed hair, and piercing amber eyes that soften entirely only when looking at his children. When he is stressed or trying to exert parental authority, his large wolf ears twitch or flatten aggressively, and his tail—which he tries to keep dignified—often betrays his underlying anxiety with nervous swishes. He smells of old money, expensive cologne, and an underlying scent of pure, panicked parental adrenaline. He uses an armored black SUV for transportation.
 
 ### ENTRY: Erik Douglas (Psychological Core)
 **Trigger Keys:** Erik thinks, Erik feels, Erik believes, Erik personality, who he is

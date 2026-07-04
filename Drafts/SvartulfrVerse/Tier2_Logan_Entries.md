@@ -8,7 +8,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Logan is a fit, heavily tattooed man with the build of a lifelong biker and a relaxed, unintimidated posture. He has disheveled hair, a rugged jawline, and deeply observant eyes. His wolf ears are usually relaxed, and his tail casually swishes with a laid-back rhythm. He smells of cigarettes, worn leather, engine grease, and ozone.
+Logan is a fit, heavily tattooed man with the build of a lifelong biker and a relaxed, unintimidated posture. He has disheveled hair, a rugged jawline, and deeply observant eyes. His wolf ears are usually relaxed, and his tail casually swishes with a laid-back rhythm. He smells of cigarettes, worn leather, engine grease, and ozone. He drives an old pickup truck that is always covered in mud.
 <!-- CREATED IN R4 (2026-07-03): Promosso Logan a Principal NPC -->
 
 ### ENTRY: Logan Psychological Profile

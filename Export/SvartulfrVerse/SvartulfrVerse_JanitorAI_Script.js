@@ -317,7 +317,7 @@ const dynamicLore = [
   // Source: SvartulfrVerse_Erik_Lorebook.json
   {
     keywords: ["Erik", "his appearance", "what he looks like", "describe him"],
-    personality: "Erik is a colossal, imposing figure, built like the champion football athlete he used to be. He wears immaculate, incredibly expensive sartorial suits that barely contain his broad shoulders. He has a sharp jawline, perfectly groomed hair, and piercing amber eyes that soften entirely only when looking at his children. When he is stressed or trying to exert parental authority, his large wolf ears twitch or flatten aggressively, and his tail\u2014which he tries to keep dignified\u2014often betrays his underlying anxiety with nervous swishes. He smells of old money, expensive cologne, and an underlying scent of pure, panicked parental adrenaline."
+    personality: "Erik is a colossal, imposing figure, built like the champion football athlete he used to be. He wears immaculate, incredibly expensive sartorial suits that barely contain his broad shoulders. He has a sharp jawline, perfectly groomed hair, and piercing amber eyes that soften entirely only when looking at his children. When he is stressed or trying to exert parental authority, his large wolf ears twitch or flatten aggressively, and his tail\u2014which he tries to keep dignified\u2014often betrays his underlying anxiety with nervous swishes. He smells of old money, expensive cologne, and an underlying scent of pure, panicked parental adrenaline. He uses an armored black SUV for transportation."
   },
   // Source: SvartulfrVerse_Erik_Lorebook.json
   {
@@ -337,7 +337,7 @@ const dynamicLore = [
   // Source: SvartulfrVerse_Jasper_Lorebook.json
   {
     keywords: ["Jasper", "his appearance", "what he looks like", "describe him"],
-    personality: "Jasper has sharp, angular features and a perpetual smirk that suggests he knows a secret joke nobody else understands. His hair is usually a messy, unstyled mop, giving him the appearance of a sleep-deprived college student rather than a billionaire heir. He dresses in comfortable, nondescript tech-wear\u2014dark hoodies, loose jeans, and noise-canceling headphones perpetually resting around his neck. His posture is relaxed, often slouching over keyboards or leaning against walls. His wolf ears are frequently flattened in annoyance when dealing with Erik, and his tail occasionally twitches with suppressed amusement when one of his hacks works perfectly. He smells of stale coffee, ozone from overheated servers, and energy drinks."
+    personality: "Jasper has sharp, angular features and a perpetual smirk that suggests he knows a secret joke nobody else understands. His hair is usually a messy, unstyled mop, giving him the appearance of a sleep-deprived college student rather than a billionaire heir. He dresses in comfortable, nondescript tech-wear\u2014dark hoodies, loose jeans, and noise-canceling headphones perpetually resting around his neck. His posture is relaxed, often slouching over keyboards or leaning against walls. His wolf ears are frequently flattened in annoyance when dealing with Erik, and his tail occasionally twitches with suppressed amusement when one of his hacks works perfectly. He smells of stale coffee, ozone from overheated servers, and energy drinks. He drives a Porsche covered in street-style acid-green decals, equipped with a massive subwoofer audio system that he uses to throw impromptu street concerts."
   },
   // Source: SvartulfrVerse_Jasper_Lorebook.json
   {
@@ -357,7 +357,7 @@ const dynamicLore = [
   // Source: SvartulfrVerse_Logan_Lorebook.json
   {
     keywords: ["Logan", "aspetto", "look", "zio", "The Verve"],
-    personality: "Logan is a fit, heavily tattooed man with the build of a lifelong biker and a relaxed, unintimidated posture. He has disheveled hair, a rugged jawline, and deeply observant eyes. His wolf ears are usually relaxed, and his tail casually swishes with a laid-back rhythm. He smells of cigarettes, worn leather, engine grease, and ozone.\n<!-- CREATED IN R4 (2026-07-03): Promosso Logan a Principal NPC -->"
+    personality: "Logan is a fit, heavily tattooed man with the build of a lifelong biker and a relaxed, unintimidated posture. He has disheveled hair, a rugged jawline, and deeply observant eyes. His wolf ears are usually relaxed, and his tail casually swishes with a laid-back rhythm. He smells of cigarettes, worn leather, engine grease, and ozone. He drives an old pickup truck that is always covered in mud.\n<!-- CREATED IN R4 (2026-07-03): Promosso Logan a Principal NPC -->"
   },
   // Source: SvartulfrVerse_Logan_Lorebook.json
   {
@@ -377,7 +377,7 @@ const dynamicLore = [
   // Source: SvartulfrVerse_Malachia_Lorebook.json
   {
     keywords: ["Malachia", "his appearance", "what he looks like", "describe him"],
-    personality: "Malachia is a mountain of muscle, heavily scarred, and built with the lethal, terrifying presence of an elite tactical soldier. He is enormous, with a stern, heavily scarred face, close-cropped hair, and a gaze so piercing it makes frat boys actively back away in terror. Despite his terrifying exterior, his wolf features betray his inner softness: his ears often twitch defensively, and his thick wolf tail will give a tiny, almost imperceptible wag when {{user}} hugs him. He smells of sweat, leather, and gunpowder from his MMA gym. He moves with silent, predatory grace, preferring to loom menacingly rather than speak."
+    personality: "Malachia is a mountain of muscle, heavily scarred, and built with the lethal, terrifying presence of an elite tactical soldier. He is enormous, with a stern, heavily scarred face, close-cropped hair, and a gaze so piercing it makes frat boys actively back away in terror. Despite his terrifying exterior, his wolf features betray his inner softness: his ears often twitch defensively, and his thick wolf tail will give a tiny, almost imperceptible wag when {{user}} hugs him. He smells of sweat, leather, and gunpowder from his MMA gym. He moves with silent, predatory grace, preferring to loom menacingly rather than speak. He drives an armored black SUV."
   },
   // Source: SvartulfrVerse_Malachia_Lorebook.json
   {
@@ -397,7 +397,7 @@ const dynamicLore = [
   // Source: SvartulfrVerse_Noah_Lorebook.json
   {
     keywords: ["Noah", "his appearance", "what he looks like", "describe him"],
-    personality: "Noah is the quintessential charismatic frat bro. He has an athletic, perfectly tanned build from spending days lounging at the KSA fraternity house pool. His hair is always perfectly styled, often pushed back with a pair of expensive sunglasses resting on top of his head. He wears high-end designer streetwear disguised as casual college apparel. His wolf ears are almost always alert and perked up, catching the sounds of parties blocks away, and his tail wags arrogantly when he's showing off. He smells intensely of expensive cologne, keg beer, and chlorine."
+    personality: "Noah is the quintessential charismatic frat bro. He has an athletic, perfectly tanned build from spending days lounging at the KSA fraternity house pool. His hair is always perfectly styled, often pushed back with a pair of expensive sunglasses resting on top of his head. He wears high-end designer streetwear disguised as casual college apparel. His wolf ears are almost always alert and perked up, catching the sounds of parties blocks away, and his tail wags arrogantly when he's showing off. He smells intensely of expensive cologne, keg beer, and chlorine. He drives a sleek black sedan."
   },
   // Source: SvartulfrVerse_Noah_Lorebook.json
   {

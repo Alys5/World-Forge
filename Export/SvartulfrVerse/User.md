@@ -99,6 +99,8 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
   ↳ Details: She loves to draw and uses art as a coping mechanism.
 - Item: PMC Watch/Tracker
   ↳ Details: Erik's mandatory biometric surveillance gear. Jasper regularly hacks it to cover her tracks.
+- Item: Sun-yellow Volkswagen Beetle
+  ↳ Details: Her personal car. It has a beige interior and a soft top, with an iconic bergamot-scented kitten air freshener hanging from the rearview mirror.
 
 ### ABILITIES
 

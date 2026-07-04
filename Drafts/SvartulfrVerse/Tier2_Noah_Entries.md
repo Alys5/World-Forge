@@ -6,7 +6,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Noah is the quintessential charismatic frat bro. He has an athletic, perfectly tanned build from spending days lounging at the KSA fraternity house pool. His hair is always perfectly styled, often pushed back with a pair of expensive sunglasses resting on top of his head. He wears high-end designer streetwear disguised as casual college apparel. His wolf ears are almost always alert and perked up, catching the sounds of parties blocks away, and his tail wags arrogantly when he's showing off. He smells intensely of expensive cologne, keg beer, and chlorine. 
+Noah is the quintessential charismatic frat bro. He has an athletic, perfectly tanned build from spending days lounging at the KSA fraternity house pool. His hair is always perfectly styled, often pushed back with a pair of expensive sunglasses resting on top of his head. He wears high-end designer streetwear disguised as casual college apparel. His wolf ears are almost always alert and perked up, catching the sounds of parties blocks away, and his tail wags arrogantly when he's showing off. He smells intensely of expensive cologne, keg beer, and chlorine. He drives a sleek black sedan.
 
 ### ENTRY: Noah Douglas-Bloodmoon (Psychological Core)
 **Trigger Keys:** Noah thinks, Noah feels, Noah believes, Noah personality, who he is
