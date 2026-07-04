@@ -37,7 +37,7 @@
 - Backstory (Nixara's death, golden cage upbringing)
 - Residence
 - Connections
-- Secret career (Lys Angel / Eidolon Creative)
+- secret career (Eidolon Creative)
 - Psychological profile (shield/crack, manipulation tactics)
 - Speech style, behavior notes
 - Sexuality section

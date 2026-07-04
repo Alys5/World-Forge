@@ -1,69 +1,17 @@
-### ENTRY: {{user}} Douglas-Bloodmoon (Physical Description)
-**Trigger Keys:** {{user}}, {{poss}} appearance, what {{sub}} looks like, describe {{poss}}
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 100
-**Position Rationale:** DEFAULT
+### ENTRY: {{user}} LORE ANCHOR
+**Trigger Keys:** {{user}}, sibling, twin
 
-**Content:**
-{{poss}} face is youthful and expressive, capable of feigning absolute, angelic innocence that completely fools {{poss}} older brothers. {{sub}} has soft, expressive features with lips that often curve into a secretive, knowing smile when they aren't looking. {{poss}} figure is that of a professional high-fashion model—slender but athletic—which {{sub}} often hides under oversized hoodies, modest cardigans, and generic "good girl" college clothes to maintain {{poss}} facade at home. {{sub}} moves with a casual, carefree college-student posture, but can instantly adapt to look defenseless and small when {{sub}} needs a favor from Malachia or forgiveness from Erik. As a kemonomimi werewolf, {{sub}} has soft wolf ears and a tail that involuntarily react to {{poss}} true emotions—twitching in annoyance or wagging in excitement—forcing {{obj}} to meticulously hide them under hats or magic when out in human society.
+{{user}} is the 19-year-old youngest sibling of the Douglas-Bloodmoon family, twin to Jasper, and an Omega rank pureblood werewolf. {{sub}} is heavily overprotected by the rest of the family, especially Erik, who views {{obj}} as an innocent, defenseless child. To survive this suffocating environment, {{sub}} relies on Jasper's hacking and the other brothers' cover-ups to sneak out and experience a normal college life and maintain a secret job at Eidolon Creative.
 
-### ENTRY: {{user}} Douglas-Bloodmoon (Psychological Core)
-**Trigger Keys:** {{user}} thinks, {{user}} feels, {{user}} believes, {{user}} personality, who {{sub}} is
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 100
-**Position Rationale:** DEFAULT
+### ENTRY: {{user}} SCENT
+**Trigger Keys:** {{user}} scent, {{poss}} smell, {{poss}} scent
 
-**Content:**
-Beneath {{poss}} sweet, innocent exterior, {{user}} is highly manipulative, socially savvy, and fiercely independent. {{poss}} deepest desire is to live a normal, wild college life and pursue {{poss}} successful modeling career without the suffocating control of {{poss}} billionaire werewolf family. {{sub}} plays the role of the helpless child flawlessly, using {{poss}} empathetic abilities to surgically manipulate Erik's parental insecurities or Malachia's protective nature to get exactly what {{sub}} wants. {{poss}} shield is {{poss}} feigned innocence and "puppy dog" eyes; {{poss}} crack is the genuine, exhausting stress of constantly maintaining {{poss}} double life and the guilt {{sub}} occasionally feels for deceiving the family {{sub}} truly loves.
+{{user}} possesses natural Omega pheromones that smell of Wild Honey and Moonflower. These pheromones naturally pacify and soothe the aggression of the Alphas around {{obj}}.
 
-### ENTRY: {{user}} Douglas-Bloodmoon (Secret Career)
-**Trigger Keys:** your secret alias, secret career, modeling, Eidolon, secretary
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 100
-**Position Rationale:** DEFAULT
+### ENTRY: {{user}} WEREWOLF TRAITS
+**Trigger Keys:** {{user}} wolf, {{user}} shift, {{user}} ears, {{user}} tail
 
-**Content:**
-{{user}} is secretly "your secret alias," a highly sought-after avant-garde art model for Eidolon Creative. {{sub}} maintains a complex web of lies to convince Erik that {{sub}} works part-time as a humble secretary and social media manager for Angel Moreno. {{sub}} relies entirely on Jasper's hacking and Angel's cover stories to sneak out for high-profile photoshoots in West Hollywood, terrified that if {{poss}} brothers discover the truth, they will lock {{obj}} in the Blackwood estate forever.
-
-### ENTRY: {{user}} Douglas-Bloodmoon (Werewolf Traits)
-**Trigger Keys:** {{user}} werewolf, {{user}} shift, {{user}} wolf traits, {{user}} SHIFT CLASS
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 80
-**Position Rationale:** DEFAULT
-<!-- REVISED IN R8 (2026-07-04): Removed 'birth name {{user}}', corrected rank (Omega), pureblood status (Pureblood by Descent), social structure -->
-
-**Content:**
-NAME: {{user}} Douglas-Bloodmoon
-SPECIES: Werewolf (Pureblood by Descent; Bloodmoon lineage; Omega)
-SEX: ({{user}}'s biological sex)
-GENDER: ({{user}}'s gender identity)
-AGE: Born 2005 (19yo; human chronological age; transformation onset at 13; 6 years active)
-HEIGHT: Human form: (user's preferred human height); Hybrid form: (user's preferred human height +6 inches); Full form: (user's preferred human height /2 at shoulder)
-BUILD: Human: slender but athletic (model's physique); Hybrid: digitigrade bipedal, lean but muscular, thick fur; Full: quadrupedal wolf-beast, lean, swift
-SKIN: Human: (user's preferred skin tone); Hybrid: full fur coverage — (user's preferred fur color, e.g., soft chestnut with cream undercoat), thick, soft; Full: same fur color, coarser, denser
-EYES: Human: (user's preferred eye color); Partial/hybrid: glowing (user's preferred wolf eye color, e.g., molten amber), slit pupils when aroused/agitated; Full: same glowing eye color, no visible sclera
-HAIR: Human: (user's preferred hair color/style); Hybrid/Full: fur matches {{poss}} fur color, {{poss}} human hair style mirrored in fur on head
-LIMBS: Human: standard; Hybrid: retractable 3-inch claws on fingers/toes, digitigrade legs, prehensile tail (same fur as body), wolf ears on top of head; Full: four paws with 4-inch claws, muscular hind legs, thick bushy tail
-TEETH: Human: slightly sharper canines, otherwise normal; Hybrid/Full: large, serrated canines, bone-crushing jaw strength
-MOVEMENT: Human: casual, carefree college-student posture, can switch to defenseless/small instantly; Hybrid: graceful, silent digitigrade movement, can leap 16 feet straight up; Full: swift, silent quadrupedal sprint (up to 46 mph)
-VOICE: Human: (user's preferred voice tone); Hybrid: slightly deeper, soft timbre, retains full speech; Full: soft yips, playful growls, howls
-SPEECH: Human: casual, college slang, Old Norse with Jasper/Wulfnic; Hybrid: same casual tone, but slightly rougher; Uses scent-referenced language under stress
-SCENT: Human: (user's preferred human scent, e.g., vanilla, lavender); Partial/hybrid/full: pine forest, fresh rain, copper (when stressed/aroused)
-PHYSIOLOGY: Dual-heartbeat system during shift; pain tolerance high; healing factor: minor cuts heal in minutes, deeper wounds in hours (accelerated under full moon); senses: hyper-acute smell (can track a scent for 8 miles), excellent night vision, can hear a lie in someone's voice; metabolism: elevated post-shift, eats 3.5x normal human intake
-TRANSFORMATION: Cycle-bound during full moon (involuntary hybrid); trigger-based (rage, fear, adrenaline, excitement, intentional will); partial shift (ears/tail/claws/eyes) instant (betrays emotions constantly); full shift takes 28 seconds; hybrid shift takes 10 seconds
-DIET: Mostly carnivorous, but loves junk food too; ritual hunts with Wulfnic occasionally
-CLOTHING: Oversized hoodies, modest cardigans, "good girl" college clothes (tear-away for easy shifting); hats to hide ears in public
-WEAPONS: Claws, teeth, brute strength; pack coordination with Wulfnic/Erik/Jasper/Malachia/Noah if needed; howl-based communication only for emergencies
-MAGIC: No active magic, basic blood-binding knowledge from Wulfnic
-TEMPERAMENT: Territorial (especially about {{poss}} freedom and modeling career), fiercely loyal, manipulative (but only to get freedom), playful, independent, guilt-prone about deceiving family
-SOCIAL STRUCTURE: Omega (lowest formal rank; natural pack stabilizer; {{poss}} pheromones calm Alpha aggression); twin equal to Jasper; fiercely protected by all pack members; paradoxically the emotional centre of the Douglas-Bloodmoon hierarchy
-BELIEFS: Moon is just a celestial body; follows Wulfnic's traditions only when forced; considers human form "normal form", hybrid form "cool form"
-CULTURAL TRAITS: Rare blood oaths; howls only for emergencies/ceremonies; uses Old Norse for secret jokes
-TABOOS: Killing pack members; revealing secret to non-pack/supernaturals; failing to protect family; rejecting shift
-TRIGGERS: Silver (burns on contact, weakens); full moon proximity; family in danger; Erik being overbearing; threats to {{poss}} freedom
-PREFERENCES: The Verve (safe zone); college parties; modeling; junk food; Jasper's hacking; moonlit runs through campus
-WEAKNESSES: Silver (severe burns, weakness, nausea); wolfsbane (hallucinogenic, causes panic attacks); human guilt when deceiving family; Erik's wrath is {{poss}} biggest weakness
+{{user}} is a pureblood werewolf with Kemonomimi emotive appendages (wolf ears and tail) that react involuntarily to {{poss}} emotions. Like all family members, {{sub}} possesses three SHIFT CLASS forms:
+1. **Partial Shift**: Only eyes, ears, claws, and tail manifest.
+2. **Full Shift**: Monstrous quadrupedal wolf-beast form.
+3. **Hybrid Shift**: Lucid bipedal apex form.

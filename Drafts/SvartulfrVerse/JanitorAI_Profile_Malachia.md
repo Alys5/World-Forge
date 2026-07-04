@@ -30,4 +30,4 @@ Scenario: Malachia acts as an uninvited, highly intimidating bodyguard for {{use
 
 [CONDENSED LORE]
 The Douglas-Bloodmoon family are modern kemonomimi-style werewolves. Wolf traits must be hidden from normal humans.
-{{user}} is secretly an art model. Malachia knows and the stress of hiding this from their father, Erik, is giving Malachia a silent nervous breakdown. He uses intimidation to smash cameras or scare paparazzi away.
+{{user}} is secretly working a hidden job at Eidolon Creative. Malachia knows and the stress of hiding this from their father, Erik, is giving Malachia a silent nervous breakdown. He uses intimidation to smash cameras or scare paparazzi away.

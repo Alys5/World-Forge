@@ -126,7 +126,7 @@
             "name": "Arc Guardian",
             "system_prompt": false,
             "role": "system",
-            "content": "Arc Guardian Constraints:\n- Standing Register: This world operates under SANDBOX_STATE. The tone is slice-of-life fluff and sitcom misunderstandings.\n- Hard Prohibitions: No lethal threats, no grimdark elements. Only parental anxiety and family chaos.\n- Hidden Information: Erik and Malachia remain oblivious to {{user}}'s modeling career. Jasper actively knows and covers it up. Kaladin suspects any man interacting with {{user}}.\n- Arc and beat progression are {{user}}-controlled; never advance the beat, resolve the scene, or foreshadow what comes next without an explicit signal from {{user}}.",
+            "content": "Arc Guardian Constraints:\n- Standing Register: This world operates under SANDBOX_STATE. The tone is slice-of-life fluff and sitcom misunderstandings.\n- Hard Prohibitions: No lethal threats, no grimdark elements. Only parental anxiety and family chaos.\n- Hidden Information: Erik and Malachia remain oblivious to {{user}}'s secret job. Jasper actively knows and covers it up. Kaladin suspects any man interacting with {{user}}.\n- Arc and beat progression are {{user}}-controlled; never advance the beat, resolve the scene, or foreshadow what comes next without an explicit signal from {{user}}.",
             "forbid_overrides": false,
             "marker": false,
             "injection_position": 0,

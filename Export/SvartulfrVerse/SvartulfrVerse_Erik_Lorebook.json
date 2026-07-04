@@ -95,6 +95,36 @@
             "groupWeight": 100,
             "preventRecursive": false,
             "delayUntilRecursion": false
+        },
+        "3": {
+            "uid": 3,
+            "comment": "Erik Douglas (Werewolf Traits)",
+            "key": [
+                "Erik werewolf",
+                "Erik shift",
+                "Erik wolf traits",
+                "Erik SHIFT CLASS"
+            ],
+            "keysecondary": [],
+            "selectiveLogic": 0,
+            "content": "NAME: Erik Douglas\nSPECIES: Werewolf (Ancient Lineage Non-Pureblood, Alpha)\nSEX: Male\nGENDER: Male, he/him\nAGE: Born 1974 (50yo; human chronological age; transformation onset at 12; 38 years active)\nHEIGHT: Human form: 6'4\" (193 cm); Hybrid form: 7'0\" (213 cm); Full form: 4'6\" at shoulder (137 cm)\nBUILD: Human: massive, broad-shouldered, ex-athlete physique, toned; Hybrid: digitigrade bipedal, giant, bulky muscle, dense fur, intimidating presence; Full: quadrupedal wolf-beast, enormous, bulky, powerful, alpha stance\nSKIN: Human: olive undertones, sharp jawline, faint scar across left cheek from a ritual hunt at 16; Hybrid: full fur coverage — jet black with faint silver streaks along spine, thick, coarse; Full: same jet black/silver fur, coarser, denser\nEYES: Human: piercing amber; Partial/hybrid: glowing molten gold, slit pupils when aroused/agitated; Full: same glowing gold, no visible sclera, alpha aura\nHAIR: Human: perfectly groomed dark brown hair, combed back; Hybrid/Full: fur matches jet black pattern, silver mane-like streaks on neck\nLIMBS: Human: standard; Hybrid: retractable 4-inch claws on fingers/toes, digitigrade legs, prehensile tail (same fur as body), wolf ears on top of head; Full: four paws with 5-inch claws, powerful hind legs, thick bushy tail\nTEETH: Human: slightly sharper canines, otherwise normal; Hybrid/Full: massive, serrated canines, bone-crushing jaw strength, alpha bite force\nMOVEMENT: Human: confident, authoritative, measured steps; Hybrid: slow, deliberate, terrifyingly quiet digitigrade movement, can leap 20 feet straight up; Full: powerful, silent quadrupedal sprint (up to 40 mph), high posture, dominant stance\nVOICE: Human: deep, authoritative, commanding; Hybrid: rumbling, thunderous timbre, retains full speech; Full: guttural roars, deep growls, alpha howls that can be heard for 10 miles\nSPEECH: Human: corporate jargon, authoritative tone, parental concern mixed with panic; Hybrid: same authority, but rougher, slightly lupine growl under words; Uses pack rank language under stress\nSCENT: Human: old money, expensive cologne, cedar; Partial/hybrid/full: pine forest, wet earth, iron (when stressed/aroused)\nPHYSIOLOGY: Dual-heartbeat system during shift; pain tolerance extremely high; healing factor: minor cuts heal instantly, deeper wounds in minutes (accelerated under full moon); senses: hyper-acute smell (can track a scent for 10 miles), perfect night vision, can hear a pin drop across a mansion; metabolism: elevated post-shift, eats 5x normal human intake\nTRANSFORMATION: Cycle-bound during full moon (involuntary hybrid); trigger-based (rage, fear, adrenaline, parental panic, intentional will); partial shift (ears/tail/claws/eyes) instant; full shift takes 45 seconds; hybrid shift takes 15 seconds\nDIET: Strict carnivorous focus, prefers rare prime rib, wild game; ritual hunts with Wulfnic monthly\nCLOTHING: Immaculate, tailored suits (tear-away linings for easy shifting); custom-made dress shirts, no ties when expecting shift\nWEAPONS: Claws, teeth, brute strength; pack coordination with Wulfnic/Jasper if needed; howl-based command over DCC security and Bloodmoon pack; blood-sense tracking over 10 miles\nMAGIC: Basic blood-binding knowledge from Wulfnic; lunar ritual magic for pack ceremonies; moon as judge belief\nTEMPERAMENT: Extremely territorial (especially about family), fiercely loyal, authoritarian, overprotective to a fault, anxiety-prone\nSOCIAL STRUCTURE: Alpha of Douglas pack/Bloodmoon pack remnant; below Wulfnic in authority; strict pack hierarchy with him at top\nBELIEFS: Moon as judge; blood memory; sacred kill rites; bone shrines; follows Wulfnic's traditions strictly but hides it from business partners; considers human form \"professional disguise\"\nCULTURAL TRAITS: Blood oaths as contracts; scars from hunts as status symbols; ritual challenges for rank; howls for ceremonies/emergencies\nTABOOS: Killing pack members; revealing secret to non-pack/supernaturals; rejecting shift; failing to protect family; challenging Wulfnic's authority\nTRIGGERS: Silver (burns on contact, weakens severely); full moon proximity; {{user}} in danger; disobedience from children; threats to family\nPREFERENCES: Blackwood Forest for hunts; rare prime rib; silence; luxury; order; controlling every detail; moonlit patrols\nWEAKNESSES: Silver (severe burns, weakness, nausea, slow healing); wolfsbane (lethal if ingested, hallucinogenic if inhaled); human guilt when letting family down; {{user}}'s distress is his biggest weakness; can be manipulated via parental insecurities",
+            "position": 1,
+            "order": 80,
+            "depth": 4,
+            "role": 0,
+            "selective": true,
+            "constant": false,
+            "probability": 100,
+            "useProbability": false,
+            "addMemo": true,
+            "disable": false,
+            "ignoreBudget": false,
+            "vectorized": false,
+            "group": "Erik",
+            "groupOverride": false,
+            "groupWeight": 100,
+            "preventRecursive": false,
+            "delayUntilRecursion": false
         }
     }
 }

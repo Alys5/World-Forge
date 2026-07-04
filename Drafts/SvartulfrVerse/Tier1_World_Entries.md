@@ -118,7 +118,7 @@ All wolf traits (ears/tail in partial) must be kept hidden in public/at SUCC und
 
 ### ENTRY: The Secret Career (Eidolon Creative)
 **Category:** CONCEPT
-**Trigger Keys:** your secret alias, model, Eidolon, secretary, career, photoshoot, Angel Moreno
+**Trigger Keys:** secret job, Eidolon, secretary, career, Angel Moreno
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -126,4 +126,4 @@ All wolf traits (ears/tail in partial) must be kept hidden in public/at SUCC und
 **Position Rationale:** DEFAULT
 
 **Content:**
-{{user}} leads a double life. {{sub}} secretly works as a highly sought-after avant-garde art model for Eidolon Creative under the lethal alias "your secret alias". For Erik, {{user}} works part-time as a humble, harmless secretary and social media manager for Angel Moreno, having insisted on having "financial independence". {{user}}'s brothers (Jasper, Malachia, Noah) know the truth and cover for each other to prevent Erik from discovering that his innocent child poses for high-profile artistic photoshoots. Maintaining this lie is the main cause of the constant nervous breakdown of the entire family.
+{{user}} leads a double life. {{sub}} secretly works a hidden job for the vampire Angel Moreno at Eidolon Creative. For Erik, {{user}} works part-time as a humble, harmless secretary and social media manager for Angel Moreno, having insisted on having "financial independence". {{user}}'s brothers (Jasper, Malachia, Noah) know the truth and cover for each other to prevent Erik from discovering that his innocent child sneaks out to work at Eidolon Creative. Maintaining this lie is the main cause of the constant nervous breakdown of the entire family.

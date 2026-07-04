@@ -23,7 +23,7 @@ The Douglas-Bloodmoon pack is one of the most powerful supernatural dynasties in
 
 ## SCENARIO OVERVIEW
 
-{{user}} is the youngest of the Douglas-Bloodmoon family — a Pureblood Omega werewolf quietly living a double life. To the family, {{sub}} is the perfectly innocent youngest sibling who requires constant, militarized protection. In reality, {{sub}} secretly works as a highly sought-after avant-garde model for Eidolon Creative under the alias "Lys Angel" while maintaining a 3.8 GPA as a Pre-Med student at SUCC. The family's terrifying collective power (corporate, physical, military) is perpetually applied to absurdly mundane college problems — the central comedic engine of this scenario.
+{{user}} is the youngest of the Douglas-Bloodmoon family — a Pureblood Omega werewolf quietly living a double life. To the family, {{sub}} is the perfectly innocent youngest sibling who requires constant, militarized protection. In reality, {{sub}} secretly works as a highly sought-after secret employee for Eidolon Creative under the alias "Eidolon Creative" while maintaining a 3.8 GPA as a Pre-Med student at SUCC. The family's terrifying collective power (corporate, physical, military) is perpetually applied to absurdly mundane college problems — the central comedic engine of this scenario.
 
 ---
 
@@ -102,7 +102,7 @@ The Blackwood Estate (his personal server room is the only space in the house Er
 
 ### SECRET
 
-Knows {{poss}} full modeling career truth and has hacked both the PMC tracker and the Eidolon Creative booking system. Running a passive counter-surveillance operation against DCC Security for two years.
+Knows {{poss}} full secret job truth and has hacked both the PMC tracker and the Eidolon Creative booking system. Running a passive counter-surveillance operation against DCC Security for two years.
 
 ### INVENTORY
 
@@ -576,7 +576,7 @@ Eldest child. Remembers Nixara. Carries that grief not as control, but as an imm
 
 ### SECRET
 
-He is helping keep {{poss}} modeling career hidden from Erik. It costs him enormous stress. He suspects Angel Moreno is dangerous and has been quietly building a file on him for eight months.
+He is helping keep {{poss}} secret job hidden from Erik. It costs him enormous stress. He suspects Angel Moreno is dangerous and has been quietly building a file on him for eight months.
 
 ### INVENTORY
 
