@@ -215,8 +215,74 @@ Before drafting, evaluate the **Ensemble Proximity** of the cast based on the Wo
 
 1. Map the core character details (from Section 5) into the `BASIC INFO AND APPEARANCE`, `PERSONALITY AND BEHAVIOR`, `SEXUALITY`, and `SPEECH AND ABILITIES` blocks of the template for each respective `<CharName>`.
 2. **Permanent Lore:** Include Tier 1 (World truths) and permanent Tier 2 (standing goals, permanent relationships) within the `[SETTING AND SCENARIO]` and `[CONDENSED LORE]` blocks of the template. *Do not leave these out under the assumption the script will handle them.* 
-3. **Keep it tight:** The JanitorAI template can easily bloat token counts, especially in Multi-Bot scenarios. Be ruthless. Distill the prose from the main Character Card rather than copying it wholesale if it's too long.
+3. **Keep it tight:** The JanitorAI template can easily bloat. Be ruthless. Distill the prose from the main Character Card rather than copying it wholesale if it's too long.
 4. **No Situational Events:** Do NOT put Arc States, tension modifiers, or situational / transient locations here. Those belong in the ES6 Script compiled in Phase 4.
+
+---
+
+## 5.7. JANITOR_AI BOT BIO (STOREFRONT) DRAFTS — `Drafts/JanitorAI_Bio_[Name].json`
+
+This draft maps the character's definition into a storefront bio page that users will see on Janitor AI. It must be written using an aggressive, marketing-focused "Storefront Window" approach. You must generate a JSON file containing the copywriting and the image generation prompts.
+
+### Copywriting Rules for the Storefront
+
+The bot card is a cover, not a manual. Think in terms of hooks, not history.
+- **Impact Title:** Short, bold, emotionally loaded (~20 characters). E.g., "Your Chaotic Roommate". Do not use just the character's name.
+- **Subtitle:** Character name + identity descriptor. E.g., "Sarah – The Girl Who Eats Pizza at 3 A.M."
+- **Blurb Flow:**
+  - **Hook (lead line):** Personality + conflict in motion. "She turns silence into tension and conversation into a dare."
+  - **Impact line:** Bold one-liner for skimmers. "Just don't call her jealous. She'll make you pay for that one."
+  - **World/Scenario Teaser:** Anchor the place lightly without lore dumps. Do NOT write "The Kingdom of Aranor was founded in 1273".
+  - **Closing line:** An invitation or a threat.
+
+### Image Generation Prompts
+
+You must author tailored prompts for generating the visuals so the user can easily render them.
+**Crucial Reminder:** In each prompt, include a brief trailing note reminding the user to crop the image to the exact aspect ratio, apply rounded corners (if desired), and export as `.webp` via Photoshop before uploading, since Janitor AI strips CSS sizing.
+- **Main Portrait (1:1):** Square, polished portrait. Clean background, eye contact, consistent with the tone. Describe exact physical features, clothing, and aesthetic (e.g., "Cinematic portrait, modern fantasy, college student, kemonomimi, highly detailed wolf ears correctly positioned... [Note for User: Crop 1:1, apply 8px border-radius in Photoshop, export as WebP]").
+- **Supporting Banner:** Wide shot (16:9 or 5:3) capturing the environment, mood, or setting. Include the Photoshop/WebP reminder.
+- **Roster Images:** 1:1 portraits for each roster member. Include the Photoshop/WebP reminder.
+- **Infographic / Data-Graphic (Optional Strategy):** If the character has complex stats, a dense relationship web, or a power-scaling chart that would break in HTML, suggest in a comment that the user generate or design a *text-in-image infographic* instead of using HTML. This bypasses the HTML sanitizer entirely.
+### JSON Structure
+
+Generate exactly this structure (Output valid JSON only):
+```json
+{
+  "storefront_text": {
+    "title": "Impact Title",
+    "subtitle": "Name - Descriptor",
+    "hook": "Lead line hook...",
+    "impact_line": "Bold one-liner...",
+    "blurb": "Personality and conflict in motion...",
+    "world_teaser": "Scenario teaser...",
+    "closing_line": "Invitation...",
+    "warnings": "Mature | Core themes | Warnings (from Section 8)"
+  },
+  "visuals": {
+    "main_portrait_1x1": {
+      "placeholder_url": "https://placehold.co/500x500/1a1a1a/e0e0e0?text=Main+Portrait",
+      "generation_prompt": "Prompt for main image..."
+    },
+    "supporting_image_banner": {
+      "placeholder_url": "https://placehold.co/800x400/1a1a1a/e0e0e0?text=Banner+Image",
+      "generation_prompt": "Prompt for banner..."
+    }
+  },
+  "roster": [
+    {
+      "name": "NPC Name",
+      "subtitle": "NPC Descriptor",
+      "description": "Short, punchy essence.",
+      "image": {
+        "placeholder_url": "https://placehold.co/200x200/1a1a1a/e0e0e0?text=NPC",
+        "generation_prompt": "Prompt for NPC..."
+      }
+    }
+  ]
+}
+```
+
+Generate this file for each character (`Drafts/JanitorAI_Bio_[CharName].json`) or group (`Drafts/JanitorAI_Bio_Group.json`).
 
 ---
 

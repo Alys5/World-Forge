@@ -199,6 +199,12 @@ For each character card built in Step 4, compile the paired JanitorAI Bot Profil
 - Verify the file has Editor Sign-Off.
 - Pass the draft byte-for-byte to `Export/[Name]_JanitorAI.txt` as plain text markdown (where `[Name]` is either the character's name or the group's name, matching the draft filename). Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
 
+### Step 4C — Build JanitorAI Bot Bio (Storefront HTML)
+For each JanitorAI Bio drafted by the Architect in Step 5.7:
+- The input will be `Drafts/JanitorAI_Bio_[Name].json`
+- Execute `python tools/build_bio.py <world_name>`
+- This script will read the JSON, merge it with `templates/Janitor_Bio_Template.html`, and generate `Export/[WorldName]_JanitorAI_Bio_[Name].html`.
+
 ### Lorebook file-naming convention (applies to Steps 5, 6, 7, and the intimacy registers)
 
 **Every exported lorebook filename is prefixed with `[WorldName]_`** — the same world-name token already used for `[WorldName]_ChatPreset.json` (from Master Design Section 1; spaces → underscores). SillyTavern names a standalone World Info world by its **imported filename**, not by the internal `name` field (`Notes_On_functionality.md` §"world-info.js → importWorldInfo"), so the filename prefix is what makes a world's entire lorebook set sort and group together as one block in ST's alphabetical World Info list. Set each lorebook's internal `name` field to match its filename (minus `.json`), and the manifest `lorebook.name` (Step 7.7b) likewise. The prefix is the **only** change to these filenames — the rest of each name (`World_Lorebook`, `[CharName]_Lorebook`, `Arc[N]_Lorebook`, …) is unchanged. Cards, `User.md`, and logs are **not** prefixed; only lorebook/register JSON.
@@ -350,7 +356,7 @@ JanitorAI supports ES6 scripts instead of standard lorebooks. Translate the Worl
 Before saving any file (per Foundational Rules at top of this file):
 - JSON is syntactically valid (balanced braces, correct commas, no trailing commas) — Foundational Rule #1
 - All required fields present and correctly typed
-- **No metadata fields outside the schema** — Foundational Rule #3. The JSON contains ONLY schema-defined fields; no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, etc. The destination filename is a tool argument to your write-file tool, never a JSON content field.
+- **No metadata fields outside the schema** — Foundational Rule #3. The JSON contains ONLY schema-defined fields; no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, etc. The destination filename is a tool argument, never a JSON content field.
 - `system_prompt` and `post_history_instructions` are non-empty strings beginning with `{{original}}` (Foundational Rule #2)
 - `data.extensions.depth_prompt` present on all character cards (prompt may be empty string) — Foundational Rule #4
 - `data.extensions.world_forge.style_override` present on all character cards — Foundational Rule #5 (schema per SHARED §1)
@@ -382,6 +388,7 @@ Before saving any file (per Foundational Rules at top of this file):
 Export/
 ├── [CharName]_Card.json            ← V3 character card per named card
 ├── [Name]_JanitorAI.txt            ← JanitorAI bot profile (Markdown format, single or group)
+├── [WorldName]_JanitorAI_Bio_[Name].html ← JanitorAI storefront bio HTML
 ├── User.md                         ← {{user}} Persona Description text (paste into ST persona)
 ├── [WorldName]_World_Lorebook.json             ← Tier 1: permanent world truths
 ├── [WorldName]_[CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
@@ -408,6 +415,7 @@ Append to `Export/Compiler_Log.md`:
 ### Output Manifest
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
 - [ ] [Name]_JanitorAI.txt — JanitorAI JED format generated (individual or group)
+- [ ] [WorldName]_JanitorAI_Bio_[Name].html — JanitorAI storefront bio HTML generated via build_bio.py
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] [WorldName]_World_Lorebook.json — [N] entries, all Tier 1
 - [ ] [WorldName]_[CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
