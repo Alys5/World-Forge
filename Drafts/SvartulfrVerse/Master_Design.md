@@ -967,12 +967,12 @@ Changes summary:
 ## SECTION 11: STYLE CONTRACT
 **11a. World Default**
 - perspective: third_limited
-- tense: past
-- narration_marker: asterisks_for_narration
+- tense: present
+- narration_marker: asterisks_for_thoughts_only
 - dialogue_marker: double_quotes
 - emphasis_marker: double_asterisks
 - paragraph_register: standard
-- style_notes: All prose must be written in English. Ensure that AnyPOV macros ({{sub}}, {{obj}}, {{poss}}, {{poss_p}}, {{ref}}) or neutral terms are used naturally where applicable.
+- style_notes: All prose must be written in English. Ensure that AnyPOV macros ({{sub}}, {{obj}}, {{poss}}, {{poss_p}}, {{ref}}) or neutral terms are used naturally where applicable. First-person present tense MUST be used when explicitly writing for {{user}}. STRICTLY PROHIBITED: em dashes (—) and meta-tags (e.g. "System:"). REQUIRED FORMATS: Native language dialogue as `"phrase" (translation)`, `In-Universe Text` in backticks, ***Narrator/Events*** in triple asterisks, and explicit tags for skips (e.g. [TIME SKIP]).
 - defaults_applied: false
 
 **11b. Per-Card Overrides**

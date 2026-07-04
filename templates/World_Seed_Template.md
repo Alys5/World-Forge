@@ -49,7 +49,7 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 ## 1.5. STYLE CONTRACT **[REQUIRED]**
 
-*This section declares the world's prose conventions — perspective, tense, formatting markers, paragraph register. The Refiner classifies it as engine-level metadata; the Prompt Engineer parameterizes the world's Main Prompt block from these values; the Architect emits per-card style overrides where applicable. If you don't care about prose style and want pipeline defaults, write `DEFAULTS` for each field and the Refiner will fill in the legacy convention (third-person limited past, asterisks-for-narration, double-quote dialogue).*
+*This section declares the world's prose conventions — perspective, tense, formatting markers, paragraph register. The Refiner classifies it as engine-level metadata; the Prompt Engineer parameterizes the world's Main Prompt block from these values; the Architect emits per-card style overrides where applicable. If you don't care about prose style and want pipeline defaults, write `DEFAULTS` for each field and the Refiner will fill in the legacy convention (third-person limited present, asterisks-for-thoughts-only, double-quote dialogue, first-person present for {{user}}, no em-dashes).*
 
 *The values you choose here apply to **every card in this world** unless a specific card declares an override (Section 4 — Card Style Override). Most worlds will set the contract once and never override; worlds with a Director/Narrator card alongside companion cards typically override perspective on the Director card only.*
 
@@ -62,12 +62,12 @@ Delete all instructional text in brackets before submitting. Leave the section h
 - `third_omniscient` — Narrator sees across all characters' interiors. Suits Director/Narrator-driven worlds.
 
 **Tense:** [Pick one]
-- `past` — "She walked across the harbor." Default for most prose fiction.
-- `present` — "She walks across the harbor." Heightened immediacy; harder to sustain across long sessions.
+- `past` — "She walked across the harbor."
+- `present` — "She walks across the harbor." Default for most prose fiction in this pipeline. Heightened immediacy.
 
 **Narration Marker:** [Pick one — defines what `*asterisks*` mean in this world]
-- `asterisks_for_narration` — *Asterisks* delimit narration, action, and interior glimpses. Spoken dialogue uses quotes. Pipeline legacy default.
-- `asterisks_for_thoughts_only` — *Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue. Action and narration are plain prose. Spoken dialogue uses quotes.
+- `asterisks_for_narration` — *Asterisks* delimit narration, action, and interior glimpses. Spoken dialogue uses quotes.
+- `asterisks_for_thoughts_only` — *Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue. Action and narration are plain prose. Spoken dialogue uses quotes. Pipeline legacy default.
 - `plain_prose` — No asterisks anywhere. Narration, action, and thought are all plain prose. Spoken dialogue uses quotes. Suits literary-realism worlds.
 
 **Dialogue Marker:** [Pick one]
