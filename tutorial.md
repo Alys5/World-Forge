@@ -85,6 +85,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 |---|---|
 | `/worldforge brainstorm` | Optional, upstream of Phase 0: divergent ideation when you have only a vibe — generates premise directions, writes informal `Brainstorm_Notes.md`, no World Seed (the Interviewer reads the notes on the next `start`) |
 | `/worldforge brainstorm --adapt <document>` | Optional, upstream of Phase 0: turn an existing story, fanfiction, or roleplay log into a precursor — extracts its world and helps you decide who `{{user}}` is, then writes an `adaptation`-stamped `Brainstorm_Notes.md` (no World Seed) |
+| `/worldforge brainstorm --improve` | Any time a world already exists (seed-only or shipped): ping-pong improvement ideas against it with no commitment — the Brainstormer reads the world read-only, riffs on fit / additions / reworks, and parks the results in the standing `Big_Brain_Storm.md`; nothing runs afterward — a later `revise --brainstorm` offers to pick a parked idea up (see Section 9) |
 | `/worldforge start` | Begin from Phase 0 (arc mode by default) |
 | `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** — an open-ended world with no narrative arc (see Section 7) |
 | `/worldforge skip phase0` | Begin from Phase 1 (you authored the World Seed manually — Lucifer's path) |
@@ -512,7 +513,7 @@ After writing the consolidated seed, the Converter hands off into the **Intervie
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-brainstorm
 ```
 
-This inserts the **Brainstormer in improvement posture** ahead of the Interviewer. It reads the consolidated seed, plays the world back, and brainstorms improvement directions *with* you — a new mechanic, an arc rework, a character to deepen, a tonal turn — generating options the way it does for a fresh world, but pointed at the world you already have. It writes informal `Brainstorm_Notes.md` (never the seed), and the chain continues into the seed-revision Interviewer, which reads those notes as *proposals*: it leads with them, you refine them in discussion, and the endorsed ones get interviewed into seed edits at full depth. The Brainstormer keeps you honest about scope — an idea that would flip the World Mode, swap the protagonist, or overturn the core concept is a *reframe* (a regular `/worldforge convert`), not a rebaseline improvement, and it'll say so. `--then-brainstorm` requires `--rebaseline` and supersedes `--then-interview` (the interview always follows the brainstorm).
+This inserts the **Brainstormer in improvement posture** ahead of the Interviewer. It reads the consolidated seed, plays the world back, and brainstorms improvement directions *with* you — a new mechanic, an arc rework, a character to deepen, a tonal turn — generating options the way it does for a fresh world, but pointed at the world you already have. It writes informal `Brainstorm_Notes.md` (never the seed), and the chain continues into the seed-revision Interviewer, which reads those notes as *proposals*: it leads with them, you refine them in discussion, and the endorsed ones get interviewed into seed edits at full depth. The Brainstormer keeps you honest about scope — an idea that would flip the World Mode, swap the protagonist, or overturn the core concept is a *reframe* (a regular `/worldforge convert`), not a rebaseline improvement, and it'll say so. `--then-brainstorm` requires `--rebaseline` and supersedes `--then-interview` (the interview always follows the brainstorm). And if you just want to explore ideas against a world *without* consolidating or committing to anything, the same improvement posture runs standalone as `/worldforge brainstorm --improve` — see Section 9.
 
 ---
 
@@ -556,7 +557,7 @@ The appearance/realism nudge is a coherence check, not a rule: it surfaces the t
 The Brainstormer runs in one of four modes depending on how it's invoked:
 
 1. **Fresh start** (`/worldforge brainstorm`) — the default above: a blank page and a vibe.
-2. **Rebaseline improvement** (`/worldforge convert ... --rebaseline --then-brainstorm`) — brainstorming *changes* to an already-consolidated world before the Interviewer reworks the seed. Covered in [Section 8](#8-converting-a-shipped-world-worldforge-convert).
+2. **Improvement** — brainstorming *changes* to a world you already have. Two doors: chained after a rebaseline (`/worldforge convert ... --rebaseline --then-brainstorm`, covered in [Section 8](#8-converting-a-shipped-world-worldforge-convert)) or standalone (`/worldforge brainstorm --improve`) — the no-commitment sounding board, two subsections down.
 3. **Revision diagnostic** (`/worldforge revise --brainstorm`) — the subsection after next.
 4. **Adaptation** (`/worldforge brainstorm --adapt <document>`) — turning an existing story, fanfiction, or roleplay log into a precursor for a world. The next subsection.
 
@@ -572,6 +573,18 @@ This runs the Brainstormer in its **adaptation posture**. It reads the document 
 
 Because the document is a *finished sample*, it also extracts the things you most likely want replicated: the **prose style** (perspective, tense, register, rhythm, and pacing — raw material for your Style Contract), **how each character speaks** (a voice fingerprint plus a verbatim sample line or two lifted straight from the text), and, if the source has sex, the **intimate register** (the dynamics, explicitness, and any kinks or fetishes the page actually shows — raw material for the Intimacy Architect in Phase 2.5). It extracts only what's on the page and *attributes it to the source* — it won't invent a hidden wound, or a kink, the story never showed; it flags those as gaps for the Interviewer to dig on instead. The output is an `adaptation`-stamped `Brainstorm_Notes.md`: the extracted world, the prose sample, the intimate register, your `{{user}}`-slot decision, and the list of gaps to fill. Hand it to `/worldforge start` exactly like any other brainstorm — the Interviewer reads it as a (richly furnished) warm start and still runs the full interview, leaning on the prose and intimate samples as confirmed starting points and pushing hardest on the interiority and stakes the document didn't supply. As always, it writes only notes, never a seed, and never edits or continues your document.
 
+### Testing ideas against an existing world (`/worldforge brainstorm --improve`)
+
+Revision assumes you've already decided something should change; `revise --brainstorm` (next subsection) assumes something already feels *wrong*. But sometimes you're just carrying ideas with no commitment behind them — "would a rival faction fit this world?", "should Anna's arc go deeper?", "could the market district be made better?" — and what you want is a sounding board, not a pipeline.
+
+```
+/worldforge brainstorm --improve
+```
+
+This runs the Brainstormer's **improvement posture standalone** — the same conversation `--then-brainstorm` chains after a rebaseline (Section 8), but with no conversion in front of it and nothing dispatched after it. It reads your world's current state read-only (`Master_Design.md` with its Revision Log if the world is built; the `World_Seed.md` if not), plays it back, and then ping-pongs: pitch it your ideas and it yes-ands, expands, pressure-tests ("where does it sag?"), and offers alternatives; arrive empty-handed and it asks what's pulling at you and generates directions. It respects the world's spine — an idea that would flip the World Mode, replace the protagonist, or overturn the core concept gets named plainly as `/worldforge convert` territory rather than dressed up as an improvement.
+
+It ends by parking everything in **`Big_Brain_Storm.md`** — a *standing* idea file, separate from the run-scoped `Brainstorm_Notes.md`, so it survives between sessions: run `--improve` again later and the Brainstormer plays your still-open ideas back and curates the file forward instead of starting from amnesia. And the parked ideas flow organically into the pipeline when you're ready: the next time you run `/worldforge revise --brainstorm`, the Brainstormer notices the file and *asks* whether to fold those ideas into the diagnosis — if one of them is the change you want, it adapts it into the notes the Reviser scopes. You can equally take an idea straight through a door yourself — `/worldforge revise` for a surgical change to a built world (state the change as your intent; the Reviser never reads `Big_Brain_Storm.md` directly), seed edits or the seed-revision interview for a world not yet built, `/worldforge convert` for the structural stuff. And if nothing lands, the ideas just stay parked — exploration is the point.
+
 ### "Something feels off but I can't name it" (`/worldforge revise --brainstorm`)
 
 The revision pipeline (`/worldforge revise`, Section 7's retrofitting note) assumes you can name what to change — "Anna's voice is too snarky in Arc 2," "add an NPC to the market district." But sometimes a shipped world just feels *off* in play and you can't point at why. That's the pre-articulation case, and grinding through the Reviser's narrowing questions doesn't help when you have no starting noun.
@@ -580,7 +593,7 @@ The revision pipeline (`/worldforge revise`, Section 7's retrofitting note) assu
 /worldforge revise --brainstorm
 ```
 
-This runs the Brainstormer in its **revision-diagnostic posture** *before* the Reviser. It reads your `Master_Design.md` read-only, plays the world back, and asks what bugged you in the last session — then diagnoses divergently, using the six lenses in reverse as a diagnostic vocabulary (a scene that fell flat → the psychology lens; samey intimate beats → the intimacy lens; an arc with no pressure → the "where does it sag" move; a world that plays like a backdrop → the world & factions lens; NPCs who all sound the same → the cast & voice lens). It converges on **one primary concern**, phrased as a revision intent, plus a few candidate future concerns, and writes them to `Brainstorm_Notes.md`. The Reviser then reads that file, captures the primary concern as your verbatim intent, and classifies and scopes the revision as normal.
+This runs the Brainstormer in its **revision-diagnostic posture** *before* the Reviser. It reads your `Master_Design.md` read-only, plays the world back, and asks what bugged you in the last session — and if you have a standing `Big_Brain_Storm.md` from earlier `brainstorm --improve` sessions, it asks whether to fold those parked ideas into the diagnosis (a felt concern and a parked idea are often the same thing seen from two sides). Then it diagnoses divergently, using the six lenses in reverse as a diagnostic vocabulary (a scene that fell flat → the psychology lens; samey intimate beats → the intimacy lens; an arc with no pressure → the "where does it sag" move; a world that plays like a backdrop → the world & factions lens; NPCs who all sound the same → the cast & voice lens). It converges on **one primary concern**, phrased as a revision intent, plus a few candidate future concerns, and writes them to `Brainstorm_Notes.md`. The Reviser then reads that file, captures the primary concern as your verbatim intent, and classifies and scopes the revision as normal.
 
 It respects the same bright line as the Reviser: if the thing that's "off" turns out to be the world's core concept, tone, Style Contract, or World Mode, it says so and points you to a full re-run or a `/worldforge convert` rather than dressing a structural change up as a surgical one. And like every Brainstormer posture, it writes only informal notes — it never classifies tiers or scopes the revision itself. That stays the Reviser's job.
 
@@ -610,6 +623,13 @@ Divergent ideation for when you have only a vibe. Generates premise directions, 
 ```
 Reads an existing narrative document (a story, fanfiction, or roleplay log), extracts the world latent in it (cast, setting, tone), and diverges on the gap to a playable world — above all the `{{user}}` slot the document's fixed POV can't supply. Writes an `adaptation`-stamped `Brainstorm_Notes.md` the next `start` reads as a warm start; never writes a World Seed and never edits your document.
 **Why:** use it when the world you want already exists in something you've read or written, and you want to *play in* it rather than build from a blank page. See Section 9.
+
+**`/worldforge brainstorm --improve`** — *any time a world exists; ideas, not yet changes*
+```
+/worldforge brainstorm --improve
+```
+Runs the Brainstormer's improvement posture standalone against a world you already have (seed-only or shipped): reads its current state read-only (`Master_Design.md` if built, else `World_Seed.md`), ping-pongs your ideas — fit, additions, reworks — pressure-tests them, and parks the results in the standing `Big_Brain_Storm.md` (curated forward across sessions, separate from `Brainstorm_Notes.md`). Commits you to nothing; a later `revise --brainstorm` offers to pick a parked idea up, or take one through `revise` / `convert` yourself.
+**Why:** you want a sounding board against an existing world without opening a revision or a conversion. If something already feels *wrong* and you can't name it, that's `revise --brainstorm` instead (Section 10.3).
 
 **`/worldforge start`** — *the normal entry*
 ```
@@ -689,8 +709,8 @@ Skips diagnostic narrowing and goes straight to "what's wrong with this file, an
 ```
 /worldforge revise --brainstorm
 ```
-Runs the Brainstormer's revision-diagnostic posture (Section 9) first: it reads `Master_Design.md` read-only, plays the world back, diagnoses divergently with the lenses, and writes one primary concern to `Brainstorm_Notes.md` — which the Reviser then picks up and scopes.
-**Why:** play feels wrong but you have no starting noun to hand the interview.
+Runs the Brainstormer's revision-diagnostic posture (Section 9) first: it reads `Master_Design.md` read-only, plays the world back, offers to fold in parked ideas from a standing `Big_Brain_Storm.md` if you have one, diagnoses divergently with the lenses, and writes one primary concern to `Brainstorm_Notes.md` — which the Reviser then picks up and scopes.
+**Why:** play feels wrong but you have no starting noun to hand the interview. (If you're carrying *ideas* rather than a symptom — "would X fit?" — use `/worldforge brainstorm --improve` instead; it commits you to nothing and this command will offer to pick its parked ideas up later.)
 
 **`/worldforge revise status` · `resume R[N]` · `cancel R[N]`**
 ```
