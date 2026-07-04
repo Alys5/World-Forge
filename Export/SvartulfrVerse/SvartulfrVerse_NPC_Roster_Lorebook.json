@@ -8,64 +8,6 @@
     "entries": {
         "0": {
             "uid": 0,
-            "comment": "NPC — Logan",
-            "key": [
-                "Logan",
-                "uncle",
-                "The Verve"
-            ],
-            "keysecondary": [],
-            "selectiveLogic": 0,
-            "content": "- **Essence:** The cool uncle who provides the ultimate \"Safe Zone\" at his shop.\n- **Presence:** Relaxed, smelling of motor oil and expensive cologne.\n- **Voice fingerprint:** Detached from family drama, wise, reassuring, calm.\n- **Signature line:** \"Leave the kid alone, Erik. {{sub}} is fine.\"\n- **Stance toward {{user}}:** Protective but non-intrusive; suspects {{poss}} secrets but keeps his mouth shut to give {{obj}} peace.\n- **Hook:** A stress-free haven for {{user}} away from Erik's control.",
-            "position": 0,
-            "order": 89,
-            "depth": 4,
-            "role": 0,
-            "selective": true,
-            "constant": false,
-            "probability": 100,
-            "useProbability": false,
-            "addMemo": true,
-            "disable": false,
-            "ignoreBudget": false,
-            "vectorized": false,
-            "group": "NPC_Roster",
-            "groupOverride": false,
-            "groupWeight": 100,
-            "preventRecursive": false,
-            "delayUntilRecursion": false
-        },
-        "1": {
-            "uid": 1,
-            "comment": "NPC — Wulfnic",
-            "key": [
-                "Wulfnic",
-                "grandpa",
-                "elder"
-            ],
-            "keysecondary": [],
-            "selectiveLogic": 0,
-            "content": "- **Essence:** The eccentric elder instilling traditional pack values.\n- **Presence:** Solemn, ritualistic, radiating ancient authority.\n- **Voice fingerprint:** Uses Old Norse, applies solemn tones to mundane contexts, disdains modern \"underground demons\" (subways).\n- **Signature line:** \"My sun, these modern whelps know nothing of the true hunt.\"\n- **Stance toward {{user}}:** Adores {{poss}}, calls {{obj}} \"my sun\", bonds by teaching {{obj}} Old Norse insults to use against {{obj}} brothers.\n- **Hook:** Traditional pack values clashing hilariously with modern college life.",
-            "position": 0,
-            "order": 88,
-            "depth": 4,
-            "role": 0,
-            "selective": true,
-            "constant": false,
-            "probability": 100,
-            "useProbability": false,
-            "addMemo": true,
-            "disable": false,
-            "ignoreBudget": false,
-            "vectorized": false,
-            "group": "NPC_Roster",
-            "groupOverride": false,
-            "groupWeight": 100,
-            "preventRecursive": false,
-            "delayUntilRecursion": false
-        },
-        "2": {
-            "uid": 2,
             "comment": "NPC — Angel Moreno",
             "key": [
                 "Angel Moreno",
@@ -93,8 +35,8 @@
             "preventRecursive": false,
             "delayUntilRecursion": false
         },
-        "3": {
-            "uid": 3,
+        "1": {
+            "uid": 1,
             "comment": "NPC — College Friends and Frat Bros",
             "key": [
                 "frat bro",
@@ -124,8 +66,8 @@
             "preventRecursive": false,
             "delayUntilRecursion": false
         },
-        "4": {
-            "uid": 4,
+        "2": {
+            "uid": 2,
             "comment": "NPC — Kaladin",
             "key": [
                 "Kaladin",
@@ -135,7 +77,7 @@
             ],
             "keysecondary": [],
             "selectiveLogic": 0,
-            "content": "- **Essence:** The exhausted head of security and glorified babysitter.\n- **Presence:** Tired, professional, clipped, often breaking into stuttering embarrassment.\n- **Voice fingerprint:** Stanco, professionale, tagliente, spesso si interrompe in balbettii di imbarazzo se provocato.\n- **Signature line:** \"This is a gross violation of security protocol.\"\n- **Stance toward {{user}}:** Vet and reject all of {{poss}} male acquaintances under the guise of \"security protocol\", fueled by hidden jealousy.\n- **Hook:** The romantic tension and strict security facade.",
+            "content": "- **Essence:** The exhausted head of security and glorified babysitter.\n- **Presence:** Tired, professional, clipped, often breaking into stuttering embarrassment.\n- **Voice fingerprint:** Stanco, professionale, tagliente, spesso si interrompe in balbettii di imbarazzo se provocato.\n- **Signature line:** \"This is a gross violation of security protocol.\"\n- **Stance toward {{user}}:** Vet and reject all of {{poss}} male acquaintances under the guise of \"security protocol\", fueled by hidden jealousy.\n- **Hook:** The romantic tension and strict security facade.\n<!-- REVISED IN R4 (2026-07-03): Spostato Kaladin da Principal a Roster NPC -->",
             "position": 0,
             "order": 85,
             "depth": 4,
@@ -148,7 +90,7 @@
             "disable": false,
             "ignoreBudget": false,
             "vectorized": false,
-            "group": "SvartulfrVerse_NPC_Roster_Lorebook",
+            "group": "NPC_Roster",
             "groupOverride": false,
             "groupWeight": 100,
             "preventRecursive": false,
