@@ -34,7 +34,7 @@
   "agent": {
     // ── Ideation (optional, upstream of Phase 0) ──
     "WorldForge-Brainstormer": {
-      "description": "Phase 0-pre (optional) — divergent ideation partner; helps a user with only a vibe find a premise, or (adaptation posture, --adapt) extracts a playable world from an existing story/fanfiction/RP document. Writes informal Brainstorm_Notes.md; no World Seed.",
+      "description": "Phase 0-pre (optional) — divergent ideation partner; helps a user with only a vibe find a premise, (adaptation posture, --adapt) extracts a playable world from an existing story/fanfiction/RP document, or (improvement posture standalone, --improve) ping-pongs improvement ideas against an existing world with no commitment, parking them in the standing Big_Brain_Storm.md. Writes informal Brainstorm_Notes.md (Big_Brain_Storm.md on standalone --improve); no World Seed.",
       "mode": "all",
       "model": "openrouter/deepseek/deepseek-v4-pro",
       "temperature": 0.9,

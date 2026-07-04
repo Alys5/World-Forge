@@ -13,6 +13,66 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-04 — Standalone improvement brainstorm: `/worldforge brainstorm --improve` + `Big_Brain_Storm.md`
+
+The Brainstormer's improvement posture (Section 8) existed but was reachable
+only chained behind a rebaseline conversion (`--then-brainstorm`), and the
+only post-launch brainstorm door (`revise --brainstorm`) presumes something
+already feels *wrong* and feeds the Reviser. A user carrying undecided
+*ideas* — "would this fit? should something be added? can this be made
+better?" — had no way to just ping-pong them against an existing world
+without opening a revision or a conversion. `--improve` runs the improvement
+posture standalone: read-only on the world's current state
+(`Drafts/Master_Design.md` + Revision Log when built, `World_Seed.md`
+otherwise), with nothing dispatched downstream. Its record is a new,
+*standing* idea file — **`Big_Brain_Storm.md`** — distinct from the
+run-scoped `Brainstorm_Notes.md`: rewritten fresh each standalone session
+with still-open ideas curated forward, never consumed silently by any agent.
+The organic pickup: a later `revise --brainstorm` run detects the file, asks
+the user whether to fold its parked ideas into the diagnosis, and adapts a
+chosen one into the revision-diagnostic `Brainstorm_Notes.md` the Reviser
+scopes as normal (the Reviser itself never reads `Big_Brain_Storm.md`).
+Ending a standalone session with parked ideas and no action is a legitimate
+outcome.
+
+### Added
+- `agent_roles/Brainstormer/00_The_Brainstormer.md`: the standalone
+  `--improve` door in Section 8 (per-door input rule, arrive-with-ideas
+  opening, `Big_Brain_Storm.md` output with its own stamped header and
+  curate-not-clobber discipline, per-door sign-off status lines) and Section
+  9 step 1a (ask-first `Big_Brain_Storm.md` pickup, read-only in that
+  posture, adapt-with-attribution into the diagnostic notes). Context
+  Manifest lists the new inputs; `Big_Brain_Storm.md` is documented as the
+  one deliberate exception to the "prior notes are never an input" rule.
+- `workflows/world-forge.md`: `/worldforge brainstorm --improve` trigger row,
+  the two-door improvement posture + `Big_Brain_Storm.md` contract in the
+  BRAINSTORM section (incl. confirming intent when a bare `brainstorm` is
+  invoked against a project that already has a world), and the project-tree
+  entry for the standing file.
+- `tutorial.md`: command-table row, "Testing ideas against an existing world"
+  subsection in §9, §10.1 command entry, and pickup/contrast notes on the
+  `revise --brainstorm` subsection and entries and the §8 `--then-brainstorm`
+  walkthrough.
+- `README.md`: trigger-command row + post-launch note.
+
+### Changed
+- `agent_roles/revise/00_The_Reviser.md`: `--brainstorm` invocation notes the
+  upstream `Big_Brain_Storm.md` offer; the stale-notes gloss states the
+  standing file is never the Reviser's input; Step 2 off-ramp gained the
+  inverse pointer (undecided idea → `brainstorm --improve`, decided intent →
+  Reviser).
+- `workflows/world-forge-revise.md`: `--brainstorm` trigger row notes the
+  `Big_Brain_Storm.md` offer.
+- `workflows/world-forge-convert.md`: `--then-brainstorm` description points
+  at the standalone door.
+- `.kilo/kilo.jsonc`: `WorldForge-Brainstormer` seat description mentions the
+  standalone improvement door and its standing file.
+- `CLAUDE.md`: principles #6 and #11 and the Brainstormer cross-file row
+  updated for the two-door improvement posture and the `Big_Brain_Storm.md`
+  pickup contract.
+
+---
+
 ## 2026-07-04 — Two new Brainstormer lenses: World & Factions, Cast & Voice
 
 A coverage review of the Brainstormer's domain lenses found the four existing

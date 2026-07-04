@@ -315,7 +315,7 @@ The `Drafts/Revision_R[N]_Report.md` is the single source of truth for what happ
 | `/worldforge revise` | Begin from R0 (interview mode) |
 | `/worldforge revise --freeform` | Begin from R0 (freeform mode — paste a description, Reviser structures) |
 | `/worldforge revise --target [path]` | Begin from R0 (target mode — skip diagnostic narrowing) |
-| `/worldforge revise --brainstorm` | Begin from R0 in **diagnostic mode** — for when something feels off but you can't name it. Runs the Brainstormer (revision-diagnostic posture, Section 9) to locate the concern, then the Reviser reads its `Brainstorm_Notes.md` and classifies as normal |
+| `/worldforge revise --brainstorm` | Begin from R0 in **diagnostic mode** — for when something feels off but you can't name it. Runs the Brainstormer (revision-diagnostic posture, Section 9) to locate the concern — if a standing `Big_Brain_Storm.md` exists (from standalone `brainstorm --improve` sessions), it asks the user whether to fold those parked ideas in and adapts a chosen one into its notes — then the Reviser reads its `Brainstorm_Notes.md` and classifies as normal |
 | `/worldforge revise status` | Show all Revision Log entries, their statuses, any pending |
 | `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
 | `/worldforge revise cancel R[N]` | Cancel a pending revision (rolls back any draft edits, marks CANCELLED) |
