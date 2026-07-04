@@ -62,7 +62,7 @@
 **Dialogue Marker:** double_quotes
 **Emphasis Marker:** double_asterisks
 **Paragraph Register:** standard
-**Style Notes:** All prose must be written in English. Ensure that AnyPOV macros ({{sub}}, {{obj}}, {{poss}}, {{poss_p}}, {{ref}}) or neutral terms are used naturally where applicable. First-person present tense MUST be used when explicitly writing for {{user}}. STRICTLY PROHIBITED: em dashes (—) and meta-tags (e.g. "System:"). REQUIRED FORMATS: Native language dialogue as `"phrase" (translation)`, `In-Universe Text` in backticks, ***Narrator/Events*** in triple asterisks, and explicit tags for skips (e.g. [TIME SKIP]).
+**Style Notes:** All prose must be written in English. Ensure that AnyPOV macros ({{sub}}, {{obj}}, {{poss}}, {{poss_p}}, {{ref}}) or neutral terms are used naturally where applicable. First-person present tense MUST be used when explicitly writing for {{user}}. STRICTLY PROHIBITED: em dashes (—) and meta-tags (e.g. "System:"). REQUIRED FORMATS: Native language dialogue as `"phrase" (English translation)`, `In-Universe Text` in backticks, ***Narrator/Events*** in triple asterisks, and explicit tags for skips (e.g. [TIME SKIP]).
 
 ---
 
