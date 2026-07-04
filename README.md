@@ -52,6 +52,7 @@ A complete SillyTavern-ready package per world (and fully compatible JanitorAI f
 - **One Arc Intimacy Register per arc with intimate beats (Tier 3, conditional)** — arc-specific intimate function and per-character delta.
 - **One Chat Completion Preset** — the model's prompt blocks, injection order, and behavioral framework, parameterized for this world's prose conventions.
 - **One JanitorAI Lorebook Script** (JS) — a dynamic, modular ES6 script that maps situational Tier 1/2 lore and Tier 3 event progression directly into `context.character.personality` and `context.character.scenario` based on keyword and message-count triggers, including `try...catch` guards and token bloat prevention logic.
+- **Initial Messages / Alternate Greetings** (MD) — un serbatoio centralizzato che gestisce le scene d'apertura (singole o di gruppo), esportate dinamicamente verso ST e Janitor.
 - **One audit report** — runtime risks identified by the Prompt Engineer, with recommended corrections for the user to apply manually.
 
 ## Core architectural ideas

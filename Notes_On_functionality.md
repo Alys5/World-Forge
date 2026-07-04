@@ -1445,3 +1445,21 @@ After the messages array is assembled, it is transformed per provider:
 ### Text completion equivalent
 
 For text completion APIs (`textgenerationwebui`, `kobold`, `novel`), the same character card and WI data is assembled but collapsed into a **single string** via the context template (`story_string` in 5.4). The Handlebars-like template slots (`{{system}}`, `{{wiBefore}}`, `{{description}}`, `{{personality}}`, `{{scenario}}`, `{{wiAfter}}`, `{{persona}}`, etc.) are filled with the same resolved values from Steps 1–3. The instruct mode template then wraps each turn with input/output sequence tags (e.g. `[INST]...[/INST]`), inserts the system sequence at the top, and handles the last-output prefix for the model's generation start.
+
+---
+
+## 9. JanitorAI Structural Guidelines (JED Format & JS Scripts)
+
+World-Forge supporta nativamente l'esportazione di profili per JanitorAI. A differenza di SillyTavern, JanitorAI si affida pesantemente al "Bot Profile" principale e non supporta un sistema di World Info/Lorebook nativo a più livelli. Per ovviare a questo e mantenere i profili leggeri, World-Forge adotta la seguente architettura per JanitorAI:
+
+### 9.1 Il Profilo Principale (Bot Profile)
+Il testo generato per il Bot Profile (che mappa su `templates/Janitor_Bot_Template.md`) deve rimanere estremamente snello. **È severamente vietato includere le sezioni Q&A (Question & Answer) o i segreti (SECRETS) nel corpo del profilo testuale.**
+Il profilo testuale deve contenere solo le sezioni operative immediate: CHARACTER OVERVIEW, APPEARANCE DETAILS, STARTING OUTFIT, INVENTORY, ABILITIES, GENERAL SEXUAL INFO, GENERAL SPEECH INFO.
+
+### 9.2 Il Javascript Modulare (`[WorldName]_JanitorAI_Script.js`)
+Tutti gli elementi scartati dal Bot Profile testuale (come i Q&A, i segreti di back-story, le dinamiche di Lore specifiche per il singolo mondo) vengono consolidati in un unico script JavaScript. 
+Questo script viene generato automaticamente in Phase 4 da `build_janitor.py`. Si occupa di iniettare contestualmente nella memoria del bot le risposte alle Q&A o rivelare i segreti solo quando il token o il contesto lo richiede.
+
+### 9.3 Alternate Greetings e Initial Messages
+World-Forge centralizza tutti i messaggi iniziali e gli "Alternate Greetings" (inclusi gli scenari di gruppo con Roster NPC) nel file canonico `Drafts/[WorldName]/Initial_Messages.md` (creato in Phase 2).
+In fase di compilazione, `build_janitor.py` (così come `compile_cards.py` per ST) andrà ad attingere da questo "serbatoio" per popolare i molteplici slot di Initial Messages di JanitorAI.

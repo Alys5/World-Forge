@@ -206,7 +206,7 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 **Input:** `Drafts/Master_Design.md` with REFINER SIGN-OFF
 **Output:** All draft files in `Drafts/`
 
-**Mandatory outputs (all eight required):**
+**Mandatory outputs (all nine required):**
 1. `Card_[CharName].md` — character card content per card
 2. `JanitorAI_Profile_[CharName].md` — JanitorAI Bot Profile format per card (maps to `templates/Janitor_Bot_Template.md`)
 3. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
@@ -215,6 +215,7 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 6. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
 7. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
 8. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
+9. `Initial_Messages.md` — serbatoio per Alternate Greetings ST e messaggi iniziali Janitor
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
 
@@ -230,7 +231,7 @@ If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architec
 
 **Mandatory outputs when phase runs:**
 1. `Tier2_[CharName]_Intimacy_Profile.md` — one per character with intimate scene presence. Permanent substrate: trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits and hard yeses. **Extends to NPCs:** principal NPCs get full profiles; roster NPCs get compact intimate stat blocks (Intimacy Architect §6.5) — load-bearing for sandbox worlds, which usually carry sexual material across a large NPC cast.
-2. Tier 3 register — *arc mode:* `Tier3_Arc[N]_Intimacy_Register.md` per arc (delta only: arc thematic function, per-character notes, live scene types, arc hard rules). *Sandbox mode:* a single `Tier3_Sandbox_Intimacy_Register.md` (standing `INTIMACY_FUNCTION`, `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc deltas).
+2. Tier 3 register — *arc mode:* thematic function, per-character notes, live scene types, arc hard rules. *Sandbox mode:* a single `Tier3_Sandbox_Intimacy_Register.md` (standing `INTIMACY_FUNCTION`, `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc deltas).
 
 **Failure conditions:**
 - Section 8 is missing material the agent needs → produces `UNRESOLVED_INTIMACY.md`, halts pipeline.
@@ -335,11 +336,15 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 **Invoke:** `@agent_roles/04_The_Compiler.md`
 **Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand) + execution of `tools/` python scripts.
-**Output:** `Export/` directory (JSON files + JanitorAI TXT/JS exports) generated via scripts.
+**Output:** `Export/[WorldName]/` directory (JSON files + JanitorAI TXT/JS exports) generated via scripts.
 
 **Read `Notes_Quick_Reference.md` first**, then the `Notes_On_functionality.md` schema sections the Compiler spec's Context Manifest names (§5.1b V3 card, §5.2 World Info file, §6 gotchas). `Notes_On_functionality.md` is the authoritative ST runtime reference — where it contradicts the quick reference, templates, or this document, it takes precedence.
 
 **Builds:**
+- Execute `python tools/compile_cards.py [WorldName]`
+- Execute `python tools/compile_lorebooks.py [WorldName]`
+- Execute `python tools/build_janitor.py [WorldName]`
+- Execute `python tools/build_bio.py [WorldName]`
 - Character Card JSON per card (`system_prompt`, `post_history_instructions`, and `data.extensions.depth_prompt` mandatory fields, never empty)
 - `User.md` — `{{user}}` Persona Description text (passed through from `Drafts/User.md` unchanged; paste-ready for ST persona)
 - All lorebook/register files are prefixed with `[WorldName]_` (the world-name token, as in `[WorldName]_ChatPreset.json`) so a world's whole lorebook set groups together in ST's filename-sorted World Info list (Compiler file-naming convention before Step 5). Cards and `User.md` are not prefixed.

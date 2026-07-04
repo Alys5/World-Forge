@@ -228,8 +228,8 @@ The three mini-auditors share the parent's failure handling: a Critical (or High
 ## PHASE R4: IMPLEMENTATION — THE COMPILER (MINI)
 
 **Invoke:** `@agent_roles/revise/04_The_Compiler_mini.md`
-**Input:** Approved touched drafts + `Notes_On_functionality.md` + existing `Export/` JSON files for UID continuity + existing `Export/REVISED_FILES.md` (if present)
-**Output:** Updated `Export/` files (only those touched) + updated `Export/REVISED_FILES.md` (cumulative manifest) + `Drafts/Revise_R[N]_Compile_Log.md` + "what changes when" user report
+**Input:** Approved touched drafts + `Notes_On_functionality.md` + existing `Export/[WorldName]/` JSON files for UID continuity + existing `Export/[WorldName]/REVISED_FILES.md` (if present)
+**Output:** Updated `Export/[WorldName]/` files (only those touched) + updated `Export/[WorldName]/REVISED_FILES.md` (cumulative manifest) + `Drafts/[WorldName]/Revise_R[N]_Compile_Log.md` + "what changes when" user report
 
 **Operationally different from the full Compiler.** Append + dedupe + UID preservation, not build-fresh. Reads each Export file before rewriting it: new entries get the next free UID, existing entries keep their UIDs, deleted entries are flagged (mini-Compiler does not delete by default — user confirms via the audit report).
 

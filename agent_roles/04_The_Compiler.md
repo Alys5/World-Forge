@@ -63,6 +63,7 @@ You have access to SillyTavern's documentation and source code for schema guidan
 - `Drafts/Tier2_[CharName]_Entries.md` — Character Lorebook entries (one per character/NPC, including the Tier 2 Protagonist Lorebook)
 - Tier 3 source — *arc mode:* `Drafts/Tier3_Arc[N]_[Title]_Entries.md` (one per arc); *sandbox mode:* `Drafts/Tier3_Sandbox_Entries.md` (single)
 - `Drafts/Instructions_[CardName].md` — system_prompt and post_history_instructions source
+- `Drafts/Initial_Messages.md` — Initial messages and Alternate Greetings source
 - `Drafts/Master_Design.md` — technical specifications
 
 ### 2b. Schema Sources (read before generating any output)

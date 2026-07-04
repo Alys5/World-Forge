@@ -40,8 +40,8 @@ When you start a new world, your project folder evolves through these files:
 ├── World_Seed.md                                  ← Phase 0 (or hand-written)
 ├── UNRESOLVED_QUESTIONS.md                        ← Phase 1 (conditional)
 ├── UNRESOLVED_INTIMACY.md                         ← Phase 2.5 (conditional)
-├── Drafts/                                        ← Phases 1–3.7 outputs
-└── Export/                                        ← Phase 4–5 final JSON package
+├── Drafts/                                        ← Phase 1–3 outputs (in Drafts/[WorldName])
+└── Export/                                        ← Phase 4–5 final JSON and JanitorAI package (in Export/[WorldName])
 ```
 
 The `templates/`, `agent_roles/`, `workflows/`, and `Notes_On_functionality.md` files travel with the repo and are read by the agents at runtime; you do not need to copy them per project.
@@ -260,9 +260,9 @@ For Lucifer, Round 1 found behavioral fidelity issues in Arc 2 intimate scenes (
 
 The three auditors run in parallel after Editor sign-off. Failures from any auditor return the affected files to the relevant Architect, then back through the Editor, then back to the auditor.
 
-### Phase 4: The Compiler — `Export/*.json` and `Compiler_Log.md`
+### Phase 4: The Compiler — `Export/[WorldName]` 
 
-The Compiler translates approved Markdown drafts into SillyTavern-ready JSON. Before doing anything, it verifies sign-off from all four prior phases:
+The Compiler translates approved Markdown drafts into SillyTavern-ready JSON and JanitorAI profiles by executing the python build scripts (`compile_cards.py`, `compile_lorebooks.py`, `build_janitor.py`, `build_bio.py`). Before doing anything, it verifies sign-off from all four prior phases:
 
 ```text
 | Phase | Report                                | Sign-Off    |

@@ -24,8 +24,8 @@ The user typed `/worldforge brainstorm`, `/worldforge start`, `/worldforge revis
   - `/worldforge resume phase[N]` → Dispatch to the custom agent defined for Phase N (e.g., `WorldForge-Editor` for Phase 3)
 - **Pipeline files are READ-ONLY at runtime:** everything under `agent_roles/`,
   `templates/`, `workflows/`, plus `Notes_On_functionality.md` and
-  `Notes_Quick_Reference.md`. You write only to the world project's `Drafts/`, `Export/`,
-  `World_Seed.md`, and report files. If you find yourself about to edit a pipeline file
+  `Notes_Quick_Reference.md`. You write only to the world project's `Drafts/[WorldName]/`, `Export/[WorldName]/`,
+  `World_Seed.md` (which also goes in `Export/[WorldName]/`), and report files. If you find yourself about to edit a pipeline file
   mid-run, stop and surface it to the user — an agent went off-script.
 - **Load only what each phase needs.** Every agent spec begins with a
   `📂 CONTEXT MANIFEST` listing exactly what to load. Honor it. In particular, never load
@@ -66,8 +66,9 @@ The user asked you to change agent specs, templates, workflows, or documentation
 6. **ARC_STATE / SANDBOX_STATE entries use the two-subsection structure** — descriptive
    situation + binding Tonal Mandate with imperative directives.
 7. **Export JSON is written as UTF-8, never through PowerShell.** After Phase 4, the
-   read-only check `python tools/validate_export.py <Export dir>` verifies parse validity,
+   read-only check `python tools/validate_export.py Export/[WorldName]` verifies parse validity,
    mojibake, `{{original}}` presence, and position enums. It never modifies files.
+8. **Export Directory Structure.** All generated drafts and final exports MUST be placed in their respective `Drafts/[WorldName]/` and `Export/[WorldName]/` subdirectories, never in the root `Drafts/` or `Export/` folder.
 
 ---
 
