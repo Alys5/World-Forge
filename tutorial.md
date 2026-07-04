@@ -123,7 +123,7 @@ For Lucifer, Phase 0 was skipped. The user authored `Samples/World_Seed_Lucifer.
 
 This is a valid path when you already have a fully-formed concept and want to write the World Seed yourself. The Interviewer is most useful for users whose ideas are still forming or who need pushback on thin material — for a fully-developed world like Lucifer, the manual path is faster.
 
-If your idea is *less* than forming — just a vibe, an image, a single character with no world around them yet — there is an optional step further upstream: `/worldforge brainstorm`. The Brainstormer is the Interviewer's divergent counterpart. Instead of walking the template and pushing for specificity, it generates premise directions, follows whatever you light up on, and helps a concept find its shape. When something has a pulse, it writes informal `Brainstorm_Notes.md` (explicitly *not* a World Seed) and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and runs the full interview. Brainstorm is entirely optional — skip it whenever you already know what you're building. **Section 9** covers the Brainstormer in full: its proactive suggestion style, the four domain lenses, and its use as a revision diagnostic.
+If your idea is *less* than forming — just a vibe, an image, a single character with no world around them yet — there is an optional step further upstream: `/worldforge brainstorm`. The Brainstormer is the Interviewer's divergent counterpart. Instead of walking the template and pushing for specificity, it generates premise directions, follows whatever you light up on, and helps a concept find its shape. When something has a pulse, it writes informal `Brainstorm_Notes.md` (explicitly *not* a World Seed) and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and runs the full interview. Brainstorm is entirely optional — skip it whenever you already know what you're building. **Section 9** covers the Brainstormer in full: its proactive suggestion style, the six domain lenses, and its use as a revision diagnostic.
 
 The completed World Seed contains nine sections: core concept and tone (Section 1), the world (Section 2 — sensory signature, rules, factions, locations, species, concepts), the protagonist (Section 3), characters and their lorebook material (Section 4), narrative arcs (Section 5), technical specifications (Section 6), test scenarios (Section 7b), and the conditional intimacy specification (Section 8). The current pipeline also includes a Section 1.5 Style Contract (perspective, tense, formatting markers); Lucifer's seed predates this section and runs cleanly under the pipeline's defaults pathway. For how to fill the Style Contract in — what `DEFAULTS` gives you, and worked examples from the literary default to a leaner "typical roleplay" register — see **Section 11 — Setting your prose style**.
 
@@ -536,7 +536,7 @@ The Brainstormer is built to be *proactive*. Rather than only asking questions, 
 - **Clichés, dodged but offered.** It steers toward the fresher angle by default, but tropes are tools — when it steers around one it says so and offers the familiar version too, because the well-worn path is often the easier build. You choose.
 - **"Where does it sag?"** It will play a premise forward and name where it tends to go flat (a sandbox with no internal pressure becomes a diorama; a one-note antagonist gets boring by the third scene), then offer ways to firm it up. This is a sounding board, not a verdict — it never scores your idea.
 
-### The four domain lenses
+### The six domain lenses
 
 When a brainstorm turns toward a domain where ideas reliably go generic, the Brainstormer pulls in a matching **lens** — craft grounding that sharpens its suggestions away from cliché. The lenses produce *leanings for the notes*, never locked content; the downstream agents still do all the authoring.
 
@@ -546,6 +546,8 @@ When a brainstorm turns toward a domain where ideas reliably go generic, the Bra
 | **Appearance & Style** | the default body-type cliché | "a curvy distance runner" is in tension — distance running builds a lean frame; want yoga instead, or keep the body and call it genetics? |
 | **Realism** | hand-wavy mechanics | a team chasing the World Cup can't train 24/7 — injuries, recovery, and politics are where the stakes live. (Genre-aware: it steps aside for power-fantasy, where "realism" becomes internal consistency.) |
 | **Character Psychology** | the flat archetype | a "cold crime boss" is a costume — what does he *want* underneath, and what's the one line he won't cross, or already crossed? |
+| **World & Factions** | the world as generic backdrop | a faction is an agenda, not a hat — what is the Merchant Guild *doing this month*, and whose plans does it wreck? A tension that resolves in one session isn't an engine; scarcity, rivalry, or occupation regenerate forever |
+| **Cast & Voice** | interchangeable NPCs orbiting `{{user}}` | if two characters would react identically to the same event, one is redundant — and strip the names off three lines of dialogue: can you tell who said what? |
 
 The appearance/realism nudge is a coherence check, not a rule: it surfaces the tension once, offers the resolutions, and drops it the moment you choose — "curvy and genetically gifted" is a complete answer.
 
@@ -578,7 +580,7 @@ The revision pipeline (`/worldforge revise`, Section 7's retrofitting note) assu
 /worldforge revise --brainstorm
 ```
 
-This runs the Brainstormer in its **revision-diagnostic posture** *before* the Reviser. It reads your `Master_Design.md` read-only, plays the world back, and asks what bugged you in the last session — then diagnoses divergently, using the four lenses in reverse as a diagnostic vocabulary (a scene that fell flat → the psychology lens; samey intimate beats → the intimacy lens; an arc with no pressure → the "where does it sag" move). It converges on **one primary concern**, phrased as a revision intent, plus a few candidate future concerns, and writes them to `Brainstorm_Notes.md`. The Reviser then reads that file, captures the primary concern as your verbatim intent, and classifies and scopes the revision as normal.
+This runs the Brainstormer in its **revision-diagnostic posture** *before* the Reviser. It reads your `Master_Design.md` read-only, plays the world back, and asks what bugged you in the last session — then diagnoses divergently, using the six lenses in reverse as a diagnostic vocabulary (a scene that fell flat → the psychology lens; samey intimate beats → the intimacy lens; an arc with no pressure → the "where does it sag" move; a world that plays like a backdrop → the world & factions lens; NPCs who all sound the same → the cast & voice lens). It converges on **one primary concern**, phrased as a revision intent, plus a few candidate future concerns, and writes them to `Brainstorm_Notes.md`. The Reviser then reads that file, captures the primary concern as your verbatim intent, and classifies and scopes the revision as normal.
 
 It respects the same bright line as the Reviser: if the thing that's "off" turns out to be the world's core concept, tone, Style Contract, or World Mode, it says so and points you to a full re-run or a `/worldforge convert` rather than dressing a structural change up as a surgical one. And like every Brainstormer posture, it writes only informal notes — it never classifies tiers or scopes the revision itself. That stays the Reviser's job.
 
@@ -599,7 +601,7 @@ A run moves left-to-right through a lifecycle: *(optional) brainstorm → start/
 ```
 /worldforge brainstorm
 ```
-Divergent ideation for when you have only a vibe. Generates premise directions, reaches for touchstones, sketches excerpts, and pulls in the four domain lenses (Section 9). Writes informal `Brainstorm_Notes.md` and stops — it never writes a World Seed.
+Divergent ideation for when you have only a vibe. Generates premise directions, reaches for touchstones, sketches excerpts, and pulls in the six domain lenses (Section 9). Writes informal `Brainstorm_Notes.md` and stops — it never writes a World Seed.
 **Why:** use it when you can't yet answer the Interviewer's "what's the central wound?" because the idea has no shape. Skip it when you already know what you're building.
 
 **`/worldforge brainstorm --adapt <document>`** — *optional, before everything; you have a story, not a vibe*
