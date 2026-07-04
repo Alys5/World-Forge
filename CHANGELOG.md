@@ -13,6 +13,48 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-04 — Two new Brainstormer lenses: World & Factions, Cast & Voice
+
+A coverage review of the Brainstormer's domain lenses found the four existing
+ones (intimacy, appearance, realism, psychology) all character-shaped or
+plausibility-shaped, leaving two suggestion domains without craft grounding:
+the **world itself** (the improvement posture's own "this faction is the
+flattest" example had no lens behind it, and the revision-diagnostic
+vocabulary had no entry for "the world plays like a backdrop") and the
+**cast as an ensemble plus per-character dialogue voice** (Section 3's
+"generate the cast when asked" move had no lens, even though voice
+distinctiveness is load-bearing downstream — the Voice Auditor's blind-line
+test and the sandbox roster's fingerprint-uniqueness rule). A third candidate
+(Systems & Powers, for heightened-world mechanics the Realism lens steps
+aside from) was deliberately deferred until real friction shows.
+
+### Added
+- `agent_roles/Brainstormer/lenses/World_and_Factions_Lens.md`: factions as
+  agendas (not hats), power with a named price, the renewable conflict
+  engine, locations that provoke, lived-in texture, and what the world wants
+  from `{{user}}` — with the premise-leads / genre-sets-the-pressure bright
+  line.
+- `agent_roles/Brainstormer/lenses/Cast_and_Voice_Lens.md`: cast built from
+  friction rather than role-slots, relationship geometry beyond
+  spokes-to-`{{user}}`, contrast pairs, right-sizing, and a distinct voice
+  fingerprint per character (diction / rhythm / tics, the blind-line test) —
+  the ensemble-level companion to the psychology lens.
+
+### Changed
+- `agent_roles/Brainstormer/00_The_Brainstormer.md`: Context Manifest lists
+  the two new lenses; Section 3's lens paragraph counts six and adds the
+  faction-fronting-NPC interlock example; the "generate the cast" move points
+  at the Cast & Voice lens; Section 9's diagnostic vocabulary adds the two
+  new symptom mappings (world-as-backdrop, NPCs who blur together).
+- `agent_roles/Brainstormer/lenses/Character_Psychology_and_Motivation_Lens.md`,
+  `Realism_Lens.md`, `Appearance_and_Style_Lens.md`: "Works with"
+  cross-references to the new lenses.
+- `CLAUDE.md` (principle #11), `workflows/world-forge-revise.md` (diagnostic
+  front door), `tutorial.md` (Section 9 lens table + command reference):
+  lens count four → six; tutorial table gains the two new rows.
+
+---
+
 ## 2026-07-02 — Director-card style coherence: stop models treating the World Director as a character
 
 Field report: on Director / NPC-host cards, some models (e.g. Kimi 2.7) burn

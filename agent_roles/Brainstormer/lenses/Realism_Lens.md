@@ -44,6 +44,7 @@ So: read the register, **offer** grounding where it strengthens immersion or sta
 
 - **Appearance & Style lens** — physique-follows-lifestyle and age-appropriate bodies are shared ground.
 - **Intimacy & Dynamics lens** — age, recovery, and realistic response feed how an intimate scene actually plays.
+- **World & Factions lens** — faction capability runs on real constraints (money, distance, manpower, logistics); load both when the question is "could this faction actually pull that off?"
 
 ## What to drop into `Brainstorm_Notes.md`
 

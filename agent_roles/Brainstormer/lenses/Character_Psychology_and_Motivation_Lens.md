@@ -40,6 +40,7 @@ Load it when the brainstorm turns to a character's motivation, personality, back
 
 - **Intimacy & Dynamics lens** — interiority feeds why a character connects the way they do; load both when motivation turns toward desire or a relationship.
 - **Appearance & Style lens** — the outside and the inside should agree (or deliberately clash); a character's bearing often *is* their defense made visible.
+- **Cast & Voice lens** — this lens digs one character's interior; that one designs the ensemble and makes the interior audible as a voice fingerprint (the tell that slips when a defense fails is a voice feature). Load both when a cast member comes into focus.
 
 ## What to drop into `Brainstorm_Notes.md`
 

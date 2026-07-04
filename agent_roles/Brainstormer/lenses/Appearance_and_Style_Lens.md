@@ -38,6 +38,7 @@ Load it when the brainstorm turns to a character's appearance, body type, attrac
 
 - **Realism lens** — physique-follows-lifestyle and age-appropriate bodies are shared ground; load both when the question is "would this body actually look like this?"
 - **Intimacy & Dynamics lens** — physicality in an intimate scene; load that when appearance turns toward how bodies meet.
+- **Cast & Voice lens** — a distinct look and a distinct voice are the same defense against an interchangeable cast; load both when differentiating ensemble members.
 
 ## What to drop into `Brainstorm_Notes.md`
 
