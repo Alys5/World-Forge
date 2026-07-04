@@ -60,7 +60,7 @@ description: A workflow to build worlds for player to roleplay in.
       |
       v
  PHASE 4: THE COMPILER
- Translates Markdown → SillyTavern JSON and JanitorAI JED/JS. Reads Notes_On_functionality.md first.
+ Translates Markdown → SillyTavern JSON and JanitorAI JED/JS by executing automated Python scripts in `tools/`. Reads Notes_On_functionality.md first.
       |
       |-- [Templates missing?] → ⏸ PAUSE → /worldforge resume phase4
       v
@@ -96,7 +96,7 @@ Sandbox mode is a **branch through this same pipeline, not a separate fork.** Th
 | 3.6 Arc Transition Auditor | Runs | **Skipped** (no arc seams) |
 | 2.5 Intimacy Architect | Per-character profiles + per-arc registers | Profiles **+ NPC intimacy** (principal full / roster compact §6.5); a single standing `Sandbox_Intimacy_Register` (no per-arc) |
 | 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8; audits the standing `INTIMACY_FUNCTION` + **NPC intimate coverage & distinctiveness** (Step 3H) across the sexual NPC cast |
-| 4 Compiler | One `[WorldName]_Arc[N]_Lorebook.json` per arc | One `[WorldName]_Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
+| 4 Compiler | One `[WorldName]_Arc[N]_Lorebook.json` per arc (generated via `tools/compile_lorebooks.py`) | One `[WorldName]_Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4, generated via `tools/compile_lorebooks.py`) |
 | 5 Prompt Engineer | Arc Guardian / Deep Think name the arcs | Blocks reference the standing sandbox state rather than arcs; defaults to **Multi-Character Dynamics** + the optional **NPC Ensemble & Enrichment** block (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment) + **high-weighted Sensory Embodiment** |
 
 **The aliveness contract** is the load-bearing idea of sandbox mode: with no arc carrying tone and momentum, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry are what keep the world feeling alive — NPCs pursuing their own agendas and initiating, the world reacting to and remembering `{{user}}`, the cast rotating in and out rather than sitting inert until summoned. It is made concrete by per-NPC **Standing Goals** (Architect §7.D): each principal carries an active objective, and the directive has an NPC advance its goal when a scene lulls. A subplot-shaped goal can optionally be staged as an **Escalation Ladder** (§7.D): 2–4 ordered stages with in-fiction advance conditions, an endpoint, and a stated collision with `{{user}}` — the directive then names the current stage and binds the progression discipline (advance only on stated condition, never skip, never self-resolve), so the model *executes* an authored subplot rather than inventing one. The Voice Auditor's **Step 3J** tests that NPCs actually take that initiative (and that laddered NPCs hold their current stage). The **roster NPC format** (§7.E) with its uniqueness rule, plus the Voice Auditor's **Distinctiveness Matrix**, are what keep a large cast from collapsing into one generic voice. The same NPC-agency mechanic runs in **arc mode** through the ARC_STATE activity-cadence directive — NPCs exist in both modes, so the goal/cadence pair is mode-agnostic.
@@ -128,7 +128,7 @@ Loop state — which phase is live, what round it is on, which sign-offs are in 
 | 3.5 Voice Auditor    | PENDING  | 0  | VOICE AUDITOR SIGN-OFF |
 | 3.6 Arc Transition   | PENDING  | 0  | ARC TRANSITION AUDITOR SIGN-OFF (SKIPPED in sandbox mode) |
 | 3.7 Intimacy Auditor | PENDING  | 0  | INTIMACY AUDITOR SIGN-OFF (SKIPPED when intimacy_in_scope: false) |
-| 4 Compiler           | PENDING  | —  | COMPILER SIGN-OFF |
+| 4 Compiler           | PENDING  | —  | COMPILER SIGN-OFF (via tools/ scripts) |
 | 5 Prompt Engineer    | PENDING  | —  | PROMPT ENGINEER SIGN-OFF |
 ```
 
@@ -334,8 +334,8 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 ## PHASE 4: IMPLEMENTATION — THE COMPILER
 
 **Invoke:** `@agent_roles/04_The_Compiler.md`
-**Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand)
-**Output:** `Export/` directory (JSON files + JanitorAI TXT/JS exports)
+**Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand) + execution of `tools/` python scripts.
+**Output:** `Export/` directory (JSON files + JanitorAI TXT/JS exports) generated via scripts.
 
 **Read `Notes_Quick_Reference.md` first**, then the `Notes_On_functionality.md` schema sections the Compiler spec's Context Manifest names (§5.1b V3 card, §5.2 World Info file, §6 gotchas). `Notes_On_functionality.md` is the authoritative ST runtime reference — where it contradicts the quick reference, templates, or this document, it takes precedence.
 

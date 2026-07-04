@@ -127,7 +127,7 @@ If you find yourself moving content between cards and preset, verify which side 
 
 The Editor (Phase 3), Voice Auditor (3.5), Arc Transition Auditor (3.6), Intimacy Auditor (3.7), and Prompt Engineer (5) are **read-only on draft and export files**. They produce critique reports, audit reports, and recommendations — they do not modify the files they audit.
 
-The Architect (Phase 2) and Intimacy Architect (Phase 2.5) are the **only agents with write authority on drafts**. The Compiler (Phase 4) is the only agent with write authority on `Export/` artifacts (JSON files and JanitorAI TXT/JS exports) — with one narrow, post-launch exception: the Prompt Engineer gains write authority on the single `Export/[WorldName]_ChatPreset.json` file (and only that file) under Preset Resync Mode, and the mini-Prompt-Engineer may toggle three preset blocks under the revise pipeline. See principle #8. Both exceptions are preset-only; neither touches lorebook or card JSON.
+The Architect (Phase 2) and Intimacy Architect (Phase 2.5) are the **only agents with write authority on drafts**. The Compiler (Phase 4) is the only agent with write authority on `Export/` artifacts (JSON files and JanitorAI TXT/JS exports) — **and must do so exclusively by executing the automated Python compilation scripts in `tools/`** rather than transcribing JSON manually. There is one narrow, post-launch exception: the Prompt Engineer gains write authority on the single `Export/[WorldName]_ChatPreset.json` file (and only that file) under Preset Resync Mode, and the mini-Prompt-Engineer may toggle three preset blocks under the revise pipeline. See principle #8. Both exceptions are preset-only; neither touches lorebook or card JSON.
 
 The Prompt Engineer's audit recommendations (Sections 7 and 8 of `Prompt_Engineer_Audit.md`) require **manual user application** — see Phase 5.5 in `workflows/world-forge.md`. This is intentional: it preserves audit reviewability and prevents self-validating corrections.
 
@@ -138,6 +138,14 @@ When modifying any agent spec, do not change its read/write authority without ex
 Every lorebook entry produced by the pipeline must include a `Position Rationale:` field. Default positions (per tier and entry type, documented in `agent_roles/02_The_Architect.md` Section 6) get the literal value "DEFAULT". Non-default positions require a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails.
 
 The Editor (Step 4.5) hard-fails entries with missing or shallow rationales. When editing entry templates, preserve the Position Rationale field.
+
+### 4.5. The AnyPOV and Persona Decoupling Mandate
+
+World Forge enforces a strict separation between the World/NPCs and the Player Character (`{{user}}`).
+- **AnyPOV by default:** All Tier 1/2/3 lorebooks and Character Cards must be written in "AnyPOV" format. They must never assume the gender, name, physical appearance, or specific deep backstory of `{{user}}`. Relationships should use generic hooks (e.g. "secret job at the company" rather than "supermodel Lys Angel").
+- **Persona Isolation (`User.md`):** All specific details about the intended protagonist (their exact physical description, specific career, specific relationships that define their unique identity) are isolated entirely into the `Drafts/User.md` persona file (using `User_Persona_template.md`).
+
+This allows players to substitute their own custom Persona into the world without colliding with hardcoded lore, while still providing the full "canonical" experience for players who choose to equip the generated `User.md`. The Architect must enforce this decoupling during Phase 2.
 
 ### 5. ARC_STATE Two-Subsection Structure
 

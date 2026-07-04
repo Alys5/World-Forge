@@ -21,7 +21,9 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER_STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority. *(Arc mode only — sandbox worlds have no arcs or CHARACTER_STATE; cards carry their full standing range and defer to `SANDBOX_STATE`.)*
 
-8. **World Mode governs Tier 3 and the NPC format.** Read Master Design Section 9's title. `arc` → author one Arc Lorebook per arc (Section 8) and use full NPC profiles (Section 7.D). `sandbox` → author the single always-active Sandbox Lorebook (Section 8S) instead, with NO `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries, and split a large NPC cast into principals (Section 7.D) + roster (Section 7.E). Do not mix: a sandbox world has no arc lorebooks; an arc world has no sandbox lorebook.
+8. **AnyPOV Decoupling Mandate.** You MUST strictly isolate all physical traits, specific background, and career details of the protagonist (`{{user}}`) into `Drafts/User.md`. All other files (Lorebooks, Cards) MUST be written in "AnyPOV" format. They must never assume the gender, physical appearance, or exact background of `{{user}}`. The Editor will hard-fail any non-User.md file that contains non-generic references to the player character.
+
+9. **World Mode governs Tier 3 and the NPC format.** Read Master Design Section 9's title. `arc` → author one Arc Lorebook per arc (Section 8) and use full NPC profiles (Section 7.D). `sandbox` → author the single always-active Sandbox Lorebook (Section 8S) instead, with NO `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries, and split a large NPC cast into principals (Section 7.D) + roster (Section 7.E). Do not mix: a sandbox world has no arc lorebooks; an arc world has no sandbox lorebook.
 
 ---
 
