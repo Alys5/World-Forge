@@ -9,13 +9,8 @@
 
 | File | Last revised in | Date | Change summary | Revision history |
 |---|---|---|---|---|
-| SvartulfrVerse_World_Lorebook.json | R2 | 2026-07-03 | Aggiunto quartieri di Blackwood | R1, R2 |
-| SvartulfrVerse_Sandbox_Lorebook.json | R3 | 2026-07-03 | Aggiunto Sandbox_Intimacy_Register | R1, R3 |
-| SvartulfrVerse_NPC_Roster_Lorebook.json | R3 | 2026-07-03 | Aggiunto nota imbarazzo rom-com ai Frat Bros | R1, R2, R3 |
-| Wulfnic_Card.json | R1 | 2026-07-03 | Geography refactoring | R1 |
-| Malachia_Card.json | R1 | 2026-07-03 | Geography refactoring | R1 |
-| Erik_Card.json | R1 | 2026-07-03 | Geography refactoring | R1 |
-| User.md | R1 | 2026-07-03 | Geography refactoring | R1 |
-| SvartulfrVerse_JanitorAI_Script.js | R1 | 2026-07-03 | Geography refactoring | R1 |
-| SvartulfrVerse_Kaladin_Lorebook.json | R3 | 2026-07-03 | Aggiunto Intimacy Manifestation per dinamica slow-burn | R3 |
-| SvartulfrVerse_Erik_Lorebook.json | R3 | 2026-07-03 | Aggiunto Intimacy Manifestation per gelosia rom-com | R3 |
+| SvartulfrVerse_World_Lorebook.json | R5 | 2026-07-03 | Updated Werewolves entry with SHIFT CLASS system (partial/full/hybrid) and Wulfnic's belief that hybrid is true werewolf form | R5 |
+| SvartulfrVerse_Malachia_Lorebook.json | R8 | 2026-07-04 | Added Werewolf Traits entry (uid:3); corrected age 28yo/b.1996, rank Alpha, pureblood status Pureblood by Descent | R8 |
+| SvartulfrVerse_Noah_Lorebook.json | R8 | 2026-07-04 | Added Werewolf Traits entry (uid:3); corrected age 25yo/b.1999, rank Delta, pureblood status Pureblood by Descent | R8 |
+| SvartulfrVerse_User_Lorebook.json | R8 | 2026-07-04 | Added Werewolf Traits entry (uid:3); Omega rank, no 'birth name Alyssa', AnyPOV macros throughout | R8 |
+| SvartulfrVerse_Logan_Lorebook.json | R8 | 2026-07-04 | Added Werewolf Traits entry (uid:3); Old Bloodline, Delta, b.1979 45yo — first werewolf traits entry for Logan | R8 |
