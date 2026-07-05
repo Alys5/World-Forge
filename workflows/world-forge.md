@@ -275,7 +275,7 @@ LOOP:  (each return increments the ledger's `3 Editor` Round)
 **Input:** All Editor-approved `Drafts/` + `Drafts/Master_Design.md` + `World_Seed.md` Section 7b
 **Output:** `Drafts/Voice_Audit_Report_[Round N].md`
 
-Generates sample regular dialogue using the drafts as runtime context, audits against character spec for trigger-response fidelity, voice distinctiveness, arc register integrity, reflex misfires, NPC voice drift, and — where the world has principal NPCs — NPC agency and goal-following in a lull (Step 3J: do NPCs take initiative toward a stated Standing Goal rather than the scene freezing? for laddered NPCs, do moves trace to the named active stage, and does the model hold the stage under a temptation scenario rather than jumping to the endgame?).
+Generates sample regular dialogue using the drafts as runtime context — as a **cold read** (plausible failure pre-committed per scenario, expected outcome out of view during generation, every PASS evidence-cited and counterfactual-probed), over a test matrix whose scenario classes go beyond the happy path (trigger-collision, near-miss/false-trigger, off-script pressure, coverage-void probes) — and audits against character spec for trigger-response fidelity, voice distinctiveness, arc register integrity, reflex misfires, NPC voice drift, and — where the world has principal NPCs — NPC agency and goal-following in a lull (Step 3J: do NPCs take initiative toward a stated Standing Goal rather than the scene freezing? for laddered NPCs, do moves trace to the named active stage, and does the model hold the stage under a temptation scenario rather than jumping to the endgame?).
 
 ```
 IF Critical or High failures → return to Architect with rewrite directives (increment ledger `3.5` Round)

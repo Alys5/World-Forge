@@ -13,6 +13,57 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-05 — Voice Auditor: adversarial scenario classes + cold-read generation discipline
+
+The Voice Auditor's simulation pass had a structural blind spot, visible in
+the sample audit reports: nearly every check passed on every scenario. Two
+causes. First, the test matrix contained only on-script scenarios — canonical
+arc beats where `{{user}}` does what the scene expects — which is the one
+case that almost never fails; trigger collisions, near-miss false triggers
+(the offering-as-reflex bug class Step 3E exists for), off-script user
+behavior, and deliberate probes into spec-silent territory (Step 3G's
+material) were aspirations in Section 7, never matrix requirements. Second,
+the auditor authored each dialogue while looking at the row's expected
+register and trigger-to-verify, "with the specific intent of exercising the
+mandate" — an author who knows the pass criteria produces conforming
+dialogue every time, so the audit graded its own homework. This change
+mandates adversarial scenario classes in Step 1 and splits author from
+grader in Step 2: pre-commit the most plausible failure before writing,
+generate from runtime context only with the expected columns out of view,
+then audit. Every PASS now requires cited evidence (the dialogue line + the
+draft line that compelled it) and must survive a counterfactual probe —
+if the same drafts equally permit the failing version, the verdict is
+⚠️ NOT BINDING (flagged Medium), the present-but-not-binding mandate being
+precisely the bug class that otherwise surfaces only in long real sessions.
+The Step 3 check taxonomy (A–J) is unchanged, so the Auditioner's
+by-reference reuse of those checks is untouched.
+
+### Changed
+- `agent_roles/03b_The_Voice_Auditor.md`: new Foundational Rule 7
+  (author/grader separation); Step 1 matrix gains Class and Plausible
+  Failure columns plus four mandatory scenario classes per AI-played
+  character (trigger-collision, near-miss/false-trigger, off-script
+  pressure, coverage-void probe — counting toward the existing
+  three-per-character-per-arc floor); Step 2 becomes a cold read
+  (pre-commit → generate blind → audit); Step 3 gains the evidence rule and
+  counterfactual probe governing every verdict; Step 4 diagnosis table gains
+  the NOT BINDING row; report template carries class, plausible failure, and
+  NOT BINDING findings under Medium; sign-off checklist gains
+  scenario-class-coverage and cold-read-discipline items; Section 7
+  reframed around the mandated classes and the do-not-write-toward-the-rubric
+  discipline.
+- `agent_roles/revise/03b_The_Voice_Auditor_mini.md`: new Foundational Delta
+  7 — the parent's cold read, evidence rule, and counterfactual probe apply
+  to all slice sampling; every touched trigger-response pair gets a
+  near-miss scenario, collision scenarios when other triggers bear on the
+  same scene type; evidence reproduction (R3.5.2) exempt from the
+  out-of-view rule but not from the probe. Old delta 7 (Step 3J) renumbered
+  to 8.
+- `workflows/world-forge.md`: Phase 3.5 description reflects the cold read
+  and scenario classes.
+
+---
+
 ## 2026-07-04 — Standalone improvement brainstorm: `/worldforge brainstorm --improve` + `Big_Brain_Storm.md`
 
 The Brainstormer's improvement posture (Section 8) existed but was reachable

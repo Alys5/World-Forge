@@ -11,6 +11,7 @@
 4. **Use the user's test scenarios from World Seed Section 7b** when present. Only fall back to generated scenarios when Section 7b is absent, and flag this in the report — the user should know their pipeline is being verified against scenarios you invented.
 5. **Multi-axis worlds require Step 3H.** When Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`, the perspective/tense bleed check (Step 3H) is mandatory. Single-axis worlds skip it cleanly.
 6. **Sandbox worlds require Step 3I and reframe the arc checks.** When `World Mode` is `sandbox` (Master Design Section 9 is a Sandbox Charter), there is no arc and no CHARACTER_STATE: read "active arc register" (Step 3A) as "standing register vs. SANDBOX_STATE," skip the wrong-arc check (Step 3D) and disguise-transition checks, and run the NPC Distinctiveness Matrix (Step 3I) across the roster. For large NPC casts the distinctiveness matrix is the highest-value check you run.
+7. **Author and grader are separate roles.** Generate every sample dialogue as a cold read (Step 2): pre-commit the plausible failure, keep the expected-outcome columns out of view while writing, and never steer the character toward the pass criteria. Every PASS requires cited evidence and must survive the counterfactual probe (Step 3). Dialogue written to pass its own audit verifies nothing.
 
 ---
 
@@ -61,11 +62,20 @@ If Section 7b is missing because the user did not provide test scenarios, genera
 
 For each AI-played character, generate this matrix:
 
-| Test Scenario | Active Arc | Expected Register | Trigger to Verify |
-|---|---|---|---|
-| [Scene from Section 7b or generated] | [Arc N] | [What the active CHARACTER_STATE specifies] | [The specific behavioral mandate or trigger-response that this scene should exercise] |
+| Test Scenario | Class | Active Arc | Expected Register | Trigger to Verify | Plausible Failure |
+|---|---|---|---|---|---|
+| [Scene from Section 7b or generated] | [on-script / collision / near-miss / off-script / void / lull / temptation / cross-axis] | [Arc N] | [What the active CHARACTER_STATE specifies] | [The specific behavioral mandate or trigger-response that this scene should exercise] | [Filled in Step 2, *before* generating — what a model would most plausibly get wrong here] |
 
 Generate at least three test scenarios per character per arc. For a five-arc world with two characters, you produce a minimum of thirty test scenarios. Coverage is more important than brevity here — the audit only catches what it tests.
+
+**Scenario classes — the matrix must contain more than the happy path.** On-script scenarios (canonical beats where {{user}} does what the scene expects) confirm the spec works when everything goes right — which is the one case that almost never fails. In addition to on-script rows, every AI-played character's scenario set must include at least one of each of the following classes (they count toward the three-per-character-per-arc floor, not on top of it):
+
+- **Trigger collision** — two or more of the character's triggers firing simultaneously, chosen for maximum contradiction (sincere kindness + active withdrawal + Timmy mentioned — three at once). Place it in the arc where the character's mandates stack most contradictorily. This verifies the spec resolves the priority instead of leaving the model to pick.
+- **Near-miss (false trigger)** — a scene that *resembles* a trigger context but should NOT fire it: kindness with a visible price attached, a touch that was asked for, a situation adjacent to a trauma trigger with the trigger itself absent. Place it where a misfire would be most damaging — typically a later arc where safety is established and a survival reflex firing anyway is the bug (the offering-as-reflex case). This is Step 3E's dedicated material; an audit built only from true-trigger scenes never actually exercises the misfire check.
+- **Off-script pressure** — {{user}} acts against the scene's grain: hostile where the beat expects warmth, flippant during a dramatic beat, changing the subject, refusing the scene's premise. Real users do this constantly; the register must hold without the arc beat's support.
+- **Coverage-void probe** — a scenario deliberately aimed at a plausible situation the card, Tier 2, and active state are all silent on. This is Step 3G's dedicated material: it forces the "would the model invent this" question instead of waiting for it to arise incidentally. Finding the void is part of the work — scan for what the drafts *don't* cover, then build a scene there.
+
+The lull, temptation, and cross-axis scenarios below are additional classes with their own trigger conditions.
 
 **When the world has principal NPCs (either mode), include at least one "lull" scenario** — {{user}} passive, saying little, handing the turn back without a prompt — so Step 3J (NPC Agency & Goal-Following) has material to test whether NPCs take initiative. **When any NPC carries a §7.D Escalation Ladder, also include one "temptation" scenario** — a scene that invites jumping to the ladder's endgame (e.g., the laddered NPC alone with exactly what they ultimately want, undefended) — so Step 3J's stage-discipline probe has material to test that the model holds the current stage.
 
@@ -73,15 +83,24 @@ Generate at least three test scenarios per character per arc. For a five-arc wor
 
 **For worlds with per-card overrides (Master Design Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`):** add at least one cross-axis scenario per arc. A cross-axis scenario places at least two cards with differing styles in the same scene context — typically the world-default card and an overriding card (e.g., a 1st-person companion card and a 3rd-person Director card; or a past-tense companion and a present-tense companion in a group chat). These scenarios are the only ones that exercise the perspective/tense-bleed check (Step 3H). Single-axis worlds (no overrides) skip this requirement.
 
-### Step 2 — Generate sample dialogue
+### Step 2 — Generate sample dialogue (cold read)
 
 For each row in the test matrix, write a 4–6 exchange dialogue snippet. Treat the Architect's drafted material as your context: the character card content, the character lorebook entries, the active arc's CHARACTER_STATE, the relevant NPC profiles. Generate dialogue *as if you were the model running on this material*.
 
-Write the dialogue with the specific intent of exercising the behavioral mandate or trigger-response listed in the matrix. If the test is "Anna's response to sincere unprompted kindness in early Arc 1," construct a scene where {{user}} offers Anna kindness with no visible price.
+Construct the scene so the *situation* exercises the row's target — if the test is "Anna's response to sincere unprompted kindness in early Arc 1," {{user}} offers kindness with no visible price. The scene setup aims at the mandate; the character's response must not.
+
+**Author and grader are separate roles — run them separately.** An audit is worthless if the dialogue is written to pass it. For each row:
+
+1. **Pre-commit the plausible failure.** Before writing a single line of dialogue, fill the row's "Plausible Failure" column: what would a model running this material most plausibly get wrong in this scene — wrong register, missed trigger, reflex misfire, invented detail? One line. This is the honesty anchor for the audit.
+2. **Generate from runtime context only.** Write the character's side of the dialogue from the material the runtime model would have — nothing else. Keep the matrix's "Expected Register" and "Trigger to Verify" columns out of view while writing. Do not steer the character toward the expected outcome; write what the context compels, including when what it compels is wrong, generic, or ambiguous. If you feel the pull to fix a line so it conforms, stop — that pull is a finding: a line you had to consciously supply is a line the drafts did not compel, and the runtime model will not supply it either.
+3. **Audit afterward** (Step 3), with the expected columns restored and the pre-committed plausible failure in hand: did the dialogue avoid that failure because the drafts prevented it, or because you did?
 
 ### Step 3 — Audit each generated dialogue
 
-For each generated dialogue, run these checks:
+For each generated dialogue, run these checks. Two standing rules govern every verdict:
+
+- **Evidence rule.** A PASS must cite both the dialogue line that shows the behavior *and* the specific draft line (card mandate, CHARACTER_STATE bullet, Tier 2 field) that compelled it. Conformance you cannot trace to a compelling spec line is not a PASS.
+- **Counterfactual probe.** For each check that passes, ask: would these same drafts equally permit the *failing* version of this moment — the pre-committed plausible failure from Step 2, or the inverse of the expected behavior? If a failing rendition is just as compatible with the drafts (nothing forced the conforming outcome; it merely happened), record the check as ⚠️ NOT BINDING instead of PASS and flag it 🟡 Medium: a mandate that is present but not binding is exactly the bug class that surfaces only across long real sessions. The fix is usually converting descriptive prose into directive language, or adding the missing context qualifier.
 
 **A. Active arc register match** *(sandbox mode: standing register match — does behavior match the SANDBOX_STATE Tonal Mandate, since there is no CHARACTER_STATE? Check register, power-fantasy contract, and whether the aliveness directives show up — do NPCs act on their own wants, does the world feel reactive rather than inert?)*
 Does the character's behavior in this dialogue match the active arc's CHARACTER_STATE description? Check specifically:
@@ -197,6 +216,7 @@ When a failure is found, do not just flag the dialogue. Trace it back to the spe
 | NPC voice drift | NPC profile sample lines insufficient or arc-differentiation absent |
 | Roster NPCs mutually swappable (Step 3I) | §7.E roster `Voice fingerprint` / `Signature line` not distinct enough across the named NPCs — sharpen those entries |
 | Detail invented by auditor | Coverage gap in the relevant lorebook entry |
+| Check conforms but the counterfactual probe shows the failing version equally permitted (⚠️ NOT BINDING) | Mandate worded descriptively rather than directively, or missing a context/arc qualifier — the drafts describe the behavior without compelling it |
 | Healed behavior in wrong arc | CHARACTER_STATE entry contaminating across arcs, or beats jumping |
 | Disguise inconsistency | NPC_SHIFT entry not capturing the arc transition correctly |
 | World idles until {{user}} acts; NPC acts with no goal-trace (Step 3J) | SANDBOX_STATE / ARC_STATE activity-cadence directive missing or abstract, OR principal NPC §7.D Standing Goal thin or absent |
@@ -218,7 +238,7 @@ Structure:
 # VOICE AUDIT REPORT — Round [N]
 
 ## Test Matrix Summary
-[Table of all scenarios audited, with pass/fail per character per arc]
+[Table of all scenarios audited, with scenario class, pre-committed plausible failure, and pass/fail per character per arc]
 
 ## Failures by Severity
 
@@ -229,7 +249,7 @@ Structure:
 [Same format]
 
 ### 🟡 Medium — drift risk that may not surface immediately
-[Same format]
+[Same format — ⚠️ NOT BINDING findings from the counterfactual probe go here: name the check, the scenario, and the descriptive-not-directive draft line]
 
 ### 🟢 Notes — voice is correct but could be sharper
 [Same format]
@@ -287,6 +307,7 @@ If no failures → sign off cleanly.
 - [ ] All trigger-response pairs from cards exercised in test scenarios
 - [ ] All NPCs voiced in test scenarios
 - [ ] User test scenarios from Section 7b included (or generated equivalents flagged)
+- [ ] **Scenario classes covered: every AI-played character has at least one trigger-collision, one near-miss (false-trigger), one off-script, and one coverage-void scenario in the matrix**
 - [ ] **Axis-mixed worlds (`is_multi_perspective: true` OR `is_multi_tense: true`): at least one cross-axis scenario per arc included; OR confirmed both flags `false` in Master Design Section 11c and Step 3H skipped**
 - [ ] **Sandbox / large-roster worlds: Step 3I Distinctiveness Matrix run; no Critical (mutually-swappable) or High (voiceless) roster NPCs remain; OR confirmed no large roster cast and Step 3I skipped**
 - [ ] **Sandbox worlds: standing register checked against SANDBOX_STATE (incl. aliveness directives — NPCs act on their own, world is reactive); arc-only checks (3D, disguise) skipped**
@@ -294,6 +315,7 @@ If no failures → sign off cleanly.
 - [ ] **Worlds with laddered NPCs: stage-trace verified (moves belong to the named active stage) and the temptation scenario run (model holds the stage, no jumping or self-resolving); OR confirmed no Escalation Ladders authored**
 
 ### Behavioral Fidelity
+- [ ] **Cold-read discipline held: plausible failure pre-committed per scenario before generation; every PASS cites dialogue evidence + the compelling draft line; counterfactual probe run on every passing check, with ⚠️ NOT BINDING findings flagged Medium**
 - [ ] No Critical failures remain
 - [ ] All High failures resolved or explicitly accepted by user
 - [ ] All Medium failures noted for awareness
@@ -313,7 +335,9 @@ You are simulating the model. The quality of your audit depends on how faithfull
 
 **Treat the CHARACTER_STATE entry as overriding the card defaults.** This is the design principle. Your dialogue must reflect the active state, not the card's general profile.
 
-**Generate dialogue that attempts to break the spec.** Pick scenarios that exercise the most contradictory mandates simultaneously. Anna receiving sincere kindness while in withdrawal while having Timmy mentioned — three triggers at once. Does the dialogue handle the priority correctly?
+**Generate scenarios that attempt to break the spec.** The Step 1 scenario classes exist because on-script scenes almost never fail. The collision row exercises the most contradictory mandates simultaneously — Anna receiving sincere kindness while in withdrawal while having Timmy mentioned, three triggers at once: does the spec resolve the priority, or did *you* have to? The near-miss row is where the offering-as-reflex class of bug lives. Aim the scenes at the seams, not at the beats the drafts were written around.
+
+**Do not write toward the rubric.** You know what the expected behavior is — that knowledge is the audit's biggest threat, because an author who writes to the pass criteria will produce conforming dialogue every time, and the runtime model has no such intent. The Step 2 cold read (pre-commit the plausible failure, expected columns out of view, write what the context compels) is what keeps your dialogue evidence rather than advocacy. A test matrix where every check passes is not a clean bill of health — it is a signal that the author leaked into the grader. When a snippet conforms, the counterfactual probe asks whether the drafts *forced* it to.
 
 **Read the dialogue back as a hostile reader.** Would this Anna offer sex when she has just been emotionally cracked open? If yes, you found a bug. Would this Black sound robotic in Arc 4 when he should sound brotherly? If yes, you found a bug.
 
