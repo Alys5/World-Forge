@@ -86,7 +86,7 @@ The Architect (when generating per-card `directives`) and the Prompt Engineer (w
 The FORMATTING MARKERS directive line is composed by joining three sub-clauses (narration + dialogue + emphasis) into a single sentence using the format:
 
 ```
-FORMATTING MARKERS: <narration sub-clause>. <dialogue sub-clause>. <emphasis sub-clause>. No other formatting conventions apply.
+FORMATTING MARKERS: <narration sub-clause>. <dialogue sub-clause>. <emphasis sub-clause>. No other formatting conventions apply. MUST include: 'NATIVE LANGUAGE DIALOGUE: If a character speaks in a non-common language, it MUST be formatted exactly as: "original language phrase" ([your_language] translation).'
 ```
 
 When the line is emitted (per the metadata schema rule in §1), it is atomic — all three sub-clauses are present using effective values (override where set, world default where inherited). The line cannot be partially emitted.

@@ -842,7 +842,7 @@ Use whichever status line matches the actual end state of the audit. Do not writ
 
 This mode runs when you are invoked via `/worldforge resync-preset`. The world has already shipped: `Export/` exists and contains `[WorldName]_ChatPreset.json`. The preset may have fallen behind in two independent ways since it was authored: the **pipeline's preset spec** has evolved (a reframed block, a new block type), and/or the **world's content** has changed through the revision pipeline (a revised or added arc, a new character) in ways the revise mini-Prompt-Engineer does not write into the preset (it only toggles Multi-Character Dynamics, NSFW, and the ACTIVE-SPEAKER RULE). Your job is to bring this one file current on both — and nothing else.
 
-**This is not Build mode and not `resume phase5`.** You do not re-audit lorebooks or cards. You do not produce or update `Prompt_Engineer_Audit.md`. You do not emit Section 7/8 recommendations. You touch exactly two files: you rewrite `Export/[WorldName]_ChatPreset.json` in place, and you write `Export/Preset_Resync_Report.md`.
+**This is not Build mode and not `resume phase5`.** You do not re-audit lorebooks or cards. You do not produce or update `Prompt_Engineer_Audit.md`. You do not emit Section 7/8 recommendations. You touch exactly three files: you rewrite `Export/[WorldName]_ChatPreset.json` in place, you run `python tools/build_janitor.py [WorldName]` to regenerate `Export/[WorldName]_JanitorAI_Script.js`, and you write `Export/Preset_Resync_Report.md`.
 
 ### 8.1 — Preconditions
 
@@ -882,6 +882,8 @@ Halt and report the specific gap if any fails:
 **Step 4 — Validate.** Run the Section 5f Pass 1 (structural) + Pass 2 (content) self-validation on the regenerated preset, and confirm the foundational hard-fail rules at the top of this document. Do not write the file if any check fails — diagnose and fix first.
 
 **Step 5 — Report.** Write `Export/Preset_Resync_Report.md` (Section 8.4 format). If Step 2 found no drift on any axis, do not rewrite the preset; write a report whose status is "ALREADY CURRENT — no changes."
+
+**Step 6 — JanitorAI Sync (MANDATORY).** Run `python tools/build_janitor.py [WorldName]` to push the updated prompt block contents (Language mandate, Extended Formatting Rules, Negative OOC Rules) into the JanitorAI script output (`Export/[WorldName]_JanitorAI_Script.js`). This ensures parity between the ST preset and the Janitor bot payload.
 
 ### 8.4 — Report format
 
@@ -935,7 +937,7 @@ Append to `Export/Preset_Resync_Report.md`:
 ---
 ## ✅ PRESET RESYNC SIGN-OFF
 
-- [ ] Scope respected: only Export/[WorldName]_ChatPreset.json and Export/Preset_Resync_Report.md written; no lorebook/card audit run; no Section 7/8 recommendations emitted
+- [ ] Scope respected: only Export/[WorldName]_ChatPreset.json and Export/Preset_Resync_Report.md written; `tools/build_janitor.py` executed; no lorebook/card audit run; no Section 7/8 recommendations emitted
 - [ ] Block content re-derived from the current (post-revision) Master Design, not copied forward from the existing preset
 - [ ] Diff run on all axes (per-block content sync, newly-warranted optional blocks, template field drift)
 - [ ] Every block retains its identifier, enabled flag, and prompt_order position — including revision-applied toggles (Multi-Character Dynamics, NSFW, ACTIVE-SPEAKER RULE)
@@ -945,6 +947,7 @@ Append to `Export/Preset_Resync_Report.md`:
 - [ ] User field-level customizations preserved; only hard-fail-required top-level fields changed
 - [ ] Hand-customized content (if any) flagged for review, not silently discarded
 - [ ] Section 5f Pass 1 + Pass 2 and foundational hard-fail rules pass on the regenerated preset
+- [ ] `python tools/build_janitor.py [WorldName]` executed successfully and updated Janitor script output
 - [ ] Resync report written with block-change table (status + cause) and accurate status line
 ```
 ```
