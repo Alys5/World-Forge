@@ -32,6 +32,19 @@ and Kimi K2.7 Code (`moonshotai/kimi-k2.7-code`, with an explicit caveat: it
 is the coding-tuned variant the models page warns against for creative seats,
 and its 16K max output is tight for the Compiler's larger lorebook JSON).
 
+### Added
+- `Kilo_Variants/`: drop-in all-seats alternates for the shipped config —
+  `kilo.glm-5.2.jsonc` (every seat on `openrouter/z-ai/glm-5.2`, reasoning
+  effort high, Z.AI upstream hard-pinned) and `kilo.kimi-k2.7-code.jsonc`
+  (every seat on `openrouter/moonshotai/kimi-k2.7-code`, reasoning effort
+  high, Moonshot AI upstream preferred; header carries an explicit
+  coding-tuned / 16K-output warning). Both omit `temperature` throughout
+  (reasoning-class endpoints ignore sampling) and are generated from the
+  shipped agent set, so the 23 seats and `{file:...}` prompt pins are
+  identical. Not auto-loaded: activated by copying over `.kilo/kilo.jsonc`
+  per the folder README. Added to `.kilocodeignore` (maintenance material,
+  not runtime context) and to the `CLAUDE.md` repository tree.
+
 ### Changed
 - `.kilo/kilo.jsonc`: new top-level `provider.openrouter.models` routing
   block (DeepSeek pinned; GLM 5.2 and Kimi K2.7 Code as commented

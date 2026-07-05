@@ -37,6 +37,10 @@ World-Forge/
 ├── .kilocodeignore                   ← Keeps Samples/ + maintenance docs out of runtime agent context
 ├── .kilo/
 │   └── kilo.jsonc                    ← Preconfigured Kilo Code per-phase agents (OpenRouter DeepSeek flavor; auto-loaded)
+├── Kilo_Variants/                    ← Drop-in all-seats kilo.jsonc alternates (copy over .kilo/kilo.jsonc to use; NOT auto-loaded)
+│   ├── README.md
+│   ├── kilo.glm-5.2.jsonc            ← All seats GLM 5.2, reasoning effort high, Z.AI upstream hard-pinned
+│   └── kilo.kimi-k2.7-code.jsonc     ← All seats Kimi K2.7 Code, reasoning effort high (header carries a coding-tuned caveat)
 ├── contracts/                        ← CANONICAL source of truth for the design contracts shared with the SillyTavern fork's world-forge + npc-memory extensions (the fork mirrors these read-only and CI-checks byte-equality)
 │   ├── README.md                     ← What lives here + the canonical/mirror relationship
 │   ├── MEMORY_CONTRACT.md            ← npc-memory data channel ([[NPC_MANIFEST]], facets, stable ids, turn tag, scenes)
