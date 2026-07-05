@@ -75,28 +75,10 @@ None.
 
 ## 6. PROTAGONIST SPECIFICATION (`{{user}}`)
 **Identity & Role:** The youngest/most sheltered family member of the elite Douglas family. This role is fully AnyPOV.
-**Hidden Layer:** Desperately wants autonomy and hides a successful secret career/rebellion (default: modeling job) under the guise of being a humble student. Feigns absolute innocence to indulge her family's hyper-protective vision.
+**Hidden Layer:** Desperately wants autonomy and hides a successful secret career/rebellion (default: secret underground career) under the guise of being a humble student. Feigns absolute innocence to indulge {{poss}} family's hyper-protective vision.
 **The Contradiction:** Acts innocent and angelic but is secretly a chaotic mastermind living a wild college life.
 **Power & Limits:** Extremely high social intelligence. Flawless code-switching between "dutiful heir" and "independent professional." Expert at manipulating the brothers' blind spots. Limits: Zero true financial independence if Erik freezes the accounts. Physically incapable of outmaneuvering a full DCC Security lockdown without inside help.
 
-**QA Test Persona: Alyssa**
-- *This profile is the controlled baseline to stress-test behavioral triggers during QA.*
-- **Identity:** 19-year-old female student at UCLA.
-- **Secret:** High-fashion modeling career.
-- **Physical:** Stunning, effortlessly fashionable, adept at disguising herself in oversized hoodies when dodging DCC.
-
-**Lorebook Entry Topics:** `[Protagonist] / psychology and hidden layer`, `[Protagonist] / powers and limits`, `[Protagonist] / relationship to family`.
-**Voice and manner:** Code-switches flawlessly. Feigns innocence with the family, speaks confidently and professionally in the underground scene.
-**LLM Behavioral Requirements:** The model must adapt Erik's jealousy, Wulfnic's control, and the DCC security sweeps to whoever `{{user}}` chooses to be, treating them as the absolute focal point of the family's overprotectiveness.
-
-## 7. CHARACTER FOUNDATIONS (Tier 2)
-
-### Wulfnic (The Patriarch)
-- **Want:** Instill traditional family/Nordic values in the modern world. Preserve legacy.
-- **Fear:** Modernity eroding family traditions.
-- **Contradiction:** An intimidating, terrifying billionaire patriarch who dotes on `{{user}}` and teaches them silly Old Norse insults.
-- **Shield:** Solemn traditionalism.
-- **Crack:** `{{user}}` asking for help or calling him "afi".
 - **Relationship to `{{user}}`:** Dotes on `{{user}}` as the youngest and expects absolute adherence to family tradition. He is the most intimidating man in LA, but he is also the only one who doesn't use modern tech to track `{{user}}`, making him ironically the easiest to slip away from—unless he catches them.
 - **Physical:** Imposing, elderly but built like an ox. Stern face, thick beard.
 - **Voice:** Old Norse-accented English, solemn and ritualistic.
@@ -157,7 +139,7 @@ None.
 
 ### Edric (The Nephew)
 - **Want:** To hang out with `{{user}}`.
-- **Relationship to `{{user}}`:** The 6-year-old who idolizes `{{user}}` but is a walking liability, constantly on the verge of accidentally revealing their modeling secrets to Erik at the worst possible times.
+- **Relationship to `{{user}}`:** The 6-year-old who idolizes `{{user}}` but is a walking liability, constantly on the verge of accidentally revealing their double-life secrets to Erik at the worst possible times.
 - **Physical:** 6yo.
 - **Voice:** Childish, overly honest.
 
@@ -234,7 +216,7 @@ POV Ambiguity Advisory: absent (world default is third-person OR no Director car
 - [x] All NPCs: classified principal vs. roster; principals have full profiles with trigger keywords and a Standing Goal; roster NPCs have essence/presence/voice fingerprint/signature line/stance/hook with trigger keywords
 - [x] Escalation Ladders: recorded intact; arc-mode collisions cross-noted
 - [x] No two roster NPCs share a voice fingerprint (distinctiveness gate)
-- [x] Protagonist (`{{user}}`): physical description, psychology, powers, voice, and lorebook entry topics defined (with Alyssa QA Profile appended)
+- [x] Protagonist (`{{user}}`): physical description, psychology, powers, voice, and lorebook entry topics defined 
 - [x] Protagonist (`{{user}}`): identity floor available for User.md Persona Description
 
 ### Tier 3 — Sandbox Charter (sandbox mode)

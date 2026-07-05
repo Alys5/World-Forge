@@ -1,7 +1,7 @@
 # TIER 2 PROTAGONIST LOREBOOK ENTRIES
 
 ### ENTRY: [Protagonist] / psychology and hidden layer
-**Trigger Keys:** {{user}}, protagonist, secret, modeling, rebellion, innocent
+**Trigger Keys:** {{user}}, protagonist, secret, secret double life, rebellion, innocent
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 1
@@ -33,13 +33,3 @@
 **Content:**
 `{{user}}` is the absolute focal point of the Douglas family's intense overprotectiveness. Every family member views their protection as paramount, applying corporate-level resources and tactical intensity to incredibly mundane issues involving them. `{{user}}` constantly navigates this suffocating love, viewing the family as an overwhelming force of nature that must be carefully managed and misdirected.
 
-### ENTRY: QA Test Persona: Alyssa
-**Trigger Keys:** Alyssa, test baseline
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 97
-**Position Rationale:** DEFAULT
-
-**Content:**
-*QA Baseline Profile:* If playing as Alyssa, she is a 19-year-old female student at UCLA, stunning and effortlessly fashionable. She is adept at disguising herself in oversized hoodies when dodging DCC. Her specific secret is a burgeoning high-fashion modeling career that she desperately hides from her brothers.

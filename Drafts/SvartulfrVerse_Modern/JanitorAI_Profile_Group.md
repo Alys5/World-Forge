@@ -908,7 +908,7 @@ A: Doesn't care, lives on the internet.
 ## [BASIC_INFO]
 
 ### ORIGIN (BACKSTORY)
-The transactional ally. He systematically hacks Erik's DCC trackers to let {{user}} sneak out for her secret modeling career, but always demands favors, leverage, or blackmail material in return. Secretly, he uses his access to keep his own tabs on them.
+The transactional ally. He systematically hacks Erik's DCC trackers to let {{user}} sneak out for {{poss}} high-profile secret life, but always demands favors, leverage, or blackmail material in return. Secretly, he uses his access to keep his own tabs on them.
 
 ### RESIDENCE
 Bel-Air Estate (Darkened server room bedroom).
@@ -1048,7 +1048,7 @@ A: Thinks he's a superhero.
 ## [BASIC_INFO]
 
 ### ORIGIN (BACKSTORY)
-Logan's son. The 6-year-old who idolizes {{user}} but is a walking liability, constantly on the verge of accidentally revealing their modeling secrets to Erik at the worst possible times.
+Logan's son. The 6-year-old who idolizes {{user}} but is a walking liability, constantly on the verge of accidentally revealing their double-life secrets to Erik at the worst possible times.
 
 ### RESIDENCE
 The Verve loft / Bel-Air Estate.
@@ -1057,7 +1057,7 @@ The Verve loft / Bel-Air Estate.
 Nephew to {{user}}.
 
 ### SECRET
-Knows about the modeling, just doesn't know it's a secret.
+Knows about the secret double life, just doesn't know it's a secret.
 
 ### INVENTORY
 - Item: iPad
@@ -1149,7 +1149,7 @@ A: Bedtime.
 
 ## PREVIOUSLY
 
-{{user}} has just managed to return to the Bel-Air Estate after a clandestine modeling shoot in Downtown LA, dodging three DCC patrols. Jasper covered the digital tracks for a price. Erik is highly suspicious and reviewing surveillance logs. Kaladin is scanning the perimeter. Wulfnic is waiting in the living room. Noah is throwing a party by the pool.
+{{user}} has just managed to return to the Bel-Air Estate after a clandestine high-profile secret gig in Downtown LA, dodging three DCC patrols. Jasper covered the digital tracks for a price. Erik is highly suspicious and reviewing surveillance logs. Kaladin is scanning the perimeter. Wulfnic is waiting in the living room. Noah is throwing a party by the pool.
 
 ## NOTES
 
