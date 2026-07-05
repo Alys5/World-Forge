@@ -46,18 +46,18 @@ LSE (Lupine Social Ecology)
 
 ## Module Index
 
-| Module | File | Contents |
-|---|---|---|
-| **PART 0** | [LSE_00_Foundations.md](LSE_00_Foundations.md) | The constitutional base. Scope, Canon Policy, Three Levels of Truth, 7 LSE Principles, Six-Axis Identity System, Core Terminology. |
-| **PART I** | [LSE_01_Species.md](LSE_01_Species.md) | Morphology & Shift Classes (Partial/Hybrid/Full), Blood Classification, Secondary Sex Physiology (Enigma/Alpha/Delta/Beta/Omega), Life Cycle, Genetics, Demographics, Reproduction. |
-| **PART II** | [LSE_02_Behavioral_Ecology.md](LSE_02_Behavioral_Ecology.md) | Psychological profiles, Neurobiology (pheromone pathway, Command mechanism), Communication (non-verbal, vocalizations), Pack Ecology, Alloparenting, Succession, Ecological Roles, Nesting & Den behavior. |
-| **PART III** | [LSE_03_Civilization.md](LSE_03_Civilization.md) | Social Hierarchy (Species→Bloodline→House→Pack→Family→Individual), Culture, Pack Types, Economy, Medicine, Education, Adoption, Parental Names, Weddings. |
-| **PART IV** | [LSE_04_Governance.md](LSE_04_Governance.md) | Pack Authority Structure, Social Status Hierarchy, House Government, Continental Council, Treaties & Alliances, Laws & Jurisdiction, Crimes & Punishments. |
-| **PART V** | [LSE_05_Religion.md](LSE_05_Religion.md) | The Faith of Fenris (Dogma, Great Betrayal, Ragnarök, Pantheon, Nine Precepts, Moon symbolism, Cult of the Living Sagas), Institutions (High Fang, Moon Speakers, Keepers), Sacred Sites, Holy Days, Rites. |
-| **PART VI** | [LSE_06_History.md](LSE_06_History.md) | Timeline (Mythic Age → Modern Era), The True Pureblood as historical event, The Living Sagas as historical fact. Uses Three Levels of Truth throughout. |
-| **PART VII** | [LSE_07_Foundational_Figures.md](LSE_07_Foundational_Figures.md) | The Nine Firstborn, The Last Three (Wulfnic, Ut, Zefir) with full Identity Cards, placeholders for Great House Founders, Legendary Alphas, Ascended Enigmas. |
-| **PART VIII** | [LSE_08_Technology.md](LSE_08_Technology.md) | Transportation, Weapons (natural/traditional/modern), Medicine Tech, Industry (corporate fronts, species-specific), Communications, Architecture. |
-| **Appendices** | [LSE_Appendices.md](LSE_Appendices.md) | Secondary Sex Matrix, Pack Role Matrix, Social Status Matrix, Profession Matrix, Blood Classification Matrix, Naming Conventions, Timeline Summary, Music Genres, Regional Variations. |
+| Module         | File                                                             | Contents                                                                                                                                                                                                    |
+| -------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **PART 0**     | [LSE_00_Foundations.md](LSE_00_Foundations.md)                   | The constitutional base. Scope, Canon Policy, Three Levels of Truth, 7 LSE Principles, Six-Axis Identity System, Core Terminology.                                                                          |
+| **PART I**     | [LSE_01_Species.md](LSE_01_Species.md)                           | Morphology & Shift Classes (Partial/Hybrid/Full), Blood Classification, Secondary Sex Physiology (Enigma/Alpha/Delta/Beta/Omega), Life Cycle, Genetics, Demographics, Reproduction.                         |
+| **PART II**    | [LSE_02_Behavioral_Ecology.md](LSE_02_Behavioral_Ecology.md)     | Psychological profiles, Neurobiology (pheromone pathway, Command mechanism), Communication (non-verbal, vocalizations), Pack Ecology, Alloparenting, Succession, Ecological Roles, Nesting & Den behavior.  |
+| **PART III**   | [LSE_03_Civilization.md](LSE_03_Civilization.md)                 | Social Hierarchy (Species→Bloodline→House→Pack→Family→Individual), Culture, Pack Types, Economy, Medicine, Education, Adoption, Parental Names, Weddings.                                                   |
+| **PART IV**    | [LSE_04_Governance.md](LSE_04_Governance.md)                     | Pack Authority Structure, Social Status Hierarchy, House Government, Continental Council, Treaties & Alliances, Laws & Jurisdiction, Crimes & Punishments.                                                  |
+| **PART V**     | [LSE_05_Religion.md](LSE_05_Religion.md)                         | The Faith of Fenris (Dogma, Great Betrayal, Ragnarök, Pantheon, Nine Precepts, Moon symbolism, Cult of the Living Sagas), Institutions (High Fang, Moon Speakers, Keepers), Sacred Sites, Holy Days, Rites. |
+| **PART VI**    | [LSE_06_History.md](LSE_06_History.md)                           | Timeline (Mythic Age → Modern Era), The True Pureblood as historical event, The Living Sagas as historical fact. Uses Three Levels of Truth throughout.                                                     |
+| **PART VII**   | [LSE_07_Foundational_Figures.md](LSE_07_Foundational_Figures.md) | The Nine Firstborn, The Last Three (Wulfnic, Ut, Zefir) with full Identity Cards, placeholders for Great House Founders, Legendary Alphas, Ascended Enigmas.                                                |
+| **PART VIII**  | [LSE_08_Technology.md](LSE_08_Technology.md)                     | Transportation, Weapons (natural/traditional/modern), Medicine Tech, Industry (corporate fronts, species-specific), Communications, Architecture.                                                           |
+| **Appendices** | [LSE_Appendices.md](LSE_Appendices.md)                           | Secondary Sex Matrix, Pack Role Matrix, Social Status Matrix, Profession Matrix, Blood Classification Matrix, Naming Conventions, Timeline Summary, Music Genres, Regional Variations.                      |
 
 ---
 
@@ -84,9 +84,3 @@ INDIVIDUAL IDENTITY
 ├── 5. Profession             [Occupation, chosen]
 └── 6. Niche                  [Specialization, developed]
 ```
-
----
-
-## Related Documents
-
-- [EABDO_Guide.md](EABDO_Guide.md) — The original Omegaverse biology reference (legacy document; superseded by LSE_01_Species.md for new development).
