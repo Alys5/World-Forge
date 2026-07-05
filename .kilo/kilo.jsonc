@@ -17,6 +17,20 @@
 // (e.g. direct Anthropic = "anthropic/<model>"). API keys are NEVER read from
 // this file; they live in Kilo's global provider settings.
 //
+// ── OpenRouter provider routing (the "provider" block below) ─────────────────
+// Kilo forwards everything under provider.openrouter.models.<id>.options
+// verbatim to OpenRouter (providerOptions.openrouter), so the full routing
+// parameter set applies: https://openrouter.ai/docs/features/provider-routing
+// Two sharp edges: (1) the routing block only works PER-MODEL under "options" —
+// placed at the root of provider.openrouter it silently does nothing; (2) the
+// fields are passed through unvalidated, so a misspelled field is ignored
+// without error. After changing routing, verify on the OpenRouter activity
+// dashboard that requests actually land on the intended upstream.
+// Commented-out alternates for GLM 5.2 and Kimi K2.7 Code sit in the block —
+// to swap a seat, uncomment the model's routing entry AND change that agent's
+// "model" string to the matching "openrouter/<id>" (see wiki/Kilo-Code-Setup.md
+// §3.2 and §5.2).
+//
 // ── Model + temperature rationale ────────────────────────────────────────────
 // Drafting/utility seats run DeepSeek 4 Pro with per-phase temperatures from
 // wiki/Agentic-Tools-and-Models.md §3.5 (creative seats hot, Compiler near zero).
@@ -31,6 +45,51 @@
 // wiki/Kilo-Code-Setup.md §5.3.
 {
   "$schema": "https://app.kilo.ai/config.json",
+  "provider": {
+    "openrouter": {
+      "models": {
+        // DeepSeek 4 Pro (all shipped seats): prefer DeepSeek's first-party
+        // upstream — the automatic prefix caching that makes per-phase spec
+        // reloads cheap (wiki/Agentic-Tools-and-Models.md §3.4) only applies
+        // when the request lands on DeepSeek itself; third-party hosts serving
+        // the same weights charge full price per phase. "order" still allows
+        // fallback if DeepSeek is down; "sort" tie-breaks fallbacks by speed.
+        "deepseek/deepseek-v4-pro": {
+          "options": {
+            "provider": { "order": ["DeepSeek"], "sort": "throughput" }
+          }
+        }
+        // ── Alternate models (uncomment to use; also swap the agent "model"
+        //    strings below to the matching "openrouter/<id>") ──
+        //
+        // GLM 5.2 ("openrouter/z-ai/glm-5.2") — reasoning-class, 1M context.
+        // Hard-pin to the first-party Z.AI upstream: third-party hosts are
+        // where the reported mid-task stream failures live, so "only" fails
+        // loudly instead of falling back to them. Reasoning effort rides the
+        // same options passthrough. On any seat running GLM 5.2, REMOVE that
+        // agent's "temperature" field — reasoner endpoints ignore sampling.
+        // "z-ai/glm-5.2": {
+        //   "options": {
+        //     "provider": { "only": ["Z.AI"] },
+        //     "reasoning": { "effort": "medium" }
+        //   }
+        // },
+        //
+        // Kimi K2.7 Code ("openrouter/moonshotai/kimi-k2.7-code") — the only
+        // K2.7 on OpenRouter is the coding-tuned variant, which the models
+        // wiki page (§3.2) warns against for creative seats: voice flattens,
+        // characterization goes generic. Its 16K max output is also tight for
+        // the Compiler's larger lorebook JSON. If you try it anyway, keep it
+        // to utility seats (Refiner / Prompt Engineer), never the Architect /
+        // Editor / auditors, and REMOVE "temperature" (always-on thinking).
+        // "moonshotai/kimi-k2.7-code": {
+        //   "options": {
+        //     "provider": { "order": ["Moonshot AI"] }
+        //   }
+        // }
+      }
+    }
+  },
   "agent": {
     // ── Ideation (optional, upstream of Phase 0) ──
     "WorldForge-Brainstormer": {

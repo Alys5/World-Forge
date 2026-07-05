@@ -13,6 +13,46 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-05 — Kilo config: OpenRouter per-model provider routing + GLM 5.2 / Kimi K2.7 alternates
+
+A user report of GLM 5.2 runs failing and stopping mid-task through OpenRouter
+traced to the upstream-routing layer, not the pipeline: OpenRouter serves each
+model through several third-party hosts, and which host a request lands on
+determines stream reliability, effective context handling, and — for
+DeepSeek — whether the automatic prefix caching that makes per-phase spec
+reloads cheap applies at all. Kilo forwards everything under
+`provider.openrouter.models.<id>.options` in `kilo.jsonc` verbatim to
+OpenRouter, so routing is pinnable per model from the shipped config. The
+shipped `kilo.jsonc` now pins the DeepSeek seats to DeepSeek's first-party
+upstream (`order: ["DeepSeek"]`, fallbacks allowed) and carries commented-out,
+ready-to-swap routing entries for GLM 5.2 (`z-ai/glm-5.2`, hard-pinned
+`only: ["Z.AI"]` because the reported mid-task stream failures live on the
+third-party upstreams, plus `reasoning: { effort }` on the same passthrough)
+and Kimi K2.7 Code (`moonshotai/kimi-k2.7-code`, with an explicit caveat: it
+is the coding-tuned variant the models page warns against for creative seats,
+and its 16K max output is tight for the Compiler's larger lorebook JSON).
+
+### Changed
+- `.kilo/kilo.jsonc`: new top-level `provider.openrouter.models` routing
+  block (DeepSeek pinned; GLM 5.2 and Kimi K2.7 Code as commented
+  alternates); header comment documents the passthrough and its two sharp
+  edges (per-model-only placement, unvalidated fields).
+- `wiki/Kilo-Code-Setup.md`: §3.2 gains item 6 (per-model provider routing
+  from `kilo.jsonc`, sharp edges, how to activate the alternates); §10
+  troubleshooting gains a row for GLM-family mid-task stops / "did not
+  provide any assistant messages" with the routing pin as the fix.
+- `wiki/Agentic-Tools-and-Models.md`: §3.3 aggregator note and the §3.4
+  DeepSeek-caching bullet now state that caching depends on landing on the
+  first-party upstream and point at the routing block.
+
+### Fixed
+- `wiki/Kilo-Code-Setup.md` §5.1/§5.2: stale claim that the shipped config
+  runs `deepseek-r1` on the Editor + Auditor seats — those seats have run
+  DeepSeek 4 Pro with per-phase temperatures (0.3 / 0.6) since the config
+  was last revised; the wiki now matches the file.
+
+---
+
 ## 2026-07-05 — Voice + Intimacy Auditors: adversarial scenario classes + cold-read generation discipline
 
 The Voice Auditor's simulation pass had a structural blind spot, visible in
