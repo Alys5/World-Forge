@@ -13,6 +13,57 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-05 — Rebaseline consolidates seed-anchored: 1:1 source seed + applied revisions
+
+Rebaseline mode previously *distilled* the entire seed from the post-revision
+`Master_Design.md` (old Step D, "Distillation, not transcription"), which
+paraphrased the user's original seed wording even in sections no revision
+ever touched. The consolidation is now **seed-anchored**: the source
+`World_Seed.md` — already seed-grade by definition — carries **1:1** as the
+base, each applied revision (from the required `Revision_R*.md` reading) is
+written into the affected seed passage in place (replace-not-stack, at seed
+grade), and a new **divergence scan** surfaces post-seed content that no
+revision explains (Refiner gap answers, arcs developed past the seed's
+sketch) for ask-first fold-in — nothing folds in or drops silently. The
+structure upgrades to the current `World_Seed_Template.md` without
+re-wording carried content. Distillation from the Master Design survives
+only as the announced fallback when the source has no `World_Seed.md`.
+Sub-seed-grade revisions (entry-level tweaks) make no seed edit and are
+recorded in the manifest as re-deriving downstream — the same outcome the
+old distillation gave them. Everything else about rebaseline (zero-axes
+gate, source-integrity check, marker-free cleanliness, fresh-UID cost,
+`--then-interview`/`--then-brainstorm` chains) is unchanged.
+
+### Changed
+- `agent_roles/Converter/00_The_Converter.md`: Section 9 Step D rewritten
+  from "Distillation, not transcription" to **"Seed-anchored
+  consolidation"** — carry the seed 1:1, apply revision deltas in place,
+  divergence scan (ask-first), upgrade structure not words, with the
+  distillation fallback for seedless sources. Step B makes the source
+  `World_Seed.md` required reading (announcing the fallback when absent);
+  Step C's disposition table defines rebaseline `keep` as carried per
+  Step D; Step E scopes `<!-- REBASELINED FROM ... -->` comments to change
+  sites (1:1 passages stay unmarked — unmarked *is* the 1:1 contract);
+  Step A's no-op flag names seed drift as a legitimate revision-free
+  rebaseline reason. Manifest gains a Consolidation block (`Seed base:`
+  line + carried-1:1 / deltas-applied / divergence-dispositions /
+  structure-upgrades inventory); Context Manifest, Step 3 intake, and the
+  rebaseline sign-off checklist updated to match.
+- `workflows/world-forge-convert.md`: REBASELINE MODE bullets describe the
+  seed-anchored consolidation and demote distillation to the no-seed
+  fallback; the C0 input list marks the source seed required in rebaseline
+  mode; two new pause gates (**C0 Rebaseline No Source Seed**, **C0
+  Rebaseline Divergence Fold-In**); operations-table row updated.
+- `templates/Convert_Brief_Template.md`: rebaseline intro note and the
+  Section 4e / Section 5 *Rebaseline:* notes now describe the 1:1
+  seed-anchored carry instead of "distills from the source".
+- `CLAUDE.md`: principle #10 rebaseline description updated (seed-anchored
+  Step D, divergence scan, fallback).
+- `tutorial.md`: Section 8 rebaseline walkthrough rewritten around the 1:1
+  carry + divergence surfacing.
+
+---
+
 ## 2026-07-05 — Rebaseline picks up the standing Big_Brain_Storm.md idea file
 
 The standing `Big_Brain_Storm.md` idea file (written by standalone

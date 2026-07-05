@@ -13,7 +13,7 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 **When NOT to use the Converter:** if you are changing **setting + protagonist + factions + tone** all at once, you are not converting — you are building a new world that takes inspiration from the source. Use `/worldforge start` against a fresh project folder instead. The Converter will refuse a four-axes-replaced Brief.
 
-**Rebaseline mode:** if you are changing *nothing structural* — same protagonist, same World Mode, same tone — and want to consolidate accumulated revisions into a clean rebuild (optionally adding new mechanics), declare `Operating mode: rebaseline` in Section 1 and invoke with `--rebaseline`. Rebaseline flips this Brief's defaults: Sections 5 and 6 are *kept from the source* instead of authored fresh, and the Section 4e auto-strip reminders invert to carry. See `agent_roles/Converter/00_The_Converter.md` Section 9. The per-section notes below say "*Rebaseline:*" where the rules differ.
+**Rebaseline mode:** if you are changing *nothing structural* — same protagonist, same World Mode, same tone — and want to consolidate accumulated revisions into a clean rebuild (optionally adding new mechanics), declare `Operating mode: rebaseline` in Section 1 and invoke with `--rebaseline`. Rebaseline flips this Brief's defaults: Sections 5 and 6 are *kept from the source* instead of authored fresh, and the Section 4e auto-strip reminders invert to carry. The consolidation is **seed-anchored**: your original `World_Seed.md` carries 1:1 — sections no revision touched keep your exact wording — with each applied revision written into the affected passage in place, and any post-seed drift surfaced for your ask-first decision (the Converter distills from the Master Design only if the source has no seed file). See `agent_roles/Converter/00_The_Converter.md` Section 9. The per-section notes below say "*Rebaseline:*" where the rules differ.
 
 ---
 
@@ -121,7 +121,7 @@ Fill in every section below. Delete instructional text in brackets before submit
 - **`Operative belief`** per relationship carries across **only** when it's between two preserved characters AND doesn't reference `{{user}}`. Beliefs about `{{user}}` get stripped (`{{user}}` has changed); beliefs between preserved characters whose dynamic shifted because the protagonist changed get surfaced for your decision during the Converter's interview.
 - **`Trauma trajectory (arc worlds)`** per intimate character is arc-coupled and always stripped. The base `Trauma map` (trigger + response, no trajectory) carries across normally. Sandbox sources never had a trajectory authored, so this rule is a no-op for sandbox preservation.
 
-***Rebaseline:* the auto-strip rules above invert to carry** — the protagonist and arc spine are unchanged, so Standing Goals, Escalation Ladders (stages, endpoint, collision — with the rebuild starting from the post-revision high-water stage), drift trajectories, operative beliefs, and trauma trajectories transfer verbatim from the post-revision Master Design. Relationship-to-`{{user}}` content also carries (same `{{user}}`). The only strip: drift/trauma/ladder lines referencing an arc you are dropping or restructuring via new mechanics.
+***Rebaseline:* the auto-strip rules above invert to carry** — the protagonist and arc spine are unchanged, so Standing Goals, Escalation Ladders (stages, endpoint, collision — with the rebuild starting from the post-revision high-water stage), drift trajectories, operative beliefs, and trauma trajectories transfer verbatim at their post-revision state (carried from the source seed, with revision deltas applied in place — the Converter's Step D). Relationship-to-`{{user}}` content also carries (same `{{user}}`). The only strip: drift/trauma/ladder lines referencing an arc you are dropping or restructuring via new mechanics.
 
 ### 4f. Section 1 — Core Concept & Tone
 
@@ -162,7 +162,7 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 ## 5. THE NEW PROTAGONIST (`{{user}}`) **[REQUIRED — reframe mode]**
 
-*Rebaseline: skip this section — write `rebaseline — protagonist unchanged, carried from post-revision Master Design` and leave the fields blank. The Converter distills Section 3 from the source.*
+*Rebaseline: skip this section — write `rebaseline — protagonist unchanged, carried at post-revision state` and leave the fields blank. The Converter carries Section 3 over 1:1 from the source seed with any revision deltas applied (distilling from the post-revision Master Design only if the source has no seed file).*
 
 *Reframe mode: this section is always new. The Converter will not transfer protagonist content from the source. Even if you are "playing as the source's antagonist" or "playing as a previously-minor character," the protagonist frame must be authored fresh — the Refiner will treat it as Phase 0 Section 3 material.*
 
