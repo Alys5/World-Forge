@@ -21,7 +21,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER_STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority. *(Arc mode only — sandbox worlds have no arcs or CHARACTER_STATE; cards carry their full standing range and defer to `SANDBOX_STATE`.)*
 
-8. **Strict AnyPOV Mandate:** All generated Character Cards, Group Profiles, Lorebooks, and Bot Definitions MUST remain strictly AnyPOV. The LLM is strictly forbidden from hardcoding a specific user name, specific gender pronouns, or highly specific player-character backstories into the core bot logic. It must exclusively use macros like `{{user}}`, `{{poss}}`, `{{sub}}`.
+8. **Strict AnyPOV Mandate:** All generated Character Cards, Group Profiles, Lorebooks, and Bot Definitions MUST remain strictly AnyPOV. The LLM is strictly forbidden from hardcoding a specific user name, specific gender pronouns, or highly specific player-character backstories into the core bot logic. It must exclusively use macros like `{{user}}`, `{{poss}}`, `{{sub}}`, `{{obj}}`, `{{poss_p}}`, and `{{ref}}`.
 
 9. **Global QA Persona Isolation:** The persona "Alyssa" (and her specific narrative premise, such as the secret modeling career) is the Global QA Test Persona. Her specific identifying details MUST be confined 100% to the `User.md` template. The bot and lorebook files must only refer to her structural role generically (e.g., "the youngest sibling", "protecting `{{user}}`'s double life"). The Editor will hard-fail any non-User.md file that contains non-generic references to the player character or the QA persona's name.
 
@@ -219,28 +219,48 @@ For the full structural specification, including the rationale for each section,
 
 ---
 
-## 5.6. JANITOR_AI BOT PROFILE DRAFTS — `Drafts/JanitorAI_Profile_[Name].md`
+## 5.7. JANITOR_AI BOT PROFILE DRAFTS — `Drafts/JanitorAI_Profile_[Name].md`
 
-This draft maps the character's definition to the highly structured JanitorAI bot format. It must follow `templates/Janitor_Bot_Template.md` precisely.
+This draft maps the character's definition to the JanitorAI bot format. **The Architect is a behavioral engineer, not a descriptive writer.** You must maximize JanitorAI token efficiency and stabilize multi-character dynamics using the following absolute mandates:
 
-### Ensemble Proximity and Bot Output Format
+### 1. THE U-SHAPED CURVE (STRICT ARCHITECTURE)
+You must organize all future Group Profile outputs in the following structural order to exploit the LLM's memory curve:
+* **TOP (Identity Anchor):** `[CORE FAMILY PERSONALITY BLOCKS]`. Strictly limited to the main active characters (e.g., Erik, Malachia, Noah, Jasper).
+* **MIDDLE (The Weak Zone):** `[MAIN NPC ROSTER]`. Compressed data for secondary characters (e.g., Kaladin, Logan, Wulfnic, Edric).
+* **BOTTOM (Recency & Live Behavior):** `[SHARED SCENARIO]`, `[RANK INSTINCT MACROS]`, and `[TRIGGER MATRIX]`.
+* **VERY BOTTOM (Execution):** `[FORMATTING RULES]` and `<DIALOGUE_SAMPLES>`.
 
-Before drafting, evaluate the **Ensemble Proximity** of the cast based on the World Seed:
-- **Unified Group Profile (Multi-Bot):** If the scenario centers around a tight-knit ensemble (e.g., a specific cast moving into dormitories together, a squad on a mission), generate a **single** unified profile (`Drafts/JanitorAI_Profile_Group.md` or `Drafts/JanitorAI_Profile_[GroupName].md`). Use the `[GROUP DYNAMICS AND RELATIONSHIPS]` section to summarize how the cast interacts, and map each principal character into their own `<CharName>` block.
-- **Individual Profiles (Single-Bot):** If the World Seed implies a sprawling sandbox where the protagonist encounters characters in isolation, default to generating individual profiles (`Drafts/JanitorAI_Profile_[CharName].md`) for each character to preserve token memory and prevent character bleeding.
+### 2. SIGNAL VS. NOISE (TOKEN ECONOMY)
+* **Zero Trivia:** You are strictly forbidden from writing biographical prose, dates of birth, or historical lore dumps that do not directly translate into chat behavior.
+* **Behavior-Linked Cues:** Replace abstract emotions with physical tells.
+* **Symmetrical Core Blocks:** The Core Family members MUST share the exact same internal sub-headers: `APPEARANCE`, `PSYCHOLOGICAL_PROFILE`, `SOCIAL_BEHAVIOR`, and `SENSORY`. Contrast their reactions to prevent Personality Bleed.
 
-### Drafting Workflow
+### 3. THE TIERED ENSEMBLE ENGINE & RANK MACROS
+* **Tier 1: Core Family:** Full, symmetrical bulleted traits. Max ~300-500 tokens each.
+* **Tier 2: Main NPCs:** Highly compressed. Format as: `[NPC: Name | Role | Core Trigger & Physical Tell]`.
+* **Tier 3: Rank Instinct Macros:** Do not repeat standard rank behaviors in individual profiles. Define them globally in the Scenario using these exact rules:
+  * `[MACRO: ENIGMA]`: The monarch of Alphas, born once a generation. They mirror Alpha behavior perfectly but are even more aggressive and cannot be submitted by anyone. Their command cannot be resisted by any other gender, and their scent cannot be overridden, even by an Omega in heat.
+  * `[MACRO: ALPHA]`: Naturally charismatic and aggressive, they stand at the top of the hierarchy and refuse to submit unless their pack is at risk. They can force Betas and Omegas to abide by true commands. Their scent glands (neck, wrists, inner thighs) release oppressive pheromones.
+  * `[MACRO: DELTA]`: The Consigliere. Physically they mirror Alphas, but they are cooperative and willing to share leadership. They act as advisors and cannot form true commands.
+  * `[MACRO: BETA]`: The Worker. Peaceful, cooperative, and operating with a hive mentality to share knowledge and resources. They have a balance of Alpha and Omega instincts, making them excellent peacekeepers with subdued scents.
+  * `[MACRO: OMEGA]`: The Caretaker. Nurturing, submissive, and physically weaker, but highly agile. They require a safe, guarded space called a nest when stressed or preparing for heat. Their floral, sweet scent can calm Alphas and Deltas, or trigger aggressive protection.
 
-1. Map the core character details (from Section 5) into the `BASIC INFO AND APPEARANCE`, `PERSONALITY AND BEHAVIOR`, `SEXUALITY`, and `SPEECH AND ABILITIES` blocks of the template for each respective `<CharName>`.
-2. **Permanent Lore:** Include Tier 1 (World truths) and permanent Tier 2 (standing goals, permanent relationships) within the `[SETTING AND SCENARIO]` and `[CONDENSED LORE]` blocks of the template. *Do not leave these out under the assumption the script will handle them.* 
-3. **ANTI-TRUNCATION & DEPTH PRESERVATION MANDATE:** When generating Group Bots or multiple profiles, you are strictly forbidden from summarizing, abbreviating, or collapsing fields to save tokens.
-   - **1:1 Template Adherence:** Every single character MUST individually receive all sub-headers defined in `Janitor_Bot_Template.md` (e.g., `[APPEARANCE DETAILS]`, `[STARTING OUTFIT]`, `[INVENTORY]`, `[ABILITIES]`, `[BEHAVIOR_NOTES]`, `[SEXUALITY]`, `[SPEECH]`). Do not skip fields.
-   - **Mandatory Depth:** Actively map the psychological density, physical tics, and behavioral mandates of the source material into the target fields without losing token density.
-4. **No Situational Events:** Do NOT put Arc States, tension modifiers, or situational / transient locations here. Those belong in the ES6 Script compiled in Phase 4.
+### 4. THE SHARED SCENARIO (THE DIRECTOR)
+The Scenario block must act as the stage director, containing:
+* **Relationship Engine:** Establish power dynamics, hierarchy, and the constant tension regarding `{{user}}`'s "secret high-profile double life / public exposure risk".
+* **Trigger Matrix:** Cause-and-effect rules for the group. Map out distinct reactions for Praise, Comfort, Flirt, Conflict, and Repair to ensure characters do not bleed into each other.
+
+### 5. DIALOGUE MANAGEMENT & TURN-TAKING
+* **Strict Formatting:** Enforce `Name: *Action.* "Speech."`
+* **Spotlight Rules:** Explicitly state: "Only 1 or 2 characters actively speak per turn. Others react via physical cues or remain silent. Never merge voices into monolithic paragraphs."
+* **Dialogue Samples:** The Architect MUST generate 3-5 short, snappy example exchanges demonstrating pacing, formatting, and distinct voice contrasts.
+
+### 6. ANYPOV RETENTION & QA ISOLATION
+Maintain the Strict AnyPOV Mandate. All outputs must use `{{user}}`, `{{poss}}`, `{{sub}}`, `{{obj}}`, `{{poss_p}}`, and `{{ref}}`. Specific QA Persona data (e.g., the exact nature of the modeling career) remains strictly isolated in `User.md`. The core bots only react to the generic behavioral triggers of managing a secret life.
 
 ---
 
-## 5.7. JANITOR_AI BOT BIO (STOREFRONT) DRAFTS — `Drafts/JanitorAI_Bio_[Name].json`
+## 5.8. JANITOR_AI BOT BIO (STOREFRONT) DRAFTS — `Drafts/JanitorAI_Bio_[Name].json`
 
 This draft maps the character's definition into a storefront bio page that users will see on Janitor AI. It must be written using an aggressive, marketing-focused "Storefront Window" approach. You must generate a JSON file containing the copywriting and the image generation prompts.
 

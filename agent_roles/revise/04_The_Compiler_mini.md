@@ -72,7 +72,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 - `system_prompt` starts with `{{original}}` on its own line
 - `post_history_instructions` same
 - Validate against parent's hard-fail rules before writing
-- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.md` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`. **ANTI-TRUNCATION VERIFICATION:** If the profile is a Group Bot, ensure EVERY character possesses ALL sub-headers defined in the template. If any fields are abbreviated or summarized, halt and report.
+- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.md` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`. **ANTI-TRUNCATION VERIFICATION:** If the profile is a Group Bot, ensure EVERY Core Family character possesses ALL symmetrical sub-headers (`APPEARANCE`, `PSYCHOLOGICAL_PROFILE`, `SOCIAL_BEHAVIOR`, `SENSORY`). If any fields are abbreviated or summarized, halt and report.
 
 **For each touched lorebook (`Tier[N]_*.md` → `*_Lorebook.json` or `Arc[N]_*Lorebook.json`):**
 - Read existing JSON

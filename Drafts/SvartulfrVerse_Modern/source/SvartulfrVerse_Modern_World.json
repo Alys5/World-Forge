@@ -1,0 +1,1074 @@
+{
+  "_copyright": {
+    "source": "Sophias LoreBary",
+    "website": "https://lorebary.com",
+    "notice": "This lorebook was created with Sophias LoreBary. All content rights belong to the original author.",
+    "license": "Content is protected by copyright. Unauthorized redistribution is prohibited.",
+    "exportedAt": "2026-06-22T13:25:33.962Z"
+  },
+  "meta": {
+    "title": "SvartulfrVerse Modern World",
+    "author": "Lys_5",
+    "description": "This is a <b>modern realistic</b> setting centered on the corporate and criminal power dynamics of 2024 Los Angeles. The lore focuses on the <b>Douglas-Bloodmoon</b> family dynasty, their high-security <b>Beverly Hills estate</b>, and the internal struggles to maintain their legacy following the death of Nixara. Roleplays can explore themes of extreme wealth, surveillance, and tactical security conflicts involving <b>DCC Security</b>, ranging from high-society politics to underground warehouse parties.",
+    "category": "original",
+    "tags": [
+      "modern crime drama",
+      "corporate dynasty",
+      "Los Angeles noir",
+      "family power struggles",
+      "high-stakes thriller"
+    ],
+    "createdAt": "2026-06-22T13:24:57.985Z",
+    "updatedAt": "2026-06-22T13:25:14.785Z"
+  },
+  "entries": {
+    "0": {
+      "uid": 0,
+      "key": [
+        "Los Angeles",
+        "LA 2024",
+        "World",
+        "Society",
+        "Earth",
+        "Conflict"
+      ],
+      "keysecondary": [
+        "politics",
+        "power",
+        "struggle",
+        "elite",
+        "class"
+      ],
+      "comment": "World: Era, Setting & Society",
+      "content": "[World: LA 2024 & Society] Era(2024), Setting(Contemporary human-only Los Angeles), Earth(Realistic 2020s physics/politics), Off-world(Supernatural Gate blocked. No magic/monsters. Focus entirely on corporate/criminal power dynamics). Society(Corporate hierarchy + family power politics), Social_Structure(Wealth concentration + elite impunity), Conflicts(Douglas-Bloodmoon internal struggles for autonomy + Rogue Mercenary probes).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 0,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "1": {
+      "uid": 1,
+      "key": [
+        "World",
+        "DCC Security",
+        "Tech",
+        "Arsenal",
+        "Surveillance"
+      ],
+      "keysecondary": [
+        "Weapons",
+        "Vehicles",
+        "Car",
+        "Gun",
+        "Security",
+        "Camera",
+        "Tracker"
+      ],
+      "comment": "World: Tech & Arsenal",
+      "content": "[World: Tech] Tech(High-end smart devices + security tracking), Surveillance(Estate perimeter grids + constant security detail check-ins), Weapons(DCC Security tactical non-lethal and lethal arms), Vehicles(Logan's yellow convertible + armored SUVs).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 1,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "2": {
+      "uid": 2,
+      "key": [
+        "Environment",
+        "Atmosphere",
+        "Weather",
+        "Wildlife",
+        "World",
+        "Los Angeles",
+        "LA"
+      ],
+      "keysecondary": [
+        "Look",
+        "Outside",
+        "Sky",
+        "Sun",
+        "Rain",
+        "Air",
+        "Nature",
+        "Vibe"
+      ],
+      "comment": "World: Environment & Atmosphere",
+      "content": "[World: Environment] Environment(Beverly Hills luxury vs DTLA industrial grit), Atmosphere(Cinematic Californian Golden Hour + amber/obsidian palette), Weather(Coastal breeze + warm sun + wet asphalt at night), Agriculture(Manicured estate gardens), Wildlife(Urban coyotes + decorative birds).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 2,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "3": {
+      "uid": 3,
+      "key": [
+        "Culture",
+        "Economy",
+        "Entertainment",
+        "Language",
+        "Money",
+        "Party",
+        "Event"
+      ],
+      "keysecondary": [],
+      "comment": "World: Economy & Culture",
+      "content": "[World: Culture] Economy(Billionaire corporate wealth vs underground artist hustle), Entertainment(Underground DJ Frequency warehouse parties + UCLA campus events + Santa Monica pier), Language(Modern English + Californian slang + tactical PMC jargon).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 3,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "4": {
+      "uid": 4,
+      "key": [
+        "World Context",
+        "Mission",
+        "Status",
+        "Narrative",
+        "Plot"
+      ],
+      "keysecondary": [
+        "Family",
+        "Goal",
+        "Plan",
+        "Hide",
+        "Protect",
+        "Danger",
+        "Current"
+      ],
+      "comment": "World: Narrative Status",
+      "content": "[World: Narrative] Context(United grief over Nixara's 2005 death shapes extreme overprotection of twins), Status(Cold war with rogue mercs), Position(Dynastic supremacy), Mission(Maintain family legacy and protect Alyssa/Jasper), Relationships(Corporate alliances vs underground loyalties).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 4,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "5": {
+      "uid": 5,
+      "key": [
+        "Douglas Estate",
+        "Tenuta",
+        "Mansion",
+        "Compound",
+        "Home"
+      ],
+      "keysecondary": [],
+      "comment": "Location: Douglas Estate (Position)",
+      "content": "[Location: Douglas Estate] Position(Beverly Hills, LA), Type(Gated luxury compound and primary Douglas-Bloodmoon fortress).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 5,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "6": {
+      "uid": 6,
+      "key": [
+        "Douglas Estate",
+        "Tenuta",
+        "Mansion",
+        "Compound",
+        "Home"
+      ],
+      "keysecondary": [
+        "inside",
+        "room",
+        "hall",
+        "layout",
+        "interior",
+        "enter",
+        "describe"
+      ],
+      "comment": "Location: Douglas Estate (Description)",
+      "content": "[Douglas Estate: Inside] Description(Old-money prestige + family warmth + rigid surveillance), Layout(Sports Atrium + Erik's Throne Room + Alyssa's Solarium + Malachia's tactical East Wing + Jasper's DJ studio + Noah's kitchens + Wulfnic's library).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 6,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "7": {
+      "uid": 7,
+      "key": [
+        "Douglas Estate",
+        "Tenuta",
+        "Mansion",
+        "Compound",
+        "Home"
+      ],
+      "keysecondary": [
+        "outside",
+        "near",
+        "perimeter",
+        "gate",
+        "leave",
+        "arrive",
+        "yard",
+        "street"
+      ],
+      "comment": "Location: Douglas Estate (Near Location)",
+      "content": "[Douglas Estate: Perimeter] Near_Location(Fortress-like DCC Security perimeter + gatehouse + underground garage + heavily monitored Beverly Hills streets).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 7,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "8": {
+      "uid": 8,
+      "key": [
+        "Douglas Estate",
+        "Tenuta",
+        "Mansion",
+        "Compound",
+        "Home"
+      ],
+      "keysecondary": [
+        "who",
+        "people",
+        "family",
+        "guards",
+        "presence",
+        "occupants",
+        "meet"
+      ],
+      "comment": "Location: Douglas Estate (Occupants)",
+      "content": "[Douglas Estate: Occupants] PC/NPC(Erik + Wulfnic + Malachia + Noah + Jasper + Alyssa + Kaladin + Marcus + DCC Security guards).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 8,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "9": {
+      "uid": 9,
+      "key": [
+        "UCLA",
+        "University",
+        "Campus",
+        "Westwood",
+        "College"
+      ],
+      "keysecondary": [],
+      "comment": "Location: UCLA Campus (Position)",
+      "content": "[Location: UCLA Campus] Position(Westwood, LA), Type(Academic, social, and political hub for the younger generation).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 9,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "10": {
+      "uid": 10,
+      "key": [
+        "UCLA",
+        "University",
+        "Campus",
+        "Westwood",
+        "College"
+      ],
+      "keysecondary": [
+        "hall",
+        "library",
+        "plaza",
+        "class",
+        "building",
+        "inside",
+        "where",
+        "describe"
+      ],
+      "comment": "Location: UCLA Campus (Sub-locations)",
+      "content": "[UCLA Campus: Sub-Locations] Description(Brick architecture + manicured lawns + high student density), Sub_Locations(Royce Hall + Powell Library + Bruin Walk + Bruin Plaza + Ackerman Union + Kerckhoff Hall + Janss Steps + Pauley Pavilion + Sunset Recreation Center).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 10,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "11": {
+      "uid": 11,
+      "key": [
+        "UCLA",
+        "University",
+        "Campus",
+        "Westwood",
+        "College"
+      ],
+      "keysecondary": [
+        "near",
+        "outside",
+        "around",
+        "leave",
+        "surroundings",
+        "street"
+      ],
+      "comment": "Location: UCLA Campus (Near)",
+      "content": "[UCLA Campus: Near Location] Near_Location(Westwood village coffee shops + Santa Monica Waterfront is a short drive away + Rose Bowl in Pasadena for football).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 11,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "12": {
+      "uid": 12,
+      "key": [
+        "UCLA",
+        "University",
+        "Campus",
+        "Westwood",
+        "College"
+      ],
+      "keysecondary": [
+        "who",
+        "students",
+        "people",
+        "meet",
+        "crowd",
+        "occupants"
+      ],
+      "comment": "Location: UCLA Campus (Occupants)",
+      "content": "[UCLA Campus: Occupants] PC/NPC(Alyssa + Jasper + Noah + Sierra + KSA Fraternity brothers + USAC student government + DCC Security shadow guards + Jared + Five Cocketeers + Dr Thorne).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 12,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "13": {
+      "uid": 13,
+      "key": [
+        "The Verve",
+        "Logan's bar",
+        "garage-lounge",
+        "Nightclub"
+      ],
+      "keysecondary": [
+        "inside",
+        "describe",
+        "layout",
+        "interior",
+        "enter"
+      ],
+      "comment": "Location: The Verve (Position & Description)",
+      "content": "[Location: The Verve] Position(DTLA Arts District), Description(Logan's garage by day, exclusive nightclub by night. Exposed brick + steel beams + mechanical car-lift + long balcony), Type(PMC-free safe zone for the family).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 13,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "14": {
+      "uid": 14,
+      "key": [
+        "The Verve",
+        "Logan's bar",
+        "garage-lounge",
+        "Nightclub"
+      ],
+      "keysecondary": [
+        "near",
+        "outside",
+        "who",
+        "people",
+        "occupants",
+        "around"
+      ],
+      "comment": "Location: The Verve (Near & Occupants)",
+      "content": "[The Verve: Context] Near_Location(Douglas Customs workshop + DTLA streets + DJ Frequency warehouse venues), PC/NPC(Logan + Jasper + underground artists + off-duty family seeking decompression).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 14,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "15": {
+      "uid": 15,
+      "key": [
+        "Seven Hills",
+        "Seven Hills Estate",
+        "Training base"
+      ],
+      "keysecondary": [
+        "inside",
+        "describe",
+        "layout",
+        "interior",
+        "enter"
+      ],
+      "comment": "Location: Seven Hills Estate (Position & Description)",
+      "content": "[Location: Seven Hills] Position(Countryside outside LA), Description(Ancestral DCC estate and DCC Security training site. Georgian villa + formal hall + wine cellar + outdoor boxing ring + strength structures).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 15,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "16": {
+      "uid": 16,
+      "key": [
+        "Seven Hills",
+        "Seven Hills Estate",
+        "Training base"
+      ],
+      "keysecondary": [
+        "near",
+        "outside",
+        "who",
+        "people",
+        "occupants",
+        "around"
+      ],
+      "comment": "Location: Seven Hills Estate (Near & Occupants)",
+      "content": "[Seven Hills: Context] Near_Location(Wooded reserve + isolated roads), PC/NPC(Malachia + DCC Security operators + Kaladin + occasionally family on retreat).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 16,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "17": {
+      "uid": 17,
+      "key": [
+        "Santa Monica",
+        "Santa Monica Waterfront",
+        "Pier",
+        "Beach"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: Santa Monica Waterfront",
+      "content": "[Location: Santa Monica] Position(Coastal LA near UCLA), Description(Neutral coastal leisure zone. Beach + pier + Third Street Promenade), Type(Casual decompression zone outside family/Logan territory).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 17,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "18": {
+      "uid": 18,
+      "key": [
+        "Douglas Customs",
+        "Arts District",
+        "Logan's workshop"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: Douglas Customs",
+      "content": "[Location: Douglas Customs] Position(DTLA Arts District), Description(Logan's mechanical workspace. Industrial + practical + working-class + restoration bays + motorcycle workstations), Type(Sharp contrast to corporate Douglas identity).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 18,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "19": {
+      "uid": 19,
+      "key": [
+        "Echo Alley",
+        "Silver Lake Overlook",
+        "Malibu Lookout",
+        "Downtown Alley",
+        "Rooftop set"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: DJ Frequency Spots",
+      "content": "[Location: DJ Frequency Spots] Position(Underground sets across LA like Echo Alley, Silver Lake Overlook, Malibu Lookout), Description(Wet asphalt + city lights + coastal breeze + deep concrete bass), Type(Secret meeting spots + zero automated security + vulnerable to doxxing/mercs).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 19,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "20": {
+      "uid": 20,
+      "key": [
+        "Rose Bowl",
+        "Pasadena",
+        "Stadium"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: Rose Bowl",
+      "content": "[Location: Rose Bowl] Position(Pasadena, 25 miles from Westwood), Description(UCLA Bruins football home stadium), Type(Game-day visibility + Erik's anonymous fan identity + KSA social culture + Malachia's sports-science context).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 20,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "21": {
+      "uid": 21,
+      "key": [
+        "Military Base",
+        "LAAFB",
+        "Los Alamitos",
+        "San Pedro",
+        "Space Systems Command"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: LA Military Bases",
+      "content": "[Location: LA Military Bases] Position(Strategic installations near LA), Type(LAAFB in El Segundo + Joint Forces Training Base in Los Alamitos + Coast Guard in San Pedro), Context(Military backdrop to PMC activities).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 21,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "22": {
+      "uid": 22,
+      "key": [
+        "DCC Tower",
+        "Century City",
+        "Headquarters",
+        "Office",
+        "DCC HQ"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: DCC Tower",
+      "content": "[Location: DCC Tower] Position(Century City, LA), Description(Corporate monolith of glass and steel + cold clinical atmosphere + high-altitude boardrooms), Type(The true corporate domain of Erik and Noah).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 22,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "23": {
+      "uid": 23,
+      "key": [
+        "Angel & Co Studios",
+        "West Hollywood",
+        "Studio fotografico",
+        "Photo studio"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: Angel & Co Studios",
+      "content": "[Location: Angel & Co Studios] Position(West Hollywood), Description(Chaotic + high fashion + neon lights + blasting pop music + racks of designer clothes), Type(Alyssa's secret modeling set and escape from the Estate).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 23,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "24": {
+      "uid": 24,
+      "key": [
+        "/DCC Medbay/gi",
+        "/Medbay/gi",
+        "/Clinica sotterranea/gi",
+        "/Underground clinic/gi",
+        "/Infirmary/gi"
+      ],
+      "keysecondary": [],
+      "comment": "Secondary Location: DCC Security Medbay",
+      "content": "[Location: DCC Security Medbay] Position(Underground level of Douglas Estate), Description(High-tech private clinic + sterile smell + surgical steel), Type(Where Malachia and militia operatives recover from fights + Alyssa hides to study or steal medical supplies).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 24,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "25": {
+      "uid": 25,
+      "key": [
+        "/Douglas Commerce Company/gi",
+        "/DCC/gi",
+        "/Corporate/gi"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: Douglas Commerce Company",
+      "content": "[Faction: DCC] Role(Billionaire corporate arm of the Douglas-Bloodmoon dynasty), Leadership(Erik commands + Noah supports legal/PR), Methods(Proxy deals + boardroom pressure + legal leverage + arms dealing through DCC Security).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 25,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "26": {
+      "uid": 26,
+      "key": [
+        "/DCC Security/gi",
+        "/Private Militia/gi",
+        "/Arms Sales/gi",
+        "/Black Wolf Division/gi"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: DCC Security (Sostituisce Vanguard)",
+      "content": "[Faction: DCC Security] Role(Private militia and global arms sales division of the Douglas Commerce Company), Leadership(Managed entirely by Director Kaladin Nargathon), Methods(Tactical discipline + perimeter control + extraction protocols + arms trade), Type(Highly trained human military force + strictly non-supernatural).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 26,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "27": {
+      "uid": 27,
+      "key": [
+        "Kappa Sigma",
+        "KSA",
+        "Fraternity"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: Kappa Sigma",
+      "content": "[Faction: Kappa Sigma] Role(UCLA fraternity tied to Douglas-Bloodmoon legacy), Members(Erik, Logan, Malachia, Noah are alumni. Jasper refuses recruitment), Context(Major source of alumni pressure and campus social conflict).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 27,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "28": {
+      "uid": 28,
+      "key": [
+        "UCLA USAC",
+        "Student Organizations",
+        "USAC"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: UCLA USAC",
+      "content": "[Faction: UCLA USAC] Role(Undergraduate student government controlling major funding and campus politics), Context(Public arena where the Douglas-Bloodmoon younger generation tests their independence + over 1000 organizations).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 28,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "29": {
+      "uid": 29,
+      "key": [
+        "Angel & Co",
+        "Fashion PR",
+        "Modeling agency"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: Angel & Co",
+      "content": "[Faction: Angel & Co] Role(Independent boutique fashion photography and talent studio run by Angel Moreno), Context(Professional fashion microculture around Alyssa's secret modeling life + independent from estate control).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 29,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "30": {
+      "uid": 30,
+      "key": [
+        "Rogue Mercenaries",
+        "Mercenary",
+        "Threat",
+        "Enemies"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: Rogue Mercenaries",
+      "content": "[Faction: Rogue Mercs] Role(Unnamed ambient pressure near Douglas-Bloodmoon territory), Methods(Deniable harassment + transponder noise + anomalies to trigger PMC posture without naming specific factions).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 30,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "31": {
+      "uid": 31,
+      "key": [
+        "DCC Board",
+        "Board of Directors",
+        "Azionisti",
+        "Shareholders",
+        "Board"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: DCC Board of Directors",
+      "content": "[Faction: DCC Board] Role(Internal threat to Erik's leadership), Context(Old billionaires and shareholders + view Jasper's lifestyle as a liability + constantly seek leverage to undermine Erik's absolute control).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 31,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "32": {
+      "uid": 32,
+      "key": [
+        "LAPD",
+        "Police",
+        "Polizia",
+        "Cops"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: LAPD",
+      "content": "[Faction: LAPD] Role(Corrupted or legally neutralized local authorities), Context(Noah's legal traps and DCC bribes keep them away + allows DCC Security to operate heavily armed in Beverly Hills with absolute impunity).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 32,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "33": {
+      "uid": 33,
+      "key": [
+        "Paparazzi",
+        "Media",
+        "Gossip",
+        "Reporters",
+        "Press"
+      ],
+      "keysecondary": [],
+      "comment": "Faction: Paparazzi / Media",
+      "content": "[Faction: Paparazzi] Role(External media pressure), Context(View the dynasty as 'LA Royalty' + morbidly hunt for Alyssa's photos, Erik's secrets, and Jasper's underground scandals).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 33,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "34": {
+      "uid": 34,
+      "key": [
+        "Nixara",
+        "Grief",
+        "Childbirth",
+        "Mother",
+        "Death"
+      ],
+      "keysecondary": [],
+      "comment": "Lore: Nixara's Death",
+      "content": "[Lore: Nixara's Death] Event(Nixara Bloodmoon died in childbirth on April 22, 2005 giving birth to twins Jasper & Alyssa), Impact(Erik never recovered + origin of escalated family surveillance and overprotection + central historical wound).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 34,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "35": {
+      "uid": 35,
+      "key": [
+        "Sunday Lunch",
+        "Pranzo della domenica",
+        "Family dinner"
+      ],
+      "keysecondary": [],
+      "comment": "Lore: Sunday Lunch",
+      "content": "[Lore: Sunday Lunch] Event(Untouchable tradition at the Douglas Estate), Purpose(Mandatory family government session where separated worlds collide), Dynamics(Erik controls + Malachia shields + Noah mediates + Jasper disrupts).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 35,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "36": {
+      "uid": 36,
+      "key": [
+        "BLACKROOM",
+        "Encrypted thread",
+        "Message"
+      ],
+      "keysecondary": [],
+      "comment": "Lore: BLACKROOM",
+      "content": "[Lore: BLACKROOM] Event(Secure messaging layer used by Echo, Alyssa, and household to ping Jasper during DJ gigs), Impact(Ignored phone generates guilt and family pressure + discovered at later stages).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 36,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "37": {
+      "uid": 37,
+      "key": [
+        "Extraction Protocol",
+        "Codice Nero",
+        "Black Code",
+        "Panic",
+        "Heart-rate spike"
+      ],
+      "keysecondary": [],
+      "comment": "Lore: Extraction Protocol",
+      "content": "[Lore: Extraction Protocol] Event(DCC Security absolute Rules of Engagement), Trigger(Alyssa or Jasper's smartwatch detects panic or heart-rate spike), Action(DCC Militia breaches immediately + disregards local laws, LAPD, and collateral damage to extract the VIP).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 37,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "38": {
+      "uid": 38,
+      "key": [
+        "Bloodmoon Heritage",
+        "Bloodmoon lineage",
+        "Old Money",
+        "Douglas-Bloodmoon"
+      ],
+      "keysecondary": [
+        "history",
+        "lore",
+        "origin",
+        "tradition"
+      ],
+      "comment": "Lore: Bloodmoon Heritage",
+      "content": "[Lore: Bloodmoon Heritage] Context(Deep contrast between the two families), Douglas(Ruthless US corporate new money focused on absolute control), Bloodmoon(European old money + nordic traditions + symbolic occultism + Wulfnic's domain).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 38,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "39": {
+      "uid": 39,
+      "key": [
+        "Douglas-Bloodmoon",
+        "Cognome",
+        "Surname",
+        "Last name"
+      ],
+      "keysecondary": [
+        "why",
+        "reason",
+        "history"
+      ],
+      "comment": "Lore: The Hyphenated Surname",
+      "content": "[Lore: The Hyphenated Surname] Context(Political weight of the 'Douglas-Bloodmoon' name), Rule(Wulfnic demanded the Bloodmoon side not be erased by Erik + forces the second generation to bear the heavy legacy of both houses).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 39,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "40": {
+      "uid": 40,
+      "key": [
+        "Temporal Framework",
+        "Time Mechanics",
+        "Passage of time",
+        "World Rules"
+      ],
+      "keysecondary": [
+        "Time",
+        "Temporal",
+        "Days",
+        "Hours",
+        "Wait",
+        "Long",
+        "Duration",
+        "Pass",
+        "Pacing"
+      ],
+      "comment": "Lore: Temporal Framework",
+      "content": "[Lore: Temporal Framework] Mechanics(1 in-game day equals 24 hours + realistic pacing), Rule(Actions like construction, research, healing, and travel require realistic time to complete + no instant fast-travel), Impact(Forces strategic planning and patience).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 40,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "41": {
+      "uid": 41,
+      "key": [
+        "Economic Framework",
+        "Resources",
+        "Production",
+        "Supply chain",
+        "Wealth"
+      ],
+      "keysecondary": [
+        "cost",
+        "buy",
+        "trade",
+        "corporate",
+        "market",
+        "expensive"
+      ],
+      "comment": "Lore: Economic Framework",
+      "content": "[Lore: Economic Framework] System(21st-century hyper-capitalism + DCC controls massive wealth and supply chains), Resources(Managed realistically + scarcity applies to underground/civilian sectors while elites hoard assets), Production(Corporate cycles dictate logistics).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 41,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "42": {
+      "uid": 42,
+      "key": [
+        "Travel",
+        "Drive",
+        "Traffic",
+        "Logistics",
+        "Transport",
+        "Flight",
+        "Ride"
+      ],
+      "keysecondary": [
+        "distance",
+        "far",
+        "vehicle",
+        "convoy",
+        "street",
+        "highway"
+      ],
+      "comment": "Lore: Travel & Logistics",
+      "content": "[Lore: Logistics & Travel] Reality(LA traffic is gridlocked and slow + distances matter), Transport(DCC Security uses armored convoys + DCC uses private flights), Rule(Movement between locations like Westwood, DTLA, and Seven Hills takes realistic travel time).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 42,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "43": {
+      "uid": 43,
+      "key": [
+        "texting",
+        "discord",
+        "reddit",
+        "twitter",
+        "instagram",
+        "phone",
+        "text",
+        "message",
+        "BLACKROOM"
+      ],
+      "keysecondary": [],
+      "comment": "Social Media & Secure Texting Format",
+      "content": "[FORMAT: Social Media & Texting] SOCIAL POST GENERATION: When characters text {{user}} via BLACKROOM, Discord, or SMS, use codeblocks or specific headers to simulate the device interface. ➤ BLACKROOM: Prefix with '[BLACKROOM - Encrypted]' for high-stakes/secret family messages (especially used by Jasper/Alyssa to hide from Erik). ➤ Social Media: Use '@username:' style formats. This breaks up the text and provides an immersive visual.",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 43,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "44": {
+      "uid": 44,
+      "key": [
+        "stream",
+        "livestream",
+        "dj set",
+        "radio",
+        "broadcast",
+        "going live"
+      ],
+      "keysecondary": [],
+      "comment": "DJ Frequency Set / Stream Format",
+      "content": "[FORMAT: DJ Set Streaming] LIVESTREAM SIMULATION: When Jasper performs an underground set as DJ Frequency or broadcasts a pirate signal, simulate a live stream overlay. Generate fake Twitch/Soundcloud fan comments in codeblocks (e.g., `[User123]: this drop is insane 🔥`) to show crowd reaction dynamically during the roleplay.",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 44,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    },
+    "45": {
+      "uid": 45,
+      "key": [
+        "2021",
+        "first kiss",
+        "Noah kissed Alyssa",
+        "teach how to kiss",
+        "date"
+      ],
+      "keysecondary": [
+        "Alyssa",
+        "Noah",
+        "Jasper",
+        "kiss",
+        "16",
+        "21"
+      ],
+      "comment": "Lore: 2021 Event (The First Kiss)",
+      "content": "[Lore: Event 2021 - The First Kiss] Context(In 2021, when Alyssa was 16 and Noah was 21. Alyssa had a date and was terrified of not knowing how to kiss), Event(Alyssa asked Noah to teach her how to kiss. She didn't ask Jasper because he was as inexperienced as her, and didn't ask Malachia because he would 'have a target to hit'. Noah decided the simplest way was a practical demonstration and kissed his 16-year-old sister), Repercussion(They both agreed to keep this a strict secret between them. If Jasper were to ever find out, he would be horrified and furious that the 21-year-old Noah crossed that line with their underage sister).",
+      "constant": false,
+      "selective": false,
+      "disable": false,
+      "order": 45,
+      "position": 0,
+      "category": "",
+      "keyMatchMode": "any"
+    }
+  },
+  "chapters": []
+}

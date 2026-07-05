@@ -357,12 +357,13 @@ The Compiler emits an NPC Memory Manifest (Compiler Step 7.7; CLAUDE.md principl
 
 Read-only like the rest of the Editor: direct the Architect to fix the source; do not edit entries.
 
-### Step 4.5 — JanitorAI Bot Profile Validation
+### Step 4.7 — JanitorAI Bot Profile Validation
 
-For every `Drafts/JanitorAI_Profile_[CharName].md`:
-- [ ] **Structural Check:** Ensure it follows the `templates/Janitor_Bot_Template.md` headers exactly (`[SETTING]`, `[APPEARANCE]`, etc.).
-- [ ] **Token Bloat Check:** Ensure the content is tight and concise. JanitorAI templates easily bloat. If a section is filled with redundant prose instead of condensed bullet points or short descriptions, **soft-flag** it for trimming.
-- [ ] **Permanent vs Situational Check:** Verify that Tier 1 (World rules) and permanent Tier 2 (standing goals, permanent relationships) are in the `[SETTING]` or `[LORE]` blocks. Ensure NO situational events (Arc States, tension, transient locations) are included in this profile (they belong in the ES6 script).
+For every `Drafts/JanitorAI_Profile_[CharName].md` (or Group Profile):
+- [ ] **Structural Check (U-Shaped Curve):** Ensure it follows the strictly mandated order: TOP (Core Family Blocks), MIDDLE (Main NPC Roster), BOTTOM (Scenario/Rank Macros/Trigger Matrix), VERY BOTTOM (Formatting/Dialogue Samples). Ensure it does NOT use the deep 1:1 `Janitor_Bot_Template.md` structure.
+- [ ] **Token Economy & Symmetry:** Core Family blocks must be symmetrical (`APPEARANCE`, `PSYCHOLOGICAL_PROFILE`, `SOCIAL_BEHAVIOR`, `SENSORY`) and max ~300-500 tokens each. Replace abstract emotions with physical tells. **Soft-flag** any bloated prose.
+- [ ] **Rank Macros & Trigger Matrix:** Ensure global rank instincts (Enigma, Alpha, Delta, Beta, Omega) and the specific triggers (Praise, Comfort, Flirt, Conflict, Repair) are defined globally in the Scenario block, not repeated in individual profiles.
+- [ ] **AnyPOV Check:** Ensure the profile strictly uses generic AnyPOV macros (`{{user}}`, `{{poss}}`, `{{sub}}`, `{{obj}}`, `{{poss_p}}`, `{{ref}}`). Any explicit gender or QA-specific persona data is a hard-fail.
 
 ### Step 5 — LLM Instruction Audit (Hybrid Validation Protocol)
 

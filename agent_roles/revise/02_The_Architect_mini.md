@@ -65,7 +65,7 @@ When the cascade adds a new file:
 
 **New `Tier2_[NewName]_Entries.md`:** Follow the parent's Tier 2 structure. Physical entry (anatomical order), psychological dimensions entries, relationship entries, voice entry. Trigger keywords per entry. Position 1 default, Position Rationale `DEFAULT` unless overridden with structural justification.
 
-**New `JanitorAI_Profile_[NewName].md` (or Group Profile):** **ANTI-TRUNCATION & DEPTH PRESERVATION MANDATE:** When generating Group Bots or multiple profiles, you are strictly forbidden from summarizing, abbreviating, or collapsing fields to save tokens. 1:1 Template Adherence is mandatory (every single character MUST individually receive all sub-headers defined in `Janitor_Bot_Template.md`).
+**New `JanitorAI_Profile_[NewName].md` (or Group Profile):** **TOKEN ECONOMY & BEHAVIORAL ENGINEERING MANDATE:** You are a behavioral engineer. Group Profiles must follow the **U-Shaped Curve Architecture**: Core Family at TOP (symmetrical blocks, ~300-500 tokens max), Main NPC Roster in MIDDLE (highly compressed, trigger-based), Scenario/Rank Macros (Enigma, Alpha, Delta, Beta, Omega)/Trigger Matrix at BOTTOM, and formatting rules/dialogue samples at VERY BOTTOM. **Zero Trivia:** Replace abstract emotions with physical tells. Enforce Strict AnyPOV (all pronouns macros) and strict dialogue spotlight rules. Do not use 1:1 deep descriptive templates; maximize token efficiency.
 
 **New `Instructions_[NewName].md`:** system_prompt starts with `{{original}}` on its own line, then character-specific content. post_history_instructions same. depth_prompt per the Master Design assessment. Style override metadata in `extensions.world_forge.style_override` if Section 11b assigns one — otherwise `null`.
 

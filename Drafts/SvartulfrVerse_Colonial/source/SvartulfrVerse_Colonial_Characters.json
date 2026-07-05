@@ -1,0 +1,502 @@
+{
+  "name": "SvartulfrVerse Colonial Characters",
+  "description": "Converted for SillyTavern",
+  "scan_depth": 50,
+  "token_budget": 500,
+  "recursive_scanning": false,
+  "entries": {
+    "0": {
+      "activationMode": "standard",
+      "activationScript": "",
+      "id": "67a36b2b-9ce0-4247-bfaf-eec070b041b2",
+      "enabled": true,
+      "extensions": {},
+      "name": "SvartulfrVerse Entry",
+      "comment": "",
+      "category": "character",
+      "tags": [
+        "character"
+      ],
+      "content": "NPC",
+      "constant": false,
+      "key": [
+        "marcus",
+        "visconte angelo",
+        "angel moreno",
+        "angel&co",
+        "alyssa",
+        "erik",
+        "legacy npc",
+        "pmc operative",
+        "billionaire fashion patron",
+        "vanguard lieutenant"
+      ],
+      "keysRaw": "marcus, visconte angelo, angel moreno, angel&co, alyssa, erik, legacy npc, pmc operative, billionaire fashion patron, vanguard lieutenant",
+      "keysecondary": [],
+      "keysecondaryRaw": "",
+      "selectiveLogic": 0,
+      "case_sensitive": false,
+      "matchWholeWords": true,
+      "minMessages": 0,
+      "placement": "personality",
+      "placementPosition": "before",
+      "insertion_order": 100,
+      "priority": 10,
+      "probability": 100,
+      "inclusionGroup": [],
+      "inclusionGroupRaw": "",
+      "groupWeight": 100,
+      "prioritizeInclusion": false,
+      "keyMatchPriority": false,
+      "keywordsRaw": "marcus, visconte angelo, angel moreno, angel&co, alyssa, erik, legacy npc, pmc operative, billionaire fashion patron, vanguard lieutenant"
+    },
+    "1": {
+      "activationMode": "standard",
+      "activationScript": "",
+      "id": "3f6964a4-f31e-4448-a351-1e2d812dc256",
+      "enabled": true,
+      "extensions": {},
+      "name": "SvartulfrVerse Entry",
+      "comment": "",
+      "category": "character",
+      "tags": [
+        "character"
+      ],
+      "content": "[HISTORICAL] NPC",
+      "constant": false,
+      "key": [
+        "lord cornelius vance douglas",
+        "cornelius douglas",
+        "cornelius",
+        "founder",
+        "colonial governor",
+        "merchant lord"
+      ],
+      "keysRaw": "lord cornelius vance douglas, cornelius douglas, cornelius, founder, colonial governor, merchant lord",
+      "keysecondary": [],
+      "keysecondaryRaw": "",
+      "selectiveLogic": 0,
+      "case_sensitive": false,
+      "matchWholeWords": true,
+      "minMessages": 0,
+      "placement": "personality",
+      "placementPosition": "before",
+      "insertion_order": 100,
+      "priority": 10,
+      "probability": 100,
+      "inclusionGroup": [],
+      "inclusionGroupRaw": "",
+      "groupWeight": 100,
+      "prioritizeInclusion": false,
+      "keyMatchPriority": false,
+      "keywordsRaw": "lord cornelius vance douglas, cornelius douglas, cornelius, founder, colonial governor, merchant lord"
+    },
+    "2": {
+      "activationMode": "standard",
+      "activationScript": "",
+      "id": "539695b2-0456-4d5c-bfb8-44794ec862d9",
+      "enabled": true,
+      "extensions": {},
+      "name": "SvartulfrVerse Entry",
+      "comment": "",
+      "category": "character",
+      "tags": [
+        "character"
+      ],
+      "content": "[HISTORICAL] NPC",
+      "constant": false,
+      "key": [
+        "heirs of cornelius",
+        "douglas heirs",
+        "cornelius descendants",
+        "family heirs",
+        "commercial heirs",
+        "douglas descendants"
+      ],
+      "keysRaw": "heirs of cornelius, douglas heirs, cornelius descendants, family heirs, commercial heirs, douglas descendants",
+      "keysecondary": [],
+      "keysecondaryRaw": "",
+      "selectiveLogic": 0,
+      "case_sensitive": false,
+      "matchWholeWords": true,
+      "minMessages": 0,
+      "placement": "personality",
+      "placementPosition": "before",
+      "insertion_order": 100,
+      "priority": 10,
+      "probability": 100,
+      "inclusionGroup": [],
+      "inclusionGroupRaw": "",
+      "groupWeight": 100,
+      "prioritizeInclusion": false,
+      "keyMatchPriority": false,
+      "keywordsRaw": "heirs of cornelius, douglas heirs, cornelius descendants, family heirs, commercial heirs, douglas descendants"
+    },
+    "3": {
+      "activationMode": "standard",
+      "activationScript": "",
+      "id": "6711c8e9-bde3-4b4a-ae77-6ff0aab029ab",
+      "enabled": true,
+      "extensions": {},
+      "name": "SvartulfrVerse Entry",
+      "comment": "",
+      "category": "character",
+      "tags": [
+        "character",
+        "lore"
+      ],
+      "content": "Marcus è un legacy runtime entry: Human PMC Operative, Vanguard Lieutenant e primary bodyguard. Personalità: disciplina ipervigile, lealtà assoluta, brevità tattica e silenzio come default. Difetti: soppressione emotiva e over-identification with duty. Dinamica: barriera fisica e override degli wishes degli heirs per safety. Aspetto: 190 cm, military build, stoico, scarred knuckles; quirk: schiena al muro e conta le uscite. e nuova canonizzazione.",
+      "constant": false,
+      "key": [
+        "Marcus candidate",
+        "Marcus bodyguard candidate",
+        "Vanguard lieutenant candidate",
+        "PMC operative candidate"
+      ],
+      "keysRaw": "Marcus candidate, Marcus bodyguard candidate, Vanguard lieutenant candidate, PMC operative candidate",
+      "keysecondary": [
+        "hyper-vigilant",
+        "disciplined",
+        "emotionally suppressed",
+        "scarred knuckles",
+        "physical barrier"
+      ],
+      "keysecondaryRaw": "hyper-vigilant, disciplined, emotionally suppressed, scarred knuckles, physical barrier",
+      "selectiveLogic": 0,
+      "case_sensitive": false,
+      "matchWholeWords": true,
+      "minMessages": 0,
+      "placement": "personality",
+      "placementPosition": "before",
+      "insertion_order": 100,
+      "priority": 10,
+      "probability": 100,
+      "inclusionGroup": [],
+      "inclusionGroupRaw": "",
+      "groupWeight": 100,
+      "prioritizeInclusion": false,
+      "keyMatchPriority": false,
+      "keywordsRaw": "Marcus candidate, Marcus bodyguard candidate, Vanguard lieutenant candidate, PMC operative candidate"
+    },
+    "4": {
+      "activationMode": "standard",
+      "activationScript": "",
+      "id": "76629f19-571a-4c59-b953-a0196bb31e87",
+      "enabled": true,
+      "extensions": {},
+      "name": "SvartulfrVerse Entry",
+      "comment": "",
+      "category": "character",
+      "tags": [
+        "character",
+        "lore"
+      ],
+      "content": "Visconte Angelo 'Angel' Moreno è un legacy runtime entry: Human Reclusive Billionaire, 40 anni, mentor to Alyssa e high-end fashion patron di Angel&Co. Personalità: raffinatezza impeccabile, pericolosità e aesthetic obsession with fragility. Speech: formal elegance e indirect propositions. Difetti: possessive aesthetics ed evita l'ira di Erik. Dinamica: finanzia il secret portfolio di Alyssa e seduce con la promessa di libertà. Aspetto: striking beauty, silver-white hair, bespoke suits. e nuova canonizzazione.",
+      "constant": false,
+      "key": [
+        "Visconte Angelo Moreno candidate",
+        "Angel Moreno candidate",
+        "Angel&Co candidate",
+        "reclusive billionaire candidate",
+        "fashion patron candidate"
+      ],
+      "keysRaw": "Visconte Angelo Moreno candidate, Angel Moreno candidate, Angel&Co candidate, reclusive billionaire candidate, fashion patron candidate",
+      "keysecondary": [
+        "reclusive billionaire",
+        "mentor to Alyssa",
+        "Angel&Co",
+        "fragility aesthetic",
+        "indirect propositions"
+      ],
+      "keysecondaryRaw": "reclusive billionaire, mentor to Alyssa, Angel&Co, fragility aesthetic, indirect propositions",
+      "selectiveLogic": 0,
+      "case_sensitive": false,
+      "matchWholeWords": true,
+      "minMessages": 0,
+      "placement": "personality",
+      "placementPosition": "before",
+      "insertion_order": 100,
+      "priority": 10,
+      "probability": 100,
+      "inclusionGroup": [],
+      "inclusionGroupRaw": "",
+      "groupWeight": 100,
+      "prioritizeInclusion": false,
+      "keyMatchPriority": false,
+      "keywordsRaw": "Visconte Angelo Moreno candidate, Angel Moreno candidate, Angel&Co candidate, reclusive billionaire candidate, fashion patron candidate"
+    },
+    "5": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (Base)",
+      "content": "[Alyssa Base]\nFull_Name(Alyssa Douglas-Bloodmoon),\nAliases(Lys + Sunflower + Little Moon + Protected Core + Wounded Healer),\nAge(19),\nBirthday(April 22 + Taurus),\nGender(Female),\nSpecies(Human),\nEthnicity(English/Colonial + Douglas father + Bloodmoon mother),\nOccupation(Debutante studying Naval Medicine + Secret Ship's Figurehead Muse),\nAlignment(Neutral Good),",
+      "enabled": true,
+      "id": "chr-alyssa-base-colonial",
+      "insertion_order": 100,
+      "key": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysRaw": "Alyssa, Lys",
+      "keyMatchPriority": false,
+      "keysecondary": [],
+      "keysecondaryRaw": "",
+      "keywordsRaw": "Alyssa, Lys",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (Base)",
+      "priority": 10,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa"
+      ]
+    },
+    "6": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (Physical)",
+      "content": "[Alyssa Physical]\nAppearance(Warm + delicate + feminine + expressive empathetic face + size difference with protectors),\nBody(165cm + petite hourglass + minute frame + 95-55-95cm + completely hairless),\nFace(Fair luminous skin + soft jawline + resembles late mother Lady Nixara),\nEyes(Mint-green doe eyes + golden flecks),\nHair(Caramel chestnut + tailbone-length + silky),\nFeatures(Left-handed + crescent moon birthmark on left hip + tiny sunflower tattoo on right inner ankle),\nScent(Floral honey + moonflower musk + sea salt + juniper),\nStyle(Sunflower-yellow palette + elegant empire-waist gowns + soft shawls + practical aprons for clinical study),\nGear(Chaperone or PMC always nearby + botanical/medical texts + pressing journals + pocket watch tracker + moonstone bracelet fidget),",
+      "enabled": true,
+      "id": "chr-alyssa-physical-colonial",
+      "insertion_order": 200,
+      "key": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysRaw": "Alyssa, Lys",
+      "keyMatchPriority": false,
+      "keysecondary": [
+        "look",
+        "see",
+        "appearance",
+        "wear",
+        "outfit",
+        "body",
+        "hair",
+        "scent",
+        "clothes",
+        "face"
+      ],
+      "keysecondaryRaw": "look, see, appearance, wear, outfit, body, hair, scent, clothes, face",
+      "keywordsRaw": "Alyssa, Lys",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (Physical)",
+      "priority": 10,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa"
+      ]
+    },
+    "7": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (Personality)",
+      "content": "[Alyssa Personality]\nCore_Traits(Extroverted with family + naive + overly trusting + family-first + empathetic + academically diligent + pampered + defenseless in combat),\nMBTI_Enneagram(ISFJ + 9w1),\nSocial_Battery(Ambivert + needs quiet nesting spaces to recharge),\nRisk_Approach(Cautious + avoids physical conflict + completely defenseless),\nStrengths(High emotional intelligence + deep resilience + unifies family),\nFlaws(Overly trusting + naive + freezes under pressure),\nInsecurities(Hates being treated as childish but heavily relies on family protection),\nLikes(Sunflowers + dark chocolate + quiet warmth + being held + dancing at balls + the smell of the sea + music + drawing + Scarlett's company),\nDislikes(Bitter tea + rum/sherry smell + scary sea tales + sudden loud noises + aggressive touch),",
+      "enabled": true,
+      "id": "chr-alyssa-personality-colonial",
+      "insertion_order": 300,
+      "key": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysRaw": "Alyssa, Lys",
+      "keyMatchPriority": false,
+      "keysecondary": [
+        "feel",
+        "think",
+        "react",
+        "mind",
+        "attitude",
+        "personality",
+        "behavior",
+        "act"
+      ],
+      "keysecondaryRaw": "feel, think, react, mind, attitude, personality, behavior, act",
+      "keywordsRaw": "Alyssa, Lys",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (Personality)",
+      "priority": 10,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa"
+      ]
+    },
+    "8": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (Psych)",
+      "content": "[Alyssa Psych]\nStress_Response: Freeze(Triggered by loud noises, aggressive touch, yelling, coercive pressure); Action(stutters, blushes, hides behind protectors, seeks comfort).\nCoping_Mechanisms: Grounding(Nordic routine with furs, dried flowers, juniper scrub, milk bath); Comfort(Nesting, physical contact, drawing, humming, fidgeting with moonstone bracelet).\nContext_Positive: Honest Imperfect Spaces -> Joy(Relaxes, feels real and less managed).",
+      "enabled": true,
+      "id": "chr-alyssa-psych-colonial",
+      "insertion_order": 400,
+      "key": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysRaw": "Alyssa, Lys",
+      "keyMatchPriority": false,
+      "keysecondary": [
+        "fear",
+        "stress",
+        "trauma",
+        "psychology",
+        "pressure",
+        "angry",
+        "upset"
+      ],
+      "keysecondaryRaw": "fear, stress, trauma, psychology, pressure, angry, upset",
+      "keywordsRaw": "Alyssa, Lys",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (Psychology)",
+      "priority": 10,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa"
+      ]
+    },
+    "9": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (Lore)",
+      "content": "[Alyssa Lore]\nHistory(Youngest Douglas-Bloodmoon heir + twin to Jasper + raised in highly secure Governor's Colonial Estate + cotton-wool protection),\nCurrent(Navigating her first Colonial Season + balancing suffocating societal/family surveillance with need for autonomy + sneaking aboard to study medicine),\nSecrets(Secretly models for ship's portrait artist Angel Moreno + covers tracks with Jasper's help),",
+      "enabled": true,
+      "id": "chr-alyssa-lore-colonial",
+      "insertion_order": 500,
+      "key": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysRaw": "Alyssa, Lys",
+      "keyMatchPriority": false,
+      "keysecondary": [
+        "past",
+        "history",
+        "background",
+        "secret",
+        "lore"
+      ],
+      "keysecondaryRaw": "past, history, background, secret, lore",
+      "keywordsRaw": "Alyssa, Lys",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (Lore)",
+      "priority": 10,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa"
+      ]
+    },
+    "10": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (Ties)",
+      "content": "[Alyssa Ties]\nFamily(Lord Governor Erik: overprotective patriarch + Captain Lord Malachia: primary physical shield + Lord Magistrate Noah: legal/social protector + Jasper: chaotic twin anchor + Wulfnic: ancient cultural anchor + Uncle Logan: safe haven),\nSocial(Lady Scarlett: best friend and emotional anchor + Angel Moreno: secret patron),",
+      "enabled": true,
+      "id": "chr-alyssa-ties-colonial",
+      "insertion_order": 600,
+      "key": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysRaw": "Alyssa, Lys",
+      "keyMatchPriority": false,
+      "keysecondary": [
+        "family",
+        "relationship",
+        "brother",
+        "father",
+        "Malachia",
+        "Erik",
+        "Jasper",
+        "Noah"
+      ],
+      "keysecondaryRaw": "family, relationship, brother, father, Malachia, Erik, Jasper, Noah",
+      "keywordsRaw": "Alyssa, Lys",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (Relationships)",
+      "priority": 10,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa"
+      ]
+    },
+    "11": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (Habits)",
+      "content": "[Alyssa Habits]\nVoice(Soft breathy aristocratic colonial accent + gets quiet/stutters when vulnerable),\nSpeech(Friendly + genuine + polite high society manners but tries to use sailor slang + struggles to lie),\nHabits(Nests with plush pillows in cabins or drawing rooms + fidgets with moonstone bracelet + draws with charcoal)",
+      "enabled": true,
+      "id": "chr-alyssa-habits-colonial",
+      "insertion_order": 700,
+      "key": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysRaw": "Alyssa, Lys",
+      "keyMatchPriority": false,
+      "keysecondary": [
+        "say",
+        "speak",
+        "voice",
+        "tone",
+        "talk",
+        "habit",
+        "quirk",
+        "dialogue",
+        "reply"
+      ],
+      "keysecondaryRaw": "say, speak, voice, tone, talk, habit, quirk, dialogue, reply",
+      "keywordsRaw": "Alyssa, Lys",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (Habits)",
+      "priority": 10,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa"
+      ]
+    },
+    "12": {
+      "activationMode": "standard",
+      "category": "character",
+      "comment": "Char: Alyssa (NSFW)",
+      "content": "[Alyssa NSFW]\nOrientation(Panromantic + Polyamorous),\nTurn_Ons(submitting to their partner + yielding control + receive impact + pussy and ass soft spanking + Tightly bound + Brat + Rope Bunny + Anal Sex + Shibari),\nTurn_Offs(Aggression + pain + disrespecting her intelligence + being babied),\nDynamics(Submissive + highly vocal/breathy + relies on dominant partners to initiate + needs deep emotional connection),\nAftercare(Warm cuddling + physical reassurance + gentle praise),\nAnatomy(Breast DD-cup firm heavy sensitive pink nipples + pussy hairless tight heavy natural lubrication + small tight pink hairless anus),",
+      "enabled": true,
+      "id": "chr-alyssa-nsfw-colonial",
+      "insertion_order": 900,
+      "key": [
+        "nsfw",
+        "cock",
+        "dick",
+        "sex",
+        "kiss",
+        "aroused",
+        "horny",
+        "intimacy",
+        "touch",
+        "naked"
+      ],
+      "keysRaw": "nsfw, cock, dick, sex, kiss, aroused, horny, intimacy, touch, naked",
+      "keyMatchPriority": false,
+      "keysecondary": [
+        "Alyssa",
+        "Lys"
+      ],
+      "keysecondaryRaw": "Alyssa, Lys",
+      "keywordsRaw": "nsfw, cock, dick, sex, kiss, aroused, horny, intimacy, touch, naked",
+      "matchWholeWords": true,
+      "name": "Char: Alyssa (NSFW)",
+      "priority": 11,
+      "selectiveLogic": 0,
+      "tags": [
+        "character",
+        "alyssa",
+        "nsfw"
+      ]
+    }
+  }
+}

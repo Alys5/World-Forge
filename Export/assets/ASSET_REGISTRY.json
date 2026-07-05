@@ -1,0 +1,1014 @@
+{
+  "Character": {
+    "Alex": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![Alex](./images/characters/Alex/Avatar_Primary/Alex.png)",
+        "trigger_keyword": "characters alex avatar primary alex",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alex/Avatar_Primary/Alex.png",
+        "status": "local_reference",
+        "source": "local"
+      }
+    },
+    "Alyssa": {
+      "Alternative_Look_1254": {
+        "web_url": null,
+        "md_tag": "![drQJYtuMBuxx76YRaasUy](./images/characters/Alyssa/Alternative_Look_1254/drQJYtuMBuxx76YRaasUy.webp)",
+        "trigger_keyword": "characters alyssa alternative look 1254 drqjytumbuxx76yraasuy",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Alternative_Look_1254/drQJYtuMBuxx76YRaasUy.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Alternative_Look_300": {
+        "web_url": null,
+        "md_tag": "![JdgW8XYh9IMfT70DT4Q7c](./images/characters/Alyssa/Alternative_Look_300/JdgW8XYh9IMfT70DT4Q7c.webp)",
+        "trigger_keyword": "characters alyssa alternative look 300 jdgw8xyh9imft70dt4q7c",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Alyssa/Alternative_Look_300/JdgW8XYh9IMfT70DT4Q7c.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Alt_Night": {
+        "web_url": null,
+        "md_tag": "![36mlQdA9q56DcYlaJakoN](./images/characters/Alyssa/Avatar_Alt_Night/36mlQdA9q56DcYlaJakoN.webp)",
+        "trigger_keyword": "characters alyssa avatar alt night 36mlqda9q56dcylajakon",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Avatar_Alt_Night/36mlQdA9q56DcYlaJakoN.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Alt_Night_300": {
+        "web_url": null,
+        "md_tag": "![eTbufISANQ5RsovFCmBcd](./images/characters/Alyssa/Avatar_Alt_Night_300/eTbufISANQ5RsovFCmBcd.webp)",
+        "trigger_keyword": "characters alyssa avatar alt night 300 etbufisanq5rsovfcmbcd",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Alyssa/Avatar_Alt_Night_300/eTbufISANQ5RsovFCmBcd.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![jrRqqRXrm13 dU5aYqkmK](./images/characters/Alyssa/Avatar_Primary/jrRqqRXrm13-dU5aYqkmK.webp)",
+        "trigger_keyword": "characters alyssa avatar primary jrrqqrxrm13 du5ayqkmk",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Avatar_Primary/jrRqqRXrm13-dU5aYqkmK.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary_300": {
+        "web_url": null,
+        "md_tag": "![h8XWRy6ek1lLtZWYbUYMC](./images/characters/Alyssa/Avatar_Primary_300/h8XWRy6ek1lLtZWYbUYMC.webp)",
+        "trigger_keyword": "characters alyssa avatar primary 300 h8xwry6ek1lltzwybuymc",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Alyssa/Avatar_Primary_300/h8XWRy6ek1lLtZWYbUYMC.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Secondary_1254": {
+        "web_url": null,
+        "md_tag": "![HEn F1GTrfAxSP6A4oNFO](./images/characters/Alyssa/Avatar_Secondary_1254/HEn-F1GTrfAxSP6A4oNFO.webp)",
+        "trigger_keyword": "characters alyssa avatar secondary 1254 hen f1gtrfaxsp6a4onfo",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Avatar_Secondary_1254/HEn-F1GTrfAxSP6A4oNFO.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Secondary_300": {
+        "web_url": null,
+        "md_tag": "![8rd911kByqq893cTHDZRL](./images/characters/Alyssa/Avatar_Secondary_300/8rd911kByqq893cTHDZRL.webp)",
+        "trigger_keyword": "characters alyssa avatar secondary 300 8rd911kbyqq893cthdzrl",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Alyssa/Avatar_Secondary_300/8rd911kByqq893cTHDZRL.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Icon_Circular": {
+        "web_url": null,
+        "md_tag": "![FDKY0tuStCm5A3S3 QeaG](./images/characters/Alyssa/Icon_Circular/FDKY0tuStCm5A3S3_QeaG.webp)",
+        "trigger_keyword": "characters alyssa icon circular fdky0tustcm5a3s3 qeag",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Icon_Circular/FDKY0tuStCm5A3S3_QeaG.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid": {
+        "web_url": null,
+        "md_tag": "![sGicPx1NJMGJ0fw 107ZQ](./images/characters/Alyssa/Polaroid_Candid/sGicPx1NJMGJ0fw-107ZQ.webp)",
+        "trigger_keyword": "characters alyssa polaroid candid sgicpx1njmgj0fw 107zq",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Polaroid_Candid/sGicPx1NJMGJ0fw-107ZQ.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid_Small": {
+        "web_url": null,
+        "md_tag": "![c HbzfXHvmbWFKz DaCLO](./images/characters/Alyssa/Polaroid_Candid_Small/c_HbzfXHvmbWFKz_DaCLO.webp)",
+        "trigger_keyword": "characters alyssa polaroid candid small c hbzfxhvmbwfkz daclo",
+        "resolution": "400x400",
+        "local_path": "./images/characters/Alyssa/Polaroid_Candid_Small/c_HbzfXHvmbWFKz_DaCLO.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Reference_Fantasy": {
+        "web_url": null,
+        "md_tag": "![Alyssa Fantasy](./images/characters/Alyssa/Reference_Fantasy/Alyssa_Fantasy.png)",
+        "trigger_keyword": "characters alyssa reference fantasy alyssa fantasy",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Reference_Fantasy/Alyssa_Fantasy.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Portraits_alyssa": {
+        "web_url": null,
+        "md_tag": "![alyssa](./images/characters/Alyssa/Reference_Portraits/alyssa.png)",
+        "trigger_keyword": "characters alyssa reference portraits alyssa",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Alyssa/Reference_Portraits/alyssa.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Portraits_alyssa_char": {
+        "web_url": null,
+        "md_tag": "![alyssa char](./images/characters/Alyssa/Reference_Portraits/alyssa_char.png)",
+        "trigger_keyword": "characters alyssa reference portraits alyssa char",
+        "resolution": "1421x1107",
+        "local_path": "./images/characters/Alyssa/Reference_Portraits/alyssa_char.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Portraits_alyssa_face": {
+        "web_url": null,
+        "md_tag": "![alyssa face](./images/characters/Alyssa/Reference_Portraits/alyssa_face.png)",
+        "trigger_keyword": "characters alyssa reference portraits alyssa face",
+        "resolution": "1466x1073",
+        "local_path": "./images/characters/Alyssa/Reference_Portraits/alyssa_face.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Portraits_alyssa_face_closeup": {
+        "web_url": null,
+        "md_tag": "![alyssa face closeup](./images/characters/Alyssa/Reference_Portraits/alyssa_face_closeup.png)",
+        "trigger_keyword": "characters alyssa reference portraits alyssa face closeup",
+        "resolution": "643x914",
+        "local_path": "./images/characters/Alyssa/Reference_Portraits/alyssa_face_closeup.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Portraits_alyssa_head": {
+        "web_url": null,
+        "md_tag": "![alyssa head](./images/characters/Alyssa/Reference_Portraits/alyssa_head.png)",
+        "trigger_keyword": "characters alyssa reference portraits alyssa head",
+        "resolution": "1464x1075",
+        "local_path": "./images/characters/Alyssa/Reference_Portraits/alyssa_head.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Succubus_alyssa_succ(1)": {
+        "web_url": null,
+        "md_tag": "![alyssa succ 1](./images/characters/Alyssa/Reference_Succubus/alyssa_succ%281%29.png)",
+        "trigger_keyword": "characters alyssa reference succubus alyssa succ",
+        "resolution": "832x1248",
+        "local_path": "./images/characters/Alyssa/Reference_Succubus/alyssa_succ(1).png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Succubus_alyssa_succ(2)": {
+        "web_url": null,
+        "md_tag": "![alyssa succ 2](./images/characters/Alyssa/Reference_Succubus/alyssa_succ%282%29.png)",
+        "trigger_keyword": "characters alyssa reference succubus alyssa succ",
+        "resolution": "832x1248",
+        "local_path": "./images/characters/Alyssa/Reference_Succubus/alyssa_succ(2).png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Succubus_alyssa_succ": {
+        "web_url": null,
+        "md_tag": "![alyssa succ](./images/characters/Alyssa/Reference_Succubus/alyssa_succ.png)",
+        "trigger_keyword": "characters alyssa reference succubus alyssa succ",
+        "resolution": "832x1248",
+        "local_path": "./images/characters/Alyssa/Reference_Succubus/alyssa_succ.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Scene_Action_Volunteer": {
+        "web_url": null,
+        "md_tag": "![73Ue3AuBXYilYyTPCR2ME](./images/characters/Alyssa/Scene_Action_Volunteer/73Ue3AuBXYilYyTPCR2ME.webp)",
+        "trigger_keyword": "characters alyssa scene action volunteer 73ue3aubxyilyytpcr2me",
+        "resolution": "1619x972",
+        "local_path": "./images/characters/Alyssa/Scene_Action_Volunteer/73Ue3AuBXYilYyTPCR2ME.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Daily_Routine": {
+        "web_url": null,
+        "md_tag": "![dlWzlnpojIYpecE5OdBP](./images/characters/Alyssa/Scene_Daily_Routine/-dlWzlnpojIYpecE5OdBP.webp)",
+        "trigger_keyword": "characters alyssa scene daily routine dlwzlnpojiypece5odbp",
+        "resolution": "2390x1792",
+        "local_path": "./images/characters/Alyssa/Scene_Daily_Routine/-dlWzlnpojIYpecE5OdBP.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Daily_Routine_400x300": {
+        "web_url": null,
+        "md_tag": "![UoZ FO4VSk 7nNETtdEI](./images/characters/Alyssa/Scene_Daily_Routine_400x300/UoZ--FO4VSk_7nNETtdEI.webp)",
+        "trigger_keyword": "characters alyssa scene daily routine 400x300 uoz fo4vsk 7nnettdei",
+        "resolution": "400x300",
+        "local_path": "./images/characters/Alyssa/Scene_Daily_Routine_400x300/UoZ--FO4VSk_7nNETtdEI.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Emotional": {
+        "web_url": null,
+        "md_tag": "![LSLCGZwAysP0ScaZGPReC](./images/characters/Alyssa/Scene_Emotional/LSLCGZwAysP0ScaZGPReC.webp)",
+        "trigger_keyword": "characters alyssa scene emotional lslcgzwaysp0scazgprec",
+        "resolution": "1448x1086",
+        "local_path": "./images/characters/Alyssa/Scene_Emotional/LSLCGZwAysP0ScaZGPReC.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Lifestyle": {
+        "web_url": null,
+        "md_tag": "![QBkxZnfU337MQxqld3GaZ](./images/characters/Alyssa/Scene_Lifestyle/QBkxZnfU337MQxqld3GaZ.webp)",
+        "trigger_keyword": "characters alyssa scene lifestyle qbkxznfu337mqxqld3gaz",
+        "resolution": "1448x1086",
+        "local_path": "./images/characters/Alyssa/Scene_Lifestyle/QBkxZnfU337MQxqld3GaZ.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Erik": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![qziRZ5Fs2BugaH80j RSY](./images/characters/Erik/Avatar_Primary/qziRZ5Fs2BugaH80j-RSY.webp)",
+        "trigger_keyword": "characters erik avatar primary qzirz5fs2bugah80j rsy",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Erik/Avatar_Primary/qziRZ5Fs2BugaH80j-RSY.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary_300": {
+        "web_url": null,
+        "md_tag": "![iSeawXWofchbdB0Kdu3f4](./images/characters/Erik/Avatar_Primary_300/iSeawXWofchbdB0Kdu3f4.webp)",
+        "trigger_keyword": "characters erik avatar primary 300 iseawxwofchbdb0kdu3f4",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Erik/Avatar_Primary_300/iSeawXWofchbdB0Kdu3f4.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid": {
+        "web_url": null,
+        "md_tag": "![bbKAuJHUkz4ogBH6GG5ER](./images/characters/Erik/Polaroid_Candid/bbKAuJHUkz4ogBH6GG5ER.webp)",
+        "trigger_keyword": "characters erik polaroid candid bbkaujhukz4ogbh6gg5er",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Erik/Polaroid_Candid/bbKAuJHUkz4ogBH6GG5ER.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid_Small": {
+        "web_url": null,
+        "md_tag": "![RnLtz5h5ex 7B1CDWDXne](./images/characters/Erik/Polaroid_Candid_Small/RnLtz5h5ex-7B1CDWDXne.webp)",
+        "trigger_keyword": "characters erik polaroid candid small rnltz5h5ex 7b1cdwdxne",
+        "resolution": "400x400",
+        "local_path": "./images/characters/Erik/Polaroid_Candid_Small/RnLtz5h5ex-7B1CDWDXne.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Jasper": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![FnwuWc0XPf5h9ul1o0R4i](./images/characters/Jasper/Avatar_Primary/FnwuWc0XPf5h9ul1o0R4i.webp)",
+        "trigger_keyword": "characters jasper avatar primary fnwuwc0xpf5h9ul1o0r4i",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Jasper/Avatar_Primary/FnwuWc0XPf5h9ul1o0R4i.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary_300": {
+        "web_url": null,
+        "md_tag": "![bzWEdnhztxK wyiWdYvGO](./images/characters/Jasper/Avatar_Primary_300/bzWEdnhztxK-wyiWdYvGO.webp)",
+        "trigger_keyword": "characters jasper avatar primary 300 bzwednhztxk wyiwdyvgo",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Jasper/Avatar_Primary_300/bzWEdnhztxK-wyiWdYvGO.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid": {
+        "web_url": null,
+        "md_tag": "![ijeMCAA3v1Ppvg520TvH9](./images/characters/Jasper/Polaroid_Candid/ijeMCAA3v1Ppvg520TvH9.webp)",
+        "trigger_keyword": "characters jasper polaroid candid ijemcaa3v1ppvg520tvh9",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Jasper/Polaroid_Candid/ijeMCAA3v1Ppvg520TvH9.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid_Small": {
+        "web_url": null,
+        "md_tag": "![pag 8qUSoP9Oxdj2ZoOfm](./images/characters/Jasper/Polaroid_Candid_Small/pag_8qUSoP9Oxdj2ZoOfm.webp)",
+        "trigger_keyword": "characters jasper polaroid candid small pag 8qusop9oxdj2zoofm",
+        "resolution": "400x400",
+        "local_path": "./images/characters/Jasper/Polaroid_Candid_Small/pag_8qUSoP9Oxdj2ZoOfm.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Action_DJSet": {
+        "web_url": null,
+        "md_tag": "![0oH05 P2k OF2y254Ib40](./images/characters/Jasper/Scene_Action_DJSet/0oH05-P2k-OF2y254Ib40.webp)",
+        "trigger_keyword": "characters jasper scene action djset 0oh05 p2k of2y254ib40",
+        "resolution": "1619x971",
+        "local_path": "./images/characters/Jasper/Scene_Action_DJSet/0oH05-P2k-OF2y254Ib40.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Daily_Routine": {
+        "web_url": null,
+        "md_tag": "![EmGX5t9zBfoGLh75PW56l](./images/characters/Jasper/Scene_Daily_Routine/EmGX5t9zBfoGLh75PW56l.webp)",
+        "trigger_keyword": "characters jasper scene daily routine emgx5t9zbfoglh75pw56l",
+        "resolution": "2390x1792",
+        "local_path": "./images/characters/Jasper/Scene_Daily_Routine/EmGX5t9zBfoGLh75PW56l.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Daily_Routine_400x300": {
+        "web_url": null,
+        "md_tag": "![WbzHrSqzm79BGnsXOSmIS](./images/characters/Jasper/Scene_Daily_Routine_400x300/WbzHrSqzm79BGnsXOSmIS.webp)",
+        "trigger_keyword": "characters jasper scene daily routine 400x300 wbzhrsqzm79bgnsxosmis",
+        "resolution": "400x300",
+        "local_path": "./images/characters/Jasper/Scene_Daily_Routine_400x300/WbzHrSqzm79BGnsXOSmIS.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Emotional": {
+        "web_url": null,
+        "md_tag": "![mnYI xnOXYqs0Mr3FlUT5](./images/characters/Jasper/Scene_Emotional/mnYI_xnOXYqs0Mr3FlUT5.webp)",
+        "trigger_keyword": "characters jasper scene emotional mnyi xnoxyqs0mr3flut5",
+        "resolution": "1448x1086",
+        "local_path": "./images/characters/Jasper/Scene_Emotional/mnYI_xnOXYqs0Mr3FlUT5.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Scene_Lifestyle": {
+        "web_url": null,
+        "md_tag": "![50 o Nct imghNsrp6FA](./images/characters/Jasper/Scene_Lifestyle/-50-o-Nct-imghNsrp6FA.webp)",
+        "trigger_keyword": "characters jasper scene lifestyle 50 o nct imghnsrp6fa",
+        "resolution": "1448x1086",
+        "local_path": "./images/characters/Jasper/Scene_Lifestyle/-50-o-Nct-imghNsrp6FA.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Kaladin": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![kaladin](./images/characters/Kaladin/Avatar_Primary/kaladin.png)",
+        "trigger_keyword": "characters kaladin avatar primary kaladin",
+        "resolution": "832x1248",
+        "local_path": "./images/characters/Kaladin/Avatar_Primary/kaladin.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_Armor": {
+        "web_url": null,
+        "md_tag": "![kaladin cavaliere](./images/characters/Kaladin/Reference_Armor/kaladin_cavaliere.png)",
+        "trigger_keyword": "characters kaladin reference armor kaladin cavaliere",
+        "resolution": "1024x1024",
+        "local_path": "./images/characters/Kaladin/Reference_Armor/kaladin_cavaliere.png",
+        "status": "local_reference",
+        "source": "local"
+      },
+      "Reference_JPEG": {
+        "web_url": null,
+        "md_tag": "![Kaladin](./images/characters/Kaladin/Reference_JPEG/Kaladin.jpeg)",
+        "trigger_keyword": "characters kaladin reference jpeg kaladin",
+        "resolution": "512x768",
+        "local_path": "./images/characters/Kaladin/Reference_JPEG/Kaladin.jpeg",
+        "status": "local_reference",
+        "source": "local"
+      }
+    },
+    "Logan": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![Jd4 jka2ASnjS9romOGfg](./images/characters/Logan/Avatar_Primary/Jd4-jka2ASnjS9romOGfg.webp)",
+        "trigger_keyword": "characters logan avatar primary jd4 jka2asnjs9romogfg",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Logan/Avatar_Primary/Jd4-jka2ASnjS9romOGfg.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary_300": {
+        "web_url": null,
+        "md_tag": "![mj58rjJAATO24WmBmn9Mn](./images/characters/Logan/Avatar_Primary_300/mj58rjJAATO24WmBmn9Mn.webp)",
+        "trigger_keyword": "characters logan avatar primary 300 mj58rjjaato24wmbmn9mn",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Logan/Avatar_Primary_300/mj58rjJAATO24WmBmn9Mn.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid": {
+        "web_url": null,
+        "md_tag": "![ZhTzNOBazY6cjfMLq Vhz](./images/characters/Logan/Polaroid_Candid/ZhTzNOBazY6cjfMLq_Vhz.webp)",
+        "trigger_keyword": "characters logan polaroid candid zhtznobazy6cjfmlq vhz",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Logan/Polaroid_Candid/ZhTzNOBazY6cjfMLq_Vhz.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid_Small": {
+        "web_url": null,
+        "md_tag": "![GnXrheeRCezC7xfbrQGN](./images/characters/Logan/Polaroid_Candid_Small/_GnXrheeRCezC7xfbrQGN.webp)",
+        "trigger_keyword": "characters logan polaroid candid small gnxrheercezc7xfbrqgn",
+        "resolution": "400x400",
+        "local_path": "./images/characters/Logan/Polaroid_Candid_Small/_GnXrheeRCezC7xfbrQGN.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Malachia": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![XzWEO1b3jpfg9Mxhx2m](./images/characters/Malachia/Avatar_Primary/--XzWEO1b3jpfg9Mxhx2m.webp)",
+        "trigger_keyword": "characters malachia avatar primary xzweo1b3jpfg9mxhx2m",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Malachia/Avatar_Primary/--XzWEO1b3jpfg9Mxhx2m.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary_300": {
+        "web_url": null,
+        "md_tag": "![qpoLB bIeL50l38h3F5xm](./images/characters/Malachia/Avatar_Primary_300/qpoLB-bIeL50l38h3F5xm.webp)",
+        "trigger_keyword": "characters malachia avatar primary 300 qpolb biel50l38h3f5xm",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Malachia/Avatar_Primary_300/qpoLB-bIeL50l38h3F5xm.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Secondary_1254": {
+        "web_url": null,
+        "md_tag": "![eLn0pvT3XIp0i kxcE0Zt](./images/characters/Malachia/Avatar_Secondary_1254/eLn0pvT3XIp0i-kxcE0Zt.webp)",
+        "trigger_keyword": "characters malachia avatar secondary 1254 eln0pvt3xip0i kxce0zt",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Malachia/Avatar_Secondary_1254/eLn0pvT3XIp0i-kxcE0Zt.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Secondary_300": {
+        "web_url": null,
+        "md_tag": "![624ZUTmqRWbNDHNtV2VGB](./images/characters/Malachia/Avatar_Secondary_300/624ZUTmqRWbNDHNtV2VGB.webp)",
+        "trigger_keyword": "characters malachia avatar secondary 300 624zutmqrwbndhntv2vgb",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Malachia/Avatar_Secondary_300/624ZUTmqRWbNDHNtV2VGB.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid": {
+        "web_url": null,
+        "md_tag": "![ag32 WSbKvasFMuAvmhGh](./images/characters/Malachia/Polaroid_Candid/ag32_WSbKvasFMuAvmhGh.webp)",
+        "trigger_keyword": "characters malachia polaroid candid ag32 wsbkvasfmuavmhgh",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Malachia/Polaroid_Candid/ag32_WSbKvasFMuAvmhGh.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid_Small": {
+        "web_url": null,
+        "md_tag": "![lifei PV6fMzLP8DQgA6l](./images/characters/Malachia/Polaroid_Candid_Small/lifei_PV6fMzLP8DQgA6l.webp)",
+        "trigger_keyword": "characters malachia polaroid candid small lifei pv6fmzlp8dqga6l",
+        "resolution": "400x400",
+        "local_path": "./images/characters/Malachia/Polaroid_Candid_Small/lifei_PV6fMzLP8DQgA6l.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Reference_Primary": {
+        "web_url": null,
+        "md_tag": "![Malachia](./images/characters/Malachia/Reference_Primary/Malachia.png)",
+        "trigger_keyword": "characters malachia reference primary malachia",
+        "resolution": "1024x1536",
+        "local_path": "./images/characters/Malachia/Reference_Primary/Malachia.png",
+        "status": "local_reference",
+        "source": "local"
+      }
+    },
+    "Noah": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![aQIh3JIIkqvxBiznj2ecV](./images/characters/Noah/Avatar_Primary/aQIh3JIIkqvxBiznj2ecV.webp)",
+        "trigger_keyword": "characters noah avatar primary aqih3jiikqvxbiznj2ecv",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Noah/Avatar_Primary/aQIh3JIIkqvxBiznj2ecV.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary_300": {
+        "web_url": null,
+        "md_tag": "![wnyfIMWngJAwXvTGDk tY](./images/characters/Noah/Avatar_Primary_300/wnyfIMWngJAwXvTGDk_tY.webp)",
+        "trigger_keyword": "characters noah avatar primary 300 wnyfimwngjawxvtgdk ty",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Noah/Avatar_Primary_300/wnyfIMWngJAwXvTGDk_tY.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid": {
+        "web_url": null,
+        "md_tag": "![ZLs0QyojTn7Cvhqw4lP4H](./images/characters/Noah/Polaroid_Candid/ZLs0QyojTn7Cvhqw4lP4H.webp)",
+        "trigger_keyword": "characters noah polaroid candid zls0qyojtn7cvhqw4lp4h",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Noah/Polaroid_Candid/ZLs0QyojTn7Cvhqw4lP4H.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid_Small": {
+        "web_url": null,
+        "md_tag": "![h7cdrBjxkQawzc8VUz 95](./images/characters/Noah/Polaroid_Candid_Small/h7cdrBjxkQawzc8VUz_95.webp)",
+        "trigger_keyword": "characters noah polaroid candid small h7cdrbjxkqawzc8vuz 95",
+        "resolution": "400x400",
+        "local_path": "./images/characters/Noah/Polaroid_Candid_Small/h7cdrBjxkQawzc8VUz_95.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Wulfnic": {
+      "Avatar_Primary": {
+        "web_url": null,
+        "md_tag": "![4PRQ0NKkfAylAtUM5xMF0](./images/characters/Wulfnic/Avatar_Primary/4PRQ0NKkfAylAtUM5xMF0.webp)",
+        "trigger_keyword": "characters wulfnic avatar primary 4prq0nkkfaylatum5xmf0",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Wulfnic/Avatar_Primary/4PRQ0NKkfAylAtUM5xMF0.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Avatar_Primary_300": {
+        "web_url": null,
+        "md_tag": "![Gd1iDKN05O3HeiHXuqnFo](./images/characters/Wulfnic/Avatar_Primary_300/Gd1iDKN05O3HeiHXuqnFo.webp)",
+        "trigger_keyword": "characters wulfnic avatar primary 300 gd1idkn05o3heihxuqnfo",
+        "resolution": "300x300",
+        "local_path": "./images/characters/Wulfnic/Avatar_Primary_300/Gd1iDKN05O3HeiHXuqnFo.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid": {
+        "web_url": null,
+        "md_tag": "![a8AYrT7DHhWYp2clgwqbR](./images/characters/Wulfnic/Polaroid_Candid/a8AYrT7DHhWYp2clgwqbR.webp)",
+        "trigger_keyword": "characters wulfnic polaroid candid a8ayrt7dhhwyp2clgwqbr",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Wulfnic/Polaroid_Candid/a8AYrT7DHhWYp2clgwqbR.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Candid_Small": {
+        "web_url": null,
+        "md_tag": "![Rz2h zdTgc16ngBzvHaOf](./images/characters/Wulfnic/Polaroid_Candid_Small/Rz2h_zdTgc16ngBzvHaOf.webp)",
+        "trigger_keyword": "characters wulfnic polaroid candid small rz2h zdtgc16ngbzvhaof",
+        "resolution": "400x400",
+        "local_path": "./images/characters/Wulfnic/Polaroid_Candid_Small/Rz2h_zdTgc16ngBzvHaOf.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    }
+  },
+  "Protagonist": {
+    "Caleum_Persona": {
+      "Pt2Sov_3jF95HTXXxbsxD.webp": {
+        "web_url": null,
+        "md_tag": "![Pt2Sov 3jF95HTXXxbsxD](./images/characters/Caleum_Persona/Pt2Sov_3jF95HTXXxbsxD.webp)",
+        "trigger_keyword": "protagonists caleum persona pt2sov 3jf95htxxxbsxd",
+        "resolution": "1254x1254",
+        "local_path": "./images/characters/Caleum_Persona/Pt2Sov_3jF95HTXXxbsxD.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    }
+  },
+  "Location": {
+    "Amarantia_Map": {
+      "Amarantia_Mappa.jpeg": {
+        "web_url": null,
+        "md_tag": "![Amarantia Mappa](./images/locations/Amarantia_Map/Amarantia_Mappa.jpeg)",
+        "trigger_keyword": "locations amarantia map amarantia mappa",
+        "resolution": "1920x866",
+        "local_path": "./images/locations/Amarantia_Map/Amarantia_Mappa.jpeg",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Environment_Overview": {
+      "env1.png": {
+        "web_url": null,
+        "md_tag": "![env1](./images/locations/Environment_Overview/env1.png)",
+        "trigger_keyword": "locations environment overview env1",
+        "resolution": "1672x941",
+        "local_path": "./images/locations/Environment_Overview/env1.png",
+        "status": "approved",
+        "source": "local"
+      },
+      "mood.png": {
+        "web_url": null,
+        "md_tag": "![mood](./images/locations/Environment_Overview/mood.png)",
+        "trigger_keyword": "locations environment overview mood",
+        "resolution": "1672x941",
+        "local_path": "./images/locations/Environment_Overview/mood.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Exterior_Bloodmoon_Estate": {
+      "rtCarJZTeMxm7OzXcLa2C.webp": {
+        "web_url": null,
+        "md_tag": "![rtCarJZTeMxm7OzXcLa2C](./images/locations/Exterior_Bloodmoon_Estate/rtCarJZTeMxm7OzXcLa2C.webp)",
+        "trigger_keyword": "locations exterior bloodmoon estate rtcarjztemxm7ozxcla2c",
+        "resolution": "1672x941",
+        "local_path": "./images/locations/Exterior_Bloodmoon_Estate/rtCarJZTeMxm7OzXcLa2C.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Exterior_Estate_Gates": {
+      "dxQqAJ3ILHGIsCbGckR3L.webp": {
+        "web_url": null,
+        "md_tag": "![dxQqAJ3ILHGIsCbGckR3L](./images/locations/Exterior_Estate_Gates/dxQqAJ3ILHGIsCbGckR3L.webp)",
+        "trigger_keyword": "locations exterior estate gates dxqqaj3ilhgiscbgckr3l",
+        "resolution": "1254x1254",
+        "local_path": "./images/locations/Exterior_Estate_Gates/dxQqAJ3ILHGIsCbGckR3L.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Exterior_UCLA_Campus": {
+      "UvG5alMlEmZyAA7oSrx-D.webp": {
+        "web_url": null,
+        "md_tag": "![UvG5alMlEmZyAA7oSrx D](./images/locations/Exterior_UCLA_Campus/UvG5alMlEmZyAA7oSrx-D.webp)",
+        "trigger_keyword": "locations exterior ucla campus uvg5almlemzyaa7osrx d",
+        "resolution": "1774x887",
+        "local_path": "./images/locations/Exterior_UCLA_Campus/UvG5alMlEmZyAA7oSrx-D.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Exterior_Zoom_Radicenera": {
+      "zoom-radicenera.jpeg": {
+        "web_url": null,
+        "md_tag": "![zoom radicenera](./images/locations/Exterior_Zoom_Radicenera/zoom-radicenera.jpeg)",
+        "trigger_keyword": "locations exterior zoom radicenera zoom radicenera",
+        "resolution": "1920x923",
+        "local_path": "./images/locations/Exterior_Zoom_Radicenera/zoom-radicenera.jpeg",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Interior_Verve_Coffee": {
+      "xB6GVo6KEfeOio3B2h7ga.webp": {
+        "web_url": null,
+        "md_tag": "![xB6GVo6KEfeOio3B2h7ga](./images/locations/Interior_Verve_Coffee/xB6GVo6KEfeOio3B2h7ga.webp)",
+        "trigger_keyword": "locations interior verve coffee xb6gvo6kefeoio3b2h7ga",
+        "resolution": "1672x941",
+        "local_path": "./images/locations/Interior_Verve_Coffee/xB6GVo6KEfeOio3B2h7ga.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Scene_Dinner_Gathering": {
+      "JuLtgEfhNNv81XUQfBpMs.webp": {
+        "web_url": null,
+        "md_tag": "![JuLtgEfhNNv81XUQfBpMs](./images/locations/Scene_Dinner_Gathering/JuLtgEfhNNv81XUQfBpMs.webp)",
+        "trigger_keyword": "locations scene dinner gathering jultgefhnnv81xuqfbpms",
+        "resolution": "1672x941",
+        "local_path": "./images/locations/Scene_Dinner_Gathering/JuLtgEfhNNv81XUQfBpMs.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    }
+  },
+  "Family": {
+    "Bloodmoon_Group": {
+      "Portrait_Members": {
+        "web_url": null,
+        "md_tag": "![Malachia Jasper Kaladin Noah](./images/families/Bloodmoon_Group/Portrait_Members/Malachia-Jasper-Kaladin-Noah.webp)",
+        "trigger_keyword": "families bloodmoon group portrait members malachia jasper kaladin noah",
+        "resolution": "1024x1536",
+        "local_path": "./images/families/Bloodmoon_Group/Portrait_Members/Malachia-Jasper-Kaladin-Noah.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Portrait_Members_PNG": {
+        "web_url": null,
+        "md_tag": "![Malachia Jasper Kaladin Noah](./images/families/Bloodmoon_Group/Portrait_Members_PNG/Malachia-Jasper-Kaladin-Noah.png)",
+        "trigger_keyword": "families bloodmoon group portrait members png malachia jasper kaladin noah",
+        "resolution": "1024x1024",
+        "local_path": "./images/families/Bloodmoon_Group/Portrait_Members_PNG/Malachia-Jasper-Kaladin-Noah.png",
+        "status": "approved",
+        "source": "local"
+      },
+      "Portrait_Trio": {
+        "web_url": null,
+        "md_tag": "![Jasper Kaladin Noah](./images/families/Bloodmoon_Group/Portrait_Trio/Jasper-Kaladin-Noah.png)",
+        "trigger_keyword": "families bloodmoon group portrait trio jasper kaladin noah",
+        "resolution": "1024x1024",
+        "local_path": "./images/families/Bloodmoon_Group/Portrait_Trio/Jasper-Kaladin-Noah.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Duo_Alyssa_Jasper": {
+      "Polaroid_Couple_Candid": {
+        "web_url": null,
+        "md_tag": "![kmNJwtwHV8hkfns1tV Dj](./images/families/Duo_Alyssa_Jasper/Polaroid_Couple_Candid/kmNJwtwHV8hkfns1tV-Dj.webp)",
+        "trigger_keyword": "families duo alyssa jasper polaroid couple candid kmnjwtwhv8hkfns1tv dj",
+        "resolution": "1254x1254",
+        "local_path": "./images/families/Duo_Alyssa_Jasper/Polaroid_Couple_Candid/kmNJwtwHV8hkfns1tV-Dj.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Couple_Medium": {
+        "web_url": null,
+        "md_tag": "![c9FCUUXjm27b7CrK2vr U](./images/families/Duo_Alyssa_Jasper/Polaroid_Couple_Medium/c9FCUUXjm27b7CrK2vr_U.webp)",
+        "trigger_keyword": "families duo alyssa jasper polaroid couple medium c9fcuuxjm27b7crk2vr u",
+        "resolution": "600x600",
+        "local_path": "./images/families/Duo_Alyssa_Jasper/Polaroid_Couple_Medium/c9FCUUXjm27b7CrK2vr_U.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Polaroid_Couple_Small": {
+        "web_url": null,
+        "md_tag": "![aitDaGq6slPSzyLUzCRyy](./images/families/Duo_Alyssa_Jasper/Polaroid_Couple_Small/aitDaGq6slPSzyLUzCRyy.webp)",
+        "trigger_keyword": "families duo alyssa jasper polaroid couple small aitdagq6slpszyluzcryy",
+        "resolution": "400x400",
+        "local_path": "./images/families/Duo_Alyssa_Jasper/Polaroid_Couple_Small/aitDaGq6slPSzyLUzCRyy.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Duo_Malachia_Kaladin": {
+      "Portrait": {
+        "web_url": null,
+        "md_tag": "![malachia kaladin](./images/families/Duo_Malachia_Kaladin/Portrait/malachia-kaladin.png)",
+        "trigger_keyword": "families duo malachia kaladin portrait malachia kaladin",
+        "resolution": "1024x1024",
+        "local_path": "./images/families/Duo_Malachia_Kaladin/Portrait/malachia-kaladin.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Portrait_Bloodmoon_Family": {
+      "B-XvIkerQaUft_MRPPFQ4.webp": {
+        "web_url": null,
+        "md_tag": "![B XvIkerQaUft MRPPFQ4](./images/families/Portrait_Bloodmoon_Family/B-XvIkerQaUft_MRPPFQ4.webp)",
+        "trigger_keyword": "families portrait bloodmoon family b xvikerqauft mrppfq4",
+        "resolution": "1672x941",
+        "local_path": "./images/families/Portrait_Bloodmoon_Family/B-XvIkerQaUft_MRPPFQ4.webp",
+        "status": "approved",
+        "source": "local"
+      },
+      "Family_Fantasy": {
+        "web_url": null,
+        "md_tag": "![family fantasy](./images/families/Portrait_Bloodmoon_Family/Family_Fantasy/family_fantasy.png)",
+        "trigger_keyword": "families portrait bloodmoon family family fantasy family fantasy",
+        "resolution": "1086x1448",
+        "local_path": "./images/families/Portrait_Bloodmoon_Family/Family_Fantasy/family_fantasy.png",
+        "status": "approved",
+        "source": "local"
+      },
+      "Family_Group": {
+        "web_url": null,
+        "md_tag": "![family](./images/families/Portrait_Bloodmoon_Family/Family_Group/family.png)",
+        "trigger_keyword": "families portrait bloodmoon family family group family",
+        "resolution": "1254x1254",
+        "local_path": "./images/families/Portrait_Bloodmoon_Family/Family_Group/family.png",
+        "status": "approved",
+        "source": "local"
+      },
+      "Family_JPEG": {
+        "web_url": null,
+        "md_tag": "![FAMILY](./images/families/Portrait_Bloodmoon_Family/Family_JPEG/FAMILY.jpeg)",
+        "trigger_keyword": "families portrait bloodmoon family family jpeg family",
+        "resolution": "832x1248",
+        "local_path": "./images/families/Portrait_Bloodmoon_Family/Family_JPEG/FAMILY.jpeg",
+        "status": "approved",
+        "source": "local"
+      },
+      "Family_Modern": {
+        "web_url": null,
+        "md_tag": "![family modern](./images/families/Portrait_Bloodmoon_Family/Family_Modern/family_modern.png)",
+        "trigger_keyword": "families portrait bloodmoon family family modern family modern",
+        "resolution": "1086x1448",
+        "local_path": "./images/families/Portrait_Bloodmoon_Family/Family_Modern/family_modern.png",
+        "status": "approved",
+        "source": "local"
+      },
+      "Family_Succ": {
+        "web_url": null,
+        "md_tag": "![family succ](./images/families/Portrait_Bloodmoon_Family/Family_Succ/family_succ.png)",
+        "trigger_keyword": "families portrait bloodmoon family family succ family succ",
+        "resolution": "1086x1448",
+        "local_path": "./images/families/Portrait_Bloodmoon_Family/Family_Succ/family_succ.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Portrait_Bloodmoon_Family_Alt": {
+      "zrklLQsO0dldHUsxXmxPW.webp": {
+        "web_url": null,
+        "md_tag": "![zrklLQsO0dldHUsxXmxPW](./images/families/Portrait_Bloodmoon_Family_Alt/zrklLQsO0dldHUsxXmxPW.webp)",
+        "trigger_keyword": "families portrait bloodmoon family alt zrkllqso0dldhusxxmxpw",
+        "resolution": "1254x1254",
+        "local_path": "./images/families/Portrait_Bloodmoon_Family_Alt/zrklLQsO0dldHUsxXmxPW.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    }
+  },
+  "Interface": {
+    "Banner_Hero_Main": {
+      "BDghYj8fEgjnAo28h3yEB": {
+        "web_url": null,
+        "md_tag": "![BDghYj8fEgjnAo28h3yEB](./images/interface/Banner_Hero_Main/BDghYj8fEgjnAo28h3yEB.webp)",
+        "trigger_keyword": "interface banner hero main bdghyj8fegjnao28h3yeb",
+        "resolution": "1672x941",
+        "local_path": "./images/interface/Banner_Hero_Main/BDghYj8fEgjnAo28h3yEB.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Banner_Keyword_Divider": {
+      "1-QfBZZ4KAX7fidRlidxq": {
+        "web_url": null,
+        "md_tag": "![1 QfBZZ4KAX7fidRlidxq](./images/interface/Banner_Keyword_Divider/1-QfBZZ4KAX7fidRlidxq.webp)",
+        "trigger_keyword": "interface banner keyword divider 1 qfbzz4kax7fidrlidxq",
+        "resolution": "1672x941",
+        "local_path": "./images/interface/Banner_Keyword_Divider/1-QfBZZ4KAX7fidRlidxq.webp",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Emblem": {
+      "emblema": {
+        "web_url": null,
+        "md_tag": "![emblema](./images/interface/Emblem/emblema.png)",
+        "trigger_keyword": "interface emblem emblema",
+        "resolution": "1161x1161",
+        "local_path": "./images/interface/Emblem/emblema.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Emblem_Small": {
+      "emblema_small": {
+        "web_url": null,
+        "md_tag": "![emblema small](./images/interface/Emblem_Small/emblema_small.png)",
+        "trigger_keyword": "interface emblem small emblema small",
+        "resolution": "200x200",
+        "local_path": "./images/interface/Emblem_Small/emblema_small.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Engine": {
+      "engine": {
+        "web_url": null,
+        "md_tag": "![engine](./images/interface/Engine/engine.png)",
+        "trigger_keyword": "interface engine engine",
+        "resolution": "1448x1086",
+        "local_path": "./images/interface/Engine/engine.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "Engine_Cover": {
+      "Engine_Core_Cover": {
+        "web_url": null,
+        "md_tag": "![Engine Core Cover](./images/interface/Engine_Cover/Engine_Core_Cover.png)",
+        "trigger_keyword": "interface engine cover engine core cover",
+        "resolution": "1672x941",
+        "local_path": "./images/interface/Engine_Cover/Engine_Core_Cover.png",
+        "status": "approved",
+        "source": "local"
+      }
+    },
+    "NPC_Index": {
+      "npc": {
+        "web_url": null,
+        "md_tag": "![npc](./images/interface/NPC_Index/npc.png)",
+        "trigger_keyword": "interface npc index npc",
+        "resolution": "1448x1086",
+        "local_path": "./images/interface/NPC_Index/npc.png",
+        "status": "approved",
+        "source": "local"
+      }
+    }
+  },
+  "Archive": {
+    "Duplicates": {
+      "FAMILY(1).jpeg": {
+        "web_url": null,
+        "md_tag": "![FAMILY 1](./images/archive/duplicates/FAMILY%281%29.jpeg)",
+        "trigger_keyword": "archive duplicates family",
+        "resolution": "832x1248",
+        "local_path": "./images/archive/duplicates/FAMILY(1).jpeg",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "families/Portrait_Bloodmoon_Family/Family_JPEG/FAMILY.jpeg"
+      },
+      "FAMILY(2).jpeg": {
+        "web_url": null,
+        "md_tag": "![FAMILY 2](./images/archive/duplicates/FAMILY%282%29.jpeg)",
+        "trigger_keyword": "archive duplicates family",
+        "resolution": "832x1248",
+        "local_path": "./images/archive/duplicates/FAMILY(2).jpeg",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "families/Portrait_Bloodmoon_Family/Family_JPEG/FAMILY.jpeg"
+      },
+      "Kaladin(1).jpeg": {
+        "web_url": null,
+        "md_tag": "![Kaladin 1](./images/archive/duplicates/Kaladin%281%29.jpeg)",
+        "trigger_keyword": "archive duplicates kaladin",
+        "resolution": "512x768",
+        "local_path": "./images/archive/duplicates/Kaladin(1).jpeg",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "characters/Kaladin/Reference_JPEG/Kaladin.jpeg"
+      },
+      "Kaladin(2).jpeg": {
+        "web_url": null,
+        "md_tag": "![Kaladin 2](./images/archive/duplicates/Kaladin%282%29.jpeg)",
+        "trigger_keyword": "archive duplicates kaladin",
+        "resolution": "512x768",
+        "local_path": "./images/archive/duplicates/Kaladin(2).jpeg",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "characters/Kaladin/Reference_JPEG/Kaladin.jpeg"
+      },
+      "Malachia(1).png": {
+        "web_url": null,
+        "md_tag": "![Malachia 1](./images/archive/duplicates/Malachia%281%29.png)",
+        "trigger_keyword": "archive duplicates malachia",
+        "resolution": "1024x1536",
+        "local_path": "./images/archive/duplicates/Malachia(1).png",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "characters/Malachia/Reference_Primary/Malachia.png"
+      },
+      "Malachia-Jasper-Kaladin-Noah - Copia.webp": {
+        "web_url": null,
+        "md_tag": "![Malachia Jasper Kaladin Noah Copia](./images/archive/duplicates/Malachia-Jasper-Kaladin-Noah%20-%20Copia.webp)",
+        "trigger_keyword": "archive duplicates malachia jasper kaladin noah copia",
+        "resolution": "1024x1536",
+        "local_path": "./images/archive/duplicates/Malachia-Jasper-Kaladin-Noah - Copia.webp",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "families/Bloodmoon_Group/Portrait_Members/Malachia-Jasper-Kaladin-Noah.webp"
+      },
+      "image(1).jpg": {
+        "web_url": null,
+        "md_tag": "![image 1](./images/archive/duplicates/image%281%29.jpg)",
+        "trigger_keyword": "archive duplicates image",
+        "resolution": "832x1248",
+        "local_path": "./images/archive/duplicates/image(1).jpg",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": null
+      },
+      "kaladin(1).png": {
+        "web_url": null,
+        "md_tag": "![kaladin 1](./images/archive/duplicates/kaladin%281%29.png)",
+        "trigger_keyword": "archive duplicates kaladin",
+        "resolution": "832x1248",
+        "local_path": "./images/archive/duplicates/kaladin(1).png",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "characters/Kaladin/Avatar_Primary/kaladin.png"
+      },
+      "malachia-kaladin - Copia.png": {
+        "web_url": null,
+        "md_tag": "![malachia kaladin Copia](./images/archive/duplicates/malachia-kaladin%20-%20Copia.png)",
+        "trigger_keyword": "archive duplicates malachia kaladin copia",
+        "resolution": "1024x1024",
+        "local_path": "./images/archive/duplicates/malachia-kaladin - Copia.png",
+        "status": "duplicate",
+        "source": "local_duplicate",
+        "duplicate_of": "families/Duo_Malachia_Kaladin/Portrait/malachia-kaladin.png"
+      }
+    },
+    "Unclassified": {
+      "ATvSGz9zAsohoY-GyHK0M.webp": {
+        "web_url": null,
+        "md_tag": "![ATvSGz9zAsohoY GyHK0M](./images/archive/unclassified/ATvSGz9zAsohoY-GyHK0M.webp)",
+        "trigger_keyword": "archive unclassified atvsgz9zasohoy gyhk0m",
+        "resolution": "1254x1254",
+        "local_path": "./images/archive/unclassified/ATvSGz9zAsohoY-GyHK0M.webp",
+        "status": "unclassified",
+        "source": "local_unclassified"
+      },
+      "image.jpg": {
+        "web_url": null,
+        "md_tag": "![image](./images/archive/unclassified/image.jpg)",
+        "trigger_keyword": "archive unclassified image",
+        "resolution": "832x1248",
+        "local_path": "./images/archive/unclassified/image.jpg",
+        "status": "unclassified",
+        "source": "local_unclassified"
+      }
+    }
+  }
+}
