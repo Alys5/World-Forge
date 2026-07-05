@@ -28,9 +28,9 @@ upstream (`order: ["DeepSeek"]`, fallbacks allowed) and carries commented-out,
 ready-to-swap routing entries for GLM 5.2 (`z-ai/glm-5.2`, hard-pinned
 `only: ["Z.AI"]` because the reported mid-task stream failures live on the
 third-party upstreams, plus `reasoning: { effort }` on the same passthrough)
-and Kimi K2.7 Code (`moonshotai/kimi-k2.7-code`, with an explicit caveat: it
-is the coding-tuned variant the models page warns against for creative seats,
-and its 16K max output is tight for the Compiler's larger lorebook JSON).
+and Kimi K2.5 (`moonshotai/kimi-k2.5`, the general-line chat-tuned Kimi —
+preferred over the coding-tuned K2.7 Code for creative seats, no output-cap
+problem, and it keeps the per-phase temperatures, unlike GLM).
 
 ### Added
 - `Kilo_Variants/`: drop-in all-seats alternates for the shipped config —
@@ -51,10 +51,10 @@ and its 16K max output is tight for the Compiler's larger lorebook JSON).
   alternates); header comment documents the passthrough and its two sharp
   edges (per-model-only placement, unvalidated fields); the `agent` section
   opens with a per-seat swap guide (exact `"model"` strings for the two
-  alternates, the uncomment-the-routing-entry step, the rule that a swapped
-  seat's `temperature` line must be removed — reasoning-class endpoints
-  ignore sampling — and seat guidance keeping Kimi K2.7 Code off the
-  creative seats and the Compiler).
+  alternates, the uncomment-the-routing-entry step, the per-alternate
+  temperature rule — GLM 5.2 seats drop `temperature` because reasoning
+  endpoints ignore sampling, Kimi K2.5 seats keep it — and seat guidance,
+  including watching the Editor for round-1 sycophancy on budget models).
 - `wiki/Kilo-Code-Setup.md`: §3.2 gains item 6 (per-model provider routing
   from `kilo.jsonc`, sharp edges, how to activate the alternates); §10
   troubleshooting gains a row for GLM-family mid-task stops / "did not
