@@ -26,20 +26,38 @@ grade), and a new **divergence scan** surfaces post-seed content that no
 revision explains (Refiner gap answers, arcs developed past the seed's
 sketch) for ask-first fold-in — nothing folds in or drops silently. The
 structure upgrades to the current `World_Seed_Template.md` without
-re-wording carried content. Distillation from the Master Design survives
-only as the announced fallback when the source has no `World_Seed.md`.
-Sub-seed-grade revisions (entry-level tweaks) make no seed edit and are
-recorded in the manifest as re-deriving downstream — the same outcome the
-old distillation gave them. Everything else about rebaseline (zero-axes
-gate, source-integrity check, marker-free cleanliness, fresh-UID cost,
+re-wording carried content. Distillation from the Master Design remains
+available, but never as a silent default while a source seed exists: the
+new **`--distill`** flag opts out of the 1:1 carry deliberately (for a
+seed that was thin at Phase 0, or a world that has outgrown its wording),
+and a seedless source is announced and confirmed — the confirmation
+counting as passing the flag, the same treat-confirmation-as-the-flag
+pattern as Step F's `--then-brainstorm` upgrade. Sub-seed-grade revisions
+(entry-level tweaks) make no seed edit and are recorded in the manifest
+as re-deriving downstream — the same outcome the old distillation gave
+them. Everything else about rebaseline (zero-axes gate, source-integrity
+check, marker-free cleanliness, fresh-UID cost,
 `--then-interview`/`--then-brainstorm` chains) is unchanged.
+
+### Added
+- **`--rebaseline --distill`** — distilled consolidation as an explicit
+  opt-in: the seed is re-derived from the post-revision Master Design
+  instead of carried 1:1 from the source seed. Requires `--rebaseline`
+  (halts in reframe mode); combines with `--brief` (new Section 1
+  `Rebaseline consolidation:` field must agree) and the `--then-*` flags.
+  The flag is the consent — the Converter announces the re-wording cost
+  once and proceeds without a further confirm. Documented across the
+  Converter spec (invocation, Step B routing, Step D distillation path,
+  manifest `Seed base:` values, sign-off), the convert workflow (mode +
+  command tables, pause gate), the Convert Brief template, `CLAUDE.md`
+  principle #10, and the tutorial's flag reference.
 
 ### Changed
 - `agent_roles/Converter/00_The_Converter.md`: Section 9 Step D rewritten
   from "Distillation, not transcription" to **"Seed-anchored
   consolidation"** — carry the seed 1:1, apply revision deltas in place,
   divergence scan (ask-first), upgrade structure not words, with the
-  distillation fallback for seedless sources. Step B makes the source
+  distillation path reserved for `--distill` and seedless sources. Step B makes the source
   `World_Seed.md` required reading (announcing the fallback when absent);
   Step C's disposition table defines rebaseline `keep` as carried per
   Step D; Step E scopes `<!-- REBASELINED FROM ... -->` comments to change
@@ -50,10 +68,10 @@ gate, source-integrity check, marker-free cleanliness, fresh-UID cost,
   structure-upgrades inventory); Context Manifest, Step 3 intake, and the
   rebaseline sign-off checklist updated to match.
 - `workflows/world-forge-convert.md`: REBASELINE MODE bullets describe the
-  seed-anchored consolidation and demote distillation to the no-seed
-  fallback; the C0 input list marks the source seed required in rebaseline
-  mode; two new pause gates (**C0 Rebaseline No Source Seed**, **C0
-  Rebaseline Divergence Fold-In**); operations-table row updated.
+  seed-anchored consolidation and route distillation through the explicit
+  `--distill` path; the C0 input list marks the source seed required in
+  rebaseline mode; two new pause gates (**C0 Rebaseline No Source Seed**,
+  **C0 Rebaseline Divergence Fold-In**); operations-table row updated.
 - `templates/Convert_Brief_Template.md`: rebaseline intro note and the
   Section 4e / Section 5 *Rebaseline:* notes now describe the 1:1
   seed-anchored carry instead of "distills from the source".

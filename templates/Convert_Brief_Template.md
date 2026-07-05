@@ -13,7 +13,7 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 **When NOT to use the Converter:** if you are changing **setting + protagonist + factions + tone** all at once, you are not converting — you are building a new world that takes inspiration from the source. Use `/worldforge start` against a fresh project folder instead. The Converter will refuse a four-axes-replaced Brief.
 
-**Rebaseline mode:** if you are changing *nothing structural* — same protagonist, same World Mode, same tone — and want to consolidate accumulated revisions into a clean rebuild (optionally adding new mechanics), declare `Operating mode: rebaseline` in Section 1 and invoke with `--rebaseline`. Rebaseline flips this Brief's defaults: Sections 5 and 6 are *kept from the source* instead of authored fresh, and the Section 4e auto-strip reminders invert to carry. The consolidation is **seed-anchored**: your original `World_Seed.md` carries 1:1 — sections no revision touched keep your exact wording — with each applied revision written into the affected passage in place, and any post-seed drift surfaced for your ask-first decision (the Converter distills from the Master Design only if the source has no seed file). See `agent_roles/Converter/00_The_Converter.md` Section 9. The per-section notes below say "*Rebaseline:*" where the rules differ.
+**Rebaseline mode:** if you are changing *nothing structural* — same protagonist, same World Mode, same tone — and want to consolidate accumulated revisions into a clean rebuild (optionally adding new mechanics), declare `Operating mode: rebaseline` in Section 1 and invoke with `--rebaseline`. Rebaseline flips this Brief's defaults: Sections 5 and 6 are *kept from the source* instead of authored fresh, and the Section 4e auto-strip reminders invert to carry. The consolidation is **seed-anchored**: your original `World_Seed.md` carries 1:1 — sections no revision touched keep your exact wording — with each applied revision written into the affected passage in place, and any post-seed drift surfaced for your ask-first decision. If you'd rather have the seed re-derived from the post-revision Master Design (your original seed was thin, or the world has outgrown its wording), pass `--distill` and declare `Rebaseline consolidation: distill` in Section 1; the Converter also falls back to distillation, with your confirmation, if the source has no seed file. See `agent_roles/Converter/00_The_Converter.md` Section 9. The per-section notes below say "*Rebaseline:*" where the rules differ.
 
 ---
 
@@ -30,6 +30,8 @@ Fill in every section below. Delete instructional text in brackets before submit
 **Target World Mode:** [`arc` | `sandbox` | `unchanged` — flipping is one of the load-bearing cases the Converter exists for. If flipping, read the SANDBOX MODE section of `workflows/world-forge.md` to understand what that means. *Rebaseline:* must be `unchanged`.]
 
 **Operating mode:** [`reframe` (default) | `rebaseline` — must match the invocation flag. `rebaseline` requires zero axes replaced in Section 3, protagonist included.]
+
+**Rebaseline consolidation:** [`seed-anchored` (default — the source `World_Seed.md` carries 1:1 with revision deltas applied) | `distill` (re-derive the seed from the post-revision Master Design; must match the `--distill` flag) | omit this line in reframe mode]
 
 ---
 
@@ -162,7 +164,7 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 ## 5. THE NEW PROTAGONIST (`{{user}}`) **[REQUIRED — reframe mode]**
 
-*Rebaseline: skip this section — write `rebaseline — protagonist unchanged, carried at post-revision state` and leave the fields blank. The Converter carries Section 3 over 1:1 from the source seed with any revision deltas applied (distilling from the post-revision Master Design only if the source has no seed file).*
+*Rebaseline: skip this section — write `rebaseline — protagonist unchanged, carried at post-revision state` and leave the fields blank. The Converter carries Section 3 over 1:1 from the source seed with any revision deltas applied (distilling from the post-revision Master Design only on the `--distill` path or when the source has no seed file).*
 
 *Reframe mode: this section is always new. The Converter will not transfer protagonist content from the source. Even if you are "playing as the source's antagonist" or "playing as a previously-minor character," the protagonist frame must be authored fresh — the Refiner will treat it as Phase 0 Section 3 material.*
 
@@ -223,7 +225,7 @@ Fill in every section below. Delete instructional text in brackets before submit
 - [ ] Major characters: each one's disposition decided (no "TBD" entries)
 - [ ] New protagonist (Section 5) authored with at least one sentence per field — *or marked `rebaseline — protagonist unchanged`*
 - [ ] Test scenarios (Section 6) — three to five written, *or `keep` in rebaseline mode*
-- [ ] Rebaseline only: Operating mode declared in Section 1; new mechanics declared in Section 2 (or `none — pure consolidation`); fresh-UID cost understood (running ST chats do not migrate to the rebuild)
+- [ ] Rebaseline only: Operating mode declared in Section 1; consolidation declared (`seed-anchored` default, or `distill` matching the `--distill` flag); new mechanics declared in Section 2 (or `none — pure consolidation`); fresh-UID cost understood (running ST chats do not migrate to the rebuild)
 - [ ] Notes for the Converter (Section 7) — filled in or explicitly left blank
 
 **When ready, invoke:**

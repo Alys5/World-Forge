@@ -495,7 +495,7 @@ There is one conversion where *nothing* is replaced: your world has been through
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline
 ```
 
-Same world, same protagonist. The Converter takes your original `World_Seed.md` as the base — everything a revision never touched carries **1:1, in your own words**, never paraphrased — then reads every `Revision_R*.md` report against the *post-revision* `Master_Design.md` and writes each revision's effect into the affected seed passage in place. Everything a regular conversion always regenerates — Section 3 (protagonist), Section 5 (arcs), the test scenarios — carries forward the same way. Anything the build added after Phase 0 that no revision explains (answers you gave the Refiner, arcs that grew past the seed's sketch) gets *surfaced*, and you decide per item whether it folds into the seed or gets re-elicited in the rebuild — nothing is silently kept or silently lost. (A source with no `World_Seed.md` falls back to distilling the seed from the Master Design — announced up front.) Revision *content* carries; revision *markers* don't. New mechanics you're introducing go in at seed level, marked `<!-- NEW IN REBASELINE -->`. Then `/worldforge skip phase0` rebuilds the world clean, and the new project's revision counter starts over at R1.
+Same world, same protagonist. The Converter takes your original `World_Seed.md` as the base — everything a revision never touched carries **1:1, in your own words**, never paraphrased — then reads every `Revision_R*.md` report against the *post-revision* `Master_Design.md` and writes each revision's effect into the affected seed passage in place. Everything a regular conversion always regenerates — Section 3 (protagonist), Section 5 (arcs), the test scenarios — carries forward the same way. Anything the build added after Phase 0 that no revision explains (answers you gave the Refiner, arcs that grew past the seed's sketch) gets *surfaced*, and you decide per item whether it folds into the seed or gets re-elicited in the rebuild — nothing is silently kept or silently lost. (If you'd rather have the seed re-derived from the post-revision Master Design — say your original seed was thin, or the world has long outgrown its wording — pass `--distill`; a source with no `World_Seed.md` falls back to the same distillation with your confirmation, announced up front.) Revision *content* carries; revision *markers* don't. New mechanics you're introducing go in at seed level, marked `<!-- NEW IN REBASELINE -->`. Then `/worldforge skip phase0` rebuilds the world clean, and the new project's revision counter starts over at R1.
 
 **The one real cost:** the rebuild compiles fresh UIDs, so running SillyTavern chats against the old package don't migrate — the old Export/ stays playable as-is, but the rebuilt world is a fresh import with fresh chat state. If you want running chats to survive, stay with `/worldforge revise`. Full mode spec: `agent_roles/Converter/00_The_Converter.md` Section 9.
 
@@ -751,8 +751,15 @@ Drives the conversion from a pre-filled `templates/Convert_Brief_Template.md` in
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline
 ```
-Same world, same protagonist: rebuilds a clean seed from the *post-revision* Master Design when accumulated revisions have made surgical editing unwieldy. Revision content carries; revision markers don't. Combines with `--brief`.
+Same world, same protagonist: rebuilds a clean seed when accumulated revisions have made surgical editing unwieldy — your original `World_Seed.md` carries 1:1, with each revision's effect applied in place and post-seed drift surfaced for your decision. Revision content carries; revision markers don't. Combines with `--brief`.
 **Why:** a world is layered with `<!-- REVISED IN R[N] -->` markers and the next change feels too big for another surgical revision. **Trade-off:** the rebuild compiles fresh UIDs, so running chats don't migrate — that's the price of a clean baseline; `revise` is the UID-preserving alternative.
+
+**`--rebaseline --distill`** — *consolidate, but re-derive the seed*
+```
+/worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --distill
+```
+Skips the 1:1 carry and distills the seed fresh from the *post-revision* Master Design instead. Requires `--rebaseline`.
+**Why:** your original seed was thin, or the world has outgrown its wording so far that you'd rather keep the Master Design's developed articulation than your Phase 0 text. **Trade-off:** every section gets re-worded through summarization — the 1:1 fidelity of a normal rebaseline is exactly what you're opting out of.
 
 **`--rebaseline --then-interview`** — *consolidate, then change a lot*
 ```
