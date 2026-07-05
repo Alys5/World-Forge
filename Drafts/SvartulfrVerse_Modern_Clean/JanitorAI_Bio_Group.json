@@ -1,0 +1,69 @@
+{
+  "storefront_text": {
+    "title": "The Douglas Family",
+    "subtitle": "The Overprotective LA Dynasty",
+    "impact_line": "You can have anything in Los Angeles... except your freedom.",
+    "hook": "You are the youngest of the elite Douglas family. Your brothers control Los Angeles. They think you are an innocent student. They don't know you sneak out to runway shows.",
+    "blurb": "A slice-of-life comedy and social thriller featuring a sprawling ensemble of overprotective billionaires, a lethal security chief with a slow-burn crush, a rebel uncle, and one protagonist desperately trying to maintain a double life as an LA fashion model.",
+    "world_teaser": "Sun-baked asphalt, expensive cologne, matcha lattes. The constant hum of LA traffic, buzzing phones, and the distant chop of DCC Security helicopters. Your family thinks they can keep you safe in a golden cage.",
+    "closing_line": "Can you keep your secret life hidden, or will the DCC perimeter lock you down for good?",
+    "warnings": "Overprotective family dynamics, stalking/monitoring, mild comedy/absurdity."
+  },
+  "visuals": {
+    "main_portrait_1x1": {
+      "generation_prompt": "Cinematic portrait of a group of extremely wealthy, intimidating men in sharp tailored suits and tactical gear, standing protectively in a sleek modern Bel-Air estate living room. High fashion, dramatic lighting, luxury.",
+      "placeholder_url": "https://files.catbox.moe/example_main.png"
+    },
+    "supporting_image_banner": {
+      "generation_prompt": "A sleek black helicopter flying over the Los Angeles skyline at sunset, with the DCC corporate logo visible on the side.",
+      "placeholder_url": "https://files.catbox.moe/example_banner.png"
+    }
+  },
+  "roster": [
+    {
+      "name": "Wulfnic",
+      "subtitle": "The Patriarch",
+      "description": "The terrifying patriarch who dotes on you and teaches you silly Old Norse insults.",
+      "image": {
+        "generation_prompt": "Elderly imposing man, stern face, thick beard, built like an ox.",
+        "placeholder_url": "https://files.catbox.moe/example_wulfnic.png"
+      }
+    },
+    {
+      "name": "Erik",
+      "subtitle": "The CEO",
+      "description": "The corporate CEO with helicopter-parent anxiety. Views any external social life as a critical security threat.",
+      "image": {
+        "generation_prompt": "50 year old man, sharp suit, stressed posture, graying temples.",
+        "placeholder_url": "https://files.catbox.moe/example_erik.png"
+      }
+    },
+    {
+      "name": "Kaladin",
+      "subtitle": "DCC Security Head",
+      "description": "The lethal security chief who completely loses his composure and stutters when you flirt with him.",
+      "image": {
+        "generation_prompt": "33 year old man, tactical suit, athletic build, vigilant eyes.",
+        "placeholder_url": "https://files.catbox.moe/example_kaladin.png"
+      }
+    },
+    {
+      "name": "Logan",
+      "subtitle": "The Biker Uncle",
+      "description": "The cool biker uncle who runs the only safe haven club against Erik's control.",
+      "image": {
+        "generation_prompt": "45 year old man, leather jacket, tattoos, relaxed swagger.",
+        "placeholder_url": "https://files.catbox.moe/example_logan.png"
+      }
+    },
+    {
+      "name": "Jasper",
+      "subtitle": "The Hacker Twin",
+      "description": "The hacker twin who helps you sneak out (for a price) by subverting Erik's security.",
+      "image": {
+        "generation_prompt": "19 year old male, pale, perpetually sleep-deprived, surrounded by glowing screens.",
+        "placeholder_url": "https://files.catbox.moe/example_jasper.png"
+      }
+    }
+  ]
+}

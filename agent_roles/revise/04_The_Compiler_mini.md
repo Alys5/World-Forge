@@ -72,7 +72,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 - `system_prompt` starts with `{{original}}` on its own line
 - `post_history_instructions` same
 - Validate against parent's hard-fail rules before writing
-- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.txt` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`. **ANTI-TRUNCATION VERIFICATION:** If the profile is a Group Bot, ensure EVERY character possesses ALL sub-headers defined in the template. If any fields are abbreviated or summarized, halt and report.
+- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.md` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`. **ANTI-TRUNCATION VERIFICATION:** If the profile is a Group Bot, ensure EVERY character possesses ALL sub-headers defined in the template. If any fields are abbreviated or summarized, halt and report.
 
 **For each touched lorebook (`Tier[N]_*.md` → `*_Lorebook.json` or `Arc[N]_*Lorebook.json`):**
 - Read existing JSON
@@ -221,7 +221,7 @@ Append to the Revision Log entry:
 ### Files Compiled
 - [list with per-file UID counts: N existing preserved, N new, N modified]
 
-### Pre-Save Guards (parent rules 1–10)
+### Pre-Save Guards (parent rules 1–12)
 - [ ] JSON parses on every written file
 - [ ] {{original}} preserved on every touched card
 - [ ] No metadata fields outside schema
@@ -234,7 +234,7 @@ Append to the Revision Log entry:
 - [ ] Entry fields camelCase per ST schema — no snake_case aliases or legacy characterFilter pair
 - [ ] No inline revision marker (`<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->`) survives in any JSON value — markers stripped on the Drafts→Export transcription; grep for `REVISED IN R` / `CREATED IN R` / `<!--` returns zero across every written file
 - [ ] Every written file is UTF-8 — non-ASCII intact (em-dashes, curly quotes, accented names), existing text not mojibaked on rewrite; no `â€`/`Ã` markers; not authored through PowerShell
-- [ ] JanitorAI Bot Profile (`[CharName]_JanitorAI.txt`) regenerated for touched cards
+- [ ] JanitorAI Bot Profile (`[CharName]_JanitorAI.md`) regenerated for touched cards
 - [ ] JanitorAI Lorebook Script (`[WorldName]_JanitorAI_Script.js`) regenerated for touched lorebooks
 
 ### UID Continuity

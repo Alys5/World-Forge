@@ -18,8 +18,10 @@ These rules are pre-save guards. If any check fails, do NOT write the file. Fix 
 8. **All entries have Position Rationale.** Either the literal string `DEFAULT` (when entry uses documented default position+flags) or a one-sentence justification per the Architect's spec. This survives compilation.
 9. **Entry object keys equal entry UIDs.** SillyTavern stores and looks up world-info entries as `entries[uid]` — every editor read and write goes through that lookup, so an entry whose string key does not equal `String(entry.uid)` imports without error and then **never renders in the World Info editor**. Every entry's object key MUST equal its `uid`: entry with `"uid": 20` is keyed `"20"`. Never key entries by sequential indices that diverge from the UIDs.
 10. **Entry fields use ST's canonical camelCase names.** Per-entry override fields are `scanDepth`, `caseSensitive`, `matchWholeWords`, `useGroupScoring` (nullable, `null` = inherit defaults). NEVER emit the snake_case aliases `case_sensitive` / `match_whole_words` / `use_regex`, nor the legacy `characterFilterNames` / `characterFilterExclude` pair — those names belong to the embedded `character_book` card format (`Notes_On_functionality.md` §5.1b), not standalone World Info files; ST imports them without error but the GUI reads only the camelCase fields, so the values are silently dead. Character filtering, when actually needed, is the optional `characterFilter` object (`{"isExclude": false, "names": [], "tags": []}`) — omit it entirely when unused.
+11. **Strict AnyPOV Mandate:** All generated Character Cards, Group Profiles, Lorebooks, and Bot Definitions MUST remain strictly AnyPOV. The LLM is strictly forbidden from hardcoding a specific user name, specific gender pronouns, or highly specific player-character backstories into the core bot logic. It must exclusively use macros like `{{user}}`, `{{poss}}`, `{{sub}}`.
+12. **Global QA Persona Isolation:** The persona "Alyssa" (and her specific narrative premise, such as the secret modeling career) is the Global QA Test Persona. Her specific identifying details MUST be confined 100% to the `User.md` template. The bot and lorebook files must only refer to her structural role generically (e.g., "the youngest sibling", "protecting `{{user}}`'s double life").
 
-If all ten pass, write the file. If any fails, the file is wrong — fix the source.
+If all twelve pass, write the file. If any fails, the file is wrong — fix the source.
 
 > **⚠️ FILE-WRITING & ENCODING — write UTF-8, never through PowerShell.** Lorebook and card content is dense with non-ASCII: em-dashes (—), curly quotes (" " ' '), ellipses (…), accented names. You should rely on the automated Python scripts in `tools/` to write every JSON file as UTF-8. **Do NOT write JSON through PowerShell** (`Out-File`, `Set-Content`, `>` redirection): Windows PowerShell re-encodes to UTF-16 / Windows-1252 and silently corrupts em-dashes and curly quotes into mojibake (`—` → `â€"`, `'` → `â€™`). After writing each file, verify: re-read it and confirm a known em-dash or accented name is intact, or grep for the mojibake markers `â€` and `Ã` and confirm zero matches.
 
@@ -195,12 +197,12 @@ Do not modify the file. Do not strip the BEGIN/END markers, the Setup Instructio
 
 If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught this. Do not attempt to synthesize one.
 
-### Step 4B — Build JanitorAI Bot Profile (`Export/[Name]_JanitorAI.txt`)
+### Step 4B — Build JanitorAI Bot Profile (`Export/[Name]_JanitorAI.md`)
 For each character card built in Step 4, compile the paired JanitorAI Bot Profile.
 - Read `Drafts/JanitorAI_Profile_[CharName].md` or `Drafts/JanitorAI_Profile_Group.md` (produced by the Architect). The Architect evaluates the ensemble proximity and may have generated a single unified Multi-Bot group profile instead of individual profiles.
 - **ANTI-TRUNCATION VERIFICATION:** Verify that the Architect obeyed the Anti-Truncation Mandate. If the profile is a Group Bot, ensure EVERY character possesses ALL sub-headers defined in the template (`[APPEARANCE DETAILS]`, `[STARTING OUTFIT]`, `[INVENTORY]`, `[ABILITIES]`, `[BEHAVIOR_NOTES]`, `[SEXUALITY]`, `[SPEECH]`). If any fields are abbreviated or summarized, halt and report.
 - Verify the file has Editor Sign-Off.
-- Pass the draft byte-for-byte to `Export/[Name]_JanitorAI.txt` as plain text markdown (where `[Name]` is either the character's name or the group's name, matching the draft filename). Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
+- Pass the draft byte-for-byte to `Export/[Name]_JanitorAI.md` as plain text markdown (where `[Name]` is either the character's name or the group's name, matching the draft filename). Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
 
 ### Step 4C — Build JanitorAI Bot Bio (Storefront HTML)
 For each JanitorAI Bio drafted by the Architect in Step 5.7:
@@ -390,7 +392,7 @@ Before saving any file (per Foundational Rules at top of this file):
 ```
 Export/
 ├── [CharName]_Card.json            ← V3 character card per named card
-├── [Name]_JanitorAI.txt            ← JanitorAI bot profile (Markdown format, single or group)
+├── [Name]_JanitorAI.md            ← JanitorAI bot profile (Markdown format, single or group)
 ├── [WorldName]_JanitorAI_Bio_[Name].html ← JanitorAI storefront bio HTML
 ├── User.md                         ← {{user}} Persona Description text (paste into ST persona)
 ├── [WorldName]_World_Lorebook.json             ← Tier 1: permanent world truths
@@ -417,7 +419,7 @@ Append to `Export/Compiler_Log.md`:
 
 ### Output Manifest
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
-- [ ] [Name]_JanitorAI.txt — JanitorAI JED format generated (individual or group)
+- [ ] `[Name]_JanitorAI.md` — JanitorAI JED format generated (individual or group)
 - [ ] [WorldName]_JanitorAI_Bio_[Name].html — JanitorAI storefront bio HTML generated via build_bio.py
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] [WorldName]_World_Lorebook.json — [N] entries, all Tier 1
