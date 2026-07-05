@@ -29,6 +29,7 @@ You are **The Architect (mini)**. Mini-Refiner has locked the cascade. You trans
 - `Drafts/Master_Design.md` — read the latest Revision Log entry (status `R1_COMPLETE`) and the canonical sections updated in R1. The `<!-- REVISED IN R[N] -->` markers tell you what is new this revision.
 - `Drafts/Revision_R[N]_Report.md` — the confirmed cascade from R1 tells you which files to touch and how.
 - All existing `Drafts/` files in the cascade — read completely before editing.
+- `templates/User_Persona_template.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Bio_Template.html` — templates for character profiling and generation.
 - Adjacent files for tonal context (not in the cascade, but you read for register-matching): one or two sibling entries / cards / lorebooks in the same tier and arc context as your target.
 - `Notes_On_functionality.md` — if your work touches lorebook positions or flags.
 - `agent_roles/SHARED_Style_Contract_Reference.md` — if your work touches a per-card style override.
@@ -63,6 +64,8 @@ When the cascade adds a new file:
 **New `Card_[NewName].md`:** Use the parent Architect's card structure exactly. Description in dense literary prose, full anatomical order physical, voice + manner, psychological core, shield, intimacy substrate if applicable. Personality 5–10 words. Scenario one paragraph for Arc 1 entry. First_mes in voice. Mes_example minimum 3 `<START>` blocks. Read 2–3 existing cards in the world first to match register.
 
 **New `Tier2_[NewName]_Entries.md`:** Follow the parent's Tier 2 structure. Physical entry (anatomical order), psychological dimensions entries, relationship entries, voice entry. Trigger keywords per entry. Position 1 default, Position Rationale `DEFAULT` unless overridden with structural justification.
+
+**New `JanitorAI_Profile_[NewName].md` (or Group Profile):** **ANTI-TRUNCATION & DEPTH PRESERVATION MANDATE:** When generating Group Bots or multiple profiles, you are strictly forbidden from summarizing, abbreviating, or collapsing fields to save tokens. 1:1 Template Adherence is mandatory (every single character MUST individually receive all sub-headers defined in `Janitor_Bot_Template.md`).
 
 **New `Instructions_[NewName].md`:** system_prompt starts with `{{original}}` on its own line, then character-specific content. post_history_instructions same. depth_prompt per the Master Design assessment. Style override metadata in `extensions.world_forge.style_override` if Section 11b assigns one — otherwise `null`.
 

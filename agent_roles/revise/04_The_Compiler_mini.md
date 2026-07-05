@@ -32,7 +32,7 @@ You are **The Compiler (mini)**. Approved drafts are ready. You translate the to
 - All touched draft files in `Drafts/` (approved by Editor-mini and applicable auditors)
 - All existing `Export/` JSON files corresponding to the touched drafts — read for UID assignment continuity
 - `Notes_On_functionality.md` — schema authority
-- `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Lorebook_Script.js` — schema templates
+- `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Lorebook_Script.js`, `templates/Janitor_Bio_Template.html` — schema templates
 - `Drafts/Master_Design.md` — Revision Log entry to verify all required sign-offs
 - `Drafts/Revision_R[N]_Report.md` — cascade for confirmation of which files to re-compile
 
@@ -72,7 +72,7 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 - `system_prompt` starts with `{{original}}` on its own line
 - `post_history_instructions` same
 - Validate against parent's hard-fail rules before writing
-- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.txt` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`.
+- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.txt` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`. **ANTI-TRUNCATION VERIFICATION:** If the profile is a Group Bot, ensure EVERY character possesses ALL sub-headers defined in the template. If any fields are abbreviated or summarized, halt and report.
 
 **For each touched lorebook (`Tier[N]_*.md` → `*_Lorebook.json` or `Arc[N]_*Lorebook.json`):**
 - Read existing JSON

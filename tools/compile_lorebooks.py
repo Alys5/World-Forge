@@ -83,7 +83,7 @@ def compile_lorebooks(world_name):
         sys.exit(1)
         
     for file in os.listdir(drafts_dir):
-        if not file.endswith('_Entries.md'):
+        if not (file.endswith('_Entries.md') or file.endswith('_Register.md') or file.endswith('_Profile.md')):
             continue
             
         parts = file.replace('.md', '').split('_')
@@ -91,9 +91,22 @@ def compile_lorebooks(world_name):
             continue
             
         group_parts = parts[1:-1]
-        group_name = '_'.join(group_parts)
+        # E.g., Tier2_Kaladin_Intimacy_Profile -> group_name = Kaladin_Intimacy
+        # Actually, let's keep the exact name the init script created
+        if "Intimacy_Profile" in file:
+            group_name = f"{parts[1]}_Intimacy_Profile"
+        elif "Sandbox_Intimacy_Register" in file:
+            group_name = "Sandbox_Intimacy_Register"
+        elif "NPC_Roster" in file:
+            group_name = "NPC_Roster"
+        else:
+            group_name = '_'.join(group_parts)
         
-        json_name = f"{world_name}_{group_name}_Lorebook.json"
+        # If it's a profile/register, the init script didn't add '_Lorebook'
+        if "Register" in group_name or "Profile" in group_name:
+            json_name = f"{world_name}_{group_name}.json"
+        else:
+            json_name = f"{world_name}_{group_name}_Lorebook.json"
         
         md_path = os.path.join(drafts_dir, file)
         json_path = os.path.join(export_dir, json_name)

@@ -32,9 +32,11 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 **Load now:**
 - `Drafts/Master_Design.md` — read completely; verify REFINER SIGN-OFF first
 - `agent_roles/SHARED_Style_Contract_Reference.md` — §1 enums and §3 directive prose for any per-card style-override metadata
+- `templates/User_Persona_template.md` — {{user}} Persona structural reference
+- `templates/Janitor_Bot_Template.md` — JanitorAI Bot Profile format
+- `templates/Janitor_Bio_Template.html` — JanitorAI Bio format
 
 **Load on demand (open at the step that needs it — do not preload):**
-- `templates/User_Persona_template.md` — when drafting `Drafts/User.md` (Section 5.5)
 - `Notes_Quick_Reference.md` — when assigning a non-default position or writing a non-DEFAULT Position Rationale (Section 6)
 
 **ST runtime questions** (position values, lorebook flags, token budget, prompt assembly order): consult `Notes_Quick_Reference.md` first; open the full `Notes_On_functionality.md` only where this spec names a section or the quick reference does not settle the question.
@@ -229,7 +231,9 @@ Before drafting, evaluate the **Ensemble Proximity** of the cast based on the Wo
 
 1. Map the core character details (from Section 5) into the `BASIC INFO AND APPEARANCE`, `PERSONALITY AND BEHAVIOR`, `SEXUALITY`, and `SPEECH AND ABILITIES` blocks of the template for each respective `<CharName>`.
 2. **Permanent Lore:** Include Tier 1 (World truths) and permanent Tier 2 (standing goals, permanent relationships) within the `[SETTING AND SCENARIO]` and `[CONDENSED LORE]` blocks of the template. *Do not leave these out under the assumption the script will handle them.* 
-3. **Keep it tight:** The JanitorAI template can easily bloat. Be ruthless. Distill the prose from the main Character Card rather than copying it wholesale if it's too long.
+3. **ANTI-TRUNCATION & DEPTH PRESERVATION MANDATE:** When generating Group Bots or multiple profiles, you are strictly forbidden from summarizing, abbreviating, or collapsing fields to save tokens.
+   - **1:1 Template Adherence:** Every single character MUST individually receive all sub-headers defined in `Janitor_Bot_Template.md` (e.g., `[APPEARANCE DETAILS]`, `[STARTING OUTFIT]`, `[INVENTORY]`, `[ABILITIES]`, `[BEHAVIOR_NOTES]`, `[SEXUALITY]`, `[SPEECH]`). Do not skip fields.
+   - **Mandatory Depth:** Actively map the psychological density, physical tics, and behavioral mandates of the source material into the target fields without losing token density.
 4. **No Situational Events:** Do NOT put Arc States, tension modifiers, or situational / transient locations here. Those belong in the ES6 Script compiled in Phase 4.
 
 ---

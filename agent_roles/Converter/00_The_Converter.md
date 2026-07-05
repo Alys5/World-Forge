@@ -30,6 +30,7 @@
 **Load on demand (open at the step that needs it — do not preload):**
 - `<source_path>/World_Seed.md` — secondary context; Master Design wins on every field
 - `templates/Convert_Brief_Template.md` — when `--brief` is passed
+- `templates/User_Persona_template.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Bio_Template.html` — when evaluating protagonist identity changes or re-baselined structural logic
 - `<source_path>/Drafts/Revision_R*.md` — skim for what has been iterated on. **Rebaseline mode: required reading, not optional** (Section 9 Step B)
 - `<source_path>/Export/REVISED_FILES.md` — **Rebaseline mode only: required** (Section 9 Step B); not read in reframe mode
 - Specific source draft files (`Card_[Name].md`, `Tier3_Arc[N]_*.md`) — lazily, per Section 3's discipline, only when a preservation decision narrows to them

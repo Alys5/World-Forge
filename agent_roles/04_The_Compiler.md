@@ -29,7 +29,7 @@ If all ten pass, write the file. If any fails, the file is wrong — fix the sou
 
 **Load now:**
 - The `Drafts/` narrative sources listed in Section 2a (verify sign-offs via the Pipeline State Ledger first)
-- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Lorebook_Script.js`
+- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Lorebook_Script.js`, `templates/Janitor_Bio_Template.html`
 - `Notes_Quick_Reference.md` — position enum, flag effects, strictness gotchas
 
 **Load on demand (open at the step that needs it — do not preload):**
@@ -184,6 +184,7 @@ For each card:
 4. Both system_prompt and post_history_instructions **must not be empty strings.**
 5. **Populate `data.extensions.depth_prompt`** if the character has complex arc-dependent behavioral requirements, strong prose style mandates, or intimacy response patterns that need mid-context reinforcement. The depth_prompt injects a third behavioral anchor at a specific depth in chat history — use it when system_prompt + post_history_instructions alone are insufficient for behavioral stability. Structure: `{"prompt": "[reinforcement text]", "depth": 4, "role": "system"}`. If not needed, set to `{"prompt": "", "depth": 4, "role": "system"}` — never omit the field.
 6. **Populate `data.extensions.world_forge.style_override`** from the Architect's `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block in `Instructions_[CardName].md`. The schema is the seven-key object documented in `agent_roles/SHARED_Style_Contract_Reference.md` §1; emit it verbatim from the Architect's draft. Non-overriding cards: emit `"world_forge": {"style_override": null}`. **Never strip this field** — it must be present on every card for the audit trail and the runtime extension to work.
+6. **Populate `data.extensions.world_forge.style_override`** from the Architect's `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block in `Instructions_[CharName].md`. The schema is the seven-key object documented in `agent_roles/SHARED_Style_Contract_Reference.md` §1; emit it verbatim from the Architect's draft. Non-overriding cards: emit `"world_forge": {"style_override": null}`. **Never strip this field** — it must be present on every card for the audit trail and the runtime extension to work.
 7. Run validation pass before saving.
 
 ### Step 4.5 — Pass `User.md` through to `Export/User.md`
@@ -197,6 +198,7 @@ If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught 
 ### Step 4B — Build JanitorAI Bot Profile (`Export/[Name]_JanitorAI.txt`)
 For each character card built in Step 4, compile the paired JanitorAI Bot Profile.
 - Read `Drafts/JanitorAI_Profile_[CharName].md` or `Drafts/JanitorAI_Profile_Group.md` (produced by the Architect). The Architect evaluates the ensemble proximity and may have generated a single unified Multi-Bot group profile instead of individual profiles.
+- **ANTI-TRUNCATION VERIFICATION:** Verify that the Architect obeyed the Anti-Truncation Mandate. If the profile is a Group Bot, ensure EVERY character possesses ALL sub-headers defined in the template (`[APPEARANCE DETAILS]`, `[STARTING OUTFIT]`, `[INVENTORY]`, `[ABILITIES]`, `[BEHAVIOR_NOTES]`, `[SEXUALITY]`, `[SPEECH]`). If any fields are abbreviated or summarized, halt and report.
 - Verify the file has Editor Sign-Off.
 - Pass the draft byte-for-byte to `Export/[Name]_JanitorAI.txt` as plain text markdown (where `[Name]` is either the character's name or the group's name, matching the draft filename). Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
 
