@@ -39,7 +39,7 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 > [Your intent statement here.]
 
-**New mechanics (rebaseline only):** [What new mechanics or structural content are you introducing in the rebuild — or write `none — pure consolidation`. New material is authored into the seed marked `<!-- NEW IN REBASELINE -->`; the Converter will surface any couplings to existing arcs, characters, or factions. If the new mechanics are big enough to replace an axis, this is a reframe conversion, not a rebaseline.]
+**New mechanics (rebaseline only):** [What new mechanics or structural content are you introducing in the rebuild — or write `none — pure consolidation`. New material is authored into the seed marked `<!-- NEW IN REBASELINE -->`; the Converter will surface any couplings to existing arcs, characters, or factions. If the new mechanics are big enough to replace an axis, this is a reframe conversion, not a rebaseline. Note: if the source project carries a standing `Big_Brain_Storm.md` (parked ideas from `brainstorm --improve` sessions), the Converter will surface it at this intake regardless of what you write here and offer routing — fold via the `--then-brainstorm` chain, state an idea here directly, or leave it parked.]
 
 ---
 

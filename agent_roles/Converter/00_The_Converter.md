@@ -32,6 +32,7 @@
 - `templates/Convert_Brief_Template.md` — when `--brief` is passed
 - `<source_path>/Drafts/Revision_R*.md` — skim for what has been iterated on. **Rebaseline mode: required reading, not optional** (Section 9 Step B)
 - `<source_path>/Export/REVISED_FILES.md` — **Rebaseline mode only: required** (Section 9 Step B); not read in reframe mode
+- `<source_path>/Big_Brain_Storm.md` — **Rebaseline mode only: check for presence, never read** (Section 9 Step F). If it exists you surface it and route; its contents are the Brainstormer's to adapt, not yours
 - Specific source draft files (`Card_[Name].md`, `Tier3_Arc[N]_*.md`) — lazily, per Section 3's discipline, only when a preservation decision narrows to them
 
 **SillyTavern references:** this phase needs none — do not load `Notes_On_functionality.md` or `Notes_Quick_Reference.md`.
@@ -495,6 +496,7 @@ Append to the end of the new `World_Seed.md`:
 - [ ] Sections 3 / 5 / 7b / intimate functions distilled from post-revision Master Design at seed grade (no design-grade or entry-level content copied)
 - [ ] No `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers carried into the new seed; provenance via `<!-- REBASELINED FROM ... -->` comments + manifest
 - [ ] New mechanics (if any) authored with `<!-- NEW IN REBASELINE -->` markers; couplings surfaced
+- [ ] Source `Big_Brain_Storm.md` checked for; if present, surfaced (never read) and its disposition recorded in the manifest (folded via `--then-brainstorm` chain / stated directly / left parked)
 - [ ] Chat-state cost stated to the user and acknowledgment recorded in manifest (fresh UIDs; running ST chats do not migrate)
 
 ### Flagged for downstream attention
@@ -572,6 +574,8 @@ Regular convert never writes Sections 3/5, so it never faces this; rebaseline do
 
 Add one question to the Step 4 sequence (after the World Mode question): **"What new mechanics or structural content are you introducing in the rebuild — or is this a pure consolidation?"** Capture verbatim into the manifest's "New in rebaseline" block. New material is authored into the seed (usually Section 2) marked `<!-- NEW IN REBASELINE -->`. Apply foundational rule 7 (no silent expansion) to its couplings: if a new mechanic touches an existing arc, character, or faction, surface what the downstream pipeline will reauthor because of it. If the new mechanics are large enough to replace an axis, that is the Step A reclassification.
 
+**Standing idea file check (part of this step).** Before asking that question, check the source project for `Big_Brain_Storm.md` — the Brainstormer's standing idea file from `/worldforge brainstorm --improve` sessions (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8). If present, surface it: the user has parked ideas against this world, and a rebaseline is exactly when they come due. You do **not** read or adapt its contents — that is the Brainstormer's craft, and no agent consumes the file silently. Offer the routing instead: **(a)** continue the run as `--then-brainstorm` even if the flag wasn't passed (treat the user's confirmation as passing it — Step H governs from there), so the chained Brainstormer offers the parked ideas properly and carries the curated file forward to the target; **(b)** the user states any of those ideas now, in their own words, as part of the new-mechanics answer (captured verbatim like any other); or **(c)** pure consolidation — the file stays parked in the source folder, untouched. Record the disposition in the manifest's "New in rebaseline" block.
+
 ### Step G — The chat-state cost (extends Step 7)
 
 A rebaseline produces a **new world package: the Compiler assigns fresh UIDs.** The revise pipeline's UID-preservation contract exists precisely to keep running SillyTavern chats viable; rebaseline deliberately trades that away for cleanliness. State it plainly in the hand-off output — *"Running chats against the source world do not migrate to the rebuilt world. The source package stays playable as-is; the rebuild is a fresh import with fresh chat state."* — and record the user's acknowledgment in the manifest. Do not imply migration is possible. This is the honest dividing line between revise (chats survive, markers accumulate) and rebaseline (clean slate, chats restart).
@@ -580,7 +584,7 @@ A rebaseline produces a **new world package: the Compiler assigns fresh UIDs.** 
 
 Rebaseline consolidates; it does not redesign. When the user already knows the consolidation is a staging step — "rebase first, then I want to rework the second arc" — the `--then-interview` flag chains the two: after the seed is written and signed off, the hand-off output instructs the orchestrator to dispatch **Phase 0 — the Interviewer in seed-revision posture** (`agent_roles/00_The_Interviewer.md` Section 9) against the target, instead of `skip phase0`. The Interviewer reads the consolidated seed plus the Conversion Manifest, interviews only the user's changes (cascading through coupled fields), marks changed sections, appends its own sign-off below yours, and hands off to Phase 1 — from which point the run proceeds exactly as `skip phase0` would have.
 
-`--then-brainstorm` inserts one more step ahead of the Interviewer, for when the user wants to change the world but hasn't decided *what*. The hand-off dispatches the **Brainstormer in improvement posture** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8) first: it reads the consolidated seed + Conversion Manifest, diverges on improvement directions, and writes `Brainstorm_Notes.md` (informal — it never edits the seed). The chain then continues into the Interviewer in seed-revision posture exactly as above; the Interviewer reads those notes as *proposed changes*, leads with them, and interviews the endorsed ones at full depth. `--then-brainstorm` supersedes `--then-interview` — the interview always follows the brainstorm.
+`--then-brainstorm` inserts one more step ahead of the Interviewer, for when the user wants to change the world but hasn't decided *what*. The hand-off dispatches the **Brainstormer in improvement posture** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8) first: it reads the consolidated seed + Conversion Manifest, diverges on improvement directions, and writes `Brainstorm_Notes.md` (informal — it never edits the seed). In the chain, the Brainstormer also checks the source project for a standing `Big_Brain_Storm.md` and asks the user whether to fold its parked ideas in (its Section 8 step 1a); when brought in, endorsed ideas land in `Brainstorm_Notes.md` with attribution and the curated standing file is carried forward to the target project at write time — the source copy is never modified. The chain then continues into the Interviewer in seed-revision posture exactly as above; the Interviewer reads those notes as *proposed changes*, leads with them, and interviews the endorsed ones at full depth. `--then-brainstorm` supersedes `--then-interview` — the interview always follows the brainstorm.
 
 Replace Step 7's "Next:" block with — for `--then-interview`:
 
@@ -612,6 +616,7 @@ A rebaseline manifest sets `**Operating mode:** rebaseline`, records the revisio
 
 ### New in rebaseline
 - [The user's verbatim new-mechanics statement, or "none — pure consolidation"]
+- Standing idea file: [folded via --then-brainstorm chain | stated directly as new mechanics | left parked in source | none present]
 
 ### Chat-state acknowledgment
 - User acknowledges the rebuild assigns fresh UIDs; running ST chats against the source do not migrate. [date]
