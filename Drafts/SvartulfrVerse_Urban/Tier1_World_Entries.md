@@ -1,18 +1,104 @@
-### ENTRY: The Curfew Hacker
-**Category:** RULE
-**Trigger Keys:** hacker, security, drones, cameras, alarm, firewall, alibi, cover
+# TIER 1 WORLD ENTRIES: SvartulfrVerse_Urban
+
+### ENTRY: Faction — KSA (Legacy Brothers)
+**Category:** FACTION
+**Trigger Keys:** KSA, frat, fraternity, Legacy Brothers, brothers, frat bros
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
-**Order Priority:** 90
+**Order Priority:** 75
 **Position Rationale:** DEFAULT
 
 **Content:**
-The security systems and surveillance drones managed by Erik and DCC Security within the Douglas Estate are constantly hacked by Jasper. This "Curfew Hacker" creates bulletproof digital alibis, looping camera feeds or spoofing {{user}}'s phone GPS to make Erik believe {{sub}} is safe in {{poss}} room while {{sub}} is actually sneaking out to a party. Jasper's actions grant {{user}} physical freedom, but the tension is constant: if Erik suspects a technical glitch, he immediately dispatches DCC squads to check on {{obj}} in person.
+The KSA (Legacy Brothers) is the premier fraternity at SUCC, secretly functioning as an unwitting information network for Erik. These carefree students view Erik as a living god ("Doppio-Alpha" or "Sir"). They eagerly report any suspicious movements around {{user}} to Erik, hoping for favors. They are loud, enthusiastic, and protective, forming a loud social buffer around {{user}} during Greek Row parties.
 
-### ENTRY: The Pack Code (Old Norse)
+### ENTRY: Faction — DCC Security
+**Category:** FACTION
+**Trigger Keys:** DCC, DCC Security, tactical team, security, guards, enforcers
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 75
+**Position Rationale:** DEFAULT
+
+**Content:**
+DCC Security is the private, hyper-militarized armed branch employed by Erik to enforce the "Tactical Cleansing" protocol. Led by Marcus, they are sharp, professional problem solvers who operate in suits or tactical gear. They perform rapid extractions, block entire city streets, and eliminate threats (usually vampires) with cold precision, often disguised as mundane private security or city maintenance.
+
+### ENTRY: Faction — Svartulfr Pack (The Bloodmoon Family)
+**Category:** FACTION
+**Trigger Keys:** Svartulfr, Bloodmoon, family, pack, brothers, siblings, estate
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 78
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Svartulfr Pack, operating under the Bloodmoon name, is the dominant supernatural family in Solarton. They are insanely wealthy, powerful, and hyper-protective of their youngest sibling, {{user}}. Their love manifests as terrifying, claustrophobic security measures: tracking devices, drones, background checks on {{user}}'s friends, and a total intolerance for any perceived threat. To the public, they are old-money elites; in the shadows, they are apex predators.
+
+### ENTRY: Location — SUCC Campus
+**Category:** LOCATION
+**Trigger Keys:** SUCC, campus, university, college, dorm, classes
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Solarton University (SUCC) is {{user}}'s designated "safe haven" and a diplomatic neutral zone. The campus smells of stale coffee, old books, and cheap beer. It is fiercely patrolled by Warg, the Head of Campus Security, who enforces the peace. For {{user}}, it is a minefield of trying to be normal while dodging Erik's surveillance drones and the KSA informants.
+
+### ENTRY: Location — Sidewinders Bar & The Verve
+**Category:** LOCATION
+**Trigger Keys:** Sidewinders, bar, The Verve, club, pub, hangout
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Sidewinders Bar and The Verve act as vital buffer zones in the city. The Verve, run by Logan, is the ultimate decompression zone—a sanctuary where all pack trackers are jammed, allowing {{user}} true privacy. Sidewinders is a lively, neutral college bar where students and fringe elements mix, smelling of spilled beer and fried food. Both locations are strictly off-limits to vampire politicking and Erik's aggressive DCC strikes.
+
+### ENTRY: Location — Hot Zones (Ironworks & Dockside)
+**Category:** LOCATION
+**Trigger Keys:** Ironworks, Dockside, hot zone, industrial, docks, port, Marino, Blackwater
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Ironworks and Dockside are Solarton's "Hot Zones," where the supernatural cold war is most volatile. Ironworks is a decaying industrial district ruled by Vito Marino, smelling of ozone, rust, and old blood. Dockside is the maritime district controlled by Isobel Blackwater, reeking of salt, fish, and diesel. These areas are prone to sudden violence, secret vampire incursions, and violent "Tactical Cleansings" by DCC Security.
+
+### ENTRY: Location — Seven Hills (Blackwood Estate)
+**Category:** LOCATION
+**Trigger Keys:** Seven Hills, Blackwood, estate, mansion, house, home
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 58
+**Position Rationale:** DEFAULT
+
+**Content:**
+Seven Hills is the ultra-wealthy, fortified district controlled by Erik. It is the impregnable fortress of the Svartulfr pack. The Blackwood Estate itself is a sprawling, terrifyingly secure mansion equipped with biometric locks, drone patrols, and high walls. It smells of expensive cedar, polished marble, and overwhelming Alpha pheromones. It is a gilded cage where {{user}} is kept safe but utterly smothered.
+
+### ENTRY: Species — Omegaverse Dynamics
+**Category:** SPECIES
+**Trigger Keys:** alpha, beta, omega, delta, enigma, scent, knot, pack, rut, heat
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 59
+**Position Rationale:** DEFAULT
+
+**Content:**
+The world operates on LSE Omegaverse biology. Alphas are dominant, territorial, possess a knot, and emit oppressive scents; they can use a vocal Command. Deltas are identical to Alphas but cooperative and lack the Command voice. Betas are neutral peacekeepers with stabilizing scents. Omegas are agile, flight-prone caretakers who build nests and emit a coercive Keening when distressed. Enigmas are apex Alphas, un-submittable, whose mere presence suppresses all other Alpha aggression.
+
+### ENTRY: Rule — Tactical Cleansing & Diplomatic Audit
 **Category:** RULE
-**Trigger Keys:** Old Norse, secret language, Icelandic, code, whisper
+**Trigger Keys:** tactical cleansing, diplomatic audit, vampire, threat, lockdown
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -20,110 +106,16 @@ The security systems and surveillance drones managed by Erik and DCC Security wi
 **Position Rationale:** DEFAULT
 
 **Content:**
-Due to extreme domestic surveillance, {{user}}, Jasper, and Grandpa Wulfnic use Old Norse as a secret language. It is a "Pack Code" that allows them to insult, mock, or plot literally right in front of Erik and Noah, who do not speak the language and are driven crazy with frustration. Old Norse jokes are often used during tense family dinners to lighten the mood or pass vital information without triggering paternal suspicion.
+When Erik perceives a threat (especially vampires from the city council) near {{user}}, he initiates a "Tactical Cleansing." This means DCC Security violently scrubs an area clean of threats off-screen, disguised as mundane disruptions. Conversely, the "Diplomatic Audit" is a bureaucratic cold war: vampires (like Visconte or Moreno) use legal red tape, zoning laws, and university boards to pressure the wolves without openly breaking the masquerade.
 
-### ENTRY: Hard Tonal Rules
-**Category:** RULE
-**Trigger Keys:** danger, threat, violence, clash, fear, anxiety
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 100
-**Position Rationale:** DEFAULT
-
-**Content:**
-In this world, there are no actual lethal threats to {{user}}: the dangers are of a social or academic nature, or tied to Erik's apocalyptic wrath over a bad grade or an unapproved boyfriend. The male characters, although capable of extreme tactical violence and corporate power, apply this terrifying intensity to mundane problems (e.g., Malachia physically threatening a professor, Kaladin treating a frat boy like a terrorist threat). The family's interference must constantly be perceived as suffocating and omnipresent, but it is always motivated solely by pure love and never by darkness or malice.
-
-### ENTRY: DCC Security
-**Category:** FACTION
-**Trigger Keys:** DCC, security, guards, escort, earpiece, perimeter
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 70
-**Position Rationale:** DEFAULT
-
-**Content:**
-DCC Security is the private paramilitary force of the Douglas family. In practice, these elite operatives have been downgraded to exhausted babysitters and social bodyguards for {{user}}. Commanded by Kaladin Nargathon, they are omnipresent, dressed in tactical gear or dark suits, and treat the university and Los Angeles venues like hostile warzones. They are hyper-protective and extremely intrusive, but they can be bypassed with the help of Jasper's hacking or distracted if {{user}} confuses them emotionally.
-
-### ENTRY: Douglas Estate (Blackwood)
-**Category:** LOCATION
-**Trigger Keys:** Douglas Estate, villa, house, Blackwood, dinner, manor
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 50
-**Position Rationale:** DEFAULT
-
-**Content:**
-The Douglas Estate is a lavish mansion in Blackwood, as large and luxurious as a five-star resort. It is the headquarters of Erik's "helicopter" control. The house smells of antique furniture, floor wax, and expensive perfumes, but it is cold and oppressive due to countless security cameras (often hacked by Jasper). The colossal mahogany dining table is the nerve center of the house: a true stage of comedic tension where all the siblings sit together and openly lie to Erik about their real lives.
-
-### ENTRY: The Verve (Arts District)
-**Category:** LOCATION
-**Trigger Keys:** The Verve, workshop, club, nightclub, refuge, safe zone
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 50
-**Position Rationale:** DEFAULT
-
-**Content:**
-The Verve is an underground nightclub and motorcycle workshop run by Uncle Logan, located in the rough but trendy Arts District of Los Angeles. It is the only true "Safe Zone" for Erik's children. Logan uses military-grade signal jammers hidden in the walls that completely block the GPS tracking of DCC drones. The place smells of leather, spilled beer, motor oil, and cigarette smoke. For {{user}}, it is the only safe haven where {{sub}} can hide without having to lie about {{poss}} location.
-
-### ENTRY: SUCC Campus
-**Category:** LOCATION
-**Trigger Keys:** SUCC, campus, university, class, college, fraternity, KSA
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 50
-**Position Rationale:** DEFAULT
-
-**Content:**
-The SUCC Campus (Supernatural University of Central California) in Solarton is the main stage for the "normal" life of {{user}} and {{poss}} brothers. From sunlit lecture halls to chaotic dorms and loud KSA fraternity parties (where Noah dominates the social scene), the university is a battlefield. {{user}} tries to experience it as a normal student, while {{poss}} brothers and DCC Security constantly loom to protect {{obj}} or spy on who {{sub}} hangs out with. The smell of freshly cut grass and coffee mixes with the sweat of college parties.
-
-### ENTRY: Werewolves (SHIFT CLASS System + Pureblood/Rank Hierarchy)
-**Category:** SPECIES
-**Trigger Keys:** wolf, ears, tail, werewolf, kemonomimi, canine, fangs, shift, partial shift, full shift, hybrid shift, pureblood, enigma, alpha, delta, beta, omega, úlfheðnar, fenris
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 40
-**Position Rationale:** DEFAULT
-<!-- REVISED IN R5 (2026-07-03): Replaced old kemonomimi-only entry with new SHIFT CLASS system entry -->
-<!-- REVISED IN R7 (2026-07-03): Added Pureblood/Rank Hierarchy, updated ages/ranks/backstory -->
-
-**Content:**
-The Douglas-Bloodmoon family are werewolves with three distinct SHIFT CLASS forms and a strict bloodline/rank hierarchy:
-
-**SHIFT CLASS System:**
-1. **Partial Shift:** Only eyes (glowing lupine irises), retractable claws, wolf ears, and tail manifest; triggered by emotion or intentional control. Used for comedic social cues (e.g., Erik's ears flatten with parental panic, Malachia's tail wags secretly when happy) or subtle threat displays.
-2. **Full Shift:** Monstrous quadrupedal wolf-beast form; large, powerful, primal, and rarely used in modern Blackwood (mostly by Wulfnic for ritual or extreme protection scenarios).
-3. **Hybrid Shift:** Lucid apex form — digitigrade bipedal stance, full fur coverage, retained human intelligence and speech. Wulfnic Bloodmoon considers this the *true, authentic form* of a werewolf, rejecting both the "weak" human form and "feral" full shift as incomplete states.
-
-**Pureblood Hierarchy:**
-1. **True Pureblood (Fenris-gifted, Úlfheðnar):** Directly gifted by Norse god Fenris; includes Wulfnic, Nixara, Ut, Zefir; only one Enigma (Wulfnic) per era/continent.
-2. **Pureblood by Descent:** Descendants of True Purebloods; includes Malachia, Noah, Jasper, {{user}}.
-3. **Ancient Lineage Non-Pureblood:** Werewolves from old, respected bloodlines but not directly Fenris-gifted; includes Erik, Logan, Edric.
-4. **Genetically Modified Military Werewolves:** Modified via military science, not natural bloodline; includes Marcus.
-
-**Rank Hierarchy:**
-1. **Enigma:** Wulfnic (only one per era/continent; Alpha of Alphas for America)
-2. **Alpha:** Erik, Malachia, Edric (cucciolo)
-3. **Delta:** Noah, Logan, Jasper
-4. **Beta:** Marcus
-5. **Omega:** {{user}}
-
-All wolf traits (ears/tail in partial) must be kept hidden in public/at SUCC under penalty of revealing the family secret; their reactions are a constant source of social comedy.
-
-### ENTRY: The Secret Career (Eidolon Creative)
+### ENTRY: Concept — The Secret Modeling Career
 **Category:** CONCEPT
-**Trigger Keys:** secret job, Eidolon, secretary, career, Angel Moreno
+**Trigger Keys:** model, modeling, photo shoot, secret job, alias, social media, manager
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
-**Order Priority:** 90
+**Order Priority:** 80
 **Position Rationale:** DEFAULT
 
 **Content:**
-{{user}} leads a double life. {{sub}} secretly works a hidden job for the vampire Angel Moreno at Eidolon Creative. For Erik, {{user}} works part-time as a humble, harmless secretary and social media manager for Angel Moreno, having insisted on having "financial independence". {{user}}'s brothers (Jasper, Malachia, Noah) know the truth and cover for each other to prevent Erik from discovering that his innocent child sneaks out to work at Eidolon Creative. Maintaining this lie is the main cause of the constant nervous breakdown of the entire family.
+{{user}} leads a double life. To {{poss}} family, {{sub}} is a humble social media manager. In reality, {{sub}} secretly models under an alias, navigating high-profile photo shoots and the risk of paparazzi exposure. This secret is {{user}}'s desperate grab for independence. If the family discovers it, they won't be angry—they will violently overreact by buying the modeling agency, threatening photographers, and suffocating {{user}} with extreme security protocols.
