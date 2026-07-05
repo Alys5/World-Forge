@@ -3,7 +3,7 @@
 
 > **Mini-pipeline entry point.** This agent has no parent in the initial-build pipeline. It is the orchestrating front door for `/worldforge convert`, replacing the Interviewer's role for *conversion* work. The Interviewer assumes nothing exists; the Reviser assumes a complete world exists and is being edited surgically; the Converter assumes a complete world exists and is being **reframed into a new build** — same world skeleton, different protagonist / World Mode / Style Contract / Core Concept. The Converter produces a new `World_Seed.md` and hands off to `/worldforge skip phase0`.
 >
-> The Converter also runs in **Rebaseline mode** (`--rebaseline`, Section 9): *same* world, *same* protagonist, rebuilt clean from its post-revision state — the consolidation path for a world whose accumulated revisions (R1…R[N]) have outgrown surgical editing, optionally folding in new mechanics at seed level. Rebaseline inverts the always-regenerate rules; everything else about the Converter (read-only source, write-only target seed, manifest provenance) is identical.
+> The Converter also runs in **Rebaseline mode** (`--rebaseline`, Section 9): *same* world, *same* protagonist, rebuilt clean from its post-revision state — the consolidation path for a world whose accumulated revisions (R1…R[N]) have outgrown surgical editing, optionally folding in new mechanics at seed level. The consolidation is **seed-anchored** (Section 9 Step D): the source `World_Seed.md` carries 1:1 as the base, revision deltas are applied in place, and post-seed divergences fold in ask-first — distillation from the Master Design runs only on explicit request (`--distill`) or as the announced fallback when the source has no seed file. Rebaseline inverts the always-regenerate rules; everything else about the Converter (read-only source, write-only target seed, manifest provenance) is identical.
 
 ---
 
@@ -28,7 +28,7 @@
 - `templates/World_Seed_Template.md` — the structure you write the new seed against
 
 **Load on demand (open at the step that needs it — do not preload):**
-- `<source_path>/World_Seed.md` — secondary context; Master Design wins on every field
+- `<source_path>/World_Seed.md` — reframe mode: secondary context; Master Design wins on every field. **Rebaseline mode: load now, in full — it is the 1:1 consolidation base (Section 9 Step D); if absent, announce the distillation fallback. Under `--distill` it demotes back to secondary context (the user chose re-derivation)**
 - `templates/Convert_Brief_Template.md` — when `--brief` is passed
 - `<source_path>/Drafts/Revision_R*.md` — skim for what has been iterated on. **Rebaseline mode: required reading, not optional** (Section 9 Step B)
 - `<source_path>/Export/REVISED_FILES.md` — **Rebaseline mode only: required** (Section 9 Step B); not read in reframe mode
@@ -73,6 +73,8 @@ You do **not**:
 
 `/worldforge convert <source_path> <target_path> --rebaseline` — **Rebaseline mode** (Section 9). Same world, same protagonist: rebuilds a revised world clean from its post-revision Master Design, optionally folding in new mechanics. Combines with `--brief` (the Brief declares `Operating mode: rebaseline` in its Section 1; the flag and the Brief field must agree).
 
+`/worldforge convert <source_path> <target_path> --rebaseline --distill` — Rebaseline with **distilled consolidation** (Section 9 Step D, distillation path): the seed is re-derived from the post-revision Master Design instead of carried 1:1 from the source `World_Seed.md`. For when the original seed exists but the user doesn't want its wording back — it was thin at Phase 0, or the world has outgrown its articulation. The flag is the consent: announce the cost once (every carried section gets re-worded through summarization; the 1:1 fidelity contract does not apply) and proceed without a further confirm. `--distill` requires `--rebaseline` — in reframe mode there is no carried-seed base to opt out of; halt and say so. Combines with `--brief` (the Brief's Section 1 `Rebaseline consolidation:` field must agree) and with the `--then-*` flags.
+
 `/worldforge convert <source_path> <target_path> --rebaseline --then-interview` — Rebaseline, then hand off into **Phase 0 (the Interviewer, seed-revision posture)** instead of `skip phase0` — for when the user wants to make major changes against the consolidated seed before the rebuild (Section 9 Step H). `--then-interview` requires `--rebaseline`; in reframe mode, halt and explain that the reframe interview (Step 4) already does this work.
 
 `/worldforge convert <source_path> <target_path> --rebaseline --then-brainstorm` — Rebaseline, then hand off into the **Brainstormer in improvement posture** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8) *before* the Interviewer — for when the user knows they want to change the consolidated world but wants to explore *what* first. The Brainstormer reads the clean seed, diverges on improvement directions, writes `Brainstorm_Notes.md`, and the chain continues into the Interviewer (seed-revision posture), which reads those notes as proposals (Section 9 Step H). `--then-brainstorm` requires `--rebaseline` and **supersedes `--then-interview`** (the interview always follows the brainstorm — passing both is the same as passing `--then-brainstorm` alone); in reframe mode, halt with the same explanation.
@@ -88,7 +90,7 @@ In all modes, `<source_path>` is the path to an already-shipped world's project 
 - `<source_path>/Export/` directory — confirm exists. The world must have been compiled at least once (i.e., it shipped).
 
 **Optional:**
-- `<source_path>/World_Seed.md` — read if present. Useful as secondary context (what was intentional at Phase 0 vs. what emerged in later phases), but Master Design takes precedence on every field.
+- `<source_path>/World_Seed.md` — read if present. Useful as secondary context (what was intentional at Phase 0 vs. what emerged in later phases), but Master Design takes precedence on every field. **Rebaseline mode: required reading when it exists — it is the 1:1 consolidation base (Section 9 Step D).**
 - `<brief_path>` (when `--brief` is passed) — the user's filled-in Convert Brief.
 - `<source_path>/Drafts/Revision_R*.md` reports — skim if present. They tell you which parts of the source world have already been iterated on; that informs your "is this load-bearing or experimental" judgment when discussing preservation with the user.
 
@@ -162,7 +164,7 @@ Read `<source_path>/Drafts/Master_Design.md` completely. Build an internal map o
 - **Tier 3 content** — arcs (arc mode) or Sandbox Charter (sandbox mode).
 - **Section 8 / intimacy** — whether the world has intimate content, the world-level posture, hard rules, per-arc functions (arc mode) or standing function (sandbox mode).
 
-If `<source_path>/World_Seed.md` exists, also read it for the original *Phase 0 intent* on each section. Where Master Design and World Seed disagree (Master Design will, on developed sections — Phases 1+ refine and extend), Master Design wins. Where the Master Design is silent and the World Seed has content, treat the World Seed as the answer.
+If `<source_path>/World_Seed.md` exists, also read it for the original *Phase 0 intent* on each section. Where Master Design and World Seed disagree (Master Design will, on developed sections — Phases 1+ refine and extend), Master Design wins. Where the Master Design is silent and the World Seed has content, treat the World Seed as the answer. (**Rebaseline mode:** the seed is additionally the consolidation *base* — a seed/Master-Design disagreement there is a revision delta to apply or a divergence to surface per Section 9 Step D, never a reason to paraphrase untouched seed wording.)
 
 Read these for structure and context. Do **not** copy entire sections verbatim into the new seed yet — that happens in Step 6, after preservation decisions are confirmed.
 
@@ -493,8 +495,13 @@ Append to the end of the new `World_Seed.md`:
 - [ ] Zero-axes gate passed (no axis replaced; protagonist unchanged)
 - [ ] `Drafts/Revision_R*.md` + `Export/REVISED_FILES.md` read; revision high-water mark recorded in manifest
 - [ ] Source-integrity check passed (every revision report's change is visible in the current Master Design)
-- [ ] Sections 3 / 5 / 7b / intimate functions distilled from post-revision Master Design at seed grade (no design-grade or entry-level content copied)
-- [ ] No `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers carried into the new seed; provenance via `<!-- REBASELINED FROM ... -->` comments + manifest
+- [ ] Seed base recorded in manifest: source `World_Seed.md` read in full and used as the 1:1 consolidation base — or the distillation path declared (`--distill` passed with its cost announced once, or no source seed with the user's confirmation counting as the flag)
+- [ ] *(seed-anchored only)* Untouched sections carried verbatim from the source seed — no paraphrase, no re-distillation, no "improvement"; carried passages left unmarked
+- [ ] *(seed-anchored only)* Revision deltas applied in place at seed grade (replace-not-stack); sub-seed-grade revisions recorded in manifest as re-derives-downstream
+- [ ] *(seed-anchored only)* Step D divergence scan run against the post-revision Master Design; every finding surfaced with a user-confirmed disposition recorded in the manifest (no silent fold-ins, no silent drops)
+- [ ] Seed structure upgraded to the current `templates/World_Seed_Template.md`; populated additions surfaced in the manifest; no content invented to fill template slots
+- [ ] No design-grade or entry-level (`CHARACTER_STATE`/`NPC_SHIFT`) content copied into the seed
+- [ ] No `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers carried into the new seed; provenance via `<!-- REBASELINED FROM ... -->` comments at change sites + manifest
 - [ ] New mechanics (if any) authored with `<!-- NEW IN REBASELINE -->` markers; couplings surfaced
 - [ ] Source `Big_Brain_Storm.md` checked for; if present, surfaced (never read) and its disposition recorded in the manifest (folded via `--then-brainstorm` chain / stated directly / left parked)
 - [ ] Chat-state cost stated to the user and acknowledgment recorded in manifest (fresh UIDs; running ST chats do not migrate)
@@ -520,9 +527,9 @@ The downstream orchestrator (`workflows/world-forge.md`) picks up from the stand
 
 ## 9. REBASELINE MODE (`--rebaseline`)
 
-**What it is.** The zero-axes-replaced conversion, formalized: same protagonist, same World Mode, same tone, same factions. The target is the *same world*, rebuilt clean from its post-revision state — optionally with new mechanics folded in at seed level. It exists for the world that has accumulated enough revisions (R1…R[N]) that its `Master_Design.md` and `Drafts/` are layered with revision markers, its `World_Seed.md` is N revisions stale, and the next change the user wants is structural enough that another surgical revision feels wrong. Rebaseline consolidates everything the revisions built into a fresh seed and lets the standard pipeline rebuild the world clean.
+**What it is.** The zero-axes-replaced conversion, formalized: same protagonist, same World Mode, same tone, same factions. The target is the *same world*, rebuilt clean from its post-revision state — optionally with new mechanics folded in at seed level. It exists for the world that has accumulated enough revisions (R1…R[N]) that its `Master_Design.md` and `Drafts/` are layered with revision markers, its `World_Seed.md` is N revisions stale, and the next change the user wants is structural enough that another surgical revision feels wrong. Rebaseline consolidates everything the revisions built into a fresh seed — anchored 1:1 on the original `World_Seed.md` (Step D) — and lets the standard pipeline rebuild the world clean.
 
-**What it is not.** Not a reframe (no axis changes — that is regular convert). Not a revision (it produces a new project, not edits to the shipped one — that is `/worldforge revise`). Not a file copy (the seed is distilled, and the downstream pipeline re-derives everything — that is what makes the rebuild clean).
+**What it is not.** Not a reframe (no axis changes — that is regular convert). Not a revision (it produces a new project, not edits to the shipped one — that is `/worldforge revise`). Not a blind file copy — untouched sections *do* carry 1:1 from the source seed (that fidelity is the point), but revision deltas are applied in place, post-seed divergences fold in only with confirmation, the structure upgrades to the current seed template, and the downstream pipeline re-derives every piece of design-grade content; the re-derivation is what makes the rebuild clean. And not a re-summarization: the seed is never re-worded through distillation while the source seed exists *unless the user explicitly asks for that* (`--distill`); Step D's distillation path covers the seedless source and the deliberate opt-out.
 
 **Everything in this spec still applies except where this section says otherwise.** Read-only on source, write-only on the target seed, single source, verbatim intent capture, no silent expansion, preconditions (Step 1), the manifest, the sign-off — all unchanged. The deltas:
 
@@ -531,11 +538,18 @@ The downstream orchestrator (`workflows/world-forge.md`) picks up from the stand
 Run the same four-axis classification (setting, protagonist, factions, tone). In Rebaseline mode the requirement is **zero axes replaced** — protagonist explicitly included. Modifications *within* an axis (a new mechanic added to the setting, a faction gaining a sub-cell) are fine; wholesale replacement of any axis is not.
 
 - **Any axis replaced → reclassify, don't refuse.** Announce it: "This replaces [axis] — that makes it a regular (reframe) conversion, where [the affected always-regenerate rules] apply. Proceed as reframe, or narrow the intent back to a rebaseline?" The inverse also holds: a regular convert request that classifies as zero-axes-replaced gets offered Rebaseline mode by name.
-- **No revisions applied AND no new mechanics named → flag the no-op.** "The source has no applied revisions and you're introducing nothing new — this rebaseline would be a copy of the existing seed. What are you rebaselining for?" Proceed only on explicit confirmation.
+- **No revisions applied AND no new mechanics named → flag the no-op.** "The source has no applied revisions and you're introducing nothing new — this rebaseline would be a copy of the existing seed. What are you rebaselining for?" Proceed only on explicit confirmation. (One legitimate answer: the seed drifted from what Phases 1–5 actually built — the Step D divergence scan exists for exactly that, and can justify a revision-free rebaseline.)
 
 ### Step B — Required reading + source-integrity check (extends Step 3)
 
 In Rebaseline mode, `<source_path>/Drafts/Revision_R*.md` and `<source_path>/Export/REVISED_FILES.md` are **required reading**, not skim-on-demand. They are the inventory of everything that has drifted since Phase 0 — exactly the content a rebaseline exists to consolidate. Record the revision high-water mark (the highest applied R[N]) in the Conversion Manifest.
+
+**The source `World_Seed.md` joins the required-reading list when it exists** — in Rebaseline mode it is not secondary context but the consolidation base Step D builds on. Read it in full. Two exceptions route to Step D's distillation path instead:
+
+- **`--distill` passed:** the user chose re-derivation over their existing seed. The seed demotes back to secondary context (read it as Step 3 normally would); announce the cost once — every carried section gets re-worded through summarization — and proceed. The flag is the consent; do not ask again.
+- **No `World_Seed.md`** (a hand-built world, a lost file): announce up front that the consolidation can only distill from the post-revision Master Design and ask the user to confirm. **A confirmation counts as passing `--distill`** — the run proceeds exactly as if the flag had been given (the same treat-confirmation-as-the-flag pattern as Step F's `--then-brainstorm` upgrade).
+
+Either way, record the route in the manifest's `Seed base:` line.
 
 **Integrity check:** every change a revision report records must be visible in the current `Master_Design.md` (the revise pipeline's mini-Refiner guarantees this; verify it held). If a revision report describes a change the Master Design does not reflect, **halt and flag it** — rebaselining from a drifted source would silently lose a revision. The user reconciles (usually by re-running the revision's R1 merge) and re-invokes.
 
@@ -543,12 +557,12 @@ In Rebaseline mode, `<source_path>/Drafts/Revision_R*.md` and `<source_path>/Exp
 
 ### Step C — Rebaseline disposition table (replaces the Section 5 inversions)
 
-Every Section 5 row whose disposition derived from "the protagonist/arcs have changed" inverts. Rows not listed here keep their Section 5 defaults (`keep`, with `modify` available — that is where new mechanics enter).
+Every Section 5 row whose disposition derived from "the protagonist/arcs have changed" inverts. Rows not listed here keep their Section 5 defaults (`keep`, with `modify` available — that is where new mechanics enter). In this table, **keep** means carried per Step D: 1:1 from the source seed with revision deltas applied in place — distilled from the post-revision Master Design only on Step D's distillation path (`--distill`, or no source seed).
 
 | Source content | Reframe disposition | Rebaseline disposition |
 |---|---|---|
-| Section 3 — Protagonist | regenerate (always) | **keep** — distilled from post-revision Master Design Section 3/6 |
-| Section 5 — Arcs / Sandbox Charter | regenerate (always); stub | **keep** — the current (post-revision) arc spine / standing state, distilled to seed grade |
+| Section 3 — Protagonist | regenerate (always) | **keep** — carried per Step D (seed base + revision deltas) |
+| Section 5 — Arcs / Sandbox Charter | regenerate (always); stub | **keep** — carried per Step D, reflecting the current (post-revision) arc spine / standing state |
 | Section 7b — Test scenarios | regenerate (always) | **keep by default**; offer a refresh (new mechanics may warrant new scenes) |
 | Section 8 — Per-arc / standing intimate function | regenerate (always) | **keep** — the spine it is shaped by is kept |
 | Section 1.5c — Per-card style overrides | regenerate with cards | **keep** |
@@ -562,13 +576,25 @@ Every Section 5 row whose disposition derived from "the protagonist/arcs have ch
 
 Role reassignment surfacing (Step 5) is normally a no-op in Rebaseline mode — nobody's role changes. If the user's new mechanics *do* shift a character's role, that is an axis-level modification: surface it through the same five-case machinery.
 
-### Step D — Distillation, not transcription (governs Step 6)
+### Step D — Seed-anchored consolidation (governs Step 6)
 
-Regular convert never writes Sections 3/5, so it never faces this; rebaseline does. Master Design content is design-grade — Section 9 arc specs are far richer than seed Section 5. **Distill to the seed template's granularity; never dump.** No `CHARACTER_STATE` / `NPC_SHIFT` / lorebook-entry-level content goes into the seed — foundational rule 4 ("output is a seed, not a finished world") already forbids it; it is restated here because the temptation to copy-paste is acute when the source *is* the target. The Refiner and Architect re-derive the full design downstream; that re-derivation is precisely what makes the rebuild clean rather than a file copy.
+Regular convert never writes Sections 3/5, so it never faces this; rebaseline does. The consolidation base is the **source `World_Seed.md` carried 1:1** — not a fresh distillation of the Master Design. The seed is already seed-grade by definition; re-summarizing it would paraphrase the user's authored wording for no gain. Four operations, in order:
+
+1. **Carry the seed 1:1.** Copy the source seed's authored content verbatim as the base of the new seed. Every section and passage that no revision touched (and no confirmed divergence alters) carries byte-faithful — the user's original wording is never paraphrased, re-summarized, or "improved." Strip only the artifacts of the source's own run (its INTERVIEWER SIGN-OFF, any prior Conversion Manifest); the new manifest and your sign-off replace them.
+
+2. **Apply revision deltas in place.** For each applied revision R1…R[high-water] (from the Step B required reading), locate the seed passage the change corresponds to and rewrite that passage — and only that passage — at seed grade so it matches the post-revision Master Design. Replace in place; never leave the old wording beside the new (the same replace-not-stack discipline the revise pipeline enforces). A revision entirely below seed granularity (an entry-level wording tweak, a preset toggle) makes no seed edit — record it in the manifest as `below seed grade — re-derives downstream`; the pipeline will rebuild it from the seed-grade content it descends from.
+
+3. **Divergence scan (ask-first).** Compare the carried seed against the post-revision Master Design for **seed-grade divergences no revision report explains** — content decided after Phase 0 that never got back into the seed: Refiner gap answers from `UNRESOLVED_QUESTIONS.md`, intimacy structures, arcs developed well beyond the seed's sketch. Surface each finding and ask: fold into the seed (written at seed grade, marked per Step E), or leave for the rebuild to re-elicit? Foundational rule 7 (no silent expansion) governs — nothing folds in unconfirmed, and nothing is silently dropped either: every scan finding gets a recorded disposition in the manifest.
+
+4. **Upgrade the structure, not the words.** Write the result against the **current** `templates/World_Seed_Template.md`. A source seed that predates newer template fields (a §2g World Calendar, a §9 Runtime Directives section, §4 Standing Goal / drift / trauma-trajectory fields) gets the current structure. Populate a new field from the Master Design where the world already has that content (e.g., Master Design Section 12 directives write back into seed §9), surfaced in the manifest like a divergence fold-in; leave it absent where the world has none — do not invent content to fill a template slot. Structure upgrades reorganize; they never re-word carried content.
+
+**Distillation path (`--distill`, or no source seed).** Two doors lead here: the user passed `--distill` (a deliberate opt-out of the 1:1 carry — the original seed was thin, or the world has outgrown its articulation and the user prefers the Master Design's developed wording), or `<source_path>/World_Seed.md` does not exist and the user confirmed the Step B announcement (which counts as passing `--distill`). On this path, distill the entire seed from the post-revision Master Design. Master Design content is design-grade — Section 9 arc specs are far richer than seed Section 5 — so **distill to the seed template's granularity; never dump.** Operations 2's manifest bookkeeping and 3's divergence handling collapse into the distillation (the post-revision Master Design already contains both); operation 4's rule still binds — write against the current template, invent nothing to fill slots. Distillation re-words everything through summarization — that is exactly what `--distill` asks for and exactly why it is never the silent default while a source seed exists. Record the route in the manifest's `Seed base:` line.
+
+Either way, no `CHARACTER_STATE` / `NPC_SHIFT` / lorebook-entry-level content goes into the seed — foundational rule 4 ("output is a seed, not a finished world") already forbids it; it is restated here because the temptation to copy-paste is acute when the source *is* the target. The Refiner and Architect re-derive the full design downstream; that re-derivation is precisely what makes the rebuild clean rather than a file copy.
 
 ### Step E — The cleanliness rule (governs Step 6)
 
-**Revision content carries; revision markers do not.** No `<!-- REVISED IN R[N] -->` or `<!-- CREATED IN R[N] -->` marker appears anywhere in the new seed — the post-revision state is written as plain first-class content. Provenance moves to two places: per-section comments `<!-- REBASELINED FROM [source_path]/Drafts/Master_Design.md §[N] (state as of R[high-water]) -->`, and the manifest's revision high-water mark. The new project starts its own revision counter at R1.
+**Revision content carries; revision markers do not.** No `<!-- REVISED IN R[N] -->` or `<!-- CREATED IN R[N] -->` marker appears anywhere in the new seed — the post-revision state is written as plain first-class content. Provenance lives at the change sites and in the manifest: passages carried 1:1 from the source seed stay **unmarked** (unmarked *is* the 1:1 contract — it means "the user's original Phase 0 wording"); every passage the rebaseline alters — a revision delta applied, a divergence folded in, a structure-upgrade field populated — gets `<!-- REBASELINED FROM [source_path]/Drafts/Master_Design.md §[N] (state as of R[high-water]) -->`; new mechanics get `<!-- NEW IN REBASELINE -->` (Step F). The manifest's Consolidation block records the section-level inventory and the revision high-water mark. The new project starts its own revision counter at R1.
 
 ### Step F — New-mechanics intake (extends Step 4)
 
@@ -611,8 +637,12 @@ Boundaries: either flag requires `--rebaseline` (in reframe mode the Step 4 inte
 A rebaseline manifest sets `**Operating mode:** rebaseline`, records the revision high-water mark, and replaces the "Always regenerated (downstream pipeline)" section with:
 
 ```
-### Carried from post-revision state (R[high-water] consolidated)
-- [Section-by-section list: what was distilled from the post-revision Master Design]
+### Consolidation (R[high-water] consolidated)
+**Seed base:** [seed-anchored: <source_path>/World_Seed.md | distilled (--distill): user chose re-derivation over the existing seed | distilled (fallback): source has no World_Seed.md, user confirmed]
+- Carried 1:1 from source seed: [section list — the untouched, unmarked majority]
+- Revision deltas applied: [per revision: R[N] → seed section(s) edited; or "below seed grade — re-derives downstream"]
+- Post-seed divergences (Step D scan): [per finding: folded in (user-confirmed) → section | left for rebuild to re-elicit | none found]
+- Structure upgrades to current template: [fields added + where their content came from | none]
 
 ### New in rebaseline
 - [The user's verbatim new-mechanics statement, or "none — pure consolidation"]
