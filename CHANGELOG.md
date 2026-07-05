@@ -13,7 +13,7 @@ numbers. Newest first.
 
 ---
 
-## 2026-07-05 — Kilo config: OpenRouter per-model provider routing + GLM 5.2 / Kimi K2.7 alternates
+## 2026-07-05 — Kilo config: OpenRouter per-model provider routing + GLM 5.2 / Kimi K2.7 alternates (#72)
 
 A user report of GLM 5.2 runs failing and stopping mid-task through OpenRouter
 traced to the upstream-routing layer, not the pipeline: OpenRouter serves each
@@ -36,7 +36,12 @@ and its 16K max output is tight for the Compiler's larger lorebook JSON).
 - `.kilo/kilo.jsonc`: new top-level `provider.openrouter.models` routing
   block (DeepSeek pinned; GLM 5.2 and Kimi K2.7 Code as commented
   alternates); header comment documents the passthrough and its two sharp
-  edges (per-model-only placement, unvalidated fields).
+  edges (per-model-only placement, unvalidated fields); the `agent` section
+  opens with a per-seat swap guide (exact `"model"` strings for the two
+  alternates, the uncomment-the-routing-entry step, the rule that a swapped
+  seat's `temperature` line must be removed — reasoning-class endpoints
+  ignore sampling — and seat guidance keeping Kimi K2.7 Code off the
+  creative seats and the Compiler).
 - `wiki/Kilo-Code-Setup.md`: §3.2 gains item 6 (per-model provider routing
   from `kilo.jsonc`, sharp edges, how to activate the alternates); §10
   troubleshooting gains a row for GLM-family mid-task stops / "did not

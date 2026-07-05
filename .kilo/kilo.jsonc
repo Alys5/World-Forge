@@ -91,6 +91,27 @@
     }
   },
   "agent": {
+    // ── Swapping a seat to GLM 5.2 or Kimi K2.7 Code ──────────────────────────
+    // Every agent below pins its own "model", so swaps are per-seat: change the
+    // "model" string on the seats you want moved and leave the rest on DeepSeek.
+    //   GLM 5.2:        "model": "openrouter/z-ai/glm-5.2"
+    //   Kimi K2.7 Code: "model": "openrouter/moonshotai/kimi-k2.7-code"
+    // For each swapped seat:
+    //   1. Uncomment the matching routing entry in the "provider" block above
+    //      (once per model — it covers every seat that uses that model).
+    //   2. REMOVE the seat's "temperature" line entirely. Both models are
+    //      reasoning-class endpoints and ignore sampling parameters — a
+    //      leftover temperature is silently dead config at best. GLM 5.2's
+    //      depth is tuned via "reasoning": { "effort": ... } in its routing
+    //      entry instead, not via temperature.
+    // Seat guidance:
+    //   - GLM 5.2 works on any seat; it earns its cost most on the Editor and
+    //     Auditor seats, where reasoning depth sharpens audit discipline.
+    //   - Kimi K2.7 Code is the coding-tuned variant (no general K2.7 exists
+    //     on OpenRouter): utility seats only — Refiner or Prompt Engineer.
+    //     Keep it OFF the Interviewer/Architect/Intimacy/auditor seats (voice
+    //     flattens, characterization goes generic) and off the Compiler (16K
+    //     max output truncates larger lorebook JSON files mid-write).
     // ── Ideation (optional, upstream of Phase 0) ──
     "WorldForge-Brainstormer": {
       "description": "Phase 0-pre (optional) — divergent ideation partner; helps a user with only a vibe find a premise, (adaptation posture, --adapt) extracts a playable world from an existing story/fanfiction/RP document, or (improvement posture standalone, --improve) ping-pongs improvement ideas against an existing world with no commitment, parking them in the standing Big_Brain_Storm.md. Writes informal Brainstorm_Notes.md (Big_Brain_Storm.md on standalone --improve); no World Seed.",
