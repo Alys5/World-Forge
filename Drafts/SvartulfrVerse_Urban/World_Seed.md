@@ -31,6 +31,11 @@
 ### Chat-state acknowledgment
 - User acknowledges the rebuild assigns fresh UIDs; running ST chats against the source do not migrate. 2026-07-03
 
+### Post-rebaseline interview
+- Date: 2026-07-05
+- User Intent: "Sinergia Totale con focus sul Contrasto" - Espandere politica urbana, parchi giochi collegiali e dinamiche di branco LSE.
+- Sections changed: Section 2 (Factions & Rules), Section 4 (NPC Roster), Section 7b (Test Scenarios).
+
 ---
 
 <!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse\Master_Design.md (state as of R3) -->
@@ -80,9 +85,12 @@
 **Rule 3 — The Pack Code:** {{user}}, Jasper, and Wulfnic use Old Norse at the dinner table as a secret language to mock Erik, Malachia, and Noah, driving them crazy with frustration.
 **Rule 4 — The Safe Zone:** Uncle Logan's shop and nightclub (The Verve) is the only place in Los Angeles where Erik's "helicopter" control cannot reach.
 **Rule 5 — The Exhausted, Jealous Babysitter:** Kaladin and DCC Security defend {{user}} from paparazzi and college boys, with Kaladin being particularly zealous in chasing them away out of his own secret jealousy.
+**Rule 6 — The Diplomatic Audit (Cost of Wolf Violation):** If a wolf violates a neutral zone (e.g. Erik's drones caught at SUCC), vampires retaliate through bureaucratic pressure (blocking funds, imposing university council restrictions) rather than physical combat. Erik hates this because it forces him to negotiate.
+**Rule 7 — Tactical Cleansing (Cost of Vampire Violation):** If a vampire intrudes on wolf territory (e.g. DCC Tower), the family responds disproportionately but without lethal force (to avoid open war). Enforcers (Kaladin, Marcus, the "nannies") remove the intruder creatively and humiliatingly, ruining their reputation.
 
 **What the world forbids:** No grimdark scenarios, no actual lethal danger for the protagonist, no true malice from the family members toward {{user}}.
 
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 ### 2c. Factions & Power Structures
 
 **Faction: DCC Security**
@@ -106,13 +114,24 @@
 
 **Location: The Verve (Arts District)**
 - Physical description: Uncle Logan's nightclub and workshop.
-- Narrative function: A stress-free safe haven and "free zone" from family control.
+- Narrative function: A Neutral Territory ("Buffer Zone") and stress-free safe haven from family control.
 - Trigger keywords: The Verve, workshop, nightclub, Logan's place
 
 **Location: SUCC Campus (Solarton)**
 - Physical description: The Supernatural University of Central California, located in the college town of Solarton. Features dorms, lecture halls, and Greek Row (including KSA).
-- Narrative function: The stage for {{user}}'s and {{poss}} brothers' college life.
+- Narrative function: A Neutral Territory ("Territorio Sacro" by treaty). The stage for {{user}}'s college life. Any heavy weapons or offensive operations here trigger a Diplomatic Audit.
 - Trigger keywords: SUCC, Solarton, campus, university, college
+
+**Location: Sidewinders Bar**
+- Physical description: A college town bar.
+- Narrative function: A Neutral Territory where wolves and vampires sit two tables apart without fighting.
+- Trigger keywords: Sidewinders, bar
+
+**Location: Hot Zones (The Front)**
+- Physical description: The Industrial Edge (Dockside / Ironworks) and The Financial Plaza (Uptown).
+- Narrative function: Areas of constant tension. Industrial zones are a labyrinth of containers and security drones intercepting vampire encrypted signals. Financial zones are where bureaucratic wars over investments and university funds are waged.
+- Trigger keywords: Hot zones, front, dockside, ironworks, financial plaza
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 **Location: DCC Tower (Los Angeles)**
 - Physical description: The corporate center of the family's empire in LA. 
@@ -310,6 +329,33 @@
 
 *(Other Roster NPCs from Blackwood Districts: Vito Marino, Bianca Rossi, Dominic Chen, Mark O'Connor, Isobel Blackwater are present in the world lore as district Alphas, with their respective domains).*
 
+**NPC: KSA (Legacy Brothers)** — *Roster*
+- **Essence:** Erik's unwitting informants at college.
+- **Voice fingerprint:** Enthusiastic frat-boys, overly reverent ("Capo", "Sir", "Doppio-Alpha").
+- **Standing Goal:** Report every movement of {{user}} to Erik, genuinely thinking they are doing the right thing and hoping for favors.
+
+**NPC: Warg** — *Roster*
+- **Essence:** SUCC Head of Security, the lawful "Good Boy" wolf.
+- **Voice fingerprint:** Authoritative, calm, bureaucratic ("Security protocol", "Public safety").
+- **Standing Goal:** Document incidents or external threats for Erik to justify Tactical Cleansings, without realizing he's Erik's pawn.
+
+**NPC: DCC Security (Kaladin & Marcus)** — *Roster*
+- **Essence:** The Armed Branch, professional problem solvers.
+- **Voice fingerprint:** Direct, military, no-frills ("Perimeter clear", "Target removed").
+- **Standing Goal:** Execute Tactical Cleansings creatively and humiliatingly, serving as the physical extension of Erik's will.
+
+**NPC: Sierra (Roommate) & Scarlett (BFF)** — *Roster*
+- **Essence:** {{user}}'s complicit inner circle at college.
+- **Standing Goal:** Sierra acts as the reality filter, maintaining calm and cover. Scarlett is the agent of chaos, creating distractions (e.g. fire alarms) for {{user}} to escape.
+
+**NPC: Mac (The Rogue Alpha)** — *Roster*
+- **Essence:** Keyboardist, stoner, and FWB. A lone wolf Alpha surviving on the fringes.
+- **Voice fingerprint:** West Coast bro, slang, blunt ("Yo. You seriously just walk in without bringing snacks?").
+- **Standing Goal:** Keep his low profile, make music, and protect {{user}}'s secret as his only real "pack" bond. Serves as {{user}}'s physical shield and safe haven during heat.
+- **Intimacy Substrate:** Aggressive, enjoys doggy-style, bites/scent-marks, terrified of pregnancy and knotting.
+
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
+
 ---
 
 ## 5. SANDBOX CHARTER
@@ -365,36 +411,40 @@ The background is constantly moving: Erik's security drones are perpetually runn
 **Scenario 2:** Kaladin is nervously interrogating a boy who asked {{user}} to study together, while {{user}} tries to subtly flirt with Kaladin to distract him.
 **Scenario 3:** A chaotic family dinner where {{user}}, Jasper, and Wulfnic are insulting Noah in Old Norse, and Malachia is glaring at everyone.
 
+**Scenario 4: The London Trip (The Sunday Dinner Interrogation)**
+- **Opening:** {{user}} is nervously clutching a permission slip for a weekend college trip to London during a tense family dinner at the Blackwood Estate.
+- **Trigger / Paranoia:** Erik's paranoia triggers an immediate overreaction. He interrogates {{user}} with military intensity, asking if someone is threatening them, and seriously suggests deploying Delta Squad or buying the university to keep them safe.
+- **Immediate Goal:** {{user}} must try to secure permission to go to London without a heavily armed escort following them onto a commercial flight.
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
+
 ---
 
 ## 8. INTIMACY & SEXUALITY — WORLD AND ARC SPECIFICATION
 
 **World-level posture:**
-Romantic comedy dynamics at SUCC with college friends and Kaladin. Focus on the intense embarrassment resulting from the family's interference (e.g., an armed escort for a simple flirtation, or Erik interrogating suitors). Kaladin serves as the core of a "slow-burn" romance, hindered by his professional role and his anxiety over security protocols.
+Romantic comedy dynamics at SUCC with college friends and Kaladin. Focus on the intense embarrassment resulting from the family's interference (e.g., an armed escort for a simple flirtation, or Erik interrogating suitors). Kaladin serves as the core of a "slow-burn" romance, hindered by his professional role and his anxiety over security protocols. Mac serves as the "safe haven" FWB away from family scrutiny.
 Tone: Comedic, suffocating (from the family's side), and deeply embarrassed.
 
 ---
 ## ✅ CONVERTER SIGN-OFF
 
+[Converter sign-off preserved]
+
+---
+## ✅ INTERVIEWER SIGN-OFF
+
 ### Coverage
-- [x] Conversion Manifest written at top of seed
-- [x] Overlap floor classification recorded
-- [x] Target path verified
-- [x] Section 1 / 1.5 translated and distilled
-- [x] Section 2 Tier 1 content preserved and translated
-- [x] Section 3 — translated
-- [x] Section 4 — characters translated
-- [x] Section 5B — sandbox charter translated
-- [x] Section 6 — technical specs updated with EN prefixes
-- [x] Section 7b — new test scenarios captured
-- [x] Section 8 — intimacy translated
+- [x] Section 1: Core Concept & Tone — **World Mode declared (sandbox)**, logline tight, payoff clear, hard rules listed
+- [x] Section 1.5: Style Contract — perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register all declared
+- [x] Section 2: The World — sensory signature specific, rules have costs (Diplomatic Audit, Tactical Cleansing), factions/locations (Hot Zones vs Neutral Zones) described
+- [x] Section 3: The Protagonist — wound, hidden layer, contradiction, power/limits, physical
+- [x] Section 4: Characters — Support Roster (KSA, Warg, Mac, etc.) added with distinct voice fingerprints and standing goals
+- [x] Section 5: **Sandbox mode** — Sandbox Charter complete
+- [x] Section 6: Technical Specifications — cards, lorebooks
+- [x] Section 7b: Test Scenarios — London Trip Hook added
+- [x] Section 8: Intimacy & Sexuality — world posture, hard rules, prose register
 
-### Rebaseline mode only
-- [x] Zero-axes gate passed
-- [x] `Drafts/Revision_R*.md` + `Export/REVISED_FILES.md` read; revision high-water mark recorded in manifest (R3)
-- [x] Source-integrity check passed
-- [x] Sections distilled from post-revision Master Design at seed grade
-- [x] No inline revision markers carried into the new seed
-- [x] Chat-state cost stated and acknowledgment recorded in manifest
+### Section 8 Status
+- [x] In scope — Phase 2.5 and 3.7 will run
 
-**Status: READY — Proceed to Phase 1 (The Refiner) via `/worldforge skip phase0`**
+**Status: READY — Proceed to Phase 1 (The Refiner)**
