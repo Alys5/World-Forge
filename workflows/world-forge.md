@@ -275,7 +275,7 @@ LOOP:  (each return increments the ledger's `3 Editor` Round)
 **Input:** All Editor-approved `Drafts/` + `Drafts/Master_Design.md` + `World_Seed.md` Section 7b
 **Output:** `Drafts/Voice_Audit_Report_[Round N].md`
 
-Generates sample regular dialogue using the drafts as runtime context, audits against character spec for trigger-response fidelity, voice distinctiveness, arc register integrity, reflex misfires, NPC voice drift, and — where the world has principal NPCs — NPC agency and goal-following in a lull (Step 3J: do NPCs take initiative toward a stated Standing Goal rather than the scene freezing? for laddered NPCs, do moves trace to the named active stage, and does the model hold the stage under a temptation scenario rather than jumping to the endgame?).
+Generates sample regular dialogue using the drafts as runtime context — as a **cold read** (plausible failure pre-committed per scenario, expected outcome out of view during generation, every PASS evidence-cited and counterfactual-probed), over a test matrix whose scenario classes go beyond the happy path (trigger-collision, near-miss/false-trigger, off-script pressure, coverage-void probes) — and audits against character spec for trigger-response fidelity, voice distinctiveness, arc register integrity, reflex misfires, NPC voice drift, and — where the world has principal NPCs — NPC agency and goal-following in a lull (Step 3J: do NPCs take initiative toward a stated Standing Goal rather than the scene freezing? for laddered NPCs, do moves trace to the named active stage, and does the model hold the stage under a temptation scenario rather than jumping to the endgame?).
 
 ```
 IF Critical or High failures → return to Architect with rewrite directives (increment ledger `3.5` Round)
@@ -313,7 +313,7 @@ IF no failures → ARC TRANSITION AUDITOR SIGN-OFF
 
 **Conditional phase.** Runs if and only if Phase 2.5 ran and produced intimacy drafts. If Phase 2.5 was skipped, this phase is also skipped.
 
-Generates sample intimate scenes using the drafts as runtime context, audits against two lenses:
+Generates sample intimate scenes using the drafts as runtime context — as a **cold read** (plausible failure pre-committed per scenario, expected outcome out of view during generation, every PASS evidence-cited and counterfactual-probed), over a test matrix whose scenario classes go beyond the canonical intimate beats (trigger-collision, function-shift, boundary, hard-limit probe, substrate near-miss) — and audits against two lenses:
 - **Primary lens — voice fidelity:** does the character behave like themselves during sex? Substrate fidelity, trauma map fidelity, voice continuity, hard limit integrity.
 - **Secondary lens — thematic register match:** does the scene serve its declared function? Function fidelity, prose register match, direction fidelity, arc atmosphere preservation.
 
