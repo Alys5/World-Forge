@@ -81,26 +81,26 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 
 ### Trigger commands
 
-| Command | Action |
-|---|---|
-| `/worldforge brainstorm` | Optional, upstream of Phase 0: divergent ideation when you have only a vibe — generates premise directions, writes informal `Brainstorm_Notes.md`, no World Seed (the Interviewer reads the notes on the next `start`) |
-| `/worldforge start` | Begin from Phase 0 (arc mode by default) |
-| `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** — an open-ended world with no narrative arc (see Section 7) |
-| `/worldforge skip phase0` | Begin from Phase 1 (you authored the World Seed manually — Lucifer's path) |
-| `/worldforge resume phase[N]` | Resume from a specific phase after a pause gate |
-| `/worldforge status` | Report current phase, round, and open blockers |
-| `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content) |
-| `/worldforge skip phase3.6` | Skip Arc Transition Auditor (auto-skipped in sandbox mode — no arc seams) |
-| `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content) |
-| `/worldforge revise` | Post-launch surgical edits to a shipped world (UID-preserving, scope-locked) |
-| `/worldforge revise --brainstorm` | Post-launch diagnostic: when something feels off but you can't name what to revise — runs the Brainstormer to locate the concern first, then the Reviser scopes it (see Section 9) |
-| `/worldforge resync-preset` | Post-launch: refresh a shipped world's Chat Completion Preset against the current template + block library |
-| `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build — different protagonist, World Mode, Style Contract, or Core Concept (see Section 8) |
-| `/worldforge convert <source> <target> --rebaseline` | Post-launch: consolidate a revised world into a clean rebuild — same protagonist, revisions carried, markers dropped (see Section 8) |
-| `/worldforge convert <source> <target> --rebaseline --then-interview` | Same, then go directly into the Interviewer to make major changes against the clean seed before the rebuild (see Section 8) |
-| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Same, but brainstorm *what* to change first (Brainstormer improvement posture), then the Interviewer reads those notes as proposals (see Section 8) |
+| Command                                                                | Action                                                                                                                                                                                                                 |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/worldforge brainstorm`                                               | Optional, upstream of Phase 0: divergent ideation when you have only a vibe — generates premise directions, writes informal `Brainstorm_Notes.md`, no World Seed (the Interviewer reads the notes on the next `start`) |
+| `/worldforge start`                                                    | Begin from Phase 0 (arc mode by default)                                                                                                                                                                               |
+| `/worldforge start --sandbox`                                          | Begin from Phase 0 in **sandbox mode** — an open-ended world with no narrative arc (see Section 7)                                                                                                                     |
+| `/worldforge skip phase0`                                              | Begin from Phase 1 (you authored the World Seed manually — Lucifer's path)                                                                                                                                             |
+| `/worldforge resume phase[N]`                                          | Resume from a specific phase after a pause gate                                                                                                                                                                        |
+| `/worldforge status`                                                   | Report current phase, round, and open blockers                                                                                                                                                                         |
+| `/worldforge skip phase2.5`                                            | Skip Intimacy Architect (no intimate content)                                                                                                                                                                          |
+| `/worldforge skip phase3.6`                                            | Skip Arc Transition Auditor (auto-skipped in sandbox mode — no arc seams)                                                                                                                                              |
+| `/worldforge skip phase3.7`                                            | Skip Intimacy Auditor (no intimate content)                                                                                                                                                                            |
+| `/worldforge revise`                                                   | Post-launch surgical edits to a shipped world (UID-preserving, scope-locked)                                                                                                                                           |
+| `/worldforge revise --brainstorm`                                      | Post-launch diagnostic: when something feels off but you can't name what to revise — runs the Brainstormer to locate the concern first, then the Reviser scopes it (see Section 9)                                     |
+| `/worldforge resync-preset`                                            | Post-launch: refresh a shipped world's Chat Completion Preset against the current template + block library                                                                                                             |
+| `/worldforge convert <source> <target>`                                | Post-launch: reframe a shipped world into a new build — different protagonist, World Mode, Style Contract, or Core Concept (see Section 8)                                                                             |
+| `/worldforge convert <source> <target> --rebaseline`                   | Post-launch: consolidate a revised world into a clean rebuild — same protagonist, revisions carried, markers dropped (see Section 8)                                                                                   |
+| `/worldforge convert <source> <target> --rebaseline --then-interview`  | Same, then go directly into the Interviewer to make major changes against the clean seed before the rebuild (see Section 8)                                                                                            |
+| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Same, but brainstorm _what_ to change first (Brainstormer improvement posture), then the Interviewer reads those notes as proposals (see Section 8)                                                                    |
 
-> This table is a quick subset. **Section 10** is the full command reference — every trigger and flag with an example invocation and the *why* behind it.
+> This table is a quick subset. **Section 10** is the full command reference — every trigger and flag with an example invocation and the _why_ behind it.
 
 > The Lucifer case study below is an **arc world** — it progresses through four arcs. If you are building an open-ended, NPC-populated world with no narrative arc (a power-fantasy, world-director, or life-sim world), read this case study first to learn the pipeline, then see **Section 7 — Sandbox worlds** for what changes.
 
@@ -110,7 +110,7 @@ Each phase is run by a specialized agent. Some phases are conditional, some loop
 
 The Lucifer world is a four-arc grimdark narrative: a recovering addict named Anna meets Andrei (the user's protagonist, secretly the Devil), navigates a celestial conflict, and ends in cosmic tragedy and reconstruction. The world has two AI character cards (Anna and a World Director managing NPCs), full intimacy specification across all four arcs, and a multi-faction setting (the Black Hand of God, the Heavenly Host, Jack's prostitution ring).
 
-### Phase 0: The Interviewer — *skipped*
+### Phase 0: The Interviewer — _skipped_
 
 For Lucifer, Phase 0 was skipped. The user authored `Samples/World_Seed_Lucifer.md` manually using `templates/World_Seed_Template.md` as the structural reference. To replicate this pattern:
 
@@ -120,7 +120,7 @@ For Lucifer, Phase 0 was skipped. The user authored `Samples/World_Seed_Lucifer.
 
 This is a valid path when you already have a fully-formed concept and want to write the World Seed yourself. The Interviewer is most useful for users whose ideas are still forming or who need pushback on thin material — for a fully-developed world like Lucifer, the manual path is faster.
 
-If your idea is *less* than forming — just a vibe, an image, a single character with no world around them yet — there is an optional step further upstream: `/worldforge brainstorm`. The Brainstormer is the Interviewer's divergent counterpart. Instead of walking the template and pushing for specificity, it generates premise directions, follows whatever you light up on, and helps a concept find its shape. When something has a pulse, it writes informal `Brainstorm_Notes.md` (explicitly *not* a World Seed) and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and runs the full interview. Brainstorm is entirely optional — skip it whenever you already know what you're building. **Section 9** covers the Brainstormer in full: its proactive suggestion style, the four domain lenses, and its use as a revision diagnostic.
+If your idea is _less_ than forming — just a vibe, an image, a single character with no world around them yet — there is an optional step further upstream: `/worldforge brainstorm`. The Brainstormer is the Interviewer's divergent counterpart. Instead of walking the template and pushing for specificity, it generates premise directions, follows whatever you light up on, and helps a concept find its shape. When something has a pulse, it writes informal `Brainstorm_Notes.md` (explicitly _not_ a World Seed) and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and runs the full interview. Brainstorm is entirely optional — skip it whenever you already know what you're building. **Section 9** covers the Brainstormer in full: its proactive suggestion style, the four domain lenses, and its use as a revision diagnostic.
 
 The completed World Seed contains nine sections: core concept and tone (Section 1), the world (Section 2 — sensory signature, rules, factions, locations, species, concepts), the protagonist (Section 3), characters and their lorebook material (Section 4), narrative arcs (Section 5), technical specifications (Section 6), test scenarios (Section 7b), and the conditional intimacy specification (Section 8). The current pipeline also includes a Section 1.5 Style Contract (perspective, tense, formatting markers); Lucifer's seed predates this section and runs cleanly under the pipeline's defaults pathway. For how to fill the Style Contract in — what `DEFAULTS` gives you, and worked examples from the literary default to a leaner "typical roleplay" register — see **Section 11 — Setting your prose style**.
 
@@ -154,18 +154,18 @@ If the Refiner finds gaps (a faction with no trigger keywords, an arc without an
 
 The Architect takes the locked Master Design and authors every Markdown source the Compiler will need. For Lucifer, Phase 2 produces:
 
-| File | What it contains |
-|---|---|
-| `Card_Anna.md` | Anna's character card content: description, personality, scenario, first message, example exchanges |
-| `Card_World_Director.md` | The World Director card: omniscient narrator content, NPC voice patterns |
-| `User.md` | The `{{user}}` Persona Description text (paste-ready, ≤150 words). Pairs with the Tier 2 Protagonist Lorebook to give `{{user}}` parity with `{{char}}` despite ST's missing persona import format. Voice and personality intentionally excluded — the human plays `{{user}}`. |
-| `Tier1_World_Entries.md` | All Tier 1 lorebook entries — world rules, factions, standing locations, species, concepts |
-| `Tier2_Anna_Entries.md` | Anna's permanent character lorebook: physical baseline, psychological core, relationships |
-| `Tier2_Andrei_Entries.md` | Protagonist lorebook for Andrei (`{{user}}`) |
-| `Tier2_NPC_Entries.md` | NPC reference data (Mr. Black, Michael, Jack, etc.) |
-| `Tier3_Arc[1-4]_Entries.md` | Per-arc state, NPC shifts, dramatic beats, tension |
-| `Instructions_Anna.md` | Anna's `system_prompt` and `post_history_instructions` |
-| `Instructions_World_Director.md` | The World Director's `system_prompt` and `post_history_instructions` |
+| File                             | What it contains                                                                                                                                                                                                                                                               |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Card_Anna.md`                   | Anna's character card content: description, personality, scenario, first message, example exchanges                                                                                                                                                                            |
+| `Card_World_Director.md`         | The World Director card: omniscient narrator content, NPC voice patterns                                                                                                                                                                                                       |
+| `User.md`                        | The `{{user}}` Persona Description text (paste-ready, ≤150 words). Pairs with the Tier 2 Protagonist Lorebook to give `{{user}}` parity with `{{char}}` despite ST's missing persona import format. Voice and personality intentionally excluded — the human plays `{{user}}`. |
+| `Tier1_World_Entries.md`         | All Tier 1 lorebook entries — world rules, factions, standing locations, species, concepts                                                                                                                                                                                     |
+| `Tier2_Anna_Entries.md`          | Anna's permanent character lorebook: physical baseline, psychological core, relationships                                                                                                                                                                                      |
+| `Tier2_Andrei_Entries.md`        | Protagonist lorebook for Andrei (`{{user}}`)                                                                                                                                                                                                                                   |
+| `Tier2_NPC_Entries.md`           | NPC reference data (Mr. Black, Michael, Jack, etc.)                                                                                                                                                                                                                            |
+| `Tier3_Arc[1-4]_Entries.md`      | Per-arc state, NPC shifts, dramatic beats, tension                                                                                                                                                                                                                             |
+| `Instructions_Anna.md`           | Anna's `system_prompt` and `post_history_instructions`                                                                                                                                                                                                                         |
+| `Instructions_World_Director.md` | The World Director's `system_prompt` and `post_history_instructions`                                                                                                                                                                                                           |
 
 Each Tier 1 entry follows a strict structure. From `Samples/Drafts/Tier1_World_Entries.md`:
 
@@ -190,7 +190,7 @@ sunglasses. The sole tell is their eyes — glowing red...
 
 Note the **Position Rationale** field. Every entry must include it. "DEFAULT" means the entry uses the documented default position for its tier (Tier 1 → position 0). Any non-default choice requires a one-sentence justification referencing `Notes_On_functionality.md`. The Editor will hard-fail entries with missing or shallow rationales.
 
-### Phase 2.5: The Intimacy Architect — *conditional*
+### Phase 2.5: The Intimacy Architect — _conditional_
 
 For worlds with intimate content (Section 8 of the World Seed populated), the Intimacy Architect runs after Phase 2 and drafts two additional file types:
 
@@ -204,7 +204,7 @@ For Lucifer, intimacy is a thematic pillar, so Phase 2.5 ran. The world's intima
 - Arc 3: Claim and Play — confidence and ownership
 - Arc 4: Ritual — weight and consequence
 
-By specifying Arc 1's function as *transaction* explicitly, the Intimacy Architect ensures the model never writes Anna as enthusiastically initiating sex in Arc 1 — preserving the world's psychological realism. This is the leverage of the function-based approach: the prose register flows from the declared purpose, not from generic erotica defaults.
+By specifying Arc 1's function as _transaction_ explicitly, the Intimacy Architect ensures the model never writes Anna as enthusiastically initiating sex in Arc 1 — preserving the world's psychological realism. This is the leverage of the function-based approach: the prose register flows from the declared purpose, not from generic erotica defaults.
 
 If your world has no intimate content, leave Section 8 of the World Seed empty and the pipeline will skip Phase 2.5 and Phase 3.7 entirely. Use `/worldforge skip phase2.5` if invoking the orchestrator manually.
 
@@ -224,18 +224,18 @@ If the Editor stalls (three rounds of the same files without improvement), the p
 
 ### Phases 3.5 / 3.6 / 3.7: The Auditors — runtime fidelity
 
-The Editor verifies that the drafts are structurally correct. The auditors verify that the drafts will *behave correctly* at runtime. They generate sample dialogue or scenes using the drafts as if the model were running on them, and audit the result against the spec.
+The Editor verifies that the drafts are structurally correct. The auditors verify that the drafts will _behave correctly_ at runtime. They generate sample dialogue or scenes using the drafts as if the model were running on them, and audit the result against the spec.
 
 #### Phase 3.5: Voice Auditor — `Voice_Audit_Report_Round[N].md`
 
 Builds a test matrix: every AI-played character × every arc × at least three scenarios per character per arc. For Lucifer's Anna:
 
-| # | Test Scenario | Active Arc | Expected Register | Trigger to Verify |
-|---|---|---|---|---|
-| A1a | Arrival at penthouse; {{user}} offers food without taking anything | Arc 1 | The Wreckage | Sincere unprompted kindness; transactional reflex |
-| A1b | {{user}} asks about Timmy during withdrawal | Arc 1 | The Wreckage | Timmy trigger — sarcasm drop; fragmented speech |
-| A2a | Anna clean, pre-revelation; {{user}} offers gentle touch unexpectedly | Arc 2 pre-rev | The Becoming | Unexpected gentle touch; warmth-then-deflect |
-| ... | (eight more scenarios) | | | |
+| #   | Test Scenario                                                         | Active Arc    | Expected Register | Trigger to Verify                                 |
+| --- | --------------------------------------------------------------------- | ------------- | ----------------- | ------------------------------------------------- |
+| A1a | Arrival at penthouse; {{user}} offers food without taking anything    | Arc 1         | The Wreckage      | Sincere unprompted kindness; transactional reflex |
+| A1b | {{user}} asks about Timmy during withdrawal                           | Arc 1         | The Wreckage      | Timmy trigger — sarcasm drop; fragmented speech   |
+| A2a | Anna clean, pre-revelation; {{user}} offers gentle touch unexpectedly | Arc 2 pre-rev | The Becoming      | Unexpected gentle touch; warmth-then-deflect      |
+| ... | (eight more scenarios)                                                |               |                   |                                                   |
 
 For each scenario, the auditor generates a 4–6 exchange dialogue sample as if it were the model running on Anna's drafted material, then checks: does the dialogue match the active arc's CHARACTER_STATE (including the trauma-trajectory line — a faded trigger must not fire at full intensity)? Do triggers fire correctly? Is voice distinct? Does behavior bleed across arcs? And in a lull, do NPCs act on their own standing goals rather than the scene freezing to wait on `{{user}}` (Step 3J)?
 
@@ -247,7 +247,7 @@ Verifies continuity across consecutive arc seams. For each arc pair, checks: tri
 
 For Lucifer, Round 1 found Critical failures at the Arc 1 → Arc 2 seam: the Arc 1 exit trigger (Jack's forces making first contact with the Black Hand) did not causally connect to the Arc 2 entry trigger (Anna's first night sleeping through without withdrawal). The structural bridge — Black Hand's response, the cooling-off period, Anna's recovery process — was missing from the Tier 3 Arc 1 file. The Architect drafted the missing bridge content; Round 2 verified.
 
-#### Phase 3.7: Intimacy Auditor — `Intimacy_Audit_Report_Round[N].md` *(conditional)*
+#### Phase 3.7: Intimacy Auditor — `Intimacy_Audit_Report_Round[N].md` _(conditional)_
 
 Generates sample intimate scenes and audits them under two lenses:
 
@@ -260,7 +260,7 @@ For Lucifer, Round 1 found behavioral fidelity issues in Arc 2 intimate scenes (
 
 The three auditors run in parallel after Editor sign-off. Failures from any auditor return the affected files to the relevant Architect, then back through the Editor, then back to the auditor.
 
-### Phase 4: The Compiler — `Export/[WorldName]` 
+### Phase 4: The Compiler — `Export/[WorldName]`
 
 The Compiler translates approved Markdown drafts into SillyTavern-ready JSON and JanitorAI profiles by executing the python build scripts (`compile_cards.py`, `compile_lorebooks.py`, `build_janitor.py`, `build_bio.py`). Before doing anything, it verifies sign-off from all four prior phases:
 
@@ -297,7 +297,7 @@ The Prompt Engineer does two things in parallel:
 
 The audit report is structured as numbered sections — for Lucifer, position logic review (table of all 22 World Lorebook entries verified), keyword coverage audit, card-lorebook consistency audit, Block Selection Rationale, and a sign-off. If the audit finds runtime risks, the recommendations land in **Sections 7 and 8** of the report as plain-text instructions for manual application — the Prompt Engineer never modifies its own audit subject.
 
-### Phase 5.5: Manual application — *conditional*
+### Phase 5.5: Manual application — _conditional_
 
 If the Prompt Engineer's audit produced recommendations in Sections 7 or 8, the user opens each named file, applies the corrections, and saves. The pipeline is complete only after this step.
 
@@ -309,19 +309,19 @@ For Lucifer, the audit ended `Status: COMPLETE`, so no Phase 5.5 was needed. The
 
 `Samples/` is structured to be navigable. If you want to understand a specific aspect of the pipeline, here is where to look:
 
-| Question | File to read |
-|---|---|
-| How does a World Seed actually look when complete? | `Samples/World_Seed_Lucifer.md` |
-| How does the Refiner organize a world into tiers? | `Samples/Drafts/Master_Design.md` |
-| What does a fully-drafted character card look like? | `Samples/Drafts/Card_Anna.md`, `Samples/Drafts/Card_World_Director.md` |
-| What does a `User.md` persona description look like? | `Samples/Drafts/User.md` (Architect draft) → `Samples/Export/User.md` (final, paste-ready) |
-| How are Tier 1/2/3 lorebook entries structured? | `Samples/Drafts/Tier1_World_Entries.md`, `Samples/Drafts/Tier2_Anna_Entries.md`, `Samples/Drafts/Tier3_Arc1_Entries.md` |
-| What is the difference between Tier 2 Intimacy Profile and Tier 3 Intimacy Register? | `Samples/Drafts/Tier2_Anna_Intimacy_Profile.md` vs. `Samples/Drafts/Tier3_Arc1_Intimacy_Register.md` |
-| How does the Editor flag and resolve issues? | `Samples/Drafts/Editor_Critique_Round1.md` (failures) → `Round3.md` (clean sign-off) |
-| What does an auditor's test matrix and dialogue audit look like? | `Samples/Drafts/Voice_Audit_Report_Round1.md` |
-| How does the Compiler verify the pipeline's chain of sign-offs? | `Samples/Export/Compiler_Log.md` |
-| What does the final Chat Completion Preset look like? | `Samples/Export/Lucifer_ChatPreset.json` |
-| How thorough is the runtime audit? | `Samples/Export/Prompt_Engineer_Audit.md` |
+| Question                                                                             | File to read                                                                                                            |
+| ------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| How does a World Seed actually look when complete?                                   | `Samples/World_Seed_Lucifer.md`                                                                                         |
+| How does the Refiner organize a world into tiers?                                    | `Samples/Drafts/Master_Design.md`                                                                                       |
+| What does a fully-drafted character card look like?                                  | `Samples/Drafts/Card_Anna.md`, `Samples/Drafts/Card_World_Director.md`                                                  |
+| What does a `User.md` persona description look like?                                 | `Samples/Drafts/User.md` (Architect draft) → `Samples/Export/User.md` (final, paste-ready)                              |
+| How are Tier 1/2/3 lorebook entries structured?                                      | `Samples/Drafts/Tier1_World_Entries.md`, `Samples/Drafts/Tier2_Anna_Entries.md`, `Samples/Drafts/Tier3_Arc1_Entries.md` |
+| What is the difference between Tier 2 Intimacy Profile and Tier 3 Intimacy Register? | `Samples/Drafts/Tier2_Anna_Intimacy_Profile.md` vs. `Samples/Drafts/Tier3_Arc1_Intimacy_Register.md`                    |
+| How does the Editor flag and resolve issues?                                         | `Samples/Drafts/Editor_Critique_Round1.md` (failures) → `Round3.md` (clean sign-off)                                    |
+| What does an auditor's test matrix and dialogue audit look like?                     | `Samples/Drafts/Voice_Audit_Report_Round1.md`                                                                           |
+| How does the Compiler verify the pipeline's chain of sign-offs?                      | `Samples/Export/Compiler_Log.md`                                                                                        |
+| What does the final Chat Completion Preset look like?                                | `Samples/Export/Lucifer_ChatPreset.json`                                                                                |
+| How thorough is the runtime audit?                                                   | `Samples/Export/Prompt_Engineer_Audit.md`                                                                               |
 
 ---
 
@@ -340,7 +340,7 @@ Once your `Export/` directory is ready:
 
 You are ready to roleplay.
 
-> Note: `User.md` deliberately does **not** contain voice, personality, or speech patterns for `{{user}}`. The human plays `{{user}}` and writes their own dialogue and actions — those are the human's domain, not the LLM's. `User.md` is reference data the LLM uses to react *to* `{{user}}` correctly.
+> Note: `User.md` deliberately does **not** contain voice, personality, or speech patterns for `{{user}}`. The human plays `{{user}}` and writes their own dialogue and actions — those are the human's domain, not the LLM's. `User.md` is reference data the LLM uses to react _to_ `{{user}}` correctly.
 
 ---
 
@@ -359,7 +359,7 @@ You are ready to roleplay.
 
 Lucifer is an **arc world**: it moves through a fixed progression of arcs, each with entry/exit triggers, dramatic beats, and per-character evolution. Some worlds have no arc at all — open-ended power-fantasy, world-director, and life-sim worlds where the experience is "live in this world and do things," not "move through a story." Those run in **sandbox mode**.
 
-Sandbox mode is **not a separate pipeline** — it is a branch *through* the same phases you just read. The same Interviewer, Refiner, Architect, Editor, Voice Auditor, Compiler, and Prompt Engineer run. Only the Tier 3 spine and the large-cast NPC format change.
+Sandbox mode is **not a separate pipeline** — it is a branch _through_ the same phases you just read. The same Interviewer, Refiner, Architect, Editor, Voice Auditor, Compiler, and Prompt Engineer run. Only the Tier 3 spine and the large-cast NPC format change.
 
 ### Declaring sandbox mode
 
@@ -373,15 +373,15 @@ This pre-sets the Interviewer, but the World Seed field is the source of truth �
 
 ### What changes vs. an arc world
 
-| Aspect | Arc world (Lucifer) | Sandbox world |
-|---|---|---|
-| **Tier 3** | One Arc Lorebook per arc, swapped in/out | **One always-active Sandbox Lorebook** — never swapped |
-| **Standing anchor** | `ARC_STATE` per arc (Dramatic Situation + Tonal Mandate) | `SANDBOX_STATE` (Standing Situation + Tonal Mandate, with an **aliveness contract**) + a `WORLD_PULSE` entry |
-| **Per-arc entries** | `CHARACTER_STATE`, `NPC_SHIFT`, `DRAMATIC_BEAT`, arc triggers | none — there is no arc |
-| **NPC cast** | Full profiles per NPC | **Principal/roster split** — a few deep principals, the rest as compact roster stat blocks with unique voice fingerprints |
-| **Phase 3.6** | Arc Transition Auditor runs | Skipped (no arc seams) |
-| **Phase 3.5** | Arc-register checks | Standing-register checks **+ NPC Distinctiveness Matrix** (a blind-line test across the roster) |
-| **Preset** | Standard blocks | Adds the **NPC Ensemble & Enrichment** block and weights Sensory Embodiment high |
+| Aspect              | Arc world (Lucifer)                                           | Sandbox world                                                                                                             |
+| ------------------- | ------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **Tier 3**          | One Arc Lorebook per arc, swapped in/out                      | **One always-active Sandbox Lorebook** — never swapped                                                                    |
+| **Standing anchor** | `ARC_STATE` per arc (Dramatic Situation + Tonal Mandate)      | `SANDBOX_STATE` (Standing Situation + Tonal Mandate, with an **aliveness contract**) + a `WORLD_PULSE` entry              |
+| **Per-arc entries** | `CHARACTER_STATE`, `NPC_SHIFT`, `DRAMATIC_BEAT`, arc triggers | none — there is no arc                                                                                                    |
+| **NPC cast**        | Full profiles per NPC                                         | **Principal/roster split** — a few deep principals, the rest as compact roster stat blocks with unique voice fingerprints |
+| **Phase 3.6**       | Arc Transition Auditor runs                                   | Skipped (no arc seams)                                                                                                    |
+| **Phase 3.5**       | Arc-register checks                                           | Standing-register checks **+ NPC Distinctiveness Matrix** (a blind-line test across the roster)                           |
+| **Preset**          | Standard blocks                                               | Adds the **NPC Ensemble & Enrichment** block and weights Sensory Embodiment high                                          |
 
 ### The aliveness contract
 
@@ -394,7 +394,7 @@ The contract is made concrete by **per-NPC standing goals**: each principal NPC 
 A sandbox usually runs on a big cast voiced by a World Director card. The failure mode at that scale is not per-NPC infidelity — it is **homogenization**: thirty NPCs collapsing into two or three generic voices. Two mechanisms defend against it:
 
 - **Roster NPC stat blocks** (Architect §7.E) — each roster NPC gets a compact block whose load-bearing field is a **voice fingerprint**: three concrete, unique speech markers no other NPC shares. The binding rule is that no two roster NPCs are confusable from a single line of dialogue.
-- **The NPC Ensemble & Enrichment preset block** (`npc_ensemble`) — encourages NPC-to-NPC dialogue (not just hub-and-spoke around `{{user}}`), scales prose up when several NPCs share a scene, and lets NPCs grow organic detail *not* in the lorebook, within guardrails (consistent with their established voice, never contradicting the lorebook, treated as canon once established).
+- **The NPC Ensemble & Enrichment preset block** (`npc_ensemble`) — encourages NPC-to-NPC dialogue (not just hub-and-spoke around `{{user}}`), scales prose up when several NPCs share a scene, and lets NPCs grow organic detail _not_ in the lorebook, within guardrails (consistent with their established voice, never contradicting the lorebook, treated as canon once established).
 
 ### Intimacy in a sandbox
 
@@ -410,7 +410,7 @@ The import flow is the same as Section 5, with one difference: there are no arc 
 
 ### Note on retrofitting
 
-Flipping World Mode is a Section 1 change, which the revise pipeline bounces. There are two paths: a from-scratch rebuild via hand-editing the World Seed (`World Mode: sandbox`, rewrite Section 5 as a Sandbox Charter, reclassify NPCs into principal/roster) and running `/worldforge skip phase0`; or the **Convert pipeline** (Section 8 below), which is the structured path for arc↔sandbox flips and other big reframings — it reads the source world's `Master_Design.md` read-only, walks you through what to keep and what to regenerate, and writes a new seed in a fresh project folder. Convert is usually the right choice for a mode flip because it preserves the Tier 1 work (rules, factions, locations) and most of Tier 2 (characters) — `start --sandbox` from scratch would make you rebuild all of that. Surgical edits to a shipped sandbox world — recalibrating `SANDBOX_STATE`, tweaking `WORLD_PULSE`, adding roster NPCs, adjusting sandbox intimacy — *are* handled by the revise pipeline (`/worldforge revise`), which is sandbox-aware via the `sandbox_*` scope types.
+Flipping World Mode is a Section 1 change, which the revise pipeline bounces. There are two paths: a from-scratch rebuild via hand-editing the World Seed (`World Mode: sandbox`, rewrite Section 5 as a Sandbox Charter, reclassify NPCs into principal/roster) and running `/worldforge skip phase0`; or the **Convert pipeline** (Section 8 below), which is the structured path for arc↔sandbox flips and other big reframings — it reads the source world's `Master_Design.md` read-only, walks you through what to keep and what to regenerate, and writes a new seed in a fresh project folder. Convert is usually the right choice for a mode flip because it preserves the Tier 1 work (rules, factions, locations) and most of Tier 2 (characters) — `start --sandbox` from scratch would make you rebuild all of that. Surgical edits to a shipped sandbox world — recalibrating `SANDBOX_STATE`, tweaking `WORLD_PULSE`, adding roster NPCs, adjusting sandbox intimacy — _are_ handled by the revise pipeline (`/worldforge revise`), which is sandbox-aware via the `sandbox_*` scope types.
 
 ---
 
@@ -422,13 +422,13 @@ Both are exactly what the **Convert pipeline** is for. It is the third post-laun
 
 ### What Convert does and does not do
 
-| What it does | What it doesn't do |
-|---|---|
-| Reads the source world's `Master_Design.md` read-only | Modifies the source project (never) |
-| Walks a preservation matrix with you (keep / modify / drop / regenerate per source section) | Writes anything other than the new `World_Seed.md` |
+| What it does                                                                                                   | What it doesn't do                                 |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
+| Reads the source world's `Master_Design.md` read-only                                                          | Modifies the source project (never)                |
+| Walks a preservation matrix with you (keep / modify / drop / regenerate per source section)                    | Writes anything other than the new `World_Seed.md` |
 | Surfaces role reassignments explicitly (old protagonist → NPC, source NPC → new `{{user}}`, power-tier shifts) | Replace `/worldforge start` for fully fresh worlds |
-| Writes a new `World_Seed.md` in your target folder | Replace `/worldforge revise` for surgical edits |
-| Hands off to `/worldforge skip phase0` for the standard build | Merge two source worlds (single source only) |
+| Writes a new `World_Seed.md` in your target folder                                                             | Replace `/worldforge revise` for surgical edits    |
+| Hands off to `/worldforge skip phase0` for the standard build                                                  | Merge two source worlds (single source only)       |
 
 The Converter is one phase (C0). After it finishes, you run the standard pipeline (Phase 1 onward) against the target folder, exactly as if you had hand-written the new seed.
 
@@ -464,7 +464,7 @@ Suppose you want to reframe the Lucifer world to play as God. You'd run:
 
 The Converter reads `path/to/Lucifer/Drafts/Master_Design.md` and walks you through:
 
-- **Overlap floor.** Setting (modern Stockholm with grimdark cosmology) — *kept*. Factions (Black Hand of God, etc.) — *kept*. Tone (grimdark, morally weighted) — *kept* or possibly modified (playing God may shift the moral lens). Protagonist (mortal → deity) — *replaced*. Result: 1 axis replaced — well-shaped. Proceed.
+- **Overlap floor.** Setting (modern Stockholm with grimdark cosmology) — _kept_. Factions (Black Hand of God, etc.) — _kept_. Tone (grimdark, morally weighted) — _kept_ or possibly modified (playing God may shift the moral lens). Protagonist (mortal → deity) — _replaced_. Result: 1 axis replaced — well-shaped. Proceed.
 - **Tier 1.** Most of Section 2 carries forward verbatim — the supernatural rules, the location descriptions, the species/cosmology entries. The factions carry forward by name and capability, but **their relationship to `{{user}}` will be reauthored downstream** — the new protagonist is God, not Anna's POV, so the Black Hand's framing shifts from "Lucifer's syndicate on Earth seen from the outside" to "Lucifer's earthly operation that you, God, are observing or intervening in." The Converter flags this; the Architect rewrites the relationship at Phase 2.
 - **Tier 2.** Anna stays as a Tier 2 character (she's not a protagonist in the new world; she's a person God interacts with). Lucifer stays as a Tier 2 character. The source `{{user}}` (the original protagonist) is dropped — there was no separate Tier 2 entry for them; they were the protagonist. The new `{{user}}` (God) does not exist as a source Tier 2 entry, so they are authored fresh in Section 3.
 - **Section 4 fields the Converter handles automatically.** Anna's `Standing Goal` carries across if it's protagonist-agnostic (e.g., "stay clean and get her brother out of the syndicate") or is stripped + marked for reauthoring if it cites the old protagonist. Every relationship's `How it drifts (arc worlds)` line is stripped — the arcs are being regenerated, so the drift trajectory will be authored fresh downstream. `Operative belief` lines carry across only between two preserved characters and only when they don't mention `{{user}}` — beliefs about `{{user}}` (the most common case) get stripped because `{{user}}` has changed. `Trauma trajectory` per intimate character is stripped for the same arc-coupled reason; the base `Trauma map` (the trigger + response substrate) carries through. You don't declare any of this in the Convert Brief — it happens inside the Converter's Section 4 carry-across pass.
@@ -478,24 +478,24 @@ After Step 6 (write the seed) and Step 7 (sign-off), the Converter outputs the h
 ### What survives, what doesn't (rule of thumb)
 
 - **Survives:** world rules, factions (without the relationship to `{{user}}`), locations, species, concepts, preserved Tier 2 characters' wounds/voices/physical descriptions, Style Contract world defaults (if kept), world-level intimacy posture (if kept).
-- **Reauthored downstream:** every preserved character's *relationship to `{{user}}`*, behavioral mandates that depended on the old protagonist, per-card style overrides, faction-to-`{{user}}` relationships.
+- **Reauthored downstream:** every preserved character's _relationship to `{{user}}`_, behavioral mandates that depended on the old protagonist, per-card style overrides, faction-to-`{{user}}` relationships.
 - **Always regenerated:** Section 3 (new `{{user}}`), Section 5 (arcs or Sandbox Charter — protagonist-shaped), Section 7b (test scenarios), per-arc / standing intimate functions.
 
 The Converter's job is to **surface every transition explicitly** in the Conversion Manifest at the top of the new seed and in HTML-comment markers throughout. The downstream pipeline treats the seed as a normal Phase 0 output and builds against it.
 
 ### Rebaseline: consolidating a revised world (`--rebaseline`)
 
-There is one conversion where *nothing* is replaced: your world has been through enough revisions (R1…R6, say) that the Master Design and drafts are layered with `<!-- REVISED IN R[N] -->` markers, the original `World_Seed.md` is six revisions stale, and the next thing you want to add is structural enough that another surgical revision feels wrong. That is **Rebaseline mode**:
+There is one conversion where _nothing_ is replaced: your world has been through enough revisions (R1…R6, say) that the Master Design and drafts are layered with `<!-- REVISED IN R[N] -->` markers, the original `World_Seed.md` is six revisions stale, and the next thing you want to add is structural enough that another surgical revision feels wrong. That is **Rebaseline mode**:
 
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline
 ```
 
-Same world, same protagonist. The Converter reads the *post-revision* `Master_Design.md` plus every `Revision_R*.md` report, and writes a seed where everything — including Section 3 (protagonist), Section 5 (arcs), and the test scenarios that a regular conversion always regenerates — carries forward, distilled to seed grade. Revision *content* carries; revision *markers* don't. New mechanics you're introducing go in at seed level, marked `<!-- NEW IN REBASELINE -->`. Then `/worldforge skip phase0` rebuilds the world clean, and the new project's revision counter starts over at R1.
+Same world, same protagonist. The Converter reads the _post-revision_ `Master_Design.md` plus every `Revision_R*.md` report, and writes a seed where everything — including Section 3 (protagonist), Section 5 (arcs), and the test scenarios that a regular conversion always regenerates — carries forward, distilled to seed grade. Revision _content_ carries; revision _markers_ don't. New mechanics you're introducing go in at seed level, marked `<!-- NEW IN REBASELINE -->`. Then `/worldforge skip phase0` rebuilds the world clean, and the new project's revision counter starts over at R1.
 
 **The one real cost:** the rebuild compiles fresh UIDs, so running SillyTavern chats against the old package don't migrate — the old Export/ stays playable as-is, but the rebuilt world is a fresh import with fresh chat state. If you want running chats to survive, stay with `/worldforge revise`. Full mode spec: `agent_roles/Converter/00_The_Converter.md` Section 9.
 
-**If the rebaseline is a staging step** — you're consolidating *because* something bigger is coming — add `--then-interview`:
+**If the rebaseline is a staging step** — you're consolidating _because_ something bigger is coming — add `--then-interview`:
 
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-interview
@@ -503,19 +503,19 @@ Same world, same protagonist. The Converter reads the *post-revision* `Master_De
 
 After writing the consolidated seed, the Converter hands off into the **Interviewer in seed-revision posture** instead of `skip phase0`: it plays the world back to you, asks what you want to change, and interviews just those changes at full Phase 0 depth — including the cascade (rework an arc and it will re-elicit that arc's relationship drift, trauma trajectory, and intimate function lines). Changed sections get marked, the Interviewer signs off below the Converter, and the standard pipeline proceeds from Phase 1.
 
-**If you know you want to change the world but not yet *what*,** use `--then-brainstorm` instead:
+**If you know you want to change the world but not yet _what_,** use `--then-brainstorm` instead:
 
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-brainstorm
 ```
 
-This inserts the **Brainstormer in improvement posture** ahead of the Interviewer. It reads the consolidated seed, plays the world back, and brainstorms improvement directions *with* you — a new mechanic, an arc rework, a character to deepen, a tonal turn — generating options the way it does for a fresh world, but pointed at the world you already have. It writes informal `Brainstorm_Notes.md` (never the seed), and the chain continues into the seed-revision Interviewer, which reads those notes as *proposals*: it leads with them, you refine them in discussion, and the endorsed ones get interviewed into seed edits at full depth. The Brainstormer keeps you honest about scope — an idea that would flip the World Mode, swap the protagonist, or overturn the core concept is a *reframe* (a regular `/worldforge convert`), not a rebaseline improvement, and it'll say so. `--then-brainstorm` requires `--rebaseline` and supersedes `--then-interview` (the interview always follows the brainstorm).
+This inserts the **Brainstormer in improvement posture** ahead of the Interviewer. It reads the consolidated seed, plays the world back, and brainstorms improvement directions _with_ you — a new mechanic, an arc rework, a character to deepen, a tonal turn — generating options the way it does for a fresh world, but pointed at the world you already have. It writes informal `Brainstorm_Notes.md` (never the seed), and the chain continues into the seed-revision Interviewer, which reads those notes as _proposals_: it leads with them, you refine them in discussion, and the endorsed ones get interviewed into seed edits at full depth. The Brainstormer keeps you honest about scope — an idea that would flip the World Mode, swap the protagonist, or overturn the core concept is a _reframe_ (a regular `/worldforge convert`), not a rebaseline improvement, and it'll say so. `--then-brainstorm` requires `--rebaseline` and supersedes `--then-interview` (the interview always follows the brainstorm).
 
 ---
 
 ## 9. Brainstorming a world (`/worldforge brainstorm`)
 
-Everything so far assumes you arrive with a concept solid enough for the Interviewer to interrogate. Sometimes you don't — you have a vibe, an image, a single character, a "what if," and nothing with a shape yet. The **Brainstormer** is the optional front porch for that state. It is the Interviewer's divergent counterpart: where the Interviewer converges (walks the template, pushes for specificity, refuses thin material), the Brainstormer diverges (throws out options, follows whatever you light up on, helps an idea find its own shape). It writes informal `Brainstorm_Notes.md` — explicitly *not* a World Seed — and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and still runs the full interview.
+Everything so far assumes you arrive with a concept solid enough for the Interviewer to interrogate. Sometimes you don't — you have a vibe, an image, a single character, a "what if," and nothing with a shape yet. The **Brainstormer** is the optional front porch for that state. It is the Interviewer's divergent counterpart: where the Interviewer converges (walks the template, pushes for specificity, refuses thin material), the Brainstormer diverges (throws out options, follows whatever you light up on, helps an idea find its own shape). It writes informal `Brainstorm_Notes.md` — explicitly _not_ a World Seed — and hands you to `/worldforge start`, where the Interviewer reads those notes as a warm start and still runs the full interview.
 
 ```
 /worldforge brainstorm
@@ -525,9 +525,9 @@ It is entirely optional and skippable — if you already know what you're buildi
 
 ### It makes suggestions, not just prompts
 
-The Brainstormer is built to be *proactive*. Rather than only asking questions, it offers material:
+The Brainstormer is built to be _proactive_. Rather than only asking questions, it offers material:
 
-- **Touchstones, not just adjectives.** Hand it a genre or mood and it reaches for the works that own that territory: "a horror sandbox in a small neighborhood" is Stephen King country — ordinary streets with something wrong humming underneath. It names the touchstone *and* describes its texture, so it lands whether or not you know the work, and it offers two or three so you can feel which direction has heat.
+- **Touchstones, not just adjectives.** Hand it a genre or mood and it reaches for the works that own that territory: "a horror sandbox in a small neighborhood" is Stephen King country — ordinary streets with something wrong humming underneath. It names the touchstone _and_ describes its texture, so it lands whether or not you know the work, and it offers two or three so you can feel which direction has heat.
 - **Excerpt sketches.** When a register is hard to describe, it writes a few lines of the world's prose in the tone it's proposing and asks if that's warmer or colder than what you meant.
 - **Cast on request.** Ask "who else is in here?" and it generates a handful of distinct candidates with a hook each, rather than handing the question back.
 - **Clichés, dodged but offered.** It steers toward the fresher angle by default, but tropes are tools — when it steers around one it says so and offers the familiar version too, because the well-worn path is often the easier build. You choose.
@@ -535,14 +535,14 @@ The Brainstormer is built to be *proactive*. Rather than only asking questions, 
 
 ### The four domain lenses
 
-When a brainstorm turns toward a domain where ideas reliably go generic, the Brainstormer pulls in a matching **lens** — craft grounding that sharpens its suggestions away from cliché. The lenses produce *leanings for the notes*, never locked content; the downstream agents still do all the authoring.
+When a brainstorm turns toward a domain where ideas reliably go generic, the Brainstormer pulls in a matching **lens** — craft grounding that sharpens its suggestions away from cliché. The lenses produce _leanings for the notes_, never locked content; the downstream agents still do all the authoring.
 
-| Lens | Guards against | Example nudge |
-|---|---|---|
-| **Intimacy & Dynamics** | interchangeable, generic sex scenes | make a scene fit the *specific pair* — a shorter man and a taller woman reshapes the staging and the power play |
-| **Appearance & Style** | the default body-type cliché | "a curvy distance runner" is in tension — distance running builds a lean frame; want yoga instead, or keep the body and call it genetics? |
-| **Realism** | hand-wavy mechanics | a team chasing the World Cup can't train 24/7 — injuries, recovery, and politics are where the stakes live. (Genre-aware: it steps aside for power-fantasy, where "realism" becomes internal consistency.) |
-| **Character Psychology** | the flat archetype | a "cold crime boss" is a costume — what does he *want* underneath, and what's the one line he won't cross, or already crossed? |
+| Lens                     | Guards against                      | Example nudge                                                                                                                                                                                              |
+| ------------------------ | ----------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Intimacy & Dynamics**  | interchangeable, generic sex scenes | make a scene fit the _specific pair_ — a shorter man and a taller woman reshapes the staging and the power play                                                                                            |
+| **Appearance & Style**   | the default body-type cliché        | "a curvy distance runner" is in tension — distance running builds a lean frame; want yoga instead, or keep the body and call it genetics?                                                                  |
+| **Realism**              | hand-wavy mechanics                 | a team chasing the World Cup can't train 24/7 — injuries, recovery, and politics are where the stakes live. (Genre-aware: it steps aside for power-fantasy, where "realism" becomes internal consistency.) |
+| **Character Psychology** | the flat archetype                  | a "cold crime boss" is a costume — what does he _want_ underneath, and what's the one line he won't cross, or already crossed?                                                                             |
 
 The appearance/realism nudge is a coherence check, not a rule: it surfaces the tension once, offers the resolutions, and drops it the moment you choose — "curvy and genetically gifted" is a complete answer.
 
@@ -551,18 +551,18 @@ The appearance/realism nudge is a coherence check, not a rule: it surfaces the t
 The Brainstormer runs in one of three modes depending on how it's invoked:
 
 1. **Fresh start** (`/worldforge brainstorm`) — the default above: a blank page and a vibe.
-2. **Rebaseline improvement** (`/worldforge convert ... --rebaseline --then-brainstorm`) — brainstorming *changes* to an already-consolidated world before the Interviewer reworks the seed. Covered in [Section 8](#8-converting-a-shipped-world-worldforge-convert).
+2. **Rebaseline improvement** (`/worldforge convert ... --rebaseline --then-brainstorm`) — brainstorming _changes_ to an already-consolidated world before the Interviewer reworks the seed. Covered in [Section 8](#8-converting-a-shipped-world-worldforge-convert).
 3. **Revision diagnostic** (`/worldforge revise --brainstorm`) — the next subsection.
 
 ### "Something feels off but I can't name it" (`/worldforge revise --brainstorm`)
 
-The revision pipeline (`/worldforge revise`, Section 7's retrofitting note) assumes you can name what to change — "Anna's voice is too snarky in Arc 2," "add an NPC to the market district." But sometimes a shipped world just feels *off* in play and you can't point at why. That's the pre-articulation case, and grinding through the Reviser's narrowing questions doesn't help when you have no starting noun.
+The revision pipeline (`/worldforge revise`, Section 7's retrofitting note) assumes you can name what to change — "Anna's voice is too snarky in Arc 2," "add an NPC to the market district." But sometimes a shipped world just feels _off_ in play and you can't point at why. That's the pre-articulation case, and grinding through the Reviser's narrowing questions doesn't help when you have no starting noun.
 
 ```
 /worldforge revise --brainstorm
 ```
 
-This runs the Brainstormer in its **revision-diagnostic posture** *before* the Reviser. It reads your `Master_Design.md` read-only, plays the world back, and asks what bugged you in the last session — then diagnoses divergently, using the four lenses in reverse as a diagnostic vocabulary (a scene that fell flat → the psychology lens; samey intimate beats → the intimacy lens; an arc with no pressure → the "where does it sag" move). It converges on **one primary concern**, phrased as a revision intent, plus a few candidate future concerns, and writes them to `Brainstorm_Notes.md`. The Reviser then reads that file, captures the primary concern as your verbatim intent, and classifies and scopes the revision as normal.
+This runs the Brainstormer in its **revision-diagnostic posture** _before_ the Reviser. It reads your `Master_Design.md` read-only, plays the world back, and asks what bugged you in the last session — then diagnoses divergently, using the four lenses in reverse as a diagnostic vocabulary (a scene that fell flat → the psychology lens; samey intimate beats → the intimacy lens; an arc with no pressure → the "where does it sag" move). It converges on **one primary concern**, phrased as a revision intent, plus a few candidate future concerns, and writes them to `Brainstorm_Notes.md`. The Reviser then reads that file, captures the primary concern as your verbatim intent, and classifies and scopes the revision as normal.
 
 It respects the same bright line as the Reviser: if the thing that's "off" turns out to be the world's core concept, tone, Style Contract, or World Mode, it says so and points you to a full re-run or a `/worldforge convert` rather than dressing a structural change up as a surgical one. And like every Brainstormer posture, it writes only informal notes — it never classifies tiers or scopes the revision itself. That stays the Reviser's job.
 
@@ -570,68 +570,82 @@ It respects the same bright line as the Reviser: if the thing that's "off" turns
 
 ## 10. Command reference — every trigger, by example
 
-This section collects every `/worldforge` command in one place, each with an example invocation, what it does, and *why* you would reach for it. The examples reuse the Lucifer project (Section 3) for continuity. Two conventions throughout:
+This section collects every `/worldforge` command in one place, each with an example invocation, what it does, and _why_ you would reach for it. The examples reuse the Lucifer project (Section 3) for continuity. Two conventions throughout:
 
 - **Paths point at project folders** — the directory that holds `World_Seed.md`, `Drafts/`, and `Export/` — not at individual files, except where a flag explicitly takes a file (`--brief`, `--target`).
 - **You type these in your agentic extension's chat** (the **Code** agent in Kilo Code, or the default agent in Cline), with the World-Forge repo open as the workspace.
 
-A run moves left-to-right through a lifecycle: *(optional) brainstorm → start/skip → resume/skip while building → ship → revise / resync-preset / convert after launch.*
+A run moves left-to-right through a lifecycle: _(optional) brainstorm → start/skip → resume/skip while building → ship → revise / resync-preset / convert after launch._
 
 ### 10.1 Starting a build
 
-**`/worldforge brainstorm`** — *optional, before everything*
+**`/worldforge brainstorm`** — _optional, before everything_
+
 ```
 /worldforge brainstorm
 ```
+
 Divergent ideation for when you have only a vibe. Generates premise directions, reaches for touchstones, sketches excerpts, and pulls in the four domain lenses (Section 9). Writes informal `Brainstorm_Notes.md` and stops — it never writes a World Seed.
 **Why:** use it when you can't yet answer the Interviewer's "what's the central wound?" because the idea has no shape. Skip it when you already know what you're building.
 
-**`/worldforge start`** — *the normal entry*
+**`/worldforge start`** — _the normal entry_
+
 ```
 /worldforge start
 ```
+
 Begins at Phase 0 (the Interviewer) in **arc mode** — the default. The Interviewer walks the World Seed Template, pushes back on thin material, and produces `World_Seed.md`. If `Brainstorm_Notes.md` is present it's read as a warm start.
 **Why:** the standard path for nearly every new world.
 
-**`/worldforge start --sandbox`** — *open-ended worlds*
+**`/worldforge start --sandbox`** — _open-ended worlds_
+
 ```
 /worldforge start --sandbox
 ```
+
 Same as `start`, but pre-sets **sandbox mode** (Section 7): no narrative arcs, a single always-active Sandbox Lorebook, and a large principal/roster NPC cast. The `World Mode: sandbox` field in the seed is the real source of truth, so this flag just pre-seeds it for the Interviewer.
 **Why:** power-fantasy, world-director, and life-sim worlds where you "live in" the world rather than move through a story.
 
-**`/worldforge skip phase0`** — *you wrote the seed yourself*
+**`/worldforge skip phase0`** — _you wrote the seed yourself_
+
 ```
 /worldforge skip phase0
 ```
+
 Begins at Phase 1 (the Refiner), assuming you authored `World_Seed.md` by hand against `templates/World_Seed_Template.md` — the way the Lucifer sample was built.
 **Why:** you have a fully-formed concept and prefer writing the seed directly to being interviewed — or you're resuming after a Section 1 / 11a revision bounced out of the revise pipeline.
 
 ### 10.2 Controlling a run in flight
 
 **`/worldforge status`**
+
 ```
 /worldforge status
 ```
+
 Reports the current phase, round, and any open blockers, read from the Pipeline State Ledger at the top of `Master_Design.md` (not reconstructed from memory).
 **Why:** any time you're unsure where a paused run actually stands.
 
 **`/worldforge resume phase[N]`**
+
 ```
 /worldforge resume phase1      # after answering UNRESOLVED_QUESTIONS.md
 /worldforge resume phase2.5    # after filling in Section 8 intimacy detail
 /worldforge resume phase3      # re-enter the Editor loop
 /worldforge resume phase5      # re-run the Prompt Engineer audit
 ```
+
 Resumes from a specific phase after a pause gate. Valid phases: `phase0, phase1, phase2, phase2.5, phase3, phase3.5, phase3.6, phase3.7, phase4, phase5`.
 **Why:** continue after you've resolved whatever caused a pause — a Refiner gap, an Editor stall, an intimacy blocker.
 
 **`/worldforge skip phase2.5` · `skip phase3.6` · `skip phase3.7`**
+
 ```
 /worldforge skip phase2.5   # no intimate content — skip the Intimacy Architect
 /worldforge skip phase3.7   # no intimate content — skip the Intimacy Auditor
 /worldforge skip phase3.6   # arc-seam auditor; auto-skipped in sandbox mode anyway
 ```
+
 Tells the orchestrator a conditional phase doesn't apply, instead of letting it ask. The two intimacy phases (2.5 and 3.7) are skipped together for worlds with no intimate content; the Arc Transition Auditor (3.6) is auto-skipped in sandbox mode.
 **Why:** declare up front that a conditional phase is irrelevant to this world.
 
@@ -639,40 +653,50 @@ Tells the orchestrator a conditional phase doesn't apply, instead of letting it 
 
 Once a world has shipped (Export/ exists), the revision pipeline makes small, scope-locked changes. It preserves UIDs, so running SillyTavern chats survive the edit. The bright line: anything touching the world's Core Concept / tone (Master Design Section 1) or Style Contract world defaults (Section 11a) — including an arc↔sandbox flip — bounces to a full re-run or a `convert`.
 
-**`/worldforge revise`** — *interview mode (default)*
+**`/worldforge revise`** — _interview mode (default)_
+
 ```
 /worldforge revise
 ```
+
 The Reviser asks what feels off, narrows it to one concern, classifies the scope, runs the bright-line check, and writes a Revision Log entry.
 **Why:** you know roughly what's wrong and want to be walked through pinning it down.
 
-**`/worldforge revise --freeform`** — *you'll describe it yourself*
+**`/worldforge revise --freeform`** — _you'll describe it yourself_
+
 ```
 /worldforge revise --freeform
 ```
+
 You paste a description of the change; the Reviser structures and classifies it, then echoes its interpretation back for confirmation.
 **Why:** you can state the change in a sentence or two and don't need the interview.
 
-**`/worldforge revise --target [path]`** — *you know the file*
+**`/worldforge revise --target [path]`** — _you know the file_
+
 ```
 /worldforge revise --target Drafts/Tier2_Anna_Entries.md
 ```
+
 Skips diagnostic narrowing and goes straight to "what's wrong with this file, and what should it become?"
 **Why:** you've already located the exact draft entry to change.
 
-**`/worldforge revise --brainstorm`** — *something feels off, but you can't name it*
+**`/worldforge revise --brainstorm`** — _something feels off, but you can't name it_
+
 ```
 /worldforge revise --brainstorm
 ```
+
 Runs the Brainstormer's revision-diagnostic posture (Section 9) first: it reads `Master_Design.md` read-only, plays the world back, diagnoses divergently with the lenses, and writes one primary concern to `Brainstorm_Notes.md` — which the Reviser then picks up and scopes.
 **Why:** play feels wrong but you have no starting noun to hand the interview.
 
 **`/worldforge revise status` · `resume R[N]` · `cancel R[N]`**
+
 ```
 /worldforge revise status        # list all revisions and their statuses
 /worldforge revise resume R3     # continue pending revision R3 from its last phase
 /worldforge revise cancel R3     # cancel R3, roll back its draft edits, mark CANCELLED
 ```
+
 Manage in-flight or past revisions. `R[N]` is the revision id from the Revision Log (R1 is the first revision; the initial build is unnumbered).
 **Why:** `status` checks for a pending revision (only one runs at a time); `resume` continues after a pause; `cancel` abandons one cleanly.
 
@@ -681,46 +705,57 @@ Manage in-flight or past revisions. `R[N]` is the revision id from the Revision 
 ```
 /worldforge resync-preset
 ```
+
 Regenerates a shipped world's `Export/[WorldName]_ChatPreset.json` against the current preset template and block library, picking up pipeline improvements and any content changes that surface inside preset blocks. It makes **no content changes** and touches only the preset — re-importing it does not disturb running chats, because a preset is a global settings profile, not UID-bearing world info.
-**Why:** the pipeline's preset spec has evolved since you built the world, or revisions changed content that should reflect in preset blocks. This is *not* `resume phase5` — that re-runs the full Phase-5 audit during an in-progress build; resync is a maintenance op on an already-shipped world.
+**Why:** the pipeline's preset spec has evolved since you built the world, or revisions changed content that should reflect in preset blocks. This is _not_ `resume phase5` — that re-runs the full Phase-5 audit during an in-progress build; resync is a maintenance op on an already-shipped world.
 
 ### 10.5 Post-launch: reframe or consolidate (`/worldforge convert`)
 
-Convert reads a shipped world read-only and writes a *new* `World_Seed.md` to a target folder — the legitimate path for the big changes the revise pipeline bounces (different protagonist, World Mode flip, Style Contract or Core Concept change). The full walkthrough is Section 8; here are the invocations side by side.
+Convert reads a shipped world read-only and writes a _new_ `World_Seed.md` to a target folder — the legitimate path for the big changes the revise pipeline bounces (different protagonist, World Mode flip, Style Contract or Core Concept change). The full walkthrough is Section 8; here are the invocations side by side.
 
-**`/worldforge convert <source> <target>`** — *reframe (interactive)*
+**`/worldforge convert <source> <target>`** — _reframe (interactive)_
+
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-as-God
 ```
+
 Interviews you through the preservation matrix (keep / modify / drop / regenerate per source section), surfaces role reassignments, and writes the new seed. You then run `/worldforge skip phase0` against the target.
 **Why:** play the same world from a different angle — e.g., Lucifer's world as God instead of Anna's foil. (Replacing setting + protagonist + factions + tone all at once is refused — that's a new world, use `start`.)
 
-**`--brief <path>`** — *reframe (brief-driven)*
+**`--brief <path>`** — _reframe (brief-driven)_
+
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-as-God --brief path/to/Convert_Brief.md
 ```
+
 Drives the conversion from a pre-filled `templates/Convert_Brief_Template.md` instead of a live interview; it still interviews you on gaps and ambiguities.
 **Why:** non-trivial conversions you want version-controlled and reviewable.
 
-**`--rebaseline`** — *consolidate a revised world*
+**`--rebaseline`** — _consolidate a revised world_
+
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline
 ```
-Same world, same protagonist: rebuilds a clean seed from the *post-revision* Master Design when accumulated revisions have made surgical editing unwieldy. Revision content carries; revision markers don't. Combines with `--brief`.
+
+Same world, same protagonist: rebuilds a clean seed from the _post-revision_ Master Design when accumulated revisions have made surgical editing unwieldy. Revision content carries; revision markers don't. Combines with `--brief`.
 **Why:** a world is layered with `<!-- REVISED IN R[N] -->` markers and the next change feels too big for another surgical revision. **Trade-off:** the rebuild compiles fresh UIDs, so running chats don't migrate — that's the price of a clean baseline; `revise` is the UID-preserving alternative.
 
-**`--rebaseline --then-interview`** — *consolidate, then change a lot*
+**`--rebaseline --then-interview`** — _consolidate, then change a lot_
+
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-interview
 ```
+
 After writing the consolidated seed, hands straight into the Interviewer (seed-revision posture) to interview your changes at full depth before Phase 1, instead of `skip phase0`. Requires `--rebaseline`.
 **Why:** the consolidation is a staging step and you already know what you want to change.
 
-**`--rebaseline --then-brainstorm`** — *consolidate, then decide what to change*
+**`--rebaseline --then-brainstorm`** — _consolidate, then decide what to change_
+
 ```
 /worldforge convert path/to/Lucifer path/to/Lucifer-clean --rebaseline --then-brainstorm
 ```
-Inserts the Brainstormer (improvement posture) ahead of that Interviewer: it brainstorms *what* to change against the consolidated world, writes `Brainstorm_Notes.md`, and the seed-revision Interviewer reads those as proposals. Requires `--rebaseline`; supersedes `--then-interview`.
+
+Inserts the Brainstormer (improvement posture) ahead of that Interviewer: it brainstorms _what_ to change against the consolidated world, writes `Brainstorm_Notes.md`, and the seed-revision Interviewer reads those as proposals. Requires `--rebaseline`; supersedes `--then-interview`.
 **Why:** you want to evolve the world but haven't decided how.
 
 ---
@@ -731,17 +766,17 @@ World Forge has no house voice. It does not decide what good prose is, and it do
 
 The Style Contract has six enum fields plus one free-text field:
 
-| Field | What it controls |
-|---|---|
-| **Perspective** | `first` / `second` / `third_limited` / `third_omniscient` |
-| **Tense** | `past` / `present` |
-| **Narration Marker** | what `*asterisks*` mean: narration+action, thoughts-only, or none |
-| **Dialogue Marker** | `double_quotes` / `single_quotes` / `em_dash` / `unmarked` |
-| **Emphasis Marker** | `double_asterisks` / `italics_underscore` / `none` |
-| **Paragraph Register** | `terse` / `standard` / `dwelling` |
-| **Style Notes** (free text) | anything the enums don't capture |
+| Field                       | What it controls                                                  |
+| --------------------------- | ----------------------------------------------------------------- |
+| **Perspective**             | `first` / `second` / `third_limited` / `third_omniscient`         |
+| **Tense**                   | `past` / `present`                                                |
+| **Narration Marker**        | what `*asterisks*` mean: narration+action, thoughts-only, or none |
+| **Dialogue Marker**         | `double_quotes` / `single_quotes` / `em_dash` / `unmarked`        |
+| **Emphasis Marker**         | `double_asterisks` / `italics_underscore` / `none`                |
+| **Paragraph Register**      | `terse` / `standard` / `dwelling`                                 |
+| **Style Notes** (free text) | anything the enums don't capture                                  |
 
-The six enums pick the *mechanics* (POV, tense, what the markup means). The seventh — **Style Notes** — is where you steer the *feel*: contractions or not, modern idiom or not, and what you do or don't want the prose to do.
+The six enums pick the _mechanics_ (POV, tense, what the markup means). The seventh — **Style Notes** — is where you steer the _feel_: contractions or not, modern idiom or not, and what you do or don't want the prose to do.
 
 ### What `DEFAULTS` does
 
@@ -759,7 +794,7 @@ Style Notes:        (none)
 
 This is the classic novelistic register — third-person limited, past tense, action and narration inside asterisks, dialogue in quotes. It's a safe default for most worlds and it's what the Lucifer sample runs under. A turn under this contract reads like:
 
-> *She set the cup down without looking at him, her shoulders held too still.* "I wasn't expecting you tonight."
+> _She set the cup down without looking at him, her shoulders held too still._ "I wasn't expecting you tonight."
 
 ### Example: a more direct, "typical roleplay" register
 
@@ -781,20 +816,20 @@ Style Notes:        Keep the prose direct and concrete. Prefer plain statements
 
 That produces the punchy, second-person-present, action-in-asterisks style most roleplay uses, and the Style Notes steer it away from the literary tropes the enums can't express on their own:
 
-> *She sets the cup down and meets your eyes.* "You're early." *A beat. Her jaw tightens.* "What do you want?"
+> _She sets the cup down and meets your eyes._ "You're early." _A beat. Her jaw tightens._ "What do you want?"
 
 ### Tuning the feel with Style Notes
 
-The six enums can't capture everything about *voice*. **Style Notes is free text that flows into the world's Main Prompt**, so it's where you put preferences the enums miss:
+The six enums can't capture everything about _voice_. **Style Notes is free text that flows into the world's Main Prompt**, so it's where you put preferences the enums miss:
 
-- **Plainness / anti-"slop":** *"Prefer concrete, factual phrasing over poetic abstraction; avoid 'X rather than Y' and 'with the X of someone who Y' constructions."*
-- **Register quirks:** *"The narrator never uses contractions."* · *"Prose avoids modern idiom in the pre-modern arcs."*
-- **Mixed markup:** *"Internal monologue uses `_italics-underscore_` even though dialogue uses `double_quotes`."*
+- **Plainness / anti-"slop":** _"Prefer concrete, factual phrasing over poetic abstraction; avoid 'X rather than Y' and 'with the X of someone who Y' constructions."_
+- **Register quirks:** _"The narrator never uses contractions."_ · _"Prose avoids modern idiom in the pre-modern arcs."_
+- **Mixed markup:** _"Internal monologue uses `\_italics-underscore_`even though dialogue uses`double*quotes`."*
 
 Two things worth knowing:
 
-- **This is the supported way to control "slop."** World Forge carries no opinion about tropes or clichés. If you want them avoided, *name them here* — the more concrete your examples, the better the model holds the line. There is no separate trope-removal pass by design; the contract is the lever.
-- **Style Notes governs runtime narration** — the prose the model generates as it plays. It's the knob for how your *sessions* read, not a cleanup pass over the lorebook text.
+- **This is the supported way to control "slop."** World Forge carries no opinion about tropes or clichés. If you want them avoided, _name them here_ — the more concrete your examples, the better the model holds the line. There is no separate trope-removal pass by design; the contract is the lever.
+- **Style Notes governs runtime narration** — the prose the model generates as it plays. It's the knob for how your _sessions_ read, not a cleanup pass over the lorebook text.
 
 ### Where this gets applied
 

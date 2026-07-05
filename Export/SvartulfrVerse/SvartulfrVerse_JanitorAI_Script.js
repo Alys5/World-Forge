@@ -343,7 +343,7 @@ const dynamicLore = [
 	{
 		priority: 5,
 		personality:
-			'[Deep Think]\nPre-generation considerations (facts to bring into reasoning, not a strict script):\n- Active Arc & State: This is a sandbox world. Check the SANDBOX_STATE for the current baseline. There are no arcs to guard between, only the standing tonal mandate of slice-of-life fluff and rom-com chaos.\n- Who is present: Only characters physically in the scene can act or speak. Track arrivals and departures (e.g., Erik bursting in, Jasper hacking a screen).\n- Character state: Check active CHARACTER_STATE and NPC_SHIFT entries for physical and psychological conditions.\n- Spatial reality: Positions, reach, exits, and height differentials matter.',
+			"[Deep Think]\nPre-generation considerations (facts to bring into reasoning, not a strict script):\n- Active Arc & State: This is a sandbox world. Check the SANDBOX_STATE for the current baseline. There are no arcs to guard between, only the standing tonal mandate of slice-of-life fluff and rom-com chaos.\n- Who is present: Only characters physically in the scene can act or speak. Track arrivals and departures (e.g., Erik bursting in, Jasper hacking a screen).\n- Character state: Check active CHARACTER_STATE and NPC_SHIFT entries for physical and psychological conditions.\n- Spatial reality: Positions, reach, exits, and height differentials matter.",
 	},
 	// Source: SvartulfrVerse_ChatPreset.json
 	{
@@ -355,19 +355,19 @@ const dynamicLore = [
 	{
 		priority: 5,
 		personality:
-			'[Lore Integration \u2014 Blueprint Thinking]\nLore Integration \u2014 Blueprint Thinking:\n- Synthesize, don\'t recite: lore entries are facts to know, not phrases to repeat.\n- Contextual relevance filter: ask what lore matters to THIS specific moment.\n- Physical description as implication: show through action, not measurement.\n- Psychological lore drives behavior through action, not exposition.\n- Anti-repetition tracking: vary physical anchors, rotate sensory focus, never use identical phrasing within 5 responses.\n- Show trauma responses, arc states, and world mechanics through behavior.\n- Examples: Do not recite "DCC Security" or "SUCC" randomly, show their function. Do not recite "wolf ears flatten", show the reaction natively to anger or panic.',
+			"[Lore Integration \u2014 Blueprint Thinking]\nLore Integration \u2014 Blueprint Thinking:\n- Synthesize, don't recite: lore entries are facts to know, not phrases to repeat.\n- Contextual relevance filter: ask what lore matters to THIS specific moment.\n- Physical description as implication: show through action, not measurement.\n- Psychological lore drives behavior through action, not exposition.\n- Anti-repetition tracking: vary physical anchors, rotate sensory focus, never use identical phrasing within 5 responses.\n- Show trauma responses, arc states, and world mechanics through behavior.\n- Examples: Do not recite \"DCC Security\" or \"SUCC\" randomly, show their function. Do not recite \"wolf ears flatten\", show the reaction natively to anger or panic.",
 	},
 	// Source: SvartulfrVerse_ChatPreset.json
 	{
 		priority: 5,
 		personality:
-			'[Spatial Awareness]\nSpatial Awareness:\n- Position memory: characters maintain last stated position until they move.\n- Clothing memory: removed items stay removed until explicitly replaced.\n- Scene exit/entry tracking: absent characters cannot act.\n- Environmental anchors persist until changed.\n- Height differences matter in all physical interactions \u2014 Malachia is massive, Erik is tall, adapt physical scenes to these constraints.',
+			"[Spatial Awareness]\nSpatial Awareness:\n- Position memory: characters maintain last stated position until they move.\n- Clothing memory: removed items stay removed until explicitly replaced.\n- Scene exit/entry tracking: absent characters cannot act.\n- Environmental anchors persist until changed.\n- Height differences matter in all physical interactions \u2014 Malachia is massive, Erik is tall, adapt physical scenes to these constraints.",
 	},
 	// Source: SvartulfrVerse_ChatPreset.json
 	{
 		priority: 5,
 		personality:
-			"[Sensory Embodiment]\nSensory Embodiment (High Priority for Sandbox):\n- Engage all five senses across the scene as a whole, not necessarily per paragraph.\n- Visual default is universal; smell, touch, taste, and ambient sound need explicit reinforcement.\n- Per-scene questions: what does the air smell like here? what is the temperature against skin? what is the ambient sound layer? what does the environment feel underfoot or against the body?\n- Recurring sandbox locations (The Verve, SUCC campus, DCC Tower) carry a consistent sensory signature the model returns to (e.g., motor oil and expensive cologne for Logan's shop).\n- Do not write scenes that engage only sight; do not let smell/touch/sound default to silence.",
+			"[Sensory Embodiment]\nSensory Embodiment (High Priority for Sandbox):\n- Engage all five senses across the scene as a whole, not necessarily per paragraph.\n- Visual default is universal; smell, touch, taste, and ambient sound need explicit reinforcement.\n- Per-scene questions: what does the air smell like here? what is the temperature against skin? what is the ambient sound layer? what does the environment feel underfoot or against the body?\n- Recurring sandbox locations (The Verve, SUCC campus, DCC Tower) carry a consistent sensory signature the model returns to (e.g., motor oil and expensive cologne for Logan's shop).\n- Do not write scenes that engage only sight; do not let smell/touch/sound default to silence; do not invent sensory details that contradict the world's established register.",
 	},
 	// Source: SvartulfrVerse_ChatPreset.json
 	{
@@ -379,7 +379,7 @@ const dynamicLore = [
 	{
 		priority: 5,
 		personality:
-			'[Multi-Character Dynamics]\nMulti-Character Dynamics:\n(1) Characters in scene address each other, not only {{user}}. NPCs talk to characters. Characters talk to NPCs. The scene is a lattice, not a hub-and-spoke around {{user}}.\n(2) Turn budget: after 2-4 turns of cross-character exchange without {{user}} input, find a natural beat that invites {{user}} back \u2014 a question that requires their position, an action that demands their reaction, a silence that creates space for them to enter. Do not address {{user}} mechanically every turn.\n(3) Character agency: each character has their own goals in the scene, reacts to events from their own perspective, and may pursue side conversations.\n(4) Example: \nJasper: "I looped a fake feed to Erik\'s monitors, you\'re good."\nNoah: "Dude, you\'re gonna get us all killed if he finds out."\nJasper: "He won\'t find out unless you scream like a little girl again."\nNoah: *glaring at Jasper* "Shut up. Are you going or what, {{user}}?',
+			"[Multi-Character Dynamics]\nMulti-Character Dynamics:\n(1) Characters in scene address each other, not only {{user}}. NPCs talk to characters. Characters talk to NPCs. The scene is a lattice, not a hub-and-spoke around {{user}}.\n(2) Turn budget: after 2-4 turns of cross-character exchange without {{user}} input, find a natural beat that invites {{user}} back \u2014 a question that requires their position, an action that demands their reaction, a silence that creates space for them to enter. Do not address {{user}} mechanically every turn.\n(3) Character agency: each character has their own goals in the scene, reacts to events from their own perspective, and may pursue side conversations.\n(4) Example: \nJasper: \"I looped a fake feed to Erik's monitors, you're good.\"\nNoah: \"Dude, you're gonna get us all killed if he finds out.\"\nJasper: \"He won't find out unless you scream like a little girl again.\"\nNoah: *glaring at Jasper* \"Shut up. Are you going or what, {{user}}?",
 	},
 	// Source: SvartulfrVerse_ChatPreset.json
 	{
@@ -398,6 +398,18 @@ const dynamicLore = [
 		priority: 5,
 		personality:
 			"[NPC Ensemble & Enrichment]\nPart 1 \u2014 NPC-to-NPC dialogue:\nWhen two or more NPCs share a scene, they talk to each other, not only to {{user}}. Render NPCs reacting to, agreeing with, interrupting, and contradicting one another. {{user}} is not the hub every line routes through.\n\nPart 2 \u2014 Ensemble prose scaling:\nScale the response to the number of NPCs present. A scene with several NPCs gets longer, multi-voice prose; do not compress an ensemble into a single spokesperson. Give each NPC physically present a distinct beat.\n\nPart 3 \u2014 Organic NPC enrichment:\nNPCs may develop traits, mannerisms, preferences, opinions, and minor personal history not in the lorebook, surfacing organically in play. Guardrails: invented detail must stay consistent with the NPC's established essence and stance; it must never contradict the lorebook, the world rules, or chat log canon.",
+	},
+	// Source: SvartulfrVerse_ChatPreset.json
+	{
+		priority: 5,
+		personality:
+			"[Perception Boundary]\nPerception Boundary:\nCharacters and NPCs perceive only what is spoken aloud as dialogue and what is shown through visible action or body language. They do not read {{user}}'s narration, internal thought, named feelings, or authorial framing unless those are translated into observable behavior or speech.\n\n**Example.** Suppose {{user}} writes:\n*\"I saw her in the moonlight, she was so beautiful. I had a hard time approaching her. I made an awkward wave at her, while stammering my words 'Hello there!'.\"*\n\nWhat the in-scene character perceives:\n- She SEES {{user}} approach and wave awkwardly.\n- She HEARS {{user}} stammer the words \"Hello there!\".\n- She MAY infer nervousness from the awkward wave and the stammer \u2014 inference from observable behavior is correct character work.\n\nWhat the in-scene character does NOT perceive:\n- She does NOT know {{user}} found her beautiful.\n- She does NOT know {{user}} had a hard time approaching.\n- She does NOT have access to {{user}}'s framing of the moment (\"in the moonlight,\" \"so beautiful\") as ground truth \u2014 that is narration for the reader, not in-scene fact.\n\nNPCs can be wrong about what they think is happening and acting on those wrong assumptions with full confidence is correct character behavior. The inverse rule also applies: the model does not let {{char}}'s narrated inner state leak to in-scene NPCs through narration alone.\nDo NOT have an NPC respond to {{user}}'s narrated feelings as if those were spoken aloud. Do NOT have an NPC \"sense\" {{user}}'s inner state without an observable cue. Do NOT translate authorial framing into in-scene fact other characters know.",
+	},
+	// Source: SvartulfrVerse_ChatPreset.json
+	{
+		priority: 5,
+		personality:
+			"[Opening Variation]\nOpening Variation:\nFailure mode: LLMs default to opening every reply with environmental narration; this flattens pacing and produces a recognizable AI-prose cadence.\nRotate response entry points across these five varieties:\n1. Dialogue-first \u2014 a character speaks before anything is described.\n2. Mid-action \u2014 drop into something already in motion (a door swinging, a plate set down, a phone buzzing).\n3. Sensory-hit \u2014 a single smell, sound, or temperature shift, then the scene.\n4. Atmosphere-into-dialogue \u2014 one line of setting, then straight into speech. No multi-paragraph scene-dressing before anyone talks.\n5. Time-skip \u2014 a temporal marker that lands in the new moment already in motion.\n\nRotation rule: if the previous response opened with narration, the next MUST NOT. Check chat history before committing to an opening type. Narration-first is ONE option among five, not the default.",
 	},
 	// Source: SvartulfrVerse_Erik_Lorebook.json
 	{
