@@ -13,7 +13,7 @@ numbers. Newest first.
 
 ---
 
-## 2026-07-05 — Voice Auditor: adversarial scenario classes + cold-read generation discipline
+## 2026-07-05 — Voice + Intimacy Auditors: adversarial scenario classes + cold-read generation discipline
 
 The Voice Auditor's simulation pass had a structural blind spot, visible in
 the sample audit reports: nearly every check passed on every scenario. Two
@@ -35,8 +35,19 @@ draft line that compelled it) and must survive a counterfactual probe —
 if the same drafts equally permit the failing version, the verdict is
 ⚠️ NOT BINDING (flagged Medium), the present-but-not-binding mandate being
 precisely the bug class that otherwise surfaces only in long real sessions.
-The Step 3 check taxonomy (A–J) is unchanged, so the Auditioner's
-by-reference reuse of those checks is untouched.
+The Intimacy Auditor shared the identical structure (scenes generated with
+the expected-substrate columns in view; "stress the spec" aspirational in
+Section 8, never mandated in Step 1), so the same fix is ported there with
+intimacy-specific scenario classes: a **hard-limit probe** (a scene that
+invites crossing a declared hard limit, making "hard limits stress-tested"
+a generated scenario rather than an entry inspection, and catching
+function/substrate conflicts before the user's session) and a **substrate
+near-miss** (a scene resembling a trauma-map trigger context with the
+trigger absent — a spurious fire is as damaging in play as a missed one).
+Check taxonomies are unchanged in both auditors, so the Auditioner's
+by-reference reuse of those checks is untouched; the Arc Transition
+Auditor is purely analytical (generates nothing) and does not share the
+weakness.
 
 ### Changed
 - `agent_roles/03b_The_Voice_Auditor.md`: new Foundational Rule 7
@@ -59,8 +70,26 @@ by-reference reuse of those checks is untouched.
   same scene type; evidence reproduction (R3.5.2) exempt from the
   out-of-view rule but not from the probe. Old delta 7 (Step 3J) renumbered
   to 8.
-- `workflows/world-forge.md`: Phase 3.5 description reflects the cold read
-  and scenario classes.
+- `agent_roles/03d_The_Intimacy_Auditor.md`: Step 1 matrix gains Class and
+  Plausible Failure columns; the "difficult intersections" list becomes five
+  mandatory scenario classes per character with intimate presence
+  (trigger-collision, function-shift, boundary, hard-limit probe, substrate
+  near-miss — counting toward the existing floor); Step 2 becomes a cold
+  read with intimacy-specific plausible-failure suspects (generic-erotica
+  collapse, vanishing shield, skipped/spurious trauma trigger, function
+  drifting to titillation); Step 3 gains the evidence rule and
+  counterfactual probe; Step 4 diagnosis table gains the NOT BINDING row;
+  report template and sign-off checklist updated (hard-limit stress-testing
+  now explicitly via probe scenarios); Section 8 gains the
+  do-not-write-toward-the-rubric discipline.
+- `agent_roles/revise/03d_The_Intimacy_Auditor_mini.md`: new Foundational
+  Delta 6 — parent cold read, evidence rule, and counterfactual probe apply
+  to slice sampling; `intimacy_substrate_modify` revisions get a near-miss +
+  hard-limit probe, register revisions get a function-shift/boundary
+  scenario; evidence reproduction (R3.7.2) exempt from the out-of-view rule
+  but not from the probe.
+- `workflows/world-forge.md`: Phase 3.5 and 3.7 descriptions reflect the
+  cold read and scenario classes.
 
 ---
 

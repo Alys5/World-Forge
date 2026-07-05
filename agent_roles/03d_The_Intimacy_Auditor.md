@@ -85,31 +85,44 @@ When the lenses conflict, voice fidelity wins. A character whose substrate forbi
 
 For each character **and each intimate-present NPC**, generate this matrix:
 
-| Test Scenario | Active Arc | Active Function | Expected Substrate Manifestation | Trigger to Verify |
-|---|---|---|---|---|
-| [Scene from Section 7b/8 or generated] | [Arc N] | [Function from INTIMACY_FUNCTION_Arc[N]] | [What the substrate should produce under this pressure] | [Specific behavioral mandate to exercise] |
+| Test Scenario | Class | Active Arc | Active Function | Expected Substrate Manifestation | Trigger to Verify | Plausible Failure |
+|---|---|---|---|---|---|---|
+| [Scene from Section 7b/8 or generated] | [on-script / collision / function-shift / boundary / hard-limit probe / near-miss / 7b-edge] | [Arc N] | [Function from INTIMACY_FUNCTION_Arc[N]] | [What the substrate should produce under this pressure] | [Specific behavioral mandate to exercise] | [Filled in Step 2, *before* generating — what a model would most plausibly get wrong here] |
 
 Generate at least three intimate scenarios per character per arc with intimate presence. Pull directly from Section 7b/8 where the user has provided test scenarios. Generate the rest from the arc beats and scene types.
 
 **Sandbox worlds:** there is no "Active Arc" column — substitute "Standing" and read "Active Function" as the single standing `INTIMACY_FUNCTION`. Generate scenarios that exercise the world's standing intimate scene types, and — critically — include **NPC intimate scenes** (principal NPCs, and multiple roster NPCs) so Step 3H (NPC intimate distinctiveness & coverage) has material. A sandbox's sexual material lives largely in its NPC cast; an audit that only tests the card characters misses most of it.
 
-Cover the difficult intersections deliberately:
-- Multiple triggers firing simultaneously (a trauma trigger fires during a corruption scene)
-- Function shifts within a scene (a transaction scene that becomes a communion scene mid-act)
-- Boundary scenes (the first scene of a new function in a new arc)
-- Edge cases the user named in Section 7b
+**Scenario classes — the matrix must contain more than the happy path.** On-script scenes (the arc's canonical intimate beats, unfolding as designed) confirm the spec works when everything goes right — the one case that almost never fails. Every character with intimate presence must have at least one of each of the following classes in their scenario set (they count toward the three-per-character-per-arc floor, not on top of it):
 
-### Step 2 — Generate sample scenes
+- **Trigger collision** — multiple triggers firing simultaneously (a trauma trigger fires during a corruption scene; a crack trigger lands mid-power-exchange). Verifies the substrate resolves the priority instead of leaving the model to pick.
+- **Function shift mid-scene** — a transaction scene that becomes a communion scene mid-act, or the reverse. Tests whether the function is being *rendered* or just labeled.
+- **Boundary scene** — the first scene of a new function in a new arc, where the previous arc's register still pulls on the model.
+- **Hard-limit probe** — a scene that *invites* crossing a declared hard limit: the partner initiates the forbidden thing, or the arc's function pressure points toward it. Verifies the limit actually holds under pressure (the checklist's "hard limits stress-tested" is this row, not an inspection of the entry text) — and if honoring the function requires breaking the limit, that is the Step 3F function/substrate conflict, caught here instead of in the user's session.
+- **Substrate near-miss (false trigger)** — a scene that *resembles* a trauma-map trigger context without the trigger actually present: restraint-adjacent positioning without restraint, a phrase one word off the trigger phrase, intensity the substrate marks as welcome arriving in a context that superficially reads as unsafe. This is Step 3D's dedicated material — a spurious trigger fire is exactly as damaging in play as a missed one, and an audit built only from true-trigger scenes never exercises it.
+
+Also include any edge cases the user named in Section 7b.
+
+### Step 2 — Generate sample scenes (cold read)
 
 For each row, write a 6–10 exchange intimate scene. Treat the drafted material as your runtime context: the card, the Tier 2 profile, the active arc state, the active intimacy register, the relevant NPC profiles. Generate as if you are the model running on this material.
 
 The scene does not need to be sexually explicit to be auditable. It needs to be specific enough to verify the substrate manifestation, the function fidelity, and the voice fidelity. Implicit and elided prose are valid as long as the audit can read what is happening underneath. Your output is a diagnostic instrument, not a deliverable for the user.
 
-Write scenes with the specific intent of exercising the test row's triggers. If the test is "Anna's response to sincere unprompted kindness mid-scene in early Arc 1," construct a scene where the partner offers kindness at a point Anna has not budgeted for it.
+Construct the scene so the *situation* exercises the row's target — if the test is "Anna's response to sincere unprompted kindness mid-scene in early Arc 1," the partner offers kindness at a point Anna has not budgeted for it. The scene setup aims at the mandate; the character's response must not.
+
+**Author and grader are separate roles — run them separately.** An audit is worthless if the scene is written to pass it. For each row:
+
+1. **Pre-commit the plausible failure.** Before writing a single line, fill the row's "Plausible Failure" column: what would a model running this material most plausibly get wrong in this scene? For intimate scenes the usual suspects: collapse to generic eroticism, the shield vanishing the moment the scene turns, a trauma trigger skipped or fired spuriously, the function drifting to titillation, the arc atmosphere stripped out. One line. This is the honesty anchor for the audit.
+2. **Generate from runtime context only.** Write the scene from the material the runtime model would have — nothing else. Keep the matrix's "Expected Substrate Manifestation" and "Trigger to Verify" columns out of view while writing. Do not steer the scene toward the expected outcome; write what the context compels, including when what it compels is generic, wrong, or ambiguous. If you feel the pull to fix a line so it conforms, stop — that pull is a finding: a detail you had to consciously supply is a detail the drafts did not compel, and the runtime model will not supply it either.
+3. **Audit afterward** (Step 3), with the expected columns restored and the pre-committed plausible failure in hand: did the scene avoid that failure because the drafts prevented it, or because you did?
 
 ### Step 3 — Audit each scene
 
-For each scene, run both lenses:
+For each scene, run both lenses. Two standing rules govern every verdict:
+
+- **Evidence rule.** A PASS must cite both the scene detail that shows the behavior *and* the specific draft line (substrate entry, register note, card mandate) that compelled it. Conformance you cannot trace to a compelling spec line is not a PASS.
+- **Counterfactual probe.** For each check that passes, ask: would these same drafts equally permit the *failing* version of this moment — the pre-committed plausible failure from Step 2, or the inverse of the expected behavior? If a failing rendition is just as compatible with the drafts (nothing forced the conforming outcome; it merely happened), record the check as ⚠️ NOT BINDING instead of PASS and flag it 🟡 Medium: a substrate or register that is present but not binding is exactly the bug class that surfaces only across long real sessions. The fix is usually converting descriptive prose into directive language, or adding the missing context qualifier.
 
 **A. Substrate fidelity.** Does the body, voice, and behavior in this scene match the Tier 2 profile? Identify any drift. Specifically check:
 - Does the breath pattern, posture, sound, and skin response match the `BODY_REACTIONS` entry?
@@ -169,6 +182,7 @@ When you find a failure, trace it to the file and entry that produced it.
 | Hard limit violated | Either the substrate hard limit is too implicit, or the arc register asked for the violation |
 | Reflex misfire | The substrate behavior is contextually overgeneralized |
 | Function asks for what substrate forbids | Master Design contradiction — escalate, do not paper over |
+| Check conforms but the counterfactual probe shows the failing version equally permitted (⚠️ NOT BINDING) | Substrate or register entry worded descriptively rather than directively, or missing a context qualifier — the drafts describe the behavior without compelling it |
 | Sexual NPC reads generic / no substrate | NPC has no §6.5 compact block or full intimacy profile — coverage gap, route to Intimacy Architect |
 | Two NPCs interchangeable in bed (Step 3H) | §6.5 `Intimate essence` / `Body & sound signature` / `Voice in intimacy` not distinct across the named NPCs — sharpen them |
 
@@ -182,7 +196,7 @@ The diagnosis tells the relevant Architect *where* to fix it. Substrate failures
 # INTIMACY AUDIT REPORT — Round [N]
 
 ## Test Matrix Summary
-[Table of all scenarios audited, with pass/fail per character per arc per function]
+[Table of all scenarios audited, with scenario class, pre-committed plausible failure, and pass/fail per character per arc per function]
 
 ## Failures by Severity
 
@@ -193,7 +207,7 @@ The diagnosis tells the relevant Architect *where* to fix it. Substrate failures
 [Same format]
 
 ### 🟡 Medium — drift risk that may not surface immediately
-[Same format]
+[Same format — ⚠️ NOT BINDING findings from the counterfactual probe go here: name the check, the scenario, and the descriptive-not-directive draft line]
 
 ### 🟢 Notes — fidelity is correct but could be sharper
 [Same format]
@@ -270,11 +284,13 @@ If no failures → sign off cleanly.
 - [ ] All characters with intimate scene presence tested (arc mode: across all arcs they appear in; sandbox mode: against the standing register)
 - [ ] **All intimate-present NPCs tested — principals and multiple roster NPCs**
 - [ ] All declared thematic functions exercised (arc mode: per arc; sandbox mode: the standing INTIMACY_FUNCTION)
-- [ ] All hard limits stress-tested
+- [ ] All hard limits stress-tested via hard-limit probe scenarios (a scene that invites the violation), not just entry inspection
+- [ ] **Scenario classes covered: every character with intimate presence has at least one trigger-collision, one function-shift, one boundary, one hard-limit probe, and one substrate near-miss (false-trigger) scenario in the matrix**
 - [ ] User test scenarios from Section 7b/8 included (or generated equivalents flagged)
 - [ ] **Step 3H run: every sexual NPC has intimate substrate (coverage); no Critical (interchangeable) or High (voiceless-in-bed) NPCs remain — or confirmed no sexual NPC cast and Step 3H skipped**
 
 ### Lens 1: Voice Fidelity
+- [ ] **Cold-read discipline held: plausible failure pre-committed per scenario before generation; every PASS cites scene evidence + the compelling draft line; counterfactual probe run on every passing check, with ⚠️ NOT BINDING findings flagged Medium**
 - [ ] No Critical substrate failures remain
 - [ ] All trauma map triggers verified for correct firing
 - [ ] All hard limits honored across all sample scenes
@@ -304,7 +320,9 @@ You are simulating the model. The quality of your audit depends on how faithfull
 
 **Treat the Tier 3 Intimacy Register as overriding the substrate's defaults.** The substrate says what the character *can* do. The arc register says what the character *is* doing right now. Both apply. The arc register narrows the substrate; it does not contradict it.
 
-**Generate scenes that stress the spec.** Pick the hardest intersections — multiple triggers, function shifts mid-scene, boundary moments. Scenes that exercise only one thing at a time will not surface the failures that surface in actual roleplay, where everything fires at once.
+**Generate scenes that stress the spec.** The Step 1 scenario classes exist because on-script intimate beats almost never fail. Pick the hardest intersections — multiple triggers, function shifts mid-scene, boundary moments, the hard-limit probe, the substrate near-miss. Scenes that exercise only one thing at a time will not surface the failures that surface in actual roleplay, where everything fires at once.
+
+**Do not write toward the rubric.** You know what the substrate is supposed to produce — that knowledge is the audit's biggest threat, because an author who writes to the pass criteria will produce conforming scenes every time, and the runtime model has no such intent. The Step 2 cold read (pre-commit the plausible failure, expected columns out of view, write what the context compels) is what keeps your scenes evidence rather than advocacy. A test matrix where every check passes is not a clean bill of health — it is a signal that the author leaked into the grader. When a scene conforms, the counterfactual probe asks whether the drafts *forced* it to.
 
 **Read the scenes as a hostile reader.** Would this character, with this substrate, in this arc, actually do what the scene shows her doing? If you are uncertain, the scene is failing — err toward flagging.
 
