@@ -13,7 +13,7 @@ numbers. Newest first.
 
 ---
 
-## 2026-07-05 — Kilo config: OpenRouter per-model provider routing + GLM 5.2 / Kimi K2.7 alternates (#72)
+## 2026-07-05 — Kilo config: OpenRouter per-model provider routing + GLM 5.2 / Kimi K2.5 alternates (#72)
 
 A user report of GLM 5.2 runs failing and stopping mid-task through OpenRouter
 traced to the upstream-routing layer, not the pipeline: OpenRouter serves each
@@ -35,19 +35,21 @@ problem, and it keeps the per-phase temperatures, unlike GLM).
 ### Added
 - `Kilo_Variants/`: drop-in all-seats alternates for the shipped config —
   `kilo.glm-5.2.jsonc` (every seat on `openrouter/z-ai/glm-5.2`, reasoning
-  effort high, Z.AI upstream hard-pinned) and `kilo.kimi-k2.7-code.jsonc`
-  (every seat on `openrouter/moonshotai/kimi-k2.7-code`, reasoning effort
-  high, Moonshot AI upstream preferred; header carries an explicit
-  coding-tuned / 16K-output warning). Both omit `temperature` throughout
-  (reasoning-class endpoints ignore sampling) and are generated from the
-  shipped agent set, so the 23 seats and `{file:...}` prompt pins are
-  identical. Not auto-loaded: activated by copying over `.kilo/kilo.jsonc`
-  per the folder README. Added to `.kilocodeignore` (maintenance material,
-  not runtime context) and to the `CLAUDE.md` repository tree.
+  effort high, Z.AI upstream hard-pinned, no `temperature` fields since
+  reasoning-class endpoints ignore sampling) and `kilo.kimi-k2.5.jsonc`
+  (every seat on `openrouter/moonshotai/kimi-k2.5`, the general-line
+  chat-tuned Kimi — per-phase temperatures kept, Moonshot AI upstream
+  preferred). Both are generated from the shipped agent set, so the 23
+  seats and `{file:...}` prompt pins are identical. Not auto-loaded:
+  activated by copying over `.kilo/kilo.jsonc` per the folder README.
+  Added to `.kilocodeignore` (maintenance material, not runtime context)
+  and to the `CLAUDE.md` repository tree. (An all-seats coding-tuned
+  Kimi K2.7 Code variant existed briefly during this PR and was replaced
+  by the K2.5 one before merge.)
 
 ### Changed
 - `.kilo/kilo.jsonc`: new top-level `provider.openrouter.models` routing
-  block (DeepSeek pinned; GLM 5.2 and Kimi K2.7 Code as commented
+  block (DeepSeek pinned; GLM 5.2 and Kimi K2.5 as commented
   alternates); header comment documents the passthrough and its two sharp
   edges (per-model-only placement, unvalidated fields); the `agent` section
   opens with a per-seat swap guide (exact `"model"` strings for the two

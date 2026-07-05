@@ -1,15 +1,5 @@
-// Kilo_Variants/kilo.kimi-k2.7-code.jsonc — ALL-SEATS Kimi K2.7 Code variant
-// of the shipped .kilo/kilo.jsonc, reasoning effort HIGH on every seat.
-//
-// ⚠️ READ BEFORE USING. Kimi K2.7 Code is the CODING-TUNED variant (no general
-// K2.7 exists on OpenRouter). Running it on every seat goes against the
-// guidance in wiki/Agentic-Tools-and-Models.md §3.2: coding-tuned models
-// flatten voice and characterization on the creative seats (Interviewer,
-// Architect, Intimacy seats, the auditors), and the model's 16K max output
-// can truncate the Compiler's larger lorebook JSON files mid-write. This
-// variant exists by explicit request; if Phase 3.5 flags flat voices or a
-// compile comes out truncated, suspect this model choice before the pipeline.
-// Run `python tools/validate_export.py Export/` after EVERY Phase 4 compile.
+// Kilo_Variants/kilo.kimi-k2.5.jsonc — ALL-SEATS Kimi K2.5 variant of the
+// shipped .kilo/kilo.jsonc.
 //
 // ── How to use ───────────────────────────────────────────────────────────────
 // Kilo only reads ./.kilo/kilo.jsonc (or the global config) — it does NOT load
@@ -21,25 +11,26 @@
 // and the OpenRouter activity dashboard shows requests landing on Moonshot AI.
 //
 // ── What differs from the shipped (DeepSeek 4 Pro) config ────────────────────
-// - Every seat runs "openrouter/moonshotai/kimi-k2.7-code" (262K context,
-//   always-on thinking mode, 16K max output).
-// - No "temperature" fields anywhere: the model always operates in thinking
-//   mode and ignores sampling parameters, so the per-phase temperature table
-//   (wiki/Agentic-Tools-and-Models.md §3.5) does not apply.
+// - Every seat runs "openrouter/moonshotai/kimi-k2.5" — the general-line,
+//   chat-tuned Kimi (262K context, no output cap concerns, roughly half the
+//   price of K2.6 / K2.7 Code).
+// - Temperatures are KEPT: K2.5 is chat-tuned, so the per-phase temperature
+//   table (wiki/Agentic-Tools-and-Models.md §3.5) applies exactly as it does
+//   on DeepSeek — creative seats hot, Editor 0.3, Compiler 0.1. There is no
+//   reasoning-effort option on this model; do not add one.
 // - Provider routing prefers the first-party Moonshot AI upstream ("order",
-//   fallbacks allowed) and passes reasoning effort HIGH through OpenRouter's
-//   unified reasoning parameter. Routing fields pass through unvalidated —
-//   if the upstream does not support effort control, the field is silently
-//   ignored rather than erroring.
+//   fallbacks allowed).
+// - 262K context is the same class the pipeline was sized against — run the
+//   per-phase agents as always so Phase 3+ stays inside a clean window, and
+//   run `python tools/validate_export.py Export/` after Phase 4.
 {
   "$schema": "https://app.kilo.ai/config.json",
   "provider": {
     "openrouter": {
       "models": {
-        "moonshotai/kimi-k2.7-code": {
+        "moonshotai/kimi-k2.5": {
           "options": {
-            "provider": { "order": ["Moonshot AI"] },
-            "reasoning": { "effort": "high" }
+            "provider": { "order": ["Moonshot AI"] }
           }
         }
       }
@@ -50,77 +41,91 @@
     "WorldForge-Brainstormer": {
       "description": "Phase 0-pre (optional) — divergent ideation partner; helps a user with only a vibe find a premise, (adaptation posture, --adapt) extracts a playable world from an existing story/fanfiction/RP document, or (improvement posture standalone, --improve) ping-pongs improvement ideas against an existing world with no commitment, parking them in the standing Big_Brain_Storm.md. Writes informal Brainstorm_Notes.md (Big_Brain_Storm.md on standalone --improve); no World Seed.",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.9,
       "prompt": "{file:../agent_roles/Brainstormer/00_The_Brainstormer.md}"
     },
     // ── Initial build (Phases 0–5) ──
     "WorldForge-Interviewer": {
       "description": "Phase 0 — interviews the user through the World Seed Template; creative partner, pushes back on thin material",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.8,
       "prompt": "{file:../agent_roles/00_The_Interviewer.md}"
     },
     "WorldForge-Refiner": {
       "description": "Phase 1 — classifies the World Seed into Tiers 1/2/3 and produces the locked Master Design",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.4,
       "prompt": "{file:../agent_roles/01_The_Refiner.md}"
     },
     "WorldForge-Architect": {
       "description": "Phase 2 — drafts all cards, persona, and Tier 1/2/3 lorebook content from the Master Design",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.8,
       "prompt": "{file:../agent_roles/02_The_Architect.md}"
     },
     "WorldForge-IntimacyArchitect": {
       "description": "Phase 2.5 (conditional) — drafts Tier 2 intimacy profiles and Tier 3 intimacy registers",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.8,
       "prompt": "{file:../agent_roles/06_The_Intimacy_Architect.md}"
     },
-    // Audit seats — Kimi K2.7 Code carries no temperature (always-on thinking
-    // mode ignores sampling); see the header warning about coding-tuned audits.
+    // Audit seats — run Kimi K2.5 with per-phase temperatures (0.3 for Editor,
+    // 0.6 for Auditors). K2.5 is chat-tuned: watch the Editor's round 1 for
+    // sycophancy (the known weak spot of budget-class models under audit) and
+    // upgrade this seat to a frontier model if drafts pass suspiciously clean.
     "WorldForge-Editor": {
       "description": "Phase 3 — validates drafts against the hard-fail rules; read-only on drafts, writes critique reports",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.3,
       "prompt": "{file:../agent_roles/03_The_Editor.md}"
     },
     "WorldForge-VoiceAuditor": {
       "description": "Phase 3.5 — simulates dialogue and audits behavioral fidelity; read-only on drafts, writes audit reports",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/03b_The_Voice_Auditor.md}"
     },
     "WorldForge-ArcAuditor": {
       "description": "Phase 3.6 (arc mode only) — audits continuity across arc seams; read-only on drafts, writes audit reports",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/03c_The_Arc_Transition_Auditor.md}"
     },
     "WorldForge-IntimacyAuditor": {
       "description": "Phase 3.7 (conditional) — audits intimate-scene fidelity and register; read-only on drafts, writes audit reports",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/03d_The_Intimacy_Auditor.md}"
     },
     "WorldForge-Compiler": {
-      "description": "Phase 4 — transcribes approved drafts to SillyTavern JSON verbatim; no sampling knob on a reasoner, and 16K max output can truncate large lorebooks — verify with tools/validate_export.py after every compile",
+      "description": "Phase 4 — transcribes approved drafts to SillyTavern JSON verbatim; near-zero temperature on purpose",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.1,
       "prompt": "{file:../agent_roles/04_The_Compiler.md}"
     },
     "WorldForge-PromptEngineer": {
       "description": "Phase 5 — audits Export/ for runtime correctness and authors the Chat Completion Preset",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.3,
       "prompt": "{file:../agent_roles/05_The_Prompt_Engineer.md}"
     },
     // ── Post-launch entry points ──
     "WorldForge-Reviser": {
       "description": "Phase R0 — classifies a post-launch revision request and routes it through the revise pipeline",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.5,
       "prompt": "{file:../agent_roles/revise/00_The_Reviser.md}"
     },
     // The revise minis (agent_roles/revise/*) are defined here so the top-level Code agent
@@ -128,67 +133,78 @@
     "WorldForge-Refiner-mini": {
       "description": "Phase R1 — merges the revision delta into the canonical Master Design",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.4,
       "prompt": "{file:../agent_roles/revise/01_The_Refiner_mini.md}"
     },
     "WorldForge-Architect-mini": {
       "description": "Phase R2 — drafts surgical edits/inserts to touched files within the cascade",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.8,
       "prompt": "{file:../agent_roles/revise/02_The_Architect_mini.md}"
     },
     "WorldForge-IntimacyArchitect-mini": {
       "description": "Phase R2.5 (conditional) — drafts surgical edits/inserts to touched intimacy files",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.8,
       "prompt": "{file:../agent_roles/revise/02b_The_Intimacy_Architect_mini.md}"
     },
     "WorldForge-Editor-mini": {
       "description": "Phase R3 — validates touched files against the Editor's hard-fail rules",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.3,
       "prompt": "{file:../agent_roles/revise/03_The_Editor_mini.md}"
     },
     "WorldForge-VoiceAuditor-mini": {
       "description": "Phase R3.5 — simulates dialogue and audits voice fidelity on touched files",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/revise/03b_The_Voice_Auditor_mini.md}"
     },
     "WorldForge-ArcAuditor-mini": {
       "description": "Phase R3.6 — audits continuity on touched arc-seam neighbors",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/revise/03c_The_Arc_Transition_Auditor_mini.md}"
     },
     "WorldForge-IntimacyAuditor-mini": {
       "description": "Phase R3.7 — audits intimate-scene fidelity on touched files",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/revise/03d_The_Intimacy_Auditor_mini.md}"
     },
     "WorldForge-Compiler-mini": {
       "description": "Phase R4 — compiles touched files and updates cumulative manifest",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.1,
       "prompt": "{file:../agent_roles/revise/04_The_Compiler_mini.md}"
     },
     "WorldForge-PromptEngineer-mini": {
       "description": "Phase R5 — audits compile output and updates runtime preset",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.3,
       "prompt": "{file:../agent_roles/revise/05_The_Prompt_Engineer_mini.md}"
     },
     "WorldForge-Converter": {
       "description": "Phase C0 — reframes a shipped world into a new World Seed (protagonist / mode / tone changes), or rebaselines a revised world into a clean rebuild (--rebaseline)",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/Converter/00_The_Converter.md}"
     },
     "WorldForge-Auditioner": {
       "description": "On-demand behavioral probe (post-launch) — simulates one character in one user-supplied scene and returns YES/NO/IT DEPENDS with a spec trace; read-only, changes nothing",
       "mode": "all",
-      "model": "openrouter/moonshotai/kimi-k2.7-code",
+      "model": "openrouter/moonshotai/kimi-k2.5",
+      "temperature": 0.6,
       "prompt": "{file:../agent_roles/Auditioner/00_The_Auditioner.md}"
     }
   }
