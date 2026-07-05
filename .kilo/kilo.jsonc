@@ -17,6 +17,20 @@
 // (e.g. direct Anthropic = "anthropic/<model>"). API keys are NEVER read from
 // this file; they live in Kilo's global provider settings.
 //
+// ── OpenRouter provider routing (the "provider" block below) ─────────────────
+// Kilo forwards everything under provider.openrouter.models.<id>.options
+// verbatim to OpenRouter (providerOptions.openrouter), so the full routing
+// parameter set applies: https://openrouter.ai/docs/features/provider-routing
+// Two sharp edges: (1) the routing block only works PER-MODEL under "options" —
+// placed at the root of provider.openrouter it silently does nothing; (2) the
+// fields are passed through unvalidated, so a misspelled field is ignored
+// without error. After changing routing, verify on the OpenRouter activity
+// dashboard that requests actually land on the intended upstream.
+// Commented-out alternates for GLM 5.2 and Kimi K2.5 sit in the block —
+// to swap a seat, uncomment the model's routing entry AND change that agent's
+// "model" string to the matching "openrouter/<id>" (see wiki/Kilo-Code-Setup.md
+// §3.2 and §5.2).
+//
 // ── Model + temperature rationale ────────────────────────────────────────────
 // Drafting/utility seats run DeepSeek 4 Pro with per-phase temperatures from
 // wiki/Agentic-Tools-and-Models.md §3.5 (creative seats hot, Compiler near zero).
@@ -31,7 +45,71 @@
 // wiki/Kilo-Code-Setup.md §5.3.
 {
   "$schema": "https://app.kilo.ai/config.json",
+  "provider": {
+    "openrouter": {
+      "models": {
+        // DeepSeek 4 Pro (all shipped seats): prefer DeepSeek's first-party
+        // upstream — the automatic prefix caching that makes per-phase spec
+        // reloads cheap (wiki/Agentic-Tools-and-Models.md §3.4) only applies
+        // when the request lands on DeepSeek itself; third-party hosts serving
+        // the same weights charge full price per phase. "order" still allows
+        // fallback if DeepSeek is down; "sort" tie-breaks fallbacks by speed.
+        "deepseek/deepseek-v4-pro": {
+          "options": {
+            "provider": { "order": ["DeepSeek"], "sort": "throughput" }
+          }
+        }
+        // ── Alternate models (uncomment to use; also swap the agent "model"
+        //    strings below to the matching "openrouter/<id>") ──
+        //
+        // GLM 5.2 ("openrouter/z-ai/glm-5.2") — reasoning-class, 1M context.
+        // Hard-pin to the first-party Z.AI upstream: third-party hosts are
+        // where the reported mid-task stream failures live, so "only" fails
+        // loudly instead of falling back to them. Reasoning effort rides the
+        // same options passthrough. On any seat running GLM 5.2, REMOVE that
+        // agent's "temperature" field — reasoner endpoints ignore sampling.
+        // "z-ai/glm-5.2": {
+        //   "options": {
+        //     "provider": { "only": ["Z.AI"] },
+        //     "reasoning": { "effort": "medium" }
+        //   }
+        // },
+        //
+        // Kimi K2.5 ("openrouter/moonshotai/kimi-k2.5") — the general-line
+        // Kimi: chat-tuned multimodal, 262K context, no output-cap problem,
+        // roughly half the price of K2.6/K2.7. Being chat-tuned it KEEPS the
+        // per-phase temperatures below and takes no reasoning option — the
+        // remove-temperature rule applies to GLM 5.2 only. Prefer this over
+        // the coding-tuned K2.7 Code for creative seats; on the Editor seat,
+        // watch round 1 for sycophancy (budget-class models' known weak spot).
+        // "moonshotai/kimi-k2.5": {
+        //   "options": {
+        //     "provider": { "order": ["Moonshot AI"] }
+        //   }
+        // }
+      }
+    }
+  },
   "agent": {
+    // ── Swapping a seat to GLM 5.2 or Kimi K2.5 ──────────────────────────────
+    // Every agent below pins its own "model", so swaps are per-seat: change the
+    // "model" string on the seats you want moved and leave the rest on DeepSeek.
+    //   GLM 5.2:   "model": "openrouter/z-ai/glm-5.2"
+    //   Kimi K2.5: "model": "openrouter/moonshotai/kimi-k2.5"
+    // For each swapped seat:
+    //   1. Uncomment the matching routing entry in the "provider" block above
+    //      (once per model — it covers every seat that uses that model).
+    //   2. Temperature: GLM 5.2 seats must have their "temperature" line
+    //      REMOVED entirely — reasoning-class endpoints ignore sampling, and a
+    //      leftover temperature is silently dead config at best; GLM's depth
+    //      is tuned via "reasoning": { "effort": ... } in its routing entry
+    //      instead. Kimi K2.5 is chat-tuned: KEEP the seat's temperature.
+    // Seat guidance:
+    //   - GLM 5.2 works on any seat; it earns its cost most on the Editor and
+    //     Auditor seats, where reasoning depth sharpens audit discipline.
+    //   - Kimi K2.5 (general-line, chat-tuned) suits the drafting and utility
+    //     seats; on the Editor seat watch round 1 for sycophancy — the known
+    //     weak spot of budget-class models under audit (wiki §3.4).
     // ── Ideation (optional, upstream of Phase 0) ──
     "WorldForge-Brainstormer": {
       "description": "Phase 0-pre (optional) — divergent ideation partner; helps a user with only a vibe find a premise, (adaptation posture, --adapt) extracts a playable world from an existing story/fanfiction/RP document, or (improvement posture standalone, --improve) ping-pongs improvement ideas against an existing world with no commitment, parking them in the standing Big_Brain_Storm.md. Writes informal Brainstorm_Notes.md (Big_Brain_Storm.md on standalone --improve); no World Seed.",

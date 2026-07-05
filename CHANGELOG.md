@@ -13,6 +13,66 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-05 — Kilo config: OpenRouter per-model provider routing + GLM 5.2 / Kimi K2.5 alternates (#72)
+
+A user report of GLM 5.2 runs failing and stopping mid-task through OpenRouter
+traced to the upstream-routing layer, not the pipeline: OpenRouter serves each
+model through several third-party hosts, and which host a request lands on
+determines stream reliability, effective context handling, and — for
+DeepSeek — whether the automatic prefix caching that makes per-phase spec
+reloads cheap applies at all. Kilo forwards everything under
+`provider.openrouter.models.<id>.options` in `kilo.jsonc` verbatim to
+OpenRouter, so routing is pinnable per model from the shipped config. The
+shipped `kilo.jsonc` now pins the DeepSeek seats to DeepSeek's first-party
+upstream (`order: ["DeepSeek"]`, fallbacks allowed) and carries commented-out,
+ready-to-swap routing entries for GLM 5.2 (`z-ai/glm-5.2`, hard-pinned
+`only: ["Z.AI"]` because the reported mid-task stream failures live on the
+third-party upstreams, plus `reasoning: { effort }` on the same passthrough)
+and Kimi K2.5 (`moonshotai/kimi-k2.5`, the general-line chat-tuned Kimi —
+preferred over the coding-tuned K2.7 Code for creative seats, no output-cap
+problem, and it keeps the per-phase temperatures, unlike GLM).
+
+### Added
+- `Kilo_Variants/`: drop-in all-seats alternates for the shipped config —
+  `kilo.glm-5.2.jsonc` (every seat on `openrouter/z-ai/glm-5.2`, reasoning
+  effort high, Z.AI upstream hard-pinned, no `temperature` fields since
+  reasoning-class endpoints ignore sampling) and `kilo.kimi-k2.5.jsonc`
+  (every seat on `openrouter/moonshotai/kimi-k2.5`, the general-line
+  chat-tuned Kimi — per-phase temperatures kept, Moonshot AI upstream
+  preferred). Both are generated from the shipped agent set, so the 23
+  seats and `{file:...}` prompt pins are identical. Not auto-loaded:
+  activated by copying over `.kilo/kilo.jsonc` per the folder README.
+  Added to `.kilocodeignore` (maintenance material, not runtime context)
+  and to the `CLAUDE.md` repository tree. (An all-seats coding-tuned
+  Kimi K2.7 Code variant existed briefly during this PR and was replaced
+  by the K2.5 one before merge.)
+
+### Changed
+- `.kilo/kilo.jsonc`: new top-level `provider.openrouter.models` routing
+  block (DeepSeek pinned; GLM 5.2 and Kimi K2.5 as commented
+  alternates); header comment documents the passthrough and its two sharp
+  edges (per-model-only placement, unvalidated fields); the `agent` section
+  opens with a per-seat swap guide (exact `"model"` strings for the two
+  alternates, the uncomment-the-routing-entry step, the per-alternate
+  temperature rule — GLM 5.2 seats drop `temperature` because reasoning
+  endpoints ignore sampling, Kimi K2.5 seats keep it — and seat guidance,
+  including watching the Editor for round-1 sycophancy on budget models).
+- `wiki/Kilo-Code-Setup.md`: §3.2 gains item 6 (per-model provider routing
+  from `kilo.jsonc`, sharp edges, how to activate the alternates); §10
+  troubleshooting gains a row for GLM-family mid-task stops / "did not
+  provide any assistant messages" with the routing pin as the fix.
+- `wiki/Agentic-Tools-and-Models.md`: §3.3 aggregator note and the §3.4
+  DeepSeek-caching bullet now state that caching depends on landing on the
+  first-party upstream and point at the routing block.
+
+### Fixed
+- `wiki/Kilo-Code-Setup.md` §5.1/§5.2: stale claim that the shipped config
+  runs `deepseek-r1` on the Editor + Auditor seats — those seats have run
+  DeepSeek 4 Pro with per-phase temperatures (0.3 / 0.6) since the config
+  was last revised; the wiki now matches the file.
+
+---
+
 ## 2026-07-05 — Voice + Intimacy Auditors: adversarial scenario classes + cold-read generation discipline
 
 The Voice Auditor's simulation pass had a structural blind spot, visible in
