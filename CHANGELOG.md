@@ -13,6 +13,61 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-05 — Rebaseline picks up the standing Big_Brain_Storm.md idea file
+
+The standing `Big_Brain_Storm.md` idea file (written by standalone
+`/worldforge brainstorm --improve` sessions) previously had exactly one
+pickup point: `revise --brainstorm` (revision-diagnostic posture, step 1a).
+A rebaseline — the moment parked ideas most naturally come due — ignored it
+entirely: the `--then-brainstorm` chained Brainstormer read only the
+consolidated seed + Conversion Manifest, and nothing carried the standing
+file to the target project, stranding the idea pool in the source folder.
+This change gives the convert side the same ask-first pickup contract and
+makes the parked pool follow the world. The "no agent reads it silently"
+line holds: the Brainstormer remains the only agent that reads or writes
+the file (now through both improvement doors plus revision-diagnostic);
+the Converter only checks for its existence; the Reviser and Interviewer
+still never touch it — endorsed ideas reach the pipeline through
+`Brainstorm_Notes.md`, as before.
+
+### Added
+- `agent_roles/Brainstormer/00_The_Brainstormer.md`: improvement-posture
+  step 1a — in a `--then-brainstorm` chain, check the **source** project
+  (path from the Conversion Manifest) for `Big_Brain_Storm.md`, ask before
+  folding its still-open ideas in, attribute endorsed ideas in
+  `Brainstorm_Notes.md` ("from `Big_Brain_Storm.md`"), and at write time
+  carry the curated standing file forward to the **target** project
+  (pursued ideas retired as "picked up in rebaseline chain", still-open
+  ideas carried, source copy never modified). Context Manifest, Section 8
+  step 4 (chained bullet), the standing file's stamped header, and the
+  improvement-posture sign-off updated to match.
+- `agent_roles/Converter/00_The_Converter.md`: Section 9 Step F standing
+  idea file check — every rebaseline checks the source for
+  `Big_Brain_Storm.md` (presence only; the Converter never reads it) and
+  routes: fold via the `--then-brainstorm` chain (upgrading the run on
+  user confirmation if the flag wasn't passed), state an idea directly as
+  new mechanics, or leave it parked. Disposition recorded via a new
+  `Standing idea file:` line in the manifest's "New in rebaseline" block;
+  Context Manifest and rebaseline sign-off checklist updated.
+
+### Changed
+- `workflows/world-forge-convert.md`: rebaseline mode bullets, the
+  `--then-brainstorm` command-table row, and the chain description now
+  document the pickup + carry-forward.
+- `workflows/world-forge.md`: BRAINSTORM section and command-table rows
+  name both pickup points (`revise --brainstorm` and the rebaseline
+  `--then-brainstorm` chain; plain `--rebaseline` surfaces and routes).
+- `CLAUDE.md`: principles #10 and #11 and the Brainstormer
+  cross-file-consistency row updated to the two-point pickup contract.
+- `templates/Convert_Brief_Template.md`: the "New mechanics (rebaseline
+  only)" field notes that the Converter surfaces a standing
+  `Big_Brain_Storm.md` at this intake regardless of the brief (three-file
+  contract kept in sync).
+- `tutorial.md` (Sections 8, 9, 10.1 / 10.5) and `README.md` (command
+  table): pickup wording updated to match.
+
+---
+
 ## 2026-07-05 — Kilo config: OpenRouter per-model provider routing + GLM 5.2 / Kimi K2.5 alternates (#72)
 
 A user report of GLM 5.2 runs failing and stopping mid-task through OpenRouter

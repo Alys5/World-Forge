@@ -182,7 +182,7 @@ A new project folder evolves through these files as the pipeline progresses:
 | Command | Action |
 |---|---|
 | `/worldforge brainstorm` | Optional, before Phase 0: divergent ideation for when you have only a vibe. Generates premise directions, then writes informal `Brainstorm_Notes.md`. Produces no World Seed; hand off to `/worldforge start` |
-| `/worldforge brainstorm --improve` | Any time a world already exists (seed-only or shipped): ping-pong improvement ideas against it with no commitment — the Brainstormer reads the world read-only, riffs on fit/additions/reworks, and parks the results in the standing `Big_Brain_Storm.md` idea file. Nothing runs afterward; a later `revise --brainstorm` offers to pick a parked idea up, or take one through `revise`/`convert` yourself. See [tutorial §9](./tutorial.md#9-brainstorming-a-world-worldforge-brainstorm). |
+| `/worldforge brainstorm --improve` | Any time a world already exists (seed-only or shipped): ping-pong improvement ideas against it with no commitment — the Brainstormer reads the world read-only, riffs on fit/additions/reworks, and parks the results in the standing `Big_Brain_Storm.md` idea file. Nothing runs afterward; a later `revise --brainstorm` or a rebaseline `--then-brainstorm` chain offers to pick a parked idea up, or take one through `revise`/`convert` yourself. See [tutorial §9](./tutorial.md#9-brainstorming-a-world-worldforge-brainstorm). |
 | `/worldforge start` | Begin from Phase 0 |
 | `/worldforge resume phase[N]` | Resume from a specific phase (`phase0`, `phase1`, `phase2`, `phase2.5`, `phase3`, `phase3.5`, `phase3.6`, `phase3.7`, `phase4`, `phase5`) |
 | `/worldforge status` | Report the current phase, round, and open blockers |
