@@ -147,7 +147,7 @@ Loop state — which phase is live, what round it is on, which sign-offs are in 
 
 Some users arrive with a fully-formed concept; the Interviewer is built for them. Others arrive with only a vibe — an image, a mood, a single character, a "what if" — and nothing solid enough for the Interviewer's structured, specificity-demanding questions to land. `/worldforge brainstorm` is the optional front porch for that state.
 
-It invokes the **Brainstormer** (`agent_roles/Brainstormer/00_The_Brainstormer.md`) as a single standalone step (Phase 0-pre). Where the Interviewer is **convergent** (walks the template, pushes for depth, refuses weak material), the Brainstormer is **divergent**: it generates multiple premise directions, yes-ands the user's instincts, follows the spark, and helps an idea find its shape. When a premise has a pulse — a central tension, a feel, and at least one anchor the user is excited about — it reflects that back and hands off.
+It invokes the **Brainstormer** (`WorldForge-Brainstormer`) as a single standalone step (Phase 0-pre). Where the Interviewer is **convergent** (walks the template, pushes for depth, refuses weak material), the Brainstormer is **divergent**: it generates multiple premise directions, yes-ands the user's instincts, follows the spark, and helps an idea find its shape. When a premise has a pulse — a central tension, a feel, and at least one anchor the user is excited about — it reflects that back and hands off.
 
 **Load-bearing properties:**
 - **Writes only `Brainstorm_Notes.md`.** Informal, unstructured ideation notes in the project folder — explicitly *not* a World Seed. The Brainstormer never authors or edits `World_Seed.md`, never writes `Drafts/` or `Export/`, and never touches structural pipeline material. Seed authorship belongs to the Interviewer alone. **There is exactly one notes file per project, written fresh every run** — each invocation overwrites any prior `Brainstorm_Notes.md` in full and stamps it with its `Posture:` (fresh-start | improvement | revision-diagnostic) + date, so a stale file from an earlier run never has to be deleted by hand and consumers can confirm which run produced it.
@@ -160,7 +160,7 @@ It invokes the **Brainstormer** (`agent_roles/Brainstormer/00_The_Brainstormer.m
 
 ## PHASE 0: DISCOVERY — THE INTERVIEWER
 
-**Invoke:** `@agent_roles/00_The_Interviewer.md`
+**Invoke:** `WorldForge-Interviewer`
 **Input:** User intent to build a new world
 **Output:** `World_Seed.md` ready for Phase 1
 
@@ -187,7 +187,7 @@ If the user resists developing a section, the Interviewer adds an explicit note 
 
 ## PHASE 1: PLANNING — THE REFINER
 
-**Invoke:** `@agent_roles/01_The_Refiner.md`
+**Invoke:** `WorldForge-Refiner`
 **Input:** `World_Seed.md` (+ `UNRESOLVED_QUESTIONS.md` if resuming)
 **Output:** `Drafts/Master_Design.md`
 
@@ -202,7 +202,7 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 
 ## PHASE 2: DRAFTING — THE ARCHITECT
 
-**Invoke:** `@agent_roles/02_The_Architect.md`
+**Invoke:** `WorldForge-Architect`
 **Input:** `Drafts/Master_Design.md` with REFINER SIGN-OFF
 **Output:** All draft files in `Drafts/`
 
@@ -223,7 +223,7 @@ If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architec
 
 ## PHASE 2.5: INTIMACY DRAFTING — THE INTIMACY ARCHITECT
 
-**Invoke:** `@agent_roles/06_The_Intimacy_Architect.md`
+**Invoke:** `WorldForge-IntimacyArchitect`
 **Input:** Architect's complete drafts + `Drafts/Master_Design.md` + `World_Seed.md` Section 8
 **Output:** Intimacy drafts added to `Drafts/`
 
@@ -244,7 +244,7 @@ The Intimacy Architect does not author or modify character cards. Card-level con
 
 ## PHASE 3: STRUCTURAL VALIDATION — THE EDITOR (ITERATIVE LOOP)
 
-**Invoke:** `@agent_roles/03_The_Editor.md`
+**Invoke:** `WorldForge-Editor`
 **Input:** All `Drafts/` files + `Drafts/Master_Design.md`
 
 Validates four layers: prose quality, tier integrity + lorebook entry quality, LLM instruction quality, and intimacy entry quality (when intimacy drafts are present).
@@ -272,7 +272,7 @@ LOOP:  (each return increments the ledger's `3 Editor` Round)
 
 ## PHASE 3.5: BEHAVIORAL FIDELITY — THE VOICE AUDITOR
 
-**Invoke:** `@agent_roles/03b_The_Voice_Auditor.md`
+**Invoke:** `WorldForge-VoiceAuditor`
 **Input:** All Editor-approved `Drafts/` + `Drafts/Master_Design.md` + `World_Seed.md` Section 7b
 **Output:** `Drafts/Voice_Audit_Report_[Round N].md`
 
@@ -289,7 +289,7 @@ IF no failures → VOICE AUDITOR SIGN-OFF
 
 ## PHASE 3.6: ARC CONTINUITY — THE ARC TRANSITION AUDITOR
 
-**Invoke:** `@agent_roles/03c_The_Arc_Transition_Auditor.md`
+**Invoke:** `WorldForge-ArcAuditor`
 **Input:** All Editor-approved `Drafts/Tier3_*` files + `Drafts/Tier2_*` files + `Drafts/Master_Design.md`
 **Output:** `Drafts/Arc_Transition_Audit_[Round N].md`
 
@@ -308,7 +308,7 @@ IF no failures → ARC TRANSITION AUDITOR SIGN-OFF
 
 ## PHASE 3.7: INTIMATE SCENE FIDELITY — THE INTIMACY AUDITOR
 
-**Invoke:** `@agent_roles/03d_The_Intimacy_Auditor.md`
+**Invoke:** `WorldForge-IntimacyAuditor`
 **Input:** All Editor-approved `Drafts/` (including Intimacy Architect's outputs) + `Drafts/Master_Design.md` + `World_Seed.md` Section 7b/8
 **Output:** `Drafts/Intimacy_Audit_Report_[Round N].md`
 
@@ -334,7 +334,7 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 ## PHASE 4: IMPLEMENTATION — THE COMPILER
 
-**Invoke:** `@agent_roles/04_The_Compiler.md`
+**Invoke:** `WorldForge-Compiler`
 **Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand) + execution of `tools/` python scripts.
 **Output:** `Export/[WorldName]/` directory (JSON files + JanitorAI TXT/JS exports) generated via scripts.
 
@@ -367,7 +367,7 @@ In SillyTavern: import the individual lorebooks — `[WorldName]_World_Lorebook.
 
 ## PHASE 5: RUNTIME VALIDATION — THE PROMPT ENGINEER
 
-**Invoke:** `@agent_roles/05_The_Prompt_Engineer.md`
+**Invoke:** `WorldForge-PromptEngineer`
 **Input:** All `Export/` files + `Notes_Quick_Reference.md` + `Notes_On_functionality.md` (§5.2, §5.10, §8 mandatory) + `templates/Chat_Completion_Preset_template.json` + `agent_roles/05a_Block_Library.md` (Workstream B only) + `Drafts/Master_Design.md`
 **Output:** `Export/Prompt_Engineer_Audit.md` + `Export/[WorldName]_ChatPreset.json`
 
@@ -492,7 +492,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge revise` | Begin the revision pipeline for surgical changes to an already-built world (see `workflows/world-forge-revise.md`) |
 | `/worldforge revise --freeform` | Revision pipeline with freeform intent input (paste a description, Reviser structures) |
 | `/worldforge revise --target [path]` | Revision pipeline with known target file/entry (skips diagnostic narrowing) |
-| `/worldforge revise --brainstorm` | Revision pipeline **diagnostic mode** — for when something feels off but you can't name it. Runs the Brainstormer (revision-diagnostic posture, `agent_roles/Brainstormer/00_The_Brainstormer.md` Section 9) to locate the concern, then the Reviser reads its `Brainstorm_Notes.md` and classifies as normal |
+| `/worldforge revise --brainstorm` | Revision pipeline **diagnostic mode** — for when something feels off but you can't name it. Runs the Brainstormer (revision-diagnostic posture, `WorldForge-Brainstormer` Section 9) to locate the concern, then the Reviser reads its `Brainstorm_Notes.md` and classifies as normal |
 | `/worldforge revise status` | Show all Revision Log entries and their statuses |
 | `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
 | `/worldforge revise cancel R[N]` | Cancel a pending revision and mark CANCELLED |
@@ -501,7 +501,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge convert <source> <target> --brief <path>` | Same as above, but driven by a pre-authored Convert Brief (`templates/Convert_Brief_Template.md`). Converter validates the brief against the source and interviews only on gaps. |
 | `/worldforge convert <source> <target> --rebaseline` | **Rebaseline mode** — same world, same protagonist: consolidate a world's accumulated revisions into a clean rebuild, optionally folding in new mechanics. Inverts the Converter's always-regenerate rules (Section 3/5/7b carry from the post-revision Master Design). Fresh UIDs — running chats do not migrate. Combines with `--brief`. See `agent_roles/Converter/00_The_Converter.md` Section 9. |
 | `/worldforge convert <source> <target> --rebaseline --then-interview` | Rebaseline, then go directly into **Phase 0 (the Interviewer, seed-revision posture** — `agent_roles/00_The_Interviewer.md` Section 9**)** to make major changes against the consolidated seed before Phase 1 runs. Requires `--rebaseline`. |
-| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Rebaseline, then go into the **Brainstormer (improvement posture** — `agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8**)** to brainstorm *what* to change against the consolidated seed, **then** the Interviewer (seed-revision posture) reads those notes as proposals. For when changes are wanted but undecided. Requires `--rebaseline`; supersedes `--then-interview`. |
+| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Rebaseline, then go into the **Brainstormer (improvement posture** — `WorldForge-Brainstormer` Section 8**)** to brainstorm *what* to change against the consolidated seed, **then** the Interviewer (seed-revision posture) reads those notes as proposals. For when changes are wanted but undecided. Requires `--rebaseline`; supersedes `--then-interview`. |
 
 ---
 

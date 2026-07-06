@@ -10,12 +10,12 @@ The Lucifer world was authored by skipping Phase 0 (the user wrote `World_Seed_L
 
 You need:
 
-- **VS Code** with an agentic extension — [Kilo Code](https://github.com/Kilo-Org/kilocode) (recommended) or [Cline](https://github.com/cline/cline) — configured with an LLM API key. For tool-by-tool guidance see [`wiki/Agentic-Tools-and-Models.md`](./wiki/Agentic-Tools-and-Models.md); Kilo Code users have a dedicated setup walkthrough at [`wiki/Kilo-Code-Setup.md`](./wiki/Kilo-Code-Setup.md).
+- **VS Code** with an agentic extension — [Antigravity](https://github.com/Antigravity/kilocode) (recommended) or [Cline](https://github.com/cline/cline) — configured with an LLM API key.
 - A clone of this repository, opened as a VS Code workspace.
 
 That is the entire setup. The pipeline is markdown specifications — there is nothing to build or install.
 
-**Two settings worth getting right before a long run:** which model runs which phase ([`wiki/Agentic-Tools-and-Models.md` §3.3](./wiki/Agentic-Tools-and-Models.md#33-mixing-models-across-phases) — spend the most on the Editor and Auditors), and sampling temperature per phase ([§3.5](./wiki/Agentic-Tools-and-Models.md#35-sampling-temperature-by-phase) — creative seats hot, the Compiler near zero). Kilo Code users get both preconfigured: the repo ships a `.kilo/kilo.jsonc` with per-phase agents, and [`wiki/Kilo-Code-Setup.md` §5.4](./wiki/Kilo-Code-Setup.md#54-per-phase-temperature) covers the temperature settings (already baked into the shipped `.kilo/kilo.jsonc`).
+**Two settings worth getting right before a long run:** which model runs which phase (spend the most on the Editor and Auditors), and sampling temperature per phase (creative seats hot, the Compiler near zero). Antigravity users get both preconfigured: the repo ships a `.agents/skills/` with per-phase agents, and the temperature settings are already baked into the shipped `.agents/skills/`.
 
 ### Repository structure (what you cloned)
 
@@ -573,7 +573,7 @@ It respects the same bright line as the Reviser: if the thing that's "off" turns
 This section collects every `/worldforge` command in one place, each with an example invocation, what it does, and _why_ you would reach for it. The examples reuse the Lucifer project (Section 3) for continuity. Two conventions throughout:
 
 - **Paths point at project folders** — the directory that holds `World_Seed.md`, `Drafts/`, and `Export/` — not at individual files, except where a flag explicitly takes a file (`--brief`, `--target`).
-- **You type these in your agentic extension's chat** (the **Code** agent in Kilo Code, or the default agent in Cline), with the World-Forge repo open as the workspace.
+- **You type these in your agentic extension's chat** (the **Code** agent in Antigravity, or the default agent in Cline), with the World-Forge repo open as the workspace.
 
 A run moves left-to-right through a lifecycle: _(optional) brainstorm → start/skip → resume/skip while building → ship → revise / resync-preset / convert after launch._
 

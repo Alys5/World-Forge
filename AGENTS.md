@@ -1,6 +1,6 @@
 # AGENTS.md — standing instructions for agentic tools
 
-> Read this first. It applies to Kilo Code, Cline, and any other agentic IDE
+> Read this first. It applies to Antigravity, Cline, and any other agentic IDE
 > tool opening this workspace. It is deliberately short — it routes you to the right
 > document for your session type instead of duplicating them.
 
@@ -16,7 +16,7 @@ The user typed `/worldforge brainstorm`, `/worldforge start`, `/worldforge revis
 - **Open `workflows/world-forge.md` and follow it.** It is the orchestrator and the
   source of truth for what runs when. Revise runs live in `workflows/world-forge-revise.md`,
   convert runs in `workflows/world-forge-convert.md`.
-- **Kilo Code Subagent Delegation:** If you are the top-level Kilo Code agent, do not run the pipeline commands inline. Instead, use your subagent delegation tool (e.g., the `task` tool) to route the command to the correct custom subagent:
+- **Antigravity Skill Delegation:** If you are the top-level Antigravity agent, do not run the pipeline commands inline. Instead, rely on the Antigravity Skill matching engine to natively adopt the correct persona:
   - `/worldforge brainstorm` or `/world-forge brainstorm` → Dispatch to `WorldForge-Brainstormer` (optional ideation upstream of Phase 0; writes informal `Brainstorm_Notes.md`, no World Seed)
   - `/worldforge start` or `/world-forge start` → Dispatch to `WorldForge-Interviewer`
   - `/worldforge revise` or `/world-forge revise` (with `--freeform`, `--target`, etc.) → Dispatch to `WorldForge-Reviser`
@@ -84,8 +84,8 @@ tables, sign-off checklists. So:
 - **Use per-phase custom agents** — strongly recommended on any model (clean window per
   phase + persona isolation so the Editor stays strict), and effectively mandatory on
   200K-and-below windows for large worlds, where inline runs genuinely overflow by
-  Phase 3. See `wiki/Kilo-Code-Setup.md` §5.
-- The shipped `.kilocodeignore` keeps `Samples/` and maintenance docs out of
+  Phase 3.
+- The shipped `.gitignore` keeps `Samples/` and maintenance docs out of
   auto-included context. Do not remove entries from it to "be thorough."
 - The `📂 CONTEXT MANIFEST` blocks exist primarily for you. When a manifest says "load on
   demand," that means *do not preload* — open the file at the step that needs it. A

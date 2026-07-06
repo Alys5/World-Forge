@@ -8,7 +8,7 @@
 
 World Forge is a **multi-agent pipeline for building immersive roleplay worlds for SillyTavern**. It is not application code in the traditional sense — it is a curated collection of agent specifications (markdown), templates (markdown and JSON), and orchestration logic (markdown) that together define a structured creative writing pipeline.
 
-The pipeline is designed to run inside an agentic VS Code extension (typically Kilo Code; the formerly-recommended Roo Code was retired May 15, 2026). When invoked, it walks a user from a raw idea through 5+ phases of structured drafting and validation, producing a complete dual-export world package (SillyTavern JSON and JanitorAI JED/JS formats).
+The pipeline is designed to run inside an agentic VS Code extension (typically Antigravity; the formerly-recommended Roo Code was retired May 15, 2026). When invoked, it walks a user from a raw idea through 5+ phases of structured drafting and validation, producing a complete dual-export world package (SillyTavern JSON and JanitorAI JED/JS formats).
 
 **The repository is the pipeline itself.** Editing files here changes how the pipeline behaves on its next run. There is no compilation step, no test suite, no deployment — files are read directly by the runtime agent.
 
@@ -17,7 +17,7 @@ The pipeline is designed to run inside an agentic VS Code extension (typically K
 ## What this repository is NOT
 
 - **Not a SillyTavern fork or extension.** SillyTavern is the runtime environment that consumes the pipeline's outputs. This repo produces files for SillyTavern; it does not modify SillyTavern itself.
-- **Not a runtime engine.** The pipeline does not execute — it is consumed by an agentic IDE extension (Kilo Code) that orchestrates LLM calls. Do not add execution logic, build steps, or deployment configuration.
+- **Not a runtime engine.** The pipeline does not execute — it is consumed by an agentic IDE extension (Antigravity) that orchestrates LLM calls. Do not add execution logic, build steps, or deployment configuration.
 - **Not a code project.** The "code" here is markdown agent specifications. Treat them as you would treat carefully-versioned prose documents, not as source code.
 - **Not for editing during pipeline runs.** When a user is actively running `/worldforge start`, the pipeline files are being read by the runtime agent. Editing them mid-run produces undefined behavior.
 
@@ -29,14 +29,14 @@ The pipeline is designed to run inside an agentic VS Code extension (typically K
 World-Forge/
 ├── README.md                         ← Human-facing project description
 ├── tutorial.md                       ← Usage tutorial
-├── AGENTS.md                         ← Standing instructions for agentic tools (Kilo/Cline); routes run-vs-maintenance sessions
+├── AGENTS.md                         ← Standing instructions for agentic tools (Antigravity/Cline); routes run-vs-maintenance sessions
 ├── Notes_On_functionality.md         ← Authoritative reference: how SillyTavern works internally
 ├── Notes_Quick_Reference.md          ← DERIVED ~5KB distillation of Notes (position enum, flags, assembly); agents consult it first
 ├── LICENSE
 ├── .gitignore
-├── .kilocodeignore                   ← Keeps Samples/ + maintenance docs out of runtime agent context
-├── .kilo/
-│   └── kilo.jsonc                    ← Preconfigured Kilo Code per-phase agents (OpenRouter DeepSeek flavor; auto-loaded)
+├── .gitignore                   ← Keeps Samples/ + maintenance docs out of runtime agent context
+├── .antigravity/
+│   └── .agents/skills/                    ← Preconfigured Antigravity per-phase agents (OpenRouter DeepSeek flavor; auto-loaded)
 ├── tools/
 │   └── validate_export.py            ← Read-only Export/ JSON validator (explicit exception to the no-code rule; see Out of scope)
 ├── agent_roles/                      ← Phase-specific agent specifications (each opens with a 📂 CONTEXT MANIFEST)
@@ -82,8 +82,6 @@ World-Forge/
 │   └── world-forge-convert.md        ← Convert fork (reframe a shipped world into a new build, Phase C0)
 ├── wiki/                             ← Setup & tooling guides (linked from README/tutorial)
 │   ├── README.md                     ← Wiki index
-│   ├── Agentic-Tools-and-Models.md   ← Kilo/Cline + model comparison (incl. Roo Code retirement note)
-│   └── Kilo-Code-Setup.md            ← Dedicated Kilo Code setup walkthrough
 └── Samples/                          ← Example world outputs for reference
 ```
 
@@ -298,7 +296,7 @@ These pairs of files must stay in sync. When editing one, check the other.
 | `agent_roles/Converter/00_The_Converter.md` (preservation matrix, Conversion Manifest format, Section 9 Rebaseline mode) | `templates/Convert_Brief_Template.md` (Sections 4a–4h mirror the matrix row-for-row; *Rebaseline:* notes mirror the Section 9 inversions) + `workflows/world-forge-convert.md` (operating modes incl. REBASELINE MODE, overlap floor / zero-axes gate, role reassignment cases) + `templates/World_Seed_Template.md` (the seed structure the Converter writes against — section numbering, required fields, conventions) — Convert is a three-file contract; changing any one requires checking the others |
 | NPC agency / relationship-belief state / trauma-trajectory machinery (Architect §7.D `Standing Goal` + `Escalation Ladder`, World Seed §4 `How it drifts` + `Operative belief` + `Trauma trajectory`, Refiner/Architect/Editor/Voice-Auditor/Arc-Transition-Auditor rules) | `agent_roles/Converter/00_The_Converter.md` (Section 4 carry-across rules + preservation matrix) and `templates/Convert_Brief_Template.md` (Section 4e reminders) — these Section 4 fields couple to the regenerated parts of a converted seed (Section 3 protagonist + Section 5 arcs). The Converter's carry-across rules (preserve / strip / mark-for-reauthor; the ladder rides the Standing Goal rule with per-stage and collision audits, active stage never carries) must stay consistent with how the parents author the fields; if the field set changes, update the Converter's Section 4 handling at the same time |
 | `agent_roles/00_The_Interviewer.md` (Section 3 protagonist questioning; Section 9 seed-revision posture) | `agent_roles/Converter/00_The_Converter.md` (Step 4 question 7 reuses the Interviewer's Section 3 depth standard; Section 9 Step H dispatches the Interviewer's seed-revision posture for `--then-interview` / `--then-brainstorm`) — Convert authors a new protagonist with Interviewer-grade depth and chains rebaseline into the posture; if either side's contract evolves, the other inherits |
-| `agent_roles/Brainstormer/00_The_Brainstormer.md` (optional ideation, #11) | `agent_roles/00_The_Interviewer.md` (Context Manifest "Load if present" + Section 4 interview-open note read `Brainstorm_Notes.md` as starting material; Section 9 reads improvement-posture notes as *proposals*), `agent_roles/revise/00_The_Reviser.md` (`--brainstorm` invocation + INPUT reads revision-diagnostic `Brainstorm_Notes.md` as captured intent + Step 2 off-ramp), `agent_roles/Converter/00_The_Converter.md` (Section 9 Step H `--then-brainstorm` dispatches the Brainstormer's improvement posture ahead of the seed-revision Interviewer), `workflows/world-forge.md` + `workflows/world-forge-convert.md` + `workflows/world-forge-revise.md` (BRAINSTORM section, trigger rows, `--then-brainstorm` chain, `revise --brainstorm` diagnostic front door), `.kilo/kilo.jsonc` (`WorldForge-Brainstormer` seat) — the Brainstormer's three postures, the `--then-brainstorm` chain, and the `revise --brainstorm` diagnostic must read consistently across the spec, the Interviewer and Reviser that consume its notes, the Converter that invokes it, the orchestrators, and the Kilo config |
+| `agent_roles/Brainstormer/00_The_Brainstormer.md` (optional ideation, #11) | `agent_roles/00_The_Interviewer.md` (Context Manifest "Load if present" + Section 4 interview-open note read `Brainstorm_Notes.md` as starting material; Section 9 reads improvement-posture notes as *proposals*), `agent_roles/revise/00_The_Reviser.md` (`--brainstorm` invocation + INPUT reads revision-diagnostic `Brainstorm_Notes.md` as captured intent + Step 2 off-ramp), `agent_roles/Converter/00_The_Converter.md` (Section 9 Step H `--then-brainstorm` dispatches the Brainstormer's improvement posture ahead of the seed-revision Interviewer), `workflows/world-forge.md` + `workflows/world-forge-convert.md` + `workflows/world-forge-revise.md` (BRAINSTORM section, trigger rows, `--then-brainstorm` chain, `revise --brainstorm` diagnostic front door), `.agents/skills/` (`WorldForge-Brainstormer` seat) — the Brainstormer's three postures, the `--then-brainstorm` chain, and the `revise --brainstorm` diagnostic must read consistently across the spec, the Interviewer and Reviser that consume its notes, the Converter that invokes it, the orchestrators, and the Antigravity config |
 
 ---
 
