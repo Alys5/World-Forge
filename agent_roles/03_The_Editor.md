@@ -393,6 +393,11 @@ Applies **only if** the Architect authored a `### CARRIER: [[DICE_TABLES]]` bloc
 - A carrier present but the Master Design Section 1 `Dice Oracle Tables` line is missing (or vice versa) — confirm the oracle is intentional and the pools/outcomes/tense/duration trace to the seed.
 - A pool value or outcome `text` phrase that reads as a full sentence rather than a short token — the dice fix *what*, the model narrates *how*; long values crowd the injected block.
 - A procedure marked `mode: "event"` with `turns` unset or `1` — events usually want a multi-reply duration so they stay in context while resolving (§3.7); confirm single-reply is intended.
+- **Shape-not-choreography anti-patterns** (Architect §6 "Roll the shape, not the choreography"). These are design smells that serialize or flatten the scene at runtime — flag for the Architect to reconsider, do not block:
+  - **Per-participant procedure / duplication.** Two procedures (or two near-identical step groups) that describe the *same encounter* from different participants' angles, rather than one procedure whose count branches into gated participant steps. Concatenated per-person records get injected as separate blocks and narrate in series.
+  - **Rolled choreography.** Steps that fix the blow-by-blow — positions, act-by-act sequence, "what each one did," a per-participant "how it ended" / where-they-finished. That is the model's *how*; rolling it produces checklist recitation, and per-person finishes are the strongest serialization signal (two endings read as two scenes). A single shared/joint outcome step is fine; per-participant ones are the smell.
+  - **Count outcome without simultaneity.** A count/number outcome whose value is > 1 but whose `text` states only the quantity ("two men") with no togetherness cue — pair it with an explicit "together / at the same time" phrasing and an encounter-level configuration step gated on count > 1.
+  - **Serializing framing.** A procedure `framing` (or the payload-level one) that invites a sequence — "narrate the sequence of events", "in order", or wording that lists participants to be handled one at a time. Recount framing should fix the register and assert one continuous scene, and leave choreography to the model.
 
 Read-only: direct the Architect to fix the carrier; do not edit it.
 

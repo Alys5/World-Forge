@@ -13,6 +13,43 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-06 — Dice Oracle: "roll the shape, not the choreography" authoring guidance
+
+A dice world built through the pipeline serialized multi-man recounts (the
+model narrated "one man, then the next appears") and read the rolled facts back
+like a checklist. Root cause was authoring, not schema: procedures rolled the
+per-participant blow-by-blow (positions, hole-switching, a per-man finish) and
+split one encounter across per-participant records, which the consumer injects
+as separate blocks. The dice were doing the model's job (choreography) badly,
+and the model was doing the dice's job (reciting the list). This threads the
+what/how line through the *authoring* step so future worlds don't reproduce it.
+
+### Added
+- **Architect** §6 — a "Roll the shape, not the choreography" block: fix
+  setting / cast-as-traits / configuration / valence / one signature detail;
+  never roll positions, act-by-act sequence, per-participant acts, or a
+  per-participant finish; one situation = one procedure (participants are gated
+  trait steps, never per-participant procedures/rolls); count > 1 states
+  simultaneity in `text` + one encounter-level configuration + one joint
+  outcome; framing fixes register, never invites a sequence.
+- **Editor** Step 4.8 — soft-flags for the same anti-patterns (per-participant
+  procedure/duplication, rolled choreography / per-person finish, count outcome
+  missing simultaneity, serializing framing).
+- **`contracts/DICE_ORACLE.md`** §6.1 — informative authoring guidance mirroring
+  the above (no schema change; **needs contract sync to the ST fork**).
+
+### Changed
+- **Interviewer** dice elicitation — steers authors to roll shape/flavor + one
+  signature detail (not choreography), keeps one situation as one procedure, and
+  draws out multi-participant configuration + simultaneity instead of "extra
+  positions"; reflect-back and §2h record note updated.
+- **World Seed** template §2h — author-facing "roll the shape, not the
+  choreography" + "one situation = one procedure" callouts; examples de-
+  choreographed (dropped "the act" / "extra-positions pool").
+- **`CLAUDE.md`** — Dice Oracle seam row notes the authoring-guidance set-piece
+  that must read consistently across seed / Interviewer / Architect / Editor /
+  contract §6.1.
+
 ## 2026-07-06 — Dice Oracle: producer caught up to schema 2 + Editor validation gate
 
 The dice oracle producer chain was still authoring **schema 1** payloads while
