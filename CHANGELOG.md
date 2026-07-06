@@ -37,6 +37,17 @@ what/how line through the *authoring* step so future worlds don't reproduce it.
   missing simultaneity, serializing framing).
 - **`contracts/DICE_ORACLE.md`** §6.1 — informative authoring guidance mirroring
   the above (no schema change; **needs contract sync to the ST fork**).
+- **Revise cascade — remediation path for an already-shipped world.** Correcting
+  a dice oracle that serializes / over-rolls is a `tier1_world_rule_modify`:
+  `agent_roles/revise/00_The_Reviser.md` names the dice-carrier target (+ a
+  possible paired `intimacy_register_modify` for the standing "tell it, don't
+  recite" instruction); `agent_roles/revise/02_The_Architect_mini.md` Step R2.5
+  rewrites the carrier payload **in place** applying the parent's shape-not-
+  choreography rules (collapse per-participant procedures, strip choreography /
+  per-person finishes, add simultaneity + configuration + one joint outcome,
+  de-serialize framing); `agent_roles/revise/03_The_Editor_mini.md` Step R3.1
+  revalidates per parent Step 4.8 + the soft-flags. The mini-Compiler already
+  preserves the carrier UID, so running SillyTavern chats keep world-info state.
 
 ### Changed
 - **Interviewer** dice elicitation — steers authors to roll shape/flavor + one
