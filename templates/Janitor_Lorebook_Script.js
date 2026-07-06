@@ -1,6 +1,6 @@
 /* ============================================================================
-   ADVANCED LORE BOOK SYSTEM v12
-   Author: Lys_5
+   [NAME] v1.0.0
+   Author: lys_5
    JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5
    //#region HEADER
    ==========================================================================
@@ -342,19 +342,20 @@ const dynamicLore = [
 	{
 		keywords: ['look', 'outfit', 'clothes', 'appearance', 'wearing', 'dress'],
 		priority: 5,
-		scenario: ' [Appearance: <Architect inserts granular details here>]'
+		scenario: ' [Appearance: <Architect inserts granular details here>]',
 	},
 	// L_INV: Oggetti e Armi (Innescato in azione)
 	{
 		keywords: ['weapon', 'pocket', 'bag', 'draw', 'inventory', 'shoot'],
 		priority: 4,
-		scenario: ' [Inventory: <Architect inserts hidden items or weapons>]'
+		scenario: ' [Inventory: <Architect inserts hidden items or weapons>]',
 	},
 	// L_LORE_RELATIONSHIP: Intimità fisica (Zero inferenze romantiche se non previste)
 	{
 		keywords: ['touch', 'kiss', 'closer', 'intimacy'],
 		priority: 5,
-		personality: ' [Behavior: <Architect defines strict physical/intimacy boundaries here>]'
+		personality:
+			' [Behavior: <Architect defines strict physical/intimacy boundaries here>]',
 	},
 
 	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
