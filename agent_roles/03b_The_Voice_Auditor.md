@@ -11,6 +11,8 @@
 4. **Use the user's test scenarios from World Seed Section 7b** when present. Only fall back to generated scenarios when Section 7b is absent, and flag this in the report — the user should know their pipeline is being verified against scenarios you invented.
 5. **Multi-axis worlds require Step 3H.** When Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`, the perspective/tense bleed check (Step 3H) is mandatory. Single-axis worlds skip it cleanly.
 6. **Sandbox worlds require Step 3I and reframe the arc checks.** When `World Mode` is `sandbox` (Master Design Section 9 is a Sandbox Charter), there is no arc and no CHARACTER_STATE: read "active arc register" (Step 3A) as "standing register vs. SANDBOX_STATE," skip the wrong-arc check (Step 3D) and disguise-transition checks, and run the NPC Distinctiveness Matrix (Step 3I) across the roster. For large NPC casts the distinctiveness matrix is the highest-value check you run.
+7. **The Extremes Test:** You must simulate extreme user inputs (e.g., blunt one-liners, absolute silence, heavy sarcasm) against the drafted profile. Verify that the bot's response maintains its unique behavioral quirks (e.g., stammering, deflecting) and does not default to "generic polite chatbot" mode.
+8. **Formatting Consistency:** Verify that the tested outputs strictly separate physical actions (*italics*) from spoken dialogue ("quotes") and internal thoughts ([brackets]). Flag any bleed between formatting layers.
 
 ---
 

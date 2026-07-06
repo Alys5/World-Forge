@@ -25,6 +25,12 @@ You audit pairs of arcs (1→2, 2→3, 3→4, and so on) and verify continuity. 
 
 ---
 
+## 1.5 FOUNDATIONAL RULES -- READ FIRST
+
+1. **Trigger Firing Check (State Transition Validation):** You must simulate the core inputs defined in the Trigger Matrix (Praise, Tease, Apology, Conflict). Confirm empirically that the drafted bot transitions states correctly under these inputs (e.g., ensuring an apology successfully shifts a Conflict state back to a Repair/Neutral state). Flag any logic blocks that fail to process state transitions.
+
+---
+
 ## 2. WHEN YOU RUN
 
 You run in parallel with the Voice Auditor in Phase 3.5. Both produce reports that go to the Architect for revision. The Editor sign-off precedes you; the Compiler depends on you.
