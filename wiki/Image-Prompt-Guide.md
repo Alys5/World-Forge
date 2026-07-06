@@ -98,3 +98,30 @@ Inpainting allows you to fix specific parts of an otherwise perfect image (e.g.,
 > 1. **One thing at a time:** Never try to inpaint multiple unconnected areas at once. The AI will get confused. Focus on one uninterrupted space.
 > 2. **Give it room to breathe:** Unless you need absolute precision, paint an area slightly *larger* than what you need to change. If you're fixing a hand, paint over the hand, the wrist, and some of the forearm. The model needs surrounding context to generate a natural replacement.
 > 3. **Hands:** You probably aren't going to get the hands right. Hide them in the pose if possible, or prepare for a long battle.
+
+---
+
+## 8. Douglas-Bloodmoon Family Aesthetic (Standardized Prompting)
+
+To maintain visual consistency across all characters of the Douglas-Bloodmoon family, use a strictly separated prompt structure. Keep the style and negative blocks identical every time, and only swap out the character-specific traits.
+
+### 1. Blocco STILE (Fixed, always use identically):
+```text
+masterpiece, best quality, ultra-detailed, semi-realistic, painterly realism, photorealistic skin texture, soft cinematic lighting, balanced natural lighting, subtle golden hour glow, niji style, natural anatomy, highly detailed face, close-up portrait, shallow depth of field, bokeh background, california beach promenade background, palm trees, blurred buildings, soft afternoon light, balanced color grading, neutral white balance
+```
+
+### 2. Negativo Fisso (Fixed, always use identically):
+```text
+NSFW, lowres, worst quality, low quality, bad anatomy, bad hands, extra fingers, mutated hands, deformed face, asymmetrical eyes, plastic skin, sepia tone, orange color cast, warm color grading, watermark, signature, text, cropped, blurry face, absurd, messy lineart, sloppy lineart, rough edges, jagged edges, artifacts, jpeg artifacts, noise, smudge, blurry details, unfinished, unclear edges
+```
+
+### 3. Settings Fissi (Confirmed):
+- **Steps:** 7-8
+- **Sampler:** Euler a
+- **CFG:** 1.6-2.0
+- **VAE:** Liquid9745VAE or Default
+- **LoRA Niji semi realism:** 0.75-0.85
+- **LoRA Add More Details:** 0.3
+
+### 4. Blocco PERSONAGGIO (Modular, replace per character):
+Here, insert *only* the specific traits — sex/gender, race, body type, hair, eyes, outfit, distinctive accessories.
