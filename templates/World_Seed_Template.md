@@ -187,6 +187,20 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 > Months are real-length and roll over correctly (leap years included). If your world uses an invented calendar with different month lengths, leave Start/End blank and use only the weekday field, or note the custom scheme in Style Notes — the Scene Tracker's anchored calendar assumes Gregorian month lengths.
 
+### 2h. Dice Oracle Tables **[OPTIONAL — fill only if the story leans on randomized off-screen facts or conjured temp characters]**
+
+*If your world regularly asks the model to invent facts it has no basis for — a character recounting an off-screen past that lives in no lorebook, or a temporary, unnamed NPC conjured for one scene ("tell me about a guy named Tom") — you can hand those decisions to the dice instead of the model's instincts. Declare the variables and their possible values here. The pipeline emits them as an inert `[[DICE_TABLES]]` entry in the World Lorebook, and SillyTavern's `world-forge` Scene Tracker exposes a **Dice** tab: you press Roll before the model narrates, and the rolled facts are injected as authoritative context (`contracts/DICE_ORACLE.md`). Purely optional — leave this blank and the Dice tab simply falls back to a generic built-in table set. Nothing else in the world depends on it.*
+
+*The dice fix WHAT is true; your world's system prompt and the narrating model decide HOW it is told. Keep every value here a short factual **token** — a phrase, an adjective, an outcome label — never a full sentence.*
+
+- **What to randomize:** [List the situations the oracle should cover and the variables each one rolls. Example: "Recounted fling → the man (one or two of them), his build, where it happened, the act, how it turned out (and if it went badly: was anyone hurt, how badly)." Each situation becomes one *procedure*.]
+- **Pools (pick-lists):** [For each descriptive variable, give a handful of values the dice pick from. Pools can be open or deliberately **constrained**. Example — *man's build*: broad and heavy / wiry and restless / soft and round / lean and tall. *Location (constrained)*: Karin's house / a concert / the pub bathroom. 4–8 values each is plenty. Leave OUT anything the model should keep inventing freely — e.g. the men's names.]
+- **Outcome scales:** [For each judged variable, give the possible outcomes and roughly how likely each is. Example — *how it turned out*: mostly good, sometimes mixed, occasionally a disaster. *injury severity (only if hurt)*: usually minor, sometimes moderate, rarely serious. The Architect turns these into dice ranges.]
+- **Relationships / branches:** [How the variables depend on each other — the part worth being explicit about. A variable can apply only when an earlier one came out a certain way, or open a new pool. Example: "Roll how many men (one / two); **if two**, also roll the group dynamic (threesome / took turns) and allow the extra-positions pool. **If** it went badly, roll whether anyone was hurt, and **only then** how badly." Name each dependency so the Architect can gate it.]
+- **Lead-in:** [OPTIONAL. One sentence the injected facts open with, in your world's voice. Example: "Here is some information regarding this recounted encounter — treat every detail as true and narrate around it." Leave blank for a neutral default.]
+
+> The oracle is **manual** (you press Roll) and its facts are **ephemeral** — they shape the next reply only and are never written to memory. Conditional variables are supported: say "severity only if someone was hurt" and the Architect wires it as a step gated on the earlier result.
+
 ---
 
 ## 3. THE PROTAGONIST — {{user}} **[REQUIRED]**
@@ -792,6 +806,7 @@ Trigger keywords: [name variants, role descriptors]
 - [ ] All non-human species/types described
 - [ ] All recurring world concepts defined
 - [ ] (Optional) World Calendar declared if the story has a fixed start date or a horizon (2g)
+- [ ] (Optional) Dice Oracle Tables declared if the story leans on randomized off-screen facts or conjured temp characters (2h)
 
 **Section 3 — The Protagonist:**
 - [ ] Identity, hidden layer, contradiction, power/limits defined

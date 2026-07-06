@@ -35,6 +35,12 @@ Checks the failure modes that slip past "the JSON parses":
                 enabled (disable:false, unlike the manifest) so the Scene Tracker sees it;
                 content parses as a JSON object; start/end month is 0-11; weekdayOfDay1 is
                 0-6; end is an object, null, or "infinite"
+              - any [[DICE_TABLES]] entry (DICE_ORACLE §2/§3) is WARN-only (optional,
+                degrades gracefully): at most one per file; carrier is enabled
+                (disable:false) so the Dice tab sees it; content parses as a JSON object
+                with an integer schema; every procedure has a slug id + >=1 valid step;
+                each step is a pick (pool/inline array) xor a roll+outcomes; every `when`
+                references an earlier step id in the same procedure; pool names resolve
   presets     - prompts array and prompt_order present; every enabled prompt_order
                 identifier resolves to a prompt
   export set  - WORLD_FORGE_SYNC §2: if any manifest declares kind:"director", at least
@@ -62,6 +68,7 @@ from pathlib import Path
 SLUG_RE = re.compile(r"^[a-z0-9]+(_[a-z0-9]+)*$")
 NPC_MANIFEST_MARKER = "[[NPC_MANIFEST]]"
 WORLD_CALENDAR_MARKER = "[[WORLD_CALENDAR]]"
+DICE_TABLES_MARKER = "[[DICE_TABLES]]"
 # Inline revision markers belong only on the Drafts side; the Export side's sole
 # revision marker is REVISED_FILES.md. A marker that reached a JSON string value
 # leaked through the mini-Compiler (agent_roles/revise/04_The_Compiler_mini.md
@@ -268,6 +275,100 @@ def check_world_calendar(entry, warn):
                  f"(0=January, 11=December), got {month!r}")
 
 
+def check_dice_tables(entry, warn):
+    """Validate a [[DICE_TABLES]] carrier (DICE_ORACLE §2/§3) - WARN-only.
+
+    The dice oracle is optional and the Scene Tracker's Dice tab no-ops on
+    anything malformed (falling back to its built-in demo tables), so nothing
+    here is fatal; these warnings catch producer mistakes that would make the
+    world silently provide no tables or drop procedures/steps.
+    """
+    # Like [[WORLD_CALENDAR]] (and unlike [[NPC_MANIFEST]]), the carrier is read
+    # from getSortedEntries() with an explicit !disable filter, so a disabled
+    # entry is silently skipped and the world provides no tables.
+    if entry.get("disable") is True:
+        warn("[[DICE_TABLES]] carrier has disable:true; the Dice tab reads it with a "
+             "!disable filter and will skip it (DICE_ORACLE §2) - emit it enabled with "
+             "key:[] and constant:false so it stays inert but visible")
+    content = entry.get("content")
+    try:
+        payload = json.loads(content) if isinstance(content, str) else None
+    except json.JSONDecodeError as exc:
+        warn(f"[[DICE_TABLES]] content is not valid JSON: {exc}")
+        return
+    if not isinstance(payload, dict):
+        warn("[[DICE_TABLES]] content must be a single JSON object")
+        return
+    schema = payload.get("schema")
+    if not isinstance(schema, int):
+        warn(f"[[DICE_TABLES]] payload should have an integer 'schema', got {schema!r}")
+
+    # Pools: map of name -> non-empty array of strings.
+    pools = payload.get("pools", {})
+    pool_names = set()
+    if pools in (None, {}):
+        pass
+    elif not isinstance(pools, dict):
+        warn(f"[[DICE_TABLES]] 'pools' should be an object of name -> string[], got {pools!r}")
+    else:
+        for name, arr in pools.items():
+            if not (isinstance(arr, list) and any(isinstance(v, str) and v.strip() for v in arr)):
+                warn(f"[[DICE_TABLES]] pool {name!r} should be a non-empty array of strings")
+            else:
+                pool_names.add(name)
+
+    procedures = payload.get("procedures")
+    if not isinstance(procedures, list) or not procedures:
+        warn("[[DICE_TABLES]] payload should have a non-empty 'procedures' array "
+             "(a payload with no valid procedures reads as absent - DICE_ORACLE §5)")
+        return
+
+    for i, proc in enumerate(procedures):
+        if not isinstance(proc, dict):
+            warn(f"[[DICE_TABLES]] procedures[{i}] is not an object")
+            continue
+        pid = proc.get("id")
+        if not (isinstance(pid, str) and SLUG_RE.match(pid)):
+            warn(f"[[DICE_TABLES]] procedure[{i}] id {pid!r} is not a valid slug "
+                 "(lowercase, _-separated)")
+        steps = proc.get("steps")
+        if not isinstance(steps, list) or not steps:
+            warn(f"[[DICE_TABLES]] procedure {pid!r} has no 'steps' array "
+                 "(a procedure with no valid steps is dropped - DICE_ORACLE §3.1)")
+            continue
+        seen_step_ids = set()
+        for j, step in enumerate(steps):
+            if not isinstance(step, dict):
+                warn(f"[[DICE_TABLES]] procedure {pid!r} step[{j}] is not an object")
+                continue
+            sid = step.get("id")
+            if not isinstance(sid, str) or not sid:
+                warn(f"[[DICE_TABLES]] procedure {pid!r} step[{j}] missing string 'id'")
+            # A step is a pick XOR a roll (DICE_ORACLE §3.2).
+            is_pick = isinstance(step.get("pick"), (str, list))
+            is_roll = "roll" in step and isinstance(step.get("outcomes"), dict)
+            if is_pick == is_roll:
+                warn(f"[[DICE_TABLES]] procedure {pid!r} step {sid!r} must be exactly one of "
+                     "a `pick` (pool name / inline array) or a `roll` with `outcomes`")
+            # pick -> a named pool must resolve (an inline array is self-contained).
+            if isinstance(step.get("pick"), str) and step["pick"] not in pool_names:
+                warn(f"[[DICE_TABLES]] procedure {pid!r} step {sid!r} picks unknown/empty "
+                     f"pool {step['pick']!r}")
+            # `when` may only reference an EARLIER step in the same procedure.
+            when = step.get("when")
+            if when is not None:
+                if not isinstance(when, dict):
+                    warn(f"[[DICE_TABLES]] procedure {pid!r} step {sid!r} 'when' should be an object")
+                else:
+                    for ref in when:
+                        if ref not in seen_step_ids:
+                            warn(f"[[DICE_TABLES]] procedure {pid!r} step {sid!r} 'when' references "
+                                 f"{ref!r}, which is not an earlier step in this procedure "
+                                 "(DICE_ORACLE §3.3)")
+            if isinstance(sid, str) and sid:
+                seen_step_ids.add(sid)
+
+
 def check_lorebook(data, fail, info=None, warn=None):
     entries = data.get("entries")
     if not isinstance(entries, dict):
@@ -277,6 +378,7 @@ def check_lorebook(data, fail, info=None, warn=None):
     seen_uids = {}
     manifests = []
     calendars = []
+    dice_tables = []
     for key, entry in entries.items():
         label = entry.get("comment") or key
         position = entry.get("position")
@@ -302,6 +404,8 @@ def check_lorebook(data, fail, info=None, warn=None):
             manifests.append(entry)
         if WORLD_CALENDAR_MARKER in comment:
             calendars.append(entry)
+        if DICE_TABLES_MARKER in comment:
+            dice_tables.append(entry)
     if len(manifests) > 1:
         fail(f"{len(manifests)} [[NPC_MANIFEST]] entries in one lorebook - the contract allows at most one")
     for entry in manifests:
@@ -314,6 +418,11 @@ def check_lorebook(data, fail, info=None, warn=None):
                  "uses the first and ignores the rest (WORLD_FORGE_SYNC §5.2)")
         for entry in calendars:
             check_world_calendar(entry, warn)
+        if len(dice_tables) > 1:
+            warn(f"{len(dice_tables)} [[DICE_TABLES]] entries in one lorebook - the Dice tab "
+                 "uses the first and ignores the rest (DICE_ORACLE §2)")
+        for entry in dice_tables:
+            check_dice_tables(entry, warn)
 
 
 def check_preset(data, fail):

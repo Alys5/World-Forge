@@ -208,6 +208,7 @@ Source: `Drafts/Tier1_World_Entries.md`
 - Sort entries within the lorebook by Order Priority (highest first when listing).
 - Set `group: "World"` on all entries for easy identification in ST editor.
 - **If the draft carries a `### CARRIER: [[WORLD_CALENDAR]]` block, also embed the inert World Calendar carrier here (Step 7.8).** It rides inside this World Lorebook file — note its flags differ from the NPC manifest (`disable: false`, not `true`).
+- **If the draft carries a `### CARRIER: [[DICE_TABLES]]` block, also embed the inert Dice Oracle carrier here (Step 7.9).** Same inert-but-enabled flags as the calendar carrier (`disable: false`, `key: []`, `constant: false`).
 
 ### Step 6 — Build Character Lorebooks (`Export/[WorldName]_[CharName]_Lorebook.json`)
 
@@ -351,6 +352,20 @@ This is the §3 round-trip requirement: the `world-forge` Scene Tracker extracts
 - `month` is **0-indexed** (0 = January … 11 = December) — carry the Architect's value through unchanged; do not "fix" it to 1–12.
 - `end` may be the object form, omitted, or the literal string `"infinite"` (open-ended). `weekdayOfDay1` (0 = Sunday … 6 = Saturday) and `start` are each omitted when the Architect omitted them. Never emit `null` placeholders. Do not invent or reshape values the Architect did not provide — if the block is malformed, the Editor's Step 4.7 should have caught it; halt and surface rather than emit a guessed calendar.
 
+### Step 7.9 — Emit Dice Oracle Tables carrier (conditional; `contracts/DICE_ORACLE.md`)
+
+**Only if** `Drafts/Tier1_World_Entries.md` contains a `### CARRIER: [[DICE_TABLES]]` block (the Architect compiles it from the Master Design; absent ⇒ skip — the oracle is optional). When present, transcribe it into the **World Lorebook** JSON as one inert World Info entry, exactly like the calendar carrier (Step 7.8). It is purely additive — a world without it still works (the Scene Tracker's Dice tab falls back to built-in demo tables).
+
+**7.9a — The carrier entry.** A World Info entry whose `comment` begins with the literal token `[[DICE_TABLES]]` (e.g. `"[[DICE_TABLES]] dice oracle"`). Set the **same inert-but-enabled flags as the calendar carrier**: **`disable: false`** (ENABLED — the Dice tab reads candidates with a `!disable` filter and skips a disabled carrier), `key: []`, `constant: false`, `selective: true`, `position: 0`, `order: 0`, `useProbability: false`, plus the standard inert boolean flags. Obeys Foundational Rule 9 (object key equals `String(uid)`) and Rule 10 (camelCase fields only). At most one per world; it rides inside the World Lorebook.
+
+**7.9b — The payload.** The entry's `content` is the Architect's payload, emitted **verbatim** as a single JSON object (UTF-8, no surrounding prose, no code fences):
+
+```json
+{"schema":1,"framing":"…","pools":{"…":["…"]},"procedures":[{"id":"…","label":"…","steps":[]}]}
+```
+
+Carry `pools`, procedure `id`/`label`/`framing`, step `pick`/`roll`/`outcomes`/`text`, and `when` gates through **unchanged** — do not reshape ranges, re-key outcomes, or "tidy" pool values. If the block is malformed (a `pick` with no matching pool, a `when` pointing at a later step, a step that is both a pick and a roll, or an empty `procedures` array), the Editor should have caught it; halt and surface rather than emit a guessed payload. `python tools/validate_export.py Export/` (Step 8) confirms it raises no `[WARN]`.
+
 ### Step 8 — Validation Pass
 
 Before saving any file (per Foundational Rules at top of this file):
@@ -379,6 +394,7 @@ Before saving any file (per Foundational Rules at top of this file):
 - ARC_STATE / SANDBOX_STATE entries have `ignoreBudget: true` — these must never be omitted due to token budget
 - **NPC Memory Manifest (Step 7.7):** each NPC/scene-bearing lorebook has exactly one `[[NPC_MANIFEST]]` entry (`disable: true`, `key: []`); its `content` parses as JSON with `schema: 1`; every npc `id` is a valid slug; every `facets`/`scenes` uid resolves to a real entry **in the same file**
 - **World Calendar carrier (Step 7.8; only if authored):** the World Lorebook has at most one `[[WORLD_CALENDAR]]` entry, **`disable: false`** (enabled — unlike the manifest) + `key: []` + `constant: false`; its `content` parses as a JSON object with 0-indexed months; `python tools/validate_export.py Export/` raises no `[WARN]` lines for it
+- **Dice Oracle carrier (Step 7.9; only if authored):** the World Lorebook has at most one `[[DICE_TABLES]]` entry, **`disable: false`** + `key: []` + `constant: false`; its `content` parses as a JSON object with an integer `schema` and a non-empty `procedures` array (each procedure a slug `id` + ≥1 step; each step a pick xor roll; `when` references only earlier steps); `python tools/validate_export.py Export/` raises no `[WARN]` lines for it
 - Files saved as `.json`, not embedded in Markdown
 
 ---
@@ -453,7 +469,8 @@ SillyTavern personas are configured manually (no import format). The pipeline pr
 - [ ] `id`s unique across the manifest — no two characters collide on one slug (halted upstream if so); `aliases` are names, not query-phrase keys; **every multi-word npc's `aliases` includes the bare first name + prose nicknames** (`contracts/WORLD_FORGE_SYNC.md` §3 — the Scene Tracker round-trip depends on it); `Shared roster entry` collapses interchangeable extras to one id (Step 7.7i–7.7j) ✓
 - [ ] Any Director / NPC-host card carries a recognized director tag in `data.tags`, agreeing with the roster lorebook manifest's `kind: "director"` (`contracts/WORLD_FORGE_SYNC.md` §2; Step 4 item 6b) ✓
 - [ ] World Calendar carrier (only if the Architect authored one): one `[[WORLD_CALENDAR]]` entry in the World Lorebook, **`disable: false`** (enabled — not `true` like the manifest) + `key: []` + `constant: false`, payload verbatim with 0-indexed months (`contracts/WORLD_FORGE_SYNC.md` §5; Step 7.8) ✓
-- [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass, no `[WARN]` for the calendar carrier ✓
+- [ ] Dice Oracle carrier (only if the Architect authored one): one `[[DICE_TABLES]]` entry in the World Lorebook, **`disable: false`** (enabled) + `key: []` + `constant: false`, payload verbatim (pools/procedures/`when` unchanged) (`contracts/DICE_ORACLE.md`; Step 7.9) ✓
+- [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass, no `[WARN]` for the calendar or dice carriers ✓
 
 ### Gap Report
 [List any required fields that could not be populated, or "None."]
