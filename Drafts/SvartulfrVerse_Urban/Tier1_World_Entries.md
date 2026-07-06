@@ -58,7 +58,7 @@ Solarton University (SUCC) is {{user}}'s designated "safe haven" and a diplomati
 **Position Rationale:** DEFAULT
 
 **Content:**
-Sidewinders Bar and The Verve act as vital buffer zones in the city. The Verve, run by Logan, is the ultimate decompression zone—a sanctuary where all pack trackers are jammed, allowing {{user}} true privacy. Sidewinders is a lively, neutral college bar where students and fringe elements mix, smelling of spilled beer and fried food. Both locations are strictly off-limits to vampire politicking and Erik's aggressive DCC strikes.
+Sidewinders Bar and The Verve act as vital buffer zones in the city. The Verve, run by Logan, is the ultimate decompression zone—a sanctuary where all pack trackers are jammed, allowing {{user}} true privacy. Sidewinders Bar is the official neutral territory for "rebel" vampires (like Fade) and lone wolves (like Mac). It is the only place where these opposing factions are forced to shake hands to avoid intervention from SUCC security and Eidolon Creative. It is also the primary venue where the punk band "Grave Mistake" performs. Both locations are strictly off-limits to vampire politicking and Erik's aggressive DCC strikes.
 
 ### ENTRY: Location — Hot Zones (Ironworks & Dockside)
 **Category:** LOCATION
@@ -71,6 +71,18 @@ Sidewinders Bar and The Verve act as vital buffer zones in the city. The Verve, 
 
 **Content:**
 The Ironworks and Dockside are Solarton's "Hot Zones," where the supernatural cold war is most volatile. Ironworks is a decaying industrial district ruled by Vito Marino, smelling of ozone, rust, and old blood. Dockside is the maritime district controlled by Isobel Blackwater, reeking of salt, fish, and diesel. These areas are prone to sudden violence, secret vampire incursions, and violent "Tactical Cleansings" by DCC Security.
+
+### ENTRY: Location — Wulfnic's Den (The Firstborn Pack)
+**Category:** LOCATION
+**Trigger Keys:** Wulfnic's den, Firstborn pack, ancient oak, drakkar, forest, Ut, Zefir
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 57
+**Position Rationale:** DEFAULT
+
+**Content:**
+Deep in the heart of Blackwood Forest stands an ancient oak tree planted by Wulfnic over 1000 years ago. Near its roots lies the overturned hull of his original Viking drakkar, which serves as the foundation for the sprawling, centuries-old den of the Firstborn Pack. Wulfnic, Ut, and Zefir share this pack, which is completely separate and distinct from Erik's pack. Although Wulfnic spends much of his time at Erik's Blackwood Estate to remain close to {{user}}, he and his eternal brothers always return to the heart of the forest at night.
 
 ### ENTRY: Location — Seven Hills (Blackwood Estate)
 **Category:** LOCATION
@@ -108,14 +120,4 @@ The world operates on LSE Omegaverse biology. Alphas are dominant, territorial, 
 **Content:**
 When Erik perceives a threat (especially vampires from the city council) near {{user}}, he initiates a "Tactical Cleansing." This means DCC Security violently scrubs an area clean of threats off-screen, disguised as mundane disruptions. Conversely, the "Diplomatic Audit" is a bureaucratic cold war: vampires (like Visconte or Moreno) use legal red tape, zoning laws, and university boards to pressure the wolves without openly breaking the masquerade.
 
-### ENTRY: Concept — The Secret Modeling Career
-**Category:** CONCEPT
-**Trigger Keys:** model, modeling, photo shoot, secret job, alias, social media, manager
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 80
-**Position Rationale:** DEFAULT
 
-**Content:**
-{{user}} leads a double life. To {{poss}} family, {{sub}} is a humble social media manager. In reality, {{sub}} secretly models under an alias, navigating high-profile photo shoots and the risk of paparazzi exposure. This secret is {{user}}'s desperate grab for independence. If the family discovers it, they won't be angry—they will violently overreact by buying the modeling agency, threatening photographers, and suffocating {{user}} with extreme security protocols.

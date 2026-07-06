@@ -1,34 +1,35 @@
 # TIER 2 CHARACTER LOREBOOK: {{user}}
 
-### ENTRY: {{user}} — Physical Description
-**Trigger Keys:** {{user}}, {{user}}'s appearance, what {{user}} looks like, describe {{user}}
+### ENTRY: {{user}} — Core Structural Role
+**Trigger Keys:** {{user}}, {{user}}'s identity, who is {{user}}
 **Constant:** No
 **Injection Position:** 1
 **Order Priority:** 80
 **Position Rationale:** DEFAULT
 
 **Content:**
-{{sub}} looks young, possessing an expression capable of feigning absolute, angelic innocence on command. {{sub}} deliberately hides {{poss}} figure under modest, "good person" clothing when around the family to maintain the illusion of being a helpless child. {{sub}} adopts a casual, typical college-student posture but can instantly shift to look small and defenseless when convenient. {{sub}} possesses Kemonomimi wolf ears and a tail that often betray {{poss}} true emotions; however, {{sub}} must keep them strictly hidden when out in human society.
+{{sub}} is the youngest child of Nixara Bloodmoon and Erik Douglas, a Founding Bloodline member of the Svartulfr pack, and Jasper's twin. {{sub}} is the absolute center of the pack's obsessive, overbearing protective instincts. The family universally views {{obj}} as fragile and in need of constant surveillance.
+[LLM DIRECTIVE: {{user}} is a pure sandbox protagonist. The LLM MUST NOT hardcode or assume any physical traits, gender, secondary sex, or morphological shift state for {{user}} unless explicitly defined by the player in the chat. The LLM must strictly adapt to the player's self-descriptions.]
 
-### ENTRY: {{user}} — Psychological Core
-**Trigger Keys:** {{user}} thinks, {{user}} feels, {{user}} believes, {{user}}'s personality, who {{user}} is
+### ENTRY: {{user}} — Psychological Autonomy
+**Trigger Keys:** {{user}} thinks, {{user}} feels, {{user}} believes, {{user}}'s personality
 **Constant:** No
 **Injection Position:** 1
 **Order Priority:** 80
 **Position Rationale:** DEFAULT
 
 **Content:**
-Despite being viewed by {{poss}} family as an innocent child, {{sub}} is actually a highly manipulative and socially savvy mastermind. {{sub}} desperately wants autonomy and a normal life away from Erik's suffocating control. To achieve this, {{sub}} plays the role of the helpless sibling perfectly, indulging the family's hyper-protective delusions. {{sub}} uses {{poss}} keen empathy to surgically manipulate Erik's parental insecurities or rely on Malachia's mutism to get away with murder. {{poss}} deepest fear is that the family will discover {{poss}} true, wild college life and {{poss}} secret modeling career.
+[LLM DIRECTIVE: The LLM is strictly forbidden from describing {{user}}'s internal thoughts, emotional reactions, or private beliefs. {{user}}'s personality and motivations are 100% controlled by the player. Do not puppet {{user}}'s actions. The NPCs must react to what {{user}} actually types, not what the LLM assumes {{sub}} is feeling.]
 
-### ENTRY: {{user}} — Standing Goal
-**Trigger Keys:** {{user}}'s goal, what {{user}} wants, {{user}}'s plan
+### ENTRY: {{user}} — Standing Goal & Secrets
+**Trigger Keys:** {{user}}'s goal, what {{user}} wants, {{user}}'s plan, {{user}}'s secret
 **Constant:** No
 **Injection Position:** 1
 **Order Priority:** 80
 **Position Rationale:** DEFAULT
 
 **Content:**
-{{sub}} is determined to maintain {{poss}} secret high-profile modeling career and enjoy a wild college life at SUCC without triggering a catastrophic security lockdown from {{poss}} overbearing family. This involves constantly lying, forging alibis with Jasper's help, and maintaining the facade of being a humble secretary for Angel Moreno.
+[LLM DIRECTIVE: {{user}} may possess a secret double life, hidden career, or clandestine goals completely unknown to the Douglas pack. The LLM MUST NOT invent these secrets. It must dynamically adapt to whatever hidden layer or goals the player establishes in their Persona or chat messages. If the player reveals a secret, the NPCs must react with appropriate shock and immediate overprotective lockdown measures.]
 
 ### ENTRY: {{user}} — Relationship to the Bloodmoon Pack
 **Trigger Keys:** {{user}}'s family, {{user}}'s brothers, {{user}}'s pack
@@ -38,4 +39,4 @@ Despite being viewed by {{poss}} family as an innocent child, {{sub}} is actuall
 **Position Rationale:** DEFAULT
 
 **Content:**
-{{sub}} is the chaotic glue holding the terrifying Svartulfr pack together. While {{sub}} loves {{poss}} overbearing brothers, {{sub}} finds their intense, violent protectiveness completely suffocating. {{sub}} relies on Jasper as a partner-in-crime, uses Malachia as a silent shield, avoids Noah's hypocritical partying lectures, and constantly works to outsmart Erik and Kaladin's strict security protocols.
+Structurally, {{sub}} is the youngest sibling. Erik (father) exerts suffocating, emotionless pack control over {{obj}}. Malachia (eldest brother) acts as a silent enforcer. Noah (second brother) lectures {{obj}} hypocritically. Jasper (twin) is biologically tied to {{obj}} via the Twin Link. Wulfnic (grandfather) dotes on {{obj}}. The exact emotional dynamic (whether {{sub}} loves them, hates them, or manipulates them) is determined entirely by the player.
