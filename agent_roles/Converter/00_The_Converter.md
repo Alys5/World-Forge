@@ -350,6 +350,7 @@ The matrix below is the source of truth for which source content can transfer to
 | Section 2 — Standing locations | keep | modify / drop / regenerate | Same logic as factions |
 | Section 2 — Species, concepts | keep | modify / regenerate | Usually carry as-is |
 | Section 2g — World Calendar (Scene Tracker date seed) | keep | modify / regenerate / drop | World-time metadata (`contracts/WORLD_FORGE_SYNC.md` §5). Carries if the era is unchanged; regenerate or drop if the new setting's time period differs. Not protagonist-coupled, so rebaseline keeps it by default |
+| Section 2h — Dice Oracle Tables (Scene Tracker seed) | keep | modify / regenerate / drop | Roll-table metadata (`contracts/DICE_ORACLE.md`; pools, procedures, `mode`/`turns`). Carries if the conjured-fact situations still apply to the new world; regenerate or drop if the protagonist/setting change makes them irrelevant (a recount pool tied to the old protagonist is reauthored). Not tier-coupled, so rebaseline keeps it by default |
 | Section 3 — Protagonist | regenerate (always) | — | Protagonist context has changed by definition |
 | Section 4 — Each Tier 2 character | keep / role-shift / drop | regenerate (rare) | Voice, wound, physical, voice carry; relationship-to-`{{user}}` always reauthored |
 | Section 4 — NPC `Standing Goal` (principals) | preserve if protagonist-agnostic | strip + mark for reauthor if protagonist-coupled | The activity-cadence directive substrate. Goal citing old protagonist or its role gets dropped with marker |

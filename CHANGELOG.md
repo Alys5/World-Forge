@@ -13,6 +13,43 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-06 — Dice Oracle: producer caught up to schema 2 + Editor validation gate
+
+The dice oracle producer chain was still authoring **schema 1** payloads while
+`contracts/DICE_ORACLE.md` had moved to **v2 / schema 2** (procedure `mode` —
+recount vs. event tense — and `turns` injection duration, both additive). The
+Architect hard-coded `schema: 1` and knew nothing about `mode`/`turns`, so the
+pipeline could not author either v2 feature. Separately, the Architect deferred
+malformed-payload rejection to the Editor, but the Editor had no dice-carrier
+validation step (only the WARN-only compile-time backstop caught it). This
+closes both gaps and threads the seam through the revise/convert cascades.
+
+### Changed
+- **World Seed** template §2h — adds per-situation **tense** (recount default /
+  event) and **duration** (replies to keep facts armed) author fields.
+- **Interviewer** (Section 2 dice elicitation) — now draws out recount-vs-event
+  and duration per procedure, and records them into §2h.
+- **Refiner** — the `**Dice Oracle Tables (Scene Tracker seed):**` line carries
+  tense + duration; points the Architect at schema 2.
+- **Architect** §6 — emits `schema: 2` with optional payload-level `turns` and
+  per-procedure `mode`/`turns`; payload example updated.
+- **Compiler** Step 7.9 — carries `mode`/`turns` verbatim; guard + checklist
+  updated to schema 2.
+- **`tools/validate_export.py`** — `check_dice_tables` gains WARN checks for a
+  bad `mode` (not recount/event) and a bad `turns` (payload or procedure, not a
+  positive int); docstring/header note schema 2.
+
+### Added
+- **Editor** Step 4.8 — Dice Oracle Carrier Validation (hard-fail on disabled
+  carrier, unparseable payload, missing/wrong `schema`, no valid procedures,
+  malformed step, uncovered roll range, forward/dangling `when`, bad
+  `mode`/`turns`; soft-flags), plus a sign-off item. Mirrors the calendar Step
+  4.7 and is the pipeline's audit gate the Architect defers to.
+- **Cross-file consistency:** `CLAUDE.md` gains a Dice Oracle seam row; the
+  revise **mini-Compiler** preserves an existing `[[DICE_TABLES]]` carrier
+  through a World-lorebook rewrite (rule + sign-off items); the **Converter**
+  preservation matrix and **Convert Brief** template gain a §2h dice row.
+
 ## 2026-07-06 — Dice Oracle: producer emits `[[DICE_TABLES]]` for the Scene Tracker
 
 New optional seam, adopted canonically from the SillyTavern fork (where the

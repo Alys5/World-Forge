@@ -104,6 +104,10 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 [The Scene Tracker date seed (`contracts/WORLD_FORGE_SYNC.md` §5). Keep it if the era is unchanged; regenerate or drop if the new setting's time period differs. *Rebaseline:* keeps by default — it is not protagonist-coupled.]
 
+**Dice Oracle Tables (Section 2h) — optional:** [`keep` | `modify: <which pools / procedures change>` | `regenerate` | `drop` | `n/a — source has none`]
+
+[The Scene Tracker dice-oracle seed (`contracts/DICE_ORACLE.md`; pools, procedures, `mode`/`turns`). Keep it if the conjured-fact situations still apply to the new world; regenerate or drop if the protagonist/setting change makes them irrelevant (a recount pool tied to the old protagonist gets reauthored). *Rebaseline:* keeps by default — it is not tier-coupled.]
+
 ### 4e. Major characters (Section 4 — Tier 2)
 
 [For each named character / NPC in the source, declare disposition. The most consequential row in the Brief — the role reassignments live here.]
