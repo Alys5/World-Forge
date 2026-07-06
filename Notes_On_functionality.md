@@ -307,7 +307,7 @@ These are practical reference templates based on current code behavior.
       "Alternative opener 2"
     ],
     "tags": ["fantasy", "elf"],
-    "creator": "CardAuthor",
+    "creator": "Lys_5",
     "character_version": "1.0",
     "extensions": {
       "talkativeness": 0.5,
@@ -509,7 +509,7 @@ V3 is more flexible in validation here (validator currently checks spec/spec_ver
       "Alternative opener 2"
     ],
     "tags": ["fantasy", "elf"],
-    "creator": "CardAuthor",
+    "creator": "Lys_5",
     "character_version": "1.0",
     "extensions": {
       "talkativeness": 0.5,

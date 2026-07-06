@@ -1,6 +1,7 @@
 /* ============================================================================
    ADVANCED LORE BOOK SYSTEM v12
    Author: Lys_5
+   JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5
    //#region HEADER
    ==========================================================================
    Inputs (read-only):  context.chat.last_message (or lastMessage), context.chat.message_count

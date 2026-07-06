@@ -1,4 +1,7 @@
 <!--### CREATOR'S NOTES ###-->
+Creator: Lys_5
+JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5
+
 <!--DELETE all <!-> comments. -->
 <!--This template is extremely excessive. DELETE the parts you don't need or add new sections to the template.-->
 <!-- KEEP all the [] notes. -->

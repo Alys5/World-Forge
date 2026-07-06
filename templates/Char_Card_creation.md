@@ -88,7 +88,7 @@ Please fill out this exact SillyTavern V3 Character Card JSON structure:
     "scenario": "The current setting, context, and the starting premise of the roleplay. Arc 1 entry point only.",
     "first_mes": "The very first message the character sends to start the roleplay. Establish voice, atmosphere, and situation immediately. Written fully in character.",
     "mes_example": "<START>\n{{user}}: [Example user dialogue — default mode]\n{{char}}: [Character response showing default defensive/surface behavior]\n<START>\n{{user}}: [Example that triggers the shield]\n{{char}}: [Character response showing shield activating]\n<START>\n{{user}}: [Example that reaches the crack — what bypasses the shield]\n{{char}}: [Character response showing the unguarded moment]",
-    "creator_notes": "Any out-of-character notes, warnings, or tips for playing with this character.",
+    "creator_notes": "Any out-of-character notes, warnings, or tips for playing with this character. \\n\\nCreator Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5",
     "system_prompt": "{{original}}\n\nMANDATORY. Character-specific content only. Identity across full arc journey. Character-specific behavioral mandates with arc-range qualifiers. Character-specific hard prohibitions with arc-range qualifiers. Character-specific trigger-response pairs. Explicit statement that active CHARACTER_STATE lorebook entry is authoritative current register. NO engine instructions — those come from the preset via {{original}}.",
     "post_history_instructions": "{{original}}\n\nMANDATORY. Max 150 words after {{original}}. Imperative tone. 2–3 drift-prone CHARACTER-SPECIFIC rules. Arc-agnostic or defer to active CHARACTER_STATE entry. NO engine instructions.",
     "alternate_greetings": [
@@ -104,7 +104,7 @@ Please fill out this exact SillyTavern V3 Character Card JSON structure:
       "tag2",
       "tag3"
     ],
-    "creator": "Your Name/Alias",
+    "creator": "Lys_5",
     "character_version": "1.0",
     "extensions": {
       "depth_prompt": {
