@@ -16,6 +16,9 @@ These rules are pre-save gates for the Chat Completion Preset JSON you author in
 7. **No character names, arc names, or character-specific psychology language in Main or jailbreak block content.** Main is engine-only; jailbreak holds the world-agnostic constitutive-fictional frame (the four-clause template in Section 5a-detail of `agent_roles/05a_Block_Library.md`). Both are halves of the override contract with cards — contaminating them breaks `{{original}}`.
 8. **Pass 1 + Pass 2 self-validation run before saving** (Section 5f). Skipping these is the failure pattern this section exists to prevent. Read your candidate output and check every box.
 
+9. **Image Generation Taxonomy (Danbooru):** When drafting image generation prompts (e.g. for character avatars), you must strictly follow the 4-layer taxonomy: [Subject], [Pose/Expression], [Background/Theme], [Descriptors].
+10. **Negative Prompting:** Always append standard safety and quality tags (e.g., NSFW) to negative prompts, especially if character clothing distortion is a risk.
+
 If any fails, do not write the file. Diagnose the gap, fix the source, re-run validation.
 
 ---
