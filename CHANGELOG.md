@@ -13,6 +13,39 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-06 — Dice Oracle: producer emits `[[DICE_TABLES]]` for the Scene Tracker
+
+New optional seam, adopted canonically from the SillyTavern fork (where the
+consumer — a manual **Dice** tab in the `world-forge` Scene Tracker — was built
+first). Before the narrating model invents facts it has no basis for — a
+character recounting an off-screen past that lives in no lorebook, or a
+temporary, unnamed NPC conjured for one scene — the player rolls world-authored
+tables and the resolved facts inject as authoritative context. The dice fix
+*what* is true; the model narrates *how*.
+
+- **New contract** `contracts/DICE_ORACLE.md` (schema 1): the `[[DICE_TABLES]]`
+  carrier (same enabled-but-inert convention as `[[WORLD_CALENDAR]]`), the
+  roll-table payload (pools, procedures, `roll`/`pick` steps, conditional
+  `when` gates, optional `framing` lead-in), and graceful degradation.
+- **Authoring chain**, mirroring the World Calendar seam end to end:
+  - **World Seed** template §2h — optional author-facing declaration (what to
+    randomize, pools, outcome scales, lead-in).
+  - **Refiner** records a `**Dice Oracle Tables (Scene Tracker seed):**` line
+    in Master Design Section 1 when §2h is filled.
+  - **Architect** compiles it into a `### CARRIER: [[DICE_TABLES]]` block
+    (pools/procedures/gated steps; likelihoods → dice ranges).
+  - **Compiler** Step 7.9 transcribes the carrier into the World Lorebook JSON
+    verbatim (enabled, inert), with a pre-save guard + release-checklist items.
+- **`tools/validate_export.py`**: WARN-only `check_dice_tables` — at most one
+  carrier per lorebook; enabled so the Dice tab sees it; JSON object with an
+  integer schema; each procedure a slug id + ≥1 step; each step a pick xor
+  roll+outcomes; named pools resolve; `when` references only earlier steps.
+
+Optional and backward-compatible: a world that declares nothing emits no
+carrier, and the Scene Tracker's Dice tab falls back to a built-in demo set.
+
+---
+
 ## 2026-07-05 — Rebaseline consolidates seed-anchored: 1:1 source seed + applied revisions
 
 Rebaseline mode previously *distilled* the entire seed from the post-revision

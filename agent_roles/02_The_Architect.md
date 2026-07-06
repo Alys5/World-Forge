@@ -325,6 +325,36 @@ Build the payload from the Master Design values:
 
 > ⚠️ **The `disable: false` flag is load-bearing and the one place this carrier differs from the NPC Memory Manifest.** The Scene Tracker reads candidate entries from `getSortedEntries()` and rejects any with `disable: true`, so a disabled calendar carrier is silently skipped and the world seeds nothing. The entry stays inert anyway because `key: []` + `constant: false` means it never activates into the prompt. Months are **0-indexed** (January = 0). Emit the marker, the flag, and the month indexing exactly.
 
+### Dice Oracle Tables carrier (conditional — `contracts/DICE_ORACLE.md`)
+
+**Author this only if** Master Design Section 1 carries a `**Dice Oracle Tables (Scene Tracker seed):**` line (the Refiner records it from World Seed Section 2h). If there is none, skip this entirely — the oracle is optional and absent ⇒ no carrier (the Scene Tracker falls back to its built-in demo tables).
+
+When present, append one **carrier block** to the end of `Drafts/Tier1_World_Entries.md` (after the World Calendar carrier if one exists). Like the calendar, it is **not a narrative lorebook entry** — it is an inert data carrier the Compiler transcribes into the World Lorebook JSON. It carries no prose, no trigger keys, and **no Position Rationale**. Use this exact form so the Compiler can transcribe it verbatim:
+
+```
+### CARRIER: [[DICE_TABLES]] (Scene Tracker dice oracle — not a narrative entry)
+**Comment:** [[DICE_TABLES]] dice oracle
+**Flags:** disable: false (ENABLED), key: [], constant: false, position: 0
+**Payload (single JSON object, emitted verbatim into `content`):**
+{"schema":1,"framing":"…","pools":{…},"procedures":[…]}
+```
+
+Compile the payload from the Master Design tables (`contracts/DICE_ORACLE.md` §3 is the authority; the essentials):
+- `schema`: always `1`.
+- `framing` *(optional)*: the seed's lead-in sentence, verbatim. Omit if the seed left it blank — the Scene Tracker supplies a neutral default.
+- `pools`: `{"<pool_name>": ["value", …]}` — one entry per descriptive pick-list, values carried as short tokens verbatim from the seed. Drop any empty pool.
+- `procedures`: one object per situation the seed named, each with:
+  - `id` — a stable snake_case slug (e.g. `recall_fling`, `temp_npc`);
+  - `label` — a short human label for the Dice-tab picker;
+  - `framing` *(optional)* — a per-procedure lead-in that overrides the payload-level one;
+  - `steps` — an ordered array. **Each step is exactly one of** a *pick* or a *roll*:
+    - **pick** — `{"id":"build","label":"The man's build","pick":"<pool_name>"}` (or an inline `"pick":["a","b"]`). Picks a value uniformly at random.
+    - **roll** — `{"id":"valence","label":"How it turned out","roll":"1d20","outcomes":{"1-7":"bad","8-14":"mixed","15-20":"great"},"text":{"bad":"it ended badly","mixed":"a fond, funny mess","great":"it turned out great"}}`. `outcomes` maps inclusive `"a-b"` (or single `"n"`) ranges to short **outcome keys**; put the readable phrase in `text`. Cover the die's whole range.
+- **Conditional steps.** A variable that applies only sometimes ("severity only if hurt") is a step with `"when":{"<earlier_step_id>":"<key>"}` (value may be an array of accepted keys). `when` may reference only an **earlier** step in the same procedure — order dependencies first.
+- **Likelihoods → ranges.** Translate the seed's rough odds into dice ranges: "usually minor, sometimes moderate, rarely serious" on `1d10` → `{"1-6":"minor","7-9":"moderate","10":"serious"}`. Pick a die size that splits the proportions cleanly.
+
+> ⚠️ **`disable: false` is load-bearing** — exactly as for the calendar carrier: the Scene Tracker reads candidate entries with a `!disable` filter, so a disabled dice carrier is silently skipped and the world provides no tables. `key: []` + `constant: false` keep it inert. Keep pool values and outcome `text` as short tokens/phrases (the dice fix *what*; the model narrates *how*). The Editor should reject a malformed payload; `python tools/validate_export.py Export/` (Compiler Step 8) flags a `pick` with no pool, a forward `when`, or a step that is both pick and roll as `[WARN]`.
+
 ---
 
 ## 7. CHARACTER LOREBOOK ENTRIES — `Drafts/Tier2_[CharName]_Entries.md`
