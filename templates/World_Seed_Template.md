@@ -216,6 +216,8 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 #### CARD DATA
 
+  **Avatar Image Prompt (PixAI / Danbooru):** [OPTIONAL. If generating an avatar, use the 4-layer structure: [Subject e.g. 1girl/1guy], [Pose/Expression e.g. looking at viewer], [Background/Theme], [Descriptors e.g. detailed, masterpiece]]
+
 **Psychological Core:**
 - Surface want: [What do they openly want?]
 - Deep want: [What do they secretly want beneath that?]

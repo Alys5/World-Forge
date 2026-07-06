@@ -44,6 +44,7 @@
 
    Output formatting:
      - Engine prepends "\n\n" before each applied personality/scenario fragment.
+     - Token Cleanup: Injected personality/scenario fragments are scoped to the current turn only. They do not permanently mutate the base state, thereby preventing context overflow (token bloat).
    ========================================================================== */
 
 /* ============================================================================
@@ -244,14 +245,9 @@ const reEsc = (s) => {
 const hasTerm = (hay, term) => {
 	let t = (term == null ? '' : String(term)).toLowerCase().trim();
 	if (!t) return false;
-	if (t.charAt(t.length - 1) === '*') {
-		let stem = reEsc(t.slice(0, -1));
-		let re1 = new RegExp('(?:^|\\s)' + stem + '[a-z]*?(?=\\s|$)');
-		return re1.test(hay);
-	}
-	let w = reEsc(t);
-	let re2 = new RegExp('(?:^|\\s)' + w + '(?=\\s|$)');
-	return re2.test(hay);
+	// Usa  per un matching chirurgico ES6-compliant
+	let re = new RegExp('\b' + reEsc(t) + '\b', 'i');
+	return re.test(hay);
 };
 
 const collectWordGates = (e) => {
@@ -342,340 +338,23 @@ const entryPasses = (e, activeTagsSet) => {
 const dynamicLore = [
 	// 🟢🟢🟢 SAFE TO EDIT BELOW THIS LINE 🟢🟢🟢
 
-	/* L0 — Always-on demo
-     What it does: Fires every turn because there are no keywords, no time gates, and no tag.
-     Why use: Bootstrap a baseline voice or a harmless always-on nudge.
-  */
-	{ personality: ' This entry will always fire.' },
-
-	/* L1 — Basics: greeting keywords
-     New tools: simple keyword list.
-     Why use: Straightforward mapping from "hello/hi/hey" to a friendly behavior.
-  */
+	// L_APP: Aspetto fisico (Innescato solo su indagine visiva)
 	{
-		keywords: ['hello', 'hi', 'hey'],
-		personality:
-			' {{char}} is friendly and professional with customers and should say hello back.',
-	},
-
-	/* L2a — Time-of-day greetings, with exclusion and trigger emission
-     New tools: priority bump (4), requireNone exclusion, triggers emission.
-     What it does: If welcome/good morning/etc appears and it's NOT a refund/complaint, greet and emit base_greeting.
-     Why use: Fan-out pattern—one keyword entry activates a cleaner follow-up via a tag.
-  */
-	{
-		keywords: ['welcome', 'good morning', 'good afternoon', 'good evening'],
-		priority: 4,
-		triggers: ['base_greeting'],
-		requireNone: ['refund', 'complaint'],
-		personality:
-			' {{char}} should greet for the time of day and should ask how they can help.',
-	},
-
-	/* L2b — Baseline greeting (trigger-only)
-     New tools: tag entry, higher priority (5).
-     What it does: Fires only if 'base_greeting' tag is present.
-     Why use: Keep layered structure tidy—separate core greeting confirmation from raw keyword hit.
-  */
-	{
-		tag: 'base_greeting',
+		keywords: ['look', 'outfit', 'clothes', 'appearance', 'wearing', 'dress'],
 		priority: 5,
-		personality:
-			" {{char}} should confirm the customer's name if it was given and should restate the greeting clearly.",
+		scenario: ' [Appearance: <Architect inserts granular details here>]'
 	},
-
-	/* L2c — Courtesy echo: always-on gated by politeness signals
-     New tools: andAny (alias of requireAny), triggers emission.
-     What it does: If courtesy terms appear anywhere, mirror a polite tone and also emit base_greeting for cohesion.
-     Why use: Gentle tonal control that chains into your greeting stack without new keywords.
-  */
+	// L_INV: Oggetti e Armi (Innescato in azione)
 	{
-		andAny: ['please', 'thank', 'thanks'],
-		priority: 3,
-		triggers: ['base_greeting'],
-		personality:
-			' {{char}} acknowledges the courtesy and mirrors the polite tone.',
-	},
-
-	/* L3a — Espresso request with block and requires
-     New tools: block (exclusion), andAny, triggers fan-out, explicit scenario.
-     What it does: For "espresso" and any of ["dial","grind"], unless blocked by "decaf-only", emit 'base_espresso'
-                   and output concrete personality+scenario steps.
-     Why use: Demonstrates negative gating and skill instruction (dial-in details).
-  */
-	{
-		keywords: ['espresso'],
+		keywords: ['weapon', 'pocket', 'bag', 'draw', 'inventory', 'shoot'],
 		priority: 4,
-		block: ['decaf-only'],
-		triggers: ['base_espresso'],
-		andAny: ['dial', 'grind'],
-		personality:
-			' {{char}} should state the target shot time and the grind adjustment before pulling the shot.',
-		scenario:
-			' {{char}} times the shot to 25-30 seconds and states the exact grind change used.',
+		scenario: ' [Inventory: <Architect inserts hidden items or weapons>]'
 	},
-
-	/* L3b — Espresso baseline (trigger-only)
-     What it does: Ensures order clarifications are surfaced once 'base_espresso' is set.
-     Why use: Centralizes the common preflight questions for all espresso variants.
-  */
+	// L_LORE_RELATIONSHIP: Intimità fisica (Zero inferenze romantiche se non previste)
 	{
-		tag: 'base_espresso',
+		keywords: ['touch', 'kiss', 'closer', 'intimacy'],
 		priority: 5,
-		personality:
-			' {{char}} should confirm single or double, desired volume or ratio, and for-here or to-go before preparing the shot.',
-	},
-
-	/* L4a — Latte art with probability and nested requires
-     New tools: probability "40%", requires.any + requires.none, triggers.
-     What it does: If "latte art" or "art", and we have art/heart/design cues, and not in a rush,
-                   then sometimes (40%) propose art and emit base_latte_art.
-     Why use: Teaches controlled randomness and queue-aware behavior.
-  */
-	{
-		keywords: ['latte art', 'art'],
-		priority: 4,
-		probability: '40%',
-		triggers: ['base_latte_art'],
-		requires: { any: ['art', 'heart', 'design'], none: ['rush', 'busy'] },
-		personality:
-			' {{char}} should check the queue length and should offer a simple heart if the line is short; otherwise {{char}} should explain that speed takes priority.',
-	},
-
-	/* L4b — Base latte art (trigger-only)
-     What it does: Standardizes pre-art confirmations (cup size, milk).
-     Why use: Keeps your latte art flow consistent and centrally adjustable.
-  */
-	{
-		tag: 'base_latte_art',
-		priority: 5,
-		personality:
-			' {{char}} should confirm cup size and milk choice before attempting latte art.',
-	},
-
-	/* L5a — Opening routine with time gating + exclusion
-     New tools: minMessages/maxMessages, notAny.
-     What it does: Only in the first 3 messages (0..3), if opening cues appear and not at night,
-                   emit base_open and list initial tasks.
-     Why use: Scenario-appropriate pacing—front-load opening steps early in a chat session.
-  */
-	{
-		keywords: ['opening', 'open'],
-		minMessages: 0,
-		maxMessages: 3,
-		priority: 4,
-		triggers: ['base_open'],
-		notAny: ['night'],
-		personality:
-			' {{char}} should list the first three opening tasks they perform.',
-	},
-
-	/* L5b — Base opening (trigger-only)
-     What it does: A fixed ordered checklist for consistency during open.
-     Why use: Enforces a canonical order of steps separate from detection logic.
-  */
-	{
-		tag: 'base_open',
-		priority: 5,
-		personality:
-			' {{char}} should calibrate the grinder, flush the group heads, and restock cups in that order.',
-	},
-
-	/* L6a — Closing routine; requires(clean) and suffix wildcard
-     New tools: suffix wildcard "clos*", minMessages gate for later chat, andAll.
-     What it does: After at least 4 messages, if closing cues and "clean" are present, emit base_close and summarize.
-     Why use: Late-session operational wrap-up with explicit cleanliness requirement.
-  */
-	{
-		keywords: ['closing', 'clos*'],
-		minMessages: 4,
-		priority: 4,
-		triggers: ['base_close'],
-		andAll: ['clean'],
-		personality:
-			' {{char}} should summarize how they clean and how they log at the end of the day.',
-	},
-
-	/* L6b — Base closing (trigger-only)
-     What it does: Standard close checklist.
-     Why use: Codifies the close routine that other entries can build on.
-  */
-	{
-		tag: 'base_close',
-		priority: 5,
-		personality:
-			' {{char}} should purge the steam wands, clean the drip trays, and record wastage before locking up.',
-	},
-
-	/* L7a — Inventory with multiple triggers and nested requires
-     New tools: multiple triggers in one entry; requires.any + requires.none bundle.
-     What it does: When stock/inventory discussed, emit both 'base_inventory' and 'order_supplies';
-                   summarize levels and whether reorder is needed.
-     Why use: Forks into two coordinated flows: assessing stock then placing orders.
-  */
-	{
-		keywords: ['inventory', 'stock'],
-		priority: 4,
-		triggers: ['base_inventory', 'order_supplies'],
-		requires: { any: ['stock', 'inventory'], none: ['audit-only'] },
-		personality:
-			' {{char}} should state current bean and milk levels and should say whether a reorder is needed.',
-	},
-
-	/* L7b — Base inventory (trigger-only)
-     What it does: Prompts a check and heuristic planning for tomorrow.
-     Why use: Keeps the inventory conversation concrete (logs, estimates, flags).
-  */
-	{
-		tag: 'base_inventory',
-		priority: 5,
-		personality:
-			" {{char}} should check the log, estimate tomorrow's usage, and flag low items.",
-	},
-
-	/* L7c — Order supplies (trigger-only)
-     What it does: Converts assessment into explicit quantities and an action (PO).
-     Why use: Ensures conversations end with a clear operational decision.
-  */
-	{
-		tag: 'order_supplies',
-		priority: 4,
-		personality:
-			' {{char}} should specify exact quantities for beans and milk and should submit the purchase order.',
-	},
-
-	/* L8a — Milk steaming with Shifts (branching refinements)
-     New tools: Shifts array (child entries), per-shift probability, per-shift gates including nameBlock, block, and andAny.
-     What it does: A base milk steaming behavior emits 'base_milk' and sets default technique outputs,
-                   while Shifts refine based on drink type and constraints.
-     Why use: Structured specialization—shared base plus targeted adjustments without duplicating the base rule.
-  */
-	{
-		keywords: ['milk', 'steam'],
-		priority: 4,
-		triggers: ['base_milk'],
-		personality:
-			' {{char}} should state the target texture based on the requested drink and should monitor milk temperature.',
-		scenario:
-			' {{char}} sets the pitcher angle, finds a whirlpool, and stops at the correct temperature.',
-		Shifts: [
-			/* Shift 1 — Cappuccino (always if matched)
-         New tools: shift with its own keywords and probability.
-         Why use: Guarantees classic cappuccino foam profile when requested.
-      */
-			{
-				keywords: ['cappuccino'],
-				probability: 1.0,
-				personality:
-					' {{char}} should create a drier foam suitable for a classic cappuccino.',
-				scenario: ' {{char}} keeps the foam airy and maintains a stable cap.',
-			},
-			/* Shift 2 — Latte (subsampled, avoids rush/busy)
-         New tools: probability 0.7, notAny exclusion inside a shift.
-         Why use: Offers microfoam and art if pace allows; defers when busy.
-      */
-			{
-				keywords: ['latte'],
-				probability: 0.7,
-				notAny: ['rush', 'busy'],
-				personality:
-					' {{char}} should create smooth microfoam suitable for a latte.',
-				scenario:
-					' {{char}} aims for a glossy texture that allows simple latte art.',
-			},
-			/* Shift 3 — Non-dairy handling with block and nameBlock
-         New tools: block ("sold out"), nameBlock (e.g., prevent cameo self-mentions from altering flow),
-                    andAny to catch non-dairy signals.
-         Why use: Precise constraints on alternative milks and a safe temperature tweak.
-      */
-			{
-				keywords: ['oat', 'almond'],
-				block: ['sold out'],
-				nameBlock: ['jamie'],
-				andAny: ['oat', 'almond', 'non-dairy'],
-				personality:
-					' {{char}} should reduce the final temperature slightly to prevent splitting for non-dairy milk.',
-				scenario:
-					' {{char}} keeps the pitcher a few degrees cooler to avoid separation.',
-			},
-		],
-	},
-
-	/* L8b — Base milk (trigger-only)
-     What it does: Establishes the milk choice confirmation and adjusts approach accordingly.
-     Why use: Keeps milk handling consistent before any specific shift overrides.
-  */
-	{
-		tag: 'base_milk',
-		priority: 5,
-		personality:
-			' {{char}} should confirm dairy or non-dairy milk and should adjust the steaming approach accordingly.',
-	},
-
-	/* L9a — Operations cameo with nameBlock and exclusion
-     New tools: nameBlock prevents self-referential loops if the character is "jamie".
-     What it does: If user mentions "jamie" or "manager" (but character named 'jamie' is blocked from acting on it),
-                   and not off-duty, emit base_ops and assign roles.
-     Why use: Avoids awkward self-cameo; still supports talking about someone else named Jamie.
-  */
-	{
-		keywords: ['jamie', 'manager'],
-		nameBlock: ['jamie'],
-		priority: 4,
-		triggers: ['base_ops'],
-		notAny: ['off-duty'],
-		personality:
-			' {{char}} should assign roles during peak hours and should confirm the plan.',
-	},
-
-	/* L9b — Base ops (trigger-only)
-     What it does: Defines the stations and the handoff checkpoints.
-     Why use: Operational clarity during busy periods.
-  */
-	{
-		tag: 'base_ops',
-		priority: 5,
-		personality:
-			' {{char}} should assign register, bar, and runner positions and should confirm handoff points.',
-	},
-
-	/* L10a — Inspection flow with multi-triggers and requires(all)
-     New tools: multiple triggers and andAll; chains into a health sub-flow.
-     What it does: For inspection/health with labels present, emit base_inspection and health_check.
-     Why use: Parallel checklists: sanitation and cold-chain checks in one pass.
-  */
-	{
-		keywords: ['inspection', 'health'],
-		priority: 4,
-		triggers: ['base_inspection', 'health_check'],
-		andAll: ['labels'],
-		personality:
-			' {{char}} should confirm sanitizer strength and should verify that all milk jugs have current labels.',
-	},
-
-	/* L10b — Base inspection (trigger-only)
-     What it does: Details the sanitizer and labeling checks.
-     Why use: Keeps inspectors’ expectations visible and precise.
-  */
-	{
-		tag: 'base_inspection',
-		priority: 5,
-		personality:
-			' {{char}} should verify sanitizer ppm, check date labels, and should note any required corrections.',
-	},
-
-	/* L10c — Health check (trigger-only) with its own requires bundle
-     New tools: requires.none + requires.any in one object.
-     What it does: If not told to skip, and temperature/fridge/thermometer is in scope,
-                   record fridge temps and list corrective actions.
-     Why use: Encodes a simple HACCP-style gate without cluttering the parent entry.
-  */
-	{
-		tag: 'health_check',
-		priority: 4,
-		requires: { none: ['skip'], any: ['temperature', 'fridge', 'thermometer'] },
-		personality:
-			' {{char}} should record fridge temperatures and should list any corrective actions completed.',
+		personality: ' [Behavior: <Architect defines strict physical/intimacy boundaries here>]'
 	},
 
 	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑

@@ -69,38 +69,20 @@ A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has 
 
 ## [APPEARANCE]
 
-### APPEARANCE DETAILS
+### PHYSICAL APPEARANCE
 
-- Full Name, Alias:
-- Race:
-- Sex/Gender:
-- Height:
-- Age:
-- Hair:
-- Eyes:
-- Body:
-- Face:
-- Features:
-- Privates:
+<!-- Describe the character's physical appearance in a concise narrative paragraph. Avoid bullet points. Focus only on traits that are immediately visible and relevant to the scenario. -->
+<!-- e.g. [CharName] is a tall, athletic human male with short black hair and piercing orange eyes. He bears a distinctive scar across his cheek. -->
 
-- Appearance Trait: <!--e.g. "Womb Tattoo (inmon)"-->
-  ↳ Details: <!--e.g. [CharName_1] was a sex slave before [...]-->
-  ↳ Effect: <!--e.g. During [...] [CharName_1] has unresistabe sexual cravings. This will result in [...]-->
-- Appearance Trait:
-  ↳ Details:
-  ↳ Effect:
+<!-- 
+IMPORTANT DIRECTIVE FOR THE ARCHITECT:
+DELEGATE, DON'T DELETE: Any hyper-granular appearance details (exact measurements, hidden tattoos, detailed accessory descriptions) MUST NOT be placed here. Move them into the separate JS Lorebook/Script payload so they can be injected only when the user looks closely or asks about outfits.
+-->
 
 ### STARTING OUTFIT
 
-- Head:
-- Accessories:
-- Makeup:
-- Neck:
-- Top:
-- Bottom:
-- Legs:
-- Shoes:
-- Underwear:
+<!-- Describe what the character is wearing at the start of the scenario in a brief narrative paragraph. -->
+<!-- e.g. Wearing a simple, dark traveling cloak over a worn leather tunic and sturdy boots. -->
 
 <Q&A>
 Q: How does [CharName_1] rate their own attractiveness?
@@ -114,6 +96,7 @@ A:
 ### ORIGIN (BACKSTORY)
 
 <!--Describe a brief backstory for your character-->
+<!-- TRIVIA MIGRATION DIRECTIVE: Do NOT include long biographical history that does not dictate immediate turn-by-turn behavior. Move extended historical trivia into the Lorebook payload so it can be injected only when relevant. -->
 
 ### RESIDENCE
 
@@ -127,21 +110,12 @@ A:
 
 <!--Is your character hiding something?-->
 
-### INVENTORY
-
-- Item: <!--e.g. "Club +24"-->
-  ↳ Details: <!--e.g. Club that was given [CharName_1] by her mother. Bonks {{user}} when angry.-->
-
-- Item:
-  ↳ Details:
-
-### ABILITIES
-
-- Ability: <!--e.g. Void magic (beginner)-->
-  ↳ Details: <!--e.g. Opens portals when sneezes-->
-
-- Ability:
-  ↳ Details:
+<!-- 
+IMPORTANT DIRECTIVE FOR THE ARCHITECT:
+TRIVIA MIGRATION DIRECTIVE: Do NOT list [INVENTORY] or [ABILITIES] in this profile. 
+Complex equipment, weapons, and magic spells are token sinks. 
+Migrate these into the JS Lorebook/Script payload so they can be injected only when the user triggers an action (via L_INV or L_ABIL).
+-->
 
 ---
 
@@ -149,6 +123,7 @@ A:
 
 ### PERSONALITY
 
+<!-- ACTIVE PHRASING DIRECTIVE: Always use active phrasing (e.g., "Speaks softly", "Quick to anger") rather than passive hedges (e.g., "Might sometimes act shy", "Can be aggressive"). Describe how they *act*, not just what they *are*. -->
 - Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
   ↳ Archetype Details: <!--Explain the chosen archetype and [CharName_1]'s Baseline Behavior-->
   ↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
@@ -277,14 +252,12 @@ A:
 <!--Try to provide examples within a certain context, like a reaction to {{user}}'s return home, an implied question from {{user}}, or an implied memory/decision/thought.-->
 
 <speech_examples>
-
-- <!--e.g. "Sempai! You came!" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. "I mean, um…"-->
-- <!--e.g. "Ow, man..."-->
-- <!--e.g. "I bet you've got lots of big tiddy girls running after you, Mr Hero. I wish I was this popular too... *sighs*"-->
-- <!--e.g. "Eww, no! I only service fem-... cute girls in this church! N-not guys!"-->
-- ""
-- ""
-  </speech_examples>
+<!-- ARCHITECT DIRECTIVE: Structure speech examples by Emotional State. Do NOT use random strings. -->
+- [Praise/Affection]: "..."
+- [Conflict/Anger]: "..."
+- [Repair/Vulnerability]: "..."
+- [Default/Neutral]: "..."
+</speech_examples>
 
 ---
 
@@ -323,38 +296,20 @@ A:
 
 ## [APPEARANCE]
 
-### APPEARANCE DETAILS
+### PHYSICAL APPEARANCE
 
-- Full Name, Alias:
-- Race:
-- Sex/Gender:
-- Height:
-- Age:
-- Hair:
-- Eyes:
-- Body:
-- Face:
-- Features:
-- Privates:
+<!-- Describe the character's physical appearance in a concise narrative paragraph. Avoid bullet points. Focus only on traits that are immediately visible and relevant to the scenario. -->
+<!-- e.g. [CharName] is a tall, athletic human male with short black hair and piercing orange eyes. He bears a distinctive scar across his cheek. -->
 
-- Appearance Trait: <!--e.g. "Womb Tattoo (inmon)"-->
-  ↳ Details: <!--e.g. [CharName_2] was a sex slave before [...]-->
-  ↳ Effect: <!--e.g. During [...] [CharName_2] has unresistabe sexual cravings. This will result in [...]-->
-- Appearance Trait:
-  ↳ Details:
-  ↳ Effect:
+<!-- 
+IMPORTANT DIRECTIVE FOR THE ARCHITECT:
+DELEGATE, DON'T DELETE: Any hyper-granular appearance details (exact measurements, hidden tattoos, detailed accessory descriptions) MUST NOT be placed here. Move them into the separate JS Lorebook/Script payload so they can be injected only when the user looks closely or asks about outfits.
+-->
 
 ### STARTING OUTFIT
 
-- Head:
-- Accessories:
-- Makeup:
-- Neck:
-- Top:
-- Bottom:
-- Legs:
-- Shoes:
-- Underwear:
+<!-- Describe what the character is wearing at the start of the scenario in a brief narrative paragraph. -->
+<!-- e.g. Wearing a simple, dark traveling cloak over a worn leather tunic and sturdy boots. -->
 
 <Q&A>
 Q: How does [CharName_2] rate their own attractiveness?
@@ -368,6 +323,7 @@ A:
 ### ORIGIN (BACKSTORY)
 
 <!--Describe a brief backstory for your character-->
+<!-- TRIVIA MIGRATION DIRECTIVE: Do NOT include long biographical history that does not dictate immediate turn-by-turn behavior. Move extended historical trivia into the Lorebook payload so it can be injected only when relevant. -->
 
 ### RESIDENCE
 
@@ -381,21 +337,12 @@ A:
 
 <!--Is your character hiding something?-->
 
-### INVENTORY
-
-- Item: <!--e.g. "Club +24"-->
-  ↳ Details: <!--e.g. Club that was given [CharName_2] by her mother. Bonks {{user}} when angry.-->
-
-- Item:
-  ↳ Details:
-
-### ABILITIES
-
-- Ability: <!--e.g. Void magic (beginner)-->
-  ↳ Details: <!--e.g. Opens portals when sneezes-->
-
-- Ability:
-  ↳ Details:
+<!-- 
+IMPORTANT DIRECTIVE FOR THE ARCHITECT:
+TRIVIA MIGRATION DIRECTIVE: Do NOT list [INVENTORY] or [ABILITIES] in this profile. 
+Complex equipment, weapons, and magic spells are token sinks. 
+Migrate these into the JS Lorebook/Script payload so they can be injected only when the user triggers an action (via L_INV or L_ABIL).
+-->
 
 ---
 
@@ -403,6 +350,7 @@ A:
 
 ### PERSONALITY
 
+<!-- ACTIVE PHRASING DIRECTIVE: Always use active phrasing (e.g., "Speaks softly", "Quick to anger") rather than passive hedges (e.g., "Might sometimes act shy", "Can be aggressive"). Describe how they *act*, not just what they *are*. -->
 - Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
   ↳ Archetype Details: <!--Explain the chosen archetype and [CharName_2]'s Baseline Behavior-->
   ↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
@@ -478,14 +426,12 @@ Move complex sexual preferences and conditions to the JS script.
 <!--Try to provide examples within a certain context, like a reaction to {{user}}'s return home, an implied question from {{user}}, or an implied memory/decision/thought.-->
 
 <speech_examples>
-
-- <!--e.g. "Sempai! You came!" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. "I mean, um…"-->
-- <!--e.g. "Ow, man..."-->
-- <!--e.g. "I bet you've got lots of big tiddy girls running after you, Mr Hero. I wish I was this popular too... *sighs*"-->
-- <!--e.g. "Eww, no! I only service fem-... cute girls in this church! N-not guys!"-->
-- ""
-- ""
-  </speech_examples>
+<!-- ARCHITECT DIRECTIVE: Structure speech examples by Emotional State. Do NOT use random strings. -->
+- [Praise/Affection]: "..."
+- [Conflict/Anger]: "..."
+- [Repair/Vulnerability]: "..."
+- [Default/Neutral]: "..."
+</speech_examples>
 
 ---
 
