@@ -1,6 +1,6 @@
 # Dice Oracle Contract — `[[DICE_TABLES]]`
 
-**Status:** Draft · **Version:** 2 · **Last updated:** 2026-07-06
+**Status:** Established · **Version:** 2 · **Last updated:** 2026-07-06
 
 > **Shared contract — canonical source of truth:**
 > [`AndreiNicu/World-Forge`](https://github.com/AndreiNicu/World-Forge) → `contracts/DICE_ORACLE.md`.

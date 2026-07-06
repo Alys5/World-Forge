@@ -25,6 +25,8 @@ validation step (only the WARN-only compile-time backstop caught it). This
 closes both gaps and threads the seam through the revise/convert cascades.
 
 ### Changed
+- **`contracts/DICE_ORACLE.md`** status flipped **Draft → Established** — the v2
+  seam is settled end to end (producer + consumer).
 - **World Seed** template §2h — adds per-situation **tense** (recount default /
   event) and **duration** (replies to keep facts armed) author fields.
 - **Interviewer** (Section 2 dice elicitation) — now draws out recount-vs-event
