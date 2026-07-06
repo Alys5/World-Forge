@@ -1,5 +1,13 @@
 # CLAUDE.md
 
+## JanitorAI Integration & Separation of Concerns
+
+This fork by **Lys_5** (JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5) introduces a highly specialized architecture to bypass JanitorAI's context limitations:
+1. **The Compiler (JSON Surface):** Extracts only the core identity, physical appearance, and personality, outputting a lightweight JSON profile (~1,500 tokens).
+2. **The Converter (ES6 Backend):** Translates deep logic (L_LORE_SECRET, L_LORE_RELATIONSHIP, Trigger Matrix) into an executable, minified JavaScript payload.
+3. **Red-Team Auditors:** The Voice, Intimacy, and Arc Auditors proactively stress-test the draft against extreme inputs, relational boundaries, and logic transitions before export.
+
+
 > Standing context for AI coding agents (Claude Code, Antigravity, similar) working on this repository. This file is read first on every session start. It tells you what this project is, what the load-bearing architectural decisions are, and what rules govern safe modification of the pipeline files.
 
 ---

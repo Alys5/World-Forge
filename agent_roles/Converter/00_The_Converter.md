@@ -20,6 +20,10 @@
 9. **Strict AnyPOV Mandate:** All generated Character Cards, Group Profiles, Lorebooks, and Bot Definitions MUST remain strictly AnyPOV. The LLM is strictly forbidden from hardcoding a specific user name, specific gender pronouns, or highly specific player-character backstories into the core bot logic. It must exclusively use macros like `{{user}}`, `{{poss}}`, `{{sub}}`, `{{obj}}`, `{{poss_p}}`, and `{{ref}}`.
 10. **Global QA Persona Isolation:** The persona "Alyssa" (and her specific narrative premise, such as the secret modeling career) is the Global QA Test Persona. Her specific identifying details MUST be confined 100% to the `User.md` template. The bot and lorebook files must only refer to her structural role generically (e.g., "the youngest sibling", "protecting `{{user}}`'s double life").
 
+11. **JS Payload Extraction:** As the ES6 Engineer, your primary input targets are the deep logic sections (L_LORE_SECRET, L_LORE_RELATIONSHIP, Pipe-State Ledgers, Trigger Matrix) that the Compiler intentionally omitted from the JSON.
+12. **ES6 Translation:** Translate textual state transitions and relational dynamics into executable, token-efficient JavaScript (ES6). Use conditional arrays, Regex, and robust if/else logic structures to enforce relational boundaries and state shifts.
+13. **Token Minification:** All generated JavaScript code must be minified and stripped of unnecessary comments or verbosity to preserve the live context budget.
+
 ---
 
 ## 📂 CONTEXT MANIFEST — load exactly this

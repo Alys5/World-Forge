@@ -1,5 +1,13 @@
 # AGENTS.md — standing instructions for agentic tools
 
+## JanitorAI Integration & Separation of Concerns
+
+This fork by **Lys_5** (JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5) introduces a highly specialized architecture to bypass JanitorAI's context limitations:
+1. **The Compiler (JSON Surface):** Extracts only the core identity, physical appearance, and personality, outputting a lightweight JSON profile (~1,500 tokens).
+2. **The Converter (ES6 Backend):** Translates deep logic (L_LORE_SECRET, L_LORE_RELATIONSHIP, Trigger Matrix) into an executable, minified JavaScript payload.
+3. **Red-Team Auditors:** The Voice, Intimacy, and Arc Auditors proactively stress-test the draft against extreme inputs, relational boundaries, and logic transitions before export.
+
+
 > Read this first. It applies to Antigravity, Cline, and any other agentic IDE
 > tool opening this workspace. It is deliberately short — it routes you to the right
 > document for your session type instead of duplicating them.

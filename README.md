@@ -2,7 +2,7 @@
 
 _A multi-agent pipeline for building immersive roleplay worlds for [SillyTavern](https://github.com/SillyTavern/SillyTavern) and [JanitorAI](https://janitorai.com/)._
 
-> **Fork Notice**: This repository is a fork of the original [AndreiNicu/World-Forge](https://github.com/AndreiNicu/World-Forge) pipeline. Maintained by [Lys_5](https://github.com/Lys-5) at [Lys-5/World-Forge](https://github.com/Lys-5/World-Forge), this fork has been heavily adapted to natively support **JanitorAI** formats and to run entirely on the **Antigravity** agentic extension.
+> **Fork Notice**: This repository is a fork of the original [AndreiNicu/World-Forge](https://github.com/AndreiNicu/World-Forge) pipeline. Maintained by [Lys_5](https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5) at [Lys-5/World-Forge](https://github.com/Lys-5/World-Forge), this fork has been heavily adapted to natively support **JanitorAI** formats and to run entirely on the **Antigravity** agentic extension.
 
 World-Forge takes you from a raw idea to a complete, runtime-ready world package: character cards, a tiered lorebook system, a chat completion preset, and audit reports — all aligned with how SillyTavern and JanitorAI actually assemble prompts and profiles at runtime. The pipeline is a sequence of specialized agents, each with a defined role, that walks you through five-plus phases of structured drafting, validation, and export.
 
@@ -56,6 +56,14 @@ A complete SillyTavern-ready package per world (and fully compatible JanitorAI f
 - **One JanitorAI Lorebook Script** (JS) — a dynamic, modular ES6 script that maps situational Tier 1/2 lore and Tier 3 event progression directly into `context.character.personality` and `context.character.scenario` based on keyword and message-count triggers, including `try...catch` guards and token bloat prevention logic.
 - **Initial Messages / Alternate Greetings** (MD) — un serbatoio centralizzato che gestisce le scene d'apertura (singole o di gruppo), esportate dinamicamente verso ST e Janitor.
 - **One audit report** — runtime risks identified by the Prompt Engineer, with recommended corrections for the user to apply manually.
+
+
+## JanitorAI Integration & Separation of Concerns
+
+This fork introduces a highly specialized architecture to bypass JanitorAI's context limitations:
+1. **The Compiler (JSON Surface):** Extracts only the core identity, physical appearance, and personality, outputting a lightweight JSON profile (~1,500 tokens).
+2. **The Converter (ES6 Backend):** Translates deep logic (L_LORE_SECRET, L_LORE_RELATIONSHIP, Trigger Matrix) into an executable, minified JavaScript payload.
+3. **Red-Team Auditors:** The Voice, Intimacy, and Arc Auditors proactively stress-test the draft against extreme inputs, relational boundaries, and logic transitions before export.
 
 ## Core architectural ideas
 

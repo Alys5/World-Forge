@@ -1,5 +1,13 @@
 # World Forge Pipeline: A Step-by-Step Tutorial
 
+## JanitorAI Integration & Separation of Concerns
+
+This fork by **Lys_5** (JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5) introduces a highly specialized architecture to bypass JanitorAI's context limitations:
+1. **The Compiler (JSON Surface):** Extracts only the core identity, physical appearance, and personality, outputting a lightweight JSON profile (~1,500 tokens).
+2. **The Converter (ES6 Backend):** Translates deep logic (L_LORE_SECRET, L_LORE_RELATIONSHIP, Trigger Matrix) into an executable, minified JavaScript payload.
+3. **Red-Team Auditors:** The Voice, Intimacy, and Arc Auditors proactively stress-test the draft against extreme inputs, relational boundaries, and logic transitions before export.
+
+
 This tutorial walks through the World Forge pipeline using the **Lucifer** project as a worked example. You can follow along by reading the actual artifacts in `Samples/Drafts/` and `Samples/Export/` as they are referenced — every claim in this tutorial maps to a real file you can open.
 
 The Lucifer world was authored by skipping Phase 0 (the user wrote `World_Seed_Lucifer.md` directly). The remaining phases ran in full, including iterative Editor and auditor loops. By the time you finish reading this tutorial, you will know how to read any pipeline output, how to interpret each agent's role, and where to look when something is wrong.
