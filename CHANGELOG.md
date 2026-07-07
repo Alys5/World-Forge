@@ -13,6 +13,30 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-07 — Brainstormer: dice-oracle awareness (leaning-only, all postures)
+
+The Brainstormer had zero awareness of the dice oracle, so it never proposed it
+even when a premise was exactly what it's for (a character who overshares random
+off-screen pasts, a conjured temp cast, recurring random events). Adds light,
+boundary-respecting awareness: the Brainstormer *names* the dice oracle as a
+leaning when the premise fits — the same way it floats Arc-vs-sandbox and the
+intimate register — and never authors tables (bright line #11 intact; the
+Interviewer elicits, the Architect authors).
+
+### Changed
+- **`agent_roles/Brainstormer/00_The_Brainstormer.md`** — Section 4 gains a
+  "Randomized off-screen facts? (surface, don't author)" divergence axis; the
+  Section 6 notes template gains a dice-oracle Leaning line; the
+  revision-diagnostic posture (Section 9 step 2) gains a diagnostic hook (model
+  keeps inventing off-screen facts wrong/repetitively → wants a dice oracle it
+  lacks, or its `[[DICE_TABLES]]` is serializing/over-rolling — both in-scope
+  `tier1_world_rule_*` revise concerns); the adaptation posture (Section 10 step
+  4) floats it when the source shows an oversharer / conjured temp cast.
+- **`agent_roles/Brainstormer/lenses/Cast_and_Voice_Lens.md`** — a leaning-only
+  note tying an oversharing / temp-cast character to the dice oracle.
+- **`CLAUDE.md`** — the dice-oracle seam row lists the Brainstormer as an
+  upstream leaning-only touchpoint.
+
 ## 2026-07-07 — Dice Oracle: complexity roadmap in contract §7 (tiered)
 
 Captures where "more complex dice / RPG mechanics" should go, so producer and
