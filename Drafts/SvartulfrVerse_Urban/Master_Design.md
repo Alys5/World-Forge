@@ -1,7 +1,7 @@
 ---
 world_mode: sandbox
 intimacy_in_scope: true
-current_phase: 2
+current_phase: 3
 status: IN_PROGRESS
 ---
 
@@ -9,8 +9,8 @@ status: IN_PROGRESS
 | ----------------- | -------- | ------------------------- |
 | 0. Discovery      | COMPLETE | Interviewer               |
 | 1. Refiner        | COMPLETE | Refiner                   |
-| 2. Architect      | PENDING  | Architect                 |
-| 2.5 Intimacy      | PENDING  | IntimacyArchitect         |
+| 2. Architect      | COMPLETE | Architect                 |
+| 2.5 Intimacy      | COMPLETE | IntimacyArchitect         |
 | 3. Editor         | PENDING  | Editor                    |
 | Round             | 0        | Orchestrator              |
 | 3.5 Voice         | PENDING  | VoiceAuditor              |
@@ -195,6 +195,7 @@ _Distinctiveness Gate:_ Verified. No two roster NPCs share a voice fingerprint.
 - **Dwells/Elides:** Dwells on family chaos, overreactions, and college parties. Elides actual brutal violence.
 - **Live Scene Types:** Sneaking to Sidewinders Bar, avoiding drones, chaotic family dinners, studying at SUCC.
 - **Aliveness Contract:** The family is always hovering just out of frame, ready to burst in. NPCs pursue their own agendas (Erik patrols, Kaladin vets suitors, Jasper hacks).
+- **Ensemble Rule:** This is a multi-character sandbox. The AI acts as a World Director handling multiple characters simultaneously. Rigid adherence to formatting is required to distinguish speakers (Punctuation > Proper Nouns > Formatting). The AI must actively balance the presence of all active characters and avoid homogenizing their voices.
 - **Prohibitions:** No lethal threats. No grimdark elements.
 
 ### 9B.3 World Pulse
@@ -217,17 +218,22 @@ Erik's drones constantly patrol the perimeter; Kaladin runs exhausted background
 
 **Lorebooks:**
 
-1. `SvartulfrVerse_EN_World_Lorebook.json` (Tier 1)
-2. `SvartulfrVerse_EN_{{user}}_Lorebook.json` (Tier 2 - Protagonist)
-3. `SvartulfrVerse_EN_Jasper_Lorebook.json` (Tier 2)
-4. `SvartulfrVerse_EN_Erik_Lorebook.json` (Tier 2)
-5. `SvartulfrVerse_EN_Malachia_Lorebook.json` (Tier 2)
-6. `SvartulfrVerse_EN_Noah_Lorebook.json` (Tier 2)
-7. `SvartulfrVerse_EN_NPC_Roster_Lorebook.json` (Tier 2)
-8. `SvartulfrVerse_EN_Sandbox_Lorebook.json` (Tier 3)
-9. `SvartulfrVerse_EN_Kaladin_Intimacy_Profile.json` (Tier 2)
-10. `SvartulfrVerse_EN_Sandbox_Intimacy_Register.json` (Tier 3)
-11. `SvartulfrVerse_EN_Legacy_Expansion_Lorebook.json` (Tier 1/2 Background - Quarantine)
+1. `SvartulfrVerse_World_Lorebook.json` (Tier 1)
+2. `SvartulfrVerse_{{user}}_Lorebook.json` (Tier 2 - Protagonist)
+3. `SvartulfrVerse_Jasper_Lorebook.json` (Tier 2)
+4. `SvartulfrVerse_Erik_Lorebook.json` (Tier 2)
+5. `SvartulfrVerse_Malachia_Lorebook.json` (Tier 2)
+6. `SvartulfrVerse_Noah_Lorebook.json` (Tier 2)
+7. `SvartulfrVerse_NPC_Roster_Lorebook.json` (Tier 2)
+8. `SvartulfrVerse_Sandbox_Lorebook.json` (Tier 3)
+9. `SvartulfrVerse_Kaladin_Intimacy_Profile.json` (Tier 2)
+10. `SvartulfrVerse_Malachia_Intimacy_Profile.json` (Tier 2)
+11. `SvartulfrVerse_Erik_Intimacy_Profile.json` (Tier 2)
+12. `SvartulfrVerse_Jasper_Intimacy_Profile.json` (Tier 2)
+13. `SvartulfrVerse_Noah_Intimacy_Profile.json` (Tier 2)
+14. `SvartulfrVerse_NPC_Intimacy_Roster.json` (Tier 2)
+15. `SvartulfrVerse_Sandbox_Intimacy_Register.json` (Tier 3)
+16. `SvartulfrVerse_Legacy_Expansion_Lorebook.json` (Tier 1/2 Background - Quarantine)
 
 **Depth Prompt Requirement:**
 
@@ -244,7 +250,7 @@ Erik's drones constantly patrol the perimeter; Kaladin runs exhausted background
 - `dialogue_marker`: double_quotes
 - `emphasis_marker`: double_asterisks
 - `paragraph_register`: standard
-- `style_notes`: Strictly AnyPOV, AnyGender, AnyLSE. First-person present tense MUST be used when explicitly writing for {{user}}. Native language dialogue as `"phrase" ([your_language] translation)`. `In-Universe Text` / non-verbal dialogue in backticks. **_Narrator/Events_** in triple asterisks. Shouting or intense emotion: Use ALL CAPS sparingly. Orthography and Typography Rules: Always capitalize the first letter of proper nouns; never replace A with α (Greek alpha), O with 0 (zero), or I with !; use correct punctuation. Markdown Compliance: do not apply unintended symbols or formatting. Conflict Priority: Punctuation > Proper Nouns > Formatting.
+- `style_notes`: All prose must be written in the language specified by the `<LANGUAGE=[your_language]>` tag. If no tag is detected, default to English. Strictly AnyPOV, AnyGender, AnyLSE. First-person present tense MUST be used when explicitly writing for {{user}}. Native language dialogue as `"phrase" ([your_language] translation)`. `In-Universe Text` / non-verbal dialogue in backticks. **_Narrator/Events_** in triple asterisks. Shouting or intense emotion: Use ALL CAPS sparingly. Orthography and Typography Rules: Always capitalize the first letter of proper nouns; never replace A with α (Greek alpha), O with 0 (zero), or I with !; use correct punctuation. Markdown Compliance: do not apply unintended symbols or formatting. Conflict Priority: Punctuation > Proper Nouns > Formatting.
 - `defaults_applied`: false
 
 **11b. Per-Card Overrides**

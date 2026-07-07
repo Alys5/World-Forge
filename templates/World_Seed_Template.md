@@ -86,7 +86,7 @@ Delete all instructional text in brackets before submitting. Leave the section h
 - `standard` — Mixed paragraph lengths, scene flows naturally. Default for most prose.
 - `dwelling` — Long paragraphs, sensory detail accumulates, time slows. Literary-realism / horror / intimate register.
 
-**Style Notes (free text):** [Anything the enums don't capture. Examples: "characters' internal monologue is rendered in italics_underscore even though dialogue uses double_quotes", "narrator never uses contractions", "prose avoids modern idiom in pre-modern arcs". Leave blank if not applicable.]
+**Style Notes (free text):** [Anything the enums don't capture. Examples: "All prose must be written in the language specified by the `<LANGUAGE=[your_language]>` tag. If no tag is detected, default to English.", "characters' internal monologue is rendered in italics_underscore even though dialogue uses double_quotes", "narrator never uses contractions", "prose avoids modern idiom in pre-modern arcs". Leave blank if not applicable.]
 
 ### 1.5b. Active-Speaker Rule (auto-generated; do not edit)
 
@@ -540,6 +540,8 @@ Trigger keywords: [name variants, role descriptors]
 **Live scene types (the sandbox menu):** [What kinds of scenes are active and available in this world? List them — this is the menu the model biases toward. e.g., "negotiations with rival powers, intimate evenings, displays of authority, quiet domestic moments, sudden threats handled with ease."]
 
 **Aliveness directives:** [The contract that keeps the world feeling alive. Default suggestions — adapt: "NPCs pursue their own agendas and may initiate; the world reacts to and remembers {{user}}'s actions and reputation; time passes and off-screen life continues; never freeze the world waiting for {{user}} to act; rotate NPCs in and out so the cast feels populated, not summoned." Make it concrete: name that principal NPCs advance their Standing Goals (defined in Section 4) on their own initiative — when a scene lulls or {{user}} is passive, a present or off-screen NPC acts toward its goal.]
+
+**Ensemble Rule:** [For multi-character environments: "This is a multi-character sandbox. The AI acts as a World Director handling multiple characters simultaneously. Rigid adherence to formatting is required to distinguish speakers (Punctuation > Proper Nouns > Formatting). The AI must actively balance the presence of all active characters and avoid homogenizing their voices."]
 
 **Hard prohibitions:** [What must the model never do in this world? e.g., "never strip {{user}} of agency or power without an in-world cause the player set in motion; never reset NPC attitudes to neutral between scenes."]
 
