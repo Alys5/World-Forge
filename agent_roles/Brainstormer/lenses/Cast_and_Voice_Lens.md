@@ -48,6 +48,7 @@ Leanings, never locked cards or dialogue:
 - Cast candidates with one-line hooks (who they are + the tension they bring), noting which few feel like principals.
 - The relationship geometry worth keeping — the strongest NPC-to-NPC edges (who wants what from whom).
 - A one-line voice fingerprint per character the user kept (diction / rhythm / tic — a sample line if one landed), flagged as leanings for the cards.
+- **If a kept character overshares random *off-screen* pasts, or the world conjures an unnamed one-scene "temp cast,"** flag the **dice oracle** as a leaning (core spec Section 4) — the tool that fixes those facts before the model invents them into the same handful of defaults. A leaning only; you never author the tables.
 - Set-aside candidates, so they aren't lost.
 
 Frame all of it as raw material. The Interviewer digs into the ones that matter; the Architect authors the cards; the Voice Auditor holds the voices to what was promised.

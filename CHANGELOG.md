@@ -13,6 +13,63 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-07 — Brainstormer: dice-oracle awareness (leaning-only, all postures)
+
+The Brainstormer had zero awareness of the dice oracle, so it never proposed it
+even when a premise was exactly what it's for (a character who overshares random
+off-screen pasts, a conjured temp cast, recurring random events). Adds light,
+boundary-respecting awareness: the Brainstormer *names* the dice oracle as a
+leaning when the premise fits — the same way it floats Arc-vs-sandbox and the
+intimate register — and never authors tables (bright line #11 intact; the
+Interviewer elicits, the Architect authors).
+
+### Changed
+- **`agent_roles/Brainstormer/00_The_Brainstormer.md`** — Section 4 gains a
+  "Randomized off-screen facts? (surface, don't author)" divergence axis; the
+  Section 6 notes template gains a dice-oracle Leaning line; the
+  revision-diagnostic posture (Section 9 step 2) gains a diagnostic hook (model
+  keeps inventing off-screen facts wrong/repetitively → wants a dice oracle it
+  lacks, or its `[[DICE_TABLES]]` is serializing/over-rolling — both in-scope
+  `tier1_world_rule_*` revise concerns); the adaptation posture (Section 10 step
+  4) floats it when the source shows an oversharer / conjured temp cast.
+- **`agent_roles/Brainstormer/lenses/Cast_and_Voice_Lens.md`** — a leaning-only
+  note tying an oversharing / temp-cast character to the dice oracle.
+- **`CLAUDE.md`** — the dice-oracle seam row lists the Brainstormer as an
+  upstream leaning-only touchpoint.
+
+## 2026-07-07 — Dice Oracle: complexity roadmap in contract §7 (tiered)
+
+Captures where "more complex dice / RPG mechanics" should go, so producer and
+consumer evolve toward the same place without accreting a half-RPG engine onto
+the ephemeral oracle. No behavior or schema change — documentation only.
+
+### Changed
+- **`contracts/DICE_ORACLE.md`** §7 rewritten into three tiers: **7.1 richer
+  randomness** (weighted pools, pick-N, advantage/keep-drop/exploding grammar,
+  derived modifiers — additive, stays in the oracle), **7.2 resolution
+  mechanics** (skill-check-vs-DC / success counting — fits until it needs a stat
+  modifier or persistence), **7.3 stateful RPG** (sheets/HP/consequences — a
+  separate subsystem via server-authoritative rolls + a state channel, never
+  bolted onto the ephemeral oracle). `Last updated` bumped; version unchanged.
+  **Cross-repo: needs contract sync to the ST fork.**
+
+## 2026-07-07 — Dice Oracle: `dice_oracle` block handles established-character references
+
+Supports a consumer-side feature (ST fork `world-forge` extension): pinning an
+**existing cast member** into a dice roll as a participant, so a rolled scene is
+part-authored (the named NPC) and part-rolled (the situation). The pipeline's
+only obligation is one interpretation clause; the roll/UI is consumer-side and
+needs no schema or contract change (the NPC is referenced by name at roll time,
+resolved from the `[[NPC_MANIFEST]]`, and stays ephemeral like every dice fact).
+
+### Changed
+- **`agent_roles/05a_Block_Library.md`** — the `dice_oracle` block's §5a-detail
+  content requirements gain an **Established-character references** clause: when
+  a `<dice_oracle>` result names an existing cast member, portray them from their
+  own lorebook/card (voice, body, psychology, intimacy profile), never from the
+  rolled facts — the dice fix the *situation*, the character is authored, not
+  rolled; the involvement is ephemeral recount/event fiction, not a canon update.
+
 ## 2026-07-07 — Dice Oracle: `dice_oracle` preset block (runtime interpretation)
 
 The pipeline fixes the *authoring* of dice tables, but nothing told the model
