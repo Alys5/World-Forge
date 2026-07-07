@@ -49,7 +49,7 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 ## 1.5. STYLE CONTRACT **[REQUIRED]**
 
-*This section declares the world's prose conventions — perspective, tense, formatting markers, paragraph register. The Refiner classifies it as engine-level metadata; the Prompt Engineer parameterizes the world's Main Prompt block from these values; the Architect emits per-card style overrides where applicable. If you don't care about prose style and want pipeline defaults, write `DEFAULTS` for each field and the Refiner will fill in the legacy convention (third-person limited present, asterisks-for-thoughts-only, double-quote dialogue, first-person present for {{user}}, no em-dashes).*
+*This section declares the world's prose conventions — perspective, tense, formatting markers, paragraph register. The Refiner classifies it as engine-level metadata; the Prompt Engineer parameterizes the world's Main Prompt block from these values; the Architect emits per-card style overrides where applicable. If you don't care about prose style and want pipeline defaults, write `DEFAULTS` for each field and the Refiner will fill in the legacy convention (third-person omniscient present, asterisks-for-thoughts-only, double-quote dialogue, first-person present for {{user}}, no em-dashes).*
 
 *The values you choose here apply to **every card in this world** unless a specific card declares an override (Section 4 — Card Style Override). Most worlds will set the contract once and never override; worlds with a Director/Narrator card alongside companion cards typically override perspective on the Director card only.*
 
@@ -58,8 +58,8 @@ Delete all instructional text in brackets before submitting. Leave the section h
 **Perspective:** [Pick one]
 - `first` — {{char}} narrates as "I". Strong intimacy, single-POV.
 - `second` — {{char}} addresses {{user}} as "you" inside the prose itself. Rare; gamebook register.
-- `third_limited` — {{char}} narrated as "she/he/they" but only {{char}}'s interior is visible. Default for most worlds.
-- `third_omniscient` — Narrator sees across all characters' interiors. Suits Director/Narrator-driven worlds.
+- `third_limited` — {{char}} narrated as "she/he/they" but only {{char}}'s interior is visible. Legacy default.
+- `third_omniscient` — Narrator sees across all characters' interiors. Suits Director/Narrator-driven worlds and group chats. Default for most worlds.
 
 **Tense:** [Pick one]
 - `past` — "She walked across the harbor."

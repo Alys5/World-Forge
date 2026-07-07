@@ -38,9 +38,11 @@ The persona description's _only_ job is to give the LLM the minimum reference co
 
 ## 3. STRUCTURE OF `Drafts/User.md`
 
-The file has two parts: the **Persona Description block** (what the user pastes into ST) and the **Setup Instructions** (how the user wires it up). Only the Persona Description block is injected into the LLM prompt; the Setup Instructions are for the human reader and never reach the model.
+The file has three parts: the **Persona Description block** (the strict <=150 word block that the user pastes into ST), the **Extended Details & Lore** (the exhaustive legacy profile used for reference or to populate the Tier 2 lorebook, organized via the "Bell Method"), and the **Setup Instructions** (how the user wires it up). 
 
-```
+Only the Persona Description block is injected into the LLM prompt.
+
+```markdown
 # {{user}} PERSONA — [In-World Name]
 
 ## PERSONA DESCRIPTION
@@ -50,20 +52,34 @@ This text is injected as a system message every turn while this persona is activ
 
 --- BEGIN PERSONA DESCRIPTION ---
 
-<{{user}}>
+[Identity & Role]
+[Physical Signature]
+[Powers / Hidden Layer]
 
-# [{{user}}]
-
-## CHARACTER OVERVIEW
-
-<!--Describe the overall idea for your scenario here-->
+--- END PERSONA DESCRIPTION ---
 
 ---
 
-## [APPEARANCE]
+## EXTENDED DETAILS & LORE (Preserved for Reference & Tier 2 Lorebook)
 
-### APPEARANCE DETAILS
+<{{user}}>
 
+### [BASIC_INFO]
+
+#### ORIGIN (BACKSTORY)
+<!--Describe a brief backstory for your character-->
+
+#### RESIDENCE
+<!--If location is important to the story. You can describe the city, house, rooms, etc.-->
+
+### SYNONYMS
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+- <!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: "Walking pudding", "Jelly girl", etc-->
+-
+
+### [APPEARANCE]
+
+#### APPEARANCE DETAILS
 - Full Name, Alias:
 - Race:
 - Sex/Gender:
@@ -83,8 +99,7 @@ This text is injected as a system message every turn while this persona is activ
   ↳ Details:
   ↳ Effect:
 
-### STARTING OUTFIT
-
+#### STARTING OUTFIT
 - Head:
 - Accessories:
 - Makeup:
@@ -100,48 +115,13 @@ Q: How does {{user}} rate their own attractiveness?
 A:
 </Q&A>
 
----
+### [CONNECTIONS]
 
-## [BASIC_INFO]
+- <!--Relatives, servants, factions, etc.-->
 
-### ORIGIN (BACKSTORY)
+### [PERSONALITY_AND_TRAITS]
 
-<!--Describe a brief backstory for your character-->
-
-### RESIDENCE
-
-<!--If location is important to the story. You can describe the city, house, rooms, etc.-->
-
-### CONNECTIONS
-
-<!--Relatives, servants, etc, if necessary-->
-
-### SECRET
-
-<!--Is your character hiding something?-->
-
-### INVENTORY
-
-- Item: <!--e.g. "Club +24"-->
-  ↳ Details: <!--e.g. Club that was given {{user}} by her mother. Bonks {{char}} when angry.-->
-
-- Item:
-  ↳ Details:
-
-### ABILITIES
-
-- Ability: <!--e.g. Void magic (beginner)-->
-  ↳ Details: <!--e.g. Opens portals when sneezes-->
-
-- Ability:
-  ↳ Details:
-
----
-
-## [PERSONALITY_AND_TRAITS]
-
-### PERSONALITY
-
+#### PERSONALITY
 - Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
   ↳ Archetype Details: <!--Explain the chosen archetype and {{user}}'s Baseline Behavior-->
   ↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
@@ -160,8 +140,8 @@ A:
 - Unique Trait: <!--Typically used if the character has curses or special states. e.g. "Succubi Feeding Frenzy Trance"-->
   ↳ Effects: <!--e.g. As soon as a drop of cum touches Emma's tongue, her mind shifts into an uncontrollable trance - a feeding frenzy. Her eyes light up with heart-shaped pupils. She doesn't control how [...]-->
 
-- Unique Trait:
-  ↳ Effects:
+#### SECRET
+<!--Is your character hiding something?-->
 
 <Q&A>
 Q: What does {{user}} do first? Think or act/talk?
@@ -198,21 +178,30 @@ Q: How {{user}} behaves with someone of a higher hierarchy or power? Will they b
 A:
 </Q&A>
 
----
-
-## [BEHAVIOR_NOTES]
-
+### [BEHAVIOR_NOTES]
 -
 -
--
-- ***
 
-## [SEXUALITY]
+### [SPEECH]
+
+#### GENERAL SPEECH INFO
+- Style: <!--e.g. {{user}} speaks like a lady from the Victorian era.-->
+- Quirks: <!--e.g.  Speaks in rhymes like rapper-->
+- Ticks: <!--e.g. Ends sentences with "Nya~".-->
+
+#### Speech EXAMPLES AND OPINIONS
+[IMPORTANT NOTE FOR AI: This section provides {{user}}'s speech examples, memories, thoughts, and {{user}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+
+<speech_examples>
+- <!--e.g. "Sempai! You came!" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. "I mean, um…"-->
+- <!--e.g. "Ow, man..."-->
+</speech_examples>
+
+### [SEXUALITY]
 
 [IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{user}} sticks to their sexual role and orientation during the story.]
 
-### GENERAL SEXUAL INFO
-
+#### GENERAL SEXUAL INFO
 - Sexual Orientation:
   ↳ Explanation:
 - Role during sex: <!--Submissive, Power Bottom, Bottom, Top, etc.-->
@@ -247,62 +236,32 @@ Q: Can {{user}} flirt BEFORE {{char}} decides to flirt?
 A:
 </Q&A>
 
----
+### [OTHER_SEXUAL_NOTES]
+- Turn Ons:
+- Turn Offs:
+- Aftercare:
 
-## [OTHER_SEXUAL_NOTES]
+#### Anatomy
+- 
 
--
--
-- ***
+#### LSE BIOLOGY & HEAT CYCLE
+- 
 
-## [SPEECH]
+### [ABILITIES_AND_INVENTORY]
 
-### GENERAL SPEECH INFO
+#### ABILITIES
+- Ability: <!--e.g. Void magic (beginner)-->
+  ↳ Details: <!--e.g. Opens portals when sneezes-->
 
-- Style: <!--e.g. {{user}} speaks like a lady from the Victorian era.-->
-- Quirks: <!--e.g.  Speaks in rhymes like rapper-->
-- Ticks: <!--e.g. Ends sentences with "Nya~".-->
-
-## Speech EXAMPLES AND OPINIONS
-
-[IMPORTANT NOTE FOR AI: This section provides {{user}}'s speech examples, memories, thoughts, and {{user}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
-
-<!--Try to provide examples within a certain context, like a reaction to {{char}}'s return home, an implied question from {{char}}, or an implied memory/decision/thought.-->
-
-<speech_examples>
-
-- <!--e.g. "Sempai! You came!" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. "I mean, um…"-->
-- <!--e.g. "Ow, man..."-->
-- <!--e.g. "I bet you've got lots of big tiddy girls running after you, Mr Hero. I wish I was this popular too... *sighs*"-->
-- <!--e.g. "Eww, no! I only service fem-... cute girls in this church! N-not guys!"-->
-- ""
-- ""
-  </speech_examples>
-
----
-
-## SYNONYMS
-
-[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-
-- <!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: "Walking pudding", "Jelly girl", etc-->
--
-- ***
+#### INVENTORY
+- Item: <!--e.g. "Club +24"-->
+  ↳ Details: <!--e.g. Club that was given {{user}} by her mother. Bonks {{char}} when angry.-->
 
 ## PREMADE STORY PLAN
-
 - Milestone 1: <!--Use this section only if you have a specific storyline in mind. e.g. Arrival and first meeting-->
   ↳ Details:<!--e.g. {{char}} and {{user}} have some time before classes the Entrance Ceremony. AI can introduce other characters, make story hooks, or let {{char}} freely explore Souta Academy until {{char}} decides to go to the Entrance Ceremony.-->
 
-- Milestone 2: <!--e.g. Entrance Ceremony-->
-  ↳ Details: <!--Mr. Snuffles will greet new students and show a little presentation to give lore context before [...]-->
-
-- Milestone 3:
-  ↳ Details:
-
 </{{user}}>
-
---- END PERSONA DESCRIPTION ---
 
 ---
 
@@ -316,7 +275,7 @@ A:
 
 ---
 
-## 4. WHAT TO PUT IN EACH SECTION OF THE PERSONA DESCRIPTION BLOCK
+## 4. WHAT TO PUT IN THE PERSONA DESCRIPTION BLOCK (The Injected 150-Word Block)
 
 ### Identity & Role (1–3 sentences, mandatory)
 
@@ -370,7 +329,8 @@ If the Architect cannot fit the protagonist into 150 words, the content is wrong
 5. Verify the assembled block is third-person reference, not directive ("Andrei is …", not "You are …" or "Always …").
 6. Verify the block contains no voice/personality/manner/style content.
 7. Count words. If >150, cut.
-8. Write the Setup Instructions section verbatim from § 3 above, substituting the in-world name and lorebook filename.
+8. Place the full extended character profile inside the `## EXTENDED DETAILS & LORE` block below the main ST injection block for reference. Make sure the extended details do not redundantly duplicate the text inside the 150-word block (e.g. remove identical Character Overview sections). Ensure the extended profile follows the Bell Curve categorization method (Broad info -> Physical -> Social -> Core Psychology -> Outward Behaviors/Speech -> Sexuality -> Fridge/Abilities/Inventory).
+9. Write the Setup Instructions section verbatim from § 3 above, substituting the in-world name and lorebook filename.
 
 ---
 

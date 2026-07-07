@@ -1,8 +1,9 @@
 # SHARED REFERENCE: STYLE CONTRACT
 
-*Canonical reference for the per-card `extensions.world_forge.style_override` metadata schema, the world Style Contract's directive prose templates, and the runtime model.*
+_Canonical reference for the per-card `extensions.world_forge.style_override` metadata schema, the world Style Contract's directive prose templates, and the runtime model._
 
 This file is the single source of truth for the Style Contract content that multiple agents would otherwise duplicate. The Refiner, Architect, Editor, Compiler, and Prompt Engineer all reference this file when they need to:
+
 - Look up an enum's allowed values
 - Look up the canonical directive prose for a given enum value (or pair)
 - Confirm the metadata schema shape
@@ -70,16 +71,16 @@ The Architect (when generating per-card `directives`) and the Prompt Engineer (w
 
 ### 3a. `NARRATIVE PERSPECTIVE` line — perspective × tense (eight rows)
 
-| Effective perspective | Effective tense | Resolved directive content |
-|---|---|---|
-| `first` | `past` | `Narrate in first-person past tense from {{char}}'s POV. {{char}} narrates their own experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.` |
-| `first` | `present` | `Narrate in first-person present tense from {{char}}'s POV. {{char}} narrates their own immediate experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.` |
-| `second` | `past` | `Narrate in second-person past tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.` |
-| `second` | `present` | `Narrate in second-person present tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.` |
-| `third_limited` | `past` | `Narrate in third-person limited past tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior — their thoughts, sensations, and immediate reactions — but not other characters' interiors. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.` |
-| `third_limited` | `present` | `Narrate in third-person limited present tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior but not other characters'. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.` |
-| `third_omniscient` | `past` | `Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
-| `third_omniscient` | `present` | `Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
+| Effective perspective | Effective tense | Resolved directive content                                                                                                                                                                                                                                                                                                                                                                                                           |
+| --------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `first`               | `past`          | `Narrate in first-person present tense from {{char}}'s POV. {{char}} narrates their own experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.`                                                                                                                                                                                                                                                 |
+| `first`               | `present`       | `Narrate in first-person present tense from {{char}}'s POV. {{char}} narrates their own immediate experience as "I". {{user}} is addressed as "you" only inside dialogue, never in narration.`                                                                                                                                                                                                                                       |
+| `second`              | `past`          | `Narrate in second-person present tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.`                                                                                                                                                                                                                                                                                              |
+| `second`              | `present`       | `Narrate in second-person present tense, addressing {{user}} as "you" inside the prose itself. {{char}} is referenced in third person.`                                                                                                                                                                                                                                                                                              |
+| `third_limited`       | `past`          | `Narrate in third-person limited present tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior — their thoughts, sensations, and immediate reactions — but not other characters' interiors. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.`                                                                                                                                   |
+| `third_limited`       | `present`       | `Narrate in third-person limited present tense, focal on {{char}} this turn. The narrator sees {{char}}'s interior but not other characters'. {{user}} is referenced by name or pronoun, never addressed as "you" in narration.`                                                                                                                                                                                                     |
+| `third_omniscient`    | `past`          | `Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
+| `third_omniscient`    | `present`       | `Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as "you" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state.` |
 
 ### 3b. `FORMATTING MARKERS` line — composed from three sub-clauses
 
@@ -93,28 +94,28 @@ When the line is emitted (per the metadata schema rule in §1), it is atomic —
 
 **Narration marker sub-clause** (effective `narration_marker`):
 
-| Value | Sub-clause |
-|---|---|
-| `asterisks_for_narration` | `*Asterisks* delimit narration, action, and interior glimpses` |
+| Value                         | Sub-clause                                                                                                                    |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `asterisks_for_narration`     | `*Asterisks* delimit narration, action, and interior glimpses`                                                                |
 | `asterisks_for_thoughts_only` | `*Asterisks* delimit only {{char}}'s internal thoughts and unspoken interior monologue; narration and action are plain prose` |
-| `plain_prose` | `No asterisks anywhere — narration, action, and thought are all plain prose` |
+| `plain_prose`                 | `No asterisks anywhere — narration, action, and thought are all plain prose`                                                  |
 
 **Dialogue marker sub-clause** (effective `dialogue_marker`):
 
-| Value | Sub-clause |
-|---|---|
-| `double_quotes` | `"Double quotes" delimit spoken dialogue` |
-| `single_quotes` | `'Single quotes' delimit spoken dialogue` |
-| `em_dash` | `An em-dash (—) precedes spoken dialogue with no closing marker` |
-| `unmarked` | `Spoken dialogue runs into the prose without delimiters` |
+| Value           | Sub-clause                                                       |
+| --------------- | ---------------------------------------------------------------- |
+| `double_quotes` | `"Double quotes" delimit spoken dialogue`                        |
+| `single_quotes` | `'Single quotes' delimit spoken dialogue`                        |
+| `em_dash`       | `An em-dash (—) precedes spoken dialogue with no closing marker` |
+| `unmarked`      | `Spoken dialogue runs into the prose without delimiters`         |
 
 **Emphasis marker sub-clause** (effective `emphasis_marker`):
 
-| Value | Sub-clause |
-|---|---|
-| `double_asterisks` | `**Double asterisks** delimit emphasis` |
-| `italics_underscore` | `_Italics-underscore_ delimits emphasis` |
-| `none` | `No emphasis marker — the prose carries its own weight` |
+| Value                | Sub-clause                                              |
+| -------------------- | ------------------------------------------------------- |
+| `double_asterisks`   | `**Double asterisks** delimit emphasis`                 |
+| `italics_underscore` | `_Italics-underscore_ delimits emphasis`                |
+| `none`               | `No emphasis marker — the prose carries its own weight` |
 
 ### 3c. `ACTIVE-SPEAKER RULE` line — world `<style_contract>` only
 
@@ -128,15 +129,15 @@ Verbatim text:
 
 ## 4. WHEN EACH AXIS CAN BE OVERRIDDEN
 
-| Axis | World Style Contract (Section 1.5a) | Per-card override |
-|---|---|---|
-| `perspective` | Required, one of four enum values | Yes — `perspective_override` |
-| `tense` | Required, one of two enum values | Yes — `tense_override` |
-| `narration_marker` | Required, one of three enum values | Yes — `narration_marker_override` |
-| `dialogue_marker` | Required, one of four enum values | Yes — `dialogue_marker_override` |
-| `emphasis_marker` | Required, one of three enum values | Yes — `emphasis_marker_override` |
-| `paragraph_register` | Required, one of three enum values | **No** — world-coherent only |
-| `style_notes` | Optional free text | No |
+| Axis                 | World Style Contract (Section 1.5a) | Per-card override                 |
+| -------------------- | ----------------------------------- | --------------------------------- |
+| `perspective`        | Required, one of four enum values   | Yes — `perspective_override`      |
+| `tense`              | Required, one of two enum values    | Yes — `tense_override`            |
+| `narration_marker`   | Required, one of three enum values  | Yes — `narration_marker_override` |
+| `dialogue_marker`    | Required, one of four enum values   | Yes — `dialogue_marker_override`  |
+| `emphasis_marker`    | Required, one of three enum values  | Yes — `emphasis_marker_override`  |
+| `paragraph_register` | Required, one of three enum values  | **No** — world-coherent only      |
+| `style_notes`        | Optional free text                  | No                                |
 
 `paragraph_register` and `style_notes` live outside the `<style_contract>` block in the Main Prompt content and are not part of the override schema.
 
@@ -163,4 +164,4 @@ Hard rules across all agents:
 - **Do NOT include engine-level perspective or formatting language in card text fields**, regardless of whether the card has an override declared. Engine instructions live in the preset Main Prompt; card text is character-specific only. The Editor's contamination scan has no exemption for cards with overrides.
 - **Do NOT emit overrides for cards that aren't listed in Master Design Section 11b.** The Refiner is the authority. If the Architect believes an override is warranted that the Refiner missed, escalate by adding a note to the LLM Instructions draft; do not freelance.
 - **Do NOT hardcode prose in the runtime extension.** The pipeline owns all directive prose; the extension splices what's in the `directives` array. New prose templates go in §3 of this file, not in extension code.
-- **Do NOT lose the world default for non-overridden axes.** The Architect's NARRATIVE PERSPECTIVE line uses both perspective AND tense in its directive content — using the effective value for each axis (override if set, world default if null). The FORMATTING MARKERS line uses all three marker axes' effective values. Field-level inheritance happens at the *directive-line* level (entire line in `directives` overrides the corresponding contract line; missing line means inherit from contract), not at the sub-clause level.
+- **Do NOT lose the world default for non-overridden axes.** The Architect's NARRATIVE PERSPECTIVE line uses both perspective AND tense in its directive content — using the effective value for each axis (override if set, world default if null). The FORMATTING MARKERS line uses all three marker axes' effective values. Field-level inheritance happens at the _directive-line_ level (entire line in `directives` overrides the corresponding contract line; missing line means inherit from contract), not at the sub-clause level.

@@ -14,7 +14,7 @@ NPC_Tiers:
 
 [FORMATTING & STANDARDS]
 Language: STRICTLY ITALIAN. You MUST write all responses, narrations, descriptions, and dialogues in Italian.
-Style: Third-person limited (focused on active NPCs/{{char}}) + omniscient world narration. Past tense.
+Style: Third-person limited (focused on active NPCs/{{char}}) + omniscient world narration. Present tense.
 Dialogue: "Straight quotation marks only."
 Thoughts: _Asterisks only._ (Never mix with speech).
 In-Universe_Text: `Backticks` for screens, messages, letters.

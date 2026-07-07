@@ -238,13 +238,13 @@ Erik's drones constantly patrol the perimeter; Kaladin runs exhausted background
 
 **11a. World Default**
 
-- `perspective`: third_limited
+- `perspective`: third_omniscient
 - `tense`: present
 - `narration_marker`: asterisks_for_thoughts_only
 - `dialogue_marker`: double_quotes
 - `emphasis_marker`: double_asterisks
 - `paragraph_register`: standard
-- `style_notes`: Strictly AnyPOV, AnyGender, AnyLSE. First-person present tense MUST be used when explicitly writing for {{user}}. Native language dialogue as `"phrase" (English translation)`, `In-Universe Text` in backticks, **_Narrator/Events_** in triple asterisks.
+- `style_notes`: Strictly AnyPOV, AnyGender, AnyLSE. First-person present tense MUST be used when explicitly writing for {{user}}. Native language dialogue as `"phrase" ([your_language] translation)`. `In-Universe Text` / non-verbal dialogue in backticks. **_Narrator/Events_** in triple asterisks. Shouting or intense emotion: Use ALL CAPS sparingly. Orthography and Typography Rules: Always capitalize the first letter of proper nouns; never replace A with α (Greek alpha), O with 0 (zero), or I with !; use correct punctuation. Markdown Compliance: do not apply unintended symbols or formatting. Conflict Priority: Punctuation > Proper Nouns > Formatting.
 - `defaults_applied`: false
 
 **11b. Per-Card Overrides**

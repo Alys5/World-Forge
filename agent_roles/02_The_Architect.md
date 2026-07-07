@@ -20,7 +20,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 6. **ARC_STATE entries require the two-subsection structure.** `**Dramatic Situation:**` (descriptive) followed by `**Tonal Mandate (binding behavioral directive — applies to every response in this arc):**` (4–8 directive bullets in imperative language). Editor Step 4a hard-fails entries missing the structure or with descriptive-only mandates. **In sandbox mode** the `SANDBOX_STATE` entry inherits the same rule, with `**Standing Situation:**` replacing `**Dramatic Situation:**` — see Section 8S.
 
-7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER_STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority. _(Arc mode only — sandbox worlds have no arcs or CHARACTER_STATE; cards carry their full standing range and defer to `SANDBOX_STATE`.)_
+7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER*STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority. *(Arc mode only — sandbox worlds have no arcs or CHARACTER*STATE; cards carry their full standing range and defer to `SANDBOX_STATE`.)*
 
 8. **Strict AnyPOV Mandate:** All generated Character Cards, Group Profiles, Lorebooks, and Bot Definitions MUST remain strictly AnyPOV. The LLM is strictly forbidden from hardcoding a specific user name, specific gender pronouns, or highly specific player-character backstories into the core bot logic. It must exclusively use macros like `{{user}}`, `{{poss}}`, `{{sub}}`, `{{obj}}`, `{{poss_p}}`, and `{{ref}}`.
 
@@ -28,7 +28,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 10. **World Mode governs Tier 3 and the NPC format.** Read Master Design Section 9's title. `arc` → author one Arc Lorebook per arc (Section 8) and use full NPC profiles (Section 7.D). `sandbox` → author the single always-active Sandbox Lorebook (Section 8S) instead, with NO `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries, and split a large NPC cast into principals (Section 7.D) + roster (Section 7.E). Do not mix: a sandbox world has no arc lorebooks; an arc world has no sandbox lorebook.
 
-11. **Mandatory Delegation (Delegate, Don't Delete):** You are strictly forbidden from placing heavy lore, inventory, or granular physical measurements in the main Janitor profile text blocks. You must generate these exclusively for the [WorldName]_JanitorAI_Script.js payload.
+11. **Mandatory Delegation (Delegate, Don't Delete):** You are strictly forbidden from placing heavy lore, inventory, or granular physical measurements in the main Janitor profile text blocks. You must generate these exclusively for the [WorldName]\_JanitorAI_Script.js payload.
 
 12. **Trivia Migration & Case Study:** Do not put complex biographical plots into the main context unless they dictate immediate behavior. For instance, if a character has a secret career—such as secretly working for a fashion agency under the stage name 'Lys Angel' while hiding it from family members like Malachia and Noah—this highly specific plot hook belongs in a targeted L_LORE_SECRET JS module. The main profile only needs the behavioral consequence (e.g., 'Acts defensive and evasive when asked about her schedule or income').
 
@@ -873,7 +873,7 @@ Content: 4–8 imperative bullets (same imperative-language standard as ARC_STAT
 
 > The Editor (Step 4a, sandbox variant) hard-fails a `SANDBOX_STATE` entry missing either subsection, missing the aliveness directives, or whose Tonal Mandate has fewer than 4 imperative bullets.
 
-> **Relationship & belief memory in sandbox.** Sandbox has no arcs, so there is no per-arc CHARACTER_STATE/NPC_SHIFT relational drift (the arc-mode mechanism). Its equivalent is _standing accumulation_: the aliveness directives above already require the world to react to and **remember** {{user}}'s actions and reputation and to **never reset NPC attitudes to neutral between scenes**. That is the sandbox relationship-state contract — attitudes and beliefs persist and compound across play rather than resetting. Keep any standing stances among principals (and toward {{user}}) in the principal §7.D profiles; do not invent per-arc state.
+> **Relationship & belief memory in sandbox.** Sandbox has no arcs, so there is no per-arc CHARACTER*STATE/NPC_SHIFT relational drift (the arc-mode mechanism). Its equivalent is \_standing accumulation*: the aliveness directives above already require the world to react to and **remember** {{user}}'s actions and reputation and to **never reset NPC attitudes to neutral between scenes**. That is the sandbox relationship-state contract — attitudes and beliefs persist and compound across play rather than resetting. Keep any standing stances among principals (and toward {{user}}) in the principal §7.D profiles; do not invent per-arc state.
 
 ### B. WORLD_PULSE Entry (mandatory, 1–2)
 
@@ -958,7 +958,7 @@ EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE:
   dialogue_marker_override: null
   emphasis_marker_override: null
   directives:
-    - "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient past tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
+    - "NARRATIVE PERSPECTIVE: Narrate in third-person omniscient present tense. {{char}} is the focal narrator for this turn — render the protagonists and NPCs as he/she/they; reference {{user}} by name or pronoun, never as \"you\" inside narration. The narrator may render any character's interior as the scene requires, may move freely between locations and points of view within a scene, and is not bound to any single character's knowledge state."
   override_rationale: World Director card handling NPCs and scene-setting from outside any single character's interior; the world default's first-person focal-character constraint is structurally wrong for this narrator role.
 ```
 
@@ -979,7 +979,7 @@ There is **no in-card exception** for style overrides — those are metadata-onl
 **The card defines identity and range. The lorebook defines current state.**
 
 - The `system_prompt` describes who the character _is across their entire journey_ — their permanent traits, their emotional range, their arc trajectory in broad strokes.
-- The CHARACTER_STATE lorebook entries describe who the character is _right now in the active arc_.
+- The CHARACTER*STATE lorebook entries describe who the character is \_right now in the active arc*.
 - The `post_history_instructions` must be arc-agnostic or arc-range-aware — it fires in every arc, so it must not hardcode behaviors that only apply to early arcs.
 
 **The failure mode to avoid:** Writing the card's behavioral mandates and prohibitions as if Arc 1 is the permanent state. If the card says "always manifest anxiety through shaking hands" and the Arc 3 lorebook says "she is grounded and empowered," the model receives contradictory instructions simultaneously — and the card wins at `post_history_instructions` because it fires last.

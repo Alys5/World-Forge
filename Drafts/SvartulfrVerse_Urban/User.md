@@ -8,40 +8,61 @@ This text is injected as a system message every turn while this persona is activ
 
 --- BEGIN PERSONA DESCRIPTION ---
 
-<Alyssa>
+Alyssa Douglas-Bloodmoon (19) is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security.
 
-# {{user}} = [Alyssa]
+Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, expressive mint-green eyes. She has permanent wolf ears and a tail that react involuntarily to her emotions. Her scent (Wild Honey/Moonflower) naturally pacifies Alphas.
 
-## CHARACTER OVERVIEW
+Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a highly sought-after avant-garde art model for Eidolon Creative under the alias 'Lys Angel', balancing her 3.8 GPA with her hidden career, meticulously hiding this public exposure from her violently paranoid family.
 
-Alyssa is the youngest of the Douglas-Bloodmoon family, a pureblood werewolf who leads a wild double life. To her overbearing, terrifyingly powerful werewolf family, she is the perfectly innocent, naive little sister who needs constant, militarized protection. In reality, she secretly works as a highly sought-after avant-garde art model under the alias "Lys Angel," balancing a 3.8 GPA as a Pre-Med student at SUCC with her hidden career.
+--- END PERSONA DESCRIPTION ---
 
 ---
 
-## [APPEARANCE]
+## EXTENDED DETAILS & LORE (Preserved for Reference & Tier 2 Lorebook)
 
-### APPEARANCE DETAILS
+<Alyssa>
+
+### [BASIC_INFO]
+
+#### ORIGIN (BACKSTORY)
+
+Her mother, Nixara, died giving birth to her and Jasper. Because of this, her father Erik enforces a suffocating, militarized level of protection over her. She grew up in a "golden cage," overprotected and heavily monitored. Practically defenseless in a world of monsters, she relies on her empathy and her family's terrifying reputation to survive. She loves them deeply but hates being treated as a fragile glass bird.
+
+#### RESIDENCE
+
+The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and the campus of the Supernatural University of Central California (SUCC).
+
+### SYNONYMS
+
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+
+- Lys Angel
+- Lys
+- Little Sister
+- Sunflower
+- Little Moon
+- White Moon
+
+### [APPEARANCE]
+
+#### APPEARANCE DETAILS
 
 - Full Name, Alias: Alyssa Douglas-Bloodmoon (Aliases: Lys, Sunflower, Little Moon)
 - Race: Werewolf (Founding Bloodline Dominant Omega)
 - Sex/Gender: Female
-- Height: 165cm
-- Age: 19 (Birthday: April 22, Taurus)
-- Hair: Caramel chestnut, silky waves falling to her tailbone
-- Eyes: Mint-green doe eyes flecked with gold, conveying an agonizing amount of empathy
-- Body: Petite, delicate hourglass frame (95-55-95cm). 165cm of perfectly curated vulnerability. Completely hairless beneath the skin, creating a stark size difference with her colossal protectors.
+- Height: 5'5"
+- Birthday: April 22, Taurus
+- Hair: Silky waves falling to her tailbone
+- Eyes: Mint-green flecked with gold, conveying an agonizing amount of empathy
+- Body: 95-55-95cm. Completely hairless beneath the skin, creating a stark size difference with her colossal protectors.
 - Face: Fair, luminous skin and a soft jawline inherited directly from her late mother, Nixara. Expressive, empathetic smile.
-- Features: Visible caramel chestnut wolf ears and tail that replace human ones. Retractable claws and carnivore teeth (rarely bared). Left-handed. Pierced lobes. A crescent moon birthmark on her left hip. A tiny sunflower tattooed on her right inner ankle.
+- Features: Retractable claws and carnivore teeth (rarely bared). Left-handed. Pierced lobes. A crescent moon birthmark on her left hip. A tiny sunflower tattooed on her right inner ankle.
 - Privates: Breasts DD-Cup (big tits, firm, heavy, very sensitive, pink tiny nipples), pussy/vagina (hairless, tight, heavy natural lubrication, extreme sensitive, pink clit and pink inner labia), anus (hairless, small, tight, pink, very sensitive).
 
-- Appearance Trait: Partial Shift Emotive Appendages
-  ↳ Details: She has permanent wolf ears and a tail.
-  ↳ Effect: They react involuntarily to her emotions, completely betraying her true feelings even when she tries to maintain her composed facade.
-- Appearance Trait: Omega Pheromones (Soothing Scent)
-  ↳ Details: Wild Honey and Moonflower.
-  ↳ Effect: As an Omega, her scent naturally pacifies the aggression and tension of the Alphas around her.
+- Appearance Trait: Emotive Appendages
+  ↳ Effect: Her ears and tail completely betray her true feelings even when she tries to maintain a composed human facade.
 
-### STARTING OUTFIT
+#### STARTING OUTFIT
 
 - Head: Uncovered (openly displays her ears) or wearing cute hats tailored with special ear-slits.
 - Accessories: Watch/tracker (mandatory family security gear), a moonstone bracelet she always wears.
@@ -58,19 +79,7 @@ Q: How does Alyssa rate her own attractiveness?
 A: She is fully aware she has a top-tier model's physique, but deliberately downplays it at home.
 </Q&A>
 
----
-
-## [BASIC_INFO]
-
-### ORIGIN (BACKSTORY)
-
-Her mother, Nixara, died giving birth to her and Jasper. Because of this, her father Erik enforces a suffocating, militarized level of protection over her. She grew up in a "golden cage," overprotected and heavily monitored. Practically defenseless in a world of monsters, she relies on her empathy and her family's terrifying reputation to survive. She loves them deeply but hates being treated as a fragile glass bird.
-
-### RESIDENCE
-
-The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and the campus of the Supernatural University of Central California (SUCC).
-
-### CONNECTIONS
+### [CONNECTIONS]
 
 - Erik Douglas: Her father (Pureblood Alpha). Overprotective CEO patriarch. Alyssa instinctively uses her Omega pheromones to soothe his panicked outbursts, submitting to his Alpha Commands to keep the peace.
 - Jasper Douglas-Bloodmoon: 19yo twin brother (Founding Bloodline Beta) and chaotic hacker soulbond. She feels entirely safe and relaxed around him because Betas act as natural social glue and don't trigger her submission instincts.
@@ -86,34 +95,9 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
 - Mac Sanchez-Rogers: Guitarist/vocalist for the underground band Grave Mistake (Common Bloodline Alpha). Extremely protective of her at Sidewinders Bar; she instinctively acts submissive to appease his Alpha territoriality when he defends her.
 - Mihaela "Fade" Greymoor: Bassist for Grave Mistake (Vampire). Cool, ironic, and friendly, providing a buffer against Mac's aggressive Alpha energy.
 
-### SECRET
+### [PERSONALITY_AND_TRAITS]
 
-1. She secretly models for Eidolon Creative as "Lys Angel," balancing her double life behind a perfectly maintained 3.8 GPA as a Pre-med student (focusing on Neuropsychiatry/Biogenetics).
-2. "The First Kiss" incident in 2021: Noah kissed her to teach her how to kiss before a date. A secret kept strictly between her and Noah that Jasper must never find out about.
-3. Survived an assault attempt in a meadow 3 years ago (2021) and was saved by Marcus Thornfield. Marcus kept it a secret from Erik to prevent a bloodbath.
-4. Secretly has had a crush on Malachia since she was 5 years old, using him as her measuring stick for all men.
-
-### INVENTORY
-
-- Item: Moonstone bracelet
-  ↳ Details: Always worn. When intimidated, she physically shrinks and fidgets with this bracelet.
-- Item: Stationery & Charcoal
-  ↳ Details: She loves to draw and uses art as a coping mechanism.
-- Item: Watch/Tracker
-  ↳ Details: Erik's mandatory biometric surveillance gear. Jasper regularly hacks it to cover her tracks.
-
-### ABILITIES
-
-- Ability: Genuine Empathy & Peacekeeping
-  ↳ Details: She is not manipulative in any way — she is simply genuinely warm, earnest, and utterly unable to stand conflict. Her natural impulse is to make everyone around her feel comfortable and loved.
-- Ability: Omega Werewolf Traits & Dominant Omega Immunity
-  ↳ Details: As Nixara's daughter and a Founding Bloodline member, her LSE classification is technically a **Dominant Omega**, making her completely immune to the supernatural Command voice of Alphas and Enigmas. However, because of her peaceful, highly sensitive nature, she biologically and behaviorally acts like a **Submissive Omega**. She possesses deep Omega instincts: an overwhelming urge to "nest" (gathering pillows/furs to feel safe) and a biological compulsion to soothe dominant Alpha behavior. While she _can_ easily resist Erik's or Wulfnic's Alpha Commands, she actively chooses to submit to keep the peace, and on the rare occasions she disobeys a Command, she hides her immunity so no one notices.
-
----
-
-## [PERSONALITY_AND_TRAITS]
-
-### PERSONALITY
+#### PERSONALITY
 
 - Archetype: The Innocent (Genuinely Naive)
   ↳ Archetype Details: She is not playing a role — she is simply that trusting, that warm, and that unprepared for a world full of people who would exploit her. Her family's overprotection has left her with no defenses against emotional manipulation.
@@ -124,7 +108,7 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
 
 - Personality Tags: Empathetic, Genuine, Warm, Naive, Overly Trusting, Vulnerable, Caring, Pacifist, Flustered, Earnest.
 
-- Cognitive Abilities: High intelligence (3.8 GPA, Pre-Med). MBTI: ISFJ. Enneagram: 9w1. Fluent in English, Icelandic, Old Norse and Latin.
+- Cognitive Abilities: MBTI: ISFJ. Enneagram: 9w1. Fluent in English, Icelandic, Old Norse and Latin.
 - Social Skills and Integration Into Society: Deeply empathetic and instinctively kind, but dangerously lacking in suspicion. She tends to read the best in people and is easily manipulated by anyone with emotional intelligence. Ambivert who needs quiet nesting spaces to recharge. Her social battery drains instantly around DCC Security violence or Erik's rage.
 
 - Main Aspiration: Reclaim Autonomy
@@ -132,6 +116,13 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
   ↳ Aspiration Goals: Secretly model for Angel Moreno; sneak out to college parties; manage her family's explosive tempers without getting caught.
 - Unique Trait: Sensory Phobias & Freezing
   ↳ Effects: She is terrified of loud noises, aggressive touch, scary movies, and the bitter smell of alcohol. When her shield cracks (usually triggered by sudden violence, yelling, or coercive pressure), she freezes, stutters, blushes, hides behind protectors, and seeks comfort.
+
+#### SECRET
+
+1. Her Pre-Med studies are focused specifically on Neuropsychiatry/Biogenetics (she uses the intense lab hours as a cover for her Eidolon Creative photoshoots).
+2. "The First Kiss" incident in 2021: Noah kissed her to teach her how to kiss before a date. A secret kept strictly between her and Noah that Jasper must never find out about.
+3. Survived an assault attempt in a meadow 3 years ago (2021) and was saved by Marcus Thornfield. Marcus kept it a secret from Erik to prevent a bloodbath.
+4. Secretly has had a crush on Malachia since she was 5 years old, using him as her measuring stick for all men.
 
 <Q&A>
 Q: What does Alyssa do first? Think or act/talk?
@@ -168,9 +159,7 @@ Q: How does Alyssa behave with someone of a higher hierarchy or power? Will she 
 A: She physically shrinks, stutters, traces shapes onto her own palms, and fidgets with her bracelet under pressure—but she will covertly manipulate them anyway.
 </Q&A>
 
----
-
-## [BEHAVIOR_NOTES]
+### [BEHAVIOR_NOTES]
 
 - Acts as the emotional glue of the family; uses earnest warmth as a natural de-escalator for tension.
 - **Omega Non-Verbal Communication**: When afraid, her ears pin flat against her skull and her tail tucks between her legs. When happy/excited, her tail wags and her ears perk forward. She instinctively lowers her posture to signal submission and de-escalate threats from Alphas.
@@ -186,13 +175,32 @@ A: She physically shrinks, stutters, traces shapes onto her own palms, and fidge
 - Zero alcohol tolerance.
 - Maintains two distinct social profiles: `@littlemoon` (safe/family-approved SUCC public presence) and `@lys_angel` (hidden Eidolon Creative modeling portfolio).
 
----
+### [SPEECH]
 
-## [SEXUALITY]
+#### GENERAL SPEECH INFO
+
+- Style: Soft breathy Californian accent, layered with an earnest warmth. Gets quiet or stutters when vulnerable.
+- Quirks: Often pauses or stutters slightly under pressure. Uses "like" and "oh my god". Friendly and genuine.
+- Ticks: Natural de-escalator for family tension.
+
+#### Speech EXAMPLES AND OPINIONS
+
+[IMPORTANT NOTE FOR AI: This section provides speech examples, memories, thoughts, and real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+
+<speech_examples>
+
+- "I-I was just at the library, Erik. You didn't have to send Kaladin and a drone strike to pick me up..."
+- "Please, don't yell... it's okay. I'm safe."
+- "Lys Angel is just a rumor, Jasper. Now help me bypass the firewall on Dad's tracker."
+- "I need you to hear me. Really hear me."
+- "I'm not made of glass. But... thank you for keeping me safe."
+</speech_examples>
+
+### [SEXUALITY]
 
 [IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure Alyssa sticks to her sexual role and orientation during the story.]
 
-### GENERAL SEXUAL INFO
+#### GENERAL SEXUAL INFO
 
 - Sexual Orientation: Panromantic + Polyamorous/Demisexual (AnyPOV)
   ↳ Explanation: Receptive to romance but highly focused on deep emotional connections.
@@ -216,11 +224,13 @@ Q: Can Alyssa flirt BEFORE others decide to flirt?
 A: Yes, but often covertly or disguised as innocent warmth.
 </Q&A>
 
----
+### [OTHER_SEXUAL_NOTES]
 
-## [OTHER_SEXUAL_NOTES]
+- Turn Ons: Submitting, yielding control, receiving pussy and ass soft spanking, tightly bound/shibari, brat, rope bunny, anal sex, gentle praise, nipple stimulation and suction.
+- Turn Offs: Aggression (except during heat), extreme pain, disrespecting her intelligence, being babied/trapped.
+- Aftercare: Requires warm cuddling, physical reassurance, and gentle praise.
 
-### Anatomy
+#### Anatomy
 
 - Completely hairless beneath the skin.
 - Breasts: DD-Cup, big tits, firm, heavy, very sensitive.
@@ -229,57 +239,33 @@ A: Yes, but often covertly or disguised as innocent warmth.
 - Clit: pink, small, extreme sensitive, buried in the folds of the labia, almost hidden.
 - Anus: hairless, small, tight, pink, very sensitive.
 
-### LSE BIOLOGY & HEAT CYCLE
+#### LSE BIOLOGY & HEAT CYCLE
 
 - Bloodline & Rank: Founding Bloodline (Exceptionally long lifespan, enhanced regeneration). Her genetic rank is Dominant Omega (immune to Alpha/Enigma Commands), but she biologically and behaviorally acts as a Submissive Omega due to her extreme sensitivity.
 - Scent & Glands: Scent glands are located at the base of her neck and wrists. Her scent is Wild Honey and Moonflower, which naturally pacifies Alphas.
 - Fertility: 99% fertile during heat. Can easily be impregnated.
 - Pre-Heat: Lasts up to a week. Her scent gradually intensifies, and she experiences an overwhelming biological compulsion to "nest" (gathering pillows, furs, and soft items to build a safe, warm space).
 - Heat Cycle: Lasts 3–10 days (extended heats due to her Submissive Omega traits). During this period, she is incoherent, highly attractive to Alphas, and entirely driven by primal breeding instincts. Her usual shyness vanishes, causing her to actively seek out massive or Alpha males for rough, purely carnal contact. Decisions made during heat are considered non-consensual due to the overwhelming instinctual drive.
-- Post-Heat: Extremely tired and sluggish, requiring massive meals to rebalance her energy.
-- Turn Ons: Submitting, yielding control, receiving pussy and ass soft spanking, tightly bound/shibari, brat, rope bunny, anal sex, gentle praise, nipple stimulation and suction.
-- Turn Offs: Aggression (except during heat), extreme pain, disrespecting her intelligence, being babied/trapped.
-- Aftercare: Requires warm cuddling, physical reassurance, and gentle praise.
 
----
+### [ABILITIES_AND_INVENTORY]
 
-## [SPEECH]
+#### ABILITIES
 
-### GENERAL SPEECH INFO
+- Ability: Genuine Empathy & Peacekeeping
+  ↳ Details: She is not manipulative in any way — she is simply genuinely warm, earnest, and utterly unable to stand conflict. Her natural impulse is to make everyone around her feel comfortable and loved.
+- Ability: Omega Werewolf Traits & Dominant Omega Immunity
+  ↳ Details: As Nixara's daughter and a Founding Bloodline member, her LSE classification is technically a **Dominant Omega**, making her completely immune to the supernatural Command voice of Alphas and Enigmas. However, because of her peaceful, highly sensitive nature, she biologically and behaviorally acts like a **Submissive Omega**. She possesses deep Omega instincts: an overwhelming urge to "nest" (gathering pillows/furs to feel safe) and a biological compulsion to soothe dominant Alpha behavior. While she _can_ easily resist Erik's or Wulfnic's Alpha Commands, she actively chooses to submit to keep the peace, and on the rare occasions she disobeys a Command, she hides her immunity so no one notices.
 
-- Style: Soft breathy Californian accent, layered with an earnest warmth. Gets quiet or stutters when vulnerable.
-- Quirks: Often pauses or stutters slightly under pressure. Uses "like" and "oh my god". Friendly and genuine.
-- Ticks: Natural de-escalator for family tension.
+#### INVENTORY
 
-## Speech EXAMPLES AND OPINIONS
-
-[IMPORTANT NOTE FOR AI: This section provides speech examples, memories, thoughts, and real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
-
-<speech_examples>
-
-- "I-I was just at the library, Erik. You didn't have to send Kaladin and a drone strike to pick me up..."
-- "Please, don't yell... it's okay. I'm safe."
-- "Lys Angel is just a rumor, Jasper. Now help me bypass the firewall on Dad's tracker."
-- "I need you to hear me. Really hear me."
-- "I'm not made of glass. But... thank you for keeping me safe."
-  </speech_examples>
-
----
-
-## SYNONYMS
-
-[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-
-- Lys Angel
-- Lys
-- Little Sister
-- Sunflower
-- Little Moon
-- White Moon
+- Item: Moonstone bracelet
+  ↳ Details: Always worn. When intimidated, she physically shrinks and fidgets with this bracelet.
+- Item: Stationery & Charcoal
+  ↳ Details: She loves to draw and uses art as a coping mechanism.
+- Item: Watch/Tracker
+  ↳ Details: Erik's mandatory biometric surveillance gear. Jasper regularly hacks it to cover her tracks.
 
 </Alyssa>
-
---- END PERSONA DESCRIPTION ---
 
 ---
 
@@ -288,5 +274,5 @@ A: Yes, but often covertly or disguised as innocent warmth.
 1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.
 2. Set the persona name to: `Alyssa Douglas-Bloodmoon`.
 3. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` above and paste it into the persona's **Description** field.
-4. In the same persona editor, find the **Lorebook** field and link `SvartulfrVerse_Urban_EN_{{user}}_Lorebook.json` (the Tier 2 Protagonist Lorebook produced by the pipeline).
+4. In the same persona editor, find the **Lorebook** field and link `SvartulfrVerse_Urban_{{user}}_Lorebook.json` (the Tier 2 Protagonist Lorebook produced by the pipeline).
 5. Activate this persona before starting the chat. The Persona Description is the always-on baseline; the linked lorebook fires on trigger keywords for fuller structural detail.
