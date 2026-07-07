@@ -336,24 +336,37 @@ When present, append one **carrier block** to the end of `Drafts/Tier1_World_Ent
 **Comment:** [[DICE_TABLES]] dice oracle
 **Flags:** disable: false (ENABLED), key: [], constant: false, position: 0
 **Payload (single JSON object, emitted verbatim into `content`):**
-{"schema":1,"framing":"…","pools":{…},"procedures":[…]}
+{"schema":2,"framing":"…","turns":1,"pools":{…},"procedures":[…]}
 ```
 
 Compile the payload from the Master Design tables (`contracts/DICE_ORACLE.md` §3 is the authority; the essentials):
-- `schema`: always `1`.
-- `framing` *(optional)*: the seed's lead-in sentence, verbatim. Omit if the seed left it blank — the Scene Tracker supplies a neutral default.
+- `schema`: always `2`.
+- `framing` *(optional)*: the seed's lead-in sentence, verbatim. Omit if the seed left it blank — the Scene Tracker supplies a neutral default keyed to the procedure's `mode`.
+- `turns` *(optional, payload-level default)*: an integer ≥ 1 — how many consecutive model replies a roll's facts stay injected before they clear (§3.6). Omit ⇒ 1 (facts shape only the next reply). A per-procedure `turns` overrides this default. Set it from the seed's duration note; leave it off when every situation is single-reply.
 - `pools`: `{"<pool_name>": ["value", …]}` — one entry per descriptive pick-list, values carried as short tokens verbatim from the seed. Drop any empty pool.
 - `procedures`: one object per situation the seed named, each with:
   - `id` — a stable snake_case slug (e.g. `recall_fling`, `temp_npc`);
   - `label` — a short human label for the Dice-tab picker;
-  - `framing` *(optional)* — a per-procedure lead-in that overrides the payload-level one;
+  - `mode` *(optional)* — `"recount"` (default: a past event / remembered fact) or `"event"` (something happening *now*, breaking into the scene). Set `"event"` only for the situations the seed flagged as live events; omit for recounts (§3.7). It selects the default framing tense when no `framing` is written.
+  - `turns` *(optional)* — a per-procedure duration that overrides the payload-level `turns` (§3.6). An `event` usually wants `turns` > 1 so it stays in context while it resolves; set it from the seed's per-situation duration.
+  - `framing` *(optional)* — a per-procedure lead-in that overrides the payload-level one (and the `mode` default);
   - `steps` — an ordered array. **Each step is exactly one of** a *pick* or a *roll*:
     - **pick** — `{"id":"build","label":"The man's build","pick":"<pool_name>"}` (or an inline `"pick":["a","b"]`). Picks a value uniformly at random.
     - **roll** — `{"id":"valence","label":"How it turned out","roll":"1d20","outcomes":{"1-7":"bad","8-14":"mixed","15-20":"great"},"text":{"bad":"it ended badly","mixed":"a fond, funny mess","great":"it turned out great"}}`. `outcomes` maps inclusive `"a-b"` (or single `"n"`) ranges to short **outcome keys**; put the readable phrase in `text`. Cover the die's whole range.
 - **Conditional steps.** A variable that applies only sometimes ("severity only if hurt") is a step with `"when":{"<earlier_step_id>":"<key>"}` (value may be an array of accepted keys). `when` may reference only an **earlier** step in the same procedure — order dependencies first.
 - **Likelihoods → ranges.** Translate the seed's rough odds into dice ranges: "usually minor, sometimes moderate, rarely serious" on `1d10` → `{"1-6":"minor","7-9":"moderate","10":"serious"}`. Pick a die size that splits the proportions cleanly.
 
-> ⚠️ **`disable: false` is load-bearing** — exactly as for the calendar carrier: the Scene Tracker reads candidate entries with a `!disable` filter, so a disabled dice carrier is silently skipped and the world provides no tables. `key: []` + `constant: false` keep it inert. Keep pool values and outcome `text` as short tokens/phrases (the dice fix *what*; the model narrates *how*). The Editor should reject a malformed payload; `python tools/validate_export.py Export/` (Compiler Step 8) flags a `pick` with no pool, a forward `when`, or a step that is both pick and roll as `[WARN]`.
+#### Roll the shape, not the choreography (the what/how line, applied)
+
+The dice fix *what is true*; the model invents *how it plays out* (§3.5). The most common way a dice procedure goes wrong is authoring past that line — rolling the blow-by-blow the model should improvise. Over-specified procedures produce two failure modes at runtime: the model **recites** the facts like a checklist instead of dramatizing them, and multi-participant scenes get **serialized** (each participant narrated in turn) instead of played as one encounter. Author against both:
+
+- **Roll shape and flavor; leave the choreography to the model.** Fix the *setting*, the *cast* (who is there, as traits — age, build, temperament), the *configuration* (how they're arranged), the *valence* (how it went), and at most one **signature detail** (the ridiculous/telling beat that makes it an anecdote). Do **not** roll the step-by-step: positions, act-by-act sequence, per-participant mechanical acts, or "what each one did." Those are the *how* — the model's job. A procedure that rolls "which positions / how many positions / what he did" hands the model a spec sheet, and a spec sheet gets read back, not performed.
+- **One real-world situation is ONE procedure.** When several participants share a single encounter, individuate them as *gated trait steps inside the one procedure* (`man_b`, `man_c` gated on the count). **Never** author a per-participant procedure, and never roll the same procedure once per participant — that produces self-contained records the consumer injects as separate blocks, and the model narrates them in series ("one, then the next appears"). The unit is the *encounter*, not the *person*.
+- **A count/number outcome > 1 must state simultaneity in its `text`.** `{"5-6":"two"}` with `"text":{"two":"two men"}` reads as a quantity the model resolves however it likes (usually sequentially). Write the togetherness into the fact: `"two men, together — both in it at the same time, not one after the other"`. Pair it with a single encounter-level **configuration** step (how they're arranged: all at once / she directs / they compete) gated on count > 1.
+- **One shared outcome, never a per-participant finish.** Roll *how the encounter ended* once, as a joint beat. A per-person "where he finished" (or per-person climax) is the strongest serialization signal there is — two stated endings read as two scenes, and no framing overrides them. Over-constraining per-person mechanics also boxes the model into sequence just to satisfy incompatible fixed facts; keep the mechanics loose so simultaneity stays reachable.
+- **Framing carries the "tell it, don't recite it" instruction.** For a recount procedure, the `framing` (§3.5) should say the facts are the *skeleton of an anecdote told in-voice* — the character's tangents, comedy, and texture are the model's to invent — and that multiple participants are *one continuous scene, not a queue*. **Never** write framing that invites serialization ("narrate the sequence of events", "in order") — that wording is the bug, not the fix. Keep the interpretive weight in the character's standing prompt / Intimacy Register (the *how*); the framing just fixes the register and the simultaneity.
+
+> ⚠️ **`disable: false` is load-bearing** — exactly as for the calendar carrier: the Scene Tracker reads candidate entries with a `!disable` filter, so a disabled dice carrier is silently skipped and the world provides no tables. `key: []` + `constant: false` keep it inert. Keep pool values and outcome `text` as short tokens/phrases (the dice fix *what*; the model narrates *how*). The Editor (Step 4.8) hard-fails a malformed payload and soft-flags the shape-not-choreography anti-patterns above; `python tools/validate_export.py Export/` (Compiler Step 8) flags a `pick` with no pool, a forward `when`, a step that is both pick and roll, or a bad `mode`/`turns` as `[WARN]`.
 
 ---
 

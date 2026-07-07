@@ -374,6 +374,33 @@ Applies **only if** the Architect authored a `### CARRIER: [[WORLD_CALENDAR]]` b
 
 Read-only: direct the Architect to fix the carrier; do not edit it.
 
+### Step 4.8 — Dice Oracle Carrier Validation (conditional; `contracts/DICE_ORACLE.md`, schema 2)
+
+Applies **only if** the Architect authored a `### CARRIER: [[DICE_TABLES]]` block at the end of `Drafts/Tier1_World_Entries.md`. Like the calendar carrier, the dice oracle is entirely optional — its **absence is never a gap**, do not flag it. When present, the producer intends the Scene Tracker's Dice tab to seed from it, so a malformed payload silently defeats its own purpose (the tab falls back to built-in demo tables); validate it. The Architect defers rejection to this step, so it is the pipeline's audit gate for the payload (`tools/validate_export.py` `check_dice_tables` is the deterministic backstop at compile time).
+
+**HARD FAIL on any of:**
+- **Disabled carrier.** The block's flags are not `disable: false`. The Scene Tracker reads candidate entries with a `!disable` filter, so a `disable: true` dice carrier is silently skipped and the world provides no tables. (Same enabled-but-inert convention as `[[WORLD_CALENDAR]]`, and the one place it differs from the `disable: true` NPC Memory Manifest.) The block must also be inert: `key: []`, `constant: false`.
+- **Unparseable payload.** The `**Payload**` line is not a single well-formed JSON object.
+- **Missing / wrong `schema`.** `schema` is absent or not an integer (current contract emits `2`).
+- **No valid procedures.** `procedures` is missing, not an array, or empty — a payload with no valid procedures reads as absent (§5). Every procedure must have a snake_case slug `id` (unique in the file) and a non-empty `steps` array.
+- **Malformed step.** A step is not exactly one of a *pick* (a `pool` name that exists and is non-empty in `pools`, or an inline string array) **xor** a *roll* (a `roll` formula with an `outcomes` map). A step that is both, or neither, hard-fails. A `pick` naming a pool absent from `pools` hard-fails.
+- **Uncovered roll range.** A `roll` step's `outcomes` ranges do not cover the die's full range (e.g. `1d20` with outcomes only up to `15` leaves `16–20` mapping to nothing) — a total matching no range silently drops the step.
+- **Forward / dangling `when`.** A step's `when` references a step id that is not an **earlier** step in the same procedure (later step, other procedure, or nonexistent). Order dependencies first.
+- **Bad `mode`.** A procedure's `mode`, if present, is not `"recount"` or `"event"` (§3.7). Omitted ⇒ `recount`.
+- **Bad `turns`.** A `turns` duration (payload-level default or per-procedure override), if present, is not an integer ≥ 1 (§3.6). Omitted ⇒ 1.
+
+**SOFT FLAG (report, do not block):**
+- A carrier present but the Master Design Section 1 `Dice Oracle Tables` line is missing (or vice versa) — confirm the oracle is intentional and the pools/outcomes/tense/duration trace to the seed.
+- A pool value or outcome `text` phrase that reads as a full sentence rather than a short token — the dice fix *what*, the model narrates *how*; long values crowd the injected block.
+- A procedure marked `mode: "event"` with `turns` unset or `1` — events usually want a multi-reply duration so they stay in context while resolving (§3.7); confirm single-reply is intended.
+- **Shape-not-choreography anti-patterns** (Architect §6 "Roll the shape, not the choreography"). These are design smells that serialize or flatten the scene at runtime — flag for the Architect to reconsider, do not block:
+  - **Per-participant procedure / duplication.** Two procedures (or two near-identical step groups) that describe the *same encounter* from different participants' angles, rather than one procedure whose count branches into gated participant steps. Concatenated per-person records get injected as separate blocks and narrate in series.
+  - **Rolled choreography.** Steps that fix the blow-by-blow — positions, act-by-act sequence, "what each one did," a per-participant "how it ended" / where-they-finished. That is the model's *how*; rolling it produces checklist recitation, and per-person finishes are the strongest serialization signal (two endings read as two scenes). A single shared/joint outcome step is fine; per-participant ones are the smell.
+  - **Count outcome without simultaneity.** A count/number outcome whose value is > 1 but whose `text` states only the quantity ("two men") with no togetherness cue — pair it with an explicit "together / at the same time" phrasing and an encounter-level configuration step gated on count > 1.
+  - **Serializing framing.** A procedure `framing` (or the payload-level one) that invites a sequence — "narrate the sequence of events", "in order", or wording that lists participants to be handled one at a time. Recount framing should fix the register and assert one continuous scene, and leave choreography to the model.
+
+Read-only: direct the Architect to fix the carrier; do not edit it.
+
 ### Step 5 — LLM Instruction Audit (Hybrid Validation Protocol)
 
 #### 5a — `{{original}}` placement check (hard fail; see Foundational Rule #1)
@@ -723,6 +750,7 @@ Post-history: [checklist results + word count]
 - **Roster NPCs (§7.E): each has Voice fingerprint + Signature line; fingerprints distinct across the roster ✓**
 - **NPC/Character Identity Integrity (Step 4.6): comment form + em-dash valid; one canonical name per character used verbatim; no slug collisions; multi-person entries split or marked `Shared roster entry` (interchangeable only); `{{user}}` not authored as an NPC; relationship-target + facet-label soft flags resolved ✓**
 - **World Calendar carrier (Step 4.7; only if present): `disable: false` + inert; payload parses; months 0-indexed 0–11; weekday 0–6; `end` is object/omitted/`"infinite"`; no null placeholders ✓**
+- **Dice Oracle carrier (Step 4.8; only if present): `disable: false` + inert; payload parses with integer `schema` (2); ≥1 procedure (slug `id` + ≥1 step); each step a pick xor roll; roll ranges cover the die; `when` references only earlier steps; any `mode` is recount/event; any `turns` a positive integer ✓**
 - **All entries: Position Rationale present (DEFAULT or justified) ✓**
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**

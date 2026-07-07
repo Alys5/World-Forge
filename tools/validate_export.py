@@ -38,9 +38,11 @@ Checks the failure modes that slip past "the JSON parses":
               - any [[DICE_TABLES]] entry (DICE_ORACLE §2/§3) is WARN-only (optional,
                 degrades gracefully): at most one per file; carrier is enabled
                 (disable:false) so the Dice tab sees it; content parses as a JSON object
-                with an integer schema; every procedure has a slug id + >=1 valid step;
-                each step is a pick (pool/inline array) xor a roll+outcomes; every `when`
-                references an earlier step id in the same procedure; pool names resolve
+                with an integer schema (currently 2); every procedure has a slug id +
+                >=1 valid step; each step is a pick (pool/inline array) xor a
+                roll+outcomes; every `when` references an earlier step id in the same
+                procedure; pool names resolve; any `mode` is recount/event and any
+                `turns` duration (payload or procedure) is a positive int
   presets     - prompts array and prompt_order present; every enabled prompt_order
                 identifier resolves to a prompt
   export set  - WORLD_FORGE_SYNC §2: if any manifest declares kind:"director", at least
@@ -275,8 +277,21 @@ def check_world_calendar(entry, warn):
                  f"(0=January, 11=December), got {month!r}")
 
 
+def _check_dice_turns(turns, where, warn):
+    """WARN if a DICE_ORACLE 'turns' duration (§3.6) is present but not a positive int.
+
+    Optional at both payload and procedure level; omitted => 1. The consumer clamps
+    a bad value rather than erroring, so this only flags a likely producer mistake.
+    """
+    if turns is None:
+        return
+    if not isinstance(turns, int) or isinstance(turns, bool) or turns < 1:
+        warn(f"[[DICE_TABLES]] {where} 'turns' should be an integer >= 1, got "
+             f"{turns!r} (DICE_ORACLE §3.6; omitted => 1)")
+
+
 def check_dice_tables(entry, warn):
-    """Validate a [[DICE_TABLES]] carrier (DICE_ORACLE §2/§3) - WARN-only.
+    """Validate a [[DICE_TABLES]] carrier (DICE_ORACLE §2/§3, schema 2) - WARN-only.
 
     The dice oracle is optional and the Scene Tracker's Dice tab no-ops on
     anything malformed (falling back to its built-in demo tables), so nothing
@@ -302,6 +317,9 @@ def check_dice_tables(entry, warn):
     schema = payload.get("schema")
     if not isinstance(schema, int):
         warn(f"[[DICE_TABLES]] payload should have an integer 'schema', got {schema!r}")
+
+    # Payload-level 'turns' (DICE_ORACLE §3.6): optional positive int, default 1.
+    _check_dice_turns(payload.get("turns"), "payload", warn)
 
     # Pools: map of name -> non-empty array of strings.
     pools = payload.get("pools", {})
@@ -331,6 +349,15 @@ def check_dice_tables(entry, warn):
         if not (isinstance(pid, str) and SLUG_RE.match(pid)):
             warn(f"[[DICE_TABLES]] procedure[{i}] id {pid!r} is not a valid slug "
                  "(lowercase, _-separated)")
+        # 'mode' (DICE_ORACLE §3.7): optional; recount (default) | event. Any other
+        # value degrades to recount consumer-side, so this is a producer-hint WARN.
+        mode = proc.get("mode")
+        if mode is not None and mode not in ("recount", "event"):
+            warn(f"[[DICE_TABLES]] procedure {pid!r} has mode {mode!r}; expected "
+                 "'recount' or 'event' (any other value degrades to 'recount' - "
+                 "DICE_ORACLE §3.7)")
+        # Per-procedure 'turns' (DICE_ORACLE §3.6): optional positive int, overrides payload.
+        _check_dice_turns(proc.get("turns"), f"procedure {pid!r}", warn)
         steps = proc.get("steps")
         if not isinstance(steps, list) or not steps:
             warn(f"[[DICE_TABLES]] procedure {pid!r} has no 'steps' array "

@@ -13,6 +13,126 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-07 — Dice Oracle: `dice_oracle` preset block (runtime interpretation)
+
+The pipeline fixes the *authoring* of dice tables, but nothing told the model
+how to *read* the `<dice_oracle>` facts at runtime — so a well-shaped payload
+could still be recited as a list or serialized participant-by-participant. This
+adds the engine-side half of the dice oracle's what/how split as an optional
+preset block: the world's `framing` + the facts fix *what is true*; the block
+fixes *how to consume the injection channel*. It sits on the preset (engine)
+side of the override contract (#2) — world-agnostic, never in cards — and is the
+`<dice_oracle>`-channel sibling of Block 4 (Lore Integration)'s anti-recitation
+rule.
+
+### Added
+- **`agent_roles/05a_Block_Library.md`** — new optional block **Dice Oracle
+  Interpretation** (`identifier: "dice_oracle"`): menu entry + §5a-detail content
+  requirements. Facts are the skeleton/constraints of a recount (past) or event
+  (present) to **interweave into one coherent scene**, never recited as a list;
+  a multi-participant result is one continuous scene, never one-after-another;
+  honor the framed tense; defer voice/tone/explicitness to the world.
+- **`agent_roles/05_The_Prompt_Engineer.md`** — 5.0b **dice-oracle block hint**
+  (default-include iff the world declares a `[[DICE_TABLES]]` oracle, either
+  mode), a Pass 1 presence-iff-oracle + no-specifics check, a sign-off checklist
+  line, and inclusion in the optional-block list + resync ADD examples.
+- **`agent_roles/revise/05_The_Prompt_Engineer_mini.md`** — **Trigger F**: when a
+  revision adds a world's first dice oracle (`tier1_world_rule_add` creating the
+  carrier), add + enable the `dice_oracle` block (editing existing tables needs
+  no preset change).
+- **`CLAUDE.md`** — Dice Oracle seam row records the runtime-interpretation block
+  and its selection/toggle touchpoints.
+
+No template JSON change: `dice_oracle` is an *optional* block (added when
+warranted), not a conditional core block, matching the `npc_ensemble` precedent.
+
+## 2026-07-06 — Dice Oracle: "roll the shape, not the choreography" authoring guidance
+
+A dice world built through the pipeline serialized multi-man recounts (the
+model narrated "one man, then the next appears") and read the rolled facts back
+like a checklist. Root cause was authoring, not schema: procedures rolled the
+per-participant blow-by-blow (positions, hole-switching, a per-man finish) and
+split one encounter across per-participant records, which the consumer injects
+as separate blocks. The dice were doing the model's job (choreography) badly,
+and the model was doing the dice's job (reciting the list). This threads the
+what/how line through the *authoring* step so future worlds don't reproduce it.
+
+### Added
+- **Architect** §6 — a "Roll the shape, not the choreography" block: fix
+  setting / cast-as-traits / configuration / valence / one signature detail;
+  never roll positions, act-by-act sequence, per-participant acts, or a
+  per-participant finish; one situation = one procedure (participants are gated
+  trait steps, never per-participant procedures/rolls); count > 1 states
+  simultaneity in `text` + one encounter-level configuration + one joint
+  outcome; framing fixes register, never invites a sequence.
+- **Editor** Step 4.8 — soft-flags for the same anti-patterns (per-participant
+  procedure/duplication, rolled choreography / per-person finish, count outcome
+  missing simultaneity, serializing framing).
+- **`contracts/DICE_ORACLE.md`** §6.1 — informative authoring guidance mirroring
+  the above (no schema change; **needs contract sync to the ST fork**).
+- **Revise cascade — remediation path for an already-shipped world.** Correcting
+  a dice oracle that serializes / over-rolls is a `tier1_world_rule_modify`:
+  `agent_roles/revise/00_The_Reviser.md` names the dice-carrier target (+ a
+  possible paired `intimacy_register_modify` for the standing "tell it, don't
+  recite" instruction); `agent_roles/revise/02_The_Architect_mini.md` Step R2.5
+  rewrites the carrier payload **in place** applying the parent's shape-not-
+  choreography rules (collapse per-participant procedures, strip choreography /
+  per-person finishes, add simultaneity + configuration + one joint outcome,
+  de-serialize framing); `agent_roles/revise/03_The_Editor_mini.md` Step R3.1
+  revalidates per parent Step 4.8 + the soft-flags. The mini-Compiler already
+  preserves the carrier UID, so running SillyTavern chats keep world-info state.
+
+### Changed
+- **Interviewer** dice elicitation — steers authors to roll shape/flavor + one
+  signature detail (not choreography), keeps one situation as one procedure, and
+  draws out multi-participant configuration + simultaneity instead of "extra
+  positions"; reflect-back and §2h record note updated.
+- **World Seed** template §2h — author-facing "roll the shape, not the
+  choreography" + "one situation = one procedure" callouts; examples de-
+  choreographed (dropped "the act" / "extra-positions pool").
+- **`CLAUDE.md`** — Dice Oracle seam row notes the authoring-guidance set-piece
+  that must read consistently across seed / Interviewer / Architect / Editor /
+  contract §6.1.
+
+## 2026-07-06 — Dice Oracle: producer caught up to schema 2 + Editor validation gate
+
+The dice oracle producer chain was still authoring **schema 1** payloads while
+`contracts/DICE_ORACLE.md` had moved to **v2 / schema 2** (procedure `mode` —
+recount vs. event tense — and `turns` injection duration, both additive). The
+Architect hard-coded `schema: 1` and knew nothing about `mode`/`turns`, so the
+pipeline could not author either v2 feature. Separately, the Architect deferred
+malformed-payload rejection to the Editor, but the Editor had no dice-carrier
+validation step (only the WARN-only compile-time backstop caught it). This
+closes both gaps and threads the seam through the revise/convert cascades.
+
+### Changed
+- **`contracts/DICE_ORACLE.md`** status flipped **Draft → Established** — the v2
+  seam is settled end to end (producer + consumer).
+- **World Seed** template §2h — adds per-situation **tense** (recount default /
+  event) and **duration** (replies to keep facts armed) author fields.
+- **Interviewer** (Section 2 dice elicitation) — now draws out recount-vs-event
+  and duration per procedure, and records them into §2h.
+- **Refiner** — the `**Dice Oracle Tables (Scene Tracker seed):**` line carries
+  tense + duration; points the Architect at schema 2.
+- **Architect** §6 — emits `schema: 2` with optional payload-level `turns` and
+  per-procedure `mode`/`turns`; payload example updated.
+- **Compiler** Step 7.9 — carries `mode`/`turns` verbatim; guard + checklist
+  updated to schema 2.
+- **`tools/validate_export.py`** — `check_dice_tables` gains WARN checks for a
+  bad `mode` (not recount/event) and a bad `turns` (payload or procedure, not a
+  positive int); docstring/header note schema 2.
+
+### Added
+- **Editor** Step 4.8 — Dice Oracle Carrier Validation (hard-fail on disabled
+  carrier, unparseable payload, missing/wrong `schema`, no valid procedures,
+  malformed step, uncovered roll range, forward/dangling `when`, bad
+  `mode`/`turns`; soft-flags), plus a sign-off item. Mirrors the calendar Step
+  4.7 and is the pipeline's audit gate the Architect defers to.
+- **Cross-file consistency:** `CLAUDE.md` gains a Dice Oracle seam row; the
+  revise **mini-Compiler** preserves an existing `[[DICE_TABLES]]` carrier
+  through a World-lorebook rewrite (rule + sign-off items); the **Converter**
+  preservation matrix and **Convert Brief** template gain a §2h dice row.
+
 ## 2026-07-06 — Dice Oracle: producer emits `[[DICE_TABLES]]` for the Scene Tracker
 
 New optional seam, adopted canonically from the SillyTavern fork (where the
