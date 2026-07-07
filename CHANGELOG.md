@@ -13,6 +13,39 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-07 — Dice Oracle: `dice_oracle` preset block (runtime interpretation)
+
+The pipeline fixes the *authoring* of dice tables, but nothing told the model
+how to *read* the `<dice_oracle>` facts at runtime — so a well-shaped payload
+could still be recited as a list or serialized participant-by-participant. This
+adds the engine-side half of the dice oracle's what/how split as an optional
+preset block: the world's `framing` + the facts fix *what is true*; the block
+fixes *how to consume the injection channel*. It sits on the preset (engine)
+side of the override contract (#2) — world-agnostic, never in cards — and is the
+`<dice_oracle>`-channel sibling of Block 4 (Lore Integration)'s anti-recitation
+rule.
+
+### Added
+- **`agent_roles/05a_Block_Library.md`** — new optional block **Dice Oracle
+  Interpretation** (`identifier: "dice_oracle"`): menu entry + §5a-detail content
+  requirements. Facts are the skeleton/constraints of a recount (past) or event
+  (present) to **interweave into one coherent scene**, never recited as a list;
+  a multi-participant result is one continuous scene, never one-after-another;
+  honor the framed tense; defer voice/tone/explicitness to the world.
+- **`agent_roles/05_The_Prompt_Engineer.md`** — 5.0b **dice-oracle block hint**
+  (default-include iff the world declares a `[[DICE_TABLES]]` oracle, either
+  mode), a Pass 1 presence-iff-oracle + no-specifics check, a sign-off checklist
+  line, and inclusion in the optional-block list + resync ADD examples.
+- **`agent_roles/revise/05_The_Prompt_Engineer_mini.md`** — **Trigger F**: when a
+  revision adds a world's first dice oracle (`tier1_world_rule_add` creating the
+  carrier), add + enable the `dice_oracle` block (editing existing tables needs
+  no preset change).
+- **`CLAUDE.md`** — Dice Oracle seam row records the runtime-interpretation block
+  and its selection/toggle touchpoints.
+
+No template JSON change: `dice_oracle` is an *optional* block (added when
+warranted), not a conditional core block, matching the `npc_ensemble` precedent.
+
 ## 2026-07-06 — Dice Oracle: "roll the shape, not the choreography" authoring guidance
 
 A dice world built through the pipeline serialized multi-man recounts (the

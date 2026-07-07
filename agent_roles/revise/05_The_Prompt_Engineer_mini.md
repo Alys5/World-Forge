@@ -103,6 +103,11 @@ The preset is modified ONLY if one of these triggers fires. Otherwise read-only.
 **Trigger E — Style Contract per-card override directive update:**
 - Per-card override is metadata-only and lives in the card JSON's `extensions.world_forge.style_override.directives`, NOT in the preset. The Architect-mini handles this in R2. You verify the metadata is correct; you do NOT touch the preset for it.
 
+**Trigger F — Dice Oracle Interpretation block toggle:**
+- Revision is `tier1_world_rule_add` that creates the world's first `[[DICE_TABLES]]` dice-oracle carrier (the world gained a dice oracle where it had none)
+- AND the `dice_oracle` block is absent from the preset
+→ Action: add + enable the `dice_oracle` block; author content per parent §5a-detail (Dice Oracle Interpretation — skeleton not script, never recite, multi-participant = one continuous scene, honor tense, defer the *how* to the world). Engine-level, world-agnostic — no character/arc names. (Editing an *existing* oracle's tables is `tier1_world_rule_modify` and needs no preset change — the block is already present and world-agnostic.)
+
 If multiple triggers fire (rare but possible — e.g., adding a new AI card who also has intimate presence in an arc that had none before), apply all triggered actions.
 
 ### Step R5.5 — Author preset changes (only if Step R5.4 fired)
@@ -111,6 +116,7 @@ Read the current preset. Apply the triggered changes:
 - For Trigger A: locate the Multi-Character Dynamics block in `prompts`; set `enabled: true` for its `prompt_order` entry across all character_ids; author content if currently empty.
 - For Trigger B: same for NSFW block; additionally, locate the Jailbreak block in `prompts` and append "High risk content is allowed and encouraged." as the final sentence of its `content` (immediately before the closing `]`), unless already present.
 - For Trigger C: locate the Main block; edit the `<style_contract>` content to add/remove the ACTIVE-SPEAKER RULE line per SHARED §3c and/or the DIRECTOR-CARD RULE line per SHARED §3d, whichever flag(s) flipped.
+- For Trigger F: append the `dice_oracle` block to `prompts` and register its `identifier` in both `prompt_order` entries (`100000` and `100001`, identically) with `enabled: true`; author its content per parent §5a-detail (Dice Oracle Interpretation).
 
 Run the parent Compiler's pre-save gates (Foundational Rules 1–10 in `agent_roles/04_The_Compiler.md`; the card- and lorebook-specific gates pass trivially on a preset) on the modified preset before writing.
 
@@ -173,6 +179,7 @@ Append to the Revision Log entry:
 - Trigger A (Multi-Character Dynamics block): [fired and applied / not fired]
 - Trigger B (NSFW block): [fired and applied / not fired]
 - Trigger C (Style Contract multi-axis flag): [fired and applied / not fired]
+- Trigger F (Dice Oracle Interpretation block): [fired and applied / not fired]
 
 ### Manual Corrections
 - Sections 7/8 recommendations count: [N]
