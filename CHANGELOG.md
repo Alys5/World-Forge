@@ -13,6 +13,23 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-07 — Dice Oracle: `dice_oracle` block handles established-character references
+
+Supports a consumer-side feature (ST fork `world-forge` extension): pinning an
+**existing cast member** into a dice roll as a participant, so a rolled scene is
+part-authored (the named NPC) and part-rolled (the situation). The pipeline's
+only obligation is one interpretation clause; the roll/UI is consumer-side and
+needs no schema or contract change (the NPC is referenced by name at roll time,
+resolved from the `[[NPC_MANIFEST]]`, and stays ephemeral like every dice fact).
+
+### Changed
+- **`agent_roles/05a_Block_Library.md`** — the `dice_oracle` block's §5a-detail
+  content requirements gain an **Established-character references** clause: when
+  a `<dice_oracle>` result names an existing cast member, portray them from their
+  own lorebook/card (voice, body, psychology, intimacy profile), never from the
+  rolled facts — the dice fix the *situation*, the character is authored, not
+  rolled; the involvement is ephemeral recount/event fiction, not a canon update.
+
 ## 2026-07-07 — Dice Oracle: `dice_oracle` preset block (runtime interpretation)
 
 The pipeline fixes the *authoring* of dice tables, but nothing told the model
