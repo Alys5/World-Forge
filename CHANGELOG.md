@@ -13,6 +13,22 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-07 — Dice Oracle: complexity roadmap in contract §7 (tiered)
+
+Captures where "more complex dice / RPG mechanics" should go, so producer and
+consumer evolve toward the same place without accreting a half-RPG engine onto
+the ephemeral oracle. No behavior or schema change — documentation only.
+
+### Changed
+- **`contracts/DICE_ORACLE.md`** §7 rewritten into three tiers: **7.1 richer
+  randomness** (weighted pools, pick-N, advantage/keep-drop/exploding grammar,
+  derived modifiers — additive, stays in the oracle), **7.2 resolution
+  mechanics** (skill-check-vs-DC / success counting — fits until it needs a stat
+  modifier or persistence), **7.3 stateful RPG** (sheets/HP/consequences — a
+  separate subsystem via server-authoritative rolls + a state channel, never
+  bolted onto the ephemeral oracle). `Last updated` bumped; version unchanged.
+  **Cross-repo: needs contract sync to the ST fork.**
+
 ## 2026-07-07 — Dice Oracle: `dice_oracle` block handles established-character references
 
 Supports a consumer-side feature (ST fork `world-forge` extension): pinning an
