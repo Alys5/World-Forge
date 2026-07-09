@@ -247,8 +247,13 @@ Erik's drones patrol, Kaladin runs background checks, Jasper actively runs inter
 7. `SvartulfrVerse_EN_NPC_Roster_Lorebook.json`
 8. `SvartulfrVerse_EN_Sandbox_Lorebook.json`
 9. `SvartulfrVerse_EN_Kaladin_Intimacy_Profile.json`
-10. `SvartulfrVerse_EN_Sandbox_Intimacy_Register.json`
-11. **`SvartulfrVerse_EN_Legacy_Expansion_Lorebook.json`** *(Quarantine target for the mass-import of `modernfantasy.json`, `succ.json`, and Svartulfr legacy files. Architect will write factions, classes, and generic locations here).*
+10. `SvartulfrVerse_EN_Jasper_Intimacy_Profile.json`
+11. `SvartulfrVerse_EN_Erik_Intimacy_Profile.json`
+12. `SvartulfrVerse_EN_Noah_Intimacy_Profile.json`
+13. `SvartulfrVerse_EN_Malachia_Intimacy_Profile.json`
+14. `SvartulfrVerse_EN_NPC_Intimacy_Roster.json`
+15. `SvartulfrVerse_EN_Sandbox_Intimacy_Register.json`
+16. `SvartulfrVerse_EN_Legacy_Expansion_Lorebook.json` *(Quarantine target for the mass-import of `modernfantasy.json`, `succ.json`, and Svartulfr legacy files. Architect will write factions, classes, and generic locations here).*
 
 ---
 
