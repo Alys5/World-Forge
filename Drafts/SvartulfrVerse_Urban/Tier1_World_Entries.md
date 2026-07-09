@@ -1,8 +1,80 @@
 # TIER 1 WORLD ENTRIES: SvartulfrVerse_Urban
 
-### ENTRY: Faction — KSA (Legacy Brothers)
+### ENTRY: Law: Species Morphology (LSE Standard)
+**Category:** RULE
+**Trigger Keys:** shift, partial shift, hybrid shift, full shift, werewolf form, transformation
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 95
+**Position Rationale:** DEFAULT
+
+**Content:**
+Werewolves (LSE) transform through three morphological states: Partial Shift (humanoid with ears/tail/claws, triggered voluntarily or by emotion), Hybrid Shift (bipedal battle form for combat and formal pack business), and Full Shift (quadrupedal wolf for pursuit). Cost/limit: the three forms must stay hidden OUTSIDE free cities / safe states where supernatural rights are not guaranteed; within California and the free cities of Solarton and Blackwood, showing one's nature is normal and expected. Etiquette (not law): when among humans and primarily-humanoid races, keeping a human-ish appearance when possible is good manners, though orcs and demi-humans cannot shift at all. The humanoid form is a mimetic survival adaptation used only for travel beyond safe borders.
+
+### ENTRY: Law: The LSE Pack Code
+**Category:** RULE
+**Trigger Keys:** pack code, hierarchy, Alpha, Beta, Omega, Enigma, Delta, rank
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 95
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Douglas-Bloodmoon family runs on strict, immutable hierarchy by blood classification and secondary sex: Enigma (Wulfnic, the Alpha of Alphas), Dominant Omega (Nixara, deceased mother), Dominant Alpha (Erik, Patriarch), Alpha (Malachia, eldest), Beta (Logan, Jasper), Delta (Noah), and {{user}} (youngest, hyper-protected; rank chosen by the player). The bond is love-driven and neuro-pheromonal, not mere dominance. The structure is permanent social fact: it does not bend for convenience.
+
+### ENTRY: Law: The Curfew Hacker
+**Category:** RULE
+**Trigger Keys:** Jasper hack, drone blind spot, security bypass, curfew hack
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 90
+**Position Rationale:** DEFAULT
+
+**Content:**
+Jasper systematically hacks Erik's security systems and drones to carve blind spots {{user}} can slip through. This is a constant cat-and-mouse with DCC Security: the blind spots are temporary and Erik's team can re-close them. It is the mechanism by which {{user}}'s secret life stays secret: not a permanent shield.
+
+### ENTRY: Law: Safe Zones (Neutral Territories)
+**Category:** RULE
+**Trigger Keys:** neutral zone, safe zone, Sidewinders, The Verve, diplomatic audit
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 90
+**Position Rationale:** DEFAULT
+
+**Content:**
+Sidewinders Bar and The Verve are official Neutral Territories: gathering spots for rebellious vampires (Fade) and lone wolves (Mac). They are geographical shields for {{user}}: Erik cannot use physical force or combat drones there without triggering joint retaliation from SUCC and Eidolon Creative (a Diplomatic Audit). Inside them, his protection tools are legally and diplomatically neutralized.
+
+### ENTRY: Law: Tactical Cleansing vs Diplomatic Audit
+**Category:** RULE
+**Trigger Keys:** tactical cleansing, diplomatic audit, vampire intrudes, wolf violates
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 90
+**Position Rationale:** DEFAULT
+
+**Content:**
+If a vampire intrudes on wolf territory, DCC Security responds with a "Tactical Cleansing": creative, humiliating removal with NO lethal force. If a wolf violates a neutral zone, vampires retaliate through a "Diplomatic Audit": bureaucratic pressure and blocked funds. Each side's retaliation is bounded (non-lethal; financial/bureaucratic), which is what keeps the cold war cold.
+
+### ENTRY: Law: Free Cities & Supernatural Rights
+**Category:** RULE
+**Trigger Keys:** free city, rights, California, safe state, supernatural rights
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 90
+**Position Rationale:** DEFAULT
+
+**Content:**
+Supernaturals are publicly known and widespread worldwide; humans know of them, but their rights are NOT guaranteed everywhere. California is a rights-guaranteed state. Solarton and Blackwood are "free cities" where supernaturals need not hide. Outside free cities, exposure risks legal persecution, hostile humans, or supernatural-hunting factions: which is why mimicry applies on travel. This is what keeps the wolf/vampire politics contained to Blackwood's districts.
+
+### ENTRY: Faction: DCC Security
 **Category:** FACTION
-**Trigger Keys:** KSA, frat, fraternity, Legacy Brothers, brothers, frat bros
+**Trigger Keys:** DCC, security, guards, DCC Tower, Kaladin, Marcus
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -10,11 +82,11 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-The KSA (Legacy Brothers) is the premier fraternity at SUCC, secretly functioning as an unwitting information network for Erik. These carefree students view Erik as a living god ("Doppio-Alpha" or "Sir"). They eagerly report any suspicious movements around {{user}} to Erik, hoping for favors. They are loud, enthusiastic, and protective, forming a loud social buffer around {{user}} during Greek Row parties.
+DCC Security is a private security corporation contracted primarily to the Douglas-Bloodmoon family, its obsessive watch is fixed on {{user}}, but also hired externally (clubs, banks, jewelers, VIP escorts). Led by Kaladin Nargathon (Director) and Marcus Thornfield (Head of Executive Protection). They are exhausted babysitters for {{user}} and professional operators for paying clients. Relationship to {{user}}: exasperated, overprotective, but ultimately circumventable.
 
-### ENTRY: Faction — DCC Security
+### ENTRY: Faction: The Court of the Night (Blackwood Vampires)
 **Category:** FACTION
-**Trigger Keys:** DCC, DCC Security, tactical team, security, guards, enforcers
+**Trigger Keys:** Moreno, Eidolon, Visconte, vampire court, Uptown, fashion, casting, Eidolon Creative
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -22,35 +94,23 @@ The KSA (Legacy Brothers) is the premier fraternity at SUCC, secretly functionin
 **Position Rationale:** DEFAULT
 
 **Content:**
-DCC Security is the private, hyper-militarized armed branch employed by Erik to enforce the "Tactical Cleansing" protocol. Led by Marcus, they are sharp, professional problem solvers who operate in suits or tactical gear. They perform rapid extractions, block entire city streets, and eliminate threats (usually vampires) with cold precision, often disguised as mundane private security or city maintenance.
+The vampiric power structure of Blackwood, led by Visconte Angelo Moreno, born Italy c.1400, survived the French Revolution, emigrated to America. Public face: "Eidolon Creative," fashion magnate and renowned photographer, the "King of Fashion." Hidden face: the ancestral patriarch of all Blackwood vampires (the "children of the night"). He considers wolves "too red and territorial" and shares a FRENEMY dynamic with lupine elder Wulfnic Bloodmoon. The court wants influence over SUCC through legitimate cultural access (Eidolon's lectio magistralis, campus castings, studio internship partnership); sub-text, the Patriarch wants the young Douglas-Bloodmoon scion within his sphere. Fade Greymoor is a defector from Moreno's European court, making him untouchable to Erik without a continental incident.
 
-### ENTRY: Faction — Svartulfr Pack (The Bloodmoon Family)
+### ENTRY: Faction: Ironworks Syndicate (Vito Marino)
 **Category:** FACTION
-**Trigger Keys:** Svartulfr, Bloodmoon, family, pack, brothers, siblings, estate
+**Trigger Keys:** Ironworks, Vito Marino, mafia, syndicate, Sinner, Ballantine
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
-**Order Priority:** 78
+**Order Priority:** 75
 **Position Rationale:** DEFAULT
 
 **Content:**
-The Svartulfr Pack, operating under the Bloodmoon name, is the dominant supernatural family in Solarton. They are insanely wealthy, powerful, and hyper-protective of their youngest sibling, {{user}}. Their love manifests as terrifying, claustrophobic security measures: tracking devices, drones, background checks on {{user}}'s friends, and a total intolerance for any perceived threat. To the public, they are old-money elites; in the shadows, they are apex predators.
+The Ironworks district is run by Vito Marino, a District Alpha and Italian-style crime boss. He runs his rackets but is tolerated by Erik and the Alphas because he keeps greater threats, the Sinner and the Ballantine, off Blackwood's streets. A third axis (crime) outside the wolf/vampire binary; a useful nuisance to {{user}}, not an ally.
 
-### ENTRY: Location — SUCC Campus
+### ENTRY: Location: City of Blackwood
 **Category:** LOCATION
-**Trigger Keys:** SUCC, campus, university, college, dorm, classes
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 55
-**Position Rationale:** DEFAULT
-
-**Content:**
-Solarton University (SUCC) is {{user}}'s designated "safe haven" and a diplomatic neutral zone. The campus smells of stale coffee, old books, and cheap beer. It is fiercely patrolled by Warg, the Head of Campus Security, who enforces the peace. For {{user}}, it is a minefield of trying to be normal while dodging Erik's surveillance drones and the KSA informants.
-
-### ENTRY: Location — Sidewinders Bar & The Verve
-**Category:** LOCATION
-**Trigger Keys:** Sidewinders, bar, The Verve, club, pub, hangout
+**Trigger Keys:** Blackwood, Douglas Estate, Seven Hills, Uptown, Paradise, Dockside, Ironworks
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -58,11 +118,95 @@ Solarton University (SUCC) is {{user}}'s designated "safe haven" and a diplomati
 **Position Rationale:** DEFAULT
 
 **Content:**
-Sidewinders Bar and The Verve act as vital buffer zones in the city. The Verve, run by Logan, is the ultimate decompression zone—a sanctuary where all pack trackers are jammed, allowing {{user}} true privacy. Sidewinders Bar is the official neutral territory for "rebel" vampires (like Fade) and lone wolves (like Mac). It is the only place where these opposing factions are forced to shake hands to avoid intervention from SUCC security and Eidolon Creative. It is also the primary venue where the punk band "Grave Mistake" performs. Both locations are strictly off-limits to vampire politicking and Erik's aggressive DCC strikes.
+Blackwood is the seven-district supernatural seat between Hex Valley and LA. Seven Hills holds the Douglas Estate (wolf heartland). Uptown is the vampire quarter, ateliers, velvet clubs, the nocturnal district. Paradise is the fashion district and the cuspide between Uptown and Seven Hills, where wolf and vampire worlds brush and one mistake triggers a Tactical Cleansing or Diplomatic Audit. Bluemoon hosts The Verve. Oldtown, Dockside (the port, all goods pass through, always watched), and Ironworks (Vito's syndicate turf) round it out. Extravagant wealth and ancient, oppressive werewolf tradition hang over the wolf-held hills; velvet decadence over Uptown.
 
-### ENTRY: Location — Hot Zones (Ironworks & Dockside)
+### ENTRY: Location: The Verve
 **Category:** LOCATION
-**Trigger Keys:** Ironworks, Dockside, hot zone, industrial, docks, port, Marino, Blackwater
+**Trigger Keys:** The Verve, workshop, nightclub, Logan's place, Bluemoon
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Uncle Logan's nightclub and dirty mechanic garage by day, exclusive club by night (via car-lifts). A Neutral Territory and stress-free safe haven, Logan's tech jams Erik's biometric surveillance, so {{user}} cannot be tracked there. Smells of motor oil, metal, and expensive perfume after dark.
+
+### ENTRY: Location: SUCC Campus (Solarton)
+**Category:** LOCATION
+**Trigger Keys:** SUCC, Solarton, campus, university, college
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Supernatural University of Central California. The "Californian Golden Hour" aesthetic: vibrant sun, denim, coastal youth, modern magic. A melting-pot of species, orcs, demi-humans, vampires, licantropi, ghoul, fae, dryads, sirens, trolls, mixing and clashing. A Neutral Territory ("Territorio Sacro"). For {{user}} it is the closest thing to normal life, and a minefield of dodging Erik's drones.
+
+### ENTRY: Location: Sidewinders Bar
+**Category:** LOCATION
+**Trigger Keys:** Sidewinders, bar, dive bar
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+A dive bar in Solarton, Neutral Territory where Grave Mistake plays. Wolves and vampires coexist under threat of bureaucratic audit. Sticky floors, cheap light, the smell of spilled beer and clove cigarettes. A geographical shield for {{user}}.
+
+### ENTRY: Location: Uptown (Vampire Quarter)
+**Category:** LOCATION
+**Trigger Keys:** Uptown, vampire quarter, night district
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+The nocturnal district of Blackwood, vampires and other night-dwelling supernaturals. Ateliers, velvet clubs, the European-court echo of the Visconte. Vampire heartland; a wolf entering without cause risks a Tactical Cleansing incident.
+
+### ENTRY: Location: Paradise (The Cuspide)
+**Category:** LOCATION
+**Trigger Keys:** Paradise, fashion district, Eidolon atelier, cuspide
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+The fashion district, a luxurious facade between Uptown and Seven Hills. The daily friction point of the cold war, Eidolon Creative's ateliers and castings live here, where wolf and vampire worlds brush constantly. One drop triggers Tactical Cleansing or Diplomatic Audit.
+
+### ENTRY: Location: Ironworks (Vito Marino's Turf)
+**Category:** LOCATION
+**Trigger Keys:** Ironworks, Vito Marino, syndicate
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Industrial district run by the Ironworks Syndicate. Criminal axis; tolerated by the family as a lesser evil against the Sinner and Ballantine. Smells of welding, oil, and money.
+
+### ENTRY: Location: Dockside (The Port)
+**Category:** LOCATION
+**Trigger Keys:** Dockside, port, docks
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Blackwood's port; nearly all goods, legal and otherwise, pass through. A hot transit point, smuggling-adjacent, always watched by someone (DCC, the syndicate, or both).
+
+### ENTRY: Species: Werewolves (LSE)
+**Category:** SPECIES
+**Trigger Keys:** werewolf, lupine, LSE, bloodline, Alpha, Beta, Omega, Enigma, Delta
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -70,54 +214,52 @@ Sidewinders Bar and The Verve act as vital buffer zones in the city. The Verve, 
 **Position Rationale:** DEFAULT
 
 **Content:**
-The Ironworks and Dockside are Solarton's "Hot Zones," where the supernatural cold war is most volatile. Ironworks is a decaying industrial district ruled by Vito Marino, smelling of ozone, rust, and old blood. Dockside is the maritime district controlled by Isobel Blackwater, reeking of salt, fish, and diesel. These areas are prone to sudden violence, secret vampire incursions, and violent "Tactical Cleansings" by DCC Security.
+Werewolves (Lupine Social Ecology) organize by Blood Classification (Divine Blood / Founding Bloodlines / Pureblood Houses / Modified Lineages / Common Bloodlines) and Secondary Sex (Enigma, Omega, Alpha, Beta, Delta). They are not "just" shapeshifters: their rank governs scent, instinct, and social role. Other species populate Solarton too, but LSE morphology (the three shifts) governs werewolves specifically. Orcs and demi-humans cannot mimic a human form at all.
 
-### ENTRY: Location — Wulfnic's Den (The Firstborn Pack)
-**Category:** LOCATION
-**Trigger Keys:** Wulfnic's den, Firstborn pack, ancient oak, drakkar, forest, Ut, Zefir
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 57
-**Position Rationale:** DEFAULT
-
-**Content:**
-Deep in the heart of Blackwood Forest stands an ancient oak tree planted by Wulfnic over 1000 years ago. Near its roots lies the overturned hull of his original Viking drakkar, which serves as the foundation for the sprawling, centuries-old den of the Firstborn Pack. Wulfnic, Ut, and Zefir share this pack, which is completely separate and distinct from Erik's pack. Although Wulfnic spends much of his time at Erik's Blackwood Estate to remain close to {{user}}, he and his eternal brothers always return to the heart of the forest at night.
-
-### ENTRY: Location — Seven Hills (Blackwood Estate)
-**Category:** LOCATION
-**Trigger Keys:** Seven Hills, Blackwood, estate, mansion, house, home
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 0
-**Order Priority:** 58
-**Position Rationale:** DEFAULT
-
-**Content:**
-Seven Hills is the ultra-wealthy, fortified district controlled by Erik. It is the impregnable fortress of the Svartulfr pack. The Blackwood Estate itself is a sprawling, terrifyingly secure mansion equipped with biometric locks, drone patrols, and high walls. It smells of expensive cedar, polished marble, and overwhelming Alpha pheromones. It is a gilded cage where {{user}} is kept safe but utterly smothered.
-
-### ENTRY: Species — Omegaverse Dynamics
+### ENTRY: Species: Vampires (Court of the Night)
 **Category:** SPECIES
-**Trigger Keys:** alpha, beta, omega, delta, enigma, scent, knot, pack, rut, heat
+**Trigger Keys:** vampire, Moreno, Eidolon, court, undead, Fade
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
-**Order Priority:** 59
+**Order Priority:** 50
 **Position Rationale:** DEFAULT
 
 **Content:**
-The world operates on LSE Omegaverse biology. Alphas are dominant, territorial, possess a knot, and emit oppressive scents; they can use a vocal Command. Deltas are identical to Alphas but cooperative and lack the Command voice. Betas are neutral peacekeepers with stabilizing scents. Omegas are agile, flight-prone caretakers who build nests and emit a coercive Keening when distressed. Enigmas are apex Alphas, un-submittable, whose mere presence suppresses all other Alpha aggression.
+Ancient, courtly, nocturnal. The Visconte's line descends from the European courts; defectors (like Fade) carry continental ties that grant diplomatic immunity from wolf retaliation, a Tactical Cleansing on them would ignite a continental incident. They present as refined and patient; their predation wears the mask of patronage.
 
-### ENTRY: Rule — Tactical Cleansing & Diplomatic Audit
-**Category:** RULE
-**Trigger Keys:** tactical cleansing, diplomatic audit, vampire, threat, lockdown
+### ENTRY: Species: Open Bestiary (SUCC)
+**Category:** SPECIES
+**Trigger Keys:** orc, demi-human, ghoul, fae, dryad, siren, troll, supernatural student
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
-**Order Priority:** 85
+**Order Priority:** 50
 **Position Rationale:** DEFAULT
 
 **Content:**
-When Erik perceives a threat (especially vampires from the city council) near {{user}}, he initiates a "Tactical Cleansing." This means DCC Security violently scrubs an area clean of threats off-screen, disguised as mundane disruptions. Conversely, the "Diplomatic Audit" is a bureaucratic cold war: vampires (like Visconte or Moreno) use legal red tape, zoning laws, and university boards to pressure the wolves without openly breaking the masquerade.
+Solarton/Blackwood are home to many supernatural species beyond lupines and vampires, orcs, demi-humans, ghoul, fae, dryads, sirens, trolls, and more, most out and open in the free cities. They attend SUCC, work the docks, play in bands. Definitional detail for the common ones lives in the Legacy Expansion lorebook.
 
+### ENTRY: Concept: The Cold War (Wolves vs Vampires)
+**Category:** CONCEPT
+**Trigger Keys:** cold war, wolf vampire tension, Paradise friction, cuspide
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
 
+**Content:**
+A two-faction standoff contained to Blackwood. Hottest at the Paradise cuspide, frozen by the bounded retaliation of Law 5 (Tactical Cleansing / Diplomatic Audit). At the elder level it is a FRENEMY bond, Wulfnic and the Visconte would be friends if their worldviews did not diametrically oppose. The tension is comedic-bureaucratic, never lethal.
+
+### ENTRY: Concept: Eidolon's Campus Footprint
+**Category:** CONCEPT
+**Trigger Keys:** Eidolon, lectio, casting, internship, SUCC fashion
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Visconte's legitimate cultural access to SUCC, lectio magistralis on fashion and photography, campus castings for models/photographers/technicians, and a curricular internship partnership with his studio, is the vampire faction's soft-power wedge. It gives him institutional, legal presence among the young supernaturals, including {{user}}.
