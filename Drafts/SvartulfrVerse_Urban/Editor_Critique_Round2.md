@@ -80,3 +80,42 @@ Two systemic hard failures (HF-1, HF-2) confined to the 4 `Instructions_*.md` co
 **Improve (optional, same pass):**
 - SF-1: consider adding `Tier2_Angelo_Entries.md` for full principal-NPC §7.D coverage.
 - SF-2: surface 2–3 explicit trigger-response pairs in each `system_prompt` body.
+
+---
+
+## Round 3 — 2026-07-09 (rework verification, sandbox mode)
+
+Single-pass rework applied across all four `Instructions_*.md` companion files plus the `Tier2_Angelo_Entries.md` coverage confirmation.
+
+### Hard-Failure Recheck (per Round 2 directives)
+
+**HF-1 — Stray leading `{{original}}` in Instructions files: ALREADY CLEAN.** The four files open with `# SYSTEM_PROMPT` (line 1); the `{{original}}` macro sits correctly only at the start of the `# SYSTEM_PROMPT` body (line 3) and the `# Post-History-Instructions` body (line 24). The Round 2 line-1 stray macro was not present in the working files at rework time, so no removal was required. No double-macro system_prompt produced.
+
+**HF-2 — Literal `{{original}}` inside `# depth_prompt`: FIXED.** All four files' "First-line mandate" bullet rephrased to: *"The card's system_prompt opens with the preset's original-macro placeholder on its own line, then the persona content."* No literal `{{original}}` token remains in any `# depth_prompt`. Verified by grep: the only `{{original}}` occurrences in each file are at lines 3 and 24 (the two legitimate splice points).
+
+### Soft-Flag Recheck
+
+**SF-1 — `Tier2_Angelo_Entries.md` (full §7.D principal-NPC coverage): ALREADY PRESENT.** The file exists with the complete §7.D structure — Profile, Physical, Voice & Manner (with voice fingerprint + sample lines + crack), Relationships, Standing Goal, and LLM Behavioral. Angelo now carries the same standalone deep-NPC coverage as the other principals. The deliberate World Director routing (no card) is preserved and noted in-file.
+
+**SF-2 — Explicit trigger-response pairs in `system_prompt` bodies: IMPLEMENTED.** Each of the four `system_prompt` bodies now closes with a `**Trigger responses:**` block containing three character-specific directives:
+- Jasper: distress/threat → ruthless + DJ Frequency prefix retained; Erik security/drones in-scene → escalate interference/forge alibi; sincerity → Norse-jab deflection without mocking the feeling.
+- Erik: feigned innocence/real distress → panicked coddling; mundane incident → tactical life-or-death escalation; secret-life crack → oblivious drone/interrogation.
+- Malachia: favor/comfort asked → steadfast gentle silence; male approaches → loom + silent shield; danger → step between threat and {{user}}.
+- Noah: caught hypocrite → panic-defensive older brother; party/bad-crowd → herd away oblivious he IS it; Erik attention on night → panic-cover.
+
+All three pairs per character are character-specific, AnyPOV-clean, and trace to the existing depth_prompt spec (no engine contamination introduced).
+
+### Audit Confirmation
+- `{{original}}` placement: start of `# SYSTEM_PROMPT` body + start of `# Post-History-Instructions` body only ✓
+- No literal `{{original}}` in `# depth_prompt` ✓
+- No stray macro before `# SYSTEM_PROMPT` ✓
+- Cards (`Card_*.md`) untouched and remain clean ✓
+- `Tier2_Angelo_Entries.md` §7.D-complete ✓
+- `system_prompt` bodies carry ≥3 explicit trigger-response pairs ✓
+- Everything else from Round 2 (Tier 1/2/3 lorebooks, intimacy profiles, User.md, position rationales, style-override audit) remains passing.
+
+---
+
+## Status: APPROVED — Phase 4 (Compiler)
+
+All Round 2 findings are resolved. HF-1 was already clean; HF-2 fixed mechanically across all four Instructions files; SF-1 confirmed (Tier2_Angelo_Entries.md present with full §7.D coverage); SF-2 implemented (three explicit trigger-response pairs per `system_prompt` body). The complete SvartulfrVerse_Urban set is APPROVED for Phase 4 (Compiler).
