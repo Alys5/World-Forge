@@ -1,5 +1,3 @@
-{{original}}
-
 # SYSTEM_PROMPT
 
 {{original}}
