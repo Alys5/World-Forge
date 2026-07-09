@@ -1,22 +1,20 @@
 # World-Forge
 
-_A multi-agent pipeline for building immersive roleplay worlds for [SillyTavern](https://github.com/SillyTavern/SillyTavern) and [JanitorAI](https://janitorai.com/)._
+*A multi-agent pipeline for building immersive roleplay worlds for [SillyTavern](https://github.com/SillyTavern/SillyTavern).*
 
-> **Fork Notice**: This repository is a fork of the original [AndreiNicu/World-Forge](https://github.com/AndreiNicu/World-Forge) pipeline. Maintained by [Lys_5](https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5) at [Lys-5/World-Forge](https://github.com/Lys-5/World-Forge), this fork has been heavily adapted to natively support **JanitorAI** formats and to run entirely on the **Antigravity** agentic extension.
+World-Forge takes you from a raw idea to a complete, runtime-ready world package: character cards, a tiered lorebook system, a chat completion preset, and audit reports — all aligned with how SillyTavern actually assembles prompts at runtime. The pipeline is a sequence of specialized agents, each with a defined role, that walks you through five-plus phases of structured drafting, validation, and export.
 
-World-Forge takes you from a raw idea to a complete, runtime-ready world package: character cards, a tiered lorebook system, a chat completion preset, and audit reports — all aligned with how SillyTavern and JanitorAI actually assemble prompts and profiles at runtime. The pipeline is a sequence of specialized agents, each with a defined role, that walks you through five-plus phases of structured drafting, validation, and export.
+The repository **is** the pipeline. There is no application code to compile, no service to deploy, no dependencies. The agents are markdown specifications consumed at runtime by an agentic IDE extension — [Kilo Code](https://github.com/Kilo-Org/kilocode) (recommended; the repo ships a preconfigured `.kilo/kilo.jsonc`) or [Cline](https://github.com/cline/cline) — running inside VS Code. When you invoke `/worldforge start`, the orchestrator reads these specifications and dispatches each phase. See [`wiki/Agentic-Tools-and-Models.md`](./wiki/Agentic-Tools-and-Models.md) for the tool comparison, and [`wiki/Kilo-Code-Setup.md`](./wiki/Kilo-Code-Setup.md) for a dedicated Kilo Code setup walkthrough. (Roo Code, the tool the pipeline was originally authored against, was retired on May 15, 2026 — see the wiki's migration note.)
 
-The repository **is** the pipeline. There is no application code to compile, no service to deploy, no dependencies. The agents are markdown specifications consumed at runtime by an agentic IDE extension — [Antigravity](https://github.com/Antigravity/kilocode) (recommended; the repo ships a preconfigured `.agents/skills/`) or [Cline](https://github.com/cline/cline) — running inside VS Code. When you invoke `/worldforge start`, the orchestrator reads these specifications and dispatches each phase.
-
-A companion SillyTavern fork — [AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern) — is maintained alongside the original project upstream. It is optional but recommended when running World-Forge worlds at scale: it relaxes some of stock SillyTavern's constraints that World-Forge outputs would otherwise bump into (notably allowing more than one matching lorebook entry to fire in a scene, which World Director cards rely on) and ships a small `world-forge` ST extension that wires style-override runtime support. See [Companion SillyTavern fork](#companion-sillytavern-fork-optional) below.
+A companion SillyTavern fork — [AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern) — is maintained alongside this repository. It is optional but recommended when running World-Forge worlds at scale: it relaxes some of stock SillyTavern's constraints that World-Forge outputs would otherwise bump into (notably allowing more than one matching lorebook entry to fire in a scene, which World Director cards rely on) and ships a small `world-forge` ST extension that wires style-override runtime support. See [Companion SillyTavern fork](#companion-sillytavern-fork-optional) below.
 
 ## ⚠️ Please read before you change anything
 
 World-Forge produces a **single integrated package**, not a grab-bag of parts. The character card, the three-tier lorebook system, and the Chat Completion Preset are co-designed against each other and against how SillyTavern actually assembles prompts at runtime (see [Core architectural ideas](#core-architectural-ideas)). Pull a piece out or swap a piece in and the contract breaks. The most common ways users break it — and then report a bug:
 
-- **Running a generated world with your own preset.** The card's `system_prompt` and `post_history_instructions` are written to splice the _pipeline's_ preset back in via `{{original}}` and then layer character-specific content on top (the override architecture). Point the card at a different preset and the engine-level half of the contract — narration discipline, perspective rules, formatting, the creative framework — is gone or contradicted. Things will feel "off," and that is expected.
+- **Running a generated world with your own preset.** The card's `system_prompt` and `post_history_instructions` are written to splice the *pipeline's* preset back in via `{{original}}` and then layer character-specific content on top (the override architecture). Point the card at a different preset and the engine-level half of the contract — narration discipline, perspective rules, formatting, the creative framework — is gone or contradicted. Things will feel "off," and that is expected.
 - **Using the character card but deleting the lorebooks.** The card is deliberately thin on world/state content because that content lives in the tiered lorebooks by design. Strip Tier 1/2/3 and the character has no world, no standing state, and no arc context to draw on. This is not a broken card; it is half a package.
-- **Editing the pipeline and then finding it "eats all the tokens."** The agent specs are long and prescriptive _on purpose_ — each phase loads several thousand tokens of structural rules and validation so the runtime model doesn't silently skip steps or drift on tier discipline. If you trim, merge, or rewire the specs without understanding which rules are load-bearing, you can blow up context usage or quietly disable the checks that make the output coherent.
+- **Editing the pipeline and then finding it "eats all the tokens."** The agent specs are long and prescriptive *on purpose* — each phase loads several thousand tokens of structural rules and validation so the runtime model doesn't silently skip steps or drift on tier discipline. If you trim, merge, or rewire the specs without understanding which rules are load-bearing, you can blow up context usage or quietly disable the checks that make the output coherent.
 
 **You are welcome to change anything** — it's your world and your workflow. But these files are tightly coupled, and the coupling is mostly invisible until it breaks at runtime. Unless you understand a given piece in full detail, expect that modifying it, removing it, or substituting your own will produce issues — and those issues are a consequence of the change, not a defect in the pipeline. If you want to understand the coupling before you cut, start with [Core architectural ideas](#core-architectural-ideas), then `CLAUDE.md` and the agent specs.
 
@@ -24,13 +22,13 @@ World-Forge produces a **single integrated package**, not a grab-bag of parts. T
 
 World-Forge does **not** do "slop removal," and it does not decide what counts as good prose versus "slop." It has no opinion about your style. The pipeline does not impose a house voice on your world.
 
-What it does instead: **you tell it.** Prose conventions — perspective, tense, register, formatting, what the prose should dwell on and what it should elide, what reads as overwrought to _you_ — are captured up front when you talk to the Interviewer (Phase 0) and recorded in your World Seed's Style Contract. That is the right place to instruct the pipeline on your style and preferences. If the output doesn't read the way you want, the fix is to give the Interviewer clearer direction (or revise the Style Contract), not to expect the pipeline to have stripped "slop" it was never told to recognize.
+What it does instead: **you tell it.** Prose conventions — perspective, tense, register, formatting, what the prose should dwell on and what it should elide, what reads as overwrought to *you* — are captured up front when you talk to the Interviewer (Phase 0) and recorded in your World Seed's Style Contract. That is the right place to instruct the pipeline on your style and preferences. If the output doesn't read the way you want, the fix is to give the Interviewer clearer direction (or revise the Style Contract), not to expect the pipeline to have stripped "slop" it was never told to recognize.
 
 ### On effort and intent
 
-World-Forge is **not a card generator.** It does not produce characters _on your behalf_, and it will not spin up a generic cast from a one-line prompt and feed you whatever it guesses is good. There is no "give me a cool character" button, and that is deliberate. The output is one tight, integrated world package — not a stack of disconnected cards.
+World-Forge is **not a card generator.** It does not produce characters *on your behalf*, and it will not spin up a generic cast from a one-line prompt and feed you whatever it guesses is good. There is no "give me a cool character" button, and that is deliberate. The output is one tight, integrated world package — not a stack of disconnected cards.
 
-The pipeline is built around **what you actually want to roleplay with**, not what it decides you should roleplay with. That requires effort from you: the Interviewer pushes for specificity precisely because the world is meant to be _yours_. The friction up front is the point — it is how the pipeline learns your intent instead of substituting its own taste. If you want characters and a world generated for you with no input, this is the wrong tool. If you want a package that faithfully realizes a world _you_ have in mind, the effort you put into the interview is exactly what makes that possible.
+The pipeline is built around **what you actually want to roleplay with**, not what it decides you should roleplay with. That requires effort from you: the Interviewer pushes for specificity precisely because the world is meant to be *yours*. The friction up front is the point — it is how the pipeline learns your intent instead of substituting its own taste. If you want characters and a world generated for you with no input, this is the wrong tool. If you want a package that faithfully realizes a world *you* have in mind, the effort you put into the interview is exactly what makes that possible.
 
 ## What this is NOT
 
@@ -41,29 +39,18 @@ The pipeline is built around **what you actually want to roleplay with**, not wh
 
 ## What it produces
 
-A complete SillyTavern-ready package per world (and fully compatible JanitorAI formats):
+A complete SillyTavern-ready package per world:
 
 - **One Character Card per AI-played character** (V3 spec JSON) — psychology, voice, and behavioral mandates wired against the override architecture, with optional `depth_prompt` for mid-context reinforcement.
-- **One JanitorAI Bot Profile per character** (TXT) — an intensely structured JED-format markdown profile mapping permanent tier 1/2 lore directly into `[SETTING]`, `[APPEARANCE]`, `[LORE]`, etc., optimized for JanitorAI context limits.
 - **One World Lorebook (Tier 1)** — permanent arc-agnostic world truths: rules, factions, locations, species, concepts.
 - **One Character Lorebook per character (Tier 2)** — permanent reference data: physical baseline, psychological dimensions, relationships.
 - **One Protagonist Lorebook (Tier 2)** — `{{user}}` identity reference, linked to your active SillyTavern Persona after import.
-- **One `User.md` Persona Description** — paste-ready text block for SillyTavern's Persona Description field. Pairs with the Protagonist Lorebook to give `{{user}}` parity with `{{char}}`. **Note:** World-Forge strictly enforces **AnyPOV decoupling**. The physical appearance, gender, and deep specific backstory of `{{user}}` live _only_ in `User.md`. All other generated files (Cards, Lorebooks) are AnyPOV and agnostic to these traits, allowing players to swap personas without lore collisions.
+- **One `User.md` Persona Description** — paste-ready text block for SillyTavern's Persona Description field. Pairs with the Protagonist Lorebook to give `{{user}}` parity with `{{char}}` despite ST's missing persona import format. Voice and personality intentionally excluded — the human plays `{{user}}`.
 - **One Intimacy Profile per character with intimate scenes (Tier 2, conditional)** — permanent intimate substrate.
-- **Tier 3, by World Mode:** _arc worlds_ get **one Arc Lorebook per arc** — modular and swap-in: ARC_STATE, CHARACTER_STATE, NPC behavioral shifts, dramatic beats, tension entries. _Sandbox worlds_ (open-ended power-fantasy / world-director worlds, run with `/worldforge start --sandbox`) get **one always-active Sandbox Lorebook** instead — SANDBOX_STATE (standing situation + tonal mandate + an aliveness contract) plus a WORLD_PULSE entry — and author large NPC casts as a principal/roster split with a per-NPC voice-fingerprint uniqueness rule.
+- **Tier 3, by World Mode:** *arc worlds* get **one Arc Lorebook per arc** — modular and swap-in: ARC_STATE, CHARACTER_STATE, NPC behavioral shifts, dramatic beats, tension entries. *Sandbox worlds* (open-ended power-fantasy / world-director worlds, run with `/worldforge start --sandbox`) get **one always-active Sandbox Lorebook** instead — SANDBOX_STATE (standing situation + tonal mandate + an aliveness contract) plus a WORLD_PULSE entry — and author large NPC casts as a principal/roster split with a per-NPC voice-fingerprint uniqueness rule.
 - **One Arc Intimacy Register per arc with intimate beats (Tier 3, conditional)** — arc-specific intimate function and per-character delta.
 - **One Chat Completion Preset** — the model's prompt blocks, injection order, and behavioral framework, parameterized for this world's prose conventions.
-- **One JanitorAI Lorebook Script** (JS) — a dynamic, modular ES6 script that maps situational Tier 1/2 lore and Tier 3 event progression directly into `context.character.personality` and `context.character.scenario` based on keyword and message-count triggers, including `try...catch` guards and token bloat prevention logic.
-- **Initial Messages / Alternate Greetings** (MD) — un serbatoio centralizzato che gestisce le scene d'apertura (singole o di gruppo), esportate dinamicamente verso ST e Janitor.
 - **One audit report** — runtime risks identified by the Prompt Engineer, with recommended corrections for the user to apply manually.
-
-
-## JanitorAI Integration & Separation of Concerns
-
-This fork introduces a highly specialized architecture to bypass JanitorAI's context limitations:
-1. **The Compiler (JSON Surface):** Extracts only the core identity, physical appearance, and personality, outputting a lightweight JSON profile (~1,500 tokens).
-2. **The Converter (ES6 Backend):** Translates deep logic (L_LORE_SECRET, L_LORE_RELATIONSHIP, Trigger Matrix) into an executable, minified JavaScript payload.
-3. **Red-Team Auditors:** The Voice, Intimacy, and Arc Auditors proactively stress-test the draft against extreme inputs, relational boundaries, and logic transitions before export.
 
 ## Core architectural ideas
 
@@ -79,19 +66,19 @@ Three architectural decisions are load-bearing across the pipeline. Understandin
 
 Each phase is run by a specialized agent. The orchestrator dispatches them in order; some are conditional, some run in parallel, and some loop until quality thresholds are met.
 
-| Phase | Agent                                  | What it does                                                                                                                                                                                                                                                     |
-| ----- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 0     | The Interviewer                        | Walks you through the World Seed Template interactively. Pushes back on thin or inconsistent material. Captures the Style Contract and test scenarios.                                                                                                           |
-| 1     | The Refiner                            | Classifies World Seed content into Tiers 1/2/3 plus the Style Contract. Identifies gaps. Produces a locked Master Design. Halts on unresolved questions.                                                                                                         |
-| 2     | The Architect                          | Drafts every Markdown source: character cards, all lorebook entries, system_prompt and post_history_instructions per card, optional depth prompts. Emits `<style_override>` blocks for cards with declared overrides.                                            |
-| 2.5   | The Intimacy Architect _(conditional)_ | Drafts Tier 2 Intimacy Profiles and Tier 3 Intimacy Registers from Section 8 of the World Seed. Skipped if Section 8 is empty.                                                                                                                                   |
-| 3     | The Editor                             | Iteratively validates prose quality, tier integrity, lorebook entry quality, the override architecture, and the style override coupling. Returns directives until all checks pass.                                                                               |
-| 3.5   | The Voice Auditor                      | Generates sample dialogue from the drafts and audits behavioral fidelity, voice distinctiveness, trigger-response correctness, NPC agency (in a lull, do NPCs act on their own standing goals?), and (in multi-perspective worlds) cross-card perspective bleed. |
-| 3.6   | The Arc Transition Auditor             | Verifies continuity across consecutive arc seams: character state, trauma de-escalation, NPC behavior, relationship & belief drift, world conditions, hidden-information rules.                                                                                  |
-| 3.7   | The Intimacy Auditor _(conditional)_   | Generates sample intimate scenes and audits them for voice fidelity (does each character behave like themselves during sex?) and thematic register match (does the scene serve its declared function?).                                                          |
-| 4     | The Compiler                           | Translates the approved Markdown drafts into SillyTavern-ready JSON files, JanitorAI bot profiles, and ES6 lorebook scripts **by executing automated Python compilation scripts in `tools/`** (zero transcription errors).                                       |
-| 5     | The Prompt Engineer                    | Audits Phase 4's output for runtime risks (read-only on `Export/`) and authors the Chat Completion Preset. Recommendations for any conflicts found are surfaced as plain-text instructions for manual application.                                               |
-| 5.5   | _(manual)_                             | If Phase 5 produced recommended corrections, you open each named file, apply the corrections, and save. The pipeline is complete only after this step.                                                                                                           |
+| Phase | Agent | What it does |
+|---|---|---|
+| 0 | The Interviewer | Walks you through the World Seed Template interactively. Pushes back on thin or inconsistent material. Captures the Style Contract and test scenarios. |
+| 1 | The Refiner | Classifies World Seed content into Tiers 1/2/3 plus the Style Contract. Identifies gaps. Produces a locked Master Design. Halts on unresolved questions. |
+| 2 | The Architect | Drafts every Markdown source: character cards, all lorebook entries, system_prompt and post_history_instructions per card, optional depth prompts. Emits `<style_override>` blocks for cards with declared overrides. |
+| 2.5 | The Intimacy Architect *(conditional)* | Drafts Tier 2 Intimacy Profiles and Tier 3 Intimacy Registers from Section 8 of the World Seed. Skipped if Section 8 is empty. |
+| 3 | The Editor | Iteratively validates prose quality, tier integrity, lorebook entry quality, the override architecture, and the style override coupling. Returns directives until all checks pass. |
+| 3.5 | The Voice Auditor | Generates sample dialogue from the drafts and audits behavioral fidelity, voice distinctiveness, trigger-response correctness, NPC agency (in a lull, do NPCs act on their own standing goals?), and (in multi-perspective worlds) cross-card perspective bleed. |
+| 3.6 | The Arc Transition Auditor | Verifies continuity across consecutive arc seams: character state, trauma de-escalation, NPC behavior, relationship & belief drift, world conditions, hidden-information rules. |
+| 3.7 | The Intimacy Auditor *(conditional)* | Generates sample intimate scenes and audits them for voice fidelity (does each character behave like themselves during sex?) and thematic register match (does the scene serve its declared function?). |
+| 4 | The Compiler | Translates the approved Markdown drafts into SillyTavern-ready JSON files. |
+| 5 | The Prompt Engineer | Audits Phase 4's output for runtime risks (read-only on `Export/`) and authors the Chat Completion Preset. Recommendations for any conflicts found are surfaced as plain-text instructions for manual application. |
+| 5.5 | *(manual)* | If Phase 5 produced recommended corrections, you open each named file, apply the corrections, and save. The pipeline is complete only after this step. |
 
 Phases 3.5 / 3.6 / 3.7 run in parallel after Phase 3 sign-off. Failures from any auditor return the affected files to the relevant Architect, then back through the Editor, then back to the auditor.
 
@@ -109,12 +96,12 @@ The pipeline pauses for user input under specific conditions:
 
 ## Quick start
 
-You need: VS Code with an agentic extension — [Antigravity](https://github.com/Antigravity/kilocode) (recommended) or [Cline](https://github.com/cline/cline) — configured with an LLM API key.
+You need: VS Code with an agentic extension — [Kilo Code](https://github.com/Kilo-Org/kilocode) (recommended) or [Cline](https://github.com/cline/cline) — configured with an LLM API key. For the Kilo Code path specifically, follow [`wiki/Kilo-Code-Setup.md`](./wiki/Kilo-Code-Setup.md); for the tool/model comparison, see [`wiki/Agentic-Tools-and-Models.md`](./wiki/Agentic-Tools-and-Models.md).
 
 **A note on model choice.** The agent specs in `agent_roles/` and the orchestrator in `workflows/world-forge.md` are deliberately long and prescriptive — each phase loads several thousand tokens of structural rules, validation checks, hard-fail conditions, and cross-references. To get the full benefit of the pipeline (and not silent skipping of validation steps or drift in tier discipline), use a model with strong long-context attention and a high tolerance for following dense, multi-step instructions. From the testing done so far, **DeepSeek 4 Pro** has held up well across the full pipeline. **Grok** failed during a run, though it is not yet clear whether the failure was the model itself or the way the agentic tool (Roo Code, since retired) drove it — treat this as a caveat, not a verdict. If you run the pipeline against a model not listed here and it succeeds (or fails in an interesting way), reports are welcome.
 
 1. Clone this repository and open it as a VS Code workspace.
-2. Open your agentic extension and select the orchestrator-class entry point: the **Code** agent in Antigravity, or the default agent in Cline.
+2. Open your agentic extension and select the orchestrator-class entry point: the **Code** agent in Kilo Code, or the default agent in Cline.
 3. In the chat, type:
    ```
    /worldforge start
@@ -135,12 +122,12 @@ What you get when you clone:
 World-Forge/
 ├── README.md                     ← This file
 ├── tutorial.md                   ← Extended usage walkthrough
-├── AGENTS.md                     ← Standing instructions for agentic tools (Antigravity/Cline)
+├── AGENTS.md                     ← Standing instructions for agentic tools (Kilo/Cline)
 ├── CLAUDE.md                     ← Standing context for AI coding agents working on the repo
 ├── Notes_On_functionality.md     ← Authoritative reference for SillyTavern's runtime behavior
 ├── Notes_Quick_Reference.md      ← Compact distillation of the above (agents consult it first)
-├── .gitignore               ← Keeps samples + maintenance docs out of runtime agent context
-├── .agents/skills/              ← Preconfigured Antigravity per-phase agents (auto-loaded; OpenRouter flavor)
+├── .kilocodeignore               ← Keeps samples + maintenance docs out of runtime agent context
+├── .kilo/kilo.jsonc              ← Preconfigured Kilo Code per-phase agents (auto-loaded; OpenRouter flavor)
 ├── tools/
 │   └── validate_export.py        ← Read-only validator for Export/ JSON (run after Phase 4)
 ├── agent_roles/                  ← Per-phase agent specifications (one .md per agent)
@@ -192,18 +179,19 @@ A new project folder evolves through these files as the pipeline progresses:
 
 ## Trigger commands
 
-| Command                                 | Action                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/worldforge brainstorm`                | Optional, before Phase 0: divergent ideation for when you have only a vibe. Generates premise directions, then writes informal `Brainstorm_Notes.md`. Produces no World Seed; hand off to `/worldforge start`                                                                                                                                                                                                                 |
-| `/worldforge start`                     | Begin from Phase 0                                                                                                                                                                                                                                                                                                                                                                                                            |
-| `/worldforge resume phase[N]`           | Resume from a specific phase (`phase0`, `phase1`, `phase2`, `phase2.5`, `phase3`, `phase3.5`, `phase3.6`, `phase3.7`, `phase4`, `phase5`)                                                                                                                                                                                                                                                                                     |
-| `/worldforge status`                    | Report the current phase, round, and open blockers                                                                                                                                                                                                                                                                                                                                                                            |
-| `/worldforge skip phase0`               | Begin from Phase 1 (you wrote the World Seed manually)                                                                                                                                                                                                                                                                                                                                                                        |
-| `/worldforge skip phase2.5`             | Skip Intimacy Architect (no intimate content)                                                                                                                                                                                                                                                                                                                                                                                 |
-| `/worldforge skip phase3.7`             | Skip Intimacy Auditor (no intimate content)                                                                                                                                                                                                                                                                                                                                                                                   |
-| `/worldforge revise`                    | Post-launch: make a surgical change to a shipped world through the revision pipeline (UID-preserving, scope-locked)                                                                                                                                                                                                                                                                                                           |
-| `/worldforge revise --brainstorm`       | Post-launch: when something feels off but you can't name what to revise — runs the Brainstormer (revision-diagnostic posture) to locate the concern, then the Reviser scopes it. See [tutorial §9](./tutorial.md#9-brainstorming-a-world-worldforge-brainstorm).                                                                                                                                                              |
-| `/worldforge resync-preset`             | Post-launch: regenerate a shipped world's Chat Completion Preset against the current template and block library — preset only, no content changes                                                                                                                                                                                                                                                                             |
+| Command | Action |
+|---|---|
+| `/worldforge brainstorm` | Optional, before Phase 0: divergent ideation for when you have only a vibe. Generates premise directions, then writes informal `Brainstorm_Notes.md`. Produces no World Seed; hand off to `/worldforge start` |
+| `/worldforge brainstorm --improve` | Any time a world already exists (seed-only or shipped): ping-pong improvement ideas against it with no commitment — the Brainstormer reads the world read-only, riffs on fit/additions/reworks, and parks the results in the standing `Big_Brain_Storm.md` idea file. Nothing runs afterward; a later `revise --brainstorm` or a rebaseline `--then-brainstorm` chain offers to pick a parked idea up, or take one through `revise`/`convert` yourself. See [tutorial §9](./tutorial.md#9-brainstorming-a-world-worldforge-brainstorm). |
+| `/worldforge start` | Begin from Phase 0 |
+| `/worldforge resume phase[N]` | Resume from a specific phase (`phase0`, `phase1`, `phase2`, `phase2.5`, `phase3`, `phase3.5`, `phase3.6`, `phase3.7`, `phase4`, `phase5`) |
+| `/worldforge status` | Report the current phase, round, and open blockers |
+| `/worldforge skip phase0` | Begin from Phase 1 (you wrote the World Seed manually) |
+| `/worldforge skip phase2.5` | Skip Intimacy Architect (no intimate content) |
+| `/worldforge skip phase3.7` | Skip Intimacy Auditor (no intimate content) |
+| `/worldforge revise` | Post-launch: make a surgical change to a shipped world through the revision pipeline (UID-preserving, scope-locked) |
+| `/worldforge revise --brainstorm` | Post-launch: when something feels off but you can't name what to revise — runs the Brainstormer (revision-diagnostic posture) to locate the concern, then the Reviser scopes it. See [tutorial §9](./tutorial.md#9-brainstorming-a-world-worldforge-brainstorm). |
+| `/worldforge resync-preset` | Post-launch: regenerate a shipped world's Chat Completion Preset against the current template and block library — preset only, no content changes |
 | `/worldforge convert <source> <target>` | Post-launch: reframe a shipped world into a new build (different protagonist, World Mode, Style Contract, or Core Concept). Produces a new `World_Seed.md` in `<target>`; hand off to `/worldforge skip phase0`. Read-only on `<source>`. (Additional modes and flags — `--brief`, `--rebaseline`, `--then-interview`/`--then-brainstorm` — in [tutorial §8](./tutorial.md#8-converting-a-shipped-world-worldforge-convert).) |
 
 ## After SillyTavern import
@@ -217,13 +205,13 @@ A new project folder evolves through these files as the pipeline progresses:
 
 A shipped world is not frozen. Two maintenance paths keep a world current without rebuilding it from scratch:
 
-- **`/worldforge revise`** runs the revision pipeline — a parallel fork that makes surgical, scope-locked content changes (revise an arc, add a character, adjust a relationship) through mini-versions of the build agents. It preserves the UIDs on your existing lorebook entries, so running SillyTavern chat states survive the change. The one bright line: revisions that touch the world's core concept/tone or its Style Contract world defaults are bounced to a full re-run (reusing your existing `World_Seed.md`). When something feels off in play but you can't name what to revise, `/worldforge revise --brainstorm` runs the Brainstormer first to locate the concern (reading the Master Design read-only and writing it to `Brainstorm_Notes.md`), then the Reviser scopes it as normal. See [`workflows/world-forge-revise.md`](./workflows/world-forge-revise.md).
+- **`/worldforge revise`** runs the revision pipeline — a parallel fork that makes surgical, scope-locked content changes (revise an arc, add a character, adjust a relationship) through mini-versions of the build agents. It preserves the UIDs on your existing lorebook entries, so running SillyTavern chat states survive the change. The one bright line: revisions that touch the world's core concept/tone or its Style Contract world defaults are bounced to a full re-run (reusing your existing `World_Seed.md`). When something feels off in play but you can't name what to revise, `/worldforge revise --brainstorm` runs the Brainstormer first to locate the concern (reading the Master Design read-only, offering to fold in parked ideas from a standing `Big_Brain_Storm.md` if you have one, and writing it to `Brainstorm_Notes.md`), then the Reviser scopes it as normal. See [`workflows/world-forge-revise.md`](./workflows/world-forge-revise.md).
 - **`/worldforge resync-preset`** refreshes only the Chat Completion Preset, bringing it current with pipeline improvements and any content changes that surface inside preset blocks. It makes no content changes and, because a preset is a global settings profile rather than UID-bearing world info, re-importing it does not disturb running chats.
 - **`/worldforge convert <source> <target>`** reframes a shipped world into a new build — different protagonist, different World Mode (arc ↔ sandbox), different tonal register, or different Style Contract world defaults — while preserving the structural work (world rules, factions, cosmology, NPCs) that would otherwise be discarded by a from-scratch `/worldforge start`. The Converter reads the source's `Master_Design.md` read-only, walks you through a preservation matrix (keep / modify / drop / regenerate, per source section), surfaces role reassignments explicitly (the old protagonist becoming an NPC, a source NPC becoming the new `{{user}}`, power-tier shifts), and writes a new `World_Seed.md` to your target folder. You then run `/worldforge skip phase0` against the target and the standard pipeline builds the new world end-to-end. Pure reskins (replacing setting + protagonist + factions + tone all at once) are refused — at that scale you're building a new world inspired by the source, not converting it; use `/worldforge start` fresh. See [`workflows/world-forge-convert.md`](./workflows/world-forge-convert.md).
 
 ## Companion SillyTavern fork (optional)
 
-World-Forge produces world packages that target stock SillyTavern (and JanitorAI natively). Worlds will run on upstream ST without modification. That said, a few World-Forge patterns push against stock-ST defaults, and a companion fork — **[AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern)** — exists to smooth those edges. Maintained alongside the upstream version of this pipeline, it relaxes some constraints to keep pace with patterns the pipeline produces.
+World-Forge produces world packages that target stock SillyTavern. Worlds will run on upstream ST without modification. That said, a few World-Forge patterns push against stock-ST defaults, and a companion fork — **[AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern)** — exists to smooth those edges. It is a separate project from this repository (this repository is **not** a fork; see [What this is NOT](#what-this-is-not) above), maintained alongside the pipeline so that the runtime keeps pace with patterns the pipeline produces.
 
 What the fork changes, relative to stock SillyTavern:
 
@@ -246,4 +234,4 @@ Installation, branch policy, and update cadence are documented in the fork's own
 
 ---
 
-_Issues, contributions, and pipeline improvements welcome. Pipeline architecture decisions are documented in `CLAUDE.md` and the agent specs themselves; consult those before proposing structural changes._
+*Issues, contributions, and pipeline improvements welcome. Pipeline architecture decisions are documented in `CLAUDE.md` and the agent specs themselves; consult those before proposing structural changes.*

@@ -67,6 +67,7 @@ For every touched file (new or modified), apply the parent's ten hard-fail rules
 - New ARC_STATE entries (rare in revisions, but possible) have the two-subsection structure (parent rule 5)
 - No tier contamination — arc-specific content in a touched Tier 1 or Tier 2 entry is a hard fail (parent rule 6)
 - For modified ARC_STATE Tonal Mandate: two-subsection structure preserved, 4–8 imperative bullets
+- A touched inert carrier — `[[DICE_TABLES]]` or `[[WORLD_CALENDAR]]` — is revalidated per the parent's Step 4.8 / Step 4.7: enabled-but-inert flags (`disable: false`, `key: []`, `constant: false`), payload parses, schema/procedures/steps well-formed. For a revised **dice** carrier, also apply the parent's **shape-not-choreography soft-flags** (per-participant procedure/duplication, rolled choreography or a per-person finish, a count outcome > 1 lacking a simultaneity cue, serializing framing) — the point of a dice remediation revision is usually to clear exactly these, so a carrier that still trips them means the fix didn't land.
 
 **Intimacy drafts (when R2.5 fired):**
 - Tier 2 Intimacy Profile not containing arc-specific content (parent rule 6 applied to intimacy)

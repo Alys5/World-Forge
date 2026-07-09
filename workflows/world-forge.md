@@ -60,11 +60,11 @@ description: A workflow to build worlds for player to roleplay in.
       |
       v
  PHASE 4: THE COMPILER
- Translates Markdown → SillyTavern JSON and JanitorAI JED/JS by executing automated Python scripts in `tools/`. Reads Notes_On_functionality.md first.
+ Translates Markdown → SillyTavern JSON. Reads Notes_On_functionality.md first.
       |
       |-- [Templates missing?] → ⏸ PAUSE → /worldforge resume phase4
       v
- Export/ [JSON package + JanitorAI files]
+ Export/ [JSON package]
       |
       v
  PHASE 5: THE PROMPT ENGINEER
@@ -96,7 +96,7 @@ Sandbox mode is a **branch through this same pipeline, not a separate fork.** Th
 | 3.6 Arc Transition Auditor | Runs | **Skipped** (no arc seams) |
 | 2.5 Intimacy Architect | Per-character profiles + per-arc registers | Profiles **+ NPC intimacy** (principal full / roster compact §6.5); a single standing `Sandbox_Intimacy_Register` (no per-arc) |
 | 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8; audits the standing `INTIMACY_FUNCTION` + **NPC intimate coverage & distinctiveness** (Step 3H) across the sexual NPC cast |
-| 4 Compiler | One `[WorldName]_Arc[N]_Lorebook.json` per arc (generated via `tools/compile_lorebooks.py`) | One `[WorldName]_Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4, generated via `tools/compile_lorebooks.py`) |
+| 4 Compiler | One `[WorldName]_Arc[N]_Lorebook.json` per arc | One `[WorldName]_Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
 | 5 Prompt Engineer | Arc Guardian / Deep Think name the arcs | Blocks reference the standing sandbox state rather than arcs; defaults to **Multi-Character Dynamics** + the optional **NPC Ensemble & Enrichment** block (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment) + **high-weighted Sensory Embodiment** |
 
 **The aliveness contract** is the load-bearing idea of sandbox mode: with no arc carrying tone and momentum, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry are what keep the world feeling alive — NPCs pursuing their own agendas and initiating, the world reacting to and remembering `{{user}}`, the cast rotating in and out rather than sitting inert until summoned. It is made concrete by per-NPC **Standing Goals** (Architect §7.D): each principal carries an active objective, and the directive has an NPC advance its goal when a scene lulls. A subplot-shaped goal can optionally be staged as an **Escalation Ladder** (§7.D): 2–4 ordered stages with in-fiction advance conditions, an endpoint, and a stated collision with `{{user}}` — the directive then names the current stage and binds the progression discipline (advance only on stated condition, never skip, never self-resolve), so the model *executes* an authored subplot rather than inventing one. The Voice Auditor's **Step 3J** tests that NPCs actually take that initiative (and that laddered NPCs hold their current stage). The **roster NPC format** (§7.E) with its uniqueness rule, plus the Voice Auditor's **Distinctiveness Matrix**, are what keep a large cast from collapsing into one generic voice. The same NPC-agency mechanic runs in **arc mode** through the ARC_STATE activity-cadence directive — NPCs exist in both modes, so the goal/cadence pair is mode-agnostic.
@@ -128,7 +128,7 @@ Loop state — which phase is live, what round it is on, which sign-offs are in 
 | 3.5 Voice Auditor    | PENDING  | 0  | VOICE AUDITOR SIGN-OFF |
 | 3.6 Arc Transition   | PENDING  | 0  | ARC TRANSITION AUDITOR SIGN-OFF (SKIPPED in sandbox mode) |
 | 3.7 Intimacy Auditor | PENDING  | 0  | INTIMACY AUDITOR SIGN-OFF (SKIPPED when intimacy_in_scope: false) |
-| 4 Compiler           | PENDING  | —  | COMPILER SIGN-OFF (via tools/ scripts) |
+| 4 Compiler           | PENDING  | —  | COMPILER SIGN-OFF |
 | 5 Prompt Engineer    | PENDING  | —  | PROMPT ENGINEER SIGN-OFF |
 ```
 
@@ -147,20 +147,20 @@ Loop state — which phase is live, what round it is on, which sign-offs are in 
 
 Some users arrive with a fully-formed concept; the Interviewer is built for them. Others arrive with only a vibe — an image, a mood, a single character, a "what if" — and nothing solid enough for the Interviewer's structured, specificity-demanding questions to land. `/worldforge brainstorm` is the optional front porch for that state.
 
-It invokes the **Brainstormer** (`WorldForge-Brainstormer`) as a single standalone step (Phase 0-pre). Where the Interviewer is **convergent** (walks the template, pushes for depth, refuses weak material), the Brainstormer is **divergent**: it generates multiple premise directions, yes-ands the user's instincts, follows the spark, and helps an idea find its shape. When a premise has a pulse — a central tension, a feel, and at least one anchor the user is excited about — it reflects that back and hands off.
+It invokes the **Brainstormer** (`agent_roles/Brainstormer/00_The_Brainstormer.md`) as a single standalone step (Phase 0-pre). Where the Interviewer is **convergent** (walks the template, pushes for depth, refuses weak material), the Brainstormer is **divergent**: it generates multiple premise directions, yes-ands the user's instincts, follows the spark, and helps an idea find its shape. When a premise has a pulse — a central tension, a feel, and at least one anchor the user is excited about — it reflects that back and hands off.
 
 **Load-bearing properties:**
-- **Writes only `Brainstorm_Notes.md`.** Informal, unstructured ideation notes in the project folder — explicitly *not* a World Seed. The Brainstormer never authors or edits `World_Seed.md`, never writes `Drafts/` or `Export/`, and never touches structural pipeline material. Seed authorship belongs to the Interviewer alone. **There is exactly one notes file per project, written fresh every run** — each invocation overwrites any prior `Brainstorm_Notes.md` in full and stamps it with its `Posture:` (fresh-start | improvement | revision-diagnostic) + date, so a stale file from an earlier run never has to be deleted by hand and consumers can confirm which run produced it.
+- **Writes only its notes files.** Informal, unstructured ideation notes in the project folder — explicitly *not* a World Seed. The Brainstormer never authors or edits `World_Seed.md`, never writes `Drafts/` or `Export/`, and never touches structural pipeline material. Seed authorship belongs to the Interviewer alone. Its run-scoped output is `Brainstorm_Notes.md`: **exactly one per project, written fresh every run** — each invocation overwrites any prior `Brainstorm_Notes.md` in full and stamps it with its `Posture:` (fresh-start | improvement | revision-diagnostic | adaptation) + date, so a stale file from an earlier run never has to be deleted by hand and consumers can confirm which run produced it. The one exception is the standalone improvement door (`brainstorm --improve`), which instead writes the standing **`Big_Brain_Storm.md`** — a living idea file rewritten fresh each standalone session with still-open ideas carried forward; no agent consumes it silently (`revise --brainstorm` and the rebaseline `--then-brainstorm` chain *offer* to adapt from it; a plain `--rebaseline` surfaces its existence and routes), and it leaves `Brainstorm_Notes.md` untouched.
 - **Upstream of the pipeline, not a phase of it.** It does not classify tiers, advance the Pipeline State Ledger, or invoke any downstream agent. It is a standalone optional entry point, like a pre-`start`.
 - **Hands off to `/worldforge start`.** The Interviewer reads `Brainstorm_Notes.md` if present (its Context Manifest lists it under "Load if present") as raw starting material, then runs the full interview — pushing for exactly the specificity the Brainstormer deliberately left open, and confirming (not inheriting) the notes' non-binding World Mode leaning.
 - **Optional and skippable.** A user with a developed concept skips brainstorm entirely and goes straight to `/worldforge start` or `/worldforge skip phase0`. Nothing downstream depends on a brainstorm having happened.
-- **Three postures.** The default (Brainstormer Sections 1–7) is the fresh start above. The **improvement posture** (Section 8) brainstorms *changes to an existing, consolidated world* — it reads the world's `World_Seed.md` and diverges on what to add, rework, or deepen. This is what `/worldforge convert --rebaseline --then-brainstorm` invokes: after a rebaseline consolidates a revised world, the Brainstormer explores improvements, writes `Brainstorm_Notes.md`, and the chain continues into the Interviewer in seed-revision posture (which reads those notes as proposals). The **revision-diagnostic posture** (Section 9) serves the post-launch *pre-articulation* case — something feels off in a shipped world but the user can't name what to revise. Invoked by `/worldforge revise --brainstorm`, it reads `Drafts/Master_Design.md` read-only, diagnoses divergently (the domain lenses as diagnostic vocabulary), and writes a primary concern to `Brainstorm_Notes.md` that the Reviser then classifies. See the CONVERT section, `workflows/world-forge-convert.md`, and `workflows/world-forge-revise.md`.
+- **Four postures.** The default (Brainstormer Sections 1–7) is the fresh start above. The **improvement posture** (Section 8) brainstorms *changes to an existing world* — it reads the world's current state and diverges on what to add, rework, or deepen, respecting the world's spine (an idea that flips World Mode, swaps the protagonist, or overturns the core concept is named as convert territory). It has two doors. **Chained:** `/worldforge convert --rebaseline --then-brainstorm` — after a rebaseline consolidates a revised world, the Brainstormer reads the consolidated `World_Seed.md`, explores improvements — offering parked ideas from the source's standing `Big_Brain_Storm.md` if one exists (ask-first), and carrying the curated file forward to the target when brought in — writes `Brainstorm_Notes.md`, and the chain continues into the Interviewer in seed-revision posture (which reads those notes as proposals). **Standalone:** `/worldforge brainstorm --improve` — no-commitment idea ping-pong against any existing world (reads `Drafts/Master_Design.md` read-only when the world is built, `World_Seed.md` otherwise), recorded in the standing **`Big_Brain_Storm.md`** rather than `Brainstorm_Notes.md`; nothing is dispatched afterward — a later `revise --brainstorm` or rebaseline `--then-brainstorm` chain offers to adapt a parked idea from the file, or the user takes a landed change through its normal door (`/worldforge revise`, seed edits before `skip phase0`, or `/worldforge convert`), or the ideas just stay parked. A bare `/worldforge brainstorm` invoked against a project that already contains a world is usually a mistake for `--improve` — confirm intent before running the fresh-start posture there. The **revision-diagnostic posture** (Section 9) serves the post-launch *pre-articulation* case — something feels off in a shipped world but the user can't name what to revise. Invoked by `/worldforge revise --brainstorm`, it reads `Drafts/Master_Design.md` read-only, diagnoses divergently (the domain lenses as diagnostic vocabulary), and writes a primary concern to `Brainstorm_Notes.md` that the Reviser then classifies. The **adaptation posture** (Section 10) serves the user who arrives with an *existing narrative document* — a story, a fanfiction, a roleplay log — rather than a blank-page vibe. Invoked by `/worldforge brainstorm --adapt <document_path>`, it reads the document read-only, extracts the world latent in it (cast, setting, tone, the prose style as a Style Contract sample, and any intimate register the source shows for Phase 2.5), and diverges on the gap between a story-to-read and a world-to-play-in — above all the `{{user}}` slot the document's fixed POV can't supply, which it recommends from the document's POV and confirms — then writes an `adaptation`-stamped `Brainstorm_Notes.md` the Interviewer reads exactly like a `fresh-start` file. See the CONVERT section, `workflows/world-forge-convert.md`, and `workflows/world-forge-revise.md`.
 
 ---
 
 ## PHASE 0: DISCOVERY — THE INTERVIEWER
 
-**Invoke:** `WorldForge-Interviewer`
+**Invoke:** `@agent_roles/00_The_Interviewer.md`
 **Input:** User intent to build a new world
 **Output:** `World_Seed.md` ready for Phase 1
 
@@ -176,6 +176,7 @@ The Interviewer asks about:
 7. Technical specifications — cards, lorebooks, depth_prompt assessment per character
 8. Test scenarios (Section 7b) — three to five specific roleplay moments the user intends to play through
 9. **Intimacy & Sexuality (Section 8)** — world-level posture toward sex, per-character intimacy substrate, per-arc thematic functions and scene types, tonal hard rules for intimate content. Conditional on the world containing intimate scenes.
+10. **Runtime Directives (Section 9)** — optional engine-steering asks about how the model must behave turn-by-turn (e.g., "combat must feel slow and costly"), each with a wrong-response example and a scope. The Prompt Engineer must address every one in the Chat Completion Preset. Most worlds leave this empty; misplaced answers (world facts, single-character behavior, style) are routed to their proper sections instead.
 
 If the user resists developing a section, the Interviewer adds an explicit note in the document marking it for Refiner review rather than silently filling gaps.
 
@@ -187,7 +188,7 @@ If the user resists developing a section, the Interviewer adds an explicit note 
 
 ## PHASE 1: PLANNING — THE REFINER
 
-**Invoke:** `WorldForge-Refiner`
+**Invoke:** `@agent_roles/01_The_Refiner.md`
 **Input:** `World_Seed.md` (+ `UNRESOLVED_QUESTIONS.md` if resuming)
 **Output:** `Drafts/Master_Design.md`
 
@@ -196,26 +197,24 @@ If the user resists developing a section, the Interviewer adds an explicit note 
 3. **No blockers:** produces `Master_Design.md` with REFINER SIGN-OFF → Phase 2.
 4. **Blockers found:** produces `UNRESOLVED_QUESTIONS.md` → **PAUSE.** Await user answers.
 
-A complete Master Design contains: world laws/factions/locations/species/concepts (Tier 1), character foundations + physical descriptions in anatomical order + protagonist spec (Tier 2), all arcs with hidden information rules + dramatic beats (Tier 3), LLM behavioral requirements per card including depth_prompt assessment, and intimacy specifications routed from Section 8 to the appropriate tier source for the Intimacy Architect.
+A complete Master Design contains: world laws/factions/locations/species/concepts (Tier 1), character foundations + physical descriptions in anatomical order + protagonist spec (Tier 2), all arcs with hidden information rules + dramatic beats (Tier 3), LLM behavioral requirements per card including depth_prompt assessment, intimacy specifications routed from Section 8 to the appropriate tier source for the Intimacy Architect, and runtime directives from World Seed Section 9 recorded in Section 12 (validated, rerouted where misplaced, or `No runtime directives declared.`) for the Prompt Engineer.
 
 ---
 
 ## PHASE 2: DRAFTING — THE ARCHITECT
 
-**Invoke:** `WorldForge-Architect`
+**Invoke:** `@agent_roles/02_The_Architect.md`
 **Input:** `Drafts/Master_Design.md` with REFINER SIGN-OFF
 **Output:** All draft files in `Drafts/`
 
-**Mandatory outputs (all nine required):**
+**Mandatory outputs (all seven required):**
 1. `Card_[CharName].md` — character card content per card
-2. `JanitorAI_Profile_[CharName].md` — JanitorAI Bot Profile format per card (maps to `templates/Janitor_Bot_Template.md`)
-3. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
-4. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
-5. `Tier1_World_Entries.md` — all Tier 1 entries
-6. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
-7. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
-8. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
-9. `Initial_Messages.md` — serbatoio per Alternate Greetings ST e messaggi iniziali Janitor
+2. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
+3. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
+4. `Tier1_World_Entries.md` — all Tier 1 entries
+5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
+6. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
+7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
 
@@ -223,7 +222,7 @@ If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architec
 
 ## PHASE 2.5: INTIMACY DRAFTING — THE INTIMACY ARCHITECT
 
-**Invoke:** `WorldForge-IntimacyArchitect`
+**Invoke:** `@agent_roles/06_The_Intimacy_Architect.md`
 **Input:** Architect's complete drafts + `Drafts/Master_Design.md` + `World_Seed.md` Section 8
 **Output:** Intimacy drafts added to `Drafts/`
 
@@ -231,7 +230,7 @@ If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architec
 
 **Mandatory outputs when phase runs:**
 1. `Tier2_[CharName]_Intimacy_Profile.md` — one per character with intimate scene presence. Permanent substrate: trauma map, body reactions, vulnerability shape, voice in intimacy, hard limits and hard yeses. **Extends to NPCs:** principal NPCs get full profiles; roster NPCs get compact intimate stat blocks (Intimacy Architect §6.5) — load-bearing for sandbox worlds, which usually carry sexual material across a large NPC cast.
-2. Tier 3 register — *arc mode:* thematic function, per-character notes, live scene types, arc hard rules. *Sandbox mode:* a single `Tier3_Sandbox_Intimacy_Register.md` (standing `INTIMACY_FUNCTION`, `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc deltas).
+2. Tier 3 register — *arc mode:* `Tier3_Arc[N]_Intimacy_Register.md` per arc (delta only: arc thematic function, per-character notes, live scene types, arc hard rules). *Sandbox mode:* a single `Tier3_Sandbox_Intimacy_Register.md` (standing `INTIMACY_FUNCTION`, `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc deltas).
 
 **Failure conditions:**
 - Section 8 is missing material the agent needs → produces `UNRESOLVED_INTIMACY.md`, halts pipeline.
@@ -244,7 +243,7 @@ The Intimacy Architect does not author or modify character cards. Card-level con
 
 ## PHASE 3: STRUCTURAL VALIDATION — THE EDITOR (ITERATIVE LOOP)
 
-**Invoke:** `WorldForge-Editor`
+**Invoke:** `@agent_roles/03_The_Editor.md`
 **Input:** All `Drafts/` files + `Drafts/Master_Design.md`
 
 Validates four layers: prose quality, tier integrity + lorebook entry quality, LLM instruction quality, and intimacy entry quality (when intimacy drafts are present).
@@ -272,11 +271,11 @@ LOOP:  (each return increments the ledger's `3 Editor` Round)
 
 ## PHASE 3.5: BEHAVIORAL FIDELITY — THE VOICE AUDITOR
 
-**Invoke:** `WorldForge-VoiceAuditor`
+**Invoke:** `@agent_roles/03b_The_Voice_Auditor.md`
 **Input:** All Editor-approved `Drafts/` + `Drafts/Master_Design.md` + `World_Seed.md` Section 7b
 **Output:** `Drafts/Voice_Audit_Report_[Round N].md`
 
-Generates sample regular dialogue using the drafts as runtime context, audits against character spec for trigger-response fidelity, voice distinctiveness, arc register integrity, reflex misfires, NPC voice drift, and — where the world has principal NPCs — NPC agency and goal-following in a lull (Step 3J: do NPCs take initiative toward a stated Standing Goal rather than the scene freezing? for laddered NPCs, do moves trace to the named active stage, and does the model hold the stage under a temptation scenario rather than jumping to the endgame?).
+Generates sample regular dialogue using the drafts as runtime context — as a **cold read** (plausible failure pre-committed per scenario, expected outcome out of view during generation, every PASS evidence-cited and counterfactual-probed), over a test matrix whose scenario classes go beyond the happy path (trigger-collision, near-miss/false-trigger, off-script pressure, coverage-void probes) — and audits against character spec for trigger-response fidelity, voice distinctiveness, arc register integrity, reflex misfires, NPC voice drift, and — where the world has principal NPCs — NPC agency and goal-following in a lull (Step 3J: do NPCs take initiative toward a stated Standing Goal rather than the scene freezing? for laddered NPCs, do moves trace to the named active stage, and does the model hold the stage under a temptation scenario rather than jumping to the endgame?).
 
 ```
 IF Critical or High failures → return to Architect with rewrite directives (increment ledger `3.5` Round)
@@ -289,7 +288,7 @@ IF no failures → VOICE AUDITOR SIGN-OFF
 
 ## PHASE 3.6: ARC CONTINUITY — THE ARC TRANSITION AUDITOR
 
-**Invoke:** `WorldForge-ArcAuditor`
+**Invoke:** `@agent_roles/03c_The_Arc_Transition_Auditor.md`
 **Input:** All Editor-approved `Drafts/Tier3_*` files + `Drafts/Tier2_*` files + `Drafts/Master_Design.md`
 **Output:** `Drafts/Arc_Transition_Audit_[Round N].md`
 
@@ -308,13 +307,13 @@ IF no failures → ARC TRANSITION AUDITOR SIGN-OFF
 
 ## PHASE 3.7: INTIMATE SCENE FIDELITY — THE INTIMACY AUDITOR
 
-**Invoke:** `WorldForge-IntimacyAuditor`
+**Invoke:** `@agent_roles/03d_The_Intimacy_Auditor.md`
 **Input:** All Editor-approved `Drafts/` (including Intimacy Architect's outputs) + `Drafts/Master_Design.md` + `World_Seed.md` Section 7b/8
 **Output:** `Drafts/Intimacy_Audit_Report_[Round N].md`
 
 **Conditional phase.** Runs if and only if Phase 2.5 ran and produced intimacy drafts. If Phase 2.5 was skipped, this phase is also skipped.
 
-Generates sample intimate scenes using the drafts as runtime context, audits against two lenses:
+Generates sample intimate scenes using the drafts as runtime context — as a **cold read** (plausible failure pre-committed per scenario, expected outcome out of view during generation, every PASS evidence-cited and counterfactual-probed), over a test matrix whose scenario classes go beyond the canonical intimate beats (trigger-collision, function-shift, boundary, hard-limit probe, substrate near-miss) — and audits against two lenses:
 - **Primary lens — voice fidelity:** does the character behave like themselves during sex? Substrate fidelity, trauma map fidelity, voice continuity, hard limit integrity.
 - **Secondary lens — thematic register match:** does the scene serve its declared function? Function fidelity, prose register match, direction fidelity, arc atmosphere preservation.
 
@@ -334,17 +333,13 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 ## PHASE 4: IMPLEMENTATION — THE COMPILER
 
-**Invoke:** `WorldForge-Compiler`
-**Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand) + execution of `tools/` python scripts.
-**Output:** `Export/[WorldName]/` directory (JSON files + JanitorAI TXT/JS exports) generated via scripts.
+**Invoke:** `@agent_roles/04_The_Compiler.md`
+**Input:** Approved `Drafts/` (with Voice + Arc Transition + Intimacy sign-offs as applicable) + `templates/` + `Notes_Quick_Reference.md` (+ `Notes_On_functionality.md` schema sections on demand)
+**Output:** `Export/` directory
 
 **Read `Notes_Quick_Reference.md` first**, then the `Notes_On_functionality.md` schema sections the Compiler spec's Context Manifest names (§5.1b V3 card, §5.2 World Info file, §6 gotchas). `Notes_On_functionality.md` is the authoritative ST runtime reference — where it contradicts the quick reference, templates, or this document, it takes precedence.
 
 **Builds:**
-- Execute `python tools/compile_cards.py [WorldName]`
-- Execute `python tools/compile_lorebooks.py [WorldName]`
-- Execute `python tools/build_janitor.py [WorldName]`
-- Execute `python tools/build_bio.py [WorldName]`
 - Character Card JSON per card (`system_prompt`, `post_history_instructions`, and `data.extensions.depth_prompt` mandatory fields, never empty)
 - `User.md` — `{{user}}` Persona Description text (passed through from `Drafts/User.md` unchanged; paste-ready for ST persona)
 - All lorebook/register files are prefixed with `[WorldName]_` (the world-name token, as in `[WorldName]_ChatPreset.json`) so a world's whole lorebook set groups together in ST's filename-sorted World Info list (Compiler file-naming convention before Step 5). Cards and `User.md` are not prefixed.
@@ -355,7 +350,6 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `[WorldName]_Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
 - Tier 3 intimacy register — *arc mode:* `[WorldName]_Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `[WorldName]_Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
 - An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
-- **JanitorAI Target:** `[CharName]_JanitorAI.txt` (JED Bot Profile format) and `[WorldName]_JanitorAI_Script.js` (Modular Lorebook script). Character profiles automatically duplicate blocks for Roster setups.
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.
 
@@ -367,15 +361,17 @@ In SillyTavern: import the individual lorebooks — `[WorldName]_World_Lorebook.
 
 ## PHASE 5: RUNTIME VALIDATION — THE PROMPT ENGINEER
 
-**Invoke:** `WorldForge-PromptEngineer`
+**Invoke:** `@agent_roles/05_The_Prompt_Engineer.md`
 **Input:** All `Export/` files + `Notes_Quick_Reference.md` + `Notes_On_functionality.md` (§5.2, §5.10, §8 mandatory) + `templates/Chat_Completion_Preset_template.json` + `agent_roles/05a_Block_Library.md` (Workstream B only) + `Drafts/Master_Design.md`
-**Output:** `Export/Prompt_Engineer_Audit.md` + `Export/[WorldName]_ChatPreset.json`
+**Output:** `Export/Prompt_Engineer_Audit.md` + `Export/[WorldName]_ChatPreset.json` + `Export/Authors_Note_Suggestions.md`
 
 **Read `Notes_Quick_Reference.md` plus `Notes_On_functionality.md` §5.2 / §5.10 / §8 completely before beginning (rest of the file on demand). For Workstream B, load `templates/Chat_Completion_Preset_template.json` as the structural reference and `agent_roles/05a_Block_Library.md` as the block library — do not author the preset from scratch.**
 
 **Workstream A — Audit (read-only against Export/):** Reviews every lorebook entry (including intimacy profiles and registers) for position correctness, injection order, keyword coverage, token budget risk. Reviews every character card for `system_prompt`, `post_history_instructions`, and `depth_prompt`. Produces audit report with **recommended corrections** for any issues found. The Prompt Engineer does NOT modify Export/ JSON files — recommendations are surfaced in Sections 7 and 8 of the audit report as plain-text instructions for the user to apply manually. The audit report's status line distinguishes "COMPLETE — pipeline ready" (no recommendations generated) from "AUDIT COMPLETE — N manual corrections required" (recommendations outstanding).
 
-**Workstream B — Chat Preset:** Begins with the Section 5.0b Block Selection Rationale — an analytical write-up that names this world's archetype, predicts 4-8 specific runtime failure modes, and maps each failure mode to the block(s) that address it. Block selection is the *outcome* of this analysis, not a checklist. The agent then starts from `templates/Chat_Completion_Preset_template.json` and authors content for the 8 core blocks (Main, Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Formatting, Jailbreak), enables/disables the 2 conditional core blocks (Multi-Character Dynamics for 2+ AI cards or Director NPC; NSFW for Section 8 in scope), and adds optional blocks from the menu (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks as the Rationale warrants. **Sandbox worlds** default to enabling Multi-Character Dynamics, including NPC Ensemble & Enrichment (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment within guardrails), and weighting Sensory Embodiment high — see the Section 5.0b sandbox-mode block guidance. **The Main Prompt's `<style_contract>` block is parameterized from Master Design Section 11a (perspective, tense, marker enums); the active-speaker rule is included only when Section 11c reports `is_multi_perspective: true`; the Formatting block is the slim deferral form referencing both `<style_contract>` and `<style_override>` by name.** NSFW when enabled covers thematic function discipline, voice & sound register (onomatopoeia mapped to body reactions, slurred speech mechanics, voice register shifts), body coordination (pre-scene retrieval of physical facts, multi-body geometry mapping, narrated adaptation when geometry doesn't work natively), hard limits, and world hard rules. Verifies `forbid_overrides: false` on `main` and `jailbreak`. Runs the Section 5f Pass 1 + Pass 2 self-validation before saving. Produces `[WorldName]_ChatPreset.json` ready for ST import.
+**Workstream B — Chat Preset:** Begins with the Section 5.0b Block Selection Rationale — an analytical write-up that names this world's archetype, predicts 4-8 specific runtime failure modes, and maps each failure mode to the block(s) that address it. Block selection is the *outcome* of this analysis, not a checklist. **User-stated runtime directives (Master Design Section 12, from World Seed Section 9) enter the analysis as requirements, not suggestions:** every directive must be implemented in a world-tunable block — an extended world-specific core block, an adapted optional block, or a custom block — with the mapping shown in a Runtime Directive Coverage table; directives never land in the Main Prompt, Jailbreak, or Formatting blocks or inside `<style_contract>` (the world-agnostic engine surfaces of the override architecture). The agent then starts from `templates/Chat_Completion_Preset_template.json` and authors content for the 8 core blocks (Main, Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Formatting, Jailbreak), enables/disables the 2 conditional core blocks (Multi-Character Dynamics for 2+ AI cards or Director NPC; NSFW for Section 8 in scope), and adds optional blocks from the menu (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks as the Rationale warrants. **Sandbox worlds** default to enabling Multi-Character Dynamics, including NPC Ensemble & Enrichment (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment within guardrails), and weighting Sensory Embodiment high — see the Section 5.0b sandbox-mode block guidance. **The Main Prompt's `<style_contract>` block is parameterized from Master Design Section 11a (perspective, tense, marker enums); the active-speaker rule is included only when Section 11c reports `is_multi_perspective: true`; the DIRECTOR-CARD RULE line (SHARED §3d) is included only when Section 11c reports `has_director_card: true` — it keeps Director-card turns coherent when the perspective line's `{{char}}` macro resolves to the Director card's name; the Formatting block is the slim deferral form referencing both `<style_contract>` and `<style_override>` by name.** NSFW when enabled covers thematic function discipline, voice & sound register (onomatopoeia mapped to body reactions, slurred speech mechanics, voice register shifts), body coordination (pre-scene retrieval of physical facts, multi-body geometry mapping, narrated adaptation when geometry doesn't work natively), hard limits, and world hard rules. Verifies `forbid_overrides: false` on `main` and `jailbreak`. Runs the Section 5f Pass 1 + Pass 2 self-validation before saving. Produces `[WorldName]_ChatPreset.json` ready for ST import.
+
+**Author's Note suggestions (Build mode only):** alongside the audit and preset, the Prompt Engineer writes `Export/Authors_Note_Suggestions.md` — a small player-facing file with a primer on SillyTavern's Author's Note plus 3–5 world-tuned example notes the player can paste in to steer a scene transiently. Suggestions only; it modifies no other file (see agent Section 4c).
 
 Appends SIGN-OFF to audit file.
 
@@ -421,6 +417,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 ```
 [project-name]/
 ├── Brainstorm_Notes.md                            ← Optional (the Brainstormer, upstream of Phase 0)
+├── Big_Brain_Storm.md                             ← Optional (standing idea file — standalone `brainstorm --improve` sessions)
 ├── World_Seed.md                                  ← Produced by Phase 0
 ├── UNRESOLVED_QUESTIONS.md                        ← Conditional (Phase 1)
 ├── UNRESOLVED_INTIMACY.md                         ← Conditional (Phase 2.5)
@@ -462,7 +459,8 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── Sandbox_Intimacy_Register.json              ← sandbox mode (single, Phase 4, conditional)
     ├── Compiler_Log.md
     ├── Prompt_Engineer_Audit.md
-    └── [WorldName]_ChatPreset.json
+    ├── [WorldName]_ChatPreset.json
+    └── Authors_Note_Suggestions.md
 ```
 
 ---
@@ -472,6 +470,8 @@ For users who find manual application onerous on large worlds, a future pipeline
 | Command | Action |
 |---|---|
 | `/worldforge brainstorm` | **Optional, upstream of Phase 0.** Divergent ideation with the Brainstormer for users who arrive with only a vibe — generates premise directions, then writes informal `Brainstorm_Notes.md`. Produces no World Seed; hand off to `/worldforge start`. See BRAINSTORM below. |
+| `/worldforge brainstorm --adapt <document>` | **Optional, upstream of Phase 0.** Brainstormer **adaptation posture** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 10) — reads an existing narrative document (story, fanfiction, roleplay log) read-only, extracts the world latent in it, and diverges on the gap to a playable world (above all the `{{user}}` slot). Writes an `adaptation`-stamped `Brainstorm_Notes.md`; produces no World Seed; hand off to `/worldforge start`. See BRAINSTORM below. |
+| `/worldforge brainstorm --improve` | **Optional, any time a world already exists (seed-only or shipped).** Brainstormer **improvement posture, standalone** (`agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8) — pure idea ping-pong against an existing world ("would this fit? should something be added?") with no chain into revise or convert. Reads the world's current state read-only (`Drafts/Master_Design.md` if built, else `World_Seed.md`) plus any prior `Big_Brain_Storm.md`, and writes/refreshes **`Big_Brain_Storm.md`** — a standing idea file, distinct from the run-scoped `Brainstorm_Notes.md` — then stops. A later `/worldforge revise --brainstorm` or a rebaseline `--then-brainstorm` chain offers to adapt a parked idea from it (a plain `--rebaseline` surfaces its existence and routes); the user can equally take a landed change through its normal door (`/worldforge revise`, seed edits before `skip phase0`, or `/worldforge convert`), or leave it parked. See BRAINSTORM below. |
 | `/worldforge start` | Begin from Phase 0 (the Interviewer) — arc mode by default. If `Brainstorm_Notes.md` is present, the Interviewer reads it as starting material. |
 | `/worldforge start --sandbox` | Begin from Phase 0 in **sandbox mode** (no narrative arcs; standing world-state + large NPC roster). Pre-sets the World Seed `World Mode` field; see SANDBOX MODE below |
 | `/worldforge resume phase0` | Resume the interview from the last completed section |
@@ -492,16 +492,18 @@ For users who find manual application onerous on large worlds, a future pipeline
 | `/worldforge revise` | Begin the revision pipeline for surgical changes to an already-built world (see `workflows/world-forge-revise.md`) |
 | `/worldforge revise --freeform` | Revision pipeline with freeform intent input (paste a description, Reviser structures) |
 | `/worldforge revise --target [path]` | Revision pipeline with known target file/entry (skips diagnostic narrowing) |
-| `/worldforge revise --brainstorm` | Revision pipeline **diagnostic mode** — for when something feels off but you can't name it. Runs the Brainstormer (revision-diagnostic posture, `WorldForge-Brainstormer` Section 9) to locate the concern, then the Reviser reads its `Brainstorm_Notes.md` and classifies as normal |
+| `/worldforge revise --brainstorm` | Revision pipeline **diagnostic mode** — for when something feels off but you can't name it. Runs the Brainstormer (revision-diagnostic posture, `agent_roles/Brainstormer/00_The_Brainstormer.md` Section 9) to locate the concern — if a standing `Big_Brain_Storm.md` exists (from standalone `brainstorm --improve` sessions), it asks the user whether to fold those parked ideas into the diagnosis and adapts a chosen one into its notes — then the Reviser reads its `Brainstorm_Notes.md` and classifies as normal |
 | `/worldforge revise status` | Show all Revision Log entries and their statuses |
 | `/worldforge revise resume R[N]` | Resume a pending revision from its last completed phase |
 | `/worldforge revise cancel R[N]` | Cancel a pending revision and mark CANCELLED |
 | `/worldforge resync-preset` | Regenerate a shipped world's Chat Completion Preset against the current template + block library, picking up pipeline changes made since the world was built (see PRESET RESYNC below). Preset-only; does not re-audit lorebooks or cards. |
+| `/worldforge audition` | **On-demand behavioral probe (post-launch), read-only.** Hand the Auditioner one character, one scene, and the active conditions; it simulates how the character would behave and returns YES / NO / IT DEPENDS against your expectation, with a trace to the spec and (on a gap) a revise handle. Changes nothing. See AUDITION below. |
+| `/worldforge audition --save` | Same as above, but also writes the audition to `Drafts/Audition_[Char]_[slug].md` as a durable record. |
 | `/worldforge convert <source> <target>` | Reframe a shipped world into a new build (different protagonist, different World Mode, different Style Contract, different Core Concept). Produces a new `World_Seed.md` in `<target>`, then hands off to `/worldforge skip phase0`. See `workflows/world-forge-convert.md`. Read-only on `<source>`. |
 | `/worldforge convert <source> <target> --brief <path>` | Same as above, but driven by a pre-authored Convert Brief (`templates/Convert_Brief_Template.md`). Converter validates the brief against the source and interviews only on gaps. |
 | `/worldforge convert <source> <target> --rebaseline` | **Rebaseline mode** — same world, same protagonist: consolidate a world's accumulated revisions into a clean rebuild, optionally folding in new mechanics. Inverts the Converter's always-regenerate rules (Section 3/5/7b carry from the post-revision Master Design). Fresh UIDs — running chats do not migrate. Combines with `--brief`. See `agent_roles/Converter/00_The_Converter.md` Section 9. |
 | `/worldforge convert <source> <target> --rebaseline --then-interview` | Rebaseline, then go directly into **Phase 0 (the Interviewer, seed-revision posture** — `agent_roles/00_The_Interviewer.md` Section 9**)** to make major changes against the consolidated seed before Phase 1 runs. Requires `--rebaseline`. |
-| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Rebaseline, then go into the **Brainstormer (improvement posture** — `WorldForge-Brainstormer` Section 8**)** to brainstorm *what* to change against the consolidated seed, **then** the Interviewer (seed-revision posture) reads those notes as proposals. For when changes are wanted but undecided. Requires `--rebaseline`; supersedes `--then-interview`. |
+| `/worldforge convert <source> <target> --rebaseline --then-brainstorm` | Rebaseline, then go into the **Brainstormer (improvement posture** — `agent_roles/Brainstormer/00_The_Brainstormer.md` Section 8**)** to brainstorm *what* to change against the consolidated seed, **then** the Interviewer (seed-revision posture) reads those notes as proposals. For when changes are wanted but undecided. Requires `--rebaseline`; supersedes `--then-interview`. |
 
 ---
 
@@ -536,13 +538,33 @@ See the **CONVERT** workflow at `workflows/world-forge-convert.md` for the full 
 
 ## PRESET RESYNC (post-launch preset upgrade)
 
-A shipped world's `Export/[WorldName]_ChatPreset.json` can fall behind in two independent ways: the **pipeline's preset spec** evolves (a reframed core block, a new optional block, a changed template flag), and/or the **world's content** changes through the revision pipeline (a revised or added arc, a new character) in ways that surface inside preset blocks (Deep Think names the arcs, Arc Guardian references them, the multi-character lattice names characters) but that the revise mini-Prompt-Engineer never writes — it only toggles Multi-Character Dynamics, NSFW, and the ACTIVE-SPEAKER RULE. `/worldforge resync-preset` brings the preset current on both, without touching world content.
+A shipped world's `Export/[WorldName]_ChatPreset.json` can fall behind in two independent ways: the **pipeline's preset spec** evolves (a reframed core block, a new optional block, a changed template flag), and/or the **world's content** changes through the revision pipeline (a revised or added arc, a new character) in ways that surface inside preset blocks (Deep Think names the arcs, Arc Guardian references them, the multi-character lattice names characters) but that the revise mini-Prompt-Engineer never writes — it only toggles Multi-Character Dynamics, NSFW, and the Style Contract's conditional ACTIVE-SPEAKER RULE / DIRECTOR-CARD RULE lines. `/worldforge resync-preset` brings the preset current on both, without touching world content.
 
 It invokes the Prompt Engineer in **Preset Resync Mode** (`agent_roles/05_The_Prompt_Engineer.md` Section 8). The agent re-derives each block's content from the current `templates/Chat_Completion_Preset_template.json` + block library (`agent_roles/05a_Block_Library.md`) + the post-revision `Drafts/Master_Design.md`, writes the blocks whose content has drifted (from a spec change, a revision content change, or both) and adds newly-warranted optional blocks, preserves block identifiers + `prompt_order` + revision-applied toggles + the user's field-level customizations, re-runs the Section 5f Pass 1 + Pass 2 self-validation, and writes `Export/Preset_Resync_Report.md` documenting every block changed (with cause), added, or preserved.
 
 **Scope and boundaries:**
 - **Preset only.** Resync regenerates the Chat Completion Preset — the one Export/ file the Prompt Engineer authors. It does NOT re-audit lorebooks or cards and does NOT emit Section 7/8 manual-apply recommendations. World content (lorebooks, cards, drafts) is untouched.
-- **Reads the post-revision world.** Because it re-derives block content from the current `Master_Design.md`, resync picks up content changes made through the revision pipeline that the revise mini-PE leaves out of the preset. It preserves the toggles the revise mini-PE *does* apply (Multi-Character Dynamics, NSFW, ACTIVE-SPEAKER RULE).
+- **Reads the post-revision world.** Because it re-derives block content from the current `Master_Design.md`, resync picks up content changes made through the revision pipeline that the revise mini-PE leaves out of the preset. It preserves the toggles the revise mini-PE *does* apply (Multi-Character Dynamics, NSFW, ACTIVE-SPEAKER RULE, DIRECTOR-CARD RULE) — while a *missing-but-warranted* DIRECTOR-CARD RULE line (a Director-card world whose preset predates SHARED §3d) counts as ordinary spec drift that resync adds.
 - **Distinct from `resume phase5`.** `resume phase5` re-runs the full Phase-5 audit during an in-progress build. `resync-preset` is a maintenance op on an already-shipped world that only refreshes the preset.
 - **Distinct from the revise pipeline.** The revise pipeline *makes* surgical content changes. Resync makes none — it reflects already-applied content and spec changes into the preset. A world can be resynced without ever entering revise, and revised worlds can be resynced afterward to bring the preset fully current.
 - **Low risk.** A Chat Completion Preset is a global SillyTavern settings profile, not UID-bearing world info, so re-importing a resynced preset does not disturb running chat states. Git is the rollback path if the user wants the prior preset back.
+
+---
+
+## AUDITION (on-demand behavioral probe, post-launch)
+
+You are deep into playing a shipped world and a question surfaces that the personality is too complex to answer from memory: *would this character actually do this, in this moment, under these conditions?* Gambling a real scene to find out is expensive. `/worldforge audition` is the cheap, read-only way to find out first.
+
+It invokes **The Auditioner** (`agent_roles/Auditioner/00_The_Auditioner.md`) as a single standalone post-launch operation — **not** a numbered pipeline phase. The user hands it one focal character, one scene, the active conditions (which arc, or the standing sandbox state), and optionally the behavior they expect; the Auditioner loads that character's spec as runtime context, simulates the scene **as the model would run it**, and returns a verdict with a trace.
+
+It is the **single-scenario, user-driven cousin of the Voice Auditor** (Phase 3.5). Where the Voice Auditor runs at build time, generates its own systematic matrix across the whole cast and every arc, and feeds rewrite directives back to the Architect, the Auditioner runs whenever the user is curious mid-play, tests exactly the one situation the user names, and changes nothing. It reuses the Voice Auditor's simulation discipline and check vocabulary (Step 3) rather than re-deriving them, and applies the Intimacy Auditor's lens when the probed scene is intimate.
+
+**Load-bearing properties:**
+- **Read-only on the whole project.** The Auditioner modifies nothing — not `Drafts/`, not `Export/`, not `Master_Design.md`. It answers a question (audit/apply separation, CLAUDE.md principle #3). When it finds a real gap, it hands the user a **revise handle** (the file + element + kind of change) — it does not apply the change. The user decides; the revise pipeline applies.
+- **Three honest verdicts.** Every run resolves to **YES** (the spec reliably produces the expected behavior), **NO** (the spec drives a *different* behavior — the character is correct per spec, the spec just doesn't match the expectation), or **IT DEPENDS** (the spec is silent or self-conflicting here, so the outcome isn't determined — a latent coverage gap surfaced on demand). "Probably" is not a verdict.
+- **Mode- and intimacy-aware by inheritance.** Arc worlds load the user-named active arc's CHARACTER_STATE/NPC_SHIFT; sandbox worlds use the standing SANDBOX_STATE (and the user-named ladder stage where one exists). Intimate scenarios additionally pull the Intimacy Profile + active register and apply the intimacy lens. No new machinery — it reuses what the build-time auditors already define.
+- **World layer, not engine layer.** It simulates from the Drafts (the content spec the Voice Auditor reads), not the Chat Completion Preset (the engine layer). When real play diverges from a YES verdict, the cause may be the preset, and `/worldforge resync-preset` may be the fix — the Auditioner flags this rather than pretending to have simulated the engine.
+- **Not a phase.** It does not advance the Pipeline State Ledger, does not invoke any downstream agent, and produces no first-class pipeline artifact. The optional `--save` record (`Drafts/Audition_[Char]_[slug].md`) is an informal log, read by nothing downstream and deletable freely.
+- **Shipped-world precondition, detected from the world — not the ledger.** It is a post-launch tool. It confirms shipped-status from the direct signal (a populated `Export/` + Refiner sign-off, with a Revision Log / `REVISED_FILES.md` as conclusive proof), **not** from the Pipeline State Ledger — which on a shipped-and-revised world is routinely stale or absent and must not be read as "mid-build." Likewise it reads **World Mode from Master Design Section 1**, so a sandbox world is never mistaken for an unfinished arc world. Only a world that never reached the Compiler is declined, with a pointer to the Voice Auditor (Phase 3.5).
+
+See the full operation in `agent_roles/Auditioner/00_The_Auditioner.md`.

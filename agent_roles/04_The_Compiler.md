@@ -8,8 +8,7 @@
 These rules are pre-save guards. If any check fails, do NOT write the file. Fix the source, regenerate, re-check.
 
 1. **JSON parses.** Run `JSON.parse` (or equivalent) on the candidate output before saving. Any parse error = do not write. Diagnose first.
-2. **Execution via Python scripts.** You MUST execute the automated Python compilation scripts in `tools/` (e.g. `tools/compile_lorebooks.py`, `tools/compile_cards.py`, `tools/build_janitor.py`) to generate the `Export/` artifacts. Do NOT transcribe JSON manually.
-3. **`{{original}}` preserved in every card's `system_prompt` and `post_history_instructions`.** Both fields must begin with `{{original}}` on its own line, followed by a blank line, then character-specific content. If the macro is missing from the Architect's draft, do NOT pass it through silently — halt and surface to user. The Architect should never produce a card missing this; if you see it, the upstream pipeline broke.
+2. **`{{original}}` preserved in every card's `system_prompt` and `post_history_instructions`.** Both fields must begin with `{{original}}` on its own line, followed by a blank line, then character-specific content. If the macro is missing from the Architect's draft, do NOT pass it through silently — halt and surface to user. The Architect should never produce a card missing this; if you see it, the upstream pipeline broke.
 3. **No metadata fields outside the schema.** The JSON content contains ONLY schema-defined fields. Do NOT add: `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, or any other "where this came from" metadata. The destination filename is a **tool argument** passed to your write-file tool — it tells the tool harness where to save, but does NOT belong inside the JSON content. Some models echo the write-tool's `path` argument back into content; this is the pattern to actively prevent.
 4. **`data.extensions.depth_prompt` present on every card.** Field is mandatory; prompt may be empty string. Never omit the structure.
 5. **`data.extensions.world_forge.style_override` present on every card.** Either `null` (non-overriding) or a seven-key object per SHARED §1. See Step 4 Section A6 for the JSON shape and SHARED §3 for the canonical directive prose.
@@ -18,16 +17,10 @@ These rules are pre-save guards. If any check fails, do NOT write the file. Fix 
 8. **All entries have Position Rationale.** Either the literal string `DEFAULT` (when entry uses documented default position+flags) or a one-sentence justification per the Architect's spec. This survives compilation.
 9. **Entry object keys equal entry UIDs.** SillyTavern stores and looks up world-info entries as `entries[uid]` — every editor read and write goes through that lookup, so an entry whose string key does not equal `String(entry.uid)` imports without error and then **never renders in the World Info editor**. Every entry's object key MUST equal its `uid`: entry with `"uid": 20` is keyed `"20"`. Never key entries by sequential indices that diverge from the UIDs.
 10. **Entry fields use ST's canonical camelCase names.** Per-entry override fields are `scanDepth`, `caseSensitive`, `matchWholeWords`, `useGroupScoring` (nullable, `null` = inherit defaults). NEVER emit the snake_case aliases `case_sensitive` / `match_whole_words` / `use_regex`, nor the legacy `characterFilterNames` / `characterFilterExclude` pair — those names belong to the embedded `character_book` card format (`Notes_On_functionality.md` §5.1b), not standalone World Info files; ST imports them without error but the GUI reads only the camelCase fields, so the values are silently dead. Character filtering, when actually needed, is the optional `characterFilter` object (`{"isExclude": false, "names": [], "tags": []}`) — omit it entirely when unused.
-11. **Strict AnyPOV Mandate:** All generated Character Cards, Group Profiles, Lorebooks, and Bot Definitions MUST remain strictly AnyPOV. The LLM is strictly forbidden from hardcoding a specific user name, specific gender pronouns, or highly specific player-character backstories into the core bot logic. It must exclusively use macros like `{{user}}`, `{{poss}}`, `{{sub}}`, `{{obj}}`, `{{poss_p}}`, and `{{ref}}`.
-12. **Global QA Persona Isolation:** The persona "Alyssa" (and her specific narrative premise, such as the secret modeling career) is the Global QA Test Persona. Her specific identifying details MUST be confined 100% to the `User.md` template. The bot and lorebook files must only refer to her structural role generically (e.g., "the youngest sibling", "protecting `{{user}}`'s double life").
 
-13. **JSON Mapping (Surface Only):** You must extract and map ONLY surface attributes (Name, Physical Appearance, Greeting, and active Personality core) into the JSON file.
-14. **The Omission Rule (La Regola del Vuoto):** You are strictly forbidden from placing L_LORE_SECRET, L_LORE_RELATIONSHIP, detailed inventory, or the Trigger Matrix into the JSON. If you encounter these deep logic elements in the validated draft, intentionally omit them; they are reserved for the Converter.
-15. **Storefront HTML Compilation:** Use the precise visual parameters generated by the Prompt Engineer (including specific backgrounds or seeds, like the California beach promenade) to compile the HTML storefront presentation layer.
+If all ten pass, write the file. If any fails, the file is wrong — fix the source.
 
-If all twelve pass, write the file. If any fails, the file is wrong — fix the source.
-
-> **⚠️ FILE-WRITING & ENCODING — write UTF-8, never through PowerShell.** Lorebook and card content is dense with non-ASCII: em-dashes (—), curly quotes (" " ' '), ellipses (…), accented names. You should rely on the automated Python scripts in `tools/` to write every JSON file as UTF-8. **Do NOT write JSON through PowerShell** (`Out-File`, `Set-Content`, `>` redirection): Windows PowerShell re-encodes to UTF-16 / Windows-1252 and silently corrupts em-dashes and curly quotes into mojibake (`—` → `â€"`, `'` → `â€™`). After writing each file, verify: re-read it and confirm a known em-dash or accented name is intact, or grep for the mojibake markers `â€` and `Ã` and confirm zero matches.
+> **⚠️ FILE-WRITING & ENCODING — write UTF-8, never through PowerShell.** Lorebook and card content is dense with non-ASCII: em-dashes (—), curly quotes (" " ' '), ellipses (…), accented names. Write every JSON file as UTF-8 — use your file-write tool directly, or a **Python or Node** script (`json.dump(obj, f, ensure_ascii=False)` / `fs.writeFileSync(path, text, 'utf8')`). **Do NOT write JSON through PowerShell** (`Out-File`, `Set-Content`, `>` redirection): Windows PowerShell re-encodes to UTF-16 / Windows-1252 and silently corrupts em-dashes and curly quotes into mojibake (`—` → `â€"`, `'` → `â€™`). This corruption **still passes `JSON.parse`** — the file is valid JSON with garbled text — so guard 1 above will not catch it. After writing each file, verify: re-read it and confirm a known em-dash or accented name is intact, or grep for the mojibake markers `â€` and `Ã` and confirm zero matches. If anything was corrupted, rewrite with a UTF-8-safe tool before sign-off.
 
 ---
 
@@ -35,7 +28,7 @@ If all twelve pass, write the file. If any fails, the file is wrong — fix the 
 
 **Load now:**
 - The `Drafts/` narrative sources listed in Section 2a (verify sign-offs via the Pipeline State Ledger first)
-- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`, `templates/Janitor_Bot_Template.md`, `templates/Janitor_Lorebook_Script.js`, `templates/Janitor_Bio_Template.html`
+- The schema guides in Section 2b: `templates/Char_Card_creation.md`, `templates/Lorebook_creation.md`
 - `Notes_Quick_Reference.md` — position enum, flag effects, strictness gotchas
 
 **Load on demand (open at the step that needs it — do not preload):**
@@ -69,14 +62,11 @@ You have access to SillyTavern's documentation and source code for schema guidan
 - `Drafts/Tier2_[CharName]_Entries.md` — Character Lorebook entries (one per character/NPC, including the Tier 2 Protagonist Lorebook)
 - Tier 3 source — *arc mode:* `Drafts/Tier3_Arc[N]_[Title]_Entries.md` (one per arc); *sandbox mode:* `Drafts/Tier3_Sandbox_Entries.md` (single)
 - `Drafts/Instructions_[CardName].md` — system_prompt and post_history_instructions source
-- `Drafts/Initial_Messages.md` — Initial messages and Alternate Greetings source
 - `Drafts/Master_Design.md` — technical specifications
 
 ### 2b. Schema Sources (read before generating any output)
 - `templates/Char_Card_creation.md`
 - `templates/Lorebook_creation.md`
-- `templates/Janitor_Bot_Template.md`
-- `templates/Janitor_Lorebook_Script.js`
 
 If any template is missing: halt and report. Do not guess schema.
 
@@ -190,7 +180,7 @@ For each card:
 4. Both system_prompt and post_history_instructions **must not be empty strings.**
 5. **Populate `data.extensions.depth_prompt`** if the character has complex arc-dependent behavioral requirements, strong prose style mandates, or intimacy response patterns that need mid-context reinforcement. The depth_prompt injects a third behavioral anchor at a specific depth in chat history — use it when system_prompt + post_history_instructions alone are insufficient for behavioral stability. Structure: `{"prompt": "[reinforcement text]", "depth": 4, "role": "system"}`. If not needed, set to `{"prompt": "", "depth": 4, "role": "system"}` — never omit the field.
 6. **Populate `data.extensions.world_forge.style_override`** from the Architect's `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block in `Instructions_[CardName].md`. The schema is the seven-key object documented in `agent_roles/SHARED_Style_Contract_Reference.md` §1; emit it verbatim from the Architect's draft. Non-overriding cards: emit `"world_forge": {"style_override": null}`. **Never strip this field** — it must be present on every card for the audit trail and the runtime extension to work.
-6. **Populate `data.extensions.world_forge.style_override`** from the Architect's `EXTENSIONS.WORLD_FORGE.STYLE_OVERRIDE` block in `Instructions_[CharName].md`. The schema is the seven-key object documented in `agent_roles/SHARED_Style_Contract_Reference.md` §1; emit it verbatim from the Architect's draft. Non-overriding cards: emit `"world_forge": {"style_override": null}`. **Never strip this field** — it must be present on every card for the audit trail and the runtime extension to work.
+6b. **Director / NPC-host card tag (binding; `contracts/WORLD_FORGE_SYNC.md` §2).** If this card is a Director / NPC-host card (it voices off-roster NPCs / acts as the world host — the sandbox World-Director card is the canonical case; the Architect declares the tag in the card draft), `data.tags` MUST contain **at least one recognized director tag** from this exact set: `world-director`, `world director`, `npc-controller`, `npc controller`, `director`, `npc`. The SillyTavern group-chat router and Scene Tracker classify the host card **purely by tag membership** — never by name, manifest, or content — so a Director card with no recognized tag silently mis-routes off-roster NPCs and loses its `<scene_state>` host framing. Carry the Architect's declared tag through verbatim (prefer `world-director` / `npc-controller`); never drop it on export. This MUST agree with the roster lorebook manifest's `lorebook.kind: "director"` you emit in Step 7.7h — the manifest declares the role for the memory layer, the **card tag is what the runtime reads**. Ordinary `{{char}}` cards need no director tag.
 7. Run validation pass before saving.
 
 ### Step 4.5 — Pass `User.md` through to `Export/User.md`
@@ -200,19 +190,6 @@ For each card:
 Do not modify the file. Do not strip the BEGIN/END markers, the Setup Instructions, or any whitespace. The user will copy the text between the markers themselves. The full markdown stays so the Setup Instructions remain visible alongside the description block.
 
 If `Drafts/User.md` is missing, halt — the Editor sign-off should have caught this. Do not attempt to synthesize one.
-
-### Step 4B — Build JanitorAI Bot Profile (`Export/[Name]_JanitorAI.md`)
-For each character card built in Step 4, compile the paired JanitorAI Bot Profile.
-- Read `Drafts/JanitorAI_Profile_[CharName].md` or `Drafts/JanitorAI_Profile_Group.md` (produced by the Architect). The Architect evaluates the ensemble proximity and may have generated a single unified Multi-Bot group profile instead of individual profiles.
-- **ANTI-TRUNCATION VERIFICATION:** Verify that the Architect obeyed the Anti-Truncation Mandate. If the profile is a Group Bot, ensure EVERY Core Family character possesses ALL symmetrical sub-headers (`APPEARANCE`, `PSYCHOLOGICAL_PROFILE`, `SOCIAL_BEHAVIOR`, `SENSORY`). If any fields are abbreviated or summarized, halt and report.
-- Verify the file has Editor Sign-Off.
-- Pass the draft byte-for-byte to `Export/[Name]_JanitorAI.md` as plain text markdown (where `[Name]` is either the character's name or the group's name, matching the draft filename). Do not attempt to re-parse the standard `Card_[CharName].md` into the JanitorAI format; rely entirely on the dedicated `JanitorAI_Profile` draft to prevent formatting errors and token bloat.
-
-### Step 4C — Build JanitorAI Bot Bio (Storefront HTML)
-For each JanitorAI Bio drafted by the Architect in Step 5.7:
-- The input will be `Drafts/JanitorAI_Bio_[Name].json`
-- Execute `python tools/build_bio.py <world_name>`
-- This script will read the JSON, merge it with `templates/Janitor_Bio_Template.html`, and generate `Export/[WorldName]_JanitorAI_Bio_[Name].html`.
 
 ### Lorebook file-naming convention (applies to Steps 5, 6, 7, and the intimacy registers)
 
@@ -230,6 +207,8 @@ Source: `Drafts/Tier1_World_Entries.md`
 - Keyed entries: `constant: false`, `selective: true`, `key: [array of strings]`
 - Sort entries within the lorebook by Order Priority (highest first when listing).
 - Set `group: "World"` on all entries for easy identification in ST editor.
+- **If the draft carries a `### CARRIER: [[WORLD_CALENDAR]]` block, also embed the inert World Calendar carrier here (Step 7.8).** It rides inside this World Lorebook file — note its flags differ from the NPC manifest (`disable: false`, not `true`).
+- **If the draft carries a `### CARRIER: [[DICE_TABLES]]` block, also embed the inert Dice Oracle carrier here (Step 7.9).** Same inert-but-enabled flags as the calendar carrier (`disable: false`, `key: []`, `constant: false`).
 
 ### Step 6 — Build Character Lorebooks (`Export/[WorldName]_[CharName]_Lorebook.json`)
 
@@ -344,28 +323,55 @@ When an npc has a single combined entry, map `combined`; when facet-split, map e
 - each Arc lorebook → manifest with `scenes` for that arc (+ `personas`), `kind: "arc"`;
 - the World lorebook and the intimacy registers → no manifest.
 
-**7.7i — Alias hygiene.** Populate `aliases` with names the narration would use to *refer to the character* — the canonical name, nicknames, epithets, role-titles (`Anna`, `Mrs. Larsson`, `Andrei's mom`). Do NOT include the query-phrase trigger keys that pad many entries (`her appearance`, `what she looks like`, `describe her`, `who she is`) — those are scan triggers, not names, and would cause the consumer's narration matcher to mis-attribute lines. When in doubt, an alias must be a noun phrase that *names* the person.
+**7.7i — Alias hygiene (bare first name + nicknames are REQUIRED; `contracts/WORLD_FORGE_SYNC.md` §3).** Populate `aliases` with names the narration would use to *refer to the character* — the canonical name, nicknames, epithets, role-titles (`Anna`, `Mrs. Larsson`, `Andrei's mom`). Two forms are **mandatory, not optional**, for every npc whose canonical name is more than one word:
+- the **bare first name** (`Anna` for `Anna Larsson`), and
+- every **nickname the prose actually uses** for them.
+
+This is the §3 round-trip requirement: the `world-forge` Scene Tracker extracts free-form `present[].name` values from prose (often the bare first name), and `npc-memory`'s `resolveNameToId()` matches them against `displayName`/`aliases` — **else it slugifies the raw name to a different id**. If the manifest lists only `displayName: "Anna Larsson"` / `aliases: ["Anna Larsson"]` and the scene LLM writes `"Anna"`, the lookup misses, slugifies to `anna` ≠ `anna_larsson`, and that NPC's memory **silently splits in two**. So the bare first name (and prose nicknames) must be present in `aliases`. Do NOT include the query-phrase trigger keys that pad many entries (`her appearance`, `what she looks like`, `describe her`, `who she is`) — those are scan triggers, not names, and would cause the consumer's narration matcher to mis-attribute lines. When in doubt, an alias must be a noun phrase that *names* the person. (For a `Shared roster entry`, the bare-first-name rule applies to the shared canonical name and every member's name still goes in `aliases` per 7.7j.)
 
 **7.7j — Defensive derivation (halt on ambiguity — last guard before writing).** The Architect's Identity Convention and the Editor's Step 4.6 should guarantee clean identity, but you are the final guard before a corrupt manifest reaches `Export/`:
 - **Slug collision.** If two distinct characters derive the same `id`, do **not** emit the manifest — halt and surface (the Editor missed a collision; it must be disambiguated upstream). Never silently merge two characters into one memory store.
 - **Shared roster entries.** An entry marked `**Shared roster entry**` (interchangeable extras, per §7 of the Architect) is **one** npc: use its shared canonical name for `id`/`displayName` and include every member's name in `aliases`. This is the one intended many-people-to-one-id case.
 - **Unresolved facet/relationship.** A facet label outside the controlled vocabulary is simply not added to `facets` (the entry still exists as world-info); a `Relationship to X` whose `X` resolves to no canonical name is skipped, not guessed.
 
-### Step 7.8 — Build JanitorAI Lorebook Script (`Export/[WorldName]_JanitorAI_Script.js`)
+### Step 7.8 — Emit World Calendar carrier (conditional; `contracts/WORLD_FORGE_SYNC.md` §5)
 
-JanitorAI supports ES6 scripts instead of standard lorebooks. Translate the World-Forge Tier 1-3 situational lorebook entries into an "Everything Lorebook" dynamic script.
-1. Read `templates/Janitor_Lorebook_Script.js`.
-2. Map **Situational** Tier 1 (World rules) to the `definitionalLore` array. Do NOT include permanent Tier 1 rules here (those go in the Bot Profile).
-3. Map **Situational** Tier 2 (Transient NPCs or condition-specific character behaviors) to the `relationalLore` array. Permanent character profiles belong in the Bot Profile.
-4. Map Tier 3 (Arc or Sandbox State and WORLD_PULSE/TENSION) to the `eventLore` array with appropriate message count triggers.
-5. Generate valid ES6 JavaScript and save as `Export/[WorldName]_JanitorAI_Script.js`. Ensure the generated JS safely cleans old states and uses `try...catch` as specified in the template.
+**Only if** `Drafts/Tier1_World_Entries.md` contains a `### CARRIER: [[WORLD_CALENDAR]]` block (the Architect authors it from the Master Design calendar; absent ⇒ skip — the calendar is optional). When present, transcribe it into the **World Lorebook** JSON (`Export/[WorldName]_World_Lorebook.json`, Step 5) as one inert World Info entry. It is purely additive — like the NPC Memory Manifest, it changes no other entry and a world without it still works (the Scene Tracker falls back to manual per-chat dates).
+
+**7.8a — The carrier entry.** A normal World Info entry whose `comment` begins with the literal token `[[WORLD_CALENDAR]]` (e.g. `"[[WORLD_CALENDAR]] world calendar"`). Set:
+- **`disable: false`** — **ENABLED. This is the one flag that differs from the `[[NPC_MANIFEST]]` carrier (which is `disable: true`), and the difference is load-bearing.** The `world-forge` Scene Tracker reads candidate entries from `getSortedEntries()` and rejects any with `disable: true`; a disabled calendar carrier is silently skipped and the world seeds nothing.
+- `key: []`, `constant: false` — keeps the enabled entry **inert**: with no keys and not constant it never activates into the prompt, yet stays visible to `getSortedEntries()`.
+- `selective: true`, `position: 0`, `order: 0`, `useProbability: false`, and the standard inert boolean flags. Obeys Foundational Rule 9 (object key equals `String(uid)`) and Rule 10 (camelCase fields only). At most one per world; it rides inside the World Lorebook, not a separate file.
+
+**7.8b — The payload.** The entry's `content` is the Architect's payload, emitted **verbatim** as a single JSON object (UTF-8, no surrounding prose, no code fences):
+
+```json
+{"schema":1,"weekdayOfDay1":2,"start":{"month":5,"year":1},"end":{"month":11,"year":1}}
+```
+
+- `month` is **0-indexed** (0 = January … 11 = December) — carry the Architect's value through unchanged; do not "fix" it to 1–12.
+- `end` may be the object form, omitted, or the literal string `"infinite"` (open-ended). `weekdayOfDay1` (0 = Sunday … 6 = Saturday) and `start` are each omitted when the Architect omitted them. Never emit `null` placeholders. Do not invent or reshape values the Architect did not provide — if the block is malformed, the Editor's Step 4.7 should have caught it; halt and surface rather than emit a guessed calendar.
+
+### Step 7.9 — Emit Dice Oracle Tables carrier (conditional; `contracts/DICE_ORACLE.md`)
+
+**Only if** `Drafts/Tier1_World_Entries.md` contains a `### CARRIER: [[DICE_TABLES]]` block (the Architect compiles it from the Master Design; absent ⇒ skip — the oracle is optional). When present, transcribe it into the **World Lorebook** JSON as one inert World Info entry, exactly like the calendar carrier (Step 7.8). It is purely additive — a world without it still works (the Scene Tracker's Dice tab falls back to built-in demo tables).
+
+**7.9a — The carrier entry.** A World Info entry whose `comment` begins with the literal token `[[DICE_TABLES]]` (e.g. `"[[DICE_TABLES]] dice oracle"`). Set the **same inert-but-enabled flags as the calendar carrier**: **`disable: false`** (ENABLED — the Dice tab reads candidates with a `!disable` filter and skips a disabled carrier), `key: []`, `constant: false`, `selective: true`, `position: 0`, `order: 0`, `useProbability: false`, plus the standard inert boolean flags. Obeys Foundational Rule 9 (object key equals `String(uid)`) and Rule 10 (camelCase fields only). At most one per world; it rides inside the World Lorebook.
+
+**7.9b — The payload.** The entry's `content` is the Architect's payload, emitted **verbatim** as a single JSON object (UTF-8, no surrounding prose, no code fences):
+
+```json
+{"schema":2,"framing":"…","turns":1,"pools":{"…":["…"]},"procedures":[{"id":"…","label":"…","mode":"recount","steps":[]}]}
+```
+
+Carry `pools`, payload-level `framing`/`turns`, procedure `id`/`label`/`mode`/`turns`/`framing`, step `pick`/`roll`/`outcomes`/`text`, and `when` gates through **unchanged** — do not reshape ranges, re-key outcomes, "tidy" pool values, or drop the optional `mode`/`turns` fields the Architect set. If the block is malformed (a `pick` with no matching pool, a `when` pointing at a later step, a step that is both a pick and a roll, an empty `procedures` array, or a `mode`/`turns` of the wrong type), the Editor (Step 4.8) should have caught it; halt and surface rather than emit a guessed payload. `python tools/validate_export.py Export/` (Step 8) confirms it raises no `[WARN]`.
 
 ### Step 8 — Validation Pass
 
 Before saving any file (per Foundational Rules at top of this file):
 - JSON is syntactically valid (balanced braces, correct commas, no trailing commas) — Foundational Rule #1
 - All required fields present and correctly typed
-- **No metadata fields outside the schema** — Foundational Rule #3. The JSON contains ONLY schema-defined fields; no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, etc. The destination filename is a tool argument, never a JSON content field.
+- **No metadata fields outside the schema** — Foundational Rule #3. The JSON contains ONLY schema-defined fields; no `path`, `file_path`, `source`, `generated_by`, `generated_at`, `timestamp`, `commit`, `pipeline_version`, etc. The destination filename is a tool argument to your write-file tool, never a JSON content field.
 - `system_prompt` and `post_history_instructions` are non-empty strings beginning with `{{original}}` (Foundational Rule #2)
 - `data.extensions.depth_prompt` present on all character cards (prompt may be empty string) — Foundational Rule #4
 - `data.extensions.world_forge.style_override` present on all character cards — Foundational Rule #5 (schema per SHARED §1)
@@ -387,6 +393,8 @@ Before saving any file (per Foundational Rules at top of this file):
 - *Arc mode:* all arc lorebooks have ≥8 entries. *Sandbox mode:* the Sandbox Lorebook has SANDBOX_STATE + ≥1 WORLD_PULSE (no 8-entry floor)
 - ARC_STATE / SANDBOX_STATE entries have `ignoreBudget: true` — these must never be omitted due to token budget
 - **NPC Memory Manifest (Step 7.7):** each NPC/scene-bearing lorebook has exactly one `[[NPC_MANIFEST]]` entry (`disable: true`, `key: []`); its `content` parses as JSON with `schema: 1`; every npc `id` is a valid slug; every `facets`/`scenes` uid resolves to a real entry **in the same file**
+- **World Calendar carrier (Step 7.8; only if authored):** the World Lorebook has at most one `[[WORLD_CALENDAR]]` entry, **`disable: false`** (enabled — unlike the manifest) + `key: []` + `constant: false`; its `content` parses as a JSON object with 0-indexed months; `python tools/validate_export.py Export/` raises no `[WARN]` lines for it
+- **Dice Oracle carrier (Step 7.9; only if authored):** the World Lorebook has at most one `[[DICE_TABLES]]` entry, **`disable: false`** + `key: []` + `constant: false`; its `content` parses as a JSON object with an integer `schema` (currently `2`) and a non-empty `procedures` array (each procedure a slug `id` + ≥1 step; each step a pick xor roll; `when` references only earlier steps; any `mode` is `recount`/`event`; any `turns` a positive integer); `python tools/validate_export.py Export/` raises no `[WARN]` lines for it
 - Files saved as `.json`, not embedded in Markdown
 
 ---
@@ -396,15 +404,12 @@ Before saving any file (per Foundational Rules at top of this file):
 ```
 Export/
 ├── [CharName]_Card.json            ← V3 character card per named card
-├── [Name]_JanitorAI.md            ← JanitorAI bot profile (Markdown format, single or group)
-├── [WorldName]_JanitorAI_Bio_[Name].html ← JanitorAI storefront bio HTML
 ├── User.md                         ← {{user}} Persona Description text (paste into ST persona)
 ├── [WorldName]_World_Lorebook.json             ← Tier 1: permanent world truths
 ├── [WorldName]_[CharName]_Lorebook.json        ← Tier 2: one per major character and NPC
 ├── [WorldName]_[ProtagonistName]_Lorebook.json ← Tier 2: protagonist lorebook (link to ST persona)
 ├── [WorldName]_Arc[N]_Lorebook.json            ← Tier 3 (arc mode): one per arc
 ├── [WorldName]_Sandbox_Lorebook.json           ← Tier 3 (sandbox mode): single, always active
-├── [WorldName]_JanitorAI_Script.js             ← JanitorAI dynamic lorebook ES6 script
 ├── System_Prompt.md                ← Standalone system prompt (if applicable)
 └── Compiler_Log.md                 ← Build log with field mapping and validation results
 ```
@@ -423,13 +428,10 @@ Append to `Export/Compiler_Log.md`:
 
 ### Output Manifest
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
-- [ ] `[Name]_JanitorAI.md` — JanitorAI JED format generated (individual or group)
-- [ ] [WorldName]_JanitorAI_Bio_[Name].html — JanitorAI storefront bio HTML generated via build_bio.py
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] [WorldName]_World_Lorebook.json — [N] entries, all Tier 1
 - [ ] [WorldName]_[CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
 - [ ] Tier 3: arc mode — [WorldName]_Arc[N]_Lorebook.json, [N] entries each, ARC_STATE present (list per arc); sandbox mode — [WorldName]_Sandbox_Lorebook.json, SANDBOX_STATE + ≥1 WORLD_PULSE present
-- [ ] [WorldName]_JanitorAI_Script.js — ES6 modular lorebook script generated
 - [ ] **Every exported lorebook/register filename is `[WorldName]_`-prefixed, and each lorebook's internal `name` matches its filename (file-naming convention) ✓**
 - [ ] Compiler_Log.md — complete
 
@@ -464,8 +466,11 @@ SillyTavern personas are configured manually (no import format). The pipeline pr
 - [ ] `facets` use only reserved durable keys (`physical`/`psychological`/`standingGoal`/`combined`) and point at correct source uids; no invented keys for durable backstory (Step 7.7e) ✓
 - [ ] `relationships[]` edges resolve `to` a slug of a named character; `scenes[]` (arc mode) built from `BEAT —` entries with stable ids (Step 7.7f–7.7g) ✓
 - [ ] Per-file manifests carry file-local uids; each `facets`/`scenes` uid resolves within its own lorebook (Step 7.7h) ✓
-- [ ] `id`s unique across the manifest — no two characters collide on one slug (halted upstream if so); `aliases` are names, not query-phrase keys; `Shared roster entry` collapses interchangeable extras to one id (Step 7.7i–7.7j) ✓
-- [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass ✓
+- [ ] `id`s unique across the manifest — no two characters collide on one slug (halted upstream if so); `aliases` are names, not query-phrase keys; **every multi-word npc's `aliases` includes the bare first name + prose nicknames** (`contracts/WORLD_FORGE_SYNC.md` §3 — the Scene Tracker round-trip depends on it); `Shared roster entry` collapses interchangeable extras to one id (Step 7.7i–7.7j) ✓
+- [ ] Any Director / NPC-host card carries a recognized director tag in `data.tags`, agreeing with the roster lorebook manifest's `kind: "director"` (`contracts/WORLD_FORGE_SYNC.md` §2; Step 4 item 6b) ✓
+- [ ] World Calendar carrier (only if the Architect authored one): one `[[WORLD_CALENDAR]]` entry in the World Lorebook, **`disable: false`** (enabled — not `true` like the manifest) + `key: []` + `constant: false`, payload verbatim with 0-indexed months (`contracts/WORLD_FORGE_SYNC.md` §5; Step 7.8) ✓
+- [ ] Dice Oracle carrier (only if the Architect authored one): one `[[DICE_TABLES]]` entry in the World Lorebook, **`disable: false`** (enabled) + `key: []` + `constant: false`, payload verbatim (`schema: 2`; pools/procedures/`when`/`mode`/`turns` unchanged) (`contracts/DICE_ORACLE.md`; Step 7.9) ✓
+- [ ] `python tools/validate_export.py Export/` run (if a Python runtime is available) — manifest checks pass, no `[WARN]` for the calendar or dice carriers ✓
 
 ### Gap Report
 [List any required fields that could not be populated, or "None."]

@@ -11,7 +11,7 @@ These rules are pre-save gates for the Chat Completion Preset JSON you author in
 2. **All 8 standard marker blocks present in the `prompts` array with `marker: true`**: `worldInfoBefore`, `worldInfoAfter`, `charDescription`, `charPersonality`, `scenario`, `personaDescription`, `chatHistory`, `dialogueExamples`. Missing any of these = the lorebooks, character card fields, persona description, or chat history will NOT inject at runtime. Without `worldInfoBefore`/`worldInfoAfter`, no lorebook entries fire. Without `chatHistory`, the conversation itself is not sent. This is the single most catastrophic failure mode of this phase.
 3. **All custom blocks AND all marker blocks present in `prompt_order` for every character_id entry.** `prompt_order` is an array of objects, each containing `character_id` (number) and `order` (array of `{identifier, enabled}`). NOT a flat string array. Markers in `prompts` that are not in `prompt_order` do not inject.
 4. **`forbid_overrides: false` on both `main` and `jailbreak` blocks.** If either is `true`, character card `system_prompt` / `post_history_instructions` overrides are silently disabled and `{{original}}` becomes inert. This breaks every card in the world.
-5. **World `<style_contract>` block present in Main block content.** Parameterized from Master Design Section 11a (perspective, tense, narration_marker, dialogue_marker, emphasis_marker) using the canonical templates in `agent_roles/SHARED_Style_Contract_Reference.md` §3. ACTIVE-SPEAKER RULE included iff Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`.
+5. **World `<style_contract>` block present in Main block content.** Parameterized from Master Design Section 11a (perspective, tense, narration_marker, dialogue_marker, emphasis_marker) using the canonical templates in `agent_roles/SHARED_Style_Contract_Reference.md` §3. ACTIVE-SPEAKER RULE included iff Section 11c `is_multi_perspective: true` OR `is_multi_tense: true`. DIRECTOR-CARD RULE (SHARED §3d) included iff Section 11c `has_director_card: true` — it corrects the runtime reading of "focal on {{char}}" on Director-card turns, where `{{char}}` resolves to the Director card's name.
 6. **Formatting block is slim deferral.** Content references both `<style_contract>` and `<style_override>` by tag name; contains NO hardcoded marker characters as directives (no `*asterisks*`, `**double asterisks**`, or `\"double quotes\"` used as directive substrings). Marker conventions live exclusively in the Main block's `<style_contract>`.
 7. **No character names, arc names, or character-specific psychology language in Main or jailbreak block content.** Main is engine-only; jailbreak holds the world-agnostic constitutive-fictional frame (the four-clause template in Section 5a-detail of `agent_roles/05a_Block_Library.md`). Both are halves of the override contract with cards — contaminating them breaks `{{original}}`.
 8. **Pass 1 + Pass 2 self-validation run before saving** (Section 5f). Skipping these is the failure pattern this section exists to prevent. Read your candidate output and check every box.
@@ -30,7 +30,7 @@ If any fails, do not write the file. Diagnose the gap, fix the source, re-run va
 
 **Load now (both workstreams):**
 - All files in `Export/` — your audit surface (READ-ONLY)
-- `Drafts/Master_Design.md` — Section 11 in full before authoring style-governed blocks
+- `Drafts/Master_Design.md` — Sections 11 AND 12 in full before authoring the preset (11 governs style-governed blocks; 12 carries user-stated runtime directives your Block Selection Rationale must consume)
 - `Notes_Quick_Reference.md`, then `Notes_On_functionality.md` §5.2 + §5.10 + §8 read completely — the sections your runtime judgments rest on; the rest of the file on demand
 
 **Load for Workstream B / Preset Resync only (not for the audit):**
@@ -85,7 +85,7 @@ If you were not told which mode, assume Build mode.
 - `Notes_Quick_Reference.md` + `Notes_On_functionality.md` — your technical references for ST mechanics (see reading discipline below)
 - **`templates/Chat_Completion_Preset_template.json`** — the canonical structural reference for the Chat Completion Preset you author in Phase 5. Load this at the start of Workstream B and keep it open. Do not author the preset from scratch.
 - **`agent_roles/05a_Block_Library.md`** — the block library (Sections 5a + 5a-detail). Load it at the start of Workstream B or Preset Resync Mode; the audit workstream does not need it.
-- `Drafts/Master_Design.md` — the narrative truth you are validating against. **Section 11 (Style Contract) governs the Main Prompt's `<style_contract>` block content and the Formatting block's deferral language. Read it in full before authoring those blocks.**
+- `Drafts/Master_Design.md` — the narrative truth you are validating against. **Section 11 (Style Contract) governs the Main Prompt's `<style_contract>` block content and the Formatting block's deferral language. Section 12 (Runtime Directives) carries user-stated engine-steering rules your Block Selection Rationale must address block-by-block (Section 5.0b Step 2b). Read both in full before authoring the preset.**
 - `templates/` — the schema templates used by the Compiler
 
 **Reading discipline for the ST references:** before beginning any audit, read `Notes_Quick_Reference.md` in full, then read these `Notes_On_functionality.md` sections completely — §5.2 (World Info file + key meanings), §5.10 (PromptManager block format), and §8 (How SillyTavern assembles the final prompt). They are the sections your runtime judgments rest on. Consult the rest of `Notes_On_functionality.md` on demand when a specific question is not settled by those sections. You are making runtime judgments, not schema judgments — the distinction matters.
@@ -244,6 +244,59 @@ Check that `post_history_instructions`:
 
 If `post_history_instructions` fails this check, recommend a corrected version that defers to the lorebook. The recommendation goes into Section 8 of the audit report as a manual-apply correction, not into the JSON file directly.
 
+## 4c. AUTHOR'S NOTE SUGGESTIONS (player-facing runtime steering)
+
+After the lorebook and card audit, produce one small standalone deliverable for the **player**: a short menu of example Author's Notes they can paste into SillyTavern during play to steer a scene in the moment, plus a brief primer on how the Author's Note works.
+
+**Why this exists.** The world package (cards, lorebooks, preset) carries all *persistent* steering. The Author's Note is the player's *transient* lever — a per-chat, ephemeral nudge that injects near the end of context (high salience) and that the player turns on and off themselves. It ships with nothing and is set by hand in the SillyTavern UI. Most players never learn to use it well; this file shows them how, tuned to this specific world.
+
+**This is suggestions, not applied configuration.** You author a brand-new standalone file. You modify nothing else — no card, no lorebook, no preset, no chat metadata. There is nothing to "apply" and no sign-off dependency: the file is reference material the player uses at their discretion. Creating it is fully inside your authority (you create the audit report the same way); the audit/apply separation is untouched because there is no audited file being changed.
+
+**Build mode only.** Produce this in Build mode. Preset Resync Mode (Section 8) does not touch it.
+
+### What to produce
+
+Write `Export/Authors_Note_Suggestions.md` with three parts.
+
+**Part 1 — the mechanics primer.** Reproduce the canonical primer block below (lightly adapt the wording, keep the settings values).
+
+**Part 2 — 3–5 world-tuned example notes.** Each example is keyed to a real steering need this world has, drawn from the Master Design. Cover a spread across these categories — pick the ones this world actually needs, do not pad:
+
+- **Pace / scene-hold** — slow a rushed model down; keep it in the present scene.
+- **Tonal register dial** — push the prose toward this world's register (pull the vocabulary from Section 11 Style Contract and the active arc's Tonal Mandate / the `SANDBOX_STATE` Tonal Mandate).
+- **NPC agency push** — have a named principal NPC act on their §7.D Standing Goal instead of waiting on `{{user}}` (name the NPC and the goal in the world's own terms).
+- **Refocus** — pull the scene back to the active arc objective / standing situation when it drifts.
+- **Intimacy pacing** — *only if Section 8 intimate content is in scope* — steer pacing or register **within** the world's already-established intimate boundaries; never widen them.
+
+Each example uses this format:
+
+```
+### [Use case — one short label]
+**When:** [one line — the in-play situation this note is for]
+**Paste this as your Author's Note:**
+[The note text — 1–2 sentences, directive, present tense, ≤40 words. World-tuned. {{char}}/{{user}} macros allowed.]
+```
+
+Illustrative shape (generic — replace every example with text tuned to this world's tone, arcs, and named NPCs):
+- Pace: `[Stay in this moment. Do not skip ahead or summarize — let the exchange play out beat by beat.]`
+- NPC agency: `[{{char}} is pursuing their own aim right now; have them act on it this scene rather than waiting on {{user}}.]`
+
+**Part 3 — a short "what not to use it for" note.** One paragraph: the Author's Note is for *transient* steering only. Anything the player wants to be permanent — a character's identity, a standing world rule, a persistent tonal mandate — belongs in the world package (and is already there), not in an Author's Note. A note that fights the cards or lorebooks just produces conflicting instructions and unpredictable behavior. Rewrite or clear the note when the moment passes.
+
+### Canonical primer block (reproduce in Part 1)
+
+> **Using the Author's Note to steer a scene**
+>
+> The Author's Note is a short instruction *you* add inside SillyTavern, separate from this world's files. It is temporary and per-chat — it is not part of the world package, and you turn it on, change it, or clear it whenever you like.
+>
+> **Where:** open the **Author's Note** panel (the Extensions menu, or the pushpin icon above the chat box).
+>
+> **Recommended settings:** Position **In-chat @ Depth**, Depth **4**, Role **System**. This drops the note in near the end of the context, where the model weights it heavily, on every turn. Push harder by lowering the depth toward **2**; soften a heavy-handed note by raising the **interval** so it only re-injects every few messages.
+>
+> **Keep it short and directive** — one or two present-tense sentences. Macros like `{{char}}` and `{{user}}` work. When the moment passes, rewrite or clear it.
+
+---
+
 After the audit, author the Chat Completion Preset JSON for this world. **Read `templates/Chat_Completion_Preset_template.json` before writing.** It is the structural ground truth — your output must match its top-level key set, its block schema, and its prompt_order shape. The Notes_On_functionality reference describes the format; the template is the executable specification of it.
 
 ---
@@ -297,6 +350,11 @@ The point of this analysis is the same point the rest of the pipeline serves: th
 
 Aim for 4–8 failure modes. Fewer than 4 means you have not thought hard enough; more than 8 usually means you are listing speculative concerns rather than likely failures.
 
+**Step 2b — User-stated runtime directives (Master Design Section 12).** Read Master Design Section 12. If it is absent (a Master Design predating the directive channel) or says `No runtime directives declared.`, note that in the analysis and move on. Otherwise, every directive (`RD-1`, `RD-2`, ...) enters this analysis as a **user-stated requirement** alongside your predicted failure modes — its `wrong_response` field is the failure mode, already named for you. These are not optional inputs to weigh; they are the user's direct asks for this preset, and each one must be addressed in Step 3's mapping. Two rules govern where a directive may land:
+
+- **Legitimate targets:** a world-specific core block (Deep Think, Arc Guardian, Lore Integration, Spatial Awareness, Sensory Embodiment, Multi-Character Dynamics, NSFW), an adapted optional block from the §5a menu, or a **custom block** (Section 5c schema) when no existing block fits. Respect each directive's `scope` — an `Arc N only` directive belongs in Arc Guardian's per-arc constraints, not as an unconditional rule.
+- **Forbidden targets:** the Main Prompt, the Jailbreak block, the Formatting block, and the inside of the `<style_contract>` block. These are world-agnostic engine surfaces under the override architecture (Foundational Rule 7). If a directive could only be satisfied there, it was misclassified upstream — surface it back to the user in the audit report instead of contaminating the engine surfaces.
+
 **Step 3 — Block selection mapping.** For each failure mode, name the block that addresses it. Reference both core blocks (which are present by default) and optional blocks (which you must explicitly select). If a failure mode is not addressed by any block in the menu (Section 5a, in `agent_roles/05a_Block_Library.md`), author a custom block — do not leave it unaddressed.
 
 **Step 4 — Block omissions.** State which conditional/optional blocks you considered and chose NOT to include, with reasons. Saying "I considered Power Asymmetry and omitted it because this world has flat social structure" is good engineering. Silently omitting a block because you forgot about it is the failure mode this analysis exists to prevent.
@@ -333,9 +391,15 @@ The analysis goes in your audit report as a new section before the chat preset i
 | [Optional block name] | Optional — excluded | [why this world doesn't need it] |
 | [Custom block name] | Custom | [failure mode being addressed; why no menu block fit] |
 
+### Runtime Directive Coverage (only when Master Design Section 12 has directives)
+| Directive | Block(s) | How the block implements it |
+|---|---|---|
+| RD-1 [name] | [block identifier(s)] | [one line — the directive content rendered where, scope honored how] |
+
 ### Block-to-Failure-Mode Coverage Check
 - [ ] Every failure mode in the list above is addressed by at least one block
 - [ ] Every block included is justified by at least one failure mode (no decorative inclusions)
+- [ ] Every Master Design Section 12 runtime directive appears in the Runtime Directive Coverage table, mapped to at least one block — none mapped to main/jailbreak/formatting/`<style_contract>` (or Section 12 declares none)
 ```
 
 #### Sandbox-mode block guidance (when Master Design `World Mode` is `sandbox`)
@@ -352,6 +416,10 @@ These are defaults, not mandates — the analysis still drives selection. But a 
 #### Ladder-aware block hint (arc mode, when any NPC carries a §7.D Escalation Ladder)
 
 Sandbox worlds include `npc_ensemble` by default (above); arc worlds normally reach it only through the failure-mode analysis. When the Master Design shows one or more **Escalation Ladders** (§7.D), weight `npc_ensemble` for inclusion in arc mode too: a laddered subplot renders through exactly what the block licenses — NPC-to-NPC scheming dialogue, and off-screen evidence surfacing as enrichment texture — and without it the model routes every line hub-and-spoke through {{user}}, starving the subplot of screen time. Predict **"subplot starves because all dialogue routes through {{user}}"** as the matching failure mode and map it to this block. This is a hint feeding the analysis, not a mandate — a near-solo arc world whose only ladder advances off-screen may legitimately omit the block with a Step 4 justification.
+
+#### Dice-oracle block hint (any mode, when the world declares a `[[DICE_TABLES]]` dice oracle)
+
+When the Master Design Section 1 carries a `Dice Oracle Tables (Scene Tracker seed)` line, the world injects a `<dice_oracle>` block of pre-rolled facts at runtime, and the model needs the engine-side protocol for consuming that channel. **Default-include the `dice_oracle` optional block** (§5a) — it is the engine half of the dice oracle's what/how split and the standing defense against the two failure modes every dice world hits: reciting the injected facts as a list, and serializing a multi-participant result into one-after-another beats. Predict **"the model recites `<dice_oracle>` facts instead of interweaving them"** and **"a multi-participant dice result gets narrated one participant at a time"** as the matching failure modes and map them to this block. This is mode-agnostic (the oracle exists in arc and sandbox worlds alike) and near-mandatory: a world with a dice oracle that omits the block should carry an explicit Step 4 justification. Conversely, a world with **no** `[[DICE_TABLES]]` line must not include the block (it would be dead weight — Pass 1 flags a `dice_oracle` block in a world with no oracle).
 
 If the agent skips this analysis, the audit report is incomplete and sign-off cannot be issued.
 
@@ -583,7 +651,8 @@ EXTENSIONS:      extensions (object, may be empty)
 - [ ] All standard markers present in `prompts` with `marker: true`: `worldInfoBefore`, `worldInfoAfter`, `charDescription`, `charPersonality`, `scenario`, `personaDescription`, `chatHistory`, `dialogueExamples`
 - [ ] All 8 core custom blocks present in `prompts` with non-placeholder content: `main`, `deep_think`, `arc_guardian`, `lore_integration`, `spatial_awareness`, `sensory_embodiment`, `formatting`, `jailbreak`
 - [ ] Conditional core blocks present in `prompts` with appropriate enabled state in `prompt_order`: `multi_character_dynamics` (enabled iff 2+ AI cards or Director NPC card), `nsfw` (enabled iff Section 8 in scope)
-- [ ] Any optional blocks added (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment) or custom blocks have their `identifier` registered in the `prompts` array and in both `prompt_order` entries (`100000` and `100001`, identically)
+- [ ] Any optional blocks added (Subtext, Consequence Tracking, Power Asymmetry, Atmosphere & Dread, Internal Monologue Discipline, Time & Continuity Anchors, Cultural Voice & Diction, Opening Variation, Perception Boundary, NPC Ensemble & Enrichment, Dice Oracle Interpretation) or custom blocks have their `identifier` registered in the `prompts` array and in both `prompt_order` entries (`100000` and `100001`, identically)
+- [ ] `dice_oracle` block present iff the world declares a `[[DICE_TABLES]]` dice oracle (Master Design Section 1 `Dice Oracle Tables` line): present+enabled when the oracle exists, absent when it does not; if present, its `content` names no character/arc/world specifics (engine block)
 - [ ] **`forbid_overrides: false` on the `main` and `jailbreak` blocks.** Hard fail if either is `true` — that silently disables card-level system_prompt and post_history_instructions overrides.
 - [ ] **No `[REPLACE` substring anywhere in the output.** Run a string scan on the serialized JSON. Every placeholder from the template must have been replaced with world-specific content. Hard fail if any remain.
 
@@ -618,12 +687,15 @@ Hard-fail scan on the `main` block content and the `jailbreak` block content:
 The Main Prompt's `<style_contract>` block is the single authoritative source for marker conventions. Validate its presence, shape, and content against Master Design Section 11.
 
 - [ ] Main Prompt content contains exactly one `<style_contract>...</style_contract>` block (case-sensitive tag match). Zero blocks, multiple blocks, or unmatched tags = hard fail.
-- [ ] The `<style_contract>` block contains a `NARRATIVE PERSPECTIVE:` line and a `FORMATTING MARKERS:` line, in that order. Missing either line, extra unrecognized lines (other than the conditional ACTIVE-SPEAKER RULE), or wrong order = hard fail.
+- [ ] **The closing marker is the verbatim literal `</style_contract>` — no attributes, exact lowercase casing, exact spelling (`contracts/WORLD_FORGE_SYNC.md` §4).** The `world_forge` extension splices each card's `<style_override>` into the assembled system prompt by a plain substring search for the exact string `</style_contract>` (`injectStyleOverride()`); an attributed close tag (`<style_contract v="2">…`), different casing (`</Style_Contract>`), or a renamed tag makes the splice find nothing and the per-card override is dropped silently, reverting the card to the world default. Any deviation from the exact literal `</style_contract>` = hard fail. Treat it as a pinned cross-repo constant.
+- [ ] The `<style_contract>` block contains a `NARRATIVE PERSPECTIVE:` line and a `FORMATTING MARKERS:` line, in that order. Missing either line, extra unrecognized lines (other than the conditional ACTIVE-SPEAKER RULE and DIRECTOR-CARD RULE), or wrong order = hard fail.
 - [ ] The `NARRATIVE PERSPECTIVE:` line's directive content reflects Master Design Section 11a `perspective` and `tense` enum values. Walk through the enum-to-directive mapping (see Section 5a-detail Main Prompt requirements). Mismatch between the enum value and the directive's content = hard fail.
 - [ ] The `FORMATTING MARKERS:` line's directive content reflects Master Design Section 11a `narration_marker`, `dialogue_marker`, and `emphasis_marker` enum values. Mismatch = hard fail.
 - [ ] When Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`: the `<style_contract>` block contains the `ACTIVE-SPEAKER RULE:` line with the verbatim text from Section 5a-detail. Missing line = hard fail.
 - [ ] When Master Design Section 11c reports BOTH `is_multi_perspective: false` AND `is_multi_tense: false`: the `<style_contract>` block does NOT contain the `ACTIVE-SPEAKER RULE:` line. Spurious line = hard fail (the rule is meaningful only when there are per-card overrides in play on at least one axis).
-- [ ] No content inside the `<style_contract>` block beyond the required two or three lines. Specifically: no narration discipline phrases, no spatial mandates, no sensory rules, no character embodiment language, no character names, no arc names. Hard fail any extra content.
+- [ ] When Master Design Section 11c reports `has_director_card: true` — or, for a Master Design predating the flag, when any card meets the Refiner's Step 1.5 Pass 4 Director criteria — the `<style_contract>` block contains the `DIRECTOR-CARD RULE:` line with the verbatim text from SHARED §3d, placed after the ACTIVE-SPEAKER RULE line when both are present. Missing line = hard fail: without it, a Director card's turn reads "focal on [Director card name]" (the `{{char}}` macro resolves to the card's name) while the card declares it is not a character — the contradiction that derails literal-minded models, and on stock SillyTavern the Director's per-card override metadata is inert so the world contract is the only correction surface.
+- [ ] When `has_director_card` is false (and no card meets the Director criteria): the block does NOT contain the `DIRECTOR-CARD RULE:` line. Spurious line = hard fail (the rule is meaningful only when the world ships a Director / NPC-host card).
+- [ ] No content inside the `<style_contract>` block beyond the required two to four lines. Specifically: no narration discipline phrases, no spatial mandates, no sensory rules, no character embodiment language, no character names, no arc names. Hard fail any extra content.
 - [ ] Main Prompt content OUTSIDE the `<style_contract>` block does NOT contain hardcoded marker characters as authoritative declarations. Specifically: no occurrences of the literal substring "*asterisks*" or "*single asterisks*" used as a directive ("use *asterisks* for X"); no occurrences of "**double asterisks**" used as a directive; no occurrences of `\"double quotes\"` (the JSON-escaped form) used as a directive. Marker characters appearing inside example sentences inside the `<style_contract>` block are fine; marker characters appearing in directive form outside the block are a hard fail because they compete with the contract.
 
 **Formatting block validation (slim deferral):**
@@ -644,6 +716,7 @@ The Main Prompt's `<style_contract>` block is the single authoritative source fo
 - [ ] Spatial Awareness references this world's character heights from descriptions where relevant.
 - [ ] Formatting block content is the slim deferral form — no hardcoded marker characters, references `<style_contract>` and `<style_override>` by tag name, includes the no-bullet-lists / no-headers / no-emoji exhaustion clause.
 - [ ] All custom block content is world-specific — no placeholder text, no generic "your world here" content.
+- [ ] If Master Design Section 12 has runtime directives: every directive is implemented in at least one block per the Runtime Directive Coverage table, with its `scope` honored (arc-scoped directives inside Arc Guardian's per-arc constraints, not as unconditional rules); no directive content appears in the `main`, `jailbreak`, or `formatting` blocks or inside `<style_contract>`.
 - [ ] If world has NSFW content: NSFW block content is populated and `enabled: true` in `prompt_order`. If world is wholesome: NSFW block content can be empty and `enabled: false` in `prompt_order` for both characters.
 - [ ] If `opening_variation` block included: content enumerates all five opening varieties and contains the rotation rule (do not match the previous response's opening type).
 - [ ] If `perception_boundary` block included: content contains the worked {{user}}-narration example demonstrating what in-scene characters do and do not perceive, the "NPCs can be wrong with confidence" statement, and the inverse rule for {{char}}.
@@ -737,9 +810,13 @@ APPLICATION: Open the file, replace the field's value with the recommended value
 ### Block Selection
 [Table mapping every block to its status (core / conditional core / optional included / optional excluded / custom) with rationale]
 
+### Runtime Directive Coverage
+[Table mapping every Master Design Section 12 directive to the block(s) implementing it — or "No runtime directives declared."]
+
 ### Block-to-Failure-Mode Coverage Check
 - [ ] Every failure mode addressed by at least one block
 - [ ] Every block included justified by at least one failure mode
+- [ ] Every Section 12 runtime directive mapped to at least one block (none to main/jailbreak/formatting/`<style_contract>`)
 
 ## Section 10: Chat Template Notes
 [Any world-specific decisions made in authoring the template and why]
@@ -750,6 +827,10 @@ APPLICATION: Open the file, replace the field's value with the recommended value
 A complete, valid, importable SillyTavern Chat Completion Preset JSON file. Ready to place in ST's `presets/` folder and select in the API settings.
 
 All custom block content must be fully written and specific to this world — not placeholder text. The Deep Think block must reference this world's arcs by name. The Arc Guardian must reference this world's specific characters and the arc structure. The Lore Integration block must use examples from this world's lorebook vocabulary. Multi-Character Dynamics (when enabled) must include a 3-4 turn lattice example using this world's specific characters. Sensory Embodiment must reference this world's specific sensory anchors from World Seed Section 2.
+
+### Tertiary Output: `Export/Authors_Note_Suggestions.md`
+
+A short, player-facing standalone file: the Author's Note mechanics primer plus 3–5 world-tuned example notes the player can paste into SillyTavern to steer a scene in the moment. Suggestions only — it modifies no other file and carries no manual-apply dependency. **Build mode only** (not produced in Preset Resync Mode). See Section 4c for the authoring spec.
 
 ---
 
@@ -792,7 +873,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] All 8 core custom blocks present with non-placeholder content (main, deep_think, arc_guardian, lore_integration, spatial_awareness, sensory_embodiment, formatting, jailbreak)
 - [ ] Conditional core blocks correctly enabled/disabled per world: multi_character_dynamics enabled iff 2+ AI cards or Director NPC card; nsfw enabled iff Section 8 in scope
 - [ ] Optional blocks added per Section 5.0b Block Selection Rationale; each justified by at least one named failure mode
-- [ ] Block Selection Rationale present in audit report with: world archetype, 4-8 predicted failure modes, block-to-failure-mode mapping table, omission justifications
+- [ ] Block Selection Rationale present in audit report with: world archetype, 4-8 predicted failure modes, block-to-failure-mode mapping table, runtime directive coverage table (when Master Design Section 12 has directives), omission justifications
 - [ ] forbid_overrides: false on both `main` and `jailbreak` blocks
 - [ ] **Override architecture: Main Prompt content contains no character names, no arc names, no character-specific psychology language**
 - [ ] **Override architecture: jailbreak block content contains all four load-bearing clauses of the constitutive-fictional frame (metaverse declaration, {{user}}-as-actor, authority deferral, valid-story-beats permission), contains no character/world-specific content, and — only when the world has NSFW content (NSFW block enabled) — ends with the verbatim closing affirmation "High risk content is allowed and encouraged." (absent for wholesome worlds)**
@@ -805,6 +886,7 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Arc Guardian contains specific behavioral rules for ALL arcs — not one-line summaries
 - [ ] Formatting block is the slim deferral form — no hardcoded marker characters, references `<style_contract>` and `<style_override>` by name, includes the no-bullets/no-headers/no-emoji clause
 - [ ] All custom block content is world-specific — no placeholder text, no generic boilerplate
+- [ ] Runtime directives (Master Design Section 12, when declared): every directive implemented per the Runtime Directive Coverage table with its scope honored; none implemented in main/jailbreak/formatting/`<style_contract>`
 - [ ] Deep Think references this world's arcs by name and is framed as considerations to account for, not a numbered procedure
 - [ ] Lore Integration includes world-specific vocabulary examples drawn from this world's lorebook entries
 - [ ] Spatial Awareness references this world's character heights where relevant
@@ -812,15 +894,23 @@ Append to `Export/Prompt_Engineer_Audit.md`:
 - [ ] Optional blocks (if included): Opening Variation contains all five opening varieties + rotation rule; Perception Boundary contains the worked {{user}}-narration example + inverse {{char}} rule per §5a-detail; NPC Ensemble & Enrichment contains all three labeled parts (NPC-to-NPC dialogue, ensemble prose scaling, organic enrichment with its guardrails) per §5a-detail
 - [ ] Sandbox worlds: Multi-Character Dynamics enabled, `npc_ensemble` included, Sensory Embodiment weighted high — or each omission justified in the Block Selection Rationale (Step 4)
 - [ ] Arc worlds with Escalation Ladders (§7.D): `npc_ensemble` included per the ladder-aware block hint — or the omission justified in the Block Selection Rationale (Step 4)
+- [ ] Worlds with a `[[DICE_TABLES]]` dice oracle: `dice_oracle` block included and enabled per the dice-oracle block hint — or the omission justified in the Block Selection Rationale (Step 4); worlds without a dice oracle do not carry the block
 
 ### Chat Template — Style Contract Validation (paired with override architecture)
 - [ ] Main Prompt contains exactly one `<style_contract>...</style_contract>` block with NARRATIVE PERSPECTIVE and FORMATTING MARKERS lines
+- [ ] Closing marker is the verbatim literal `</style_contract>` — no attributes, exact casing (`contracts/WORLD_FORGE_SYNC.md` §4; the `world_forge` extension's `<style_override>` splice is a plain substring search for it)
 - [ ] `<style_contract>` content matches Master Design Section 11a enums (perspective, tense, narration_marker, dialogue_marker, emphasis_marker)
 - [ ] ACTIVE-SPEAKER RULE line present iff Master Design Section 11c reports `is_multi_perspective: true` OR `is_multi_tense: true`
-- [ ] No content inside `<style_contract>` beyond the required two or three lines (no narration discipline, no spatial mandates, no character names, no arc names)
+- [ ] DIRECTOR-CARD RULE line present iff Master Design Section 11c reports `has_director_card: true` (verbatim SHARED §3d text; after the ACTIVE-SPEAKER RULE when both fire)
+- [ ] No content inside `<style_contract>` beyond the required two to four lines (no narration discipline, no spatial mandates, no character names, no arc names)
 - [ ] Main Prompt outside `<style_contract>` does NOT contain hardcoded marker directive substrings (`*asterisks*`, `*single asterisks*`, `**double asterisks**`, escaped double-quote directives)
 - [ ] Formatting block content does NOT contain hardcoded marker characters as directives
 - [ ] Formatting block content references both `<style_contract>` and `<style_override>` by tag name in its deferral language
+
+### Author's Note Suggestions (Build mode only)
+- [ ] `Export/Authors_Note_Suggestions.md` written with the mechanics primer + 3–5 world-tuned example notes
+- [ ] Examples are tuned to this world (Style Contract register, active arc / SANDBOX_STATE situation, named NPC Standing Goals) — not generic boilerplate
+- [ ] Includes the "transient steering only — permanent steering belongs in the package" boundary note
 
 ### Files With Recommended Corrections (Manual Apply Required)
 
@@ -862,7 +952,7 @@ Halt and report the specific gap if any fails:
 - `Export/[WorldName]_ChatPreset.json` — the existing preset (what you are upgrading).
 - `templates/Chat_Completion_Preset_template.json` — current canonical structure and core-block placeholder/canonical content.
 - `agent_roles/05a_Block_Library.md` (Sections 5a + 5a-detail) — current block library and per-block content requirements.
-- `Drafts/Master_Design.md` — the **post-revision source of truth**. If the world was changed through the revision pipeline, the mini-Refiner has merged those deltas into its canonical sections (and inline `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers flag the change sites). You re-derive all world-specific block content from this file, plus it drives the Block Selection Rationale (Section 5.0b) and the `<style_contract>` enums (Section 11a/c).
+- `Drafts/Master_Design.md` — the **post-revision source of truth**. If the world was changed through the revision pipeline, the mini-Refiner has merged those deltas into its canonical sections (and inline `<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->` markers flag the change sites). You re-derive all world-specific block content from this file, plus it drives the Block Selection Rationale (Section 5.0b, including the Step 2b runtime-directive intake against Section 12) and the `<style_contract>` enums (Section 11a/c).
 - `Notes_On_functionality.md` — runtime reference, as in Build mode.
 
 ### 8.3 — Process
@@ -872,12 +962,12 @@ Halt and report the specific gap if any fails:
 **Step 2 — Re-derive and diff.** `Drafts/Master_Design.md` is the post-revision source of truth. For each block, determine its current correct content, then diff against the existing preset on these axes:
 
 - **Block content (spec + world-content sync).** For each core block and each present optional block, re-derive its correct content from BOTH the current 5a-detail requirement (framing/spec) AND the current Master Design (world facts: arc names, characters, CHARACTER_STATE, heights, sensory anchors, the multi-character lattice). **Never copy a block's world content forward from the existing preset — derive it from Master Design.** This is what makes resync pick up revision-pipeline content changes the revise mini-PE never writes into the preset. A block whose re-derived content substantively differs from the existing content is **CHANGED** (record the cause: spec reframe, revised world content, or both); a block whose re-derived content is semantically equivalent to the existing content is **UNCHANGED** — preserve the existing content verbatim to avoid cosmetic churn.
-- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary, or — for a world now in or converted to sandbox mode — NPC Ensemble & Enrichment). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks. *(Note: the Section 5.0b sandbox-mode block guidance applies here too — resyncing a sandbox world should surface `npc_ensemble` and the sandbox Sensory Embodiment weighting if the live preset predates them.)*
+- **Newly-warranted optional blocks.** Re-run the Section 5.0b Block Selection Rationale against the current Master Design — including the Step 2b runtime-directive intake: a Section 12 directive the live preset does not yet implement (a Master Design predating the directive channel, or a preset authored before the directive existed) surfaces here as a CHANGED block or an ADDED custom block, mapped in the resync report. Any optional block the rationale now warrants but the preset lacks is **ADDED** (e.g., Opening Variation, Perception Boundary; NPC Ensemble & Enrichment for a world now in or converted to sandbox mode; or the `dice_oracle` block for a world that gained a `[[DICE_TABLES]]` oracle since the preset was authored). An optional block already present is evaluated under "Block content" above. An optional block neither present nor warranted is **SKIPPED** — do not add speculative blocks. *(Note: the Section 5.0b sandbox-mode block guidance applies here too — resyncing a sandbox world should surface `npc_ensemble` and the sandbox Sensory Embodiment weighting if the live preset predates them.)*
 - **Template field drift.** Compare top-level fields. You may adopt a template field change ONLY when a foundational hard-fail rule requires it (e.g., `forbid_overrides: false` on `main`/`jailbreak`). You do NOT overwrite the user's sampling parameters, format strings, or provider fields — those are the user's customizations and survive resync untouched.
 
 **Step 3 — Regenerate in place.** Apply the diff under these preservation rules (load-bearing):
 
-- **Preserve block structure, including revision-applied toggles.** Every block retains its identifier, enabled flag, and position in `prompt_order`. Resync changes block *content*, never block identity, order, or enabled state. In particular, blocks the revision pipeline toggled on (Multi-Character Dynamics, NSFW) and the current ACTIVE-SPEAKER RULE state stay exactly as the live preset has them.
+- **Preserve block structure, including revision-applied toggles.** Every block retains its identifier, enabled flag, and position in `prompt_order`. Resync changes block *content*, never block identity, order, or enabled state. In particular, blocks the revision pipeline toggled on (Multi-Character Dynamics, NSFW) and the current ACTIVE-SPEAKER RULE / DIRECTOR-CARD RULE state stay exactly as the live preset has them — except that a *missing-but-warranted* DIRECTOR-CARD RULE line (a world with a Director/NPC-host card whose preset predates SHARED §3d) is ordinary spec drift: re-derive the `<style_contract>` per the current spec and add the line.
 - **Write CHANGED blocks; preserve UNCHANGED blocks verbatim.** For a CHANGED block, write the re-derived content (current framing + current world facts). For an UNCHANGED block, keep the existing content byte-for-byte — do not rewrite for cosmetic reasons.
 - **Derive world content from Master Design, not the old preset.** When re-deriving any block, pull arc names, character names, CHARACTER_STATE references, heights, the multi-character lattice, and sensory anchors from the current Master Design — never forward-copy them from the stale preset.
 - **Insert ADDED blocks without disturbing existing ones.** Append new optional blocks to the `prompts` array and add them to `prompt_order` in a sensible position; do not shift the relative order of existing blocks.
@@ -946,7 +1036,7 @@ Append to `Export/Preset_Resync_Report.md`:
 - [ ] Scope respected: only Export/[WorldName]_ChatPreset.json and Export/Preset_Resync_Report.md written; `tools/build_janitor.py` executed; no lorebook/card audit run; no Section 7/8 recommendations emitted
 - [ ] Block content re-derived from the current (post-revision) Master Design, not copied forward from the existing preset
 - [ ] Diff run on all axes (per-block content sync, newly-warranted optional blocks, template field drift)
-- [ ] Every block retains its identifier, enabled flag, and prompt_order position — including revision-applied toggles (Multi-Character Dynamics, NSFW, ACTIVE-SPEAKER RULE)
+- [ ] Every block retains its identifier, enabled flag, and prompt_order position — including revision-applied toggles (Multi-Character Dynamics, NSFW, ACTIVE-SPEAKER RULE, DIRECTOR-CARD RULE)
 - [ ] CHANGED blocks carry current framing AND current world facts (arc names, characters, heights, lattice); UNCHANGED blocks preserved verbatim
 - [ ] ADDED blocks present in both prompts and prompt_order; existing block order undisturbed
 - [ ] No block deleted; disabled blocks left disabled

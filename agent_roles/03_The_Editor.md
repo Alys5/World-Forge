@@ -18,9 +18,6 @@ These ten rules are hard-fail triggers. If any one is violated, reject the file 
 9. **`override_rationale` is stylistic, not structural.** Hard-fail patterns: `"feels better"`, `"prefer"`, `"more natural"`, `"sounds better"`, `"reads better"`, `"my style"`, `"liked it"`, `"chose it"`, `"wanted to try"`, `"thought it would"`. Override must name a structural feature of the card.
 10. **Cross-arc inconsistency.** A behavioral mandate in a card that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, etc.). `post_history_instructions` must not hardcode an early-arc register as permanent; it must defer to the active CHARACTER_STATE entry. See Step 5e (Cross-Arc Consistency). *(Arc mode only — sandbox worlds have no arcs and no CHARACTER_STATE; cards carry their full standing range and defer to SANDBOX_STATE. Do not require arc-range qualifiers in sandbox mode.)*
 
-11. **U-Shaped Curve Enforcement:** Audit the drafted text blocks for U-Shaped memory compliance. Hard-fail and rewrite any profile that attempts to place critical behavioral triggers in the middle of a text block. Critical instructions must be at the very start (Personality) or very end (Scenario/Advanced Prompt).
-12. **Token Budget Auditing:** You must estimate the token count of the permanent context (Personality + Scenario) for any drafted card. If the footprint exceeds ~1,800 tokens, you must hard-fail the draft and demand the Architect delegate more static data to the JS script.
-
 **World Mode gate:** Read Master Design Section 9's title before applying the rules above. In **sandbox** mode, rules referencing arcs (ARC_STATE → read as SANDBOX_STATE per #5; the ≥8-entries-per-arc floor in Step 2 does not apply; cross-arc #10 does not apply) shift to their sandbox equivalents documented in Step 4a (sandbox variant) and Step 2. Everything else (override architecture, contamination, Position Rationale, tier integrity) applies identically in both modes.
 
 If all ten pass, proceed to the full audit (Step 3 onward) for prose quality, lorebook quality, and remaining checks.
@@ -360,13 +357,49 @@ The Compiler emits an NPC Memory Manifest (Compiler Step 7.7; CLAUDE.md principl
 
 Read-only like the rest of the Editor: direct the Architect to fix the source; do not edit entries.
 
-### Step 4.7 — JanitorAI Bot Profile Validation
+### Step 4.7 — World Calendar Carrier Validation (conditional; `contracts/WORLD_FORGE_SYNC.md` §5)
 
-For every `Drafts/JanitorAI_Profile_[CharName].md` (or Group Profile):
-- [ ] **Structural Check (U-Shaped Curve):** Ensure it follows the strictly mandated order: TOP (Core Family Blocks), MIDDLE (Main NPC Roster), BOTTOM (Scenario/Rank Macros/Trigger Matrix), VERY BOTTOM (Formatting/Dialogue Samples). Ensure it does NOT use the deep 1:1 `Janitor_Bot_Template.md` structure.
-- [ ] **Token Economy & Symmetry:** Core Family blocks must be symmetrical (`APPEARANCE`, `PSYCHOLOGICAL_PROFILE`, `SOCIAL_BEHAVIOR`, `SENSORY`) and max ~300-500 tokens each. Replace abstract emotions with physical tells. **Soft-flag** any bloated prose.
-- [ ] **Rank Macros & Trigger Matrix:** Ensure global rank instincts (Enigma, Alpha, Delta, Beta, Omega) and the specific triggers (Praise, Comfort, Flirt, Conflict, Repair) are defined globally in the Scenario block, not repeated in individual profiles.
-- [ ] **AnyPOV Check:** Ensure the profile strictly uses generic AnyPOV macros (`{{user}}`, `{{poss}}`, `{{sub}}`, `{{obj}}`, `{{poss_p}}`, `{{ref}}`). Any explicit gender or QA-specific persona data is a hard-fail.
+Applies **only if** the Architect authored a `### CARRIER: [[WORLD_CALENDAR]]` block at the end of `Drafts/Tier1_World_Entries.md`. The carrier is entirely optional — its **absence is never a gap**, do not flag it. When it *is* present, the producer intends the Scene Tracker to seed from it, so a malformed carrier silently defeats its own purpose; validate it.
+
+**HARD FAIL on any of:**
+- **Disabled carrier.** The block's flags are not `disable: false`. The Scene Tracker reads candidate entries with a `!disable` filter, so a `disable: true` calendar is silently skipped and the world seeds nothing. (This is the one place the carrier flags differ from the NPC Memory Manifest, which is `disable: true` — do not copy the manifest's flag here.) The block must also be inert: `key: []`, `constant: false`.
+- **Unparseable payload.** The `**Payload**` line is not a single well-formed JSON object.
+- **Month out of range / wrong indexing.** `start.month` or `end.month` is not an integer **0–11** (0 = January … 11 = December). A 1–12 value is the common mistake — flag it as off-by-one.
+- **Weekday out of range.** `weekdayOfDay1` is present and not an integer **0–6** (0 = Sunday … 6 = Saturday).
+- **Bad `end` shape.** `end`, if present, is not one of: an object `{month, year}`, omitted, or the literal string `"infinite"` (open-ended). A bare label like `"December"` is wrong — it must be the `{month, year}` object.
+- **Null placeholders.** Any field emitted as `null` (omit absent fields entirely; the sole exception is `end: "infinite"`).
+
+**SOFT FLAG (report, do not block):**
+- A carrier present but the Master Design Section 1 `World Calendar` line is missing (or vice versa) — confirm the calendar is intentional and the values trace to the seed.
+
+Read-only: direct the Architect to fix the carrier; do not edit it.
+
+### Step 4.8 — Dice Oracle Carrier Validation (conditional; `contracts/DICE_ORACLE.md`, schema 2)
+
+Applies **only if** the Architect authored a `### CARRIER: [[DICE_TABLES]]` block at the end of `Drafts/Tier1_World_Entries.md`. Like the calendar carrier, the dice oracle is entirely optional — its **absence is never a gap**, do not flag it. When present, the producer intends the Scene Tracker's Dice tab to seed from it, so a malformed payload silently defeats its own purpose (the tab falls back to built-in demo tables); validate it. The Architect defers rejection to this step, so it is the pipeline's audit gate for the payload (`tools/validate_export.py` `check_dice_tables` is the deterministic backstop at compile time).
+
+**HARD FAIL on any of:**
+- **Disabled carrier.** The block's flags are not `disable: false`. The Scene Tracker reads candidate entries with a `!disable` filter, so a `disable: true` dice carrier is silently skipped and the world provides no tables. (Same enabled-but-inert convention as `[[WORLD_CALENDAR]]`, and the one place it differs from the `disable: true` NPC Memory Manifest.) The block must also be inert: `key: []`, `constant: false`.
+- **Unparseable payload.** The `**Payload**` line is not a single well-formed JSON object.
+- **Missing / wrong `schema`.** `schema` is absent or not an integer (current contract emits `2`).
+- **No valid procedures.** `procedures` is missing, not an array, or empty — a payload with no valid procedures reads as absent (§5). Every procedure must have a snake_case slug `id` (unique in the file) and a non-empty `steps` array.
+- **Malformed step.** A step is not exactly one of a *pick* (a `pool` name that exists and is non-empty in `pools`, or an inline string array) **xor** a *roll* (a `roll` formula with an `outcomes` map). A step that is both, or neither, hard-fails. A `pick` naming a pool absent from `pools` hard-fails.
+- **Uncovered roll range.** A `roll` step's `outcomes` ranges do not cover the die's full range (e.g. `1d20` with outcomes only up to `15` leaves `16–20` mapping to nothing) — a total matching no range silently drops the step.
+- **Forward / dangling `when`.** A step's `when` references a step id that is not an **earlier** step in the same procedure (later step, other procedure, or nonexistent). Order dependencies first.
+- **Bad `mode`.** A procedure's `mode`, if present, is not `"recount"` or `"event"` (§3.7). Omitted ⇒ `recount`.
+- **Bad `turns`.** A `turns` duration (payload-level default or per-procedure override), if present, is not an integer ≥ 1 (§3.6). Omitted ⇒ 1.
+
+**SOFT FLAG (report, do not block):**
+- A carrier present but the Master Design Section 1 `Dice Oracle Tables` line is missing (or vice versa) — confirm the oracle is intentional and the pools/outcomes/tense/duration trace to the seed.
+- A pool value or outcome `text` phrase that reads as a full sentence rather than a short token — the dice fix *what*, the model narrates *how*; long values crowd the injected block.
+- A procedure marked `mode: "event"` with `turns` unset or `1` — events usually want a multi-reply duration so they stay in context while resolving (§3.7); confirm single-reply is intended.
+- **Shape-not-choreography anti-patterns** (Architect §6 "Roll the shape, not the choreography"). These are design smells that serialize or flatten the scene at runtime — flag for the Architect to reconsider, do not block:
+  - **Per-participant procedure / duplication.** Two procedures (or two near-identical step groups) that describe the *same encounter* from different participants' angles, rather than one procedure whose count branches into gated participant steps. Concatenated per-person records get injected as separate blocks and narrate in series.
+  - **Rolled choreography.** Steps that fix the blow-by-blow — positions, act-by-act sequence, "what each one did," a per-participant "how it ended" / where-they-finished. That is the model's *how*; rolling it produces checklist recitation, and per-person finishes are the strongest serialization signal (two endings read as two scenes). A single shared/joint outcome step is fine; per-participant ones are the smell.
+  - **Count outcome without simultaneity.** A count/number outcome whose value is > 1 but whose `text` states only the quantity ("two men") with no togetherness cue — pair it with an explicit "together / at the same time" phrasing and an encounter-level configuration step gated on count > 1.
+  - **Serializing framing.** A procedure `framing` (or the payload-level one) that invites a sequence — "narrate the sequence of events", "in order", or wording that lists participants to be handled one at a time. Recount framing should fix the register and assert one continuous scene, and leave choreography to the model.
+
+Read-only: direct the Architect to fix the carrier; do not edit it.
 
 ### Step 5 — LLM Instruction Audit (Hybrid Validation Protocol)
 
@@ -592,7 +625,7 @@ Trigger rules (hard reject on violation):
 - ALL three marker overrides `null` ⇒ NO `FORMATTING MARKERS:` line.
 
 Content rules (hard reject on mismatch; use SHARED §3 as source of truth):
-- The `NARRATIVE PERSPECTIVE:` line's prose must match SHARED §3a for the card's *effective* perspective/tense pair (effective = override if set, else world default per Master Design Section 11a).
+- The `NARRATIVE PERSPECTIVE:` line's prose must match SHARED §3a for the card's *effective* perspective/tense pair (effective = override if set, else world default per Master Design Section 11a) — **or SHARED §3a-D (Director variant) when the card is Director-flagged per Master Design Section 11c.** Template selection is itself a hard check: a Director-flagged card whose line uses the character-shaped §3a prose ("focal on {{char}}", "{{char}}'s interior", "{{char}} is the focal narrator") = hard reject — at runtime `{{char}}` resolves to the Director card's name and the directive tells the model the Director is a character in the scene. A non-Director card whose line uses §3a-D prose = hard reject.
 - The `FORMATTING MARKERS:` line must contain three sub-clauses (narration + dialogue + emphasis) matching SHARED §3b for the card's effective values on each axis. The line must end with `No other formatting conventions apply.`
 - Every directive line that references a focal character must literally include `{{char}}`. Exceptions: `plain_prose`, `unmarked`, and `none` sub-clauses don't need `{{char}}`.
 
@@ -716,6 +749,8 @@ Post-history: [checklist results + word count]
 - **Sandbox mode: SANDBOX_STATE has Standing Situation + Tonal Mandate (4–8 imperative bullets incl. aliveness directives + live scene types); ≥1 WORLD_PULSE; no arc/CHARACTER_STATE/NPC_SHIFT/DRAMATIC_BEAT contamination (Step 4a-S) ✓**
 - **Roster NPCs (§7.E): each has Voice fingerprint + Signature line; fingerprints distinct across the roster ✓**
 - **NPC/Character Identity Integrity (Step 4.6): comment form + em-dash valid; one canonical name per character used verbatim; no slug collisions; multi-person entries split or marked `Shared roster entry` (interchangeable only); `{{user}}` not authored as an NPC; relationship-target + facet-label soft flags resolved ✓**
+- **World Calendar carrier (Step 4.7; only if present): `disable: false` + inert; payload parses; months 0-indexed 0–11; weekday 0–6; `end` is object/omitted/`"infinite"`; no null placeholders ✓**
+- **Dice Oracle carrier (Step 4.8; only if present): `disable: false` + inert; payload parses with integer `schema` (2); ≥1 procedure (slug `id` + ≥1 step); each step a pick xor roll; roll ranges cover the die; `when` references only earlier steps; any `mode` is recount/event; any `turns` a positive integer ✓**
 - **All entries: Position Rationale present (DEFAULT or justified) ✓**
 - **All "DEFAULT" rationales: position + flags match documented default for tier and entry type ✓**
 - **All non-default rationales: reference Notes_On_functionality, name the goal, explain why default fails ✓**
@@ -728,7 +763,7 @@ Post-history: [checklist results + word count]
 - **All cards: `depth_prompt` does not contain `{{original}}` ✓**
 - **All cards: no literal `<style_override>` tag block in any card text field — metadata at `extensions.world_forge.style_override` is the sole declaration (Step 5.6 Pass 3) ✓**
 - **All overriding cards: `extensions.world_forge.style_override` is well-formed with seven keys (perspective_override, tense_override, narration_marker_override, dialogue_marker_override, emphasis_marker_override, directives, override_rationale), valid enum values, ≥15-char rationale (Step 5.6 Pass 1) ✓**
-- **All overriding cards: `directives` array is consistent with the enum values — NARRATIVE PERSPECTIVE line iff perspective_override OR tense_override is non-null; FORMATTING MARKERS line iff ANY of narration/dialogue/emphasis marker overrides is non-null; FORMATTING MARKERS line composes all three marker sub-clauses; directive prose matches canonical templates for effective values (Step 5.6 Pass 2) ✓**
+- **All overriding cards: `directives` array is consistent with the enum values — NARRATIVE PERSPECTIVE line iff perspective_override OR tense_override is non-null; FORMATTING MARKERS line iff ANY of narration/dialogue/emphasis marker overrides is non-null; FORMATTING MARKERS line composes all three marker sub-clauses; directive prose matches canonical templates for effective values, with Director-flagged cards on the SHARED §3a-D Director variant and non-Director cards on §3a (Step 5.6 Pass 2) ✓**
 - **All overriding cards: `override_rationale` is structural, not stylistic (Step 5.6 Pass 4 hard-fail patterns clean) ✓**
 - **All overriding cards: enum values match Master Design Section 11b verbatim, including tense_override (Step 5.6 Pass 5) ✓**
 - **All Style Override Metadata soft flags reviewed and resolved (or carried forward as user-acknowledged) ✓**
