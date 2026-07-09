@@ -118,7 +118,7 @@ The Ironworks district is run by Vito Marino, a District Alpha and Italian-style
 **Position Rationale:** DEFAULT
 
 **Content:**
-Blackwood is the seven-district supernatural seat between Hex Valley and LA. Seven Hills holds the Douglas Estate (wolf heartland). Uptown is the vampire quarter, ateliers, velvet clubs, the nocturnal district. Paradise is the fashion district and the cuspide between Uptown and Seven Hills, where wolf and vampire worlds brush and one mistake triggers a Tactical Cleansing or Diplomatic Audit. Bluemoon hosts The Verve. Oldtown, Dockside (the port, all goods pass through, always watched), and Ironworks (Vito's syndicate turf) round it out. Extravagant wealth and ancient, oppressive werewolf tradition hang over the wolf-held hills; velvet decadence over Uptown.
+Blackwood is the seven-district supernatural seat between Hex Valley and LA. Seven Hills holds the Douglas Estate (wolf heartland). Uptown is the vampire quarter, ateliers, velvet clubs, the nocturnal district. Paradise is the fashion district and the cusp between Uptown and Seven Hills, where wolf and vampire worlds brush and one mistake triggers a Tactical Cleansing or Diplomatic Audit. Bluemoon hosts The Verve. Oldtown, Dockside (the port, all goods pass through, always watched), and Ironworks (Vito's syndicate turf) round it out. Extravagant wealth and ancient, oppressive werewolf tradition hang over the wolf-held hills; velvet decadence over Uptown.
 
 ### ENTRY: Location: The Verve
 **Category:** LOCATION
@@ -170,7 +170,7 @@ The nocturnal district of Blackwood, vampires and other night-dwelling supernatu
 
 ### ENTRY: Location: Paradise (The Cuspide)
 **Category:** LOCATION
-**Trigger Keys:** Paradise, fashion district, Eidolon atelier, cuspide
+**Trigger Keys:** Paradise, fashion district, Eidolon atelier, cusp
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -242,7 +242,7 @@ Solarton/Blackwood are home to many supernatural species beyond lupines and vamp
 
 ### ENTRY: Concept: The Cold War (Wolves vs Vampires)
 **Category:** CONCEPT
-**Trigger Keys:** cold war, wolf vampire tension, Paradise friction, cuspide
+**Trigger Keys:** cold war, wolf vampire tension, Paradise friction, cusp
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 0
@@ -250,7 +250,7 @@ Solarton/Blackwood are home to many supernatural species beyond lupines and vamp
 **Position Rationale:** DEFAULT
 
 **Content:**
-A two-faction standoff contained to Blackwood. Hottest at the Paradise cuspide, frozen by the bounded retaliation of Law 5 (Tactical Cleansing / Diplomatic Audit). At the elder level it is a FRENEMY bond, Wulfnic and the Visconte would be friends if their worldviews did not diametrically oppose. The tension is comedic-bureaucratic, never lethal.
+A two-faction standoff contained to Blackwood. Hottest at the Paradise cusp, frozen by the bounded retaliation of Law 5 (Tactical Cleansing / Diplomatic Audit). At the elder level it is a FRENEMY bond, Wulfnic and the Visconte would be friends if their worldviews did not diametrically oppose. The tension is comedic-bureaucratic, never lethal.
 
 ### ENTRY: Concept: Eidolon's Campus Footprint
 **Category:** CONCEPT

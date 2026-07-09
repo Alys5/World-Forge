@@ -80,3 +80,35 @@ Manifests emitted (kind): World→none; Jasper/Erik/Malachia/Noah/Angelo/Wulfnic
 - **Pipeline State Ledger staleness:** `Master_Design.md` front-matter ledger still lists phases 2/2.5/3/3.5/3.7/4 as `PENDING` (and `current_phase: 2`). This ledger predates the 2026-07-09 rebuild and was not updated. The authoritative gate is `Editor_Critique_Round2.md` → **Status: APPROVED — Phase 4 (Compiler)** (line 119), which resolves all Round-2 hard failures (HF-2 stray `{{original}}` removed from each `Instructions_*.md`; SF-1 `Tier2_Angelo_Entries.md` confirmed present). Compilation proceeded on that sign-off per the plan's Prerequisites Verified section. Recommend the orchestrator refresh the ledger rows to COMPLETE before Phase 5.
 - **Excluded stray artifacts:** `SvartulfrVerse_Urban_Group.json` (from a prior `init_export_generic.py` run), `SvartulfrVerse_Urban_Legacy_Expansion_Lorebook.json`, and `SvartulfrVerse_Urban_ChatPreset.json` (Phase 5 artifact) were present in `Export/` as pre-existing leftovers (timestamps predating this build) and are **not** in the plan's Output Targets. They were removed so `Export/` matches the plan manifest. `Tier1_Legacy_Expansion_Entries.md` exists as a draft but was intentionally not compiled (not listed in the plan's Output Targets).
 - **No mojibake, no schema violations, no key/UID mismatches** detected by `tools/validate_export.py` or the supplementary gate verifier.
+
+---
+
+## ✅ COMPILER SIGN-OFF — Recompile Run (2026-07-09, post-audit)
+
+Build run: 2026-07-09 ~22:45 — Compiler refresh (`tools/wf_build_svartulfr.py`)
+Trigger: language-normalization sweep + Voice Audit Round 3 + Intimacy Audit Round 1 sign-off; refresh stale exports.
+
+### Pre-conditions
+- **Language normalization:** the only Italian found in `Drafts/` was 3 Master Design §7 orientation lines (`Strettamente eterosessuale…` → "Strictly heterosexual (personal/cultural preference)") and the `cuspide` token (→ `cusp`, 26 instances across drafts + stale exports). All corrected; all cards/instructions/Tier1-3/intimacy profiles confirmed English. SF-1 (orientation in card `description`) and SF-2 (anti-flattening in `post_history_instructions`) already present in English on all four cards/instructions.
+- **Voice Audit:** `Voice_Audit_Report_Round3.md` — APPROVED (Medium M-1…M-4 only, no Critical/High).
+- **Intimacy Audit:** `Intimacy_Audit_Report_Round1.md` — APPROVED (Medium M-I/M-II only, no Critical/High).
+- **Pipeline State Ledger** updated: 3.5 Voice COMPLETE, 3.7 IntimacyAudit COMPLETE, 4 Compiler COMPLETE. `world_mode: sandbox` matches §1; `status` not BLOCKED/ESCALATED.
+
+### Output Manifest (recompiled)
+- [x] 4 character cards (`Jasper_Card`, `Erik_Card`, `Malachia_Card`, `Noah_Card`) — system_prompt + post_history begin with `{{original}}` ✓
+- [x] 17 lorebook/register JSON files (World, 9× Tier2 incl. Angelo + Wulfnic, Sandbox, 5× intimacy profiles, NPC intimacy roster, Sandbox intimacy register) — all `SvartulfrVerse_Urban_`-prefixed, internal `name` matches filename ✓
+- [x] `User.md` copied byte-for-byte; `SvartulfrVerse_Urban_JanitorAI.md` copied ✓
+
+### Validation (`python tools/validate_export.py Export/SvartulfrVerse_Urban`)
+- 21 files checked. **9 failures at prior state → 1 failure after this run.**
+- **Fixed:** manifest alias hygiene — `ALIAS_EXTRAS` in `wf_build_svartulfr.py` extended to include bare first names for Mac, Fade/Mihaela, Logan, Marcus, Vito, and band/collective entities (Grave Mistake, District Alphas, Ut & Zefir). Re-run + re-validate: all alias failures cleared.
+- **Remaining (1):** `kind:"director"` declared on `SvartulfrVerse_Urban_NPC_Roster_Lorebook.json` manifest, but **no exported card carries a recognized director tag** (`world-director` / `npc-controller` / `director` / `npc`). This is a pre-existing structural gap: the sandbox **World-Director host card is not built** by `wf_build_svartulfr.py` (it emits only the 4 `{{char}}` cards). The manifest kind and the missing Director card are inconsistent. Resolution requires authoring the World-Director host card (Phase 2 Architect task, tagged `world-director`) and adding it to the build — or, if this world intentionally has no Director card, downgrading the roster manifest `kind` to `npc`/`group`. **Flagged for user decision; not blocking the refreshed exports otherwise.**
+
+### Critical Field Verification
+- [x] All system_prompt / post_history_instructions non-empty, begin with `{{original}}` ✓
+- [x] All `data.extensions.depth_prompt` + `world_forge.style_override` present on every card ✓
+- [x] Sandbox lorebook: SANDBOX_STATE (constant/pos1/ignoreBudget) + 2× WORLD_PULSE (pos4) ✓
+- [x] Entry key == String(uid); camelCase fields only; no `enabled` field ✓
+- [x] UTF-8, no mojibake ✓
+- [x] No non-schema metadata fields ✓
+

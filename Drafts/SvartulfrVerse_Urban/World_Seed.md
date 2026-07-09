@@ -20,7 +20,7 @@
 
 ### Post-rebaseline interview (seed-revision, depth pass)
 - Date: 2026-07-09
-- User Intent: Deepen four weak areas flagged during the round-1 rebuild: (1) Urban Politics — formalize the two-faction cold war (Wolves vs Vampires under Visconte Angelo Moreno = Eidolon Creative; FRENEMY with Wulfnic); (4) Conflict Geography — map hot zones (Uptown, Paradise cuspide, Ironworks/Vito Marino, Dockside) vs neutral territories; (5) Grave Mistake — soften to a freedom space (Mac = FWB, indie-punk, far from the polished world) rather than a hard "anti-KSA" faction; (8) Aesthetic — formalize "Californian Golden Hour" + hi-tech paranoia as World-feel; plural-species Solarton as a free city; DCC as private security; NSFW #5 gated A/O/E with the global non-consensual ban removed and a bio advisory. The London Trip scenario was removed. Five initial-message entry points added.
+- User Intent: Deepen four weak areas flagged during the round-1 rebuild: (1) Urban Politics — formalize the two-faction cold war (Wolves vs Vampires under Visconte Angelo Moreno = Eidolon Creative; FRENEMY with Wulfnic); (4) Conflict Geography — map hot zones (Uptown, Paradise cusp, Ironworks/Vito Marino, Dockside) vs neutral territories; (5) Grave Mistake — soften to a freedom space (Mac = FWB, indie-punk, far from the polished world) rather than a hard "anti-KSA" faction; (8) Aesthetic — formalize "Californian Golden Hour" + hi-tech paranoia as World-feel; plural-species Solarton as a free city; DCC as private security; NSFW #5 gated A/O/E with the global non-consensual ban removed and a bio advisory. The London Trip scenario was removed. Five initial-message entry points added.
 - Sections changed: §2b (Rule 1 reformulated; Rule 6 added), §2c (Vampire Court + Ironworks factions; DCC private-security nuance), §2d (Uptown, Paradise, Ironworks, Dockside hot zones), §4 (Grave Mistake reframe; Fade–Visconte link; Vito Marino reconciliation; Wulfnic FRENEMY; Angelo Moreno NPC added), §5 (pulse + 5 Entry Points), §7b (London scenario replaced; canonical entry points), §8 (non-consensual ban removed; bio advisory; heat/rut A/O/E gate).
 
 ---
@@ -111,7 +111,7 @@
 <!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 **Location: City of Blackwood**
-- Physical description: The seven-district supernatural seat between Hex Valley and LA. Districts: Seven Hills (Douglas Estate — wolf heartland), **Uptown** (vampire quarter / creatures of the night), **Paradise** (fashion district, the cuspide between Uptown and Seven Hills), Bluemoon, Oldtown, **Dockside** (the port — legal and less-legal goods pass through), **Ironworks** (Vito Marino's syndicate turf).
+- Physical description: The seven-district supernatural seat between Hex Valley and LA. Districts: Seven Hills (Douglas Estate — wolf heartland), **Uptown** (vampire quarter / creatures of the night), **Paradise** (fashion district, the cusp between Uptown and Seven Hills), Bluemoon, Oldtown, **Dockside** (the port — legal and less-legal goods pass through), **Ironworks** (Vito Marino's syndicate turf).
 - Trigger keywords: Blackwood, Douglas Estate, Seven Hills, Uptown, Paradise, Dockside, Ironworks.
 
 **Location: The Verve (Arts District)**
@@ -137,7 +137,7 @@
 **Location: Paradise (The Cuspide)**
 - Physical description: The fashion district, luxurious facade, sitting between Uptown and Seven Hills.
 - Narrative function: The daily friction point of the cold war — Eidolon Creative's ateliers/castings live here, where wolf and vampire worlds brush constantly. One drop here triggers Tactical Cleansing or Diplomatic Audit.
-- Trigger keywords: Paradise, fashion district, Eidolon atelier, cuspide
+- Trigger keywords: Paradise, fashion district, Eidolon atelier, cusp
 
 **Location: Ironworks (Vito Marino's Turf)**
 - Physical description: Industrial district run by the Ironworks Syndicate.
@@ -281,7 +281,7 @@ A soft indie-punk band, deeply far from {{user}}'s polished, hierarchical world.
 - **Ensemble Rule:** This is a multi-character sandbox. The AI acts as a World Director handling multiple characters simultaneously. Rigid adherence to formatting is required to distinguish speakers (Punctuation > Proper Nouns > Formatting). The AI must actively balance the presence of all active characters and avoid homogenizing their voices.
 
 ### 5B.3 — World Pulse
-Erik's drones patrol (fixed on {{user}}, though DCC also works external contracts), Kaladin runs background checks, Jasper actively runs interference and hacks systems, Fade and Mac play gigs at Sidewinders, and the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cuspide.
+Erik's drones patrol (fixed on {{user}}, though DCC also works external contracts), Kaladin runs background checks, Jasper actively runs interference and hacks systems, Fade and Mac play gigs at Sidewinders, and the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cusp.
 
 ### 5B.4 — Canonical Entry Points (initial-message anchors)
 The sandbox opens through five loose, player-directed entry points (no fixed plot):
@@ -354,7 +354,7 @@ Per LSE canon, only **Alpha, Omega, and Enigma** ranks experience natural heat/r
 ### Coverage
 - [x] Section 1: Core Concept & Tone — **World Mode declared (sandbox)**, logline tight, AnyPOV enforced.
 - [x] Section 1.5: Style Contract — perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register all declared. STRICT ANYPOV RULE APPLIED.
-- [x] Section 2: The World — "Californian Golden Hour" aesthetic; **(changed)** Urban Politics two-faction cold war (Wolves vs Vampire Court under Visconte Angelo Moreno / Eidolon Creative; FRENEMY with Wulfnic); **(changed)** Conflict Geography hot zones (Uptown, Paradise cuspide, Ironworks/Vito Marino, Dockside) vs neutral territories; **(changed)** Rule 1 reformulated (geographic mimicry) + Rule 6 (free cities / rights).
+- [x] Section 2: The World — "Californian Golden Hour" aesthetic; **(changed)** Urban Politics two-faction cold war (Wolves vs Vampire Court under Visconte Angelo Moreno / Eidolon Creative; FRENEMY with Wulfnic); **(changed)** Conflict Geography hot zones (Uptown, Paradise cusp, Ironworks/Vito Marino, Dockside) vs neutral territories; **(changed)** Rule 1 reformulated (geographic mimicry) + Rule 6 (free cities / rights).
 - [x] Section 3: The Protagonist — AnyPOV, Twin to Jasper, manipulation contradiction. (Alyssa remains quarantined — was a typo in the user's draft.)
 - [x] Section 4: Characters — Principal Cast Erik/Malachia/Noah/Jasper; **(changed)** Grave Mistake reframed as a freedom space (Mac = FWB, indie-punk); Fade–Visconte link; Wulfnic FRENEMY; Vito Marino reconciled (District Alpha + boss); Angelo Moreno added as Principal NPC.
 - [x] Section 5: **Sandbox mode** — Sandbox Charter complete; **(changed)** World Pulse + **Canonical Entry Points (5 initial-message anchors)** added.

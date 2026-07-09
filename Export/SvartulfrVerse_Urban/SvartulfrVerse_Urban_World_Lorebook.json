@@ -468,7 +468,7 @@
             ],
             "keysecondary": [],
             "selectiveLogic": 0,
-            "content": "Blackwood is the seven-district supernatural seat between Hex Valley and LA. Seven Hills holds the Douglas Estate (wolf heartland). Uptown is the vampire quarter, ateliers, velvet clubs, the nocturnal district. Paradise is the fashion district and the cuspide between Uptown and Seven Hills, where wolf and vampire worlds brush and one mistake triggers a Tactical Cleansing or Diplomatic Audit. Bluemoon hosts The Verve. Oldtown, Dockside (the port, all goods pass through, always watched), and Ironworks (Vito's syndicate turf) round it out. Extravagant wealth and ancient, oppressive werewolf tradition hang over the wolf-held hills; velvet decadence over Uptown.",
+            "content": "Blackwood is the seven-district supernatural seat between Hex Valley and LA. Seven Hills holds the Douglas Estate (wolf heartland). Uptown is the vampire quarter, ateliers, velvet clubs, the nocturnal district. Paradise is the fashion district and the cusp between Uptown and Seven Hills, where wolf and vampire worlds brush and one mistake triggers a Tactical Cleansing or Diplomatic Audit. Bluemoon hosts The Verve. Oldtown, Dockside (the port, all goods pass through, always watched), and Ironworks (Vito's syndicate turf) round it out. Extravagant wealth and ancient, oppressive werewolf tradition hang over the wolf-held hills; velvet decadence over Uptown.",
             "position": 0,
             "order": 55,
             "depth": 4,
@@ -704,7 +704,7 @@
                 "Paradise",
                 "fashion district",
                 "Eidolon atelier",
-                "cuspide"
+                "cusp"
             ],
             "keysecondary": [],
             "selectiveLogic": 0,
@@ -1001,11 +1001,11 @@
                 "cold war",
                 "wolf vampire tension",
                 "Paradise friction",
-                "cuspide"
+                "cusp"
             ],
             "keysecondary": [],
             "selectiveLogic": 0,
-            "content": "A two-faction standoff contained to Blackwood. Hottest at the Paradise cuspide, frozen by the bounded retaliation of Law 5 (Tactical Cleansing / Diplomatic Audit). At the elder level it is a FRENEMY bond, Wulfnic and the Visconte would be friends if their worldviews did not diametrically oppose. The tension is comedic-bureaucratic, never lethal.",
+            "content": "A two-faction standoff contained to Blackwood. Hottest at the Paradise cusp, frozen by the bounded retaliation of Law 5 (Tactical Cleansing / Diplomatic Audit). At the elder level it is a FRENEMY bond, Wulfnic and the Visconte would be friends if their worldviews did not diametrically oppose. The tension is comedic-bureaucratic, never lethal.",
             "position": 0,
             "order": 60,
             "depth": 4,

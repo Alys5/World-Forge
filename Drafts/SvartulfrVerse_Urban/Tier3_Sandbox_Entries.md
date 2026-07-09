@@ -20,7 +20,7 @@ SvartulfrVerse_Urban is a slice-of-life supernatural college sandbox set in the 
 
 - Prose elides: graphic violence, genuine peril, and any framing that makes the family's interference anything other than love. The stakes are a bad grade or Erik's wrath over a boyfriend, not survival.
 
-- Live scene types: Sunday family lunch; college / sociology project; sneaking out with Jasper; cozy mall ice-cream with Edric & Logan; ordinary SUCC campus life; Grave Mistake gigs at Sidewinders; DCC interrogation of {{user}}'s suitors; Paradise cuspide cold-war friction; NSFW pre-heat/rut (gated to Alpha/Omega/Enigma ranks only, Betas have no natural cycle per LSE).
+- Live scene types: Sunday family lunch; college / sociology project; sneaking out with Jasper; cozy mall ice-cream with Edric & Logan; ordinary SUCC campus life; Grave Mistake gigs at Sidewinders; DCC interrogation of {{user}}'s suitors; Paradise cusp cold-war friction; NSFW pre-heat/rut (gated to Alpha/Omega/Enigma ranks only, Betas have no natural cycle per LSE).
 
 - Power-fantasy contract: the world treats {{user}} as the cherished, fragile youngest, NPCs defer, overprotect, or (in Mac/Fade's case) offer freedom from that. {{user}} holds the agency to rebel, sneak, or comply; the world never strips that agency without an in-world cause {{user}} set in motion.
 
@@ -38,11 +38,11 @@ SvartulfrVerse_Urban is a slice-of-life supernatural college sandbox set in the 
 **Position Rationale:** DEFAULT
 
 **Content:**
-Erik's drones patrol, fixed on {{user}} (though DCC also runs external contracts); Kaladin runs background checks on {{user}}'s acquaintances; Jasper actively runs interference and hacks systems to open blind spots; Fade and Mac play gigs at Sidewinders; the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cuspide. This is the standing pressure that never resolves: the world is always alive around {{user}}, and reputation precedes {{user}} into every room.
+Erik's drones patrol, fixed on {{user}} (though DCC also runs external contracts); Kaladin runs background checks on {{user}}'s acquaintances; Jasper actively runs interference and hacks systems to open blind spots; Fade and Mac play gigs at Sidewinders; the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cusp. This is the standing pressure that never resolves: the world is always alive around {{user}}, and reputation precedes {{user}} into every room.
 
 ### ENTRY: WORLD_PULSE Cold War Edge
 **Category:** PULSE
-**Trigger Keys:** Paradise, cuspide, Eidolon, vampire, Uptown
+**Trigger Keys:** Paradise, cusp, Eidolon, vampire, Uptown
 **Selective Logic:** 0
 **Constant:** No
 **Injection Position:** 4
@@ -50,4 +50,4 @@ Erik's drones patrol, fixed on {{user}} (though DCC also runs external contracts
 **Position Rationale:** DEFAULT
 
 **Content:**
-At the Paradise cuspide, wolf and vampire interests brush daily, Eidolon Creative's ateliers and castings sit a street from wolf-held hills. One misstep triggers a Tactical Cleansing or a Diplomatic Audit. The Visconte wants the young Douglas-Bloodmoon scion within his sphere; the family wants {{user}} nowhere near the court. The tension is bureaucratic and comedic, never violent, but it is always present at the edge of any scene set in or near Paradise.
+At the Paradise cusp, wolf and vampire interests brush daily, Eidolon Creative's ateliers and castings sit a street from wolf-held hills. One misstep triggers a Tactical Cleansing or a Diplomatic Audit. The Visconte wants the young Douglas-Bloodmoon scion within his sphere; the family wants {{user}} nowhere near the court. The tension is bureaucratic and comedic, never violent, but it is always present at the edge of any scene set in or near Paradise.

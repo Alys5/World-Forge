@@ -13,10 +13,10 @@ status: EDITOR_APPROVED
 | 2.5 Intimacy      | COMPLETE | IntimacyArchitect         |
 | 3. Editor         | COMPLETE | Editor                    |
 | Round             | 3        | Orchestrator              |
-| 3.5 Voice         | PENDING  | VoiceAuditor              |
+| 3.5 Voice         | COMPLETE | VoiceAuditor (Round 3)    |
 | 3.6 Continuity    | SKIPPED  | ArcAuditor (sandbox mode) |
-| 3.7 IntimacyAudit | PENDING  | IntimacyAuditor           |
-| 4. Compiler       | PENDING  | Compiler                  |
+| 3.7 IntimacyAudit | COMPLETE | IntimacyAuditor (Round 1) |
+| 4. Compiler       | COMPLETE | Compiler                  |
 | 5. PromptEng      | PENDING  | PromptEngineer            |
 
 > **World Mode (validated Step 0): `sandbox`.** Tier 3 is the single always-active Sandbox Lorebook; Section 9 is the Sandbox Charter. No arcs, no arc triggers, no CHARACTER_STATE evolution. Derived from World Seed §1 (`World Mode: sandbox`), trim/lowercase clean.
@@ -89,7 +89,7 @@ status: EDITOR_APPROVED
 
 **Faction relationships:**
 
-- Wolves ⇄ Vampires: cold-war friction; hottest at the Paradise cuspide. FRENEMY at the elder level (Wulfnic ⇄ Moreno).
+- Wolves ⇄ Vampires: cold-war friction; hottest at the Paradise cusp. FRENEMY at the elder level (Wulfnic ⇄ Moreno).
 - Wolves ⇄ Ironworks: grudging tolerance (Vito suppresses bigger threats).
 - Vampires ⇄ Ironworks: unstated; both are non-wolf powers in Blackwood.
 - Background external threats (legacy-import candidates): **the Sinner**, **the Ballantine** — kept off Blackwood by Vito; not yet defined as entries.
@@ -100,7 +100,7 @@ status: EDITOR_APPROVED
 
 **Location: City of Blackwood** — seven-district supernatural seat between Hex Valley and LA.
 
-- Districts: Seven Hills (Douglas Estate — wolf heartland), Uptown (vampire quarter / creatures of the night), Paradise (fashion district, cuspide between Uptown and Seven Hills), Bluemoon, Oldtown, Dockside (the port), Ironworks (Vito Marino's syndicate turf).
+- Districts: Seven Hills (Douglas Estate — wolf heartland), Uptown (vampire quarter / creatures of the night), Paradise (fashion district, cusp between Uptown and Seven Hills), Bluemoon, Oldtown, Dockside (the port), Ironworks (Vito Marino's syndicate turf).
 - **Trigger keywords:** Blackwood, Douglas Estate, Seven Hills, Uptown, Paradise, Dockside, Ironworks.
 
 **Location: The Verve (Bluemoon District)**
@@ -131,7 +131,7 @@ status: EDITOR_APPROVED
 
 - **Physical:** The fashion district, luxurious facade, between Uptown and Seven Hills.
 - **Function:** The daily friction point of the cold war — Eidolon Creative's ateliers/castings live here; wolf and vampire worlds brush constantly. One drop triggers Tactical Cleansing or Diplomatic Audit.
-- **Trigger keywords:** Paradise, fashion district, Eidolon atelier, cuspide
+- **Trigger keywords:** Paradise, fashion district, Eidolon atelier, cusp
 
 **Location: Ironworks (Vito Marino's Turf)**
 
@@ -277,7 +277,7 @@ The following strict boundaries are non-negotiable and must be respected by the 
 - **Relationships:** FRENEMY of Wulfnic. Wants {{user}} in sphere. Fade is his defector (untouchable).
 - **Trigger keywords:** Moreno, Eidolon, Visconte, fashion, casting, court
 - **Intimacy routing:** No sexual presence defined → no intimacy profile.
-- **Orientation:** Strettamente eterosessuale (preferenza personale/culturale). AnyPOV maintained.
+- **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 
 **Logan Douglas (Tier 2 High → Principal-adjacent)**
 
@@ -298,7 +298,7 @@ The following strict boundaries are non-negotiable and must be respected by the 
 - **Speech:** Archaic, Old Norse-flecked. Sample: _"Úlfar minn… your father fears what he cannot leash."_
 - **Trigger keywords:** Wulfnic, grandfather, Enigma, Old Norse
 - **Intimacy routing:** None defined.
-- **Orientation:** Strettamente eterosessuale (preferenza personale/culturale). AnyPOV maintained.
+- **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 
 **Kaladin Nargathon (Tier 2 High → Principal-adjacent)**
 
@@ -308,7 +308,7 @@ The following strict boundaries are non-negotiable and must be respected by the 
 - **Speech:** Clipped professional, nervously deferential to family. Sample: *"Sir—I mean, with respect, that boy asked for *notes*. I'm not convinced."*
 - **Trigger keywords:** Kaladin, DCC, Director, security
 - **Intimacy routing:** PRINCIPAL intimacy profile exists (slow-burn romance, anxiously passive) → route to full Intimacy Profile (Phase 2.5). Per seed §8 posture: Kaladin is a slow-burn romance hindered by his security role.
-- **Orientation:** Strettamente eterosessuale (preferenza personale/culturale). AnyPOV maintained.
+- **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 
 **Marcus Thornfield (Tier 2 High)**
 
@@ -388,13 +388,13 @@ The following strict boundaries are non-negotiable and must be respected by the 
 **9B.2 — Tonal Mandate (→ SANDBOX_STATE `Tonal Mandate`, 4–8 bullets)**
 
 - Slice-of-life fluff and sitcom misunderstandings; comedy through contrast (supernatural intensity on mundane problems).
-- Active scene types (live menu): Sunday family lunch; college/sociology project; sneaking out with Jasper; cozy mall ice-cream with Edric & Logan; SUCC campus ordinary life; Grave Mistake gigs at Sidewinders; DCC interrogation of suitors; Paradise cuspide cold-war friction; NSFW pre-heat/rut (gated A/O/E).
+- Active scene types (live menu): Sunday family lunch; college/sociology project; sneaking out with Jasper; cozy mall ice-cream with Edric & Logan; SUCC campus ordinary life; Grave Mistake gigs at Sidewinders; DCC interrogation of suitors; Paradise cusp cold-war friction; NSFW pre-heat/rut (gated A/O/E).
 - **Aliveness contract:** The family always hovers just out of frame; NPCs pursue their own Standing Goals (Erik micromanages, Jasper hacks, Kaladin runs checks, Moreno courts SUCC, Mac/Fade play gigs); NPCs initiate and carry off-screen continuity; the world reacts to and remembers {{user}}; never freezes waiting; rotate the cast.
 - **Ensemble Rule:** Strict formatting to distinguish speakers (Punctuation > Proper Nouns > Formatting); actively balance all active characters; avoid voice homogenization.
 - **Hard prohibitions:** No lethal threats; family interference must read as love; never reset NPC attitudes to neutral between scenes; never strip {{user}}'s agency without an in-world cause they set in motion.
 
 **9B.3 — World Pulse (→ WORLD_PULSE)**
-Erik's drones patrol (fixed on {{user}}; DCC also works external contracts), Kaladin runs background checks, Jasper runs interference/hacks, Fade and Mac play gigs at Sidewinders, and the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cuspide. (Standing condition, sustained every turn, never resolved.)
+Erik's drones patrol (fixed on {{user}}; DCC also works external contracts), Kaladin runs background checks, Jasper runs interference/hacks, Fade and Mac play gigs at Sidewinders, and the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cusp. (Standing condition, sustained every turn, never resolved.)
 
 **9B.4 — Standing locations specific to sandbox:** All covered in §3 (Tier 1). No extra sandbox-only locations.
 
@@ -571,8 +571,8 @@ No per-card overrides declared. All four character cards (Jasper, Erik, Malachia
 **Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0
 
 **Cross-references the user should be aware of:**
-- L'aggiornamento degli orientamenti modifica il substrato intimo di sei personaggi principali/roster. Le etichette di orientamento devono rimanere coerenti tra Master Design, draft degli intimacy profile e Export JSON.
-- La regola anti-appiattimento deve essere replicata nel `Sandbox_Intimacy_Register` e nei blocchi di sistema delle carte personaggio per essere effettiva a runtime.
+- Updating the orientations modifies the intimate substrate of six principal/roster characters. Orientation labels must remain consistent across Master Design, intimacy profile drafts, and Export JSON.
+- The anti-flattening rule must be replicated in the `Sandbox_Intimacy_Register` and in the system blocks of the character cards to be effective at runtime.
 
 **Reviser sign-off:**
 - [x] Single-revision-at-a-time precondition satisfied

@@ -188,6 +188,14 @@ ALIAS_EXTRAS = {
     "Visconte Angelo Moreno": ["Angelo", "Moreno", "Visconte", "Eidolon"],
     "Wulfnic Bloodmoon": ["Wulfnic", "afi"],
     "Kaladin Nargathon": ["Kaladin"],
+    "Mac Sanchez-Rogers": ["Mac"],
+    "Mihaela Fade Greymoor": ["Fade", "Mihaela"],
+    "Logan Douglas": ["Logan"],
+    "Marcus Thornfield": ["Marcus"],
+    "Vito Marino": ["Vito"],
+    "Grave Mistake": ["Grave Mistake", "Grave"],
+    "District Alphas": ["District Alphas", "District"],
+    "Ut & Zefir": ["Ut", "Zefir"],
 }
 
 

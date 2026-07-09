@@ -5,37 +5,44 @@
 # Brainstorm Notes (improvement) — SvartulfrVerse_Urban
 
 ## Brainstormed against
-Target `World_Seed.md` di SvartulfrVerse_Urban, post-rebaseline da draft legacy.
+
+Target `World_Seed.md` of SvartulfrVerse_Urban, post-rebaseline from legacy draft.
 
 ## Changes the user wants to pursue
-*(Integrazione dei punti precedentemente concordati + nuovi inserimenti dai file legacy)*
 
-- **Livello "Politica Urbana" (Vampiri vs Lupi):** Espandere la guerra fredda burocratica tra le fazioni (Moreno/Eidolon vs Visconte vs lupi). Questo giustifica l'iper-protezionismo di Erik (es. paranoie sul viaggio a Londra) rendendolo una mossa diplomatica, non solo genitoriale.
-- **Livello "Vita Collegiale" (SUCC/Università):** Usare location specifiche (Sidewinders Bar, campus) come "parco giochi" di normalità per {{user}}, costantemente invaso dalla paranoia tattica e hi-tech della sicurezza dei lupi (es. droni che scansionano caffè).
-- **Livello "Dinamiche di Branco":** Strutturare ruoli precisi secondo il sistema LSE. Erik (leader ossessivo), Wulfnic ("pulizia legale", complice del lavoro segreto), Jasper (testa i limiti della protezione). 
-- **Geografia del Conflitto:** Definire nel World Seed il territorio neutrale e le zone calde della città per radicare il contrasto.
-- **Integrazione "Grave Mistake" (Rifugio Underground):** Aggiungere la band indie punk come "anti-KSA". Mac (già presente, "Rogue Alpha"), Fade e Roland diventano il "branco scelto" alternativo di {{user}}, un porto sicuro al college invisibile ai droni di Erik. Le loro serate ai dive bars (Sidewinders/The Verve) sono le vere zone franche dalla famiglia.
-- **Fade Greymoor (Specchio & Tensione Diplomatica):** Inserire Fade (vampiro transmasc) nel Roster. Essendo fuggito dalle tradizioni purosangue di una potente famiglia europea, funge da specchio tematico per {{user}}. Crea una fantastica tensione comico-diplomatica: Erik lo detesta in quanto vampiro punk vicino a {{user}}, ma non può autorizzare una Tactical Cleansing su di lui senza scatenare un incidente diplomatico con l'Europa, rendendo Fade intoccabile.
-- **Roland Vickers:** Inserire Roland (batterista non-morto/ectoplasmico, depresso) nel Roster per completare la band e le dinamiche del campus.
-- **Estetica "Californian Golden Hour":** Definire formalmente il "World-feel" di Solarton e della SUCC: magia moderna, sole vibrante, oceano, denim, vita costiera californiana e gioventù. Serve a creare un netto contrasto sensoriale e visivo con l'estetica più cupa, formale e iper-aziendale di Blackwood Estate e della DCC Tower.
-- **Mass-Import della Lore Legacy (Integrazione non distruttiva):** Importare i contenuti dei file `modernfantasy.json`, `succ.json`, `SvartulfrVerse_Urban_Characters.json` e `SvartulfrVerse_Urban_World.json` convertendoli e smistandoli come semplici entry (location, fazioni, background e personaggi secondari) per i nostri nuovi lorebook di Tier 1/2.
-  - *Regola d'oro:* L'obiettivo è riempire il mondo con la "polpa" preesistente, ma senza **mai sovrascrivere o contraddire** la spina dorsale appena definita. Qualsiasi elemento legacy che entri in conflitto con i personaggi del roster principale (Erik, Jasper, ecc.), con il sistema LSE, o con le dinamiche correnti, viene scartato o de-canonizzato in favore del World Seed attuale. Serve solo per estendere il Sandbox.
+*(Integration of previously agreed points + new insertions from legacy files)*
+
+- **"Urban Politics" level (Vampires vs Wolves):** Expand the bureaucratic cold war between factions (Moreno/Eidolon vs Visconte vs wolves). This justifies Erik's over-protectiveness (e.g., paranoia about the London trip) making it a diplomatic move, not just parental.
+- **"College Life" level (SUCC/University):** Use specific locations (Sidewinders Bar, campus) as a "playground" of normality for {{user}}, constantly invaded by the tactical, hi-tech paranoia of wolf security (e.g., drones scanning coffee shops).
+- **"Pack Dynamics" level:** Structure precise roles according to the LSE system. Erik (obsessive leader), Wulfnic ("legal cleanup", accomplice to secret work), Jasper (tests the limits of protection).
+- **Conflict Geography:** Define neutral territory and hot zones in the World Seed to root the contrast.
+- **"Grave Mistake" Integration (Underground Refuge):** Add the indie punk band as an "anti-KSA". Mac (already present, "Rogue Alpha"), Fade and Roland become {{user}}'s alternative "chosen pack", a safe haven at college invisible to Erik's drones. Their nights at dive bars (Sidewinders/The Verve) are the true free zones from the family.
+- **Fade Greymoor (Mirror & Diplomatic Tension):** Insert Fade (transmasc vampire) into the Roster. Having fled from the pureblood traditions of a powerful European family, he serves as a thematic mirror for {{user}}. He creates a fantastic comedic-diplomatic tension: Erik hates him as a punk vampire near {{user}}, but cannot authorize a Tactical Cleansing on him without triggering a continental incident with Europe, making Fade untouchable.
+- **Roland Vickers:** Insert Roland (undead/ectoplasmic drummer, depressed) into the Roster to complete the band and campus dynamics.
+- **"Californian Golden Hour" Aesthetic:** Formally define the "World-feel" of Solarton and SUCC: modern magic, vibrant sun, ocean, denim, coastal Californian life and youth. It creates a sharp sensory and visual contrast with the darker, more formal, hyper-corporate aesthetic of Blackwood Estate and DCC Tower.
+- **Legacy Lore Mass-Import (non-destructive integration):** Import the content of `modernfantasy.json`, `succ.json`, `SvartulfrVerse_Urban_Characters.json` and `SvartulfrVerse_Urban_World.json` by converting and sorting them as simple entries (locations, factions, backgrounds and secondary characters) for our new Tier 1/2 lorebooks.
+  - *Golden rule:* The goal is to fill the world with pre-existing "meat", but without **ever overwriting or contradicting** the backbone just defined. Any legacy element that conflicts with the main roster characters (Erik, Jasper, etc.), with the LSE system, or with current dynamics, is discarded or de-canonized in favor of the current World Seed. It is only meant to extend the Sandbox.
 
 ## Explored but set aside
-- Abbiamo convergiuto direttamente sull'integrazione totale; nessuna strada è stata scartata.
+
+- We converged directly on total integration; no paths were discarded.
 
 ## Out of scope (flagged)
-- Nessun elemento reframe o fuori scope rilevato (tutto rientra in un'aggiunta di colore, personaggi e lore al Sandbox esistente).
+
+- No reframe or out-of-scope elements detected (everything fits as adding color, characters and lore to the existing Sandbox).
 
 ## Loose fragments
-- Il file `source/Mac.md` deve essere analizzato a fondo: il suo testo libero (markdown) deve essere convertito in entry ottimizzate da Roster (Essence, Presence, Voice fingerprint, Hook, Intimacy Substrate) per definire compiutamente Mac, Fade e Roland.
-- I file in `source/Personas/` (Jasper, Logan, Alyssa) e `source/TwinXFamily_Bot/01_personality.md` devono essere analizzati per **estrarre dettagli granulari** (es. quirk fisici, l'alter ego "DJ Frequency" per Jasper, le catene di Flaw/MBTI, e la logica dell'Active Trigger Matrix) e arricchire i profili Principal già esistenti.
-  - *Regola:* **Non sovrascrivere le fondamenta.** Gli Standing Goal e i ruoli narrativi già decisi nel `Master_Design.md` (es. Logan come "safe haven", Erik come "helicopter dad") restano la verità assoluta. I frammenti prelevati da questi file servono solo per aggiungere "flavor" e profondità comportamentale. Alyssa può essere aggiunta come variante gemella opzionale se l'utente gioca un personaggio maschile.
-- Il file `SvartulfrVerse_Visual_Urban.md` funge da base per il template visivo californiano.
-- **Cleanup finale:** Una volta completata la `seed-revision posture` e verificato che tutti i dati utili siano stati fusi con successo nel nuovo `World_Seed.md` e nel Roster, l'intera cartella `source/` deve essere **eliminata**.
+
+- The `source/Mac.md` file must be analyzed thoroughly: its free text (markdown) must be converted into optimized Roster entries (Essence, Presence, Voice fingerprint, Hook, Intimacy Substrate) to fully define Mac, Fade and Roland.
+- The files in `source/Personas/` (Jasper, Logan, Alyssa) and `source/TwinXFamily_Bot/01_personality.md` must be analyzed to **extract granular details** (e.g., physical quirks, the "DJ Frequency" alter-ego for Jasper, the Flaw/MBTI chains, and the Active Trigger Matrix logic) and enrich the existing Principal profiles.
+  - *Rule:* **Do not overwrite the foundations.** The Standing Goals and narrative roles already decided in `Master_Design.md` (e.g., Logan as "safe haven", Erik as "helicopter dad") remain the absolute truth. Fragments taken from these files serve only to add "flavor" and behavioral depth. Alyssa can be added as an optional twin variant if the user plays a male character.
+- The `SvartulfrVerse_Visual_Urban.md` file serves as the basis for the Californian visual template.
+- **Final cleanup:** Once the `seed-revision posture` is completed and all useful data has been successfully merged into the new `World_Seed.md` and the Roster, the entire `source/` folder must be **deleted**.
 
 ---
+
 ## ✅ BRAINSTORMER SIGN-OFF
+
 - [x] At least one change direction the user wants to pursue
 - [x] Reframe-scope ideas flagged and decided
 - [x] Set-aside directions recorded
