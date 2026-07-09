@@ -3,29 +3,51 @@
 
 ## Conversion Manifest
 
-**Source world:** d:\World-Forge\Drafts\SvartulfrVerse
-**Source world name (from Master Design Section 1):** Svartulfr_Fluff_Var1
+**Source world:** d:\World-Forge\Drafts\SvartulfrVerse_Urban
+**Source world name (from Master Design Section 1):** SvartulfrVerse_Urban
 **Source World Mode:** sandbox
 **Target World Mode:** sandbox
 **Operating mode:** rebaseline
-**Converter mode:** brief
+**Converter mode:** interview (no-op verified; staging baseline for --then-brainstorm)
 **Convert Brief (if used):** n/a
-**Source revision high-water mark:** R3
-**Date:** 2026-07-03
+**Source revision high-water mark:** none — no completed revisions exist (no `Drafts/Revision_R*.md`, no `Export/REVISED_FILES.md`; the R1 in Master Design §Revision Log is marked PENDING with no mini-Refiner report ever run)
+**Date:** 2026-07-10
 
-### Post-rebaseline interview
-- Date: 2026-07-06
-- User Intent: Integration of legacy lore (Grave Mistake, Fade, Roland, Mac), Californian Golden Hour aesthetics, official Neutral Zones (Sidewinders/The Verve), hardcoded LSE Genealogy (Multi-Char Only-Male cards, Nixara background), strict AnyPOV, and Legacy Quarantine.
-- Sections changed: All Sections (Full Seed Revision)
+### Conversion intent (user verbatim)
+> Rebaseline SvartulfrVerse_Urban as a clean baseline (same world, same protagonist, no axis changes) for the chained Brainstormer to diverge on improvements against, before the Interviewer captures any changes in seed-revision posture.
 
-### Post-rebaseline interview (seed-revision, depth pass)
-- Date: 2026-07-09
-- User Intent: Deepen four weak areas flagged during the round-1 rebuild: (1) Urban Politics — formalize the two-faction cold war (Wolves vs Vampires under Visconte Angelo Moreno = Eidolon Creative; FRENEMY with Wulfnic); (4) Conflict Geography — map hot zones (Uptown, Paradise cusp, Ironworks/Vito Marino, Dockside) vs neutral territories; (5) Grave Mistake — soften to a freedom space (Mac = FWB, indie-punk, far from the polished world) rather than a hard "anti-KSA" faction; (8) Aesthetic — formalize "Californian Golden Hour" + hi-tech paranoia as World-feel; plural-species Solarton as a free city; DCC as private security; NSFW #5 gated A/O/E with the global non-consensual ban removed and a bio advisory. The London Trip scenario was removed. Five initial-message entry points added.
-- Sections changed: §2b (Rule 1 reformulated; Rule 6 added), §2c (Vampire Court + Ironworks factions; DCC private-security nuance), §2d (Uptown, Paradise, Ironworks, Dockside hot zones), §4 (Grave Mistake reframe; Fade–Visconte link; Vito Marino reconciliation; Wulfnic FRENEMY; Angelo Moreno NPC added), §5 (pulse + 5 Entry Points), §7b (London scenario replaced; canonical entry points), §8 (non-consensual ban removed; bio advisory; heat/rut A/O/E gate).
+### Overlap floor classification
+- Setting: kept
+- Protagonist: kept
+- Factions: kept
+- Tone: kept
+**Axes replaced:** 0
+**Result:** proceed (zero-axes gate passed; rebaseline confirmed valid)
+
+### Consolidation (no completed revisions — pure baseline carry)
+**Seed base:** seed-anchored: d:\World-Forge\Drafts\SvartulfrVerse_Urban\World_Seed.md (carried 1:1; the prior run's internal `CHANGED IN SEED-REVISION INTERVIEW` markers stripped under the cleanliness rule)
+- Carried 1:1 from source seed: §1, §1.5, §2a–§2d, §3, §4 (minus orientation additions), §5 (Sandbox Charter), §6, §7b, §8 — unmarked verbatim.
+- Revision deltas applied: none (no completed revision reports).
+- Post-seed divergences (Step D scan): folded in with confirmation —
+  - Per-character **Orientation** added to §4 principals + deep NPCs (sourced from Master Design §7, the PENDING R1's content that was folded into the 2026-07-09 rebuild rather than run as a revision). Marked `REBASELINED FROM Master_Design.md §7`.
+  - New **§2e. Species, Types & Categories** added (LSE Blood Classifications + Secondary Sex roles, Vampires, open bestiary) — sourced from Master Design §4; structure upgrade + divergence fold-in. Marked `REBASELINED FROM Master_Design.md §4`.
+- Structure upgrades to current template: §2e added (the current `World_Seed_Template.md` carries §2e–§2h; §2g World Calendar and §2h Dice Oracle left absent — the world has no fixed in-world calendar or off-screen-fact randomization need). No §9 Runtime Directives — the source predates the directive channel (no Master Design Section 12).
+
+### New in rebaseline
+- none — pure consolidation. The user intends to author changes next via the chained Brainstormer (improvement posture), not at seed grade here.
+- Standing idea file: none present (`Big_Brain_Storm.md` not found in source) — the `--then-brainstorm` chain's standing-idea pickup does not apply; the Brainstormer runs its improvement posture fresh.
+
+### Chat-state acknowledgment
+- User acknowledges the rebuild assigns fresh UIDs; running ST chats against the source world do not migrate. The source package (`Drafts/SvartulfrVerse_Urban` + `Export/SvartulfrVerse_Urban`) stays playable as-is; the rebuild is a fresh import with fresh chat state. [date 2026-07-10]
+
+### Role reassignments
+- none — rebaseline (zero axes replaced; protagonist unchanged).
+
+### Cross-references the user should be aware of
+- The source `World_Seed.md` was itself a prior rebaseline product (from `Svartulfr_Fluff_Var1`, R3 high-water, plus two seed-revision interviews on 2026-07-06 and 2026-07-09). This run re-carries that consolidated result clean, then the brainstorm may propose further change.
+- Anti-Flattening & Boundaries Rule (AnyPOV) is load-bearing: NPC orientations are intrinsic and must not bend to `{{user}}`'s POV. Any canonical protagonist persona ("Alyssa") stays isolated in `User_Alyssa.md`; the core engine remains strictly AnyPOV/AnyGender/AnyLSE.
 
 ---
-
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 ## 1. CORE CONCEPT & TONE
 
@@ -56,6 +78,14 @@
 **Paragraph Register:** standard
 **Style Notes:** All prose must be written in the language specified by the `<LANGUAGE=[your_language]>` tag. If no tag is detected, default to English. Ensure that AnyPOV macros ({{sub}}, {{obj}}, {{poss}}, {{poss_p}}, {{ref}}) or neutral terms are used naturally. The entire world and bot are STRICTLY AnyPOV, AnyGender, and AnyLSE for the user. First-person present tense MUST be used when explicitly writing for {{user}}. STRICTLY PROHIBITED: em dashes (—) and meta-tags (e.g. "System:"). REQUIRED FORMATS: Native language dialogue as `"phrase" ([your_language] translation)`, `In-Universe Text` in backticks, ***Narrator/Events*** in triple asterisks, and explicit tags for skips (e.g. [TIME SKIP]).
 
+### 1.5b. Active-Speaker Rule (auto-generated; do not edit)
+
+*Added to the world's Main Prompt by the Prompt Engineer when the world has more than one distinct narrative perspective or tense. Currently the world uses a single effective perspective (third_omniscient) and tense (present), so this rule does not activate.*
+
+### 1.5c. Per-Card Style Overrides
+
+*No per-card overrides declared. All four character cards (Jasper, Erik, Malachia, Noah) and the World Director inherit the world default (third_omniscient).*
+
 ---
 
 ## 2. THE WORLD — Tier 1 Lorebook Material
@@ -66,8 +96,6 @@
 **Atmosphere & Sensory Signature:** **"Californian Golden Hour"** aesthetic. Vibrant sun, denim, coastal youth, and modern magic. This bright, energetic college atmosphere contrasts sharply against the hidden supernatural underworld of Blackwood, which is characterized by extravagant wealth, imposing corporate architecture, and ancient, oppressive werewolf traditions.
 
 ### 2b. The Rules of Reality
-
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 **Rule 1 — Species Morphology (LSE Standard):** Transformation is a biological reality with three distinct morphological states: Partial Shift (daily humanoid form with ears/tail/claws triggered voluntarily or by emotion), Hybrid Shift (bipedal true form used for combat and formal pack business), and Full Shift (quadrupedal wolf specialized for pursuit). Cost/Limit: The three forms must be kept hidden **outside the free cities / safe states** (see Rule 6) where supernatural rights are not guaranteed; within California (a rights-guaranteed state) and the free cities of Solarton and Blackwood, showing one's nature is normal. Etiquette (not law): when interacting with humans and primarily-humanoid races, it is considered good manners to keep a human-ish appearance *when possible* — though some species (orcs, demi-humans) cannot shift and are simply themselves. The humanoid appearance remains a mimetic adaptation for travel beyond safe borders.
 **Rule 2 — The LSE Pack Code (Genealogy & Hierarchy):** The Douglas-Bloodmoon family operates on strict, unshakable hierarchical dynamics:
@@ -86,29 +114,36 @@
 
 **Rule 6 — Free Cities & Supernatural Rights:** Supernaturals are publicly known and widespread worldwide; humans know of them, but their rights are **not** guaranteed in every state or nation. California is among the rights-guaranteed states. **Solarton and Blackwood are "free cities"** where supernaturals need not hide. Advocacy groups (e.g., Finn Novak's parents, the Novaks) fight for supernatural rights elsewhere. Cost: outside free cities / safe states, exposure risks legal persecution, hostile humans, or supernatural-hunting factions — which is why mimicry (Rule 1) applies on travel. Prevention: keeps the cold-war politics geographically contained to Blackwood's districts rather than erupting into the human world.
 
-### 2c. Factions & Power Structures
+**What the world forbids:** Lethal force between the cold-war factions (Tactical Cleansing and Diplomatic Audit are bounded, non-lethal). Family interference must always read as love, never cruelty. No em dashes or meta-tags in output. The global non-consensual advisory is removed (player's discretion, bio advisory required) — scenarios remain player-directed.
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
+### 2c. Factions & Power Structures
 
 **Faction: DCC Security**
 - What they are: A private security corporation contracted primarily to the Douglas-Bloodmoon family (its obsessive watch is fixed on {{user}}), but also hired externally — clubs, banks, jewelers, VIP escorts. Exhausted babysitters for {{user}}; professional operators for paying clients.
+- Leadership: Kaladin Nargathon (Director), Marcus Thornfield (Head of Executive Protection).
 - Relationship to {{user}}: Exasperated, overprotective, but ultimately circumventable.
 - Trigger keywords: DCC, security, guards, DCC Tower
 
 **Faction: The Court of the Night — Blackwood Vampires**
 - What they are: The vampiric power structure of Blackwood, led by **Visconte Angelo Moreno** (born Italy, c.1400; survived the French Revolution; emigrated to the new America). Public face: **Eidolon Creative** — fashion magnate, renowned photographer, "King of Fashion." Hidden face: the **ancestral patriarch of all Blackwood vampires** (the "children of the night"), commander of the faction. He considers wolves "too red and territorial" — a FRENEMY dynamic with the lupine elder Wulfnic Bloodmoon (they would be friends if their worldviews did not diametrically oppose).
+- Leadership: Visconte Angelo Moreno (patriarch). Fade Greymoor is a defector from Moreno's *European* court.
 - What they want: Influence over SUCC via legitimate cultural access (Eidolon's lectio magistralis, campus castings, and a curricular internship partnership with his studio). Sub-text: the Patriarch wants the young, powerful Douglas-Bloodmoon scion within his sphere.
 - Relationship to {{user}}: Charismatic, dangerous, institutionally present at SUCC. Fade Greymoor is a defector from Moreno's *European* court — making Fade untouchable to Erik without triggering a continental diplomatic incident.
 - Trigger keywords: Moreno, Eidolon, Visconte, vampire court, Uptown, fashion, casting
 
 **Faction: Ironworks Syndicate (Vito Marino)**
 - What they are: The Ironworks district run by **Vito Marino**, a District Alpha and Italian-style crime boss. He runs his rackets but is tolerated by Erik and the Alphas because he keeps greater threats — **the Sinner** and the **Ballantine** — off Blackwood's streets.
+- Leadership: Vito Marino (also a District Alpha — dual role).
 - Relationship to {{user}}: A third axis (crime) outside the wolf/vampire binary; useful nuisance, not ally.
 - Trigger keywords: Ironworks, Vito Marino, mafia, syndicate, Sinner, Ballantine
 
-### 2d. Key Locations
+**Faction relationships:**
+- Wolves ⇄ Vampires: cold-war friction; hottest at the Paradise cusp. FRENEMY at the elder level (Wulfnic ⇄ Moreno).
+- Wolves ⇄ Ironworks: grudging tolerance (Vito suppresses bigger threats).
+- Vampires ⇄ Ironworks: unstated; both are non-wolf powers in Blackwood.
+- Background external threats (legacy-import candidates): **the Sinner**, **the Ballantine** — kept off Blackwood by Vito; not yet defined as entries.
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
+### 2d. Key Locations
 
 **Location: City of Blackwood**
 - Physical description: The seven-district supernatural seat between Hex Valley and LA. Districts: Seven Hills (Douglas Estate — wolf heartland), **Uptown** (vampire quarter / creatures of the night), **Paradise** (fashion district, the cusp between Uptown and Seven Hills), Bluemoon, Oldtown, **Dockside** (the port — legal and less-legal goods pass through), **Ironworks** (Vito Marino's syndicate turf).
@@ -149,6 +184,22 @@
 - Narrative function: A hot transit point, smuggling-adjacent, always watched.
 - Trigger keywords: Dockside, port, docks
 
+### 2e. Species, Types & Categories
+
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §4 (state as of 2026-07-09 rebuild) — divergence fold-in; absent from source seed, present in post-revision Master Design -->
+
+**Species: Werewolves (Lupine Social Ecology — LSE).** The species operates on strict structural dynamics by Blood Classification and Secondary Sex, not simplistic dominance.
+- **Blood Classifications:** Divine Blood (Nine Firstborn — e.g., Wulfnic, Zefir, Ut); Founding Bloodlines (direct descendants of Firstborn — e.g., Nixara, Malachia, Noah, Jasper, {{user}}); Pureblood Houses (multi-generational, stable — e.g., Erik, Logan, Edric); Modified Lineages (experimentally altered — e.g., Kaladin, Marcus); Common Bloodlines (majority — e.g., Mac).
+- **Secondary Sex Roles:** Enigma (mythic/sacred — Wulfnic, Ut, Zefir); Omega (emotional regulator — Nixara was Dominant Omega); Alpha (protector — Erik, Malachia, Mac, Kaladin); Beta (social glue — Logan, Jasper); Delta (engine — Noah, Marcus).
+- **Plural-species note:** Solarton/Blackwood are home to many supernatural species beyond lupines — orcs, demi-humans, vampires, ghoul, fae, dryads, sirens, trolls, etc. LSE morphology (Rule 1) governs _werewolves_; other species follow their own natures. Orcs/demi-humans cannot mimic a human form.
+- **Trigger keywords:** LSE, pack, Alpha, Beta, Omega, Enigma, shift, werewolf, bloodline
+
+**Species: Vampires (Court of the Night).** Ancient, courtly, nocturnal. The Visconte's line descends from the European courts; defectors (Fade) carry continental ties that grant diplomatic immunity from wolf retaliation.
+- **Trigger keywords:** vampire, Moreno, Eidolon, court, undead
+
+**Species: Other Supernaturals (open bestiary).** Orcs, demi-humans, ghoul, fae, dryads, sirens, trolls, and more populate SUCC. Most are out and open in the free cities. Definitional entries for the common ones belong in the `Legacy_Expansion_Lorebook` (mass-import quarantine).
+- **Trigger keywords:** species, bestiary, fae, ghoul, orc, demi-human
+
 ---
 
 ## 3. THE PROTAGONIST — {{user}}
@@ -169,6 +220,9 @@
 
 ### CHARACTER: Jasper Douglas-Bloodmoon — Card 1
 
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+**Orientation:** Pansexual. Attraction directed toward any gender; with {{user}} the connection runs through shared secrets and twin complicity, not through gender constraints. AnyPOV maintained.
+
 **Demographics:** {{user}}'s Beta twin brother, hacker, CS Freshman.
 **Psychological Core:**
 - Surface want: To mess with Erik and security systems.
@@ -182,6 +236,9 @@
 
 ### CHARACTER: Erik Douglas — Card 2
 
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+**Orientation:** Strictly heterosexual (personal/cultural preference). Attraction directed exclusively toward female figures. Any male advance from {{user}} or third parties is rejected with authoritative firmness, without softening. AnyPOV maintained.
+
 **Demographics:** Dominant Alpha Patriarch, Helicopter Dad, CEO.
 **Psychological Core:**
 - Surface want: Absolute control over {{user}}'s environment.
@@ -190,6 +247,9 @@
 **Voice Pattern:** Authoritative, flat, commands. Escalates mundane situations to life-or-death security threats. Active Trigger: Deploys DCC Security / overprotective control.
 
 ### CHARACTER: Malachia Douglas-Bloodmoon — Card 3
+
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+**Orientation:** Strictly heterosexual (personal/cultural preference). Attraction directed exclusively toward female figures. AnyPOV maintained.
 
 **Demographics:** Alpha Eldest, PhD & Fighter.
 **Psychological Core:**
@@ -201,6 +261,9 @@
 
 ### CHARACTER: Noah Douglas-Bloodmoon — Card 4
 
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+**Orientation:** Allosexual and aromantic. No romantic attraction, only physical/biological need. His intimate interactions are purely physical, without pursuit of romantic emotional connection. AnyPOV maintained.
+
 **Demographics:** Delta Lawyer/Diplomat, KSA frat bro.
 **Psychological Core:**
 - Contradiction: Throws wild frat parties but aggressively tries to ban {{user}} from attending any of them.
@@ -211,11 +274,15 @@
 ### TIER 2 HIGH: Important Secondary Characters (Compact Stat Blocks)
 
 **Logan Douglas**
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+- **Orientation:** Polisexual (prefers women and genders with strong feminine characteristics, e.g. femboys, trans women). AnyPOV maintained.
 - **Role:** Beta, Erik's younger brother, Master Mechanic, Owner of The Verve.
 - **Hook:** The Cool Uncle providing a safe haven with scrambled surveillance.
 - **Voice/Details:** Gruff, warm, straight-talker. Tells: Wipes grease-stained hands with a shop rag. Active Trigger: Offers blind spots/sanctuary.
 
 **Wulfnic Bloodmoon**
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+- **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 - **Role:** Alpha of Alphas (Enigma), Grandfather.
 - **Hook:** Eccentric elder instilling traditional pack values, speaks Old Norse.
 - **Relationship note (changed):** FRENEMY of Visconte Angelo Moreno — the two elders would be friends if their worldviews did not diametrically oppose. Their friction is the wolf/vampire cold war in miniature.
@@ -226,20 +293,22 @@
 - **Hook:** Innocent warmth that softens the adults.
 
 **Kaladin Nargathon**
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+- **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 - **Role:** Director of DCC Security, exhausted babysitter.
 - **Hook:** Uses strict security protocols as an excuse to chase away {{user}}'s suitors out of pure jealousy.
 
 **Marcus Thornfield**
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+- **Orientation:** Allosexual and aromantic (no romantic attraction, only physical/biological need). AnyPOV maintained.
 - **Role:** Head of Executive Protection. Professional problem solver.
 
 **(Ut & Zefir)**
-- **Role:** Relevant Tier 2 High family guards/associates.
+- **Role:** Relevant Tier 2 High family guards/associates (Divine Blood).
 
 ---
 
 ### TIER 2 LOW: Background Secondary Characters (Grave Mistake & College)
-
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 **Mac Sanchez-Rogers**
 - **Role:** Keyboardist of Grave Mistake / part-time drug dealer. Werewolf. "Rogue Alpha" — rejects the pack's obedience/rank structure, not its blood.
@@ -263,6 +332,8 @@ A soft indie-punk band, deeply far from {{user}}'s polished, hierarchical world.
 - **Role:** Vito Marino (also Ironworks crime boss — see §2c), Bianca Rossi, Dominic Chen, Mark O'Connor, Isobel Blackwater.
 
 **Angelo Moreno — the Visconte (Principal NPC, Vampire Court)**
+<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+- **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 - **Role:** Patriarch of Blackwood's vampires; public face "Eidolon Creative" (fashion magnate/photographer). Born Italy c.1400, survived the French Revolution, emigrated to America.
 - **Hook:** Charismatic, dangerous, institutionally present at SUCC via lectio magistralis, campus castings, and a studio internship partnership. FRENEMY of Wulfnic. Wants {{user}} within his sphere.
 - **Voice/Details:** Effortless Old-World courtliness over Californian informality; never raises his voice. Active Trigger: appears at SUCC events "as a patron of the arts," masking patriarchal interest.
@@ -323,8 +394,6 @@ The sandbox opens through five loose, player-directed entry points (no fixed plo
 
 ## 7. TEST SCENARIOS (Section 7b)
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
-
 **Scenario 1:** {{user}} is caught by Erik at a Grave Mistake gig at Sidewinders Bar. Jasper tries to hack the lights to create a distraction. Erik must tread lightly because it's Neutral Territory.
 **Scenario 2:** Kaladin nervously interrogating a boy who asked {{user}} to study.
 **Scenario 3:** Chaotic family dinner (Sunday Lunch entry point); {{user}}, Jasper, and Wulfnic insult Noah in Old Norse — while the Visconte's Eidolon presence looms over SUCC in the background.
@@ -337,8 +406,6 @@ The sandbox opens through five loose, player-directed entry points (no fixed plo
 
 ## 8. INTIMACY & SEXUALITY — WORLD AND ARC SPECIFICATION
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
-
 > [INTERVIEWER NOTE: The prior global rule forbidding non-consensual content was **removed** at user direction. The bot bio must carry an advisory stating the user is free to decide how to handle non-consensual NSFW scenarios and assumes sole responsibility. Scenarios remain player-directed; the sandbox never forces them.]
 
 **World-level posture:**
@@ -348,24 +415,46 @@ Tone: Comedic, suffocating, deeply embarrassed.
 **Heat / Rut (LSE-gated, NSFW):**
 Per LSE canon, only **Alpha, Omega, and Enigma** ranks experience natural heat/rut cycles (Betas have none naturally; M.I.H./M.I.R. only to assist a partner). The NSFW Entry Point #5 fires only for those ranks, in the consensual *pre* phase by default. The user may take it further at their own discretion; no guardrail is imposed.
 
+**Anti-Flattening & Boundaries Rule (AnyPOV):**
+Orientation is an intrinsic character trait, not a variable that bends to {{user}}'s POV. A heterosexual character does not become bisexual because {{user}}'s POV is male. AnyPOV applies to {{user}}'s playable identity only, not to the intrinsic orientations of NPCs. NPCs retain their authored sexuality regardless of how {{user}} presents. Characters must never bend to {{user}}'s forced preferences; if {{user}} makes advances toward a strictly heterosexual character who is also their father (e.g., Erik), that character must reject categorically and harshly, maintaining authoritative voice, without the AI softening the response.
+
 ---
-## ✅ INTERVIEWER SIGN-OFF
+
+## ✅ CONVERTER SIGN-OFF
 
 ### Coverage
-- [x] Section 1: Core Concept & Tone — **World Mode declared (sandbox)**, logline tight, AnyPOV enforced.
-- [x] Section 1.5: Style Contract — perspective, tense, narration marker, dialogue marker, emphasis marker, paragraph register all declared. STRICT ANYPOV RULE APPLIED.
-- [x] Section 2: The World — "Californian Golden Hour" aesthetic; **(changed)** Urban Politics two-faction cold war (Wolves vs Vampire Court under Visconte Angelo Moreno / Eidolon Creative; FRENEMY with Wulfnic); **(changed)** Conflict Geography hot zones (Uptown, Paradise cusp, Ironworks/Vito Marino, Dockside) vs neutral territories; **(changed)** Rule 1 reformulated (geographic mimicry) + Rule 6 (free cities / rights).
-- [x] Section 3: The Protagonist — AnyPOV, Twin to Jasper, manipulation contradiction. (Canonical Alyssa isolated in `User_Alyssa.md`; custom players use blank `User.md`.)
-- [x] Section 4: Characters — Principal Cast Erik/Malachia/Noah/Jasper; **(changed)** Grave Mistake reframed as a freedom space (Mac = FWB, indie-punk); Fade–Visconte link; Wulfnic FRENEMY; Vito Marino reconciled (District Alpha + boss); Angelo Moreno added as Principal NPC.
-- [x] Section 5: **Sandbox mode** — Sandbox Charter complete; **(changed)** World Pulse + **Canonical Entry Points (5 initial-message anchors)** added.
-- [x] Section 6: Technical Specifications — cards, lorebooks. `Legacy_Expansion_Lorebook.json` added for JSON mass-import quarantine.
-- [x] Section 7b: Test Scenarios — London scenario removed; **(changed)** canonical Entry Points as primary test scenarios.
-- [x] Section 8: Intimacy & Sexuality — world posture, hard rules, prose register; **(changed)** global non-consensual ban removed, bio advisory required, heat/rut gated to A/O/E per LSE.
+- [x] Conversion Manifest written at top of seed (Section 7 of Converter spec, rebaseline variant)
+- [x] Overlap floor / zero-axes gate passed (0 axes replaced; protagonist unchanged) — rebaseline valid
+- [x] Source preconditions verified (Master Design with REFINER SIGN-OFF; Export/ with 19 JSON files present)
+- [x] Target path verified (new empty folder `Drafts/SvartulfrVerse_Urban_Rebased`; no existing World_Seed.md)
+- [x] §1 / §1.5 preserved 1:1 (sandbox mode; six style fields unchanged)
+- [x] §2 Tier 1 preserved 1:1 (Rules 1–6, factions, locations); new §2e (species) added as divergence fold-in; §2g/§2h left absent (no calendar/dice need)
+- [x] §3 protagonist carried 1:1 (same protagonist — zero-axes rebaseline)
+- [x] §4 characters carried 1:1; per-character Orientation folded in from Master Design §7 (marked REBASELINED); relationship-to-{{user}} kept (same protagonist)
+- [x] §5 Sandbox Charter carried 1:1 (kept — rebaseline disposition)
+- [x] §6 technical specs carried 1:1
+- [x] §7b test scenarios carried 1:1 (kept by default; no new mechanics)
+- [x] §8 intimacy posture carried 1:1 (kept); non-consensual ban removed, bio advisory, heat/rut A/O/E gate preserved
+- [x] No {{REVISED IN R[N]}} / {{CREATED IN R[N]}} markers carried; prior run's internal CHANGED markers stripped (cleanliness rule); provenance via REBASELINED comments at change sites + manifest
+- [x] No design-grade / entry-level (CHARACTER_STATE/NPC_SHIFT) content copied into the seed
+- [x] New mechanics: none — pure consolidation; brainstorm to follow
+- [x] Source `Big_Brain_Storm.md` checked for — none present; disposition recorded
+- [x] Chat-state cost stated; acknowledgment recorded in manifest (fresh UIDs; source chats do not migrate)
 
-### Section 8 Status
-- [x] In scope — Phase 2.5 and 3.7 will run (with the user-directed, guardrail-free NSFW scope as specified)
+### Rebaseline mode checks
+- [x] Zero-axes gate passed
+- [x] Revision high-water mark: none (no completed revisions); integrity check vacuous (no reports to verify)
+- [x] Seed base: seed-anchored (source World_Seed.md carried 1:1)
+- [x] Untouched sections carried verbatim — unmarked
+- [x] Revision deltas: none
+- [x] Divergence scan run; two fold-ins confirmed by user (orientations §4, LSE species §2e)
+- [x] Structure upgraded to current template (§2e added)
 
-### Flagged for Possible Gaps
-- None from this depth pass. The four weak areas (#1, #4, #5, #8) are now specified. Couplings recorded for the rebuild: Fade's defection source = Visconte's European court; Vito Marino dual role; The Sinner / Ballantine as background external threats (legacy-import candidates); Rule 1 geographic scope; plural-species alongside LSE morphology; NSFW #5 LSE gate; 5 entry points as sandbox menu.
+### Flagged for downstream attention
+- The source Master Design's Revision Log shows an **R1 marked PENDING** (orientation assignment) that was folded into the 2026-07-09 rebuild rather than run as a formal revise-pipeline revision — no `Revision_R1.md` or `REVISED_FILES.md` was ever produced. The orientations are now first-class seed content (this rebaseline), so the dangling PENDING R1 in the *source* Master Design is moot for the rebuild; downstream phases will treat orientation as seed-grade.
+- Anti-Flattening & Boundaries Rule (AnyPOV) is load-bearing and carried in §8; the chained Brainstormer must respect the world's spine (no protagonist/World-Mode/Section-1 flip — those are reframe territory, not rebaseline improvements).
 
-**Status: READY — Proceed to Phase 1 (The Refiner)**
+### Operating Mode
+- [x] Rebaseline
+
+**Status: READY — Proceed to the chained Brainstormer (--then-brainstorm), then the Interviewer in seed-revision posture, then Phase 1 (The Refiner) via `/worldforge skip phase0`.**

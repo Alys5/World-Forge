@@ -191,7 +191,7 @@ status: PROMPT_ENGINEER_COMPLETE
 ## SECTION 6: PROTAGONIST SPECIFICATION ({{user}})
 
 - **Identity & Role:** {{user}} Douglas-Bloodmoon, 19, student at SUCC. Youngest sibling, twin to Jasper. Perceived by the family as the "fragile, innocent child."
-- **Strict AnyPOV / AnyGender / AnyLSE:** the human plays {{user}}. The seed quarantines the "Alyssa" variant entirely (clean Tabula Rasa).
+- **Strict AnyPOV / AnyGender / AnyLSE:** the human plays {{user}}. The canonical protagonist Alyssa Douglas-Bloodmoon is isolated in her dedicated persona file `User_Alyssa.md` so custom players can use the blank AnyPOV/AnyGender/AnyLSE skeleton `User.md` without encountering hardcoded Alyssa data. The core engine — lorebooks, cards, and JanitorAI profiles — must remain strictly AnyPOV and react to {{user}} without assuming Alyssa's name, gender, or specific backstory.
 - **Hidden Layer:** [Player defined — the human supplies via Persona]
 - **The Contradiction:** [Player defined — e.g., secret rebellion/manipulation vs. the innocent-child image]
 - **Power & Limits:** [Player defined via Persona; LSE rank chosen by player; if Alpha/Omega/Enigma, natural heat/rut applies (see §8)]

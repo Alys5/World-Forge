@@ -384,7 +384,7 @@ def write_card(card_md, display_name):
     card = json.loads(json.dumps(CHAR_TPL))
     card["name"] = display_name
     card["data"]["name"] = display_name
-    for field in ("description", "personality", "scenario", "first_mes", "mes_example"):
+    for field in ("description", "personality", "scenario", "first_mes", "mes_example", "orientation"):
         if fm.get(field):
             card["data"][field] = fm[field]
 
@@ -438,6 +438,7 @@ def main():
     write_card("Card_Noah.md", "Noah Douglas-Bloodmoon")
 
     copy_binary("User.md", "User.md")
+    copy_binary("User_Alyssa.md", "User_Alyssa.md")
     copy_binary("JanitorAI_Profile_Group.md", f"{WORLD}_JanitorAI.md")
     print("Done.")
 

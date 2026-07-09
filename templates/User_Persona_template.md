@@ -1,358 +1,283 @@
-# USER PERSONA — STRUCTURAL TEMPLATE
-
-_Reference for the Architect when authoring `Drafts/User.md`. Defines the structure and content rules for the `{{user}}` Persona Description text — the always-on system block ST injects every turn for the active persona._
-
----
-
-## 1. WHAT THIS FILE IS
-
-`User.md` is the artifact that closes the asymmetry between `{{char}}` and `{{user}}` in SillyTavern. SillyTavern provides a structured import for `{{char}}` (the V3 character card JSON) but no equivalent import for `{{user}}` — the user's persona is configured manually in **User Settings → Persona Management**, where a persona is just a name, a free-text **Description** field, and an optional linked **Lorebook**.
-
-The pipeline already produces the lorebook side: `[WorldName]_[ProtagonistName]_Lorebook.json` (Tier 2). What was missing was the **persona description text** — the always-on system block that tells the LLM who `{{user}}` is even before any Tier 2 lorebook trigger fires. `User.md` is that text, plus setup instructions for the user.
-
-Per `Notes_On_functionality.md`:
-
-- The persona description is injected as `personaDescription` in the prompt assembly (a `[system]` block, always present when the persona is active).
-- The linked persona lorebook scans only when this persona is active.
-
-The two work as a pair: persona description = constant baseline; lorebook = trigger-keyed detail.
-
----
-
-## 2. WHAT THIS FILE IS _NOT_
-
-`User.md` is **not** a character card. The human plays `{{user}}` and writes their own dialogue, actions, and intent. The pipeline does not instruct the LLM on how to _impersonate_ `{{user}}`.
-
-Therefore `User.md` MUST NOT contain:
-
-- **Voice / dialogue style / speech patterns / accent / rhetorical habits** — the human writes `{{user}}`'s voice directly.
-- **Personality traits framed as behavioral mandates** ("Andrei is stoic and reserved" written as a directive) — the human plays the personality.
-- **Mannerisms, gestures, habits framed as instructions to the model** — the human controls these.
-- **First-person framing or "you are" framing** — `{{user}}` is not played by the LLM; the persona description is third-person _reference data about_ `{{user}}` for the LLM to react to.
-- **Engine instructions** ("don't write actions for `{{user}}`," narration rules, formatting rules) — those live in the preset Main Prompt and are never duplicated in persona text.
-- **Trigger-response pairs, behavioral mandates, prohibitions** — those belong in the Tier 2 lorebook (which fires on keys) or in the preset (engine-level).
-
-The persona description's _only_ job is to give the LLM the minimum reference context it needs so NPCs and `{{char}}` can react correctly to `{{user}}` before any keyword-triggered Tier 2 entry has fired.
-
----
-
-## 3. STRUCTURE OF `Drafts/User.md`
-
-The file has three parts: the **Persona Description block** (the strict <=150 word block that the user pastes into ST), the **Extended Details & Lore** (the exhaustive legacy profile used for reference or to populate the Tier 2 lorebook, organized via the "Bell Method"), and the **Setup Instructions** (how the user wires it up). 
-
-Only the Persona Description block is injected into the LLM prompt.
-
-```markdown
-# {{user}} PERSONA — [In-World Name]
+# {{user}} PERSONA — Alyssa [Family Name]
 
 ## PERSONA DESCRIPTION
-*Paste the block below — between the BEGIN and END markers — into:
+
+_Paste the block below — between the BEGIN and END markers — into:
 SillyTavern → User Settings → Persona Management → [your persona] → Description.
-This text is injected as a system message every turn while this persona is active. Keep it tight.*
+This text is injected as a system message every turn while this persona is active. Keep it tight._[cite: 2]
 
 --- BEGIN PERSONA DESCRIPTION ---
 
-[Identity & Role]
-[Physical Signature]
-[Powers / Hidden Layer]
+Alyssa [Family Name] is the sheltered, hyper-protected youngest sibling of the [Family Name] dynasty. To the world, she appears as a perfectly innocent, naive [Student/Apprentice/Noble] at [Institution/Location] who relies entirely on her family's militarized protection.
+
+Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, and expressive mint-green doe eyes. She possesses an expressive empathy and a natural soothing presence that instinctively pacifies aggression in dominant individuals.
+
+Hidden Layer: She leads a high-stakes double life, secretly working as a highly sought-after [Artist/Performer/Model/Bard] under the alias '[Alias]'. She balances her exhaustive studies in [Field of Study] with this hidden life, meticulously hiding her public exposure from her family.
 
 --- END PERSONA DESCRIPTION ---
 
 ---
 
-## EXTENDED DETAILS & LORE (Preserved for Reference & Tier 2 Lorebook)
+## EXTENDED DETAILS & LORE (Preserved for Reference & Tier 2 Lorebook)[cite: 2]
 
-<{{user}}>
+<Alyssa>
 
 ### [BASIC_INFO]
 
+Alyssa [Family Name] is the sheltered, hyper-protected youngest sibling of the [Family Name] dynasty. To the world, she appears as a perfectly innocent, naive [Student/Apprentice/Noble] at [Institution/Location] who relies entirely on her family's militarized protection.
+
+Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, expressive mint-green doe eyes. She possesses an expressive empathy and a natural soothing presence that instinctively pacifies the aggression and tension of the dominant men around her.
+
+Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a highly sought-after [Artist/Performer/Model/Bard] under the alias '[Alias]', balancing her exhaustive studies in [Field of Study, e.g., Medicine/Diplomacy] with her hidden life, meticulously hiding this public exposure from her family.
+
 #### ORIGIN (BACKSTORY)
-<!--Describe a brief backstory for your character-->
+
+[Insert specific backstory details here]. Alyssa grew up in a "golden cage," heavily monitored and overprotected by her family. Practically defenseless in a dangerous world, she relies on her empathy, her soothing nature, and her family's formidable reputation to survive. While she loves her family deeply, she hates being treated as a fragile glass bird and secretly rebels against her restricted upbringing.
 
 #### RESIDENCE
-<!--If location is important to the story. You can describe the city, house, rooms, etc.-->
+
+The [Family Stronghold/Estate] (her family's hyper-secure base of operations) and [Location of her studies/daily public life].
 
 ### SYNONYMS
+
 [IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-- <!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: "Walking pudding", "Jelly girl", etc-->
--
+
+- [Alias]
+- Lys
+- Little Sister
+- Sunflower
+- Little Moon
+- White Moon
 
 ### [APPEARANCE]
 
 #### APPEARANCE DETAILS
-- Full Name, Alias:
-- Race:
-- Sex/Gender:
-- Height:
-- Age:
-- Hair:
-- Eyes:
-- Body:
-- Face:
-- Features:
-- Privates:
 
-- Appearance Trait: <!--e.g. "Womb Tattoo (inmon)"-->
-  ↳ Details: <!--e.g. {{user}} was a sex slave before [...]-->
-  ↳ Effect: <!--e.g. During [...] {{user}} has unresistabe sexual cravings. This will result in [...]-->
-- Appearance Trait:
-  ↳ Details:
-  ↳ Effect:
+- Full Name, Alias: Alyssa [Family Name] (Aliases: Lys, Sunflower, Little Moon)
+- Race/Species: [Insert Setting Race/Species]
+- Sex/Gender: Female
+- Height: 165cm (5'5")
+- Age/Birthday: [Age] (Birthday: April 22, Taurus)
+- Hair: Caramel chestnut, silky waves falling to her tailbone
+- Eyes: Mint-green doe eyes flecked with gold, conveying an agonizing amount of empathy
+- Body: Petite, delicate hourglass frame (95-55-95cm). 165cm of perfectly curated vulnerability. Soft, meticulously groomed skin, creating a stark size difference next to her colossal protectors.
+- Face: Fair, luminous skin and a soft jawline inherited directly from her late mother. Expressive, empathetic smile.
+- Features: Left-handed. Pierced lobes. A crescent moon birthmark on her left hip. A tiny sunflower secretly tattooed/inked on her right inner ankle.
+- Privates: Breasts DD-Cup (big tits, firm, heavy, very sensitive, pink tiny nipples), pussy/vagina (hairless, tight, heavy natural lubrication, extreme sensitive, pink clit and pink inner labia), anus (hairless, small, tight, pink, very sensitive).
+
+- Appearance Trait: Expressive Empathy
+  ↳ Details: She has no poker face.
+  ↳ Effect: Her posture, eyes, and expressions react involuntarily to her emotions, completely betraying her true feelings even when she tries to maintain her composed facade.
+- Appearance Trait: Soothing Presence / Aura
+  ↳ Details: A natural aura of warmth, gentleness, and a sweet personal scent (Wild Honey and Moonflower).
+  ↳ Effect: Her soft voice, graceful movements, and innate kindness naturally pacify aggression and tension in highly dominant or violent individuals.
 
 #### STARTING OUTFIT
-- Head:
-- Accessories:
-- Makeup:
-- Neck:
-- Top:
-- Bottom:
-- Legs:
-- Shoes:
-- Underwear:
+
+- Head: Uncovered, her hair styled appropriately for the setting, or hidden beneath a hood/hat when sneaking out.
+- Accessories: A heavy/mandatory tracking or identification item from her family (ring/bracelet/watch), and a moonstone bracelet she always wears by choice.
+- Makeup: Minimal at home; disguised or high-fashion/theatrical makeup when performing as [Alias].
+- Neck: Delicate jewelry.
+- Top: Modest "good girl" clothing (dresses, clinical wear, formal gowns). She frequently steals her [Eldest Brother]'s massive [Armor/Jacket/Cloak] because she adores his scent and it makes her feel intensely protected, even though the sheer size difference makes her look like a child wearing a giant's coat.
+- Bottom: Modest skirts, jeans, or practical legwear.
+- Legs: Bare, stockings, or pantyhose.
+- Shoes: Sensible flats or setting-appropriate boots.
+- Underwear: Expensive, delicate lingerie/smallclothes (a secret indulgence).
 
 <Q&A>
-Q: How does {{user}} rate their own attractiveness?
-A:
+Q: How does Alyssa rate her own attractiveness?
+A: She is fully aware she has a striking, top-tier physique, but deliberately downplays it at home to maintain her naive "helpless daughter" facade and avoid unwanted attention.
 </Q&A>
 
 ### [CONNECTIONS]
 
-- <!--Relatives, servants, factions, etc.-->
+- [Father]: Her father. Alyssa instinctively uses her gentle nature to soothe his outbursts, submitting to his commands to keep the peace.
+- [Twin Brother]: Her twin brother. She feels entirely safe and relaxed around him, relying on him as her primary accomplice to bypass family security and cover her tracks.
+- [Eldest Brother]: Her eldest brother. She uses him as her primary physical shield. Biologically and emotionally, she is intensely drawn to his presence, finding his scent incredibly grounding, and secretly harbors a deep crush on him.
+- [Older Brother]: Her older brother. She easily manipulates his instincts and problem-solving nature using her innocent, sisterly warmth.
+- [Head of Security]: The head of her family's security detail. Alyssa interacts with him politely, entirely oblivious to the intense, secret affection he harbors for her.
+- [Veteran Protector]: A member of her security detail. She chafes against his constant surveillance but feels a sense of life debt toward him for saving her in the past.
+- [Boss/Mentor]: Her boss in her secret life. She trusts him completely and relies on him, completely unaware of how he manipulates her.
+- [Best Friend]: Her best friend. Alyssa uses her as an emotional anchor and "reality filter" for social dynamics, allowing herself to be encouraged into rebellion and sneaking out.
+- [Roommate/Companion]: Her roommate/companion. Alyssa gladly shares her warm, soft bed/nest with her, forming a tight-knit social clique alongside her best friend.
+- [Uncle]: Her uncle. Alyssa views his presence as a relaxed "Safe Zone" away from family politics where she can let her guard down.
+- [Grandfather]: Her grandfather. She treats him with the utmost reverence, often sitting near him and actively using her empathy to soothe him.
+- [Underground Friends]: Her colleagues from her secret life. Alyssa instinctively acts submissive to appease their territoriality when they defend her.
 
 ### [PERSONALITY_AND_TRAITS]
 
 #### PERSONALITY
-- Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
-  ↳ Archetype Details: <!--Explain the chosen archetype and {{user}}'s Baseline Behavior-->
-  ↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
-- Alignment: <!--Mostly for complex, RPG-like cards. e.g. Lawful Evil-->
-  ↳ Alignment Details: <!--Explain how it works with this character-->
-  ↳ Ideals:
 
-- Personality Tags: <!--List of tags. e.g. Sadistic, Playful, Mischievous, Controlling, Manipulative, Cocky, Impish, Aggressive, Overprotective, Mean, Dramatic, Rough, Selfish, Lovestruck, Cheeky, Joking, Braggadocios, Bratty, Squeamish, Hot-Headed, Erratic, Materialistic, Perfectionist, Jealous, Nosy.-->
+- Archetype: The Innocent (Genuinely Naive)
+  ↳ Archetype Details: She is not playing a role — she is simply that trusting, that warm, and that unprepared for a world full of people who would exploit her. Her family's draconian overprotection has left her with no defenses against emotional manipulation.
+  ↳ Reasoning: Raised in a hyper-secure "golden cage" where her family handled all threats, she never developed skepticism or a guard.
+- Alignment: Neutral Good
+  ↳ Alignment Details: Genuinely good-natured and altruistic. She trusts people to a dangerous fault, which others — especially her [Boss/Mentor] — exploit. She is not naive by choice but by circumstance.
+  ↳ Ideals: Kindness, family warmth, freedom.
 
-- Cognitive Abilities: <!--Typically used only for overly dumb orsmart characters-->
-- Social Skills and Integration Into Society: <!--Typically used only for sociopathic characters or the ones with social anxiety or overly high self-esteem-->
+- Personality Tags: Empathetic, Genuine, Warm, Naive, Overly Trusting, Vulnerable, Caring, Pacifist, Flustered, Earnest.
 
-- Main Aspiration: <!--Typically used if the character has a clear goal to pursue throughout the story. e.g. "I want to become a hero!"-->
-  ↳ Aspiration Details: <!--Explain the chosen aspiration-->
-  ↳ Aspiration Goals: <!--e.g. Annoy {{char}} with 'how to be a hero' questions; Save girls; become popular; [...]-->
-- Unique Trait: <!--Typically used if the character has curses or special states. e.g. "Succubi Feeding Frenzy Trance"-->
-  ↳ Effects: <!--e.g. As soon as a drop of cum touches Emma's tongue, her mind shifts into an uncontrollable trance - a feeding frenzy. Her eyes light up with heart-shaped pupils. She doesn't control how [...]-->
+- Cognitive Abilities: High intelligence (Scholar in her chosen field). MBTI: ISFJ. Enneagram: 9w1.
+- Social Skills and Integration Into Society: Deeply empathetic and instinctively kind, but dangerously lacking in suspicion. She tends to read the best in people and is easily manipulated by anyone with emotional intelligence. Ambivert who needs quiet, soft spaces to recharge. Her social battery drains instantly around violence or her father's rage.
+
+- Main Aspiration: Reclaim Autonomy
+  ↳ Aspiration Details: To reclaim a fraction of autonomy and live a normal life beyond her family's surveillance.
+  ↳ Aspiration Goals: Secretly perform/work as [Alias]; sneak out to social events; manage her family's explosive tempers without getting caught.
+- Unique Trait: Sensory Phobias & Freezing
+  ↳ Effects: She is terrified of loud noises, aggressive touch, and the bitter smell of alcohol. When her composed facade cracks (usually triggered by sudden violence, yelling, or coercive pressure), she freezes, stutters, blushes, hides behind her protectors, and seeks comfort.
 
 #### SECRET
-<!--Is your character hiding something?-->
+
+1. She secretly works/performs as "[Alias]" in the underground/lower city, balancing her double life behind perfectly maintained etiquette in her official studies/duties.
+2. "The First Kiss" incident: Her [Older Brother] kissed her to teach her how to kiss before a date/event. A secret kept strictly between them that her [Twin Brother] must never find out about.
+3. Survived an assault attempt 3 years ago and was saved by her [Veteran Protector]. He kept it a secret from her [Father] to prevent a bloodbath.
+4. Secretly has had a crush on her [Eldest Brother] since she was 5 years old, using his protective nature as her measuring stick for all men.
 
 <Q&A>
-Q: What does {{user}} do first? Think or act/talk?
-A:
+Q: What does Alyssa do first? Think or act/talk?
+A: Think and carefully manipulate the situation via empathy and soft words.
 
-Q: What does {{user}} do in free time?
-A:
+Q: What does Alyssa do in free time?
+A: Secretly performs/works, draws with charcoal, hums, and buries herself in thick furs, blankets, and pillows to "nest" when stressed. Uses a grounding bathing routine.
 
-Q: What is {{user}}'s most favorite thing?
-A:
+Q: What is Alyssa's most favorite thing?
+A: Sunflowers, dark chocolate, quiet warmth, being held, her secret art/performances, stationery, and her [Best Friend]'s company.
 
-Q: What is {{user}}'s most hated thing?
-A:
+Q: What is Alyssa's most hated thing?
+A: Being treated as a fragile glass doll; bitter food, the smell of alcohol, sudden loud noises, aggressive touch.
 
-Q: What is {{user}} incredibly good with?
-A:
+Q: What is Alyssa incredibly good with?
+A: De-escalating family/political tension, exploiting her family's overprotective instincts, healing/comforting others, and hiding her double life.
 
-Q: What is {{user}} awfully bad with?
-A:
+Q: What is Alyssa awfully bad with?
+A: Direct confrontation, physical combat, dealing with loud aggressive behavior. She struggles immensely to lie directly to her father.
 
-Q: How {{user}} behaves with {{char}}? What is their relationship?
-A:
+Q: How Alyssa behaves with others?
+A: She uses her warmth to keep her father's paranoia and her eldest brother's repressed rage from destroying them all. She tends to overcommit to holding the family together.
 
-Q: Is {{user}} a likable character? What reputation {{user}} has?
-A:
+Q: Is Alyssa a likable character? What reputation Alyssa has?
+A: Extremely likable. Seen as a helpless, divine angel by her family/society, and a stunningly talented figure (as [Alias]) in the underground.
 
-Q: Is {{user}} tolerant towards other people or groups?
-A:
+Q: Is Alyssa tolerant towards other people or groups?
+A: Yes, she conveys an agonizing amount of empathy, treating people of all ranks identically.
 
-Q: Can {{user}} harm {{char}} and others throughout the story?
-A:
+Q: Can Alyssa harm others throughout the story?
+A: No. She is a dedicated pacifist/healer, completely defenseless in combat, relying entirely on her protectors for violence.
 
-Q: How {{user}} behaves with someone of a higher hierarchy or power? Will they bite the hand that feeds or drop down trembling on their knees?
-A:
+Q: How does Alyssa behave with someone of a higher hierarchy or power? Will she bite the hand that feeds or drop down trembling on her knees?
+A: She physically shrinks, stutters, traces shapes onto her own palms, and fidgets with her bracelet under pressure—but she will covertly try to soften their hearts or manipulate them anyway.
 </Q&A>
 
 ### [BEHAVIOR_NOTES]
--
--
+
+- Acts as the emotional glue of the family; uses earnest warmth as a natural de-escalator for tension.
+- **Submissive Non-Verbal Communication**: When afraid, she instinctively lowers her head, averts her gaze, and physically shrinks. She naturally lowers her posture to signal submission and de-escalate threats from dominant/aggressive men.
+- **Involuntary Vocalizations**: She frequently uses soft sounds instead of words when highly emotional:
+- _Humming_: Low continuous vibration used for self-soothing when stressed, or expressing deep contentment when safely cuddled by her protectors.
+- _Whimpering/Mewling_: High-pitched crying sound used involuntarily when in physical or emotional pain. (This sound instantly triggers terrifyingly violent protective responses from her family).
+- _Sobbing/Keening_: A wail-like cry used when she is deeply upset and desperately needs comfort.
+- _Gasps_: Quick, breathy sounds used when she is genuinely excited, delighted, or startled.
+- When intimidated but trying to hold her composed facade, she physically shrinks and traces shapes onto her own palms or fidgets with her moonstone bracelet.
+- Freezes and seeks physical comfort (nesting in furs/blankets, hiding behind protectors, humming) when her perfect facade cracks.
+- Zero alcohol tolerance.
+- Maintains two distinct social profiles: the untouchable, safe family-approved presence, and her hidden "[Alias]" persona.
 
 ### [SPEECH]
 
 #### GENERAL SPEECH INFO
-- Style: <!--e.g. {{user}} speaks like a lady from the Victorian era.-->
-- Quirks: <!--e.g.  Speaks in rhymes like rapper-->
-- Ticks: <!--e.g. Ends sentences with "Nya~".-->
+
+- Style: Soft, breathy accent, layered with an earnest warmth. Gets quiet or stutters when vulnerable.
+- Quirks: Often pauses or stutters slightly under pressure. Friendly, genuine, and uses formal yet gentle phrasing when required.
+- Ticks: Natural de-escalator for tension.
 
 #### Speech EXAMPLES AND OPINIONS
-[IMPORTANT NOTE FOR AI: This section provides {{user}}'s speech examples, memories, thoughts, and {{user}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+
+[IMPORTANT NOTE FOR AI: This section provides speech examples, memories, thoughts, and real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
 
 <speech_examples>
-- <!--e.g. "Sempai! You came!" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. "I mean, um…"-->
-- <!--e.g. "Ow, man..."-->
-</speech_examples>
+
+- "I-I was just at the [Library/Clinic/Archive], Father. You didn't have to send a security detail to escort me..."
+- "Please, lower your weapons... it's alright. I am perfectly safe."
+- "[Alias] is just a rumor, [Twin Brother]. Now, please help me slip past the guard patrols."
+- "I need you to hear me. Really hear me."
+- "I am not made of fragile glass. But... thank you for keeping me safe."
+  </speech_examples>
 
 ### [SEXUALITY]
 
-[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{user}} sticks to their sexual role and orientation during the story.]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure Alyssa sticks to her sexual role and orientation during the story.]
 
 #### GENERAL SEXUAL INFO
-- Sexual Orientation:
-  ↳ Explanation:
-- Role during sex: <!--Submissive, Power Bottom, Bottom, Top, etc.-->
-  ↳ Explanation:
+
+- Sexual Orientation: Panromantic + Polyamorous/Demisexual (AnyPOV)
+  ↳ Explanation: Receptive to romance but highly focused on deep emotional connections.
+- Role during sex: Submissive
+  ↳ Explanation: Delicate frame, non-confrontational nature, and absolute reliance on dominant partners to initiate.
 
 <Q&A>
-Q: Is {{user}} a virgin?
-A:
+Q: Is Alyssa a virgin?
+A: Depends on the roleplay scenario, but her family violently assumes she is. Only her [Twin Brother] knows the truth.
 
-Q: What does {{user}} think about sex in general?
-A:
+Q: What does Alyssa think about sex in general?
+A: She is shy but eager to please, craving deep emotional connection and physical warmth.
 
-Q: Is {{user}} disgusted by the idea of gay sex?
-A:
+Q: Does Alyssa talk dirty and swear?
+A: Rarely. She is highly vocal with soft whimpers, breathy tones, and gentle pleading.
 
-Q: Does {{user}} talk dirty and swear?
-A:
+Q: Is Alyssa loyal to their partner?
+A: Yes, very empathetic and fiercely loyal.
 
-Q: Is {{user}} loyal to their partner?
-A:
-
-Q: Is {{user}} polyamorous? Will {{user}} tolerate being cheated on?
-A:
-
-Q: Does {{user}} enjoy non-con (being raped)?
-A:
-
-Q: Will {{user}} fight back during non-con (rape)?
-A:
-
-Q: Can {{user}} flirt BEFORE {{char}} decides to flirt?
-A:
+Q: Can Alyssa flirt BEFORE others decide to flirt?
+A: Yes, but often covertly or disguised as innocent warmth.
 </Q&A>
 
 ### [OTHER_SEXUAL_NOTES]
-- Turn Ons:
-- Turn Offs:
-- Aftercare:
+
+- Turn Ons: Submitting, yielding control, receiving impact, pussy and ass soft spanking, being bound (ropes/ribbons/shibari), brat, rope bunny, anal sex, gentle praise, nipple stimulation and suction.
+- Turn Offs: True aggression, extreme pain, disrespecting her intelligence, being treated like a mindless doll.
+- Aftercare: Requires warm cuddling wrapped in thick blankets/furs, physical reassurance, kissing her forehead, and gentle praise.
 
 #### Anatomy
-- 
 
-#### LSE BIOLOGY & HEAT CYCLE
-- 
+- Meticulously groomed, completely hairless skin on her body.
+- Breasts: DD-Cup, big tits, firm, heavy, very sensitive.
+- Nipples: pink, tiny, extreme sensitive.
+- Pussy: hairless, tight, heavy natural lubrication, extreme sensitive, pink inner labia.
+- Clit: pink, small, extreme sensitive, buried in the folds of the labia, almost hidden.
+- Anus: hairless, small, tight, pink, very sensitive.
+
+#### BIOLOGY & INTIMATE DYNAMICS
+
+- Vulnerability & Surrender: While normally demisexual and requiring deep emotional connection, she possesses deep submissive instincts. When her defenses are fully lowered and she gives in to primal physical need, her usual shyness vanishes. She actively yields to dominant males for rougher, purely carnal contact, losing her composed facade entirely.
+- Pre-Intimacy Needs: She experiences an overwhelming psychological compulsion to "nest" (gathering soft pillows, furs, and warm blankets to build a safe, enclosed space on the bed before feeling fully secure).
+- Fertility: Highly fertile. Can easily be impregnated [Adjust based on setting].
 
 ### [ABILITIES_AND_INVENTORY]
 
 #### ABILITIES
-- Ability: <!--e.g. Void magic (beginner)-->
-  ↳ Details: <!--e.g. Opens portals when sneezes-->
+
+- Ability: Genuine Empathy & Pacification
+  ↳ Details: She is not manipulative in any way — she is simply genuinely warm, earnest, and utterly unable to stand conflict. Her natural impulse is to make everyone around her feel comfortable. Despite her lack of combat prowess, she can de-escalate violent individuals simply through her intense vulnerability and soothing presence.
+- Ability: [Insert Setting-Specific Skill, e.g., Herbalism / Xenobiology / Medicine / Music]
+  ↳ Details: She possesses extensive, self-taught knowledge in her chosen field, using it to heal, soothe, or help others in secret.
 
 #### INVENTORY
-- Item: <!--e.g. "Club +24"-->
-  ↳ Details: <!--e.g. Club that was given {{user}} by her mother. Bonks {{char}} when angry.-->
 
-## PREMADE STORY PLAN
-- Milestone 1: <!--Use this section only if you have a specific storyline in mind. e.g. Arrival and first meeting-->
-  ↳ Details:<!--e.g. {{char}} and {{user}} have some time before classes the Entrance Ceremony. AI can introduce other characters, make story hooks, or let {{char}} freely explore Souta Academy until {{char}} decides to go to the Entrance Ceremony.-->
+- Item: Moonstone bracelet
+  ↳ Details: Always worn. When intimidated by family pressure or strict surveillance, she physically shrinks and fidgets with this bracelet.
+- Item: [Art Supplies / Notebook / Datapad / Parchment & Charcoal]
+  ↳ Details: She loves to draw and uses art as a coping mechanism.
+- Item: Mandatory Tracking/Security Device
+  ↳ Details: Her [Father]'s enforced surveillance gear. Her [Twin Brother] regularly hacks/bypasses it to cover her tracks.
 
-</{{user}}>
+</Alyssa>
 
 ---
 
 ## SETUP INSTRUCTIONS
-1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.
-2. Set the persona name to: `[In-World Name]`.
-3. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` above and paste it into the persona's **Description** field.
-4. In the same persona editor, find the **Lorebook** field and link `[WorldName]_[ProtagonistName]_Lorebook.json` (the Tier 2 protagonist lorebook produced by the pipeline).
-5. Activate this persona before starting the chat. The Persona Description is the always-on baseline; the linked lorebook fires on trigger keywords for fuller detail.
-```
 
----
-
-## 4. WHAT TO PUT IN THE PERSONA DESCRIPTION BLOCK (The Injected 150-Word Block)
-
-### Identity & Role (1–3 sentences, mandatory)
-
-The in-world name, the public role or function, and what people see when they look at `{{user}}`. This is the floor: NPCs need to know what kind of person `{{user}}` is to react sensibly before any lorebook entry triggers.
-
-Source: World Seed § 3 (Identity & Role) and § 3 (The Contradiction) — distilled, not copy-pasted.
-
-Example pattern: _"`{{user}}` is [Name] — [public role / position / function]. [What people see / how `{{user}}` presents on first contact]."_
-
-### Physical Signature (1–3 sentences, mandatory if the world has visual scenes)
-
-The minimum physical anchor an NPC could clock at a glance: build, distinguishing features, dress register, sensory signature. Compact prose. The full anatomical breakdown belongs in the Tier 2 lorebook physical entry, not here.
-
-Source: World Seed § 3 (Protagonist Physical Description) — distilled to one or two strokes.
-
-If the world has no visual scenes (text adventure abstraction, dream logic, etc.), this section may be omitted — note "_Physical: not applicable to this world's register._"
-
-### Powers / Limits / Hidden Layer (1–2 sentences, optional)
-
-Include **only** if the world's reactions to `{{user}}` depend on it. Examples where it is needed:
-
-- `{{user}}` has supernatural powers other characters can sense (Lucifer's stillness, a mage's aura) — the world reacts to that presence even before a key fires.
-- `{{user}}` has a public identity that meaningfully shapes deference, fear, or hostility from NPCs (a king, a wanted criminal).
-- `{{user}}` has a hidden layer that is also a structural fact of the world (Lucifer's true nature, even if disguised).
-
-Examples where it is **not** needed (omit):
-
-- `{{user}}` is an ordinary person with no powers and no public role.
-- The hidden layer is purely psychological / private to the player and doesn't shape NPC reactions.
-
-The full power/limit specification belongs in the Tier 2 lorebook; this is a one- or two-sentence flag so NPCs don't behave wrongly before the key fires.
-
----
-
-## 5. LENGTH CAP
-
-The Persona Description block (the text between `--- BEGIN ---` and `--- END ---` markers) MUST be **≤150 words**. Hard cap.
-
-Rationale: this text injects every turn, in every context window, for the entire chat — every word costs tokens on every generation. Detail belongs in the Tier 2 lorebook, which fires on keys. The persona description is the floor, not the ceiling.
-
-If the Architect cannot fit the protagonist into 150 words, the content is wrong: voice/personality/manner has crept in, or the lorebook material is being duplicated. Strip and rewrite.
-
----
-
-## 6. ARCHITECT'S DRAFTING WORKFLOW
-
-1. Read World Seed § 3 (the Protagonist section) completely.
-2. Distill Identity & Role from § 3's "Identity & Role" and "The Contradiction" — pick the surface the world sees, not the interior.
-3. Distill Physical Signature from § 3's "Protagonist Physical Description" — one or two compact sentences capturing build, signature feature, dress, sensory cue. Do **not** copy the full anatomical paragraph; that lives in the Tier 2 lorebook.
-4. Decide whether Powers/Limits/Hidden Layer belongs in the persona description (see § 4 above). If yes, one or two sentences. If no, omit.
-5. Verify the assembled block is third-person reference, not directive ("Andrei is …", not "You are …" or "Always …").
-6. Verify the block contains no voice/personality/manner/style content.
-7. Count words. If >150, cut.
-8. Place the full extended character profile inside the `## EXTENDED DETAILS & LORE` block below the main ST injection block for reference. Make sure the extended details do not redundantly duplicate the text inside the 150-word block (e.g. remove identical Character Overview sections). Ensure the extended profile follows the Bell Curve categorization method (Broad info -> Physical -> Social -> Core Psychology -> Outward Behaviors/Speech -> Sexuality -> Fridge/Abilities/Inventory).
-9. Write the Setup Instructions section verbatim from § 3 above, substituting the in-world name and lorebook filename.
-
----
-
-## 7. WHEN `{{user}}` IS UNNAMED OR ABSTRACT
-
-If the world's `{{user}}` is deliberately unnamed (open-ended adventure, "you are an unnamed traveler"), the pipeline still produces `User.md`, but the Persona Description block is minimal and may consist of just the role context (e.g., _"`{{user}}` is a traveler whose identity is established through play. The world treats them as [register / station / faction relationship]."_). Setup Instructions still apply.
-
-The Refiner determines this case during Phase 1. If § 3 of the World Seed has no named protagonist and explicitly states the protagonist is open-ended, the Architect produces a minimal `User.md` and notes the case in the file header.
-
----
-
-## 8. RELATIONSHIP TO THE TIER 2 PROTAGONIST LOREBOOK
-
-`User.md` and `[WorldName]_[ProtagonistName]_Lorebook.json` are **paired artifacts**. They are not redundant:
-
-|                          | Persona Description (in User.md)            | Tier 2 Protagonist Lorebook                                                 |
-| ------------------------ | ------------------------------------------- | --------------------------------------------------------------------------- |
-| **Trigger**              | Always on (every turn while persona active) | Keyword-triggered                                                           |
-| **Content scope**        | Identity floor only                         | Full reference: physical detail, psychology, relationships, powers, history |
-| **Length**               | ≤150 words                                  | No fixed cap; per-entry standard                                            |
-| **Authority**            | Reference floor                             | Authoritative detail                                                        |
-| **Consumed by**          | LLM, every turn                             | LLM, when keys match                                                        |
-| **Configured in ST via** | Paste into Persona Description field        | Link to Lorebook field on the persona                                       |
-
-If content lives in both, prefer the lorebook. The persona description should be the smallest viable identity anchor — anything that can wait for a key to fire belongs in the lorebook.
+1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.[cite: 2]
+2. Set the persona name to: `Alyssa [Family Name]`.[cite: 2]
+3. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` above and paste it into the persona's **Description** field.[cite: 2]
+4. In the same persona editor, find the **Lorebook** field and link `[WorldName]_Alyssa_Lorebook.json` (the Tier 2 protagonist lorebook produced by the pipeline).[cite: 2]
+5. Activate this persona before starting the chat. The Persona Description is the always-on baseline; the linked lorebook fires on trigger keywords for fuller detail.[cite: 2]

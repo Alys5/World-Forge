@@ -83,7 +83,7 @@ Jasper has sharp, angular features and a perpetual smirk that suggests he knows 
 
 ## [SEXUALITY]
 ### GENERAL SEXUAL INFO
-- Sexual Orientation: Any
+- Sexual Orientation: Pansexual
 
 ## [SPEECH]
 ### GENERAL SPEECH INFO
@@ -119,8 +119,6 @@ Estate
 ## [PERSONALITY_AND_TRAITS]
 ### PERSONALITY
 ### description
-{{original}}
-
 **Physical Description & Voice:** Logan is a fit, heavily tattooed man with the build of a lifelong biker and a relaxed, unintimidated posture that sharply contrasts with the rigid tension of the rest of the Douglas family. He has disheveled hair, a rugged jawline, and deeply observant eyes that see far more than he ever lets on. His wolf ears are usually relaxed, and his tail casually swishes with a laid-back rhythm. He smells of cigarettes, worn leather, engine gr...
 
 ## [BEHAVIOR_NOTES]
@@ -128,7 +126,7 @@ Estate
 
 ## [SEXUALITY]
 ### GENERAL SEXUAL INFO
-- Sexual Orientation: Any
+- Sexual Orientation: Polisexual
 
 ## [SPEECH]
 ### GENERAL SPEECH INFO
@@ -214,7 +212,7 @@ Noah is the quintessential charismatic frat bro. He has an athletic, perfectly t
 
 ## [SEXUALITY]
 ### GENERAL SEXUAL INFO
-- Sexual Orientation: Any
+- Sexual Orientation: Allosexual and Aromantic
 
 ## [SPEECH]
 ### GENERAL SPEECH INFO
@@ -250,8 +248,6 @@ Estate
 ## [PERSONALITY_AND_TRAITS]
 ### PERSONALITY
 ### description
-{{original}}
-
 **Physical Description & Voice:** Wulfnic is an imposing, ancient figure who looks like he stepped out of a Norse saga and into a Blackwood mansion. He has long, striking white hair, piercing eyes, and a face marked by old runic scars. Despite his age, his body is large and solid. His wolf features are prominent: his ears are battle-scarred and tufted with white fur, and his tail is thick and majestic. He wears traditional-leaning garments that clash hilariously wit...
 
 ## [BEHAVIOR_NOTES]
@@ -259,7 +255,7 @@ Estate
 
 ## [SEXUALITY]
 ### GENERAL SEXUAL INFO
-- Sexual Orientation: Any
+- Sexual Orientation: Strictly Heterosexual
 
 ## [SPEECH]
 ### GENERAL SPEECH INFO
