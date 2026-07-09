@@ -40,7 +40,7 @@ Erik is a colossal, imposing figure, built like the champion football athlete he
 
 ## [SEXUALITY]
 ### GENERAL SEXUAL INFO
-- Sexual Orientation: Any
+- Sexual Orientation: Strictly Heterosexual
 
 ## [SPEECH]
 ### GENERAL SPEECH INFO
@@ -171,7 +171,7 @@ Malachia is a mountain of muscle, heavily scarred, and built with the lethal, te
 
 ## [SEXUALITY]
 ### GENERAL SEXUAL INFO
-- Sexual Orientation: Any
+- Sexual Orientation: Strictly Heterosexual
 
 ## [SPEECH]
 ### GENERAL SPEECH INFO

@@ -61,7 +61,7 @@
             "depth": 4,
             "role": 0,
             "selective": true,
-            "constant": true,
+            "constant": false,
             "probability": 100,
             "useProbability": false,
             "addMemo": true,
