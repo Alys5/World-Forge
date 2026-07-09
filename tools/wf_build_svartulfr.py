@@ -253,7 +253,7 @@ LOREBOOKS = [
     ("SvartulfrVerse_Urban_Malachia_Lorebook", "Tier2_Malachia_Entries.md", "Malachia", "npc", "Malachia Douglas-Bloodmoon"),
     ("SvartulfrVerse_Urban_Noah_Lorebook", "Tier2_Noah_Entries.md", "Noah", "npc", "Noah Douglas-Bloodmoon"),
     ("SvartulfrVerse_Urban_User_Lorebook", "Tier2_User_Entries.md", "User", "npc", None),
-    ("SvartulfrVerse_Urban_NPC_Roster_Lorebook", "Tier2_NPC_Roster_Entries.md", "NPC_Roster", "director", None),
+    ("SvartulfrVerse_Urban_NPC_Roster_Lorebook", "Tier2_NPC_Roster_Entries.md", "NPC_Roster", "group", None),
     ("SvartulfrVerse_Urban_Angelo_Lorebook", "Tier2_Angelo_Entries.md", "Angelo", "npc", "Visconte Angelo Moreno"),
     ("SvartulfrVerse_Urban_Wulfnic_Lorebook", "Tier2_Wulfnic_Entries.md", "Wulfnic", "npc", "Wulfnic Bloodmoon"),
     ("SvartulfrVerse_Urban_Sandbox_Lorebook", "Tier3_Sandbox_Entries.md", "Sandbox", None, None),

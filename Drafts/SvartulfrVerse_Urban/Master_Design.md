@@ -1,8 +1,8 @@
 ---
 world_mode: sandbox
 intimacy_in_scope: true
-current_phase: 4
-status: EDITOR_APPROVED
+current_phase: 5
+status: PROMPT_ENGINEER_COMPLETE
 ---
 
 | Phase             | Status   | Agent                     |
@@ -17,7 +17,7 @@ status: EDITOR_APPROVED
 | 3.6 Continuity    | SKIPPED  | ArcAuditor (sandbox mode) |
 | 3.7 IntimacyAudit | COMPLETE | IntimacyAuditor (Round 1) |
 | 4. Compiler       | COMPLETE | Compiler                  |
-| 5. PromptEng      | PENDING  | PromptEngineer            |
+| 5. PromptEng      | COMPLETE | PromptEngineer            |
 
 > **World Mode (validated Step 0): `sandbox`.** Tier 3 is the single always-active Sandbox Lorebook; Section 9 is the Sandbox Charter. No arcs, no arc triggers, no CHARACTER_STATE evolution. Derived from World Seed §1 (`World Mode: sandbox`), trim/lowercase clean.
 
