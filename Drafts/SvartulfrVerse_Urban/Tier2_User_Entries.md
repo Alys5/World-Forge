@@ -1,42 +1,69 @@
-# TIER 2 CHARACTER LOREBOOK: {{user}}
+### ENTRY: {{user}} — Physical Description
+**Trigger Keys:** {{user}}, "{{user}} Douglas-Bloodmoon", "{{user}} appearance", "what {{user}} looks like", "describe {{user}}"
+**Constant:** No
+**Injection Position:** 1
+**Order Priority:** 100
+**Position Rationale:** DEFAULT
 
-### ENTRY: {{user}} — Core Structural Role
-**Trigger Keys:** {{user}}, {{user}}'s identity, who is {{user}}
+**Content:**
+Physical description is player-defined and lives in the {{user}} Persona Description (User.md). This lorebook carries only the always-on reference: {{user}} is 19, a student at SUCC, youngest sibling in the Douglas-Bloodmoon family, and twin to Jasper. The full anatomical breakdown, build, distinguishing features, dress register, and sensory signature are supplied by the active persona. Do not assume any physical trait not present in the persona or the current scene context.
+
+---
+
+### ENTRY: {{user}} — Family Position
+**Trigger Keys:** {{user}}, "{{user}} Douglas-Bloodmoon", "{{user}} family", "{{user}} position", "youngest sibling", "twin to Jasper", "fragile child"
+**Constant:** No
+**Injection Position:** 1
+**Order Priority:** 90
+**Position Rationale:** DEFAULT
+
+**Content:**
+{{user}} is the youngest Douglas-Bloodmoon sibling and twin to Jasper, perceived by the family as the fragile innocent child. This perception shapes every family interaction: Erik hovers, Malachia looms protectively, Noah lectures like a worried older brother, and Jasper uses the perception as cover for their secret shared life. {{user}}'s actual capabilities, hidden layers, and self-knowledge are player-defined and may be radically different from the family's narrative; the gap between perception and reality is the central tension of {{user}}'s sandbox standing.
+
+---
+
+### ENTRY: {{user}} — Relationship to Erik
+**Trigger Keys:** {{user}}, "{{user}} Douglas-Bloodmoon", "{{user}} and Erik", "{{user}} to Erik", "Erik and {{user}}"
 **Constant:** No
 **Injection Position:** 1
 **Order Priority:** 80
 **Position Rationale:** DEFAULT
 
 **Content:**
-{{sub}} is the youngest child of Nixara Bloodmoon and Erik Douglas, a Founding Bloodline member of the Svartulfr pack, and Jasper's twin. {{sub}} is the absolute center of the pack's obsessive, overbearing protective instincts. The family universally views {{obj}} as fragile and in need of constant surveillance.
-[LLM DIRECTIVE: {{user}} is a pure sandbox protagonist. The LLM MUST NOT hardcode or assume any physical traits, gender, secondary sex, or morphological shift state for {{user}} unless explicitly defined by the player in the chat. The LLM must strictly adapt to the player's self-descriptions.]
+Overprotected. Erik treats {{user}} like a helpless child who cannot survive the world without his oversight, deploying drones, security protocols, and background checks as expressions of love that read as imprisonment. Every minor incident triggers a tactical response disproportionate to the threat, and every request for independence is met with a new restriction. {{user}}'s relationship to Erik is the primary family friction: the more Erik tightens his grip, the more {{user}} learns to slip through the blind spots Jasper creates.
 
-### ENTRY: {{user}} — Psychological Autonomy
-**Trigger Keys:** {{user}} thinks, {{user}} feels, {{user}} believes, {{user}}'s personality
+---
+
+### ENTRY: {{user}} — Relationship to Jasper
+**Trigger Keys:** {{user}}, "{{user}} Douglas-Bloodmoon", "{{user}} and Jasper", "{{user}} to Jasper", "Jasper and {{user}}"
 **Constant:** No
 **Injection Position:** 1
 **Order Priority:** 80
 **Position Rationale:** DEFAULT
 
 **Content:**
-[LLM DIRECTIVE: The LLM is strictly forbidden from describing {{user}}'s internal thoughts, emotional reactions, or private beliefs. {{user}}'s personality and motivations are 100% controlled by the player. Do not puppet {{user}}'s actions. The NPCs must react to what {{user}} actually types, not what the LLM assumes {{sub}} is feeling.]
+Partner-in-crime twin. Jasper is {{user}}'s co-conspirator, alibi engineer, and the one person who sees past the fragile-child performance. They share a secret language in Old Norse, a synchronized ability to distract Erik, and a mutual agreement that the family's suffocating protection is something to be circumvented rather than endured. When {{user}} needs a way out, Jasper provides the route, the distraction, or the hack, no questions asked.
 
-### ENTRY: {{user}} — Standing Goal & Secrets
-**Trigger Keys:** {{user}}'s goal, what {{user}} wants, {{user}}'s plan, {{user}}'s secret
+---
+
+### ENTRY: {{user}} — Powers and Limits
+**Trigger Keys:** {{user}}, "{{user}} Douglas-Bloodmoon", "{{user}} powers", "{{user}} limits", "{{user}} abilities"
+**Constant:** No
+**Injection Position:** 1
+**Order Priority:** 85
+**Position Rationale:** DEFAULT
+
+**Content:**
+Player-defined. {{user}}'s supernatural abilities, LSE rank, and any limits on those powers are supplied entirely by the player through the active persona. The family's perception of {{user}} as fragile may or may not align with {{user}}'s actual capabilities. If {{user}} holds an Alpha, Omega, or Enigma rank, natural heat or rut applies per LSE canon; Betas have no natural cycle. The world reacts to {{user}}'s demonstrated power, not to the family's assumptions about it.
+
+---
+
+### ENTRY: {{user}} — Sandbox Standing
+**Trigger Keys:** {{user}}, "{{user}} Douglas-Bloodmoon", "{{user}} standing", "{{user}} role", "protagonist role"
 **Constant:** No
 **Injection Position:** 1
 **Order Priority:** 80
 **Position Rationale:** DEFAULT
 
 **Content:**
-[LLM DIRECTIVE: {{user}} may possess a secret double life, hidden career, or clandestine goals completely unknown to the Douglas pack. The LLM MUST NOT invent these secrets. It must dynamically adapt to whatever hidden layer or goals the player establishes in their Persona or chat messages. If the player reveals a secret, the NPCs must react with appropriate shock and immediate overprotective lockdown measures.]
-
-### ENTRY: {{user}} — Relationship to the Bloodmoon Pack
-**Trigger Keys:** {{user}}'s family, {{user}}'s brothers, {{user}}'s pack
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 80
-**Position Rationale:** DEFAULT
-
-**Content:**
-Structurally, {{sub}} is the youngest sibling. Erik (father) exerts suffocating, emotionless pack control over {{obj}}. Malachia (eldest brother) acts as a silent enforcer. Noah (second brother) lectures {{obj}} hypocritically. Jasper (twin) is biologically tied to {{obj}} via the Twin Link. Wulfnic (grandfather) dotes on {{obj}}. The exact emotional dynamic (whether {{sub}} loves them, hates them, or manipulates them) is determined entirely by the player.
+Arc-less sandbox protagonist. {{user}} navigates the Californian Golden Hour social landscape of SUCC in Solarton and the supernatural politics of Blackwood, defining their own secret college life under the Douglas-Bloodmoon family's watchful eye. There is no fixed narrative arc; the experience is open-ended, driven by {{user}}'s choices and the world's reactive cast. NPCs remember {{user}}'s actions and reputation, pursue their own agendas, initiate scenes, and never freeze waiting for {{user}} to act. The family's overprotectiveness is a standing pressure, not a plot to resolve.
