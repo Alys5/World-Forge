@@ -355,6 +355,8 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 
 **Post-compile check (read-only):** if a Python runtime is available, run `python tools/validate_export.py Export/` after the last file is written. It verifies UTF-8 integrity (mojibake markers), strict JSON parse, `{{original}}` presence on both card override fields, position enum range, and UID uniqueness — the exact failure modes of the Compiler's pre-save guards, checked deterministically. It never modifies files. Failures mean the source is wrong: fix and re-compile; do not hand-edit Export/ JSON.
 
+**JanitorAI Exports:** After validation, run `python tools/build_janitor.py <world_name>` to generate the `[WorldName]_JanitorAI_Script.js` using `Janitor_Lorebook_Script.js`, and `python tools/build_bio.py <world_name>` to generate the storefront HTML bio using `Janitor_Bio_Template.html`. The bot profile `JanitorAI_Profile_Group.md` (which maps to `Janitor_Bot_Template.md`) is automatically copied to the Export folder during the main compilation step.
+
 In SillyTavern: import the individual lorebooks — `[WorldName]_World_Lorebook.json` and the per-character lorebooks (plus character intimacy profiles) stay enabled permanently; swap the arc lorebooks (including arc intimacy registers) in and out as the story advances. In **User Settings → Persona Management**, create the persona for this world, paste the Persona Description block from `Export/User.md` into the Description field, and link `[WorldName]_[ProtagonistName]_Lorebook.json` in the Lorebook field.
 
 ---
@@ -443,8 +445,11 @@ For users who find manual application onerous on large worlds, a future pipeline
 ├── templates/
 │   ├── Char_Card_creation.md
 │   ├── Lorebook_creation.md
-│   ├── User_Persona_template.md                   ⭐ {{user}} Persona structural reference
-│   └── Chat_Completion_Preset_template.json   ⭐ new (Phase 5 structural reference)
+│   ├── User_Persona_template.md                   🔹 {{user}} Persona structural reference
+│   ├── Janitor_Bot_Template.md                    🔹 JanitorAI bot profile structure
+│   ├── Janitor_Lorebook_Script.js                 🔹 JanitorAI lorebook to ES6 script structure
+│   ├── Janitor_Bio_Template.html                  🔹 JanitorAI storefront bio layout
+│   └── Chat_Completion_Preset_template.json       🔹 new (Phase 5 structural reference)
 └── Export/
     ├── [CharName]_Card.json
     ├── User.md                                     ⭐ {{user}} Persona Description (Phase 4 passthrough)
@@ -460,6 +465,9 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── Compiler_Log.md
     ├── Prompt_Engineer_Audit.md
     ├── [WorldName]_ChatPreset.json
+    ├── [WorldName]_JanitorAI.md                   🔹 JanitorAI bot profile (Phase 4 passthrough)
+    ├── [WorldName]_JanitorAI_Script.js            🔹 JanitorAI generated lorebook script (Phase 4)
+    ├── [WorldName]_JanitorAI_Bio_Group.html       🔹 JanitorAI storefront bio (Phase 4)
     └── Authors_Note_Suggestions.md
 ```
 
