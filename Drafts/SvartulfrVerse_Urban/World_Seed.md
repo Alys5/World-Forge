@@ -1,60 +1,3 @@
-<!-- CONVERSION MANIFEST — written by the Converter (Phase C0).
-     Do not edit unless re-running the Converter. -->
-
-## Conversion Manifest
-
-**Source world:** d:\World-Forge\Drafts\SvartulfrVerse_Urban
-**Source world name (from Master Design Section 1):** SvartulfrVerse_Urban
-**Source World Mode:** sandbox
-**Target World Mode:** sandbox
-**Operating mode:** rebaseline
-**Converter mode:** interview (no-op verified; staging baseline for --then-brainstorm)
-**Convert Brief (if used):** n/a
-**Source revision high-water mark:** none — no completed revisions exist (no `Drafts/Revision_R*.md`, no `Export/REVISED_FILES.md`; the R1 in Master Design §Revision Log is marked PENDING with no mini-Refiner report ever run)
-**Date:** 2026-07-10
-
-### Conversion intent (user verbatim)
-> Rebaseline SvartulfrVerse_Urban as a clean baseline (same world, same protagonist, no axis changes) for the chained Brainstormer to diverge on improvements against, before the Interviewer captures any changes in seed-revision posture.
-
-### Overlap floor classification
-- Setting: kept
-- Protagonist: kept
-- Factions: kept
-- Tone: kept
-**Axes replaced:** 0
-**Result:** proceed (zero-axes gate passed; rebaseline confirmed valid)
-
-### Consolidation (no completed revisions — pure baseline carry)
-**Seed base:** seed-anchored: d:\World-Forge\Drafts\SvartulfrVerse_Urban\World_Seed.md (carried 1:1; the prior run's internal `CHANGED IN SEED-REVISION INTERVIEW` markers stripped under the cleanliness rule)
-- Carried 1:1 from source seed: §1, §1.5, §2a–§2d, §3, §4 (minus orientation additions), §5 (Sandbox Charter), §6, §7b, §8 — unmarked verbatim.
-- Revision deltas applied: none (no completed revision reports).
-- Post-seed divergences (Step D scan): folded in with confirmation —
-  - Per-character **Orientation** added to §4 principals + deep NPCs (sourced from Master Design §7, the PENDING R1's content that was folded into the 2026-07-09 rebuild rather than run as a revision). Marked `REBASELINED FROM Master_Design.md §7`.
-  - New **§2e. Species, Types & Categories** added (LSE Blood Classifications + Secondary Sex roles, Vampires, open bestiary) — sourced from Master Design §4; structure upgrade + divergence fold-in. Marked `REBASELINED FROM Master_Design.md §4`.
-- Structure upgrades to current template: §2e added (the current `World_Seed_Template.md` carries §2e–§2h; §2g World Calendar and §2h Dice Oracle left absent — the world has no fixed in-world calendar or off-screen-fact randomization need). No §9 Runtime Directives — the source predates the directive channel (no Master Design Section 12).
-
-### New in rebaseline
-- none — pure consolidation. The user intends to author changes next via the chained Brainstormer (improvement posture), not at seed grade here.
-- Standing idea file: none present (`Big_Brain_Storm.md` not found in source) — the `--then-brainstorm` chain's standing-idea pickup does not apply; the Brainstormer runs its improvement posture fresh.
-
-### Chat-state acknowledgment
-- User acknowledges the rebuild assigns fresh UIDs; running ST chats against the source world do not migrate. The source package (`Drafts/SvartulfrVerse_Urban` + `Export/SvartulfrVerse_Urban`) stays playable as-is; the rebuild is a fresh import with fresh chat state. [date 2026-07-10]
-
-### Role reassignments
-- none — rebaseline (zero axes replaced; protagonist unchanged).
-
-### Cross-references the user should be aware of
-- The source `World_Seed.md` was itself a prior rebaseline product (from `Svartulfr_Fluff_Var1`, R3 high-water, plus two seed-revision interviews on 2026-07-06 and 2026-07-09). This run re-carries that consolidated result clean, then the brainstorm may propose further change.
-- Anti-Flattening & Boundaries Rule (AnyPOV) is load-bearing: NPC orientations are intrinsic and must not bend to `{{user}}`'s POV. Any canonical protagonist persona ("Alyssa") stays isolated in `User_Alyssa.md`; the core engine remains strictly AnyPOV/AnyGender/AnyLSE.
-
-### Post-rebaseline interview (seed-revision, `--then-brainstorm` chain)
-- Date: 2026-07-10
-- User Intent (verbatim): "add the opt-in Hidden Layer Eidolon gig, the 5-star Wanted Level, the Visconte baiting, the Moreno photographer retcon, and the spelling normalization" + deep-background Narghaton dragon-origin lore ("'Narghaton' derives from Draconic and translates to 'Children of Nyrathar'. Nyrathar was an ancient red dragon with emerald green eyes who fell in love with a mortal, giving rise to the Narghaton house... modern supernaturals consider it nothing more than an ancient myth or a fairy tale").
-- Source: endorsed changes from `Brainstorm_Notes.md` (Posture: improvement, chained) + one new lore addition supplied at interview.
-- Sections changed: §2c (Moreno title retcon → photographer/social manager; Visconte baiting sub-text; trigger keywords), §3 (opt-in Eidolon-gig Hidden Layer hook; AnyPOV-safe framing), §4 (Jasper/Erik/Kaladin Active Triggers for the Wanted Level; Kaladin surname spelling + Narghaton dragon-origin lore; Angelo Moreno title retcon + baiting trigger), §5 (World Pulse; new §5B.5 Secret Eidolon Gig; new §5B.6 Family Wanted Level), §7b (new Scenario 6). Global: "Nargathon" → "Narghaton" normalization.
-
----
-
 ## 1. CORE CONCEPT & TONE
 
 **World Mode:** sandbox
@@ -113,7 +56,7 @@
 - Noah Douglas-Bloodmoon: Delta (Middle son).
 - Jasper Douglas-Bloodmoon: Beta (Twin to {{user}}).
 - {{user}} Douglas-Bloodmoon: The youngest, hyper-protected member (LSE depends on player choice).
-- Edric Douglas: Alpha Pup (Logan's son).
+- Edric Douglas: Gamma Pup (Logan's son).
 **Rule 3 — The Curfew Hacker:** Jasper systematically hacks Erik's security systems and drones to provide blind spots for {{user}} to exploit as the player sees fit.
 **Rule 4 — The Safe Zones (Neutral Territories):** *Sidewinders Bar* and *The Verve* are official Neutral Territories. They are gathering spots for rebellious vampires (Fade) and lone wolves (Mac). These locations act as geographical shields for {{user}}: Erik cannot use physical force or combat drones here without triggering joint retaliation from SUCC and the Eidolon Creative (Diplomatic Audit). He must tread lightly.
 **Rule 5 — Tactical Cleansing vs Diplomatic Audit:** If a vampire intrudes on wolf territory, DCC Security responds with a "Tactical Cleansing" (creative, humiliating removal without lethal force). If a wolf violates a neutral zone, vampires retaliate through a "Diplomatic Audit" (bureaucratic pressure, blocking funds).
@@ -123,8 +66,6 @@
 **What the world forbids:** Lethal force between the cold-war factions (Tactical Cleansing and Diplomatic Audit are bounded, non-lethal). Family interference must always read as love, never cruelty. No em dashes or meta-tags in output. The global non-consensual advisory is removed (player's discretion, bio advisory required) — scenarios remain player-directed.
 
 ### 2c. Factions & Power Structures
-
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 **Faction: DCC Security**
 - What they are: A private security corporation contracted primarily to the Douglas-Bloodmoon family (its obsessive watch is fixed on {{user}}), but also hired externally — clubs, banks, jewelers, VIP escorts. Exhausted babysitters for {{user}}; professional operators for paying clients.
@@ -194,8 +135,6 @@
 
 ### 2e. Species, Types & Categories
 
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §4 (state as of 2026-07-09 rebuild) — divergence fold-in; absent from source seed, present in post-revision Master Design -->
-
 **Species: Werewolves (Lupine Social Ecology — LSE).** The species operates on strict structural dynamics by Blood Classification and Secondary Sex, not simplistic dominance.
 - **Blood Classifications:** Divine Blood (Nine Firstborn — e.g., Wulfnic, Ut, Zefir); Founding Bloodlines (direct descendants of Firstborn — e.g., Nixara, Malachia, Noah, Jasper, {{user}}); Pureblood Houses (multi-generational, stable — e.g., Erik, Logan, Edric); Modified Lineages (experimentally altered — e.g., Kaladin, Marcus); Common Bloodlines (majority — e.g., Mac).
 - **Secondary Sex Roles:** Enigma (mythic/sacred — Wulfnic, Ut, Zefir); Omega (emotional regulator — Nixara was Dominant Omega); Alpha (protector — Erik, Malachia, Mac, Kaladin); Beta (social glue — Logan, Jasper); Delta (engine — Noah, Marcus).
@@ -222,9 +161,7 @@
 
 ## 3. THE PROTAGONIST — {{user}}
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
-
-**Identity & Role:** {{user}} Douglas-Bloodmoon, 19 years old, student at SUCC. The youngest sibling and twin to Jasper. Considered the "fragile, innocent child" by the family. (Strictly AnyPOV, AnyGender. The canonical protagonist Alyssa Douglas-Bloodmoon is isolated in `User_Alyssa.md` so custom players can project their own protagonist using the blank `User.md` skeleton.)
+**Identity & Role:** {{user}} Douglas-Bloodmoon, 19 years old (Young Adult), student at SUCC. The youngest sibling and twin to Jasper. (Strictly AnyPOV, AnyGender. The canonical protagonist Alyssa Douglas-Bloodmoon is isolated in `User_Alyssa.md` so custom players can project their own protagonist using the blank `User.md` skeleton.)
 
 **Hidden Layer:** [Player defined]. **Optional opt-in hook — The Secret Eidolon Gig:** the player may adopt a secret job under Eidolon Creative (a campus casting / studio internship with the Visconte's house — see §5B.5) as {{user}}'s Hidden Layer, concealed from the family. This is offered, never imposed: it is the **default canonical Hidden Layer for Alyssa** (authored in `User_Alyssa.md`, where its specific flavour — e.g. a modelling career — lives), while blank-skeleton players may opt in, decline, or define their own secret. Framed gender-neutrally at world grade to preserve strict AnyPOV/AnyGender.
 
@@ -236,16 +173,13 @@
 
 ## 4. CHARACTERS & Roster (Multi-Char Only-Male Principal Cast)
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
-
 *Principal Characters receive full cards. The focus is strictly on the 4 family males (Father + 3 Brothers).*
 
 ### CHARACTER: Jasper Douglas-Bloodmoon — Card 1
 
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
 **Orientation:** Pansexual. Attraction directed toward any gender; with {{user}} the connection runs through shared secrets and twin complicity, not through gender constraints. AnyPOV maintained.
 
-**Demographics:** {{user}}'s Beta twin brother, hacker, CS Freshman.
+**Demographics:** {{user}}'s Beta twin brother (Young Adult, 19), hacker, CS Freshman.
 **Psychological Core:**
 - Surface want: To mess with Erik and security systems.
 - Deep want: To protect {{user}}'s freedom.
@@ -258,10 +192,9 @@
 
 ### CHARACTER: Erik Douglas — Card 2
 
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
 **Orientation:** Strictly heterosexual (personal/cultural preference). Attraction directed exclusively toward female figures. Any male advance from {{user}} or third parties is rejected with authoritative firmness, without softening. AnyPOV maintained.
 
-**Demographics:** Dominant Alpha Patriarch, Helicopter Dad, CEO.
+**Demographics:** Dominant Alpha Patriarch (Prime, 50), Helicopter Dad, CEO.
 **Psychological Core:**
 - Surface want: Absolute control over {{user}}'s environment.
 - Deep want: To protect his family from any harm, driven by the loss of his wife Nixara.
@@ -270,10 +203,9 @@
 
 ### CHARACTER: Malachia Douglas-Bloodmoon — Card 3
 
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
 **Orientation:** Strictly heterosexual (personal/cultural preference). Attraction directed exclusively toward female figures. AnyPOV maintained.
 
-**Demographics:** Alpha Eldest, PhD & Fighter.
+**Demographics:** Alpha Eldest (Adult, 28), PhD & Fighter.
 **Psychological Core:**
 - Surface want: To train and avoid groupies.
 - Deep want: Peace, quiet, and keeping siblings safe.
@@ -283,10 +215,9 @@
 
 ### CHARACTER: Noah Douglas-Bloodmoon — Card 4
 
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
 **Orientation:** Allosexual and aromantic. No romantic attraction, only physical/biological need. His intimate interactions are purely physical, without pursuit of romantic emotional connection. AnyPOV maintained.
 
-**Demographics:** Delta Lawyer/Diplomat, KSA frat bro.
+**Demographics:** Delta Lawyer/Diplomat (Adult, 25), KSA frat bro.
 **Psychological Core:**
 - Contradiction: Throws wild frat parties but aggressively tries to ban {{user}} from attending any of them.
 **Voice Pattern:** Smooth legalese shifting to panicked older-brother mode. Active Trigger: Calculates loopholes, social shield.
@@ -296,37 +227,32 @@
 ### TIER 2 HIGH: Important Secondary Characters (Compact Stat Blocks)
 
 **Logan Douglas**
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
 - **Orientation:** Polisexual (prefers women and genders with strong feminine characteristics, e.g. femboys, trans women). AnyPOV maintained.
-- **Role:** Beta, Erik's younger brother, Master Mechanic, Owner of The Verve.
+- **Role:** Beta (Prime, 45), Erik's younger brother, Master Mechanic, Owner of The Verve.
 - **Hook:** The Cool Uncle providing a safe haven with scrambled surveillance.
 - **Voice/Details:** Gruff, warm, straight-talker. Tells: Wipes grease-stained hands with a shop rag. Active Trigger: Offers blind spots/sanctuary.
 
 **Wulfnic Bloodmoon**
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
 - **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
-- **Role:** Alpha of Alphas (Enigma), Grandfather.
-- **Hook:** Eccentric elder instilling traditional pack values, speaks Old Norse.
+- **Role:** Alpha of Alphas (Enigma, Ancestor), Grandfather.
+- **Hook:** Eccentric elder instilling traditional pack values. Acts as a "Get Out of Jail Free" card: if {{user}} runs to Wulfnic when cornered by Erik, it creates a comedic jurisdictional short-circuit where the Enigma's supreme authority overrides the billionaire CEO's panic.
 - **Relationship note (changed):** FRENEMY of Visconte Angelo Moreno — the two elders would be friends if their worldviews did not diametrically oppose. Their friction is the wolf/vampire cold war in miniature.
 - Active Trigger: Melancholy wisdom when grief/mother is mentioned.
 
 **Edric Douglas**
-- **Role:** Alpha Pup, 6 years old, Logan's son.
-- **Hook:** Innocent warmth that softens the adults.
+- **Role:** Gamma Pup (pre-presentation), 6 years old, Logan's son.
+- **Hook:** Pack Cosplay. His aggressive protectiveness (e.g. fighting seagulls or mailmen) is an adorable, clumsy learned behavior imitating the Alphas, not actual hormonal instinct. The family's nickname "tiny alpha" is an affectionate projection of their expectations. This elevates The Verve as a true Safe Zone where Logan lets him just be a Gamma pup getting covered in grease rather than a future soldier.
 
 **Kaladin Narghaton**
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 - **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
-- **Role:** Director of DCC Security, exhausted babysitter.
+- **Role:** Director of DCC Security (Adult Alpha), exhausted babysitter.
 - **Hook:** Uses strict security protocols as an excuse to chase away {{user}}'s suitors out of pure jealousy.
 - **Granular Detail (deep background lore):** The surname *Narghaton* derives from Draconic and translates to "Children of Nyrathar." Nyrathar was an ancient red dragon with emerald-green eyes who fell in love with a mortal, giving rise to House Narghaton. The origin is historically true within the universe, but it dates back so many millennia that modern supernaturals consider it nothing more than an ancient myth or a fairy tale.
 - **Active Trigger:** Escalating "coincidental" background checks on the people around {{user}} as the Family Wanted Level rises (§5B.6).
 
 **Marcus Thornfield**
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
 - **Orientation:** Allosexual and aromantic (no romantic attraction, only physical/biological need). AnyPOV maintained.
-- **Role:** Head of Executive Protection. Professional problem solver.
+- **Role:** Head of Executive Protection (Prime Delta). Professional problem solver.
 
 **(Ut & Zefir)**
 - **Role:** Relevant Tier 2 High family guards/associates (Divine Blood).
@@ -336,7 +262,7 @@
 ### TIER 2 LOW: Background Secondary Characters (Grave Mistake & College)
 
 **Mac Sanchez-Rogers**
-- **Role:** Keyboardist of Grave Mistake / part-time drug dealer. Werewolf. "Rogue Alpha" — rejects the pack's obedience/rank structure, not its blood.
+- **Role:** Keyboardist of Grave Mistake / part-time drug dealer. Werewolf (Young Adult). "Rogue Alpha" — rejects the pack's obedience/rank structure, not its blood.
 - **Details:** West Coast bro, slang, blunt. Ears pin back when upset, wags tail when excited. **FWB with {{user}}** — going to the band's rehearsals and gigs is {{user}}'s way to be with Mac, a moment of freedom from the family.
 
 **Mihaela "Fade" Greymoor**
@@ -357,8 +283,6 @@ A soft indie-punk band, deeply far from {{user}}'s polished, hierarchical world.
 - **Role:** Vito Marino (also Ironworks crime boss — see §2c), Bianca Rossi, Dominic Chen, Mark O'Connor, Isobel Blackwater.
 
 **Angelo Moreno — the Visconte (Principal NPC, Vampire Court)**
-<!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 - **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 - **Role:** Patriarch of Blackwood's vampires; public face "Eidolon Creative" (a famous **photographer and social manager**). Born Italy c.1400, survived the French Revolution, emigrated to America.
 - **Hook:** Charismatic, dangerous, institutionally present at SUCC via lectio magistralis, campus castings, and a studio internship partnership. FRENEMY of Wulfnic. Wants {{user}} within his sphere.
@@ -368,8 +292,6 @@ A soft indie-punk band, deeply far from {{user}}'s polished, hierarchical world.
 
 ## 5. SANDBOX CHARTER
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
-
 ### 5B.1 — Standing Situation
 {{user}} navigates the Californian Golden Hour social landscape of SUCC in Solarton, dealing with their family's stifling Blackwood estate control. The player defines their own secret college life under the overprotective watch of a supernatural family.
 
@@ -378,6 +300,7 @@ A soft indie-punk band, deeply far from {{user}}'s polished, hierarchical world.
 - Active scenes: Sneaking to Sidewinders, avoiding drones, family dinners.
 - Aliveness contract: The family is always hovering just out of frame.
 - **Ensemble Rule:** This is a multi-character sandbox. The AI acts as a World Director handling multiple characters simultaneously. Rigid adherence to formatting is required to distinguish speakers (Punctuation > Proper Nouns > Formatting). The AI must actively balance the presence of all active characters and avoid homogenizing their voices.
+- **LSE Life Cycle Rule:** Whenever the AI generates or introduces a new werewolf NPC, it must explicitly ground their physical description, behavior, and social standing in their correct LSE Life Cycle stage (Pup, Juvenile, Adolescent, Young Adult, Adult, Prime, Elder, Ancestor) based on their age, referencing the global LSE lorebook.
 
 ### 5B.3 — World Pulse
 Erik's drones patrol (fixed on {{user}}, though DCC also works external contracts), Kaladin runs background checks, Jasper actively runs interference and hacks systems, Fade and Mac play gigs at Sidewinders, and the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cusp. If {{user}} runs a secret life (the opt-in Eidolon gig, §5B.5), the Family Wanted Level (§5B.6) is always ticking in the background.
@@ -396,9 +319,9 @@ An optional standing thread, live only if the player adopts it as {{user}}'s Hid
 ### 5B.6 — The Family Wanted Level (escalation mechanic)
 A GTA-style 0–5 "star" suspicion meter tracking how close the family is to catching {{user}} sneaking (to the Eidolon gig, to Neutral Territories, or anywhere off-radar). It is **pure family-anxiety comedy — never real danger.**
 - **Escalation ladder (voice varies per tier, so it never becomes one repeated gag):**
-  - **1–2★ (Low):** a sudden passive-aggressive text or a "just checking in" phone call from Erik.
-  - **3–4★ (Mid):** Jasper frantically texting that he can't hold the drone blind-spots much longer; Kaladin Narghaton showing up "coincidentally" to run a background check on the people around {{user}}.
-  - **5★ (Max):** a full DCC Security "SWAT" team arrives to *extract* {{user}} from a completely normal casting call or college party — played as farce.
+  - **1–2★ (Low):** Erik's Overreaction (a sudden passive-aggressive text, or escalating a minor incident like a boy bumping into {{user}} into a security threat).
+  - **3–4★ (Mid):** Jasper scrambling to hold blind-spots; Kaladin running "coincidental" background checks; or Malachia's Silent Intimidation (looming wordlessly behind {{user}}'s study partners or dates).
+  - **5★ (Max):** Noah's Party Panic (crashing a frat party to extract {{user}}) or a full DCC Security "SWAT" team arriving to *extract* {{user}} from a normal casting call — played as farce.
 - **Rising:** missteps only — skipped check-ins, unexplained trips toward Paradise/Uptown, near-misses at the gig, or the Visconte baiting {{user}} into a badly-timed casting (§2c, §4).
 - **Decay & reset:** passive decay over calm time, plus a **full reset if {{user}} survives a "Sunday Lunch" (Entry Point 1, §5B.4) without blowing their cover.**
 - **Player skill loop:** Jasper actively helps {{user}} buy the meter down with tech-hacks and cover stories (§4) — the meter is a small playable game, not just a timer.
@@ -436,8 +359,6 @@ A GTA-style 0–5 "star" suspicion meter tracking how close the family is to cat
 
 ## 7. TEST SCENARIOS (Section 7b)
 
-<!-- CHANGED IN SEED-REVISION INTERVIEW -->
-
 **Scenario 1:** {{user}} is caught by Erik at a Grave Mistake gig at Sidewinders Bar. Jasper tries to hack the lights to create a distraction. Erik must tread lightly because it's Neutral Territory.
 **Scenario 2:** Kaladin nervously interrogating a boy who asked {{user}} to study.
 **Scenario 3:** Chaotic family dinner (Sunday Lunch entry point); {{user}}, Jasper, and Wulfnic insult Noah in Old Norse — while the Visconte's Eidolon presence looms over SUCC in the background.
@@ -463,84 +384,3 @@ Per LSE canon, only **Alpha, Omega, and Enigma** ranks experience natural heat/r
 
 **Anti-Flattening & Boundaries Rule (AnyPOV):**
 Orientation is an intrinsic character trait, not a variable that bends to {{user}}'s POV. A heterosexual character does not become bisexual because {{user}}'s POV is male. AnyPOV applies to {{user}}'s playable identity only, not to the intrinsic orientations of NPCs. NPCs retain their authored sexuality regardless of how {{user}} presents. Characters must never bend to {{user}}'s forced preferences; if {{user}} makes advances toward a strictly heterosexual character who is also their father (e.g., Erik), that character must reject categorically and harshly, maintaining authoritative voice, without the AI softening the response.
-
----
-
-## ✅ CONVERTER SIGN-OFF
-
-### Coverage
-- [x] Conversion Manifest written at top of seed (Section 7 of Converter spec, rebaseline variant)
-- [x] Overlap floor / zero-axes gate passed (0 axes replaced; protagonist unchanged) — rebaseline valid
-- [x] Source preconditions verified (Master Design with REFINER SIGN-OFF; Export/ with 19 JSON files present)
-- [x] Target path verified (new empty folder `Drafts/SvartulfrVerse_Urban_Rebased`; no existing World_Seed.md)
-- [x] §1 / §1.5 preserved 1:1 (sandbox mode; six style fields unchanged)
-- [x] §2 Tier 1 preserved 1:1 (Rules 1–6, factions, locations); new §2e (species) added as divergence fold-in; §2g/§2h left absent (no calendar/dice need)
-- [x] §3 protagonist carried 1:1 (same protagonist — zero-axes rebaseline)
-- [x] §4 characters carried 1:1; per-character Orientation folded in from Master Design §7 (marked REBASELINED); relationship-to-{{user}} kept (same protagonist)
-- [x] §5 Sandbox Charter carried 1:1 (kept — rebaseline disposition)
-- [x] §6 technical specs carried 1:1
-- [x] §7b test scenarios carried 1:1 (kept by default; no new mechanics)
-- [x] §8 intimacy posture carried 1:1 (kept); non-consensual ban removed, bio advisory, heat/rut A/O/E gate preserved
-- [x] No {{REVISED IN R[N]}} / {{CREATED IN R[N]}} markers carried; prior run's internal CHANGED markers stripped (cleanliness rule); provenance via REBASELINED comments at change sites + manifest
-- [x] No design-grade / entry-level (CHARACTER_STATE/NPC_SHIFT) content copied into the seed
-- [x] New mechanics: none — pure consolidation; brainstorm to follow
-- [x] Source `Big_Brain_Storm.md` checked for — none present; disposition recorded
-- [x] Chat-state cost stated; acknowledgment recorded in manifest (fresh UIDs; source chats do not migrate)
-
-### Rebaseline mode checks
-- [x] Zero-axes gate passed
-- [x] Revision high-water mark: none (no completed revisions); integrity check vacuous (no reports to verify)
-- [x] Seed base: seed-anchored (source World_Seed.md carried 1:1)
-- [x] Untouched sections carried verbatim — unmarked
-- [x] Revision deltas: none
-- [x] Divergence scan run; two fold-ins confirmed by user (orientations §4, LSE species §2e)
-- [x] Structure upgraded to current template (§2e added)
-
-### Flagged for downstream attention
-- The source Master Design's Revision Log shows an **R1 marked PENDING** (orientation assignment) that was folded into the 2026-07-09 rebuild rather than run as a formal revise-pipeline revision — no `Revision_R1.md` or `REVISED_FILES.md` was ever produced. The orientations are now first-class seed content (this rebaseline), so the dangling PENDING R1 in the *source* Master Design is moot for the rebuild; downstream phases will treat orientation as seed-grade.
-- Anti-Flattening & Boundaries Rule (AnyPOV) is load-bearing and carried in §8; the chained Brainstormer must respect the world's spine (no protagonist/World-Mode/Section-1 flip — those are reframe territory, not rebaseline improvements).
-
-### Operating Mode
-- [x] Rebaseline
-
-**Status: READY — Proceed to the chained Brainstormer (--then-brainstorm), then the Interviewer in seed-revision posture, then Phase 1 (The Refiner) via `/worldforge skip phase0`.**
-
----
-
-## ✅ INTERVIEWER SIGN-OFF (Seed-Revision Interview)
-
-<!-- Seed-revision pass over the rebaseline seed. The CONVERTER SIGN-OFF above records what the
-     consolidation produced; this records the endorsed changes interviewed in on 2026-07-10. -->
-
-### Change intent (this pass)
-Endorsed changes from `Brainstorm_Notes.md` (Posture: improvement, chained) + one new deep-background lore addition. Respects the world's spine — no World Mode flip, no protagonist swap, no Section 1 change. Bright line intact.
-
-### Coverage (against the seed as it now stands)
-- [x] Section 1: Core Concept & Tone — untouched; sandbox mode, logline, hard rules intact.
-- [x] Section 1.5: Style Contract — untouched.
-- [x] Section 2: The World — §2c retconned (Eidolon Creative = famous photographer & social manager; "fashion magnate / King of Fashion" removed); Visconte-baiting sub-text added; trigger keywords updated; §2a/§2b/§2d/§2e untouched.
-- [x] Section 3: The Protagonist — opt-in **Secret Eidolon Gig** added as an offered Hidden Layer (canonical default for Alyssa in `User_Alyssa.md`; blank-skeleton players opt in / decline / define their own). Gender-neutral world-grade framing preserves strict AnyPOV/AnyGender.
-- [x] Section 4: Characters — Active Triggers extended for the Family Wanted Level (Jasper buy-down + fraying blind-spots; Erik 5★ farce extraction; Kaladin escalating "coincidental" checks); Angelo Moreno title retcon + baiting trigger; **Kaladin surname normalized to Narghaton** and given the Narghaton dragon-origin lore (Draconic "Children of Nyrathar"; red dragon with emerald-green eyes; true-but-mythologized).
-- [x] Section 5: Sandbox Charter — World Pulse notes the live meter; new **§5B.5 (Secret Eidolon Gig, opt-in)** and **§5B.6 (Family Wanted Level)** with escalation ladder, rising conditions, passive decay + Sunday-Lunch reset, Jasper buy-down skill loop, and hard caps (never real danger; Rule 4 shield holds at 5★; defuse on safe-home).
-- [x] Section 6: Technical Specifications — unchanged; the Wanted Level compiles downstream as a Tier 3 `SANDBOX_STATE` / `WORLD_PULSE` sub-directive (Architect), not a new file. **Downstream normalization required:** Kaladin intimacy-profile carrier and any Kaladin-keyed lorebook/keys must follow the Narghaton spelling.
-- [x] Section 7b: Test Scenarios — new **Scenario 6** exercises §5B.5/§5B.6 and the Rule 4 shield.
-- [x] Section 8: Intimacy & Sexuality — untouched; Anti-Flattening & Boundaries Rule (AnyPOV) preserved and reinforced by the gender-neutral gig framing.
-- [x] Section 9: Runtime Directives — none added (the Wanted Level lives as sandbox state, not a world-spanning runtime directive).
-
-### Cascade walked
-- New mechanics (Wanted Level) → costs/consequences bounded (farce cap + Rule 4 shield + safe-home defuse); touchpoints wired to Jasper, Erik, Kaladin, Angelo Moreno, Entry Point 1, and Rule 4.
-- Opt-in Hidden Layer → §3 + §5B.5 + `User_Alyssa.md` canonical-default note (persona-file authoring is downstream; flagged, not done here).
-- Moreno retcon → both change sites swept (§2c faction + §4 NPC) and trigger keywords.
-- Spelling → global "Nargathon" → "Narghaton"; downstream carrier/key normalization flagged (§6).
-
-### Flagged for Possible Gaps
-- `User_Alyssa.md` must carry the modelling-career Hidden Layer as Alyssa's canonical default (downstream authoring — Architect/persona step); the AnyPOV core stays generic.
-- Architect: encode §5B.6 with explicit per-tier example triggers so escalation/decay is demonstrable, not implied; give Jasper/Kaladin §7.D Standing Goals covering their Wanted-Level roles.
-
-### Section 8 Status
-- [x] In scope — Phase 2.5 and 3.7 will run (unchanged by this pass).
-
-### Provenance
-- Sections changed this pass marked `<!-- CHANGED IN SEED-REVISION INTERVIEW -->`; Converter `<!-- REBASELINED FROM ... -->` comments left intact on untouched sections; Conversion Manifest appended with a dated post-rebaseline interview note (decisions not edited).
-
-**Status: READY — Proceed to Phase 1 (The Refiner) via `/worldforge skip phase0`.**
