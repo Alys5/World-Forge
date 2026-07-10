@@ -1,9 +1,33 @@
 import os
 import re
 import json
+import glob
+import sys
+import sys
 
-WORLD = "SvartulfrVerse_Urban"
 BASE = os.getcwd()
+
+
+def discover_world_name():
+    """Auto-detect world name from Drafts directory by finding the * _World_Lorebook pattern."""
+    draft_dirs = glob.glob(os.path.join(BASE, "Drafts", "*"))
+    for d in draft_dirs:
+        if os.path.isdir(d):
+            world_name = os.path.basename(d)
+            # Verify it has the expected structure
+            if os.path.exists(os.path.join(d, "Tier1_World_Entries.md")):
+                return world_name
+    raise RuntimeError("Could not auto-detect world name from Drafts/*")
+
+
+def get_world_name():
+    """Get world name from command line argument or auto-discover."""
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    return discover_world_name()
+
+
+WORLD = get_world_name()
 DRAFTS = os.path.join(BASE, "Drafts", WORLD)
 EXPORT = os.path.join(BASE, "Export", WORLD)
 TEMPLATES = os.path.join(BASE, "templates")
@@ -185,9 +209,9 @@ ALIAS_EXTRAS = {
     "Erik Douglas": ["Erik", "Dad", "Patriarch"],
     "Malachia Douglas-Bloodmoon": ["Malachia"],
     "Noah Douglas-Bloodmoon": ["Noah"],
-    "Visconte Angelo Moreno": ["Angelo", "Moreno", "Visconte", "Eidolon"],
+"Visconte Angelo Moreno": ["Angelo", "Moreno", "Visconte", "Eidolon"],
     "Wulfnic Bloodmoon": ["Wulfnic", "afi"],
-    "Kaladin Nargathon": ["Kaladin"],
+    "Kaladin Narghaton": ["Kaladin"],
     "Mac Sanchez-Rogers": ["Mac"],
     "Mihaela Fade Greymoor": ["Fade", "Mihaela"],
     "Logan Douglas": ["Logan"],
@@ -247,23 +271,23 @@ def build_manifest(internal_name, kind, entries_with_uid, single_display):
 # ---------------------------------------------------------------------------
 
 LOREBOOKS = [
-    ("SvartulfrVerse_Urban_World_Lorebook", "Tier1_World_Entries.md", "World", None, None),
-    ("SvartulfrVerse_Urban_Jasper_Lorebook", "Tier2_Jasper_Entries.md", "Jasper", "npc", "Jasper Douglas-Bloodmoon"),
-    ("SvartulfrVerse_Urban_Erik_Lorebook", "Tier2_Erik_Entries.md", "Erik", "npc", "Erik Douglas"),
-    ("SvartulfrVerse_Urban_Malachia_Lorebook", "Tier2_Malachia_Entries.md", "Malachia", "npc", "Malachia Douglas-Bloodmoon"),
-    ("SvartulfrVerse_Urban_Noah_Lorebook", "Tier2_Noah_Entries.md", "Noah", "npc", "Noah Douglas-Bloodmoon"),
-    ("SvartulfrVerse_Urban_User_Lorebook", "Tier2_User_Entries.md", "User", "npc", None),
-    ("SvartulfrVerse_Urban_NPC_Roster_Lorebook", "Tier2_NPC_Roster_Entries.md", "NPC_Roster", "group", None),
-    ("SvartulfrVerse_Urban_Angelo_Lorebook", "Tier2_Angelo_Entries.md", "Angelo", "npc", "Visconte Angelo Moreno"),
-    ("SvartulfrVerse_Urban_Wulfnic_Lorebook", "Tier2_Wulfnic_Entries.md", "Wulfnic", "npc", "Wulfnic Bloodmoon"),
-    ("SvartulfrVerse_Urban_Sandbox_Lorebook", "Tier3_Sandbox_Entries.md", "Sandbox", None, None),
-    ("SvartulfrVerse_Urban_Kaladin_Intimacy_Profile", "Tier2_Kaladin_Intimacy_Profile.md", "Kaladin_Intimacy_Profile", "npc", "Kaladin Nargathon"),
-    ("SvartulfrVerse_Urban_Jasper_Intimacy_Profile", "Tier2_Jasper_Intimacy_Profile.md", "Jasper_Intimacy_Profile", "npc", "Jasper Douglas-Bloodmoon"),
-    ("SvartulfrVerse_Urban_Erik_Intimacy_Profile", "Tier2_Erik_Intimacy_Profile.md", "Erik_Intimacy_Profile", "npc", "Erik Douglas"),
-    ("SvartulfrVerse_Urban_Noah_Intimacy_Profile", "Tier2_Noah_Intimacy_Profile.md", "Noah_Intimacy_Profile", "npc", "Noah Douglas-Bloodmoon"),
-    ("SvartulfrVerse_Urban_Malachia_Intimacy_Profile", "Tier2_Malachia_Intimacy_Profile.md", "Malachia_Intimacy_Profile", "npc", "Malachia Douglas-Bloodmoon"),
-    ("SvartulfrVerse_Urban_NPC_Intimacy_Roster", "Tier2_NPC_Intimacy_Roster.md", "NPC_Intimacy_Roster", "npc", None),
-    ("SvartulfrVerse_Urban_Sandbox_Intimacy_Register", "Tier3_Sandbox_Intimacy_Register.md", "Sandbox_Intimacy_Register", None, None),
+    (f"{WORLD}_World_Lorebook", "Tier1_World_Entries.md", "World", None, None),
+    (f"{WORLD}_Jasper_Lorebook", "Tier2_Jasper_Entries.md", "Jasper", "npc", "Jasper Douglas-Bloodmoon"),
+    (f"{WORLD}_Erik_Lorebook", "Tier2_Erik_Entries.md", "Erik", "npc", "Erik Douglas"),
+    (f"{WORLD}_Malachia_Lorebook", "Tier2_Malachia_Entries.md", "Malachia", "npc", "Malachia Douglas-Bloodmoon"),
+    (f"{WORLD}_Noah_Lorebook", "Tier2_Noah_Entries.md", "Noah", "npc", "Noah Douglas-Bloodmoon"),
+    (f"{WORLD}_User_Lorebook", "Tier2_Protagonist_Entries.md", "User", "npc", None),
+    (f"{WORLD}_NPC_Roster_Lorebook", "Tier2_NPC_Roster_Entries.md", "NPC_Roster", "group", None),
+    (f"{WORLD}_Angelo_Lorebook", "Tier2_Angelo_Entries.md", "Angelo", "npc", "Visconte Angelo Moreno"),
+    (f"{WORLD}_Wulfnic_Lorebook", "Tier2_Wulfnic_Entries.md", "Wulfnic", "npc", "Wulfnic Bloodmoon"),
+    (f"{WORLD}_Sandbox_Lorebook", "Tier3_Sandbox_Entries.md", "Sandbox", None, None),
+    (f"{WORLD}_Kaladin_Intimacy_Profile", "Tier2_Kaladin_Intimacy_Profile.md", "Kaladin_Intimacy_Profile", "npc", "Kaladin Narghaton"),
+    (f"{WORLD}_Jasper_Intimacy_Profile", "Tier2_Jasper_Intimacy_Profile.md", "Jasper_Intimacy_Profile", "npc", "Jasper Douglas-Bloodmoon"),
+    (f"{WORLD}_Erik_Intimacy_Profile", "Tier2_Erik_Intimacy_Profile.md", "Erik_Intimacy_Profile", "npc", "Erik Douglas"),
+    (f"{WORLD}_Noah_Intimacy_Profile", "Tier2_Noah_Intimacy_Profile.md", "Noah_Intimacy_Profile", "npc", "Noah Douglas-Bloodmoon"),
+    (f"{WORLD}_Malachia_Intimacy_Profile", "Tier2_Malachia_Intimacy_Profile.md", "Malachia_Intimacy_Profile", "npc", "Malachia Douglas-Bloodmoon"),
+    (f"{WORLD}_NPC_Intimacy_Roster", "Tier2_NPC_Intimacy_Roster.md", "NPC_Intimacy_Roster", "npc", None),
+    (f"{WORLD}_Sandbox_Intimacy_Register", "Tier3_Sandbox_Intimacy_Register.md", "Sandbox_Intimacy_Register", None, None),
 ]
 
 

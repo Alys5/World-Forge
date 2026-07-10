@@ -1,6 +1,53 @@
-import os, json, re
+import os
+import json
+import re
+import glob
+import sys
 
-EXPORT = r"D:\World-Forge\Export\SvartulfrVerse_Urban"
+BASE = os.getcwd()
+
+
+def discover_export_world_name():
+    """Auto-detect world name from Export directory by finding *_World_Lorebook.json.
+    Prefers worlds with more complete structure (has Sandbox_Lorebook)."""
+    export_dirs = glob.glob(os.path.join(BASE, "Export", "*"))
+    candidates = []
+    for d in export_dirs:
+        if os.path.isdir(d):
+            world_name = os.path.basename(d)
+            files = os.listdir(d)
+            has_world = any(f.endswith("_World_Lorebook.json") for f in files)
+            has_sandbox = any(f.endswith("_Sandbox_Lorebook.json") for f in files)
+            if has_world:
+                # Score: higher = more complete
+                score = (2 if has_sandbox else 1)
+                candidates.append((score, world_name, d))
+    if not candidates:
+        raise RuntimeError("Could not auto-detect world name from Export/*")
+    # Sort by score descending, prefer more complete worlds
+    candidates.sort(reverse=True)
+    return candidates[0][1]
+
+
+def find_lorebook_file(export_dir, pattern):
+    """Find a lorebook file matching the pattern (e.g., '*_World_Lorebook.json')."""
+    matches = glob.glob(os.path.join(export_dir, pattern))
+    if not matches:
+        raise FileNotFoundError(f"No file matching {pattern} in {export_dir}")
+    if len(matches) > 1:
+        raise RuntimeError(f"Multiple files match {pattern} in {export_dir}: {matches}")
+    return matches[0]
+
+
+def get_world_name():
+    """Get world name from command line argument or auto-discover."""
+    if len(sys.argv) > 1:
+        return sys.argv[1]
+    return discover_export_world_name()
+
+
+WORLD_NAME = get_world_name()
+EXPORT_DIR = os.path.join(BASE, "Export", WORLD_NAME)
 errors = []
 warns = []
 
@@ -8,7 +55,7 @@ SNAKE = ["case_sensitive", "match_whole_words", "use_regex",
          "characterFilterNames", "characterFilterExclude", "enabled"]
 
 def check_lb(path):
-    with open(path, encoding="utf-8") as f:
+    with open(path, encoding="utf-8-sig") as f:
         data = json.load(f)
     entries = data.get("entries", {})
     # key/uid parity
@@ -44,7 +91,7 @@ def check_lb(path):
                         errors.append(f"{os.path.basename(path)} npc {n['id']} facet {fk} -> missing uid {fuid}")
 
 def check_card(path):
-    with open(path, encoding="utf-8") as f:
+    with open(path, encoding="utf-8-sig") as f:
         data = json.load(f)
     d = data["data"]
     if not d.get("system_prompt", "").startswith("{{original}}"):
@@ -72,8 +119,8 @@ def pos_check(path, expected):
         if e["position"] != expected:
             errors.append(f"{os.path.basename(path)} uid {e['uid']} pos {e['position']} != {expected} ({e.get('comment')})")
 
-for fn in os.listdir(EXPORT):
-    p = os.path.join(EXPORT, fn)
+for fn in os.listdir(EXPORT_DIR):
+    p = os.path.join(EXPORT_DIR, fn)
     if fn.endswith(".json"):
         if "Card" in fn:
             check_card(p)
@@ -81,38 +128,38 @@ for fn in os.listdir(EXPORT):
             check_lb(p)
 
 # mojibake
-for root, _, files in os.walk(EXPORT):
+for root, _, files in os.walk(EXPORT_DIR):
     for fn in files:
         if fn.endswith((".json", ".md", ".html", ".js")):
-            with open(os.path.join(root, fn), encoding="utf-8") as f:
+            with open(os.path.join(root, fn), encoding="utf-8-sig") as f:
                 c = f.read()
             for mk in ["â€", "Ã", "â€™"]:
                 if mk in c:
                     errors.append(f"{fn}: mojibake {mk}")
 
-# position spot checks (file-agnostic)
-WORLD_LB = os.path.join(EXPORT, "SvartulfrVerse_Urban_World_Lorebook.json")
-SANDBOX_LB = os.path.join(EXPORT, "SvartulfrVerse_Urban_Sandbox_Lorebook.json")
-SANDBOX_REG = os.path.join(EXPORT, "SvartulfrVerse_Urban_Sandbox_Intimacy_Register.json")
+# position spot checks (file-agnostic, using discovered paths)
+WORLD_LB = find_lorebook_file(EXPORT_DIR, "*_World_Lorebook.json")
+SANDBOX_LB = find_lorebook_file(EXPORT_DIR, "*_Sandbox_Lorebook.json")
+SANDBOX_REG = find_lorebook_file(EXPORT_DIR, "*_Sandbox_Intimacy_Register.json")
 
 # Tier 1 world -> position 0
-with open(WORLD_LB, encoding="utf-8") as f:
+with open(WORLD_LB, encoding="utf-8-sig") as f:
     wl = json.load(f)
 for e in wl["entries"].values():
     if e["position"] != 0:
         errors.append(f"World_Lorebook uid {e['uid']} pos {e['position']} != 0")
 
 # All other lorebooks (except sandbox pair) -> Tier2/intimacy entries position 1
-for fn in os.listdir(EXPORT):
+for fn in os.listdir(EXPORT_DIR):
     if not fn.endswith(".json"):
         continue
-    if fn in ("SvartulfrVerse_Urban_World_Lorebook.json",
-              "SvartulfrVerse_Urban_Sandbox_Lorebook.json",
-              "SvartulfrVerse_Urban_Sandbox_Intimacy_Register.json"):
+    if fn in (os.path.basename(WORLD_LB),
+              os.path.basename(SANDBOX_LB),
+              os.path.basename(SANDBOX_REG)):
         continue
     if "Card" in fn:
         continue
-    with open(os.path.join(EXPORT, fn), encoding="utf-8") as f:
+    with open(os.path.join(EXPORT_DIR, fn), encoding="utf-8-sig") as f:
         ld = json.load(f)
     if "entries" not in ld:
         continue
@@ -125,7 +172,7 @@ for fn in os.listdir(EXPORT):
             errors.append(f"{fn} uid {e['uid']} pos {e['position']} != 1 ({e.get('comment')})")
 
 # SANDBOX_STATE / WORLD_PULSE specifics
-with open(os.path.join(EXPORT, "SvartulfrVerse_Urban_Sandbox_Lorebook.json"), encoding="utf-8") as f:
+with open(os.path.join(EXPORT_DIR, os.path.basename(SANDBOX_LB)), encoding="utf-8-sig") as f:
     sb = json.load(f)
 for e in sb["entries"].values():
     c = e.get("comment", "")
@@ -142,4 +189,4 @@ if errors:
         print("  -", e)
 else:
     print("ALL GATES PASSED")
-print(f"Total files checked: {len([f for f in os.listdir(EXPORT) if f.endswith(('.json','.md','.html','.js'))])}")
+print(f"Total files checked: {len([f for f in os.listdir(EXPORT_DIR) if f.endswith(('.json','.md','.html','.js'))])}")

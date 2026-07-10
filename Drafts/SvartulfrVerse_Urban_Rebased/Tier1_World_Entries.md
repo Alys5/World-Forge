@@ -363,3 +363,25 @@ Enforced through each card's system_prompt and these lorebook entries. The playe
 The Narghaton surname derives from Draconic and translates to "Children of Nyrathar." Nyrathar was an ancient red dragon with emerald-green eyes who fell in love with a mortal, giving rise to House Narghaton. The origin is historically true within the universe but dates back so many millennia that modern supernaturals consider it nothing more than an ancient myth or a fairy tale.
 
 Kaladin Narghaton knows it as family lore; most modern supernaturals dismiss it as myth. This is Kaladin's deep-background distinctiveness, a hidden ancient lineage beneath the Modified Lineage label. Use it as quiet color on Kaladin, never as a plot engine unless the player digs.
+
+---
+
+### ENTRY: Concept — The Nine Firstborn / The Last Three (LSE Core Canon)
+**Category:** CONCEPT
+**Trigger Keys:** Nine Firstborn, Last Three, Living Sagas, Divine Blood, Primordial Enigma, First Fang, Builder King, Second Fang, The Mountain, Third Fang, White Ghost, Wulfnic, Ut, Zefir, Fenris, Sacred Forge, Winter Path
+**Secondary Keys:** origin, Fenris, Bloodmoon Dynasty, religious canon, recorded history
+**Selective Logic:** 0 (OR)
+**Constant:** No
+**Injection Position:** 0 (Before Char Def — Tier 1 default)
+**Order Priority:** 63
+**Position Rationale:** DEFAULT
+**Content:**
+The Nine Firstborn are the origin event of the werewolf species. Religious Canon (Faith of Fenris): Fenris personally forged nine mortal Úlfheðnar warriors with his own Divine Blood. Recorded History: nine extraordinary individuals appeared during the Viking Age (~827–900 AD) with biological immortality, extreme regeneration, perfect Shift stability, supreme pheromonal aura, and absolute Command. They founded the first packs and all modern bloodlines descend from them. Six are lost to history; three survive as The Last Three / The Living Sagas.
+
+The Last Three represent the three essential pack aspects: Leadership (Wulfnic — The First Fang / The Builder King), Creation (Ut — The Second Fang / The Mountain / Keeper of the Sacred Forge), Wisdom/Memory (Zefir — The Third Fang / The White Ghost / Watcher of the Moon / Keeper of the Winter Path). They hold Divine Blood, are Primordial Enigmas, and are 1,100+ years old. The Faith of Fenris reveres them as Living Sagas — saints who walked with Fenris and still walk among his children. Their authority carries religious weight: disobeying a Living Saga is, to the faithful, a rejection of Fenris' chosen instruments.
+
+Wulfnic Bloodmoon: Born ~827 AD, Iceland. Patriarch of House Bloodmoon, supreme political authority in North America. Founded the Bloodmoon Dynasty ~1025 AD. FRENEMY of Visconte Angelo Moreno. Domains: Leadership, Family, Territory, Justice, Civilization.
+
+Ut: Born Viking Age, Scandinavia. Resides in Bloodmoon territory in deliberate austerity; secretly fascinated by combustion engines and modern mechanics; torments Logan Douglas with endless questions about cars. 230 cm, blunt, stoic, physical. Domains: Creation, Work, Resistance, Tradition, Technology (ironic).
+
+Zefir: Born Viking Age, Scandinavia. Nomadic within Bloodmoon territory; silent, eerie, observant; moves without sound. Snow-white hair, washed-out ice-blue eyes, appears as ghostly teenager. Treats modern technology with extreme suspicion. Domains: The Moon, Hunting, Silence, Winter, Death, Memory.
