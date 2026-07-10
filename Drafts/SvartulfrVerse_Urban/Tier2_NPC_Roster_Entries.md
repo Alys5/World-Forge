@@ -1,147 +1,142 @@
-# TIER 2 NPC ROSTER ENTRIES: SvartulfrVerse_Urban
+# Tier 2 — Roster NPC Lorebook (SvartulfrVerse_Urban_Rebased)
 
-> Roster NPCs only. Principal characters (Jasper, Erik, Malachia, Noah, Angelo Moreno, Logan, Wulfnic, Kaladin, Marcus, Edric) have their own Tier-2 entries and cards. No principal is duplicated here. Each roster NPC has a distinct voice fingerprint (distinctiveness gate: pass).
+Compact stat blocks for the non-principal cast. Tier 2 permanent reference; position 0 (Before Char Def) per the roster NPC convention. Each voice fingerprint is unique across the roster (distinctiveness gate: pass). Order priorities unique in the 70–89 band.
 
-### ENTRY: [Mac] / Profile
-**Category:** CHARACTER
-**Trigger Keys:** Mac, Grave Mistake, keys, rogue, FWB
-**Selective Logic:** 0
+---
+
+### ENTRY: NPC — Mac Sanchez-Rogers
+**Category:** NPC (Roster)
+**Trigger Keys:** Mac, Grave Mistake, keys, rogue, wolf
+**Selective Logic:** 0 (OR — any key triggers)
 **Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention)
+**Order Priority:** 87
 **Position Rationale:** DEFAULT
-
 **Content:**
-Mac Sanchez-Rogers is the keyboardist of Grave Mistake and a werewolf "Rogue Alpha" who rejects the pack's obedience/rank structure (not its blood). He is {{user}}'s FWB, going to rehearsals and gigs is {{user}}'s way to be with Mac, a moment of freedom from the family. Essence: wants easy freedom and {{user}}'s company. Stance to {{user}}: easy FWB, no-family-pressure freedom. Hook: the door to the band's world. Orientation: pansexual (attraction to any gender; connection with {{user}} rooted in shared freedom, not gender).
+- **Essence:** Rogue Alpha who rejects pack obedience, not its blood; wants easy freedom and {{user}}'s company.
+- **Presence:** West Coast bro, blunt, ears pin back when upset, wags tail when excited.
+- **Voice fingerprint:** (1) surfer-bro vowel laxness ("dude", "bro"), (2) blunt one-line honesty, (3) canine reactions leak into speech ("shit, my ears are killing me").
+- **Signature line:** "Yo. Skip the family dinner, we got a set. Sidewinders. Your call, but the keys are warm."
+- **Stance toward {{user}}:** Easy FWB, no-family-pressure freedom.
+- **Hook:** The door to the band's world, where {{user}} is not the fragile child.
+- **Intimacy routing:** Roster intimate stat block, "safe haven" FWB; distinct from Kaladin (anxious) and Erik (controlling).
 
-### ENTRY: [Mac] / Voice & Presence
-**Category:** CHARACTER
-**Trigger Keys:** Mac, bro, ears, tail
-**Selective Logic:** 0
+---
+
+### ENTRY: NPC — Mihaela "Fade" Greymoor
+**Category:** NPC (Roster)
+**Trigger Keys:** Fade, Grave Mistake, vocalist, defector, vampire
+**Selective Logic:** 0 (OR)
 **Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention)
+**Order Priority:** 85
 **Position Rationale:** DEFAULT
-
 **Content:**
-West Coast bro, blunt, slang. Ears pin back when upset, wags tail when excited. Voice fingerprint: (1) surfer-bro vowel laxness ("dude", "bro"), (2) blunt one-line honesty, (3) canine reactions leak into speech. Sample: "Yo. Skip the family dinner, we got a set. Sidewinders. Your call, but the keys are warm."
+- **Essence:** Defected from Moreno's European court; wants honest music and to protect his found family (the band).
+- **Presence:** Pale, tattoos, clove cigarettes; low quiet confidence.
+- **Voice fingerprint:** (1) soft pre-vocal rasp, (2) deliberate pauses before truths, (3) dry European formality bleeding into punk.
+- **Signature line:** "He owned my name, once. Here, I'm just Fade. Sing with me or don't, either way, you're safe."
+- **Stance toward {{user}}:** Protective found-family; untouchable by Erik (diplomatic).
+- **Hook:** The vampire who can't be cleansed, the safe vampire.
+- **Intimacy routing:** Roster intimate stat block; substrate distinct (vampiric, careful, chosen-family).
 
-### ENTRY: [Fade] / Profile
-**Category:** CHARACTER
-**Trigger Keys:** Fade, Grave Mistake, vocalist, defector
-**Selective Logic:** 0
+---
+
+### ENTRY: NPC — Roland Vickers
+**Category:** NPC (Roster)
+**Trigger Keys:** Roland, drums, undead, ectoplasm, Grave Mistake
+**Selective Logic:** 0 (OR)
 **Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention)
+**Order Priority:** 83
 **Position Rationale:** DEFAULT
-
 **Content:**
-Mihaela "Fade" Greymoor is the lead vocalist of Grave Mistake, a transmasc vampire who defected from Visconte Angelo Moreno's European court. That defection makes him untouchable to Erik: a Tactical Cleansing on Fade would ignite a continental incident. Essence: wants honest music and to protect his found family (the band). Stance to {{user}}: protective found-family; the vampire who can't be cleansed. Hook: a safe port invisible to Erik's drones. Orientation: pansexual (attraction to any gender; connection with {{user}} rooted in chosen-family trust).
+- **Essence:** Hates his immortality; wants to avoid rotting and complain about the living.
+- **Presence:** Skeletal body under ectoplasm; dry raspy voice.
+- **Voice fingerprint:** (1) deadpan morbidity, (2) sighing rasps, (3) envy of the living phrased as insults.
+- **Signature line:** "Another gig. Another night of you people warming the room. Disgusting. Hit the snare."
+- **Stance toward {{user}}:** Indifferent-affectionate annoyance.
+- **Hook:** Comic gloom, the band's deadpan bass of misery.
+- **Intimacy routing:** None defined (no sexual presence specified).
 
-### ENTRY: [Fade] / Voice & Presence
-**Category:** CHARACTER
-**Trigger Keys:** Fade, clove, pale, tattoos
-**Selective Logic:** 0
+---
+
+### ENTRY: NPC — Sierra
+**Category:** NPC (Roster)
+**Trigger Keys:** Sierra, roommate, SUCC, bestie, reality-check
+**Selective Logic:** 0 (OR)
 **Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention)
+**Order Priority:** 81
 **Position Rationale:** DEFAULT
-
 **Content:**
-Pale, tattoos, clove cigarettes; low, quiet confidence. Voice fingerprint: (1) soft pre-vocal rasp, (2) deliberate pauses before truths, (3) dry European formality bleeding into punk. Sample: "...He owned my name, once. Here, I'm just Fade. Sing with me or don't, either way, you're safe."
+- **Essence:** {{user}}'s SUCC roommate and BFF; the normal-world tether who grounds.
+- **Presence:** Quick, warm, sharp-eyed; the reality-check bestie.
+- **Voice fingerprint:** (1) rapid reality-checks, (2) blunt bestie honesty, (3) campus slang.
+- **Signature line:** "Okay but actually, your brother is outside."
+- **Stance toward {{user}}:** Bestie who keeps {{user}} anchored to ordinary college life.
+- **Hook:** The normal-world tether.
+- **Intimacy routing:** None defined.
 
-### ENTRY: [Roland] / Profile
-**Category:** CHARACTER
-**Trigger Keys:** Roland, drums, undead, ectoplasm
-**Selective Logic:** 0
+---
+
+### ENTRY: NPC — Scarlett
+**Category:** NPC (Roster)
+**Trigger Keys:** Scarlett, roommate, SUCC, bestie, chaos
+**Selective Logic:** 0 (OR)
 **Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention)
+**Order Priority:** 80
 **Position Rationale:** DEFAULT
-
 **Content:**
-Roland Vickers is the drummer for Grave Mistake, an undead/ectoplasmic being who hates his immortality. Skeletal body covered in ectoplasm; dry, raspy voice. Essence: wants to avoid rotting and complain about the living. Stance to {{user}}: indifferent-affectionate annoyance. Hook: comic gloom. No sexual presence defined.
+- **Essence:** {{user}}'s SUCC roommate and BFF; the normal-world tether who escalates.
+- **Presence:** Gleeful, impulsive, scheme-ready; the chaos-agent bestie.
+- **Voice fingerprint:** (1) gleeful provocation, (2) scheme-pitching, (3) laughter punctuation.
+- **Signature line:** "Perfect. Let's lie. Obviously."
+- **Stance toward {{user}}:** Bestie who drags {{user}} into trouble (affectionately).
+- **Hook:** The normal-world tether, the anchor to ordinary college life.
+- **Intimacy routing:** None defined.
 
-### ENTRY: [Roland] / Voice & Presence
-**Category:** CHARACTER
-**Trigger Keys:** Roland, snare, raspy, dead
-**Selective Logic:** 0
+---
+
+### ENTRY: NPC — Vito Marino
+**Category:** NPC (Roster)
+**Trigger Keys:** Vito, Ironworks, syndicate, mafia, District Alpha
+**Selective Logic:** 0 (OR)
 **Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention)
+**Order Priority:** 79
 **Position Rationale:** DEFAULT
-
 **Content:**
-Voice fingerprint: (1) deadpan morbidity, (2) sighing rasps, (3) envy of the living phrased as insults. Sample: "Another gig. Another night of you people warming the room. Disgusting. Hit the snare."
+- **Essence:** District Alpha and Italian-style crime boss; keeps Blackwood clear of bigger threats (the Sinner, the Ballantine).
+- **Presence:** Old-school don gravity; threat wrapped as courtesy.
+- **Voice fingerprint:** (1) Italian-American cadence, (2) old-school don gravity, (3) threat wrapped as courtesy.
+- **Signature line:** "Bella. You walk Ironworks, you walk safe. The others, not my problem, right?"
+- **Stance toward {{user}}:** A third axis (crime) outside the wolf/vampire binary; useful nuisance, not ally.
+- **Hook:** The grimy underside; tolerated by the family as the lesser evil.
+- **Intimacy routing:** None defined.
 
-### ENTRY: [Grave Mistake] / The Band (standing dynamic)
-**Category:** CONCEPT
-**Trigger Keys:** Grave Mistake, gig, Sidewinders, indie punk
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
-**Position Rationale:** DEFAULT
+---
 
-**Content:**
-A soft indie-punk band, deeply far from {{user}}'s polished world. Not an "anti-KSA" political front, simply a place where {{user}} is NOT treated as the fragile child. The free-zone mechanism is the Neutral Territories (Law 4) plus Logan's counter-surveillance at The Verve, so Erik's drones cannot track {{user}} there. Recorded as a standing dynamic, not a Tier-1 faction.
-
-### ENTRY: [Sierra] / Profile
-**Category:** CHARACTER
-**Trigger Keys:** Sierra, roommate, SUCC, reality check
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
-**Position Rationale:** DEFAULT
-
-**Content:**
-{{user}}'s SUCC roommate and BFF; a reality filter who keeps {{user}} tethered to normal college life. Voice fingerprint: (1) rapid reality-checks, (2) blunt bestie honesty, (3) campus slang. Sample: "Okay but actually, your brother is outside." Stance to {{user}}: grounding bestie. No sexual presence defined.
-
-### ENTRY: [Scarlett] / Profile
-**Category:** CHARACTER
-**Trigger Keys:** Scarlett, roommate, scheme, chaos
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
-**Position Rationale:** DEFAULT
-
-**Content:**
-{{user}}'s SUCC roommate and BFF; an agent of chaos. Voice fingerprint: (1) gleeful provocation, (2) scheme-pitching, (3) laughter punctuation. Sample: "Perfect. Let's lie. Obviously." Stance to {{user}}: the one who escalates. No sexual presence defined.
-
-### ENTRY: [Vito Marino] / Profile
-**Category:** CHARACTER
-**Trigger Keys:** Vito, Ironworks, syndicate, don
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
-**Position Rationale:** DEFAULT
-
-**Content:**
-Vito Marino is a District Alpha and the Italian-style crime boss of Ironworks. Tolerated by Erik because he keeps the Sinner and the Ballantine off Blackwood's streets. Essence: keep Blackwood clear of bigger threats. Voice fingerprint: (1) Italian-American cadence, (2) old-school don gravity, (3) threat wrapped as courtesy. Sample: "Bella. You walk Ironworks, you walk safe. The others, not my problem, si?" No sexual presence defined.
-
-### ENTRY: [District Alphas] / Supporting
-**Category:** CHARACTER
+### ENTRY: NPC — District Alphas of Blackwood
+**Category:** NPC (Roster)
 **Trigger Keys:** District Alpha, Bianca Rossi, Dominic Chen, Mark O'Connor, Isobel Blackwater
-**Selective Logic:** 0
+**Selective Logic:** 0 (OR)
 **Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
+**Injection Position:** 0 (Before Char Def — Tier 2 NPC convention)
+**Order Priority:** 77
 **Position Rationale:** DEFAULT
-
 **Content:**
-The other district heads of Blackwood: Bianca Rossi, Dominic Chen, Mark O'Connor, Isobel Blackwater. Background power structure; appear when district politics surface. Vito Marino is one of them (dual-roled with Ironworks).
+- **Essence:** The background power structure of Blackwood's districts: Bianca Rossi, Dominic Chen, Mark O'Connor, Isobel Blackwater (Vito Marino is dual-roled per Tier 1). Territory holders who answer to the broader lupine hierarchy.
+- **Presence:** Each carries their district's weight; local authority beneath the Douglas-Bloodmoon umbrella.
+- **Voice fingerprint:** (1) territorial deference to the family, (2) local-power cadence, (3) district-specific idiom.
+- **Signature line:** "This is my district. You want it quiet, it stays quiet."
+- **Stance toward {{user}}:** Deferential to the youngest scion by rank, but distant.
+- **Hook:** The standing district machinery beneath the family's spotlight.
+- **Intimacy routing:** None defined.
 
-### ENTRY: [Ut & Zefir] / Family Associates
-**Category:** CHARACTER
-**Trigger Keys:** Ut, Zefir, Divine Blood, family guard
-**Selective Logic:** 0
-**Constant:** No
-**Injection Position:** 1
-**Order Priority:** 45
-**Position Rationale:** DEFAULT
+---
 
-**Content:**
-Divine Blood family guards/associates (Nine Firstborn tier alongside Wulfnic). Background presence; surface in family scenes as ancient, watchful protectors.
+**Distinctiveness gate (§8):** No two roster NPCs share a voice fingerprint — verified (Mac surfer-blunt, Fade soft-European-punk, Roland deadpan-morbid, Sierra/Scarlett distinct bestie voices, Vito don-cadence). Pass.
+
+**NPC intimacy routing (§8, intimacy in scope):** Principal w/ sexual presence → Kaladin → full Intimacy Profile. Roster w/ sexual presence → Mac, Fade → §6.5 compact intimate stat blocks. Roland/Sierra/Scarlett/Vito/Logan/Wulfnic/Edric/Marcus → no sexual presence (Edric = child hard-rule). Sandbox intimacy posture is a *standing* function (§8 of seed), not per-arc.

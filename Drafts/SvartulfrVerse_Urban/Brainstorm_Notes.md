@@ -1,51 +1,67 @@
 > [BRAINSTORM NOTES — informal ideation, NOT a World Seed.
-> Posture: improvement · Written: 2026-07-06 · Replaces any prior Brainstorm_Notes.md in full.
-> Hand to the Interviewer via `/worldforge start`; it will read this as raw material and run the full interview.]
+> Posture: improvement · Written: 2026-07-10 · Replaces any prior Brainstorm_Notes.md in full.
+> Chained after `/worldforge convert --rebaseline --then-brainstorm`. Hand to the Interviewer in
+> seed-revision posture; it will lead with these proposed changes, interview the endorsed ones at
+> full depth, and cascade coupled fields. The Brainstormer writes clues; the Interviewer makes the edits.]
 
-# Brainstorm Notes (improvement) — SvartulfrVerse_Urban
+# Brainstorm Notes (improvement) — chained — SvartulfrVerse_Urban_Rebased
 
 ## Brainstormed against
+Target `World_Seed.md`, post-rebaseline from `Drafts/SvartulfrVerse_Urban` (sandbox; zero-axes rebaseline; no source `Big_Brain_Storm.md` present).
 
-Target `World_Seed.md` of SvartulfrVerse_Urban, post-rebaseline from legacy draft.
+## Spine respected (no reframe)
+All directions below add to the existing spine — Urban Politics + the Paradise-cusp cold war, comedy-through-contrast, slice-of-life fluff — without touching World Mode (sandbox), the protagonist, or Section 1. No bright line crossed. AnyPOV/AnyGender integrity preserved throughout (safeguards below).
 
 ## Changes the user wants to pursue
 
-*(Integration of previously agreed points + new insertions from legacy files)*
+### 1. The Secret Eidolon Gig — as an opt-in Hidden Layer (NOT fixed world canon)
+- `{{user}}` may secretly take a campus casting / studio internship with **Eidolon Creative** (the Visconte's public house), recruited via SUCC's existing internship partnership (already in §2c). Hiding a mundane job from Erik — who'd treat "working for the vampire frenemy" as DEFCON-1 — is the daily, playable expression of the cold-war friction. Serves comedy-through-contrast directly.
+- **Architecture (the elegant call):** the gig is a **player-embraced Hidden Layer**, opt-in via `{{user}}`.Hidden Layer — NOT a fixed world fact. This preserves strict AnyPOV/AnyGender for custom playthroughs.
+  - **Canonical Alyssa** (`User_Alyssa.md`): the secret modeling/casting career becomes her **default canonical Hidden Layer**.
+  - **Blank `User.md` skeleton:** the player may opt in to the Eidolon gig, or define their own secret entirely. The gig is offered, never imposed.
+- **AnyPOV safeguards (load-bearing — must survive to the seed):**
+  1. Frame the gig **gender-neutrally at world/seed grade** ("campus casting / studio internship"), so it fits any `{{user}}` POV/gender/LSE. (Alyssa's *specific* "modeling career" flavor lives in her isolated `User_Alyssa.md`, not in the AnyPOV core.)
+  2. Moreno's interest stays **patriarchal / institutional power-play, not courtship** — the gig is leverage to pull the Douglas-Bloodmoon scion into his sphere, consistent with his strictly-heterosexual §4 orientation. The escalation ladder must not romanticize it.
+  3. Any suspicion/escalation fires on **behavior (missteps), never on `{{user}}`'s identity.**
 
-- **"Urban Politics" level (Vampires vs Wolves):** Expand the bureaucratic cold war between factions (Moreno/Eidolon vs Visconte vs wolves). This justifies Erik's over-protectiveness (e.g., paranoia about the London trip) making it a diplomatic move, not just parental.
-- **"College Life" level (SUCC/University):** Use specific locations (Sidewinders Bar, campus) as a "playground" of normality for {{user}}, constantly invaded by the tactical, hi-tech paranoia of wolf security (e.g., drones scanning coffee shops).
-- **"Pack Dynamics" level:** Structure precise roles according to the LSE system. Erik (obsessive leader), Wulfnic ("legal cleanup", accomplice to secret work), Jasper (tests the limits of protection).
-- **Conflict Geography:** Define neutral territory and hot zones in the World Seed to root the contrast.
-- **"Grave Mistake" Integration (Underground Refuge):** Add the indie punk band as an "anti-KSA". Mac (already present, "Rogue Alpha"), Fade and Roland become {{user}}'s alternative "chosen pack", a safe haven at college invisible to Erik's drones. Their nights at dive bars (Sidewinders/The Verve) are the true free zones from the family.
-- **Fade Greymoor (Mirror & Diplomatic Tension):** Insert Fade (transmasc vampire) into the Roster. Having fled from the pureblood traditions of a powerful European family, he serves as a thematic mirror for {{user}}. He creates a fantastic comedic-diplomatic tension: Erik hates him as a punk vampire near {{user}}, but cannot authorize a Tactical Cleansing on him without triggering a continental incident with Europe, making Fade untouchable.
-- **Roland Vickers:** Insert Roland (undead/ectoplasmic drummer, depressed) into the Roster to complete the band and campus dynamics.
-- **"Californian Golden Hour" Aesthetic:** Formally define the "World-feel" of Solarton and SUCC: modern magic, vibrant sun, ocean, denim, coastal Californian life and youth. It creates a sharp sensory and visual contrast with the darker, more formal, hyper-corporate aesthetic of Blackwood Estate and DCC Tower.
-- **Legacy Lore Mass-Import (non-destructive integration):** Import the content of `modernfantasy.json`, `succ.json`, `SvartulfrVerse_Urban_Characters.json` and `SvartulfrVerse_Urban_World.json` by converting and sorting them as simple entries (locations, factions, backgrounds and secondary characters) for our new Tier 1/2 lorebooks.
-  - *Golden rule:* The goal is to fill the world with pre-existing "meat", but without **ever overwriting or contradicting** the backbone just defined. Any legacy element that conflicts with the main roster characters (Erik, Jasper, etc.), with the LSE system, or with current dynamics, is discarded or de-canonized in favor of the current World Seed. It is only meant to extend the Sandbox.
+### 2. The "Family Wanted Level" mechanic (GTA-style, family-anxiety themed)
+A 0–5 "star" family-suspicion meter tracking how close the family is to catching `{{user}}` sneaking (to the gig, to Neutral Territories, or anywhere off-radar). Purely family-anxiety comedy — never real danger.
+- **Escalation ladder (voices tiered so the comedy varies per tier, not one repeated gag):**
+  - **Low (1–2★):** a sudden passive-aggressive text or a "just checking in" call from Erik.
+  - **Mid (3–4★):** Jasper frantically texting that he can't hold the drone blind-spots much longer; **Kaladin Narghaton** showing up "coincidentally" to run a background check on the people around `{{user}}`.
+  - **Max (5★):** a full DCC Security "SWAT" team arrives to *extract* `{{user}}` from a completely normal casting call or college party. Played as farce, never threat.
+- **Decay & reset model:** **passive decay over calm time**, plus a **full active reset if `{{user}}` survives a "Sunday Lunch" (Entry Point 1) without blowing their cover.** Ties the meter to the existing entry-point menu.
+- **Player skill loop:** **Jasper actively helps `{{user}}` buy down the meter** with tech-hacks and cover stories — turns the meter into a small playable game (complicity + cover), not just a timer. Extends his existing Rule 3 / Active Trigger.
+- **Caps (must survive to the seed):** never crosses into real danger; **Neutral Territory shield (Rule 4) stays intact** — a 5★ extraction still can't use force in a Neutral Territory without triggering joint retaliation; the meter defuses the instant `{{user}}` is safely home.
+
+### 3. Visconte baiting (the cold-war cat-and-mouse that powers the meter)
+- **Moreno intentionally schedules gigs/castings when Erik's surveillance is at its suffocating peak** — deliberately spiking `{{user}}`'s Wanted Level as a move in the frenemy cold war. Narrative engine: it *justifies* meter spikes and keeps the friction renewable rather than random. Reinforces his §4 "wants `{{user}}` within his sphere" as active tactics, not passive presence.
+
+### 4. Lore retcon — Angelo Moreno's public title (§2c + §4)
+- Remove "**fashion magnate / mogul / King of Fashion**" framing from his **Eidolon Creative public face**. Redefine strictly as a **famous photographer and social manager**. (His hidden face — ancestral patriarch of Blackwood's vampires — is unchanged.) Interviewer should sweep §2c faction block, §4 Angelo Moreno NPC block, and any coupled trigger-keyword/`What they want` lines for the old title.
+
+### 5. Spelling normalization — "Narghaton"
+- Kaladin's surname must be spelled **Narghaton** consistently across all seed + technical documentation (the rebaseline seed currently reads "Nargathon"; downstream cards, lorebooks, and intimacy-profile filenames must follow the corrected spelling). Flagged for the Interviewer/Architect to normalize on the rebuild.
+
+## Where these land in the seed (clues for the Interviewer — not edits)
+- **§5 Sandbox Charter:** new **5B.5 — The Secret Eidolon Gig** (opt-in Hidden Layer thread; gender-neutral world-grade frame) and **5B.6 — Family Wanted Level** (0–5 ladder + decay/reset + Jasper buy-down + caps). 5B.6 references Rule 4 (shield) and Entry Point 1 (reset).
+- **§3 Protagonist / persona files:** note the gig as an *optional* Hidden Layer in the AnyPOV core; canonical default belongs in `User_Alyssa.md`.
+- **§4 dynamics:** extend Active Triggers — Jasper (blind-spots fail as the meter climbs; buy-down loop), Kaladin (escalating "coincidental" background checks), Erik (5★ DCC extraction). Retcon Moreno's title.
+- **Downstream Architect note (not seed grade):** 5B.6 → a Tier 3 `SANDBOX_STATE` / `FAMILY_WATCH_LEVEL` directive with explicit example triggers per tier so escalation/decay is demonstrable, not implied; aliveness cadence "checks" the meter on a lull. Jasper/Kaladin get §7.D Standing Goals for their role in it.
+
+## Where it could sag (pressure-tested, with patches carried)
+- **Model forgets to escalate/decay** (meter is guidance, not a hard ST variable) → patch: encode explicit per-tier example triggers in the Tonal Mandate cadence at Architect grade.
+- **Repetition** (same extraction gag) → patch: tier the *voices* (Erik passive-aggressive text vs Jasper panic vs Kaladin procedural calm vs 5★ farce).
+- **Drifts into real threat** → patch: 5★ cap is farce + Rule 4 shield re-asserted at the top of 5B.6; defuse on safe-home.
 
 ## Explored but set aside
-
-- We converged directly on total integration; no paths were discarded.
+- Gig as fixed world canon (always-true at start) — **rejected** in favor of the opt-in Hidden Layer, to preserve AnyPOV for custom players.
+- Active-only decay (meter falls only on deliberate "safe" actions) — folded into the chosen hybrid: passive decay + hard reset on a clean Sunday Lunch.
 
 ## Out of scope (flagged)
-
-- No reframe or out-of-scope elements detected (everything fits as adding color, characters and lore to the existing Sandbox).
+- None. Every direction stays within improvement scope — no World Mode flip, no protagonist swap, no Section 1 change.
 
 ## Loose fragments
-
-- The `source/Mac.md` file must be analyzed thoroughly: its free text (markdown) must be converted into optimized Roster entries (Essence, Presence, Voice fingerprint, Hook, Intimacy Substrate) to fully define Mac, Fade and Roland.
-- The files in `source/Personas/` (Jasper, Logan, Alyssa) and `source/TwinXFamily_Bot/01_personality.md` must be analyzed to **extract granular details** (e.g., physical quirks, the "DJ Frequency" alter-ego for Jasper, the Flaw/MBTI chains, and the Active Trigger Matrix logic) and enrich the existing Principal profiles.
-  - *Rule:* **Do not overwrite the foundations.** The Standing Goals and narrative roles already decided in `Master_Design.md` (e.g., Logan as "safe haven", Erik as "helicopter dad") remain the absolute truth. Fragments taken from these files serve only to add "flavor" and behavioral depth. Alyssa can be added as an optional twin variant if the user plays a male character.
-- The `SvartulfrVerse_Visual_Urban.md` file serves as the basis for the Californian visual template.
-- **Final cleanup:** Once the `seed-revision posture` is completed and all useful data has been successfully merged into the new `World_Seed.md` and the Roster, the entire `source/` folder must be **deleted**.
-
----
-
-## ✅ BRAINSTORMER SIGN-OFF
-
-- [x] At least one change direction the user wants to pursue
-- [x] Reframe-scope ideas flagged and decided
-- [x] Set-aside directions recorded
-- [x] File written fresh — replaces any prior `Brainstorm_Notes.md` in full, stamped with `Posture:` + `Written:` date, labeled as informal notes NOT a World Seed
-
-**Status: READY — hands to the Interviewer (seed-revision posture) to turn these proposals into seed edits.**
+- "Now Playing:" — Jasper narrating the buy-down like a DJ set could be a recurring comedic tell during meter management.
+- 5★ farce beat: DCC breaching a sociology lecture / a birthday party to "extract" `{{user}}` mid-canapé.
+- Meter nickname in-world? (Jasper coining a term for it — e.g. "the Dad-dar" — potential flavor, Interviewer's call.)

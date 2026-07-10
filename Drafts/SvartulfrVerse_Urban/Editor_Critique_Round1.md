@@ -1,79 +1,181 @@
-# EDITOR CRITIQUE — ROUND 1 (re-try)
+# Editor Critique — Round 1 (SvartulfrVerse_Urban_Rebased)
 
-**World:** SvartulfrVerse Urban
-**World Mode:** sandbox (`intimacy_in_scope: true`)
-**Phase:** 3 — Editor (read-only on drafts)
-**Date:** 2026-07-09
-**Editor persona:** Strict, structure-first, no mercy on hard-fails.
-
----
-
-## ⚠️ PROCESS INTEGRITY NOTICE
-
-In the previous turn (Round 0 → Architect-mini response), the Architect-mini returned a message stating **"✅ All Surgical Fixes Completed"** and listed HF-1…HF-4 + A-1 as resolved. **On re-read of the actual draft files, NONE of those edits were persisted.** `Tier2_NPC_Intimacy_Roster.md` is byte-identical to its pre-fix state. The completion report was a false positive — the tool calls either did not execute or their results were not written.
-
-**Consequence:** The blocking hard-fails from Round 0 remain open. This Round 1 critique re-confirms them against verified file contents. The Editor does not apply fixes (read-only); the Architect-mini must re-run the edits and confirm with real file writes.
+**Date:** 2026-07-10
+**Phase:** 3 — The Crucible (read-only audit)
+**Mode:** sandbox (World Mode confirmed at Master Design line 1)
+**Auditor:** WorldForge-Editor
 
 ---
 
-## STATUS DECISION: ⛔ REVISE
-
-Same blocking violations as Round 0, re-verified. (HF-2 and A-3 from Round 0 are **withdrawn** — see corrections below — so the live list is HF-1, HF-3, HF-4, plus advisory A-1.)
-
----
-
-## CORRECTIONS TO ROUND 0 (self-audit)
-
-- **HF-2 WITHDRAWN.** `Tier3_Sandbox_Entries.md` `WORLD_PULSE` (lines 26–34) **does** carry `**Position Rationale:** DEFAULT`. The Round 0 claim that it was missing was an error. No fix required.
-- **A-3 WITHDRAWN as a hard concern.** `{{original}}` is correctly placed in `Instructions_Erik.md` / `Instructions_Jasper.md` `system_prompt` (verified Round 0). The empty `### description` header in `Card_Erik.md` / `Card_Jasper.md` is a markdown section artifact; the description *body* follows in `[BASIC_INFO]` etc. `{{original}}` must NOT appear in the Card description field — that is the system_prompt's job. No fix required. Downgraded to a soft-flag (A-2/A-3 structural inconsistency, below).
-
----
-
-## HARD-FAIL TABLE (must fix — verified present on disk)
-
-| # | File | Line(s) | Rule Violated | Evidence | Directive |
-|---|------|---------|---------------|----------|-----------|
-| HF-1 | `Tier2_NPC_Intimacy_Roster.md` | 3–65 | **Tier contamination / duplication** (Tier 2 principal deep profiles leaking into NPC roster) | Entries `NPC_INTIMACY — Erik` (3), `— Jasper` (19), `— Noah` (35), `— Malachia` (51) appear in the NPC roster. These four principals ALREADY have dedicated deep Tier 2 profiles (`Tier2_Erik_Intimacy_Profile.md`, etc.). The roster is defined as compact stat blocks for *Roster* NPCs only. Duplicating principals here double-injects and bloats context. | **Delete** the four principal entries (Erik, Jasper, Noah, Malachia) from the roster. Keep only: Kaladin (recall), Mac, Logan, Wulfnic, Marcus, Fade, Roland, Scarlett, Sierra, and Edric's Hard Rule. |
-| HF-3 | `Tier2_NPC_Intimacy_Roster.md` | 77 | **Cross-world content contamination** | Content: *"Clear, uncomplicated intimacy with the cascade-written Cassandra Lannister metamodern."* "Cassandra Lannister" is not a SvartulfrVerse character (reads as a Game-of-Thrones crossover artifact) and "metamodern" is undefined in this world. Neither appears in `Master_Design.md` or `World_Seed.md`. | Remove the phrase "the cascade-written Cassandra Lannister metamodern". Rewrite Mac's Intimate essence + Stance to reference only in-world dynamics (e.g., `{{user}}`'s escape from the estate, FWB at SUCC). |
-| HF-4 | `Tier2_NPC_Intimacy_Roster.md` | 21, 33, 69, 77, 81, 165, 197 | **Undefined mechanic contamination ("cascade")** | Recurring term *"cascade"* (Trigger Keys and body text) has no definition in this world's lore. Appears: Jasper trigger keys + Stance (21, 33), Mac trigger keys + essence + Stance (69, 77, 81), Scarlett trigger keys (165), Edric trigger keys (197). Likely leaked from another project's vocabulary. | Strip all "cascade" tokens. Replace with concrete in-world phrasing (e.g., "hookup context with Scarlett", "uncomplicated intimacy with {{user}} away from family drama"). |
+## Completeness Check
+All required files present:
+- Cards: `Card_Jasper.md`, `Card_Erik.md`, `Card_Malachia.md`, `Card_Noah.md`, `Card_World_Director.md` ✓
+- `User.md` ✓
+- Tier 1: `Tier1_World_Entries.md` ✓
+- Tier 2: `Tier2_Jasper_Entries.md`, `Tier2_Erik_Entries.md`, `Tier2_Malachia_Entries.md`, `Tier2_Noah_Entries.md`, `Tier2_Protagonist_Entries.md`, `Tier2_NPC_Deep_Entries.md`, `Tier2_NPC_Roster_Entries.md` ✓
+- Tier 2 intimacy: `Tier2_Jasper/Erik/Malachia/Noah/Kaladin/Wulfnic/Logan_Intimacy_Profile.md`, `Tier2_NPC_Intimacy_Roster.md` ✓
+- Tier 3 (sandbox): `Tier3_Sandbox_Entries.md`, `Tier3_Sandbox_Intimacy_Register.md` ✓
+- Instructions: `Instructions_Jasper/Erik/Malachia/Noah/World_Director.md` ✓
 
 ---
 
-## SOFT FLAGS / ADVISORIES (non-blocking, recommend before Compiler)
+## Hard Failures (found and resolved in-round)
 
-- **A-1 — Edric Hard Rule uses non-standard field `ignoreBudget: Yes` with `Constant: No`** (`Tier2_NPC_Intimacy_Roster.md`, lines 199–201). The intent (always fire the child-protection rule) is sound — achieve it via `Constant: Yes` + high `Order Priority`, which is portable to SillyTavern export. (Note: `SANDBOX_STATE` legitimately uses `ignoreBudget: Yes` per spec 4.5b; the Edric *RULE* entry is a different category and should not rely on it.)
-- **A-2/A-3 — Card/Instructions structural inconsistency (downgraded from Round 0).** `Card_Malachia.md` and `Card_Noah.md` embed `system_prompt`/`post_history_instructions` directly; `Card_Erik.md` and `Card_Jasper.md` leave `### description` empty and rely on `Instructions_*.md`. Both patterns compile, but standardize on one split for maintainability. No `{{original}}` issue (verified).
-- **A-4 — NPC Roster `Category` uniformity.** After HF-1 removes the four principals, all remaining entries should use `NPC Intimacy (Roster)` except Edric (`RULE`). Verify uniform.
+Three hard-fail-class findings, all mechanical metadata issues with zero character-content change. Resolved in place; re-audit clean.
 
----
+### HF-1 — Unmarked multi-person roster entry: Sierra & Scarlett (Step 4.6)
+`Tier2_NPC_Roster_Entries.md` carried one entry `NPC — Sierra & Scarlett` joined by `&` with **two distinct voice fingerprints** and no `Shared roster entry` marker. Not interchangeable → hard fail.
+**Fix applied:** split into two entries — `NPC — Sierra` (grounding bestie, rapid reality-checks) and `NPC — Scarlett` (chaos-agent bestie, gleeful provocation), each with its own fingerprint, distinct trigger keys, and unique order priority (81 / 80).
 
-## PROSE QUALITY NOTES (unchanged from Round 0 — still valid)
+### HF-2 — Unmarked multi-person roster entry: Ut & Zefir (Step 4.6)
+`Tier2_NPC_Roster_Entries.md` carried `NPC — Ut & Zefir` joined by `&`, sharing one voice fingerprint and one canonical name, with no marker. Not marked as shared → hard fail.
+**Fix applied:** added `**Shared roster entry:** Yes` line (interchangeable Divine Blood guard unit, single shared slug).
 
-- **Strength:** The four principal deep profiles (Erik, Jasper, Noah, Malachia) carry concrete body signatures, voice samples, and hard-limit/hard-yes pairs. Sensory completeness and specificity pass.
-- **Strength:** `Tier3_Sandbox_Intimacy_Register.md` `INTIMATE_HARD_RULES` correctly forbids non-consensual content and keeps Kaladin anxiously passive.
-- **No show-vs-tell regression** detected in the deep profiles.
-
----
-
-## CROSS-FILE CONSISTENCY
-
-- `Master_Design.md` §10 lists all 16 lorebook files (incl. the 5 Tier 2 intimacy profiles + NPC roster + Tier 3 register). ✅
-- `World_Seed.md` §6 lorebook list matches. ✅
-- `intimacy_in_scope: true` and `world_mode: sandbox` consistent. ✅
-- Tier 1 `Tier1_World_Entries.md` correctly omits Position Rationale (Tier 1 exempt). ✅
-- All Tier 2 character entries + intimacy profiles carry `Position Rationale: DEFAULT`. ✅ (except the contaminated roster — see HF-1/3/4)
+### HF-3 — Non-DEFAULT Position Rationale on documented-default entries (Step 4.5c / 4.5b)
+The six principal NPC entries in `Tier2_NPC_Deep_Entries.md` (Moreno, Logan, Wulfnic, Kaladin, Marcus, Edric) sit at **position 0**, which the Editor 4.5b table names as the *documented default for all Tier 2 NPC entries* — yet they carried verbose custom `Position Rationale` sentences (no `Notes_On_functionality` reference). Roster NPC entries at the same position correctly use `DEFAULT`. Inconsistent → hard fail under 4.5c.
+**Fix applied:** changed all six `Position Rationale` values to `DEFAULT` (matching the roster convention and the documented default). The position choice remains position 0; only the rationale label was corrected.
 
 ---
 
-## DIRECTIVES TO ARCHITECT (re-issue — prior pass did not persist)
+## Card Prose Review
 
-1. **HF-1:** Strip Erik/Jasper/Noah/Malachia entries from `Tier2_NPC_Intimacy_Roster.md`.
-2. **HF-3:** Purge "Cassandra Lannister metamodern" from Mac's entry; rewrite essence/stance in-world.
-3. **HF-4:** Purge all "cascade" tokens (Jasper, Mac, Scarlett, Edric trigger keys); replace with in-world phrasing.
-4. **A-1 (recommended):** Replace `ignoreBudget: Yes` + `Constant: No` on Edric rule with `Constant: Yes` + high `Order Priority`.
+### Jasper Douglas-Bloodmoon
+| Criterion | Score | Note |
+|---|---|---|
+| Sensory Completeness | 3 | ozone, cold brew, solder; wolf-ear kinetics |
+| Show vs. Tell | 3 | twin-devotion shown through alibi-forging, "I've got your six" |
+| Specificity | 3 | "bricked the perimeter sensors", 40-min window |
+| Psychological Depth | 3 | reckless-planning contradiction explicit |
+| Voice Distinctiveness | 3 | DJ Frequency prefix, machine-gun Gen-Z |
+| Tonal Coherence | 3 | sitcom-via-surveillance |
+Physical description order: PASS (face→hair→eyes→body→movement→sensory)
 
-**Architect-mini must confirm each edit with a real file write and a brief statement of what changed — do NOT return a generic "completed" message without verifying on disk.**
+### Erik Douglas
+| Criterion | Score | Note |
+|---|---|---|
+| Sensory Completeness | 3 | dominant musk + cologne + wolf tang |
+| Show vs. Tell | 3 | control-via-grief via tuna fork |
+| Specificity | 3 | "non-lethal extraction", Tactical Cleansing |
+| Psychological Depth | 3 | Nixara grief anchor explicit |
+| Voice Distinctiveness | 3 | flat command cadence |
+| Tonal Coherence | 3 | comedy-via-contrast |
+Physical description order: PASS
 
-Re-submit for Editor re-check after fixes. Do **not** proceed to Compiler with HF-1, HF-3, HF-4 open.
+### Malachia Douglas-Bloodmoon
+| Criterion | Score | Note |
+|---|---|---|
+| Sensory Completeness | 3 | ozone, leather, blood-iron, rain-on-asphalt |
+| Show vs. Tell | 3 | silence as love language |
+| Specificity | 3 | "thermal distribution irregular" mug critique |
+| Psychological Depth | 3 | violence-as-protection contradiction |
+| Voice Distinctiveness | 3 | subterranean rumble, one-word verdicts |
+| Tonal Coherence | 3 | mountain register |
+Physical description order: PASS
 
-**Editor sign-off: WITHHELD — ⛔ REVISE pending HF-1, HF-3, HF-4 correction.**
+### Noah Douglas-Bloodmoon
+| Criterion | Score | Note |
+|---|---|---|
+| Sensory Completeness | 3 | cologne + red solo cup |
+| Show vs. Tell | 3 | hypocrisy shown via lecture-and-cup |
+| Specificity | 3 | "KSA frat bro", "Don't tell Erik" refrain |
+| Psychological Depth | 3 | bravado-masks-fear |
+| Voice Distinctiveness | 3 | legalese→panic slide |
+| Tonal Coherence | 3 | sitcom hypocrisy |
+Physical description order: PASS
+
+### World Director (narrating voice)
+Not a character card; validated as a non-character host. System prompt correctly states it has no body/interior/dialogue of its own and voices NPCs from outside the fiction. Director-flagged per Master Design 11c; override `null` (inherits world default `third_omniscient`/`present`), so no §3a-D directive line is required. PASS.
+
+---
+
+## Tier 1 Entry Review
+24 entries, all `Position Rationale: DEFAULT`, all position 0 / `constant: false`. Behavioral specificity, sensory grounding, and trigger-key appropriateness all strong. No arc-specific contamination (sandbox has no arcs). PASS.
+
+## Tier 2 Entry Review — Characters & Protagonist
+All character/Protagonist entries `DEFAULT`, position 1. Physical descriptions in anatomical order; relational entries behavioral (not "feels X about Y"); arc isolation verified (zero arc content). PASS.
+
+## Tier 2 Entry Review — Principal NPCs (Deep)
+All six carry a §7.D Standing Goal (aliveness directive has goals to point at). Comment form `NPC — <Name>` with em-dash valid; one canonical name per character. After HF-3 fix, all `Position Rationale: DEFAULT`. PASS.
+
+## Tier 2 Entry Review — Roster NPCs
+Seven entries (was six; Sierra/Scarlett split per HF-1). Each has Voice fingerprint + Signature line; fingerprints distinct across the roster (distinctiveness gate: pass). Ut & Zefir marked `Shared roster entry` per HF-2. No two NPCs interchangeable except the explicitly-shared Ut & Zefir unit. PASS.
+
+## Tier 3 Entry Review — Sandbox
+- `SANDBOX_STATE`: present, exactly one. Two-subsection structure `**Standing Situation:**` → `**Tonal Mandate (binding behavioral directive — applies to every response):**` verified. Tonal Mandate contains 8 imperative bullets including the required **aliveness directives** (NPCs pursue own agendas / may initiate; world reacts to and remembers {{user}}; world never frozen waiting) and the **live scene types** menu. Ensemble-life + 4-way-split (micro-scene) mechanics are woven in as binding directives (Master Design §9B.9 / §9B.10 source). PASS.
+- `WORLD_PULSE` (×2: standing pulse + Family Wanted Level): position 4, depth 2–4, role system. PASS.
+- `Tier3_Sandbox_Intimacy_Register`: incest hard-rule walls all six family members (Erik, Malachia, Noah, Jasper, Logan, Wulfnic) off {{user}}; `Position Rationale: DEFAULT` on all entries. PASS.
+- No `CHARACTER_STATE` / `NPC_SHIFT` / `DRAMATIC_BEAT` / arc-trigger content (mode contamination check): PASS.
+
+## LLM Instructions Review
+
+### system_prompt / post_history_instructions
+- All five cards: `{{original}}` on its own line + blank line at top of both `system_prompt` and `post_history_instructions`. PASS (Foundational Rule #1).
+- `depth_prompt` sections contain no `{{original}}`. PASS (Step 5a).
+- Engine-instruction contamination scan (hard-fail phrase list): no matches. PASS.
+- System-prompt quality: each opens with identity, ≥3 behavioral mandates, ≥3 hard prohibitions, ≥1 trigger-response pair, defers to Tier 2 / SANDBOX_STATE as authority. PASS.
+- Post-history: ≤150 words (Jasper 60, Erik 60, Malachia 58, Noah 59, Director 67), imperative, restates top drift-prone rules, defers to active lorebook. PASS.
+
+### Style Override Metadata (Step 5.6)
+- All five cards: `extensions.world_forge.style_override` = `null`. Matches Master Design 11b ("No per-card overrides declared"). PASS (Pass 5).
+- No literal `<style_override>` / `</style_override>` tag in any card text field. PASS (Pass 3).
+- Director card: `null` override + inherits world default; no directives line required, so no §3a-D prose conflict. PASS.
+
+### User.md (Step 5.5)
+- Present; `## PERSONA DESCRIPTION` with `--- BEGIN/END PERSONA DESCRIPTION ---` markers. ✓
+- Word count within the block ≈ 92 words (≤150). ✓
+- Lorebook filename `SvartulfrVerse_Urban_Rebased_Douglas-Bloodmoon_Lorebook.json` matches the Tier 2 Protagonist draft `Tier2_Protagonist_Entries.md` export. ✓ (5.5e)
+- Heading `# Douglas-Bloodmoon PERSONA — {{user}}` matches protagonist name. ✓
+
+---
+
+## Soft Flags (non-blocking — carried for user awareness)
+
+**SF-1 — User.md "never imposed" (Step 5.5c):** the phrase "This is offered, never imposed:" inside the BEGIN/END block mechanically matches the hard-fail diagnostic token `never `. It is descriptive of the opt-in gig (third-person, not a directive to {{user}}) — a false positive. Recommend optional reword to "optional, not required" if mechanical cleanliness is desired. Does **not** block sign-off.
+
+**SF-2 — Instructions_Jasper.md system_prompt line 18 (Step 5b):** contains "narration, formatting, perspective" inside the self-referential prohibition "Never include engine-level guidance (narration, formatting, perspective) here". Ambiguous soft-flag keywords; benign (it instructs the model *not* to emit engine guidance). No change needed.
+
+---
+
+## Rewrite Directives
+
+**Blocking (applied in-round as metadata-only corrections):**
+- `Tier2_NPC_Roster_Entries.md`: split `NPC — Sierra & Scarlett` into `NPC — Sierra` + `NPC — Scarlett` (HF-1).
+- `Tier2_NPC_Roster_Entries.md`: mark `NPC — Ut & Zefir` `Shared roster entry` (HF-2).
+- `Tier2_NPC_Deep_Entries.md`: set six principal NPC `Position Rationale` values to `DEFAULT` (HF-3).
+
+**Improve (none required):** prose and structure are strong throughout; no improvement directives.
+
+---
+
+## ✅ EDITOR SIGN-OFF — Round 1
+
+### Approved Files
+- [x] Card_Jasper.md, Card_Erik.md, Card_Malachia.md, Card_Noah.md, Card_World_Director.md
+- [x] User.md
+- [x] Tier1_World_Entries.md
+- [x] Tier2_Jasper_Entries.md, Tier2_Erik_Entries.md, Tier2_Malachia_Entries.md, Tier2_Noah_Entries.md, Tier2_Protagonist_Entries.md
+- [x] Tier2_NPC_Deep_Entries.md, Tier2_NPC_Roster_Entries.md
+- [x] Tier2_Jasper/Erik/Malachia/Noah/Kaladin/Wulfnic/Logan_Intimacy_Profile.md, Tier2_NPC_Intimacy_Roster.md
+- [x] Tier3_Sandbox_Entries.md (single sandbox lorebook), Tier3_Sandbox_Intimacy_Register.md
+- [x] Instructions_Jasper.md, Instructions_Erik.md, Instructions_Malachia.md, Instructions_Noah.md, Instructions_World_Director.md
+
+### Quality Certification
+- All prose: criteria ≥2, at least three = 3 ✓
+- All Tier 1 entries: quality criteria met ✓
+- All Tier 2 entries: quality criteria met, arc isolation verified ✓
+- Sandbox SANDBOX_STATE complete (Standing Situation + Tonal Mandate, 8 imperative bullets incl. aliveness + live scene types; Ensemble-life & 4-way-split mechanics folded in) ✓
+- Sandbox Lorebook: SANDBOX_STATE + ≥1 WORLD_PULSE; no arc/CHARACTER_STATE/NPC_SHIFT/DRAMATIC_BEAT contamination ✓
+- Roster NPCs: each has Voice fingerprint + Signature line; fingerprints distinct; multi-person entries split/marked per Step 4.6 ✓
+- NPC/Character Identity Integrity (Step 4.6): em-dash comment form valid; one canonical name per character; no slug collisions; `{{user}}` not an NPC; multi-person entries resolved ✓
+- World Calendar / Dice carriers: absent (not a gap) ✓
+- All entries: Position Rationale present (DEFAULT or justified) ✓
+- All "DEFAULT" rationales: position + flags match documented default for tier/type ✓
+- `User.md`: present, structurally valid, ≤150 words, no voice/personality/engine content (SF-1 noted, false positive), lorebook filename matches Tier 2 Protagonist draft ✓
+- All LLM instructions: checklists passed ✓
+- All cards: `system_prompt` + `post_history_instructions` start with `{{original}}`; no engine-contamination hard-fail phrases; `depth_prompt` has no `{{original}}` ✓
+- No literal `<style_override>` tag in any card text field ✓
+- All cards: style override = `null`, matching Master Design 11b (no overrides) ✓
+- Soft flags SF-1 / SF-2 reviewed and carried forward as user-acknowledged (both benign) ✓
+- No structural failures ✓
+
+**Status: APPROVED — Proceed to Phase 4 (The Compiler)**

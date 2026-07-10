@@ -128,8 +128,20 @@ World-Forge/
 ├── Notes_Quick_Reference.md      ← Compact distillation of the above (agents consult it first)
 ├── .kilocodeignore               ← Keeps samples + maintenance docs out of runtime agent context
 ├── .kilo/kilo.jsonc              ← Preconfigured Kilo Code per-phase agents (auto-loaded; OpenRouter flavor)
-├── tools/
-│   └── validate_export.py        ← Read-only validator for Export/ JSON (run after Phase 4)
+├── tools/                        ← World-agnostic build toolchain (all take `world_name` as CLI arg)
+│   ├── wf_build_world.py         ← Full Drafts→Export compilation (cards, lorebooks, manifests)
+│   ├── resync_world.py           ← Regenerate Chat Completion Preset + JanitorAI script from templates
+│   ├── compile_cards.py          ← Compile character cards from Card_*.md + Instructions_*.md
+│   ├── compile_lorebooks.py      ← Compile lorebooks from Tier*_Entries.md + Tier*_Register.md
+│   ├── build_bio.py              ← Build JanitorAI storefront HTML from JSON
+│   ├── build_janitor.py          ← Build ES6 JanitorAI lorebook script from Export/ JSON
+│   ├── init_export_generic.py    ← Initialize Export/ directory from templates
+│   ├── debug_janitor.py          ← Debug ChatPreset export (check {{original}} macros)
+│   ├── validate_export.py        ← Read-only validator for Export/ JSON (run after Phase 4)
+│   └── project_parsers/          ← Isolated parsing utilities
+│       ├── format.py
+│       ├── format2.py
+│       └── parse_lse_granular.py
 ├── agent_roles/                  ← Per-phase agent specifications (one .md per agent)
 ├── templates/                    ← Structural references (World Seed, character card, lorebook, preset)
 ├── workflows/

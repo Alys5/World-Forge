@@ -14,39 +14,32 @@ This fork by **Lys_5** (JanitorAI Profile: https://janitorai.com/profiles/df1f02
 
 ---
 
-## First: which kind of session is this?
+## Directory Structure Rule
+Per the user's request, when generating or refining worlds, the active project folder MUST NOT be the root of the World-Forge repository. 
+Instead, all data for a specific world must follow this exact split structure:
+- **Drafts**: MUST be saved in `d:\World-Forge\Drafts\[WorldName]\`
+- **Exports & World Seed**: MUST be saved in `d:\World-Forge\Export\[WorldName]\`
 
-### A. Running the pipeline (most sessions)
+Whenever a pipeline phase requires reading or writing files, you MUST use these specific `Drafts\[WorldName]` and `Export\[WorldName]` subdirectories rather than the root project folders.
 
-The user typed `/worldforge brainstorm`, `/worldforge start`, `/worldforge revise`,
-`/worldforge resync-preset`, `/worldforge convert`, or a `resume`/`skip`/`status` variant.
+## World-Agnostic Toolchain
+All build tools in `tools/` are world-agnostic and accept the `world_name` as a required CLI argument:
+- `python tools/wf_build_world.py <world_name>` — Full Drafts→Export compilation
+- `python tools/resync_world.py <world_name>` — Regenerate Chat Completion Preset + JanitorAI script
+- `python tools/compile_cards.py <world_name>` — Compile character cards
+- `python tools/compile_lorebooks.py <world_name>` — Compile lorebooks
+- `python tools/build_janitor.py <world_name>` — Build ES6 JanitorAI script
+- `python tools/validate_export.py <Export_dir>` — Read-only Export/ JSON validator
+- `python tools/init_export_generic.py <world_name>` — Initialize Export/ from templates
 
-- **Open `workflows/world-forge.md` and follow it.** It is the orchestrator and the
-  source of truth for what runs when. Revise runs live in `workflows/world-forge-revise.md`,
-  convert runs in `workflows/world-forge-convert.md`.
-- **Antigravity Skill Delegation:** If you are the top-level Antigravity agent, do not run the pipeline commands inline. Instead, rely on the Antigravity Skill matching engine to natively adopt the correct persona:
-  - `/worldforge brainstorm` or `/world-forge brainstorm` → Dispatch to `WorldForge-Brainstormer` (optional ideation upstream of Phase 0; writes informal `Brainstorm_Notes.md`, no World Seed)
-  - `/worldforge start` or `/world-forge start` → Dispatch to `WorldForge-Interviewer`
-  - `/worldforge revise` or `/world-forge revise` (with `--freeform`, `--target`, etc.) → Dispatch to `WorldForge-Reviser`
-  - `/worldforge convert` or `/world-forge convert` → Dispatch to `WorldForge-Converter`
-  - `/worldforge resume phase[N]` → Dispatch to the custom agent defined for Phase N (e.g., `WorldForge-Editor` for Phase 3)
-- **Pipeline files are READ-ONLY at runtime:** everything under `agent_roles/`,
-  `templates/`, `workflows/`, plus `Notes_On_functionality.md` and
-  `Notes_Quick_Reference.md`. You write only to the world project's `Drafts/[WorldName]/`, `Export/[WorldName]/`,
-  `World_Seed.md` (which also goes in `Export/[WorldName]/`), and report files. If you find yourself about to edit a pipeline file
-  mid-run, stop and surface it to the user — an agent went off-script.
-- **Load only what each phase needs.** Every agent spec begins with a
-  `📂 CONTEXT MANIFEST` listing exactly what to load. Honor it. In particular, never load
-  `Samples/`, `wiki/`, `CLAUDE.md`, `CHANGELOG.md`, or `tutorial.md` during a run — they
-  are human-facing or maintenance material and only burn context.
-- **For SillyTavern runtime questions** (position values, lorebook flags, token budget,
-  prompt assembly order): consult `Notes_Quick_Reference.md` first. Open the full
-  `Notes_On_functionality.md` only when the quick reference does not settle the question
-  or the agent spec explicitly requires a section of it.
+Isolated parsing utilities live in `tools/project_parsers/`.
 
-### B. Editing the pipeline itself (maintenance)
+## Antigravity Subagent Execution
+The `kilo.jsonc` subagents have been converted to Antigravity Skills in `d:\World-Forge\.agents\skills\`.
+When following the orchestration workflow (`workflows/world-forge.md`) and instructed to dispatch to a subagent (e.g., `WorldForge-Interviewer` or `WorldForge-Refiner`), do not attempt to use Kilo's task delegation. 
+Instead, rely on the Antigravity Skill matching engine. As Antigravity, you can natively adopt these personas because the Skills will automatically trigger and provide you with the correct `agent_roles/*.md` specification file for the requested phase.
 
-The user asked you to change agent specs, templates, workflows, or documentation.
+---
 
 - **Read `CLAUDE.md` completely before any edit.** It holds the load-bearing
   architectural principles, the cross-file consistency table (most pipeline files have

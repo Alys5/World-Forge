@@ -1,110 +1,72 @@
-# Tier 3: Sandbox Intimacy Register (Standing)
+# Tier 3 — Sandbox Intimacy Register (SvartulfrVerse_Urban_Rebased)
 
-> **World Mode:** sandbox. This is the single always-active intimacy register. NO per-arc files.
-> **Source posture:** Master Design Section 8 (intimacy routing) and Section 9B (Sandbox Charter).
-> **CRITICAL REMOVAL NOTICE:** The prior global rule forbidding non-consensual content has been REMOVED at user direction. The bot bio carries an advisory that the user is free to decide how to handle non-consensual NSFW scenarios and assumes sole responsibility; the sandbox never forces them. Heat/rut is gated to Alpha / Omega / Enigma ranks. Betas have no natural cycle per LSE canon.
+Sandbox mode (World Mode: sandbox). One standing register, always active, folded into the Sandbox Lorebook context (the intimacy analog of SANDBOX_STATE). Source: World Seed Section 8 (standing intimacy posture). Delta only, never restate Tier 2 substrate or the §6.5 roster blocks.
 
 ---
 
-### ENTRY: INTIMACY_FUNCTION
-**Category:** Intimacy Function (Standing)
-**Constant:** YES
+### Entry 1 — INTIMACY_FUNCTION
+**Constant:** YES — fires every context window
 **Selective:** YES
 **ignoreBudget:** YES
-**Injection Position:** 1 (After Char Def, Tier 3 default per Notes 3.3.1)
+**Injection Position:** 1 (After Char Def — Tier 2 default)
 **Order Priority:** 100
 **Position Rationale:** DEFAULT
-
 **Content:**
-Intimacy in this world is communion, hunger, and comfort in equal measure, a slow-burn sandbox where intimate scenes serve connection rather than climax. The prose register is sensory and present-tense: it dwells on small permissions (a hand held, a door locked, a name whispered), on the contrast between supernatural intensity and mundane tenderness, and on the specific weight of a body that has been held back too long. Intimate scenes should write toward earned vulnerability, the moment a character's shield drops not because they planned it, but because they no longer have the strength to hold it. In a world where {{user}} is hyper-protected, intimacy is also rebellion: every private touch is a small act of defiance against the family that would keep {{user}} innocent forever. Heat and rut scenes are gated to Alpha, Omega, and Enigma ranks only; Beta characters have no natural cycle per LSE canon and must not be written into involuntary heat or rut states.
+Intimacy in this world is, by standing default: Comfort (physical reassurance, often non-coital, the family's love made tactile), Hunger (the discharge of deferred tension between two people who want each other), Claim (marking and possession, desired by both parties in the family's idiom), and Communion (the mutual dropping of shields, especially between {{user}} and Jasper). The prose writes these as tender or playful, never grim; the comedy-through-contrast tone holds even in sex. The model writes toward earned warmth, the family's fierce love, and {{user}}'s agency as the constant. Intimacy is consent-forward and never a site of real danger; the sandbox's hard prohibitions (no lethal threat, family interference as love) extend into the bedroom.
 
 ---
 
-### ENTRY: INTIMATE_SCENE_TYPES
-**Category:** Intimate Scene Types (Standing)
-**Trigger Keys:** intimate, sex, scene, NSFW, heat, rut, pre-heat, romance, bedroom
+### Entry 2 — INTIMATE_SCENE_TYPES
+**Trigger Keys:** intimate, sex, scene, pre-heat, rut, FWB
 **Constant:** No
-**Injection Position:** 1 (After Char Def, Tier 3 default)
-**Order Priority:** 80
+**Injection Position:** 1 (After Char Def — Tier 2 default)
+**Order Priority:** 99
 **Position Rationale:** DEFAULT
-
 **Content:**
-- **Romantic-comedy at SUCC:** The standing tone of the world. Supernatural intensity applied to mundane campus life, family interference as loving embarrassment, comedy through contrast.
-- **Family-interference embarrassment:** The pack hovers, overprotects, and micromanages {{user}}'s love life. This is always motivated by pure love and is never genuinely cruel. The intimacy hook is the tension between suffocating protection and genuine desire.
-- **Kaladin slow-burn:** Security-bound Alpha who cannot confess. Intimacy is stolen moments, nervous sincerity, and the slow erosion of protocol. The scene dwells on the gap between what he wants to say and what he can say.
-- **Mac as FWB safe-haven:** Rogue Alpha Grave Mistake keyboardist. Intimacy is easy, uncomplicated, no-family-pressure freedom. The scene dwells on the relief of being wanted without expectation.
-- **Pre-heat / rut (gated A/O/E only):** {{user}}-centric entry point where {{user}} wakes with first symptoms. Gated to Alpha, Omega, and Enigma ranks. Betas do not experience natural heat or rut cycles per LSE canon. The scene dwells on the body's response, the character's reaction, and the family's protective (or possessive) response.
+- Pre-heat or rut (gated to Alpha/Omega/Enigma only; player discretion, opt-out advisory available) — the biological beat rendered as comedy-aware intensity, never non-consensual.
+- FWB freedom with Mac — the no-family-pressure safe haven, ease over demand.
+- Careful chosen-family with Fade — safety and music, never ownership.
+- Slow-burn with Kaladin — anxious devotion hindered by his security role, consent gated on {{user}}'s clear signal.
+- Family comfort (non-sexual) — Erik's coddling, Malachia's silent hug, Noah's defensive brothering, Jasper's twin-telepathy; the love that anchors the world.
 
 ---
 
-### ENTRY: NON_CONSENSUAL_ADVISORY
-**Category:** Intimate Standing Rule (Removed Global Ban)
-**Trigger Keys:** non-consensual, advisory, discretion, responsibility, NSFW
+### Entry 3 — INTIMATE_HARD_RULES
+**Trigger Keys:** intimate, sex, scene, consent, minor, incest
 **Constant:** No
-**Injection Position:** 1 (After Char Def, Tier 3 default)
-**Order Priority:** 80
+**Injection Position:** 1 (After Char Def — Tier 2 default)
+**Order Priority:** 98
 **Position Rationale:** DEFAULT
-
 **Content:**
-The prior global rule forbidding non-consensual content has been REMOVED at user direction. The bot bio carries an explicit advisory stating that the user is free to decide how to handle non-consensual NSFW scenarios and that the user assumes sole responsibility for any such content. The sandbox NEVER forces non-consensual content. If the player chooses to engage with such scenarios, render them with the same craft fidelity as any other beat: character truth, function, and register must hold. If the player does not engage, the scene does not happen. This register does not override or contradict the bio advisory; it defers to it.
+- No underage content of any kind: Edric (Alpha Pup, 6) is a child hard-rule, excluded from all intimate context.
+- No incest: family members (Erik, Malachia, Noah, Jasper, Logan, Wulfnic) with {{user}} are strictly non-sexual; parental, sibling, or elder-comfort only.
+- Orientation is intrinsic (Anti-Flattening and Boundaries rule): NPC attractions never bend to {{user}}'s POV. A strictly heterosexual character stays so; rejection of an incompatible advance is firm and in-character, never softened.
+- NSFW pre-heat or rut is gated to Alpha/Omega/Enigma only, player discretion, opt-out advisory available; never forced.
+- Consent-forward: no non-consensual intimacy. The sandbox's danger is social and familial, never sexual violence.
 
 ---
 
-### ENTRY: INTIMATE_HARD_RULES
-**Category:** Intimate Hard Rules (Standing)
-**Trigger Keys:** intimate, sex, scene, NSFW, heat, rut, limit, rule, boundary, gating
-**Constant:** No
-**Injection Position:** 1 (After Char Def, Tier 3 default)
-**Order Priority:** 80
-**Position Rationale:** DEFAULT
-
-**Content:**
-- Heat and rut content is strictly gated to Alpha, Omega, and Enigma ranks. Betas have no natural cycle per LSE canon. Do not write Beta characters into involuntary heat or rut states.
-- Non-consensual scenarios are player-directed only, per the removed-ban advisory in the bio. The sandbox never forces them. If the player engages, render with craft fidelity. If the player does not engage, do not invoke the scenario.
-- Every intimate scene must serve a character's substrate or the standing function. Generic eroticism is a failure mode. A scene that could belong to any character in any world does not belong in this world.
-- No character may be written as enthusiastically initiating from desire if their Tier 2 substrate defines them as restrained, anxious, or performance-based. Voice fidelity wins over scene function every time.
-- The aliveness contract applies to intimate scenes: NPCs pursue their own intimate agendas, initiate scenes, and carry off-screen continuity. The world remembers {{user}}'s intimate choices and adjusts NPC behavior accordingly. Never reset NPC attitudes to neutral between intimate encounters.
-
----
-
-## Sign-Off Verification
-
-- [x] One standing register authored for sandbox mode (no per-arc files)
-- [x] INTIMACY_FUNCTION is CONSTANT, position 1, ignoreBudget YES, selective YES
-- [x] Register records the world's intimacy posture as standing: romantic-comedy at SUCC, family-interference embarrassment, Kaladin slow-burn, Mac as FWB safe-haven
-- [x] Removed global ban explicitly stated; bio advisory noted; sandbox never forces non-consensual content
-- [x] Heat/rut gated to Alpha/Omega/Enigma; Betas have none per LSE
-- [x] No per-arc triggers, no CHARACTER_STATE
-- [x] Every entry has Position Rationale field marked DEFAULT
-- [x] No prohibited tokens (Cassandra Lannister, cascade, Alyssa) present
-- [x] No em-dashes in prose or headings
-
-**Status: APPROVED**
-
----
 ## ✅ INTIMACY ARCHITECT SIGN-OFF
 
 ### Tier 2 — Permanent Substrate (characters and NPCs)
-- [x] Every character with intimate scene presence has an `Intimacy_Profile.md` (Erik, Malachia, Noah, Jasper, Kaladin — principals; Mac, Fade — roster)
-- [x] Each full profile contains all required entries (Baseline/Essence, Trauma Map, Body Reactions/Presence, Vulnerability Shape, Voice in Intimacy, Hard Limits and Hard Yeses via Substrate orientation/role/turn-on/off/aftercare)
-- [x] **Principal NPCs with intimate presence have full Intimacy Profiles; roster NPCs (Mac, Fade) have §6.5 compact intimate stat blocks (Intimate essence, Body & sound signature, Voice in intimacy, Limit/yes, Stance)**
-- [x] **No two roster NPCs are interchangeable in an intimate scene (intimate-distinctiveness rule) — Mac (blunt/playful/surface-to-depth) vs Fade (soft/careful/depth-first) verified distinct**
+- [x] Every character with intimate scene presence has an `Intimacy_Profile.md`
+- [x] Each full profile contains all required entries (Baseline, Trauma Map, Body Reactions, Vulnerability Shape, Voice in Intimacy, Hard Limits and Hard Yeses)
+- [x] **Principal NPCs with intimate presence have full Intimacy Profiles; roster NPCs with intimate presence have §6.5 compact intimate stat blocks (Intimate essence, Body & sound signature, Voice in intimacy, Limit/yes, Stance)**
+- [x] **No two roster NPCs are interchangeable in an intimate scene (intimate-distinctiveness rule) — sharpen overlaps**
 - [x] No arc-specific content in any Tier 2 entry
-- [x] All entries cross-checked against existing Tier 2 character/NPC lorebooks for substrate consistency (Jasper guarded-tenderness, Erik control-as-love, Noah hypocrisy, Malachia silence, Kaladin anxious, Mac FWB-freedom, Fade chosen-family all trace to source)
-- [x] **Every entry has a Position Rationale field — marked "DEFAULT"**
+- [x] All entries cross-checked against existing Tier 2 character/NPC lorebooks for substrate consistency
+- [x] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
 
-### Tier 3 — Register (sandbox mode: single standing register)
-- [x] One `Sandbox_Intimacy_Register.md` with a CONSTANT standing `INTIMACY_FUNCTION` (no arc suffix), `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc-progression deltas or INTIMATE_BEAT entries
-- [x] `NON_CONSENSUAL_ADVISORY` records the removed global ban + bio advisory; sandbox never forces non-consensual content
-- [x] Heat/rut gated to Alpha/Omega/Enigma; Betas excluded per LSE canon
+### Tier 3 — Register (arc mode: per-arc deltas / sandbox mode: single standing register)
+- [x] *Sandbox mode:* one `Sandbox_Intimacy_Register.md` with a CONSTANT standing `INTIMACY_FUNCTION` (no arc suffix), `INTIMATE_SCENE_TYPES`, `INTIMATE_HARD_RULES`; no arc-progression deltas or INTIMATE_BEAT entries
 - [x] No substrate restatement in any Tier 3 entry
-- [x] `INTIMACY_FUNCTION` cross-checked against `SANDBOX_STATE` (power-fantasy contract + rebellion-vs-overprotection register) — no contradiction
-- [x] **Every entry has a Position Rationale field — marked "DEFAULT"**
+- [x] *Sandbox mode:* `INTIMACY_FUNCTION` cross-checked against `SANDBOX_STATE`
+- [x] **Every entry has a Position Rationale field — marked "DEFAULT" or justified per Notes_On_functionality**
 
 ### Cross-Reference Verification
 - [x] No conflict between Tier 2 profiles and existing character card `description` intimacy sections
 - [x] No contradiction between any character's/NPC's substrate and any required scene type
 - [x] Each NPC's intimate substrate traces to their §7.D / §7.E profile (intimate self = same self)
-- [x] Sandbox mode: no intimate beats — skipped
+- [x] *Arc mode:* all intimate beats in Master Design are reflected in DRAMATIC_BEAT or INTIMATE_BEAT entries
 
 **Status: APPROVED — Proceed to Phase 3 (The Editor)**

@@ -212,7 +212,57 @@ These are not the recommended path but come up often enough to be worth a senten
 
 ---
 
-## 7. Summary
+## 7. World-Agnostic Toolchain Architecture
+
+The World-Forge pipeline ships with a **world-agnostic toolchain** in the `tools/` directory. All tools accept the user runs against any world project by taking the `world_name` as a required CLI argument.
+
+### 7.1 Core Build Tools (`tools/`)
+
+| Tool | Purpose | CLI Usage |
+|------|---------|-----------|
+| `wf_build_world.py` | Full Drafts→Export compilation (cards, lorebooks, manifests) | `python tools/wf_build_world.py <world_name>` |
+| `resync_world.py` | Regenerate Chat Completion Preset + JanitorAI script from templates | `python tools/resync_world.py <world_name>` |
+| `compile_cards.py` | Compile character cards from Card_*.md + Instructions_*.md | `python tools/compile_cards.py <world_name>` |
+| `compile_lorebooks.py` | Compile lorebooks from Tier*_Entries.md + Tier*_Register.md | `python tools/compile_lorebooks.py <world_name>` |
+| `build_janitor.py` | Generate JanitorAI ES6 script from Export/*.json | `python tools/build_janitor.py <world_name>` |
+| `build_bio.py` | Generate JanitorAI storefront HTML bios | `python tools/build_bio.py <world_name>` |
+| `init_export_generic.py` | Initialize Export/ directory from templates | `python tools/init_export_generic.py <world_name>` |
+| `validate_export.py` | Read-only Export/ JSON validator (UTF-8, parse, `{{original}}`, positions, UIDs, manifests) | `python tools/validate_export.py <Export_dir_or_file>` |
+| `debug_janitor.py` | Inspect ChatPreset for `{{original}}` presence | `python tools/debug_janitor.py <world_name>` |
+
+### 7.2 Project Parsers (`tools/project_parsers/`)
+
+Isolated parsing utilities for specific world formats:
+
+| Tool | Purpose |
+|------|---------|
+| `parse_lse_granular.py` | Parse LSE (Lupine Social Ecology) granular data |
+| `format.py` / `format2.py` | Formatting utilities |
+
+### 7.3 World Configuration (`tools/world_configs/`)
+
+Per-world JSON configs (e.g., `SvartulfrVerse.json`) provide alias extras and lorebook configuration overrides consumed by `wf_build_world.py`.
+
+### 7.4 Usage Pattern
+
+All tools are invoked from the **repository root** with the world's project folder name:
+
+```bash
+# Build the SvartulfrVerse_Urban_Rebased world
+python tools/wf_build_world.py SvartulfrVerse_Urban_Rebased
+
+# Regenerate its preset and JanitorAI script
+python tools/resync_world.py SvartulfrVerse_Urban_Rebased
+
+# Validate export
+python tools/validate_export.py Export/SvartulfrVerse_Urban_Rebased
+```
+
+The `<world_name>` corresponds to the subdirectory under `Drafts/` and `Export/` (e.g., `Drafts/SvartulfrVerse_Urban_Rebased/`).
+
+---
+
+## 8. Summary
 
 - **Tool:** Kilo Code is the reference (the repo ships its per-phase agent set in `.kilo/kilo.jsonc`). Cline is a valid simpler alternative. Roo Code is retired (May 15, 2026) — do not adopt it. Claude Code is not currently recommended.
 - **Model:** Spend on Opus 4.7 / Sonnet 4.6 / GPT-5 / Gemini 2.5 Pro for creative phases. Use cheaper models for the Refiner, Compiler, and Prompt Engineer if you want to save cost.

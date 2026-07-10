@@ -234,7 +234,14 @@ If you trust the pipeline to write files without per-write confirmation prompts,
 
 - **Read** — safe to auto-approve broadly.
 - **Edit / Write** — scope to the workspace folder. World-Forge writes to `Drafts/`, `Export/`, `UNRESOLVED_QUESTIONS.md`, `UNRESOLVED_INTIMACY.md`, and audit-report files. Pipeline files (`agent_roles/`, `templates/`, `workflows/`, `Notes_On_functionality.md`) are read-only at runtime — if Kilo asks to edit one of those, **deny** and surface the request: it indicates an agent went off-script.
-- **Bash / Terminal** — leave off, with one exception worth allowlisting if your build supports per-command rules: `python tools/validate_export.py` — the read-only Export/ validator the Compiler phase recommends running after Phase 4 (it checks JSON parse, encoding mojibake, `{{original}}` presence, and position enums; it never modifies files). Everything else the pipeline does goes through the file tools.
+- **Bash / Terminal** — leave off, with exceptions worth allowlisting if your build supports per-command rules:
+  - `python tools/validate_export.py <Export_dir>` — the read-only Export/ validator the Compiler phase recommends running after Phase 4 (it checks JSON parse, encoding mojibake, `{{original}}` presence, and position enums; it never modifies files).
+  - `python tools/wf_build_world.py <world_name>` — world-agnostic compiler (Phase 4); builds all JSON from Drafts/.
+  - `python tools/resync_world.py <world_name>` — regenerates ChatPreset and JanitorAI script (Preset Resync).
+  - `python tools/build_janitor.py <world_name>` — regenerates JanitorAI ES6 script from Export/.
+  - `python tools/validate_export.py <Export_dir>` — read-only validator.
+  
+  Everything else the pipeline does goes through the file tools.
 
 You can also scope tool access per agent in `kilo.jsonc` via each agent's `permission` field (`allow` / `ask` / `deny` per tool, with glob support for bash commands) — see the [custom-subagents docs](https://kilo.ai/docs/customize/custom-subagents).
 
