@@ -59,7 +59,8 @@ def load_lorebook_config(base_dir: Path, world_name: str) -> list[tuple]:
         with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
         configs = config.get("lorebook_configs", [])
-        return [(c["source_md"], c["group"], c.get("kind"), c.get("single_display")) for c in configs]
+        if configs:
+            return [(c["source_md"], c["group"], c.get("kind"), c.get("single_display")) for c in configs]
 
     # Fallback: auto-discover from Drafts directory
     return discover_lorebooks(base_dir / "Drafts" / world_name)
@@ -79,8 +80,8 @@ def discover_lorebooks(drafts_dir: Path) -> list[tuple]:
     # Tier 2 - Character entries, profiles, registers
     for md_file in sorted(drafts_dir.glob("Tier2_*_Entries.md")):
         name = md_file.stem.replace("Tier2_", "").replace("_Entries", "")
-        kind = "npc" if name not in ("NPC_Roster", "Protagonist", "User") else ("group" if name == "NPC_Roster" else "npc")
-        single_display = None if name in ("NPC_Roster", "Protagonist", "User") else name.replace("_", " ")
+        kind = "npc" if name not in ("NPC_Roster", "NPC_Deep", "Protagonist", "User") else ("group" if name in ("NPC_Roster", "NPC_Deep") else "npc")
+        single_display = None if name in ("NPC_Roster", "NPC_Deep", "Protagonist", "User") else name.replace("_", " ")
         lorebooks.append((md_file.name, name, kind, single_display))
 
     # Tier 2 - Intimacy profiles/registers
@@ -313,10 +314,11 @@ def parse_card_frontmatter(text: str) -> dict:
             fm_start = i
             break
     fm_end = None
-    for i in range(fm_start + 1, len(lines)):
-        if lines[i].strip() == "---":
-            fm_end = i
-            break
+    if fm_start is not None:
+        for i in range(fm_start + 1, len(lines)):
+            if lines[i].strip() == "---":
+                fm_end = i
+                break
     fm = {}
     if fm_start is None or fm_end is None:
         return fm
@@ -332,14 +334,14 @@ def parse_instructions(text: str) -> dict:
     cur = None
     buf = []
     for line in text.split("\n"):
-        m = re.match(r"^#\s+(.*)$", line)
+        m = re.match(r"^#+\s+(.*)$", line)
         if m:
             if cur:
                 sections[cur] = "\n".join(buf).strip()
             header = m.group(1).strip().lower()
-            if header.startswith("system_prompt"):
+            if header.startswith("system_prompt") or header.startswith("system prompt"):
                 cur = "system_prompt"
-            elif header.startswith("depth_prompt"):
+            elif header.startswith("depth_prompt") or header.startswith("depth prompt"):
                 cur = "depth_prompt"
             elif header.startswith("post") or header.startswith("post-history"):
                 cur = "post_history"

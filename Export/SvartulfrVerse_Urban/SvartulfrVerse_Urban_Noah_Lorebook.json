@@ -1,5 +1,5 @@
 {
-    "name": "SvartulfrVerse_Urban_Rebased_Noah_Lorebook",
+    "name": "SvartulfrVerse_Urban_Noah_Lorebook",
     "description": "General description of the world or setting.",
     "scan_depth": 50,
     "token_budget": 2048,
@@ -250,11 +250,11 @@
         },
         "5": {
             "uid": 5,
-            "comment": "[[NPC_MANIFEST]] SvartulfrVerse_Urban_Rebased_Noah_Lorebook NPC Memory index",
+            "comment": "[[NPC_MANIFEST]] SvartulfrVerse_Urban_Noah_Lorebook NPC Memory index",
             "key": [],
             "keysecondary": [],
             "selectiveLogic": 0,
-            "content": "{\"schema\": 1, \"lorebook\": {\"name\": \"SvartulfrVerse_Urban_Rebased_Noah_Lorebook\", \"kind\": \"npc\"}, \"personas\": {\"user\": {\"name\": \"{{user}}\", \"aliases\": [\"{{user}}\"]}}, \"npcs\": [{\"id\": \"noah_douglas_bloodmoon\", \"displayName\": \"Noah Douglas-Bloodmoon\", \"aliases\": [\"Noah\", \"Noah Douglas-Bloodmoon\"], \"facets\": {\"physical\": 0, \"psychological\": 1}}]}",
+            "content": "{\"schema\": 1, \"lorebook\": {\"name\": \"SvartulfrVerse_Urban_Noah_Lorebook\", \"kind\": \"npc\"}, \"personas\": {\"user\": {\"name\": \"{{user}}\", \"aliases\": [\"{{user}}\"]}}, \"npcs\": [{\"id\": \"noah\", \"displayName\": \"Noah\", \"aliases\": [\"Noah\"], \"facets\": {\"physical\": 0, \"psychological\": 1}}]}",
             "position": 1,
             "order": 0,
             "depth": 4,

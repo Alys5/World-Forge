@@ -52,7 +52,7 @@ def main():
     print(f"Created {group_file.name}")
 
     # Create world lorebook from template
-    lb_template_path = templates_dir / "World_Lorebook_template.json"
+    lb_template_path = templates_dir / "Lorebook_Template.json"
     if lb_template_path.exists():
         with open(lb_template_path, "r", encoding="utf-8") as f:
             lb_template = json.load(f)
