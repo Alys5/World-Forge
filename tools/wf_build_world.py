@@ -306,27 +306,38 @@ def build_manifest(internal_name: str, kind: str | None, entries_with_uid: list[
 # Card parsing
 # ---------------------------------------------------------------------------
 
-def parse_card_frontmatter(text: str) -> dict:
+def parse_card_markdown(text: str) -> dict:
+    sections = {}
+    current_section = None
+    buffer = []
+    
+    # Check for frontmatter just in case
     lines = text.split("\n")
-    fm_start = None
-    for i, l in enumerate(lines):
-        if l.strip() == "---":
-            fm_start = i
-            break
-    fm_end = None
-    if fm_start is not None:
-        for i in range(fm_start + 1, len(lines)):
-            if lines[i].strip() == "---":
-                fm_end = i
-                break
-    fm = {}
-    if fm_start is None or fm_end is None:
-        return fm
-    for line in lines[fm_start + 1:fm_end]:
-        if ":" in line:
-            k, v = line.split(":", 1)
-            fm[k.strip()] = v.strip()
-    return fm
+    in_fm = False
+    for line in lines:
+        if line.strip() == "---" and not sections and current_section is None:
+            in_fm = not in_fm
+            continue
+        if in_fm:
+            if ":" in line:
+                k, v = line.split(":", 1)
+                sections[k.strip()] = v.strip()
+            continue
+            
+        m = re.match(r"^##\s+(.+)$", line)
+        if m:
+            if current_section:
+                sections[current_section] = "\n".join(buffer).strip()
+            current_section = m.group(1).strip().lower()
+            buffer = []
+        else:
+            if current_section:
+                buffer.append(line)
+    
+    if current_section:
+        sections[current_section] = "\n".join(buffer).strip()
+        
+    return sections
 
 
 def parse_instructions(text: str) -> dict:
@@ -449,7 +460,7 @@ def main():
     # Build character cards from Card_*.md files
     for card_md in sorted(drafts_dir.glob("Card_*.md")):
         char_key = card_md.stem.replace("Card_", "")
-        fm = parse_card_frontmatter(card_md.read_text(encoding="utf-8"))
+        fm = parse_card_markdown(card_md.read_text(encoding="utf-8"))
 
         inst_path = drafts_dir / f"Instructions_{char_key}.md"
         if not inst_path.exists():
@@ -496,13 +507,11 @@ def main():
             dst.write_bytes(src.read_bytes())
             print(f"Copied {copy_file}")
 
-    # Copy JanitorAI profile if exists
-    janitor_src = drafts_dir / "JanitorAI_Profile_Group.md"
-    if janitor_src.exists():
-        janitor_dst = export_dir / f"{world_name}_JanitorAI.md"
-        janitor_dst.write_bytes(janitor_src.read_bytes())
-        print(f"Copied JanitorAI_Profile_Group.md -> {janitor_dst.name}")
-
+    # Generate JanitorAI profile
+    import subprocess
+    print("Generating JanitorAI profile...")
+    subprocess.run([sys.executable, str(base_dir / "tools" / "build_janitor_profile.py"), world_name], check=True)
+    
     print("Done.")
 
 
