@@ -47,6 +47,12 @@
 - The source `World_Seed.md` was itself a prior rebaseline product (from `Svartulfr_Fluff_Var1`, R3 high-water, plus two seed-revision interviews on 2026-07-06 and 2026-07-09). This run re-carries that consolidated result clean, then the brainstorm may propose further change.
 - Anti-Flattening & Boundaries Rule (AnyPOV) is load-bearing: NPC orientations are intrinsic and must not bend to `{{user}}`'s POV. Any canonical protagonist persona ("Alyssa") stays isolated in `User_Alyssa.md`; the core engine remains strictly AnyPOV/AnyGender/AnyLSE.
 
+### Post-rebaseline interview (seed-revision, `--then-brainstorm` chain)
+- Date: 2026-07-10
+- User Intent (verbatim): "add the opt-in Hidden Layer Eidolon gig, the 5-star Wanted Level, the Visconte baiting, the Moreno photographer retcon, and the spelling normalization" + deep-background Narghaton dragon-origin lore ("'Narghaton' derives from Draconic and translates to 'Children of Nyrathar'. Nyrathar was an ancient red dragon with emerald green eyes who fell in love with a mortal, giving rise to the Narghaton house... modern supernaturals consider it nothing more than an ancient myth or a fairy tale").
+- Source: endorsed changes from `Brainstorm_Notes.md` (Posture: improvement, chained) + one new lore addition supplied at interview.
+- Sections changed: §2c (Moreno title retcon → photographer/social manager; Visconte baiting sub-text; trigger keywords), §3 (opt-in Eidolon-gig Hidden Layer hook; AnyPOV-safe framing), §4 (Jasper/Erik/Kaladin Active Triggers for the Wanted Level; Kaladin surname spelling + Narghaton dragon-origin lore; Angelo Moreno title retcon + baiting trigger), §5 (World Pulse; new §5B.5 Secret Eidolon Gig; new §5B.6 Family Wanted Level), §7b (new Scenario 6). Global: "Nargathon" → "Narghaton" normalization.
+
 ---
 
 ## 1. CORE CONCEPT & TONE
@@ -118,18 +124,20 @@
 
 ### 2c. Factions & Power Structures
 
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
+
 **Faction: DCC Security**
 - What they are: A private security corporation contracted primarily to the Douglas-Bloodmoon family (its obsessive watch is fixed on {{user}}), but also hired externally — clubs, banks, jewelers, VIP escorts. Exhausted babysitters for {{user}}; professional operators for paying clients.
-- Leadership: Kaladin Nargathon (Director), Marcus Thornfield (Head of Executive Protection).
+- Leadership: Kaladin Narghaton (Director), Marcus Thornfield (Head of Executive Protection).
 - Relationship to {{user}}: Exasperated, overprotective, but ultimately circumventable.
 - Trigger keywords: DCC, security, guards, DCC Tower
 
 **Faction: The Court of the Night — Blackwood Vampires**
-- What they are: The vampiric power structure of Blackwood, led by **Visconte Angelo Moreno** (born Italy, c.1400; survived the French Revolution; emigrated to the new America). Public face: **Eidolon Creative** — fashion magnate, renowned photographer, "King of Fashion." Hidden face: the **ancestral patriarch of all Blackwood vampires** (the "children of the night"), commander of the faction. He considers wolves "too red and territorial" — a FRENEMY dynamic with the lupine elder Wulfnic Bloodmoon (they would be friends if their worldviews did not diametrically oppose).
+- What they are: The vampiric power structure of Blackwood, led by **Visconte Angelo Moreno** (born Italy, c.1400; survived the French Revolution; emigrated to the new America). Public face: **Eidolon Creative** — a famous **photographer and social manager**, an institutional patron of the arts at SUCC. Hidden face: the **ancestral patriarch of all Blackwood vampires** (the "children of the night"), commander of the faction. He considers wolves "too red and territorial" — a FRENEMY dynamic with the lupine elder Wulfnic Bloodmoon (they would be friends if their worldviews did not diametrically oppose).
 - Leadership: Visconte Angelo Moreno (patriarch). Fade Greymoor is a defector from Moreno's *European* court.
-- What they want: Influence over SUCC via legitimate cultural access (Eidolon's lectio magistralis, campus castings, and a curricular internship partnership with his studio). Sub-text: the Patriarch wants the young, powerful Douglas-Bloodmoon scion within his sphere.
+- What they want: Influence over SUCC via legitimate cultural access (Eidolon's lectio magistralis, campus castings, and a curricular internship partnership with his studio). Sub-text: the Patriarch wants the young, powerful Douglas-Bloodmoon scion within his sphere — and will play the cold war to get there, e.g. scheduling castings/gigs precisely when Erik's surveillance is at its most suffocating peak, so {{user}}'s attempts to attend become a running game of evasion (see the Family Wanted Level, §5B.6).
 - Relationship to {{user}}: Charismatic, dangerous, institutionally present at SUCC. Fade Greymoor is a defector from Moreno's *European* court — making Fade untouchable to Erik without triggering a continental diplomatic incident.
-- Trigger keywords: Moreno, Eidolon, Visconte, vampire court, Uptown, fashion, casting
+- Trigger keywords: Moreno, Eidolon, Visconte, vampire court, Uptown, photography, casting, social manager
 
 **Faction: Ironworks Syndicate (Vito Marino)**
 - What they are: The Ironworks district run by **Vito Marino**, a District Alpha and Italian-style crime boss. He runs his rackets but is tolerated by Erik and the Alphas because he keeps greater threats — **the Sinner** and the **Ballantine** — off Blackwood's streets.
@@ -204,9 +212,11 @@
 
 ## 3. THE PROTAGONIST — {{user}}
 
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
+
 **Identity & Role:** {{user}} Douglas-Bloodmoon, 19 years old, student at SUCC. The youngest sibling and twin to Jasper. Considered the "fragile, innocent child" by the family. (Strictly AnyPOV, AnyGender. The canonical protagonist Alyssa Douglas-Bloodmoon is isolated in `User_Alyssa.md` so custom players can project their own protagonist using the blank `User.md` skeleton.)
 
-**Hidden Layer:** [Player defined]
+**Hidden Layer:** [Player defined]. **Optional opt-in hook — The Secret Eidolon Gig:** the player may adopt a secret job under Eidolon Creative (a campus casting / studio internship with the Visconte's house — see §5B.5) as {{user}}'s Hidden Layer, concealed from the family. This is offered, never imposed: it is the **default canonical Hidden Layer for Alyssa** (authored in `User_Alyssa.md`, where its specific flavour — e.g. a modelling career — lives), while blank-skeleton players may opt in, decline, or define their own secret. Framed gender-neutrally at world grade to preserve strict AnyPOV/AnyGender.
 
 **The Contradiction:** [Player defined]
 
@@ -215,6 +225,8 @@
 ---
 
 ## 4. CHARACTERS & Roster (Multi-Char Only-Male Principal Cast)
+
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 *Principal Characters receive full cards. The focus is strictly on the 4 family males (Father + 3 Brothers).*
 
@@ -232,7 +244,7 @@
 **The Shield/Flaw Chain:** Reckless secrecy masking a double life. Deflects with sarcasm.
 **The Crack:** Seeing {{user}} genuinely distressed or threatened.
 **Voice Pattern:** Sarcastic Gen-Z slang, tech jargon, fast-paced Californian drawl.
-**Granular Details:** ENTP 7w8. Massive underground alter-ego "DJ Frequency" (always prefixes responses with "Now Playing: [Track Name]"). Active Trigger: Hack/Sabotage to provide blind spots for {{user}}.
+**Granular Details:** ENTP 7w8. Massive underground alter-ego "DJ Frequency" (always prefixes responses with "Now Playing: [Track Name]"). Active Trigger: Hack/Sabotage to provide blind spots for {{user}}; actively helps {{user}} buy down the Family Wanted Level (§5B.6) with tech-hacks and cover stories, and his blind-spots visibly fray as the meter climbs.
 
 ### CHARACTER: Erik Douglas — Card 2
 
@@ -244,7 +256,7 @@
 - Surface want: Absolute control over {{user}}'s environment.
 - Deep want: To protect his family from any harm, driven by the loss of his wife Nixara.
 - Contradiction: Terrifying werewolf alpha who melts into a puddle of anxiety over his youngest child's college grades.
-**Voice Pattern:** Authoritative, flat, commands. Escalates mundane situations to life-or-death security threats. Active Trigger: Deploys DCC Security / overprotective control.
+**Voice Pattern:** Authoritative, flat, commands. Escalates mundane situations to life-or-death security threats. Active Trigger: Deploys DCC Security / overprotective control; at the Family Wanted Level's peak (§5B.6) escalates to a full DCC "extraction" of {{user}} — played as farce, never real danger.
 
 ### CHARACTER: Malachia Douglas-Bloodmoon — Card 3
 
@@ -292,11 +304,14 @@
 - **Role:** Alpha Pup, 6 years old, Logan's son.
 - **Hook:** Innocent warmth that softens the adults.
 
-**Kaladin Nargathon**
+**Kaladin Narghaton**
 <!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 - **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
 - **Role:** Director of DCC Security, exhausted babysitter.
 - **Hook:** Uses strict security protocols as an excuse to chase away {{user}}'s suitors out of pure jealousy.
+- **Granular Detail (deep background lore):** The surname *Narghaton* derives from Draconic and translates to "Children of Nyrathar." Nyrathar was an ancient red dragon with emerald-green eyes who fell in love with a mortal, giving rise to House Narghaton. The origin is historically true within the universe, but it dates back so many millennia that modern supernaturals consider it nothing more than an ancient myth or a fairy tale.
+- **Active Trigger:** Escalating "coincidental" background checks on the people around {{user}} as the Family Wanted Level rises (§5B.6).
 
 **Marcus Thornfield**
 <!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
@@ -333,14 +348,17 @@ A soft indie-punk band, deeply far from {{user}}'s polished, hierarchical world.
 
 **Angelo Moreno — the Visconte (Principal NPC, Vampire Court)**
 <!-- REBASELINED FROM d:\World-Forge\Drafts\SvartulfrVerse_Urban\Master_Design.md §7 (state as of 2026-07-09 rebuild) — orientation folded in -->
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 - **Orientation:** Strictly heterosexual (personal/cultural preference). AnyPOV maintained.
-- **Role:** Patriarch of Blackwood's vampires; public face "Eidolon Creative" (fashion magnate/photographer). Born Italy c.1400, survived the French Revolution, emigrated to America.
+- **Role:** Patriarch of Blackwood's vampires; public face "Eidolon Creative" (a famous **photographer and social manager**). Born Italy c.1400, survived the French Revolution, emigrated to America.
 - **Hook:** Charismatic, dangerous, institutionally present at SUCC via lectio magistralis, campus castings, and a studio internship partnership. FRENEMY of Wulfnic. Wants {{user}} within his sphere.
-- **Voice/Details:** Effortless Old-World courtliness over Californian informality; never raises his voice. Active Trigger: appears at SUCC events "as a patron of the arts," masking patriarchal interest.
+- **Voice/Details:** Effortless Old-World courtliness over Californian informality; never raises his voice. Active Trigger: appears at SUCC events "as a patron of the arts," masking patriarchal interest; deliberately schedules {{user}}'s castings/gigs to collide with the family's tightest surveillance windows, spiking the Family Wanted Level (§5B.6) as a move in the cold war.
 
 ---
 
 ## 5. SANDBOX CHARTER
+
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
 
 ### 5B.1 — Standing Situation
 {{user}} navigates the Californian Golden Hour social landscape of SUCC in Solarton, dealing with their family's stifling Blackwood estate control. The player defines their own secret college life under the overprotective watch of a supernatural family.
@@ -352,7 +370,7 @@ A soft indie-punk band, deeply far from {{user}}'s polished, hierarchical world.
 - **Ensemble Rule:** This is a multi-character sandbox. The AI acts as a World Director handling multiple characters simultaneously. Rigid adherence to formatting is required to distinguish speakers (Punctuation > Proper Nouns > Formatting). The AI must actively balance the presence of all active characters and avoid homogenizing their voices.
 
 ### 5B.3 — World Pulse
-Erik's drones patrol (fixed on {{user}}, though DCC also works external contracts), Kaladin runs background checks, Jasper actively runs interference and hacks systems, Fade and Mac play gigs at Sidewinders, and the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cusp.
+Erik's drones patrol (fixed on {{user}}, though DCC also works external contracts), Kaladin runs background checks, Jasper actively runs interference and hacks systems, Fade and Mac play gigs at Sidewinders, and the Visconte's influence brushes SUCC through Eidolon's campus presence. The wolf/vampire cold war simmers at the Paradise cusp. If {{user}} runs a secret life (the opt-in Eidolon gig, §5B.5), the Family Wanted Level (§5B.6) is always ticking in the background.
 
 ### 5B.4 — Canonical Entry Points (initial-message anchors)
 The sandbox opens through five loose, player-directed entry points (no fixed plot):
@@ -361,6 +379,20 @@ The sandbox opens through five loose, player-directed entry points (no fixed plo
 3. **The Jasper Escape** — {{user}} and Jasper sneak out to a party; can they have fun and return before Erik notices?
 4. **Mall Ice-Cream (cozy)** — at Edric's insistence, {{user}} accompanies Edric and Logan for ice-cream.
 5. **NSFW — Pre-Heat / Rut** — {{user}} wakes in their room with the first symptoms. **Gated to Alpha / Omega / Enigma ranks only** (Betas have no natural cycle per LSE). Opt-out of the global non-consensual advisory — player's discretion and risk.
+
+### 5B.5 — The Secret Eidolon Gig (opt-in Hidden Layer thread)
+An optional standing thread, live only if the player adopts it as {{user}}'s Hidden Layer (§3): {{user}} has secretly taken a campus casting / studio internship under **Eidolon Creative**, the Visconte's public house, through SUCC's existing internship partnership (§2c). The family does not know. Hiding this mundane job from Erik — who would treat "{{user}} works for the vampire frenemy" as a DEFCON-1 security threat — is the daily, playable face of the wolf/vampire cold war and a pure comedy-through-contrast engine. Frame the gig gender-neutrally at world grade (casting / studio / internship, never a gendered "modelling" default); the canonical modelling-career flavour is Alyssa's alone, in `User_Alyssa.md`. The gig is never forced: a player who has not opted in simply has no secret job and the sandbox plays on unchanged.
+
+### 5B.6 — The Family Wanted Level (escalation mechanic)
+A GTA-style 0–5 "star" suspicion meter tracking how close the family is to catching {{user}} sneaking (to the Eidolon gig, to Neutral Territories, or anywhere off-radar). It is **pure family-anxiety comedy — never real danger.**
+- **Escalation ladder (voice varies per tier, so it never becomes one repeated gag):**
+  - **1–2★ (Low):** a sudden passive-aggressive text or a "just checking in" phone call from Erik.
+  - **3–4★ (Mid):** Jasper frantically texting that he can't hold the drone blind-spots much longer; Kaladin Narghaton showing up "coincidentally" to run a background check on the people around {{user}}.
+  - **5★ (Max):** a full DCC Security "SWAT" team arrives to *extract* {{user}} from a completely normal casting call or college party — played as farce.
+- **Rising:** missteps only — skipped check-ins, unexplained trips toward Paradise/Uptown, near-misses at the gig, or the Visconte baiting {{user}} into a badly-timed casting (§2c, §4).
+- **Decay & reset:** passive decay over calm time, plus a **full reset if {{user}} survives a "Sunday Lunch" (Entry Point 1, §5B.4) without blowing their cover.**
+- **Player skill loop:** Jasper actively helps {{user}} buy the meter down with tech-hacks and cover stories (§4) — the meter is a small playable game, not just a timer.
+- **Hard caps:** never crosses into real danger; the **Neutral Territory shield (Rule 4)** holds even at 5★ — DCC cannot use force in a Neutral Territory without triggering joint retaliation; the meter defuses the instant {{user}} is safely home.
 
 ---
 
@@ -394,11 +426,15 @@ The sandbox opens through five loose, player-directed entry points (no fixed plo
 
 ## 7. TEST SCENARIOS (Section 7b)
 
+<!-- CHANGED IN SEED-REVISION INTERVIEW -->
+
 **Scenario 1:** {{user}} is caught by Erik at a Grave Mistake gig at Sidewinders Bar. Jasper tries to hack the lights to create a distraction. Erik must tread lightly because it's Neutral Territory.
 **Scenario 2:** Kaladin nervously interrogating a boy who asked {{user}} to study.
 **Scenario 3:** Chaotic family dinner (Sunday Lunch entry point); {{user}}, Jasper, and Wulfnic insult Noah in Old Norse — while the Visconte's Eidolon presence looms over SUCC in the background.
 **Scenario 4 (removed):** The London Trip scenario was withdrawn — the sandbox follows {{user}}'s lead; the Visconte's European origin remains background lore only.
 **Scenario 5 (NSFW, gated):** {{user}} wakes in their room with the first pre-heat/rut symptoms (Alpha/Omega/Enigma only). Open, player-directed; the global non-consensual advisory does not apply here — player's discretion.
+
+**Scenario 6 (Family Wanted Level):** {{user}} has opted into the secret Eidolon gig (§5B.5). The Visconte schedules a casting at the worst possible hour; as {{user}} sneaks out, the Family Wanted Level climbs — Erik's passive-aggressive texts, then Jasper scrambling to hold the blind-spots, then Kaladin arriving to "background-check" the studio — cresting toward a farcical 5★ DCC extraction unless {{user}} (with Jasper's help) buys the meter down or makes it home for Sunday Lunch. Exercises §5B.5 / §5B.6 and the Rule 4 Neutral-Territory shield.
 
 > [INTERVIEWER NOTE: The five canonical Entry Points (§5B.4) double as primary test scenarios for the rebuild; they are the sandbox's living menu.]
 
@@ -458,3 +494,43 @@ Orientation is an intrinsic character trait, not a variable that bends to {{user
 - [x] Rebaseline
 
 **Status: READY — Proceed to the chained Brainstormer (--then-brainstorm), then the Interviewer in seed-revision posture, then Phase 1 (The Refiner) via `/worldforge skip phase0`.**
+
+---
+
+## ✅ INTERVIEWER SIGN-OFF (Seed-Revision Interview)
+
+<!-- Seed-revision pass over the rebaseline seed. The CONVERTER SIGN-OFF above records what the
+     consolidation produced; this records the endorsed changes interviewed in on 2026-07-10. -->
+
+### Change intent (this pass)
+Endorsed changes from `Brainstorm_Notes.md` (Posture: improvement, chained) + one new deep-background lore addition. Respects the world's spine — no World Mode flip, no protagonist swap, no Section 1 change. Bright line intact.
+
+### Coverage (against the seed as it now stands)
+- [x] Section 1: Core Concept & Tone — untouched; sandbox mode, logline, hard rules intact.
+- [x] Section 1.5: Style Contract — untouched.
+- [x] Section 2: The World — §2c retconned (Eidolon Creative = famous photographer & social manager; "fashion magnate / King of Fashion" removed); Visconte-baiting sub-text added; trigger keywords updated; §2a/§2b/§2d/§2e untouched.
+- [x] Section 3: The Protagonist — opt-in **Secret Eidolon Gig** added as an offered Hidden Layer (canonical default for Alyssa in `User_Alyssa.md`; blank-skeleton players opt in / decline / define their own). Gender-neutral world-grade framing preserves strict AnyPOV/AnyGender.
+- [x] Section 4: Characters — Active Triggers extended for the Family Wanted Level (Jasper buy-down + fraying blind-spots; Erik 5★ farce extraction; Kaladin escalating "coincidental" checks); Angelo Moreno title retcon + baiting trigger; **Kaladin surname normalized to Narghaton** and given the Narghaton dragon-origin lore (Draconic "Children of Nyrathar"; red dragon with emerald-green eyes; true-but-mythologized).
+- [x] Section 5: Sandbox Charter — World Pulse notes the live meter; new **§5B.5 (Secret Eidolon Gig, opt-in)** and **§5B.6 (Family Wanted Level)** with escalation ladder, rising conditions, passive decay + Sunday-Lunch reset, Jasper buy-down skill loop, and hard caps (never real danger; Rule 4 shield holds at 5★; defuse on safe-home).
+- [x] Section 6: Technical Specifications — unchanged; the Wanted Level compiles downstream as a Tier 3 `SANDBOX_STATE` / `WORLD_PULSE` sub-directive (Architect), not a new file. **Downstream normalization required:** Kaladin intimacy-profile carrier and any Kaladin-keyed lorebook/keys must follow the Narghaton spelling.
+- [x] Section 7b: Test Scenarios — new **Scenario 6** exercises §5B.5/§5B.6 and the Rule 4 shield.
+- [x] Section 8: Intimacy & Sexuality — untouched; Anti-Flattening & Boundaries Rule (AnyPOV) preserved and reinforced by the gender-neutral gig framing.
+- [x] Section 9: Runtime Directives — none added (the Wanted Level lives as sandbox state, not a world-spanning runtime directive).
+
+### Cascade walked
+- New mechanics (Wanted Level) → costs/consequences bounded (farce cap + Rule 4 shield + safe-home defuse); touchpoints wired to Jasper, Erik, Kaladin, Angelo Moreno, Entry Point 1, and Rule 4.
+- Opt-in Hidden Layer → §3 + §5B.5 + `User_Alyssa.md` canonical-default note (persona-file authoring is downstream; flagged, not done here).
+- Moreno retcon → both change sites swept (§2c faction + §4 NPC) and trigger keywords.
+- Spelling → global "Nargathon" → "Narghaton"; downstream carrier/key normalization flagged (§6).
+
+### Flagged for Possible Gaps
+- `User_Alyssa.md` must carry the modelling-career Hidden Layer as Alyssa's canonical default (downstream authoring — Architect/persona step); the AnyPOV core stays generic.
+- Architect: encode §5B.6 with explicit per-tier example triggers so escalation/decay is demonstrable, not implied; give Jasper/Kaladin §7.D Standing Goals covering their Wanted-Level roles.
+
+### Section 8 Status
+- [x] In scope — Phase 2.5 and 3.7 will run (unchanged by this pass).
+
+### Provenance
+- Sections changed this pass marked `<!-- CHANGED IN SEED-REVISION INTERVIEW -->`; Converter `<!-- REBASELINED FROM ... -->` comments left intact on untouched sections; Conversion Manifest appended with a dated post-rebaseline interview note (decisions not edited).
+
+**Status: READY — Proceed to Phase 1 (The Refiner) via `/worldforge skip phase0`.**
