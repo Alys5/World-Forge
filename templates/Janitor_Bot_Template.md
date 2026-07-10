@@ -84,11 +84,6 @@ DELEGATE, DON'T DELETE: Any hyper-granular appearance details (exact measurement
 <!-- Describe what the character is wearing at the start of the scenario in a brief narrative paragraph. -->
 <!-- e.g. Wearing a simple, dark traveling cloak over a worn leather tunic and sturdy boots. -->
 
-<Q&A>
-Q: How does [CharName_1] rate their own attractiveness?
-A:
-</Q&A>
-
 ---
 
 ## [BASIC_INFO]
@@ -97,25 +92,6 @@ A:
 
 <!--Describe a brief backstory for your character-->
 <!-- TRIVIA MIGRATION DIRECTIVE: Do NOT include long biographical history that does not dictate immediate turn-by-turn behavior. Move extended historical trivia into the Lorebook payload so it can be injected only when relevant. -->
-
-### RESIDENCE
-
-<!--If location is important to the story. You can describe the city, house, rooms, etc.-->
-
-### CONNECTIONS
-
-<!--Relatives, servants, etc, if necessary-->
-
-### SECRET
-
-<!--Is your character hiding something?-->
-
-<!-- 
-IMPORTANT DIRECTIVE FOR THE ARCHITECT:
-TRIVIA MIGRATION DIRECTIVE: Do NOT list [INVENTORY] or [ABILITIES] in this profile. 
-Complex equipment, weapons, and magic spells are token sinks. 
-Migrate these into the JS Lorebook/Script payload so they can be injected only when the user triggers an action (via L_INV or L_ABIL).
--->
 
 ---
 
@@ -145,41 +121,6 @@ Migrate these into the JS Lorebook/Script payload so they can be injected only w
 - Unique Trait:
   ↳ Effects:
 
-<Q&A>
-Q: What does [CharName_1] do first? Think or act/talk?
-A:
-
-Q: What does [CharName_1] do in free time?
-A:
-
-Q: What is [CharName_1]'s most favorite thing?
-A:
-
-Q: What is [CharName_1]'s most hated thing?
-A:
-
-Q: What is [CharName_1] incredibly good with?
-A:
-
-Q: What is [CharName_1] awfully bad with?
-A:
-
-Q: How [CharName_1] behaves with {{user}}? What is their relationship?
-A:
-
-Q: Is [CharName_1] a likable character? What reputation [CharName_1] has?
-A:
-
-Q: Is [CharName_1] tolerant towards other people or groups?
-A:
-
-Q: Can [CharName_1] harm {{user}} and others throughout the story?
-A:
-
-Q: How [CharName_1] behaves with someone of a higher hierarchy or power? Will they bite the hand that feeds or drop down trembling on their knees?
-A:
-</Q&A>
-
 ---
 
 ## [BEHAVIOR_NOTES]
@@ -188,97 +129,6 @@ A:
 -
 -
 - ***
-
-## [SEXUALITY]
-
-[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure [CharName_1] sticks to their sexual role and orientation during the story.]
-
-### GENERAL SEXUAL INFO
-
-- Sexual Orientation:
-  ↳ Explanation:
-- Role during sex: <!--Submissive, Power Bottom, Bottom, Top, etc.-->
-  ↳ Explanation:
-
-<Q&A>
-Q: Is [CharName_1] a virgin?
-A:
-
-Q: What does [CharName_1] think about sex in general?
-A:
-
-Q: Is [CharName_1] disgusted by the idea of gay sex?
-A:
-
-Q: Does [CharName_1] talk dirty and swear?
-A:
-
-Q: Is [CharName_1] loyal to their partner?
-A:
-
-Q: Is [CharName_1] polyamorous? Will [CharName_1] tolerate being cheated on?
-A:
-
-Q: Does [CharName_1] enjoy non-con (being raped)?
-A:
-
-Q: Will [CharName_1] fight back during non-con (rape)?
-A:
-
-Q: Can [CharName_1] flirt BEFORE {{user}} decides to flirt?
-A:
-</Q&A>
-
----
-
-## [OTHER_SEXUAL_NOTES]
-
--
--
-- ***
-
-## [SPEECH]
-
-### GENERAL SPEECH INFO
-
-- Style: <!--e.g. [CharName_1] speaks like a lady from the Victorian era.-->
-- Quirks: <!--e.g.  Speaks in rhymes like rapper-->
-- Ticks: <!--e.g. Ends sentences with "Nya~".-->
-
-## Speech EXAMPLES AND OPINIONS
-
-[IMPORTANT NOTE FOR AI: This section provides [CharName_1]'s speech examples, memories, thoughts, and [CharName_1]'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
-
-<!--Try to provide examples within a certain context, like a reaction to {{user}}'s return home, an implied question from {{user}}, or an implied memory/decision/thought.-->
-
-<speech_examples>
-<!-- ARCHITECT DIRECTIVE: Structure speech examples by Emotional State. Do NOT use random strings. -->
-- [Praise/Affection]: "..."
-- [Conflict/Anger]: "..."
-- [Repair/Vulnerability]: "..."
-- [Default/Neutral]: "..."
-</speech_examples>
-
----
-
-## SYNONYMS
-
-[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-
-- <!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: "Walking pudding", "Jelly girl", etc-->
--
-- ***
-
-## PREMADE STORY PLAN
-
-- Milestone 1: <!--Use this section only if you have a specific storyline in mind. e.g. Arrival and first meeting-->
-  ↳ Details:<!--e.g. {{user}} and Takita have some time before classes the Entrance Ceremony. AI can introduce other characters, make story hooks, or let {{user}} freely explore Souta Academy until {{user}} decides to go to the Entrance Ceremony.-->
-
-- Milestone 2: <!--e.g. Entrance Ceremony-->
-  ↳ Details: <!--Mr. Snuffles will greet new students and show a little presentation to give lore context before [...]-->
-
-- Milestone 3:
-  ↳ Details:
 
 </[CharName_1]>
 
@@ -311,11 +161,6 @@ DELEGATE, DON'T DELETE: Any hyper-granular appearance details (exact measurement
 <!-- Describe what the character is wearing at the start of the scenario in a brief narrative paragraph. -->
 <!-- e.g. Wearing a simple, dark traveling cloak over a worn leather tunic and sturdy boots. -->
 
-<Q&A>
-Q: How does [CharName_2] rate their own attractiveness?
-A:
-</Q&A>
-
 ---
 
 ## [BASIC_INFO]
@@ -324,25 +169,6 @@ A:
 
 <!--Describe a brief backstory for your character-->
 <!-- TRIVIA MIGRATION DIRECTIVE: Do NOT include long biographical history that does not dictate immediate turn-by-turn behavior. Move extended historical trivia into the Lorebook payload so it can be injected only when relevant. -->
-
-### RESIDENCE
-
-<!--If location is important to the story. You can describe the city, house, rooms, etc.-->
-
-### CONNECTIONS
-
-<!--Relatives, servants, etc, if necessary-->
-
-### SECRET
-
-<!--Is your character hiding something?-->
-
-<!-- 
-IMPORTANT DIRECTIVE FOR THE ARCHITECT:
-TRIVIA MIGRATION DIRECTIVE: Do NOT list [INVENTORY] or [ABILITIES] in this profile. 
-Complex equipment, weapons, and magic spells are token sinks. 
-Migrate these into the JS Lorebook/Script payload so they can be injected only when the user triggers an action (via L_INV or L_ABIL).
--->
 
 ---
 
@@ -386,73 +212,6 @@ These must be moved to the modular JavaScript script (`[WorldName]_JanitorAI_Scr
 -
 -
 - ***
-
-## [SEXUALITY]
-
-[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure [CharName_2] sticks to their sexual role and orientation during the story.]
-
-### GENERAL SEXUAL INFO
-
-- Sexual Orientation:
-  ↳ Explanation:
-- Role during sex: <!--Submissive, Power Bottom, Bottom, Top, etc.-->
-  ↳ Explanation:
-
-<!-- 
-SEXUAL Q&A sections have been intentionally REMOVED from the text profile. 
-Move complex sexual preferences and conditions to the JS script.
--->
-
----
-
-## [OTHER_SEXUAL_NOTES]
-
--
--
-- ***
-
-## [SPEECH]
-
-### GENERAL SPEECH INFO
-
-- Style: <!--e.g. [CharName_2] speaks like a lady from the Victorian era.-->
-- Quirks: <!--e.g.  Speaks in rhymes like rapper-->
-- Ticks: <!--e.g. Ends sentences with "Nya~".-->
-
-## Speech EXAMPLES AND OPINIONS
-
-[IMPORTANT NOTE FOR AI: This section provides [CharName_2]'s speech examples, memories, thoughts, and [CharName_2]'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
-
-<!--Try to provide examples within a certain context, like a reaction to {{user}}'s return home, an implied question from {{user}}, or an implied memory/decision/thought.-->
-
-<speech_examples>
-<!-- ARCHITECT DIRECTIVE: Structure speech examples by Emotional State. Do NOT use random strings. -->
-- [Praise/Affection]: "..."
-- [Conflict/Anger]: "..."
-- [Repair/Vulnerability]: "..."
-- [Default/Neutral]: "..."
-</speech_examples>
-
----
-
-## SYNONYMS
-
-[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-
-- <!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: "Walking pudding", "Jelly girl", etc-->
--
-- ***
-
-## PREMADE STORY PLAN
-
-- Milestone 1: <!--Use this section only if you have a specific storyline in mind. e.g. Arrival and first meeting-->
-  ↳ Details:<!--e.g. {{user}} and Takita have some time before classes the Entrance Ceremony. AI can introduce other characters, make story hooks, or let {{user}} freely explore Souta Academy until {{user}} decides to go to the Entrance Ceremony.-->
-
-- Milestone 2: <!--e.g. Entrance Ceremony-->
-  ↳ Details: <!--Mr. Snuffles will greet new students and show a little presentation to give lore context before [...]-->
-
-- Milestone 3:
-  ↳ Details:
 
 </[CharName_2]>
 

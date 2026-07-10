@@ -357,6 +357,48 @@ const dynamicLore = [
 		personality:
 			' [Behavior: <Architect defines strict physical/intimacy boundaries here>]',
 	},
+	// L_QA: Character Q&A (Informazioni aggiuntive estratte dal vecchio Bot Profile)
+	{
+		keywords: ['ask', 'question', 'why', 'who', 'how', 'when', 'what'],
+		priority: 3,
+		personality:
+			' <Q&A>\n Q: <Architect inserts character Q&A here>\n A: ...\n </Q&A>',
+	},
+	// L_STORY: Premade Story Plan (Milestones ed eventi della storia)
+	{
+		keywords: ['story', 'milestone', 'plan', 'progress', 'next', 'event'],
+		priority: 4,
+		scenario:
+			' [Premade Story Plan: <Architect inserts Milestones here>]',
+	},
+	// L_TRIVIA: Residence, Connections, Secrets (Dettagli background isolati)
+	{
+		keywords: ['house', 'home', 'live', 'friend', 'family', 'secret', 'past', 'history'],
+		priority: 3,
+		personality:
+			' [Background Trivia: <Architect inserts residence, connections, and secrets here>]',
+	},
+	// L_SEX: Preferenze sessuali, orientamento (Innescato in situazioni esplicite)
+	{
+		keywords: ['sex', 'fuck', 'moan', 'dick', 'pussy', 'cock', 'lust', 'aroused', 'horny'],
+		priority: 5,
+		personality:
+			' [Sexuality: <Architect inserts explicit sexual orientation, role, and kinks here>]',
+	},
+	// L_SPEECH: Esempi di dialogo e opinioni (Riferimento per il parlato)
+	{
+		keywords: ['talk', 'say', 'speak', 'voice', 'reply', 'answer', 'tell'],
+		priority: 3,
+		personality:
+			' [Speech Examples: <Architect inserts situational speech examples here>]',
+	},
+	// L_SYNONYMS: Sinonimi del personaggio (Opzionale)
+	{
+		keywords: ['name', 'call', 'known'],
+		priority: 2,
+		personality:
+			' [Synonyms: <Architect inserts name synonyms here>]',
+	},
 
 	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
 ];

@@ -19,6 +19,9 @@ POSITION VALUES (use the correct one for each entry type):
 ENTRY TYPE → CORRECT POSITION:
 - World rules, factions, species definitions → position: 0
 - Character physical descriptions, psychology, NPC profiles → position: 1
+- Character Q&A and Premade Story Plans (Milestones) → position: 1
+- Background Trivia (Residence, Connections, Secrets) → position: 1
+- Sexuality, Sexual Preferences, Speech Examples, Synonyms → position: 1
 - Arc state (ARC_STATE), dramatic beats, NPC behavioral shifts → position: 1
 - TENSION entries (narrative urgency, active stakes) → position: 4, depth: 2-4
 
