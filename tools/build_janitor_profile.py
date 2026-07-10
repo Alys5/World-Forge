@@ -122,6 +122,67 @@ def build_janitor_profile(world_name):
     out_path.write_text(final_md, encoding="utf-8")
     print(f"Successfully generated Janitor Profile: {out_path.name}")
 
+    # 3. Generate Janitor Bio
+    bio_json_path = drafts_dir / "JanitorAI_Bio_Group.json"
+    bio_template_path = base_dir / "templates" / "Janitor_Bio_Template.html"
+    if bio_json_path.exists() and bio_template_path.exists():
+        bio_data = json.loads(bio_json_path.read_text(encoding="utf-8"))
+        bio_html = bio_template_path.read_text(encoding="utf-8")
+        
+        sf = bio_data.get("storefront_text", {})
+        vis = bio_data.get("visuals", {})
+        
+        bio_html = bio_html.replace("{{TITLE}}", sf.get("title", ""))
+        bio_html = bio_html.replace("{{SUBTITLE}}", sf.get("subtitle", ""))
+        
+        main_vis = vis.get("main_portrait_1x1", {})
+        bio_html = bio_html.replace("{{MAIN_PORTRAIT_URL}}", main_vis.get("placeholder_url", ""))
+        
+        bio_html = bio_html.replace("{{IMPACT_LINE}}", sf.get("impact_line", ""))
+        bio_html = bio_html.replace("{{HOOK}}", sf.get("hook", ""))
+        bio_html = bio_html.replace("{{BLURB}}", sf.get("blurb", ""))
+        
+        sup_vis = vis.get("supporting_image_banner", {})
+        bio_html = bio_html.replace("{{BANNER_URL}}", sup_vis.get("placeholder_url", ""))
+        
+        bio_html = bio_html.replace("{{WORLD_TEASER}}", sf.get("world_teaser", ""))
+        bio_html = bio_html.replace("{{CLOSING_LINE}}", sf.get("closing_line", ""))
+        bio_html = bio_html.replace("{{WARNINGS}}", sf.get("warnings", ""))
+        
+        # Build roster
+        roster_blocks = []
+        for r in bio_data.get("roster", []):
+            r_img = r.get("image", {}).get("placeholder_url", "")
+            r_name = r.get("name", "")
+            r_sub = r.get("subtitle", "")
+            r_desc = r.get("description", "")
+            
+            block = f'''<p style="text-align: center">
+    <img src="{r_img}" alt="{r_name}" width="200" /><br />
+    <span style="font-size: 1.1em; color: rgb(249, 226, 175)"><strong>{r_name}</strong></span><br />
+    <span style="font-size: 0.9em; color: rgb(166, 173, 200)"><em>{r_sub}</em></span>
+</p>
+<p style="text-align: justify">
+    <span style="font-size: 0.9em; color: rgb(250, 179, 135)">{r_desc}</span>
+</p>'''
+            roster_blocks.append(block)
+            
+        bio_html = bio_html.replace("{{ROSTER_SECTION}}", "\n".join(roster_blocks))
+        
+        bio_out_path = export_dir / f"{world_name}_JanitorAI_Bio.html"
+        bio_out_path.write_text(bio_html, encoding="utf-8")
+        print(f"Successfully generated Janitor Bio: {bio_out_path.name}")
+        
+    # 4. Generate Janitor Script
+    script_template_path = base_dir / "templates" / "Janitor_Lorebook_Script.js"
+    if script_template_path.exists():
+        script_js = script_template_path.read_text(encoding="utf-8")
+        script_js = script_js.replace("[NAME]", world_name)
+        
+        script_out_path = export_dir / f"{world_name}_JanitorAI_Script.js"
+        script_out_path.write_text(script_js, encoding="utf-8")
+        print(f"Successfully generated Janitor Script: {script_out_path.name}")
+
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: python tools/build_janitor_profile.py <world_name>")
