@@ -366,6 +366,20 @@ This is the §3 round-trip requirement: the `world-forge` Scene Tracker extracts
 
 Carry `pools`, payload-level `framing`/`turns`, procedure `id`/`label`/`mode`/`turns`/`framing`, step `pick`/`roll`/`outcomes`/`text`, and `when` gates through **unchanged** — do not reshape ranges, re-key outcomes, "tidy" pool values, or drop the optional `mode`/`turns` fields the Architect set. If the block is malformed (a `pick` with no matching pool, a `when` pointing at a later step, a step that is both a pick and a roll, an empty `procedures` array, or a `mode`/`turns` of the wrong type), the Editor (Step 4.8) should have caught it; halt and surface rather than emit a guessed payload. `python tools/validate_export.py Export/` (Step 8) confirms it raises no `[WARN]`.
 
+### Step 7.10 — Emit JanitorAI Split Config (`Export/[WorldName]_janitor_split_config.json`)
+
+To support JanitorAI's modular script export, you must create a configuration file that categorizes characters into `Family` (Core Cast/Principals) vs. `NPC` (Secondary/Roster).
+1. Read `Drafts/Master_Design.md` Section 2 (The Cast) and Section 3 (The NPCs).
+2. Create a JSON file named `Export/[WorldName]_janitor_split_config.json`.
+3. Shape the JSON as follows:
+```json
+{
+  "Family": ["Protagonist", "User", "<Principal Name 1>", "<Principal Name 2>"],
+  "NPC": ["<NPC Name 1>", "<NPC Name 2>"]
+}
+```
+Include `Protagonist` and `User` in the `Family` list. This config allows `build_janitor.py` to correctly split character lorebooks into `_JanitorAI_Script_Family.js` and `_JanitorAI_Script_NPC.js`.
+
 ### Step 8 — Validation Pass
 
 Before saving any file (per Foundational Rules at top of this file):
