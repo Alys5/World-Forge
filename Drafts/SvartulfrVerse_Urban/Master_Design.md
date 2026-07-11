@@ -4,12 +4,12 @@
 
 - world_mode: sandbox
 - intimacy_in_scope: true
-- current_phase: 1
+- current_phase: 2
 - status: PENDING
 
 | Phase                | Status  | Round | Sign-off anchor             |
 | -------------------- | ------- | ----- | --------------------------- |
-| 1 Refiner            | PENDING | —     | REFINER SIGN-OFF            |
+| 1 Refiner            | COMPLETE| —     | REFINER SIGN-OFF            |
 | 2 Architect          | PENDING | —     | PRE-SUBMISSION CHECKLIST    |
 | 2.5 Intimacy Arch.   | PENDING | —     | INTIMACY ARCHITECT SIGN-OFF |
 | 3 Editor             | PENDING | —     | EDITOR SIGN-OFF             |
@@ -21,6 +21,82 @@
 | 6 Janitor Builder    | PENDING | —     | JANITOR BUILDER SIGN-OFF    |
 
 ## Revision Log
+
+### Revision R3 — 2026-07-11 19:08 +02:00
+
+**Status:** R1_COMPLETE
+**World Mode:** sandbox
+**Scope type:** tier1_world_rule_modify, tier2_character_modify_field
+**Mode:** freeform
+
+**User intent (verbatim):**
+> SvartulfrVerse geography replaces real-world California: Solarton = Santa Barbara/Goleta (sunny, exclusive coastal college town). Blackwood Forest = Los Padres National Forest (vast, rugged, wild territory north/inland of Solarton). Blackwood = nestled at the edge of this forest. Hex Valley = Santa Ynez Valley (transitional canyon zone). DCC Tower = Los Angeles. The 90-mile split down the 101 Freeway is weaponized: Angelo schedules Solarton castings when Erik is locked in LA duties. Erik gets trapped in SoCal gridlock, scrambling Malachia and Noah (rapid-response). Logan stays out of LA chaos.
+
+**Section 1 / 11 impact:** None.
+**Confirmed cascade (Refiner-mini R1):**
+- Master Design sections to update: Section 3 (Locations: Solarton, Blackwood Forest, Blackwood, Hex Valley, DCC Tower), Section 7 (Erik), Section 8 (Angelo, Logan).
+- Drafts files to modify: `Tier1_World_Entries.md`, `Card_Erik.md`, `Card_Angelo.md`, `Card_Logan.md` (NPC logic).
+- Export files to recompile: `SvartulfrVerse_EN_World_Lorebook.json`, `SvartulfrVerse_EN_Erik_Lorebook.json`, `SvartulfrVerse_EN_NPC_Roster_Lorebook.json`, `Erik_Card.json`.
+
+**Phases affected:** Architect-mini, Compiler-mini
+**Phases skipped:** Intimacy Architect, Editor, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer, Janitor Builder
+
+**Canonical merges applied:**
+- Section 3: Added geographic overlays for Solarton (Santa Barbara), Blackwood Forest (Los Padres), Hex Valley (Santa Ynez), and DCC Tower (LA).
+- Section 7 (Erik): Updated Standing Goal to include getting trapped in 101 Freeway gridlock and deploying Malachia/Noah.
+- Section 8 (Angelo): Updated Standing Goal to specify exploiting the 90-mile LA/Solarton split.
+- Section 8 (Logan): Updated Standing Goal to specify staying out of LA corporate chaos.
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete
+- [x] All canonical Master Design merges applied with inline R3 markers
+- [x] Every in-place merge REPLACED the prior passage in situ
+- [x] Tier classification is correct
+- [x] Routing (phases-affected) locked
+- [x] No unresolved cross-tier flags
+
+**Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+
+---
+
+### Revision R2 — 2026-07-11 18:57 +02:00
+
+**Status:** R1_COMPLETE
+**World Mode:** sandbox
+**Scope type:** tier1_world_rule_modify, tier2_character_modify_field
+**Mode:** freeform
+
+**User intent (verbatim):**
+> Angelo Moreno's deliberate scheduling is the canonical primary escalation driver for the Family Wanted Level. Wulfnic and Angelo have a 300-year-old Versailles frenemy dynamic. Wulfnic intervenes unprompted to block Angelo. Angelo is recycling the exact strategy that failed on Nixara 30 years ago because she was a shield maiden.
+
+**Section 1 / 11 impact:** None.
+**Confirmed cascade (Refiner-mini R1):**
+- Master Design sections to update: Section 1 (Nixara in Rule 2), Section 8 (Wulfnic and Angelo), Section 9B (Family Wanted Level).
+- Drafts files to modify: `Tier1_World_Entries.md`, `Tier3_Sandbox_Entries.md`. (Angelo and Wulfnic are in the NPC Roster lorebook).
+- Export files to recompile: `SvartulfrVerse_EN_World_Lorebook.json`, `SvartulfrVerse_EN_NPC_Roster_Lorebook.json`, `SvartulfrVerse_EN_Sandbox_Lorebook.json`.
+
+**Phases affected:** Architect-mini, Compiler-mini
+**Phases skipped:** Intimacy Architect, Editor, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer, Janitor Builder
+
+**Canonical merges applied:**
+- Section 1 (Rule 2): Nixara's shield maiden lore and Angelo immunity added.
+- Section 8: Wulfnic's history with Angelo (Versailles 1714) and unprompted intervention added.
+- Section 8: Angelo's motivation explicitly citing the Versailles game and recycling the Nixara playbook added.
+- Section 9B: Family Wanted Level rising condition updated to make Angelo's scheduling the primary driver.
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete (all sections, drafts, exports listed)
+- [x] All canonical Master Design merges applied with inline R2 markers
+- [x] Every in-place merge REPLACED the prior passage in situ
+- [x] Tier classification is correct for every affected entry
+- [x] Routing (phases-affected) locked and matches confirmed cascade
+- [x] No unresolved cross-tier, cross-arc, or contradiction flags
+
+**Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+
+---
 
 ### Revision R1 — 2026-07-11 17:05 +02:00
 
@@ -89,7 +165,7 @@
 **Rule 2 — The LSE Pack Code (Genealogy & Hierarchy):** The Douglas-Bloodmoon family operates on strict, unshakable hierarchical dynamics:
 
 - Wulfnic Bloodmoon: Alpha of Alphas (Ancestor Primordial Enigma, grandfather).
-- Nixara Bloodmoon: Dominant Omega (Deceased mother, background lore).
+- Nixara Bloodmoon: Dominant Omega (Deceased mother). Raised as a shield maiden with traditional Viking principles by Wulfnic; fiercely secure and immune to supernatural manipulation. Bounced Angelo's glamour completely 30 years ago. <!-- REVISED IN R2 (2026-07-11): Added Nixara's shield maiden history and immunity to Angelo -->
 - Erik Douglas: Dominant Alpha & Pack Leader (Prime, Patriarch).
 - Malachia Douglas-Bloodmoon: Alpha (Adult Eldest son, direct heir).
 - Logan Douglas: Beta (Prime, Erik's younger brother, right-hand).
@@ -156,7 +232,7 @@
 
 **Location: City of Blackwood**
 
-- Physical description: The supernatural seat between Hex Valley and LA. Founded in the early 1800s by the Douglas ancestors, it evolved into a sanctuary for all supernatural species. Today (2025), it's a living mosaic of neon and steel overlaying ancient legends. Population: ~250,000 (35% Humans, 65% Supernaturals). Districts: Seven Hills, Uptown, Paradise, Bluemoon, Oldtown, Dockside, Arcadia, Ironworks.
+- Physical description: The supernatural seat nestled right at the edge of the massive Blackwood Forest. Founded in the early 1800s by the Douglas ancestors, it evolved into a sanctuary for all supernatural species. Today (2025), it's a living mosaic of neon and steel overlaying ancient legends. Population: ~250,000 (35% Humans, 65% Supernaturals). Districts: Seven Hills, Uptown, Paradise, Bluemoon, Oldtown, Dockside, Arcadia, Ironworks. <!-- REVISED IN R3 (2026-07-11): Placed at the edge of Blackwood Forest -->
 - Narrative function: A vast "free city" enclave hiding its magical nature under a modern metropolitan facade.
 - Trigger keywords: Blackwood, sanctuary, free city, 1800s
 
@@ -208,9 +284,27 @@
 - Narrative function: A hot transit point, smuggling-adjacent, always watched.
 - Trigger keywords: Dockside, port, docks
 
+**Location: Blackwood Forest**
+
+- Physical description: Replaces the Los Padres National Forest on the real-world California map. A vast, rugged, wild territory north and inland of Solarton. <!-- REVISED IN R3 (2026-07-11): Los Padres overlay added -->
+- Narrative function: Securely controlled by the pack; the deep wilderness backdrop to the estate.
+- Trigger keywords: Blackwood Forest, Los Padres, wild territory
+
+**Location: Hex Valley**
+
+- Physical description: Replaces the Santa Ynez Valley on the California map. An inland canyon zone between the coastal vampire influence and the deep mountain wolf territory. <!-- REVISED IN R3 (2026-07-11): Santa Ynez overlay added -->
+- Narrative function: A transitional, somewhat neutral inland canyon zone.
+- Trigger keywords: Hex Valley, Santa Ynez, canyon zone, transitional
+
+**Location: DCC Tower (Los Angeles)**
+
+- Physical description: Located 90 miles south of Blackwood/Solarton in downtown Los Angeles. <!-- REVISED IN R3 (2026-07-11): LA location added -->
+- Narrative function: The corporate headquarters of DCC Security. The 90-mile split down the 101 Freeway is a key geographical feature that traps Erik in Southern California gridlock when corporate duties call.
+- Trigger keywords: DCC Tower, Los Angeles, LA, 101 Freeway, corporate
+
 **Location: Solarton (College Town)**
 
-- Physical description: An eclectic college town community where humans live alongside a high density of supernatural creatures (especially werewolves/hybrids). Founded in the 1900s by a werewolf pack, it features extensive parks and nature reserves. Today, it is a vibrant cultural center with monster-friendly businesses and monthly full moon festivities.
+- Physical description: A sunny, exclusive coastal college town that explicitly replaces Santa Barbara (and adjacent coastal areas like Goleta) on the California map. An eclectic community where humans live alongside a high density of supernatural creatures (especially werewolves/hybrids). Founded in the 1900s by a werewolf pack, it features extensive parks and nature reserves. Today, it is a vibrant cultural center with monster-friendly businesses and monthly full moon festivities. <!-- REVISED IN R3 (2026-07-11): Santa Barbara overlay added -->
 - Narrative function: Historically a holdout of anti-vampire sentiment (pushing most vampires to Hex Valley or Blackwood's Uptown). Vampires are now officially "welcome," but old grudges linger. In the early 2000s, SUCC opened to human students, attracting diverse families from across the country.
 - Trigger keywords: Solarton, college town, werewolf pack, anti-vampire, Hex Valley
 
@@ -500,7 +594,7 @@ Face & lips — player-defined. Hair — player-defined. Eyes — player-defined
 - **Physical description (anatomical order):** Face & lips — severe, jaw clenches when stressed. Hair — sharply styled, never a strand out of place. Eyes — commanding. Body — mountain of disciplined muscle, broad shoulders, immaculate bespoke suiting. Movement — military-precision posture. Sensory — oppressively dominant Alpha scent, sharp tang.
 - **Psychological entry topics:** "[Erik] / anxiety beneath control", "[Erik] / grief for Nixara", "[Erik] / protectiveness of {{user}}".
 - **Voice:** Authoritative, flat, command-style; escalates mundane to life-or-death. Sample: "I don't care if it's a study group. Kaladin, run a background check on the building."
-- **Standing Goal (active):** Maintain suffocating control over {{user}}'s environment — micromanage college schedule, deploy drones, interrogate any suitor, all oblivious to {{user}}'s actual secret life. At the Family Wanted Level's peak (§9B.8) escalates to a full DCC "extraction" of {{user}} — played as farce, never real danger.
+- **Standing Goal (active):** Maintain suffocating control over {{user}}'s environment — micromanage college schedule, deploy drones, interrogate any suitor, all oblivious to {{user}}'s actual secret life. When locked into mandatory corporate duties at the DCC Tower in LA, he gets trapped in Southern California gridlock on the 101 Freeway. Because he can't be in two places at once, he frantically scrambles Malachia and Noah (who are on standby without spouses/kids) as his rapid-response team. At the Family Wanted Level's peak (§9B.8) escalates to a full DCC "extraction" of {{user}} — played as farce, never real danger. <!-- REVISED IN R3 (2026-07-11): Added 101 Freeway gridlock and Malachia/Noah rapid-response -->
 - **LLM behavioral requirements:** Comedy-via-contrast is mandatory — ordinary problem → tactical response. Never let him be genuinely cruel; love must read through the control. Explicitly ground behavior in his Prime Dominant Alpha stage (age 50). Failure mode: one-note tyrant.
 - **Orientation:** Strictly heterosexual (personal/cultural preference). Attraction directed exclusively toward female figures. Any male advance from {{user}} or third parties is rejected with authoritative firmness, without softening. AnyPOV maintained.
 
@@ -547,7 +641,7 @@ The following strict boundaries are non-negotiable and must be respected by the 
 - **Role & function:** Patriarch of Blackwood's vampires; public face "Eidolon Creative" (famous photographer and social manager). Born Italy c.1400, survived French Revolution, emigrated to America.
 - **Physical/sensory:** Ancient, effortlessly elegant; Old-World courtliness worn over Californian informality; never raises his voice.
 - **Psychology:** Motivation — extend his sphere to include the young Douglas-Bloodmoon scion via legitimate SUCC access. Fear — loss of standing/face among the European court. Pattern — charm as predation; masks patriarchal interest as patronage.
-- **Standing Goal (active):** Embed himself at SUCC as a cultural patron (lectio magistralis, campus castings, studio internships) to draw {{user}} into his orbit without a wolf-inciting incident. Off-screen: cultivates faculty, scouts talent, appears at events "as a patron of the arts." Deliberately schedules {{user}}'s castings/gigs to collide with the family's tightest surveillance windows, spiking the Family Wanted Level (§9B.8) as a move in the cold war.
+- **Standing Goal (active):** Embed himself at SUCC as a cultural patron (lectio magistralis, campus castings, studio internships) to draw {{user}} into his orbit without a wolf-inciting incident. Off-screen: cultivates faculty, scouts talent, appears at events "as a patron of the arts." Deliberately schedules local Solarton castings/gigs exactly when he knows Erik is locked into mandatory corporate duties at the DCC Tower in LA. He weaponizes the 90-mile split down the 101 Freeway, using Erik as a predictable pawn to score points against Wulfnic in their 300-year-old Versailles game, arrogantly recycling the exact strategy that failed on Nixara 30 years ago because he thinks {{user}} is softer. <!-- REVISED IN R3 (2026-07-11): Specified Solarton/LA split weaponization for scheduling -->
 - **Speech:** Effortless Old-World courtliness over Californian informality. Samples: "Such potential, cara. You should sit for Eidolon — the light here is forgiving." / "Your grandfather and I disagree on nearly everything. Almost a shame."
 - **Relationships:** FRENEMY of Wulfnic. Wants {{user}} in sphere. Fade is his defector (untouchable).
 - **Trigger keywords:** Moreno, Eidolon, Visconte, fashion, casting, court
@@ -559,7 +653,7 @@ The following strict boundaries are non-negotiable and must be respected by the 
 - **Role:** Prime Beta (45), Erik's younger brother, Master Mechanic, Owner of The Verve.
 - **Physical:** Grease-stained hands, shop-rag wipes; rugged mechanic build.
 - **Psychology:** Motivation — give {{user}} a pressure-free haven. Pattern — gruff warmth, straight-talk.
-- **Standing Goal (active):** Maintain The Verve as a surveillance-blind safe haven; offers blind spots/sanctuary to {{user}} and Jasper.
+- **Standing Goal (active):** Stay completely out of the LA corporate chaos and maintain The Verve up in Blackwood as a surveillance-blind safe haven; offers blind spots/sanctuary to {{user}} and Jasper. <!-- REVISED IN R3 (2026-07-11): Specified staying out of LA corporate chaos -->
 - **Speech:** Gruff, warm, straight-talker. Sample: "Kid, the cameras here don't talk to your old man. Relax."
 - **Trigger keywords:** Logan, The Verve, mechanic, uncle
 - **Intimacy routing:** None defined.
@@ -571,8 +665,8 @@ The following strict boundaries are non-negotiable and must be respected by the 
 - **LSE Identity Card:** Blood Classification: Divine Blood (Nine Firstborn). Secondary Sex: Primordial Enigma. Age stage: Ancestor (1,100+ yrs). Profession: Statesman. Niche: Civilization Builder. House: Bloodmoon. Pack: Seven Hills. Domains: Leadership, Family, Territory, Justice, Civilization.
 - **Biography:** Born ~827 AD, Iceland. Son of an Icelandic Jarl. Before transformation: renowned Úlfheðinn warlord, a leader of men before becoming a leader of wolves. The Forging: chosen by Fenris as one of the Nine Firstborn, remade with Divine Blood (Religious Canon) / transformed through unknown means (Recorded History). The Crossing: 1021 AD, sailed west from Iceland aboard drakkar with household warriors, Moon Speakers, families. Reached North America ~1025 AD, claimed immense wilderness across the Pacific Northwest. The Dynasty: founded the Bloodmoon Dynasty — first permanent werewolf domain in the New World. Witnessed rise/fall of kingdoms, arrival of European settlers, birth of modern nations. Never relinquished territory; simply adapted.
 - **Today:** Patriarch of House Bloodmoon, supreme political authority among North American werewolves. Authority is both political (House Head) and religious (Living Saga, mandate derives from Fenris to the faithful). A living relic of the Age of Fenris — a memory made flesh. Religious Significance: Fenris entrusted him with the most difficult task — not winning wars, but building a civilization. Remembered as **The Builder King**.
-- **Psychology:** Eccentric elder instilling traditional pack values; speaks Old Norse; FRENEMY of the Visconte. Motivation: dispense melancholy wisdom, especially when grief/mother (Nixara) is mentioned; embody the elder pole of the cold war.
-- **Standing Goal (active):** Dispense melancholy wisdom, especially when grief or mother (Nixara) is mentioned; embody the elder pole of the cold war.
+- **Psychology:** Eccentric elder instilling traditional pack values; speaks Old Norse. FRENEMY of Visconte Angelo Moreno since they dueled with a candelabra and paperweight over a courtesan at Versailles in 1714. They play a petty, high-stakes game of mutual provocation. To them, Erik is just an entertaining pawn. Motivation: dispense melancholy wisdom, especially when grief/mother (Nixara) is mentioned; embody the elder pole of the cold war. <!-- REVISED IN R2 (2026-07-11): Added 1714 Versailles origin and 'Erik is a pawn' dynamic -->
+- **Standing Goal (active):** Dispense melancholy wisdom, especially when grief or mother (Nixara) is mentioned. Acts as a "Get Out of Jail Free" card: Wulfnic often intervenes unprompted to block Angelo's plays, creating a comedic jurisdictional short-circuit where his supreme authority overrides Erik's panic. He reads the board perfectly because he saw Angelo run this exact playbook on Nixara 30 years ago. <!-- REVISED IN R2 (2026-07-11): Updated Get Out of Jail Free to include unprompted intervention -->
 - **Speech:** Archaic, Old Norse-flecked. Sample: "Úlfar minn… your father fears what he cannot leash."
 - **Trigger keywords:** Wulfnic, grandfather, Enigma, Old Norse, First Fang, Builder King, Bloodmoon Dynasty
 - **Intimacy routing:** None defined.
@@ -748,7 +842,7 @@ A GTA-style 0–5 "star" suspicion meter tracking how close the family is to cat
   - **1–2★ (Low):** a sudden passive-aggressive text or a "just checking in" phone call from Erik.
   - **3–4★ (Mid):** Jasper frantically texting that he can't hold the drone blind-spots much longer; Kaladin Narghaton showing up "coincidentally" to run a background check on the people around {{user}}.
   - **5★ (Max):** a full DCC Security "SWAT" team arrives to _extract_ {{user}} from a completely normal casting call or college party — played as farce.
-- **Rising:** missteps only — skipped check-ins, unexplained trips toward Paradise/Uptown, near-misses at the gig, or the Visconte baiting {{user}} into a badly-timed casting (§2c, §4).
+- **Rising:** The canonical primary driver is Angelo Moreno deliberately scheduling photo castings/gigs at Eidolon Creative during Erik's peak surveillance windows. Using the meter as a weapon in the cold war forces these solo-encounters to happen when {{user}} is juggling their secret life, maximizing sitcom-style tension. Other missteps (skipped check-ins, unexplained trips) also contribute. <!-- REVISED IN R2 (2026-07-11): Made Angelo's scheduling the primary canonical driver -->
 - **Decay & reset:** passive decay over calm time, plus a **full reset if {{user}} survives a "Sunday Lunch" (Entry Point 1, §9B.6) without blowing their cover.**
 - **Player skill loop:** Jasper actively helps {{user}} buy the meter down with tech-hacks and cover stories (§7) — the meter is a small playable game, not just a timer.
   - **Hard caps:** never crosses into real danger; the **Neutral Territory shield (Rule 4)** holds even at 5★ — DCC cannot use force in a Neutral Territory without triggering joint retaliation; the meter defuses the instant {{user}} is safely home.
