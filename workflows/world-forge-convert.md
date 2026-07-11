@@ -170,7 +170,7 @@ After the Converter writes the seed and outputs its sign-off message, the user r
 - **Reauthored content markers** (relationship-to-`{{user}}`, role-shift Tier 2 blocks): the Refiner notes them. The Architect handles the reauthoring at Phase 2.
 - **Regeneration stubs** (Section 5 arcs / Sandbox Charter, often Section 8 per-arc functions): the Refiner surfaces these as gaps in `UNRESOLVED_QUESTIONS.md` exactly as it would for any thin Phase 0 section. The user answers the gaps; `/worldforge resume phase1` proceeds.
 
-From Phase 2 onward, the conversion is invisible to the rest of the pipeline. The Architect builds drafts from the Master Design; the Editor validates them; the auditors run; the Compiler produces Export/; the Prompt Engineer authors the preset. No agent downstream needs special handling for a converted world — the new seed and Master Design are first-class Phase 0/1 outputs.
+From Phase 2 onward, the conversion is invisible to the rest of the pipeline. The Architect builds drafts from the Master Design; the Editor validates them; the auditors run; the Compiler produces Export/ (including the modular JanitorAI scripts); the Prompt Engineer authors the preset. No agent downstream needs special handling for a converted world — the new seed and Master Design are first-class Phase 0/1 outputs.
 
 **This is by design.** Convert is upstream of the standard pipeline, not parallel to it. There is no "Convert mode" the downstream agents need to know about; they read the seed and Master Design exactly as they would for a hand-written world.
 

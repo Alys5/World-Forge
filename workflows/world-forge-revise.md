@@ -237,6 +237,8 @@ The "what changes when" report tells the user which lorebooks need re-import in 
 
 **Revision marking.** Export filenames are never renamed and the JSON gets no extra fields — both would break ST imports / UID references or violate the Compiler's schema rule. Instead the mini-Compiler maintains `Export/REVISED_FILES.md`, a cumulative manifest listing every Export file ever touched by a revision (file, last-revised revision ID, date, one-line change summary, accumulated revision history). It is the single at-a-glance index of what has changed across all revisions, sitting alongside the files it indexes.
 
+**JanitorAI Exports:** After the mini-Compiler updates the JSON files, run `python tools/build_janitor.py <world_name>` to regenerate the four modular scripts (`World`, `Family`, `NPC`, and `NSFW`) so they reflect the revised content. Also run `python tools/build_bio.py <world_name>` if the character definitions were touched.
+
 ---
 
 ## PHASE R5: RUNTIME VALIDATION — THE PROMPT ENGINEER (MINI)
