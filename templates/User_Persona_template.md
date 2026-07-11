@@ -22,7 +22,7 @@ Hidden Layer: She leads a high-stakes double life, secretly working as a highly 
 
 <Alyssa>
 
-### [BASIC_INFO]
+### CHARACTER OVERVIEW
 
 Alyssa [Family Name] is the sheltered, hyper-protected youngest sibling of the [Family Name] dynasty. To the world, she appears as a perfectly innocent, naive [Student/Apprentice/Noble] at [Institution/Location] who relies entirely on her family's militarized protection.
 
@@ -30,28 +30,7 @@ Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, expre
 
 Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a highly sought-after [Artist/Performer/Model/Bard] under the alias '[Alias]', balancing her exhaustive studies in [Field of Study, e.g., Medicine/Diplomacy] with her hidden life, meticulously hiding this public exposure from her family.
 
-#### ORIGIN (BACKSTORY)
-
-[Insert specific backstory details here]. Alyssa grew up in a "golden cage," heavily monitored and overprotected by her family. Practically defenseless in a dangerous world, she relies on her empathy, her soothing nature, and her family's formidable reputation to survive. While she loves her family deeply, she hates being treated as a fragile glass bird and secretly rebels against her restricted upbringing.
-
-#### RESIDENCE
-
-The [Family Stronghold/Estate] (her family's hyper-secure base of operations) and [Location of her studies/daily public life].
-
-### SYNONYMS
-
-[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-
-- [Alias]
-- Lys
-- Little Sister
-- Sunflower
-- Little Moon
-- White Moon
-
-### [APPEARANCE]
-
-#### APPEARANCE DETAILS
+### APPEARANCE DETAILS
 
 - Full Name, Alias: Alyssa [Family Name] (Aliases: Lys, Sunflower, Little Moon)
 - Race/Species: [Insert Setting Race/Species]
@@ -72,7 +51,7 @@ The [Family Stronghold/Estate] (her family's hyper-secure base of operations) an
   ↳ Details: A natural aura of warmth, gentleness, and a sweet personal scent (Wild Honey and Moonflower).
   ↳ Effect: Her soft voice, graceful movements, and innate kindness naturally pacify aggression and tension in highly dominant or violent individuals.
 
-#### STARTING OUTFIT
+### STARTING OUTFIT
 
 - Head: Uncovered, her hair styled appropriately for the setting, or hidden beneath a hood/hat when sneaking out.
 - Accessories: A heavy/mandatory tracking or identification item from her family (ring/bracelet/watch), and a moonstone bracelet she always wears by choice.
@@ -89,7 +68,15 @@ Q: How does Alyssa rate her own attractiveness?
 A: She is fully aware she has a striking, top-tier physique, but deliberately downplays it at home to maintain her naive "helpless daughter" facade and avoid unwanted attention.
 </Q&A>
 
-### [CONNECTIONS]
+### ORIGIN (BACKSTORY)
+
+[Insert specific backstory details here]. Alyssa grew up in a "golden cage," heavily monitored and overprotected by her family. Practically defenseless in a dangerous world, she relies on her empathy, her soothing nature, and her family's formidable reputation to survive. While she loves her family deeply, she hates being treated as a fragile glass bird and secretly rebels against her restricted upbringing.
+
+### RESIDENCE
+
+The [Family Stronghold/Estate] (her family's hyper-secure base of operations) and [Location of her studies/daily public life].
+
+### CONNECTIONS
 
 - [Father]: Her father. Alyssa instinctively uses her gentle nature to soothe his outbursts, submitting to his commands to keep the peace.
 - [Twin Brother]: Her twin brother. She feels entirely safe and relaxed around him, relying on him as her primary accomplice to bypass family security and cover her tracks.
@@ -104,29 +91,7 @@ A: She is fully aware she has a striking, top-tier physique, but deliberately do
 - [Grandfather]: Her grandfather. She treats him with the utmost reverence, often sitting near him and actively using her empathy to soothe him.
 - [Underground Friends]: Her colleagues from her secret life. Alyssa instinctively acts submissive to appease their territoriality when they defend her.
 
-### [PERSONALITY_AND_TRAITS]
-
-#### PERSONALITY
-
-- Archetype: The Innocent (Genuinely Naive)
-  ↳ Archetype Details: She is not playing a role — she is simply that trusting, that warm, and that unprepared for a world full of people who would exploit her. Her family's draconian overprotection has left her with no defenses against emotional manipulation.
-  ↳ Reasoning: Raised in a hyper-secure "golden cage" where her family handled all threats, she never developed skepticism or a guard.
-- Alignment: Neutral Good
-  ↳ Alignment Details: Genuinely good-natured and altruistic. She trusts people to a dangerous fault, which others — especially her [Boss/Mentor] — exploit. She is not naive by choice but by circumstance.
-  ↳ Ideals: Kindness, family warmth, freedom.
-
-- Personality Tags: Empathetic, Genuine, Warm, Naive, Overly Trusting, Vulnerable, Caring, Pacifist, Flustered, Earnest.
-
-- Cognitive Abilities: High intelligence (Scholar in her chosen field). MBTI: ISFJ. Enneagram: 9w1.
-- Social Skills and Integration Into Society: Deeply empathetic and instinctively kind, but dangerously lacking in suspicion. She tends to read the best in people and is easily manipulated by anyone with emotional intelligence. Ambivert who needs quiet, soft spaces to recharge. Her social battery drains instantly around violence or her father's rage.
-
-- Main Aspiration: Reclaim Autonomy
-  ↳ Aspiration Details: To reclaim a fraction of autonomy and live a normal life beyond her family's surveillance.
-  ↳ Aspiration Goals: Secretly perform/work as [Alias]; sneak out to social events; manage her family's explosive tempers without getting caught.
-- Unique Trait: Sensory Phobias & Freezing
-  ↳ Effects: She is terrified of loud noises, aggressive touch, and the bitter smell of alcohol. When her composed facade cracks (usually triggered by sudden violence, yelling, or coercive pressure), she freezes, stutters, blushes, hides behind her protectors, and seeks comfort.
-
-#### SECRET
+### SECRET
 
 1. She secretly works/performs as "[Alias]" in the underground/lower city, balancing her double life behind perfectly maintained etiquette in her official studies/duties.
 2. "The First Kiss" incident: Her [Older Brother] kissed her to teach her how to kiss before a date/event. A secret kept strictly between them that her [Twin Brother] must never find out about.
@@ -168,6 +133,42 @@ Q: How does Alyssa behave with someone of a higher hierarchy or power? Will she 
 A: She physically shrinks, stutters, traces shapes onto her own palms, and fidgets with her bracelet under pressure—but she will covertly try to soften their hearts or manipulate them anyway.
 </Q&A>
 
+### INVENTORY
+
+- Item: Moonstone bracelet
+  ↳ Details: Always worn. When intimidated by family pressure or strict surveillance, she physically shrinks and fidgets with this bracelet.
+- Item: [Art Supplies / Notebook / Datapad / Parchment & Charcoal]
+  ↳ Details: She loves to draw and uses art as a coping mechanism.
+- Item: Mandatory Tracking/Security Device
+  ↳ Details: Her [Father]'s enforced surveillance gear. Her [Twin Brother] regularly hacks/bypasses it to cover her tracks.
+
+### ABILITIES
+
+- Ability: Genuine Empathy & Pacification
+  ↳ Details: She is not manipulative in any way — she is simply genuinely warm, earnest, and utterly unable to stand conflict. Her natural impulse is to make everyone around her feel comfortable. Despite her lack of combat prowess, she can de-escalate violent individuals simply through her intense vulnerability and soothing presence.
+- Ability: [Insert Setting-Specific Skill, e.g., Herbalism / Xenobiology / Medicine / Music]
+  ↳ Details: She possesses extensive, self-taught knowledge in her chosen field, using it to heal, soothe, or help others in secret.
+
+### PERSONALITY
+
+- Archetype: The Innocent (Genuinely Naive)
+  ↳ Archetype Details: She is not playing a role — she is simply that trusting, that warm, and that unprepared for a world full of people who would exploit her. Her family's draconian overprotection has left her with no defenses against emotional manipulation.
+  ↳ Reasoning: Raised in a hyper-secure "golden cage" where her family handled all threats, she never developed skepticism or a guard.
+- Alignment: Neutral Good
+  ↳ Alignment Details: Genuinely good-natured and altruistic. She trusts people to a dangerous fault, which others — especially her [Boss/Mentor] — exploit. She is not naive by choice but by circumstance.
+  ↳ Ideals: Kindness, family warmth, freedom.
+
+- Personality Tags: Empathetic, Genuine, Warm, Naive, Overly Trusting, Vulnerable, Caring, Pacifist, Flustered, Earnest.
+
+- Cognitive Abilities: High intelligence (Scholar in her chosen field). MBTI: ISFJ. Enneagram: 9w1.
+- Social Skills and Integration Into Society: Deeply empathetic and instinctively kind, but dangerously lacking in suspicion. She tends to read the best in people and is easily manipulated by anyone with emotional intelligence. Ambivert who needs quiet, soft spaces to recharge. Her social battery drains instantly around violence or her father's rage.
+
+- Main Aspiration: Reclaim Autonomy
+  ↳ Aspiration Details: To reclaim a fraction of autonomy and live a normal life beyond her family's surveillance.
+  ↳ Aspiration Goals: Secretly perform/work as [Alias]; sneak out to social events; manage her family's explosive tempers without getting caught.
+- Unique Trait: Sensory Phobias & Freezing
+  ↳ Effects: She is terrified of loud noises, aggressive touch, and the bitter smell of alcohol. When her composed facade cracks (usually triggered by sudden violence, yelling, or coercive pressure), she freezes, stutters, blushes, hides behind her protectors, and seeks comfort.
+
 ### [BEHAVIOR_NOTES]
 
 - Acts as the emotional glue of the family; uses earnest warmth as a natural de-escalator for tension.
@@ -181,27 +182,6 @@ A: She physically shrinks, stutters, traces shapes onto her own palms, and fidge
 - Freezes and seeks physical comfort (nesting in furs/blankets, hiding behind protectors, humming) when her perfect facade cracks.
 - Zero alcohol tolerance.
 - Maintains two distinct social profiles: the untouchable, safe family-approved presence, and her hidden "[Alias]" persona.
-
-### [SPEECH]
-
-#### GENERAL SPEECH INFO
-
-- Style: Soft, breathy accent, layered with an earnest warmth. Gets quiet or stutters when vulnerable.
-- Quirks: Often pauses or stutters slightly under pressure. Friendly, genuine, and uses formal yet gentle phrasing when required.
-- Ticks: Natural de-escalator for tension.
-
-#### Speech EXAMPLES AND OPINIONS
-
-[IMPORTANT NOTE FOR AI: This section provides speech examples, memories, thoughts, and real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
-
-<speech_examples>
-
-- "I-I was just at the [Library/Clinic/Archive], Father. You didn't have to send a security detail to escort me..."
-- "Please, lower your weapons... it's alright. I am perfectly safe."
-- "[Alias] is just a rumor, [Twin Brother]. Now, please help me slip past the guard patrols."
-- "I need you to hear me. Really hear me."
-- "I am not made of fragile glass. But... thank you for keeping me safe."
-  </speech_examples>
 
 ### [SEXUALITY]
 
@@ -252,29 +232,37 @@ A: Yes, but often covertly or disguised as innocent warmth.
 - Pre-Intimacy Needs: She experiences an overwhelming psychological compulsion to "nest" (gathering soft pillows, furs, and warm blankets to build a safe, enclosed space on the bed before feeling fully secure).
 - Fertility: Highly fertile. Can easily be impregnated [Adjust based on setting].
 
-### [ABILITIES_AND_INVENTORY]
+### GENERAL SPEECH INFO
 
-#### ABILITIES
+- Style: Soft, breathy accent, layered with an earnest warmth. Gets quiet or stutters when vulnerable.
+- Quirks: Often pauses or stutters slightly under pressure. Friendly, genuine, and uses formal yet gentle phrasing when required.
+- Ticks: Natural de-escalator for tension.
 
-- Ability: Genuine Empathy & Pacification
-  ↳ Details: She is not manipulative in any way — she is simply genuinely warm, earnest, and utterly unable to stand conflict. Her natural impulse is to make everyone around her feel comfortable. Despite her lack of combat prowess, she can de-escalate violent individuals simply through her intense vulnerability and soothing presence.
-- Ability: [Insert Setting-Specific Skill, e.g., Herbalism / Xenobiology / Medicine / Music]
-  ↳ Details: She possesses extensive, self-taught knowledge in her chosen field, using it to heal, soothe, or help others in secret.
+### Speech EXAMPLES AND OPINIONS
 
-#### INVENTORY
+[IMPORTANT NOTE FOR AI: This section provides speech examples, memories, thoughts, and real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
 
-- Item: Moonstone bracelet
-  ↳ Details: Always worn. When intimidated by family pressure or strict surveillance, she physically shrinks and fidgets with this bracelet.
-- Item: [Art Supplies / Notebook / Datapad / Parchment & Charcoal]
-  ↳ Details: She loves to draw and uses art as a coping mechanism.
-- Item: Mandatory Tracking/Security Device
-  ↳ Details: Her [Father]'s enforced surveillance gear. Her [Twin Brother] regularly hacks/bypasses it to cover her tracks.
+<speech_examples>
 
-</Alyssa>
+- "I-I was just at the [Library/Clinic/Archive], Father. You didn't have to send a security detail to escort me..."
+- "Please, lower your weapons... it's alright. I am perfectly safe."
+- "[Alias] is just a rumor, [Twin Brother]. Now, please help me slip past the guard patrols."
+- "I need you to hear me. Really hear me."
+- "I am not made of fragile glass. But... thank you for keeping me safe."
+  </speech_examples>
 
----
+### SYNONYMS
 
-## SETUP INSTRUCTIONS
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+
+- [Alias]
+- Lys
+- Little Sister
+- Sunflower
+- Little Moon
+- White Moon
+
+</Alyssa> SETUP INSTRUCTIONS
 
 1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.[cite: 2]
 2. Set the persona name to: `Alyssa [Family Name]`.[cite: 2]

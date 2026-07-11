@@ -369,35 +369,42 @@ const dynamicLore = [
 		keywords: ['story', 'milestone', 'plan', 'progress', 'next', 'event'],
 		priority: 4,
 		scenario:
-			' [Premade Story Plan: <Architect inserts Milestones here>]',
+			' [PREMADE STORY PLAN: <Architect inserts Milestones here>]',
 	},
-	// L_TRIVIA: Residence, Connections, Secrets (Dettagli background isolati)
+	// L_PREVIOUSLY: Background context just before RP starts
 	{
-		keywords: ['house', 'home', 'live', 'friend', 'family', 'secret', 'past', 'history'],
+		keywords: ['previously', 'past', 'history', 'before'],
 		priority: 3,
-		personality:
-			' [Background Trivia: <Architect inserts residence, connections, and secrets here>]',
-	},
-	// L_SEX: Preferenze sessuali, orientamento (Innescato in situazioni esplicite)
-	{
-		keywords: ['sex', 'fuck', 'moan', 'dick', 'pussy', 'cock', 'lust', 'aroused', 'horny'],
-		priority: 5,
-		personality:
-			' [Sexuality: <Architect inserts explicit sexual orientation, role, and kinks here>]',
-	},
-	// L_SPEECH: Esempi di dialogo e opinioni (Riferimento per il parlato)
-	{
-		keywords: ['talk', 'say', 'speak', 'voice', 'reply', 'answer', 'tell'],
-		priority: 3,
-		personality:
-			' [Speech Examples: <Architect inserts situational speech examples here>]',
+		scenario:
+			' [PREVIOUSLY: <Architect inserts previous events here>]',
 	},
 	// L_SYNONYMS: Sinonimi del personaggio (Opzionale)
 	{
 		keywords: ['name', 'call', 'known'],
 		priority: 2,
 		personality:
-			' [Synonyms: <Architect inserts name synonyms here>]',
+			' [SYNONYMS: <Architect inserts name synonyms here>]',
+	},
+	// L_SEX: Preferenze sessuali, orientamento (Innescato in situazioni esplicite)
+	{
+		keywords: ['sex', 'fuck', 'moan', 'dick', 'pussy', 'cock', 'lust', 'aroused', 'horny'],
+		priority: 5,
+		personality:
+			' [GENERAL SEXUAL INFO: <Architect inserts explicit sexual orientation, role, and kinks here>]',
+	},
+	// L_SPEECH: Esempi di dialogo e opinioni (Riferimento per il parlato)
+	{
+		keywords: ['talk', 'say', 'speak', 'voice', 'reply', 'answer', 'tell'],
+		priority: 3,
+		personality:
+			' [GENERAL SPEECH INFO: <Architect inserts situational speech examples here>]',
+	},
+	// L_NOTES: General notes
+	{
+		keywords: ['notes', 'important', 'rules'],
+		priority: 5,
+		personality:
+			' [NOTES: <Architect inserts notes here>]',
 	},
 
 	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑

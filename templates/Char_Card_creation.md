@@ -7,14 +7,20 @@ Here is the character concept I want you to build:
 
 FIELD GUIDANCE:
 
-- description: Write in dense prose. Format the description using the 'Bell Method' structure with explicit markdown headers:
-  ### [BASIC_INFO] (Background, Role, Status)
-  ### [APPEARANCE] (Physical appearance in anatomical order, clothing, sensory signature)
-  ### [CONNECTIONS] (Relationships, Reputation)
-  ### [PERSONALITY_AND_TRAITS] (Psychological core, alignment, the shield and how it manifests, secrets)
-  ### [BEHAVIOR_NOTES] (Voice, mannerisms, habits, outward expression of the core)
-  ### [SEXUALITY] & [OTHER_SEXUAL_NOTES] (Intimacy profile, physical closeness, boundaries)
-  ### [ABILITIES_AND_INVENTORY] (Specific powers, carried items)
+- description: Write in dense prose. Format the description using the exact sections below with explicit markdown headers:
+  ### CHARACTER OVERVIEW (Describe the overall idea for your scenario here)
+  ### APPEARANCE DETAILS (Full Name, Alias, Race, Sex/Gender, Height, Age, Hair, Eyes, Body, Face, Features, Privates, Appearance Traits + Details/Effects)
+  ### STARTING OUTFIT (Head, Accessories, Makeup, Neck, Top, Bottom, Legs, Shoes, Underwear)
+  ### ORIGIN (BACKSTORY) (Brief backstory)
+  ### RESIDENCE (City, house, rooms, etc.)
+  ### CONNECTIONS (Relatives, servants, etc.)
+  ### SECRET (Is the character hiding something?)
+  ### INVENTORY (Items + Details)
+  ### ABILITIES (Abilities + Details)
+  ### PERSONALITY (Archetype + Details/Reasoning, Alignment + Details/Ideals, Personality Tags, Cognitive Abilities, Social Skills, Main Aspiration + Details/Goals, Unique Traits + Effects)
+  ### [BEHAVIOR_NOTES]
+  ### [SEXUALITY] (Sexual Orientation + Explanation, Role during sex + Explanation)
+  ### [OTHER_SEXUAL_NOTES]
   NO arc-specific content. NO timeline events. This is the permanent character substrate.
 
 ---
@@ -100,7 +106,7 @@ Please fill out this exact SillyTavern V3 Character Card JSON structure:
 "spec_version": "3.0",
 "data": {
 "name": "Character Name",
-"description": "Comprehensive details formatted via the 'Bell Method' with explicit markdown headers: ### [BASIC_INFO], ### [APPEARANCE], ### [CONNECTIONS], ### [PERSONALITY_AND_TRAITS], ### [BEHAVIOR_NOTES], ### [SEXUALITY] & [OTHER_SEXUAL_NOTES], ### [ABILITIES_AND_INVENTORY]. Use dense prose. No arc-specific content.",
+"description": "Comprehensive details formatted with explicit markdown headers: ### CHARACTER OVERVIEW, ### APPEARANCE DETAILS, ### STARTING OUTFIT, ### ORIGIN (BACKSTORY), ### RESIDENCE, ### CONNECTIONS, ### SECRET, ### INVENTORY, ### ABILITIES, ### PERSONALITY, ### [BEHAVIOR_NOTES], ### [SEXUALITY], ### [OTHER_SEXUAL_NOTES]. Use dense prose. No arc-specific content.",
 "personality": "A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).",
 "scenario": "The current setting, context, and the starting premise of the roleplay. Arc 1 entry point only.",
 "first_mes": "The very first message the character sends to start the roleplay. Establish voice, atmosphere, and situation immediately. Written fully in character.",

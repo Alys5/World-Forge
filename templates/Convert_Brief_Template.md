@@ -176,17 +176,17 @@ Fill in every section below. Delete instructional text in brackets before submit
 
 **Identity and role:** [Who is the new `{{user}}` in this world? Not their backstory — what is their position, function, what do people see when they look at them?]
 
+**Physical description (anatomical order):** [Face and lips, hair, eyes, body, movement and posture, sensory signature.]
+
 **The wound (foundational):** [What happened to this person that shaped everything? The thing they are still inside, not the thing they have processed.]
-
-**The hidden layer:** [What does the new `{{user}}` want that they will not admit to themselves? What are they running from?]
-
-**The contradiction:** [What do they do that contradicts who they claim to be? The gap between self-image and behavior.]
 
 **Power and limits:** [What can the new `{{user}}` do in this world? **And** — equally important — what can they absolutely not do, even if they wanted to?]
 
+**The hidden layer:** [What does the new `{{user}}` want that they will not admit to themselves? What are they running from?]
+
 **Arc trajectory (arc mode) or standing posture (sandbox mode):** [Arc mode: one sentence per intended arc — what is the protagonist's internal journey across the new story? Sandbox mode: what is the protagonist's standing position in the world, and what kind of life are they living turn-by-turn?]
 
-**Physical description (anatomical order):** [Face and lips, hair, eyes, body, movement and posture, sensory signature.]
+**The contradiction:** [What do they do that contradicts who they claim to be? The gap between self-image and behavior.]
 
 **Voice and manner:** [Sentence length, vocabulary, accent if any, what they never say directly. A sample line in their actual voice if you can.]
 

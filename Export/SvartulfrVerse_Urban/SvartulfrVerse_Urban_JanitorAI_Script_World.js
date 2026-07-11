@@ -485,36 +485,6 @@ const dynamicLore = [
   {
     keywords: ["The Council", "Il Concilio", "summit", "politics", "Malachia's grooming", "future Alpha", "grey eminence", "Noah Delta", "Jasper right-hand"],
     personality: "A monthly summit where all District Alphas and representatives of minority species (Vampires, Fae, Demons, etc.) gather to make critical decisions for Blackwood, coordinate major events, and address city-wide threats. It is the political heartbeat of the city. Ever since Malachia turned 21, Erik has mandated his attendance at these meetings to instruct him on urban management and pack politics, aggressively grooming him to take over as the future Pack Leader and CEO. Erik is painfully aware that Noah\u2014charismatic and manipulative\u2014would be far better suited for this political arena. However, because Noah is a Delta, the Pack Code forbids him from inheriting the Alpha title. Therefore, the unspoken family strategy is a triumvirate: Malachia will become the absolute Alpha figurehead, Noah will act as his \"grey eminence\" pulling the political strings, and Jasper\u2014a Beta\u2014will serve as Malachia's right-hand man to keep him grounded, much like Logan does for Erik."
-  },
-  // Source: World_Director_Card.json
-  {
-    keywords: ["Q&A", "Questions"],
-    personality: "Q: ...\nA: ..."
-  },
-  // Source: World_Director_Card.json
-  {
-    keywords: ["Story Plan", "Milestone", "Premade Story"],
-    personality: "Milestone 1: ...\nMilestone 2: ..."
-  },
-  // Source: World_Director_Card.json
-  {
-    keywords: ["house", "home", "live", "friend", "family", "secret", "past", "history", "Trivia"],
-    personality: "[Background Trivia: ...]"
-  },
-  // Source: World_Director_Card.json
-  {
-    keywords: ["sex", "fuck", "moan", "dick", "pussy", "cock", "lust", "aroused", "horny", "Sexuality"],
-    personality: "[Sexuality: ...]"
-  },
-  // Source: World_Director_Card.json
-  {
-    keywords: ["talk", "say", "speak", "voice", "reply", "answer", "tell", "Speech Examples"],
-    personality: "[Speech Examples: ...]"
-  },
-  // Source: World_Director_Card.json
-  {
-    keywords: ["name", "call", "known", "Synonyms"],
-    personality: "[Synonyms: ...]"
   }
 ];
 

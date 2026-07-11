@@ -62,162 +62,133 @@ A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has 
 # [[CharName_1]]
 
 ## CHARACTER OVERVIEW
-
 <!--Describe the overall idea for your scenario here-->
 
----
+## APPEARANCE DETAILS
+Full Name, Alias:
+Race:
+Sex/Gender:
+Height:
+Age:
+Hair:
+Eyes:
+Body:
+Face:
+Features:
+Privates:
+Appearance Trait: <!--e.g. "Womb Tattoo (inmon)"-->
+↳ Details: <!--e.g. {{char}} was a sex slave before [...]-->
+↳ Effect: <!--e.g. During [...] {{char}} has unresistabe sexual cravings. This will result in [...]-->
+Appearance Trait:
+↳ Details:
+↳ Effect:
 
-## [APPEARANCE]
+## STARTING OUTFIT
+Head:
+Accessories:
+Makeup:
+Neck:
+Top:
+Bottom:
+Legs:
+Shoes:
+Underwear:
 
-### PHYSICAL APPEARANCE
-
-<!-- Describe the character's physical appearance in a concise narrative paragraph. Avoid bullet points. Focus only on traits that are immediately visible and relevant to the scenario. -->
-<!-- e.g. [CharName] is a tall, athletic human male with short black hair and piercing orange eyes. He bears a distinctive scar across his cheek. -->
-
-<!-- 
-IMPORTANT DIRECTIVE FOR THE ARCHITECT:
-DELEGATE, DON'T DELETE: Any hyper-granular appearance details (exact measurements, hidden tattoos, detailed accessory descriptions) MUST NOT be placed here. Move them into the separate JS Lorebook/Script payload so they can be injected only when the user looks closely or asks about outfits.
--->
-
-### STARTING OUTFIT
-
-<!-- Describe what the character is wearing at the start of the scenario in a brief narrative paragraph. -->
-<!-- e.g. Wearing a simple, dark traveling cloak over a worn leather tunic and sturdy boots. -->
-
----
-
-## [BASIC_INFO]
-
-### ORIGIN (BACKSTORY)
-
+## ORIGIN (BACKSTORY)
 <!--Describe a brief backstory for your character-->
-<!-- TRIVIA MIGRATION DIRECTIVE: Do NOT include long biographical history that does not dictate immediate turn-by-turn behavior. Move extended historical trivia into the Lorebook payload so it can be injected only when relevant. -->
 
----
+## RESIDENCE
+<!--If location is important to the story. You can describe the city, house, rooms, etc.-->
 
-## [PERSONALITY_AND_TRAITS]
+## CONNECTIONS
+<!--Relatives, servants, etc, if necessary-->
 
-### PERSONALITY
+## SECRET
+<!--Is your character hiding something?-->
 
-<!-- ACTIVE PHRASING DIRECTIVE: Always use active phrasing (e.g., "Speaks softly", "Quick to anger") rather than passive hedges (e.g., "Might sometimes act shy", "Can be aggressive"). Describe how they *act*, not just what they *are*. -->
-- Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
-  ↳ Archetype Details: <!--Explain the chosen archetype and [CharName_1]'s Baseline Behavior-->
-  ↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
-- Alignment: <!--Mostly for complex, RPG-like cards. e.g. Lawful Evil-->
-  ↳ Alignment Details: <!--Explain how it works with this character-->
-  ↳ Ideals:
+## INVENTORY
+Item: <!--e.g. "Club +24"-->
+↳ Details: <!--e.g. Club that was given {{char}} by her mother. Bonks {{user}} when angry.-->
+Item:
+↳ Details:
 
-- Personality Tags: <!--List of tags. e.g. Sadistic, Playful, Mischievous, Controlling, Manipulative, Cocky, Impish, Aggressive, Overprotective, Mean, Dramatic, Rough, Selfish, Lovestruck, Cheeky, Joking, Braggadocios, Bratty, Squeamish, Hot-Headed, Erratic, Materialistic, Perfectionist, Jealous, Nosy.-->
+## ABILITIES
+Ability: <!--e.g. Void magic (beginner)-->
+↳ Details: <!--e.g. Opens portals when sneezes-->
+Ability:
+↳ Details:
 
-- Cognitive Abilities: <!--Typically used only for overly dumb orsmart characters-->
-- Social Skills and Integration Into Society: <!--Typically used only for sociopathic characters or the ones with social anxiety or overly high self-esteem-->
-
-- Main Aspiration: <!--Typically used if the character has a clear goal to pursue throughout the story. e.g. "I want to become a hero!"-->
-  ↳ Aspiration Details: <!--Explain the chosen aspiration-->
-  ↳ Aspiration Goals: <!--e.g. Annoy {{user}} with 'how to be a hero' questions; Save girls; become popular; [...]-->
-- Unique Trait: <!--Typically used if the character has curses or special states. e.g. "Succubi Feeding Frenzy Trance"-->
-  ↳ Effects: <!--e.g. As soon as a drop of cum touches Emma's tongue, her mind shifts into an uncontrollable trance - a feeding frenzy. Her eyes light up with heart-shaped pupils. She doesn't control how [...]-->
-
-- Unique Trait:
-  ↳ Effects:
-
----
+## PERSONALITY
+Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
+↳ Archetype Details: <!--Explain the chosen archetype and {{char}}'s Baseline Behavior-->
+↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
+Alignment: <!--Mostly for complex, RPG-like cards. e.g. Lawful Evil-->
+↳ Alignment Details: <!--Explain how it works with this character-->
+↳ Ideals:
+Personality Tags: <!--List of tags. e.g. Sadistic, Playful, Mischievous, Controlling, Manipulative, Cocky, Impish, Aggressive, Overprotective, Mean, Dramatic, Rough, Selfish, Lovestruck, Cheeky, Joking, Braggadocios, Bratty, Squeamish, Hot-Headed, Erratic, Materialistic, Perfectionist, Jealous, Nosy.-->
+Cognitive Abilities: <!--Typically used only for overly dumb orsmart characters-->
+Social Skills and Integration Into Society: <!--Typically used only for sociopathic characters or the ones with social anxiety or overly high self-esteem-->
+Main Aspiration: <!--Typically used if the character has a clear goal to pursue throughout the story. e.g. "I want to become a hero!"-->
+↳ Aspiration Details: <!--Explain the chosen aspiration-->
+↳ Aspiration Goals: <!--e.g. Annoy {{user}} with 'how to be a hero' questions; Save girls; become popular; [...]-->
+Unique Trait: <!--Typically used if the character has curses or special states. e.g. "Succubi Feeding Frenzy Trance"-->
+↳ Effects: <!--e.g. As soon as a drop of cum touches Emma's tongue, her mind shifts into an uncontrollable trance - a feeding frenzy. Her eyes light up with heart-shaped pupils. She doesn't control how [...]-->
+Unique Trait:
+↳ Effects:
 
 ## [BEHAVIOR_NOTES]
 
--
--
--
-- ***
+## [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+## GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: <!--Submissive, Power Bottom, Bottom, Top, etc.-->
+↳ Explanation:
+
+## [OTHER_SEXUAL_NOTES]
+
+## GENERAL SPEECH INFO
+Style: <!--e.g. {{char}} speaks like a lady from the Victorian era.-->
+Quirks: <!--e.g.  Speaks in rhymes like rapper-->
+Ticks: <!--e.g. Ends sentences with "Nya~".-->
+
+## Speech EXAMPLES AND OPINIONS
+[IMPORTANT NOTE FOR AI: This section provides {{char}}'s speech examples, memories, thoughts, and {{char}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+<!--Try to provide examples within a certain context, like a reaction to {{user}}'s return home, an implied question from {{user}}, or an implied memory/decision/thought.-->
+<speech_examples>
+<!--e.g. "Sempai! You came!" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. "I mean, um…"-->
+<!--e.g. "Ow, man..."-->
+<!--e.g. "I bet you've got lots of big tiddy girls running after you, Mr Hero. I wish I was this popular too... *sighs*"-->
+<!--e.g. "Eww, no! I only service fem-... cute girls in this church! N-not guys!"-->
+""
+""
+</speech_examples>
+
+## SYNONYMS
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+<!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: "Walking pudding", "Jelly girl", etc-->
+
+## PREMADE STORY PLAN
+Milestone 1: <!--Use this section only if you have a specific storyline in mind. e.g. Arrival and first meeting-->
+↳ Details:<!--e.g. {{user}} and Takita have some time before classes the Entrance Ceremony. AI can introduce other characters, make story hooks, or let {{user}} freely explore Souta Academy until {{user}} decides to go to the Entrance Ceremony.-->
+Milestone 2: <!--e.g. Entrance Ceremony-->
+↳ Details: <!--Mr. Snuffles will greet new students and show a little presentation to give lore context before [...]-->
+Milestone 3:
+↳ Details:
+
+## PREVIOUSLY
+<!--Use this section to describe what happened right before the RP starts-->
+
+## NOTES
+<!--e.g. "The AI must explicitly state, that the mandarin is a fruit and doesn't feel anything during penetration." Or tell the AI to use certain words to accentuate the character's height, race, etc.)-->
 
 </[CharName_1]>
 
 ---
 
-<[CharName_2]>
-
-# [[CharName_2]]
-
-## CHARACTER OVERVIEW
-
-<!--Describe the overall idea for your scenario here-->
-
----
-
-## [APPEARANCE]
-
-### PHYSICAL APPEARANCE
-
-<!-- Describe the character's physical appearance in a concise narrative paragraph. Avoid bullet points. Focus only on traits that are immediately visible and relevant to the scenario. -->
-<!-- e.g. [CharName] is a tall, athletic human male with short black hair and piercing orange eyes. He bears a distinctive scar across his cheek. -->
-
-<!-- 
-IMPORTANT DIRECTIVE FOR THE ARCHITECT:
-DELEGATE, DON'T DELETE: Any hyper-granular appearance details (exact measurements, hidden tattoos, detailed accessory descriptions) MUST NOT be placed here. Move them into the separate JS Lorebook/Script payload so they can be injected only when the user looks closely or asks about outfits.
--->
-
-### STARTING OUTFIT
-
-<!-- Describe what the character is wearing at the start of the scenario in a brief narrative paragraph. -->
-<!-- e.g. Wearing a simple, dark traveling cloak over a worn leather tunic and sturdy boots. -->
-
----
-
-## [BASIC_INFO]
-
-### ORIGIN (BACKSTORY)
-
-<!--Describe a brief backstory for your character-->
-<!-- TRIVIA MIGRATION DIRECTIVE: Do NOT include long biographical history that does not dictate immediate turn-by-turn behavior. Move extended historical trivia into the Lorebook payload so it can be injected only when relevant. -->
-
----
-
-## [PERSONALITY_AND_TRAITS]
-
-### PERSONALITY
-
-<!-- ACTIVE PHRASING DIRECTIVE: Always use active phrasing (e.g., "Speaks softly", "Quick to anger") rather than passive hedges (e.g., "Might sometimes act shy", "Can be aggressive"). Describe how they *act*, not just what they *are*. -->
-- Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
-  ↳ Archetype Details: <!--Explain the chosen archetype and [CharName_2]'s Baseline Behavior-->
-  ↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
-- Alignment: <!--Mostly for complex, RPG-like cards. e.g. Lawful Evil-->
-  ↳ Alignment Details: <!--Explain how it works with this character-->
-  ↳ Ideals:
-
-- Personality Tags: <!--List of tags. e.g. Sadistic, Playful, Mischievous, Controlling, Manipulative, Cocky, Impish, Aggressive, Overprotective, Mean, Dramatic, Rough, Selfish, Lovestruck, Cheeky, Joking, Braggadocios, Bratty, Squeamish, Hot-Headed, Erratic, Materialistic, Perfectionist, Jealous, Nosy.-->
-
-- Cognitive Abilities: <!--Typically used only for overly dumb orsmart characters-->
-- Social Skills and Integration Into Society: <!--Typically used only for sociopathic characters or the ones with social anxiety or overly high self-esteem-->
-
-- Main Aspiration: <!--Typically used if the character has a clear goal to pursue throughout the story. e.g. "I want to become a hero!"-->
-  ↳ Aspiration Details: <!--Explain the chosen aspiration-->
-  ↳ Aspiration Goals: <!--e.g. Annoy {{user}} with 'how to be a hero' questions; Save girls; become popular; [...]-->
-- Unique Trait: <!--Typically used if the character has curses or special states. e.g. "Succubi Feeding Frenzy Trance"-->
-  ↳ Effects: <!--e.g. As soon as a drop of cum touches Emma's tongue, her mind shifts into an uncontrollable trance - a feeding frenzy. Her eyes light up with heart-shaped pupils. She doesn't control how [...]-->
-
-- Unique Trait:
-  ↳ Effects:
-
-<!-- 
-IMPORTANT: Q&A and SECRETS sections have been intentionally REMOVED from the text profile. 
-Do NOT include Q&A, character back-story secrets, or conditional lore here. 
-These must be moved to the modular JavaScript script (`[WorldName]_JanitorAI_Script.js`) generated by `build_janitor.py` to prevent token bloat. 
--->
-
----
-
-## [BEHAVIOR_NOTES]
-
--
--
--
-- ***
-
-</[CharName_2]>
-
----
-
-<!-- DUPLICATE THE BLOCK ABOVE FOR CHARACTERS 3, 4, 5, 6 CHANGING THE NAME IN THE TAG -->
+<!-- DUPLICATE THE BLOCK ABOVE FOR CHARACTERS 2, 3, 4, 5 CHANGING THE NAME IN THE TAG -->
 <!-- IF THIS IS A SINGLE-CHARACTER BOT, JUST USE ONE <CharName> BLOCK -->
 
 ---
@@ -225,18 +196,3 @@ These must be moved to the modular JavaScript script (`[WorldName]_JanitorAI_Scr
 # [AI BEHAVIOR NOTES (MULTI-CHAR)]
 
 [IMPORTANT DIRECTIVE FOR AI: This scenario includes multiple characters. The AI MUST actively and faithfully portray all characters defined in the name tags (e.g., <CharName_1>). The AI MUST NEVER speak or act on behalf of {{user}}. The AI must ensure each character maintains their distinct personality and speech style during group conversations. Only involve characters relevant to the current action, avoiding having everyone speak at the same time unless necessary.]
-
----
-
-## [PRESCENARIO]
-
-## PREVIOUSLY
-
-<!--Use this section to describe what happened right before the RP starts-->
-
-## NOTES
-
-- <!--e.g. "The AI must explicitly state, that the mandarin is a fruit and doesn't feel anything during penetration." Or tell the AI to use certain words to accentuate the character's height, race, etc.)-->
--
--
--

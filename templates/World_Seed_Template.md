@@ -212,21 +212,22 @@ Delete all instructional text in brackets before submitting. Leave the section h
 ## 3. THE PROTAGONIST — {{user}} **[REQUIRED]**
 
 *This section defines who the player is. It becomes the Andrei_Lorebook equivalent — the Tier 2 protagonist lorebook — and informs the Persona description.*
-
 **Identity & Role:** [Who is {{user}} in this world? Name, title, function, public face vs. private reality.]
-
-**Hidden Layer:** [What does {{user}} want that they will not admit to themselves or others? What are they running from?]
-
-**The Contradiction:** [What action of {{user}}'s contradicts what they claim to be? The gap between self-image and behavior is where character lives.]
-
-**Power & Limits:** [What can {{user}} do? What can they absolutely not do? Be specific about the limits — they create dramatic tension.]
-
-**{{user}}'s Arc:** [One sentence per arc describing the protagonist's internal journey. Example: "Arc 1: Denial. Arc 2: Confrontation. Arc 3: Loss. Arc 4: Reconstruction."]
 
 #### PROTAGONIST PHYSICAL DESCRIPTION **[OPTIONAL but recommended]**
 *If you want the AI to render {{user}}'s appearance consistently, describe it here. This becomes a Tier 2 lorebook entry. If left blank, the AI will not describe {{user}}'s appearance unprompted.*
 
 [Physical description: build, face, hair, eyes, clothing, sensory signature, movement quality. Be as specific or as sparse as you want. Note any real-world reference if useful.]
+
+**The Wound:** [What happened to this person that shaped everything? The thing they are still inside, not the thing they have processed.]
+
+**Power & Limits:** [What can {{user}} do? What can they absolutely not do? Be specific about the limits — they create dramatic tension.]
+
+**Hidden Layer:** [What does {{user}} want that they will not admit to themselves or others? What are they running from?]
+
+**{{user}}'s Arc:** [One sentence per arc describing the protagonist's internal journey. Example: "Arc 1: Denial. Arc 2: Confrontation. Arc 3: Loss. Arc 4: Reconstruction."]
+
+**The Contradiction:** [What action of {{user}}'s contradicts what they claim to be? The gap between self-image and behavior is where character lives.]
 
 ---
 
@@ -246,59 +247,7 @@ Delete all instructional text in brackets before submitting. Leave the section h
 **Demographics:** [Age, gender, role, relevant background facts]
 **The Card's Function:** [What role does this character play? Primary companion? NPC controller? Narrator? Antagonist?]
 
-#### CARD DATA
-
-  **Avatar Image Prompt (PixAI / Danbooru):** [OPTIONAL. If generating an avatar, use the 4-layer structure: [Subject e.g. 1girl/1guy], [Pose/Expression e.g. looking at viewer], [Background/Theme], [Descriptors e.g. detailed, masterpiece]]
-
-**Psychological Core:**
-- Surface want: [What do they openly want?]
-- Deep want: [What do they secretly want beneath that?]
-- Central fear: [What are they most afraid of? What would destroy them?]
-- Contradiction: [What do they do that contradicts who they claim to be?]
-
-**The Shield:** [How do they protect themselves from being truly seen? Sarcasm? Cold professionalism? Humor? Aggression? Compliance?]
-
-**The Crack:** [What bypasses the shield entirely? What makes the armor fall? 2–3 specific triggers.]
-
-**Voice Pattern:** [How do they speak? Sentence length, vocabulary level, verbal tics, what they never say directly, how they express strong emotion. Give the AI enough to write them distinctly.]
-
-**Card Style Override:** **[OPTIONAL — leave all fields as `INHERIT` for the vast majority of cards]**
-
-*This card may override the world's perspective, tense, and the marker triplet (narration / dialogue / emphasis) per Section 1.5a, for its own turns. Override only when the card is structurally incompatible with the world default — typical cases: a Director/Narrator card sitting alongside companion cards in a single-character-perspective world; a confessional companion card in an otherwise third-person world; group chats where one card narrates in present tense and another in past; a card using em-dash dialogue convention while the world uses double quotes. Do NOT override for stylistic preference; that's what the world default is for. Paragraph register remains a world-coherence setting and cannot be overridden per card.*
-
-- **Perspective override:** [`INHERIT` (default — uses world Section 1.5a value) | `first` | `second` | `third_limited` | `third_omniscient`]
-- **Tense override:** [`INHERIT` (default) | `past` | `present`]
-- **Narration marker override:** [`INHERIT` (default) | `asterisks_for_narration` | `asterisks_for_thoughts_only` | `plain_prose`]
-- **Dialogue marker override:** [`INHERIT` (default) | `double_quotes` | `single_quotes` | `em_dash` | `unmarked`]
-- **Emphasis marker override:** [`INHERIT` (default) | `double_asterisks` | `italics_underscore` | `none`]
-- **Override rationale:** [REQUIRED if any override is not INHERIT. One sentence explaining the structural reason this card cannot use the world default. Stylistic preference is not a structural reason. Examples: "Director card handling NPC voices and scene-setting from outside any character's POV; world-default first-person is structurally wrong for this role." / "Companion card narrates in present tense for immediacy; world default is past for the broader narrative pace." / "European-literary card using em-dash dialogue convention to mark its register difference from the world default's double-quote convention." The Editor hard-fails any non-INHERIT override with an empty or vague rationale.]
-
-**Opening Scenario:** [Where are they when the story starts? What is their situation and immediate goal?]
-
-**First Message:** [The character's opening message. Write this in full — it sets the tone for every subsequent interaction. It should establish voice, atmosphere, and situation immediately.]
-
-*[First message text here — write in character]*
-
-**Example Exchanges:** [Minimum 3 exchanges demonstrating different behavioral modes: default behavior, shield being triggered, crack being reached. Write these in full.]*
-```
-<START>
-{{user}}: [Player action or dialogue]
-{{char}}: [Character response]
-
-<START>
-{{user}}: [Player action or dialogue]
-{{char}}: [Character response]
-
-<START>
-{{user}}: [Player action or dialogue]
-{{char}}: [Character response]
-```
-
----
-
-#### CHARACTER LOREBOOK DATA
-
-*Everything below becomes Tier 2 lorebook entries — permanent reference data that fires when the character is relevant.*
+#### LOREBOOK DATA & BACKGROUND (Trivia & Details)
 
 ##### PHYSICAL DESCRIPTION — BASELINE
 *Permanent anatomical truth only. No arc-specific condition (weight, health, clothing state) — those belong in arc ANNA_STATE entries.*
@@ -315,24 +264,6 @@ Trigger keywords: [Character name, "her appearance", "what she looks like", "des
 7. Habitual gestures and posture tells]
 
 > ⚠️ **ARCHITECT INSTRUCTION:** This entry is permanent anatomy only. Arc-specific physical state (health, weight changes, clothing, emotional presentation) belongs in ANNA_STATE entries in each arc's Tier 3 lorebook.
-
----
-
-##### CHARACTER'S PSYCHOLOGICAL EVOLUTION (Tier 3 source — one entry per arc)
-*Define who this character is in each arc. These become CONSTANT entries in each arc's Tier 3 lorebook.*
-
-**ARC 1 — [Character Name]_STATE: [Arc State Name]**
-*Constant entry. Fires every context window in Arc 1.*
-
-[Physical state this arc: how do they look? What is their body doing? What has changed from baseline?]
-
-[Psychological state this arc: what is their operating mode? What governs their behavior? What are they working toward? What do they fear? How do they relate to the other major characters this arc?]
-
-**ARC 2 — [Character Name]_STATE: [Arc State Name]**
-[Same format]
-
-**ARC [N] — [Character Name]_STATE: [Arc State Name]**
-[Same format — one entry per arc]
 
 ---
 
@@ -357,6 +288,40 @@ Trigger keywords: [their relationship, how they feel about X, X and Y, etc.]
 
 **[Character] / [Other Character Name]**
 [Same format — repeat for each significant relationship]
+
+---
+
+#### CARD DATA & PSYCHOLOGY (Core Behavior & Identity)
+
+**Avatar Image Prompt (PixAI / Danbooru):** [OPTIONAL. If generating an avatar, use the 4-layer structure: [Subject e.g. 1girl/1guy], [Pose/Expression e.g. looking at viewer], [Background/Theme], [Descriptors e.g. detailed, masterpiece]]
+
+**Psychological Core:**
+- Surface want: [What do they openly want?]
+- Deep want: [What do they secretly want beneath that?]
+- Central fear: [What are they most afraid of? What would destroy them?]
+- Contradiction: [What do they do that contradicts who they claim to be?]
+
+**The Shield:** [How do they protect themselves from being truly seen? Sarcasm? Cold professionalism? Humor? Aggression? Compliance?]
+
+**The Crack:** [What bypasses the shield entirely? What makes the armor fall? 2–3 specific triggers.]
+
+---
+
+##### CHARACTER'S PSYCHOLOGICAL EVOLUTION (Tier 3 source — one entry per arc)
+*Define who this character is in each arc. These become CONSTANT entries in each arc's Tier 3 lorebook.*
+
+**ARC 1 — [Character Name]_STATE: [Arc State Name]**
+*Constant entry. Fires every context window in Arc 1.*
+
+[Physical state this arc: how do they look? What is their body doing? What has changed from baseline?]
+
+[Psychological state this arc: what is their operating mode? What governs their behavior? What are they working toward? What do they fear? How do they relate to the other major characters this arc?]
+
+**ARC 2 — [Character Name]_STATE: [Arc State Name]**
+[Same format]
+
+**ARC [N] — [Character Name]_STATE: [Arc State Name]**
+[Same format — one entry per arc]
 
 ---
 
@@ -395,6 +360,31 @@ Trigger keywords: [sex, intimacy, touch, desire, arousal, etc.]
 
 ---
 
+**Voice Pattern:** [How do they speak? Sentence length, vocabulary level, verbal tics, what they never say directly, how they express strong emotion. Give the AI enough to write them distinctly.]
+
+**Opening Scenario:** [Where are they when the story starts? What is their situation and immediate goal?]
+
+**First Message:** [The character's opening message. Write this in full — it sets the tone for every subsequent interaction. It should establish voice, atmosphere, and situation immediately.]
+
+*[First message text here — write in character]*
+
+**Example Exchanges:** [Minimum 3 exchanges demonstrating different behavioral modes: default behavior, shield being triggered, crack being reached. Write these in full.]*
+```
+<START>
+{{user}}: [Player action or dialogue]
+{{char}}: [Character response]
+
+<START>
+{{user}}: [Player action or dialogue]
+{{char}}: [Character response]
+
+<START>
+{{user}}: [Player action or dialogue]
+{{char}}: [Character response]
+```
+
+---
+
 #### LLM BEHAVIORAL INSTRUCTIONS (Card [N] — [Character Name])
 
 **Core directive:** [One sentence that captures the absolute heart of how to play this character.]
@@ -417,6 +407,19 @@ Trigger keywords: [sex, intimacy, touch, desire, arousal, etc.]
 - Arc [N] (*[State Name]*): [Same — one per arc]
 
 [⚠️ ARCHITECT INSTRUCTION: Write all behavioral mandates and prohibitions with arc-range qualifiers where they don't apply to all arcs. Any mandate that would produce wrong behavior in a later arc must be labeled: "Arc 1–2 only:", "Arc 3+:", "All arcs:", etc. The active CHARACTER_STATE lorebook entry is the authoritative current state and overrides general card defaults. The post_history_instructions must not hardcode any early-arc register as permanently active — it must defer to the active lorebook entry.]
+
+---
+
+**Card Style Override:** **[OPTIONAL — leave all fields as `INHERIT` for the vast majority of cards]**
+
+*This card may override the world's perspective, tense, and the marker triplet (narration / dialogue / emphasis) per Section 1.5a, for its own turns. Override only when the card is structurally incompatible with the world default — typical cases: a Director/Narrator card sitting alongside companion cards in a single-character-perspective world; a confessional companion card in an otherwise third-person world; group chats where one card narrates in present tense and another in past; a card using em-dash dialogue convention while the world uses double quotes. Do NOT override for stylistic preference; that's what the world default is for. Paragraph register remains a world-coherence setting and cannot be overridden per card.*
+
+- **Perspective override:** [`INHERIT` (default — uses world Section 1.5a value) | `first` | `second` | `third_limited` | `third_omniscient`]
+- **Tense override:** [`INHERIT` (default) | `past` | `present`]
+- **Narration marker override:** [`INHERIT` (default) | `asterisks_for_narration` | `asterisks_for_thoughts_only` | `plain_prose`]
+- **Dialogue marker override:** [`INHERIT` (default) | `double_quotes` | `single_quotes` | `em_dash` | `unmarked`]
+- **Emphasis marker override:** [`INHERIT` (default) | `double_asterisks` | `italics_underscore` | `none`]
+- **Override rationale:** [REQUIRED if any override is not INHERIT. One sentence explaining the structural reason this card cannot use the world default. Stylistic preference is not a structural reason. Examples: "Director card handling NPC voices and scene-setting from outside any character's POV; world-default first-person is structurally wrong for this role." / "Companion card narrates in present tense for immediacy; world default is past for the broader narrative pace." / "European-literary card using em-dash dialogue convention to mark its register difference from the world default's double-quote convention." The Editor hard-fails any non-INHERIT override with an empty or vague rationale.]
 
 ---
 
@@ -483,7 +486,6 @@ Trigger keywords: [name variants, role descriptors]
 [Same format — repeat for each roster NPC]
 
 ---
-
 ## 5. NARRATIVE ARCS — or — SANDBOX CHARTER
 
 > **Which one you fill depends on Section 1 `World Mode`.**

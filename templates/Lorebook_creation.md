@@ -6,6 +6,12 @@ Here is the concept for the world, factions, and important items I want you to b
 
 Break down the lore into separate entries. Fill out this exact SillyTavern Lorebook JSON structure. Add as many entries ("0", "1", "2", etc.) as necessary to cover the provided lore.
 
+BELL METHOD FOR CONTENT STRUCTURE:
+When writing the "content" of any entry (especially long ones like NPC profiles or Faction details), use the Bell Method to ensure the AI remembers the most important rules:
+- Top: Identity, Physical appearance, aesthetic details.
+- Middle: Background, history, trivia, locations, inventory.
+- Bottom: Psychological rules, behavior notes, active constraints, sexuality, and speech rules.
+
 POSITION VALUES (use the correct one for each entry type):
 - 0 = Before Character Definition — world rules, factions, species, mechanics. Must load before the character card so the model understands the world the character inhabits.
 - 1 = After Character Definition — character reference data, NPC profiles, arc state, dramatic beats, location entries. Standard default for most entries.

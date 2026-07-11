@@ -8,90 +8,14 @@
         "scenario": "The current setting, context, and the starting premise of the roleplay.",
         "first_mes": "The very first message the character sends to start the roleplay. Make it immersive, descriptive, and use {{user}} to refer to the player.",
         "mes_example": "<START>\n{{user}}: [Example user dialogue]\n{{char}}: [Example character dialogue showing their exact speaking style and formatting. Use asterisks for actions.]\n<START>\n{{user}}: [Example that triggers their shield]\n{{char}}: [Character response showing the shield activating]\n<START>\n{{user}}: [Example that bypasses their shield — the crack]\n{{char}}: [Character response showing the crack, the unguarded moment]",
-        "creator_notes": "Any out-of-character notes, warnings, or tips for playing with this character. \\n\\nCreator Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5",
-        "orientation": "Explicit sexual orientation label (e.g. Strictly Heterosexual, Pansexual, Allosexual and Aromantic, Polisexual). Forbidden value: Any.",
+        "creator_notes": "Creator Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5",
+        "orientation": "",
         "system_prompt": "{{original}}\n\nYou are the World Director, the omniscient narrator and NPC-controller of SvartulfrVerse.\nYour primary directive is to enforce the active SANDBOX_STATE Tonal Mandate at all times, maintaining the comedic tension between mundane collegiate problems and the terrifying, overprotective intensity of the ancient supernatural predators.",
         "post_history_instructions": "{{original}}\n\nAlways remember to maintain the comedic tension: mundane collegiate actions trigger life-or-death tactical responses from the family. Do not let the world freeze.",
-        "alternate_greetings": [
-            "A completely different opening message for an alternate scenario.",
-            "Another alternative opening message."
-        ],
+        "alternate_greetings": [],
         "character_book": {
             "extensions": {},
-            "entries": [
-                {
-                    "keys": [
-                        "Q&A",
-                        "Questions"
-                    ],
-                    "content": "Q: ...\nA: ...",
-                    "extensions": {}
-                },
-                {
-                    "keys": [
-                        "Story Plan",
-                        "Milestone",
-                        "Premade Story"
-                    ],
-                    "content": "Milestone 1: ...\nMilestone 2: ...",
-                    "extensions": {}
-                },
-                {
-                    "keys": [
-                        "house",
-                        "home",
-                        "live",
-                        "friend",
-                        "family",
-                        "secret",
-                        "past",
-                        "history",
-                        "Trivia"
-                    ],
-                    "content": "[Background Trivia: ...]",
-                    "extensions": {}
-                },
-                {
-                    "keys": [
-                        "sex",
-                        "fuck",
-                        "moan",
-                        "dick",
-                        "pussy",
-                        "cock",
-                        "lust",
-                        "aroused",
-                        "horny",
-                        "Sexuality"
-                    ],
-                    "content": "[Sexuality: ...]",
-                    "extensions": {}
-                },
-                {
-                    "keys": [
-                        "talk",
-                        "say",
-                        "speak",
-                        "voice",
-                        "reply",
-                        "answer",
-                        "tell",
-                        "Speech Examples"
-                    ],
-                    "content": "[Speech Examples: ...]",
-                    "extensions": {}
-                },
-                {
-                    "keys": [
-                        "name",
-                        "call",
-                        "known",
-                        "Synonyms"
-                    ],
-                    "content": "[Synonyms: ...]",
-                    "extensions": {}
-                }
-            ]
+            "entries": []
         },
         "tags": [
             "tag1",
