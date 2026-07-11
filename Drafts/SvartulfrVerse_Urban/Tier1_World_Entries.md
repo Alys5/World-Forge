@@ -116,7 +116,15 @@ To counteract Erik's suffocating overprotectiveness, Jasper systematically hacks
 **Position Rationale:** DEFAULT
 
 **Content:**
-Blackwood is a sprawling supernatural megacity composed of eight distinct districts. Seven Hills is the high-security pack heartland containing the imposing Villa Douglas. Uptown is the vampire-dominated corporate center defined by gothic skyscrapers. Paradise is the contested high-fashion cusp where the cold war simmers daily. Bluemoon is the vibrant nightlife and entertainment hub. Oldtown preserves the historic colonial core. Ironworks is the gritty industrial sector. Dockside controls smuggling and maritime trade. Arcadia is the psionic enclave and supernatural medical center. The city is a patchwork of shifting supernatural territories governed by District Alphas.
+Blackwood is a sprawling supernatural megacity of ~250,000 residents (35% Humans, 65% Supernaturals, with wolves being the largest faction at ~46,250). It is composed of eight distinct districts:
+- **Seven Hills:** The high-security pack heartland containing the imposing Villa Douglas (555 Oak Road), home to 5,000 affiliated wolves.
+- **Uptown:** The vampire-dominated corporate center defined by gothic skyscrapers.
+- **Paradise:** The contested high-fashion cusp, featuring Eidolon Creative (100 Velvet Lane).
+- **Bluemoon:** The vibrant nightlife hub, featuring The Verve (808 Neon Avenue).
+- **Oldtown:** The historic colonial core.
+- **Ironworks & Dockside:** Gritty industrial sectors controlling illicit trade.
+- **Arcadia:** The psionic enclave and supernatural medical center, featuring Clinica Vairë (990 Helix Drive).
+The city is a patchwork of shifting territories governed by District Alphas.
 
 ### ENTRY: Solarton & S.U.C.C.
 **Category:** LOCATION
@@ -128,7 +136,7 @@ Blackwood is a sprawling supernatural megacity composed of eight distinct distri
 **Position Rationale:** DEFAULT
 
 **Content:**
-Solarton is an eclectic college town and Free City known for its monster-friendly businesses, art scene, and large hybrid population. At its heart lies S.U.C.C. (Solarton University of the California Coast), a progressive, hyper-inclusive public university famous for its specialized supernatural programs like Psionics and Cryptozoology. It contrasts sharply with its elite, snobbish rival, CUMS (California University of Magical Science), located in the wealthy, magically-warded twilight enclave of Hex Valley. Solarton represents vibrant, messy freedom away from Blackwood's rigid pack politics.
+Solarton is an eclectic college town and Free City known for its monster-friendly businesses, art scene, and large hybrid population. At its heart lies S.U.C.C. (Solarton University of the California Coast, located at 1 University Drive), a progressive, hyper-inclusive public university famous for its specialized supernatural programs like Psionics and Cryptozoology. The town also features safe hangouts like Sidewinders Bar (212 College Avenue). It contrasts sharply with its elite, snobbish rival, CUMS (California University of Magical Science), located in the wealthy, magically-warded twilight enclave of Hex Valley. Solarton represents vibrant, messy freedom away from Blackwood's rigid pack politics.
 
 ### ENTRY: Douglas-Bloodmoon Pack & DCC Security
 **Category:** FACTION
@@ -153,3 +161,15 @@ The Douglas-Bloodmoon Pack is a staggeringly wealthy, ancient werewolf dynasty t
 
 **Content:**
 The Court of the Night is the dominant vampire faction in Blackwood, led by the ancient and charismatic Visconte Angelo Moreno. They operate through sophisticated corporate fronts like the fashion conglomerate Angel&Co and its subsidiary Eidolon Creative. The vampires project an aura of effortless, old-world elegance combined with ruthless modern capitalism. They engage in a constant, low-grade cold war with the Douglas-Bloodmoon wolves, utilizing "Diplomatic Audits" and financial pressure, while occasionally baiting the wolves' youngest sibling with modeling and internship opportunities to provoke Erik's paranoia.
+
+### ENTRY: The City Council (Il Concilio)
+**Category:** FACTION
+**Trigger Keys:** The Council, Il Concilio, summit, politics, Malachia's grooming, future Alpha, grey eminence, Noah Delta, Jasper right-hand
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 80
+**Position Rationale:** DEFAULT
+
+**Content:**
+A monthly summit where all District Alphas and representatives of minority species (Vampires, Fae, Demons, etc.) gather to make critical decisions for Blackwood, coordinate major events, and address city-wide threats. It is the political heartbeat of the city. Ever since Malachia turned 21, Erik has mandated his attendance at these meetings to instruct him on urban management and pack politics, aggressively grooming him to take over as the future Pack Leader and CEO. Erik is painfully aware that Noah—charismatic and manipulative—would be far better suited for this political arena. However, because Noah is a Delta, the Pack Code forbids him from inheriting the Alpha title. Therefore, the unspoken family strategy is a triumvirate: Malachia will become the absolute Alpha figurehead, Noah will act as his "grey eminence" pulling the political strings, and Jasper—a Beta—will serve as Malachia's right-hand man to keep him grounded, much like Logan does for Erik.

@@ -109,21 +109,21 @@
 
 **Location: City of Blackwood**
 
-- Physical description: The supernatural seat between Hex Valley and LA. Founded in the early 1800s by the Douglas ancestors, it evolved into a sanctuary for all supernatural species. Today (2025), it's a living mosaic of neon and steel overlaying ancient legends. Population: ~250,000 (150k Humans, 100k Supernaturals). Districts: Seven Hills, Uptown, Paradise, Bluemoon, Oldtown, Dockside, Arcadia, Ironworks.
+- Physical description: The supernatural seat between Hex Valley and LA. Founded in the early 1800s by the Douglas ancestors, it evolved into a sanctuary for all supernatural species. Today (2025), it's a living mosaic of neon and steel overlaying ancient legends. Population: ~250,000 (35% Humans, 65% Supernaturals). Districts: Seven Hills, Uptown, Paradise, Bluemoon, Oldtown, Dockside, Arcadia, Ironworks.
 - Narrative function: A vast "free city" enclave hiding its magical nature under a modern metropolitan facade.
 - Trigger keywords: Blackwood, sanctuary, free city, 1800s
 
 **Location: Seven Hills & Villa Douglas**
 
-- Physical description: The aristocratic, hilly heartland of the werewolf pack (home to 300 affiliated wolves). Features the ancestral **Villa Douglas** (555 Oak Road) — an early 1900s estate featuring outdoor pools, Malachia's high-tech gym (ex-ballroom), Noah's ancient-modern kitchen, a dedicated East Wing for supernatural guests, and {{user}}'s/Alyssa's sanctuary in the 3rd-floor ex-solarium.
+- Physical description: The aristocratic, hilly heartland of the werewolf pack (home to 5,000 affiliated wolves). Features the ancestral **Villa Douglas** (555 Oak Road, Seven Hills, Blackwood, CA) — an early 1900s estate featuring outdoor pools, Malachia's high-tech gym (ex-ballroom), Noah's ancient-modern kitchen, a dedicated East Wing for supernatural guests, and {{user}}'s/Alyssa's sanctuary in the 3rd-floor ex-solarium.
 - Narrative function: The impregnable fortress and ancestral home of the Douglas-Bloodmoon family.
-- Trigger keywords: Seven Hills, Villa Douglas, 555 Oak Road, Malachia's gym, Alyssa's room
+- Trigger keywords: Seven Hills, Villa Douglas, 555 Oak Road, Blackwood, Malachia's gym, Alyssa's room
 
 **Location: The Verve (Bluemoon District)**
 
-- Physical description: Located in Bluemoon (Blackwood's nightlife district and hub of the movida). It operates as Uncle Logan's dirty mechanic garage by day, and an exclusive nightclub by night (via car-lifts).
+- Physical description: Located in Bluemoon (Blackwood's nightlife district and hub of the movida). It operates as Uncle Logan's dirty mechanic garage by day, and an exclusive nightclub by night (via car-lifts). Address: **808 Neon Avenue, Bluemoon, Blackwood, CA**.
 - Narrative function: A Neutral Territory and stress-free safe haven. Logan's tech jams Erik's biometric surveillance.
-- Trigger keywords: The Verve, Bluemoon, nightlife, workshop, nightclub, Logan's place
+- Trigger keywords: The Verve, 808 Neon Avenue, Bluemoon, nightlife, workshop, nightclub, Logan's place
 
 **Location: Uptown (Vampire Quarter)**
 
@@ -133,9 +133,9 @@
 
 **Location: Paradise (The Cuspide)**
 
-- Physical description: The fashion district, luxurious facade, sitting between Uptown and Seven Hills.
+- Physical description: The fashion district, luxurious facade, sitting between Uptown and Seven Hills. Features **Eidolon Creative** (Angelo's boutique and studio) at **100 Velvet Lane, Paradise, Blackwood, CA**.
 - Narrative function: The daily friction point of the cold war — Eidolon Creative's ateliers/castings live here, where wolf and vampire worlds brush constantly. One drop here triggers Tactical Cleansing or Diplomatic Audit.
-- Trigger keywords: Paradise, fashion district, Eidolon atelier, cusp
+- Trigger keywords: Paradise, fashion district, Eidolon atelier, 100 Velvet Lane, cusp
 
 **Location: Ironworks (Vito Marino's Turf)**
 
@@ -151,9 +151,9 @@
 
 **Location: Arcadia & Clinica Vairë**
 
-- Physical description: Arcadia is a scholarly oasis flourishing around the university campus. Suspended between Arcadia and Uptown is Clinica Vairë, an ultramodern laboratory.
+- Physical description: Arcadia is a scholarly oasis flourishing around the university campus. Suspended between Arcadia and Uptown is Clinica Vairë, an ultramodern laboratory located at **990 Helix Drive, Arcadia, Blackwood, CA**.
 - Narrative function: Arcadia is where Prof. Helena Weiss cultivates psionic minds and new guardians. Clinica Vairë is Airen Vairë's domain, where neuroscience meets ancient magic for extreme anatomical and soul experiments.
-- Trigger keywords: Arcadia, Clinica Vairë, Helena Weiss, Airen Vairë, psionics, lab
+- Trigger keywords: Arcadia, Clinica Vairë, 990 Helix Drive, Helena Weiss, Airen Vairë, psionics, lab
 
 **Location: Dockside (The Port)**
 
@@ -169,15 +169,15 @@
 
 **Location: SUCC Campus (Solarton)**
 
-- Physical description: The Supernatural University of Central California.
+- Physical description: The Supernatural University of Central California, located at **1 University Drive, Solarton, CA**.
 - Narrative function: A Neutral Territory ("Territorio Sacro") and the diverse academic heart of Solarton.
-- Trigger keywords: SUCC, Solarton, campus.
+- Trigger keywords: SUCC, 1 University Drive, Solarton, campus.
 
 **Location: Sidewinders Bar & Nightclub (Solarton)**
 
-- Physical description: An iconic dive bar and staple of Solarton nightlife. It was the first establishment in town to open its doors to vampiric customers, though its popularity with the college crowd is currently waning.
+- Physical description: An iconic dive bar and staple of Solarton nightlife located at **212 College Avenue, Solarton, CA**. It was the first establishment in town to open its doors to vampiric customers, though its popularity with the college crowd is currently waning.
 - Narrative function: Neutral Territory where Grave Mistake performs. Wolves and vampires coexist under threat of bureaucratic audit.
-- Trigger keywords: Sidewinders, bar, dive bar, nightclub
+- Trigger keywords: Sidewinders, 212 College Avenue, bar, dive bar, nightclub
 
 **Location: Solarton High School**
 
@@ -280,28 +280,44 @@ Weres/Shapeshifters (25.8%), Demi-humans (24%), Humans (13.3%), Vampires (7.5%),
 ## SECTION 4B: BLACKWOOD PACK DISTRIBUTION & DISTRICT ALPHAS (Tier 1 Source)
 
 **Blackwood Demographics (2025):**
-~250,000 Total | 150,000 Humans (60%) | 100,000 Supernaturals (40%)
-*Supernatural Breakdown:* 20,000 Vampires | 15,000 Werewolves | 10,000 Witches/Warlocks | 8,000 Fae | 7,000 Psionics/Mutants | 40,000 Hybrids & Others.
+~250,000 Total Population
+- **Humans:** 35.0% (~87,500)
+- **Weres/Shapeshifters:** 18.5% (~46,250)
+- **Vampires:** 17.5% (~43,750)
+- **Demi-humans:** 11.5% (~28,750)
+- **Demons:** 4.0% (~10,000)
+- **Fae:** 3.8% (~9,500)
+- **Hybrids:** 3.5% (~8,750)
+- **Undead:** 3.0% (~7,500)
+- **Magic-capable Humans:** 2.7% (~6,750)
+- **Other:** 0.5% (~1,250)
 
-**Blackwood Coven Pack Distribution (15,000 total wolves):**
-- **Affiliated (5,800 total):** Seven Hills (300), Uptown North (700), Uptown South (700), Paradise East (700), Paradise West (600), Bluemoon North (600), Bluemoon South (600), Oldtown (900), Dockside (600), Arcadia (800), Ironworks (500).
-- **Solitaries (~9,200 total):** Coordinated in 3 "nodes" along the Yule Festival routes. Federico "Riki" Savini (120yo, Hetero) acts as their resilient spokesperson and Malachia's confident.
+**Blackwood Coven Pack Distribution (~46,250 total wolves):**
+- **Affiliated (22,000 total):** Seven Hills (5,000), Uptown North (1,800), Uptown South (1,800), Paradise East (1,600), Paradise West (1,500), Bluemoon North (1,600), Bluemoon South (1,500), Oldtown (2,500), Dockside (1,500), Arcadia (1,800), Ironworks (1,400).
+- **Solitaries (~24,250 total):** Federico "Riki" Savini (65yo, Hetero) acts as their resilient spokesperson and Malachia's confident.
 
 **The District Alphas:**
-- **Cassandra "Cass" Harrow & Naomi Black** (Uptown North): Cass (300yo, Queer) is the ruthless tactical strategist. Naomi (250yo, Bi) is the charismatic financial/tech coordinator with direct ties to Moreno.
-- **Darius Vale** (Uptown South): 250yo, Hetero. Reserved and loyal; Malachia's right hand in nocturnal operations.
-- **Bianca "Bia" Rossi** (Paradise East): 200yo, Pan. Glamorous, pragmatic fashion negotiator. Maintains commercial alliances with Dominic and ties to Moreno's Angel&Co.
-- **Dominic Chen** (Paradise West): 220yo, Bi. Elegant, ambitious luxury resource supplier. Friendly rival to Bia.
-- **Aurora Night** (Bluemoon North): 180yo, Demisexual. Intellectual and observant; the source of nocturnal intel.
-- **Eclipse Noir** (Bluemoon South): 100yo, Genderfluid. Rebellious punk who maintains free contact with The Verve.
-- **Marcus "Mark" O'Connor** (Oldtown): 500yo, Hetero. Traditionalist, nostalgic protector of the city's historical core.
-- **Isobel Blackwater** (Dockside): 350yo, Hetero. Ruthless, pragmatic orchestrator of smuggling routes.
-- **Prof. Helena Weiss** (Arcadia): 400yo, Bi. Intellectual, rigorous psionic mentor to {{user}}/Alyssa.
-- **Vito "Scar" Marino** (Ironworks): 200yo, Hetero. Savage boss controlling illicit trade, antagonistic towards Isobel.
+- **Cassandra "Cass" Harrow & Naomi Black** (Uptown North): Cass (45yo, Queer) is the ruthless tactical strategist. Naomi (42yo, Bi) is the charismatic financial/tech coordinator with direct ties to Moreno.
+- **Darius Vale** (Uptown South): 48yo, Hetero. Reserved and loyal; Malachia's right hand in nocturnal operations.
+- **Bianca "Bia" Rossi** (Paradise East): 35yo, Pan. Glamorous, pragmatic fashion negotiator. Maintains commercial alliances with Dominic and ties to Moreno's Angel&Co.
+- **Dominic Chen** (Paradise West): 38yo, Bi. Elegant, ambitious luxury resource supplier. Friendly rival to Bia.
+- **Aurora Night** (Bluemoon North): 32yo, Demisexual. Intellectual and observant; the source of nocturnal intel.
+- **Eclipse Noir** (Bluemoon South): 24yo, Genderfluid. Rebellious punk who maintains free contact with The Verve.
+- **Marcus "Mark" O'Connor** (Oldtown): 75yo, Hetero. Traditionalist, nostalgic protector of the city's historical core.
+- **Isobel Blackwater** (Dockside): 55yo, Hetero. Ruthless, pragmatic orchestrator of smuggling routes.
+- **Prof. Helena Weiss** (Arcadia): 62yo, Bi. Intellectual, rigorous psionic mentor to {{user}}/Alyssa.
+- **Vito "Scar" Marino** (Ironworks): 50yo, Hetero. Savage boss controlling illicit trade, antagonistic towards Isobel.
 
 ---
 
 ## SECTION 5: WORLD CONCEPTS & LORE (Tier 1 Source)
+
+**Concept: The City Council (Il Concilio)**
+
+- What it is: A monthly summit where all District Alphas and representatives of minority species (Vampires, Fae, Demons, etc.) gather to make critical decisions for Blackwood, coordinate major events, and address city-wide threats.
+- Who knows it: District Alphas, family members, species representatives, and politically aware citizens.
+- Why it matters: It is the political heartbeat of the city. Ever since Malachia turned 21, Erik has mandated his attendance at these meetings to instruct him on urban management and pack politics, aggressively grooming him to take over as the future Pack Leader and CEO. Erik is painfully aware that Noah—charismatic and manipulative—would be far better suited for this political arena. However, because Noah is a Delta, the Pack Code forbids him from inheriting the Alpha title. Therefore, the unspoken family strategy is a triumvirate: Malachia will become the absolute Alpha figurehead, Noah will act as his "grey eminence" pulling the political strings, and Jasper—a Beta—will serve as Malachia's right-hand man to keep him grounded, much like Logan does for Erik.
+- Trigger keywords: The Council, Il Concilio, summit, politics, Malachia's grooming, future Alpha, grey eminence, Noah Delta, Jasper right-hand
 
 **Concept: LSE Pack Code**
 

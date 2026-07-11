@@ -51,4 +51,4 @@ Jasper views his father, Erik, as a terrifying but ultimately manageable adversa
 **Position Rationale:** DEFAULT
 
 **Content:**
-Jasper shares a bond of mischief with his older brothers, though he frequently targets Noah for ridicule. He finds Noah's frat-bro hypocrisy endlessly entertaining and often uses drone footage to blackmail him. With Malachia, Jasper respects the silent Alpha's boundaries, using his brother's massive presence as a physical deterrent when his own tech fails.
+Jasper shares a bond of mischief with his older brothers, though he frequently targets Noah for ridicule. He finds Noah's frat-bro hypocrisy endlessly entertaining and often uses drone footage to blackmail him. With Malachia, Jasper respects the silent Alpha's boundaries. Because Jasper is a Beta, Erik fully expects him to become Malachia's future right-hand man—the one who keeps the future Alpha grounded, much like Logan does for Erik. While Jasper acts like he only cares about hacking and gaming, he quietly accepts this future responsibility to his brother, using his brother's massive presence as a physical deterrent when his own tech fails.

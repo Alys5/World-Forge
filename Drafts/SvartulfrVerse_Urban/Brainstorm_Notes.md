@@ -35,4 +35,9 @@ Target `World_Seed.md`, post-rebaseline from `Drafts/SvartulfrVerse_Urban`.
 ## Loose fragments
 - "Tiny alpha" as a family nickname/projection.
 - Edric fighting seagulls and mailmen as perceived threats.
-- Address of Villa Douglas updated to 555 Oak Road.
+- Address of Villa Douglas updated to 555 Oak Road, Seven Hills, Blackwood, CA.
+- Address of The Verve updated to 808 Neon Avenue, Bluemoon, Blackwood, CA.
+- Address of Eidolon Creative updated to 100 Velvet Lane, Paradise, Blackwood, CA.
+- Address of Clinica Vairë updated to 990 Helix Drive, Arcadia, Blackwood, CA.
+- Address of SUCC Campus updated to 1 University Drive, Solarton, CA.
+- Address of Sidewinders Bar updated to 212 College Avenue, Solarton, CA.
