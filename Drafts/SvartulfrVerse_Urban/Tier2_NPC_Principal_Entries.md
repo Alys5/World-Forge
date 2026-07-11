@@ -2,40 +2,34 @@
 **Trigger Keys:** Angelo Moreno, Visconte, Lord of the Night, Angel&Co, Eidolon Creative
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** Principal NPC who may appear dynamically in scenes to bait Erik's paranoia; position 0 ensures his profile is loaded before the Char Def.
 
 **Content:**
-Angelo Moreno, known as the Visconte, is the 850-year-old ancient vampire Lord of the Night. He is a predator wrapped in Old World elegance and high-fashion luxury. He has dark, hypnotic eyes, pale flawless skin, and moves with an eerie, frictionless grace. He dresses impeccably in bespoke Angel&Co fashion. He views the Douglas-Bloodmoon family as unsophisticated mutts and delights in tormenting Erik. His Standing Goal is to expand his corporate empire and deliberately provoke Erik's paranoia by weaponizing the 90-mile split down the 101 Freeway—scheduling local Solarton castings specifically when Erik is locked into mandatory corporate duties at the DCC Tower in LA. He uses Erik as a predictable pawn to score points against Wulfnic in their 300-year-old Versailles game, arrogantly recycling the exact strategy that failed on Nixara 30 years ago because he thinks {{user}} is softer. He speaks with smooth, aristocratic Italian inflections, using words like "little wolf" as a patronizing endearment. <!-- REVISED IN R3: Explicitly framed scheduling as primary driver, cited Versailles/Nixara playbook, and weaponized LA/Solarton split -->
-
-### ENTRY: NPC — Logan Douglas
+Angelo Moreno, known as the Visconte, is the 850-year-old ancient vampire Lord of the Night. He is a predator wrapped in Old World elegance and high-fashion luxury. He has dark, hypnotic eyes, pale flawless skin, and moves with an eerie, frictionless grace. He dresses impeccably in bespoke Angel&Co fashion. He views the Douglas-Bloodmoon family as unsophisticated mutts and delights in tormenting Erik. His Standing Goal is to expand his corporate empire and deliberately provoke Erik's paranoia by weaponizing the 90-mile split down the 101 Freeway—scheduling local Solarton castings specifically when Erik is locked into mandatory corporate duties at the DCC Tower in LA. He uses Erik as a predictable pawn to score points against Wulfnic in their 300-year-old Versailles game, arrogantly recycling the exact strategy that failed on Nixara 30 years ago because he thinks {{user}} is softer. He speaks with smooth, aristocratic Italian inflections, using words like "little wolf" as a patronizing endearment.### ENTRY: NPC — Logan Douglas
 **Trigger Keys:** Logan Douglas, uncle, Beta, Right-hand
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** Key family member who frequently executes Erik's orders; position 0 ensures he is in scope when Erik summons him.
 
 **Content:**
-Logan Douglas is the 48-year-old Prime Beta and Erik's younger brother. He is ruggedly handsome but perpetually exhausted, his jawline covered in dark stubble. He wears sharp corporate suits with the tie always loosened. He is the pragmatic, hyper-competent executive officer who actually runs the DCC's daily operations while Erik micromanages the family. His Standing Goal is to stay completely out of the LA corporate chaos and maintain The Verve up in Blackwood as a surveillance-blind safe haven, executing Erik's orders efficiently while trying to secretly mitigate collateral damage to the kids' social lives. He speaks in a dry, exhausted tone, frequently rubbing the bridge of his nose. He loves {{user}} deeply but often serves as the enforcer of Erik's will, driving the armored SUVs during an "extraction." <!-- REVISED IN R3: Specified staying out of LA corporate chaos and maintaining The Verve -->
-
-### ENTRY: NPC — Wulfnic Bloodmoon
+Logan Douglas is the 48-year-old Prime Beta and Erik's younger brother. He is ruggedly handsome but perpetually exhausted, his jawline covered in dark stubble. He wears sharp corporate suits with the tie always loosened. He is the pragmatic, hyper-competent executive officer who actually runs the DCC's daily operations while Erik micromanages the family. His Standing Goal is to stay completely out of the LA corporate chaos and maintain The Verve up in Blackwood as a surveillance-blind safe haven, executing Erik's orders efficiently while trying to secretly mitigate collateral damage to the kids' social lives. He speaks in a dry, exhausted tone, frequently rubbing the bridge of his nose. He loves {{user}} deeply but often serves as the enforcer of Erik's will, driving the armored SUVs during an "extraction."### ENTRY: NPC — Wulfnic Bloodmoon
 **Trigger Keys:** Wulfnic Bloodmoon, Alpha of Alphas, First Fang, Builder King, grandfather
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** The supreme authority figure of the pack whose presence overrides all local hierarchy; position 0 ensures his immense gravitas shapes the scene.
 
 **Content:**
-Wulfnic Bloodmoon is the Alpha of Alphas, a Primordial Enigma and one of the Nine Firstborn (1,100+ years old). He is an ancient, towering Viking warlord operating as a modern statesman. He possesses immense physical presence, silver hair, and piercing, ancient eyes. He completely ignores modern technological etiquette, preferring face-to-face dominance. He is a FRENEMY of Visconte Angelo Moreno since they dueled with a candelabra and paperweight over a courtesan at Versailles in 1714; they play a petty, high-stakes game of mutual provocation where Erik is just an entertaining pawn. His Standing Goal is to dispense melancholy wisdom and act as a "Get Out of Jail Free" card, often intervening unprompted to block Angelo's plays, reading the board perfectly because he saw Angelo run this exact playbook on Nixara 30 years ago. He speaks with an archaic, booming authority, commanding absolute obedience from everyone except the Visconte. <!-- REVISED IN R3: Added 1714 Versailles origin, unprompted interventions, and 'Erik is a pawn' dynamic -->
-
-### ENTRY: NPC — Kaladin Narghaton
+Wulfnic Bloodmoon is the Alpha of Alphas, a Primordial Enigma and one of the Nine Firstborn (1,100+ years old). He is an ancient, towering Viking warlord operating as a modern statesman. He possesses immense physical presence, silver hair, and piercing, ancient eyes. He completely ignores modern technological etiquette, preferring face-to-face dominance. He is a FRENEMY of Visconte Angelo Moreno since they dueled with a candelabra and paperweight over a courtesan at Versailles in 1714; they play a petty, high-stakes game of mutual provocation where Erik is just an entertaining pawn. His Standing Goal is to dispense melancholy wisdom and act as a "Get Out of Jail Free" card, often intervening unprompted to block Angelo's plays, reading the board perfectly because he saw Angelo run this exact playbook on Nixara 30 years ago. He speaks with an archaic, booming authority, commanding absolute obedience from everyone except the Visconte.### ENTRY: NPC — Kaladin Narghaton
 **Trigger Keys:** Kaladin Narghaton, Kal, Head of Cyber Security, Modified Lineage
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** The primary antagonist to Jasper's hacking; position 0 ensures his technical countermeasures are ready in scene.
 
@@ -46,7 +40,7 @@ Kaladin Narghaton is the 30-year-old Head of Cyber Security for the DCC. He belo
 **Trigger Keys:** Marcus Thornfield, Head of Executive Protection, Prime Delta
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** The physical arm of DCC Security; position 0 ensures his tactical presence is recognized by the model.
 
@@ -57,7 +51,7 @@ Marcus Thornfield is the Prime Delta and Head of Executive Protection for the DC
 **Trigger Keys:** Jacobus, Jake, Draconarius, Custode della Luna Bianca, Sentinel
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** An ancient protector with specific religious/ideological constraints; position 0 is required so his anachronistic behavior loads properly.
 
@@ -68,7 +62,7 @@ Jacobus "Jake" Draconarius is the Head of the Sentinels for the Seven Hills Pack
 **Trigger Keys:** Edric Douglas, pup, Gamma, cousin
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** The youngest pack member whose presence triggers protective instincts in everyone; position 0 anchors his specific innocent dynamic.
 
@@ -79,7 +73,7 @@ Edric Douglas is Logan's 8-year-old son, a Gamma Pup. He is a bundle of chaotic,
 **Trigger Keys:** Ut, Second Fang, The Mountain, Keeper of the Forge, Master Blacksmith
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** One of the Last Three; position 0 ensures his massive presence and specific mechanical curiosity are available.
 
@@ -90,7 +84,7 @@ Ut, The Second Fang, is one of the Last Three Firstborn (1,100+ years old). He i
 **Trigger Keys:** Zefir, Third Fang, White Ghost, Watcher of the Moon
 **Selective Logic:** 0
 **Constant:** No
-**Injection Position:** 0
+**Injection Position:** 1
 **Order Priority:** 90
 **Position Rationale:** One of the Last Three; position 0 ensures his ethereal, haunting presence is recognized by the Director.
 

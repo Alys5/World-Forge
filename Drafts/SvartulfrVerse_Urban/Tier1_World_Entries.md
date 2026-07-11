@@ -8,9 +8,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-The Douglas-Bloodmoon werewolf family, and broader lupine society, operates on a strict, unshakable hierarchical and genealogical structure known as the LSE Pack Code. This hierarchy determines rank, authority, mating structure, and pack obligations. The patriarch, Erik, is a Prime Dominant Alpha, holding absolute authority over his sons: Malachia (Alpha), Noah (Delta), and Jasper (Beta). The Alpha of Alphas, Wulfnic Bloodmoon, is a Primordial Enigma and the supreme authority. Nixara Bloodmoon (deceased) was a Dominant Omega raised as a shield maiden with traditional Viking principles by Wulfnic; she was fiercely secure and immune to supernatural manipulation, famously bouncing Angelo Moreno's glamour completely 30 years ago. This strict hierarchy drives the family's extreme overprotectiveness of the youngest sibling, imposing a dynamic where family interference is an inescapable, suffocating expression of love and duty. <!-- REVISED IN R2: Added Nixara's shield maiden history and immunity to Angelo -->
-
-### ENTRY: The Cold War (Wolves vs Vampires)
+The Douglas-Bloodmoon werewolf family, and broader lupine society, operates on a strict, unshakable hierarchical and genealogical structure known as the LSE Pack Code. This hierarchy determines rank, authority, mating structure, and pack obligations. The patriarch, Erik, is a Prime Dominant Alpha, holding absolute authority over his sons: Malachia (Alpha), Noah (Delta), and Jasper (Beta). The Alpha of Alphas, Wulfnic Bloodmoon, is a Primordial Enigma and the supreme authority. Nixara Bloodmoon (deceased) was a Dominant Omega raised as a shield maiden with traditional Viking principles by Wulfnic; she was fiercely secure and immune to supernatural manipulation, famously bouncing Angelo Moreno's glamour completely 30 years ago. This strict hierarchy drives the family's extreme overprotectiveness of the youngest sibling, imposing a dynamic where family interference is an inescapable, suffocating expression of love and duty.### ENTRY: The Cold War (Wolves vs Vampires)
 **Category:** MECHANIC
 **Trigger Keys:** cold war, wolf, vampire, Paradise, Tactical Cleansing, Diplomatic Audit, Visconte, Moreno
 **Selective Logic:** 0
@@ -116,8 +114,7 @@ To counteract Erik's suffocating overprotectiveness, Jasper systematically hacks
 **Position Rationale:** DEFAULT
 
 **Content:**
-Blackwood is a sprawling supernatural megacity nestled right at the edge of the massive Blackwood Forest. It houses ~250,000 residents (35% Humans, 65% Supernaturals, with wolves being the largest faction at ~46,250). It is composed of eight distinct districts: <!-- REVISED IN R3: Placed at the edge of Blackwood Forest -->
-- **Seven Hills:** The high-security pack heartland containing the imposing Villa Douglas (555 Oak Road), home to 5,000 affiliated wolves.
+Blackwood is a sprawling supernatural megacity nestled right at the edge of the massive Blackwood Forest. It houses ~250,000 residents (35% Humans, 65% Supernaturals, with wolves being the largest faction at ~46,250). It is composed of eight distinct districts:- **Seven Hills:** The high-security pack heartland containing the imposing Villa Douglas (555 Oak Road), home to 5,000 affiliated wolves.
 - **Uptown:** The vampire-dominated corporate center defined by gothic skyscrapers.
 - **Paradise:** The contested high-fashion cusp, featuring Eidolon Creative (100 Velvet Lane).
 - **Bluemoon:** The vibrant nightlife hub, featuring The Verve (808 Neon Avenue).
@@ -136,9 +133,7 @@ The city is a patchwork of shifting territories governed by District Alphas.
 **Position Rationale:** DEFAULT
 
 **Content:**
-Solarton is a sunny, exclusive coastal college town that explicitly replaces Santa Barbara (and adjacent coastal areas like Goleta) on the California map. It is an eclectic Free City known for its monster-friendly businesses, art scene, and large hybrid population. At its heart lies S.U.C.C. (Solarton University of the California Coast, located at 1 University Drive), a progressive, hyper-inclusive public university famous for its specialized supernatural programs like Psionics and Cryptozoology. The town also features safe hangouts like Sidewinders Bar (212 College Avenue). It contrasts sharply with its elite, snobbish rival, CUMS (California University of Magical Science), located in the wealthy, magically-warded twilight enclave of Hex Valley. Solarton represents vibrant, messy freedom away from Blackwood's rigid pack politics. <!-- REVISED IN R3: Santa Barbara overlay added -->
-
-### ENTRY: SvartulfrVerse Geography (California Overlay)
+Solarton is a sunny, exclusive coastal college town that explicitly replaces Santa Barbara (and adjacent coastal areas like Goleta) on the California map. It is an eclectic Free City known for its monster-friendly businesses, art scene, and large hybrid population. At its heart lies S.U.C.C. (Solarton University of the California Coast, located at 1 University Drive), a progressive, hyper-inclusive public university famous for its specialized supernatural programs like Psionics and Cryptozoology. The town also features safe hangouts like Sidewinders Bar (212 College Avenue). It contrasts sharply with its elite, snobbish rival, CUMS (California University of Magical Science), located in the wealthy, magically-warded twilight enclave of Hex Valley. Solarton represents vibrant, messy freedom away from Blackwood's rigid pack politics.### ENTRY: SvartulfrVerse Geography (California Overlay)
 **Category:** LOCATION
 **Trigger Keys:** Blackwood Forest, Los Padres, wild territory, Hex Valley, Santa Ynez, canyon zone, transitional, DCC Tower, Los Angeles, LA, 101 Freeway, corporate
 **Selective Logic:** 0

@@ -29,10 +29,10 @@ def build_janitor_profile(world_name):
     setting = parse_master_design(world_name, drafts_dir)
     
     # Extract Character Template Block
-    # Look for the <[CharName_1]> ... </[CharName_1]> block
-    char_block_match = re.search(r'(<\[CharName_1\]>\n.*?\n</\[CharName_1\]>)', tpl_text, re.DOTALL)
+    # Look for the <{{CharName_1}}> ... </{{CharName_1}}> block
+    char_block_match = re.search(r'(<\{\{CharName_1\}\}>.*?</\{\{CharName_1\}\}>)', tpl_text, re.DOTALL)
     if not char_block_match:
-        print("Error: Could not find <[CharName_1]> block in template.")
+        print("Error: Could not find <{{CharName_1}}> block in template.")
         sys.exit(1)
         
     char_block_template = char_block_match.group(1)
@@ -73,9 +73,9 @@ def build_janitor_profile(world_name):
         # Replace placeholders in the block
         cb = char_block_template
         # Replace name tags
-        cb = cb.replace("<[CharName_1]>", f"<{name}>")
-        cb = cb.replace("</[CharName_1]>", f"</{name}>")
-        cb = cb.replace("[[CharName_1]]", f"[{name}]")
+        cb = cb.replace("<{{CharName_1}}>", f"<{name}>")
+        cb = cb.replace("</{{CharName_1}}>", f"</{name}>")
+        cb = cb.replace("[{{CharName_1}}]", f"[{name}]")
         cb = cb.replace("[CharName_1]", name)
         
         # Inject Character Overview (Scenario)
@@ -111,7 +111,7 @@ def build_janitor_profile(world_name):
     # 2. Replace the character section
     # The template has CharName_1 and CharName_2 and a duplicate note. We remove everything from <[CharName_1]> up to # [AI BEHAVIOR NOTES (MULTI-CHAR)]
     # and replace it with our joined character blocks.
-    pattern = r'<\[CharName_1\]>.*?---(?=\n\n# \[AI BEHAVIOR NOTES \(MULTI-CHAR\)\])'
+    pattern = r'<\{\{CharName_1\}\}>.*?---(?=\n\n# \[AI BEHAVIOR NOTES \(MULTI-CHAR\)\])'
     
     match = re.search(pattern, final_md, flags=re.DOTALL)
     if match:

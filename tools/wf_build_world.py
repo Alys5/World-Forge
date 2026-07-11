@@ -49,21 +49,36 @@ def load_alias_extras(base_dir: Path, world_name: str) -> dict[str, list[str]]:
 
 
 def load_lorebook_config(base_dir: Path, world_name: str) -> list[tuple]:
-    """Load lorebook configuration from world config file if it exists.
+    """Load lorebook configuration, overlaying explicit config on auto-discovery.
 
     Config file: tools/world_configs/<world_name>.json
     Returns list of (source_md, group, kind, single_display) tuples.
+
+    Discovery still classifies every lorebook (the source of truth for which files
+    exist). The optional `lorebook_configs` array overlays overrides keyed by
+    `group` — e.g. forcing the Protagonist lorebook to `kind: "personas_only"`
+    to emit a personas-only manifest (Compiler §7.7h) without re-listing every file.
     """
+    drafts_dir = base_dir / "Drafts" / world_name
+    discovered = discover_lorebooks(drafts_dir)
+
     config_path = base_dir / "tools" / "world_configs" / f"{world_name}.json"
     if config_path.exists():
         with open(config_path, "r", encoding="utf-8") as f:
             config = json.load(f)
-        configs = config.get("lorebook_configs", [])
-        if configs:
-            return [(c["source_md"], c["group"], c.get("kind"), c.get("single_display")) for c in configs]
+        overrides = {c["group"]: c for c in config.get("lorebook_configs", [])}
+        if overrides:
+            discovered = [
+                (
+                    src,
+                    grp,
+                    o.get("kind", knd) if (o := overrides.get(grp)) is not None else knd,
+                    o.get("single_display", sd) if (o := overrides.get(grp)) is not None else sd,
+                )
+                for (src, grp, knd, sd) in discovered
+            ]
 
-    # Fallback: auto-discover from Drafts directory
-    return discover_lorebooks(base_dir / "Drafts" / world_name)
+    return discovered
 
 
 def discover_lorebooks(drafts_dir: Path) -> list[tuple]:
@@ -113,6 +128,18 @@ META_KEYS = [
     "Injection Position", "Order Priority", "Position Rationale",
     "Selective", "ignoreBudget", "Depth",
 ]
+
+# Inline revision markers (<!-- REVISED IN R3 -->) and any other HTML comments
+# belong only in Drafts/, never in Export/ JSON (Compiler Foundational Rule 9 +
+# validate_export.py). Strip them during transcription so the audit trail in the
+# Drafts does not leak into the clean runtime prompt at export time.
+HTML_COMMENT_RE = re.compile(r"<!--.*?-->", re.DOTALL)
+
+def strip_html_comments(text: str | None) -> str | None:
+    """Remove <!-- ... --> comment spans (incl. inline revision markers)."""
+    if not text:
+        return text
+    return HTML_COMMENT_RE.sub("", text).strip()
 
 
 def slug(name: str) -> str:
@@ -220,6 +247,7 @@ def parse_entries(md_path: Path) -> list[dict]:
 
 
 def make_entry(uid: int, comment: str, content: str, meta: dict, group: str, lb_tpl: dict) -> dict:
+    content = strip_html_comments(content) or ""
     position = parse_int(meta.get("Injection Position")) or 1
     order = parse_int(meta.get("Order Priority")) or 100
     constant = parse_bool(meta.get("Constant"))
@@ -291,12 +319,17 @@ def build_npcs(entries_with_uid: list[tuple], single_display: str | None, alias_
 
 
 def build_manifest(internal_name: str, kind: str | None, entries_with_uid: list[tuple], single_display: str | None, alias_extras: dict) -> dict:
+    # "personas_only" (Compiler §7.7h): the protagonist's Tier 2 lorebook carries a
+    # personas-only manifest — npcs: [] with a valid kind ("npc"). This sidesteps the
+    # legacy "no_manifest" sentinel, whose emitted kind was not in the contract enum.
+    personas_only = (kind == "personas_only")
     npcs = []
-    if kind and kind != "no_manifest":
+    if kind and not personas_only:
         npcs = build_npcs(entries_with_uid, single_display, alias_extras)
+    output_kind = "npc" if personas_only else (kind if kind else "world")
     return {
         "schema": 1,
-        "lorebook": {"name": internal_name, "kind": kind if kind else "world"},
+        "lorebook": {"name": internal_name, "kind": output_kind},
         "personas": {"user": {"name": "{{user}}", "aliases": ["{{user}}"]}},
         "npcs": npcs,
     }
@@ -336,8 +369,27 @@ def parse_card_markdown(text: str) -> dict:
     
     if current_section:
         sections[current_section] = "\n".join(buffer).strip()
-        
+
     return sections
+
+
+def parse_tags(text: str | None) -> list[str] | None:
+    """Parse a `## tags` body (comma- or newline-separated) into a tag list."""
+    if not text:
+        return None
+    tags = []
+    for part in re.split(r"[\n,]", text):
+        t = part.strip()
+        if t and t.lower() not in ("none", "tag1", "tag2", "tag3"):
+            tags.append(t)
+    # de-dupe preserving order
+    seen = set()
+    out = []
+    for t in tags:
+        if t not in seen:
+            seen.add(t)
+            out.append(t)
+    return out or None
 
 
 def parse_instructions(text: str) -> dict:
@@ -470,8 +522,8 @@ def main():
 
         display_name = fm.get("name", char_key.replace("_", " "))
 
-        sp = inst.get("system_prompt", "")
-        ph = inst.get("post_history", "")
+        sp = strip_html_comments(inst.get("system_prompt", ""))
+        ph = strip_html_comments(inst.get("post_history", ""))
         if not sp.startswith("{{original}}"):
             raise SystemExit(f"system_prompt missing {{original}} for {char_key}")
         if not ph.startswith("{{original}}"):
@@ -482,17 +534,33 @@ def main():
         card["data"]["name"] = display_name
         for field in ("description", "personality", "scenario", "first_mes", "mes_example", "orientation"):
             if fm.get(field):
-                card["data"][field] = fm[field]
+                card["data"][field] = strip_html_comments(fm[field])
+
+        # Per-card tags: override template defaults when the draft declares them.
+        draft_tags = parse_tags(fm.get("tags"))
+        if draft_tags:
+            card["data"]["tags"] = draft_tags
+
+        # Per-card style_override: read a JSON object from `## style_override`.
+        style_override = None
+        so_raw = fm.get("style_override")
+        if so_raw:
+            try:
+                style_override = json.loads(so_raw)
+            except json.JSONDecodeError as e:
+                raise SystemExit(
+                    f"style_override for {char_key} is not valid JSON: {e}"
+                )
 
         card["data"]["system_prompt"] = sp
         card["data"]["post_history_instructions"] = ph
         card["data"]["extensions"] = {
             "depth_prompt": {
-                "prompt": inst.get("depth_prompt", ""),
+                "prompt": strip_html_comments(inst.get("depth_prompt", "")),
                 "depth": 4,
                 "role": "system",
             },
-            "world_forge": {"style_override": None},
+            "world_forge": {"style_override": style_override},
         }
         out_path = export_dir / f"{char_key}_Card.json"
         with open(out_path, "w", encoding="utf-8") as f:

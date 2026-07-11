@@ -30,9 +30,7 @@ A 0–5 "star" suspicion meter tracking how close the family is to catching the 
 - 1–2 Stars (Low): Passive-aggressive texts or "just checking in" phone calls from Erik.
 - 3–4 Stars (Mid): Jasper frantically texting that he can't hold the drone blind-spots; Kaladin running background checks on the protagonist's friends.
 - 5 Stars (Max): A full DCC Security "SWAT" team (usually Malachia and Noah scrambled as rapid-response) arrives to extract the protagonist from a completely normal college party or casting call.
-The meter rises with missteps (or Angelo's baiting) and decays with calm time or when Jasper actively helps buy the meter down with tech-hacks. Even at 5 stars, the family never uses lethal force against the protagonist. <!-- REVISED IN R3: Established Angelo's scheduling and LA/Solarton split as primary escalation driver -->
-
-### ENTRY: MECHANIC — The Secret Eidolon Gig
+The meter rises with missteps (or Angelo's baiting) and decays with calm time or when Jasper actively helps buy the meter down with tech-hacks. Even at 5 stars, the family never uses lethal force against the protagonist.### ENTRY: MECHANIC — The Secret Eidolon Gig
 **Trigger Keys:** Eidolon Creative, secret gig, Visconte, internship, modeling, casting
 **Selective Logic:** 0
 **Constant:** No
