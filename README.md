@@ -2,9 +2,9 @@
 
 *A multi-agent pipeline for building immersive roleplay worlds for [SillyTavern](https://github.com/SillyTavern/SillyTavern).*
 
-World-Forge takes you from a raw idea to a complete, runtime-ready world package: character cards, a tiered lorebook system, a chat completion preset, and audit reports — all aligned with how SillyTavern actually assembles prompts at runtime. The pipeline is a sequence of specialized agents, each with a defined role, that walks you through five-plus phases of structured drafting, validation, and export.
+World-Forge takes you from a raw idea to a complete, runtime-ready world package: character cards, a tiered lorebook system, a chat completion preset, and audit reports — all aligned with how SillyTavern actually assembles prompts at runtime. The pipeline is a sequence of specialized agents, each with a defined role, that walks you through 6 phases of structured drafting, validation, and export.
 
-The repository **is** the pipeline. There is no application code to compile, no service to deploy, no dependencies. The agents are markdown specifications consumed at runtime by an agentic IDE extension — [Kilo Code](https://github.com/Kilo-Org/kilocode) (recommended; the repo ships a preconfigured `.kilo/kilo.jsonc`) or [Cline](https://github.com/cline/cline) — running inside VS Code. When you invoke `/worldforge start`, the orchestrator reads these specifications and dispatches each phase. See [`wiki/Agentic-Tools-and-Models.md`](./wiki/Agentic-Tools-and-Models.md) for the tool comparison, and [`wiki/Kilo-Code-Setup.md`](./wiki/Kilo-Code-Setup.md) for a dedicated Kilo Code setup walkthrough. (Roo Code, the tool the pipeline was originally authored against, was retired on May 15, 2026 — see the wiki's migration note.)
+The repository **is** the pipeline. There is no application code to compile, no service to deploy, no dependencies. The agents are markdown specifications consumed at runtime by an agentic IDE extension — **Antigravity**. When you invoke `/worldforge start`, the orchestrator reads these specifications and dispatches each phase. See [`wiki/Agentic-Tools-and-Models.md`](./wiki/Agentic-Tools-and-Models.md) for the tool comparison, and [`wiki/Antigravity-Setup.md`](./wiki/Antigravity-Setup.md) for a dedicated Antigravity setup walkthrough. (Roo Code and Kilo Code, the tools the pipeline was originally authored against, were retired/deprecated.)
 
 A companion SillyTavern fork — [AndreiNicu/SillyTavern](https://github.com/AndreiNicu/SillyTavern) — is maintained alongside this repository. It is optional but recommended when running World-Forge worlds at scale: it relaxes some of stock SillyTavern's constraints that World-Forge outputs would otherwise bump into (notably allowing more than one matching lorebook entry to fire in a scene, which World Director cards rely on) and ships a small `world-forge` ST extension that wires style-override runtime support. See [Companion SillyTavern fork](#companion-sillytavern-fork-optional) below.
 
@@ -33,7 +33,7 @@ The pipeline is built around **what you actually want to roleplay with**, not wh
 ## What this is NOT
 
 - **Not a SillyTavern fork.** SillyTavern is the runtime that consumes World-Forge's outputs. World-Forge does not modify SillyTavern.
-- **Not a runtime engine.** The pipeline does not execute on its own — it is consumed by an agentic IDE extension that orchestrates LLM calls.
+- **Not a runtime engine.** The pipeline does not execute on its own — it is consumed by an agentic IDE extension (Antigravity) that orchestrates LLM calls.
 - **Not application code.** Editing files here is editing markdown specs, not source code. There is nothing to build or deploy.
 - **Not a card generator.** World-Forge does not crank out characters on your behalf. It will not spin up a generic cast from a one-line prompt and hand you what it guesses is "good." The output is a tight, integrated world package, not a pile of cards. See [On effort and intent](#on-effort-and-intent) above.
 
@@ -50,6 +50,7 @@ A complete SillyTavern-ready package per world:
 - **Tier 3, by World Mode:** *arc worlds* get **one Arc Lorebook per arc** — modular and swap-in: ARC_STATE, CHARACTER_STATE, NPC behavioral shifts, dramatic beats, tension entries. *Sandbox worlds* (open-ended power-fantasy / world-director worlds, run with `/worldforge start --sandbox`) get **one always-active Sandbox Lorebook** instead — SANDBOX_STATE (standing situation + tonal mandate + an aliveness contract) plus a WORLD_PULSE entry — and author large NPC casts as a principal/roster split with a per-NPC voice-fingerprint uniqueness rule.
 - **One Arc Intimacy Register per arc with intimate beats (Tier 3, conditional)** — arc-specific intimate function and per-character delta.
 - **One Chat Completion Preset** — the model's prompt blocks, injection order, and behavioral framework, parameterized for this world's prose conventions.
+- **JanitorAI Integration Files** — Custom HTML bios, bot profiles, and compiled Javascript lorebook scripts (Phase 6).
 - **One audit report** — runtime risks identified by the Prompt Engineer, with recommended corrections for the user to apply manually.
 
 ## Core architectural ideas
@@ -78,7 +79,8 @@ Each phase is run by a specialized agent. The orchestrator dispatches them in or
 | 3.7 | The Intimacy Auditor *(conditional)* | Generates sample intimate scenes and audits them for voice fidelity (does each character behave like themselves during sex?) and thematic register match (does the scene serve its declared function?). |
 | 4 | The Compiler | Translates the approved Markdown drafts into SillyTavern-ready JSON files. |
 | 5 | The Prompt Engineer | Audits Phase 4's output for runtime risks (read-only on `Export/`) and authors the Chat Completion Preset. Recommendations for any conflicts found are surfaced as plain-text instructions for manual application. |
-| 5.5 | *(manual)* | If Phase 5 produced recommended corrections, you open each named file, apply the corrections, and save. The pipeline is complete only after this step. |
+| 5.5 | *(manual)* | If Phase 5 produced recommended corrections, you open each named file, apply the corrections, and save. |
+| 6 | The Janitor Builder | Generates JanitorAI ready bot profiles, bios, and Lorebook scripts by combining exported JSON files with custom templates. |
 
 Phases 3.5 / 3.6 / 3.7 run in parallel after Phase 3 sign-off. Failures from any auditor return the affected files to the relevant Architect, then back through the Editor, then back to the auditor.
 
@@ -96,12 +98,12 @@ The pipeline pauses for user input under specific conditions:
 
 ## Quick start
 
-You need: VS Code with an agentic extension — [Kilo Code](https://github.com/Kilo-Org/kilocode) (recommended) or [Cline](https://github.com/cline/cline) — configured with an LLM API key. For the Kilo Code path specifically, follow [`wiki/Kilo-Code-Setup.md`](./wiki/Kilo-Code-Setup.md); for the tool/model comparison, see [`wiki/Agentic-Tools-and-Models.md`](./wiki/Agentic-Tools-and-Models.md).
+You need: VS Code (or a compatible IDE) with the **Antigravity** extension configured with an LLM API key. For the Antigravity setup specifically, follow [`wiki/Antigravity-Setup.md`](./wiki/Antigravity-Setup.md); for the tool/model comparison, see [`wiki/Agentic-Tools-and-Models.md`](./wiki/Agentic-Tools-and-Models.md).
 
-**A note on model choice.** The agent specs in `agent_roles/` and the orchestrator in `workflows/world-forge.md` are deliberately long and prescriptive — each phase loads several thousand tokens of structural rules, validation checks, hard-fail conditions, and cross-references. To get the full benefit of the pipeline (and not silent skipping of validation steps or drift in tier discipline), use a model with strong long-context attention and a high tolerance for following dense, multi-step instructions. From the testing done so far, **DeepSeek 4 Pro** has held up well across the full pipeline. **Grok** failed during a run, though it is not yet clear whether the failure was the model itself or the way the agentic tool (Roo Code, since retired) drove it — treat this as a caveat, not a verdict. If you run the pipeline against a model not listed here and it succeeds (or fails in an interesting way), reports are welcome.
+**A note on model choice.** The agent specs in `agent_roles/` and the orchestrator in `workflows/world-forge.md` are deliberately long and prescriptive — each phase loads several thousand tokens of structural rules, validation checks, hard-fail conditions, and cross-references. To get the full benefit of the pipeline (and not silent skipping of validation steps or drift in tier discipline), use a model with strong long-context attention and a high tolerance for following dense, multi-step instructions. From the testing done so far, **DeepSeek 4 Pro** has held up well across the full pipeline. **Grok** failed during a run, though it is not yet clear whether the failure was the model itself or the way the agentic tool drove it — treat this as a caveat, not a verdict. If you run the pipeline against a model not listed here and it succeeds (or fails in an interesting way), reports are welcome.
 
-1. Clone this repository and open it as a VS Code workspace.
-2. Open your agentic extension and select the orchestrator-class entry point: the **Code** agent in Kilo Code, or the default agent in Cline.
+1. Clone this repository and open it as a workspace.
+2. Open Antigravity.
 3. In the chat, type:
    ```
    /worldforge start
@@ -109,6 +111,7 @@ You need: VS Code with an agentic extension — [Kilo Code](https://github.com/K
 4. The Interviewer takes over. Answer its questions; it will push back when material is thin. Five minutes of friction here saves an hour of debugging at the runtime stage. (If you arrive with only a vibe and no premise yet, run `/worldforge brainstorm` first — a divergent ideation partner that helps a concept find its shape and drops informal `Brainstorm_Notes.md` for the Interviewer to pick up. It writes no World Seed; the Interviewer still runs the full interview.)
 5. Subsequent phases run automatically, pausing only at the gates listed above.
 6. When Phase 5 finishes, your `Export/` directory contains SillyTavern-importable JSON. If `Prompt_Engineer_Audit.md` lists recommendations, apply them manually before importing.
+7. Phase 6 then generates JanitorAI files (Bot Profiles, bios, and lorebook scripts) based on the finalised `Export/` directory.
 
 ## A worked example
 
@@ -122,12 +125,12 @@ What you get when you clone:
 World-Forge/
 ├── README.md                     ← This file
 ├── tutorial.md                   ← Extended usage walkthrough
-├── AGENTS.md                     ← Standing instructions for agentic tools (Kilo/Cline)
+├── AGENTS.md                     ← Standing instructions for agentic tools (Antigravity)
 ├── CLAUDE.md                     ← Standing context for AI coding agents working on the repo
 ├── Notes_On_functionality.md     ← Authoritative reference for SillyTavern's runtime behavior
 ├── Notes_Quick_Reference.md      ← Compact distillation of the above (agents consult it first)
-├── .kilocodeignore               ← Keeps samples + maintenance docs out of runtime agent context
-├── .kilo/kilo.jsonc              ← Preconfigured Kilo Code per-phase agents (auto-loaded; OpenRouter flavor)
+├── .antigravityignore            ← Keeps samples + maintenance docs out of runtime agent context
+├── .agents/skills/               ← Antigravity Skills for each per-phase subagent (auto-discovered)
 ├── tools/                        ← World-agnostic build toolchain (all take `world_name` as CLI arg)
 │   ├── wf_build_world.py         ← Full Drafts→Export compilation (cards, lorebooks, manifests)
 │   ├── resync_world.py           ← Regenerate Chat Completion Preset + JanitorAI script from templates

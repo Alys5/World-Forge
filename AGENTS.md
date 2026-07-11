@@ -35,8 +35,8 @@ All build tools in `tools/` are world-agnostic and accept the `world_name` as a 
 Isolated parsing utilities live in `tools/project_parsers/`.
 
 ## Antigravity Subagent Execution
-The `kilo.jsonc` subagents have been converted to Antigravity Skills in `d:\World-Forge\.agents\skills\`.
-When following the orchestration workflow (`workflows/world-forge.md`) and instructed to dispatch to a subagent (e.g., `WorldForge-Interviewer` or `WorldForge-Refiner`), do not attempt to use Kilo's task delegation. 
+The legacy subagents have been converted to Antigravity Skills in `d:\World-Forge\.agents\skills\`.
+When following the orchestration workflow (`workflows/world-forge.md`) and instructed to dispatch to a subagent (e.g., `WorldForge-Interviewer` or `WorldForge-Refiner`), do not attempt to use legacy task delegation. 
 Instead, rely on the Antigravity Skill matching engine. As Antigravity, you can natively adopt these personas because the Skills will automatically trigger and provide you with the correct `agent_roles/*.md` specification file for the requested phase.
 
 ---

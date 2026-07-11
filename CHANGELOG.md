@@ -13,6 +13,18 @@ numbers. Newest first.
 
 ---
 
+## 2026-07-11 — Architecture Migration: Antigravity & Phase 6 Integration
+
+The pipeline has been migrated off the deprecated Kilo Code and `.kilo` agent architecture to the new Antigravity extension. All `kilo.jsonc` subagents have been converted to native Antigravity Skills inside `.agents/skills/`.
+Simultaneously, **Phase 6 (The Janitor Builder)** has been fully documented and integrated across all pipeline orchestration files and documentation. Phase 6 automatically generates JanitorAI bot profiles, storefront bios (HTML), and Lorebook scripts by combining the Phase 4/5 Export JSON with specialized templates.
+
+### Changed
+- **Documentation Migration:** Replaced all references to "Kilo Code" and "Cline" with "Antigravity" across `README.md`, `tutorial.md`, `CLAUDE.md`, and `AGENTS.md`.
+- **Ignore files:** Renamed `.kilocodeignore` to `.antigravityignore`.
+- **Deprecated Architecture Removed:** Deleted the `.kilo/` and `Kilo_Variants/` directories in favor of `.agents/skills/`.
+- **Phase 6 Documented:** Officially added "Phase 6 — The Janitor Builder" to the overview schemas in `workflows/world-forge.md`, `workflows/world-forge-revise.md`, `README.md`, and `tutorial.md`.
+- **Wiki Updates:** Renamed `wiki/Kilo-Code-Setup.md` to `wiki/Antigravity-Setup.md` and updated setup instructions in `wiki/Agentic-Tools-and-Models.md`.
+
 ## 2026-07-07 — Brainstormer: dice-oracle awareness (leaning-only, all postures)
 
 The Brainstormer had zero awareness of the dice oracle, so it never proposed it

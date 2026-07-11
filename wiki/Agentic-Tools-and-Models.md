@@ -2,7 +2,7 @@
 
 This page covers which agentic VS Code extensions can drive the World-Forge pipeline, how to configure them, and which underlying LLMs perform well in each phase. It is aimed at users who already understand what the pipeline does (see the [README](../README.md) and [tutorial.md](../tutorial.md)) and want to set up the *runtime environment* that executes it.
 
-> **TL;DR** — The recommended tool is **Kilo Code**, which this repo ships preconfigured for (`.kilo/kilo.jsonc`). **Cline** works well as a simpler alternative. **Roo Code** — the tool the pipeline was originally designed against — was **retired on May 15, 2026** and should not be adopted for new setups; see [§2.3](#23-roo-code-retired-may-15-2026). The pipeline is **not** optimized for code-focused agents like Claude Code — see [Why Claude Code is a poor fit](#why-claude-code-is-a-poor-fit-currently). For the underlying LLM, prefer literary-register models (Claude Opus / Sonnet, GPT-5, Gemini 2.5 Pro) over coding-tuned variants.
+> **TL;DR** — The recommended tool is **Antigravity**, which this repo ships preconfigured for (`.agents/skills/` Skill Engine). **Cline** works as a simpler alternative. **Kilo Code** (deprecated) and **Roo Code** (retired May 15, 2026) should not be adopted for new setups. The pipeline is **not** optimized for code-focused agents like Claude Code — see [Why Claude Code is a poor fit](#why-claude-code-is-a-poor-fit-currently). For the underlying LLM, prefer literary-register models (Claude Opus / Sonnet, GPT-5, Gemini 2.5 Pro) over coding-tuned variants.
 
 ---
 
@@ -16,28 +16,25 @@ World-Forge is not application code. It is a set of markdown agent specification
 4. **Per-phase persona or mode switching** — each agent in `agent_roles/` is a *different* persona with different rules. Tools that can swap system prompts or modes mid-run handle this cleanly.
 5. **A trigger-command convention** — the pipeline is driven by `/worldforge start`, `/worldforge resume phase[N]`, etc. The tool needs to let you type free-form instructions that the executing agent interprets against `workflows/world-forge.md`.
 
-You do **not** need: code execution, terminal automation, build/test integration, git automation, or any MCP servers. Nothing in the pipeline runs code, and built-in file edit tools cover the entire workload — adding MCP servers imports complexity for no documented benefit. See the [MCP servers section in the Kilo Code setup page](./Kilo-Code-Setup.md#9-mcp-servers--none-required) for category-by-category guidance and a specific note on Iron Manus MCP, which is sometimes suggested but is the wrong fit.
+You do **not** need: code execution, terminal automation, build/test integration, git automation, or any MCP servers. Nothing in the pipeline runs code, and built-in file edit tools cover the entire workload — adding MCP servers imports complexity for no documented benefit. See [`Antigravity-Setup.md`](./Antigravity-Setup.md#9-mcp-servers--none-required) for category-by-category guidance and a specific note on Iron Manus MCP, which is sometimes suggested but is the wrong fit.
 
 ---
 
 ## 2. Supported agentic tools
 
-> **Roo Code retirement (May 15, 2026).** The pipeline was originally authored against Roo Code's Orchestrator mode. Roo Code shut down all its products on May 15, 2026 — the VS Code extension is archived and receives no further updates. The recommended tool is now **Kilo Code**, which began as a Roo fork and is feature-compatible for the pipeline's purposes. See [§2.3](#23-roo-code-retired-may-15-2026) if you are still running Roo.
+> **Roo Code retirement (May 15, 2026).** The pipeline was originally authored against Roo Code's Orchestrator mode. Roo Code shut down all its products on May 15, 2026 — the VS Code extension is archived and receives no further updates. After that, **Kilo Code** was the recommended tool; it has since been deprecated as well in favour of **Antigravity**, which is the current recommended tool. See [§2.3](#23-roo-code-retired-may-15-2026) if you are still running Roo or Kilo.
 
-### 2.1 Kilo Code (recommended — reference tool)
+### 2.1 Antigravity (recommended — reference tool)
 
-[Kilo Code](https://github.com/Kilo-Org/kilocode) is the recommended tool and the one this repository ships configuration for (`.kilo/kilo.jsonc` per-phase agents, `.kilocodeignore` context discipline). It is an open-source extension that began as a fork of Roo Code — the tool the pipeline was authored against — and merges features from Roo and Cline, so its orchestration model maps cleanly onto World-Forge's phase-by-phase persona swaps.
+**Antigravity** is the recommended tool and the one this repository ships configuration for (`.agents/skills/` per-phase Skill Engine). It is a next-generation agentic IDE extension by Google DeepMind that natively supports a Skill matching engine — each phase's agent spec is automatically loaded from the matching `.agents/skills/WorldForge-*` skill directory.
 
 **Why it fits:**
-- **Subagent delegation** is built into the default Code / Plan / Debug agents: the top-level agent dispatches each phase's persona (`agent_roles/00_The_Interviewer.md`, `agent_roles/02_The_Architect.md`, etc.) as a distinct subtask with its own system prompt. You don't have to manually re-prime the agent between phases.
-- Strong file-edit toolchain (read, write, diff, search-and-replace) — required for the Architect's draft files and the Compiler's JSON output.
-- Supports any OpenAI-compatible API endpoint, so you can route to Anthropic, OpenAI, Google, OpenRouter, or a local server.
-- **Custom agents with per-agent model and temperature selection** — each phase's agent pins its system prompt to the matching spec file (e.g., a `WorldForge-Architect` agent pinned to `agent_roles/02_The_Architect.md`), which reduces drift on long runs and mirrors the [Audit-vs-Apply separation](../CLAUDE.md#3-audit-vs-apply-separation). The repo's shipped `.kilo/kilo.jsonc` already defines this agent set.
-- Open source under a permissive license — useful if you want to audit or extend the tool itself.
+- **Skill Engine (native subagent dispatch)** — Antigravity automatically discovers skills in `.agents/skills/` and adopts each phase's persona cleanly. No `kilo.jsonc` or JSON configuration needed.
+- **No per-run configuration overhead** — The skills are auto-discovered when you open the workspace. Just type `/worldforge start` and the Interviewer loads automatically.
+- **Strong file-edit toolchain** — read, write, search-and-replace, and diff capabilities across the workspace.
+- Supports any OpenAI-compatible API endpoint.
 
-**Terminology caveat (April 2026 rebuild):** Kilo renamed "Modes" to **Agents** and **deprecated the dedicated Orchestrator mode** — subagent delegation is now built into the default Code / Plan / Debug agents. Older Roo-style tutorials that say "switch to Orchestrator mode" do not map directly; use the **Code** agent as the entry point and pin custom subagents per phase.
-
-**Setup:** See the dedicated [Kilo Code Setup tutorial](./Kilo-Code-Setup.md) for step-by-step install, provider configuration, custom-agent definition, and a first-run smoke test. Short version: install the `kilocode.Kilo-Code` extension, configure your provider via the sidebar gear icon, open the World-Forge workspace, select the **Code** agent, and type `/worldforge start`.
+**Setup:** See the dedicated [Antigravity Setup tutorial](./Antigravity-Setup.md) for step-by-step install and first run. Short version: install Antigravity, open the World-Forge workspace, and type `/worldforge start`.
 
 ### 2.2 Cline
 
@@ -65,8 +62,9 @@ You do **not** need: code execution, terminal automation, build/test integration
 
 **Do not adopt Roo Code for a new setup.** If you are still running the pipeline under a final-state Roo install, it will keep working until a VS Code or provider-API change breaks it, but you should migrate:
 
-- **Kilo Code** ([§2.1](#21-kilo-code-recommended--reference-tool)) started as a Roo fork with shared git history — custom modes, project rules, and per-mode model selection all carry over, and this repo ships a preconfigured `.kilo/kilo.jsonc`. This is the recommended destination.
-- **Cline** ([§2.2](#22-cline)) is Roo Code's own parting recommendation for a model-agnostic open-source extension, at the cost of no per-phase mode switching.
+- **Antigravity** ([§2.1](#21-antigravity-recommended--reference-tool)) is the current recommended tool, using the `.agents/skills/` Skill Engine — this is the recommended destination.
+- **Cline** ([§2.2](#22-cline)) is a simpler fallback with no per-phase mode switching.
+- **Kilo Code** — was the intermediate recommended tool after Roo's retirement, before Antigravity. It began as a Roo fork and shipped a `.kilo/kilo.jsonc` config. Kilo Code is now deprecated — do not adopt it for new setups; migrate existing Kilo setups to Antigravity.
 
 Nothing in the pipeline itself is Roo-specific — the trigger commands are free-form prompts interpreted against `workflows/world-forge.md` — so migration is a tool swap, not a pipeline change.
 
@@ -74,9 +72,10 @@ Nothing in the pipeline itself is Roo-specific — the trigger commands are free
 
 | Tool | Orchestrator / multi-mode | File edit tools | Custom modes | Recommended for |
 |---|---|---|---|---|
-| **Kilo Code** | Yes (subagent delegation from Code/Plan/Debug agents) | Yes | Yes | All runs — ships preconfigured in this repo (`.kilo/kilo.jsonc`) |
+| **Antigravity** | Yes (Skill Engine — auto-discovers `.agents/skills/`) | Yes | Yes (via Skills) | All runs — ships preconfigured in this repo (`.agents/skills/`) |
 | **Cline** | No (single-mode) | Yes | No | First-time users, simpler runs |
-| **Roo Code** | Yes (Orchestrator) | Yes | Yes | **Nothing — retired May 15, 2026; migrate to Kilo Code or Cline** |
+| **Kilo Code** | Yes (subagent delegation) | Yes | Yes | Deprecated — migrate to Antigravity |
+| **Roo Code** | Yes (Orchestrator) | Yes | Yes | **Nothing — retired May 15, 2026; migrate to Antigravity** |
 
 ---
 
@@ -113,7 +112,7 @@ The pipeline is unusually demanding of the underlying LLM. Most phases are *lite
 
 ### 3.3 Mixing models across phases
 
-If your agentic tool supports per-mode model configuration (Kilo Code does), a cost-effective pattern is:
+If your agentic tool supports per-phase skill or agent configuration (Antigravity does via `.agents/skills/`), a cost-effective pattern is:
 
 | Phase | Suggested model |
 |---|---|
@@ -127,18 +126,18 @@ If your agentic tool supports per-mode model configuration (Kilo Code does), a c
 
 Spend the most where the literary judgment is most load-bearing (Architect, Editor, Auditors). Save on structural transformation phases.
 
-**Aggregator routing note.** The model names above are display names. If you route through OpenRouter or Nano-GPT rather than direct provider accounts, the model strings you actually configure are provider-prefixed in the aggregator's catalog format (e.g., `anthropic/claude-opus-4-7`, `deepseek/deepseek-v4-pro`). For Kilo Code specifically, the per-agent `"model"` field in `kilo.jsonc` then doubles the prefix as `openrouter/anthropic/claude-opus-4-7` — see the [Kilo Code setup page §5.2](./Kilo-Code-Setup.md#52-a-minimal-world-forge-agent-set) for the exact form and a known caching caveat on the OpenRouter → Anthropic path. OpenRouter additionally routes each request to one of several upstream hosts serving the model, and which host you land on matters (caching, stream reliability, effective context) — pin it per model with the provider-routing block described in [Kilo setup §3.2 item 6](./Kilo-Code-Setup.md#32-aggregators); the shipped `kilo.jsonc` pins the DeepSeek seats to DeepSeek's first-party upstream and carries commented-out GLM 5.2 / Kimi K2.5 alternates.
+**Aggregator routing note.** The model names above are display names. If you route through OpenRouter or Nano-GPT, the model strings are provider-prefixed in the aggregator's catalog format (e.g., `anthropic/claude-opus-4-7`, `deepseek/deepseek-v4-pro`). See the [Antigravity Setup page](./Antigravity-Setup.md) for the current provider configuration guidance.
 
 ### 3.4 Context discipline on DeepSeek and GLM
 
 DeepSeek 4 Pro (1M nominal context) and GLM 5 (200K nominal) are genuinely viable for this pipeline, and neither is window-starved on paper. Treat the discipline below as **quality-and-cost engineering, not a workaround for a hard ceiling**: on every current model — frontier included — effective recall and instruction adherence degrade well before the nominal limit, and the degradation hits exactly the content this pipeline depends on (hard-fail rules buried mid-spec, position tables, sign-off checklists). A Phase 5 run that naively loads the Prompt Engineer spec + the ST reference material + the Master Design + Export JSON puts ~100K tokens in front of the model before it writes a word; a 1M window *holds* that comfortably, but the audit it produces is sharper (and cheaper) when the load is a third of that. The repository ships the discipline — use it:
 
-- **Per-phase custom agents** ([Kilo setup §5](./Kilo-Code-Setup.md#5-recommended-define-custom-agents-per-phase)) — strongly recommended on any model, for two independent reasons: persona isolation (the documented Editor-leniency drift when drafting context stays warm) and a clean window per phase. On GLM 5's 200K they also prevent genuine overflow on large worlds — multiple arcs plus intimacy in scope accumulates past 200K by Phase 3 when run inline. On DeepSeek's 1M, overflow is a non-issue; recall quality and cost are the reasons.
-- **Keep the shipped `.kilocodeignore` intact.** It keeps `Samples/` (>1 MB) and maintenance docs out of auto-included context.
+- **Per-phase skills** (Antigravity's Skill Engine) — strongly recommended on any model, for two independent reasons: persona isolation (the documented Editor-leniency drift when drafting context stays warm) and a clean window per phase. On GLM 5's 200K they also prevent genuine overflow on large worlds — multiple arcs plus intimacy in scope accumulates past 200K by Phase 3 when run inline. On DeepSeek's 1M, overflow is a non-issue; recall quality and cost are the reasons.
+- **Keep the shipped `.antigravityignore` intact.** It keeps `Samples/` (>1 MB) and maintenance docs out of auto-included context.
 - **Honor the `📂 CONTEXT MANIFEST`** at the top of every agent spec. "Load on demand" means *do not preload*. The manifests exist precisely so the model never carries the full 67 KB `Notes_On_functionality.md` when the 5 KB `Notes_Quick_Reference.md` answers the question.
 - **Spend your strongest model on the Editor and Auditor seats.** The known weak spot of DeepSeek/GLM-class models in this pipeline is not prose — it is *sycophancy under audit*: agreeing with the Architect's framing instead of hunting for failures. If you can afford one frontier seat, make it the Editor (Phase 3); the Auditors (3.5–3.7) are next. Drafting (Architect, Intimacy Architect) and the Interviewer tolerate DeepSeek/GLM well.
 - **The Compiler is fine on DeepSeek/GLM** — they emit verbatim structured output reliably, unlike flash-tier models — but always run the read-only check `python tools/validate_export.py Export/` after Phase 4. It deterministically catches the silent failure modes (dropped `{{original}}` macros, encoding mojibake, out-of-range positions) that no model-side vigilance fully prevents.
-- **Caching is a non-issue on DeepSeek — *if* the request lands on DeepSeek.** DeepSeek's API applies automatic context caching to repeated prefixes, so the per-phase reload of a large agent spec is cheap by default — none of the OpenRouter→Anthropic `cache_control` round-trip anxiety documented in the [Kilo setup §3.2](./Kilo-Code-Setup.md#32-aggregators) applies. The catch when routing through OpenRouter: the caching lives on DeepSeek's *first-party* upstream, and OpenRouter may route to a third-party host serving the same weights, which charges full price per phase. Pin the routing (`order: ["DeepSeek"]`) via the per-model provider-routing block in `kilo.jsonc` — the shipped World-Forge config already does this; see [Kilo setup §3.2 item 6](./Kilo-Code-Setup.md#32-aggregators).
+- **Caching is a non-issue on DeepSeek — *if* the request lands on DeepSeek.** DeepSeek's API applies automatic context caching to repeated prefixes. The catch when routing through OpenRouter: pin the routing to DeepSeek's first-party upstream so the cache remains effective.
 
 A workable budget assignment, all through OpenRouter: DeepSeek 4 Pro (`deepseek/deepseek-v4-pro`) or GLM 5 (`z-ai/glm-5`) for Phases 0, 1, 2, 2.5, 4, and 5; the strongest model you can afford (frontier if possible, otherwise the larger reasoning variant of the same family) for Phases 3 and 3.5–3.7.
 
@@ -159,9 +158,9 @@ The pipeline's phases split cleanly into prose seats (where sampling variety is 
 | 5 | Prompt Engineer | 0.2–0.4 | Runtime judgments plus structured JSON authoring. |
 | R0 / C0 | Reviser, Converter | 0.4–0.6 | Classification plus interview — between the Refiner and the Interviewer. |
 
-**Reasoning-model caveat:** reasoner-class endpoints (e.g. `deepseek/deepseek-r1`) generally ignore sampling parameters — temperature has no effect. The shipped `.kilo/kilo.jsonc` runs every seat — audit seats included — on chat-tuned DeepSeek 4 Pro with per-phase temperatures, so the table applies as-is. If you upgrade an audit seat to a reasoner, drop its `temperature` field; it would be silently ignored.
+**Reasoning-model caveat:** reasoner-class endpoints (e.g. `deepseek/deepseek-r1`) generally ignore sampling parameters — temperature has no effect. The Antigravity Skill Engine runs each phase in a clean context per skill; if you upgrade a seat to a reasoner model, temperature is simply a no-op there.
 
-If maintaining four temperature bands is more fiddling than you want, collapse to two: a **creative** profile (~0.8) for Phases 0, 2, 2.5 and the auditors, and a **precise** profile (~0.2) for Phases 1, 3, 4, 5 — the Compiler and Editor are the two seats where getting this wrong costs the most. Kilo Code users: `temperature` is a per-agent field in `kilo.jsonc`, and the shipped World-Forge config already carries these values — see [Kilo setup §5.4](./Kilo-Code-Setup.md#54-per-phase-temperature).
+If maintaining four temperature bands is more fiddling than you want, collapse to two: a **creative** profile (~0.8) for Phases 0, 2, 2.5 and the auditors, and a **precise** profile (~0.2) for Phases 1, 3, 4, 5 — the Compiler and Editor are the two seats where getting this wrong costs the most.
 
 ---
 
@@ -181,7 +180,7 @@ The issues are at the agent-harness level, not the model level:
 
 5. **Tool surface is wrong for the job.** Claude Code's strengths (Bash execution, git integration, type checking, build tools) are unused here. Its weaknesses for this use case (terse output, code-style reflexes) are exposed every turn.
 
-The *model* under Claude Code (Claude Opus / Sonnet) is in fact the best model for the pipeline. The issue is the harness. Run the same model through Kilo Code or Cline and the experience is materially different — the agent reads agent specs as creative-writing instructions rather than as engineering tickets, and the prose output matches the pipeline's register expectations.
+The *model* under Claude Code (Claude Opus / Sonnet) is in fact the best model for the pipeline. The issue is the harness. Run the same model through Antigravity or Cline and the experience is materially different — the agent reads agent specs as creative-writing instructions rather than as engineering tickets, and the prose output matches the pipeline's register expectations.
 
 > **Future note:** If a future Claude Code release supports custom personas or a "creative-writing" mode that swaps the orientation, this guidance would change. As of writing, it does not.
 
@@ -191,11 +190,10 @@ The *model* under Claude Code (Claude Opus / Sonnet) is in fact the best model f
 
 These are not the recommended path but come up often enough to be worth a sentence each:
 
-- **Cursor / Windsurf** — separate IDEs (VS Code forks), not extensions. They can run the pipeline, but their agent UX is optimized for in-editor coding rather than long agentic runs. Workable but not recommended over Kilo Code.
-- **GitHub Copilot (Agent mode)** — the agent mode is improving but is currently weaker on long-context multi-file orchestration than Kilo Code or Cline.
+- **Cursor / Windsurf** — separate IDEs (VS Code forks), not extensions. They can run the pipeline, but their agent UX is optimized for in-editor coding rather than long agentic runs. Workable but not recommended over Antigravity.
+- **GitHub Copilot (Agent mode)** — the agent mode is improving but is currently weaker on long-context multi-file orchestration than Antigravity or Cline.
 - **Continue** — primarily a chat / inline-edit assistant, not an agentic orchestrator. Insufficient for the pipeline.
 - **Aider** — CLI, not VS Code. Works if you prefer the terminal, but loses the workspace file tree affordance the pipeline assumes.
-- **Antigravity** (Google) — early-stage agentic IDE platform. May be a future option as it matures.
 
 ---
 
@@ -204,8 +202,8 @@ These are not the recommended path but come up often enough to be worth a senten
 | Symptom | Likely cause | Fix |
 |---|---|---|
 | Agent ignores `/worldforge start` and asks "what would you like to build?" | Tool didn't read `workflows/world-forge.md` — usually because the workspace root isn't this repo, or the file isn't visible. | Open this repo (or your world project containing it) as the VS Code workspace root. Confirm `workflows/world-forge.md` exists and is readable. |
-| Agent jumps phases or skips auditors | Single-mode tool (e.g., Cline) lost the orchestrator instructions after a long Phase 2. | Re-prime with `/worldforge resume phase[N]`. Consider switching to Kilo Code's per-phase custom agents ([Kilo setup §5](./Kilo-Code-Setup.md#5-recommended-define-custom-agents-per-phase)) for longer worlds. |
-| Voice is flat, generic, "AI-assistant" register | Wrong model tier or wrong tool harness. | Switch to Sonnet 4.6 or Opus 4.7. If already on those models via Claude Code, switch tools to Kilo Code or Cline. |
+| Agent jumps phases or skips auditors | Single-mode tool (e.g., Cline) lost the orchestrator instructions after a long Phase 2. | Re-prime with `/worldforge resume phase[N]`. Consider switching to Antigravity's Skill Engine for longer worlds. |
+| Voice is flat, generic, "AI-assistant" register | Wrong model tier or wrong tool harness. | Switch to Sonnet 4.6 or Opus 4.7. If already on those models via Claude Code, switch tools to Antigravity or Cline. |
 | Editor passes everything on round 1 | Model is being sycophantic (often a small or coding-tuned model). | Switch to a stronger creative model. Verify the Editor agent spec is being loaded. |
 | Context-window errors in Phase 3+ | Model has insufficient context. | Use a 200K+ context model. Verify the tool isn't loading every file in the workspace by default (some tools auto-include too much). |
 | Phase 4 JSON output is sparse, missing fields, or omits literal strings like `{{original}}` from `system_prompt` / `post_history_instructions` | Flash-tier or summarization-prone model used for the Compiler. Observed on **Gemini 3.1 Flash**. | Switch the Compiler (and ideally the Architect) to a Pro-tier or frontier-tier model. The Compiler must emit verbatim content; summarizing models silently drop macros and break the [Override Architecture](../CLAUDE.md#2-the-override-architecture-paired-contract). |
@@ -264,8 +262,8 @@ The `<world_name>` corresponds to the subdirectory under `Drafts/` and `Export/`
 
 ## 8. Summary
 
-- **Tool:** Kilo Code is the reference (the repo ships its per-phase agent set in `.kilo/kilo.jsonc`). Cline is a valid simpler alternative. Roo Code is retired (May 15, 2026) — do not adopt it. Claude Code is not currently recommended.
+- **Tool:** Antigravity is the reference (the repo ships its per-phase skill set in `.agents/skills/`). Cline is a valid simpler alternative. Kilo Code is deprecated; Roo Code is retired (May 15, 2026) — do not adopt either. Claude Code is not currently recommended.
 - **Model:** Spend on Opus 4.7 / Sonnet 4.6 / GPT-5 / Gemini 2.5 Pro for creative phases. Use cheaper models for the Refiner, Compiler, and Prompt Engineer if you want to save cost.
-- **Setup:** Open this repo as a VS Code workspace, configure your tool's model provider, switch to orchestrator mode if available, type `/worldforge start`.
+- **Setup:** Open this repo as a workspace, configure your tool's model provider, type `/worldforge start`.
 
 If you discover a tool not listed here that works well, please open an issue or PR against this page.
