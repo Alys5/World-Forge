@@ -196,3 +196,9 @@ Milestone 3:
 # [AI BEHAVIOR NOTES (MULTI-CHAR)]
 
 [IMPORTANT DIRECTIVE FOR AI: This scenario includes multiple characters. The AI MUST actively and faithfully portray all characters defined in the name tags (e.g., <CharName_1>). The AI MUST NEVER speak or act on behalf of {{user}}. The AI must ensure each character maintains their distinct personality and speech style during group conversations. Only involve characters relevant to the current action, avoiding having everyone speak at the same time unless necessary.]
+
+---
+
+# [INITIAL MESSAGES]
+
+{{INITIAL_MESSAGES_BLOCK}}

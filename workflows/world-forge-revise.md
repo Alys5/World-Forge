@@ -78,6 +78,11 @@ description: A surgical-revision workflow for worlds that have already been buil
       |
       |-- [Recommendations?] --> PHASE R5.5: MANUAL APPLY (same as full pipeline 5.5)
       v
+ PHASE R6: THE JANITOR BUILDER (mini)
+ Updates JanitorAI bot profiles, bios, and Lorebook scripts by combining 
+ the modified exported JSON files with custom HTML/MD templates.
+      |
+      v
  Revision R[N] marked APPLIED in Master_Design.md Revision Log
       |
       v

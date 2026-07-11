@@ -35,24 +35,54 @@ def build_bio(world_name):
             visuals = data.get("visuals", {})
             roster = data.get("roster", [])
             
+            # Also read corresponding Character Card to get first messages
+            card_path = os.path.join(export_dir, f"{name}_Card.json")
+            char_messages_html = ""
+            if os.path.exists(card_path):
+                with open(card_path, 'r', encoding='utf-8') as cf:
+                    cdata = json.load(cf)
+                    f_mes = cdata.get("data", {}).get("first_mes", "")
+                    alts = cdata.get("data", {}).get("alternate_greetings", [])
+                    if f_mes:
+                        char_messages_html += f"<blockquote>**[{name}] - First Message:**<br/>{f_mes}</blockquote><br/>"
+                    for i, alt in enumerate(alts):
+                        char_messages_html += f"<blockquote>**[{name}] - Alternate Greeting {i+1}:**<br/>{alt}</blockquote><br/>"
+            
             # Map placeholders
             html_content = template_content
-            html_content = html_content.replace("{{TITLE}}", storefront.get("title", ""))
+            html_content = html_content.replace("{{TITLE}}", storefront.get("title", f"The {world_name} Universe"))
             html_content = html_content.replace("{{SUBTITLE}}", storefront.get("subtitle", ""))
             html_content = html_content.replace("{{HOOK}}", storefront.get("hook", ""))
             html_content = html_content.replace("{{IMPACT_LINE}}", storefront.get("impact_line", ""))
             html_content = html_content.replace("{{BLURB}}", storefront.get("blurb", ""))
             html_content = html_content.replace("{{WORLD_TEASER}}", storefront.get("world_teaser", ""))
             html_content = html_content.replace("{{CLOSING_LINE}}", storefront.get("closing_line", ""))
-            html_content = html_content.replace("{{WARNINGS}}", storefront.get("warnings", ""))
+            html_content = html_content.replace("{{WARNINGS}}", storefront.get("warnings", "Fiction only."))
+            
+            html_content = html_content.replace("{{FIRST_MESSAGES_PREVIEWS}}", char_messages_html)
+            
+            # Additional placeholders from template updates
+            html_content = html_content.replace("{{GENRE}}", "")
+            html_content = html_content.replace("{{SETTING}}", "")
+            html_content = html_content.replace("{{ROLE}}", "")
+            html_content = html_content.replace("{{POV}}", "AnyPOV")
+            html_content = html_content.replace("{{GENDER}}", "AnyGender")
+            html_content = html_content.replace("{{DEFINED_ABOUT_CHARACTERS_AND_USER}}", "")
+            html_content = html_content.replace("{{IMPLIED_BY_SCENARIO}}", "")
+            html_content = html_content.replace("{{SCENARIOS}}", "")
+            html_content = html_content.replace("{{WORLD_AND_FACTIONS}}", "")
+            html_content = html_content.replace("{{LOREBOOK_ENGINE_DESCRIPTION}}", "")
+            html_content = html_content.replace("{{DISCOVERY_TAGS}}", "")
+            html_content = html_content.replace("{{ART_CREDITS}}", "")
+            html_content = html_content.replace("{{FOOTER_LINKS}}", "")
             
             main_vis = visuals.get("main_portrait_1x1", {})
             html_content = html_content.replace("{{MAIN_PORTRAIT_PROMPT}}", main_vis.get("generation_prompt", ""))
-            html_content = html_content.replace("{{MAIN_PORTRAIT_URL}}", main_vis.get("placeholder_url", ""))
+            html_content = html_content.replace("{{MAIN_PORTRAIT_URL}}", main_vis.get("placeholder_url", "https://placecats.com/300/300"))
             
             banner_vis = visuals.get("supporting_image_banner", {})
             html_content = html_content.replace("{{BANNER_PROMPT}}", banner_vis.get("generation_prompt", ""))
-            html_content = html_content.replace("{{BANNER_URL}}", banner_vis.get("placeholder_url", ""))
+            html_content = html_content.replace("{{BANNER_URL}}", banner_vis.get("placeholder_url", "https://placecats.com/800/300"))
             
             # Roster section
             roster_html = ""

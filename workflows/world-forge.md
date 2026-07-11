@@ -73,6 +73,10 @@ description: A workflow to build worlds for player to roleplay in.
       |
       |-- [Recommendations in Sections 7/8?] --> PHASE 5.5: MANUAL APPLY
       v
+ PHASE 6: THE JANITOR BUILDER
+ Generates JanitorAI ready bot profiles, bios, and Lorebook scripts by combining 
+ exported JSON files with custom HTML/MD templates.
+      v
  ✅ PIPELINE COMPLETE
 ```
 
@@ -98,6 +102,7 @@ Sandbox mode is a **branch through this same pipeline, not a separate fork.** Th
 | 3.7 Intimacy Auditor | Conditional on Section 8 | Conditional on Section 8; audits the standing `INTIMACY_FUNCTION` + **NPC intimate coverage & distinctiveness** (Step 3H) across the sexual NPC cast |
 | 4 Compiler | One `[WorldName]_Arc[N]_Lorebook.json` per arc | One `[WorldName]_Sandbox_Lorebook.json` (always active; SANDBOX_STATE constant + ignoreBudget, WORLD_PULSE at position 4) |
 | 5 Prompt Engineer | Arc Guardian / Deep Think name the arcs | Blocks reference the standing sandbox state rather than arcs; defaults to **Multi-Character Dynamics** + the optional **NPC Ensemble & Enrichment** block (NPC-to-NPC dialogue, ensemble prose scaling, organic NPC enrichment) + **high-weighted Sensory Embodiment** |
+| 6 Janitor Builder | Profile/Bio uses standard World Name. | Same format, Profile/Bio uses Sandbox parameters. |
 
 **The aliveness contract** is the load-bearing idea of sandbox mode: with no arc carrying tone and momentum, the `SANDBOX_STATE` Tonal Mandate and the `WORLD_PULSE` entry are what keep the world feeling alive — NPCs pursuing their own agendas and initiating, the world reacting to and remembering `{{user}}`, the cast rotating in and out rather than sitting inert until summoned. It is made concrete by per-NPC **Standing Goals** (Architect §7.D): each principal carries an active objective, and the directive has an NPC advance its goal when a scene lulls. A subplot-shaped goal can optionally be staged as an **Escalation Ladder** (§7.D): 2–4 ordered stages with in-fiction advance conditions, an endpoint, and a stated collision with `{{user}}` — the directive then names the current stage and binds the progression discipline (advance only on stated condition, never skip, never self-resolve), so the model *executes* an authored subplot rather than inventing one. The Voice Auditor's **Step 3J** tests that NPCs actually take that initiative (and that laddered NPCs hold their current stage). The **roster NPC format** (§7.E) with its uniqueness rule, plus the Voice Auditor's **Distinctiveness Matrix**, are what keep a large cast from collapsing into one generic voice. The same NPC-agency mechanic runs in **arc mode** through the ARC_STATE activity-cadence directive — NPCs exist in both modes, so the goal/cadence pair is mode-agnostic.
 

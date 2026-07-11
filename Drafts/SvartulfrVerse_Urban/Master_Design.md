@@ -4,55 +4,61 @@
 
 - world_mode: sandbox
 - intimacy_in_scope: true
-- current_phase: 5
-- status: COMPLETE
+- current_phase: 1
+- status: PENDING
 
-| Phase                | Status   | Round | Sign-off anchor             |
-| -------------------- | -------- | ----- | --------------------------- |
-| 1 Refiner            | COMPLETE | —     | REFINER SIGN-OFF            |
-| 2 Architect          | COMPLETE | —     | PRE-SUBMISSION CHECKLIST    |
-| 2.5 Intimacy Arch.   | COMPLETE | —     | INTIMACY ARCHITECT SIGN-OFF |
-| 3 Editor             | COMPLETE | 1     | EDITOR SIGN-OFF             |
-| 3.5 Voice Auditor    | COMPLETE | 1     | VOICE AUDITOR SIGN-OFF      |
-| 3.6 Arc Transition   | SKIPPED  | 0     | (SKIPPED in sandbox mode)   |
-| 3.7 Intimacy Auditor | COMPLETE | 1     | INTIMACY AUDITOR SIGN-OFF   |
-| 4 Compiler           | COMPLETE | —     | COMPILER SIGN-OFF           |
-| 5 Prompt Engineer    | COMPLETE | —     | PROMPT ENGINEER SIGN-OFF    |
-| 6 Janitor Builder    | COMPLETE | —     | JANITOR BUILDER SIGN-OFF    |
+| Phase                | Status  | Round | Sign-off anchor             |
+| -------------------- | ------- | ----- | --------------------------- |
+| 1 Refiner            | PENDING | —     | REFINER SIGN-OFF            |
+| 2 Architect          | PENDING | —     | PRE-SUBMISSION CHECKLIST    |
+| 2.5 Intimacy Arch.   | PENDING | —     | INTIMACY ARCHITECT SIGN-OFF |
+| 3 Editor             | PENDING | —     | EDITOR SIGN-OFF             |
+| 3.5 Voice Auditor    | PENDING | —     | VOICE AUDITOR SIGN-OFF      |
+| 3.6 Arc Transition   | SKIPPED | 0     | (SKIPPED in sandbox mode)   |
+| 3.7 Intimacy Auditor | PENDING | —     | INTIMACY AUDITOR SIGN-OFF   |
+| 4 Compiler           | PENDING | —     | COMPILER SIGN-OFF           |
+| 5 Prompt Engineer    | PENDING | —     | PROMPT ENGINEER SIGN-OFF    |
+| 6 Janitor Builder    | PENDING | —     | JANITOR BUILDER SIGN-OFF    |
 
 ## Revision Log
 
 ### Revision R1 — 2026-07-11 17:05 +02:00
+
 **Status:** PENDING
 **World Mode:** sandbox
 **Scope type:** tier2_character_modify_field
 **Mode:** freeform
 
 **User intent (verbatim):**
+
 > Popolare le 21 Q&A mancanti (le entries di char_template.json) nelle Card di Erik, Jasper, Malachia e Noah per completare i metadati strutturati e allineare il workflow alla nuova architettura.
 
 **Evidence (optional):**
+
 > None provided.
 
 **Section 1 / 11 impact:** none
 
 **Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+
 - Master Design sections to update: none (structural metadata only)
 - Drafts files to create: none
 - Drafts files to modify: Card_Erik.md, Card_Jasper.md, Card_Malachia.md, Card_Noah.md (or populated via script)
 - Export files to recompile: Erik_Card.json, Jasper_Card.json, Malachia_Card.json, Noah_Card.json
 - Chat preset changes: no
-- JanitorAI scripts to regenerate: yes (build_janitor.py run for SvartulfrVerse_Urban_JanitorAI_Script_*.js)
+- JanitorAI scripts to regenerate: yes (build*janitor.py run for SvartulfrVerse_Urban_JanitorAI_Script*\*.js)
 
 **Phases affected:** Refiner, Architect, Editor, Compiler
 **Phases skipped:** Intimacy Architect, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer
 
-**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0   <!-- loop-phase round counters; downstream minis increment a counter on each return so the round>3 ceiling survives a restart. Skipped phases stay 0. -->
+**Rounds:** R3:0 R3.5:0 R3.6:0 R3.7:0 <!-- loop-phase round counters; downstream minis increment a counter on each return so the round>3 ceiling survives a restart. Skipped phases stay 0. -->
 
 **Cross-references the user should be aware of:**
+
 - Poiché questo è un riempimento meccanico di campi noti, l'Architect mini potrebbe usare `split_qa.py` per automatizzare l'estrazione dai profili esistenti invece di generare testo da zero.
 
 **Reviser sign-off:**
+
 - [x] Single-revision-at-a-time precondition satisfied
 - [x] Section 1 / 11 bright line verified non-triggering
 - [x] Scope type matches user intent (confirmed by user)
@@ -255,11 +261,13 @@
 ## SECTION 3B: SUCC & CUMS ACADEMICS / STUDENT LIFE (Tier 1 Source)
 
 **SUCC Majors & Programs**
+
 - **Undergraduate**: BA, BSA (Supernatural Arts), BCOM, BFA, BMA (Magic), BS. Known for interdisciplinary approaches (e.g. supernatural biology + traditional biology).
 - **Post-Graduate**: ME, MSR (Supernatural Relations), MArch, and research-focused PhDs.
 - **Supernatural Specialties (~75 total majors)**: Alchemy, Applied Divination, Astral Studies, Cryptozoology, Environmental Magic, Lycanthropy Studies, Necromancy, Paranormal Psychology, Potions, Supernatural/Human Relations, Vampiric Studies, Non-Euclidean Architectural Studies.
 
 **SUCC Clubs & Greek Life**
+
 - **Anime Club**: Library Basement 005 (Fridays 6 PM). Humans and supernaturals.
 - **The Pack**: Nocturnal Hall / Lunar Quad (Tuesdays 7-9 PM). Official were/canid/lupine support society.
 - **BigFeet Hiking Club**: Unicorn Hall. Welcoming to cryptids/less-common species.
@@ -268,6 +276,7 @@
 - **Fraternities/Sororities**: Alpha Rho Omega, Alpha Sigma Sigma, Beta Rho Omega (Fraternities). Mu Omega Omega, Theta Iota Theta (Sororities).
 
 **SUCC Sports Teams (Integrated human & supernatural players)**
+
 - **Football**: The Bulls.
 - **Ice Hockey**: The Bears.
 - **Swim & Dive**: The Kelpies (dominated by selkies, merfolk, and aquatic creatures).
@@ -276,6 +285,7 @@
 - **Other Teams**: Baseball, Gymnastics, Lacrosse, Rowing, Soccer, Tennis, Track, Volleyball, Wrestling.
 
 **CUMS Sports & Clubs**
+
 - **Sports**: The CLAMS (Football), The BEAVERS (Hockey).
 - **Clubs**: Vampire/Undead Alliance (V.U.A.).
 
@@ -299,21 +309,27 @@
 Weres/Shapeshifters (25.8%), Demi-humans (24%), Humans (13.3%), Vampires (7.5%), Demons (5%), Fae (4.9%), Hybrids (4.7%), Undead (4%), Magic-capable Humans (4%), Other (<1%).
 
 **Species: Humans (Mundane & Magic-capable)**
+
 - **Description:** A sizeable minority at SUCC (13.3% mundane, 4% magic). Includes both fierce monster-equality advocates and controversial anti-monster groups like "Humans First." Magical ability is rare but present.
 
 **Species: Demons (Succubi, Incubi, Imps, Ifrits, Fiends)**
+
 - **Description:** Span many types depending on infernal heritage (horns, wings, tails, or nearly human). Legally required by the state to register, particularly those feeding on humans.
 
 **Species: Fae (Pixies, Dryads, Elves, Nymphs, Sprites, Sidhe)**
+
 - **Description:** Magically gifted from various regional backgrounds. Not all are diminutive or winged.
 
 **Species: Demi-humans**
+
 - **Description:** Part-human hybrids with animal/mythical heritage (cats, dogs, birds, reptiles, dragons). Usually human features with animal ears, tails, or wings.
 
 **Species: Hybrids (Centaurs, Merfolk, Fauns, Naga)**
+
 - **Description:** Cross-species individuals, equally animal and human, often requiring special anatomical accommodations.
 
 **Species: Undead (Zombies, Lichs, Ghosts, Ghouls, Wights)**
+
 - **Description:** Most undergo rigorous rehabilitation to control pre-reanimation violent tendencies. Generally accepted at SUCC, though they face occasional societal prejudice.
 
 ---
@@ -322,6 +338,7 @@ Weres/Shapeshifters (25.8%), Demi-humans (24%), Humans (13.3%), Vampires (7.5%),
 
 **Blackwood Demographics (2025):**
 ~250,000 Total Population
+
 - **Humans:** 35.0% (~87,500)
 - **Weres/Shapeshifters:** 18.5% (~46,250)
 - **Vampires:** 17.5% (~43,750)
@@ -334,10 +351,12 @@ Weres/Shapeshifters (25.8%), Demi-humans (24%), Humans (13.3%), Vampires (7.5%),
 - **Other:** 0.5% (~1,250)
 
 **Blackwood Coven Pack Distribution (~46,250 total wolves):**
+
 - **Affiliated (22,000 total):** Seven Hills (5,000), Uptown North (1,800), Uptown South (1,800), Paradise East (1,600), Paradise West (1,500), Bluemoon North (1,600), Bluemoon South (1,500), Oldtown (2,500), Dockside (1,500), Arcadia (1,800), Ironworks (1,400).
 - **Solitaries (~24,250 total):** Federico "Riki" Savini (65yo, Hetero) acts as their resilient spokesperson and Malachia's confident.
 
 **The District Alphas:**
+
 - **Cassandra "Cass" Harrow & Naomi Black** (Uptown North): Cass (45yo, Queer) is the ruthless tactical strategist. Naomi (42yo, Bi) is the charismatic financial/tech coordinator with direct ties to Moreno.
 - **Darius Vale** (Uptown South): 48yo, Hetero. Reserved and loyal; Malachia's right hand in nocturnal operations.
 - **Bianca "Bia" Rossi** (Paradise East): 35yo, Pan. Glamorous, pragmatic fashion negotiator. Maintains commercial alliances with Dominic and ties to Moreno's Angel&Co.

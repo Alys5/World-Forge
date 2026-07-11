@@ -55,7 +55,7 @@ Today the revise pipeline tells users to run a full rebuild for any of these. Th
  [User runs /worldforge skip phase0 against <target>]
       |
       v
- Standard pipeline (Phases 1 → 5.5) builds the new world end-to-end.
+ Standard pipeline (Phases 1 → 6) builds the new world end-to-end.
  The Refiner reads the Conversion Manifest, treats preserved sections as
  confirmed Phase 0 content, and surfaces regeneration stubs as normal gaps.
 ```

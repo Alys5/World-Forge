@@ -55,12 +55,15 @@ def build_janitor_profile(world_name):
     # Process Character Blocks
     all_chars_text = []
     char_names = []
+    all_messages = []
     for card in cards:
         name = card["data"]["name"]
         char_names.append(name)
         desc = card["data"].get("description", "")
         personality = card["data"].get("personality", "")
         scenario = card["data"].get("scenario", "")
+        first_mes = card["data"].get("first_mes", "")
+        alt_greetings = card["data"].get("alternate_greetings", [])
         
         # We will use the entire desc for PHYSICAL APPEARANCE
         physical = desc.strip() if desc.strip() else "Physical appearance details are integrated in the Lorebook."
@@ -92,6 +95,11 @@ def build_janitor_profile(world_name):
         
         all_chars_text.append(cb)
         
+        if first_mes:
+            all_messages.append(f"**[{name}] - First Message:**\n\n{first_mes}")
+        for idx, alt in enumerate(alt_greetings):
+            all_messages.append(f"**[{name}] - Alternate Greeting {idx+1}:**\n\n{alt}")
+        
     # Reassemble the final markdown
     # 1. Replace SETTING fields
     main_chars = "{{user}}, " + ", ".join(char_names)
@@ -118,6 +126,10 @@ def build_janitor_profile(world_name):
     # Clean multiple empty lines
     final_md = re.sub(r'\n{3,}', '\n\n', final_md)
     
+    # 2.5 Inject initial messages block
+    messages_str = "\n\n---\n\n".join(all_messages) if all_messages else "No initial messages provided."
+    final_md = final_md.replace("{{INITIAL_MESSAGES_BLOCK}}", messages_str)
+    
     out_path = export_dir / f"{world_name}_JanitorAI.md"
     out_path.write_text(final_md, encoding="utf-8")
     print(f"Successfully generated Janitor Profile: {out_path.name}")
@@ -125,49 +137,65 @@ def build_janitor_profile(world_name):
     # 3. Generate Janitor Bio
     bio_json_path = drafts_dir / "JanitorAI_Bio_Group.json"
     bio_template_path = base_dir / "templates" / "Janitor_Bio_Template.html"
-    if bio_json_path.exists() and bio_template_path.exists():
-        bio_data = json.loads(bio_json_path.read_text(encoding="utf-8"))
+    if bio_template_path.exists():
         bio_html = bio_template_path.read_text(encoding="utf-8")
         
-        sf = bio_data.get("storefront_text", {})
-        vis = bio_data.get("visuals", {})
+        sf = {}
+        vis = {}
+        if bio_json_path.exists():
+            bio_data = json.loads(bio_json_path.read_text(encoding="utf-8"))
+            sf = bio_data.get("storefront_text", {})
+            vis = bio_data.get("visuals", {})
+            
+            # Build roster from JSON if present
+            roster_blocks = []
+            for r in bio_data.get("roster", []):
+                r_img = r.get("image", {}).get("placeholder_url", "")
+                r_name = r.get("name", "")
+                r_sub = r.get("subtitle", "")
+                r_desc = r.get("description", "")
+                
+                block = f'''<p style="text-align: center">
+        <img src="{r_img}" alt="{r_name}" width="200" /><br />
+        <span style="font-size: 1.1em; color: rgb(249, 226, 175)"><strong>{r_name}</strong></span><br />
+        <span style="font-size: 0.9em; color: rgb(166, 173, 200)"><em>{r_sub}</em></span>
+    </p>
+    <p style="text-align: justify">
+        <span style="font-size: 0.9em; color: rgb(250, 179, 135)">{r_desc}</span>
+    </p>'''
+                roster_blocks.append(block)
+                
+            bio_html = bio_html.replace("{{ROSTER_SECTION}}", "\n".join(roster_blocks))
         
-        bio_html = bio_html.replace("{{TITLE}}", sf.get("title", ""))
-        bio_html = bio_html.replace("{{SUBTITLE}}", sf.get("subtitle", ""))
+        bio_html = bio_html.replace("{{TITLE}}", sf.get("title", f"The {world_name} Universe"))
+        bio_html = bio_html.replace("{{SUBTITLE}}", sf.get("subtitle", "A Multi-Character Interactive Experience"))
         
         main_vis = vis.get("main_portrait_1x1", {})
-        bio_html = bio_html.replace("{{MAIN_PORTRAIT_URL}}", main_vis.get("placeholder_url", ""))
+        bio_html = bio_html.replace("{{MAIN_PORTRAIT_URL}}", main_vis.get("placeholder_url", "https://placecats.com/300/300"))
         
         bio_html = bio_html.replace("{{IMPACT_LINE}}", sf.get("impact_line", ""))
         bio_html = bio_html.replace("{{HOOK}}", sf.get("hook", ""))
         bio_html = bio_html.replace("{{BLURB}}", sf.get("blurb", ""))
         
         sup_vis = vis.get("supporting_image_banner", {})
-        bio_html = bio_html.replace("{{BANNER_URL}}", sup_vis.get("placeholder_url", ""))
+        bio_html = bio_html.replace("{{BANNER_URL}}", sup_vis.get("placeholder_url", "https://placecats.com/800/300"))
         
         bio_html = bio_html.replace("{{WORLD_TEASER}}", sf.get("world_teaser", ""))
         bio_html = bio_html.replace("{{CLOSING_LINE}}", sf.get("closing_line", ""))
-        bio_html = bio_html.replace("{{WARNINGS}}", sf.get("warnings", ""))
+        bio_html = bio_html.replace("{{WARNINGS}}", sf.get("warnings", "Fiction only."))
         
-        # Build roster
-        roster_blocks = []
-        for r in bio_data.get("roster", []):
-            r_img = r.get("image", {}).get("placeholder_url", "")
-            r_name = r.get("name", "")
-            r_sub = r.get("subtitle", "")
-            r_desc = r.get("description", "")
-            
-            block = f'''<p style="text-align: center">
-    <img src="{r_img}" alt="{r_name}" width="200" /><br />
-    <span style="font-size: 1.1em; color: rgb(249, 226, 175)"><strong>{r_name}</strong></span><br />
-    <span style="font-size: 0.9em; color: rgb(166, 173, 200)"><em>{r_sub}</em></span>
-</p>
-<p style="text-align: justify">
-    <span style="font-size: 0.9em; color: rgb(250, 179, 135)">{r_desc}</span>
-</p>'''
-            roster_blocks.append(block)
-            
-        bio_html = bio_html.replace("{{ROSTER_SECTION}}", "\n".join(roster_blocks))
+        # New Tags added by user template updates
+        bio_html = bio_html.replace("{{GENRE}}", setting.get("genre", ""))
+        bio_html = bio_html.replace("{{SETTING}}", setting.get("world", ""))
+        
+        # Build first messages previews from extracted all_messages
+        if all_messages:
+            preview_html = ""
+            for msg in all_messages:
+                # msg format is **[Name] - First Message:**\n\n[text]
+                # we just format it as blockquote
+                preview_html += f"<blockquote>{msg}</blockquote><br/>\n"
+            bio_html = bio_html.replace("{{FIRST_MESSAGES_PREVIEWS}}", preview_html)
         
         bio_out_path = export_dir / f"{world_name}_JanitorAI_Bio.html"
         bio_out_path.write_text(bio_html, encoding="utf-8")
