@@ -4,8 +4,8 @@
 
 ### Confirmed cascade (Refiner-mini R1):
 - Master Design sections to update: Section 3 (Locations: Solarton, Blackwood Forest, Blackwood, Hex Valley, DCC Tower), Section 7 (Erik), Section 8 (Angelo, Logan).
-- Drafts files to modify: `Tier1_World_Entries.md`, `Card_Erik.md`, `Card_Angelo.md`, `Card_Logan.md` (NPC logic).
-- Export files to recompile: `SvartulfrVerse_EN_World_Lorebook.json`, `SvartulfrVerse_EN_Erik_Lorebook.json`, `SvartulfrVerse_EN_NPC_Roster_Lorebook.json`, `Erik_Card.json`.
+- Drafts files to modify: `Tier1_World_Entries.md`, `Card_Erik.md`, `Tier2_NPC_Principal_Entries.md` (Angelo/Logan/Wulfnic), `Tier3_Sandbox_Entries.md`.
+- Export files to recompile: `SvartulfrVerse_Urban_World_Lorebook.json`, `SvartulfrVerse_Urban_Erik_Lorebook.json`, `SvartulfrVerse_Urban_NPC_Principal_Lorebook.json`, `SvartulfrVerse_Urban_Sandbox_Lorebook.json`, `Erik_Card.json`.
 
 **Phases affected:** Architect-mini, Compiler-mini
 

@@ -24,7 +24,7 @@
 
 ### Revision R3 — 2026-07-11 19:08 +02:00
 
-**Status:** R1_COMPLETE
+**Status:** APPLIED
 **World Mode:** sandbox
 **Scope type:** tier1_world_rule_modify, tier2_character_modify_field
 **Mode:** freeform
@@ -37,8 +37,8 @@
 **Confirmed cascade (Refiner-mini R1):**
 
 - Master Design sections to update: Section 3 (Locations: Solarton, Blackwood Forest, Blackwood, Hex Valley, DCC Tower), Section 7 (Erik), Section 8 (Angelo, Logan).
-- Drafts files to modify: `Tier1_World_Entries.md`, `Card_Erik.md`, `Card_Angelo.md`, `Card_Logan.md` (NPC logic).
-- Export files to recompile: `SvartulfrVerse_EN_World_Lorebook.json`, `SvartulfrVerse_EN_Erik_Lorebook.json`, `SvartulfrVerse_EN_NPC_Roster_Lorebook.json`, `Erik_Card.json`.
+- Drafts files to modify: `Tier1_World_Entries.md`, `Card_Erik.md`, `Tier2_NPC_Principal_Entries.md` (Angelo/Logan/Wulfnic NPC logic), `Tier3_Sandbox_Entries.md`.
+- Export files to recompile: `SvartulfrVerse_Urban_World_Lorebook.json`, `SvartulfrVerse_Urban_Erik_Lorebook.json`, `SvartulfrVerse_Urban_NPC_Principal_Lorebook.json`, `SvartulfrVerse_Urban_Sandbox_Lorebook.json`, `Erik_Card.json`.
 
 **Phases affected:** Architect-mini, Compiler-mini
 **Phases skipped:** Intimacy Architect, Editor, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer, Janitor Builder
@@ -60,7 +60,7 @@
 - [x] Routing (phases-affected) locked
 - [x] No unresolved cross-tier flags
 
-**Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+**Status: APPLIED — R3 edits confirmed reflected in current Drafts/Export; superseded by the full template-convention rebuild (all files recompiled).**
 
 **Architect-mini sign-off (Phase R2):**
 
