@@ -14,13 +14,19 @@ FIELD GUIDANCE:
   ### ORIGIN (BACKSTORY) (Brief backstory)
   ### RESIDENCE (City, house, rooms, etc.)
   ### CONNECTIONS (Relatives, servants, etc.)
-  ### SECRET (Is the character hiding something?)
   ### INVENTORY (Items + Details)
   ### ABILITIES (Abilities + Details)
-  ### PERSONALITY (Archetype + Details/Reasoning, Alignment + Details/Ideals, Personality Tags, Cognitive Abilities, Social Skills, Main Aspiration + Details/Goals, Unique Traits + Effects)
+  ### PERSONALITY (Archetype, Personality Tags)
   ### [BEHAVIOR_NOTES]
   ### [SEXUALITY] (Sexual Orientation + Explanation, Role during sex + Explanation)
-  ### [OTHER_SEXUAL_NOTES]
+
+- character_book.entries: You will find newly added Q&A Lorebook entries in the JSON. You MUST fill these out with:
+  1. The character's SECRET (Triggered by investigation/truth).
+  2. The character's deep personality details (Archetype Reasoning, Alignment Ideals).
+  3. Cognitive abilities, Social Skills, Main Aspirations, and Unique Traits.
+  4. Other Sexual Notes.
+  5. Premade Story Plan, Previously, and Notes.
+  6. Synonyms and Speech Examples.
   NO arc-specific content. NO timeline events. This is the permanent character substrate.
 
 ---

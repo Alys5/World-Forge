@@ -1,7 +1,4 @@
 <!--### CREATOR'S NOTES ###-->
-Creator: Lys_5
-JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5
-
 <!--DELETE all <!-> comments. -->
 <!--This template is extremely excessive. DELETE the parts you don't need or add new sections to the template.-->
 <!-- KEEP all the [] notes. -->
@@ -12,7 +9,7 @@ JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee0243
 
 <!-- Example:
 # Setting (h1, level 1)
-# [CharName_1] (h1, level 1)
+# {{CharName_1}} (h1, level 1)
 	↳ ## Appearance (h2, level 2)
 		↳ ## Starting Outfit (h3, level 3)
 	↳ ## Personality (h2, level 2)
@@ -21,7 +18,7 @@ JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee0243
 <!--Hint: Use "Citation" instead or with descriptions where possible to let your character describe themselves on their own-->
 
 <!-- Example:
-Q: How [CharName_1] behaves with {{user}}? What is their relationship?
+Q: How {{CharName_1}} behaves with {{user}}? What is their relationship?
 A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has complex feelings towards [...]
 -->
 
@@ -31,16 +28,20 @@ A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has 
 
 # [SETTING]
 
-- Time/Period: <!--e.g. Middle Age, Winter-->
-- World Details: <!--e.g. The fantasy world of Root, inhabited by monsters and other fictional races.-->
-- Main Characters: {{user}}, [CharName_1] <!--If the scenario has additional characters-->
+- Time/Period: {{SETTING_TIME}} <!--e.g. Middle Age, Winter-->
+- World Details: {{SETTING_WORLD}} <!--e.g. The fantasy world of Root, inhabited by monsters and other fictional races.-->
+- Main Characters: {{SETTING_MAIN_CHARS}} <!--If the scenario has additional characters-->
 
 ## LORE
+
+{{LORE}}
 
 <!--Is there any lore or worldbuilding information for your story?-->
 <!-- e.g. Root is a medieval Scandinavian fantasy world with magic, monsters, heroes, and a bunch of MMORPG cliches. Aedelgard is one of the kingdoms in Root. Outskirts of the cities boil with monsters of various danger levels. This world works under [...]-->
 
 ## SCENARIO OVERVIEW
+
+{{SCENARIO_OVERVIEW}}
 
 <!--What is this scenario about? What is the main idea? Blurb.-->
 <!--In one of his adventures, {{user}} was severely wounded and lost his party. However, a passing healer (Ottis) saved him and brought him to a nearby Maretta's [...]-->
@@ -51,140 +52,113 @@ A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has 
 
 <!--CRITICAL SECTION FOR MULTI-CHAR. Describe how the group interacts as a whole. Delete this section if this is a Single-Character bot.-->
 
-- Internal Relationships: <!--e.g. Char1 hates Char2 but protects Char3. Char4 is the unofficial leader.-->
-- Attitude toward {{user}}: <!--e.g. The group is suspicious of {{user}}, but forced to cooperate to survive.-->
-- Hierarchy/Roles: <!--e.g. Char1: Leader; Char2: Healer; Char3: Tank; etc.-->
+- Internal Relationships: {{GROUP_RELATIONSHIPS}} <!--e.g. Char1 hates Char2 but protects Char3. Char4 is the unofficial leader.-->
+- Attitude toward {{user}}: {{GROUP_ATTITUDE}} <!--e.g. The group is suspicious of {{user}}, but forced to cooperate to survive.-->
+- Hierarchy/Roles: {{GROUP_HIERARCHY}} <!--e.g. Char1: Leader; Char2: Healer; Char3: Tank; etc.-->
 
 ---
 
-<[CharName_1]>
+<{{CharName_1}}> <!-- MAX 500 TOKEN -->
 
-# [[CharName_1]]
+# [{{CharName_1}}]
 
 ## CHARACTER OVERVIEW
-<!--Describe the overall idea for your scenario here-->
+
+{{CHARACTER_OVERVIEW}}
+
+<!--  (Describe the overall idea for your scenario here) -->
 
 ## APPEARANCE DETAILS
-Full Name, Alias:
-Race:
-Sex/Gender:
-Height:
-Age:
-Hair:
-Eyes:
-Body:
-Face:
-Features:
-Privates:
-Appearance Trait: <!--e.g. "Womb Tattoo (inmon)"-->
-↳ Details: <!--e.g. {{char}} was a sex slave before [...]-->
-↳ Effect: <!--e.g. During [...] {{char}} has unresistabe sexual cravings. This will result in [...]-->
-Appearance Trait:
-↳ Details:
-↳ Effect:
+
+Full Name, Alias: {{APPEARANCE_FULL_NAME}}
+Race: {{APPEARANCE_RACE}}
+Sex/Gender: {{APPEARANCE_SEX}}
+Height: {{APPEARANCE_HEIGHT}}
+Age: {{APPEARANCE_AGE}}
+Hair: {{APPEARANCE_HAIR}}
+Eyes: {{APPEARANCE_EYES}}
+Body: {{APPEARANCE_BODY}}
+Face: {{APPEARANCE_FACE}}
+Features: {{APPEARANCE_FEATURES}}
+Privates: {{APPEARANCE_PRIVATES}}
+Appearance Trait: {{APPEARANCE_TRAIT_1}} <!--e.g. "Womb Tattoo (inmon)"-->
+↳ Details: {{APPEARANCE_TRAIT_1_DETAILS}} <!--e.g. {{char}} was a sex slave before [...]-->
+↳ Effect: {{APPEARANCE_TRAIT_1_EFFECT}} <!--e.g. During [...] {{char}} has unresistabe sexual cravings. This will result in [...]-->
+Appearance Trait: {{APPEARANCE_TRAIT_2}}
+↳ Details: {{APPEARANCE_TRAIT_2_DETAILS}}
+↳ Effect: {{APPEARANCE_TRAIT_2_EFFECT}}
 
 ## STARTING OUTFIT
-Head:
-Accessories:
-Makeup:
-Neck:
-Top:
-Bottom:
-Legs:
-Shoes:
-Underwear:
+
+Head: {{OUTFIT_HEAD}}
+Accessories: {{OUTFIT_ACCESSORIES}}
+Makeup: {{OUTFIT_MAKEUP}}
+Neck: {{OUTFIT_NECK}}
+Top: {{OUTFIT_TOP}}
+Bottom: {{OUTFIT_BOTTOM}}
+Legs: {{OUTFIT_LEGS}}
+Shoes: {{OUTFIT_SHOES}}
+Underwear: {{OUTFIT_UNDERWEAR}}
 
 ## ORIGIN (BACKSTORY)
-<!--Describe a brief backstory for your character-->
+
+{{ORIGIN_BACKSTORY}}
+
+<!--  Describe a brief backstory for your character -->
 
 ## RESIDENCE
-<!--If location is important to the story. You can describe the city, house, rooms, etc.-->
+
+{{RESIDENCE}}
+
+<!--  If location is important to the story. You can describe the city, house, rooms, etc. -->
 
 ## CONNECTIONS
-<!--Relatives, servants, etc, if necessary-->
 
-## SECRET
-<!--Is your character hiding something?-->
+{{CONNECTIONS}}
+
+<!--  Relatives, servants, etc, if necessary -->
 
 ## INVENTORY
-Item: <!--e.g. "Club +24"-->
-↳ Details: <!--e.g. Club that was given {{char}} by her mother. Bonks {{user}} when angry.-->
-Item:
-↳ Details:
+
+Item: {{INVENTORY_ITEM_1}} <!--e.g. "Club +24"-->
+↳ Details: {{INVENTORY_ITEM_1_DETAILS}} <!--e.g. Club that was given {{char}} by her mother. Bonks {{user}} when angry.-->
+Item: {{INVENTORY_ITEM_2}}
+↳ Details: {{INVENTORY_ITEM_2_DETAILS}}
 
 ## ABILITIES
-Ability: <!--e.g. Void magic (beginner)-->
-↳ Details: <!--e.g. Opens portals when sneezes-->
-Ability:
-↳ Details:
+
+Ability: {{ABILITY_1}} <!--e.g. Void magic (beginner)-->
+↳ Details: {{ABILITY_1_DETAILS}} <!--e.g. Opens portals when sneezes-->
+Ability: {{ABILITY_2}}
+↳ Details: {{ABILITY_2_DETAILS}}
 
 ## PERSONALITY
-Archetype: <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
-↳ Archetype Details: <!--Explain the chosen archetype and {{char}}'s Baseline Behavior-->
-↳ Reasoning: <!--Tell why the character behaves this way. Did something happen in the past? Make some psychoanalysis-->
-Alignment: <!--Mostly for complex, RPG-like cards. e.g. Lawful Evil-->
-↳ Alignment Details: <!--Explain how it works with this character-->
-↳ Ideals:
-Personality Tags: <!--List of tags. e.g. Sadistic, Playful, Mischievous, Controlling, Manipulative, Cocky, Impish, Aggressive, Overprotective, Mean, Dramatic, Rough, Selfish, Lovestruck, Cheeky, Joking, Braggadocios, Bratty, Squeamish, Hot-Headed, Erratic, Materialistic, Perfectionist, Jealous, Nosy.-->
-Cognitive Abilities: <!--Typically used only for overly dumb orsmart characters-->
-Social Skills and Integration Into Society: <!--Typically used only for sociopathic characters or the ones with social anxiety or overly high self-esteem-->
-Main Aspiration: <!--Typically used if the character has a clear goal to pursue throughout the story. e.g. "I want to become a hero!"-->
-↳ Aspiration Details: <!--Explain the chosen aspiration-->
-↳ Aspiration Goals: <!--e.g. Annoy {{user}} with 'how to be a hero' questions; Save girls; become popular; [...]-->
-Unique Trait: <!--Typically used if the character has curses or special states. e.g. "Succubi Feeding Frenzy Trance"-->
-↳ Effects: <!--e.g. As soon as a drop of cum touches Emma's tongue, her mind shifts into an uncontrollable trance - a feeding frenzy. Her eyes light up with heart-shaped pupils. She doesn't control how [...]-->
-Unique Trait:
-↳ Effects:
+
+Archetype: {{PERSONALITY_ARCHETYPE}} <!--e.g. "Shy Bakadere with a brother complex"; {Modifier} + {Archetype} + {Addition}-->
+Personality Tags: {{PERSONALITY_TAGS}} <!--List of tags. e.g. Sadistic, Playful, Mischievous, Controlling, Manipulative, Cocky, Impish, Aggressive, Overprotective, Mean, Dramatic, Rough, Selfish, Lovestruck, Cheeky, Joking, Braggadocios, Bratty, Squeamish, Hot-Headed, Erratic, Materialistic, Perfectionist, Jealous, Nosy.-->
 
 ## [BEHAVIOR_NOTES]
 
+{{BEHAVIOR_NOTES}}
+
 ## [SEXUALITY]
+
 [IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
 
 ## GENERAL SEXUAL INFO
-Sexual Orientation:
-↳ Explanation:
-Role during sex: <!--Submissive, Power Bottom, Bottom, Top, etc.-->
-↳ Explanation:
 
-## [OTHER_SEXUAL_NOTES]
+Sexual Orientation: {{SEXUAL_ORIENTATION}}
+↳ Explanation: {{SEXUAL_ORIENTATION_EXPLANATION}}
+Role during sex: {{SEXUAL_ROLE}} <!--Submissive, Power Bottom, Bottom, Top, etc.-->
+↳ Explanation: {{SEXUAL_ROLE_EXPLANATION}}
 
 ## GENERAL SPEECH INFO
-Style: <!--e.g. {{char}} speaks like a lady from the Victorian era.-->
-Quirks: <!--e.g.  Speaks in rhymes like rapper-->
-Ticks: <!--e.g. Ends sentences with "Nya~".-->
 
-## Speech EXAMPLES AND OPINIONS
-[IMPORTANT NOTE FOR AI: This section provides {{char}}'s speech examples, memories, thoughts, and {{char}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
-<!--Try to provide examples within a certain context, like a reaction to {{user}}'s return home, an implied question from {{user}}, or an implied memory/decision/thought.-->
-<speech_examples>
-<!--e.g. "Sempai! You came!" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. "I mean, um…"-->
-<!--e.g. "Ow, man..."-->
-<!--e.g. "I bet you've got lots of big tiddy girls running after you, Mr Hero. I wish I was this popular too... *sighs*"-->
-<!--e.g. "Eww, no! I only service fem-... cute girls in this church! N-not guys!"-->
-""
-""
-</speech_examples>
+Style: {{SPEECH_STYLE}} <!--e.g. {{char}} speaks like a lady from the Victorian era.-->
+Quirks: {{SPEECH_QUIRKS}} <!--e.g.  Speaks in rhymes like rapper-->
+Ticks: {{SPEECH_TICKS}} <!--e.g. Ends sentences with "Nya~".-->
 
-## SYNONYMS
-[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-<!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: "Walking pudding", "Jelly girl", etc-->
-
-## PREMADE STORY PLAN
-Milestone 1: <!--Use this section only if you have a specific storyline in mind. e.g. Arrival and first meeting-->
-↳ Details:<!--e.g. {{user}} and Takita have some time before classes the Entrance Ceremony. AI can introduce other characters, make story hooks, or let {{user}} freely explore Souta Academy until {{user}} decides to go to the Entrance Ceremony.-->
-Milestone 2: <!--e.g. Entrance Ceremony-->
-↳ Details: <!--Mr. Snuffles will greet new students and show a little presentation to give lore context before [...]-->
-Milestone 3:
-↳ Details:
-
-## PREVIOUSLY
-<!--Use this section to describe what happened right before the RP starts-->
-
-## NOTES
-<!--e.g. "The AI must explicitly state, that the mandarin is a fruit and doesn't feel anything during penetration." Or tell the AI to use certain words to accentuate the character's height, race, etc.)-->
-
-</[CharName_1]>
+</{{CharName_1}}>
 
 ---
 

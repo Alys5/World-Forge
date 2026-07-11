@@ -79,19 +79,19 @@ def build_janitor_profile(world_name):
         cb = cb.replace("[CharName_1]", name)
         
         # Inject Character Overview (Scenario)
-        cb = re.sub(r'(## CHARACTER OVERVIEW\n\n)(.*?)(?=\n---)', lambda m: m.group(1) + (scenario if scenario else "Detailed in Lorebook.") + "\n", cb, flags=re.DOTALL)
+        cb = re.sub(r'(## CHARACTER OVERVIEW\n(?:<!--.*?-->\n)?)(.*?)(?=\n## APPEARANCE DETAILS)', lambda m: m.group(1) + (scenario if scenario else "Detailed in Lorebook.") + "\n", cb, flags=re.DOTALL)
         
         # Inject Physical Appearance
-        cb = re.sub(r'(### PHYSICAL APPEARANCE\n\n)(.*?)(?=\n### STARTING OUTFIT)', lambda m: m.group(1) + physical + "\n\n", cb, flags=re.DOTALL)
+        cb = re.sub(r'(## APPEARANCE DETAILS\n)(.*?)(?=\n## STARTING OUTFIT)', lambda m: m.group(1) + physical + "\n", cb, flags=re.DOTALL)
         
         # Inject Starting Outfit
-        cb = re.sub(r'(### STARTING OUTFIT\n\n)(.*?)(?=\n---)', lambda m: m.group(1) + outfit + "\n\n", cb, flags=re.DOTALL)
+        cb = re.sub(r'(## STARTING OUTFIT\n)(.*?)(?=\n## ORIGIN \(BACKSTORY\))', lambda m: m.group(1) + outfit + "\n", cb, flags=re.DOTALL)
         
         # Inject Origin
-        cb = re.sub(r'(### ORIGIN \(BACKSTORY\)\n\n)(.*?)(?=\n---)', lambda m: m.group(1) + "Background details are stored in the Lorebook payload.\n\n", cb, flags=re.DOTALL)
+        cb = re.sub(r'(## ORIGIN \(BACKSTORY\)\n(?:<!--.*?-->\n)?)(.*?)(?=\n## RESIDENCE)', lambda m: m.group(1) + "Background details are stored in the Lorebook payload.\n", cb, flags=re.DOTALL)
         
         # Inject Personality
-        cb = re.sub(r'(- Archetype:)(.*?\n)', lambda m: f"- Archetype: {personality}\n", cb)
+        cb = re.sub(r'(Archetype:)(.*?\n)', lambda m: f"Archetype: {personality}\n", cb)
         
         all_chars_text.append(cb)
         
@@ -201,15 +201,6 @@ def build_janitor_profile(world_name):
         bio_out_path.write_text(bio_html, encoding="utf-8")
         print(f"Successfully generated Janitor Bio: {bio_out_path.name}")
         
-    # 4. Generate Janitor Script
-    script_template_path = base_dir / "templates" / "Janitor_Lorebook_Script.js"
-    if script_template_path.exists():
-        script_js = script_template_path.read_text(encoding="utf-8")
-        script_js = script_js.replace("[NAME]", world_name)
-        
-        script_out_path = export_dir / f"{world_name}_JanitorAI_Script.js"
-        script_out_path.write_text(script_js, encoding="utf-8")
-        print(f"Successfully generated Janitor Script: {script_out_path.name}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:

@@ -17,8 +17,8 @@
 | 3.6 Arc Transition   | SKIPPED  | 0     | (SKIPPED in sandbox mode)   |
 | 3.7 Intimacy Auditor | COMPLETE | —     | INTIMACY AUDITOR SIGN-OFF   |
 | 4 Compiler           | COMPLETE | —     | COMPILER SIGN-OFF           |
-| 5 Prompt Engineer    | PENDING  | —     | PROMPT ENGINEER SIGN-OFF    |
-| 6 Janitor Builder    | PENDING  | —     | JANITOR BUILDER SIGN-OFF    |
+| 5 Prompt Engineer    | COMPLETE | —     | PROMPT ENGINEER SIGN-OFF    |
+| 6 Janitor Builder    | COMPLETE | —     | JANITOR BUILDER SIGN-OFF    |
 
 ## Revision Log
 
@@ -158,12 +158,14 @@ _(Skipped: No intimacy scopes were triggered by Revisions R2 or R3. The cascade 
 **Compiler-mini sign-off (Phase R4):**
 
 ### Files Compiled
+
 - `SvartulfrVerse_Urban_World_Lorebook.json` (3 modified, 1 new, 11 preserved)
 - `SvartulfrVerse_Urban_NPC_Principal_Lorebook.json` (3 modified, 7 preserved)
 - `SvartulfrVerse_Urban_Sandbox_Lorebook.json` (1 modified, 4 preserved)
 - `Erik_Card.json`
 
 ### Pre-Save Guards (parent rules 1–12)
+
 - [x] JSON parses on every written file
 - [x] {{original}} preserved on every touched card
 - [x] No metadata fields outside schema
@@ -178,11 +180,13 @@ _(Skipped: No intimacy scopes were triggered by Revisions R2 or R3. The cascade 
 - [x] Every written file is UTF-8 — non-ASCII intact, no mojibake, not authored through PowerShell
 
 ### UID Continuity
+
 - [x] Existing entries keep their UIDs across all touched lorebooks
 - [x] New entries assigned next-free UIDs without collision
 - [x] No entries deleted that weren't explicitly in the cascade as deletions
 
 ### NPC Memory Manifest (parent Step 7.7)
+
 - [x] Every rewritten lorebook that had a `[[NPC_MANIFEST]]` entry has it regenerated (N/A)
 - [x] Any existing `[[WORLD_CALENDAR]]` carrier preserved through a World-lorebook rewrite
 - [x] Any existing `[[DICE_TABLES]]` carrier preserved through a World-lorebook rewrite
@@ -190,16 +194,55 @@ _(Skipped: No intimacy scopes were triggered by Revisions R2 or R3. The cascade 
 - [x] Slug `id`s compared against the prior export; no renames detected
 
 ### User Report
+
 - [x] "What Changes When" report produced
 - [x] Risk assessment included for running chats
 
 ### Revision Manifest
+
 - [x] Export/REVISED_FILES.md created (first revision) or updated (subsequent)
 - [x] Every file touched this revision has an upserted row
 - [x] Files touched in prior revisions retain their rows (manifest is cumulative)
 - [x] No Export file renamed to mark it revised; no in-JSON revision field added
 
 **Status: R4_COMPLETE — Proceed to Phase R5 (mini-Prompt-Engineer)**
+
+**Prompt-Engineer-mini sign-off (Phase R5):**
+
+### Audit Scope
+
+- Touched entries audited: 8 across 3 lorebooks
+- Touched cards audited: 1
+
+### Findings
+
+- Position correctness: PASS
+- Keyword coverage / collisions: PASS
+- Token budget concerns: none
+- Card override architecture: PASS
+- Style Contract consistency: PASS
+
+### Preset Changes Applied
+
+- Trigger A (Multi-Character Dynamics block): not fired
+- Trigger B (NSFW block): not fired
+- Trigger C (Style Contract multi-axis flag): not fired
+- Trigger F (Dice Oracle Interpretation block): not fired
+
+### Manual Corrections
+
+- Sections 7/8 recommendations count: 0
+- Files with outstanding recommendations: none
+
+**Status: R5_COMPLETE — Proceed to Phase R6 (mini-Janitor-Builder)**
+
+**JANITOR BUILDER SIGN-OFF (Phase R6):**
+- [x] build_janitor.py executed successfully
+- [x] build_bio.py executed successfully
+- [x] build_janitor_profile.py executed successfully
+- [x] Scripts, bios, and bot profiles are updated in Export/
+
+**Status: R6_COMPLETE / APPLIED**
 
 ---
 

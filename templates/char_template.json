@@ -278,6 +278,92 @@
                     ],
                     "content": "NOTES\n<!--e.g. \"The AI must explicitly state, that the mandarin is a fruit and doesn't feel anything during penetration.\" Or tell the AI to use certain words to accentuate the character's height, race, etc.)-->",
                     "extensions": {}
+                },
+                {
+                    "keys": [
+                        "secret",
+                        "truth",
+                        "investigate",
+                        "discover",
+                        "hidden",
+                        "past"
+                    ],
+                    "content": "Q: What is {{char}}'s secret? Is {{char}} hiding something?\\nA: {{SECRET}}",
+                    "extensions": {
+                        "position": 1
+                    }
+                },
+                {
+                    "keys": [
+                        "personality",
+                        "mind",
+                        "archetype",
+                        "alignment",
+                        "ideals"
+                    ],
+                    "content": "Q: What is the reasoning behind {{char}}'s Archetype and Alignment?\\nA: Archetype Details: {{PERSONALITY_ARCHETYPE_DETAILS}}\\nReasoning: {{PERSONALITY_REASONING}}\\nAlignment Details: {{PERSONALITY_ALIGNMENT_DETAILS}}\\nIdeals: {{PERSONALITY_IDEALS}}",
+                    "extensions": {
+                        "position": 1
+                    }
+                },
+                {
+                    "keys": [
+                        "social",
+                        "society",
+                        "intelligence",
+                        "cognitive",
+                        "aspiration",
+                        "goal",
+                        "unique trait",
+                        "trait"
+                    ],
+                    "content": "Q: What are {{char}}'s cognitive abilities, social skills, aspirations, and unique traits?\\nA: Cognitive Abilities: {{PERSONALITY_COGNITIVE}}\\nSocial Skills: {{PERSONALITY_SOCIAL}}\\nMain Aspiration: {{PERSONALITY_ASPIRATION}} (Details: {{PERSONALITY_ASPIRATION_DETAILS}}, Goals: {{PERSONALITY_ASPIRATION_GOALS}})\\nUnique Trait 1: {{PERSONALITY_TRAIT_1}} (Effects: {{PERSONALITY_TRAIT_1_EFFECTS}})\\nUnique Trait 2: {{PERSONALITY_TRAIT_2}} (Effects: {{PERSONALITY_TRAIT_2_EFFECTS}})",
+                    "extensions": {
+                        "position": 1
+                    }
+                },
+                {
+                    "keys": [
+                        "sex",
+                        "sexual",
+                        "kink",
+                        "fetish",
+                        "intimate",
+                        "fuck"
+                    ],
+                    "content": "Q: Are there any other sexual notes or preferences for {{char}}?\\nA: {{OTHER_SEXUAL_NOTES}}",
+                    "extensions": {
+                        "position": 1
+                    }
+                },
+                {
+                    "keys": [
+                        "story",
+                        "plot",
+                        "milestone",
+                        "plan",
+                        "previously",
+                        "notes",
+                        "scenario"
+                    ],
+                    "content": "Q: What is the Premade Story Plan, Previous events, and extra Notes?\\nA: PREVIOUSLY: {{PREVIOUSLY}}\\n\\nSTORY PLAN:\\nMilestone 1: {{MILESTONE_1}} ({{MILESTONE_1_DETAILS}})\\nMilestone 2: {{MILESTONE_2}} ({{MILESTONE_2_DETAILS}})\\nMilestone 3: {{MILESTONE_3}} ({{MILESTONE_3_DETAILS}})\\n\\nNOTES: {{NOTES}}",
+                    "extensions": {
+                        "position": 1
+                    }
+                },
+                {
+                    "keys": [
+                        "speak",
+                        "talk",
+                        "voice",
+                        "say",
+                        "synonym",
+                        "refer"
+                    ],
+                    "content": "Q: What are synonymous phrases for {{char}}, and what are some speech examples?\\nA: SYNONYMS: {{SYNONYMS}}\\n\\nSPEECH EXAMPLES:\\n{{SPEECH_EXAMPLES}}",
+                    "extensions": {
+                        "position": 1
+                    }
                 }
             ]
         },

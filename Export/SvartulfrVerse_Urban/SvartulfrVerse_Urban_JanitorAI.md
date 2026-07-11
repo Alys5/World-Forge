@@ -25,8 +25,12 @@ JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee0243
 # [Erik]
 
 ## CHARACTER OVERVIEW
+The current setting, context, and the starting premise of the roleplay.
 
 ## APPEARANCE DETAILS
+### CHARACTER OVERVIEW
+
+### APPEARANCE DETAILS
 Full Name, Alias:
 Race:
 Sex/Gender:
@@ -42,7 +46,7 @@ Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
 ↳ Details:
 ↳ Effect:
 
-## STARTING OUTFIT
+### STARTING OUTFIT
 Head:
 Accessories:
 Makeup:
@@ -53,7 +57,44 @@ Legs:
 Shoes:
 Underwear:
 
+### ORIGIN (BACKSTORY)
+
+### RESIDENCE
+
+### CONNECTIONS
+
+### SECRET
+
+### INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
+
+### ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
+
+### PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
+
+### [BEHAVIOR_NOTES]
+
+### [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+### [OTHER_SEXUAL_NOTES]
+
+## STARTING OUTFIT
+Outfit and clothing details are integrated within the Physical Appearance section above.
+
 ## ORIGIN (BACKSTORY)
+Background details are stored in the Lorebook payload.
 
 ## RESIDENCE
 
@@ -70,9 +111,7 @@ Ability: ↳ Details: Ability:
 ↳ Details:
 
 ## PERSONALITY
-Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
-Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
-↳ Effects:
+Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
 
 ## [BEHAVIOR_NOTES]
 
@@ -115,8 +154,12 @@ Milestone 1: ↳ Details:Milestone 2: ↳ Details: Milestone 3:
 # [Jasper]
 
 ## CHARACTER OVERVIEW
+The current setting, context, and the starting premise of the roleplay.
 
 ## APPEARANCE DETAILS
+### CHARACTER OVERVIEW
+
+### APPEARANCE DETAILS
 Full Name, Alias:
 Race:
 Sex/Gender:
@@ -132,7 +175,7 @@ Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
 ↳ Details:
 ↳ Effect:
 
-## STARTING OUTFIT
+### STARTING OUTFIT
 Head:
 Accessories:
 Makeup:
@@ -143,7 +186,44 @@ Legs:
 Shoes:
 Underwear:
 
+### ORIGIN (BACKSTORY)
+
+### RESIDENCE
+
+### CONNECTIONS
+
+### SECRET
+
+### INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
+
+### ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
+
+### PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
+
+### [BEHAVIOR_NOTES]
+
+### [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+### [OTHER_SEXUAL_NOTES]
+
+## STARTING OUTFIT
+Outfit and clothing details are integrated within the Physical Appearance section above.
+
 ## ORIGIN (BACKSTORY)
+Background details are stored in the Lorebook payload.
 
 ## RESIDENCE
 
@@ -160,9 +240,7 @@ Ability: ↳ Details: Ability:
 ↳ Details:
 
 ## PERSONALITY
-Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
-Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
-↳ Effects:
+Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
 
 ## [BEHAVIOR_NOTES]
 
@@ -205,8 +283,12 @@ Milestone 1: ↳ Details:Milestone 2: ↳ Details: Milestone 3:
 # [Malachia]
 
 ## CHARACTER OVERVIEW
+The current setting, context, and the starting premise of the roleplay.
 
 ## APPEARANCE DETAILS
+### CHARACTER OVERVIEW
+
+### APPEARANCE DETAILS
 Full Name, Alias:
 Race:
 Sex/Gender:
@@ -222,7 +304,7 @@ Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
 ↳ Details:
 ↳ Effect:
 
-## STARTING OUTFIT
+### STARTING OUTFIT
 Head:
 Accessories:
 Makeup:
@@ -233,7 +315,44 @@ Legs:
 Shoes:
 Underwear:
 
+### ORIGIN (BACKSTORY)
+
+### RESIDENCE
+
+### CONNECTIONS
+
+### SECRET
+
+### INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
+
+### ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
+
+### PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
+
+### [BEHAVIOR_NOTES]
+
+### [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+### [OTHER_SEXUAL_NOTES]
+
+## STARTING OUTFIT
+Outfit and clothing details are integrated within the Physical Appearance section above.
+
 ## ORIGIN (BACKSTORY)
+Background details are stored in the Lorebook payload.
 
 ## RESIDENCE
 
@@ -250,9 +369,7 @@ Ability: ↳ Details: Ability:
 ↳ Details:
 
 ## PERSONALITY
-Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
-Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
-↳ Effects:
+Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
 
 ## [BEHAVIOR_NOTES]
 
@@ -295,8 +412,12 @@ Milestone 1: ↳ Details:Milestone 2: ↳ Details: Milestone 3:
 # [Noah]
 
 ## CHARACTER OVERVIEW
+The current setting, context, and the starting premise of the roleplay.
 
 ## APPEARANCE DETAILS
+### CHARACTER OVERVIEW
+
+### APPEARANCE DETAILS
 Full Name, Alias:
 Race:
 Sex/Gender:
@@ -312,7 +433,7 @@ Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
 ↳ Details:
 ↳ Effect:
 
-## STARTING OUTFIT
+### STARTING OUTFIT
 Head:
 Accessories:
 Makeup:
@@ -323,7 +444,44 @@ Legs:
 Shoes:
 Underwear:
 
+### ORIGIN (BACKSTORY)
+
+### RESIDENCE
+
+### CONNECTIONS
+
+### SECRET
+
+### INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
+
+### ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
+
+### PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
+
+### [BEHAVIOR_NOTES]
+
+### [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+### [OTHER_SEXUAL_NOTES]
+
+## STARTING OUTFIT
+Outfit and clothing details are integrated within the Physical Appearance section above.
+
 ## ORIGIN (BACKSTORY)
+Background details are stored in the Lorebook payload.
 
 ## RESIDENCE
 
@@ -340,9 +498,7 @@ Ability: ↳ Details: Ability:
 ↳ Details:
 
 ## PERSONALITY
-Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
-Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
-↳ Effects:
+Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
 
 ## [BEHAVIOR_NOTES]
 
