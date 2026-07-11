@@ -364,6 +364,24 @@
                     "extensions": {
                         "position": 1
                     }
+                },
+                {
+                    "keys": [
+                        "species",
+                        "blood",
+                        "shift",
+                        "magic",
+                        "moon",
+                        "feed",
+                        "curse",
+                        "true form",
+                        "power",
+                        "weakness"
+                    ],
+                    "content": "[SPECIES DETAILS: {{SPECIES_CONDENSED_BLOCK}}]\\n<!-- This block should only be filled if the character is a supernatural species. The AI will place the condensed parameter block here. -->",
+                    "extensions": {
+                        "position": 1
+                    }
                 }
             ]
         },

@@ -127,6 +127,8 @@ Item: {{INVENTORY_ITEM_2}}
 
 ## ABILITIES
 
+Species Traits: {{SPECIES_SUMMARY_SHORT}} <!-- e.g. "Vampire. Harmed by sunlight. Needs blood." Keep it under 15 words. Remove if human. -->
+
 Ability: {{ABILITY_1}} <!--e.g. Void magic (beginner)-->
 ↳ Details: {{ABILITY_1_DETAILS}} <!--e.g. Opens portals when sneezes-->
 Ability: {{ABILITY_2}}

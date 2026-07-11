@@ -27,6 +27,7 @@ FIELD GUIDANCE:
   4. Other Sexual Notes.
   5. Premade Story Plan, Previously, and Notes.
   6. Synonyms and Speech Examples.
+  7. SPECIES_DETAILS: If the character is a supernatural species, DO NOT put their full biology in the main description. You MUST fill out the corresponding condensed block (from the ⭐ SUPERNATURAL SPECIES TEMPLATES section below) and place it entirely in the Species_Details Lorebook entry.
   NO arc-specific content. NO timeline events. This is the permanent character substrate.
 
 ---
@@ -112,12 +113,12 @@ Please fill out this exact SillyTavern V3 Character Card JSON structure:
 "spec_version": "3.0",
 "data": {
 "name": "Character Name",
-"description": "Comprehensive details formatted with explicit markdown headers: ### CHARACTER OVERVIEW, ### APPEARANCE DETAILS, ### STARTING OUTFIT, ### ORIGIN (BACKSTORY), ### RESIDENCE, ### CONNECTIONS, ### SECRET, ### INVENTORY, ### ABILITIES, ### PERSONALITY, ### [BEHAVIOR_NOTES], ### [SEXUALITY], ### [OTHER_SEXUAL_NOTES]. Use dense prose. No arc-specific content.",
+"description": "Comprehensive details formatted with explicit markdown headers: ### CHARACTER OVERVIEW, ### APPEARANCE DETAILS, ### STARTING OUTFIT, ### ORIGIN (BACKSTORY), ### RESIDENCE, ### CONNECTIONS, ### SECRET, ### INVENTORY, ### ABILITIES, ### PERSONALITY, ### [BEHAVIOR_NOTES], ### [SEXUALITY], ### [OTHER_SEXUAL_NOTES]. Include a ### SPECIES_DETAILS section only if the character is a supernatural entity; for these, you MUST fill out the corresponding block from the ⭐ SUPERNATURAL SPECIES TEMPLATES section below. Use dense prose. No arc-specific content.",
 "personality": "A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).",
 "scenario": "The current setting, context, and the starting premise of the roleplay. Arc 1 entry point only.",
 "first_mes": "The very first message the character sends to start the roleplay. Establish voice, atmosphere, and situation immediately. Written fully in character.",
 "mes_example": "<START>\n{{user}}: [Example user dialogue — default mode]\n{{char}}: [Character response showing default defensive/surface behavior]\n<START>\n{{user}}: [Example that triggers the shield]\n{{char}}: [Character response showing shield activating]\n<START>\n{{user}}: [Example that reaches the crack — what bypasses the shield]\n{{char}}: [Character response showing the unguarded moment]",
-"creator_notes": "Any out-of-character notes, warnings, or tips for playing with this character. \\n\\nCreator Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5",
+"creator_notes": "Any out-of-character notes, warnings, or tips for playing with this character. \n\nCreator Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5",
 "system_prompt": "{{original}}\n\nMANDATORY. U-Shaped Memory Note: Anchors long-term static identity. Combined permanent token budget < 1,800. Character-specific content only. Identity across full arc journey. Character-specific behavioral mandates with arc-range qualifiers. Character-specific hard prohibitions with arc-range qualifiers. Character-specific trigger-response pairs. Explicit statement that active CHARACTER_STATE lorebook entry is authoritative current register. NO engine instructions — those come from the preset via {{original}}.",
 "post_history_instructions": "{{original}}\n\nMANDATORY. U-Shaped Memory Note: Sits at the end of context. Drives immediate turn-by-turn behavior. Max 150 words after {{original}}. Imperative tone. 2–3 drift-prone CHARACTER-SPECIFIC rules. Arc-agnostic or defer to active CHARACTER_STATE entry. NO engine instructions.",
 "alternate_greetings": [
@@ -169,3 +170,161 @@ For cards that DO declare a per-card style override (typically a Director/Narrat
 Allowed enum values for each axis, the directive line triggers, and the canonical prose templates: `agent_roles/SHARED_Style_Contract_Reference.md` §1 and §3. The Editor validates schema, enum values, and `directives`/enum consistency (Step 5.6).
 
 The `world_forge` extensions namespace is the canonical declaration of per-card style overrides. SillyTavern itself ignores unknown extension keys (per `Notes_On_functionality.md` Section 5.6 V3 card notes), so on stock ST the metadata is inert at runtime. A `world_forge`-aware ST extension reads the metadata and synthesizes the runtime injection — that's the path that turns the metadata into actual model-visible directives.
+
+---
+
+# ⭐ SUPERNATURAL SPECIES TEMPLATES
+
+If the character belongs to one of the following species, you must fill out its corresponding condensed parameter block and place it in the `Species_Details` entry inside `character_book.entries`. Do NOT put this block in the main `description`.
+
+### Werewolf (Adheres to World-Forge LSE Guidelines)
+[NAME: (birth name, alias);  
+SPECIES: werewolf;  
+BLOOD_CLASS: (Divine, Founding, Pureblood, Common, Modified);  
+ABO_DYNAMICS: secondary sex(Enigma, Alpha, Delta, Beta, Omega, Gamma), subgender(Dominant/Submissive if applicable);  
+AGE: (human age), presentation age(typically 13);  
+HEIGHT: human form(ft/in or cm), hybrid form(larger, bipedal);  
+BUILD: human form(lean, dense, scarred), hybrid form(muscle-bulked, digitigrade);  
+SKIN/FUR: human form(standard), hybrid/full form(fur coverage, color: ash, black, russet, silver);  
+EYES: baseline color, shifted glow(color and intensity);  
+SHIFT_CLASSES: Partial(ears/tail/eyes/claws for social cues/intimidation), Hybrid(Species True Form: bipedal, furred, max strength, used for combat/ceremony), Full(quadrupedal wolf, used for pursuit/formations);  
+SCENT: base scent, ABO pheromones(Alpha: aggressive/oppressive, Omega: floral/soothing, Beta: subdued, etc.), stress shifts;  
+PHYSIOLOGY: hyper-acute senses, extreme regeneration, ABO specifics(knotting for Alphas, heat cycles for Omegas, rut for Alphas);  
+COMMAND: (Enigma: absolute command, Alpha: dictates Betas/Omegas, Delta: immune to non-Enigma commands but cannot command);  
+DIET: carnivorous focus, raw-preference;  
+CLOTHING: durable, tearaway, pack-crest accessories;  
+WEAPONS: claws, teeth, brute force, pack coordination;  
+TEMPERAMENT: influenced by ABO (e.g. territorial Alphas, strategic Deltas, empathetic Omegas, stabilizing Betas);  
+SOCIAL STRUCTURE: Pack hierarchy, role matches skills, lone wolf(exiled);  
+BELIEFS: Faith of Fenris(optional), Firstborn legends;  
+TABOOS: rejecting shift, defying legitimate Command, harming pups;  
+WEAKNESSES: silver(burning, poisoning), wolfsbane, feral insticts under extreme stress]
+
+### Vampire
+[NAME: (true name, current alias, or bloodline title);  
+SPECIES: vampire(subtype: nosferatu, noble-born, thrall-forged, revenant, feral, daywalker);  
+SEX: (biological sex);  
+GENDER: (gender identity);  
+AGE: (turned age), apparent age, total lifespan(immortal or degeneration-prone);  
+HEIGHT: (in ft/in or cm);  
+BUILD: emaciated, statuesque, predatory lean, corpse-thickened, or aesthetically preserved;  
+SKIN: cold, pale, bloodless, ash-gray, moonlit, or marble-smooth;  
+EYES: color(red, gold, black, void, blood-haloed), vision(low-light adapted, motion-predictive);  
+HAIR: death-preserved or modern-altered, color(original vs. glamoured);  
+FANGS: retractable or permanent, upper/lower, venomous(optional);  
+NAILS: clawlike, lacquered, grow under stress;  
+MOVEMENT: elegant, stuttering speed, still as stone when observing, predatory grace;  
+SCENT: iron, rosewater, old blood, crypt-damp, incense, perfume masking death;  
+VOICE: low resonance, mesmer-glide, echoes of accent from turning era, oath-woven commands;  
+SPEECH: antiquated or sharpened modern diction, seductive or surgical;  
+PHYSIOLOGY: circulatory(dead or minimal), respiration(optional, mimicked), thermoregulation(absent), blood dependence(required volume, interval), wound healing(rapid, slows under starvation), digestive system(blood only or optional solids);  
+SENSES: acute hearing(heartbeat detection), smell(blood type, pheromone shifts), vision(low light, aura perception);  
+LIMITATIONS: sunlight(sensitivity scale: burn, slow-death, blindness, none), religious symbols(if cursed variant), invitation rules(optional), running water, fire;  
+DIET: human blood, animal fallback (efficacy varies), psychic/emotional draining (succubus-like variants), artificial plasma (modern transhuman variants);  
+CLOTHING: era-tethered formality, tailored suits, shrouds, armor of bone or silk, functional glamours;  
+WEAPONS: fangs, claws, mesmerism, blood-manipulation, shadowmeld, blade mastery;  
+MAGIC: glamour, shadowstep, blood-calling, necromancy, stormcraft, mirror-passing;  
+TEMPERAMENT: detached, obsessive, strategic, mournful, wrathful under provocation;  
+SOCIAL STRUCTURE: solitary predator, coven/court-bound, bloodline-fealty, masquerade enforcer, feral rogue;  
+BELIEFS: blood as sacrament, death as transformation, memory as inheritance, time as a weapon;  
+CULTURAL TRAITS: turning rituals, blood-oath fealty, coffin-burial cycles, mirror-truth trials, feeding etiquette, name-binding law;  
+TABOOS: feeding on kin, public transformation, turning without permission, reflection denial;  
+TRIGGERS: heartbeat of a former life, scent of betrayal, broken oath, scent of fear or defiance;  
+PREFERENCES: dusklight, old architecture, stillness, unspoken rooms, silk-lined enclosures, blood served warm;  
+WEAKNESSES: sunlight, iron (optional folkloric), religious symbols (if faith-bonded), starvation hallucinations, obsessive fixations, compulsions]
+
+### Naga
+[NAME: (full name);  
+SPECIES: naga(nagi, serpent-folk, lamia variant);  
+SEX: (biological sex);  
+GENDER: (gender identity);  
+AGE: (years, or equivalent if lifespan differs);  
+HEIGHT: (overall length), torso height(human-equivalent portion);  
+WEIGHT: (optional);  
+BODY TYPE: upper(humanoid, muscular/slender/etc.), lower(serpentine, species: python/cobra/viper/etc.);  
+SCALE COLOR: (primary), markings(stripes, patterns, underbelly);  
+EYE COLOR: (slit-pupiled, color), eyelids(nictitating membrane, no lashes);  
+SKIN (HUMANOID PORTION): (texture, tone, optional markings);  
+LIMBS: arms(two), legs(none), tail(prehensile, dominant in locomotion);  
+MOVEMENT: locomotion(slithering, vertical coil elevation), speed(burst vs. endurance), terrain(preferred terrain types);  
+VOICE: sibilant, resonance(human-like, echoing, inhuman timbre);  
+LANGUAGES: (spoken languages), species dialect(hissing, pheromone-laced, tongue-clicks);  
+SENSES: vision(daylight, infrared/night vision), smell(Jacobson’s organ), heat detection(pit organs), touch scales(sensitive or armored);  
+DIET: (carnivorous, blood-fed, egg-based, etc.), feeding(method: constriction, venom, fang-injection);  
+ANATOMY NOTES: lungs(bi-lobed), heart(cold-blooded/variant), bones(flexible spine), genitalia(retractable hemipenes/cloacae/etc.);  
+CLOTHING: upper(greaves, armor, draping cloth), lower(none, scale adornments);  
+WEAPONS: fangs(venomous?), tail(strike force), hands(grappling, armed or clawed);  
+MAGIC: (optional, if innate), resistance(cold/hypnosis/etc.);  
+PSYCHOLOGY: temperament(cold-blooded, calculating/emotive?), territoriality(level), mating behavior(courtship rites, seasonal urges);  
+SOCIAL STRUCTURE: solitary/tribal/clan-based/cultist, role within (title/status);  
+BELIEFS: (serpent deity, reincarnation, domination-based hierarchy);  
+CULTURAL TRAITS: communication(non-verbal cues: tongue-flicking, tail-thumps), taboos(interbreeding, eye contact, etc.);  
+SCENT: musk, scale oil, (optional pheromone);  
+TRIGGERS: (optional—touch aversion, sudden cold, disrespect rituals);  
+PREFERENCES: habitat(underground, rainforest, desert), aesthetic(jewelry, hoards, silk, bones);  
+WEAKNESSES: temperature sensitivity, limb-based combat, social distrust]
+
+### Succubus
+[NAME: (true name, summoned alias, title);  
+SPECIES: succubus(subtype: dream-feeder, pact-bound, carnal warden, parasitic shadow, courtless);  
+SEX: (biological sex, default or fluid);  
+GENDER: (gender identity, may shift or mask);  
+AGE: (chronological), time since emergence(summoning, awakening, exile);  
+HEIGHT: (variable or fixed—note if illusioned);  
+BUILD: tailored to target (hourglass, serpentine, androgynous, exaggerated), latent form(bone-thin, horned, winged, monstrous);  
+SKIN: hue(flushed, violet, gray, black-red), texture(slick, silken, scaled, burning cold), pheromone-active?;  
+EYES: luminous(color: amber, void-black, glowing rose), pupil shape(serpentine, absent, haloed), gaze effects(hypnosis, compulsion);  
+HAIR: shadow-thick, sin-colored, flame-slick, illusion-tendrils;  
+HORNS: optional, shape(crown, curling ram, antlered), sensory or symbolic;  
+WINGS: batlike, ephemeral flame, oil-slick membranes, astral or illusionary;  
+TAIL: yes/no, function(flirtation, anchor, feeding aid, weapon);  
+VOICE: layered seduction, vocal mimicry, dream-echo, orgasmic distortion;  
+SCENT: warm skin, incense, pheromone-rich musk, bloodrose, vanilla over decay, ozone aftertouch;  
+PHYSIOLOGY: warm-blooded or adaptive, blood(laced with narcotic, black ichor, mercury-thick), temperature(radiates arousal or chill), regeneration through contact or climax;  
+SENSES: touch-mapped empathy, emotional field perception, soul heat-tracking, aura detection;  
+MOVEMENT: hypnotic, liquid glide, stalking dance, unnatural poise;  
+DIET: sexual energy, soul fragments, dreams, shame, obsession, or post-climax essence;  
+FEEDING METHOD: direct contact, dream invasion, pact tether, ritual coupling, voyeurism siphon;  
+TRANSFORMATION: glamours for gender, race, species, or erotic archetype;  
+CLOTHING: illusion-borne, lacebound shadow, flesh-armor, tailored temptation;  
+WEAPONS: kissbite(flesh-mark binding), blood-pact claws, emotion leech, climax-induced paralysis, orgasmic dreamloop trap;  
+MAGIC: lustbinding, dreamwalking, pactcraft, emotional rerouting, mimicry, shapeshifting, trauma reanimation;  
+TEMPERAMENT: patient, calculating, playful, obsessive, brutal under rejection, fragile beneath arrogance;  
+SOCIAL STRUCTURE: infernal court, rogue, contract-bound to mortal, hierarch of pleasure-wars, self-crowned queen of ruins;  
+BELIEFS: desire is truth, pleasure erodes lies, names are power, love is control;  
+CULTURAL TRAITS: pact tattoos, climax memory keeping, ritual mirror duels, binding through kisses or scars, dream horde hoarding;  
+TABOOS: genuine love unspoken, feeding without consent(if lawful-aligned), false climax, pactbreaking;  
+TRIGGERS: name spoken in ritual, betrayal by host, unexpected affection, mirror trauma;  
+PREFERENCES: silk bedding, confessionals, guilty minds, broken champions, exhausted lovers, candle-warm rooms;  
+WEAKNESSES: name-binding, celibate wards, iron purity, anti-seduction mantras, rejection by will alone]
+
+### God
+[NAME: (divine name, true name, forgotten epithet, mortal-conferred title);  
+SPECIES: god(subtype: primordial, ascended mortal, cultural deity, pantheon-bound, forgotten god, false god, cosmic constant);  
+SEX: (none, all, fixed, fluid, culturally assigned);  
+GENDER: (none, reflective, worship-dependent, self-defined archetype);  
+AGE: (timeless, epoch-born, chronologically bound to a cycle, pre-universe);  
+HEIGHT: (in ft/in or as concept magnitude—e.g., horizon-spanning, hand-sized, formless);  
+FORM: humanoid, animal-headed, shifting, elemental embodiment, void construct, idol-anchored, perception-altered per viewer;  
+FACE: singular, faceless, multi-faced, mirrored, symbol-marked;  
+EYES: star-clusters, eclipse-rings, all-seeing, black voids, flame or shadow;  
+SKIN: stone, light, bark, metal, skin of scripture, storm-cloud, golden sheen, none;  
+LIMBS: standard, exaggerated, extra arms/wings, serpents for fingers, infinite, absent;  
+VOICE: thunder-layered, wordless command, language of all listeners, choral, whisper behind thoughts;  
+SCENT: sacred ash, incense, lightning ozone, no scent, blood and myrrh, nostalgia;  
+MANIFESTATION: avatar form, dream presence, symbolic object, storm-front silhouette, encoded prayer structure;  
+MOVEMENT: telepresent, omnipresent, myth-cycle locked, bound to shrines or names, eruptive arrival;  
+DOMAIN: war, love, death, harvest, time, trickery, memory, chaos, judgment, flame, silence, the void, forgotten names, invention, language, decay, fertility, etc.;  
+POWER SOURCE: worship, ancestral bloodlines, divine law, belief systems, forgotten names, forced devotion, natural cycles, constructed myth;  
+MAGIC/ABILITY: miracle-granting, time-loop manipulation, divine smiting, curse-weaving, resurrection, entropy denial, revelation/inspiration, fate rewriting;  
+LIMITATIONS: belief erosion, name corruption, cosmic law, divine pacts, anchor destruction, mortal rebellion, pantheon restriction;  
+CLOTHING: ceremonial robes, bone drapery, constellation-woven cloak, body-as-symbol, none needed;  
+WEAPONS: divine staff, thunderbolt, blood-flame, memory blade, word of erasure, chain of worship;  
+TEMPERAMENT: aloof, wrathful, cryptically compassionate, joy-drunk, ritualistic, unfathomable, mechanically detached, obsessive over chosen few;  
+SOCIAL STRUCTURE: pantheon-aligned, solitary sovereign, one of many masks, exiled/fallen, collective hive-god, parasite upon belief;  
+BELIEFS: order must be enforced, prayer binds fate, chaos is sacred, flesh is illusion, sacrifice affirms truth, time is heresy, silence is law;  
+CULTURAL TRAITS: receives offerings, demands ritual language, appears only in mirrored forms, punishes irreverence, favors the firstborn, speaks through dreams or blood;  
+TABOOS: speaking true name, direct contact by mortals, betrayal by priesthood, refusal of tribute, altered scripture;  
+TRIGGERS: forgotten by followers, icon defacement, oath broken in god’s name, sacred animal killed, rival god's invocation;  
+PREFERENCES: gold, incense, silence before dawn, blood rites, psalms, sculpted idols, absolute obedience, philosophical sacrifice;  
+WEAKNESSES: disbelief spreading, death of last follower, sealed shrine, divine weapon, paradox summoning, memory erasure]

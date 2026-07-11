@@ -406,6 +406,16 @@ const dynamicLore = [
 		personality:
 			' [NOTES: <Architect inserts notes here>]',
 	},
+	// L_SPECIES: Supernatural Biology (Use Case 1: Single-Char Sandbox / Arc, Use Case 2: Multi-Char Sandbox / Arc)
+	{
+		keywords: ['species', 'blood', 'shift', 'magic', 'moon', 'feed', 'curse', 'true form', 'power', 'weakness'],
+		priority: 5,
+		// TAG GATES:
+		// - If Arc Mode: Uncomment 'requires: { any: ["arc_2", "arc_3"] }' if true form is locked until later arcs.
+		// - If Multi-Char: The compiler will inject 'nameBlock' or specific triggers to ensure the biology only applies to the correct character.
+		personality:
+			' [SPECIES DETAILS: <Architect inserts condensed supernatural block here. Remove this entry if character is human.>]',
+	},
 
 	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
 ];

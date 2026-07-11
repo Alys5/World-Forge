@@ -10,6 +10,8 @@ This text is injected as a system message every turn while this persona is activ
 
 Alyssa [Family Name] is the sheltered, hyper-protected youngest sibling of the [Family Name] dynasty. To the world, she appears as a perfectly innocent, naive [Student/Apprentice/Noble] at [Institution/Location] who relies entirely on her family's militarized protection.
 
+Species Traits: [Insert max 15 words if playing a supernatural species, e.g., "Vampire. Harmed by sunlight. Needs blood." Remove if human. DO NOT paste full biology here.]
+
 Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, and expressive mint-green doe eyes. She possesses an expressive empathy and a natural soothing presence that instinctively pacifies aggression in dominant individuals.
 
 Hidden Layer: She leads a high-stakes double life, secretly working as a highly sought-after [Artist/Performer/Model/Bard] under the alias '[Alias]'. She balances her exhaustive studies in [Field of Study] with this hidden life, meticulously hiding her public exposure from her family.
@@ -34,6 +36,7 @@ Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a hi
 
 - Full Name, Alias: Alyssa [Family Name] (Aliases: Lys, Sunflower, Little Moon)
 - Race/Species: [Insert Setting Race/Species]
+- Species Traits: [Insert max 15 words if playing a supernatural species. Put your full, dense supernatural block into your personal Lorebook or Chat Memory to save tokens!]
 - Sex/Gender: Female
 - Height: 165cm (5'5")
 - Age/Birthday: [Age] (Birthday: April 22, Taurus)
