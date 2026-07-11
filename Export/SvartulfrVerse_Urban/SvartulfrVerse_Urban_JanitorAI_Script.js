@@ -390,7 +390,7 @@ const dynamicLore = [
 		keywords: ['talk', 'say', 'speak', 'voice', 'reply', 'answer', 'tell'],
 		priority: 3,
 		personality:
-			' [Speech Examples: <Architect inserts situational speech examples here>]',',
+			' [Speech Examples: <Architect inserts situational speech examples here>]',
 	},
 	// L_SYNONYMS: Sinonimi del personaggio (Opzionale)
 	{

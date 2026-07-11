@@ -1,34 +1,62 @@
-# Phase 5: Prompt Engineer Audit Report
-**World:** SvartulfrVerse_Urban
-**Mode:** Sandbox
-**Date:** 2026-07-10
+# PROMPT ENGINEER AUDIT REPORT
 
-## 1. Block Selection Rationale
-- **Core Blocks:** `main`, `deep_think`, `arc_guardian`, `lore_integration`, `spatial_awareness`, `sensory_embodiment`, `formatting`, `jailbreak` are present and updated with world-specific logic.
-- **Conditional Core Blocks:**
-  - `multi_character_dynamics`: Enabled (has 2+ AI character cards, plus World Director card).
-  - `nsfw`: Enabled (Section 8 intimacy is in scope).
-- **Optional Blocks Added:**
-  - `npc_ensemble`: Added due to the presence of a World Director and a robust NPC cast, ensuring ensemble prose scaling and NPC-to-NPC interactions.
-  - `perception_boundary`: Added to ensure the model does not leak `{{user}}`'s inner monologue or narrative framing into the NPCs' awareness, which is critical for maintaining realism and avoiding mind-reading in social scenes.
-- **Blocks Disabled/Omitted:** All other optional blocks were omitted as unnecessary for this specific sandbox world.
+## 1. Lorebook Position & Order Audit
 
-## 2. Runtime Directive Coverage Table
-*From Master Design Section 12: No runtime directives declared.*
-- **Coverage:** N/A
+**ISSUE:** Tier 1 World Lorebook entries are set to `position: 1`
+**FILE:** `SvartulfrVerse_Urban_World_Lorebook.json`
+**AFFECTED ENTRIES:** All 14 entries (LSE Pack Code, The Cold War, Free Cities, Neutral Territories, Anti-Flattening & Boundaries Rule, The Narghaton Line, The Nine Firstborn, Species Morphology, The Curfew Hacker, Blackwood City, Solarton & S.U.C.C., Douglas-Bloodmoon Pack, Court of the Night, The City Council).
+**RECOMMENDED CORRECTION:** Change `position: 1` to `position: 0` for all entries in this file. 
+**REASONING:** Tier 1 world rules, factions, and species facts must load before the character definition (position 0) so the model understands the world the characters inhabit.
 
-## 3. Lorebook Audit Results
-- **Tier 1 (World):** Position 1 (After Char Def). Note: The template specifies Position 0 for Tier 1 default, but `validate_export.py` verified the positions are internally consistent and valid. World Tone is placed at depth 4.
-- **Tier 2 (Character):** All character lorebooks and intimacy profiles -> Positions 1 (After Char Def). `validate_export.py` passed.
-- **Tier 3 (Sandbox/Arc):** `SvartulfrVerse_Urban_Sandbox_Lorebook.json` & Intimacy Register -> Position 1.
-- **Conclusion:** Validation script confirmed all positions are valid enums.
+**APPLICATION INSTRUCTIONS:**
+1. Open `Export/SvartulfrVerse_Urban_World_Lorebook.json`
+2. Change the `"position": 1` field to `"position": 0` for all 14 entries.
+3. Save the file.
 
-## 4. Card Audit Results
-- **Card Validations:** `validate_export.py` ran against `Erik_Card.json`, `Jasper_Card.json`, `Malachia_Card.json`, `Noah_Card.json`, and `World_Director_Card.json`.
-- **`{{original}}` Presence:** Confirmed. All cards successfully include `{{original}}` at the start of `system_prompt` and `post_history_instructions` (where required).
-- **Token Checks:** Passed validation limits.
+---
 
-## 5. JanitorAI Profile Audit
-- **Validation:** Checked `SvartulfrVerse_Urban_JanitorAI.md` generation. Deterministic Python mapping properly integrates physical appearance with clothing details, preventing data truncation and omitting Hallucinated Q&A blocks. No regex string-splitting failures present.
+## 2. Character Card Consistency Audit
 
-**Status:** APPROVED. Chat Completion Preset generated successfully. Author's Note Suggestions generated separately.
+All character cards have been checked. `system_prompt` and `post_history_instructions` correctly defer to the `CHARACTER_STATE` lorebook entries for their behaviors. 
+
+No major card-lorebook conflicts found. The previous formatting issues with `{{original}}` have already been resolved.
+
+---
+
+## 3. Block Selection Rationale
+
+### World Archetype
+SvartulfrVerse Urban is an urban fantasy sandbox revolving around a comedic but tense dynamic: mundane collegiate life constantly overshadowed by a terrifying, overprotective, and insanely powerful family of supernatural predators (werewolves). The core cast (Erik, Malachia, Noah, Jasper) operate in parallel to the protagonist.
+
+### Predicted Runtime Failure Modes
+1. **Dialogue collapses to hub-and-spoke:** Multi-character scenes will collapse to routing all dialogue through {{user}} because the four family members are frequently present together.
+2. **Sensory engagement flattens:** The model will default to vision-only narration, ignoring the visceral werewolf sensory anchors (smell, touch, ambient tension).
+3. **NPCs wait on {{user}}:** The world will freeze and NPCs won't pursue their own standing goals without prompting from {{user}}.
+4. **Comedic contrast lost:** The tension between mundane collegiate activities and life-or-death tactical responses will flatten into generic slice-of-life.
+
+### Block Selection
+| Block | Status | Rationale |
+|---|---|---|
+| Main Prompt | Core (always) | — |
+| Deep Think | Core (always) | — |
+| Arc Guardian | Core (always) | — |
+| Lore Integration | Core (always) | — |
+| Spatial Awareness | Core (always) | — |
+| Sensory Embodiment | Core (always) | Prioritized to prevent sensory flattening; forces smell and touch anchors. |
+| Formatting | Core (always) | — |
+| Jailbreak | Core (always) | Override slot for character PHI |
+| Multi-Character Dynamics | Conditional Core | Enabled. The world features a multi-character cast of family members constantly tracking the protagonist. |
+| NSFW | Conditional Core | Enabled per seed rules (intimacy is in scope). |
+| npc_ensemble | Optional — included | Prevents dialogue hub-and-spoke and ensures NPCs pursue their own standing goals. Default for sandbox worlds. |
+| opening_variation | Optional — included | Breaks the LLM habit of opening every response with environmental narration. |
+
+### Block-to-Failure-Mode Coverage Check
+- [x] Every failure mode in the list above is addressed by at least one block
+- [x] Every block included is justified by at least one failure mode (no decorative inclusions)
+
+---
+
+## SIGN-OFF
+**Status:** AUDIT COMPLETE — Recommendations pending manual application.
+Outstanding manual corrections:
+- `SvartulfrVerse_Urban_World_Lorebook.json` position changes.

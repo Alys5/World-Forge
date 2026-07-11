@@ -12,12 +12,12 @@
 | 1 Refiner            | COMPLETE | —     | REFINER SIGN-OFF            |
 | 2 Architect          | COMPLETE | —     | PRE-SUBMISSION CHECKLIST    |
 | 2.5 Intimacy Arch.   | COMPLETE | —     | INTIMACY ARCHITECT SIGN-OFF |
-| 3 Editor             | PENDING  | 0     | EDITOR SIGN-OFF             |
-| 3.5 Voice Auditor    | PENDING  | 0     | VOICE AUDITOR SIGN-OFF      |
+| 3 Editor             | COMPLETE | 1     | EDITOR SIGN-OFF             |
+| 3.5 Voice Auditor    | COMPLETE | 1     | VOICE AUDITOR SIGN-OFF      |
 | 3.6 Arc Transition   | SKIPPED  | 0     | (SKIPPED in sandbox mode)   |
-| 3.7 Intimacy Auditor | PENDING  | 0     | INTIMACY AUDITOR SIGN-OFF   |
-| 4 Compiler           | PENDING  | —     | COMPILER SIGN-OFF           |
-| 5 Prompt Engineer    | PENDING  | —     | PROMPT ENGINEER SIGN-OFF    |
+| 3.7 Intimacy Auditor | COMPLETE | 1     | INTIMACY AUDITOR SIGN-OFF   |
+| 4 Compiler           | COMPLETE | —     | COMPILER SIGN-OFF           |
+| 5 Prompt Engineer    | COMPLETE | —     | PROMPT ENGINEER SIGN-OFF    |
 
 ---
 

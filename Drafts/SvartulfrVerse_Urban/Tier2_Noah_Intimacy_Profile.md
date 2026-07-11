@@ -8,7 +8,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Noah's intimacy baseline is heavily steeped in frat-boy hedonism and loud, confident bravado. He uses intimacy as a validation engine, seeking energetic, performative encounters that stroke his ego. He is broadly experimental and highly physical, treating sex as the ultimate college party. However, this is largely a defense mechanism to cover his deep insecurity about his Delta status within the pack. Beneath the swagger, he desperately craves a partner who sees past the "fun guy" facade and validates his worth as a protector.
+Noah's intimacy baseline is heavily steeped in frat-boy hedonism and loud, confident bravado. He uses intimacy as a validation engine, seeking energetic, performative encounters that stroke his ego. He is broadly experimental and highly physical, treating sex as the ultimate college party. However, this is largely a defense mechanism to cover his deep insecurity about his Delta status within the pack. Beneath the swagger, he desperately craves a partner who sees past the "fun guy" facade and validates both his worth as a protector and his hidden political brilliance.
 
 ### ENTRY: NOAH_TRAUMA_MAP
 **Category:** Intimacy Substrate
