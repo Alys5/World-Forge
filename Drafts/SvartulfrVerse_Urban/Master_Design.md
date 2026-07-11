@@ -4,21 +4,21 @@
 
 - world_mode: sandbox
 - intimacy_in_scope: true
-- current_phase: 2
+- current_phase: 4
 - status: PENDING
 
-| Phase                | Status  | Round | Sign-off anchor             |
-| -------------------- | ------- | ----- | --------------------------- |
-| 1 Refiner            | COMPLETE| —     | REFINER SIGN-OFF            |
-| 2 Architect          | PENDING | —     | PRE-SUBMISSION CHECKLIST    |
-| 2.5 Intimacy Arch.   | PENDING | —     | INTIMACY ARCHITECT SIGN-OFF |
-| 3 Editor             | PENDING | —     | EDITOR SIGN-OFF             |
-| 3.5 Voice Auditor    | PENDING | —     | VOICE AUDITOR SIGN-OFF      |
-| 3.6 Arc Transition   | SKIPPED | 0     | (SKIPPED in sandbox mode)   |
-| 3.7 Intimacy Auditor | PENDING | —     | INTIMACY AUDITOR SIGN-OFF   |
-| 4 Compiler           | PENDING | —     | COMPILER SIGN-OFF           |
-| 5 Prompt Engineer    | PENDING | —     | PROMPT ENGINEER SIGN-OFF    |
-| 6 Janitor Builder    | PENDING | —     | JANITOR BUILDER SIGN-OFF    |
+| Phase                | Status   | Round | Sign-off anchor             |
+| -------------------- | -------- | ----- | --------------------------- |
+| 1 Refiner            | COMPLETE | —     | REFINER SIGN-OFF            |
+| 2 Architect          | COMPLETE | —     | PRE-SUBMISSION CHECKLIST    |
+| 2.5 Intimacy Arch.   | COMPLETE | —     | INTIMACY ARCHITECT SIGN-OFF |
+| 3 Editor             | COMPLETE | —     | EDITOR SIGN-OFF             |
+| 3.5 Voice Auditor    | COMPLETE | —     | VOICE AUDITOR SIGN-OFF      |
+| 3.6 Arc Transition   | SKIPPED  | 0     | (SKIPPED in sandbox mode)   |
+| 3.7 Intimacy Auditor | COMPLETE | —     | INTIMACY AUDITOR SIGN-OFF   |
+| 4 Compiler           | COMPLETE | —     | COMPILER SIGN-OFF           |
+| 5 Prompt Engineer    | PENDING  | —     | PROMPT ENGINEER SIGN-OFF    |
+| 6 Janitor Builder    | PENDING  | —     | JANITOR BUILDER SIGN-OFF    |
 
 ## Revision Log
 
@@ -30,10 +30,12 @@
 **Mode:** freeform
 
 **User intent (verbatim):**
+
 > SvartulfrVerse geography replaces real-world California: Solarton = Santa Barbara/Goleta (sunny, exclusive coastal college town). Blackwood Forest = Los Padres National Forest (vast, rugged, wild territory north/inland of Solarton). Blackwood = nestled at the edge of this forest. Hex Valley = Santa Ynez Valley (transitional canyon zone). DCC Tower = Los Angeles. The 90-mile split down the 101 Freeway is weaponized: Angelo schedules Solarton castings when Erik is locked in LA duties. Erik gets trapped in SoCal gridlock, scrambling Malachia and Noah (rapid-response). Logan stays out of LA chaos.
 
 **Section 1 / 11 impact:** None.
 **Confirmed cascade (Refiner-mini R1):**
+
 - Master Design sections to update: Section 3 (Locations: Solarton, Blackwood Forest, Blackwood, Hex Valley, DCC Tower), Section 7 (Erik), Section 8 (Angelo, Logan).
 - Drafts files to modify: `Tier1_World_Entries.md`, `Card_Erik.md`, `Card_Angelo.md`, `Card_Logan.md` (NPC logic).
 - Export files to recompile: `SvartulfrVerse_EN_World_Lorebook.json`, `SvartulfrVerse_EN_Erik_Lorebook.json`, `SvartulfrVerse_EN_NPC_Roster_Lorebook.json`, `Erik_Card.json`.
@@ -42,12 +44,14 @@
 **Phases skipped:** Intimacy Architect, Editor, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer, Janitor Builder
 
 **Canonical merges applied:**
+
 - Section 3: Added geographic overlays for Solarton (Santa Barbara), Blackwood Forest (Los Padres), Hex Valley (Santa Ynez), and DCC Tower (LA).
 - Section 7 (Erik): Updated Standing Goal to include getting trapped in 101 Freeway gridlock and deploying Malachia/Noah.
 - Section 8 (Angelo): Updated Standing Goal to specify exploiting the 90-mile LA/Solarton split.
 - Section 8 (Logan): Updated Standing Goal to specify staying out of LA corporate chaos.
 
 **Refiner-mini sign-off (Phase R1):**
+
 - [x] Section 1 / 11 bright-line re-verified (no late hits)
 - [x] Confirmed cascade is complete
 - [x] All canonical Master Design merges applied with inline R3 markers
@@ -59,6 +63,7 @@
 **Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
 
 **Architect-mini sign-off (Phase R2):**
+
 - [x] Every file in the cascade has been touched as specified
 - [x] No file outside the cascade has been touched
 - [x] All parent foundational rules upheld in new content ({{original}}, no engine content in cards, Position Rationale, ARC_STATE structure, style override metadata-only, cross-arc consistency)
@@ -68,6 +73,133 @@
 - [x] No new content references entries/characters/arcs that don't exist (or that aren't being created in this revision)
 
 **Status: R2_COMPLETE — Proceed to Phase R3 (mini-Editor)**
+
+**Intimacy-Architect-mini sign-off (Phase R2.5):**
+
+- [x] Every intimacy file in the cascade has been touched as specified (N/A)
+- [x] No card content modified (cards are Architect-mini's domain)
+- [x] Substrate vs Register separation preserved (no substrate duplication in registers)
+- [x] All cross-references to existing intimacy files are consistent
+- [x] No function/substrate contradictions introduced
+- [x] Inline revision markers placed at every change site
+- [x] World's intimate prose register inherited (vocabulary, dwell pattern, voice)
+
+**Status: R2.5_COMPLETE — Proceed to Phase R3 (mini-Editor)**
+
+**Editor-mini sign-off (Phase R3, Round 1):**
+
+### Touched Files Audited
+
+- `Tier1_World_Entries.md`
+- `Card_Erik.md`
+- `Tier2_NPC_Principal_Entries.md`
+- `Tier3_Sandbox_Entries.md`
+
+### Hard-Fail Rules (parent rules 1–10)
+
+- [x] {{original}} present on touched cards (N/A, Instructions untouched)
+- [x] No engine contamination in touched cards
+- [x] No <style_override> tag in card text fields
+- [x] Position Rationale present and meaningful on every new entry
+- [x] ARC_STATE two-subsection structure preserved on any touched ARC_STATE (N/A)
+- [x] No tier contamination in touched entries
+- [x] All cascade files present (none missing)
+- [x] Override metadata schema valid (where applicable) (N/A)
+- [x] Override rationales structural (where applicable) (N/A)
+- [x] Cross-arc consistency preserved (N/A)
+
+### Cross-Reference Integrity
+
+- [x] Touched files do not contradict untouched files
+- [x] Master Design canonical sections match draft content for touched areas
+- [x] Inline revision markers present at every change site
+- [x] No stacked/duplicated content — every in-place edit replaced its target; no near-duplicate variants of one passage left in any touched field/entry (Step R3.1b)
+- [x] No silent scope expansion (no edits outside the cascade)
+
+### Layer 4 (when applicable)
+
+- [x] Tier 2 Intimacy Profile contains no arc-specific content (N/A)
+- [x] Tier 3 Intimacy Register does not duplicate substrate (N/A)
+- [x] Function/substrate contradictions absent (N/A)
+
+**Status: R3_COMPLETE — Proceed to Phase R4 (mini-Compiler)**
+
+**Voice-Auditor-mini sign-off (Phase R3.5):**
+
+### Audit Scope
+
+- Affected character(s): Erik, Angelo, Logan, Wulfnic
+- Affected arc(s): N/A
+- Evidence test cases: 1
+- Section 7b test cases: 4
+
+### Findings
+
+- Evidence reproduction: 1 RESOLVED
+- Trigger-response fidelity: PASS
+- Voice distinctiveness: PASS
+- Arc register integrity (where applicable): N/A
+- Multi-axis bleed (where applicable): N/A
+- Voice continuity (for calibration scopes): PASS
+
+### Severity Summary
+
+- Critical: 0
+- High: 0
+- Medium: 0
+
+**Status: R3.5_COMPLETE — Proceed to Phase R4 (mini-Compiler)**
+
+**Intimacy-Auditor-mini sign-off (Phase R3.7):**
+_(Skipped: No intimacy scopes were triggered by Revisions R2 or R3. The cascade is entirely non-intimate.)_
+
+**Status: R3.7_SKIPPED — Proceed to Phase R4 (mini-Compiler)**
+
+**Compiler-mini sign-off (Phase R4):**
+
+### Files Compiled
+- `SvartulfrVerse_Urban_World_Lorebook.json` (3 modified, 1 new, 11 preserved)
+- `SvartulfrVerse_Urban_NPC_Principal_Lorebook.json` (3 modified, 7 preserved)
+- `SvartulfrVerse_Urban_Sandbox_Lorebook.json` (1 modified, 4 preserved)
+- `Erik_Card.json`
+
+### Pre-Save Guards (parent rules 1–12)
+- [x] JSON parses on every written file
+- [x] {{original}} preserved on every touched card
+- [x] No metadata fields outside schema
+- [x] data.extensions.depth_prompt present on every card
+- [x] data.extensions.world_forge.style_override present on every card
+- [x] All required sign-offs verified
+- [x] Position fields correct
+- [x] All entries have Position Rationale
+- [x] Every entry's object key equals String(uid) — preserved and new UIDs alike
+- [x] Entry fields camelCase per ST schema — no snake_case aliases or legacy characterFilter pair
+- [x] No inline revision marker (`<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->`) survives in any JSON value
+- [x] Every written file is UTF-8 — non-ASCII intact, no mojibake, not authored through PowerShell
+
+### UID Continuity
+- [x] Existing entries keep their UIDs across all touched lorebooks
+- [x] New entries assigned next-free UIDs without collision
+- [x] No entries deleted that weren't explicitly in the cascade as deletions
+
+### NPC Memory Manifest (parent Step 7.7)
+- [x] Every rewritten lorebook that had a `[[NPC_MANIFEST]]` entry has it regenerated (N/A)
+- [x] Any existing `[[WORLD_CALENDAR]]` carrier preserved through a World-lorebook rewrite
+- [x] Any existing `[[DICE_TABLES]]` carrier preserved through a World-lorebook rewrite
+- [x] No manifest, calendar, or dice carrier added to a lorebook that never had one
+- [x] Slug `id`s compared against the prior export; no renames detected
+
+### User Report
+- [x] "What Changes When" report produced
+- [x] Risk assessment included for running chats
+
+### Revision Manifest
+- [x] Export/REVISED_FILES.md created (first revision) or updated (subsequent)
+- [x] Every file touched this revision has an upserted row
+- [x] Files touched in prior revisions retain their rows (manifest is cumulative)
+- [x] No Export file renamed to mark it revised; no in-JSON revision field added
+
+**Status: R4_COMPLETE — Proceed to Phase R5 (mini-Prompt-Engineer)**
 
 ---
 
@@ -79,10 +211,12 @@
 **Mode:** freeform
 
 **User intent (verbatim):**
+
 > Angelo Moreno's deliberate scheduling is the canonical primary escalation driver for the Family Wanted Level. Wulfnic and Angelo have a 300-year-old Versailles frenemy dynamic. Wulfnic intervenes unprompted to block Angelo. Angelo is recycling the exact strategy that failed on Nixara 30 years ago because she was a shield maiden.
 
 **Section 1 / 11 impact:** None.
 **Confirmed cascade (Refiner-mini R1):**
+
 - Master Design sections to update: Section 1 (Nixara in Rule 2), Section 8 (Wulfnic and Angelo), Section 9B (Family Wanted Level).
 - Drafts files to modify: `Tier1_World_Entries.md`, `Tier3_Sandbox_Entries.md`. (Angelo and Wulfnic are in the NPC Roster lorebook).
 - Export files to recompile: `SvartulfrVerse_EN_World_Lorebook.json`, `SvartulfrVerse_EN_NPC_Roster_Lorebook.json`, `SvartulfrVerse_EN_Sandbox_Lorebook.json`.
@@ -91,12 +225,14 @@
 **Phases skipped:** Intimacy Architect, Editor, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer, Janitor Builder
 
 **Canonical merges applied:**
+
 - Section 1 (Rule 2): Nixara's shield maiden lore and Angelo immunity added.
 - Section 8: Wulfnic's history with Angelo (Versailles 1714) and unprompted intervention added.
 - Section 8: Angelo's motivation explicitly citing the Versailles game and recycling the Nixara playbook added.
 - Section 9B: Family Wanted Level rising condition updated to make Angelo's scheduling the primary driver.
 
 **Refiner-mini sign-off (Phase R1):**
+
 - [x] Section 1 / 11 bright-line re-verified (no late hits)
 - [x] Confirmed cascade is complete (all sections, drafts, exports listed)
 - [x] All canonical Master Design merges applied with inline R2 markers
