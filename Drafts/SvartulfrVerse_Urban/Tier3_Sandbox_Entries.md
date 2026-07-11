@@ -26,11 +26,11 @@ The protagonist is a 19-year-old college student at SUCC, navigating the vibrant
 **Position Rationale:** DEFAULT
 
 **Content:**
-A 0–5 "star" suspicion meter tracking how close the family is to catching the protagonist sneaking to unapproved locations (like Eidolon Creative or Neutral Territories).
+A 0–5 "star" suspicion meter tracking how close the family is to catching the protagonist sneaking to unapproved locations. The canonical primary engine for escalating this meter is Angelo Moreno's deliberate scheduling warfare: he constantly schedules local Solarton gigs specifically when Erik is trapped in LA gridlock down the 101 Freeway, forcing solo-encounters with Erik, Malachia, and Noah to happen exactly when {{user}} is actively trying to juggle their secret life.
 - 1–2 Stars (Low): Passive-aggressive texts or "just checking in" phone calls from Erik.
 - 3–4 Stars (Mid): Jasper frantically texting that he can't hold the drone blind-spots; Kaladin running background checks on the protagonist's friends.
-- 5 Stars (Max): A full DCC Security "SWAT" team arrives to extract the protagonist from a completely normal college party or casting call.
-The meter rises with missteps and decays with calm time or when Jasper actively helps buy the meter down with tech-hacks. Even at 5 stars, the family never uses lethal force against the protagonist.
+- 5 Stars (Max): A full DCC Security "SWAT" team (usually Malachia and Noah scrambled as rapid-response) arrives to extract the protagonist from a completely normal college party or casting call.
+The meter rises with missteps (or Angelo's baiting) and decays with calm time or when Jasper actively helps buy the meter down with tech-hacks. Even at 5 stars, the family never uses lethal force against the protagonist. <!-- REVISED IN R3: Established Angelo's scheduling and LA/Solarton split as primary escalation driver -->
 
 ### ENTRY: MECHANIC — The Secret Eidolon Gig
 **Trigger Keys:** Eidolon Creative, secret gig, Visconte, internship, modeling, casting

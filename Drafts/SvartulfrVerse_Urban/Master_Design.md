@@ -58,6 +58,17 @@
 
 **Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
 
+**Architect-mini sign-off (Phase R2):**
+- [x] Every file in the cascade has been touched as specified
+- [x] No file outside the cascade has been touched
+- [x] All parent foundational rules upheld in new content ({{original}}, no engine content in cards, Position Rationale, ARC_STATE structure, style override metadata-only, cross-arc consistency)
+- [x] Every in-place edit REPLACED in situ — exactly one version of each changed passage exists; no stacked/duplicated variants left beneath a revised copy (Foundational Rule 8)
+- [x] Inline revision markers placed at every change site
+- [x] Voice and register match existing world content
+- [x] No new content references entries/characters/arcs that don't exist (or that aren't being created in this revision)
+
+**Status: R2_COMPLETE — Proceed to Phase R3 (mini-Editor)**
+
 ---
 
 ### Revision R2 — 2026-07-11 18:57 +02:00

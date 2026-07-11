@@ -25,3 +25,17 @@
 - Routing locked.
 
 **Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+
+## Phase R2 — Mini-Architect
+
+### Files Modified:
+- `Drafts/SvartulfrVerse_Urban/Tier1_World_Entries.md`: Edited in-place to add Nixara's shield maiden immunity to the LSE Pack Code (R2 cascade). Edited in-place to update Blackwood and Solarton descriptions with geographic overlays. Added new entry "SvartulfrVerse Geography (California Overlay)" in append mode.
+- `Drafts/SvartulfrVerse_Urban/Card_Erik.md`: Edited in-place to add the 101 Freeway gridlock and Malachia/Noah rapid-response protocol to his description.
+- `Drafts/SvartulfrVerse_Urban/Tier2_NPC_Principal_Entries.md`: Edited in-place to add the 1714 Versailles duel, Angelo's 101 Freeway scheduling warfare (recycled Nixara playbook), Logan staying out of LA, and Wulfnic's unprompted interventions.
+- `Drafts/SvartulfrVerse_Urban/Tier3_Sandbox_Entries.md`: Edited in-place to update the Family Wanted Level mechanic, making Angelo's scheduling the primary escalation driver.
+
+### Notes for Downstream Minis:
+- **Editor / Voice Auditor:** Ensure the comedic juxtaposition of Erik trapped in LA traffic vs Angelo scheduling castings locally is preserved. The 90-mile distance is a core structural constraint on Erik's power.
+- All modifications replaced in situ (Foundational Rule 8 upheld).
+
+**Status: R2_COMPLETE — Proceed to Phase R3 (mini-Editor)**
