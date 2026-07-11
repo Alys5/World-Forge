@@ -449,6 +449,7 @@ For users who find manual application onerous on large worlds, a future pipeline
 │   ├── Janitor_Bot_Template.md                    🔹 JanitorAI bot profile structure
 │   ├── Janitor_Lorebook_Script.js                 🔹 JanitorAI lorebook to ES6 script structure
 │   ├── Janitor_Bio_Template.html                  🔹 JanitorAI storefront bio layout
+│   ├── char_template.json                         🔹 Q&A template reference for characters
 │   └── Chat_Completion_Preset_template.json       🔹 new (Phase 5 structural reference)
 └── Export/
     ├── [CharName]_Card.json
@@ -466,7 +467,10 @@ For users who find manual application onerous on large worlds, a future pipeline
     ├── Prompt_Engineer_Audit.md
     ├── [WorldName]_ChatPreset.json
     ├── [WorldName]_JanitorAI.md                   🔹 JanitorAI bot profile (Phase 4 passthrough)
-    ├── [WorldName]_JanitorAI_Script.js            🔹 JanitorAI generated lorebook script (Phase 4)
+    ├── [WorldName]_JanitorAI_Script_World.js      🔹 JanitorAI generated modular lorebook script (Phase 4)
+    ├── [WorldName]_JanitorAI_Script_Family.js     🔹 JanitorAI generated modular lorebook script (Phase 4)
+    ├── [WorldName]_JanitorAI_Script_NPC.js        🔹 JanitorAI generated modular lorebook script (Phase 4)
+    ├── [WorldName]_JanitorAI_Script_NSFW.js       🔹 JanitorAI generated modular lorebook script (Phase 4)
     ├── [WorldName]_JanitorAI_Bio_Group.html       🔹 JanitorAI storefront bio (Phase 4)
     └── Authors_Note_Suggestions.md
 ```
