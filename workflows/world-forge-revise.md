@@ -237,8 +237,6 @@ The "what changes when" report tells the user which lorebooks need re-import in 
 
 **Revision marking.** Export filenames are never renamed and the JSON gets no extra fields — both would break ST imports / UID references or violate the Compiler's schema rule. Instead the mini-Compiler maintains `Export/REVISED_FILES.md`, a cumulative manifest listing every Export file ever touched by a revision (file, last-revised revision ID, date, one-line change summary, accumulated revision history). It is the single at-a-glance index of what has changed across all revisions, sitting alongside the files it indexes.
 
-**JanitorAI Exports:** After the mini-Compiler updates the JSON files, run `python tools/build_janitor.py <world_name>` to regenerate the four modular scripts (`World`, `Family`, `NPC`, and `NSFW`) so they reflect the revised content. Also run `python tools/build_bio.py <world_name>` if the character definitions were touched.
-
 ---
 
 ## PHASE R5: RUNTIME VALIDATION — THE PROMPT ENGINEER (MINI)
@@ -253,6 +251,16 @@ Preset modification is conditional and tightly scoped:
 - New AI card or Director NPC added that triggers Multi-Character Dynamics block (was disabled) → enables block
 - Intimacy register added when no other arc/register had intimate content → enables NSFW block
 - A per-card style override changed that affects the multi-perspective / multi-tense flags → updates Style Contract ACTIVE-SPEAKER RULE line
+
+---
+
+## PHASE R6: EXTERNAL EXPORTS — THE JANITOR BUILDER (MINI)
+
+**Invoke:** `@agent_roles/revise/06_The_Janitor_Builder_mini.md`
+**Input:** `Export/` JSONs + `ChatPreset.json`
+**Output:** Updated `Export/[WorldName]_JanitorAI_Script_*.js` and `Export/Janitor_Bio_[CharName].html`
+
+**Mandatory end-of-revision phase:** Runs after the Prompt Engineer (or Compiler if R5 is skipped). The agent re-runs `python tools/build_janitor.py <world_name>` and `python tools/build_bio.py <world_name>` to regenerate the storefront bios and modular JS scripts, ensuring they capture all revised lore and new runtime directives.
 - A Director / NPC-host card added or removed that flips Section 11c `has_director_card` → adds or removes the Style Contract DIRECTOR-CARD RULE line (SHARED §3d)
 - **Sandbox roster grows and the preset lacks the `npc_ensemble` block** (e.g., the world predates it) → flag in the audit that `/worldforge resync-preset` should add NPC Ensemble & Enrichment; the mini does not author the block itself (block authoring is a full-Phase-5 / resync concern, not a surgical toggle)
 - Otherwise: preset is untouched

@@ -18,6 +18,7 @@
 | 3.7 Intimacy Auditor | COMPLETE | 1     | INTIMACY AUDITOR SIGN-OFF   |
 | 4 Compiler           | COMPLETE | —     | COMPILER SIGN-OFF           |
 | 5 Prompt Engineer    | COMPLETE | —     | PROMPT ENGINEER SIGN-OFF    |
+| 6 Janitor Builder    | COMPLETE | —     | JANITOR BUILDER SIGN-OFF    |
 
 ## Revision Log
 
@@ -41,6 +42,7 @@
 - Drafts files to modify: Card_Erik.md, Card_Jasper.md, Card_Malachia.md, Card_Noah.md (or populated via script)
 - Export files to recompile: Erik_Card.json, Jasper_Card.json, Malachia_Card.json, Noah_Card.json
 - Chat preset changes: no
+- JanitorAI scripts to regenerate: yes (build_janitor.py run for SvartulfrVerse_Urban_JanitorAI_Script_*.js)
 
 **Phases affected:** Refiner, Architect, Editor, Compiler
 **Phases skipped:** Intimacy Architect, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer

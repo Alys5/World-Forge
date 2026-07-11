@@ -71,4 +71,12 @@
   - `Export/SvartulfrVerse_Urban/Malachia_Card.json`
   - `Export/SvartulfrVerse_Urban/Noah_Card.json`
 - `Export/REVISED_FILES.md` manifest updated.
+**Status: R4_COMPLETE**
+
+---
+
+## Phase R6 — Mini-Janitor-Builder
+- Re-executed `build_janitor.py SvartulfrVerse_Urban` to encapsulate the 21 Q&A responses inside the bot scripts.
+- Re-executed `build_bio.py SvartulfrVerse_Urban` to sync any bio changes.
+- Output JSON scripts and HTML bio successfully generated in `Export/`.
 **Status: APPLIED**

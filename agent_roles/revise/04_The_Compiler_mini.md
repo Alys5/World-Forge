@@ -72,7 +72,6 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
 - `system_prompt` starts with `{{original}}` on its own line
 - `post_history_instructions` same
 - Validate against parent's hard-fail rules before writing
-- **(JanitorAI)** Also regenerate `Export/[CharName]_JanitorAI.md` by copying the updated `Drafts/JanitorAI_Profile_[CharName].md`. **ANTI-TRUNCATION VERIFICATION:** If the profile is a Group Bot, ensure EVERY Core Family character possesses ALL symmetrical sub-headers (`APPEARANCE`, `PSYCHOLOGICAL_PROFILE`, `SOCIAL_BEHAVIOR`, `SENSORY`). If any fields are abbreviated or summarized, halt and report.
 
 **For each touched lorebook (`Tier[N]_*.md` → `*_Lorebook.json` or `Arc[N]_*Lorebook.json`):**
 - Read existing JSON
@@ -85,7 +84,6 @@ UID preservation makes the parent's key/UID parity guard (Foundational Rule 9) a
   - If markdown was edited in append/in-place mode (the common case) → keep the existing JSON entry untouched
 - **Inert carriers are preserved, never silently dropped.** If the existing JSON has a `[[WORLD_CALENDAR]]` entry (`contracts/WORLD_FORGE_SYNC.md` §5), a `[[DICE_TABLES]]` entry (`contracts/DICE_ORACLE.md`), or an `[[NPC_MANIFEST]]` entry (parent Step 7.7), carry it through the rewrite with its UID — even when the touched draft does not restate the carrier block (a Tier 1 entry edit usually won't). The calendar and dice carriers keep their enabled-but-inert flags verbatim (`disable: false`, `key: []`, `constant: false`) and their payloads unless the revision explicitly changes that carrier; the manifest is regenerated against the final UID set (Step 7.7 / sign-off below). Do **not** add a carrier to a lorebook that never had one — that is a full-compile concern, not a surgical revision. A revision that edits the calendar or the dice tables itself is an ordinary `tier1_world_rule_modify`: the mini-Architect rewrites the carrier block (inheriting parent §6) and the mini-Editor revalidates it (inheriting parent Step 4.7 for the calendar, Step 4.8 for the dice oracle).
 - Validate the resulting JSON against the schema and parent hard-fail rules
-- **(JanitorAI)** Regenerate `Export/[WorldName]_JanitorAI_Script.js` incorporating the updated situational entries into the `definitionalLore`, `relationalLore`, and `eventLore` arrays.
 
 **For Export/User.md:**
 - Pass-through from `Drafts/User.md` if it was touched (revision could touch the persona description — rare; usually only when a character revision affects the protagonist)
@@ -173,10 +171,6 @@ Your running SillyTavern session is affected by this revision as follows:
 - [Changed / unchanged]. If changed, re-import via ST → Settings → Connection
   Profiles / Chat Completion Settings → Import.
 
-### JanitorAI Export files updated
-- [Path]: [JanitorAI Bot Profile / JanitorAI Lorebook Script] regenerated. 
-  Re-import these into JanitorAI if you are using that platform.
-
 ### Risk to running chats
 - Lorebook UIDs preserved: yes — existing chats reference UIDs and will pick up
   the new content on next scan with no break in state.
@@ -235,8 +229,6 @@ Append to the Revision Log entry:
 - [ ] Entry fields camelCase per ST schema — no snake_case aliases or legacy characterFilter pair
 - [ ] No inline revision marker (`<!-- REVISED IN R[N] -->` / `<!-- CREATED IN R[N] -->`) survives in any JSON value — markers stripped on the Drafts→Export transcription; grep for `REVISED IN R` / `CREATED IN R` / `<!--` returns zero across every written file
 - [ ] Every written file is UTF-8 — non-ASCII intact (em-dashes, curly quotes, accented names), existing text not mojibaked on rewrite; no `â€`/`Ã` markers; not authored through PowerShell
-- [ ] JanitorAI Bot Profile (`[CharName]_JanitorAI.md`) regenerated for touched cards
-- [ ] JanitorAI Lorebook Script (`[WorldName]_JanitorAI_Script.js`) regenerated for touched lorebooks
 
 ### UID Continuity
 - [ ] Existing entries keep their UIDs across all touched lorebooks

@@ -236,9 +236,10 @@ The entry sits inside the `## Revision Log` section at the top of `Drafts/Master
 - Drafts files to create: [list, or "none"]
 - Drafts files to modify: [list, or "none"]
 - Export files to recompile: [list, or "none"]
-- Chat preset changes: [yes | no | conditional on architecture impact]
+- Chat preset changes: [yes | no]
+- JanitorAI scripts to regenerate: [yes | no]
 
-**Phases affected:** [Refiner, Architect, Editor, Voice Auditor, Compiler, Prompt Engineer, ...]
+**Phases affected:** [Refiner, Architect, Editor, Voice Auditor, Compiler, Prompt Engineer, Janitor Builder, ...]
 **Phases skipped:** [Intimacy Architect, Arc Transition Auditor, Intimacy Auditor, ...]
 
 **Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0   <!-- loop-phase round counters; downstream minis increment a counter on each return so the round>3 ceiling survives a restart. Skipped phases stay 0. -->

@@ -51,6 +51,7 @@ World-Forge/
 │   ├── 00_The_Interviewer.md
 │   ├── 01_The_Refiner.md
 │   ├── 02_The_Architect.md
+│   ├── 02b_The_Intimacy_Architect.md
 │   ├── 03_The_Editor.md
 │   ├── 03b_The_Voice_Auditor.md
 │   ├── 03c_The_Arc_Transition_Auditor.md
@@ -289,7 +290,7 @@ These pairs of files must stay in sync. When editing one, check the other.
 | `agent_roles/05_The_Prompt_Engineer.md` Section 8 (Preset Resync Mode) | `workflows/world-forge.md` PRESET RESYNC section — both define the `/worldforge resync-preset` operation |
 | `Notes_On_functionality.md` (position table) | All agent files referencing positions — they cite this table |
 | Any agent spec (sign-off block) | `workflows/world-forge.md` (phase descriptions) — phase outputs feed handoffs |
-| `agent_roles/06_The_Intimacy_Architect.md` | `agent_roles/03d_The_Intimacy_Auditor.md` — auditor validates what architect produces |
+| `agent_roles/02b_The_Intimacy_Architect.md` | `agent_roles/03d_The_Intimacy_Auditor.md` — auditor validates what architect produces |
 | `agent_roles/03b_The_Voice_Auditor.md` (Step 3 check taxonomy: register match, trigger-response, reflex misfire, NPC goal-trace, "would the model invent this") and `agent_roles/03d_The_Intimacy_Auditor.md` (intimacy lens) | `agent_roles/Auditioner/00_The_Auditioner.md` — the on-demand probe **reuses these checks by reference** rather than duplicating them (Section 4 Step 3); if a check's name or semantics change, update the Auditioner's citation. Also `workflows/world-forge.md` AUDITION section + `.kilo/kilo.jsonc` `WorldForge-Auditioner` seat |
 | Any parent agent in `agent_roles/*.md` | Its mini counterpart in `agent_roles/revise/*_mini.md` — the mini inherits parent's foundational rules, so changing the parent may require updating the mini's delta list |
 | Revision replace-not-stack contract (principle #6 "Inline revision markers"): `agent_roles/revise/01_The_Refiner_mini.md` (R1.5 in-place merge), `agent_roles/revise/02_The_Architect_mini.md` (Foundational Rule 8 + R2.5/R2.6), `agent_roles/revise/02b_The_Intimacy_Architect_mini.md` (R2.5.x) | `agent_roles/revise/03_The_Editor_mini.md` (Step R3.1b no-stacking hard-fail gate) and `agent_roles/revise/04_The_Compiler_mini.md` (Foundational Rule 9 marker strip) and `tools/validate_export.py` (leaked-marker backstop) — the producers must replace in situ, the Editor must catch any residual stack, the Compiler strips the annotation; the "replace, don't stack / one current version per passage" rule must read identically across all of them |
