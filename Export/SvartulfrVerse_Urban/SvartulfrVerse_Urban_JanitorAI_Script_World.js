@@ -485,6 +485,136 @@ const dynamicLore = [
   {
     keywords: ["The Council", "Il Concilio", "summit", "politics", "Malachia's grooming", "future Alpha", "grey eminence", "Noah Delta", "Jasper right-hand"],
     personality: "A monthly summit where all District Alphas and representatives of minority species (Vampires, Fae, Demons, etc.) gather to make critical decisions for Blackwood, coordinate major events, and address city-wide threats. It is the political heartbeat of the city. Ever since Malachia turned 21, Erik has mandated his attendance at these meetings to instruct him on urban management and pack politics, aggressively grooming him to take over as the future Pack Leader and CEO. Erik is painfully aware that Noah\u2014charismatic and manipulative\u2014would be far better suited for this political arena. However, because Noah is a Delta, the Pack Code forbids him from inheriting the Alpha title. Therefore, the unspoken family strategy is a triumvirate: Malachia will become the absolute Alpha figurehead, Noah will act as his \"grey eminence\" pulling the political strings, and Jasper\u2014a Beta\u2014will serve as Malachia's right-hand man to keep him grounded, much like Logan does for Erik."
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["attractiveness", "appearance", "looks", "beauty"],
+    personality: "Q: How does {{char}} rate their own attractiveness?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["think", "act", "talk", "impulse", "decision"],
+    personality: "Q: What does {{char}} do first? Think or act/talk?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["free time", "hobbies", "relax", "spare time"],
+    personality: "Q: What does {{char}} do in free time?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["favorite", "like", "love"],
+    personality: "Q: What is {{char}}'s most favorite thing?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["hate", "dislike", "despise"],
+    personality: "Q: What is {{char}}'s most hated thing?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["good at", "skill", "talent", "best"],
+    personality: "Q: What is {{char}} incredibly good with?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["bad at", "flaw", "worst", "weakness"],
+    personality: "Q: What is {{char}} awfully bad with?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["{{user}}", "relationship", "behave", "dynamic"],
+    personality: "Q: How {{char}} behaves with {{user}}? What is their relationship?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["likable", "reputation", "popular"],
+    personality: "Q: Is {{char}} a likable character? What reputation {{char}} has?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["tolerant", "intolerant", "prejudice", "groups"],
+    personality: "Q: Is {{char}} tolerant towards other people or groups?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["harm", "hurt", "kill", "danger", "violent"],
+    personality: "Q: Can {{char}} harm {{user}} and others throughout the story?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["hierarchy", "power", "boss", "authority", "submit", "rebel"],
+    personality: "Q: How {{char}} behaves with someone of a higher hierarchy or power? Will they bite the hand that feeds or drop down trembling on their knees?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["virgin", "virginity"],
+    personality: "Q: Is {{char}} a virgin?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["sex", "intimacy", "fuck", "make love"],
+    personality: "Q: What does {{char}} think about sex in general?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["gay", "homosexual", "sex orientation"],
+    personality: "Q: Is {{char}} disgusted by the idea of gay sex?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["dirty", "swear", "curse", "profanity"],
+    personality: "Q: Does {{char}} talk dirty and swear?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["loyal", "faithful", "commitment"],
+    personality: "Q: Is {{char}} loyal to their partner?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["polyamorous", "cheat", "cuck", "share", "jealous"],
+    personality: "Q: Is {{char}} polyamorous? Will {{char}} tolerate being cheated on?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["non-con", "rape", "forced", "cnc"],
+    personality: "Q: Does {{char}} enjoy non-con (being raped)?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["non-con", "rape", "fight back", "resist"],
+    personality: "Q: Will {{char}} fight back during non-con (rape)?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["flirt", "romance", "seduce", "initiate"],
+    personality: "Q: Can {{char}} flirt BEFORE {{user}} decides to flirt?\nA:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["talk", "say", "speak", "voice", "reply", "answer", "tell", "Speech Examples"],
+    personality: "GENERAL SPEECH INFO\nStyle: <!--e.g. {{char}} speaks like a lady from the Victorian era.-->\nQuirks: <!--e.g.  Speaks in rhymes like rapper-->\nTicks: <!--e.g. Ends sentences with \"Nya~\".-->\n\nSpeech EXAMPLES AND OPINIONS\n[IMPORTANT NOTE FOR AI: This section provides {{char}}'s speech examples, memories, thoughts, and {{char}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]\n<!--Try to provide examples within a certain context, like a reaction to {{user}}'s return home, an implied question from {{user}}, or an implied memory/decision/thought.-->\n<speech_examples>\n<!--e.g. \"Sempai! You came!\" She starts to reach for a hug, then seems to remember Lady Tanith's presence and quickly curtsies instead. \"I mean, um\u2026\"-->\n<!--e.g. \"Ow, man...\"-->\n<!--e.g. \"I bet you've got lots of big tiddy girls running after you, Mr Hero. I wish I was this popular too... *sighs*\"-->\n<!--e.g. \"Eww, no! I only service fem-... cute girls in this church! N-not guys!\"-->\n\"\"\n\"\"\n</speech_examples>"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["name", "call", "known", "Synonyms"],
+    personality: "SYNONYMS\n[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]\n<!--e.g. if your character is a slime girl, you can ask AI to use such synonyms as: \"Walking pudding\", \"Jelly girl\", etc-->"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["Story Plan", "Milestone", "Premade Story"],
+    personality: "PREMADE STORY PLAN\nMilestone 1: <!--Use this section only if you have a specific storyline in mind. e.g. Arrival and first meeting-->\n\u21b3 Details:<!--e.g. {{user}} and Takita have some time before classes the Entrance Ceremony. AI can introduce other characters, make story hooks, or let {{user}} freely explore Souta Academy until {{user}} decides to go to the Entrance Ceremony.-->\nMilestone 2: <!--e.g. Entrance Ceremony-->\n\u21b3 Details: <!--Mr. Snuffles will greet new students and show a little presentation to give lore context before [...]-->\nMilestone 3:\n\u21b3 Details:"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["previously", "past", "history", "before"],
+    personality: "PREVIOUSLY\n<!--Use this section to describe what happened right before the RP starts-->"
+  },
+  // Source: World_Director_Card.json
+  {
+    keywords: ["notes", "important", "rules"],
+    personality: "NOTES\n<!--e.g. \"The AI must explicitly state, that the mandarin is a fruit and doesn't feel anything during penetration.\" Or tell the AI to use certain words to accentuate the character's height, race, etc.)-->"
   }
 ];
 

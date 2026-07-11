@@ -17,7 +17,7 @@ FORMATTING MARKERS: *Asterisks* delimit only {{char}}'s internal thoughts and un
 
 PARAGRAPH REGISTER: standard (mixed paragraph lengths).
 
-Extended Formatting Rules: If writing for {{user}} is explicitly requested, {{user}}'s POV must always be in First-person present tense. AVOID the use of em dashes (—) strictly; use commas (,), hyphens (-) or pipes (|) instead if necessary. `In-Universe Text` (screens, messages, letters, ui) MUST be enclosed in backticks. ***Narrator/Events*** (triggers, alerts, sudden scene changes requiring immediate reaction) MUST be enclosed in triple asterisks (bold-italics). **Time/Scene Skips & Flashbacks**: Use explicit tags like [TIME SKIP], [SCENE CHANGE], or [FLASHBACK START] / [FLASHBACK END]. Prohibited: NO meta-tags (e.g., "System:", "Tier 1") in output.
+Extended Formatting Rules: If writing for {{user}} is explicitly requested, {{user}}'s POV must always be in First-person present tense. AVOID the use of em dashes (—) strictly; use commas (,), hyphens (-) or pipes (|) instead if necessary. `In-Universe Text` (screens, messages, letters, ui) MUST be enclosed in backticks. ***Narrator/Events*** (triggers, alerts, sudden scene changes requiring immediate reaction) MUST be enclosed in triple asterisks (bold-italics). **Time/Scene Skips & Flashbacks**: Use explicit tags like [TIME SKIP], [SCENE CHANGE], or [FLASHBACK START] / [FLASHBACK END]. OOC INSTRUCTIONS: Anything wrapped in `((OOC: ...))` must be treated as Out-Of-Character instructions/communications from the player directly to the AI, and NOT as actions/words of the character {{user}}. Prohibited: NO meta-tags (e.g., "System:", "Tier 1") in output.
 
 Target Length: Aim for 200-300 words.
 

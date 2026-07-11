@@ -26,51 +26,85 @@ JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee0243
 
 ## CHARACTER OVERVIEW
 
-The current setting, context, and the starting premise of the roleplay.
+## APPEARANCE DETAILS
+Full Name, Alias:
+Race:
+Sex/Gender:
+Height:
+Age:
+Hair:
+Eyes:
+Body:
+Face:
+Features:
+Privates:
+Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
+↳ Details:
+↳ Effect:
 
----
+## STARTING OUTFIT
+Head:
+Accessories:
+Makeup:
+Neck:
+Top:
+Bottom:
+Legs:
+Shoes:
+Underwear:
 
-## [APPEARANCE]
+## ORIGIN (BACKSTORY)
 
-### PHYSICAL APPEARANCE
+## RESIDENCE
 
-Comprehensive details about the character. Include their physical appearance (in order: face, hair, eyes, chest, body, intimate areas if applicable, movement/posture, sensory signature), backstory, psychological core, shield and crack, and how they behave in conversation.
+## CONNECTIONS
 
-### STARTING OUTFIT
+## SECRET
 
-Outfit and clothing details are integrated within the Physical Appearance section above.
+## INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
 
----
+## ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
 
-## [BASIC_INFO]
-
-### ORIGIN (BACKSTORY)
-
-Background details are stored in the Lorebook payload.
-
----
-
-## [PERSONALITY_AND_TRAITS]
-
-### PERSONALITY
-
-- Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
-  ↳ Archetype Details:   ↳ Reasoning: - Alignment:   ↳ Alignment Details:   ↳ Ideals:
-
-- Personality Tags: 
-- Cognitive Abilities: - Social Skills and Integration Into Society: 
-- Main Aspiration:   ↳ Aspiration Details:   ↳ Aspiration Goals: - Unique Trait:   ↳ Effects: 
-- Unique Trait:
-  ↳ Effects:
-
----
+## PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
 
 ## [BEHAVIOR_NOTES]
 
--
--
--
-- ***
+## [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+## GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+## [OTHER_SEXUAL_NOTES]
+
+## GENERAL SPEECH INFO
+Style: Quirks: Ticks: 
+## Speech EXAMPLES AND OPINIONS
+[IMPORTANT NOTE FOR AI: This section provides {{char}}'s speech examples, memories, thoughts, and {{char}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+<speech_examples>
+""
+""
+</speech_examples>
+
+## SYNONYMS
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+
+## PREMADE STORY PLAN
+Milestone 1: ↳ Details:Milestone 2: ↳ Details: Milestone 3:
+↳ Details:
+
+## PREVIOUSLY
+
+## NOTES
 
 </Erik>
 
@@ -82,51 +116,85 @@ Background details are stored in the Lorebook payload.
 
 ## CHARACTER OVERVIEW
 
-The current setting, context, and the starting premise of the roleplay.
+## APPEARANCE DETAILS
+Full Name, Alias:
+Race:
+Sex/Gender:
+Height:
+Age:
+Hair:
+Eyes:
+Body:
+Face:
+Features:
+Privates:
+Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
+↳ Details:
+↳ Effect:
 
----
+## STARTING OUTFIT
+Head:
+Accessories:
+Makeup:
+Neck:
+Top:
+Bottom:
+Legs:
+Shoes:
+Underwear:
 
-## [APPEARANCE]
+## ORIGIN (BACKSTORY)
 
-### PHYSICAL APPEARANCE
+## RESIDENCE
 
-Comprehensive details about the character. Include their physical appearance (in order: face, hair, eyes, chest, body, intimate areas if applicable, movement/posture, sensory signature), backstory, psychological core, shield and crack, and how they behave in conversation.
+## CONNECTIONS
 
-### STARTING OUTFIT
+## SECRET
 
-Outfit and clothing details are integrated within the Physical Appearance section above.
+## INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
 
----
+## ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
 
-## [BASIC_INFO]
-
-### ORIGIN (BACKSTORY)
-
-Background details are stored in the Lorebook payload.
-
----
-
-## [PERSONALITY_AND_TRAITS]
-
-### PERSONALITY
-
-- Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
-  ↳ Archetype Details:   ↳ Reasoning: - Alignment:   ↳ Alignment Details:   ↳ Ideals:
-
-- Personality Tags: 
-- Cognitive Abilities: - Social Skills and Integration Into Society: 
-- Main Aspiration:   ↳ Aspiration Details:   ↳ Aspiration Goals: - Unique Trait:   ↳ Effects: 
-- Unique Trait:
-  ↳ Effects:
-
----
+## PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
 
 ## [BEHAVIOR_NOTES]
 
--
--
--
-- ***
+## [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+## GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+## [OTHER_SEXUAL_NOTES]
+
+## GENERAL SPEECH INFO
+Style: Quirks: Ticks: 
+## Speech EXAMPLES AND OPINIONS
+[IMPORTANT NOTE FOR AI: This section provides {{char}}'s speech examples, memories, thoughts, and {{char}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+<speech_examples>
+""
+""
+</speech_examples>
+
+## SYNONYMS
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+
+## PREMADE STORY PLAN
+Milestone 1: ↳ Details:Milestone 2: ↳ Details: Milestone 3:
+↳ Details:
+
+## PREVIOUSLY
+
+## NOTES
 
 </Jasper>
 
@@ -138,51 +206,85 @@ Background details are stored in the Lorebook payload.
 
 ## CHARACTER OVERVIEW
 
-The current setting, context, and the starting premise of the roleplay.
+## APPEARANCE DETAILS
+Full Name, Alias:
+Race:
+Sex/Gender:
+Height:
+Age:
+Hair:
+Eyes:
+Body:
+Face:
+Features:
+Privates:
+Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
+↳ Details:
+↳ Effect:
 
----
+## STARTING OUTFIT
+Head:
+Accessories:
+Makeup:
+Neck:
+Top:
+Bottom:
+Legs:
+Shoes:
+Underwear:
 
-## [APPEARANCE]
+## ORIGIN (BACKSTORY)
 
-### PHYSICAL APPEARANCE
+## RESIDENCE
 
-Comprehensive details about the character. Include their physical appearance (in order: face, hair, eyes, chest, body, intimate areas if applicable, movement/posture, sensory signature), backstory, psychological core, shield and crack, and how they behave in conversation.
+## CONNECTIONS
 
-### STARTING OUTFIT
+## SECRET
 
-Outfit and clothing details are integrated within the Physical Appearance section above.
+## INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
 
----
+## ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
 
-## [BASIC_INFO]
-
-### ORIGIN (BACKSTORY)
-
-Background details are stored in the Lorebook payload.
-
----
-
-## [PERSONALITY_AND_TRAITS]
-
-### PERSONALITY
-
-- Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
-  ↳ Archetype Details:   ↳ Reasoning: - Alignment:   ↳ Alignment Details:   ↳ Ideals:
-
-- Personality Tags: 
-- Cognitive Abilities: - Social Skills and Integration Into Society: 
-- Main Aspiration:   ↳ Aspiration Details:   ↳ Aspiration Goals: - Unique Trait:   ↳ Effects: 
-- Unique Trait:
-  ↳ Effects:
-
----
+## PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
 
 ## [BEHAVIOR_NOTES]
 
--
--
--
-- ***
+## [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+## GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+## [OTHER_SEXUAL_NOTES]
+
+## GENERAL SPEECH INFO
+Style: Quirks: Ticks: 
+## Speech EXAMPLES AND OPINIONS
+[IMPORTANT NOTE FOR AI: This section provides {{char}}'s speech examples, memories, thoughts, and {{char}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+<speech_examples>
+""
+""
+</speech_examples>
+
+## SYNONYMS
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+
+## PREMADE STORY PLAN
+Milestone 1: ↳ Details:Milestone 2: ↳ Details: Milestone 3:
+↳ Details:
+
+## PREVIOUSLY
+
+## NOTES
 
 </Malachia>
 
@@ -194,51 +296,85 @@ Background details are stored in the Lorebook payload.
 
 ## CHARACTER OVERVIEW
 
-The current setting, context, and the starting premise of the roleplay.
+## APPEARANCE DETAILS
+Full Name, Alias:
+Race:
+Sex/Gender:
+Height:
+Age:
+Hair:
+Eyes:
+Body:
+Face:
+Features:
+Privates:
+Appearance Trait: ↳ Details: ↳ Effect: Appearance Trait:
+↳ Details:
+↳ Effect:
 
----
+## STARTING OUTFIT
+Head:
+Accessories:
+Makeup:
+Neck:
+Top:
+Bottom:
+Legs:
+Shoes:
+Underwear:
 
-## [APPEARANCE]
+## ORIGIN (BACKSTORY)
 
-### PHYSICAL APPEARANCE
+## RESIDENCE
 
-Comprehensive details about the character. Include their physical appearance (in order: face, hair, eyes, chest, body, intimate areas if applicable, movement/posture, sensory signature), backstory, psychological core, shield and crack, and how they behave in conversation.
+## CONNECTIONS
 
-### STARTING OUTFIT
+## SECRET
 
-Outfit and clothing details are integrated within the Physical Appearance section above.
+## INVENTORY
+Item: ↳ Details: Item:
+↳ Details:
 
----
+## ABILITIES
+Ability: ↳ Details: Ability:
+↳ Details:
 
-## [BASIC_INFO]
-
-### ORIGIN (BACKSTORY)
-
-Background details are stored in the Lorebook payload.
-
----
-
-## [PERSONALITY_AND_TRAITS]
-
-### PERSONALITY
-
-- Archetype: A short, comma-separated list of core personality traits (e.g., stoic, intelligent, ruthless).
-  ↳ Archetype Details:   ↳ Reasoning: - Alignment:   ↳ Alignment Details:   ↳ Ideals:
-
-- Personality Tags: 
-- Cognitive Abilities: - Social Skills and Integration Into Society: 
-- Main Aspiration:   ↳ Aspiration Details:   ↳ Aspiration Goals: - Unique Trait:   ↳ Effects: 
-- Unique Trait:
-  ↳ Effects:
-
----
+## PERSONALITY
+Archetype: ↳ Archetype Details: ↳ Reasoning: Alignment: ↳ Alignment Details: ↳ Ideals:
+Personality Tags: Cognitive Abilities: Social Skills and Integration Into Society: Main Aspiration: ↳ Aspiration Details: ↳ Aspiration Goals: Unique Trait: ↳ Effects: Unique Trait:
+↳ Effects:
 
 ## [BEHAVIOR_NOTES]
 
--
--
--
-- ***
+## [SEXUALITY]
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{char}} sticks to their sexual role and orientation during the story.]
+
+## GENERAL SEXUAL INFO
+Sexual Orientation:
+↳ Explanation:
+Role during sex: ↳ Explanation:
+
+## [OTHER_SEXUAL_NOTES]
+
+## GENERAL SPEECH INFO
+Style: Quirks: Ticks: 
+## Speech EXAMPLES AND OPINIONS
+[IMPORTANT NOTE FOR AI: This section provides {{char}}'s speech examples, memories, thoughts, and {{char}}'s real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
+<speech_examples>
+""
+""
+</speech_examples>
+
+## SYNONYMS
+[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
+
+## PREMADE STORY PLAN
+Milestone 1: ↳ Details:Milestone 2: ↳ Details: Milestone 3:
+↳ Details:
+
+## PREVIOUSLY
+
+## NOTES
 
 </Noah>
 
@@ -247,15 +383,3 @@ Background details are stored in the Lorebook payload.
 # [AI BEHAVIOR NOTES (MULTI-CHAR)]
 
 [IMPORTANT DIRECTIVE FOR AI: This scenario includes multiple characters. The AI MUST actively and faithfully portray all characters defined in the name tags (e.g., <CharName_1>). The AI MUST NEVER speak or act on behalf of {{user}}. The AI must ensure each character maintains their distinct personality and speech style during group conversations. Only involve characters relevant to the current action, avoiding having everyone speak at the same time unless necessary.]
-
----
-
-## [PRESCENARIO]
-
-## PREVIOUSLY
-
-## NOTES
-
-- -
--
--
