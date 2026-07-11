@@ -35,3 +35,4 @@ Target `World_Seed.md`, post-rebaseline from `Drafts/SvartulfrVerse_Urban`.
 ## Loose fragments
 - "Tiny alpha" as a family nickname/projection.
 - Edric fighting seagulls and mailmen as perceived threats.
+- Address of Villa Douglas updated to 555 Oak Road.

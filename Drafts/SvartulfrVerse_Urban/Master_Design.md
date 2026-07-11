@@ -4,14 +4,14 @@
 
 - world_mode: sandbox
 - intimacy_in_scope: true
-- current_phase: 2
+- current_phase: 3
 - status: IN_PROGRESS
 
 | Phase                | Status   | Round | Sign-off anchor             |
 | -------------------- | -------- | ----- | --------------------------- |
 | 1 Refiner            | COMPLETE | —     | REFINER SIGN-OFF            |
-| 2 Architect          | PENDING  | —     | PRE-SUBMISSION CHECKLIST    |
-| 2.5 Intimacy Arch.   | PENDING  | —     | INTIMACY ARCHITECT SIGN-OFF |
+| 2 Architect          | COMPLETE | —     | PRE-SUBMISSION CHECKLIST    |
+| 2.5 Intimacy Arch.   | COMPLETE | —     | INTIMACY ARCHITECT SIGN-OFF |
 | 3 Editor             | PENDING  | 0     | EDITOR SIGN-OFF             |
 | 3.5 Voice Auditor    | PENDING  | 0     | VOICE AUDITOR SIGN-OFF      |
 | 3.6 Arc Transition   | SKIPPED  | 0     | (SKIPPED in sandbox mode)   |
@@ -115,9 +115,9 @@
 
 **Location: Seven Hills & Villa Douglas**
 
-- Physical description: The aristocratic, hilly heartland of the werewolf pack (home to 300 affiliated wolves). Features the ancestral **Villa Douglas** (Via della Quercia 555) — an early 1900s estate featuring outdoor pools, Malachia's high-tech gym (ex-ballroom), Noah's ancient-modern kitchen, a dedicated East Wing for supernatural guests, and {{user}}'s/Alyssa's sanctuary in the 3rd-floor ex-solarium.
+- Physical description: The aristocratic, hilly heartland of the werewolf pack (home to 300 affiliated wolves). Features the ancestral **Villa Douglas** (555 Oak Road) — an early 1900s estate featuring outdoor pools, Malachia's high-tech gym (ex-ballroom), Noah's ancient-modern kitchen, a dedicated East Wing for supernatural guests, and {{user}}'s/Alyssa's sanctuary in the 3rd-floor ex-solarium.
 - Narrative function: The impregnable fortress and ancestral home of the Douglas-Bloodmoon family.
-- Trigger keywords: Seven Hills, Villa Douglas, Via della Quercia, Malachia's gym, Alyssa's room
+- Trigger keywords: Seven Hills, Villa Douglas, 555 Oak Road, Malachia's gym, Alyssa's room
 
 **Location: The Verve (Bluemoon District)**
 
