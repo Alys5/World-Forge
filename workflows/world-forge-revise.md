@@ -304,6 +304,19 @@ Same semantics as the full pipeline's Phase 5.5. User opens each named file, app
 └── Export/
     ├── (existing files surgically updated; UIDs preserved)
     └── REVISED_FILES.md                                   ⭐ cumulative revision manifest (maintained by mini-Compiler)
+
+templates/                                                ← Universal Template Library used by all pipelines
+├── Char_Card_creation.md
+├── char_template.json
+├── Chat_Completion_Preset_template.json
+├── Convert_Brief_Template.md
+├── Janitor_Bio_Template.html
+├── Janitor_Bot_Template.md
+├── Janitor_Lorebook_Script.js
+├── Lorebook_creation.md
+├── Lorebook_Template.json
+├── User_Persona_template.md
+└── World_Seed_Template.md
 ```
 
 The `Drafts/Revision_R[N]_Report.md` is the single source of truth for what happened in revision R[N]. Each mini appends its work to it. Cross-references the Revision Log entry in Master_Design.md by ID.

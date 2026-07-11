@@ -217,6 +217,19 @@ The Converter writes a single file. After Phase C0:
     │   ├── ## 7. TEST SCENARIOS (Section 7b)
     │   ├── ## 8. INTIMACY (conditional)
     │   └── ## ✅ CONVERTER SIGN-OFF (bottom)
+
+templates/                                  ← Universal Template Library used by all pipelines
+├── Char_Card_creation.md
+├── char_template.json
+├── Chat_Completion_Preset_template.json
+├── Convert_Brief_Template.md               ⭐ heavily used in Phase C0
+├── Janitor_Bio_Template.html
+├── Janitor_Bot_Template.md
+├── Janitor_Lorebook_Script.js
+├── Lorebook_creation.md
+├── Lorebook_Template.json
+├── User_Persona_template.md
+└── World_Seed_Template.md                  ⭐ defines the target structure for Phase C0
 ```
 
 After the user runs `/worldforge skip phase0` against the target, the standard pipeline takes over and the target folder evolves through the normal structure (`Drafts/`, `Export/`, etc.) documented in `workflows/world-forge.md`.

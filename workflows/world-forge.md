@@ -443,14 +443,17 @@ For users who find manual application onerous on large worlds, a future pipeline
 │   ├── Arc_Transition_Audit_[Round N].md
 │   └── Intimacy_Audit_Report_[Round N].md         ⭐ new (Phase 3.7)
 ├── templates/
-│   ├── Char_Card_creation.md
-│   ├── Lorebook_creation.md
-│   ├── User_Persona_template.md                   🔹 {{user}} Persona structural reference
+│   ├── Char_Card_creation.md                      🔹 Character card instruction reference
+│   ├── char_template.json                         🔹 Q&A template reference for characters
+│   ├── Chat_Completion_Preset_template.json       🔹 Phase 5 structural reference (Runtime Engine)
+│   ├── Convert_Brief_Template.md                  🔹 Conversion brief structure for C0
+│   ├── Janitor_Bio_Template.html                  🔹 JanitorAI storefront bio layout
 │   ├── Janitor_Bot_Template.md                    🔹 JanitorAI bot profile structure
 │   ├── Janitor_Lorebook_Script.js                 🔹 JanitorAI lorebook to ES6 script structure
-│   ├── Janitor_Bio_Template.html                  🔹 JanitorAI storefront bio layout
-│   ├── char_template.json                         🔹 Q&A template reference for characters
-│   └── Chat_Completion_Preset_template.json       🔹 new (Phase 5 structural reference)
+│   ├── Lorebook_creation.md                       🔹 Lorebook entry formatting rules
+│   ├── Lorebook_Template.json                     🔹 Lorebook JSON structural reference
+│   ├── User_Persona_template.md                   🔹 {{user}} Persona structural reference
+│   └── World_Seed_Template.md                     🔹 Phase 0/C0 structural baseline for the world seed
 └── Export/
     ├── [CharName]_Card.json
     ├── User.md                                     ⭐ {{user}} Persona Description (Phase 4 passthrough)

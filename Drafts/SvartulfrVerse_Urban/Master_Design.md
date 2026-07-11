@@ -4,8 +4,8 @@
 
 - world_mode: sandbox
 - intimacy_in_scope: true
-- current_phase: 3
-- status: IN_PROGRESS
+- current_phase: 5
+- status: COMPLETE
 
 | Phase                | Status   | Round | Sign-off anchor             |
 | -------------------- | -------- | ----- | --------------------------- |
@@ -18,6 +18,45 @@
 | 3.7 Intimacy Auditor | COMPLETE | 1     | INTIMACY AUDITOR SIGN-OFF   |
 | 4 Compiler           | COMPLETE | —     | COMPILER SIGN-OFF           |
 | 5 Prompt Engineer    | COMPLETE | —     | PROMPT ENGINEER SIGN-OFF    |
+
+## Revision Log
+
+### Revision R1 — 2026-07-11 17:05 +02:00
+**Status:** PENDING
+**World Mode:** sandbox
+**Scope type:** tier2_character_modify_field
+**Mode:** freeform
+
+**User intent (verbatim):**
+> Popolare le 21 Q&A mancanti (le entries di char_template.json) nelle Card di Erik, Jasper, Malachia e Noah per completare i metadati strutturati e allineare il workflow alla nuova architettura.
+
+**Evidence (optional):**
+> None provided.
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+- Master Design sections to update: none (structural metadata only)
+- Drafts files to create: none
+- Drafts files to modify: Card_Erik.md, Card_Jasper.md, Card_Malachia.md, Card_Noah.md (or populated via script)
+- Export files to recompile: Erik_Card.json, Jasper_Card.json, Malachia_Card.json, Noah_Card.json
+- Chat preset changes: no
+
+**Phases affected:** Refiner, Architect, Editor, Compiler
+**Phases skipped:** Intimacy Architect, Voice Auditor, Arc Transition Auditor, Intimacy Auditor, Prompt Engineer
+
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0   <!-- loop-phase round counters; downstream minis increment a counter on each return so the round>3 ceiling survives a restart. Skipped phases stay 0. -->
+
+**Cross-references the user should be aware of:**
+- Poiché questo è un riempimento meccanico di campi noti, l'Architect mini potrebbe usare `split_qa.py` per automatizzare l'estrazione dai profili esistenti invece di generare testo da zero.
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Status: APPLIED — Revision R1 is fully integrated**
 
 ---
 
