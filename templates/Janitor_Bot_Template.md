@@ -178,3 +178,11 @@ Ticks: {{SPEECH_TICKS}} <!--e.g. Ends sentences with "Nya~".-->
 # [INITIAL MESSAGES]
 
 {{INITIAL_MESSAGES_BLOCK}}
+
+<!--
+Intro 1 - Group Intro AnyPOV introduction of all Principal Char
+Intro 2 - College/Work Scenario
+Intro 3 - Cozy Scenario
+Intro 4 - NSFW Scenario
+Intro 5 - Void Scenario (Write your opening scene.)
+-->
