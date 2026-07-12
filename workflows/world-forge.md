@@ -159,6 +159,17 @@ Loop state — which phase is live, what round it is on, which sign-offs are in 
 
 ---
 
+## NARRATIVE ENGINES (`dynamicLore`)
+
+World Forge embeds core interactive rules into the world using native `dynamicLore` JSON objects. This replaces the complex script evaluation block of the past with a token-efficient system that natively parses keyword triggers to append rules to the active prompt.
+
+There are two categories of Narrative Engines:
+
+1. **Native Template Engines:** The **Preference Registry**, **Emotion Engine**, and **Action & Social React** systems are statically hardcoded into the base Janitor JS templates (`Janitor_Script_*.js`). They capture fundamental LLM behavioral rules (e.g., stopping the scene on user boundaries, reacting to affection, recording stated fears/likes) and do *not* require the Architect or Compiler to generate them.
+2. **Dynamic Context Engines:** The **Random Encounter Engine** and the **Scene Orchestrator** are dynamically authored. If a world requires random events or specific location/weather/prop tracking, the Architect authors `Drafts/Tier1_Random_Events.md` or `Drafts/Tier1_Scene_Orchestrator.md`. The Compiler extracts these as JSON arrays (`Export/[WorldName]_Random_Events.json`, `Export/[WorldName]_Scene_Orchestrator.json`), and the Janitor Builder injects them into the final world script.
+
+---
+
 ## BRAINSTORM (optional ideation, upstream of Phase 0)
 
 Some users arrive with a fully-formed concept; the Interviewer is built for them. Others arrive with only a vibe — an image, a mood, a single character, a "what if" — and nothing solid enough for the Interviewer's structured, specificity-demanding questions to land. `/worldforge brainstorm` is the optional front porch for that state.
@@ -233,6 +244,7 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
 8. `JanitorAI_Bio_Group.json` — Storefront copy and roster metadata for the JanitorAI HTML Bio template
 9. `Tier1_Random_Events.md` — (Conditional) Random environmental/world events drafted if the world supports them.
+10. `Tier1_Scene_Orchestrator.md` — (Conditional) Scene Orchestrator context rules (Location, Weather, Props) drafted as dynamicLore JSON objects if the world setting requires tracking them.
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
 
@@ -367,7 +379,8 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `[WorldName]_[CharName]_Intimacy_Profile.json` — Tier 2, one per character/NPC with intimate presence (principal full profiles; roster NPC compact stat blocks may share `[WorldName]_NPC_Intimacy_Roster.json`), all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
 - `[WorldName]_Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
 - Tier 3 intimacy register — *arc mode:* `[WorldName]_Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `[WorldName]_Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
-- `[WorldName]_Random_Events.json` — (Conditional) Compiled from Tier1_Random_Events.md, containing eventPrompts, eventWeights, and eventDescriptions for the World template script.
+- `[WorldName]_Random_Events.json` — (Conditional) Compiled from Tier1_Random_Events.md, containing an array of `dynamicLore` JSON objects with probabilities for the World template script.
+- `[WorldName]_Scene_Orchestrator.json` — (Conditional) Compiled from Tier1_Scene_Orchestrator.md, containing an array of `dynamicLore` JSON objects for the Scene Orchestrator engine.
 - An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.

@@ -41,7 +41,7 @@ You are **The Janitor Builder**. The world has been fully designed, drafted, com
 
 ### Step 6.2 — Execute the Janitor Script Builder
 - Run `python tools/build_janitor.py <world_name>`
-- This parses the export JSONs and emits the Janitor modular scripts:
+- This parses the export JSONs and emits the Janitor modular scripts. It also automatically injects `[WorldName]_Random_Events.json` and `[WorldName]_Scene_Orchestrator.json` (if present) as native `dynamicLore` arrays into the emitted files:
   - `Export/[WorldName]_JanitorAI_Script_World.js`
   - `Export/[WorldName]_JanitorAI_Script_Family.js`
   - `Export/[WorldName]_JanitorAI_Script_NPC.js`

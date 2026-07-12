@@ -64,6 +64,7 @@ You have access to SillyTavern's documentation and source code for schema guidan
 - `Drafts/User.md` — `{{user}}` Persona Description text (passes through to Export unchanged; see Step 4.5 below)
 - `Drafts/Tier1_World_Entries.md` — World Lorebook entries
 - `Drafts/Tier1_Random_Events.md` — (Conditional) Random environmental/sandbox events
+- `Drafts/Tier1_Scene_Orchestrator.md` — (Conditional) Scene Orchestrator rules for Locations/Weather/Props
 - `Drafts/Tier2_[CharName]_Entries.md` — Character Lorebook entries (one per character/NPC, including the Tier 2 Protagonist Lorebook)
 - Tier 3 source — *arc mode:* `Drafts/Tier3_Arc[N]_[Title]_Entries.md` (one per arc); *sandbox mode:* `Drafts/Tier3_Sandbox_Entries.md` (single)
 - `Drafts/Instructions_[CardName].md` — system_prompt and post_history_instructions source
@@ -247,6 +248,11 @@ One lorebook file per arc.
 
 Source: `Drafts/Tier3_Sandbox_Entries.md`
 
+### Step 7.11 — Emit Scene Orchestrator and Random Events JSON
+If the Architect produced a `Drafts/Tier1_Scene_Orchestrator.md` file, extract the JSON block from it and save it as `Export/[WorldName]_Scene_Orchestrator.json`.
+If the Architect produced a `Drafts/Tier1_Random_Events.md` file, extract the JSON block from it and save it as `Export/[WorldName]_Random_Events.json`.
+The Janitor Builder uses these files to inject dynamic rules into the World JS template.
+
 Exactly **one** lorebook file, always active (the user never swaps it). It is the structural twin of an Arc Lorebook — same flag mechanics — minus the arc machinery.
 - **SANDBOX_STATE entry: `constant: true`, `selective: true`, `key: []`, `order: 100`, `position: 1`, `ignoreBudget: true`.** Same placement rationale as ARC_STATE — position 1, never displaced by budget. This is the master standing directive.
 - **WORLD_PULSE entries: `order: 90`, `position: 4`, `depth: 2–4`** (recency-injected, the TENSION analog). If a WORLD_PULSE entry is authored CONSTANT in the draft, set `constant: true`, `key: []`, `ignoreBudget: true`; otherwise `constant: false`, `selective: true` with its trigger keys.
@@ -389,6 +395,10 @@ Include `Protagonist` and `User` in the `Family` list. This config allows `build
 
 If the Architect produced a `Drafts/Tier1_Random_Events.md` file containing random events for the world, extract the JSON block from it and save it as `Export/[WorldName]_Random_Events.json`. The Janitor Builder uses this to inject dynamic events into the World JS template.
 
+### Step 7.12 — Emit Scene Orchestrator JSON (`Export/[WorldName]_Scene_Orchestrator.json`)
+
+If the Architect produced a `Drafts/Tier1_Scene_Orchestrator.md` file containing Scene Orchestrator rules, extract the JSON block (an array of `dynamicLore` objects) and save it as `Export/[WorldName]_Scene_Orchestrator.json`. The Janitor Builder uses this to inject dynamic context directly into the World JS template.
+
 ### Step 8 — Validation Pass
 
 Before saving any file (per Foundational Rules at top of this file):
@@ -453,6 +463,7 @@ Append to `Export/Compiler_Log.md`:
 - [ ] [CharName]_Card.json — system_prompt populated, post_history populated
 - [ ] User.md — passed through from Drafts/ unchanged, BEGIN/END markers and Setup Instructions intact
 - [ ] [WorldName]_World_Lorebook.json — [N] entries, all Tier 1
+- [ ] [WorldName]_Scene_Orchestrator.json and [WorldName]_Random_Events.json extracted (if authored by Architect)
 - [ ] [WorldName]_[CharName]_Lorebook.json — [N] entries (list per character, including the Tier 2 Protagonist Lorebook)
 - [ ] Tier 3: arc mode — [WorldName]_Arc[N]_Lorebook.json, [N] entries each, ARC_STATE present (list per arc); sandbox mode — [WorldName]_Sandbox_Lorebook.json, SANDBOX_STATE + ≥1 WORLD_PULSE present
 - [ ] **Every exported lorebook/register filename is `[WorldName]_`-prefixed, and each lorebook's internal `name` matches its filename (file-naming convention) ✓**

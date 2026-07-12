@@ -108,24 +108,34 @@ def build_janitor(world_name):
 
         template_content = re.sub(r'let APPLY_LIMIT\s*=\s*6;', 'let APPLY_LIMIT = 15;', template_content)
         
+        js_elements = []
         if group_name == "World":
             random_events_path = os.path.join(export_dir, f"{world_name}_Random_Events.json")
             if os.path.exists(random_events_path):
                 try:
                     with open(random_events_path, 'r', encoding='utf-8') as ref:
                         revents = json.load(ref)
-                    prompts_safe = json.dumps(revents.get("eventPrompts", []))
-                    weights_safe = json.dumps(revents.get("eventWeights", []))
-                    descs_safe = json.dumps(revents.get("eventDescriptions", {}))
-                    
-                    template_content = template_content.replace('const eventPrompts = [];', f'const eventPrompts = {prompts_safe};')
-                    template_content = template_content.replace('const eventWeights = [];', f'const eventWeights = {weights_safe};')
-                    template_content = template_content.replace('const eventDescriptions = {};', f'const eventDescriptions = {descs_safe};')
-                    print(f"Injected Random Events into World Template.")
+                    for rule in revents:
+                        rule_safe = json.dumps(rule, indent=4)
+                        js_elements.append(rule_safe)
+                    print(f"Injected Random Events as dynamicLore into World Template.")
                 except Exception as e:
                     print(f"Error processing {random_events_path}: {e}")
+
+            orchestrator_path = os.path.join(export_dir, f"{world_name}_Scene_Orchestrator.json")
+            if os.path.exists(orchestrator_path):
+                try:
+                    with open(orchestrator_path, 'r', encoding='utf-8') as o_ref:
+                        orchestrator_rules = json.load(o_ref)
+                    for rule in orchestrator_rules:
+                        # Convert python dict to a formatted JSON string that fits inside JS array
+                        rule_safe = json.dumps(rule, indent=4)
+                        js_elements.append(rule_safe)
+                    print(f"Injected Scene Orchestrator Packs into World Template.")
+                except Exception as e:
+                    print(f"Error processing {orchestrator_path}: {e}")
         
-        js_elements = []
+
         for entry in entries:
             content_safe = json.dumps(entry["content"])
             keys_safe = json.dumps(entry["keys"])
@@ -140,12 +150,12 @@ def build_janitor(world_name):
         if js_elements:
             injection_string = ",\n".join(js_elements) + ",\n\t"
             
-        marker = ""
+        marker = "const dynamicLore = ["
         if marker not in template_content:
             print(f"Could not find injection marker in {template_path}!")
             sys.exit(1)
             
-        final_content = template_content.replace(marker, injection_string + marker)
+        final_content = template_content.replace(marker, marker + "\n" + injection_string)
         
         out_path = os.path.join(export_dir, f"{world_name}_JanitorAI_Script_{group_name}.js")
         with open(out_path, 'w', encoding='utf-8') as f:

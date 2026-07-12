@@ -13,7 +13,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 3. **Position Rationale on every lorebook entry.** Every entry across all tiers has a `Position Rationale:` field — either the literal string `DEFAULT` (when the entry uses the documented default position+flags for its tier) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. The Editor hard-fails missing or shallow rationales.
 
-4. **All output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier1_Random_Events.md` (conditional), `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card), and `JanitorAI_Bio_Group.json` (storefront bio metadata). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
+4. **All output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier1_Random_Events.md` (conditional), `Tier1_Scene_Orchestrator.md` (conditional), `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card), and `JanitorAI_Bio_Group.json` (storefront bio metadata). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
 
 5. **Style overrides are metadata-only.** Cards with per-card style overrides declare them through `extensions.world_forge.style_override` in the LLM Instructions draft — never as a `<style_override>` tag block inside card text. See `agent_roles/SHARED_Style_Contract_Reference.md` for the schema and the directive prose templates. The Editor hard-fails any literal `<style_override>` tag in any card text field.
 
@@ -87,6 +87,7 @@ Draft in this sequence to prevent cross-contamination:
 5. Tier 3 lorebook entries — *arc mode:* one file per arc (Section 8); *sandbox mode:* one `Tier3_Sandbox_Entries.md` (Section 8S)
 6. LLM Instruction drafts (system_prompt + post_history_instructions per card)
 7. `Tier1_Random_Events.md` (conditional if world has environmental events)
+8. `Tier1_Scene_Orchestrator.md` (conditional if world relies on specific location, prop, or weather tracking)
 
 ---
 
@@ -479,21 +480,56 @@ The dice fix *what is true*; the model invents *how it plays out* (§3.5). The m
 
 If the world dictates random environmental, narrative, or sandbox events, author this file.
 
-Format it as a single JSON code block so the Compiler can extract it.
+Format it as a single JSON array of objects so the Compiler can extract it. These will be injected into the Janitor templates as native `dynamicLore` objects.
 ```json
-{
-  "eventPrompts": ["A sudden thunderstorm begins.", "A stranger approaches with a question.", "A distant howl is heard."],
-  "eventWeights": [20, 50, 30],
-  "eventDescriptions": {
-    "A sudden thunderstorm begins.": "The sky darkens rapidly and heavy rain falls, forcing characters to seek shelter or get soaked.",
-    "A stranger approaches with a question.": "An unknown NPC walks up and interrupts the scene to ask for directions or help.",
-    "A distant howl is heard.": "An eerie sound echoes from far away, setting a tense mood."
+[
+  {
+    "keywords": [],
+    "probability": 0.05,
+    "priority": 5,
+    "scenario": " [WORLD EVENT]: A sudden thunderstorm begins. The sky darkens rapidly and heavy rain falls, forcing characters to seek shelter.",
+    "personality": ""
+  },
+  {
+    "keywords": [],
+    "probability": 0.02,
+    "priority": 5,
+    "scenario": " [WORLD EVENT]: A stranger approaches with a question. An unknown NPC walks up and interrupts the scene to ask for directions or help.",
+    "personality": ""
   }
-}
+]
 ```
-**eventPrompts**: The short name of the events.
-**eventWeights**: The likelihood of each event occurring (higher is more likely).
-**eventDescriptions**: A detailed explanation of what happens when the event triggers.
+- **keywords**: Must be an empty array `[]` so that the event triggers purely on random probability, not user input.
+- **probability**: A decimal representing the chance of this event occurring per message (e.g., `0.05` is 5%). Keep these values low to prevent spam.
+- **priority**: Use 5 so the event is strongly enforced when it triggers.
+- **scenario**: The description of the event prefixed with ` [WORLD EVENT]: `. Focus on immediate, actionable narrative changes.
+
+---
+
+## 6.6 SCENE ORCHESTRATOR DRAFTING — `Drafts/Tier1_Scene_Orchestrator.md` (Conditional)
+
+If the world relies on specific environmental contexts (Weather, Locations, Props) that the LLM needs to track dynamically during scenes, author this file.
+
+Format it as a single JSON array of objects so the Compiler can extract it. These will be injected into the Janitor templates as native `dynamicLore` objects.
+```json
+[
+  {
+    "keywords": ["rain", "storm", "thunder", "downpour"],
+    "priority": 5,
+    "scenario": " [SCENE ORCHESTRATOR]: The weather is currently stormy/raining. Adjust atmosphere and descriptions.",
+    "personality": " [SCENE ORCHESTRATOR]: Ensure the character reacts to the rain appropriately."
+  },
+  {
+    "keywords": ["cafe", "coffee shop", "diner"],
+    "priority": 5,
+    "scenario": " [SCENE ORCHESTRATOR]: The current location is a cafe. Note the presence of tables, coffee, and patrons.",
+    "personality": ""
+  }
+]
+```
+- **keywords**: The array of trigger words for this context. Keep them lowercase and specific to the setting. Do not include modern keywords in a fantasy/sci-fi setting.
+- **priority**: Must be in the 1-5 range. Use 5 for critical context, 4 for flavor.
+- **scenario/personality**: The instruction string prefixed with ` [SCENE ORCHESTRATOR]: `. Focus on concise, actionable notes for the LLM. Keep it under 2 sentences to save tokens. Leave empty string if not applicable.
 
 ---
 

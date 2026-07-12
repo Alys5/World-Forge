@@ -5,7 +5,7 @@ description: A surgical-revision workflow for worlds that have already been buil
 # THE WORLD FORGE REVISION PIPELINE
 *Orchestrator (revise fork) — Surgical Revisions to Built Worlds*
 
-**When to use:** the world has been built (Phase 0–5 complete, Export/ exists), is in active play or post-launch, and needs a surgical change — a new NPC, a voice calibration, an arc tonal recalibration, an entry tweak. The minis read existing Drafts/ and Export/, make targeted insertions or edits, preserve UIDs, and audit only the touched surfaces.
+**When to use:** the world has been built (Phase 0–5 complete, Export/ exists), is in active play or post-launch, and needs a surgical change — a new NPC, a voice calibration, an arc tonal recalibration, an entry tweak, or modifications to `Tier1_Random_Events.md` and `Tier1_Scene_Orchestrator.md`. The minis read existing Drafts/ and Export/, make targeted insertions or edits, preserve UIDs, and audit only the touched surfaces.
 
 **When NOT to use:** any change that touches Master Design Section 1 (Core Concept & Tone) or Section 11a (Style Contract world defaults). Those require a full pipeline re-run from Phase 1, with the existing World_Seed.md reused and the Interviewer skipped (`/worldforge skip phase0`). **Flipping `World Mode` (arc↔sandbox) is a Section 1 change** — it bounces out of the revise pipeline to a full rebuild, exactly like a tonal-rule change. The revise pipeline edits a world *within* its mode; it does not convert between modes.
 

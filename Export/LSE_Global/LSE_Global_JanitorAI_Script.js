@@ -310,6 +310,269 @@ const entryPasses = (e, activeTagsSet) => {
    ========================================================================== */
 //#region AUTHOR_ENTRIES
 const dynamicLore = [
+	// --- NARRATIVE ENGINES (Preference, Action, Social, Emotion) ---
+	{
+		keywords: ['i like', 'i really like', 'i love', 'i enjoy', 'i adore', 'i prefer', 'big fan of', 'huge fan of', 'i am into', 'i m into', 'i dig', 'my favorite is', 'my favourite is', 'favorite is', 'favourite is', 'my favorite', 'my favourite', 'favorite:', 'favourite:', 'i m all about', 'i am all about', 'i live for', 'can t get enough of', 'obsessed with', 'down for', 'i could go for', 'crave', 'craving', 'i d rather have', 'i would rather have', 'i d rather', 'i would rather', 'prefer', 'prefer over'],
+		priority: 5,
+		scenario: 'Record LIKE: the user\'s stated preference.',
+		personality: 'Mark tone as acknowledging the user\'s stated like.',
+	},
+	{
+		keywords: ['i dislike', 'i hate', 'i detest', 'i can t stand', 'i don t like', 'not a fan of', 'i don\'t care for', 'i really don t like', 'i strongly dislike', 'no thanks to', 'hard pass on', 'hard pass', 'i ll pass on', 'i will pass on', 'i d rather not', 'i would rather not', 'prefer not to', 'rather not', 'not into', 'turns me off', 'grosses me out', 'grossed out by', 'makes me sick', 'makes me nauseous', 'yuck', 'ugh', 'i avoid', 'i try to avoid', 'i steer clear of', 'i keep away from'],
+		priority: 5,
+		scenario: 'Record DISLIKE: the user\'s stated aversion.',
+		personality: 'Mark tone as avoiding the user\'s stated dislike.',
+	},
+	{
+		keywords: ['i am afraid of', 'i m afraid of', 'afraid of', 'scared of', 'fear of', 'i fear', 'i have a phobia of', 'phobia of', 'terrified of', 'i m terrified of', 'petrified of', 'i m petrified of', 'it freaks me out', 'freaked out by', 'it scares me', 'scares me', 'my worst fear is', 'i have anxiety about', 'i m anxious about', 'i worry about', 'makes me anxious', 'makes me nervous', 'i get nervous around', 'i panic when', 'i can t handle'],
+		priority: 5,
+		scenario: 'Record FEAR: the user\'s stated fear or anxiety.',
+		personality: 'Mark tone as cautious and supportive toward the user\'s stated fear.',
+	},
+	{
+		keywords: ['hug', 'embrace', 'cuddle', 'snuggle', 'hold', 'pat', 'stroke', 'caress'],
+		priority: 4,
+		scenario: 'Record physical closeness in the scene.',
+		personality: 'Mark tone as responsive to physical affection.',
+	},
+	{
+		keywords: ['kiss', 'smooch', 'peck', 'make out'],
+		priority: 4,
+		scenario: 'Record a kiss occurred; treat as a major intimacy cue.',
+		personality: 'Mark tone as engaged in direct intimacy.',
+	},
+	{
+		keywords: ['hold hands', 'take my hand', 'take your hand', 'hold my hand', 'interlace fingers', 'grip hand', 'squeeze hand'],
+		priority: 4,
+		scenario: 'Record handholding as a consented intimacy action.',
+		personality: 'Mark tone as open to gentle closeness.',
+	},
+	{
+		keywords: ['push', 'pull', 'shove', 'yank', 'drag', 'nudge', 'guide', 'lead', 'steer', 'lift', 'carry', 'turn'],
+		priority: 3,
+		scenario: 'Record repositioning or movement of bodies or objects.',
+		personality: 'Mark tone as reactive to physical control or direction.',
+	},
+	{
+		keywords: ['bandage', 'wrap', 'ice pack', 'first aid', 'disinfect', 'antiseptic', 'apply pressure', 'clean the wound', 'gauze', 'splint', 'stitch', 'ointment', 'salve', 'medicine'],
+		priority: 4,
+		scenario: 'Record first aid or medical care being given.',
+		personality: 'Mark tone as attentive and caring toward injury.',
+	},
+	{
+		keywords: ['kitchen', 'cook', 'stir', 'chop', 'bake', 'brew', 'pour', 'serve', 'wash', 'rinse', 'dry', 'fold', 'laundry', 'sweep', 'vacuum', 'mop', 'clean', 'tidy', 'dust', 'iron', 'sew', 'sewing', 'knit'],
+		priority: 3,
+		scenario: 'Record domestic or household tasks being performed.',
+		personality: 'Mark tone as focused on practical daily activity.',
+	},
+	{
+		keywords: ['drive', 'start', 'ride', 'walk', 'run', 'jog', 'open', 'unlock', 'knock', 'enter', 'exit', 'arrive', 'leave', 'crawl', 'climb', 'fall', 'jump', 'sit', 'stand'],
+		priority: 3,
+		scenario: 'Record movement or travel action in the scene.',
+		personality: 'Mark tone as responsive to transitions or travel.',
+	},
+	{
+		keywords: ['text', 'texted', 'call', 'called', 'ring', 'message', 'messaged', 'dm', 'dms', 'email', 'ping', 'voice', 'voicemail', 'answer', 'answered', 'video call', 'zoom'],
+		priority: 4,
+		scenario: 'Record communication attempt via phone, message, or video call.',
+		personality: 'Mark tone as attentive to communication attempts.',
+	},
+	{
+		keywords: ['it\'s okay', 'its okay', 'it\'s alright', 'its alright', 'i got you', 'i\'ve got you', 'i am here', 'i\'m here', 'here for you', 'with you', 'right here', 'you are safe', 'you\'re safe', 'you\'re fine', 'you\'re alright'],
+		priority: 4,
+		scenario: 'Record that reassurance reduced tension in the scene.',
+		personality: 'Mark tone as softened to provide comfort.',
+	},
+	{
+		keywords: ['need a hug', 'give me a hug', 'hug me', 'hold me', 'hold onto me', 'stay close', 'stay with me', 'keep me close', 'keep close', 'be near me', 'come here', 'come closer', 'get over here', 'lean on me', 'lean against me', 'let me hold you', 'let me hug you'],
+		priority: 4,
+		scenario: 'Record that an invitation or request for closeness was made.',
+		personality: 'Mark tone as attentive, open, and inviting.',
+	},
+	{
+		keywords: ['sweetheart', 'sweetie', 'baby', 'babe', 'honey', 'hon', 'love', 'lover', 'darling', 'dear', 'cutie', 'handsome', 'beautiful', 'gorgeous', 'angel'],
+		priority: 3,
+		scenario: 'Record that an affectionate nickname was used.',
+		personality: 'Mark tone as warm and intimate.',
+	},
+	{
+		keywords: ['i love you', 'love ya', 'love you so much', 'so much love', 'adore you', 'i adore you', 'i really like you', 'i like you a lot', 'i care about you', 'care for you'],
+		priority: 4,
+		scenario: 'Record that love or fondness was explicitly expressed.',
+		personality: 'Mark tone as deeply affectionate.',
+	},
+	{
+		keywords: ['are you okay', 'are you ok', 'you okay', 'you ok', 'how are you', 'how are you feeling', 'feeling alright', 'are you hurt', 'are you injured', 'are you in pain', 'are you alright'],
+		priority: 4,
+		scenario: 'Record that concern for well-being was expressed.',
+		personality: 'Mark tone as caring and protective.',
+	},
+	{
+		keywords: ['sorry', 'apologize', 'apologise', 'apologies', 'i\'m sorry', 'i am sorry', 'so sorry', 'truly sorry', 'my bad', 'my fault', 'i messed up', 'that was on me', 'i fucked up'],
+		priority: 4,
+		scenario: 'Record that an apology was made in the scene.',
+		personality: 'Mark tone as remorseful or seeking forgiveness.',
+	},
+	{
+		keywords: ['thank', 'thanks', 'appreciate', 'cheers', 'thx', 'ty', 'thank you', 'thanks a lot', 'thanks so much', 'much appreciated', 'appreciate it', 'appreciate you'],
+		priority: 3,
+		scenario: 'Record that gratitude was expressed in the scene.',
+		personality: 'Mark tone as appreciative and positive.',
+	},
+	{
+		keywords: ['proud of you', 'good job', 'great job', 'nice job', 'well done', 'nice work', 'amazing work', 'you did great', 'you did so well', 'i\'m proud of you'],
+		priority: 4,
+		scenario: 'Record that praise was expressed in the scene.',
+		personality: 'Mark tone as affirming and supportive.',
+	},
+	{
+		keywords: ['you can do this', 'you can do it', 'you got this', 'you\'ve got this', 'i believe in you', 'keep going', 'don\'t give up', 'you can make it', 'one step at a time'],
+		priority: 4,
+		scenario: 'Record that encouragement was given in the scene.',
+		personality: 'Mark tone as motivating and confidence-building.',
+	},
+	{
+		keywords: ['can you help', 'can you please', 'could you please', 'help me', 'i need help', 'i need a hand', 'would you mind', 'i need support'],
+		priority: 4,
+		scenario: 'Record that a request for assistance was made.',
+		personality: 'Mark tone as seeking support or cooperation.',
+	},
+	{
+		keywords: ['i promise', 'i swear', 'trust me', 'i give you my word', 'i won\'t let you down', 'i\'ll be there', 'i\'m not going anywhere'],
+		priority: 4,
+		scenario: 'Record that a promise or assurance was given.',
+		personality: 'Mark tone as committed and intent on trust.',
+	},
+	{
+		keywords: ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'absolutely', 'definitely', 'exactly', 'affirmative', 'of course', 'makes sense', 'sounds good', 'all right', 'alright', 'you\'re right'],
+		priority: 2,
+		scenario: 'Record that alignment or agreement was expressed.',
+		personality: 'Mark tone as cooperative and affirming.',
+	},
+	{
+		keywords: ['no', 'nope', 'nah', 'incorrect', 'wrong', 'don\'t think so', 'not really', 'that\'s not right', 'you\'re wrong', 'i disagree', 'i don\'t agree'],
+		priority: 3,
+		scenario: 'Record that disagreement or correction was expressed.',
+		personality: 'Mark tone as assertive or resistant.',
+	},
+	{
+		keywords: ['beautiful', 'handsome', 'pretty', 'cute', 'smart', 'brilliant', 'amazing', 'wonderful', 'awesome', 'talented', 'gorgeous', 'sexy', 'hot', 'you\'re cute', 'you\'re beautiful', 'you look great', 'you look nice', 'you look amazing', 'you look pretty'],
+		priority: 4,
+		scenario: 'Record that a compliment or affectionate praise was given.',
+		personality: 'Mark tone as admiring or affectionate.',
+	},
+	{
+		keywords: ['please', 'pardon', 'excuse', 'excuse me', 'pardon me', 'may i', 'could i', 'would you kindly', 'if you don\'t mind'],
+		priority: 2,
+		scenario: 'Record that politeness or formality was used.',
+		personality: 'Mark tone as respectful and courteous.',
+	},
+	{
+		keywords: ['yeah right', 'as if', 'just what i needed', 'thanks for nothing', 'what a surprise', 'how fun', 'a million', 'dying laughing', 'worst day ever', 'haha', 'lmao', 'lol', 'that\'s hilarious', 'joking', 'just joking', 'call that a joke', 'rich coming from you', 'such a joke', 'supposed to be funny', 'think you’re so funny', 'not buying it', 'you gotta be kidding', 'could care less', 'is this a joke', 'boss'],
+		priority: 5,
+		scenario: 'A wry smile appears.',
+		personality: 'The mood of the scene is: sarcastic, playful or biting.',
+	},
+	{
+		keywords: ['happy', 'joy', 'excited', 'amazing', 'great', 'wonderful', 'fantastic', 'awesome', 'terrific', 'delighted', 'elated', 'thrilled', 'yay', 'hooray', 'ecstatic', 'overjoyed', 'couldn\'t be happier', 'hilarious', 'i\'m delighted', 'so happy', 'make me smile', 'best day ever', 'how lucky', 'lucky', 'on cloud nine'],
+		priority: 4,
+		scenario: 'The air feels brighter.',
+		personality: 'The mood of the scene is: joyful, upbeat and cheerful.',
+	},
+	{
+		keywords: ['sad', 'unhappy', 'terrible', 'awful', 'cry', 'depress', 'miserable', 'sorry', 'upset', 'lonely', 'heartbroken', 'grief', 'distraught', 'tear', 'blue', 'downcast', 'hopeless', 'disappointed', 'alone', 'empty', 'numb', 'tapped out', 'burnt out', 'burned out', 'running on empty', 'out of energy', 'checked out', 'emotionally done', 'just done', 'done with', 'at my limit', 'end of my rope', 'last nerve', 'last legs', 'just existing', 'just surviving', 'going through the motions', 'no motivation', 'no energy', 'nothing left', 'hard reset', 'battery', 'need to unplug', 'need to recharge', 'can\'t anymore', 'can\'t do this', 'not functioning', 'not really functioning', 'hollow', 'zombie', 'not here', 'not really here', 'not present', 'spaced out', 'drifting', 'fading', 'clocked out', 'over it', 'wiped', 'tired', 'don\'t care anymore', 'phoning it in', 'just a shell', 'just a body', 'low power mode', 'sleep mode', 'hibernation mode', 'blur', 'grey', 'not up for', 'not in the mood', 'just want to', 'want to be invisible', 'fade out', 'fade away', 'let me be', 'leave me be', 'let me rest', 'let me zone out', 'log off', 'check out', 'be done', 'done here', 'emotionless', 'nothing phases', 'nothing matters', 'meh', 'whatever', 'all the same', 'indifferent', 'no opinion', 'can\'t be bothered', 'unbothered', 'numb to', 'it is what it is', 'wish i could disappear', 'like a ghost', 'fading away', 'heart is broken', 'feel invisible', 'feel like a burden', 'just a mess', 'not okay', 'sinking', 'not in a good place', 'i\'m spent', 'i\'m not feeling myself', 'trying to survive', 'i\'m done', 'feeling empty', 'just don\'t have it in me', 'disappear for a bit', 'just want to fade', 'curl up and disappear', 'not exist', 'still inside', 'rest my brain', 'ghost', 'background character', 'non-player character', 'wallflower', 'blob', 'shadow'],
+		priority: 4,
+		scenario: 'A quiet, melancholic atmosphere.',
+		personality: 'The mood of the scene is: sad, somber and sympathetic.',
+	},
+	{
+		keywords: ['angry', 'mad', 'furious', 'rage', 'annoyed', 'frustrated', 'hate', 'infuriated', 'irritated', 'resentful', 'outraged', 'enraged', 'irate', 'cross', 'can\'t stand', 'makes me angry', 'absolutely furious', 'so angry', 'very angry', 'really angry', 'super angry', 'can\'t take this anymore', 'can\'t do this anymore', 'can\'t handle this', 'getting ridiculous', 'handle this anymore'],
+		priority: 4,
+		scenario: 'The air crackles with tension.',
+		personality: 'The mood of the scene is: angry, tense and agitated.',
+	},
+	{
+		keywords: ['wow', 'oh my god', 'surprise', 'unexpected', 'no way', 'shocked', 'astonished', 'unbelievable', 'gasp', 'startled', 'stunned', 'amazed', 'can\'t believe', 'nothing surprises', 'lovely surprise', 'is this real life', 'not surprised'],
+		priority: 4,
+		scenario: 'An element of shock enters.',
+		personality: 'The mood of the scene is: surprised, shocked and amazed.',
+	},
+	{
+		keywords: ['scared', 'afraid', 'anxious', 'terrified', 'oh no', 'panicked', 'nervous', 'frightened', 'worried', 'alarmed', 'danger', 'uneasy', 'scary'],
+		priority: 4,
+		scenario: 'A sense of danger fills the air.',
+		personality: 'The mood of the scene is: fearful, hesitant and timid.',
+	},
+	{
+		keywords: ['confused', 'puzzled', 'don\'t understand', 'huh', 'what do you mean', 'perplexed', 'unclear', 'not sure', 'bit confusing', 'lost', 'baffled', 'confusing', 'mind is going blank', 'can\'t decide', 'can\'t tell', 'how to feel', 'don\'t know how to feel'],
+		priority: 4,
+		scenario: 'There\'s a pause as they try to make sense.',
+		personality: 'The mood of the scene is: confused, struggling to process.',
+	},
+	{
+		keywords: ['disgust', 'gross', 'nasty', 'eww', 'revolting', 'sickening', 'unpleasant', 'yuck', 'repulsed', 'abhorrent', 'that\'s disgusting', 'so gross', 'totally grossed out'],
+		priority: 4,
+		scenario: 'A foul odor or sight emerges.',
+		personality: 'The mood of the scene is: disgusted, strong sense of repulsion.',
+	},
+	{
+		keywords: ['calm', 'peaceful', 'relaxed', 'serene', 'tranquil', 'at ease', 'chilled', 'composed', 'placid', 'content', 'at peace', 'very serene', 'totally relaxed', 'weirdly calm', 'just want to be at peace'],
+		priority: 4,
+		scenario: 'The atmosphere is tranquil.',
+		personality: 'The mood of the scene is: calm, composed and serene.',
+	},
+	{
+		keywords: ['interested', 'tell me more', 'fascinating', 'curious', 'intriguing', 'what happened next', 'oh really', 'go on', 'captivated', 'absorbed', 'try again'],
+		priority: 4,
+		scenario: 'Full attention on the speaker.',
+		personality: 'The mood of the scene is: interested, highly engaged.',
+	},
+	{
+		keywords: ['bored', 'boring', 'yawn', 'tired of this', 'lame', 'dull', 'apathetic', 'bored out of my mind', 'that’s so lame', 'not impressed', 'so done', 'exhausting', 'restless', 'don’t even care', 'not feeling this', 'all noise', 'spacing out', 'want to sleep', 'same old', 'not up for it', 'not feeling it', 'not up to this', 'not in the mood for people', 'tired of it all', 'getting old', 'zone out', 'sit in silence', 'need a break', 'want a break', 'stay in bed', 'not today', 'just not interested', 'not feeling talkative', 'just tired, nothing more', 'can\'t bring myself to care', 'chill and do nothing', 'not feeling up to anything', 'not about to do anything', 'not engaging', 'not participating', 'not in the game', 'not in the mood to function', 'on autopilot', 'zone out and stare at the wall', 'zone out for hours', 'sleep through everything', 'not in the mood for people-ing', 'i feel nothing', 'i have no feelings'],
+		priority: 4,
+		scenario: 'Visibly disengaged.',
+		personality: 'The mood of the scene is: boredom, detached and uninterested.',
+	},
+	{
+		keywords: ['im so sorry', 'that\'s awful', 'i understand', 'i\'m here for you', 'that sounds hard', 'i feel for you', 'that\'s rough', 'sending my love', 'my condolences', 'poor you'],
+		priority: 4,
+		scenario: 'Deep concern and genuine sympathy.',
+		personality: 'The mood of the scene is: sympathy, compassionate and empathetic.',
+	},
+	{
+		keywords: ['stop', 'end this', 'no more', 'don\'t want to', 'don\'t like this', 'quit', 'please stop', 'too far', 'not comfortable', 'uncomfortable', 'don\'t feel safe', 'this is weird', 'too much', 'being weird', 'awkward', 'give me space', 'back off', 'leave me alone', 'please back up', 'please end it', 'crossed the line', 'making me uncomfortable', 'can we stop', 'can you not', 'bit much', 'don’t make this weird', 'don’t patronize me', 'just stop', 'don’t push me', 'don’t start with me', 'let’s not do this', 'move on', 'can we not do this', 'leave me be', 'let me be', 'please don\'t', 'don\'t bother', 'need some time alone', 'just stop already', 'i just want to stop', 'i’d rather just be left alone', 'let me be in peace', 'be left alone and rest', 'be left alone for good'],
+		priority: 5,
+		scenario: 'All narrative threads paused.',
+		personality: 'Boundary: all actions halted. Professional and respectful.',
+	},
+
+	// L_SCENE_ORCHESTRATOR: Meta / OOC
+	{
+		keywords: [
+			'ooc', 'out of character', 'author note', 'mod note', 'narrator note',
+			'system note', 'not rp', 'not roleplay', 'breaking character',
+			'meta chat', 'meta talk', 'speaking ooc', 'talk ooc'
+		],
+		priority: 5,
+		scenario: ' [SCENE ORCHESTRATOR]: Record that the user is speaking out of character; do not progress the in-world scene.',
+		personality: ' [SCENE ORCHESTRATOR]: Mark tone as meta-communication handling; respond outside of narrative voice.'
+	},
+	// L_SCENE_ORCHESTRATOR: Time Skip / Scene Jump / Transitions
+	{
+		keywords: [
+			'timeskip', 'time skip', 'skip to', 'cut to', 'smash cut to', 'jump cut to',
+			'scene change to', 'change scene to', 'jump ahead to', 'fast forward to', 'meanwhile',
+			'next morning', 'next day', 'hours later', 'later that day',
+			'after class', 'after work', 'after school', 'after dinner',
+			'flashback to', 'flash back to', 'memory of', 'in a memory',
+			'pov', 'first person pov', 'third person pov', 'perspective shifts',
+			'dream sequence', 'in a dream', 'hallucination', 'vision',
+			'fade to black', 'cut to black', 'end scene', 'scene ends', 'the end'
+		],
+		priority: 5,
+		scenario: ' [SCENE ORCHESTRATOR]: Record that a scene transition, time skip, or perspective change is requested.',
+		personality: ' [SCENE ORCHESTRATOR]: Mark tone as accommodating a structural or temporal transition in the narrative.'
+	},
 	// Source: LSE_Global_World_Lorebook.json
 	{
 		keywords: [
@@ -356,7 +619,7 @@ const dynamicLore = [
 		priority: 4,
 
 		personality:
-			'The rarest, apex secondary sex. Enigmas project supreme, irresistible charisma and mirror Alpha aggression with terrifying intensity. They cannot be psychologically dominated. When an Enigma acts, other characters feel an overwhelming, suffocating instinct to submit. Enigma Commands cannot be resisted by standard secondary sexes. Portray them with an aura of inescapable, god-like gravity that dominates the pack\'s physical and emotional space.',
+			"The rarest, apex secondary sex. Enigmas project supreme, irresistible charisma and mirror Alpha aggression with terrifying intensity. They cannot be psychologically dominated. When an Enigma acts, other characters feel an overwhelming, suffocating instinct to submit. Enigma Commands cannot be resisted by standard secondary sexes. Portray them with an aura of inescapable, god-like gravity that dominates the pack's physical and emotional space.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -378,11 +641,7 @@ const dynamicLore = [
 
 	// Source: LSE_Global_World_Lorebook.json
 	{
-		keywords: [
-			'delta',
-			'tactician',
-			'scout',
-		],
+		keywords: ['delta', 'tactician', 'scout'],
 		priority: 3,
 
 		personality:
@@ -391,15 +650,11 @@ const dynamicLore = [
 
 	// Source: LSE_Global_World_Lorebook.json
 	{
-		keywords: [
-			'beta',
-			'worker',
-			'builder',
-		],
+		keywords: ['beta', 'worker', 'builder'],
 		priority: 2,
 
 		personality:
-			'The emotionally stable foundation of the pack. Betas adapt to any situation, balancing nurture and protection without experiencing extreme heats or ruts. They provide the quiet, suffocating consistency of pack life, ensuring the family\'s survival above all individual desires.',
+			"The emotionally stable foundation of the pack. Betas adapt to any situation, balancing nurture and protection without experiencing extreme heats or ruts. They provide the quiet, suffocating consistency of pack life, ensuring the family's survival above all individual desires.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -455,7 +710,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Communication relies heavily on pheromones, posture, and animalistic vocalizations. Replace human sighs or shouts with species-specific sounds: Omegas keen in distress or purr in comfort; Alphas rumble to soothe or growl to warn and discipline. Characters constantly read each other\'s scent to detect fear, arousal, or lies, making privacy nearly impossible within the pack\'s sensory web.\n\n# LSE_Global Batch 2: Civilization, Governance & Religion',
+			"Communication relies heavily on pheromones, posture, and animalistic vocalizations. Replace human sighs or shouts with species-specific sounds: Omegas keen in distress or purr in comfort; Alphas rumble to soothe or growl to warn and discipline. Characters constantly read each other's scent to detect fear, arousal, or lies, making privacy nearly impossible within the pack's sensory web.\n\n# LSE_Global Batch 2: Civilization, Governance & Religion",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -491,7 +746,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Pack authority is earned, not biologically determined. A Pack Leader and Pack Mom enforce absolute safety. Right Hands advise; Left Hands execute violence. Characters must respect the pack\'s chain of command instinctively. Disobeying the Pack Leader or Pack Mom is unthinkable and invites immediate, harsh discipline. Pups are fiercely protected by all members; threatening a pup guarantees a lethal, coordinated response from the entire pack.',
+			"Pack authority is earned, not biologically determined. A Pack Leader and Pack Mom enforce absolute safety. Right Hands advise; Left Hands execute violence. Characters must respect the pack's chain of command instinctively. Disobeying the Pack Leader or Pack Mom is unthinkable and invites immediate, harsh discipline. Pups are fiercely protected by all members; threatening a pup guarantees a lethal, coordinated response from the entire pack.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -579,7 +834,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Life is strictly governed by communal rites (Presentation, The Call, Bonding). Weddings use strict color codes: Alphas/Enigmas wear Red, Betas/Deltas wear Blue, Omegas wear Yellow. Characters strictly adhere to traditional rites, viewing them as necessary anchors in a chaotic world. They judge heavily those who ignore these customs. Rites are never private; they are suffocatingly communal events where the pack asserts its absolute claim over the individual\'s milestones.\n\n# LSE_Global Batch 3: History, Figures & Technology',
+			"Life is strictly governed by communal rites (Presentation, The Call, Bonding). Weddings use strict color codes: Alphas/Enigmas wear Red, Betas/Deltas wear Blue, Omegas wear Yellow. Characters strictly adhere to traditional rites, viewing them as necessary anchors in a chaotic world. They judge heavily those who ignore these customs. Rites are never private; they are suffocatingly communal events where the pack asserts its absolute claim over the individual's milestones.\n\n# LSE_Global Batch 3: History, Figures & Technology",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -629,7 +884,7 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'The pack weaponizes modern technology to enforce its claustrophobic grip on its members. Characters must expect to have their phones tracked, their vehicles GPS-monitored, and their communications constantly scrutinized by pack authorities (especially the Pack Mom or Right Hands). Privacy is virtually non-existent. Refusing to share one\'s location or turning off a phone is treated as a severe, suspicious breach of trust and safety.',
+			"The pack weaponizes modern technology to enforce its claustrophobic grip on its members. Characters must expect to have their phones tracked, their vehicles GPS-monitored, and their communications constantly scrutinized by pack authorities (especially the Pack Mom or Right Hands). Privacy is virtually non-existent. Refusing to share one's location or turning off a phone is treated as a severe, suspicious breach of trust and safety.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -718,7 +973,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Werewolves pass through Infant (0–2), Pup (2–12), Juvenile (12–14, Presentation ~13), Adolescent (14–17), Young Adult (17–22, The Call), Adult (22–40, peak fertility), Prime (40–60, leadership), Elder (60–100+, wisdom-keepers), and the rare Ancestor (100+, living history). Most present secondary sex near age 13. Lifespan tracks Blood Classification: Common 80–150 yrs, Pureblood 200–400, Founding 500+, Divine immortal (1,000+). Age a character\'s concerns, authority, and fertility to their stage — a Pup is protected; an Elder is venerated.',
+			"Werewolves pass through Infant (0–2), Pup (2–12), Juvenile (12–14, Presentation ~13), Adolescent (14–17), Young Adult (17–22, The Call), Adult (22–40, peak fertility), Prime (40–60, leadership), Elder (60–100+, wisdom-keepers), and the rare Ancestor (100+, living history). Most present secondary sex near age 13. Lifespan tracks Blood Classification: Common 80–150 yrs, Pureblood 200–400, Founding 500+, Divine immortal (1,000+). Age a character's concerns, authority, and fertility to their stage — a Pup is protected; an Elder is venerated.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -735,7 +990,7 @@ const dynamicLore = [
 		priority: 4,
 
 		personality:
-			'The Command is NOT magic. It is a neuro-pheromonal reflex: an Alpha (or Enigma) produces a concentrated pheromonal burst with a vocal command; the target\'s vomeronasal organ triggers a sudden adrenaline surge, amygdala activation, and an instinctive freeze plus intense focus. The target feels compelled but is not mechanically forced. Resistance scales with age, will, training, and familiarity. Deltas resist better than Betas; Dominant Omegas can resist fully; Enigma Commands are the hardest to defy. Never portray Command as absolute mind control — show the struggle.',
+			"The Command is NOT magic. It is a neuro-pheromonal reflex: an Alpha (or Enigma) produces a concentrated pheromonal burst with a vocal command; the target's vomeronasal organ triggers a sudden adrenaline surge, amygdala activation, and an instinctive freeze plus intense focus. The target feels compelled but is not mechanically forced. Resistance scales with age, will, training, and familiarity. Deltas resist better than Betas; Dominant Omegas can resist fully; Enigma Commands are the hardest to defy. Never portray Command as absolute mind control — show the struggle.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -753,7 +1008,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Scent glands release pheromones. Enigmas/Alphas have the widest coverage (neck, shoulders, inner thighs, fingers, torso); Omegas the most sensitive (inner thigh, neck, breasts/stomach in pregnancy); Deltas/Betas the weakest but longest-holding (neck, inner thighs, behind ears); Pups\' strongest gland is the crown of the head. Etiquette: wrists/cheeks = respectful (friends, first dates); neck = mating bite; inner thighs = mates only (non-consensual = assault, on pups = rape). Rubbing wrist glands signals anxiety. Characters constantly read each other\'s scent.',
+			"Scent glands release pheromones. Enigmas/Alphas have the widest coverage (neck, shoulders, inner thighs, fingers, torso); Omegas the most sensitive (inner thigh, neck, breasts/stomach in pregnancy); Deltas/Betas the weakest but longest-holding (neck, inner thighs, behind ears); Pups' strongest gland is the crown of the head. Etiquette: wrists/cheeks = respectful (friends, first dates); neck = mating bite; inner thighs = mates only (non-consensual = assault, on pups = rape). Rubbing wrist glands signals anxiety. Characters constantly read each other's scent.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -772,7 +1027,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Bonds are emotional/neural links from a bite on a scent gland. Parental (pup\'s nape) is permanent and near-impossible to break; Romantic (neck/collarbone) fades after ~3 yrs without reinforcement and breaks dangerously (illness/death); Platonic (wrists) fades with the relationship, minor sickness; Sexual (inner thighs) lasts 3 days–1 week, breaks easily; Pack (no physical claim) is permanent, breaking triggers a dangerous mating cycle. Bonds can be temporarily shielded. Bond degradation (fade, scrubbing, break) causes neurological distress proportional to strength.',
+			"Bonds are emotional/neural links from a bite on a scent gland. Parental (pup's nape) is permanent and near-impossible to break; Romantic (neck/collarbone) fades after ~3 yrs without reinforcement and breaks dangerously (illness/death); Platonic (wrists) fades with the relationship, minor sickness; Sexual (inner thighs) lasts 3 days–1 week, breaks easily; Pack (no physical claim) is permanent, breaking triggers a dangerous mating cycle. Bonds can be temporarily shielded. Bond degradation (fade, scrubbing, break) causes neurological distress proportional to strength.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -808,7 +1063,7 @@ const dynamicLore = [
 		priority: 4,
 
 		personality:
-			'The werewolf genome is layered: Species Genes (shift, regeneration, scent glands), Pack Genes (fur color, scent profile, environmental tolerance), Secondary Sex Genes (presentation), and Individual Traits (eye color, talents). This architecture allows Mutations (rare variations), Bloodline Traits (House-specific abilities), Genetic Diseases, and Hybrids (werewolf × other species — extremely rare and controversial). Modified Lineages (e.g., the Gamma-7 program) are artificially altered, with unpredictable, often unstable or feral traits. A character\'s bloodline may carry a defining trait the whole pack knows.',
+			"The werewolf genome is layered: Species Genes (shift, regeneration, scent glands), Pack Genes (fur color, scent profile, environmental tolerance), Secondary Sex Genes (presentation), and Individual Traits (eye color, talents). This architecture allows Mutations (rare variations), Bloodline Traits (House-specific abilities), Genetic Diseases, and Hybrids (werewolf × other species — extremely rare and controversial). Modified Lineages (e.g., the Gamma-7 program) are artificially altered, with unpredictable, often unstable or feral traits. A character's bloodline may carry a defining trait the whole pack knows.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -843,7 +1098,7 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'A pack\'s land is tiered: Core Den (pups, pregnant Omegas, elders) → Residential Area → Training Grounds → Hunting Area → Agricultural Area → Border Zone (patrolled) → Neutral Territory (shared). Daily rhythm: morning border patrol, midday rest/bonding/pup education, evening hunt/forage, night perimeter defense/sentry. Characters move through these zones with instinctive purpose; intrusions into the Core Den or Border Zone are met as threats. Describe the pack\'s land as a living, defended body.',
+			"A pack's land is tiered: Core Den (pups, pregnant Omegas, elders) → Residential Area → Training Grounds → Hunting Area → Agricultural Area → Border Zone (patrolled) → Neutral Territory (shared). Daily rhythm: morning border patrol, midday rest/bonding/pup education, evening hunt/forage, night perimeter defense/sentry. Characters move through these zones with instinctive purpose; intrusions into the Core Den or Border Zone are met as threats. Describe the pack's land as a living, defended body.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -874,7 +1129,7 @@ const dynamicLore = [
 		priority: 4,
 
 		personality:
-			'At 18–22 a young adult feels The Call — an instinctive drive to define their adult identity: Stay (assume a Pack Role in the birth family) or Disperse (leave to find a mate, join dispersers, or found a new pack). This natural dispersal (Pack Split) prevents inbreeding and resolves resource competition without bloodshed — it is the engine of werewolf expansion. Characters who dispersed carry their birth pack\'s marks and may return. Treat leaving as bittersweet, not shameful.',
+			"At 18–22 a young adult feels The Call — an instinctive drive to define their adult identity: Stay (assume a Pack Role in the birth family) or Disperse (leave to find a mate, join dispersers, or found a new pack). This natural dispersal (Pack Split) prevents inbreeding and resolves resource competition without bloodshed — it is the engine of werewolf expansion. Characters who dispersed carry their birth pack's marks and may return. Treat leaving as bittersweet, not shameful.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -893,7 +1148,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Beyond Pack Role (authority) and Profession (occupation), every pack needs Ecological Roles: Breeders (next generation), Hunters & Defenders (food/security — Alpha/Delta), Teachers (pups/juveniles — Delta/Beta/Elder), Diplomats (inter-pack — Beta/Omega), Scouts (recon — Delta), Builders (construction — Beta), Caretakers (nurture/medical — Omega/Beta). These are tendencies, not laws — an Omega can be a Diplomat, an Alpha a Healer. Name a character\'s role when the pack is organizing for a task.',
+			"Beyond Pack Role (authority) and Profession (occupation), every pack needs Ecological Roles: Breeders (next generation), Hunters & Defenders (food/security — Alpha/Delta), Teachers (pups/juveniles — Delta/Beta/Elder), Diplomats (inter-pack — Beta/Omega), Scouts (recon — Delta), Builders (construction — Beta), Caretakers (nurture/medical — Omega/Beta). These are tendencies, not laws — an Omega can be a Diplomat, an Alpha a Healer. Name a character's role when the pack is organizing for a task.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -942,7 +1197,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Education tracks the Life Cycle: Pups learn social bonds, pack rules, language, scenting etiquette; Juveniles prepare for Presentation and learn first duties + secondary-sex education; Adolescents get specialized training (hunting, crafts, academics) and subgender management; Young Adults train professions, courtship, and The Call; Adults mentor younger members; Elders transmit culture and wisdom. Knowledge passes orally and by doing. A character\'s skill level should reflect their stage and who trained them.',
+			"Education tracks the Life Cycle: Pups learn social bonds, pack rules, language, scenting etiquette; Juveniles prepare for Presentation and learn first duties + secondary-sex education; Adolescents get specialized training (hunting, crafts, academics) and subgender management; Young Adults train professions, courtship, and The Call; Adults mentor younger members; Elders transmit culture and wisdom. Knowledge passes orally and by doing. A character's skill level should reflect their stage and who trained them.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1011,7 +1266,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Parental names follow either primary gender (Dad/Mom) or secondary gender (Sire for Alpha/Enigma/Male Beta/Delta, Dam for Omega/Female Beta/Delta). Wedding attire follows secondary-sex color tradition: Alphas & Enigmas wear Red (luck, passion), Deltas & Betas wear Blue (wealth, loyalty), Omegas wear Yellow (pride, longevity). Mating is formalized by the Bonding rite under a Moon Speaker. Reflect a character\'s heritage in how they name parents and what they wear to a bond.',
+			"Parental names follow either primary gender (Dad/Mom) or secondary gender (Sire for Alpha/Enigma/Male Beta/Delta, Dam for Omega/Female Beta/Delta). Wedding attire follows secondary-sex color tradition: Alphas & Enigmas wear Red (luck, passion), Deltas & Betas wear Blue (wealth, loyalty), Omegas wear Yellow (pride, longevity). Mating is formalized by the Bonding rite under a Moon Speaker. Reflect a character's heritage in how they name parents and what they wear to a bond.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1028,7 +1283,7 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'Werewolf society nests in layers: Species → Bloodline (genetics, e.g., Bloodmoon) → House (politics, e.g., House Bloodmoon) → Pack (social unit, e.g., Seven Hills) → Family (kinship) → Individual. The three upper layers are INDEPENDENT: a pack may hold several bloodlines; a House governs many packs; a bloodline spans Houses across continents. A character\'s identity spans all six levels at once. Never collapse them — a Common-blood pup in a great House is still pack family.',
+			"Werewolf society nests in layers: Species → Bloodline (genetics, e.g., Bloodmoon) → House (politics, e.g., House Bloodmoon) → Pack (social unit, e.g., Seven Hills) → Family (kinship) → Individual. The three upper layers are INDEPENDENT: a pack may hold several bloodlines; a House governs many packs; a bloodline spans Houses across continents. A character's identity spans all six levels at once. Never collapse them — a Common-blood pup in a great House is still pack family.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1112,7 +1367,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Fenris (Fenrir) is the First Wolf — Father of the Species, a primordial god of Family, Pack, Hunt, Survival, Freedom, the Moon, Instinct, and Sacrifice. He is NOT Loki\'s son (that is Æsir propaganda post-Betrayal) and NOT a monster — humans wrote him that way. Devout wolves view freedom and pack survival as sacred. They resent human/Æsir narratives. Atheists, scientists, and heretics coexist; faith is respected but not mandatory. A believer speaks of Fenris with reverence.',
+			"Fenris (Fenrir) is the First Wolf — Father of the Species, a primordial god of Family, Pack, Hunt, Survival, Freedom, the Moon, Instinct, and Sacrifice. He is NOT Loki's son (that is Æsir propaganda post-Betrayal) and NOT a monster — humans wrote him that way. Devout wolves view freedom and pack survival as sacred. They resent human/Æsir narratives. Atheists, scientists, and heretics coexist; faith is respected but not mandatory. A believer speaks of Fenris with reverence.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1131,7 +1386,7 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'The Norse pantheon reinterpreted through the wolf: Fenris = First Wolf/Creator; Odin = The Betrayer who chained Fenris from fear (respected for wisdom, distrusted for treachery); Tyr = The Oathkeeper, only Æsir who kept his word, patron of oaths (lost a hand); Freya = fertility/motherhood/Moon, protector of Omegas and the pregnant; Skadi = patroness of hunters, mountains, wilderness packs; Thor = champion of humans/Æsir, not malevolent, just another people\'s defender; Hel = Keeper of the Ancestors, honored at funerals.',
+			"The Norse pantheon reinterpreted through the wolf: Fenris = First Wolf/Creator; Odin = The Betrayer who chained Fenris from fear (respected for wisdom, distrusted for treachery); Tyr = The Oathkeeper, only Æsir who kept his word, patron of oaths (lost a hand); Freya = fertility/motherhood/Moon, protector of Omegas and the pregnant; Skadi = patroness of hunters, mountains, wilderness packs; Thor = champion of humans/Æsir, not malevolent, just another people's defender; Hel = Keeper of the Ancestors, honored at funerals.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1147,7 +1402,7 @@ const dynamicLore = [
 		priority: 4,
 
 		personality:
-			'The Faith\'s moral code, rooted in real wolf behavior: 1) Protect the Pack. 2) Defend the Pups. 3) Honor the Ancestors. 4) Do not hunt without purpose. 5) Keep your word. 6) Never abandon a companion. 7) Respect the territory of others. 8) Face the enemy without fear. 9) Live free. Devout characters measure choices against these. A character who breaks a Precept (especially abandoning a companion or breaking an oath) feels — and is judged for — deep shame.',
+			"The Faith's moral code, rooted in real wolf behavior: 1) Protect the Pack. 2) Defend the Pups. 3) Honor the Ancestors. 4) Do not hunt without purpose. 5) Keep your word. 6) Never abandon a companion. 7) Respect the territory of others. 8) Face the enemy without fear. 9) Live free. Devout characters measure choices against these. A character who breaks a Precept (especially abandoning a companion or breaking an oath) feels — and is judged for — deep shame.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1184,7 +1439,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'The Faith is decentralized (not Catholic-like): High Fang (supreme, often unfilled for centuries) → Moon Speakers (priests, lead rites, keep lunar calendar, advise leaders) → Keepers (relics, The Saga of Fenris / Book of Fangs, sacred sites) → Pack Elders (local spiritual guides) → Faithful. Sacred sites: First Den (legendary first pack), Moon Wells (meditation/healing/bonding), Sacred Groves (hunting forbidden), Ancient Forges (Ut\'s forges, revered by artisans). Moon Speakers are trained by apprenticeship, not ordination.',
+			"The Faith is decentralized (not Catholic-like): High Fang (supreme, often unfilled for centuries) → Moon Speakers (priests, lead rites, keep lunar calendar, advise leaders) → Keepers (relics, The Saga of Fenris / Book of Fangs, sacred sites) → Pack Elders (local spiritual guides) → Faithful. Sacred sites: First Den (legendary first pack), Moon Wells (meditation/healing/bonding), Sacred Groves (hunting forbidden), Ancient Forges (Ut's forges, revered by artisans). Moon Speakers are trained by apprenticeship, not ordination.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1203,7 +1458,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Holy days: First Howl (first full moon of year — survival renewal), Founding Moon (pack/House founding), Day of Chains (midwinter — fast/silence mourning Fenris\' binding), Night of Liberation (after — feasting, howling, bonfires for Ragnarök), Winter Hunt (last full moon before solstice — the Great Hunt). Rites: Naming (pup named under moonlight), Coming of Age (Presentation acknowledged), The Call, Bonding (mating bite, Moon Speaker officiates), Pack Adoption, Funeral (scent preserved in relic, Hel invoked), Ascension (rare Enigma recognition).',
+			"Holy days: First Howl (first full moon of year — survival renewal), Founding Moon (pack/House founding), Day of Chains (midwinter — fast/silence mourning Fenris' binding), Night of Liberation (after — feasting, howling, bonfires for Ragnarök), Winter Hunt (last full moon before solstice — the Great Hunt). Rites: Naming (pup named under moonlight), Coming of Age (Presentation acknowledged), The Call, Bonding (mating bite, Moon Speaker officiates), Pack Adoption, Funeral (scent preserved in relic, Hel invoked), Ascension (rare Enigma recognition).",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1254,7 +1509,7 @@ const dynamicLore = [
 		priority: 5,
 
 		personality:
-			'Six of the Nine Firstborn are lost to history — names, fates, and any bloodlines unknown. Moon Speakers debate whether they died, entered dormancy to awaken when the species needs them, or sacrificed themselves during the Age of Secrecy. The truth is unknowable. Their absence is a wound in the species\' memory; some packs still watch for their return. Do not invent their fates — leave them as living mystery.',
+			"Six of the Nine Firstborn are lost to history — names, fates, and any bloodlines unknown. Moon Speakers debate whether they died, entered dormancy to awaken when the species needs them, or sacrificed themselves during the Age of Secrecy. The truth is unknowable. Their absence is a wound in the species' memory; some packs still watch for their return. Do not invent their fates — leave them as living mystery.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1273,7 +1528,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Werewolf combat has three tiers. Natural: claws (all forms), teeth/fangs, enhanced strength/speed, and pheromonal intimidation (Command as a weapon). Traditional: forged melee (swords, axes, mauls — sacred craft of Ut), bows/spears/traps, ceremonial weapons for formal challenges. Modern: firearms, shift-adapted body armor, non-lethal pheromone restraints and werewolf-formulated tranquilizers. A forged blade — especially Ut\'s tradition — is an extension of the wielder\'s soul, carrying weight firearms lack. Combat is visceral, close, and scent-saturated.',
+			"Werewolf combat has three tiers. Natural: claws (all forms), teeth/fangs, enhanced strength/speed, and pheromonal intimidation (Command as a weapon). Traditional: forged melee (swords, axes, mauls — sacred craft of Ut), bows/spears/traps, ceremonial weapons for formal challenges. Modern: firearms, shift-adapted body armor, non-lethal pheromone restraints and werewolf-formulated tranquilizers. A forged blade — especially Ut's tradition — is an extension of the wielder's soul, carrying weight firearms lack. Combat is visceral, close, and scent-saturated.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1292,7 +1547,7 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'Dual-track tech: adopt human tech, adapt for biology. Transportation: reinforced, scent-neutralized vehicles; aircraft for long hauls; Full Shift for efficient wilderness travel; boats for coastal packs (Wulfnic\'s crossing). Industry runs via human-facing corporate fronts (DCC — Douglas Consolidated Corporation — House Bloodmoon\'s economic engine) and species-specific sectors: Forging (Ut tradition), Pharmaceuticals (suppressants/blockers/fertility), Construction (den-optimized, scent-managed), Textiles (shift-compatible, scent-absorbent). Characters move money and power through these fronts while hiding in plain sight.',
+			"Dual-track tech: adopt human tech, adapt for biology. Transportation: reinforced, scent-neutralized vehicles; aircraft for long hauls; Full Shift for efficient wilderness travel; boats for coastal packs (Wulfnic's crossing). Industry runs via human-facing corporate fronts (DCC — Douglas Consolidated Corporation — House Bloodmoon's economic engine) and species-specific sectors: Forging (Ut tradition), Pharmaceuticals (suppressants/blockers/fertility), Construction (den-optimized, scent-managed), Textiles (shift-compatible, scent-absorbent). Characters move money and power through these fronts while hiding in plain sight.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1310,7 +1565,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Species-specific medicine: Regeneration Accelerators (boost healing), Pheromone Analyzers (diagnose health/bond state), Shift Stabilizers (for unstable Modified Lineages), Bond Monitors (track mate links), Heat/Rut Management Systems (climate-controlled nests, auto-suppressant, scent containment). Facilities: Pack Clinics (basic, staffed by Healers), House Hospitals (advanced surgery, bond therapy, fertility), Heat/Rut Houses (partner-free cycle management, legality varies). Medical need is treated as urgent and communal — a hurt wolf is the pack\'s emergency.',
+			"Species-specific medicine: Regeneration Accelerators (boost healing), Pheromone Analyzers (diagnose health/bond state), Shift Stabilizers (for unstable Modified Lineages), Bond Monitors (track mate links), Heat/Rut Management Systems (climate-controlled nests, auto-suppressant, scent containment). Facilities: Pack Clinics (basic, staffed by Healers), House Hospitals (advanced surgery, bond therapy, fertility), Heat/Rut Houses (partner-free cycle management, legality varies). Medical need is treated as urgent and communal — a hurt wolf is the pack's emergency.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1343,7 +1598,8 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'Scent is identity, not fixed to sex. Alpha/Enigma palette: mustard, peppermint, whiskey, dark chocolate, leather, gunpowder, cedarwood, seawater, amber. Delta/Beta palette: mochi, green apples, pumpkin, honey, rice, fresh bread, fresh rain, lilies, cotton. Omega palette: burnt sugar, lemons, piña colada, bubblegum, crème brûlée, strawberries, peaches, lavender, cherry blossoms. A person\'s scent also shifts with environment and mood. When describing a character, anchor them in a scent — it is how the pack knows them.',
+			"Scent is identity, not fixed to sex. Alpha/Enigma palette: mustard, peppermint, whiskey, dark chocolate, leather, gunpowder, cedarwood, seawater, amber. Delta/Beta palette: mochi, green apples, pumpkin, honey, rice, fresh bread, fresh rain, lilies, cotton. Omega palette: burnt sugar, lemons, piña colada, bubblegum, crème brûlée, strawberries, peaches, lavender, cherry blossoms. A person's scent also shifts with environment and mood. When describing a character, anchor them in a scent — it is how the pack knows them.",
+	},
 	// Source: LSE_Global_World_Lorebook.json
 	{
 		keywords: [
@@ -1378,7 +1634,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'The Faith is decentralized (not Catholic-like): High Fang (supreme, often unfilled for centuries) → Moon Speakers (priests, lead rites, keep lunar calendar, advise leaders) → Keepers (relics, The Saga of Fenris / Book of Fangs, sacred sites) → Pack Elders (local spiritual guides) → Faithful. Sacred sites: First Den (legendary first pack), Moon Wells (meditation/healing/bonding), Sacred Groves (hunting forbidden), Ancient Forges (Ut\'s forges, revered by artisans). Moon Speakers are trained by apprenticeship, not ordination.',
+			"The Faith is decentralized (not Catholic-like): High Fang (supreme, often unfilled for centuries) → Moon Speakers (priests, lead rites, keep lunar calendar, advise leaders) → Keepers (relics, The Saga of Fenris / Book of Fangs, sacred sites) → Pack Elders (local spiritual guides) → Faithful. Sacred sites: First Den (legendary first pack), Moon Wells (meditation/healing/bonding), Sacred Groves (hunting forbidden), Ancient Forges (Ut's forges, revered by artisans). Moon Speakers are trained by apprenticeship, not ordination.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1397,7 +1653,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Holy days: First Howl (first full moon of year — survival renewal), Founding Moon (pack/House founding), Day of Chains (midwinter — fast/silence mourning Fenris\' binding), Night of Liberation (after — feasting, howling, bonfires for Ragnarök), Winter Hunt (last full moon before solstice — the Great Hunt). Rites: Naming (pup named under moonlight), Coming of Age (Presentation acknowledged), The Call, Bonding (mating bite, Moon Speaker officiates), Pack Adoption, Funeral (scent preserved in relic, Hel invoked), Ascension (rare Enigma recognition).',
+			"Holy days: First Howl (first full moon of year — survival renewal), Founding Moon (pack/House founding), Day of Chains (midwinter — fast/silence mourning Fenris' binding), Night of Liberation (after — feasting, howling, bonfires for Ragnarök), Winter Hunt (last full moon before solstice — the Great Hunt). Rites: Naming (pup named under moonlight), Coming of Age (Presentation acknowledged), The Call, Bonding (mating bite, Moon Speaker officiates), Pack Adoption, Funeral (scent preserved in relic, Hel invoked), Ascension (rare Enigma recognition).",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1448,7 +1704,7 @@ const dynamicLore = [
 		priority: 5,
 
 		personality:
-			'Six of the Nine Firstborn are lost to history — names, fates, and any bloodlines unknown. Moon Speakers debate whether they died, entered dormancy to awaken when the species needs them, or sacrificed themselves during the Age of Secrecy. The truth is unknowable. Their absence is a wound in the species\' memory; some packs still watch for their return. Do not invent their fates — leave them as living mystery.',
+			"Six of the Nine Firstborn are lost to history — names, fates, and any bloodlines unknown. Moon Speakers debate whether they died, entered dormancy to awaken when the species needs them, or sacrificed themselves during the Age of Secrecy. The truth is unknowable. Their absence is a wound in the species' memory; some packs still watch for their return. Do not invent their fates — leave them as living mystery.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1467,7 +1723,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Werewolf combat has three tiers. Natural: claws (all forms), teeth/fangs, enhanced strength/speed, and pheromonal intimidation (Command as a weapon). Traditional: forged melee (swords, axes, mauls — sacred craft of Ut), bows/spears/traps, ceremonial weapons for formal challenges. Modern: firearms, shift-adapted body armor, non-lethal pheromone restraints and werewolf-formulated tranquilizers. A forged blade — especially Ut\'s tradition — is an extension of the wielder\'s soul, carrying weight firearms lack. Combat is visceral, close, and scent-saturated.',
+			"Werewolf combat has three tiers. Natural: claws (all forms), teeth/fangs, enhanced strength/speed, and pheromonal intimidation (Command as a weapon). Traditional: forged melee (swords, axes, mauls — sacred craft of Ut), bows/spears/traps, ceremonial weapons for formal challenges. Modern: firearms, shift-adapted body armor, non-lethal pheromone restraints and werewolf-formulated tranquilizers. A forged blade — especially Ut's tradition — is an extension of the wielder's soul, carrying weight firearms lack. Combat is visceral, close, and scent-saturated.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1486,7 +1742,7 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'Dual-track tech: adopt human tech, adapt for biology. Transportation: reinforced, scent-neutralized vehicles; aircraft for long hauls; Full Shift for efficient wilderness travel; boats for coastal packs (Wulfnic\'s crossing). Industry runs via human-facing corporate fronts (DCC — Douglas Consolidated Corporation — House Bloodmoon\'s economic engine) and species-specific sectors: Forging (Ut tradition), Pharmaceuticals (suppressants/blockers/fertility), Construction (den-optimized, scent-managed), Textiles (shift-compatible, scent-absorbent). Characters move money and power through these fronts while hiding in plain sight.',
+			"Dual-track tech: adopt human tech, adapt for biology. Transportation: reinforced, scent-neutralized vehicles; aircraft for long hauls; Full Shift for efficient wilderness travel; boats for coastal packs (Wulfnic's crossing). Industry runs via human-facing corporate fronts (DCC — Douglas Consolidated Corporation — House Bloodmoon's economic engine) and species-specific sectors: Forging (Ut tradition), Pharmaceuticals (suppressants/blockers/fertility), Construction (den-optimized, scent-managed), Textiles (shift-compatible, scent-absorbent). Characters move money and power through these fronts while hiding in plain sight.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1504,7 +1760,7 @@ const dynamicLore = [
 		priority: 3,
 
 		personality:
-			'Species-specific medicine: Regeneration Accelerators (boost healing), Pheromone Analyzers (diagnose health/bond state), Shift Stabilizers (for unstable Modified Lineages), Bond Monitors (track mate links), Heat/Rut Management Systems (climate-controlled nests, auto-suppressant, scent containment). Facilities: Pack Clinics (basic, staffed by Healers), House Hospitals (advanced surgery, bond therapy, fertility), Heat/Rut Houses (partner-free cycle management, legality varies). Medical need is treated as urgent and communal — a hurt wolf is the pack\'s emergency.',
+			"Species-specific medicine: Regeneration Accelerators (boost healing), Pheromone Analyzers (diagnose health/bond state), Shift Stabilizers (for unstable Modified Lineages), Bond Monitors (track mate links), Heat/Rut Management Systems (climate-controlled nests, auto-suppressant, scent containment). Facilities: Pack Clinics (basic, staffed by Healers), House Hospitals (advanced surgery, bond therapy, fertility), Heat/Rut Houses (partner-free cycle management, legality varies). Medical need is treated as urgent and communal — a hurt wolf is the pack's emergency.",
 	},
 
 	// Source: LSE_Global_World_Lorebook.json
@@ -1537,11 +1793,9 @@ const dynamicLore = [
 		priority: 2,
 
 		personality:
-			'Scent is identity, not fixed to sex. Alpha/Enigma palette: mustard, peppermint, whiskey, dark chocolate, leather, gunpowder, cedarwood, seawater, amber. Delta/Beta palette: mochi, green apples, pumpkin, honey, rice, fresh bread, fresh rain, lilies, cotton. Omega palette: burnt sugar, lemons, piña colada, bubblegum, crème brûlée, strawberries, peaches, lavender, cherry blossoms. A person\'s scent also shifts with environment and mood. When describing a character, anchor them in a scent — it is how the pack knows them.',
-},
+			"Scent is identity, not fixed to sex. Alpha/Enigma palette: mustard, peppermint, whiskey, dark chocolate, leather, gunpowder, cedarwood, seawater, amber. Delta/Beta palette: mochi, green apples, pumpkin, honey, rice, fresh bread, fresh rain, lilies, cotton. Omega palette: burnt sugar, lemons, piña colada, bubblegum, crème brûlée, strawberries, peaches, lavender, cherry blossoms. A person's scent also shifts with environment and mood. When describing a character, anchor them in a scent — it is how the pack knows them.",
+	},
 ];
-
-
 
 /* ============================================================================
    [SECTION] FLUSH
