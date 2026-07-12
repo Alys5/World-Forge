@@ -338,26 +338,26 @@ const entryPasses = (e, activeTagsSet) => {
 const dynamicLore = [
 	// 🟢🟢🟢 SAFE TO EDIT BELOW THIS LINE 🟢🟢🟢
 
-	// L_STORY: Premade Story Plan (Milestones ed eventi della storia)
+	// L_WORLD_RULES: Overarching Physical or Magical Laws
 	{
-		keywords: ['story', 'milestone', 'plan', 'progress', 'next', 'event'],
+		keywords: ['world', 'magic', 'rule', 'law', 'realm', 'system', 'god'],
+		priority: 5,
+		scenario:
+			' [WORLD RULES: <Architect inserts global physics, magic system limits, or overarching laws here>]',
+	},
+	// L_FACTION: Political Entities and Alliances
+	{
+		keywords: ['<Architect inserts Faction Name here>', 'faction', 'guild', 'alliance', 'empire'],
 		priority: 4,
 		scenario:
-			' [PREMADE STORY PLAN: <Architect inserts Milestones here>]',
+			' [FACTION DETAILS: <Architect inserts specific standing, hierarchy, and political attitude towards {{user}} here>]',
 	},
-	// L_PREVIOUSLY: Background context just before RP starts
+	// L_LOCATION: Environmental Context
 	{
-		keywords: ['previously', 'past', 'history', 'before'],
-		priority: 3,
+		keywords: ['<Architect inserts Location Name here>', 'city', 'town', 'forest', 'dungeon', 'ruin'],
+		priority: 4,
 		scenario:
-			' [PREVIOUSLY: <Architect inserts previous events here>]',
-	},
-	// L_NOTES: General notes
-	{
-		keywords: ['notes', 'important', 'rules'],
-		priority: 5,
-		personality:
-			' [NOTES: <Architect inserts notes here>]',
+			' [LOCATION CONTEXT: <Architect inserts environmental hazards, atmosphere, and local NPCs present in this specific location here>]',
 	},
 	// L_SPECIES: Supernatural Biology (Use Case 1: Single-Char Sandbox / Arc, Use Case 2: Multi-Char Sandbox / Arc)
 	{
@@ -379,28 +379,19 @@ const dynamicLore = [
    ========================================================================== */
 //#region COMPILATION
 const compileAuthorLore = (authorLore) => {
-	let src = Array.isArray(authorLore) ? authorLore : [];
-	let out = new Array(src.length);
-	for (let i = 0; i < src.length; i++) out[i] = normalizeEntry(src[i]);
-	return out;
+	const src = Array.isArray(authorLore) ? authorLore : [];
+	return src.map(normalizeEntry);
 };
 const normalizeEntry = (e) => {
 	if (!e) return {};
-	let out = {};
-	for (let k in e)
-		if (Object.prototype.hasOwnProperty.call(e, k)) out[k] = e[k];
-	out.keywords = Array.isArray(e.keywords) ? e.keywords.slice(0) : [];
+	const out = { ...e };
+	out.keywords = Array.isArray(e.keywords) ? [...e.keywords] : [];
 	if (Array.isArray(e.Shifts) && e.Shifts.length) {
-		let shArr = new Array(e.Shifts.length);
-		for (let i = 0; i < e.Shifts.length; i++) {
-			let sh = e.Shifts[i] || {};
-			let shOut = {};
-			for (let sk in sh)
-				if (Object.prototype.hasOwnProperty.call(sh, sk)) shOut[sk] = sh[sk];
-			shOut.keywords = Array.isArray(sh.keywords) ? sh.keywords.slice(0) : [];
-			shArr[i] = shOut;
-		}
-		out.Shifts = shArr;
+		out.Shifts = e.Shifts.map((sh) => {
+			const shOut = { ...(sh || {}) };
+			shOut.keywords = Array.isArray(shOut.keywords) ? [...shOut.keywords] : [];
+			return shOut;
+		});
 	} else if (out.hasOwnProperty('Shifts')) {
 		delete out.Shifts;
 	}
@@ -417,8 +408,7 @@ const _ENGINE_LORE = compileAuthorLore(
 //#region SELECTION_PIPELINE
 // --- State -------------------------------------------------------------------
 const buckets = [null, [], [], [], [], []];
-const picked = new Array(_ENGINE_LORE.length);
-for (let __i = 0; __i < picked.length; __i++) picked[__i] = 0;
+const picked = new Array(_ENGINE_LORE.length).fill(0);
 
 const makeTagSet = () => Object.create(null);
 const trigSet = makeTagSet();
@@ -431,50 +421,43 @@ const hasTag = (set, key) => set[String(key)] === 1;
 
 // --- 1) Direct pass ----------------------------------------------------------
 for (let i1 = 0; i1 < _ENGINE_LORE.length; i1++) {
-	let e1 = _ENGINE_LORE[i1];
-	let hit =
-		isAlwaysOn(e1) ||
-		getKW(e1).some((kw) => {
-			return hasTerm(last, kw);
-		});
+	const e1 = _ENGINE_LORE[i1];
+	const hit = isAlwaysOn(e1) || getKW(e1).some((kw) => hasTerm(last, kw));
 	if (!hit) continue;
 	if (!entryPasses(e1, undefined)) {
-		dbg('filtered entry[' + i1 + ']');
+		dbg(`filtered entry[${i1}]`);
 		continue;
 	}
 	buckets[prio(e1)].push(i1);
 	picked[i1] = 1;
-	let trg1 = getTrg(e1);
-	for (let t1 = 0; t1 < trg1.length; t1++) addTag(trigSet, trg1[t1]);
-	dbg('hit entry[' + i1 + '] p=' + prio(e1));
+	getTrg(e1).forEach((t) => addTag(trigSet, t));
+	dbg(`hit entry[${i1}] p=${prio(e1)}`);
 }
 
 // --- 2) Trigger pass ---------------------------------------------------------
 for (let i2 = 0; i2 < _ENGINE_LORE.length; i2++) {
 	if (picked[i2]) continue;
-	let e2 = _ENGINE_LORE[i2];
+	const e2 = _ENGINE_LORE[i2];
 	if (!(e2 && e2.tag && hasTag(trigSet, e2.tag))) continue;
 	if (!entryPasses(e2, trigSet)) {
-		dbg('filtered triggered entry[' + i2 + ']');
+		dbg(`filtered triggered entry[${i2}]`);
 		continue;
 	}
 	buckets[prio(e2)].push(i2);
 	picked[i2] = 1;
-	let trg2 = getTrg(e2);
-	for (let t2 = 0; t2 < trg2.length; t2++) addTag(trigSet, trg2[t2]);
-	dbg('triggered entry[' + i2 + '] p=' + prio(e2));
+	getTrg(e2).forEach((t) => addTag(trigSet, t));
+	dbg(`triggered entry[${i2}] p=${prio(e2)}`);
 }
 
 // --- 3) Priority selection (capped) -----------------------------------------
 const selected = [];
 let pickedCount = 0;
-let __APPLY_LIMIT =
-	typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
+const __APPLY_LIMIT = typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
 
 for (let p = 5; p >= 1 && pickedCount < __APPLY_LIMIT; p--) {
-	let bucket = buckets[p];
-	for (let bi = 0; bi < bucket.length && pickedCount < __APPLY_LIMIT; bi++) {
-		selected.push(bucket[bi]);
+	for (const idx of buckets[p]) {
+		if (pickedCount >= __APPLY_LIMIT) break;
+		selected.push(idx);
 		pickedCount++;
 	}
 }
@@ -488,25 +471,17 @@ if (pickedCount === __APPLY_LIMIT) dbg('APPLY_LIMIT reached');
 let bufP = '';
 let bufS = '';
 
-for (let si = 0; si < selected.length; si++) {
-	let idx = selected[si];
-	let e3 = _ENGINE_LORE[idx];
+for (const idx of selected) {
+	const e3 = _ENGINE_LORE[idx];
 	if (e3 && e3.personality) bufP += '\n\n' + e3.personality;
 	if (e3 && e3.scenario) bufS += '\n\n' + e3.scenario;
 	if (!(e3 && Array.isArray(e3.Shifts) && e3.Shifts.length)) continue;
 
-	for (let shI = 0; shI < e3.Shifts.length; shI++) {
-		let sh = e3.Shifts[shI];
-		let activated =
-			isAlwaysOn(sh) ||
-			getKW(sh).some((kw) => {
-				return hasTerm(last, kw);
-			});
+	for (const sh of e3.Shifts) {
+		const activated = isAlwaysOn(sh) || getKW(sh).some((kw) => hasTerm(last, kw));
 		if (!activated) continue;
 
-		let trgSh = getTrg(sh);
-		for (let tt = 0; tt < trgSh.length; tt++)
-			addTag(postShiftTrigSet, trgSh[tt]);
+		getTrg(sh).forEach((t) => addTag(postShiftTrigSet, t));
 
 		if (!entryPasses(sh, trigSet)) {
 			dbg('shift filtered');
@@ -519,25 +494,19 @@ for (let si = 0; si < selected.length; si++) {
 }
 
 // --- Post-shift triggers -----------------------------------------------------
-const unionTags = (() => {
-	let dst = makeTagSet(),
-		k;
-	for (k in trigSet) if (trigSet[k] === 1) dst[k] = 1;
-	for (k in postShiftTrigSet) if (postShiftTrigSet[k] === 1) dst[k] = 1;
-	return dst;
-})();
+const unionTags = Object.assign(makeTagSet(), trigSet, postShiftTrigSet);
 
 for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
 	if (picked[i3]) continue;
-	let e4 = _ENGINE_LORE[i3];
+	const e4 = _ENGINE_LORE[i3];
 	if (!(e4 && e4.tag && hasTag(postShiftTrigSet, e4.tag))) continue;
 	if (!entryPasses(e4, unionTags)) {
-		dbg('post-filter entry[' + i3 + ']');
+		dbg(`post-filter entry[${i3}]`);
 		continue;
 	}
 	if (e4.personality) bufP += '\n\n' + e4.personality;
 	if (e4.scenario) bufS += '\n\n' + e4.scenario;
-	dbg('post-shift triggered entry[' + i3 + '] p=' + prio(e4));
+	dbg(`post-shift triggered entry[${i3}] p=${prio(e4)}`);
 }
 
 /* ============================================================================

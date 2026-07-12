@@ -191,10 +191,10 @@ const clamp01 = (v) => {
 const parseProbability = (v) => {
 	if (v == null) return 1;
 	if (typeof v === 'number') return clamp01(v);
-	let s = String(v).trim().toLowerCase();
-	let n = parseFloat(s.replace('%', ''));
+	const s = String(v).trim().toLowerCase();
+	const n = parseFloat(s.replace('%', ''));
 	if (!isFinite(n)) return 1;
-	return s.indexOf('%') !== -1 ? clamp01(n / 100) : clamp01(n);
+	return s.includes('%') ? clamp01(n / 100) : clamp01(n);
 };
 const prio = (e) => {
 	let p = e && isFinite(e.priority) ? +e.priority : 3;
@@ -228,13 +228,13 @@ const normName = (s) => {
 };
 const isNameBlocked = (e) => {
 	if (!activeName) return false;
-	let nb = getNameBlock(e);
-	for (let i = 0; i < nb.length; i++) {
-		let n = normName(nb[i]);
+	const nb = getNameBlock(e);
+	for (const block of nb) {
+		const n = normName(block);
 		if (!n) continue;
 		if (n === activeName) return true;
-		if (activeName.indexOf(n) !== -1) return true;
-		if (n.indexOf(activeName + ' ') === 0) return true;
+		if (activeName.includes(n)) return true;
+		if (n.startsWith(activeName + ' ')) return true;
 	}
 	return false;
 };
@@ -243,68 +243,42 @@ const reEsc = (s) => {
 };
 
 const hasTerm = (hay, term) => {
-	let t = (term == null ? '' : String(term)).toLowerCase().trim();
+	const t = (term == null ? '' : String(term)).toLowerCase().trim();
 	if (!t) return false;
-	// Usa  per un matching chirurgico ES6-compliant
-	let re = new RegExp('\b' + reEsc(t) + '\b', 'i');
+	// Usa \b per un matching chirurgico ES6-compliant
+	const re = new RegExp('\\b' + reEsc(t) + '\\b', 'i');
 	return re.test(hay);
 };
 
 const collectWordGates = (e) => {
-	let r = e && e.requires ? e.requires : {};
-	let any = [].concat(arr(e && e.requireAny), arr(e && e.andAny), arr(r.any));
-	let all = [].concat(arr(e && e.requireAll), arr(e && e.andAll), arr(r.all));
-	let none = [].concat(
+	const r = e && e.requires ? e.requires : {};
+	const any = [].concat(arr(e && e.requireAny), arr(e && e.andAny), arr(r.any));
+	const all = [].concat(arr(e && e.requireAll), arr(e && e.andAll), arr(r.all));
+	const none = [].concat(
 		arr(e && e.requireNone),
 		arr(e && e.notAny),
 		arr(r.none),
 		arr(getBlk(e))
 	);
-	let nall = [].concat(arr(e && e.notAll));
-	return { any: any, all: all, none: none, nall: nall };
+	const nall = [].concat(arr(e && e.notAll));
+	return { any, all, none, nall };
 };
 
 const wordGatesPass = (e) => {
-	let g = collectWordGates(e);
-	if (
-		g.any.length &&
-		!g.any.some((w) => {
-			return hasTerm(last, w);
-		})
-	)
-		return false;
-	if (
-		g.all.length &&
-		!g.all.every((w) => {
-			return hasTerm(last, w);
-		})
-	)
-		return false;
-	if (
-		g.none.length &&
-		g.none.some((w) => {
-			return hasTerm(last, w);
-		})
-	)
-		return false;
-	if (
-		g.nall.length &&
-		g.nall.every((w) => {
-			return hasTerm(last, w);
-		})
-	)
-		return false;
+	const g = collectWordGates(e);
+	if (g.any.length && !g.any.some((w) => hasTerm(last, w))) return false;
+	if (g.all.length && !g.all.every((w) => hasTerm(last, w))) return false;
+	if (g.none.length && g.none.some((w) => hasTerm(last, w))) return false;
+	if (g.nall.length && g.nall.every((w) => hasTerm(last, w))) return false;
 	return true;
 };
 
 const tagsPass = (e, activeTagsSet) => {
-	let anyT = arr(e && e.andAnyTags);
-	let allT = arr(e && e.andAllTags);
-	let noneT = arr(e && e.notAnyTags);
-	let nallT = arr(e && e.notAllTags);
-	let hasT = (t) => {
-		return !!activeTagsSet && activeTagsSet[String(t)] === 1;
-	};
+	const anyT = arr(e && e.andAnyTags);
+	const allT = arr(e && e.andAllTags);
+	const noneT = arr(e && e.notAnyTags);
+	const nallT = arr(e && e.notAllTags);
+	const hasT = (t) => !!activeTagsSet && activeTagsSet[String(t)] === 1;
 
 	if (anyT.length && !anyT.some(hasT)) return false;
 	if (allT.length && !allT.every(hasT)) return false;
@@ -1370,177 +1344,204 @@ const dynamicLore = [
 
 		personality:
 			'Scent is identity, not fixed to sex. Alpha/Enigma palette: mustard, peppermint, whiskey, dark chocolate, leather, gunpowder, cedarwood, seawater, amber. Delta/Beta palette: mochi, green apples, pumpkin, honey, rice, fresh bread, fresh rain, lilies, cotton. Omega palette: burnt sugar, lemons, piña colada, bubblegum, crème brûlée, strawberries, peaches, lavender, cherry blossoms. A person\'s scent also shifts with environment and mood. When describing a character, anchor them in a scent — it is how the pack knows them.',
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'moon',
+			'new moon',
+			'full moon',
+			'first quarter',
+			'waning moon',
+			'lunar calendar',
+			'pact',
+			'symbol of the pact',
+		],
+		priority: 1,
+
+		personality:
+			'The Moon is the Symbol of the Pact between Fenris and his children — witness to all oaths, hunts, and rites (not a goddess). Phases carry meaning: New Moon = Silence (reflection, mourning, rest, no hunts); First Quarter = Growth (beginnings, pup naming, planting); Full Moon = The Hunt (peak activity, sacred hunts, bonding rites); Waning = Memory (ancestors, oral history). The religious calendar follows the LUNAR cycle, not the solar. Characters mark time and mood by the moon.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'high fang',
+			'moon speaker',
+			'keeper',
+			'pack elder',
+			'sacred sites',
+			'moon wells',
+			'sacred groves',
+			'ancient forges',
+			'book of fangs',
+		],
+		priority: 3,
+
+		personality:
+			'The Faith is decentralized (not Catholic-like): High Fang (supreme, often unfilled for centuries) → Moon Speakers (priests, lead rites, keep lunar calendar, advise leaders) → Keepers (relics, The Saga of Fenris / Book of Fangs, sacred sites) → Pack Elders (local spiritual guides) → Faithful. Sacred sites: First Den (legendary first pack), Moon Wells (meditation/healing/bonding), Sacred Groves (hunting forbidden), Ancient Forges (Ut\'s forges, revered by artisans). Moon Speakers are trained by apprenticeship, not ordination.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'first howl',
+			'founding moon',
+			'day of chains',
+			'night of liberation',
+			'winter hunt',
+			'naming rite',
+			'coming of age',
+			'ascension',
+			'funeral',
+		],
+		priority: 3,
+
+		personality:
+			'Holy days: First Howl (first full moon of year — survival renewal), Founding Moon (pack/House founding), Day of Chains (midwinter — fast/silence mourning Fenris\' binding), Night of Liberation (after — feasting, howling, bonfires for Ragnarök), Winter Hunt (last full moon before solstice — the Great Hunt). Rites: Naming (pup named under moonlight), Coming of Age (Presentation acknowledged), The Call, Bonding (mating bite, Moon Speaker officiates), Pack Adoption, Funeral (scent preserved in relic, Hel invoked), Ascension (rare Enigma recognition).',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'mythic age',
+			'age of the firstborn',
+			'age of expansion',
+			'age of houses',
+			'age of kingdoms',
+			'age of secrecy',
+			'great hiding',
+			'modern era',
+			'viking age',
+		],
+		priority: 3,
+
+		personality:
+			'Eras: Mythic Age (Fenris, origin, unknown); Age of the Firstborn (~800–1000, Nine appear, first packs); Age of Expansion (~1000–1300, spread across Europe, Wulfnic to North America ~1025); Age of Houses (~1300–1600, Noble Houses formalize, diplomacy begins); Age of Kingdoms (~1600–1800, peak civilization); Age of Secrecy (~1800–1950, the Great Hiding from humanity, Masquerade); Modern Era (~1950–present, corporate fronts, urban packs). Characters inherit the paranoia of the Great Hiding; history is a living wound, not the past.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'wulfnic',
+			'builder king',
+			'ut the smith',
+			'zefir the ghost',
+			'bloodmoon dynasty',
+			'seven hills',
+			'living saga bios',
+		],
+		priority: 4,
+
+		personality:
+			'Three Firstborn survive (1,100+ yrs). Wulfnic Bloodmoon — The First Fang, "The Builder King," Primordial Enigma, Patriarch of House Bloodmoon, most powerful werewolf in the Americas; sailed to North America ~1025, founded the Bloodmoon Dynasty. Ut — The Second Fang, "The Mountain," master blacksmith, Keeper of the Sacred Forge, reclusive, fascinated by engines. Zefir — The Third Fang, "The White Ghost," silent hunter, Watcher of the Moon, Keeper of the Winter Path, living memory of the species. Their presence commands awe; their word nears scripture.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'six lost firstborn',
+			'lost fangs',
+			'dormant firstborn',
+			'six fangs of fenris',
+			'missing firstborn',
+		],
+		priority: 5,
+
+		personality:
+			'Six of the Nine Firstborn are lost to history — names, fates, and any bloodlines unknown. Moon Speakers debate whether they died, entered dormancy to awaken when the species needs them, or sacrificed themselves during the Age of Secrecy. The truth is unknowable. Their absence is a wound in the species\' memory; some packs still watch for their return. Do not invent their fates — leave them as living mystery.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'natural weapons',
+			'claws',
+			'teeth',
+			'fangs',
+			'traditional weapons',
+			'forged blade',
+			'firearms',
+			'modern weapons',
+			'body armor',
+		],
+		priority: 3,
+
+		personality:
+			'Werewolf combat has three tiers. Natural: claws (all forms), teeth/fangs, enhanced strength/speed, and pheromonal intimidation (Command as a weapon). Traditional: forged melee (swords, axes, mauls — sacred craft of Ut), bows/spears/traps, ceremonial weapons for formal challenges. Modern: firearms, shift-adapted body armor, non-lethal pheromone restraints and werewolf-formulated tranquilizers. A forged blade — especially Ut\'s tradition — is an extension of the wielder\'s soul, carrying weight firearms lack. Combat is visceral, close, and scent-saturated.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'vehicles',
+			'aircraft',
+			'maritime',
+			'corporate fronts',
+			'dcc',
+			'forging industry',
+			'pharmaceuticals',
+			'textiles',
+			'shift-compatible',
+		],
+		priority: 2,
+
+		personality:
+			'Dual-track tech: adopt human tech, adapt for biology. Transportation: reinforced, scent-neutralized vehicles; aircraft for long hauls; Full Shift for efficient wilderness travel; boats for coastal packs (Wulfnic\'s crossing). Industry runs via human-facing corporate fronts (DCC — Douglas Consolidated Corporation — House Bloodmoon\'s economic engine) and species-specific sectors: Forging (Ut tradition), Pharmaceuticals (suppressants/blockers/fertility), Construction (den-optimized, scent-managed), Textiles (shift-compatible, scent-absorbent). Characters move money and power through these fronts while hiding in plain sight.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'regeneration accelerator',
+			'pheromone analyzer',
+			'shift stabilizer',
+			'bond monitor',
+			'heat rut houses',
+			'pack clinic',
+			'house hospital',
+			'healer',
+		],
+		priority: 3,
+
+		personality:
+			'Species-specific medicine: Regeneration Accelerators (boost healing), Pheromone Analyzers (diagnose health/bond state), Shift Stabilizers (for unstable Modified Lineages), Bond Monitors (track mate links), Heat/Rut Management Systems (climate-controlled nests, auto-suppressant, scent containment). Facilities: Pack Clinics (basic, staffed by Healers), House Hospitals (advanced surgery, bond therapy, fertility), Heat/Rut Houses (partner-free cycle management, legality varies). Medical need is treated as urgent and communal — a hurt wolf is the pack\'s emergency.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'howl network',
+			'scent messaging',
+			'encrypted pack channels',
+			'human networks',
+			'long-range communication',
+		],
+		priority: 3,
+
+		personality:
+			'Werewolves use layered comms. Human Networks: phones, internet, encrypted messaging for daily life (but pack IT monitors them). Howl Networks: coordinated long-range howling, still used in wilderness and emergencies. Scent Messaging: pheromone-infused objects carrying emotional context text cannot. Encrypted Pack Channels: secure digital nets run by House IT. When a pack coordinates, show the mix — a howl across the ridge, a scent-tagged token, a tracked phone. Secrecy from humans shapes every channel.',
+	},
+
+	// Source: LSE_Global_World_Lorebook.json
+	{
+		keywords: [
+			'alpha scent',
+			'omega scent',
+			'delta scent',
+			'beta scent',
+			'scent palette',
+			'mustard peppermint',
+			'burnt sugar lemons',
+			'pheromone palette',
+		],
+		priority: 2,
+
+		personality:
+			'Scent is identity, not fixed to sex. Alpha/Enigma palette: mustard, peppermint, whiskey, dark chocolate, leather, gunpowder, cedarwood, seawater, amber. Delta/Beta palette: mochi, green apples, pumpkin, honey, rice, fresh bread, fresh rain, lilies, cotton. Omega palette: burnt sugar, lemons, piña colada, bubblegum, crème brûlée, strawberries, peaches, lavender, cherry blossoms. A person\'s scent also shifts with environment and mood. When describing a character, anchor them in a scent — it is how the pack knows them.',
 },
 ];
 
 // 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
-
-/* ============================================================================
-   [SECTION] COMPILATION
-   DO NOT EDIT: Behavior-sensitive
-   ========================================================================== */
-//#region COMPILATION
-const compileAuthorLore = (authorLore) => {
-	let src = Array.isArray(authorLore) ? authorLore : [];
-	let out = new Array(src.length);
-	for (let i = 0; i < src.length; i++) out[i] = normalizeEntry(src[i]);
-	return out;
-};
-const normalizeEntry = (e) => {
-	if (!e) return {};
-	let out = {};
-	for (let k in e)
-		if (Object.prototype.hasOwnProperty.call(e, k)) out[k] = e[k];
-	out.keywords = Array.isArray(e.keywords) ? e.keywords.slice(0) : [];
-	if (Array.isArray(e.Shifts) && e.Shifts.length) {
-		let shArr = new Array(e.Shifts.length);
-		for (let i = 0; i < e.Shifts.length; i++) {
-			let sh = e.Shifts[i] || {};
-			let shOut = {};
-			for (let sk in sh)
-				if (Object.prototype.hasOwnProperty.call(sh, sk)) shOut[sk] = sh[sk];
-			shOut.keywords = Array.isArray(sh.keywords) ? sh.keywords.slice(0) : [];
-			shArr[i] = shOut;
-		}
-		out.Shifts = shArr;
-	} else if (out.hasOwnProperty('Shifts')) {
-		delete out.Shifts;
-	}
-	return out;
-};
-const _ENGINE_LORE = compileAuthorLore(
-	typeof dynamicLore !== 'undefined' ? dynamicLore : []
-);
-
-/* ============================================================================
-   [SECTION] SELECTION PIPELINE
-   DO NOT EDIT: Behavior-sensitive
-   ========================================================================== */
-//#region SELECTION_PIPELINE
-// --- State -------------------------------------------------------------------
-const buckets = [null, [], [], [], [], []];
-const picked = new Array(_ENGINE_LORE.length);
-for (let __i = 0; __i < picked.length; __i++) picked[__i] = 0;
-
-const makeTagSet = () => Object.create(null);
-const trigSet = makeTagSet();
-const postShiftTrigSet = makeTagSet();
-
-const addTag = (set, key) => {
-	set[String(key)] = 1;
-};
-const hasTag = (set, key) => set[String(key)] === 1;
-
-// --- 1) Direct pass ----------------------------------------------------------
-for (let i1 = 0; i1 < _ENGINE_LORE.length; i1++) {
-	let e1 = _ENGINE_LORE[i1];
-	let hit =
-		isAlwaysOn(e1) ||
-		getKW(e1).some((kw) => {
-			return hasTerm(last, kw);
-		});
-	if (!hit) continue;
-	if (!entryPasses(e1, undefined)) {
-		dbg('filtered entry[' + i1 + ']');
-		continue;
-	}
-	buckets[prio(e1)].push(i1);
-	picked[i1] = 1;
-	let trg1 = getTrg(e1);
-	for (let t1 = 0; t1 < trg1.length; t1++) addTag(trigSet, trg1[t1]);
-	dbg('hit entry[' + i1 + '] p=' + prio(e1));
-}
-
-// --- 2) Trigger pass ---------------------------------------------------------
-for (let i2 = 0; i2 < _ENGINE_LORE.length; i2++) {
-	if (picked[i2]) continue;
-	let e2 = _ENGINE_LORE[i2];
-	if (!(e2 && e2.tag && hasTag(trigSet, e2.tag))) continue;
-	if (!entryPasses(e2, trigSet)) {
-		dbg('filtered triggered entry[' + i2 + ']');
-		continue;
-	}
-	buckets[prio(e2)].push(i2);
-	picked[i2] = 1;
-	let trg2 = getTrg(e2);
-	for (let t2 = 0; t2 < trg2.length; t2++) addTag(trigSet, trg2[t2]);
-	dbg('triggered entry[' + i2 + '] p=' + prio(e2));
-}
-
-// --- 3) Priority selection (capped) -----------------------------------------
-const selected = [];
-let pickedCount = 0;
-let __APPLY_LIMIT =
-	typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
-
-for (let p = 5; p >= 1 && pickedCount < __APPLY_LIMIT; p--) {
-	let bucket = buckets[p];
-	for (let bi = 0; bi < bucket.length && pickedCount < __APPLY_LIMIT; bi++) {
-		selected.push(bucket[bi]);
-		pickedCount++;
-	}
-}
-if (pickedCount === __APPLY_LIMIT) dbg('APPLY_LIMIT reached');
-
-/* ============================================================================
-   [SECTION] APPLY + SHIFTS + POST-SHIFT
-   DO NOT EDIT: Behavior-sensitive
-   ========================================================================== */
-//#region APPLY_AND_SHIFTS
-let bufP = '';
-let bufS = '';
-
-for (let si = 0; si < selected.length; si++) {
-	let idx = selected[si];
-	let e3 = _ENGINE_LORE[idx];
-	if (e3 && e3.personality) bufP += '\n\n' + e3.personality;
-	if (e3 && e3.scenario) bufS += '\n\n' + e3.scenario;
-	if (!(e3 && Array.isArray(e3.Shifts) && e3.Shifts.length)) continue;
-
-	for (let shI = 0; shI < e3.Shifts.length; shI++) {
-		let sh = e3.Shifts[shI];
-		let activated =
-			isAlwaysOn(sh) ||
-			getKW(sh).some((kw) => {
-				return hasTerm(last, kw);
-			});
-		if (!activated) continue;
-
-		let trgSh = getTrg(sh);
-		for (let tt = 0; tt < trgSh.length; tt++)
-			addTag(postShiftTrigSet, trgSh[tt]);
-
-		if (!entryPasses(sh, trigSet)) {
-			dbg('shift filtered');
-			continue;
-		}
-
-		if (sh.personality) bufP += '\n\n' + sh.personality;
-		if (sh.scenario) bufS += '\n\n' + sh.scenario;
-	}
-}
-
-// --- Post-shift triggers -----------------------------------------------------
-const unionTags = (() => {
-	let dst = makeTagSet(),
-		k;
-	for (k in trigSet) if (trigSet[k] === 1) dst[k] = 1;
-	for (k in postShiftTrigSet) if (postShiftTrigSet[k] === 1) dst[k] = 1;
-	return dst;
-})();
-
-for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
-	if (picked[i3]) continue;
-	let e4 = _ENGINE_LORE[i3];
-	if (!(e4 && e4.tag && hasTag(postShiftTrigSet, e4.tag))) continue;
-	if (!entryPasses(e4, unionTags)) {
-		dbg('post-filter entry[' + i3 + ']');
-		continue;
-	}
-	if (e4.personality) bufP += '\n\n' + e4.personality;
-	if (e4.scenario) bufS += '\n\n' + e4.scenario;
-	dbg('post-shift triggered entry[' + i3 + '] p=' + prio(e4));
-}
 
 /* ============================================================================
    [SECTION] FLUSH
