@@ -63,6 +63,7 @@ You have access to SillyTavern's documentation and source code for schema guidan
 - `Drafts/Card_[CharName].md` — character card content
 - `Drafts/User.md` — `{{user}}` Persona Description text (passes through to Export unchanged; see Step 4.5 below)
 - `Drafts/Tier1_World_Entries.md` — World Lorebook entries
+- `Drafts/Tier1_Random_Events.md` — (Conditional) Random environmental/sandbox events
 - `Drafts/Tier2_[CharName]_Entries.md` — Character Lorebook entries (one per character/NPC, including the Tier 2 Protagonist Lorebook)
 - Tier 3 source — *arc mode:* `Drafts/Tier3_Arc[N]_[Title]_Entries.md` (one per arc); *sandbox mode:* `Drafts/Tier3_Sandbox_Entries.md` (single)
 - `Drafts/Instructions_[CardName].md` — system_prompt and post_history_instructions source
@@ -383,6 +384,10 @@ To support JanitorAI's modular script export, you must create a configuration fi
 }
 ```
 Include `Protagonist` and `User` in the `Family` list. This config allows `build_janitor.py` to correctly split character lorebooks into `_JanitorAI_Script_Family.js` and `_JanitorAI_Script_NPC.js`.
+
+### Step 7.11 — Emit Random Events JSON (`Export/[WorldName]_Random_Events.json`)
+
+If the Architect produced a `Drafts/Tier1_Random_Events.md` file containing random events for the world, extract the JSON block from it and save it as `Export/[WorldName]_Random_Events.json`. The Janitor Builder uses this to inject dynamic events into the World JS template.
 
 ### Step 8 — Validation Pass
 

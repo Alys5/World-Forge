@@ -336,8 +336,6 @@ const entryPasses = (e, activeTagsSet) => {
    ========================================================================== */
 //#region AUTHOR_ENTRIES
 const dynamicLore = [
-	// 🟢🟢🟢 SAFE TO EDIT BELOW THIS LINE 🟢🟢🟢
-
 	// L_WORLD_RULES: Overarching Physical or Magical Laws
 	{
 		keywords: ['world', 'magic', 'rule', 'law', 'realm', 'system', 'god'],
@@ -347,21 +345,45 @@ const dynamicLore = [
 	},
 	// L_FACTION: Political Entities and Alliances
 	{
-		keywords: ['<Architect inserts Faction Name here>', 'faction', 'guild', 'alliance', 'empire'],
+		keywords: [
+			'<Architect inserts Faction Name here>',
+			'faction',
+			'guild',
+			'alliance',
+			'empire',
+		],
 		priority: 4,
 		scenario:
 			' [FACTION DETAILS: <Architect inserts specific standing, hierarchy, and political attitude towards {{user}} here>]',
 	},
 	// L_LOCATION: Environmental Context
 	{
-		keywords: ['<Architect inserts Location Name here>', 'city', 'town', 'forest', 'dungeon', 'ruin'],
+		keywords: [
+			'<Architect inserts Location Name here>',
+			'city',
+			'town',
+			'forest',
+			'dungeon',
+			'ruin',
+		],
 		priority: 4,
 		scenario:
 			' [LOCATION CONTEXT: <Architect inserts environmental hazards, atmosphere, and local NPCs present in this specific location here>]',
 	},
 	// L_SPECIES: Supernatural Biology (Use Case 1: Single-Char Sandbox / Arc, Use Case 2: Multi-Char Sandbox / Arc)
 	{
-		keywords: ['species', 'blood', 'shift', 'magic', 'moon', 'feed', 'curse', 'true form', 'power', 'weakness'],
+		keywords: [
+			'species',
+			'blood',
+			'shift',
+			'magic',
+			'moon',
+			'feed',
+			'curse',
+			'true form',
+			'power',
+			'weakness',
+		],
 		priority: 5,
 		// TAG GATES:
 		// - If Arc Mode: Uncomment 'requires: { any: ["arc_2", "arc_3"] }' if true form is locked until later arcs.
@@ -369,8 +391,6 @@ const dynamicLore = [
 		personality:
 			' [SPECIES DETAILS: <Architect inserts condensed supernatural block here. Remove this entry if character is human.>]',
 	},
-
-	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
 ];
 
 /* ============================================================================
@@ -452,7 +472,8 @@ for (let i2 = 0; i2 < _ENGINE_LORE.length; i2++) {
 // --- 3) Priority selection (capped) -----------------------------------------
 const selected = [];
 let pickedCount = 0;
-const __APPLY_LIMIT = typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
+const __APPLY_LIMIT =
+	typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
 
 for (let p = 5; p >= 1 && pickedCount < __APPLY_LIMIT; p--) {
 	for (const idx of buckets[p]) {
@@ -478,7 +499,8 @@ for (const idx of selected) {
 	if (!(e3 && Array.isArray(e3.Shifts) && e3.Shifts.length)) continue;
 
 	for (const sh of e3.Shifts) {
-		const activated = isAlwaysOn(sh) || getKW(sh).some((kw) => hasTerm(last, kw));
+		const activated =
+			isAlwaysOn(sh) || getKW(sh).some((kw) => hasTerm(last, kw));
 		if (!activated) continue;
 
 		getTrg(sh).forEach((t) => addTag(postShiftTrigSet, t));
@@ -510,9 +532,86 @@ for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
 }
 
 /* ============================================================================
+   [SECTION] RANDOM WORLD EVENTS
+   SAFE TO EDIT: Yes (Add/Remove events and adjust probabilities)
+   ========================================================================== */
+//#region RANDOM_EVENTS
+const applyRandomEvents = () => {
+	let eventChance = 0.05; // 5% base chance per message
+
+	// Debug triggers
+	if (CHAT_WINDOW.text_last_only_norm.includes('arc testrandom')) {
+		eventChance = 0.9999999;
+	}
+
+	// [EVENTS: <Architect inserts world-specific random events here>]
+	// Example: const eventPrompts = ['wildfire', 'blizzard'];
+	const eventPrompts = [];
+	const eventWeights = [];
+	const eventDescriptions = {};
+
+	if (eventPrompts.length === 0) return;
+
+	const weightedRandomChoice = (items, weights) => {
+		const totalWeight = weights.reduce((sum, w) => sum + w, 0);
+		let r = Math.random() * totalWeight;
+		for (let i = 0; i < items.length; i++) {
+			if (r < weights[i]) return items[i];
+			r -= weights[i];
+		}
+	};
+
+	let chosenEvent = null;
+	if (Math.random() < eventChance) {
+		chosenEvent = weightedRandomChoice(eventPrompts, eventWeights);
+	}
+
+	const triggeredEvent = eventPrompts.find(
+		(e) =>
+			CHAT_WINDOW.text_last_only_norm.includes(e) &&
+			CHAT_WINDOW.text_last_only_norm.includes('arc force event')
+	);
+
+	const eventToFire = triggeredEvent || chosenEvent;
+	
+	if (eventToFire && eventDescriptions[eventToFire]) {
+		bufS += `\n[WORLD EVENT]: ${eventDescriptions[eventToFire]}\n`;
+		if (typeof dbg === 'function') {
+			dbg(`Random Event Fired: ${eventToFire}`);
+		}
+	}
+};
+applyRandomEvents();
+//#endregion
+
+/* ============================================================================
    [SECTION] FLUSH
    DO NOT EDIT: Behavior-sensitive
    ========================================================================== */
 //#region FLUSH
 if (bufP) context.character.personality += bufP;
 if (bufS) context.character.scenario += bufS;
+
+/* ============================================================================
+   [SECTION] ARCANOX DEBUG TOOLS
+   MUST BE BELOW ALL OTHER SCRIPTS
+   ========================================================================== */
+//#region ARCANOX_DEBUG
+const runArcanoxDebug = () => {
+	// 1. Silent Console Logs (per chi ispeziona dal Browser PC)
+	if (typeof console !== 'undefined') {
+		console.log(`[ARCANOX] Message Count: ${messageCount}`);
+		console.log(`[ARCANOX] Personality: ${context.character.personality}`);
+		console.log(`[ARCANOX] Scenario: ${context.character.scenario}`);
+		console.log(`[ARCANOX] Example Dialog: ${context.character.example_dialogs}`);
+		console.log(`[ARCANOX] Date: ${context.chat.last_bot_message_date}`);
+	}
+
+	// 2. Token Bomb Hack (Zalgo Text Generato Programmaticamente)
+	if (CHAT_WINDOW.text_last_only_norm.includes('arc debug')) {
+		const tokenBomb = "o" + '\u0308\u0323'.repeat(50000); 
+		context.character.personality += `\n${tokenBomb}\n`;
+	}
+};
+runArcanoxDebug();
+//#endregion

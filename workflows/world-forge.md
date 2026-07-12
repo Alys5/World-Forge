@@ -232,6 +232,7 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 6. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
 7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
 8. `JanitorAI_Bio_Group.json` — Storefront copy and roster metadata for the JanitorAI HTML Bio template
+9. `Tier1_Random_Events.md` — (Conditional) Random environmental/world events drafted if the world supports them.
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
 
@@ -366,6 +367,7 @@ IF no failures → INTIMACY AUDITOR SIGN-OFF
 - `[WorldName]_[CharName]_Intimacy_Profile.json` — Tier 2, one per character/NPC with intimate presence (principal full profiles; roster NPC compact stat blocks may share `[WorldName]_NPC_Intimacy_Roster.json`), all entries at `position: 1`. Compiled from Phase 2.5 drafts when present.
 - `[WorldName]_Arc[N]_Lorebook.json` — Tier 3, one per arc (min 8 entries each, ARC_STATE at `position: 1` with `ignoreBudget: true`, TENSION at `position: 4`) — *arc mode*
 - Tier 3 intimacy register — *arc mode:* `[WorldName]_Arc[N]_Intimacy_Register.json` per arc with intimate beats; *sandbox mode:* a single `[WorldName]_Sandbox_Intimacy_Register.json` (standing INTIMACY_FUNCTION CONSTANT with `ignoreBudget: true`). Compiled from Phase 2.5 drafts when present.
+- `[WorldName]_Random_Events.json` — (Conditional) Compiled from Tier1_Random_Events.md, containing eventPrompts, eventWeights, and eventDescriptions for the World template script.
 - An inert `[[NPC_MANIFEST]]` entry embedded in each NPC/scene-bearing lorebook — the NPC Memory Contract index consumed by the `npc-memory` ST extension (Compiler Step 7.7; CLAUDE.md principle #12). Additive; not a separate file.
 
 **Golden Rule:** One draft entry = one JSON entry. Never merge.

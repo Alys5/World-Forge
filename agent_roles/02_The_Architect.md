@@ -13,7 +13,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 3. **Position Rationale on every lorebook entry.** Every entry across all tiers has a `Position Rationale:` field — either the literal string `DEFAULT` (when the entry uses the documented default position+flags for its tier) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. The Editor hard-fails missing or shallow rationales.
 
-4. **All seven output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card), and `JanitorAI_Bio_Group.json` (storefront bio metadata). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
+4. **All output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier1_Random_Events.md` (conditional), `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card), and `JanitorAI_Bio_Group.json` (storefront bio metadata). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
 
 5. **Style overrides are metadata-only.** Cards with per-card style overrides declare them through `extensions.world_forge.style_override` in the LLM Instructions draft — never as a `<style_override>` tag block inside card text. See `agent_roles/SHARED_Style_Contract_Reference.md` for the schema and the directive prose templates. The Editor hard-fails any literal `<style_override>` tag in any card text field.
 
@@ -86,6 +86,7 @@ Draft in this sequence to prevent cross-contamination:
 4. Character Lorebook entries (Tier 2, one file per character — including the Tier 2 Protagonist Lorebook for `{{user}}`)
 5. Tier 3 lorebook entries — *arc mode:* one file per arc (Section 8); *sandbox mode:* one `Tier3_Sandbox_Entries.md` (Section 8S)
 6. LLM Instruction drafts (system_prompt + post_history_instructions per card)
+7. `Tier1_Random_Events.md` (conditional if world has environmental events)
 
 ---
 
@@ -471,6 +472,28 @@ The dice fix *what is true*; the model invents *how it plays out* (§3.5). The m
 - **Framing carries the "tell it, don't recite it" instruction.** For a recount procedure, the `framing` (§3.5) should say the facts are the *skeleton of an anecdote told in-voice* — the character's tangents, comedy, and texture are the model's to invent — and that multiple participants are *one continuous scene, not a queue*. **Never** write framing that invites serialization ("narrate the sequence of events", "in order") — that wording is the bug, not the fix. Keep the interpretive weight in the character's standing prompt / Intimacy Register (the *how*); the framing just fixes the register and the simultaneity.
 
 > ⚠️ **`disable: false` is load-bearing** — exactly as for the calendar carrier: the Scene Tracker reads candidate entries with a `!disable` filter, so a disabled dice carrier is silently skipped and the world provides no tables. `key: []` + `constant: false` keep it inert. Keep pool values and outcome `text` as short tokens/phrases (the dice fix *what*; the model narrates *how*). The Editor (Step 4.8) hard-fails a malformed payload and soft-flags the shape-not-choreography anti-patterns above; `python tools/validate_export.py Export/` (Compiler Step 8) flags a `pick` with no pool, a forward `when`, a step that is both pick and roll, or a bad `mode`/`turns` as `[WARN]`.
+
+---
+
+## 6.5 RANDOM EVENTS DRAFTING — `Drafts/Tier1_Random_Events.md` (Conditional)
+
+If the world dictates random environmental, narrative, or sandbox events, author this file.
+
+Format it as a single JSON code block so the Compiler can extract it.
+```json
+{
+  "eventPrompts": ["A sudden thunderstorm begins.", "A stranger approaches with a question.", "A distant howl is heard."],
+  "eventWeights": [20, 50, 30],
+  "eventDescriptions": {
+    "A sudden thunderstorm begins.": "The sky darkens rapidly and heavy rain falls, forcing characters to seek shelter or get soaked.",
+    "A stranger approaches with a question.": "An unknown NPC walks up and interrupts the scene to ask for directions or help.",
+    "A distant howl is heard.": "An eerie sound echoes from far away, setting a tense mood."
+  }
+}
+```
+**eventPrompts**: The short name of the events.
+**eventWeights**: The likelihood of each event occurring (higher is more likely).
+**eventDescriptions**: A detailed explanation of what happens when the event triggers.
 
 ---
 

@@ -310,11 +310,23 @@ const entryPasses = (e, activeTagsSet) => {
    ========================================================================== */
 //#region AUTHOR_ENTRIES
 const dynamicLore = [
-	// 🟢🟢🟢 SAFE TO EDIT BELOW THIS LINE 🟢🟢🟢
-
 	// L_INTIMACY_PROFILE: Boundaries, kinks, arousal triggers
 	{
-		keywords: ['touch', 'kiss', 'closer', 'intimacy', 'sex', 'fuck', 'moan', 'dick', 'pussy', 'cock', 'lust', 'aroused', 'horny'],
+		keywords: [
+			'touch',
+			'kiss',
+			'closer',
+			'intimacy',
+			'sex',
+			'fuck',
+			'moan',
+			'dick',
+			'pussy',
+			'cock',
+			'lust',
+			'aroused',
+			'horny',
+		],
 		priority: 5,
 		personality:
 			' [INTIMACY PROFILE: <Architect inserts sexual orientation, role, kinks, erogenous zones, and physical/intimacy boundaries here>]',
@@ -328,7 +340,10 @@ const dynamicLore = [
 	},
 	// L_TRAUMA_MAP: Specific triggers that induce trauma/panic
 	{
-		keywords: ['<Architect inserts Trauma Trigger 1>', '<Architect inserts Trauma Trigger 2>'],
+		keywords: [
+			'<Architect inserts Trauma Trigger 1>',
+			'<Architect inserts Trauma Trigger 2>',
+		],
 		priority: 5,
 		personality:
 			' [TRAUMA TRIGGERED: <Architect inserts description of the traumatic reaction here>]',
@@ -339,11 +354,9 @@ const dynamicLore = [
 				priority: 5,
 				personality:
 					' [MENTAL SHIFT - PANIC: <Architect inserts specific behavioral changes during a panic attack or PTSD episode here>]',
-			}
-		]
+			},
+		],
 	},
-
-	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
 ];
 
 /* ============================================================================
@@ -425,7 +438,8 @@ for (let i2 = 0; i2 < _ENGINE_LORE.length; i2++) {
 // --- 3) Priority selection (capped) -----------------------------------------
 const selected = [];
 let pickedCount = 0;
-const __APPLY_LIMIT = typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
+const __APPLY_LIMIT =
+	typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
 
 for (let p = 5; p >= 1 && pickedCount < __APPLY_LIMIT; p--) {
 	for (const idx of buckets[p]) {
@@ -451,7 +465,8 @@ for (const idx of selected) {
 	if (!(e3 && Array.isArray(e3.Shifts) && e3.Shifts.length)) continue;
 
 	for (const sh of e3.Shifts) {
-		const activated = isAlwaysOn(sh) || getKW(sh).some((kw) => hasTerm(last, kw));
+		const activated =
+			isAlwaysOn(sh) || getKW(sh).some((kw) => hasTerm(last, kw));
 		if (!activated) continue;
 
 		getTrg(sh).forEach((t) => addTag(postShiftTrigSet, t));
@@ -489,3 +504,27 @@ for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
 //#region FLUSH
 if (bufP) context.character.personality += bufP;
 if (bufS) context.character.scenario += bufS;
+
+/* ============================================================================
+   [SECTION] ARCANOX DEBUG TOOLS
+   MUST BE BELOW ALL OTHER SCRIPTS
+   ========================================================================== */
+//#region ARCANOX_DEBUG
+const runArcanoxDebug = () => {
+	// 1. Silent Console Logs (per chi ispeziona dal Browser PC)
+	if (typeof console !== 'undefined') {
+		console.log(`[ARCANOX] Message Count: ${messageCount}`);
+		console.log(`[ARCANOX] Personality: ${context.character.personality}`);
+		console.log(`[ARCANOX] Scenario: ${context.character.scenario}`);
+		console.log(`[ARCANOX] Example Dialog: ${context.character.example_dialogs}`);
+		console.log(`[ARCANOX] Date: ${context.chat.last_bot_message_date}`);
+	}
+
+	// 2. Token Bomb Hack (Zalgo Text Generato Programmaticamente)
+	if (CHAT_WINDOW.text_last_only_norm.includes('arc debug')) {
+		const tokenBomb = "o" + '\u0308\u0323'.repeat(50000); 
+		context.character.personality += `\n${tokenBomb}\n`;
+	}
+};
+runArcanoxDebug();
+//#endregion

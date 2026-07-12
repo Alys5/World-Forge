@@ -310,31 +310,54 @@ const entryPasses = (e, activeTagsSet) => {
    ========================================================================== */
 //#region AUTHOR_ENTRIES
 const dynamicLore = [
-	// 🟢🟢🟢 SAFE TO EDIT BELOW THIS LINE 🟢🟢🟢
-
 	// L_PACK_HIERARCHY: Pack roles and dominance structure
 	{
-		keywords: ['pack', 'alpha', 'beta', 'omega', 'leader', 'submit', 'obey', 'order'],
+		keywords: [
+			'pack',
+			'alpha',
+			'beta',
+			'omega',
+			'leader',
+			'submit',
+			'obey',
+			'order',
+		],
 		priority: 5,
 		personality:
 			' [PACK HIERARCHY: <Architect inserts power dynamics, submission rules, and pack roles here>]',
 	},
 	// L_FAMILY_DYNAMICS: Relationships between family members
 	{
-		keywords: ['family', 'brother', 'sister', 'father', 'mother', 'sibling', 'blood', 'parent', 'clan'],
+		keywords: [
+			'family',
+			'brother',
+			'sister',
+			'father',
+			'mother',
+			'sibling',
+			'blood',
+			'parent',
+			'clan',
+		],
 		priority: 4,
 		personality:
 			' [FAMILY DYNAMICS: <Architect inserts specific familial bonds, loyalties, rivalries, and internal family rules here>]',
 	},
 	// L_SHARED_HISTORY: Past events affecting the group
 	{
-		keywords: ['past', 'remember', 'history', 'childhood', 'before', 'war', 'tragedy'],
+		keywords: [
+			'past',
+			'remember',
+			'history',
+			'childhood',
+			'before',
+			'war',
+			'tragedy',
+		],
 		priority: 3,
 		scenario:
 			' [SHARED HISTORY: <Architect inserts specific past events, shared traumas, or grudges that impact the family/pack here>]',
 	},
-
-	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
 ];
 
 /* ============================================================================
@@ -416,7 +439,8 @@ for (let i2 = 0; i2 < _ENGINE_LORE.length; i2++) {
 // --- 3) Priority selection (capped) -----------------------------------------
 const selected = [];
 let pickedCount = 0;
-const __APPLY_LIMIT = typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
+const __APPLY_LIMIT =
+	typeof APPLY_LIMIT === 'number' && APPLY_LIMIT >= 1 ? APPLY_LIMIT : 99999;
 
 for (let p = 5; p >= 1 && pickedCount < __APPLY_LIMIT; p--) {
 	for (const idx of buckets[p]) {
@@ -442,7 +466,8 @@ for (const idx of selected) {
 	if (!(e3 && Array.isArray(e3.Shifts) && e3.Shifts.length)) continue;
 
 	for (const sh of e3.Shifts) {
-		const activated = isAlwaysOn(sh) || getKW(sh).some((kw) => hasTerm(last, kw));
+		const activated =
+			isAlwaysOn(sh) || getKW(sh).some((kw) => hasTerm(last, kw));
 		if (!activated) continue;
 
 		getTrg(sh).forEach((t) => addTag(postShiftTrigSet, t));
@@ -480,3 +505,27 @@ for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
 //#region FLUSH
 if (bufP) context.character.personality += bufP;
 if (bufS) context.character.scenario += bufS;
+
+/* ============================================================================
+   [SECTION] ARCANOX DEBUG TOOLS
+   MUST BE BELOW ALL OTHER SCRIPTS
+   ========================================================================== */
+//#region ARCANOX_DEBUG
+const runArcanoxDebug = () => {
+	// 1. Silent Console Logs (per chi ispeziona dal Browser PC)
+	if (typeof console !== 'undefined') {
+		console.log(`[ARCANOX] Message Count: ${messageCount}`);
+		console.log(`[ARCANOX] Personality: ${context.character.personality}`);
+		console.log(`[ARCANOX] Scenario: ${context.character.scenario}`);
+		console.log(`[ARCANOX] Example Dialog: ${context.character.example_dialogs}`);
+		console.log(`[ARCANOX] Date: ${context.chat.last_bot_message_date}`);
+	}
+
+	// 2. Token Bomb Hack (Zalgo Text Generato Programmaticamente)
+	if (CHAT_WINDOW.text_last_only_norm.includes('arc debug')) {
+		const tokenBomb = "o" + '\u0308\u0323'.repeat(50000); 
+		context.character.personality += `\n${tokenBomb}\n`;
+	}
+};
+runArcanoxDebug();
+//#endregion

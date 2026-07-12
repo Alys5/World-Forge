@@ -108,6 +108,23 @@ def build_janitor(world_name):
 
         template_content = re.sub(r'let APPLY_LIMIT\s*=\s*6;', 'let APPLY_LIMIT = 15;', template_content)
         
+        if group_name == "World":
+            random_events_path = os.path.join(export_dir, f"{world_name}_Random_Events.json")
+            if os.path.exists(random_events_path):
+                try:
+                    with open(random_events_path, 'r', encoding='utf-8') as ref:
+                        revents = json.load(ref)
+                    prompts_safe = json.dumps(revents.get("eventPrompts", []))
+                    weights_safe = json.dumps(revents.get("eventWeights", []))
+                    descs_safe = json.dumps(revents.get("eventDescriptions", {}))
+                    
+                    template_content = template_content.replace('const eventPrompts = [];', f'const eventPrompts = {prompts_safe};')
+                    template_content = template_content.replace('const eventWeights = [];', f'const eventWeights = {weights_safe};')
+                    template_content = template_content.replace('const eventDescriptions = {};', f'const eventDescriptions = {descs_safe};')
+                    print(f"Injected Random Events into World Template.")
+                except Exception as e:
+                    print(f"Error processing {random_events_path}: {e}")
+        
         js_elements = []
         for entry in entries:
             content_safe = json.dumps(entry["content"])
@@ -123,7 +140,7 @@ def build_janitor(world_name):
         if js_elements:
             injection_string = ",\n".join(js_elements) + ",\n\t"
             
-        marker = "// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑"
+        marker = ""
         if marker not in template_content:
             print(f"Could not find injection marker in {template_path}!")
             sys.exit(1)
