@@ -23,13 +23,11 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 8. **World Mode governs Tier 3 and the NPC format.** Read Master Design Section 9's title. `arc` → author one Arc Lorebook per arc (Section 8) and use full NPC profiles (Section 7.D). `sandbox` → author the single always-active Sandbox Lorebook (Section 8S) instead, with NO `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries, and split a large NPC cast into principals (Section 7.D) + roster (Section 7.E). Do not mix: a sandbox world has no arc lorebooks; an arc world has no sandbox lorebook.
 
-9. **JanitorAI Template Compliance.** When drafting character files (e.g., `Card_*.md`, `Tier2_[CharName]_Entries.md` for NPCs), you MUST explicitly generate and populate all foundational fields required by the `Janitor_Bot_Template.md` structure. Every character draft must structurally include explicit data for the following categories, leaving no missing keys:
-   - **Appearance & Outfit:** Full starting outfit breakdown (Head, Neck, Accessories, Top, Bottom, Shoes, Underwear, Makeup) and at least one explicit Appearance Trait with its Details and Effect.
-   - **Inventory:** At least one specific item carried, along with its functional details.
-   - **Abilities & Species Traits:** Explicit definition of species traits (if applicable) and specific abilities with their narrative details.
-   - **Sexuality:** Sexual Orientation, Orientation Explanation, Sexual Role (e.g., Top, Bottom, Switch, Submissive), and Role Explanation.
-   - **Speech Info:** Speech Style, Quirks, and Ticks.
-   - **Constraint:** If a character does not possess a specific item, quirk, or accessory, supply a definitive null-state value (e.g., "None", "Standard civilian clothing", "No visible quirks") rather than omitting the category. The Draft structure must perfectly mirror the JanitorAI template dependencies to ensure Phase 4 scripts can compile a 1:1 mapped output without dropping required platform keys.
+9. **STRICT TEMPLATE COMPLIANCE MANDATE (ZERO-DEVIATION POLICY).** When drafting any file (especially `Card_*.md` and `Tier2_[CharName]_Entries.md`), you MUST treat the templates (`char_template.json`, `Janitor_Bot_Template.md`, etc.) as rigid schemas, not loose suggestions.
+   - **1:1 Structural Mapping**: Outputs must map exactly to the provided template structure. No missing keys, no altered markdown headers, and no floating text outside defined key-value pairs.
+   - **Zero Omission (Explicit Null-States)**: If a character does not possess a specific item, quirk, or accessory, or if a template field lacks data, supply a definitive null-state value (e.g., "None", "Standard civilian clothing", "N/A") rather than omitting the category.
+   - **Array/List Constraints**: Strict adherence to exact item counts. When a template specifies a limit (e.g., "Exactly FIVE global scenarios"), you MUST generate exactly that number. No placeholders, no splitting limits across characters unless specifically dictated.
+   - Every character draft must structurally include explicit data for the following categories: Appearance & Outfit, Inventory, Abilities & Species Traits, Sexuality, Speech Info.
 
 ---
 

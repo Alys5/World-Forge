@@ -9,6 +9,16 @@ description: A workflow to build worlds for player to roleplay in.
 
 ---
 
+## STRICT TEMPLATE COMPLIANCE MANDATE (ZERO-DEVIATION POLICY)
+
+This pipeline relies on strict schema adherence across all phases. Agents **MUST** treat templates as rigid schemas, not loose suggestions. 
+1. **1:1 Structural Mapping**: Outputs must map exactly to the provided template structure (e.g., `char_template.json`, `Janitor_Bot_Template.md`). No missing keys, no altered markdown headers, and no floating text outside defined key-value pairs.
+2. **Zero Omission (Explicit Null-States)**: If a template field is not applicable or lacks data, you MUST include the field with an explicit null-state (e.g., "None", "N/A", "Unstated") rather than deleting the key.
+3. **Array/List Constraints**: Strict adherence to exact item counts. When a template specifies a limit (e.g., "Exactly FIVE global scenarios"), you MUST generate exactly that number.
+4. **No Schema Truncation**: Empty JSON fields or template sections must never be pruned. The target platform relies on the full schema to function properly.
+
+---
+
 ## PIPELINE OVERVIEW
 
 ```

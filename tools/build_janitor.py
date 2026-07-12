@@ -6,8 +6,7 @@ import re
 def build_janitor(world_name):
     base_dir = os.getcwd()
     export_dir = os.path.join(base_dir, 'Export', world_name)
-    template_path = os.path.join(base_dir, 'templates', 'Janitor_Lorebook_Script.js')
-    
+    export_dir = os.path.join(base_dir, 'Export', world_name)
     if not os.path.exists(export_dir):
         print(f"Error: Export directory not found for {world_name}")
         sys.exit(1)
@@ -98,29 +97,17 @@ def build_janitor(world_name):
 
         groups[group].extend(file_entries)
 
-    if not os.path.exists(template_path):
-        print(f"Error: Template {template_path} not found.")
-        sys.exit(1)
-        
-    with open(template_path, 'r', encoding='utf-8') as f:
-        template_content = f.read()
-
-    template_content = re.sub(r'let APPLY_LIMIT\s*=\s*6;', 'let APPLY_LIMIT = 15;', template_content)
-
-    pattern = r'(const dynamicLore\s*=\s*\[)(.*?)(// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑\s*\];)'
-    match = re.search(pattern, template_content, flags=re.DOTALL)
-
-    if not match:
-        print("Could not find dynamicLore block in template!")
-        sys.exit(1)
-
-    before = template_content[:match.start(1)]
-    after = template_content[match.end(3):]
-    
     for group_name, entries in groups.items():
-        if not entries:
+        template_path = os.path.join(base_dir, 'templates', f'Janitor_Script_{group_name}_Template.js')
+        if not os.path.exists(template_path):
+            print(f"Warning: Template {template_path} not found. Skipping group {group_name}.")
             continue
             
+        with open(template_path, 'r', encoding='utf-8') as f:
+            template_content = f.read()
+
+        template_content = re.sub(r'let APPLY_LIMIT\s*=\s*6;', 'let APPLY_LIMIT = 15;', template_content)
+        
         js_elements = []
         for entry in entries:
             content_safe = json.dumps(entry["content"])
@@ -132,8 +119,16 @@ def build_janitor(world_name):
                 js_entry = f"  // Source: {entry['source']}\n  {{\n    keywords: {keys_safe},\n    personality: {content_safe}\n  }}"
             js_elements.append(js_entry)
 
-        generated_lore = "[\n" + ",\n".join(js_elements) + "\n];"
-        final_content = before + "const dynamicLore = " + generated_lore + "\n\n// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑\n" + after
+        injection_string = ""
+        if js_elements:
+            injection_string = ",\n".join(js_elements) + ",\n\t"
+            
+        marker = "// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑"
+        if marker not in template_content:
+            print(f"Could not find injection marker in {template_path}!")
+            sys.exit(1)
+            
+        final_content = template_content.replace(marker, injection_string + marker)
         
         out_path = os.path.join(export_dir, f"{world_name}_JanitorAI_Script_{group_name}.js")
         with open(out_path, 'w', encoding='utf-8') as f:

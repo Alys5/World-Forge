@@ -22,6 +22,45 @@
 
 ## Revision Log
 
+### Revision R5 — 2026-07-12 17:00 +02:00
+
+**Status:** PENDING
+**World Mode:** sandbox
+**Scope type:** tier2_character_modify_field
+**Mode:** freeform
+
+**User intent (verbatim):**
+
+> post aggiornamento del workflow facciamo una revisione completa del draft e una nuova esportazione pulita per assicurarci che il processo ora funzioni correttamente
+
+**Evidence (optional):**
+
+> None provided.
+
+**Section 1 / 11 impact:** none
+
+**Confirmed cascade (Refiner-mini R1):**
+
+- Master Design sections to update: N/A directly.
+- Drafts files to create: `JanitorAI_Bio_Group.json`
+- Drafts files to modify: `Card_Erik.md`, `Card_Jasper.md`, `Card_Malachia.md`, `Card_Noah.md`, `Card_World_Director.md`.
+- Export files to recompile: Entire `Export/SvartulfrVerse_Urban` JSON tree and Janitor scripts.
+- Chat preset changes: no
+- JanitorAI scripts to regenerate: yes
+
+**Phases affected:** Architect, Editor, Compiler, Janitor Builder
+**Phases skipped:** Intimacy Architect, Voice Auditor, Arc Transition Auditor, Intimacy Auditor
+
+**Canonical merges applied:**
+
+- Nessuna (aggiornamento strutturale per campi JanitorAI).
+
+**Rounds:** R3:0 R3.5:0 R3.6:0 R3.7:0
+
+**Cross-references the user should be aware of:**
+
+- L'aggiunta dei campi Janitor non sovrascrive il behavior LLM, ma serve all'estrazione per la pubblicazione su JanitorAI.
+
 ### Revision R4 — 2026-07-12 01:22 +02:00
 
 **Status:** APPLIED

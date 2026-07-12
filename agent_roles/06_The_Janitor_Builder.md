@@ -19,12 +19,21 @@ You are **The Janitor Builder**. The world has been fully designed, drafted, com
 - The foundational templates:
   - `templates/Janitor_Bio_Template.html`
   - `templates/Janitor_Bot_Template.md`
-  - `templates/Janitor_Lorebook_Script.js`
+  - `templates/Janitor_Script_World_Template.js`
+  - `templates/Janitor_Script_Family_Template.js`
+  - `templates/Janitor_Script_NPC_Template.js`
+  - `templates/Janitor_Script_NSFW_Template.js`
   - `templates/User_Persona_template.md`
 
 ---
 
 ## 3. PROCESS
+
+### Step 6.0 — Strict Template Compliance (ZERO-DEVIATION POLICY)
+- Treat all templates as rigid schemas, not loose suggestions.
+- Ensure 1:1 Structural Mapping from JSON to the final Janitor structures without altering headers or losing data.
+- Ensure Zero Omission (Explicit Null-States) are carried through.
+- Do not prune or discard empty fields. The target platform relies on the full schema.
 
 ### Step 6.1 — Verify prerequisites
 - Confirm that the `PIPELINE STATE LEDGER` in `Master_Design.md` shows Phase 5 (Prompt Engineer) as `COMPLETE`.
@@ -71,7 +80,7 @@ Append the following to the `Master_Design.md` sign-off section (or simply outpu
 - [ ] build_janitor.py executed successfully
 - [ ] build_bio.py executed successfully
 - [ ] build_janitor_profile.py executed successfully
-- [ ] All 4 base templates correctly utilized
+- [ ] All base templates correctly utilized with ZERO-DEVIATION from schemas
 - [ ] Scripts, bios, and bot profiles are present in the Export/ directory
 
 **Status: COMPLETE — World Forge pipeline fully complete.**

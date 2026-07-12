@@ -1,0 +1,62 @@
+{
+  "storefront_text": {
+    "title": "SvartulfrVerse: Urban",
+    "subtitle": "The Douglas-Bloodmoon Pack Sandbox",
+    "impact_line": "A cold war in the shadows, a terrified father, and the chaotic lives of his four sons.",
+    "hook": "Navigate the sprawling city of Blackwood, where mundane collegiate life collides with ancient supernatural predators.",
+    "blurb": "The World Director orchestrates a chaotic, multi-character sandbox spanning the elite SUCC campus to the fortified Seven Hills Villa. Survive the terrifyingly overprotective Alpha Patriarch Erik, the violently protective enforcer Malachia, the paranoid hacker Jasper, and the hedonistic party-boy Noah.",
+    "world_teaser": "In Blackwood, object permanence is enforced. If you ignore the brewing war with the Court of the Night vampires, they will advance their plans. If you skip class, your family will know.",
+    "closing_line": "Every action ripples across the pack. Who will you run with?",
+    "warnings": "Fiction only. Contains dark supernatural themes, violence, and overbearing familial control."
+  },
+  "visuals": {
+    "main_portrait_1x1": {
+      "placeholder_url": "https://placecats.com/300/300"
+    },
+    "supporting_image_banner": {
+      "placeholder_url": "https://placecats.com/800/300"
+    }
+  },
+  "roster": [
+    {
+      "name": "Erik Douglas",
+      "subtitle": "The Patriarch",
+      "description": "A terrifying Prime Dominant Alpha whose suffocating corporate and tactical control masks an overwhelming, irrational anxiety over his family's safety.",
+      "image": {
+        "placeholder_url": "https://placecats.com/200/200"
+      }
+    },
+    {
+      "name": "Malachia",
+      "subtitle": "The Heir and Enforcer",
+      "description": "The eldest son. A violently protective, physically imposing Alpha enforcer who hides a deep well of tenderness for his pack beneath his brutal exterior.",
+      "image": {
+        "placeholder_url": "https://placecats.com/200/200"
+      }
+    },
+    {
+      "name": "Jasper",
+      "subtitle": "The Hacker and Tracker",
+      "description": "A deeply paranoid, nocturnal Beta twin. He tracks the entire family through the city's digital grid from his dark, energy-drink fueled sanctuary.",
+      "image": {
+        "placeholder_url": "https://placecats.com/200/200"
+      }
+    },
+    {
+      "name": "Noah",
+      "subtitle": "The Hedonist",
+      "description": "A hedonistic, emotionally intelligent Delta. The party-boy middle son whose casual disregard for danger actively spikes the family's blood pressure.",
+      "image": {
+        "placeholder_url": "https://placecats.com/200/200"
+      }
+    },
+    {
+      "name": "The World Director",
+      "subtitle": "The Engine",
+      "description": "The unseen narrator that orchestrates the city, giving life to the NPC roster, the vampire Court of the Night, and the bustling student body of SUCC.",
+      "image": {
+        "placeholder_url": "https://placecats.com/200/200"
+      }
+    }
+  ]
+}

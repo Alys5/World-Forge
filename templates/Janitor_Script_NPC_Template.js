@@ -350,34 +350,6 @@ const dynamicLore = [
 		priority: 4,
 		scenario: ' [Inventory: <Architect inserts hidden items or weapons>]',
 	},
-	// L_LORE_RELATIONSHIP: Intimità fisica (Zero inferenze romantiche se non previste)
-	{
-		keywords: ['touch', 'kiss', 'closer', 'intimacy'],
-		priority: 5,
-		personality:
-			' [Behavior: <Architect defines strict physical/intimacy boundaries here>]',
-	},
-	// L_QA: Character Q&A (Informazioni aggiuntive estratte dal vecchio Bot Profile)
-	{
-		keywords: ['ask', 'question', 'why', 'who', 'how', 'when', 'what'],
-		priority: 3,
-		personality:
-			' <Q&A>\n Q: <Architect inserts character Q&A here>\n A: ...\n </Q&A>',
-	},
-	// L_STORY: Premade Story Plan (Milestones ed eventi della storia)
-	{
-		keywords: ['story', 'milestone', 'plan', 'progress', 'next', 'event'],
-		priority: 4,
-		scenario:
-			' [PREMADE STORY PLAN: <Architect inserts Milestones here>]',
-	},
-	// L_PREVIOUSLY: Background context just before RP starts
-	{
-		keywords: ['previously', 'past', 'history', 'before'],
-		priority: 3,
-		scenario:
-			' [PREVIOUSLY: <Architect inserts previous events here>]',
-	},
 	// L_SYNONYMS: Sinonimi del personaggio (Opzionale)
 	{
 		keywords: ['name', 'call', 'known'],
@@ -385,36 +357,12 @@ const dynamicLore = [
 		personality:
 			' [SYNONYMS: <Architect inserts name synonyms here>]',
 	},
-	// L_SEX: Preferenze sessuali, orientamento (Innescato in situazioni esplicite)
-	{
-		keywords: ['sex', 'fuck', 'moan', 'dick', 'pussy', 'cock', 'lust', 'aroused', 'horny'],
-		priority: 5,
-		personality:
-			' [GENERAL SEXUAL INFO: <Architect inserts explicit sexual orientation, role, and kinks here>]',
-	},
 	// L_SPEECH: Esempi di dialogo e opinioni (Riferimento per il parlato)
 	{
 		keywords: ['talk', 'say', 'speak', 'voice', 'reply', 'answer', 'tell'],
 		priority: 3,
 		personality:
 			' [GENERAL SPEECH INFO: <Architect inserts situational speech examples here>]',
-	},
-	// L_NOTES: General notes
-	{
-		keywords: ['notes', 'important', 'rules'],
-		priority: 5,
-		personality:
-			' [NOTES: <Architect inserts notes here>]',
-	},
-	// L_SPECIES: Supernatural Biology (Use Case 1: Single-Char Sandbox / Arc, Use Case 2: Multi-Char Sandbox / Arc)
-	{
-		keywords: ['species', 'blood', 'shift', 'magic', 'moon', 'feed', 'curse', 'true form', 'power', 'weakness'],
-		priority: 5,
-		// TAG GATES:
-		// - If Arc Mode: Uncomment 'requires: { any: ["arc_2", "arc_3"] }' if true form is locked until later arcs.
-		// - If Multi-Char: The compiler will inject 'nameBlock' or specific triggers to ensure the biology only applies to the correct character.
-		personality:
-			' [SPECIES DETAILS: <Architect inserts condensed supernatural block here. Remove this entry if character is human.>]',
 	},
 
 	// 🛑🛑🛑 DO NOT EDIT BELOW THIS LINE 🛑🛑🛑
