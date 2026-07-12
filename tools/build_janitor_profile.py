@@ -52,6 +52,19 @@ def build_janitor_profile(world_name):
                 continue
             cards.append(card_data)
             
+    def extract_section(text, section_name):
+        pattern = rf'###\s*{section_name}\s*\n(.*?)(?=\n###\s*[A-Z]|\Z)'
+        m = re.search(pattern, text, re.DOTALL | re.IGNORECASE)
+        return m.group(1).strip() if m else ""
+
+    def extract_key_value(text):
+        data = {}
+        for line in text.split('\n'):
+            if ':' in line:
+                parts = line.split(':', 1)
+                data[parts[0].strip()] = parts[1].strip()
+        return data
+
     # Process Character Blocks
     all_chars_text = []
     char_names = []
@@ -65,12 +78,19 @@ def build_janitor_profile(world_name):
         first_mes = card["data"].get("first_mes", "")
         alt_greetings = card["data"].get("alternate_greetings", [])
         
-        # We will use the entire desc for PHYSICAL APPEARANCE
-        physical = desc.strip() if desc.strip() else "Physical appearance details are integrated in the Lorebook."
-        # Cross reference for STARTING OUTFIT per user instruction
-        outfit = "Outfit and clothing details are integrated within the Physical Appearance section above."
+        char_overview = extract_section(desc, "CHARACTER OVERVIEW")
+        appearance_details = extract_section(desc, "APPEARANCE DETAILS")
+        starting_outfit = extract_section(desc, "STARTING OUTFIT")
+        origin = extract_section(desc, r"ORIGIN\s*\(BACKSTORY\)")
+        residence = extract_section(desc, "RESIDENCE")
+        connections = extract_section(desc, "CONNECTIONS")
+        inventory = extract_section(desc, "INVENTORY")
+        abilities = extract_section(desc, "ABILITIES")
+        personality_sec = extract_section(desc, "PERSONALITY")
         
-        # Replace placeholders in the block
+        app_kv = extract_key_value(appearance_details)
+        outfit_kv = extract_key_value(starting_outfit)
+        
         cb = char_block_template
         # Replace name tags
         cb = cb.replace("<{{CharName_1}}>", f"<{name}>")
@@ -78,20 +98,46 @@ def build_janitor_profile(world_name):
         cb = cb.replace("[{{CharName_1}}]", f"[{name}]")
         cb = cb.replace("[CharName_1]", name)
         
-        # Inject Character Overview (Scenario)
-        cb = re.sub(r'(## CHARACTER OVERVIEW\n(?:<!--.*?-->\n)?)(.*?)(?=\n## APPEARANCE DETAILS)', lambda m: m.group(1) + (scenario if scenario else "Detailed in Lorebook.") + "\n", cb, flags=re.DOTALL)
+        cb = cb.replace("{{CHARACTER_OVERVIEW}}", char_overview or scenario or "Detailed in Lorebook.")
         
-        # Inject Physical Appearance
-        cb = re.sub(r'(## APPEARANCE DETAILS\n)(.*?)(?=\n## STARTING OUTFIT)', lambda m: m.group(1) + physical + "\n", cb, flags=re.DOTALL)
+        cb = cb.replace("{{APPEARANCE_FULL_NAME}}", app_kv.get("Full Name", app_kv.get("Full Name, Alias", name)))
+        cb = cb.replace("{{APPEARANCE_RACE}}", app_kv.get("Race", ""))
+        cb = cb.replace("{{APPEARANCE_SEX}}", app_kv.get("Sex/Gender", ""))
+        cb = cb.replace("{{APPEARANCE_HEIGHT}}", app_kv.get("Height", ""))
+        cb = cb.replace("{{APPEARANCE_AGE}}", app_kv.get("Age", ""))
+        cb = cb.replace("{{APPEARANCE_HAIR}}", app_kv.get("Hair", ""))
+        cb = cb.replace("{{APPEARANCE_EYES}}", app_kv.get("Eyes", ""))
+        cb = cb.replace("{{APPEARANCE_BODY}}", app_kv.get("Body", ""))
+        cb = cb.replace("{{APPEARANCE_FACE}}", app_kv.get("Face", ""))
+        cb = cb.replace("{{APPEARANCE_FEATURES}}", app_kv.get("Features", ""))
+        cb = cb.replace("{{APPEARANCE_PRIVATES}}", app_kv.get("Privates", "Unstated"))
+        cb = re.sub(r'Appearance Trait: \{\{APPEARANCE_TRAIT_1\}\}.*?Effect: \{\{APPEARANCE_TRAIT_2_EFFECT\}\}', app_kv.get("Appearance Traits + Details", ""), cb, flags=re.DOTALL)
         
-        # Inject Starting Outfit
-        cb = re.sub(r'(## STARTING OUTFIT\n)(.*?)(?=\n## ORIGIN \(BACKSTORY\))', lambda m: m.group(1) + outfit + "\n", cb, flags=re.DOTALL)
+        cb = cb.replace("{{OUTFIT_HEAD}}", outfit_kv.get("Head", ""))
+        cb = cb.replace("{{OUTFIT_ACCESSORIES}}", outfit_kv.get("Accessories", ""))
+        cb = cb.replace("{{OUTFIT_MAKEUP}}", outfit_kv.get("Makeup", ""))
+        cb = cb.replace("{{OUTFIT_NECK}}", outfit_kv.get("Neck", ""))
+        cb = cb.replace("{{OUTFIT_TOP}}", outfit_kv.get("Top", ""))
+        cb = cb.replace("{{OUTFIT_BOTTOM}}", outfit_kv.get("Bottom", ""))
+        cb = cb.replace("{{OUTFIT_LEGS}}", outfit_kv.get("Legs", ""))
+        cb = cb.replace("{{OUTFIT_SHOES}}", outfit_kv.get("Shoes", ""))
+        cb = cb.replace("{{OUTFIT_UNDERWEAR}}", outfit_kv.get("Underwear", ""))
         
-        # Inject Origin
-        cb = re.sub(r'(## ORIGIN \(BACKSTORY\)\n(?:<!--.*?-->\n)?)(.*?)(?=\n## RESIDENCE)', lambda m: m.group(1) + "Background details are stored in the Lorebook payload.\n", cb, flags=re.DOTALL)
+        cb = cb.replace("{{ORIGIN_BACKSTORY}}", origin or "Background details are stored in the Lorebook.")
+        cb = cb.replace("{{RESIDENCE}}", residence or "Unknown")
+        cb = cb.replace("{{CONNECTIONS}}", connections or "None")
         
-        # Inject Personality
-        cb = re.sub(r'(Archetype:)(.*?\n)', lambda m: f"Archetype: {personality}\n", cb)
+        cb = re.sub(r'Item: \{\{INVENTORY_ITEM_1\}\}.*?\{\{INVENTORY_ITEM_2_DETAILS\}\}', inventory or "None", cb, flags=re.DOTALL)
+        cb = re.sub(r'Species Traits: \{\{SPECIES_SUMMARY_SHORT\}\}\s*<!--.*?-->\n+', "", cb)
+        cb = re.sub(r'Ability: \{\{ABILITY_1\}\}.*?\{\{ABILITY_2_DETAILS\}\}', abilities or "None", cb, flags=re.DOTALL)
+        
+        pers_kv = extract_key_value(personality_sec)
+        cb = cb.replace("{{PERSONALITY_ARCHETYPE}}", pers_kv.get("Archetype", personality))
+        cb = cb.replace("{{PERSONALITY_TAGS}}", pers_kv.get("Personality Tags", ""))
+        cb = cb.replace("{{BEHAVIOR_NOTES}}", "Detailed in Lorebook.")
+        
+        cb = re.sub(r'Sexual Orientation: \{\{SEXUAL_ORIENTATION\}\}.*?Explanation: \{\{SEXUAL_ROLE_EXPLANATION\}\}', "See Lorebook or character overview for intimacy profiles.", cb, flags=re.DOTALL)
+        cb = re.sub(r'Style: \{\{SPEECH_STYLE\}\}.*?Ticks: \{\{SPEECH_TICKS\}\}', "See Lorebook.", cb, flags=re.DOTALL)
         
         all_chars_text.append(cb)
         
@@ -129,6 +175,9 @@ def build_janitor_profile(world_name):
     # 2.5 Inject initial messages block
     messages_str = "\n\n---\n\n".join(all_messages) if all_messages else "No initial messages provided."
     final_md = final_md.replace("{{INITIAL_MESSAGES_BLOCK}}", messages_str)
+    
+    # Clean up any remaining uppercase placeholders
+    final_md = re.sub(r'\{\{[A-Z0-9_]+\}\}', '', final_md)
     
     out_path = export_dir / f"{world_name}_JanitorAI.md"
     out_path.write_text(final_md, encoding="utf-8")
@@ -196,6 +245,9 @@ def build_janitor_profile(world_name):
                 # we just format it as blockquote
                 preview_html += f"<blockquote>{msg}</blockquote><br/>\n"
             bio_html = bio_html.replace("{{FIRST_MESSAGES_PREVIEWS}}", preview_html)
+        
+        # Clean up any remaining uppercase placeholders
+        bio_html = re.sub(r'\{\{[A-Z0-9_]+\}\}', '', bio_html)
         
         bio_out_path = export_dir / f"{world_name}_JanitorAI_Bio.html"
         bio_out_path.write_text(bio_html, encoding="utf-8")

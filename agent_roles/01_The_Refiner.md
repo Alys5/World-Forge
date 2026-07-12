@@ -209,10 +209,10 @@ For each major character:
 - Surface want, deep want, central fear, central contradiction.
 - The shield and the crack.
 - Relationship map: how they relate to every other named character and to {{user}}. **For each load-bearing relationship, note whether it evolves across arcs and in which arcs it shifts** (with the beat that causes each shift), plus any load-bearing **belief** the character holds about another party or about {{user}} and what would overturn it. This tells the Architect which arcs need a CHARACTER_STATE/NPC_SHIFT relational-stance line and gives the Arc Transition Auditor the trajectory to check continuity against. *Sandbox mode:* relationships do not drift per-arc; record standing stances/beliefs that persist and accumulate instead.
-- Physical description structured for the Architect: face & lips → hair → eyes → body (chest, waist, hips, legs) → intimate areas (if applicable) → movement & posture → sensory signature.
+- Physical description structured for the Architect: face & lips → hair → eyes → body (chest, waist, hips, legs) → intimate areas (if applicable) → movement & posture → sensory signature. MUST include all foundational JanitorAI fields (Appearance, Outfit, Inventory, Abilities/Species, Sexuality, Speech Info) with explicit null-states if empty.
 - Psychological dimensions requiring lorebook entries (list each as a topic, e.g.: "[Character] / religion", "[Character] / their child", "[Character] / intimacy and trust", "[Character] / their past", etc. — use whatever dimensions are relevant to this specific character)
 - **Trauma trajectory (arc worlds):** if any trauma response changes across arcs, note which trigger fades (or hardens) in which arc and the beat that earns it. This tells the Architect which arcs need a CHARACTER_STATE trauma-trajectory line (item 7) and gives the Arc Transition Auditor the fade to verify. Triggers that stay constant, and characters with no trauma map, need nothing here. *Sandbox:* trauma is static substrate (no per-arc fade) — record it in Tier 2 only.
-- Voice characteristics for the character card.
+- Voice characteristics and Speech Info for the character card.
 - LLM behavioral requirements: failure modes, mandates, prohibitions, trigger-response pairs.
 
 ### SECTION 8: NPC ROSTER (Tier 2 Source — secondary characters)

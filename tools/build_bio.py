@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import re
 
 def build_bio(world_name):
     base_dir = os.getcwd()
@@ -108,6 +109,9 @@ def build_bio(world_name):
 """
 
             html_content = html_content.replace("{{ROSTER_SECTION}}", roster_html)
+            
+            # Clean up any remaining uppercase placeholders
+            html_content = re.sub(r'\{\{[A-Z0-9_]+\}\}', '', html_content)
             
             out_path = os.path.join(export_dir, f"{world_name}_JanitorAI_Bio_{name}.html")
             with open(out_path, 'w', encoding='utf-8') as f:

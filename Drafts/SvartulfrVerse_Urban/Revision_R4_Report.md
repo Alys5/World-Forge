@@ -116,3 +116,14 @@
 **Audit File:** `Drafts/SvartulfrVerse_Urban/Revise_R4_Prompt_Engineer_Audit.md`
 
 **Status:** R5_COMPLETE
+
+---
+
+## Phase R6 — Janitor Builder
+
+**Action Taken:**
+- Executed `build_janitor.py` (generated World, Family, NPC, and NSFW js scripts).
+- Executed `build_bio.py` and `build_janitor_profile.py` (updated `SvartulfrVerse_Urban_JanitorAI.md` and `SvartulfrVerse_Urban_JanitorAI_Bio.html`).
+- All Janitor exports are now strictly aligned to the newly rebuilt JSON hierarchy.
+
+**Status:** APPLIED

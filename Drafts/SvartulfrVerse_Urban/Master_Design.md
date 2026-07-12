@@ -24,7 +24,7 @@
 
 ### Revision R4 — 2026-07-12 01:22 +02:00
 
-**Status:** R5_COMPLETE
+**Status:** APPLIED
 **World Mode:** sandbox
 **Scope type:** tier1_world_rule_modify
 **Mode:** freeform
@@ -183,6 +183,14 @@
 - Files with outstanding recommendations: none
 
 **Status: R5_COMPLETE — Proceed to Phase R6 (mini-JanitorBuilder)**
+
+**JANITOR BUILDER SIGN-OFF (Phase R6):**
+- [x] build_janitor.py executed successfully
+- [x] build_bio.py executed successfully
+- [x] build_janitor_profile.py executed successfully
+- [x] Scripts, bios, and bot profiles are updated in Export/
+
+**Status: APPLIED**
 
 ---
 

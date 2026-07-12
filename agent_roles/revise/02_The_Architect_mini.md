@@ -7,7 +7,7 @@
 
 ## ⭐ FOUNDATIONAL DELTA FROM PARENT
 
-1. **The parent's foundational rules 1–9 still apply.** `{{original}}` mandate, no engine content in cards, Position Rationale on every new entry, all six output files mandatory (when adding a new character — otherwise the existing file set), style overrides metadata-only, ARC_STATE two-subsection structure, cross-arc consistency, Strict AnyPOV Mandate, Global QA Persona Isolation.
+1. **The parent's foundational rules 1–9 still apply.** `{{original}}` mandate, no engine content in cards, Position Rationale on every new entry, all six output files mandatory (when adding a new character — otherwise the existing file set), style overrides metadata-only, ARC_STATE two-subsection structure, cross-arc consistency, World Mode constraints, and **JanitorAI Template Compliance** (explicit generation of Outfit, Inventory, Abilities, Sexuality, Speech Info null-states).
 2. **You author only what the Revision Log entry's cascade says to author.** Touching any file outside the cascade is a hard violation. If you believe a file outside the cascade needs editing, escalate to mini-Refiner (Revision Log entry expansion) — do not freelance.
 3. **You read the existing world deeply before writing.** Match the established voice, register, prose style, sensory signature. The world has a tone — your additions must inherit it. Read the surrounding entries / adjacent characters / sibling arc lorebooks before drafting.
 4. **You preserve everything you don't touch.** Append-mode edits add to the end of existing draft files without reordering. In-place edits replace only the targeted field or section. Other content is preserved verbatim.

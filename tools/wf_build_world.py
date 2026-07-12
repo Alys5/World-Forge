@@ -129,6 +129,10 @@ META_KEYS = [
     "Selective", "ignoreBudget", "Depth",
 ]
 
+# Regex matching uppercase template placeholders like {{SECRET}}, {{MILESTONE_1}}
+# but NOT SillyTavern runtime macros like {{user}}, {{char}}, {{original}}
+UPPER_PLACEHOLDER_RE = re.compile(r'\{\{[A-Z][A-Z0-9_]*\}\}')
+
 # Inline revision markers (<!-- REVISED IN R3 -->) and any other HTML comments
 # belong only in Drafts/, never in Export/ JSON (Compiler Foundational Rule 9 +
 # validate_export.py). Strip them during transcription so the audit trail in the
@@ -420,6 +424,73 @@ def parse_instructions(text: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Character book processing
+# ---------------------------------------------------------------------------
+
+def populate_card_book(card: dict, fm: dict, display_name: str):
+    """Process character_book entries from the template.
+
+    1. Replace {{char}} with the character's display_name.
+    2. Strip HTML comments (<!-- ... -->).
+    3. Remove Q&A entries whose answer is empty.
+    4. Remove entries that still contain unfilled {{PLACEHOLDER}} patterns.
+    5. Remove entries whose content becomes trivially short after cleanup.
+    """
+    book = card["data"].get("character_book")
+    if not book:
+        return
+
+    entries = book.get("entries", [])
+    cleaned = []
+
+    for entry in entries:
+        content = entry.get("content", "")
+
+        # 1. Replace {{char}} with display_name
+        content = content.replace("{{char}}", display_name)
+
+        # 2. Strip HTML comments
+        content = HTML_COMMENT_RE.sub("", content).strip()
+
+        # 3. Remove entries with empty Q&A answers
+        #    Handles both real newlines and literal \n in JSON strings.
+        if re.search(r'(?:\n|\\n)A:\s*$', content) or content.rstrip().endswith('A: '):
+            continue
+
+        # 4. Remove entries with remaining uppercase {{PLACEHOLDER}} patterns
+        if UPPER_PLACEHOLDER_RE.search(content):
+            continue
+
+        # 5. Strip structural labels/headers and check if anything meaningful remains.
+        #    This catches template shells like "GENERAL SPEECH INFO\nStyle:\nQuirks:\nTicks:\n..."
+        #    that passed the Q&A and placeholder checks but have no actual data.
+        stripped = content
+        # Remove known structural headers and labels
+        # 5. Check if anything meaningful remains after stripping structural text
+        stripped = content
+        # Remove instructions
+        stripped = re.sub(r'\[IMPORTANT NOTE FOR AI:[^\]]*\]', '', stripped, flags=re.DOTALL)
+        # Remove known labels (case insensitive)
+        labels = [
+            'GENERAL SPEECH INFO', 'SYNONYMS', 'PREMADE STORY PLAN', 'PREVIOUSLY', 'NOTES',
+            'Speech EXAMPLES AND OPINIONS', 'Style', 'Quirks', 'Ticks', 'Milestone \d+',
+            r'\? Details', 'Details', 'speech_examples'
+        ]
+        for label in labels:
+            stripped = re.sub(rf'(?i){label}:?', '', stripped)
+        
+        # Remove formatting chars
+        stripped = re.sub(r'[↳\s\n\r\[\]#:\-\|<>/"]', '', stripped)
+        if len(stripped) < 5:
+            continue
+
+        entry["content"] = content
+        cleaned.append(entry)
+
+    book["entries"] = cleaned
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -562,6 +633,10 @@ def main():
             },
             "world_forge": {"style_override": style_override},
         }
+
+        # Process character_book: replace {{char}}, strip comments, remove empties
+        populate_card_book(card, fm, display_name)
+
         out_path = export_dir / f"{char_key}_Card.json"
         with open(out_path, "w", encoding="utf-8") as f:
             json.dump(card, f, ensure_ascii=False, indent=4)
@@ -574,6 +649,14 @@ def main():
             dst = export_dir / copy_file
             dst.write_bytes(src.read_bytes())
             print(f"Copied {copy_file}")
+
+    # Copy ChatPreset template (resync_world.py will update Main/Jailbreak blocks)
+    preset_src = templates_dir / "Chat_Completion_Preset_template.json"
+    preset_dst = export_dir / f"{world_name}_ChatPreset.json"
+    if preset_src.exists() and not preset_dst.exists():
+        import shutil
+        shutil.copy2(preset_src, preset_dst)
+        print(f"Copied ChatPreset template -> {preset_dst.name}")
 
     # Generate JanitorAI profile
     import subprocess

@@ -213,14 +213,15 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 **Input:** `Drafts/Master_Design.md` with REFINER SIGN-OFF
 **Output:** All draft files in `Drafts/`
 
-**Mandatory outputs (all seven required):**
-1. `Card_[CharName].md` — character card content per card
+**Mandatory outputs (all eight required):**
+1. `Card_[CharName].md` — character card content per card (MUST strictly include all foundational JanitorAI fields in `description` with explicit null-states)
 2. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
 3. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
 4. `Tier1_World_Entries.md` — all Tier 1 entries
 5. `Tier2_[CharName]_Entries.md` — Tier 2 entries per character/NPC (principals as full profiles, roster NPCs as compact stat blocks for large casts)
 6. Tier 3 lorebook — *arc mode:* `Tier3_Arc[N]_[Title]_Entries.md` per arc; *sandbox mode:* a single `Tier3_Sandbox_Entries.md` (`SANDBOX_STATE` + `WORLD_PULSE`)
 7. `Instructions_[CardName].md` — system_prompt + post_history_instructions + depth_prompt per card
+8. `JanitorAI_Bio_Group.json` — Storefront copy and roster metadata for the JanitorAI HTML Bio template
 
 If the PRE-SUBMISSION CHECKLIST shows any of these unchecked, return to Architect before proceeding.
 

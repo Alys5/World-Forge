@@ -7,7 +7,7 @@
 
 ## ⭐ FOUNDATIONAL DELTA FROM PARENT
 
-1. **All ten of the parent's hard-fail rules apply to touched files.** No exemptions for revisions. A new entry without Position Rationale fails hard. An edited card with engine contamination fails hard. An edited ARC_STATE missing the two-subsection structure fails hard.
+1. **All eleven of the parent's hard-fail rules apply to touched files.** No exemptions for revisions. A new entry without Position Rationale fails hard. An edited card with engine contamination fails hard. An edited ARC_STATE missing the two-subsection structure fails hard. A touched character draft missing JanitorAI Template Compliance fields fails hard.
 2. **Scope is the cascade.** You validate files listed in the Revision Log entry's confirmed cascade. You do NOT re-audit untouched files for prose quality or completeness — those passed in the original Editor sign-off and have not changed.
 3. **You DO cross-reference untouched files for tier integrity and cross-arc consistency.** If a touched file now contains content that contradicts an untouched file, that's a hard failure on the touched file. The untouched file is read-only context.
 4. **Inline revision markers must be present.** Any change site in a touched file lacking a `<!-- REVISED IN R[N] -->` or `<!-- CREATED IN R[N] -->` marker is a hard failure. The markers are the audit trail; missing them breaks revision archaeology.

@@ -13,7 +13,7 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 3. **Position Rationale on every lorebook entry.** Every entry across all tiers has a `Position Rationale:` field — either the literal string `DEFAULT` (when the entry uses the documented default position+flags for its tier) or a one-sentence justification referencing `Notes_On_functionality.md` and explaining why the default fails. The Editor hard-fails missing or shallow rationales.
 
-4. **All six output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
+4. **All seven output files are mandatory.** Per the workflow: `Card_[CharName].md`, `User.md`, `Tier1_World_Entries.md`, `Tier2_[CharName]_Entries.md` (one per character + Tier 2 Protagonist Lorebook + NPC profiles), the Tier 3 lorebook (`Tier3_Arc[N]_*_Entries.md` — one per arc in **arc** mode; a single `Tier3_Sandbox_Entries.md` in **sandbox** mode), `Instructions_[CardName].md` (one per card), and `JanitorAI_Bio_Group.json` (storefront bio metadata). Conditional Phase 2.5 adds Intimacy Profile and Register files when World Seed Section 8 is in scope.
 
 5. **Style overrides are metadata-only.** Cards with per-card style overrides declare them through `extensions.world_forge.style_override` in the LLM Instructions draft — never as a `<style_override>` tag block inside card text. See `agent_roles/SHARED_Style_Contract_Reference.md` for the schema and the directive prose templates. The Editor hard-fails any literal `<style_override>` tag in any card text field.
 
@@ -22,6 +22,14 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 7. **Cross-arc consistency on character cards.** Every behavioral mandate, prohibition, and trigger-response pair must be checked against every arc's CHARACTER_STATE entry. Any mandate that would produce wrong behavior in a later arc must carry an explicit arc-range qualifier (`"Arc 1–2 only:"`, `"Arc 3+:"`, `"All arcs:"`). `post_history_instructions` must NOT hardcode any early-arc register as permanent; it must defer to the active CHARACTER_STATE entry as the authority. *(Arc mode only — sandbox worlds have no arcs or CHARACTER_STATE; cards carry their full standing range and defer to `SANDBOX_STATE`.)*
 
 8. **World Mode governs Tier 3 and the NPC format.** Read Master Design Section 9's title. `arc` → author one Arc Lorebook per arc (Section 8) and use full NPC profiles (Section 7.D). `sandbox` → author the single always-active Sandbox Lorebook (Section 8S) instead, with NO `CHARACTER_STATE`/`NPC_SHIFT`/`DRAMATIC_BEAT`/arc-trigger entries, and split a large NPC cast into principals (Section 7.D) + roster (Section 7.E). Do not mix: a sandbox world has no arc lorebooks; an arc world has no sandbox lorebook.
+
+9. **JanitorAI Template Compliance.** When drafting character files (e.g., `Card_*.md`, `Tier2_[CharName]_Entries.md` for NPCs), you MUST explicitly generate and populate all foundational fields required by the `Janitor_Bot_Template.md` structure. Every character draft must structurally include explicit data for the following categories, leaving no missing keys:
+   - **Appearance & Outfit:** Full starting outfit breakdown (Head, Neck, Accessories, Top, Bottom, Shoes, Underwear, Makeup) and at least one explicit Appearance Trait with its Details and Effect.
+   - **Inventory:** At least one specific item carried, along with its functional details.
+   - **Abilities & Species Traits:** Explicit definition of species traits (if applicable) and specific abilities with their narrative details.
+   - **Sexuality:** Sexual Orientation, Orientation Explanation, Sexual Role (e.g., Top, Bottom, Switch, Submissive), and Role Explanation.
+   - **Speech Info:** Speech Style, Quirks, and Ticks.
+   - **Constraint:** If a character does not possess a specific item, quirk, or accessory, supply a definitive null-state value (e.g., "None", "Standard civilian clothing", "No visible quirks") rather than omitting the category. The Draft structure must perfectly mirror the JanitorAI template dependencies to ensure Phase 4 scripts can compile a 1:1 mapped output without dropping required platform keys.
 
 ---
 
@@ -33,6 +41,8 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
 
 **Load on demand (open at the step that needs it — do not preload):**
 - `templates/User_Persona_template.md` — when drafting `Drafts/User.md` (Section 5.5)
+- `templates/Janitor_Bot_Template.md` — when structuring the card `description` field (Section 5)
+- `templates/Janitor_Bio_Template.html` — when drafting `JanitorAI_Bio_Group.json` (Section 5.6)
 - `Notes_Quick_Reference.md` — when assigning a non-default position or writing a non-DEFAULT Position Rationale (Section 6)
 
 **ST runtime questions** (position values, lorebook flags, token budget, prompt assembly order): consult `Notes_Quick_Reference.md` first; open the full `Notes_On_functionality.md` only where this spec names a section or the quick reference does not settle the question.
@@ -86,14 +96,64 @@ Draft in this sequence to prevent cross-contamination:
 One file per character card. Contains:
 
 ### description
-Combine physical anatomy (from Master Design Section 7 physical specification) with the character's psychological and behavioral profile. Structure:
-1. Physical description — full, sensory, in anatomical order where relevant
-2. Voice, manner, rhetorical habits
-3. Psychological core — shown through behavior, not stated
-4. The shield and how it manifests
-5. Intimacy/sexual profile (if applicable)
+You MUST structure the description field using EXACTLY the following Markdown headers. This is a binding requirement to ensure JanitorAI export scripts can extract the fields correctly. Do not omit any headers; if a category is empty, provide a definitive null-state value (e.g., "None").
 
-Write in dense, evocative prose. This is the single richest text in the card.
+```markdown
+### CHARACTER OVERVIEW
+[Summary of the character and their role]
+
+### APPEARANCE DETAILS
+Full Name, Alias: [Name]
+Race: [Race]
+Sex/Gender: [Sex]
+Height: [Height]
+Age: [Age]
+Hair: [Hair]
+Eyes: [Eyes]
+Body: [Body]
+Face: [Face]
+Features: [Features]
+Privates: [Privates]
+Appearance Trait: [Trait]
+↳ Details: [Details]
+↳ Effect: [Effect]
+
+### STARTING OUTFIT
+Head: [None/Value]
+Accessories: [None/Value]
+Makeup: [None/Value]
+Neck: [None/Value]
+Top: [None/Value]
+Bottom: [None/Value]
+Legs: [None/Value]
+Shoes: [None/Value]
+Underwear: [None/Value]
+
+### ORIGIN (BACKSTORY)
+[Character's backstory]
+
+### RESIDENCE
+[Location where they live]
+
+### CONNECTIONS
+[Relationships with other characters]
+
+### INVENTORY
+Item: [Item Name]
+↳ Details: [Details]
+
+### ABILITIES
+Species Traits: [Short summary if applicable, else "None"]
+Ability: [Ability Name]
+↳ Details: [Details]
+
+### PERSONALITY
+Archetype: [Archetype]
+Personality Tags: [Comma-separated tags]
+[Write dense, evocative prose about their psychological core, voice, shield, and intimacy/sexual profile here.]
+```
+
+Write the prose sections in dense, evocative prose. This is the single richest text in the card.
 
 > ⚠️ No arc-specific content. No timeline events. No "she is currently doing X." This is the permanent character substrate.
 
@@ -212,6 +272,52 @@ This text is injected as a system message every turn while this persona is activ
 | **Length** | ≤150 words | No fixed cap; per-entry standard |
 
 For the full structural specification, including the rationale for each section, see `templates/User_Persona_template.md`.
+
+---
+
+## 5.6. JANITORAI BIO DATA — `Drafts/JanitorAI_Bio_Group.json`
+
+This file provides the world and character summaries that the JanitorAI export pipeline uses to assemble the HTML Bio page (`Janitor_Bio_Template.html`). You MUST create this file.
+
+### Structure
+
+Produce a JSON object matching this schema exactly:
+
+```json
+{
+  "storefront_text": {
+    "title": "[Name of the World/Franchise]",
+    "subtitle": "[A short, punchy sub-header]",
+    "impact_line": "[A dramatic one-liner representing the core conflict]",
+    "hook": "[1-2 sentence compelling intro]",
+    "blurb": "[Short paragraph summarizing the setting]",
+    "world_teaser": "[A teaser for the world's deeper lore or factions]",
+    "closing_line": "[A final prompt or question for the player]",
+    "warnings": "[Content warnings, e.g., 'Mature themes, violence']"
+  },
+  "visuals": {
+    "main_portrait_1x1": {
+      "placeholder_url": "https://placecats.com/300/300"
+    },
+    "supporting_image_banner": {
+      "placeholder_url": "https://placecats.com/800/300"
+    }
+  },
+  "roster": [
+    {
+      "name": "[Character Name]",
+      "subtitle": "[Character Role/Archetype]",
+      "description": "[1-2 sentence bio]",
+      "image": { "placeholder_url": "https://placecats.com/200/200" }
+    }
+  ]
+}
+```
+
+### Drafting workflow
+
+1. Populate the `storefront_text` fields based on the Master Design's tone and premise. Make the copy evocative, punchy, and designed to sell the world to a player.
+2. Under `roster`, create one object for every named character card (including any principals). Extract their name, role, and a micro-bio. Use generic placeholder URLs for the images (users will replace them later).
 
 ---
 
