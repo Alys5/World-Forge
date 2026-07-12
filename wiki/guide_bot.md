@@ -1,4 +1,7 @@
-Foreword and Introduction
+> [!WARNING]
+> **ARCHITECTURE UPDATE**: The monolithic `Janitor_Lorebook_Script.js` is deprecated. The World-Forge pipeline now enforces a Strict Template Compliance Mandate using a 4-template domain system (`World`, `Family`, `NPC`, and `NSFW`). All bot creation and scripting guidelines below should be applied with this new separation of concerns in mind.
+
+# Foreword and Introduction
 This guide was written to give both new and experienced creators a clear, structured path into building effective chatbots on JanitorAI and similar platforms. Over the last several years, the community has experimented with countless templates, lorebooks, and scripting systems — and while fragments of best practices were scattered across guides, posts, and personal notes, there was never a single resource that pulled everything together in one place.
 
 This book is my attempt to change that. It combines hard lessons from hundreds of hours of building, testing, and refining bots with research from community leaders, and practical trial-and-error. Every chapter is designed to move from theory to practice: not just what to do, but why it matters and how to implement it in a way that actually survives in live play.

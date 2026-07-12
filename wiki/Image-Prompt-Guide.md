@@ -1,5 +1,8 @@
 # Image Prompt Generation Guide (PixAI / NovelAI / Danbooru Tags)
 
+> [!WARNING]
+> **ARCHITECTURE UPDATE**: The monolithic `Janitor_Lorebook_Script.js` is deprecated. The World-Forge pipeline now uses a strict 4-template domain system for ES6 scripts: `World`, `Family`, `NPC`, and `NSFW`. Ensure any manual script or prompt alignment respects this new separation of concerns.
+
 This guide outlines the standard rules and best practices for generating image prompts, specifically tailored for PixAI, NovelAI, and models trained on Danbooru-style tags.
 
 ## 1. Prompt Anatomy

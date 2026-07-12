@@ -1,3 +1,6 @@
+> [!WARNING]
+> **ARCHITECTURE UPDATE**: The monolithic `Janitor_Lorebook_Script.js` is deprecated. The World-Forge pipeline now enforces a Strict Template Compliance Mandate using a 4-template domain system for ES6 scripts (`World`, `Family`, `NPC`, and `NSFW`). All scripting guidelines below should be applied with this new separation of concerns in mind.
+
 1. 📘 Foreword
 2. 📘 Introduction
 3. 📘 Chapter List

@@ -11,6 +11,10 @@ The pipeline ships as living markdown specifications rather than versioned
 software, so entries are grouped by date and pull request rather than release
 numbers. Newest first.
 
+## 2026-07-12 — Strict Template Compliance & 4-Template Janitor Split
+
+Replaced the deprecated, monolithic `Janitor_Lorebook_Script.js` with a 4-template domain system (`World`, `Family`, `NPC`, `NSFW`) for ES6 scripts to prevent context bloat and enforce separation of concerns in JanitorAI. Promoted the **Strict Template Compliance Mandate (Zero-Deviation Policy)** to a foundational architectural law across all agents, mini-agents, and pipelines (Build, Revise, Convert) ensuring 1:1 structural mapping to schemas with explicit null-states and no schema truncation.
+
 ---
 
 ## 2026-07-11 — Architecture Migration: Antigravity & Phase 6 Integration

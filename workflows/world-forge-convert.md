@@ -24,6 +24,16 @@ Today the revise pipeline tells users to run a full rebuild for any of these. Th
 
 ---
 
+## STRICT TEMPLATE COMPLIANCE MANDATE (ZERO-DEVIATION POLICY)
+
+This pipeline relies on strict schema adherence across all phases. Agents **MUST** treat templates as rigid schemas, not loose suggestions. 
+1. **1:1 Structural Mapping**: Outputs must map exactly to the provided template structure (e.g., `char_template.json`, `Janitor_Bot_Template.md`). No missing keys, no altered markdown headers, and no floating text outside defined key-value pairs.
+2. **Zero Omission (Explicit Null-States)**: If a template field is not applicable or lacks data, you MUST include the field with an explicit null-state (e.g., "None", "N/A", "Unstated") rather than deleting the key.
+3. **Array/List Constraints**: Strict adherence to exact item counts. When a template specifies a limit (e.g., "Exactly FIVE global scenarios"), you MUST generate exactly that number.
+4. **No Schema Truncation**: Empty JSON fields or template sections must never be pruned. The target platform relies on the full schema to function properly.
+
+---
+
 ## CONVERT PIPELINE OVERVIEW
 
 ```
@@ -77,6 +87,7 @@ Today the revise pipeline tells users to run a full rebuild for any of these. Th
 **Authority:**
 - **Read-only on `<source_path>`.** Hard rule. The Converter never modifies any file in the source project.
 - **Write-only on `<target_path>/World_Seed.md`.** Does not write `Drafts/`, `Export/`, `Master_Design.md`, or any other file in the target project. The standard pipeline produces those.
+- **Strict Template Compliance & ES6 Domain Initialization:** Ensures the new World Seed natively provisions constraints and data structures supporting the 4-template domain system (World, Family, NPC, NSFW) for downstream build scripts.
 
 **Single phase.** The Converter is one phase, not a multi-phase mini-pipeline. It produces the seed; everything downstream is the regular pipeline. This is unlike `/worldforge revise`, which orchestrates eight mini-phases.
 
@@ -225,7 +236,10 @@ templates/                                  ← Universal Template Library used 
 ├── Convert_Brief_Template.md               ⭐ heavily used in Phase C0
 ├── Janitor_Bio_Template.html
 ├── Janitor_Bot_Template.md
-├── Janitor_Lorebook_Script.js
+├── Janitor_Script_World_Template.js
+├── Janitor_Script_Family_Template.js
+├── Janitor_Script_NPC_Template.js
+├── Janitor_Script_NSFW_Template.js
 ├── Lorebook_creation.md
 ├── Lorebook_Template.json
 ├── User_Persona_template.md

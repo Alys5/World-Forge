@@ -474,7 +474,10 @@ For users who find manual application onerous on large worlds, a future pipeline
 │   ├── Convert_Brief_Template.md                  🔹 Conversion brief structure for C0
 │   ├── Janitor_Bio_Template.html                  🔹 JanitorAI storefront bio layout
 │   ├── Janitor_Bot_Template.md                    🔹 JanitorAI bot profile structure
-│   ├── Janitor_Lorebook_Script.js                 🔹 JanitorAI lorebook to ES6 script structure
+│   ├── Janitor_Script_World_Template.js           🔹 JanitorAI Tier 1 rules and factions script
+│   ├── Janitor_Script_Family_Template.js          🔹 JanitorAI family and pack dynamics script
+│   ├── Janitor_Script_NPC_Template.js             🔹 JanitorAI roster NPCs script
+│   ├── Janitor_Script_NSFW_Template.js            🔹 JanitorAI intimacy and trauma script
 │   ├── Lorebook_creation.md                       🔹 Lorebook entry formatting rules
 │   ├── Lorebook_Template.json                     🔹 Lorebook JSON structural reference
 │   ├── User_Persona_template.md                   🔹 {{user}} Persona structural reference
