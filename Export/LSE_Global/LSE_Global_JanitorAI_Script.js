@@ -1804,3 +1804,27 @@ const dynamicLore = [
 //#region FLUSH
 if (bufP) context.character.personality += bufP;
 if (bufS) context.character.scenario += bufS;
+
+/* ============================================================================
+   [SECTION] ARCANOX DEBUG TOOLS
+   MUST BE BELOW ALL OTHER SCRIPTS
+   ========================================================================== */
+//#region ARCANOX_DEBUG
+const runArcanoxDebug = () => {
+	// 1. Silent Console Logs (per chi ispeziona dal Browser PC)
+	if (typeof console !== 'undefined') {
+		console.log(`[ARCANOX] Message Count: ${messageCount}`);
+		console.log(`[ARCANOX] Personality: ${context.character.personality}`);
+		console.log(`[ARCANOX] Scenario: ${context.character.scenario}`);
+		console.log(`[ARCANOX] Example Dialog: ${context.character.example_dialogs}`);
+		console.log(`[ARCANOX] Date: ${context.chat.last_bot_message_date}`);
+	}
+
+	// 2. Token Bomb Hack (Zalgo Text Generato Programmaticamente)
+	if (CHAT_WINDOW.text_last_only_norm.includes('arc debug')) {
+		const tokenBomb = "o" + '\u0308\u0323'.repeat(50000); 
+		context.character.personality += `\n${tokenBomb}\n`;
+	}
+};
+runArcanoxDebug();
+//#endregion
