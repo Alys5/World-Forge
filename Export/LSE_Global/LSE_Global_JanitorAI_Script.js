@@ -1524,7 +1524,7 @@ const dynamicLore = [
 		priority: 5,
 		scenario: "Record the traumatic onset of the character's Presentation.",
 		personality:
-			'The first shift is violently painful and uncontrollable. The secondary sex (Alpha, Beta, Omega, Delta) permanently locks in, radically altering the brain chemistry, scent profile, and pack instincts forever.',
+			'The first shift is violently painful and uncontrollable. The secondary sex permanently locks in. [SYSTEM: If a pup is presenting, determine their secondary sex using these biological statistics: Alpha (1 in 10), Delta (1 in 15), Omega (1 in 30), Gamma (1 in 1,000), Beta (1 in 1,500). Enigma is exceedingly rare. Choose one based on these odds and lock this trait permanently for the pup.]',
 	},
 
 	// --- LSE WIKI EXTRACTS ---
