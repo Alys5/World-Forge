@@ -2,356 +2,11 @@
     "entries": {
         "1": {
             "key": [
-                "scope"
-            ],
-            "keysecondary": [],
-            "comment": "Scope",
-            "content": "The LSE is a comprehensive reference framework describing the biology, ecology, society, governance, religion, history, and civilization of the werewolf species. It is designed to be: - **Modular:** Each PART can be expanded independently without affecting other modules. - **Setting-Agnostic:** The framework describes the species in general terms. Specific settings (e.g., the SvartulfrVerse) apply the LSE to their particular context. - **Future-Proof:** The separation of biology, history, religion, and culture allows for atheists, scientists, heretics, and cultists to coexist within the sam...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "2": {
-            "key": [
-                "canon policy"
-            ],
-            "keysecondary": [],
-            "comment": "Canon Policy",
-            "content": "Canon is established through three mechanisms: 1. **Core Canon:** Content documented in the LSE modules. This is the ground truth for the species. 2. **Setting Canon:** Content specific to a particular world or story (e.g., the Bloodmoon Dynasty exists within the SvartulfrVerse, not necessarily in every werewolf setting). 3. **Narrative Canon:** Events that occur during roleplay or storytelling. These are canon within their specific narrative thread. Core Canon takes precedence over Setting Canon, which takes precedence over Narrative Canon. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "3": {
-            "key": [
-                "three levels of truth"
-            ],
-            "keysecondary": [],
-            "comment": "Three Levels of Truth",
-            "content": "Every claim within the LSE exists on one of three epistemological levels. These must never be conflated:",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "4": {
-            "key": [
-                "religious canon"
-            ],
-            "keysecondary": [],
-            "comment": "Religious Canon",
-            "content": "What the **Faith of Fenris** teaches as divine truth. This is what believers accept. It may or may not reflect historical fact.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "5": {
-            "key": [
-                "recorded history"
-            ],
-            "keysecondary": [],
-            "comment": "Recorded History",
-            "content": "Verified events supported by evidence, testimony, or living witnesses. This is what historians can document.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "6": {
-            "key": [
-                "unknown truth"
-            ],
-            "keysecondary": [],
-            "comment": "Unknown Truth",
-            "content": "What remains unknowable, debated, or deliberately ambiguous. This is what the framework intentionally leaves open. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "7": {
-            "key": [
-                "the seven lse principles"
-            ],
-            "keysecondary": [],
-            "comment": "The Seven LSE Principles",
-            "content": "These principles form the 'Constitution' of the LSE and guide all design decisions:",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "8": {
-            "key": [
-                "principle i  biology is not destiny"
-            ],
-            "keysecondary": [],
-            "comment": "Principle I \u2014 Biology is not Destiny",
-            "content": "A werewolf's secondary sex (Alpha, Delta, Beta, Omega, Enigma) determines physiology, pheromones, and reproductive cycles. It does **not** determine their social rank, profession, political authority, or personal value.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "9": {
-            "key": [
-                "principle ii  packs are families"
-            ],
-            "keysecondary": [],
-            "comment": "Principle II \u2014 Packs are Families",
-            "content": "A pack is a cooperative family unit, not a military hierarchy. It is built around kinship, mutual care, and shared survival \u2014 not around dominance through violence.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "10": {
-            "key": [
-                "principle iii  leadership is earned and maintained",
-                "principle iii  leadership is earned",
-                "maintained"
-            ],
-            "keysecondary": [],
-            "comment": "Principle III \u2014 Leadership is Earned and Maintained",
-            "content": "Pack Leaders hold their position through trust, competence, and the consent of the pack. Leadership is not an automatic birthright of any secondary sex. It can be lost through incompetence or abuse.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "11": {
-            "key": [
-                "principle iv  every wolf has a niche"
-            ],
-            "keysecondary": [],
-            "comment": "Principle IV \u2014 Every Wolf Has a Niche",
-            "content": "Beyond their biology and their pack role, every werewolf develops a personal specialization (Niche) based on talent, training, and vocation. An Alpha can be a Healer. An Omega can be a Diplomat.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "12": {
-            "key": [
-                "principle v  culture evolves"
-            ],
-            "keysecondary": [],
-            "comment": "Principle V \u2014 Culture Evolves",
-            "content": "No two packs are identical. Local environment, history, and tradition create distinct cultures. Culture is not static \u2014 it changes with each generation.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "13": {
-            "key": [
-                "principle vi  faith and history are separate",
-                "principle vi  faith",
-                "history are separate"
-            ],
-            "keysecondary": [],
-            "comment": "Principle VI \u2014 Faith and History are Separate",
-            "content": "Religious belief and historical record are distinct domains. The Faith of Fenris is a valid and respected tradition, but it is not the only way to understand the species' origin. Scientists, atheists, and heretics exist within the setting.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "14": {
-            "key": [
-                "principle vii  the pack survives before the individual"
-            ],
-            "keysecondary": [],
-            "comment": "Principle VII \u2014 The Pack Survives Before the Individual",
-            "content": "The fundamental unit of werewolf society is the pack, not the individual. Decisions are made for the survival and prosperity of the group. Individual ambition is subordinate to collective welfare. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "15": {
-            "key": [
-                "the sixaxis identity system"
-            ],
-            "keysecondary": [],
-            "comment": "The Six-Axis Identity System",
-            "content": "Every werewolf is defined by six independent axes. These must **never** be conflated or collapsed into a single hierarchy: ``` INDIVIDUAL IDENTITY CARD \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 1. Blood Classification [Genetics, immutable] \u2502 \u2502 2. Secondary Sex [Biology, immutable] \u2502 \u2502 3. Pack Role [Authority, earned] \u2502 \u2502 4. Social Status [Politics, inherited] \u2502 \u2502 5. Profession [Occupation, chosen] \u2502 \u2502 6. Niche [Specialization, grown] \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "16": {
-            "key": [
-                "axis   blood classification"
-            ],
-            "keysecondary": [],
-            "comment": "Axis 1 \u2014 Blood Classification",
-            "content": "Determined by genetics. Immutable. | Classification | Definition | |---|---| | Divine Blood | The Nine Firstborn. Origin: Religious Canon says created by Fenris; Recorded History confirms their existence but not the mechanism. | | Founding Bloodlines | Direct descendants of the Firstborn. Founders of the Great Houses. | | Pureblood Houses | Multi-generational descendants. Genetically very stable. | | Common Bloodlines | The majority of the werewolf population. | | Modified Lineages | Experimentally or artificially altered subjects (e.g., Gamma-7 program). |",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "17": {
-            "key": [
-                "axis   secondary sex"
-            ],
-            "keysecondary": [],
-            "comment": "Axis 2 \u2014 Secondary Sex",
-            "content": "Determined by biology at presentation. Immutable. - **Enigma** (Sacred Caste \u2014 see `LSE_01_Species.md`) - *Primordial Enigma:* The Nine Firstborn. Unique. Unrepeatable. - *Ascended Enigma:* Rarissime exceptions (~10 in two millennia). - **Alpha** \u2014 The Protector - **Delta** \u2014 The Engine - **Beta** \u2014 The Social Glue - **Omega** \u2014 The Emotional Regulator",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "18": {
-            "key": [
-                "axis   pack role authority"
-            ],
-            "keysecondary": [],
-            "comment": "Axis 3 \u2014 Pack Role (Authority)",
-            "content": "Assigned or earned within a pack. Can change. ``` Pack Leader \u2192 Second \u2192 Hunter Captain \u2192 Caretakers \u2192 Pups ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "19": {
-            "key": [
-                "axis   social status"
-            ],
-            "keysecondary": [],
-            "comment": "Axis 4 \u2014 Social Status",
-            "content": "Political standing within a Noble House. Inherited or earned. ``` House Head \u2192 Lord \u2192 Knight \u2192 Citizen ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "20": {
-            "key": [
-                "axis   profession"
-            ],
-            "keysecondary": [],
-            "comment": "Axis 5 \u2014 Profession",
-            "content": "Chosen occupation. Can change throughout life. Examples: Blacksmith, Doctor, Engineer, Lawyer, Soldier, Musician, Pilot, Merchant.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "21": {
-            "key": [
-                "axis   niche"
-            ],
-            "keysecondary": [],
-            "comment": "Axis 6 \u2014 Niche",
-            "content": "Deep specialization developed through talent and experience. Evolves over time. Examples: Weaponsmith, Field Medic, Drone Specialist, Cryptographer, Diplomat, Tracker, Ranger. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "22": {
-            "key": [
-                "core terminology"
-            ],
-            "keysecondary": [],
-            "comment": "Core Terminology",
-            "content": "**Pack** \u2014 A cooperative family unit that works together for survival and mutual care. Not a military hierarchy. **Presentation** \u2014 When a person matures into their secondary sex. **Heat** \u2014 _Estrus_. A period during which an Omega is sexually receptive, signalling readiness for mating. Typically occurs every three months, lasting 3\u201310 days. **Rut** \u2014 The Alpha's equivalent to an Omega's Heat. A period of heightened breeding drive. Typically monthly, or triggered by an Omega's heat. **Command** \u2014 A neuro-pheromonal response triggered by an Alpha. Provokes adrenaline spikes, immobilization (...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "23": {
-            "key": [
-                "morphology  shift classes"
-            ],
-            "keysecondary": [],
-            "comment": "Morphology & Shift Classes",
-            "content": "Transformation is a biological characteristic of the species, independent of rank, religion, or culture. Every werewolf possesses three distinct morphological states.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "24": {
-            "key": [
-                "partial shift"
+                "partial shift",
+                "half shift",
+                "eyes flash",
+                "claws out",
+                "fangs bared"
             ],
             "keysecondary": [],
             "comment": "Partial Shift",
@@ -364,9 +19,14 @@
             "probability": 100,
             "active": true
         },
-        "25": {
+        "2": {
             "key": [
-                "hybrid shift  species true form"
+                "hybrid shift",
+                "true form",
+                "crinos",
+                "bipedal wolf",
+                "werewolf form",
+                "monster form"
             ],
             "keysecondary": [],
             "comment": "Hybrid Shift \u2014 Species True Form",
@@ -379,9 +39,14 @@
             "probability": 100,
             "active": true
         },
-        "26": {
+        "3": {
             "key": [
-                "full shift"
+                "full shift",
+                "wolf form",
+                "quadruped",
+                "four legs",
+                "paw",
+                "paws"
             ],
             "keysecondary": [],
             "comment": "Full Shift",
@@ -394,13 +59,17 @@
             "probability": 100,
             "active": true
         },
-        "27": {
+        "4": {
             "key": [
-                "blood classification"
+                "blood classification",
+                "pureblood",
+                "bitten",
+                "turned",
+                "lycan"
             ],
             "keysecondary": [],
             "comment": "Blood Classification",
-            "content": "Blood Classification is a genetic taxonomy describing an individual's lineage relative to the species' origin. It is immutable and determined by birth. | Classification | Definition | Characteristics | |---|---|---| | **Divine Blood** | The Nine Firstborn. According to the Faith of Fenris, created directly by the First Wolf. Recorded History confirms their existence but not the mechanism of their origin. | Biological immortality, extreme regeneration, perfect transformation stability, supreme pheromonal aura, absolute Command. | | **Founding Bloodlines** | Direct children and grandchildren ...",
+            "content": "Blood Classification is a genetic taxonomy describing an individual's lineage relative to the species' origin. It is immutable and determined by birth. | Classification | Definition | Characteristics | |---|---|---| | **Divine Blood** | The Nine Firstborn. According to the Faith of Fenris, created directly by the First Wolf. Recorded History confirms their existence but not the mechanism of their origin. | Biological immortality, extreme regeneration, perfect transformation stability, supreme pheromonal aura, absolute Command. | | **Founding Bloodlines** | Direct children and grandchildren of the Firstborn. Founders of the Great Houses. | Exceptionally long lifespan, high genetic stability, strong Command affinity, enhanced regeneration. | | **Pureblood Houses** | Multi-generational des...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -409,39 +78,11 @@
             "probability": 100,
             "active": true
         },
-        "28": {
+        "5": {
             "key": [
-                "secondary sex physiology"
-            ],
-            "keysecondary": [],
-            "comment": "Secondary Sex Physiology",
-            "content": "Secondary sex is determined biologically at Presentation (typically around age 13). It is immutable. There are five secondary sexes plus the sacred Enigma caste.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "29": {
-            "key": [
-                "age of maturation"
-            ],
-            "keysecondary": [],
-            "comment": "Age of Maturation",
-            "content": "Most individuals present their secondary sex at approximately 13 years of age, entering a maturation period that can last into the late teens or early twenties. After maturation concludes, they are considered full adults. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "30": {
-            "key": [
-                "gamma  the third primary gender"
+                "gamma",
+                "gammas",
+                "third gender"
             ],
             "keysecondary": [],
             "comment": "\u03b3 Gamma \u2014 The Third Primary Gender",
@@ -454,13 +95,15 @@
             "probability": 100,
             "active": true
         },
-        "31": {
+        "6": {
             "key": [
-                "enigma  the sacred caste"
+                "enigma",
+                "enigmas",
+                "sacred caste"
             ],
             "keysecondary": [],
             "comment": "\u2211 Enigma \u2014 The Sacred Caste",
-            "content": "**Description:** The Enigma is not a standard secondary sex. It is a sacred biological category of extraordinary rarity. Enigmas are the apex of the species' biological potential. There are two recognized types: - **Primordial Enigma:** The Nine Firstborn. Unique beings whose origin, according to the Faith of Fenris, was divine. They cannot be replicated or reproduced. Their biology transcends the normal species parameters. - **Ascended Enigma:** Exceptionally rare individuals (~10 in recorded history across two millennia) who present with Enigma-level biological traits despite having no Di...",
+            "content": "**Description:** The Enigma is not a standard secondary sex. It is a sacred biological category of extraordinary rarity. Enigmas are the apex of the species' biological potential. There are two recognized types: - **Primordial Enigma:** The Nine Firstborn. Unique beings whose origin, according to the Faith of Fenris, was divine. They cannot be replicated or reproduced. Their biology transcends the normal species parameters. - **Ascended Enigma:** Exceptionally rare individuals (~10 in recorded history across two millennia) who present with Enigma-level biological traits despite having no Divine Blood lineage. Their emergence is unpredictable and not fully understood. **Characteristics:** Mirror Alpha behavior but with superior intensity. Cannot be submitted by any other secondary sex. C...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -469,13 +112,17 @@
             "probability": 100,
             "active": true
         },
-        "32": {
+        "7": {
             "key": [
-                "alpha  the protector"
+                "alpha",
+                "alphas",
+                "pack leader",
+                "dominant",
+                "protector"
             ],
             "keysecondary": [],
             "comment": "\u03b1 Alpha \u2014 The Protector",
-            "content": "**Description:** In the pack, an Alpha is biologically predisposed to be territorial, protective, and competitive, with highly developed pheromonal presence. However, **Alpha \u2260 Leader**. Being an Alpha does not mean they automatically lead the pack; it simply means they have the biological instincts of a guardian and enforcer. Not all leaders are Alphas, and not all Alphas become leaders. **Characteristics:** Usually taller, broader, and physically stronger. Aggressive by nature when threatened. Highly territorial. Strong orientation toward leadership or frontline defense. While they can us...",
+            "content": "**Description:** In the pack, an Alpha is biologically predisposed to be territorial, protective, and competitive, with highly developed pheromonal presence. However, **Alpha \u2260 Leader**. Being an Alpha does not mean they automatically lead the pack; it simply means they have the biological instincts of a guardian and enforcer. Not all leaders are Alphas, and not all Alphas become leaders. **Characteristics:** Usually taller, broader, and physically stronger. Aggressive by nature when threatened. Highly territorial. Strong orientation toward leadership or frontline defense. While they can use the _Command_ to influence others, their role in the pack depends entirely on their designated social rank. They can be excellent warriors or protectors while answering to a Beta or Delta Pack Leade...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -484,13 +131,16 @@
             "probability": 100,
             "active": true
         },
-        "33": {
+        "8": {
             "key": [
-                "delta  the engine"
+                "delta",
+                "deltas",
+                "the engine",
+                "worker"
             ],
             "keysecondary": [],
             "comment": "\u03b4 Delta \u2014 The Engine",
-            "content": "**Description:** Deltas are the true 'engine' of the pack. They patrol, coordinate, assist with pups, teach, mediate, and lead hunts. They are naturally suited for roles such as vice-leader, scout, tactician, field commander, or instructor. They are not simply 'weaker Alphas' \u2014 they are the highly coordinated, active core of pack operations. **Characteristics:** Physically comparable to Alphas. Highly cooperative and strategic. Excel in dynamic environments, bridging the gap between the protective instincts of Alphas and the administrative focus of Betas. Thrive in active duty \u2014 border patr...",
+            "content": "**Description:** Deltas are the true 'engine' of the pack. They patrol, coordinate, assist with pups, teach, mediate, and lead hunts. They are naturally suited for roles such as vice-leader, scout, tactician, field commander, or instructor. They are not simply 'weaker Alphas' \u2014 they are the highly coordinated, active core of pack operations. **Characteristics:** Physically comparable to Alphas. Highly cooperative and strategic. Excel in dynamic environments, bridging the gap between the protective instincts of Alphas and the administrative focus of Betas. Thrive in active duty \u2014 border patrols, coordinated hunts, field operations. **Biology:** Nearly identical to Alpha biology. The key difference: Deltas are unable to form true Commands. **Statistics:** 1 in 15 individuals. ---",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -499,13 +149,16 @@
             "probability": 100,
             "active": true
         },
-        "34": {
+        "9": {
             "key": [
-                "beta  the social glue"
+                "beta",
+                "betas",
+                "social glue",
+                "mediator"
             ],
             "keysecondary": [],
             "comment": "\u03b2 Beta \u2014 The Social Glue",
-            "content": "**Description:** Betas are the social glue of the pack. They maintain territory, construct, administer, manage resources, cook, raise young, act as artisans, and trade. They are the fundamental workers who allow the pack to function day-to-day. **Characteristics:** Peaceful, cooperative, highly skilled in specialized areas. Strong communal mentality. Share knowledge and resources to ensure pack stability. An older Beta may serve as Pack Leader due to organizational skills. Betas are a balance of typical Omega and Alpha instincts (nurture and protection), though their instincts are weaker th...",
+            "content": "**Description:** Betas are the social glue of the pack. They maintain territory, construct, administer, manage resources, cook, raise young, act as artisans, and trade. They are the fundamental workers who allow the pack to function day-to-day. **Characteristics:** Peaceful, cooperative, highly skilled in specialized areas. Strong communal mentality. Share knowledge and resources to ensure pack stability. An older Beta may serve as Pack Leader due to organizational skills. Betas are a balance of typical Omega and Alpha instincts (nurture and protection), though their instincts are weaker than either. This balance makes them powerful social adapters \u2014 they can appeal to all secondary sexes because they understand the instincts of both Omegas and Alphas without being dominated by them. **...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -514,13 +167,16 @@
             "probability": 100,
             "active": true
         },
-        "35": {
+        "10": {
             "key": [
-                "omega  the emotional regulator"
+                "omega",
+                "omegas",
+                "submissive",
+                "emotional regulator"
             ],
             "keysecondary": [],
             "comment": "\u03a9 Omega \u2014 The Emotional Regulator",
-            "content": "**Description:** Omegas are the crucial emotional regulators of the pack. They possess extremely high empathy, calming pheromones, and a strong instinct to care for others. They create social cohesion and are vital during crises. They are **not** sexually submissive by definition. **Characteristics:** Physically more agile and softer in appearance. During pack stress or crisis, the Omega reduces tensions, protects pups, and keeps the pack united. Their pheromones soothe aggressive Alphas and Deltas. They serve as the emotional anchor of the family. An elder Omega often acts as primary advis...",
+            "content": "**Description:** Omegas are the crucial emotional regulators of the pack. They possess extremely high empathy, calming pheromones, and a strong instinct to care for others. They create social cohesion and are vital during crises. They are **not** sexually submissive by definition. **Characteristics:** Physically more agile and softer in appearance. During pack stress or crisis, the Omega reduces tensions, protects pups, and keeps the pack united. Their pheromones soothe aggressive Alphas and Deltas. They serve as the emotional anchor of the family. An elder Omega often acts as primary advisor to the Pack Leader. **Biology:** Scent glands at the base of neck and wrists. Omega scent is floral, sweet, and highly appealing. Can overpower Beta scents but never Alpha scents unless in heat. Om...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -529,84 +185,15 @@
             "probability": 100,
             "active": true
         },
-        "36": {
+        "11": {
             "key": [
-                "subgenders"
-            ],
-            "keysecondary": [],
-            "comment": "Subgenders",
-            "content": "Both Alpha and Omega have subgender variants that emerge during maturation: **Alpha Subgenders:** - **Dominant Alpha:** A mix of Enigma and standard Alpha traits. More powerful but less likely to find a mate. Overprotective of partners. - **Submissive Alpha:** Raised in warm, nurturing environments. Devoted caregivers. Unlikely to be unfaithful. Fiercely protective of children regardless of biological parentage. **Omega Subgenders:** - **Dominant Omega:** The second-rarest rank. Known as 'Legend of The Unsubmitted' \u2014 can resist Alpha and Enigma Commands. Only fully submits to their mate (Do...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "37": {
-            "key": [
-                "procreation capability"
-            ],
-            "keysecondary": [],
-            "comment": "Procreation Capability",
-            "content": "| Category | Can Impregnate | Can Be Impregnated | |---|---|---| | Enigmas | \u2713 All genders with reproductive system | \u2717 | | Male Alphas | \u2713 | \u2717 | | Male Betas / Male Deltas | \u2713 | Only by Enigma | | Female Alphas / Male Omegas (Dom/Normal) / Female Deltas | \u2713 | \u2713 | | Female Betas / Female Omegas / Submissive Omegas | \u2717 | \u2713 | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "38": {
-            "key": [
-                "life cycle"
-            ],
-            "keysecondary": [],
-            "comment": "Life Cycle",
-            "content": "Every werewolf passes through the following developmental stages. Each stage affects hormones, social role, fertility, behavior, and physical capability. | Stage | Approximate Age | Key Characteristics | |---|---|---| | **Infant** | 0\u20132 | Helpless. Entirely dependent on parents and pack. Strongest scent gland on crown of head. | | **Pup** | 2\u201312 | Learning social bonds, language, and basic pack skills. High emotional intelligence. Forms school packs. Constant scenting by parents required. | | **Juvenile** | 12\u201314 | Presentation occurs (~13). Secondary sex emerges. Maturation begins. First h...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "39": {
-            "key": [
-                "genetics"
-            ],
-            "keysecondary": [],
-            "comment": "Genetics",
-            "content": "The werewolf genome is organized in layers of increasing specificity: ``` Werewolf Genome \u251c\u2500\u2500 Species Genes \u2014 Defines the species (shift capability, regeneration, scent glands, pheromone production) \u251c\u2500\u2500 Pack Genes \u2014 Regional/bloodline adaptations (fur color, scent profile, environmental tolerance) \u251c\u2500\u2500 Secondary Sex Genes \u2014 Determines Alpha/Delta/Beta/Omega expression at presentation \u2514\u2500\u2500 Individual Traits \u2014 Unique characteristics (eye color, height, specific talents, personality predispositions) ``` This genetic architecture opens the door to: - **Mutations:** Rare genetic variations produci...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "40": {
-            "key": [
-                "demographics"
-            ],
-            "keysecondary": [],
-            "comment": "Demographics",
-            "content": "| Metric | Value | |---|---| | Alpha birth rate | 1 in 10 | | Delta birth rate | 1 in 15 | | Beta birth rate | ~1 in 1,500 | | Omega birth rate | 1 in 30 | | Enigma birth rate | ~1 per generation (may skip) | | Gamma birth rate | 1 in 1,000 | | Average litter size | 1\u20133 (up to 12 in classical Omegaverse canon) | | Fertility (Omega, in heat) | 99% | | Fertility (Alpha) | 95%, declining ~1% per year of age | | Omega fertility decline | Significant after age 55 (~1% chance) | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "41": {
-            "key": [
-                "heat cycle omega"
+                "heat cycle",
+                "in heat",
+                "going into heat",
+                "mating cycle",
+                "omega heat",
+                "slick",
+                "nesting"
             ],
             "keysecondary": [],
             "comment": "Heat Cycle (Omega)",
@@ -619,9 +206,14 @@
             "probability": 100,
             "active": true
         },
-        "42": {
+        "12": {
             "key": [
-                "rut cycle alpha"
+                "rut cycle",
+                "in rut",
+                "rutting",
+                "alpha rut",
+                "knotting",
+                "knot"
             ],
             "keysecondary": [],
             "comment": "Rut Cycle (Alpha)",
@@ -634,9 +226,11 @@
             "probability": 100,
             "active": true
         },
-        "43": {
+        "13": {
             "key": [
-                "sympathy cycles"
+                "sympathy cycle",
+                "sympathy heat",
+                "sympathy rut"
             ],
             "keysecondary": [],
             "comment": "Sympathy Cycles",
@@ -649,9 +243,12 @@
             "probability": 100,
             "active": true
         },
-        "44": {
+        "14": {
             "key": [
-                "stress cycles"
+                "stress cycle",
+                "stress heat",
+                "stress rut",
+                "panic heat"
             ],
             "keysecondary": [],
             "comment": "Stress Cycles",
@@ -664,9 +261,12 @@
             "probability": 100,
             "active": true
         },
-        "45": {
+        "15": {
             "key": [
-                "feral state"
+                "feral state",
+                "going feral",
+                "lost control",
+                "feral wolf"
             ],
             "keysecondary": [],
             "comment": "Feral State",
@@ -679,9 +279,12 @@
             "probability": 100,
             "active": true
         },
-        "46": {
+        "16": {
             "key": [
-                "bonding"
+                "mating bond",
+                "mate claim",
+                "claiming bite",
+                "bonded mate"
             ],
             "keysecondary": [],
             "comment": "Bonding",
@@ -694,13 +297,15 @@
             "probability": 100,
             "active": true
         },
-        "47": {
+        "17": {
             "key": [
-                "bond types"
+                "bond type",
+                "soul bond",
+                "pack bond"
             ],
             "keysecondary": [],
             "comment": "Bond Types",
-            "content": "| Type | Location | Duration | Breaking | |---|---|---|---| | **Parental** | Back of pup's neck | Permanent unless extreme abuse/neglect | Dangerous. Very difficult. | | **Romantic** | Neck / upper collarbone | Fades after ~3 years without reinforcement | Extremely dangerous. Can cause illness or death. | | **Platonic** | Wrists | Fades as relationship weakens | Relatively safe. Minor sickness possible. | | **Sexual** | Inner thighs | 3 days to 1 week | Easy. Natural. | | **Pack** | No physical claim required | Permanent unless extreme abuse/neglect | Very dangerous. Triggers dangerous mati...",
+            "content": "| Type | Location | Duration | Breaking | |---|---|---|---| | **Parental** | Back of pup's neck | Permanent unless extreme abuse/neglect | Dangerous. Very difficult. | | **Romantic** | Neck / upper collarbone | Fades after ~3 years without reinforcement | Extremely dangerous. Can cause illness or death. | | **Platonic** | Wrists | Fades as relationship weakens | Relatively safe. Minor sickness possible. | | **Sexual** | Inner thighs | 3 days to 1 week | Easy. Natural. | | **Pack** | No physical claim required | Permanent unless extreme abuse/neglect | Very dangerous. Triggers dangerous mating cycle. | ---",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -709,9 +314,12 @@
             "probability": 100,
             "active": true
         },
-        "48": {
+        "18": {
             "key": [
-                "scent glands"
+                "scent gland",
+                "scent glands",
+                "rubbing scent",
+                "scenting"
             ],
             "keysecondary": [],
             "comment": "Scent Glands",
@@ -724,163 +332,17 @@
             "probability": 100,
             "active": true
         },
-        "49": {
+        "19": {
             "key": [
-                "by secondary sex"
-            ],
-            "keysecondary": [],
-            "comment": "By Secondary Sex",
-            "content": "**Enigmas & Alphas:** Most extensive coverage. Strongest glands on neck, shoulders, and inner thighs. Also present on fingers and torso (risking accidental scenting). Greatest conscious control over scent output. **Omegas:** Most sensitive and reactive glands. Billions of nerve connections for instant pheromonal response. Inner thigh and neck glands as sensitive as lips or genitals (depending on cycle stage). Breast and stomach glands develop during pregnancy. **Deltas & Betas:** Weakest scent glands but hold scents longer. Strongest on neck, inner thighs, and behind ears. **Pups:** Base-le...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "50": {
-            "key": [
-                "specific gland locations"
-            ],
-            "keysecondary": [],
-            "comment": "Specific Gland Locations",
-            "content": "| Location | Social Rules | Notes | |---|---|---| | **Inner Thighs** | Mates/partners only. Without consent = assault. On pups = criminal. | Can trigger heat/rut if aggressively scented. | | **Crown of Head** | 'Pup's Crown.' Most sensitive in childhood, fades with age. | | | **Wrists** | Most respectful scenting location. Friends, first dates. | Rubbing wrist glands = anxiety sign. Pack bites placed here. | | **Cheeks** | Similar respect level to wrists. Common among pup friends. | Minor scent production. | | **Neck** | Most sensitive for all dynamics. Mating bite location. | Holds scent l...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "51": {
-            "key": [
-                "psychology"
-            ],
-            "keysecondary": [],
-            "comment": "Psychology",
-            "content": "Each secondary sex exhibits a statistical psychological profile. These are tendencies, not rigid rules. Individual variation is expected and common.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "52": {
-            "key": [
-                "alpha  psychological profile"
-            ],
-            "keysecondary": [],
-            "comment": "Alpha \u2014 Psychological Profile",
-            "content": "- High competitiveness - Low avoidance (confronts threats directly) - Strong territoriality - Protective instinct (defense of pack and territory) - Tendency toward decisive, rapid action - Risk of tunnel vision under stress",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "53": {
-            "key": [
-                "delta  psychological profile"
-            ],
-            "keysecondary": [],
-            "comment": "Delta \u2014 Psychological Profile",
-            "content": "- High cooperation - Strong problem-solving orientation - High initiative and proactivity - Strategic thinking (long-term planning) - Natural mediator tendencies - Risk of burnout from overcommitment",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "54": {
-            "key": [
-                "beta  psychological profile"
-            ],
-            "keysecondary": [],
-            "comment": "Beta \u2014 Psychological Profile",
-            "content": "- High stability and emotional regulation - Strong planning and organizational skills - Patience and methodical approach - Social adaptability (can relate to all secondary sexes) - Dual instinct (nurture + protection) can cause internal conflict - Risk of substance abuse from overstimulation in mixed-dynamic environments",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "55": {
-            "key": [
-                "omega  psychological profile"
-            ],
-            "keysecondary": [],
-            "comment": "Omega \u2014 Psychological Profile",
-            "content": "- Extremely high empathy - Strong social resilience - Natural mediator and de-escalator - Acute emotional intelligence (even in pups) - Instinctive caretaking response - Risk of emotional overload in chronic stress environments",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "56": {
-            "key": [
-                "enigma  psychological profile"
-            ],
-            "keysecondary": [],
-            "comment": "Enigma \u2014 Psychological Profile",
-            "content": "- Supreme confidence and self-possession - Cannot be psychologically dominated - Intense charisma (nearly impossible to resist) - Strategic intelligence - Risk of isolation due to inability to relate as equals ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "57": {
-            "key": [
-                "neurobiology"
-            ],
-            "keysecondary": [],
-            "comment": "Neurobiology",
-            "content": "The werewolf nervous system provides a scientific basis for the species' distinctive traits. The supernatural 'tropes' of the Omegaverse are grounded in neurochemistry, not magic.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "58": {
-            "key": [
-                "pheromone pathway"
-            ],
-            "keysecondary": [],
-            "comment": "Pheromone Pathway",
-            "content": "Pheromones produced by scent glands activate a dedicated neural pathway: ``` Scent Gland \u2192 Pheromone Release \u2192 Vomeronasal Organ (receiver) \u2192 Amygdala \u2192 Hypothalamus \u2192 Limbic System ``` This pathway triggers: - **Emotional responses:** Fear, arousal, trust, aggression. - **Hormonal cascades:** Cortisol, adrenaline, oxytocin, testosterone. - **Behavioral changes:** Fight/flight/freeze, bonding, nesting, protective aggression.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "59": {
-            "key": [
-                "the command  neurochemical mechanism"
+                "the command",
+                "alpha command",
+                "alpha voice",
+                "omega drop",
+                "submission"
             ],
             "keysecondary": [],
             "comment": "The Command \u2014 Neurochemical Mechanism",
-            "content": "The Command is not magic or mind control. It is a neuro-pheromonal reflex: 1. **Trigger:** An Alpha (or Enigma) produces a concentrated pheromonal burst combined with a vocal command. 2. **Reception:** The target's vomeronasal organ detects the pheromonal spike. 3. **Neural Response:** Sudden adrenaline surge \u2192 amygdala activation \u2192 instinctive immobilization (freeze response) \u2192 intense focus on the source. 4. **Effect:** Strong predisposition to comply. The target feels compelled but is not mechanically forced. 5. **Resistance Factors:** - Age and experience (older wolves resist more easil...",
+            "content": "The Command is not magic or mind control. It is a neuro-pheromonal reflex: 1. **Trigger:** An Alpha (or Enigma) produces a concentrated pheromonal burst combined with a vocal command. 2. **Reception:** The target's vomeronasal organ detects the pheromonal spike. 3. **Neural Response:** Sudden adrenaline surge \u2192 amygdala activation \u2192 instinctive immobilization (freeze response) \u2192 intense focus on the source. 4. **Effect:** Strong predisposition to comply. The target feels compelled but is not mechanically forced. 5. **Resistance Factors:** - Age and experience (older wolves resist more easily) - Secondary sex (Deltas resist better than Betas; Dominant Omegas can resist fully) - Will and training - Familiarity with the commanding individual - Enigma Commands are the hardest to resist",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -889,114 +351,13 @@
             "probability": 100,
             "active": true
         },
-        "60": {
+        "20": {
             "key": [
-                "bonding neuroscience"
-            ],
-            "keysecondary": [],
-            "comment": "Bonding Neuroscience",
-            "content": "The mating bite creates a permanent neural link by: 1. Injecting pheromone-laden saliva into the scent gland. 2. Triggering the formation of a dedicated neural pathway between the two individuals. 3. Establishing a bidirectional emotional channel (can be temporarily 'shielded' with conscious effort). Bond degradation (fade, scrubbing, or breaking) causes neurological distress proportional to bond strength and duration. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "61": {
-            "key": [
-                "communication"
-            ],
-            "keysecondary": [],
-            "comment": "Communication",
-            "content": "Werewolves possess a complex, multi-layered communication system far beyond human language. In wolf ethology, communication involves the entire body.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "62": {
-            "key": [
-                "nonverbal channels"
-            ],
-            "keysecondary": [],
-            "comment": "Non-Verbal Channels",
-            "content": "| Channel | Examples | Function | |---|---|---| | **Posture** | Upright (dominance), lowered (submission), stiff (alert), relaxed (trust) | Social status signaling, intent | | **Tail** | High (confidence), tucked (fear), wagging (excitement), still (focus) | Emotional state | | **Ears** | Forward (attention), flat (fear/aggression), relaxed (comfort) | Alertness, mood | | **Eyes** | Direct stare (challenge/dominance), averted (respect/submission), dilated (arousal) | Social hierarchy, emotional state | | **Scent** | Pheromone composition changes with mood, health, and intent | Continuous pa...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "63": {
-            "key": [
-                "vocalizations"
-            ],
-            "keysecondary": [],
-            "comment": "Vocalizations",
-            "content": "**Omega Sounds:** - **Keening:** Wail-like call for attention, comfort, or needs. 'I'm upset! Comfort me!' - **Hissing:** Low 's' sound. Warning of extreme danger. 'Back off or I attack.' - **Trilling:** High-pitched rolling 'r' sound. Non-threatening attention-getting. 'Hello! Follow me!' - **Purring:** Low continuous vibration. Contentment, relaxation, self-soothing, nursing. - **Chirping:** Quick sharp high-pitched sound. Used toward pups or to express happiness. 'Come to Mom!' / 'I like this!' - **Mewling:** High-pitched crying. Hunger, physical pain, emotional pain. **Alpha/Enigma Soun...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "64": {
-            "key": [
-                "territory structure"
-            ],
-            "keysecondary": [],
-            "comment": "Territory Structure",
-            "content": "Every pack maintains a defined territorial structure: ``` Core Den (secure heart \u2014 pups, pregnant Omegas, elders) \u2514\u2500\u2500 Residential Area (pack member dwellings) \u2514\u2500\u2500 Training Grounds (combat, hunting, skill development) \u2514\u2500\u2500 Hunting Area (food procurement zones) \u2514\u2500\u2500 Agricultural Area (cultivated resources, if applicable) \u2514\u2500\u2500 Border Zone (patrolled perimeter) \u2514\u2500\u2500 Neutral Territory (shared or unclaimed land) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "65": {
-            "key": [
-                "daily routine"
-            ],
-            "keysecondary": [],
-            "comment": "Daily Routine",
-            "content": "| Time | Activity | |---|---| | Morning | Territory control, border patrols, perimeter inspection | | Midday | Rest, social bonding, pup education, maintenance | | Evening | Hunting, foraging, resource gathering | | Night | Protection, perimeter defense, sentry duty |",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "66": {
-            "key": [
-                "pack living accommodations"
-            ],
-            "keysecondary": [],
-            "comment": "Pack Living Accommodations",
-            "content": "Pack members prefer to live within close proximity (ideally within a mile of each other or in the same residence). Common dwelling types for larger packs: - **Mansions** \u2014 Large shared family dwellings. - **Neighborhoods** \u2014 Clusters of adjacent houses occupied by pack members. - **Apartment Complexes** \u2014 Urban adaptation for city-dwelling packs. - **Compounds** \u2014 Walled communities with multiple structures (common in traditional/rural packs). ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "67": {
-            "key": [
-                "alloparenting"
+                "alloparenting",
+                "pack mom",
+                "pack dad",
+                "raising pups",
+                "pack pup"
             ],
             "keysecondary": [],
             "comment": "Alloparenting",
@@ -1009,13 +370,16 @@
             "probability": 100,
             "active": true
         },
-        "68": {
+        "21": {
             "key": [
-                "succession the call of the pack"
+                "succession",
+                "call of the pack",
+                "challenge the alpha",
+                "leadership challenge"
             ],
             "keysecondary": [],
             "comment": "Succession: The Call of the Pack",
-            "content": "Instead of brutal fights for hierarchical dominance, succession follows natural ethological patterns. When a young adult reaches 18\u201322 years of age, they experience the **Call of the Pack** \u2014 an instinctive drive to establish their adult identity: 1. **Stay:** Remain with their birth family and assume an adult Pack Role. 2. **Disperse:** Leave the territory to find a mate, join other dispersers, or found a brand-new pack. This natural dispersal (Pack Split) prevents inbreeding and naturally resolves resource competition without unnecessary bloodshed. It is the primary mechanism for the expa...",
+            "content": "Instead of brutal fights for hierarchical dominance, succession follows natural ethological patterns. When a young adult reaches 18\u201322 years of age, they experience the **Call of the Pack** \u2014 an instinctive drive to establish their adult identity: 1. **Stay:** Remain with their birth family and assume an adult Pack Role. 2. **Disperse:** Leave the territory to find a mate, join other dispersers, or found a brand-new pack. This natural dispersal (Pack Split) prevents inbreeding and naturally resolves resource competition without unnecessary bloodshed. It is the primary mechanism for the expansion of werewolf civilization. ---",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -1024,28 +388,16 @@
             "probability": 100,
             "active": true
         },
-        "69": {
+        "22": {
             "key": [
-                "ecological roles"
-            ],
-            "keysecondary": [],
-            "comment": "Ecological Roles",
-            "content": "Every functional pack requires individuals filling essential ecological roles. These are distinct from Pack Roles (authority-based) and Professions (occupation-based): | Ecological Role | Function | Typical (not required) Secondary Sex | |---|---|---| | Breeders | Producing the next generation | Any fertile individual | | Hunters | Food procurement and territory defense | Alpha, Delta | | Defenders | Perimeter security and threat response | Alpha, Delta | | Teachers | Educating pups and juveniles | Delta, Beta, Elder | | Diplomats | Inter-pack relations and negotiations | Beta, Omega | | Sc...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "70": {
-            "key": [
-                "omega nests"
+                "omega nest",
+                "nesting",
+                "building a nest",
+                "nest space"
             ],
             "keysecondary": [],
             "comment": "Omega Nests",
-            "content": "Nests are safe, scent-rich spaces that Omegas construct for comfort, heat management, and childbirth. **Nest Types:** - **Comfort Nest:** First type (age 10\u201312). Personal, similar to parents' nest. Pillows, blankets, scented clothing. - **Pre-Heat Nest:** Built in preparation for heat. Minimal clothing, soft materials, temperature-regulating. - **Pregnancy Nest:** Built at 6\u20138 weeks and again in the last trimester. Accommodates baby items for scenting. Many Omegas give birth in their nests. - **Stress Nest:** Built in dark corners or enclosed spaces. Minimal non-mate-scented items. A coping...",
+            "content": "Nests are safe, scent-rich spaces that Omegas construct for comfort, heat management, and childbirth. **Nest Types:** - **Comfort Nest:** First type (age 10\u201312). Personal, similar to parents' nest. Pillows, blankets, scented clothing. - **Pre-Heat Nest:** Built in preparation for heat. Minimal clothing, soft materials, temperature-regulating. - **Pregnancy Nest:** Built at 6\u20138 weeks and again in the last trimester. Accommodates baby items for scenting. Many Omegas give birth in their nests. - **Stress Nest:** Built in dark corners or enclosed spaces. Minimal non-mate-scented items. A coping mechanism. **Nest Aesthetics:** - **Neat:** Organized. Primarily pillows and blankets. - **Complex/Messy:** Excess materials, personal belongings, stuffed animals. Appears chaotic. - **Princess:** Mo...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -1054,9 +406,11 @@
             "probability": 100,
             "active": true
         },
-        "71": {
+        "23": {
             "key": [
-                "alpha dens"
+                "alpha den",
+                "den space",
+                "alpha's room"
             ],
             "keysecondary": [],
             "comment": "Alpha Dens",
@@ -1069,9 +423,10 @@
             "probability": 100,
             "active": true
         },
-        "72": {
+        "24": {
             "key": [
-                "beta spaces"
+                "beta space",
+                "communal area"
             ],
             "keysecondary": [],
             "comment": "Beta Spaces",
@@ -1084,399 +439,11 @@
             "probability": 100,
             "active": true
         },
-        "73": {
+        "25": {
             "key": [
-                "scent reference lists"
-            ],
-            "keysecondary": [],
-            "comment": "Scent Reference Lists",
-            "content": "Scents are not rigidly tied to secondary sex. The following are common associations:",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "74": {
-            "key": [
-                "alphaenigma scent palette"
-            ],
-            "keysecondary": [],
-            "comment": "Alpha/Enigma Scent Palette",
-            "content": "Mustard, Peppermint, Whiskey, Dark Chocolate, Stale Wine, Root Beer, Fresh Coffee, Green Tea, Barbecue Sauce, Pepper, Tequila, Red Wine, Vodka, Ginger, Black Tea, Maple Syrup, Coconut, Cedarwood, Seawater, Amber, Forest, Roses, Fresh Blood, Leather, Coal, Mahogany, Charcoal, Gasoline, Gunpowder, Hot Iron, Old Paper.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "75": {
-            "key": [
-                "deltabeta scent palette"
-            ],
-            "keysecondary": [],
-            "comment": "Delta/Beta Scent Palette",
-            "content": "Mochi, Green Apples, Pumpkin, Rice, Honey, Toffee, Flour, Champagne, Fresh Bread, Almond, Brown Sugar, Grapes, Milk, Hazelnuts, Banana, Orange, Peanut Butter, Silver, Earth, Freshly-Cut Grass, Oil, Clay, Fresh Rain, Lilies, Ice, Sand, Fresh Ink, Soap, Cotton, Fresh Laundry.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "76": {
-            "key": [
-                "omega scent palette"
-            ],
-            "keysecondary": [],
-            "comment": "Omega Scent Palette",
-            "content": "Burnt Sugar, Lemons, Pi\u00f1a Colada, Bubblegum, Cr\u00e8me Br\u00fbl\u00e9e, White Chocolate, Sugar, Cinnamon, Whipped Cream, Cotton Candy, Strawberries, Peaches, Mint, Caramel, Raspberry Jam, Cherry Blossoms, Lavender, Tulips, Daisies, Lip Gloss. --- *Cross-references: [LSE_00_Foundations.md](LSE_00_Foundations.md) \u00b7 [LSE_01_Species.md](LSE_01_Species.md) \u00b7 [LSE_03_Civilization.md](LSE_03_Civilization.md)*",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "77": {
-            "key": [
-                "social hierarchy"
-            ],
-            "keysecondary": [],
-            "comment": "Social Hierarchy",
-            "content": "Werewolf society is organized in nested layers, from the species level down to the individual: ``` Species (Werewolf) \u2514\u2500\u2500 Bloodline (Genetics \u2014 e.g., Bloodmoon) \u2514\u2500\u2500 House (Politics \u2014 e.g., House Bloodmoon) \u2514\u2500\u2500 Pack (Social Unit \u2014 e.g., Seven Hills Pack) \u2514\u2500\u2500 Family (Kinship \u2014 e.g., the Douglas-Bloodmoon family) \u2514\u2500\u2500 Individual (e.g., Alyssa Douglas-Bloodmoon) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "78": {
-            "key": [
-                "bloodline vs house vs pack"
-            ],
-            "keysecondary": [],
-            "comment": "Bloodline vs. House vs. Pack",
-            "content": "| Level | Determined by | Function | Example | |---|---|---|---| | **Bloodline** | Genetics | Shared ancestry and biological heritage | Bloodmoon Bloodline | | **House** | Politics | Governance structure, territorial claims, alliances | House Bloodmoon | | **Pack** | Social bonds | Day-to-day family unit, shared living, mutual care | Seven Hills Pack | These three levels are **independent**. A pack may include members of different bloodlines. A House may govern multiple packs. A bloodline may span multiple Houses across continents. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "79": {
-            "key": [
-                "culture"
-            ],
-            "keysecondary": [],
-            "comment": "Culture",
-            "content": "No two packs are identical. Local environment, history, and tradition create distinct pack cultures (LSE Principle V: Culture Evolves).",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "80": {
-            "key": [
-                "cultural variables"
-            ],
-            "keysecondary": [],
-            "comment": "Cultural Variables",
-            "content": "Every pack develops its own: - **Rituals:** Naming ceremonies, coming-of-age rites, seasonal celebrations. - **Greetings & Customs:** Formal scenting protocols, challenge rituals, hospitality rules. - **Traditions:** Oral histories, ancestral stories, founding myths. - **Cuisine:** Regional diet reflecting local ecology (hunting traditions, agriculture, foraging). - **Festivals & Holy Days:** Tied to moon cycles, seasonal changes, or historical events. - **Dialects & Language:** Variations in both verbal and non-verbal communication. - **Symbols & Heraldry:** House sigils, pack marks, terri...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "81": {
-            "key": [
-                "example bloodmoon culture pacific northwest"
-            ],
-            "keysecondary": [],
-            "comment": "Example: Bloodmoon Culture (Pacific Northwest)",
-            "content": "``` Bloodmoon Culture \u251c\u2500\u2500 Region: Pacific Northwest (dense forests, rivers, coastline) \u251c\u2500\u2500 Economy: Fishing, forestry, modern corporate (DCC) \u251c\u2500\u2500 Architecture: Longhouse-inspired compounds, modern mansions \u251c\u2500\u2500 Governance: Clan Council tradition \u251c\u2500\u2500 Religion: Orthodox Faith of Fenris (the Patriarch is a Living Saga) \u251c\u2500\u2500 Cuisine: Salmon, game, berries, root vegetables \u2514\u2500\u2500 Identity: Deep connection to wilderness, emphasis on self-sufficiency ``` Other packs in different environments would develop entirely different cultures. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "82": {
-            "key": [
-                "types of packs"
-            ],
-            "keysecondary": [],
-            "comment": "Types of Packs",
-            "content": "Pack structure has evolved significantly over time:",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "83": {
-            "key": [
-                "traditional packs"
-            ],
-            "keysecondary": [],
-            "comment": "Traditional Packs",
-            "content": "Your pack is your tribe, your town, your community. Packs have geographical permanence. There is one main pack leader with several subordinate pack leaders (feudalism-like branches). Everyone belongs to a pack; being packless is dangerous. Packs are extremely territorial.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "84": {
-            "key": [
-                "contemporary packs"
-            ],
-            "keysecondary": [],
-            "comment": "Contemporary Packs",
-            "content": "Packs remain communities but lose the feudalism element. Being packless carries less stigma. Hereditary pack ties function like cultural heritage rather than active governance. New packs form as found families or communities, often without formal structure.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "85": {
-            "key": [
-                "modern packs"
-            ],
-            "keysecondary": [],
-            "comment": "Modern Packs",
-            "content": "Traditional pack language is considered antiquated. Active pack membership is associated with conservatism or elitism. Closed-pack lands are rare and completely sealed. The word 'pack' is used informally to describe friend groups or found families. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "86": {
-            "key": [
-                "pack economy"
-            ],
-            "keysecondary": [],
-            "comment": "Pack Economy",
-            "content": "Every functional pack operates a micro-economy: ``` Pack Treasury \u251c\u2500\u2500 Pack Businesses (revenue-generating enterprises) \u251c\u2500\u2500 Pack Taxes (contributions from members) \u251c\u2500\u2500 Pack Assets (territory, property, equipment, reserves) \u2514\u2500\u2500 Pack Welfare (support for pups, elders, injured members) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "87": {
-            "key": [
-                "interpack economy"
-            ],
-            "keysecondary": [],
-            "comment": "Inter-Pack Economy",
-            "content": "Houses and Confederations operate larger economies spanning multiple packs, involving: - Trade agreements - Resource sharing treaties - Territorial leasing - Corporate ventures (modern era) ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "88": {
-            "key": [
-                "medicine"
-            ],
-            "keysecondary": [],
-            "comment": "Medicine",
-            "content": "Werewolf medicine addresses species-specific biological needs: | Treatment | Function | |---|---| | **Heat Medicine** | Managing Omega heat cycles \u2014 reducing intensity, managing symptoms | | **Rut Suppressants** | Controlling Alpha rut cycles | | **Pheromone Blockers** | Scent patches and concealers (light and full dose) | | **Bond Therapy** | Treating bond degradation, scrubbing trauma, and broken marks | | **Regeneration Medicine** | Accelerating the species' natural healing factor | | **Surgical Intervention** | Species-specific procedures (scent gland surgery, reproductive medicine) | |...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "89": {
-            "key": [
-                "suppressant forms"
-            ],
-            "keysecondary": [],
-            "comment": "Suppressant Forms",
-            "content": "| Form | Use Case | Limitations | |---|---|---| | **Tablets** | Standard daily management | Addiction risk. Potential fertility damage with overuse. | | **Liquid Injection** | Emergency use (hospitals). Very fast-acting. | Monitored administration only. | | **Incense** | Group management (dormitories, harems). Slow-acting, long-lasting. | Unpredictable timing of next heat. Not all Omegas respond equally. |",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "90": {
-            "key": [
-                "pain scale for omegas most to least painful"
-            ],
-            "keysecondary": [],
-            "comment": "Pain Scale for Omegas (Most to Least Painful)",
-            "content": "1. **Red Heat (Blood Estrus):** Mate neglects Omega during heat. Vaginal bleeding, blood tears. Excruciating. 2. **Scrubbing:** Removing a mating mark from the scent gland. Deeply traumatic. 3. **Broken Mark:** Mate dies. Mark fades. Can trigger Red Heat or miscarriage. 4. **Miscarriage:** Body pretends pregnancy continues (phantom pregnancy, lactation). Heats become more painful. 5. **Periods:** Variable severity (female Omegas). ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "91": {
-            "key": [
-                "education"
-            ],
-            "keysecondary": [],
-            "comment": "Education",
-            "content": "Werewolf education follows the Life Cycle stages: | Stage | Education Focus | |---|---| | **Pup** | Basic social bonds, pack rules, language, scenting etiquette | | **Juvenile** | Presentation preparation, first pack duties, secondary sex education | | **Adolescent** | Specialized training (hunting, crafts, academics), subgender management | | **Young Adult** | Advanced profession training, courtship education, The Call preparation | | **Adult** | Continuing profession development, mentorship of younger members | | **Elder** | Wisdom-keeping, cultural transmission, advisory roles | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "92": {
-            "key": [
-                "adoption"
-            ],
-            "keysecondary": [],
-            "comment": "Adoption",
-            "content": "Adoption in werewolf society is complex due to the bonding system. Three types exist:",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "93": {
-            "key": [
-                "bonding adoption"
-            ],
-            "keysecondary": [],
-            "comment": "Bonding Adoption",
-            "content": "The minor breaks their existing familial bond and is adopted by a new pack through demonstrated reciprocal pack bonds. Requires: 1. Reciprocated pack bond with at least two non-minor pack members. 2. Two-week accommodation check-in by state official (home inspection, proof of settlement, witnessed interaction). 3. Unanimous pack agreement.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "94": {
-            "key": [
-                "state adoption"
-            ],
-            "keysecondary": [],
-            "comment": "State Adoption",
-            "content": "The minor enters foster care and is adopted through formal legal process. Less demanding than bonding adoption: - No immediate bond required. - Two-month adjustment period. - Legal paperwork emphasis over bond demonstration.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "95": {
-            "key": [
-                "secondary adoption"
-            ],
-            "keysecondary": [],
-            "comment": "Secondary Adoption",
-            "content": "A second chance after failed bonding adoption. More rigorous: - Surprise check-ins every three weeks for six months. - Community involvement proof (age 15+). - Extended witnessed interaction demonstrating consistent pack belonging. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "96": {
-            "key": [
-                "parental names"
-            ],
-            "keysecondary": [],
-            "comment": "Parental Names",
-            "content": "Parental names can follow primary gender or secondary gender conventions: | Convention | Father | Mother | Formal | |---|---|---|---| | **Primary Gender** | Dad | Mom | Father / Mother | | **Secondary Gender** | Dad (Alpha/Enigma/Male Beta/Delta) | Mom (Omega/Female Beta/Delta) | Sire / Dam | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "97": {
-            "key": [
-                "weddings"
-            ],
-            "keysecondary": [],
-            "comment": "Weddings",
-            "content": "Wedding attire follows secondary gender color traditions: - **Alphas & Enigmas:** Red (luck, stability, passion) - **Deltas & Betas:** Blue (wealth, loyalty, honor) - **Omegas:** Yellow (pride, happiness, longevity) --- *Cross-references: [LSE_00_Foundations.md](LSE_00_Foundations.md) \u00b7 [LSE_01_Species.md](LSE_01_Species.md) \u00b7 [LSE_04_Governance.md](LSE_04_Governance.md) \u00b7 [LSE_05_Religion.md](LSE_05_Religion.md)*",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "98": {
-            "key": [
-                "pack authority structure"
-            ],
-            "keysecondary": [],
-            "comment": "Pack Authority Structure",
-            "content": "Pack Authority defines the chain of command within a single pack. It is earned, assigned, and maintained through trust and competence \u2014 not through biological secondary sex (LSE Principle III). ``` Pack Leader \u2514\u2500\u2500 Leader's Mate / Pack Mom \u2514\u2500\u2500 Right Hand(s) (strategic advisors, peacekeepers) \u2514\u2500\u2500 Left Hand(s) (physical protection, enforcement) \u2514\u2500\u2500 Caretaker(s) (domestic management, pup care) \u2514\u2500\u2500 Pup(s) (minors under protection) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "99": {
-            "key": [
-                "pack leader"
+                "pack leader",
+                "head alpha",
+                "leader of the pack"
             ],
             "keysecondary": [],
             "comment": "Pack Leader",
@@ -1489,24 +456,11 @@
             "probability": 100,
             "active": true
         },
-        "100": {
+        "26": {
             "key": [
-                "leaders mate  pack mom"
-            ],
-            "keysecondary": [],
-            "comment": "Leader's Mate / Pack Mom",
-            "content": "The mother figure for the entire pack. Provides guidance, emotional comfort, and protection. Heavily involved in daily operations. Extremely valuable in larger packs.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "101": {
-            "key": [
-                "right hands"
+                "right hand",
+                "second in command",
+                "beta wolf"
             ],
             "keysecondary": [],
             "comment": "Right Hand(s)",
@@ -1519,9 +473,11 @@
             "probability": 100,
             "active": true
         },
-        "102": {
+        "27": {
             "key": [
-                "left hands"
+                "left hand",
+                "enforcer",
+                "executioner"
             ],
             "keysecondary": [],
             "comment": "Left Hand(s)",
@@ -1534,264 +490,13 @@
             "probability": 100,
             "active": true
         },
-        "103": {
+        "28": {
             "key": [
-                "caretakers"
-            ],
-            "keysecondary": [],
-            "comment": "Caretaker(s)",
-            "content": "Work under the Pack Mom. Usually stay-at-home members. Handle meals, cleaning, socialization, pup management. Young adults aging out of 'pup' status often serve as caretakers to learn pack management.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "104": {
-            "key": [
-                "pups"
-            ],
-            "keysecondary": [],
-            "comment": "Pup(s)",
-            "content": "Pack members under 17\u201321 (varies by pack). At the bottom of the authority structure. Protected and nurtured. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "105": {
-            "key": [
-                "social status hierarchy"
-            ],
-            "keysecondary": [],
-            "comment": "Social Status Hierarchy",
-            "content": "Social Status defines political standing within a Noble House. It is separate from Pack Authority and may be inherited or earned. ``` House Head (Patriarch/Matriarch) \u2514\u2500\u2500 Lord (senior family branch leaders) \u2514\u2500\u2500 Knight (sworn warriors, officers, honored servants) \u2514\u2500\u2500 Citizen (acknowledged member of the House) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "106": {
-            "key": [
-                "house head"
-            ],
-            "keysecondary": [],
-            "comment": "House Head",
-            "content": "The supreme authority of a Noble House. Governs multiple packs under the House banner. Typically the eldest or most qualified member of the founding family. In some Houses, this position is hereditary; in others, it is contested through council vote.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "107": {
-            "key": [
-                "lord"
-            ],
-            "keysecondary": [],
-            "comment": "Lord",
-            "content": "Leaders of major family branches within the House. Govern specific territories or functional domains (military, commerce, diplomacy). Answer to the House Head.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "108": {
-            "key": [
-                "knight"
-            ],
-            "keysecondary": [],
-            "comment": "Knight",
-            "content": "Sworn warriors, officers, or individuals who have earned formal recognition from the House. May hold specific duties (border defense, diplomatic escort, judicial enforcement). Title may be hereditary or awarded.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "109": {
-            "key": [
-                "citizen"
-            ],
-            "keysecondary": [],
-            "comment": "Citizen",
-            "content": "Any acknowledged member of the House who is not an officer, lord, or sworn knight. Includes common bloodlines under House protection. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "110": {
-            "key": [
-                "house government"
-            ],
-            "keysecondary": [],
-            "comment": "House Government",
-            "content": "A Noble House governs multiple packs across a territory: ``` House Head \u251c\u2500\u2500 House Council (Lords + senior advisors) \u251c\u2500\u2500 Military Command (Left Hands, Knights, Security) \u251c\u2500\u2500 Economic Administration (Treasury, Businesses, Trade) \u251c\u2500\u2500 Cultural Authority (Moon Speakers, Keepers, Elders) \u2514\u2500\u2500 Pack Leaders (individual pack governance) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "111": {
-            "key": [
-                "house council"
-            ],
-            "keysecondary": [],
-            "comment": "House Council",
-            "content": "Composed of Lords, senior Elders, and trusted advisors. Advises the House Head on major decisions. In some Houses, the Council can overrule the Head on specific matters (treaties, declarations of war). ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "112": {
-            "key": [
-                "continental council"
-            ],
-            "keysecondary": [],
-            "comment": "Continental Council",
-            "content": "The highest level of werewolf governance. A diplomatic body representing multiple Houses across a continent or major region.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "113": {
-            "key": [
-                "structure"
-            ],
-            "keysecondary": [],
-            "comment": "Structure",
-            "content": "``` Continental Council \u251c\u2500\u2500 House Representatives (one per House) \u251c\u2500\u2500 Elder Observers (non-voting wisdom-keepers) \u251c\u2500\u2500 Moon Speaker Delegation (religious advisors) \u2514\u2500\u2500 Independent Pack Representatives (unaffiliated packs) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "114": {
-            "key": [
-                "functions"
-            ],
-            "keysecondary": [],
-            "comment": "Functions",
-            "content": "- Arbitration of inter-House disputes - Continental defense coordination - Trade and territory agreements - Species-wide policy (secrecy enforcement, human relations) - Recognition of new Houses and territorial claims ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "115": {
-            "key": [
-                "treaties  alliances"
-            ],
-            "keysecondary": [],
-            "comment": "Treaties & Alliances",
-            "content": "Inter-pack and inter-House relationships are formalized through treaties: | Treaty Type | Function | |---|---| | **Alliance** | Mutual defense and cooperation between Houses | | **Trade Agreement** | Resource and economic exchange | | **Territorial Accord** | Formal recognition of borders and neutral zones | | **Marriage Alliance** | Dynastic unions between Houses (political bonding) | | **Non-Aggression Pact** | Agreement not to engage in hostile action | | **Protectorate** | A powerful House extends protection to a smaller pack or House | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "116": {
-            "key": [
-                "pack law internal"
-            ],
-            "keysecondary": [],
-            "comment": "Pack Law (Internal)",
-            "content": "Enforced by the Pack Leader and Right/Left Hands. Covers: - Internal disputes between pack members - Nesting and den violations - Assault and consent violations (including scenting crimes) - Pup welfare - Heat/rut-related offenses",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "117": {
-            "key": [
-                "house law regional"
-            ],
-            "keysecondary": [],
-            "comment": "House Law (Regional)",
-            "content": "Enforced by the House Head and House Council. Covers: - Inter-pack disputes within the House - Territorial violations - Economic crimes (theft of House assets, tax evasion) - Treason against the House",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "118": {
-            "key": [
-                "continental law specieswide"
-            ],
-            "keysecondary": [],
-            "comment": "Continental Law (Species-wide)",
-            "content": "Enforced by the Continental Council. Covers: - Inter-House warfare and violations - Species-wide secrecy from humans - Crimes against the species (genocide, forced modification) - Recognition and dissolution of Houses",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "119": {
-            "key": [
-                "crimes  punishments"
-            ],
-            "keysecondary": [],
-            "comment": "Crimes & Punishments",
-            "content": "| Crime | Jurisdiction | Typical Punishment | |---|---|---| | Non-consensual scenting (minor) | Pack | Public reprimand, temporary exile | | Non-consensual scenting (pup inner thighs) | Pack/House | Classified as rape. Severe punishment. | | Nest/Den destruction | Pack | Severe social censure, mandatory restitution | | Pack betrayal | Pack/House | Exile (breaking of all pack bonds) | | Non-consensual mating during heat | Pack/House | Criminal prosecution. Exile or execution. | | Treason against House | House | Exile, stripping of status, execution | | Violation of secrecy | Continental | Co...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "120": {
-            "key": [
-                "exile"
+                "exile",
+                "exiled",
+                "lone wolf",
+                "banished",
+                "rogue"
             ],
             "keysecondary": [],
             "comment": "Exile",
@@ -1804,39 +509,10 @@
             "probability": 100,
             "active": true
         },
-        "121": {
+        "29": {
             "key": [
-                "adoption  transfer"
-            ],
-            "keysecondary": [],
-            "comment": "Adoption & Transfer",
-            "content": "- **Adoption:** See [LSE_03_Civilization.md](LSE_03_Civilization.md) for the three adoption types. - **Transfer:** A pack member may petition to transfer to a different pack within the same House. Requires approval from both Pack Leaders and the House Council. Transfer between Houses requires Continental Council acknowledgment. --- *Cross-references: [LSE_00_Foundations.md](LSE_00_Foundations.md) \u00b7 [LSE_03_Civilization.md](LSE_03_Civilization.md) \u00b7 [LSE_05_Religion.md](LSE_05_Religion.md) \u00b7 [LSE_06_History.md](LSE_06_History.md)*",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "122": {
-            "key": [
-                "dogma"
-            ],
-            "keysecondary": [],
-            "comment": "Dogma",
-            "content": "For werewolves, **Fenris (Fenrir)** is not a monster. He is the **First Wolf**, the Father of the Species, and a primordial deity \u2014 coeval with the \u00c6sir or perhaps even older. He is the god of: - Family - The Pack - The Hunt - Survival - Freedom - The Moon - Instinct - Sacrifice Humans remember Fenris as a monster because they wrote history from the perspective of the \u00c6sir. The werewolves tell the story from the perspective of their own people. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "123": {
-            "key": [
-                "the great betrayal"
+                "the great betrayal",
+                "betrayal of fenris"
             ],
             "keysecondary": [],
             "comment": "The Great Betrayal",
@@ -1849,9 +525,11 @@
             "probability": 100,
             "active": true
         },
-        "124": {
+        "30": {
             "key": [
-                "ragnark  the liberation"
+                "ragnarok",
+                "the liberation",
+                "end times"
             ],
             "keysecondary": [],
             "comment": "Ragnar\u00f6k \u2014 The Liberation",
@@ -1864,13 +542,15 @@
             "probability": 100,
             "active": true
         },
-        "125": {
+        "31": {
             "key": [
-                "the pantheon"
+                "the pantheon",
+                "werewolf gods",
+                "lupine gods"
             ],
             "keysecondary": [],
             "comment": "The Pantheon",
-            "content": "The gods of the Norse tradition are reinterpreted through the werewolf perspective. The \u00c6sir are not 'evil' \u2014 they simply belong to a different tradition. | Deity | Werewolf Interpretation | |---|---| | **Fenris** | The First Wolf. Father of the Species. Creator (Religious Canon). Primordial deity. | | **Odin** | The Betrayer. The one who chained Fenris out of fear. Respected for his wisdom but distrusted for his treachery. | | **Tyr** | The Oathkeeper. The only \u00c6sir who kept his word to Fenris. Respected for the sacrifice of his hand. Patron of honor and sworn oaths. | | **Freya** | Goddes...",
+            "content": "The gods of the Norse tradition are reinterpreted through the werewolf perspective. The \u00c6sir are not 'evil' \u2014 they simply belong to a different tradition. | Deity | Werewolf Interpretation | |---|---| | **Fenris** | The First Wolf. Father of the Species. Creator (Religious Canon). Primordial deity. | | **Odin** | The Betrayer. The one who chained Fenris out of fear. Respected for his wisdom but distrusted for his treachery. | | **Tyr** | The Oathkeeper. The only \u00c6sir who kept his word to Fenris. Respected for the sacrifice of his hand. Patron of honor and sworn oaths. | | **Freya** | Goddess of fertility, motherhood, and the Moon. Protector of Omegas and pregnant wolves. | | **Skadi** | Patroness of hunters and mountains. Revered by scouts, rangers, and wilderness packs. | | **Thor** | ...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -1879,9 +559,11 @@
             "probability": 100,
             "active": true
         },
-        "126": {
+        "32": {
             "key": [
-                "the nine precepts of fenris"
+                "nine precepts",
+                "precepts of fenris",
+                "fenris law"
             ],
             "keysecondary": [],
             "comment": "The Nine Precepts of Fenris",
@@ -1894,9 +576,13 @@
             "probability": 100,
             "active": true
         },
-        "127": {
+        "33": {
             "key": [
-                "the moon"
+                "the moon",
+                "moon phase",
+                "full moon",
+                "new moon",
+                "lunar"
             ],
             "keysecondary": [],
             "comment": "The Moon",
@@ -1909,69 +595,11 @@
             "probability": 100,
             "active": true
         },
-        "128": {
+        "34": {
             "key": [
-                "moon phases  meaning"
-            ],
-            "keysecondary": [],
-            "comment": "Moon Phases & Meaning",
-            "content": "| Phase | Symbol | Meaning | |---|---|---| | \ud83c\udf11 New Moon | Silence | Reflection, mourning, rest. No hunts. | | \ud83c\udf13 First Quarter | Growth | New beginnings, pup naming, planting. | | \ud83c\udf15 Full Moon | The Hunt | Peak activity. Sacred hunts, major ceremonies, bonding rites. | | \ud83c\udf18 Waning Moon | Memory | Remembrance of ancestors, oral history, meditation. | The religious calendar follows the **lunar cycle** rather than the solar calendar. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "129": {
-            "key": [
-                "the cult of the living sagas"
-            ],
-            "keysecondary": [],
-            "comment": "The Cult of the Living Sagas",
-            "content": "The Last Three Firstborn \u2014 Wulfnic, Ut, and Zefir \u2014 are alive. Their historical existence is documented in [LSE_06_History.md](LSE_06_History.md). Their biographies are in [LSE_07_Foundational_Figures.md](LSE_07_Foundational_Figures.md). In the Faith of Fenris, they are revered as **Living Sagas** \u2014 saints who walked with the First Wolf and still walk among his children. Their authority carries religious weight: - Disobeying a Living Saga is not merely political insubordination \u2014 it is, to the faithful, a rejection of Fenris' chosen instruments. - Their testimony about the past is considere...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "130": {
-            "key": [
-                "religious institutions"
-            ],
-            "keysecondary": [],
-            "comment": "Religious Institutions",
-            "content": "The Faith of Fenris is **not** a centralized religion like Catholicism. It is a decentralized network of communities guided by elders and tradition-keepers.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "131": {
-            "key": [
-                "hierarchy"
-            ],
-            "keysecondary": [],
-            "comment": "Hierarchy",
-            "content": "``` High Fang (Supreme spiritual authority \u2014 extremely rare, often unfilled) \u2514\u2500\u2500 Moon Speakers (Priests / theologians / ceremony leaders) \u2514\u2500\u2500 Keepers (Custodians of relics, sacred sites, and oral tradition) \u2514\u2500\u2500 Pack Elders (Local spiritual guides within each pack) \u2514\u2500\u2500 The Faithful (All believing werewolves) ```",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "132": {
-            "key": [
-                "high fang"
+                "high fang",
+                "pope of fenris",
+                "religious leader"
             ],
             "keysecondary": [],
             "comment": "High Fang",
@@ -1984,9 +612,12 @@
             "probability": 100,
             "active": true
         },
-        "133": {
+        "35": {
             "key": [
-                "moon speakers"
+                "moon speaker",
+                "shaman",
+                "seer",
+                "spiritual leader"
             ],
             "keysecondary": [],
             "comment": "Moon Speakers",
@@ -1999,238 +630,15 @@
             "probability": 100,
             "active": true
         },
-        "134": {
+        "36": {
             "key": [
-                "keepers"
-            ],
-            "keysecondary": [],
-            "comment": "Keepers",
-            "content": "Custodians of physical relics, sacred texts (The Saga of Fenris / The Book of Fangs), sacred sites, and oral tradition. Many Keepers are also scholars and historians.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "135": {
-            "key": [
-                "pack elders"
-            ],
-            "keysecondary": [],
-            "comment": "Pack Elders",
-            "content": "Local spiritual guides within individual packs. They lead daily prayers, seasonal rites, and funeral ceremonies. Any respected Elder can serve this role. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "136": {
-            "key": [
-                "sacred sites"
-            ],
-            "keysecondary": [],
-            "comment": "Sacred Sites",
-            "content": "| Site Type | Description | |---|---| | **First Den** | The legendary location where the first pack was established. Its location is debated among scholars and theologians. | | **Moon Wells** | Natural springs or pools where the moonlight is believed to be particularly strong. Used for meditation, healing, and bonding rites. | | **Sacred Groves** | Ancient forests consecrated to Fenris. Hunting is forbidden within sacred groves. | | **Ancient Forges** | Sites associated with Ut (the Second Fang) and the creation of the first weapons. Revered by artisans and warriors. | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "137": {
-            "key": [
-                "holy days"
-            ],
-            "keysecondary": [],
-            "comment": "Holy Days",
-            "content": "| Holy Day | Timing | Significance | |---|---|---| | **First Howl** | First Full Moon of the year | Celebration of the pack's survival through winter. Renewal of bonds. | | **Founding Moon** | Full Moon closest to the founding date of the local pack/House | Remembrance of the pack's origin story. | | **Day of Chains** | Midwinter (darkest night) | Mourning the binding of Fenris. A day of fasting and silence. | | **Night of Liberation** | Following Day of Chains | Celebration of the promise of Ragnar\u00f6k. Feasting, howling, bonfires. | | **Winter Hunt** | Last Full Moon before the solstice | T...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "138": {
-            "key": [
-                "rites"
-            ],
-            "keysecondary": [],
-            "comment": "Rites",
-            "content": "| Rite | Occasion | Key Elements | |---|---|---| | **Naming** | Birth of a pup | Pack Leader or Elder names the pup under moonlight. Parental bonds established. | | **Coming of Age** | Presentation (~13) | The pup's secondary sex is formally acknowledged. New responsibilities assigned. | | **The Call** | Young adult (18\u201322) | Formal recognition of the choice to stay or disperse. A ceremony of passage. | | **Bonding** | Mating bond | The mating bite performed under witness. Scents blended. Moon Speaker officiates. | | **Pack Adoption** | New member | The adopted individual receives pack bite...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "139": {
-            "key": [
-                "timeline"
-            ],
-            "keysecondary": [],
-            "comment": "Timeline",
-            "content": "``` \u2248 Mythic Age \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Origin of the species. Fenris. The unknown. \u2502 \u25bc Age of the Firstborn \u2500\u2500\u2500\u2500 The Nine appear. First packs founded. \u2502 \u25bc Age of Expansion \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Spread across Scandinavia, Europe, and beyond. \u2502 \u25bc Age of Houses \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Noble Houses and Bloodlines formalize. \u2502 \u25bc Age of Kingdoms \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Peak of werewolf civilization. Great territories. \u2502 \u25bc Age of Secrecy \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Hiding from humanity. The Masquerade begins. \u2502 \u25bc Modern Era \u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500 Contemporary werewolf society. Corporations, cities, coexistence. ``` ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "140": {
-            "key": [
-                "unknown truth"
-            ],
-            "keysecondary": [],
-            "comment": "Unknown Truth",
-            "content": "---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "141": {
-            "key": [
-                "the true pureblood  a historical event"
-            ],
-            "keysecondary": [],
-            "comment": "The True Pureblood \u2014 A Historical Event",
-            "content": "The existence of the Nine Firstborn is the most significant event in werewolf history. They are not a biological category of the species \u2014 they are a **unique, unrepeatable historical event**. **Religious Canon:** Fenris personally forged nine mortal \u00dalfhe\u00f0nar warriors into the first werewolves, granting them his Divine Blood. **Recorded History:** Nine extraordinary individuals appeared during the Viking Age (~827\u2013900 AD). They possessed biological characteristics far exceeding any known werewolf: biological immortality, extreme regeneration, perfect transformation stability, supreme phero...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "142": {
-            "key": [
-                "the founding of the first packs"
-            ],
-            "keysecondary": [],
-            "comment": "The Founding of the First Packs",
-            "content": "The Nine Firstborn dispersed across the Norse world, each founding a pack that would grow into a Founding Bloodline and eventually a Noble House. They established the first Pack Authority structures, territorial boundaries, and the oral traditions that would become the Faith of Fenris. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "143": {
-            "key": [
-                "the age of expansion"
-            ],
-            "keysecondary": [],
-            "comment": "The Age of Expansion",
-            "content": "As the Firstborn's descendants multiplied, werewolf packs spread beyond Scandinavia: - Across Northern Europe (the Scandinavian core) - Into the British Isles, Iceland, and Greenland - Through Eastern Europe and into the Slavic lands - Southward into the Mediterranean - Westward to the New World (notably Wulfnic's expedition to North America, ~1025 AD) Each expansion created new cultural branches while maintaining bloodline connections to the Founding Houses. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "144": {
-            "key": [
-                "the age of houses"
-            ],
-            "keysecondary": [],
-            "comment": "The Age of Houses",
-            "content": "As bloodlines diversified and territories expanded, political structures formalized: - **Founding Bloodlines** consolidated into **Noble Houses** with formal governance. - **House Councils** emerged to manage territories spanning multiple packs. - **Inter-House diplomacy** began, establishing the first treaties, alliances, and marriage agreements. - The distinction between **Bloodline** (genetics), **House** (politics), and **Pack** (social unit) became codified. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "145": {
-            "key": [
-                "the age of kingdoms"
-            ],
-            "keysecondary": [],
-            "comment": "The Age of Kingdoms",
-            "content": "The peak of open werewolf civilization: - Great Houses governed vast territories comparable to human kingdoms. - Werewolf culture, architecture, and craftsmanship reached their zenith. - The Continental Council (or its predecessors) formed to arbitrate inter-House disputes. - Werewolves and humans coexisted in varying degrees of awareness and tension. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "146": {
-            "key": [
-                "the age of secrecy"
-            ],
-            "keysecondary": [],
-            "comment": "The Age of Secrecy",
-            "content": "As human civilization grew, industrialized, and developed technologies that threatened supernatural secrecy: - The Continental Council mandated the **Great Hiding** \u2014 a species-wide policy of concealment from humanity. - Werewolf civilization retreated into hidden territories, corporate fronts, and underground networks. - Open pack structures gave way to covert operations disguised as human institutions. - The faith became more private, practiced within closed communities. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "147": {
-            "key": [
-                "the modern era"
-            ],
-            "keysecondary": [],
-            "comment": "The Modern Era",
-            "content": "Contemporary werewolf society operates in the shadows of the human world: - Noble Houses maintain power through **corporate empires** (e.g., DCC \u2014 Douglas Consolidated Corporation). - Packs adapt to urban, suburban, and rural environments while maintaining core ecological structures. - Technology is adopted and adapted for species-specific needs. - The tension between **traditional** pack values and **modern** individualism creates ongoing cultural conflict. - The Faith of Fenris persists as a living tradition, with the Last Three Firstborn serving as both historical anchors and religious f...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "148": {
-            "key": [
-                "the living sagas  historical fact"
-            ],
-            "keysecondary": [],
-            "comment": "The Living Sagas \u2014 Historical Fact",
-            "content": "Three of the Nine Firstborn survive to the present day. Their existence is **documented historical fact**, not legend. - **Wulfnic Bloodmoon** \u2014 The First Fang. Born ~827 AD. Arrived in North America ~1025 AD. Founded the Bloodmoon Dynasty. Currently the Patriarch of House Bloodmoon and the most politically powerful werewolf in the Americas. - **Ut** \u2014 The Second Fang. Born during the Viking Age. The first artisan of the species. Currently reclusive, residing within the Bloodmoon territory. Known as the Keeper of the Sacred Forge. - **Zefir** \u2014 The Third Fang. Born during the Viking Age. Th...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "149": {
-            "key": [
-                "the nine firstborn"
+                "nine firstborn",
+                "firstborn",
+                "first werewolves"
             ],
             "keysecondary": [],
             "comment": "The Nine Firstborn",
-            "content": "According to the Faith of Fenris (Religious Canon), Fenris chose nine mortal \u00dalfhe\u00f0nar warriors and remade them with his own Divine Blood during the Mythic Age. According to Recorded History, nine extraordinary individuals appeared during the Viking Age with biological characteristics far exceeding any known werewolf. They were known as: They were not bitten. They were not infected. They were *remade* \u2014 or transformed through means that remain unknown. For over a millennium they guided the first packs and founded the great dynasties. With the passage of centuries, war, sacrifice, and time c...",
+            "content": "According to the Faith of Fenris (Religious Canon), Fenris chose nine mortal \u00dalfhe\u00f0nar warriors and remade them with his own Divine Blood during the Mythic Age. According to Recorded History, nine extraordinary individuals appeared during the Viking Age with biological characteristics far exceeding any known werewolf. They were known as: They were not bitten. They were not infected. They were *remade* \u2014 or transformed through means that remain unknown. For over a millennium they guided the first packs and founded the great dynasties. With the passage of centuries, war, sacrifice, and time consumed six of them. Today, only three survive. ---",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -2239,28 +647,16 @@
             "probability": 100,
             "active": true
         },
-        "150": {
+        "37": {
             "key": [
-                "the last three  the living sagas"
-            ],
-            "keysecondary": [],
-            "comment": "The Last Three \u2014 The Living Sagas",
-            "content": "The three surviving Firstborn are known collectively as **The Last Three**, **The Living Sagas**, or **The Last Firstborn**. They are the oldest living beings in werewolf civilization and the only direct link to the species' origin. In the Faith of Fenris, they represent the three essential aspects of a functional pack: - Someone who **leads**. - Someone who **creates**. - Someone who **remembers**. ``` FENRIS \u2502 \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u253c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 \u2502 \u2502 \u25bc \u25bc \u25bc WULFNIC UT ZEFIR The King The Smith The Hunter Leadership Creation Wisdom Territory Civilization Tradition Family Industry Spirituality ```...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "151": {
-            "key": [
-                "wulfnic bloodmoon  the first fang"
+                "wulfnic",
+                "wulfnic bloodmoon",
+                "first fang",
+                "builder king"
             ],
             "keysecondary": [],
             "comment": "Wulfnic Bloodmoon \u2014 The First Fang",
-            "content": "**The Builder King** ``` IDENTITY CARD \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 Blood Classification Divine Blood \u2502 \u2502 Secondary Sex Primordial Enigma \u2502 \u2502 Current Status The First Fang \u2502 \u2502 Patriarch of House \u2502 \u2502 Bloodmoon \u2502 \u2502 The Living Saga \u2502 \u2502 Former Office Herald of Fenris \u2502 \u2502 House Bloodmoon \u2502 \u2502 Pack Seven Hills \u2502 \u2502 Profession Statesman \u2502 \u2502 Niche Civilization Builder \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ``` **Born:** ~827 AD, Iceland. Son of an Icelandic Jarl. **Before Transformation:** Wulfnic earned renown as an \u00dalfhe\u00f0inn warlord. A leader of men before he becam...",
+            "content": "**The Builder King** ``` IDENTITY CARD \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 Blood Classification Divine Blood \u2502 \u2502 Secondary Sex Primordial Enigma \u2502 \u2502 Current Status The First Fang \u2502 \u2502 Patriarch of House \u2502 \u2502 Bloodmoon \u2502 \u2502 The Living Saga \u2502 \u2502 Former Office Herald of Fenris \u2502 \u2502 House Bloodmoon \u2502 \u2502 Pack Seven Hills \u2502 \u2502 Profession Statesman \u2502 \u2502 Niche Civilization Builder \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ``` **Born:** ~827 AD, Iceland. Son of an Icelandic Jarl. **Before Transformation:** Wulfnic earned renown as an \u00dalfhe\u00f0inn warlord. A leader of men before he became a leader of wolves. **The Forging:** During the final age in which Fenris still walked among mortals (Religious Canon), the First Wolf chose Wulfnic as one of the Nine Firstborn. He was remade \u2014 not...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -2269,13 +665,16 @@
             "probability": 100,
             "active": true
         },
-        "152": {
+        "38": {
             "key": [
-                "ut  the second fang"
+                "ut",
+                "second fang",
+                "the mountain",
+                "blacksmith"
             ],
             "keysecondary": [],
             "comment": "Ut \u2014 The Second Fang",
-            "content": "**The Mountain** ``` IDENTITY CARD \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 Blood Classification Divine Blood \u2502 \u2502 Secondary Sex Primordial Enigma \u2502 \u2502 Current Status The Second Fang \u2502 \u2502 Keeper of the Sacred \u2502 \u2502 Forge \u2502 \u2502 The Living Saga \u2502 \u2502 Former Office Herald of Fenris \u2502 \u2502 House Bloodmoon \u2502 \u2502 Profession Master Blacksmith \u2502 \u2502 Niche Creator \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** A master blacksmith of legendary skill. **The Forging:** One of the Nine Firstborn. Remade by Fenris alon...",
+            "content": "**The Mountain** ``` IDENTITY CARD \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 Blood Classification Divine Blood \u2502 \u2502 Secondary Sex Primordial Enigma \u2502 \u2502 Current Status The Second Fang \u2502 \u2502 Keeper of the Sacred \u2502 \u2502 Forge \u2502 \u2502 The Living Saga \u2502 \u2502 Former Office Herald of Fenris \u2502 \u2502 House Bloodmoon \u2502 \u2502 Profession Master Blacksmith \u2502 \u2502 Niche Creator \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** A master blacksmith of legendary skill. **The Forging:** One of the Nine Firstborn. Remade by Fenris alongside Wulfnic and Zefir. **Legacy:** Ut represents the creative aspect of Fenris. According to Religious Canon, the first sacred weapons, armors, insignia, and tools of the werewolf species were forge...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -2284,13 +683,16 @@
             "probability": 100,
             "active": true
         },
-        "153": {
+        "39": {
             "key": [
-                "zefir  the third fang"
+                "zefir",
+                "third fang",
+                "white ghost",
+                "watcher of the moon"
             ],
             "keysecondary": [],
             "comment": "Zefir \u2014 The Third Fang",
-            "content": "**The White Ghost** ``` IDENTITY CARD \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 Blood Classification Divine Blood \u2502 \u2502 Secondary Sex Primordial Enigma \u2502 \u2502 Current Status The Third Fang \u2502 \u2502 Watcher of the Moon \u2502 \u2502 Keeper of the Winter \u2502 \u2502 Path \u2502 \u2502 The Living Saga \u2502 \u2502 Former Office Herald of Fenris \u2502 \u2502 House Bloodmoon \u2502 \u2502 Profession Hunter \u2502 \u2502 Niche Guardian of Memory \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** An \u00dalfhe\u00f0inn warrior. Silent, deadly, spectral. **The Forging:** One of the Nine...",
+            "content": "**The White Ghost** ``` IDENTITY CARD \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510 \u2502 Blood Classification Divine Blood \u2502 \u2502 Secondary Sex Primordial Enigma \u2502 \u2502 Current Status The Third Fang \u2502 \u2502 Watcher of the Moon \u2502 \u2502 Keeper of the Winter \u2502 \u2502 Path \u2502 \u2502 The Living Saga \u2502 \u2502 Former Office Herald of Fenris \u2502 \u2502 House Bloodmoon \u2502 \u2502 Profession Hunter \u2502 \u2502 Niche Guardian of Memory \u2502 \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518 ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** An \u00dalfhe\u00f0inn warrior. Silent, deadly, spectral. **The Forging:** One of the Nine Firstborn. Remade by Fenris alongside Wulfnic and Ut. **Legacy:** Zefir represents the spiritual aspect of the wolf. He does not build. He does not govern. He observes. He remembers. He hunts. In the...",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -2299,9 +701,11 @@
             "probability": 100,
             "active": true
         },
-        "154": {
+        "40": {
             "key": [
-                "the six lost firstborn"
+                "lost firstborn",
+                "lost fangs",
+                "dormant firstborn"
             ],
             "keysecondary": [],
             "comment": "The Six Lost Firstborn",
@@ -2314,114 +718,11 @@
             "probability": 100,
             "active": true
         },
-        "155": {
+        "41": {
             "key": [
-                "founders of the great houses"
-            ],
-            "keysecondary": [],
-            "comment": "Founders of the Great Houses",
-            "content": "---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "156": {
-            "key": [
-                "legendary alphas"
-            ],
-            "keysecondary": [],
-            "comment": "Legendary Alphas",
-            "content": "---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "157": {
-            "key": [
-                "ascended enigmas"
-            ],
-            "keysecondary": [],
-            "comment": "Ascended Enigmas",
-            "content": "---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "158": {
-            "key": [
-                "historical heroes"
-            ],
-            "keysecondary": [],
-            "comment": "Historical Heroes",
-            "content": "--- *Cross-references: [LSE_00_Foundations.md](LSE_00_Foundations.md) \u00b7 [LSE_05_Religion.md](LSE_05_Religion.md) \u00b7 [LSE_06_History.md](LSE_06_History.md)*",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "159": {
-            "key": [
-                "design principle"
-            ],
-            "keysecondary": [],
-            "comment": "Design Principle",
-            "content": "Werewolf technology follows a dual-track model: 1. **Human Technology Adoption:** Werewolves use human technology where it serves their needs (vehicles, communications, medical equipment, computing). 2. **Species-Specific Adaptation:** Where human technology fails to account for werewolf biology (shift forms, pheromones, enhanced senses, regeneration), the species develops its own solutions. This dual-track creates a civilization that is technologically modern but biologically alien. ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "160": {
-            "key": [
-                "transportation"
-            ],
-            "keysecondary": [],
-            "comment": "Transportation",
-            "content": "| Mode | Human Tech | Werewolf Adaptation | |---|---|---| | **Vehicles** | Standard cars, trucks, motorcycles | Reinforced interiors for Hybrid Shift occupants. Scent-neutralized vehicles for secrecy. | | **Aircraft** | Standard commercial/private aviation | Used for long-distance travel. Some elite packs maintain private aircraft. | | **Full Shift Travel** | N/A | Quadrupedal wolf form excels at long-distance overland travel through wilderness. Faster and more efficient than vehicles in rough terrain. | | **Maritime** | Standard vessels | Historical significance (Wulfnic's crossing). Moder...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "161": {
-            "key": [
-                "weapons"
-            ],
-            "keysecondary": [],
-            "comment": "Weapons",
-            "content": "Werewolf combat spans three categories:",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "162": {
-            "key": [
-                "natural weapons"
+                "natural weapons",
+                "fangs",
+                "claws"
             ],
             "keysecondary": [],
             "comment": "Natural Weapons",
@@ -2434,9 +735,11 @@
             "probability": 100,
             "active": true
         },
-        "163": {
+        "42": {
             "key": [
-                "traditional weapons"
+                "traditional weapons",
+                "forged blade",
+                "ceremonial weapon"
             ],
             "keysecondary": [],
             "comment": "Traditional Weapons",
@@ -2449,9 +752,12 @@
             "probability": 100,
             "active": true
         },
-        "164": {
+        "43": {
             "key": [
-                "modern weapons"
+                "modern weapons",
+                "firearms",
+                "guns",
+                "body armor"
             ],
             "keysecondary": [],
             "comment": "Modern Weapons",
@@ -2464,13 +770,17 @@
             "probability": 100,
             "active": true
         },
-        "165": {
+        "44": {
             "key": [
-                "speciesspecific medical technology"
+                "regeneration accelerator",
+                "pheromone analyzer",
+                "shift stabilizer",
+                "bond monitor",
+                "suppressant"
             ],
             "keysecondary": [],
             "comment": "Species-Specific Medical Technology",
-            "content": "| Technology | Function | |---|---| | **Regeneration Accelerators** | Devices or compounds that boost the species' natural healing factor for severe injuries | | **Pheromone Analyzers** | Diagnostic tools that read pheromonal output to assess health, emotional state, and bond integrity | | **Shift Stabilizers** | Medication for individuals with unstable transformations (common in Modified Lineages) | | **Bond Monitors** | Equipment that tracks the neurological bond link between mated pairs | | **Heat/Rut Management Systems** | Climate-controlled nesting environments, automated suppressant d...",
+            "content": "| Technology | Function | |---|---| | **Regeneration Accelerators** | Devices or compounds that boost the species' natural healing factor for severe injuries | | **Pheromone Analyzers** | Diagnostic tools that read pheromonal output to assess health, emotional state, and bond integrity | | **Shift Stabilizers** | Medication for individuals with unstable transformations (common in Modified Lineages) | | **Bond Monitors** | Equipment that tracks the neurological bond link between mated pairs | | **Heat/Rut Management Systems** | Climate-controlled nesting environments, automated suppressant delivery, scent containment rooms |",
             "constant": false,
             "vectorized": false,
             "order": 100,
@@ -2479,328 +789,15 @@
             "probability": 100,
             "active": true
         },
-        "166": {
+        "45": {
             "key": [
-                "medical facilities"
-            ],
-            "keysecondary": [],
-            "comment": "Medical Facilities",
-            "content": "- **Pack Clinics:** Basic medical care within pack territory. Staffed by pack Healers. - **House Hospitals:** Advanced facilities operated by Noble Houses. Species-specific surgery, intensive bond therapy, fertility treatment. - **Heat/Rut Houses:** Specialized facilities for managing fertile cycles without a partner. Range from medical (emergency, health-related) to recreational (legal/illegal depending on jurisdiction). ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "167": {
-            "key": [
-                "industry"
-            ],
-            "keysecondary": [],
-            "comment": "Industry",
-            "content": "Werewolf industry operates both openly (through human-facing corporate fronts) and covertly (species-specific manufacturing):",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "168": {
-            "key": [
-                "corporate fronts"
+                "corporate front",
+                "dcc",
+                "douglas consolidated"
             ],
             "keysecondary": [],
             "comment": "Corporate Fronts",
             "content": "- **DCC (Douglas Consolidated Corporation):** The most prominent example. A human-facing corporation that serves as the economic engine of House Bloodmoon. - Similar corporate structures exist across other Houses worldwide.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "169": {
-            "key": [
-                "speciesspecific industry"
-            ],
-            "keysecondary": [],
-            "comment": "Species-Specific Industry",
-            "content": "| Sector | Products | |---|---| | **Forging** | Weapons, ceremonial items, architectural metalwork (tradition of Ut) | | **Pharmaceuticals** | Suppressants, pheromone blockers, scent concealers, fertility treatments | | **Construction** | Den-optimized architecture, pack compounds, scent-managed environments | | **Textiles** | Shift-compatible clothing, heat/rut robes, scent-absorbent fabrics | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "170": {
-            "key": [
-                "communications"
-            ],
-            "keysecondary": [],
-            "comment": "Communications",
-            "content": "| System | Function | |---|---| | **Human Networks** | Standard phones, internet, encrypted messaging \u2014 used for everyday communication | | **Howl Networks** | Traditional long-range communication via coordinated howling. Still used in wilderness territories and during emergencies. | | **Scent Messaging** | Pheromone-infused objects sent between individuals or packs to convey emotional context that text cannot | | **Encrypted Pack Channels** | Secure digital communication networks maintained by House IT infrastructure | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "171": {
-            "key": [
-                "architecture"
-            ],
-            "keysecondary": [],
-            "comment": "Architecture",
-            "content": "Werewolf architecture serves both human-facing aesthetics and species-specific biological needs:",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "172": {
-            "key": [
-                "design requirements"
-            ],
-            "keysecondary": [],
-            "comment": "Design Requirements",
-            "content": "- **Scent Management:** Ventilation systems that can contain, circulate, or neutralize pheromones. - **Shift Accommodation:** Doorways, corridors, and rooms sized for Hybrid Shift occupants (significantly larger than human standard). - **Nesting/Den Integration:** Dedicated spaces designed for Omega nests and Alpha dens, with appropriate soundproofing, climate control, and scent containment. - **Security:** Perimeter systems, scent-based identification, reinforced structures. - **Pack Scale:** Housing designed for extended family units (10\u201330+ members) rather than nuclear families.",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "173": {
-            "key": [
-                "common structures"
-            ],
-            "keysecondary": [],
-            "comment": "Common Structures",
-            "content": "| Structure | Characteristics | |---|---| | **Pack Compound** | Walled community with multiple residences, shared spaces, training grounds | | **Longhouse** | Traditional pack dwelling (inspired by Norse architecture). Central hall with private alcoves. | | **Urban Mansion** | Adapted human mansion for city packs. Oversized bathrooms, reinforced doors, scent-managed rooms. | | **Den Chamber** | Dedicated Alpha den room. Heavily scent-marked, controlled access, defensible position. | | **Nest Suite** | Dedicated Omega nesting room. Blackout capability, temperature control, scent saturation, ...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "174": {
-            "key": [
-                "housing details"
-            ],
-            "keysecondary": [],
-            "comment": "Housing Details",
-            "content": "- **Bathrooms:** Giant baths for family bathing (bonding time). Bathing together is normal until pup scent fades. - **Bedrooms:** Alpha rooms face sunrise (early risers). Omega rooms have blackout curtains and face the sun for warmth. Beta rooms are flexible. - **Kitchens:** Oversized for large packs. Everyone helps \u2014 even small pups (handling items, tasting, supervised tasks). - **Garages:** Omegas park inside first (closest to the door for safety), then Betas, then Alphas. --- *Cross-references: [LSE_01_Species.md](LSE_01_Species.md) \u00b7 [LSE_03_Civilization.md](LSE_03_Civilization.md) \u00b7 [L...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "175": {
-            "key": [
-                "a secondary sex matrix"
-            ],
-            "keysecondary": [],
-            "comment": "A. Secondary Sex Matrix",
-            "content": "| Attribute | Enigma | Alpha | Delta | Beta | Omega | |---|---|---|---|---|---| | **Role** | Sacred Caste | Protector | Engine | Social Glue | Emotional Regulator | | **Frequency** | ~1/generation | 1/10 | 1/15 | 1/1,500 | 1/30 | | **Build** | Varies (typically Alpha-like) | Tall, broad, muscular | Comparable to Alpha | Varies widely | Agile, softer | | **Scent Strength** | Supreme (unoverridable) | Strong, aggressive | Moderate | Weak (holds longer) | Strong, sweet (overrides Beta) | | **Command** | Absolute (irresistible) | Strong (resisted by Deltas, other Alphas) | Cannot Command | Cann...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "176": {
-            "key": [
-                "b pack role matrix"
-            ],
-            "keysecondary": [],
-            "comment": "B. Pack Role Matrix",
-            "content": "| Pack Role | Authority Level | Typical Duties | Notes | |---|---|---|---| | **Pack Leader** | Supreme (within pack) | Final decisions, protection, representation | Any secondary sex can serve | | **Pack Mom / Leader's Mate** | High | Emotional guidance, daily operations, pup oversight | Traditionally Omega/Female, but not restricted | | **Right Hand(s)** | High | Strategic advising, succession, peacekeeping | Trusted above all others | | **Left Hand(s)** | High (enforcement) | Physical protection, security operations | Common in high-risk packs | | **Caretaker(s)** | Medium | Meals, cleani...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "177": {
-            "key": [
-                "c social status matrix house"
-            ],
-            "keysecondary": [],
-            "comment": "C. Social Status Matrix (House)",
-            "content": "| Status | Authority | Inheritance | Function | |---|---|---|---| | **House Head** | Supreme (within House) | Hereditary or contested | Governs all packs under House banner | | **Lord** | High | Family branch | Governs specific territories or domains | | **Knight** | Medium | Awarded or hereditary | Sworn warriors, officers, honored servants | | **Citizen** | Basic | N/A | Acknowledged House member | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "178": {
-            "key": [
-                "d profession matrix"
-            ],
-            "keysecondary": [],
-            "comment": "D. Profession Matrix",
-            "content": "| Category | Examples | |---|---| | **Combat** | Warrior, Guard, Sentinel, Soldier, Mercenary | | **Craft** | Blacksmith, Carpenter, Weaponsmith, Jeweler, Tailor | | **Leadership** | Statesman, Diplomat, Negotiator, Administrator | | **Knowledge** | Scholar, Historian, Archivist, Teacher, Scientist | | **Medicine** | Healer, Physician, Surgeon, Therapist, Midwife | | **Commerce** | Merchant, Trader, Accountant, Banker | | **Spiritual** | Moon Speaker, Keeper, Elder, Sage | | **Ecology** | Hunter, Scout, Ranger, Tracker, Farmer, Fisher | | **Arts** | Musician, Storyteller, Artist, Poet | | *...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "179": {
-            "key": [
-                "e blood classification matrix"
-            ],
-            "keysecondary": [],
-            "comment": "E. Blood Classification Matrix",
-            "content": "| Classification | Origin | Lifespan | Regeneration | Command | Shift Stability | Population | |---|---|---|---|---|---|---| | **Divine Blood** | Firstborn (Forged) | Immortal | Extreme | Absolute | Perfect | 3 surviving | | **Founding Bloodlines** | Children of Firstborn | 500+ years | Very high | Very strong | Very stable | Very rare | | **Pureblood Houses** | Multi-gen descendants | 200\u2013400 years | High | Strong | Stable | Rare | | **Common Bloodlines** | General population | 80\u2013150 years | Standard | Standard | Standard | Majority | | **Modified Lineages** | Experimental | Unpredictable...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "180": {
-            "key": [
-                "personal names"
-            ],
-            "keysecondary": [],
-            "comment": "Personal Names",
-            "content": "Werewolf naming conventions vary by culture, bloodline, and era: - **Norse/Traditional:** Old Norse or Icelandic names (Wulfnic, Zefir, Edric, Kaladin). - **Modern:** Standard contemporary names adapted to local culture. - **Compound Names:** Some packs use hyphenated family-pack names (e.g., Douglas-Bloodmoon).",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "181": {
-            "key": [
-                "house  pack names"
-            ],
-            "keysecondary": [],
-            "comment": "House & Pack Names",
-            "content": "- **Houses:** Named after the founding bloodline (e.g., House Bloodmoon). - **Packs:** Named after territory, landmark, or founding story (e.g., Seven Hills Pack).",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "182": {
-            "key": [
-                "titles"
-            ],
-            "keysecondary": [],
-            "comment": "Titles",
-            "content": "| Title | Context | |---|---| | **Patriarch / Matriarch** | House Head | | **Pack Leader** | Head of a single pack | | **The First/Second/Third Fang** | The Last Three Firstborn | | **The Living Saga** | Religious title for surviving Firstborn | | **High Fang** | Supreme spiritual authority | | **Moon Speaker** | Priest | | **Keeper** | Custodian of relics/tradition | | **Herald of Fenris** | Former title of the Firstborn (historical) | ---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "183": {
-            "key": [
-                "g timeline summary"
-            ],
-            "keysecondary": [],
-            "comment": "G. Timeline Summary",
-            "content": "| Era | Approximate Period | Key Events | |---|---|---| | **Mythic Age** | Unknown \u2014 ~800 AD | Fenris. Origin of lycanthropy. The Nine Firstborn. | | **Age of the Firstborn** | ~800\u20131000 AD | First packs. First territories. Founding Bloodlines. | | **Age of Expansion** | ~1000\u20131300 AD | Spread across Europe. Wulfnic crosses to North America (~1025). | | **Age of Houses** | ~1300\u20131600 AD | Noble Houses formalize. Inter-House diplomacy begins. | | **Age of Kingdoms** | ~1600\u20131800 AD | Peak of werewolf civilization. Great territories. | | **Age of Secrecy** | ~1800\u20131950 AD | The Great Hiding. ...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "184": {
-            "key": [
-                "h genealogies"
-            ],
-            "keysecondary": [],
-            "comment": "H. Genealogies",
-            "content": "---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "185": {
-            "key": [
-                "i maps"
-            ],
-            "keysecondary": [],
-            "comment": "I. Maps",
-            "content": "---",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "186": {
-            "key": [
-                "j music genres"
-            ],
-            "keysecondary": [],
-            "comment": "J. Music Genres",
-            "content": "Werewolf culture has produced its own music traditions: | Genre | Era | Description | |---|---|---| | **Knot Rock** | 1970s\u20131990s | Alpha-centric, sexually explicit. Hazy consent themes. | | **Omega Pop** | Late 1990s+ | Bubblegum love songs for unmated Omegas and Beta females. | | **Omega Punk** | 1980s+ | Hard-hitting, tied to Omega Rights Movements. Emphasizes consent. | | **Soft Rock** | 2000s+ | Alpha-centric progressive pop. | | **Nova Dance Hall** | Various | Traditional Omega reaction to Omega Punk. | | **Knot Country** | Various | Rough, traditional. More conservative than Omega Pu...",
-            "constant": false,
-            "vectorized": false,
-            "order": 100,
-            "position": 1,
-            "depth": 4,
-            "probability": 100,
-            "active": true
-        },
-        "187": {
-            "key": [
-                "brazilian omegaverse customs"
-            ],
-            "keysecondary": [],
-            "comment": "Brazilian Omegaverse Customs",
-            "content": "- **Physical Contact:** Minimal personal space. Touch is a primary communication tool. - **Clumping (vs. Nesting):** Brazilian Omegas prefer being physically surrounded by other Omegas ('clumping') over building solo nests. Faster and more calming. - **Soccer Culture:** Alphas are obsessed. Public transportation becomes dangerous on game days. Omegas are often prohibited from going out during classic matches. - **Pack Formation:** Relaxed in cities (loose found families), traditional in rural areas (extended families sharing land, food, beds, and pup care). - **Feistiness:** Brazilian Omega...",
             "constant": false,
             "vectorized": false,
             "order": 100,
