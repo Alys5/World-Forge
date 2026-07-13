@@ -20,6 +20,14 @@
    - **World Mode** is **Master Design Section 1** (`World Mode: arc | sandbox`) — corroborated by Section 9 being a **Sandbox Charter** and a single `Drafts/Tier3_Sandbox_Entries.md` existing (vs. per-arc `Tier3_Arc[N]_*` files). Section 1 wins over the ledger on any disagreement. **A sandbox world has no arcs — never hunt for arc files or ask which arc is active in sandbox mode.**
    - **Shipped** = `Drafts/Master_Design.md` present with REFINER SIGN-OFF **and** a populated `Export/` directory. A **Revision Log** (`R1`…) at the top of the Master Design and/or `Export/REVISED_FILES.md` is definitive proof the world shipped and has been revised. A stale, absent, or non-`COMPLETE` ledger on a world whose `Export/` exists is **not** a mid-build world — do not decline on the ledger's say-so.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ---
 
 ## 📂 CONTEXT MANIFEST — load exactly this

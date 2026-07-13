@@ -7,6 +7,11 @@
    Inputs (read-only):  context.chat.last_message (or lastMessage), context.chat.message_count
    Outputs (write-only): context.character.personality, context.character.scenario
 
+   SANDBOX LIMITATIONS (ES6):
+     - BLOCKED: async, await, Promise, fetch, setTimeout, document, window, I/O APIs.
+     - SAFE: string methods (.includes, .replace), array methods (.map, .filter), Math.
+     - MEMORY: Use `context.chat.last_messages.slice(-X)` for deep scanning, not just `last_message`.
+
    AUTHOR CHEAT-SHEET (ASCII-safe):
      - keywords: real user words/phrases; supports suffix wildcard "welcom*" -> welcome/welcomed/welcoming.
      - tag: internal label for this entry (e.g., "base_open"); never matched against text.

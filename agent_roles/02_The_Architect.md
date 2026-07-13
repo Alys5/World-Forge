@@ -1150,6 +1150,11 @@ Append to your submission note before handing to The Editor:
 - [ ] No trigger-response pairs, prohibitions, or behavioral mandates
 - [ ] Setup Instructions present, naming the protagonist lorebook filename to link in ST
 
+### ES6 Scripting Sandbox Constraints
+If drafting `Random_Events.md` or `Scene_Orchestrator.md` with explicit JS triggers:
+- [ ] Ensure scripts respect the Janitor Sandbox constraints (No async, no fetch, no window, no external calls).
+- [ ] Use `context.character.personality` and `context.character.scenario` as the only writeable objects.
+- [ ] Use `context.chat.last_messages` scanning logic (`.slice(-N)`) for memory states rather than generic global flags.
 ### Tier 1 — World Lorebook Entries
 - [ ] All factions covered
 - [ ] All standing locations covered

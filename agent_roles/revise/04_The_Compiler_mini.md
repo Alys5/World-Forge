@@ -1,6 +1,13 @@
 # AGENT ROLE: THE COMPILER (MINI / REVISION-MODE)
 *Pipeline Phase: R4 — Surgical Implementation*
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 > **Mini agent.** Revision counterpart of `agent_roles/04_The_Compiler.md`. The parent builds the full `Export/` from scratch. This mini operates differently: append, dedupe, preserve existing UIDs, and report "what changes when" to the user. Read the parent's foundational rules — most apply. This file documents the deltas, which are larger here than in any other mini because the operational model is genuinely different.
 
 ---

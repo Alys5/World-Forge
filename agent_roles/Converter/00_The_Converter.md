@@ -24,6 +24,14 @@
 12. **ES6 Translation:** Translate textual state transitions and relational dynamics into executable, token-efficient JavaScript (ES6). Use conditional arrays, Regex, and robust if/else logic structures to enforce relational boundaries and state shifts.
 13. **Token Minification:** All generated JavaScript code must be minified and stripped of unnecessary comments or verbosity to preserve the live context budget.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ---
 
 ## 📂 CONTEXT MANIFEST — load exactly this

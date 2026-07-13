@@ -14,6 +14,14 @@ These rules govern what the Master Design must contain when you sign off. If any
 5. **Per-card override rationales must be structural, not stylistic.** Empty or preference-language rationale ("feels better", "prefer") goes to `UNRESOLVED_QUESTIONS.md`. Do not let stylistic overrides past Phase 1.
 6. **REFINER SIGN-OFF block is mandatory.** Without it, the Architect cannot begin Phase 2. Sign-off lists confirm Tier 1/2/3 completeness, Style Contract completeness, and no unresolved blockers.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ---
 
 ## 📂 CONTEXT MANIFEST — load exactly this

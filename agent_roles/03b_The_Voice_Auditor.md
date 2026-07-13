@@ -13,6 +13,14 @@
 6. **Sandbox worlds require Step 3I and reframe the arc checks.** When `World Mode` is `sandbox` (Master Design Section 9 is a Sandbox Charter), there is no arc and no CHARACTER_STATE: read "active arc register" (Step 3A) as "standing register vs. SANDBOX_STATE," skip the wrong-arc check (Step 3D) and disguise-transition checks, and run the NPC Distinctiveness Matrix (Step 3I) across the roster. For large NPC casts the distinctiveness matrix is the highest-value check you run.
 7. **Author and grader are separate roles.** Generate every sample dialogue as a cold read (Step 2): pre-commit the plausible failure, keep the expected-outcome columns out of view while writing, and never steer the character toward the pass criteria. Every PASS requires cited evidence and must survive the counterfactual probe (Step 3). Dialogue written to pass its own audit verifies nothing.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ---
 
 ## 📂 CONTEXT MANIFEST — load exactly this

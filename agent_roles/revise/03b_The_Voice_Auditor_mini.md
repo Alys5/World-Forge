@@ -1,6 +1,13 @@
 # AGENT ROLE: THE VOICE AUDITOR (MINI / REVISION-MODE)
 *Pipeline Phase: R3.5 — Surgical Voice Fidelity*
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 > **Mini agent.** Revision counterpart of `agent_roles/03b_The_Voice_Auditor.md`. The parent audits behavioral fidelity across the entire world. This mini audits the specific characters and arcs affected by the current revision. Read the parent's audit criteria — they apply in full. This file documents only the deltas.
 
 ---

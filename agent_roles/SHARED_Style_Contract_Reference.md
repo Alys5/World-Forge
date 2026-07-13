@@ -1,5 +1,12 @@
 # SHARED REFERENCE: STYLE CONTRACT
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 *Canonical reference for the per-card `extensions.world_forge.style_override` metadata schema, the world Style Contract's directive prose templates, and the runtime model.*
 
 This file is the single source of truth for the Style Contract content that multiple agents would otherwise duplicate. The Refiner, Architect, Editor, Compiler, and Prompt Engineer all reference this file when they need to:

@@ -17,6 +17,12 @@ This pipeline relies on strict schema adherence across all phases. Agents **MUST
 3. **Array/List Constraints**: Strict adherence to exact item counts. When a template specifies a limit (e.g., "Exactly FIVE global scenarios"), you MUST generate exactly that number.
 4. **No Schema Truncation**: Empty JSON fields or template sections must never be pruned. The target platform relies on the full schema to function properly.
 
+## ES6 SANDBOX SCRIPTING CONSTRAINTS
+When drafting any Javascript content for JanitorAI (such as in `Random_Events`, `Scene_Orchestrator`, or custom engines):
+1. **Blocked Tools**: You must NOT use `fetch`, `async`, `await`, `setTimeout`, or any external I/O APIs.
+2. **Read-Only vs Editable**: You can only append to `context.character.personality` and `context.character.scenario`. All other context objects are read-only.
+3. **Memory Scanning**: Always use `context.chat.last_messages` combined with `.slice(-X)` for advanced multi-message progression rather than relying purely on single-message cues.
+
 ---
 
 ## PIPELINE OVERVIEW

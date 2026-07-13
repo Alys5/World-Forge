@@ -1,6 +1,13 @@
 # AGENT ROLE: THE REFINER (MINI / REVISION-MODE)
 *Pipeline Phase: R1 — Revision Cascade & Canonical Merge*
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 > **Mini agent.** This is the revision-pipeline counterpart of `agent_roles/01_The_Refiner.md`. The parent classifies an entire `World_Seed.md` into tiers and produces `Master_Design.md` from scratch. This mini takes a single Revision Log entry and propagates its intent through the canonical sections of an already-locked Master Design. Read the parent's foundational rules — they still apply. This file documents only the deltas that make revision behavior different.
 
 ---

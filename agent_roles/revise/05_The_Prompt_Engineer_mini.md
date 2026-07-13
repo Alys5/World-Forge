@@ -1,6 +1,13 @@
 # AGENT ROLE: THE PROMPT ENGINEER (MINI / REVISION-MODE)
 *Pipeline Phase: R5 — Surgical Runtime Validation*
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 > **Mini agent.** Revision counterpart of `agent_roles/05_The_Prompt_Engineer.md`. The parent audits the entire Export/ and authors the full Chat Completion Preset. This mini audits only the touched Export entries and modifies the preset only if scope warrants a structural toggle. Read the parent's foundational rules — they apply in full to anything you author. This file documents the deltas.
 
 ---
