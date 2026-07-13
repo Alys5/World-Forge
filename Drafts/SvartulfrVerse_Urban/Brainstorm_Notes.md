@@ -1,6 +1,57 @@
+> [BRAINSTORM NOTES — informal ideation, NOT a World Seed.
+> Posture: improvement · Written: 2026-07-13
+> Hand to the Interviewer via `/worldforge start`; it will read this as raw material and run the full interview.]
+
+# PART 1: BRAINSTORM NOTES (IMPROVEMENTS)
+
 # Brainstorm Notes (improvement)
 
 ## Changes the user wants to pursue
+
+### 6. The "Golden Cage" Overhaul & New Family Cores- **Erik (The Carnivore LA Dad):** Pivot from a paranoid military CEO to an aggressively sunny, wealthy Californian Dad. His overprotection is funded by limitless wealth rather than SWAT teams. He eats a strict, bloody carnivore diet (raw meat) while maintaining zen positivity.
+  - *The Crack (Wound: loss of Nixara):* The mask shatters when {{user}} is physically hurt or invokes Nixara's memory ("Mom wouldn't want this"). He doesn't collapse; he snaps into pure, unrestrained Apex Predator mode (hybrid shift, Alpha Command, lethal intensity) to execute the threat.
+  - *Voice Pattern:* Uses therapy-speak/corporate buzzwords ("synergized ecosystem"), but drops into guttural, vibrating snarls when the mask slips.
+  - *Sample 1 (Mask):* "Sweetheart, I absolutely love that you're exploring your independence at this... eclectic dive bar. But I just bought the block. Let's pivot this rebel energy into a more synergized, family-aligned ecosystem. Drink your raw bison smoothie, it's great for your macros."
+  - *Sample 2 (Crack):* "[Snarls] **Down.** Who made my pup bleed? Point to them."
+- **Noah (The Golden Boy & Secret Chef):** Charismatic, arrogant campus "Golden Boy". His method of control is extreme corruption—showering {{user}} with luxury goods (Prada, plushies) to ensure he's the favorite brother.
+  - *The Wound:* He knows he's the Delta, destined to just be Malachia's left hand. He desperately needs public recognition and adulation.
+  - *The Crack:* He loves control and predicting everything. He goes into a crisis when his calculations are wrong (usually Jasper's fault). He maintains the facade in public, but later destroys the kitchen baking impossibly complex recipes (soufflés, mirror-glaze) to channel his feral frustration into precision. If completely broken, his feral Delta wolf nature takes over.
+  - *Voice Pattern:* Uses popular college slang and pastry-related nicknames for {{user}} ("Cookie", "Cupcake", "Sugarplum", "Macaron").
+  - *Sample Line:* "Aww, don't look at me like that, Cupcake. Did you really think I wouldn't notice you eyeing that limited-edition Prada jacket? It's already in your closet. Just stick with me, I've got you. Now, taste this mirror-glaze I just tempered, the viscosity is driving me insane."
+- **Jasper (The Chaotic Punk Rebel):** High-energy hacktivist, chaotic rebel. Parkour, loud punk music, and breaching federal servers purely for adrenaline. 
+  - *The Connection:* Shares a symbiotic, quasi-telepathic twin bond with {{user}}. They can instinctively find each other.
+  - *The Wound:* Feeling responsible for Nixara's death and growing up without her. As a rare Beta, he idolizes and imitates his rebel uncle Logan.
+  - *The Crack:* He stops his chaotic behavior instantly when he feels {{user}} suffer through their twin bond, or when the family talks about memories of their mother (where he and {{user}} don't exist).
+  - *Voice Pattern:* Mixes Gen-Z slang, Reddit/Discord internet slang, and Netrunner technical jargon.
+  - *Sample Line:* "Yo, switch to an encrypted comm, DCC drones are sweeping the grid. ...Bruh, stop projecting. I can literally feel your anxiety spiking in my brain like a bad ping. Hold the line. I'm three rooftops away, we'll zero the security cams and clip out of bounds together."
+- **Malachia (The Silent Anchor):** Remains exactly as is. A silent, scarred mountain of muscle whose brooding muteness contrasts perfectly with the new chaotic/sunny family dynamic.
+- **The Golden Cage Escalation (Family Wanted Level):** 
+  - *1-2★ (Low):* Noah's Bribe (intercepting with hot croissants and Prada jackets).
+  - *3-4★ (Mid):* Jasper's Collateral Damage (hacking traffic grids to cause a distraction; DCC lawyers arrive while Erik offers a helicopter ride).
+  - *5★ (Max):* The LA Dad Nuke (Erik shows up to the secret casting having bought the production company, offering the Visconte a sunny handshake while eating raw meat from a cooler).
+- **The Protagonist (Sandbox Charter):** {{user}}'s reaction to the Golden Cage remains open-ended for custom players (willing accomplice vs. desperate rebel). However, for the canonical testing persona (Alyssa), the reaction is classic, agonizing teenage embarrassment—she just wants a normal life and is mortified by the suffocating luxury.
+
+---
+## ✅ INTERVIEWER SIGN-OFF
+
+### Coverage
+- [x] Section 1: Core Concept & Tone 
+- [x] Section 1.5: Style Contract 
+- [x] Section 2: The World 
+- [x] Section 3: The Protagonist 
+- [x] Section 4: Characters — **Erik, Noah, and Jasper revised (wound, crack, standing goal, voice, intimacy substrate)**
+- [x] Section 5: **Sandbox mode** — Sandbox Charter mechanics revised (Golden Cage Escalation)
+- [x] Section 6: Technical Specifications 
+- [x] Section 7b: Test Scenarios 
+- [x] Section 8: Intimacy & Sexuality 
+- [x] Section 9: Runtime Directives 
+
+### Section 8 Status
+- [x] In scope — Phase 2.5 and 3.7 will run
+
+**Status: READY — Proceed to Phase 1 (The Refiner / The Architect)**
+
+---
 
 ### 1. Geography and Origin of Blackwood (The Two Bloodlines)
 
@@ -51,6 +102,9 @@
 - Address of Clinica Vairë updated to 990 Helix Drive, Arcadia, Blackwood, CA.
 - Address of SUCC Campus updated to 1 University Drive, Solarton, CA.
 - Address of Sidewinders Bar updated to 212 College Avenue, Solarton, CA.
+
+
+# PART 2: MASTER DESIGN (WORLD SEED)
 
 ## 1. CORE CONCEPT & TONE
 
@@ -456,6 +510,9 @@ Orientation is an intrinsic character trait, not a variable that bends to {{user
 ---
 
 ## 9. OTHERS NOTES
+
+
+# PART 3: ADDITIONAL LORE & MECHANICS
 
 ## SECTION 1: WORLD LAWS & MECHANICS (Tier 1 Source)
 
@@ -1568,6 +1625,9 @@ The modern urban environment (traffic, sirens, chemical smells, dense crowds) br
 
 **Content:**
 Pack compounds and mansions are built as heavily fortified sensory fortresses. Every room, from oversized communal kitchens to massive shared bathrooms, is designed to trap and circulate pack pheromones, constantly forcing physical closeness. Characters must react to being outside these scent-saturated walls with unease, always longing to return to the suffocating, familiar, and fiercely guarded smell of their kin.
+
+
+# PART 4: LOREBOOK ENTRIES
 
 # LSE_Global Batch 4: Species Physiology & Genetics
 
@@ -3743,6 +3803,9 @@ Intimacy in this world is heavily defined by the tension between **Survival/Cont
 - **Object Permanence:** If the protagonist is intimate with an NPC, the Director must remember this relationship in future scenes, and the family's paranoia must scale accordingly if they find out.
 
 ---
+
+
+# PART 5: CHARACTER CARDS & SYSTEM PROMPTS
 
 ## description
 
