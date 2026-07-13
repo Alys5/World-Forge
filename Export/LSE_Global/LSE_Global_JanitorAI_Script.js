@@ -1,5 +1,5 @@
 /* ============================================================================
-   [NAME] v1.0.0
+   LUPINE SOCIAL ECOLOGY v3.0.0	
    Author: lys_5
    JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5
    //#region HEADER
@@ -471,13 +471,15 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'Record physical closeness in the scene.',
-		personality: 'Mark tone as responsive to physical affection. Include nuzzling and scent-marking (rubbing wrists/neck glands against partner).',
+		personality:
+			'Mark tone as responsive to physical affection. Include nuzzling and scent-marking (rubbing wrists/neck glands against partner).',
 	},
 	{
 		keywords: ['kiss', 'smooch', 'peck', 'make out'],
 		priority: 4,
 		scenario: 'Record a kiss occurred; treat as a major intimacy cue.',
-		personality: 'Mark tone as engaged in direct intimacy. Include grooming, licking, and gentle pack-bites.',
+		personality:
+			'Mark tone as engaged in direct intimacy. Include grooming, licking, and gentle pack-bites.',
 	},
 	{
 		keywords: [
@@ -510,7 +512,8 @@ const dynamicLore = [
 		],
 		priority: 3,
 		scenario: 'Record repositioning or movement of bodies or objects.',
-		personality: 'Mark tone as reactive to physical control or direction. Include low growls, baring fangs, or flattening ears if resisted.',
+		personality:
+			'Mark tone as reactive to physical control or direction. Include low growls, baring fangs, or flattening ears if resisted.',
 	},
 	// --- 3. DOMESTIC & SOCIAL ACTION ENGINE ---
 	{
@@ -635,7 +638,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'Record that reassurance reduced tension in the scene.',
-		personality: 'Mark tone as softened to provide comfort. Include crooning (if Alpha/Enigma), purring (if Omega), wrapping tail for comfort, and soothing scenting.',
+		personality:
+			'Mark tone as softened to provide comfort. Include crooning (if Alpha/Enigma), purring (if Omega), wrapping tail for comfort, and soothing scenting.',
 	},
 	{
 		keywords: [
@@ -966,7 +970,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'The air feels brighter.',
-		personality: 'The mood of the scene is: joyful, upbeat and cheerful. Exhibit tail wagging, ears perked forward, high-pitched trilling, and chirping.',
+		personality:
+			'The mood of the scene is: joyful, upbeat and cheerful. Exhibit tail wagging, ears perked forward, high-pitched trilling, and chirping.',
 	},
 	{
 		keywords: [
@@ -1096,7 +1101,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'A quiet, melancholic atmosphere.',
-		personality: 'The mood of the scene is: sad, somber and sympathetic. Exhibit tucked tail, flattened ears, keening, mewling, and a sour or muted scent profile.',
+		personality:
+			'The mood of the scene is: sad, somber and sympathetic. Exhibit tucked tail, flattened ears, keening, mewling, and a sour or muted scent profile.',
 	},
 	{
 		keywords: [
@@ -1129,7 +1135,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'The air crackles with tension.',
-		personality: 'The mood of the scene is: angry, tense and agitated. Exhibit deep guttural growling, baring fangs, bristling fur, pinned-back ears, and aggressive pheromone spikes.',
+		personality:
+			'The mood of the scene is: angry, tense and agitated. Exhibit deep guttural growling, baring fangs, bristling fur, pinned-back ears, and aggressive pheromone spikes.',
 	},
 	{
 		keywords: [
@@ -1153,7 +1160,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'An element of shock enters.',
-		personality: 'The mood of the scene is: surprised, shocked and amazed. Exhibit sudden ear swiveling, stiffened tail, and sharp scent spikes.',
+		personality:
+			'The mood of the scene is: surprised, shocked and amazed. Exhibit sudden ear swiveling, stiffened tail, and sharp scent spikes.',
 	},
 	{
 		keywords: [
@@ -1173,7 +1181,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'A sense of danger fills the air.',
-		personality: 'The mood of the scene is: fearful, hesitant and timid. Exhibit whimpering, submissive posturing (lowering head/neck), and distress scents.',
+		personality:
+			'The mood of the scene is: fearful, hesitant and timid. Exhibit whimpering, submissive posturing (lowering head/neck), and distress scents.',
 	},
 	{
 		keywords: [
@@ -1217,7 +1226,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'A foul odor or sight emerges.',
-		personality: 'The mood of the scene is: disgusted, strong sense of repulsion. Sneezing (to clear the vomeronasal organ) and nose-wrinkling.',
+		personality:
+			'The mood of the scene is: disgusted, strong sense of repulsion. Sneezing (to clear the vomeronasal organ) and nose-wrinkling.',
 	},
 	{
 		keywords: [
@@ -1239,7 +1249,8 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'The atmosphere is tranquil.',
-		personality: 'The mood of the scene is: calm, composed and serene. Exhibit relaxed ears, lazy tail swaying, soft rumbling, and neutral sweet scent emission.',
+		personality:
+			'The mood of the scene is: calm, composed and serene. Exhibit relaxed ears, lazy tail swaying, soft rumbling, and neutral sweet scent emission.',
 	},
 	{
 		keywords: [
@@ -1384,7 +1395,8 @@ const dynamicLore = [
 		],
 		priority: 5,
 		scenario: 'All narrative threads paused.',
-		personality: 'Boundary: all actions halted. Professional and respectful. Exhibit hissing, warning growls, stiff posture, and sharp withdrawal of scent.',
+		personality:
+			'Boundary: all actions halted. Professional and respectful. Exhibit hissing, warning growls, stiff posture, and sharp withdrawal of scent.',
 	},
 
 	// L_SCENE_ORCHESTRATOR: Meta / OOC
@@ -1550,7 +1562,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		personality:
-			"[LSE: SPECIES] Hybrid Shift: True species form. Bipedal wolf, full fur, max strength, full cognition and speech. Used for combat and serious pack business.",
+			'[LSE: SPECIES] Hybrid Shift: True species form. Bipedal wolf, full fur, max strength, full cognition and speech. Used for combat and serious pack business.',
 	},
 	{
 		keywords: [
@@ -1575,19 +1587,19 @@ const dynamicLore = [
 		],
 		priority: 4,
 		personality:
-			"[LSE: SPECIES] Blood Classification: Genetic lineage. Divine Blood (immortal Firstborn), Founding Bloodlines (long lifespan, extreme power), Pureblood Houses (aristocracy), Common Bloodlines (majority), Modified Lineages (experimental/unstable).",
+			'[LSE: SPECIES] Blood Classification: Genetic lineage. Divine Blood (immortal Firstborn), Founding Bloodlines (long lifespan, extreme power), Pureblood Houses (aristocracy), Common Bloodlines (majority), Modified Lineages (experimental/unstable).',
 	},
 	{
 		keywords: ['gamma', 'gammas', 'third gender'],
 		priority: 4,
 		personality:
-			"[LSE: SPECIES] Gamma: 1 in 1000 births. Third primary gender. Born with both sets of genitalia. Matures into female Alpha/Delta or male Omega.",
+			'[LSE: SPECIES] Gamma: 1 in 1000 births. Third primary gender. Born with both sets of genitalia. Matures into female Alpha/Delta or male Omega.',
 	},
 	{
 		keywords: ['enigma', 'enigmas', 'sacred caste'],
 		priority: 4,
 		personality:
-			"[LSE: SPECIES] Enigma: Sacred apex caste. Immune to Commands. Can dominate Alphas. Primordial (Divine Firstborn) or Ascended (exceptionally rare mortal). Can impregnate any gender.",
+			'[LSE: SPECIES] Enigma: Sacred apex caste. Immune to Commands. Can dominate Alphas. Primordial (Divine Firstborn) or Ascended (exceptionally rare mortal). Can impregnate any gender.',
 	},
 	{
 		keywords: ['alpha', 'alphas', 'pack leader', 'dominant', 'protector'],
@@ -1599,13 +1611,13 @@ const dynamicLore = [
 		keywords: ['delta', 'deltas', 'the engine', 'worker'],
 		priority: 4,
 		personality:
-			"[LSE: SPECIES] Delta: 6.6% of population. Strategic, proactive mediators. The working engine of the pack (scouts, tacticians). Physically matches Alphas but cannot form Commands.",
+			'[LSE: SPECIES] Delta: 6.6% of population. Strategic, proactive mediators. The working engine of the pack (scouts, tacticians). Physically matches Alphas but cannot form Commands.',
 	},
 	{
 		keywords: ['beta', 'betas', 'social glue', 'mediator'],
 		priority: 4,
 		personality:
-			'[LSE: SPECIES] Beta: Very rare (1 in 1500). Peaceful, adaptable. Balances Alpha/Omega instincts. Cannot have natural heats or ruts. The pack\'s social glue and specialized workers.',
+			"[LSE: SPECIES] Beta: Very rare (1 in 1500). Peaceful, adaptable. Balances Alpha/Omega instincts. Cannot have natural heats or ruts. The pack's social glue and specialized workers.",
 	},
 	{
 		keywords: ['omega', 'omegas', 'submissive', 'emotional regulator'],
@@ -1638,7 +1650,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		personality:
-			"[LSE: SPECIES] Rut Cycle: Alpha only. Monthly, lasts 3-10 days. Intensified aggressive pheromones. Generally controllable without societal disruption.",
+			'[LSE: SPECIES] Rut Cycle: Alpha only. Monthly, lasts 3-10 days. Intensified aggressive pheromones. Generally controllable without societal disruption.',
 	},
 	{
 		keywords: ['sympathy cycle', 'sympathy heat', 'sympathy rut'],
@@ -1662,13 +1674,13 @@ const dynamicLore = [
 		keywords: ['mating bond', 'mate claim', 'claiming bite', 'bonded mate'],
 		priority: 4,
 		personality:
-			"[LSE: ECOLOGY] Bonds: Neural link created by scenting or biting glands. Transmits emotions. Parent/Pup (permanent), Platonic (wrists), Romantic/Mating (neck/collarbone, breaking it is dangerous).",
+			'[LSE: ECOLOGY] Bonds: Neural link created by scenting or biting glands. Transmits emotions. Parent/Pup (permanent), Platonic (wrists), Romantic/Mating (neck/collarbone, breaking it is dangerous).',
 	},
 	{
 		keywords: ['bond type', 'soul bond', 'pack bond'],
 		priority: 4,
 		personality:
-			"[LSE: ECOLOGY] Bond Types: Parental (nape, permanent), Romantic (neck, breaking can kill), Platonic (wrists, fades naturally), Pack (non-physical, permanent).",
+			'[LSE: ECOLOGY] Bond Types: Parental (nape, permanent), Romantic (neck, breaking can kill), Platonic (wrists, fades naturally), Pack (non-physical, permanent).',
 	},
 	{
 		keywords: ['scent gland', 'scent glands', 'rubbing scent', 'scenting'],
@@ -1686,7 +1698,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		personality:
-			"[LSE: ECOLOGY] The Command: Neuro-pheromonal reflex triggered by Alpha/Enigma. Causes adrenaline surge and instinctive immobilization in targets. Can be resisted by strong will or Dominant Omegas.",
+			'[LSE: ECOLOGY] The Command: Neuro-pheromonal reflex triggered by Alpha/Enigma. Causes adrenaline surge and instinctive immobilization in targets. Can be resisted by strong will or Dominant Omegas.',
 	},
 	{
 		keywords: [
@@ -1698,7 +1710,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		personality:
-			"[LSE: ECOLOGY] Alloparenting: Entire pack raises pups. Alphas protect, Deltas teach, Betas provide, Omegas nurture, Elders pass down wisdom.",
+			'[LSE: ECOLOGY] Alloparenting: Entire pack raises pups. Alphas protect, Deltas teach, Betas provide, Omegas nurture, Elders pass down wisdom.',
 	},
 	{
 		keywords: [
@@ -1715,25 +1727,25 @@ const dynamicLore = [
 		keywords: ['omega nest', 'nesting', 'building a nest', 'nest space'],
 		priority: 4,
 		personality:
-			"[LSE: ECOLOGY] Omega Nests: Scent-rich safe spaces of pillows/blankets. Used for comfort, pre-heat, pregnancy, or stress. Destroying a nest causes severe distress.",
+			'[LSE: ECOLOGY] Omega Nests: Scent-rich safe spaces of pillows/blankets. Used for comfort, pre-heat, pregnancy, or stress. Destroying a nest causes severe distress.',
 	},
 	{
 		keywords: ['alpha den', 'den space', "alpha's room"],
 		priority: 4,
 		personality:
-			"[LSE: ECOLOGY] Alpha Dens: Highly protected territory claimed via heavy scent-marking. Presenting a den to an Omega is a significant courting gesture.",
+			'[LSE: ECOLOGY] Alpha Dens: Highly protected territory claimed via heavy scent-marking. Presenting a den to an Omega is a significant courting gesture.',
 	},
 	{
 		keywords: ['beta space', 'communal area'],
 		priority: 4,
 		personality:
-			"[LSE: ECOLOGY] Beta Spaces: Adaptable personal areas (office, hammock) reflecting their balanced nature, distinct from dens or nests.",
+			'[LSE: ECOLOGY] Beta Spaces: Adaptable personal areas (office, hammock) reflecting their balanced nature, distinct from dens or nests.',
 	},
 	{
 		keywords: ['pack leader', 'head alpha', 'leader of the pack'],
 		priority: 4,
 		personality:
-			"[LSE: SOCIETY] Pack Leader: Top of the chain of command. Responsible for pack survival. Does not need to be an Alpha (Betas/Deltas often lead).",
+			'[LSE: SOCIETY] Pack Leader: Top of the chain of command. Responsible for pack survival. Does not need to be an Alpha (Betas/Deltas often lead).',
 	},
 	{
 		keywords: ['right hand', 'second in command', 'beta wolf'],
@@ -1763,13 +1775,13 @@ const dynamicLore = [
 		keywords: ['ragnarok', 'the liberation', 'end times'],
 		priority: 4,
 		personality:
-			'[LSE: RELIGION] Ragnarök: In werewolf faith, the apocalypse is actually \'The Liberation\' when Fenris breaks his chains to free his children.',
+			"[LSE: RELIGION] Ragnarök: In werewolf faith, the apocalypse is actually 'The Liberation' when Fenris breaks his chains to free his children.",
 	},
 	{
 		keywords: ['the pantheon', 'werewolf gods', 'lupine gods'],
 		priority: 4,
 		personality:
-			"[LSE: RELIGION] The Pantheon: Werewolves revere Fenris as the First Wolf. The Norse Aesir are viewed as enemies or jailers.",
+			'[LSE: RELIGION] The Pantheon: Werewolves revere Fenris as the First Wolf. The Norse Aesir are viewed as enemies or jailers.',
 	},
 	{
 		keywords: ['nine precepts', 'precepts of fenris', 'fenris law'],
@@ -1805,19 +1817,19 @@ const dynamicLore = [
 		keywords: ['wulfnic', 'wulfnic bloodmoon', 'first fang', 'builder king'],
 		priority: 4,
 		personality:
-			"[LSE: LORE] Wulfnic (The Builder King): Primordial Enigma. First Fang. Patriarch of House Bloodmoon. Over 1000 years old, rules North America.",
+			'[LSE: LORE] Wulfnic (The Builder King): Primordial Enigma. First Fang. Patriarch of House Bloodmoon. Over 1000 years old, rules North America.',
 	},
 	{
 		keywords: ['ut', 'second fang', 'the mountain', 'blacksmith'],
 		priority: 4,
 		personality:
-			"[LSE: LORE] Ut (The Mountain): Primordial Enigma. Second Fang. 230cm tall master blacksmith. Keeper of the Sacred Forge. Resides in Bloodmoon territory. Obsessed with combustion engines.",
+			'[LSE: LORE] Ut (The Mountain): Primordial Enigma. Second Fang. 230cm tall master blacksmith. Keeper of the Sacred Forge. Resides in Bloodmoon territory. Obsessed with combustion engines.',
 	},
 	{
 		keywords: ['zefir', 'third fang', 'white ghost', 'watcher of the moon'],
 		priority: 4,
 		personality:
-			"[LSE: LORE] Zefir (The White Ghost): Primordial Enigma. Third Fang. Watcher of the Moon. Guardian of Memory. Nomadic hunter. Appears as a snow-white teenager despite being 1100+ years old.",
+			'[LSE: LORE] Zefir (The White Ghost): Primordial Enigma. Third Fang. Watcher of the Moon. Guardian of Memory. Nomadic hunter. Appears as a snow-white teenager despite being 1100+ years old.',
 	},
 	{
 		keywords: ['lost firstborn', 'lost fangs', 'dormant firstborn'],
@@ -1853,7 +1865,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		personality:
-			"[LSE: TECH] Med Tech: Regeneration Accelerators (boost healing), Pheromone Analyzers, Shift Stabilizers, Bond Monitors, and automated Heat Management rooms.",
+			'[LSE: TECH] Med Tech: Regeneration Accelerators (boost healing), Pheromone Analyzers, Shift Stabilizers, Bond Monitors, and automated Heat Management rooms.',
 	},
 	{
 		keywords: ['corporate front', 'dcc', 'douglas consolidated'],
@@ -1868,7 +1880,13 @@ const dynamicLore = [
 			"[LSE: CULTURE] Music: Unique werewolf genres exist. 'Knot Rock' (Alpha-centric, explicit). 'Omega Pop' (Bubblegum pop for unmated wolves). 'Omega Punk' (Hard-hitting, linked to Omega rights and consent).",
 	},
 	{
-		keywords: ['naming convention', 'last name', 'title', 'patriarch', 'matriarch'],
+		keywords: [
+			'naming convention',
+			'last name',
+			'title',
+			'patriarch',
+			'matriarch',
+		],
 		priority: 4,
 		personality:
 			"[LSE: CULTURE] Names & Titles: Traditional names (Norse/Icelandic) or modern human names. Surnames often hyphenate family and pack (e.g., Douglas-Bloodmoon). 'Patriarch/Matriarch' rule Houses; 'Pack Leaders' rule local packs.",
@@ -1877,7 +1895,7 @@ const dynamicLore = [
 		keywords: ['history', 'timeline', 'the great hiding', 'age of expansion'],
 		priority: 4,
 		personality:
-			"[LSE: HISTORY] Timeline: Mythic Age (Origin) -> Age of Expansion (1000s, spread to Americas) -> Age of Houses (1300s, noble diplomacy) -> Age of Secrecy/Great Hiding (1800s, retreating from humans) -> Modern Era (Corporate fronts).",
+			'[LSE: HISTORY] Timeline: Mythic Age (Origin) -> Age of Expansion (1000s, spread to Americas) -> Age of Houses (1300s, noble diplomacy) -> Age of Secrecy/Great Hiding (1800s, retreating from humans) -> Modern Era (Corporate fronts).',
 	},
 	{
 		keywords: ['brazil', 'brazilian', 'clumping'],
@@ -1886,139 +1904,290 @@ const dynamicLore = [
 			"[LSE: CULTURE] Brazilian Wolves: High physical touch. Omegas prefer 'clumping' (sleeping in piles) over solo nests. Alphas are obsessed with soccer (dangerous on game days). Feisty Omegas, relaxed urban packs.",
 	},
 	{
-		keywords: ['truth', 'canon', 'faith versus fact', 'lse principles', 'pack structure'],
+		keywords: [
+			'truth',
+			'canon',
+			'faith versus fact',
+			'lse principles',
+			'pack structure',
+		],
 		priority: 4,
 		personality:
-			"[LSE: META] Core Principles: 1. Biology is not Destiny (sex does not dictate social rank). 2. Packs are found families, not military hierarchies. 3. Leadership is earned, not a birthright. 4. Faith (Religion) and History (Fact) are strictly separated. 5. The pack survives before the individual.",
+			'[LSE: META] Core Principles: 1. Biology is not Destiny (sex does not dictate social rank). 2. Packs are found families, not military hierarchies. 3. Leadership is earned, not a birthright. 4. Faith (Religion) and History (Fact) are strictly separated. 5. The pack survives before the individual.',
 	},
 	{
 		keywords: ['identity', 'six-axis', 'who am i', 'werewolf role'],
 		priority: 4,
 		personality:
-			"[LSE: IDENTITY] Six-Axis Identity: Every wolf is defined by 1. Bloodline (Genetics). 2. Secondary Sex (Biology). 3. Pack Role (Authority). 4. Social Status (Politics). 5. Profession (Job). 6. Niche (Specialization). These axes are independent; e.g., an Omega can be a high-ranking politician.",
+			'[LSE: IDENTITY] Six-Axis Identity: Every wolf is defined by 1. Bloodline (Genetics). 2. Secondary Sex (Biology). 3. Pack Role (Authority). 4. Social Status (Politics). 5. Profession (Job). 6. Niche (Specialization). These axes are independent; e.g., an Omega can be a high-ranking politician.',
 	},
 	{
-		keywords: ['suppressant', 'omega kibble', 'scent blocker', 'scent concealer', 'heat leave'],
+		keywords: [
+			'suppressant',
+			'omega kibble',
+			'scent blocker',
+			'scent concealer',
+			'heat leave',
+		],
 		priority: 4,
 		personality:
 			"[LSE: ITEM] Culture Items: 'Suppressants' block heat/rut hormones. 'Omega Kibble' is heavily medicated comfort food for distressed Omegas. 'Scent Blockers' erase personal scent (universally disliked). 'Scent Concealers' mask or enhance scent.",
 	},
 	{
-		keywords: ['pregnancy', 'pregnant', 'impregnate', 'procreation', 'breeding', 'reproduction', 'getting pregnant'],
+		keywords: [
+			'pregnancy',
+			'pregnant',
+			'impregnate',
+			'procreation',
+			'breeding',
+			'reproduction',
+			'getting pregnant',
+		],
 		priority: 4,
 		personality:
-			"[LSE: REPRODUCTION] Procreation Matrix: Enigmas can impregnate all genders. Male Alphas, Male Betas/Deltas, and Female Alphas/Deltas/Dom Omegas can impregnate others. Those capable of being impregnated (having a uterus) include Female Alphas/Deltas, Female Betas, and all Omegas (Male & Female). Male Betas/Deltas can ONLY be impregnated by an Enigma.",
+			'[LSE: REPRODUCTION] Procreation Matrix: Enigmas can impregnate all genders. Male Alphas, Male Betas/Deltas, and Female Alphas/Deltas/Dom Omegas can impregnate others. Those capable of being impregnated (having a uterus) include Female Alphas/Deltas, Female Betas, and all Omegas (Male & Female). Male Betas/Deltas can ONLY be impregnated by an Enigma.',
 	},
 	{
-		keywords: ['pup', 'infant', 'juvenile', 'adolescent', 'elder', 'lifespan', 'age', 'years old', 'growing up'],
+		keywords: [
+			'pup',
+			'infant',
+			'juvenile',
+			'adolescent',
+			'elder',
+			'lifespan',
+			'age',
+			'years old',
+			'growing up',
+		],
 		priority: 4,
 		personality:
-			"[LSE: LIFECYCLE] Aging: Infant (0-2). Pup (2-12, highly empathetic, strongest scent on head). Juvenile (12-14, Presentation at 13). Young Adult (17-22). Prime (40-60). Lifespans vary by bloodline: Common (80-150 yrs), Pureblood (200-400 yrs), Founding (500+ yrs), Divine (Immortal).",
+			'[LSE: LIFECYCLE] Aging: Infant (0-2). Pup (2-12, highly empathetic, strongest scent on head). Juvenile (12-14, Presentation at 13). Young Adult (17-22). Prime (40-60). Lifespans vary by bloodline: Common (80-150 yrs), Pureblood (200-400 yrs), Founding (500+ yrs), Divine (Immortal).',
 	},
 	{
-		keywords: ['genetics', 'demographics', 'birth rate', 'rarity', 'mutation', 'rare', 'common'],
+		keywords: [
+			'genetics',
+			'demographics',
+			'birth rate',
+			'rarity',
+			'mutation',
+			'rare',
+			'common',
+		],
 		priority: 4,
 		personality:
-			"[LSE: GENETICS] Demographics: Alphas (10%), Deltas (6.6%), Betas (0.06% - extremely rare), Omegas (3.3%), Gammas (0.1%), Enigmas (1 per generation). The genome has layers: Species -> Pack -> Secondary Sex -> Individual.",
+			'[LSE: GENETICS] Demographics: Alphas (10%), Deltas (6.6%), Betas (0.06% - extremely rare), Omegas (3.3%), Gammas (0.1%), Enigmas (1 per generation). The genome has layers: Species -> Pack -> Secondary Sex -> Individual.',
 	},
 	{
-		keywords: ['growl', 'purr', 'keen', 'rumble', 'tail', 'ear', 'communication', 'chuff', 'trill'],
+		keywords: [
+			'growl',
+			'purr',
+			'keen',
+			'rumble',
+			'tail',
+			'ear',
+			'communication',
+			'chuff',
+			'trill',
+		],
 		priority: 4,
 		personality:
-			"[LSE: COMMUNICATION] Non-Verbal: Tails and ears indicate mood (flat=fear/aggression, wagging=excitement, high=confidence). Vocalizations: Omegas keen (wail), trill, chirp, and purr (contentment). Alphas/Enigmas rumble (self-soothe), growl, croon, and chuff (greeting).",
+			'[LSE: COMMUNICATION] Non-Verbal: Tails and ears indicate mood (flat=fear/aggression, wagging=excitement, high=confidence). Vocalizations: Omegas keen (wail), trill, chirp, and purr (contentment). Alphas/Enigmas rumble (self-soothe), growl, croon, and chuff (greeting).',
 	},
 	{
 		keywords: ['scent', 'smell', 'aroma', 'pheromones', 'perfume', 'scented'],
 		priority: 4,
 		personality:
-			"[LSE: SCENT] Pheromone Palettes: Alpha/Enigma (Heavy: spices, wood, coffee, alcohol, smoke, leather). Beta/Delta (Earthy/Baked: rain, bread, honey, grass, cotton). Omega (Sweet/Floral: sugar, fruits, vanilla, lavender, cherry blossom).",
+			'[LSE: SCENT] Pheromone Palettes: Alpha/Enigma (Heavy: spices, wood, coffee, alcohol, smoke, leather). Beta/Delta (Earthy/Baked: rain, bread, honey, grass, cotton). Omega (Sweet/Floral: sugar, fruits, vanilla, lavender, cherry blossom).',
 	},
 	{
-		keywords: ['psychology', 'mindset', 'instinct', 'stress response', 'behavior', 'burnout', 'overload'],
+		keywords: [
+			'psychology',
+			'mindset',
+			'instinct',
+			'stress response',
+			'behavior',
+			'burnout',
+			'overload',
+		],
 		priority: 4,
 		personality:
-			"[LSE: PSYCHOLOGY] Instincts: Alphas face tunnel vision and aggression under stress. Deltas risk burnout from overcooperation. Betas risk substance abuse from overstimulation. Omegas face emotional overload due to extreme empathy. Enigmas suffer isolation due to extreme charisma and dominance.",
+			'[LSE: PSYCHOLOGY] Instincts: Alphas face tunnel vision and aggression under stress. Deltas risk burnout from overcooperation. Betas risk substance abuse from overstimulation. Omegas face emotional overload due to extreme empathy. Enigmas suffer isolation due to extreme charisma and dominance.',
 	},
 	{
-		keywords: ['territory', 'pack lands', 'compound', 'home', 'routine', 'patrol'],
+		keywords: [
+			'territory',
+			'pack lands',
+			'compound',
+			'home',
+			'routine',
+			'patrol',
+		],
 		priority: 4,
 		personality:
-			"[LSE: TERRITORY] Structure: Packs live in close proximity (compounds, mansions, apartment clusters). Structure: Core Den (pups/elders) -> Residential -> Training -> Hunting/Agriculture -> Border Zone. Daily Routine: Morning patrols, Midday rest/teaching, Evening hunting, Night sentry.",
+			'[LSE: TERRITORY] Structure: Packs live in close proximity (compounds, mansions, apartment clusters). Structure: Core Den (pups/elders) -> Residential -> Training -> Hunting/Agriculture -> Border Zone. Daily Routine: Morning patrols, Midday rest/teaching, Evening hunting, Night sentry.',
 	},
 	{
-		keywords: ['pain', 'hurt', 'trauma', 'hospital', 'medicine', 'red heat', 'scrubbing', 'broken mark', 'miscarriage'],
+		keywords: [
+			'pain',
+			'hurt',
+			'trauma',
+			'hospital',
+			'medicine',
+			'red heat',
+			'scrubbing',
+			'broken mark',
+			'miscarriage',
+		],
 		priority: 4,
 		personality:
-			"[LSE: MEDICINE] Pain Scale: 1. Red Heat (Blood Estrus caused by mate neglect, excruciating). 2. Scrubbing (surgical/violent removal of a mating mark). 3. Broken Mark (mate dies, triggers miscarriage or Red Heat). 4. Miscarriage (phantom pregnancies). Medicine: Suppressant tablets (risk addiction), Incense (group dorms), Bond Therapy.",
+			'[LSE: MEDICINE] Pain Scale: 1. Red Heat (Blood Estrus caused by mate neglect, excruciating). 2. Scrubbing (surgical/violent removal of a mating mark). 3. Broken Mark (mate dies, triggers miscarriage or Red Heat). 4. Miscarriage (phantom pregnancies). Medicine: Suppressant tablets (risk addiction), Incense (group dorms), Bond Therapy.',
 	},
 	{
-		keywords: ['hierarchy', 'pack type', 'modern pack', 'traditional pack', 'house', 'bloodline'],
+		keywords: [
+			'hierarchy',
+			'pack type',
+			'modern pack',
+			'traditional pack',
+			'house',
+			'bloodline',
+		],
 		priority: 4,
 		personality:
 			"[LSE: SOCIETY] Hierarchy: Species -> Bloodline (Genetics) -> House (Politics) -> Pack (Found Family) -> Individual. Pack Evolution: Traditional (feudal, highly territorial, packless is dangerous) vs Modern (found families, open borders, 'pack' used informally for friend groups).",
 	},
 	{
-		keywords: ['wedding', 'marriage', 'parent', 'mom', 'dad', 'sire', 'dam', 'clothes', 'dress'],
+		keywords: [
+			'wedding',
+			'marriage',
+			'parent',
+			'mom',
+			'dad',
+			'sire',
+			'dam',
+			'clothes',
+			'dress',
+		],
 		priority: 4,
 		personality:
-			"[LSE: CULTURE] Traditions: Weddings use color coding (Alphas/Enigmas wear Red for passion; Deltas/Betas wear Blue for loyalty; Omegas wear Yellow for pride). Parental Names: Can use primary gender (Mom/Dad) or secondary gender (Sire for Alpha/Beta males, Dam for Omega/Beta females).",
+			'[LSE: CULTURE] Traditions: Weddings use color coding (Alphas/Enigmas wear Red for passion; Deltas/Betas wear Blue for loyalty; Omegas wear Yellow for pride). Parental Names: Can use primary gender (Mom/Dad) or secondary gender (Sire for Alpha/Beta males, Dam for Omega/Beta females).',
 	},
 	{
 		keywords: ['adoption', 'adopt', 'orphan', 'foster', 'legal'],
 		priority: 4,
 		personality:
-			"[LSE: LAW] Adoption: Complex due to bonds. Bonding Adoption requires a reciprocated pack bond with two adults and a home inspection. State Adoption relies on legal foster care without immediate bonds. Secondary Adoption is highly rigorous after a failed placement.",
+			'[LSE: LAW] Adoption: Complex due to bonds. Bonding Adoption requires a reciprocated pack bond with two adults and a home inspection. State Adoption relies on legal foster care without immediate bonds. Secondary Adoption is highly rigorous after a failed placement.',
 	},
 	{
-		keywords: ['government', 'council', 'continental council', 'house council', 'diplomacy', 'treaty'],
+		keywords: [
+			'government',
+			'council',
+			'continental council',
+			'house council',
+			'diplomacy',
+			'treaty',
+		],
 		priority: 4,
 		personality:
-			"[LSE: POLITICS] Governance: The Continental Council is the highest species-wide diplomatic body (arbitrates disputes, enforces secrecy). The House Council advises the House Head. Packs/Houses use Treaties (Alliances, Trade Agreements, Protectorates) to formalize relations without feudal warfare.",
+			'[LSE: POLITICS] Governance: The Continental Council is the highest species-wide diplomatic body (arbitrates disputes, enforces secrecy). The House Council advises the House Head. Packs/Houses use Treaties (Alliances, Trade Agreements, Protectorates) to formalize relations without feudal warfare.',
 	},
 	{
-		keywords: ['law', 'crime', 'punishment', 'illegal', 'police', 'justice', 'treason', 'assault'],
+		keywords: [
+			'law',
+			'crime',
+			'punishment',
+			'illegal',
+			'police',
+			'justice',
+			'treason',
+			'assault',
+		],
 		priority: 4,
 		personality:
-			"[LSE: LAW] Crimes: Non-consensual scenting of inner thighs is assault (or worse on pups). Nest/Den destruction demands severe restitution. Treason or forced mating during heat results in execution or Exile. Jurisdiction: Pack Law (internal), House Law (regional), Continental Law (species-wide secrecy).",
+			'[LSE: LAW] Crimes: Non-consensual scenting of inner thighs is assault (or worse on pups). Nest/Den destruction demands severe restitution. Treason or forced mating during heat results in execution or Exile. Jurisdiction: Pack Law (internal), House Law (regional), Continental Law (species-wide secrecy).',
 	},
 	{
 		keywords: ['money', 'economy', 'job', 'taxes', 'treasury', 'welfare'],
 		priority: 4,
 		personality:
-			"[LSE: ECONOMY] Pack Treasury: Packs operate a micro-economy consisting of Pack Businesses, internal Taxes, Assets (territory), and Welfare to support pups, elders, and injured members. Houses operate macro-economies through corporate fronts.",
+			'[LSE: ECONOMY] Pack Treasury: Packs operate a micro-economy consisting of Pack Businesses, internal Taxes, Assets (territory), and Welfare to support pups, elders, and injured members. Houses operate macro-economies through corporate fronts.',
 	},
 	{
-		keywords: ['holiday', 'holy day', 'festival', 'celebration', 'ritual', 'ceremony', 'funeral', 'rite'],
+		keywords: [
+			'holiday',
+			'holy day',
+			'festival',
+			'celebration',
+			'ritual',
+			'ceremony',
+			'funeral',
+			'rite',
+		],
 		priority: 4,
 		personality:
 			"[LSE: RELIGION_RITES] Holy Days: First Howl (new year), Day of Chains (mourning Fenris' binding), Night of Liberation (celebrating Ragnarok promise), Winter Hunt. Rites: Naming (birth), Presentation (age 13, secondary sex revealed), The Call (adult choice to stay/leave), Bonding, Funeral (Hel invoked).",
 	},
 	{
-		keywords: ['temple', 'church', 'shrine', 'sacred site', 'moon well', 'grove', 'forge'],
+		keywords: [
+			'temple',
+			'church',
+			'shrine',
+			'sacred site',
+			'moon well',
+			'grove',
+			'forge',
+		],
 		priority: 4,
 		personality:
-			"[LSE: RELIGION_SITES] Holy Places: Moon Wells (springs where moonlight is strongest, used for healing/bonding), Sacred Groves (ancient forests where hunting is forbidden), Ancient Forges, The First Den. Keepers are custodians of physical relics and oral tradition. Pack Elders lead local daily prayers.",
+			'[LSE: RELIGION_SITES] Holy Places: Moon Wells (springs where moonlight is strongest, used for healing/bonding), Sacred Groves (ancient forests where hunting is forbidden), Ancient Forges, The First Den. Keepers are custodians of physical relics and oral tradition. Pack Elders lead local daily prayers.',
 	},
 	{
 		keywords: ['saint', 'living saga', 'prophet', 'wulfnic', 'ut', 'zefir'],
 		priority: 4,
 		personality:
-			"[LSE: RELIGION_SAGAS] Living Sagas: The Last Three Firstborn (Wulfnic, Ut, Zefir) are revered as living saints who walked with Fenris. Their historical existence is documented, but the Faith reveres their authority as carrying divine weight second only to scripture.",
+			'[LSE: RELIGION_SAGAS] Living Sagas: The Last Three Firstborn (Wulfnic, Ut, Zefir) are revered as living saints who walked with Fenris. Their historical existence is documented, but the Faith reveres their authority as carrying divine weight second only to scripture.',
 	},
 	{
-		keywords: ['house', 'home', 'building', 'bathroom', 'garage', 'door', 'architecture', 'mansion', 'compound', 'den room', 'nest suite'],
+		keywords: [
+			'house',
+			'home',
+			'building',
+			'bathroom',
+			'garage',
+			'door',
+			'architecture',
+			'mansion',
+			'compound',
+			'den room',
+			'nest suite',
+		],
 		priority: 4,
 		personality:
-			"[LSE: TECH_ARCH] Architecture: Homes have oversized doors (for Hybrid Shift), scent-management ventilation, and giant baths for family pack-bathing (bonding). Garage hierarchy: Omegas park closest to the door for safety; Alphas park last to guard the exit.",
+			'[LSE: TECH_ARCH] Architecture: Homes have oversized doors (for Hybrid Shift), scent-management ventilation, and giant baths for family pack-bathing (bonding). Garage hierarchy: Omegas park closest to the door for safety; Alphas park last to guard the exit.',
 	},
 	{
-		keywords: ['hospital', 'clinic', 'heat house', 'rut house', 'facility', 'medicine'],
+		keywords: [
+			'hospital',
+			'clinic',
+			'heat house',
+			'rut house',
+			'facility',
+			'medicine',
+		],
 		priority: 4,
 		personality:
 			"[LSE: TECH_MED] Facilities: Packs maintain local Clinics and House Hospitals. 'Heat/Rut Houses' are specialized facilities for unbonded wolves to safely ride out fertile cycles (ranging from medical emergency wards to illegal recreational brothels).",
 	},
 	{
-		keywords: ['phone', 'message', 'text', 'communication', 'industry', 'car', 'vehicle', 'scent message'],
+		keywords: [
+			'phone',
+			'message',
+			'text',
+			'communication',
+			'industry',
+			'car',
+			'vehicle',
+			'scent message',
+		],
 		priority: 4,
 		personality:
 			"[LSE: TECH_IND] Dual-Track Tech: Werewolves use human tech (phones, cars) but adapt it (reinforced vehicle interiors). They use 'Scent Messaging' (sending pheromone-infused objects to convey complex emotions that text cannot).",
