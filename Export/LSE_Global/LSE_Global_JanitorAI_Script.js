@@ -2005,6 +2005,24 @@ const dynamicLore = [
 		personality:
 			"[LSE: RELIGION_SAGAS] Living Sagas: The Last Three Firstborn (Wulfnic, Ut, Zefir) are revered as living saints who walked with Fenris. Their historical existence is documented, but the Faith reveres their authority as carrying divine weight second only to scripture.",
 	},
+	{
+		keywords: ['house', 'home', 'building', 'bathroom', 'garage', 'door', 'architecture', 'mansion', 'compound', 'den room', 'nest suite'],
+		priority: 4,
+		personality:
+			"[LSE: TECH_ARCH] Architecture: Homes have oversized doors (for Hybrid Shift), scent-management ventilation, and giant baths for family pack-bathing (bonding). Garage hierarchy: Omegas park closest to the door for safety; Alphas park last to guard the exit.",
+	},
+	{
+		keywords: ['hospital', 'clinic', 'heat house', 'rut house', 'facility', 'medicine'],
+		priority: 4,
+		personality:
+			"[LSE: TECH_MED] Facilities: Packs maintain local Clinics and House Hospitals. 'Heat/Rut Houses' are specialized facilities for unbonded wolves to safely ride out fertile cycles (ranging from medical emergency wards to illegal recreational brothels).",
+	},
+	{
+		keywords: ['phone', 'message', 'text', 'communication', 'industry', 'car', 'vehicle', 'scent message'],
+		priority: 4,
+		personality:
+			"[LSE: TECH_IND] Dual-Track Tech: Werewolves use human tech (phones, cars) but adapt it (reinforced vehicle interiors). They use 'Scent Messaging' (sending pheromone-infused objects to convey complex emotions that text cannot).",
+	},
 ];
 
 /* ============================================================================
