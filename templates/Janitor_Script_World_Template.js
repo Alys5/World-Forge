@@ -341,7 +341,11 @@ const entryPasses = (e, activeTagsSet) => {
    ========================================================================== */
 //#region AUTHOR_ENTRIES
 const dynamicLore = [
-	// --- NARRATIVE ENGINES (Preference, Action, Social, Emotion) ---
+	// =========================================================================
+	// NARRATIVE ENGINES
+	// =========================================================================
+
+	// --- 1. PREFERENCE ENGINE (Likes, Dislikes, Fears) ---
 	{
 		keywords: ['i like', 'i really like', 'i love', 'i enjoy', 'i adore', 'i prefer', 'big fan of', 'huge fan of', 'i am into', 'i m into', 'i dig', 'my favorite is', 'my favourite is', 'favorite is', 'favourite is', 'my favorite', 'my favourite', 'favorite:', 'favourite:', 'i m all about', 'i am all about', 'i live for', 'can t get enough of', 'obsessed with', 'down for', 'i could go for', 'crave', 'craving', 'i d rather have', 'i would rather have', 'i d rather', 'i would rather', 'prefer', 'prefer over'],
 		priority: 5,
@@ -360,6 +364,7 @@ const dynamicLore = [
 		scenario: 'Record FEAR: the user\'s stated fear or anxiety.',
 		personality: 'Mark tone as cautious and supportive toward the user\'s stated fear.',
 	},
+	// --- 2. PHYSICAL INTIMACY & ACTION ENGINE ---
 	{
 		keywords: ['hug', 'embrace', 'cuddle', 'snuggle', 'hold', 'pat', 'stroke', 'caress'],
 		priority: 4,
@@ -384,6 +389,7 @@ const dynamicLore = [
 		scenario: 'Record repositioning or movement of bodies or objects.',
 		personality: 'Mark tone as reactive to physical control or direction.',
 	},
+	// --- 3. DOMESTIC & SOCIAL ACTION ENGINE ---
 	{
 		keywords: ['bandage', 'wrap', 'ice pack', 'first aid', 'disinfect', 'antiseptic', 'apply pressure', 'clean the wound', 'gauze', 'splint', 'stitch', 'ointment', 'salve', 'medicine'],
 		priority: 4,
@@ -408,6 +414,7 @@ const dynamicLore = [
 		scenario: 'Record communication attempt via phone, message, or video call.',
 		personality: 'Mark tone as attentive to communication attempts.',
 	},
+	// --- 4. EMOTIONAL REASSURANCE & AFFECTION ENGINE ---
 	{
 		keywords: ['it\'s okay', 'its okay', 'it\'s alright', 'its alright', 'i got you', 'i\'ve got you', 'i am here', 'i\'m here', 'here for you', 'with you', 'right here', 'you are safe', 'you\'re safe', 'you\'re fine', 'you\'re alright'],
 		priority: 4,
@@ -474,6 +481,7 @@ const dynamicLore = [
 		scenario: 'Record that a promise or assurance was given.',
 		personality: 'Mark tone as committed and intent on trust.',
 	},
+	// --- 5. CONVERSATIONAL REACTION ENGINE ---
 	{
 		keywords: ['yes', 'yeah', 'yep', 'sure', 'ok', 'okay', 'absolutely', 'definitely', 'exactly', 'affirmative', 'of course', 'makes sense', 'sounds good', 'all right', 'alright', 'you\'re right'],
 		priority: 2,
@@ -498,6 +506,7 @@ const dynamicLore = [
 		scenario: 'Record that politeness or formality was used.',
 		personality: 'Mark tone as respectful and courteous.',
 	},
+	// --- 6. CORE EMOTION & ATTITUDE ENGINE ---
 	{
 		keywords: ['yeah right', 'as if', 'just what i needed', 'thanks for nothing', 'what a surprise', 'how fun', 'a million', 'dying laughing', 'worst day ever', 'haha', 'lmao', 'lol', 'that\'s hilarious', 'joking', 'just joking', 'call that a joke', 'rich coming from you', 'such a joke', 'supposed to be funny', 'think you’re so funny', 'not buying it', 'you gotta be kidding', 'could care less', 'is this a joke', 'boss'],
 		priority: 5,
@@ -570,6 +579,7 @@ const dynamicLore = [
 		scenario: 'Deep concern and genuine sympathy.',
 		personality: 'The mood of the scene is: sympathy, compassionate and empathetic.',
 	},
+	// --- 7. BOUNDARY ENGINE (Stop/Uncomfortable) ---
 	{
 		keywords: ['stop', 'end this', 'no more', 'don\'t want to', 'don\'t like this', 'quit', 'please stop', 'too far', 'not comfortable', 'uncomfortable', 'don\'t feel safe', 'this is weird', 'too much', 'being weird', 'awkward', 'give me space', 'back off', 'leave me alone', 'please back up', 'please end it', 'crossed the line', 'making me uncomfortable', 'can we stop', 'can you not', 'bit much', 'don’t make this weird', 'don’t patronize me', 'just stop', 'don’t push me', 'don’t start with me', 'let’s not do this', 'move on', 'can we not do this', 'leave me be', 'let me be', 'please don\'t', 'don\'t bother', 'need some time alone', 'just stop already', 'i just want to stop', 'i’d rather just be left alone', 'let me be in peace', 'be left alone and rest', 'be left alone for good'],
 		priority: 5,
