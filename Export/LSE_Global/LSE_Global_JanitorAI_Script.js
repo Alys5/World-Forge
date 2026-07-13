@@ -1811,13 +1811,13 @@ const dynamicLore = [
 		keywords: ['ut', 'second fang', 'the mountain', 'blacksmith'],
 		priority: 4,
 		personality:
-			'[LSE: LORE] Ut (The Mountain): Primordial Alpha. Master blacksmith. Patriarch of House Ironclaw. Forges legendary weapons.',
+			"[LSE: LORE] Ut (The Mountain): Primordial Enigma. Second Fang. 230cm tall master blacksmith. Keeper of the Sacred Forge. Resides in Bloodmoon territory. Obsessed with combustion engines.",
 	},
 	{
 		keywords: ['zefir', 'third fang', 'white ghost', 'watcher of the moon'],
 		priority: 4,
 		personality:
-			"[LSE: LORE] Zefir (The White Ghost): Primordial Omega. Seer and mystic. High Priestess. Watches over the spiritual health of the species.",
+			"[LSE: LORE] Zefir (The White Ghost): Primordial Enigma. Third Fang. Watcher of the Moon. Guardian of Memory. Nomadic hunter. Appears as a snow-white teenager despite being 1100+ years old.",
 	},
 	{
 		keywords: ['lost firstborn', 'lost fangs', 'dormant firstborn'],
