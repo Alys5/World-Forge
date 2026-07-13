@@ -11,6 +11,17 @@ The pipeline ships as living markdown specifications rather than versioned
 software, so entries are grouped by date and pull request rather than release
 numbers. Newest first.
 
+## 2026-07-13 — ES6 Sandbox Constraints & WorldForge-Scripter Bot
+
+Integrated comprehensive **ES6 Sandbox Scripting Constraints** across all 30+ agent roles, mini-agents, and workflows. This enforces strict execution safety in JanitorAI by explicitly blocking async/I/O calls and mandating `.slice(-X)` for memory scanning. Migrated complex JavaScript regex logic (Narrative Engines) into highly optimized `dynamicLore` JSON static objects.
+
+### Added
+- **WorldForge-Scripter**: A pre-compiled JanitorAI Lorebook providing a standalone "Scripting Mentor" bot trained entirely on the ES6 Sandbox rules. 
+- **ES6 Constraints Checklist**: Injected into the foundational rules of all agent specifications and the strict template compliance mandates of all workflows.
+- **Template Cheat-Sheets**: Added JanitorAI Sandbox limitations to the headers of all 4 foundational JS templates (`World`, `Family`, `NPC`, `NSFW`).
+
+---
+
 ## 2026-07-12 — Strict Template Compliance & 4-Template Janitor Split
 
 Replaced the deprecated, monolithic `Janitor_Lorebook_Script.js` with a 4-template domain system (`World`, `Family`, `NPC`, `NSFW`) for ES6 scripts to prevent context bloat and enforce separation of concerns in JanitorAI. Promoted the **Strict Template Compliance Mandate (Zero-Deviation Policy)** to a foundational architectural law across all agents, mini-agents, and pipelines (Build, Revise, Convert) ensuring 1:1 structural mapping to schemas with explicit null-states and no schema truncation.

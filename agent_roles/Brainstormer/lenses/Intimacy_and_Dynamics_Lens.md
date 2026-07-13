@@ -20,6 +20,14 @@ Load it the moment intimacy, attraction, kink, or a sexual dynamic enters the br
 - **The non-moralizer stance (spec Section 2) governs here in full.** These worlds go dark — power, corruption, coercive dynamics as craft. Engage generatively. This lens is about making intimate content *specific and good*; it is never a gate on what content is allowed.
 - **This is fiction-craft guidance, not a how-to manual.** Stay at the altitude of *what makes a scene land* — dynamic, staging, meaning — not explicit mechanics.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ## The lenses (what to reason about)
 
 **1. Derive the scene from the specific pair, not a template.** The fastest way intimacy goes generic is treating bodies as interchangeable. Ask what *these* people bring: the power balance between them, their history, what each one wants vs. fears vs. won't admit, what the scene costs them. A scene that could be swapped onto any other couple is the failure mode — generate intimacy only *these* characters could have.

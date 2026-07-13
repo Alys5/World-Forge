@@ -3,6 +3,13 @@
 <!--This template is extremely excessive. DELETE the parts you don't need or add new sections to the template.-->
 <!-- KEEP all the [] notes. -->
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 <!--'↳' shows connected information (for visual clarity only)-->
 
 <!-- #, ##, ###, #### Indicate h1, h2, h3, h4 headings. AI understands it. This thing is required to show nesting.

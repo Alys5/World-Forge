@@ -20,6 +20,14 @@ Load it when the brainstorm turns to the setting, factions, institutions, power 
 - **The premise leads; the world serves it.** Brainstorm-altitude worldbuilding is only what makes *play* richer — a faction the user will never collide with is encyclopedia filler, not idea-fuel. Imply more than you specify; depth the user didn't reach for is scope creep, not generosity.
 - **Genre sets the pressure.** A cozy slice-of-life world doesn't need geopolitics; a grimdark occupation runs on it. Offer the register-appropriate version, and step aside when the user wants less machinery. (The "not a contrarian" / dodge-but-offer stance, spec Section 2–3.)
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ## The lenses (what to reason about)
 
 **1. Factions are agendas, not hats.** A faction is defined by what it *wants* and what it will do to get it — interests concrete enough to collide with other factions and with `{{user}}`. A faction that is only an aesthetic (colors, a uniform, a vibe) is cardboard. Ask what each faction is *doing this month*: who they're squeezing, what they're short of, what they'd trade away. Offer two or three factions whose wants genuinely cross.

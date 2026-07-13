@@ -29,6 +29,14 @@ These rules are hard-fail-on-violation. Every other section of this spec elabora
    - **Array/List Constraints**: Strict adherence to exact item counts. When a template specifies a limit (e.g., "Exactly FIVE global scenarios"), you MUST generate exactly that number. No placeholders, no splitting limits across characters unless specifically dictated.
    - Every character draft must structurally include explicit data for the following categories: Appearance & Outfit, Inventory, Abilities & Species Traits, Sexuality, Speech Info.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ---
 
 ## 📂 CONTEXT MANIFEST — load exactly this

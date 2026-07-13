@@ -1,5 +1,12 @@
 # AGENTS.md — standing instructions for agentic tools
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ## JanitorAI Integration & Separation of Concerns
 
 This fork by **Lys_5** (JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5) introduces a highly specialized architecture to bypass JanitorAI's context limitations:

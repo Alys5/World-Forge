@@ -1,5 +1,12 @@
 # World Forge Pipeline: A Step-by-Step Tutorial
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 This tutorial walks through the World Forge pipeline using the **Lucifer** project as a worked example. You can follow along by reading the actual artifacts in `Samples/Drafts/` and `Samples/Export/` as they are referenced — every claim in this tutorial maps to a real file you can open.
 
 The Lucifer world was authored by skipping Phase 0 (the user wrote `World_Seed_Lucifer.md` directly). The remaining phases ran in full, including iterative Editor and auditor loops. By the time you finish reading this tutorial, you will know how to read any pipeline output, how to interpret each agent's role, and where to look when something is wrong.

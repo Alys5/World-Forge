@@ -1,6 +1,13 @@
 > [!WARNING]
 > **ARCHITECTURE UPDATE**: The monolithic `Janitor_Lorebook_Script.js` is deprecated. The World-Forge pipeline now enforces a Strict Template Compliance Mandate using a 4-template domain system (`World`, `Family`, `NPC`, and `NSFW`). All bot creation and scripting guidelines below should be applied with this new separation of concerns in mind.
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 # Foreword and Introduction
 This guide was written to give both new and experienced creators a clear, structured path into building effective chatbots on JanitorAI and similar platforms. Over the last several years, the community has experimented with countless templates, lorebooks, and scripting systems — and while fragments of best practices were scattered across guides, posts, and personal notes, there was never a single resource that pulled everything together in one place.
 

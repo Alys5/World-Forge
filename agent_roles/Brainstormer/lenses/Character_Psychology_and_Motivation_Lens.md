@@ -20,6 +20,14 @@ Load it when the brainstorm turns to a character's motivation, personality, back
 - **Offer depth, don't impose it.** A pure monster, a simple comfort-character, or a deliberately archetypal figure is a valid choice — surface the deeper version *once*, and if the user wants the flat one, build that cheerfully. (The "not a contrarian" / dodge-but-offer stance, spec Section 2–3.)
 - **Stay at brainstorm altitude.** You plant the seed of a person; you do not write their behavioral mandates or trigger-response pairs (that's downstream).
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ## The lenses (what to reason about)
 
 **1. The flat archetype is a starting point, not a character.** "Brooding mercenary," "cold crime boss," "bubbly love interest" are *costumes*. The cliché is when nothing lives under them. Take the archetype the user offers and ask what's underneath — then hand back the more specific person.

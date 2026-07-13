@@ -50,7 +50,7 @@ A complete SillyTavern-ready package per world:
 - **Tier 3, by World Mode:** *arc worlds* get **one Arc Lorebook per arc** — modular and swap-in: ARC_STATE, CHARACTER_STATE, NPC behavioral shifts, dramatic beats, tension entries. *Sandbox worlds* (open-ended power-fantasy / world-director worlds, run with `/worldforge start --sandbox`) get **one always-active Sandbox Lorebook** instead — SANDBOX_STATE (standing situation + tonal mandate + an aliveness contract) plus a WORLD_PULSE entry — and author large NPC casts as a principal/roster split with a per-NPC voice-fingerprint uniqueness rule.
 - **One Arc Intimacy Register per arc with intimate beats (Tier 3, conditional)** — arc-specific intimate function and per-character delta.
 - **One Chat Completion Preset** — the model's prompt blocks, injection order, and behavioral framework, parameterized for this world's prose conventions.
-- **JanitorAI Integration Files** — Custom HTML bios, bot profiles, and compiled Javascript lorebook scripts (Phase 6).
+- **JanitorAI Integration Files** — Custom HTML bios, bot profiles, and modular ES6 Javascript lorebook scripts (Phase 6). See [JanitorAI Integration](./wiki/JanitorAI-Integration.md) for ES6 Sandbox Scripting limitations and details on the included **WorldForge-Scripter** scripting mentor bot.
 - **One audit report** — runtime risks identified by the Prompt Engineer, with recommended corrections for the user to apply manually.
 
 ## Core architectural ideas

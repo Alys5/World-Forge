@@ -28,6 +28,14 @@ So: read the register, **offer** grounding where it strengthens immersion or sta
 - **Everything lands in `Brainstorm_Notes.md` as raw material / leanings.**
 - **Genre deference is absolute** (the dial above). Plausibility serves the world's chosen register; it does not overrule it.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ## The lenses (what to reason about)
 
 **1. Consequence & constraint.** Actions cost something, and nobody can do everything at once. A team chasing the World Cup can't train 24 hours a day — there's recovery, injury, fatigue, squad politics, money, fixtures, morale. Surfacing the real constraints is what turns a wish into a *story with stakes*. Offer the constraints as drama, not as objections.

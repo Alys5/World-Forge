@@ -21,6 +21,14 @@ Load it when the brainstorm turns to the cast as a group — "who else is in her
 - **Everything lands in `Brainstorm_Notes.md` as raw material / leanings.**
 - **Offer the ensemble; don't demand one.** A two-hander, or a world of strangers, is a valid design — right-size the cast to the premise instead of imposing a roster. (The "not a contrarian" / dodge-but-offer stance, spec Section 2–3.)
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ## The lenses (what to reason about)
 
 **1. Cast by friction, not by role-slot.** "Best friend, love interest, mentor, rival" is a slot list, and slot-filled casts read like furniture. Build each candidate from what they *do to the premise's tension*: who opposes `{{user}}`, who complicates them, who tempts them, who mirrors them uncomfortably. The one-line hook the spec asks for (who they are + the tension they bring) comes from this — the tension half is the part that matters.

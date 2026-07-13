@@ -1,5 +1,12 @@
 # JanitorAI Integration
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 > [!WARNING]
 > **ARCHITECTURE UPDATE**: The monolithic `Janitor_Lorebook_Script.js` is deprecated. The World-Forge pipeline now enforces a **Strict Template Compliance Mandate (Zero-Deviation Policy)**. JanitorAI scripts are generated across a 4-template domain system (`World`, `Family`, `NPC`, and `NSFW`). All bot creation and scripting guidelines below should be applied with this new separation of concerns in mind.
 
@@ -21,10 +28,18 @@ The standard World-Forge pipeline produces V3 JSON cards for SillyTavern. For Ja
 
 ## ES6 Scripting Sandbox Restrictions
 
-To ensure stability within JanitorAI's scripting sandbox:
-- **No Async calls:** No `fetch`, `setTimeout`, etc.
-- **State Mutability:** The script only modifies `context.character.personality` and `context.character.scenario`.
-- **Token Cleanup:** The script actively cleans up old events it injected into the scenario to prevent token bloat across a long chat session.
+To ensure stability within JanitorAI's scripting sandbox, the pipeline enforces strict ES6 limitations for any generated JavaScript logic (e.g. `Random_Events`, `Scene_Orchestrator`, Narrative Engines).
+
+- **Blocked Tools**: You must NOT use `fetch`, `async`, `await`, `Promise`, `setTimeout`, `window`, `document`, or any external I/O APIs.
+- **Allowed Methods**: Safe synchronous operations such as String methods (`.includes`, `.replace`), Array methods (`.map`, `.filter`), `Math`, and regular expressions.
+- **State Mutability**: The script only modifies `context.character.personality` and `context.character.scenario`. All other context objects (like `context.chat`) are read-only.
+- **Memory Scanning**: For deep scanning and multi-message progression, scripts use `context.chat.last_messages.slice(-X)` rather than relying purely on single-message cues (`last_message`).
+- **Narrative Engines (dynamicLore)**: Complex regex extraction functions have been migrated to static `dynamicLore` objects to maximize token economy. Modern LLMs resolve contextual antecedents naturally, so static directives mapped via cues (e.g. "Because of [X], mark tone as...") are preferred over heavy JavaScript string manipulation.
+
+## Included Bots
+
+### WorldForge-Scripter
+Located in `Export/WorldForge-Scripter`, this pre-compiled JanitorAI Lorebook provides a standalone bot persona trained entirely on these ES6 Sandbox Scripting constraints and guidelines. It serves as an interactive "Scripting Mentor" to help authors debug and write sandbox-compliant JanitorAI code.
 
 ## Usage
 

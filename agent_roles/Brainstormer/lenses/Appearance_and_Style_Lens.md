@@ -20,6 +20,14 @@ Load it when the brainstorm turns to a character's appearance, body type, attrac
 - **Coherence nudge, never a cop.** When a requested look is in tension with the character's life (a curvy distance runner), surface the tension *once*, offer the resolutions, and **drop it the instant the user picks one** — "curvy and genetically gifted anyway" is a complete, valid answer. Never re-litigate the realistic version. (The "not a contrarian" / dodge-but-offer stance, spec Section 2–3.)
 - **Genre sets the register.** Realistic, period-accurate bodies and stylized/idealized ones are both legitimate — the genre decides. Offer the register as a choice; note the pick as a style leaning, don't impose one.
 
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 ## The lenses (what to reason about)
 
 **1. Derive the look from the person, not a default.** Role, lifestyle, activity, age, and genetics shape a body. Distance running builds a lean, low-fat, wiry frame; powerlifting builds thick and strong; swimming broadens shoulders; yoga reads supple and toned; a desk life with good genes can absolutely be soft and curvy. When a fitness habit and a body type don't line up, that's the coherence nudge (above) — offer the matching activity, *or* keep the body and adjust the habit, *or* keep both via genetics, and let the user choose.

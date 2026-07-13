@@ -1,6 +1,13 @@
 I need you to generate a world lorebook for a text-based roleplaying game.
 Please output the result strictly as a valid JSON file using the exact structure provided below. Do not include markdown formatting errors, and do not include any comments in the final JSON output.
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 Here is the concept for the world, factions, and important items I want you to build:
 [INSERT YOUR WORLD LORE, PLACES, FACTIONS, AND IMPORTANT CONCEPTS HERE]
 

@@ -1,5 +1,12 @@
 # Agentic Tools and Models for World-Forge
 
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
 This page covers which agentic VS Code extensions can drive the World-Forge pipeline, how to configure them, and which underlying LLMs perform well in each phase. It is aimed at users who already understand what the pipeline does (see the [README](../README.md) and [tutorial.md](../tutorial.md)) and want to set up the *runtime environment* that executes it.
 
 > **TL;DR** — The recommended tool is **Antigravity**, which this repo ships preconfigured for (`.agents/skills/` Skill Engine). **Cline** works as a simpler alternative. **Kilo Code** (deprecated) and **Roo Code** (retired May 15, 2026) should not be adopted for new setups. The pipeline is **not** optimized for code-focused agents like Claude Code — see [Why Claude Code is a poor fit](#why-claude-code-is-a-poor-fit-currently). For the underlying LLM, prefer literary-register models (Claude Opus / Sonnet, GPT-5, Gemini 2.5 Pro) over coding-tuned variants.
