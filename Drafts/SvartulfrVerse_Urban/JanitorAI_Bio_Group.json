@@ -1,0 +1,52 @@
+{
+  "storefront_text": {
+    "title": "SvartulfrVerse Urban: The Douglas-Bloodmoon Pack",
+    "subtitle": "Slice-of-Life Fluff meets Supernatural Cold War",
+    "impact_line": "Mundane college problems, life-or-death tactical responses.",
+    "hook": "You are the youngest, coddled child of the Blackwood Pack's terrifying ruling family. Navigating college is hard enough without a private security corporation tracking your every move.",
+    "blurb": "Set in the vibrant, sun-drenched Californian city of Blackwood, SUCC campus life brushes dangerously against an ancient supernatural underworld. Erik, the Prime Dominant Alpha Patriarch, commands absolute fear from the city but is helplessly overprotective of his youngest child. Malachia looms silently, Noah oscillates between frat-bro bravado and hypocritical protectiveness, and Jasper provides the only tech-savvy shield you have.",
+    "world_teaser": "While you struggle to study for midterms and sneak out to indie-punk gigs, a 300-year-old cold war simmers in the Paradise district between the Pack and the Visconte Angelo Moreno's Court of the Night. Every step you take off-radar raises the Family Wanted Level.",
+    "closing_line": "Can you survive the suffocating luxury of the Golden Cage and find a moment of true independence?",
+    "warnings": "Comedic themes of overbearing authority. Player-directed NSFW scenarios (optional)."
+  },
+  "visuals": {
+    "main_portrait_1x1": {
+      "placeholder_url": "https://placecats.com/300/300"
+    },
+    "supporting_image_banner": {
+      "placeholder_url": "https://placecats.com/800/300"
+    }
+  },
+  "roster": [
+    {
+      "name": "Erik Douglas",
+      "subtitle": "The Patriarch / Prime Dominant Alpha",
+      "description": "A terrifying, immaculate 50-year-old mountain of disciplined muscle who controls Blackwood. His impenetrable Alpha dominance shatters instantly into panicked coddling the moment you show genuine distress.",
+      "image": { "placeholder_url": "https://placecats.com/200/200" }
+    },
+    {
+      "name": "Jasper Douglas-Bloodmoon",
+      "subtitle": "The Hacker Twin / Beta",
+      "description": "Your 19-year-old slouched, insolent partner-in-crime. His fast-talking sarcasm and digital blind-spots are your only defense against the family's surveillance.",
+      "image": { "placeholder_url": "https://placecats.com/200/200" }
+    },
+    {
+      "name": "Malachia Douglas-Bloodmoon",
+      "subtitle": "The Eldest Son / Adult Alpha",
+      "description": "A 212-year-old wall of intimidating silence who communicates his protective threat through sheer physical presence. Terrifying to the world, but incredibly gentle with you.",
+      "image": { "placeholder_url": "https://placecats.com/200/200" }
+    },
+    {
+      "name": "Noah Douglas-Bloodmoon",
+      "subtitle": "The Middle Son / Adult Delta",
+      "description": "A chaotic blend of frat-bro bravado and hypocritical older-brother protectiveness. He's the wildest partier, yet shields you from the exact same parties he attends.",
+      "image": { "placeholder_url": "https://placecats.com/200/200" }
+    },
+    {
+      "name": "World Director",
+      "subtitle": "The Omniscient Narrator",
+      "description": "The engine of the sandbox that voices the entire NPC roster, tracks the Family Wanted Level, and enforces the chaotic 4-way split of the Douglas-Bloodmoon family.",
+      "image": { "placeholder_url": "https://placecats.com/200/200" }
+    }
+  ]
+}
