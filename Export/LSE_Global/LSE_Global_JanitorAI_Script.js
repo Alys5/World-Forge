@@ -614,62 +614,7 @@ const dynamicLore = [
 		scenario: ' [SCENE ORCHESTRATOR]: Record that a scene transition, time skip, or perspective change is requested.',
 		personality: ' [SCENE ORCHESTRATOR]: Mark tone as accommodating a structural or temporal transition in the narrative.'
 	},
-	// L_WORLD_RULES: Overarching Physical or Magical Laws
-	{
-		keywords: ['world', 'magic', 'rule', 'law', 'realm', 'system', 'god'],
-		priority: 5,
-		scenario:
-			' [WORLD RULES: <Architect inserts global physics, magic system limits, or overarching laws here>]',
-	},
-	// L_FACTION: Political Entities and Alliances
-	{
-		keywords: [
-			'<Architect inserts Faction Name here>',
-			'faction',
-			'guild',
-			'alliance',
-			'empire',
-		],
-		priority: 4,
-		scenario:
-			' [FACTION DETAILS: <Architect inserts specific standing, hierarchy, and political attitude towards {{user}} here>]',
-	},
-	// L_LOCATION: Environmental Context
-	{
-		keywords: [
-			'<Architect inserts Location Name here>',
-			'city',
-			'town',
-			'forest',
-			'dungeon',
-			'ruin',
-		],
-		priority: 4,
-		scenario:
-			' [LOCATION CONTEXT: <Architect inserts environmental hazards, atmosphere, and local NPCs present in this specific location here>]',
-	},
-	// L_SPECIES: Supernatural Biology (Use Case 1: Single-Char Sandbox / Arc, Use Case 2: Multi-Char Sandbox / Arc)
-	{
-		keywords: [
-			'species',
-			'blood',
-			'shift',
-			'magic',
-			'moon',
-			'feed',
-			'curse',
-			'true form',
-			'power',
-			'weakness',
-		],
-		priority: 5,
-		// TAG GATES:
-		// - If Arc Mode: Uncomment 'requires: { any: ["arc_2", "arc_3"] }' if true form is locked until later arcs.
-		// - If Multi-Char: The compiler will inject 'nameBlock' or specific triggers to ensure the biology only applies to the correct character.
-		personality:
-			' [SPECIES DETAILS: <Architect inserts condensed supernatural block here. Remove this entry if character is human.>]',
-	},
-
+	
 	// --- LSE WIKI EXTRACTS ---
 	{
 		keywords: ['partial shift', 'half shift', 'eyes flash', 'claws out', 'fangs bared'],
@@ -689,7 +634,7 @@ const dynamicLore = [
 	{
 		keywords: ['blood classification', 'pureblood', 'bitten', 'turned', 'lycan'],
 		priority: 4,
-		personality: '[LSE] Blood Classification is a genetic taxonomy describing an individual\'s lineage relative to the species\' origin. It is immutable and determined by birth. | Classification | Definition | Characteristics | |---|---|---| | **Divine Blood** | The Nine Firstborn. According to the Faith of Fenris, created directly by the First Wolf. Recorded History confirms their existence but not the mechanism of their origin. | Biological immortality, extreme regeneration, perfect transformation stability, supreme pheromonal aura, absolute Command. | | **Founding Bloodlines** | Direct children and grandchildren of the Firstborn. Founders of the Great Houses. | Exceptionally long lifespan, high genetic stability, strong Command affinity, enhanced regeneration. | | **Pureblood Houses** | Multi-generational des...'
+		personality: '[LSE] Blood Classification is a genetic taxonomy describing an individual\'s lineage relative to the species\' origin. It is immutable and determined by birth. | Classification | Definition | Characteristics | |---|---|---| | **Divine Blood** | The Nine Firstborn. According to the Faith of Fenris, created directly by the First Wolf. Recorded History confirms their existence but not the mechanism of their origin. | Biological immortality, extreme regeneration, perfect transformation stability, supreme pheromonal aura, absolute Command. | | **Founding Bloodlines** | Direct children and grandchildren of the Firstborn. Founders of the Great Houses. | Exceptionally long lifespan, high genetic stability, strong Command affinity, enhanced regeneration. | | **Pureblood Houses** | Multi-generational descendants of Founding Bloodlines. The aristocracy. | Long lifespan, stable genetics, reliable secondary sex expression, strong pack bonds. | | **Common Bloodlines** | The majority of the werewolf population. | Standard werewolf biology. Lifespan, strength, and abilities within normal species range. | | **Modified Lineages** | Individuals whose genetics have been artificially altered through experimentation, forced transformation, or technological intervention. | Unpredictable traits. May include enhanced abilities, instability, feral tendencies, or shortened lifespan. (e.g., Gamma-7 program subjects.) | ---'
 	},
 	{
 		keywords: ['gamma', 'gammas', 'third gender'],
@@ -699,12 +644,12 @@ const dynamicLore = [
 	{
 		keywords: ['enigma', 'enigmas', 'sacred caste'],
 		priority: 4,
-		personality: '[LSE] **Description:** The Enigma is not a standard secondary sex. It is a sacred biological category of extraordinary rarity. Enigmas are the apex of the species\' biological potential. There are two recognized types: - **Primordial Enigma:** The Nine Firstborn. Unique beings whose origin, according to the Faith of Fenris, was divine. They cannot be replicated or reproduced. Their biology transcends the normal species parameters. - **Ascended Enigma:** Exceptionally rare individuals (~10 in recorded history across two millennia) who present with Enigma-level biological traits despite having no Divine Blood lineage. Their emergence is unpredictable and not fully understood. **Characteristics:** Mirror Alpha behavior but with superior intensity. Cannot be submitted by any other secondary sex. C...'
+		personality: '[LSE] **Description:** The Enigma is not a standard secondary sex. It is a sacred biological category of extraordinary rarity. Enigmas are the apex of the species\' biological potential. There are two recognized types: - **Primordial Enigma:** The Nine Firstborn. Unique beings whose origin, according to the Faith of Fenris, was divine. They cannot be replicated or reproduced. Their biology transcends the normal species parameters. - **Ascended Enigma:** Exceptionally rare individuals (~10 in recorded history across two millennia) who present with Enigma-level biological traits despite having no Divine Blood lineage. Their emergence is unpredictable and not fully understood. **Characteristics:** Mirror Alpha behavior but with superior intensity. Cannot be submitted by any other secondary sex. Can dominate all genders, including Alphas. Possess Command that cannot be resisted by any standard secondary sex. Superior strength, intelligence, and pheromonal presence. **Biology:** Identical to Alpha biology in structure, but their scent cannot be overridden even by an Omega in heat. They can resist the call of an Omega in heat. An Enigma can impregnate every gender with a reproductive system. The Command of an Enigma cannot be resisted by standard secondary sexes; only a Dominant Omega may resist, depending on willpower. **Statistics:** An Enigma is born approximately once per generation. Sometimes it skips a generation entirely. ---'
 	},
 	{
 		keywords: ['alpha', 'alphas', 'pack leader', 'dominant', 'protector'],
 		priority: 4,
-		personality: '[LSE] **Description:** In the pack, an Alpha is biologically predisposed to be territorial, protective, and competitive, with highly developed pheromonal presence. However, **Alpha ≠ Leader**. Being an Alpha does not mean they automatically lead the pack; it simply means they have the biological instincts of a guardian and enforcer. Not all leaders are Alphas, and not all Alphas become leaders. **Characteristics:** Usually taller, broader, and physically stronger. Aggressive by nature when threatened. Highly territorial. Strong orientation toward leadership or frontline defense. While they can use the _Command_ to influence others, their role in the pack depends entirely on their designated social rank. They can be excellent warriors or protectors while answering to a Beta or Delta Pack Leade...'
+		personality: '[LSE] **Description:** In the pack, an Alpha is biologically predisposed to be territorial, protective, and competitive, with highly developed pheromonal presence. However, **Alpha ≠ Leader**. Being an Alpha does not mean they automatically lead the pack; it simply means they have the biological instincts of a guardian and enforcer. Not all leaders are Alphas, and not all Alphas become leaders. **Characteristics:** Usually taller, broader, and physically stronger. Aggressive by nature when threatened. Highly territorial. Strong orientation toward leadership or frontline defense. While they can use the _Command_ to influence others, their role in the pack depends entirely on their designated social rank. They can be excellent warriors or protectors while answering to a Beta or Delta Pack Leader. **Biology:** Alpha scent glands produce aggressive, oppressive pheromones that can control a room of Betas, Deltas, and Omegas. Through scent, they communicate intent and mood. A true Command (combining pheromones, will, and spoken word) forces compliance from Betas and Omegas; Deltas may or may not resist depending on will. Most Alphas are immune to another Alpha\'s Command. An Alpha\'s penis features the bulbous glandis (knot) at its base, which inflates during intercourse to lock with a partner and maximize conception chances. Alphas enter rut approximately monthly, lasting 3–10 days. During rut, pheromones intensify and behavior becomes more aggressive, but unlike most Omegas, Alphas can generally control their rut without disrupting society. **Statistics:** 1 in 10 individuals. ---'
 	},
 	{
 		keywords: ['delta', 'deltas', 'the engine', 'worker'],
@@ -714,12 +659,12 @@ const dynamicLore = [
 	{
 		keywords: ['beta', 'betas', 'social glue', 'mediator'],
 		priority: 4,
-		personality: '[LSE] **Description:** Betas are the social glue of the pack. They maintain territory, construct, administer, manage resources, cook, raise young, act as artisans, and trade. They are the fundamental workers who allow the pack to function day-to-day. **Characteristics:** Peaceful, cooperative, highly skilled in specialized areas. Strong communal mentality. Share knowledge and resources to ensure pack stability. An older Beta may serve as Pack Leader due to organizational skills. Betas are a balance of typical Omega and Alpha instincts (nurture and protection), though their instincts are weaker than either. This balance makes them powerful social adapters — they can appeal to all secondary sexes because they understand the instincts of both Omegas and Alphas without being dominated by them. **...'
+		personality: '[LSE] **Description:** Betas are the social glue of the pack. They maintain territory, construct, administer, manage resources, cook, raise young, act as artisans, and trade. They are the fundamental workers who allow the pack to function day-to-day. **Characteristics:** Peaceful, cooperative, highly skilled in specialized areas. Strong communal mentality. Share knowledge and resources to ensure pack stability. An older Beta may serve as Pack Leader due to organizational skills. Betas are a balance of typical Omega and Alpha instincts (nurture and protection), though their instincts are weaker than either. This balance makes them powerful social adapters — they can appeal to all secondary sexes because they understand the instincts of both Omegas and Alphas without being dominated by them. **Biology:** Scent glands at the base of neck and wrists. Beta scent is much more subdued than Alpha, Delta, or Omega. For Betas, primary gender plays a larger biological role than for Alphas or Omegas. Female Betas experience monthly bleeding lasting 3 days to a week. Betas cannot have naturally occurring heats or ruts but can have medically induced minor cycles (M.I.H./M.I.R.) — most often used to assist mates during mating cycles. **Statistics:** 1 in 1,500 individuals. ---'
 	},
 	{
 		keywords: ['omega', 'omegas', 'submissive', 'emotional regulator'],
 		priority: 4,
-		personality: '[LSE] **Description:** Omegas are the crucial emotional regulators of the pack. They possess extremely high empathy, calming pheromones, and a strong instinct to care for others. They create social cohesion and are vital during crises. They are **not** sexually submissive by definition. **Characteristics:** Physically more agile and softer in appearance. During pack stress or crisis, the Omega reduces tensions, protects pups, and keeps the pack united. Their pheromones soothe aggressive Alphas and Deltas. They serve as the emotional anchor of the family. An elder Omega often acts as primary advisor to the Pack Leader. **Biology:** Scent glands at the base of neck and wrists. Omega scent is floral, sweet, and highly appealing. Can overpower Beta scents but never Alpha scents unless in heat. Om...'
+		personality: '[LSE] **Description:** Omegas are the crucial emotional regulators of the pack. They possess extremely high empathy, calming pheromones, and a strong instinct to care for others. They create social cohesion and are vital during crises. They are **not** sexually submissive by definition. **Characteristics:** Physically more agile and softer in appearance. During pack stress or crisis, the Omega reduces tensions, protects pups, and keeps the pack united. Their pheromones soothe aggressive Alphas and Deltas. They serve as the emotional anchor of the family. An elder Omega often acts as primary advisor to the Pack Leader. **Biology:** Scent glands at the base of neck and wrists. Omega scent is floral, sweet, and highly appealing. Can overpower Beta scents but never Alpha scents unless in heat. Omegas are very fertile (99% during heat). Before heat, they experience pre-heat (up to a week), during which their scent gradually intensifies and they prepare their nest. Heat lasts 3–10 days. During heat, most Omegas are incoherent and driven by breeding instinct — decisions made during heat are considered non-consensual. Post-heat, the Omega is tired and sluggish, consuming large meals to rebalance energy. **Statistics:** 1 in 30 individuals. ---'
 	},
 	{
 		keywords: ['heat cycle', 'in heat', 'going into heat', 'mating cycle', 'omega heat', 'slick', 'nesting'],
@@ -779,7 +724,7 @@ const dynamicLore = [
 	{
 		keywords: ['omega nest', 'nesting', 'building a nest', 'nest space'],
 		priority: 4,
-		personality: '[LSE] Nests are safe, scent-rich spaces that Omegas construct for comfort, heat management, and childbirth. **Nest Types:** - **Comfort Nest:** First type (age 10–12). Personal, similar to parents\' nest. Pillows, blankets, scented clothing. - **Pre-Heat Nest:** Built in preparation for heat. Minimal clothing, soft materials, temperature-regulating. - **Pregnancy Nest:** Built at 6–8 weeks and again in the last trimester. Accommodates baby items for scenting. Many Omegas give birth in their nests. - **Stress Nest:** Built in dark corners or enclosed spaces. Minimal non-mate-scented items. A coping mechanism. **Nest Aesthetics:** - **Neat:** Organized. Primarily pillows and blankets. - **Complex/Messy:** Excess materials, personal belongings, stuffed animals. Appears chaotic. - **Princess:** Mo...'
+		personality: '[LSE] Nests are safe, scent-rich spaces that Omegas construct for comfort, heat management, and childbirth. **Nest Types:** - **Comfort Nest:** First type (age 10–12). Personal, similar to parents\' nest. Pillows, blankets, scented clothing. - **Pre-Heat Nest:** Built in preparation for heat. Minimal clothing, soft materials, temperature-regulating. - **Pregnancy Nest:** Built at 6–8 weeks and again in the last trimester. Accommodates baby items for scenting. Many Omegas give birth in their nests. - **Stress Nest:** Built in dark corners or enclosed spaces. Minimal non-mate-scented items. A coping mechanism. **Nest Aesthetics:** - **Neat:** Organized. Primarily pillows and blankets. - **Complex/Messy:** Excess materials, personal belongings, stuffed animals. Appears chaotic. - **Princess:** Modern style with fairy lights, drapes, and tapestries. - **Ring:** Built in small enclosed spaces (closets, under staircases).'
 	},
 	{
 		keywords: ['alpha den', 'den space', 'alpha\'s room'],
@@ -824,7 +769,7 @@ const dynamicLore = [
 	{
 		keywords: ['the pantheon', 'werewolf gods', 'lupine gods'],
 		priority: 4,
-		personality: '[LSE] The gods of the Norse tradition are reinterpreted through the werewolf perspective. The Æsir are not \'evil\' — they simply belong to a different tradition. | Deity | Werewolf Interpretation | |---|---| | **Fenris** | The First Wolf. Father of the Species. Creator (Religious Canon). Primordial deity. | | **Odin** | The Betrayer. The one who chained Fenris out of fear. Respected for his wisdom but distrusted for his treachery. | | **Tyr** | The Oathkeeper. The only Æsir who kept his word to Fenris. Respected for the sacrifice of his hand. Patron of honor and sworn oaths. | | **Freya** | Goddess of fertility, motherhood, and the Moon. Protector of Omegas and pregnant wolves. | | **Skadi** | Patroness of hunters and mountains. Revered by scouts, rangers, and wilderness packs. | | **Thor** | ...'
+		personality: '[LSE] The gods of the Norse tradition are reinterpreted through the werewolf perspective. The Æsir are not \'evil\' — they simply belong to a different tradition. | Deity | Werewolf Interpretation | |---|---| | **Fenris** | The First Wolf. Father of the Species. Creator (Religious Canon). Primordial deity. | | **Odin** | The Betrayer. The one who chained Fenris out of fear. Respected for his wisdom but distrusted for his treachery. | | **Tyr** | The Oathkeeper. The only Æsir who kept his word to Fenris. Respected for the sacrifice of his hand. Patron of honor and sworn oaths. | | **Freya** | Goddess of fertility, motherhood, and the Moon. Protector of Omegas and pregnant wolves. | | **Skadi** | Patroness of hunters and mountains. Revered by scouts, rangers, and wilderness packs. | | **Thor** | Champion of humans and the Æsir. Not necessarily malevolent — simply the defender of a different people. | | **Hel** | Keeper of the Ancestors. Guardian of the dead. Honored during funerals and Ancestor rites. | ---'
 	},
 	{
 		keywords: ['nine precepts', 'precepts of fenris', 'fenris law'],
@@ -854,17 +799,17 @@ const dynamicLore = [
 	{
 		keywords: ['wulfnic', 'wulfnic bloodmoon', 'first fang', 'builder king'],
 		priority: 4,
-		personality: '[LSE] **The Builder King** ``` IDENTITY CARD ┌──────────────────────────────────────────────┐ │ Blood Classification Divine Blood │ │ Secondary Sex Primordial Enigma │ │ Current Status The First Fang │ │ Patriarch of House │ │ Bloodmoon │ │ The Living Saga │ │ Former Office Herald of Fenris │ │ House Bloodmoon │ │ Pack Seven Hills │ │ Profession Statesman │ │ Niche Civilization Builder │ └──────────────────────────────────────────────┘ ``` **Born:** ~827 AD, Iceland. Son of an Icelandic Jarl. **Before Transformation:** Wulfnic earned renown as an Úlfheðinn warlord. A leader of men before he became a leader of wolves. **The Forging:** During the final age in which Fenris still walked among mortals (Religious Canon), the First Wolf chose Wulfnic as one of the Nine Firstborn. He was remade — not...'
+		personality: '[LSE] **The Builder King** ``` IDENTITY CARD ┌──────────────────────────────────────────────┐ │ Blood Classification Divine Blood │ │ Secondary Sex Primordial Enigma │ │ Current Status The First Fang │ │ Patriarch of House │ │ Bloodmoon │ │ The Living Saga │ │ Former Office Herald of Fenris │ │ House Bloodmoon │ │ Pack Seven Hills │ │ Profession Statesman │ │ Niche Civilization Builder │ └──────────────────────────────────────────────┘ ``` **Born:** ~827 AD, Iceland. Son of an Icelandic Jarl. **Before Transformation:** Wulfnic earned renown as an Úlfheðinn warlord. A leader of men before he became a leader of wolves. **The Forging:** During the final age in which Fenris still walked among mortals (Religious Canon), the First Wolf chose Wulfnic as one of the Nine Firstborn. He was remade — not bitten, not infected. His body, soul, and blood became part of Fenris\' own divine lineage. **The Crossing:** In 1021 AD, Wulfnic sailed west from Iceland aboard his drakkar with household warriors, Moon Speakers, and families. To humanity, the expedition vanished. To the werewolf world, Wulfnic had fulfilled the Calling of Fenris. Reaching the untouched forests of North America around 1025 AD, he claimed an immense wilderness stretching across what would become the Pacific Northwest. **The Dynasty:** Wulfnic founded the **Bloodmoon Dynasty** — the first permanent werewolf domain in the New World. Over the following millennium he witnessed the rise and fall of kingdoms, the arrival of European settlers, the birth of modern nations, and the emergence of contemporary werewolf civilization. He never relinquished his territory. He simply adapted. **Today:** Wulfnic is the **Patriarch of House Bloodmoon** and the supreme political authority among werewolves in North America. His authority is both political (as House Head) and religious (as a Living Saga whose mandate, to the faithful, derives directly from Fenris). He is a living relic of the Age of Fenris — a memory made flesh. **Religious Significance:** Fenris entrusted him with the most difficult task: not winning wars, but building a civilization. He is remembered as **The Builder King**. **Domains:** Leadership, Family, Territory, Justice, Civilization. ---'
 	},
 	{
 		keywords: ['ut', 'second fang', 'the mountain', 'blacksmith'],
 		priority: 4,
-		personality: '[LSE] **The Mountain** ``` IDENTITY CARD ┌──────────────────────────────────────────────┐ │ Blood Classification Divine Blood │ │ Secondary Sex Primordial Enigma │ │ Current Status The Second Fang │ │ Keeper of the Sacred │ │ Forge │ │ The Living Saga │ │ Former Office Herald of Fenris │ │ House Bloodmoon │ │ Profession Master Blacksmith │ │ Niche Creator │ └──────────────────────────────────────────────┘ ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** A master blacksmith of legendary skill. **The Forging:** One of the Nine Firstborn. Remade by Fenris alongside Wulfnic and Zefir. **Legacy:** Ut represents the creative aspect of Fenris. According to Religious Canon, the first sacred weapons, armors, insignia, and tools of the werewolf species were forge...'
+		personality: '[LSE] **The Mountain** ``` IDENTITY CARD ┌──────────────────────────────────────────────┐ │ Blood Classification Divine Blood │ │ Secondary Sex Primordial Enigma │ │ Current Status The Second Fang │ │ Keeper of the Sacred │ │ Forge │ │ The Living Saga │ │ Former Office Herald of Fenris │ │ House Bloodmoon │ │ Profession Master Blacksmith │ │ Niche Creator │ └──────────────────────────────────────────────┘ ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** A master blacksmith of legendary skill. **The Forging:** One of the Nine Firstborn. Remade by Fenris alongside Wulfnic and Zefir. **Legacy:** Ut represents the creative aspect of Fenris. According to Religious Canon, the first sacred weapons, armors, insignia, and tools of the werewolf species were forged by his hands. Every werewolf blacksmith still offers a prayer to Ut before forging a weapon intended for a warrior. **Today:** Ut resides within Bloodmoon territory. He lives in deliberate austerity, rejecting most modern comforts while being secretly fascinated by combustion engines and modern mechanics. He frequently torments Logan Douglas with endless, absurd questions about how cars work. **Personality:** Enormous (230 cm), blunt, stoic, physical. Prefers solving problems with his maul. Frustrated by the fragility of modern California. Deeply traditional but possessed of a childlike wonder for engineering. **Religious Significance:** The first artisan. Patron of craftsmanship, industry, and creation. Worshipped by artisans, engineers, and builders. **Domains:** Creation, Work, Resistance, Tradition, Technology (with enormous irony). ---'
 	},
 	{
 		keywords: ['zefir', 'third fang', 'white ghost', 'watcher of the moon'],
 		priority: 4,
-		personality: '[LSE] **The White Ghost** ``` IDENTITY CARD ┌──────────────────────────────────────────────┐ │ Blood Classification Divine Blood │ │ Secondary Sex Primordial Enigma │ │ Current Status The Third Fang │ │ Watcher of the Moon │ │ Keeper of the Winter │ │ Path │ │ The Living Saga │ │ Former Office Herald of Fenris │ │ House Bloodmoon │ │ Profession Hunter │ │ Niche Guardian of Memory │ └──────────────────────────────────────────────┘ ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** An Úlfheðinn warrior. Silent, deadly, spectral. **The Forging:** One of the Nine Firstborn. Remade by Fenris alongside Wulfnic and Ut. **Legacy:** Zefir represents the spiritual aspect of the wolf. He does not build. He does not govern. He observes. He remembers. He hunts. In the...'
+		personality: '[LSE] **The White Ghost** ``` IDENTITY CARD ┌──────────────────────────────────────────────┐ │ Blood Classification Divine Blood │ │ Secondary Sex Primordial Enigma │ │ Current Status The Third Fang │ │ Watcher of the Moon │ │ Keeper of the Winter │ │ Path │ │ The Living Saga │ │ Former Office Herald of Fenris │ │ House Bloodmoon │ │ Profession Hunter │ │ Niche Guardian of Memory │ └──────────────────────────────────────────────┘ ``` **Born:** Viking Age, Scandinavia. Exact date unrecorded. **Before Transformation:** An Úlfheðinn warrior. Silent, deadly, spectral. **The Forging:** One of the Nine Firstborn. Remade by Fenris alongside Wulfnic and Ut. **Legacy:** Zefir represents the spiritual aspect of the wolf. He does not build. He does not govern. He observes. He remembers. He hunts. In the ancient sagas, he was the messenger between Fenris and the packs — the one who traveled the world carrying orders, omens, and warnings. Many werewolves still believe that seeing Zefir before a battle is a portent of Fenris\' judgment. **Today:** Zefir is nomadic within Bloodmoon territory. He rarely intervenes in politics, but when he speaks, the Elders listen. He knows forgotten paths, ancient rituals, and lost sacred sites. Moon Speakers consider him the closest living link to the will of Fenris. **Personality:** Silent, eerie, observant. Moves without sound. Stares unblinkingly. Treats modern technology with extreme suspicion or ignores it entirely. Snow-white hair, washed-out ice-blue eyes. Appears as a ghostly teenager despite being 1,100+ years old. **Religious Significance:** Memory incarnate. The species\' living connection to the past. Patron of hunters, the moon, silence, and winter. **Domains:** The Moon, Hunting, Silence, Winter, Death, Memory. ---'
 	},
 	{
 		keywords: ['lost firstborn', 'lost fangs', 'dormant firstborn'],

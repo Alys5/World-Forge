@@ -132,10 +132,6 @@ def extract_entries():
         
         keywords = KEYWORD_MAPPING[header]
             
-        # Condense text if too long (Janitor limit per entry is ~600 chars for good performance)
-        if len(text) > 800:
-            text = text[:797] + "..."
-            
         dynamic_lore_objects.append({
             "keywords": keywords,
             "priority": 4,
@@ -177,6 +173,10 @@ def build():
     match = re.search(r'(const dynamicLore = \[.*?)(\];)', js_content, re.DOTALL)
     if match:
         prefix = js_content[:match.start()] + match.group(1)
+        # Strip out the base template placeholders that start with // L_WORLD_RULES
+        if '// L_WORLD_RULES:' in prefix:
+            prefix = prefix.split('// L_WORLD_RULES:')[0]
+        
         suffix = match.group(2)
         
         injections = []
