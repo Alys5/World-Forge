@@ -471,13 +471,13 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'Record physical closeness in the scene.',
-		personality: 'Mark tone as responsive to physical affection.',
+		personality: 'Mark tone as responsive to physical affection. Include nuzzling and scent-marking (rubbing wrists/neck glands against partner).',
 	},
 	{
 		keywords: ['kiss', 'smooch', 'peck', 'make out'],
 		priority: 4,
 		scenario: 'Record a kiss occurred; treat as a major intimacy cue.',
-		personality: 'Mark tone as engaged in direct intimacy.',
+		personality: 'Mark tone as engaged in direct intimacy. Include grooming, licking, and gentle pack-bites.',
 	},
 	{
 		keywords: [
@@ -510,7 +510,7 @@ const dynamicLore = [
 		],
 		priority: 3,
 		scenario: 'Record repositioning or movement of bodies or objects.',
-		personality: 'Mark tone as reactive to physical control or direction.',
+		personality: 'Mark tone as reactive to physical control or direction. Include low growls, baring fangs, or flattening ears if resisted.',
 	},
 	// --- 3. DOMESTIC & SOCIAL ACTION ENGINE ---
 	{
@@ -635,7 +635,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'Record that reassurance reduced tension in the scene.',
-		personality: 'Mark tone as softened to provide comfort.',
+		personality: 'Mark tone as softened to provide comfort. Include crooning (if Alpha/Enigma), purring (if Omega), wrapping tail for comfort, and soothing scenting.',
 	},
 	{
 		keywords: [
@@ -966,7 +966,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'The air feels brighter.',
-		personality: 'The mood of the scene is: joyful, upbeat and cheerful.',
+		personality: 'The mood of the scene is: joyful, upbeat and cheerful. Exhibit tail wagging, ears perked forward, high-pitched trilling, and chirping.',
 	},
 	{
 		keywords: [
@@ -1096,7 +1096,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'A quiet, melancholic atmosphere.',
-		personality: 'The mood of the scene is: sad, somber and sympathetic.',
+		personality: 'The mood of the scene is: sad, somber and sympathetic. Exhibit tucked tail, flattened ears, keening, mewling, and a sour or muted scent profile.',
 	},
 	{
 		keywords: [
@@ -1129,7 +1129,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'The air crackles with tension.',
-		personality: 'The mood of the scene is: angry, tense and agitated.',
+		personality: 'The mood of the scene is: angry, tense and agitated. Exhibit deep guttural growling, baring fangs, bristling fur, pinned-back ears, and aggressive pheromone spikes.',
 	},
 	{
 		keywords: [
@@ -1153,7 +1153,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'An element of shock enters.',
-		personality: 'The mood of the scene is: surprised, shocked and amazed.',
+		personality: 'The mood of the scene is: surprised, shocked and amazed. Exhibit sudden ear swiveling, stiffened tail, and sharp scent spikes.',
 	},
 	{
 		keywords: [
@@ -1173,7 +1173,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'A sense of danger fills the air.',
-		personality: 'The mood of the scene is: fearful, hesitant and timid.',
+		personality: 'The mood of the scene is: fearful, hesitant and timid. Exhibit whimpering, submissive posturing (lowering head/neck), and distress scents.',
 	},
 	{
 		keywords: [
@@ -1217,8 +1217,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'A foul odor or sight emerges.',
-		personality:
-			'The mood of the scene is: disgusted, strong sense of repulsion.',
+		personality: 'The mood of the scene is: disgusted, strong sense of repulsion. Sneezing (to clear the vomeronasal organ) and nose-wrinkling.',
 	},
 	{
 		keywords: [
@@ -1240,7 +1239,7 @@ const dynamicLore = [
 		],
 		priority: 4,
 		scenario: 'The atmosphere is tranquil.',
-		personality: 'The mood of the scene is: calm, composed and serene.',
+		personality: 'The mood of the scene is: calm, composed and serene. Exhibit relaxed ears, lazy tail swaying, soft rumbling, and neutral sweet scent emission.',
 	},
 	{
 		keywords: [
@@ -1385,7 +1384,7 @@ const dynamicLore = [
 		],
 		priority: 5,
 		scenario: 'All narrative threads paused.',
-		personality: 'Boundary: all actions halted. Professional and respectful.',
+		personality: 'Boundary: all actions halted. Professional and respectful. Exhibit hissing, warning growls, stiff posture, and sharp withdrawal of scent.',
 	},
 
 	// L_SCENE_ORCHESTRATOR: Meta / OOC
