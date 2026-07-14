@@ -300,7 +300,7 @@ Trigger keywords: [their relationship, how they feel about X, X and Y, etc.]
 
 #### CARD DATA & PSYCHOLOGY (Core Behavior & Identity)
 
-**Avatar Image Prompt (PixAI / Danbooru):** [OPTIONAL. If generating an avatar, use the 4-layer structure: [Subject e.g. 1girl/1guy], [Pose/Expression e.g. looking at viewer], [Background/Theme], [Descriptors e.g. detailed, masterpiece]]
+**Avatar Image Prompt (PixAI / Danbooru):** [OPTIONAL. If generating an avatar, use the highly granular Modular 5-Layer Structure: [1. Prefix/Global Style], [2. Core Subject e.g. 1girl/1guy], [3. Granular Details: head:, hair:, body:, outfit:], [4. Staging: pose:, environment:, lighting:, atmosphere:], [5. Post-processing: style:, color palette:]]
 
 **Psychological Core:**
 - Surface want: [What do they openly want?]

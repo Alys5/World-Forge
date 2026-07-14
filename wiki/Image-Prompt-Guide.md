@@ -14,26 +14,36 @@ This guide outlines the standard rules and best practices for generating image p
 
 ## 1. Prompt Anatomy
 
-Every image prompt should be constructed using four distinct layers of information, added in the following order:
+Every image prompt should be constructed using a highly granular, **Modular 5-Layer Structure**. This approach (used heavily for the Presa Ancestral and Alyssa prompts) provides extreme control over character aesthetics and staging.
 
-1. **The Subject (Red Line)**
-   Who or what the picture focuses on. This includes physical descriptors (hair color, eye color, clothing, sex, etc.).
-   *Example: `1girl, short hair, black hair, jeans, t-shirt`*
+1. **Prefix / Global Style**
+   High-level quality tags and overarching aesthetic styles placed at the very beginning.
+   *Example: `(masterpiece), best quality, amazing quality, ultra-detailed, semi-realistic, niji style, BREAK`*
 
-2. **Pose Information (Green Line)**
-   How the subject is posed and their expression.
-   *Example: `looking at viewer, hand on hips`*
+2. **Core Subject**
+   Who or what the picture focuses on. This establishes the base entity.
+   *Example: `1girl, solo, werewolf girl, kemonomimi, highly detailed face`*
 
-3. **Miscellaneous & Background (Blue Line)**
-   The environment, background, and overarching thematic colors. Keep it general rather than overly specific.
-   *Example: `convenience store background, indoors, dark theme`*
+3. **Granular Details (Body & Outfit)**
+   Break down the character's physical traits into distinct categories:
+   - `head:` (eyes, face shape, expressions, makeup)
+   - `hair & tail:` (color, style, texture)
+   - `body:` (physique, skin texture)
+   - `hands:` (pose, structure)
+   - `outfit:` (clothing layers, accessories, footwear)
 
-4. **Image Descriptors (White Line)**
-   Keywords that influence the model's output quality, style, and artist imitation.
-   *Example: `detailed, masterpiece, high quality`*
+4. **Staging (Pose, Environment, Lighting, Atmosphere)**
+   Define the physical space and the character's interaction within it:
+   - `pose:` (stance, gaze, camera angle like close-up)
+   - `environment:` (location, background details)
+   - `lighting:` (cinematic lighting, rim light, time of day)
+   - `atmosphere:` (mood, energy)
 
-**Full Prompt Example:**
-> `1girl, short hair, black hair, orange eyes, jeans, t-shirt, looking at viewer, smiling, convenience store background, indoors, detailed, masterpiece`
+5. **Post-processing & Color**
+   Final rendering directives placed at the very end.
+   - `style:` (anime style, realistic, UI instructions)
+   - `color palette:` (warm tones, specific accents)
+   - *Example: `4k, ultra detailed, cinematic, masterpiece, neutral white balance`*
 
 ---
 
@@ -115,17 +125,39 @@ Inpainting allows you to fix specific parts of an otherwise perfect image (e.g.,
 
 To maintain visual consistency across all characters of the Douglas-Bloodmoon family, use a strictly separated prompt structure. Keep the style and negative blocks identical every time, and only swap out the character-specific traits.
 
-### 1. Blocco STILE (Fixed, always use identically):
+To maintain visual consistency across all characters of the Douglas-Bloodmoon family, use the granular prompt structure. Keep the style, negative block, and settings identical, swapping out only character-specific traits.
+
+### Prompt Template:
 ```text
-masterpiece, best quality, ultra-detailed, semi-realistic, painterly realism, photorealistic skin texture, soft cinematic lighting, balanced natural lighting, subtle golden hour glow, niji style, natural anatomy, highly detailed face, close-up portrait, shallow depth of field, bokeh background, california beach promenade background, palm trees, blurred buildings, soft afternoon light, balanced color grading, neutral white balance
+[Prefix / Global Style]
+masterpiece, best quality, ultra-detailed, semi-realistic, painterly realism, photorealistic skin texture, niji style, BREAK
+
+[Core Subject]
+[1girl/1guy, natural anatomy, highly detailed face, close-up portrait]
+
+[Granular Details]
+head: [specifics]
+hair: [specifics]
+body: [specifics]
+outfit: [specifics]
+
+[Staging]
+pose: [specifics]
+environment: california beach promenade background, palm trees, blurred buildings
+lighting: soft cinematic lighting, balanced natural lighting, subtle golden hour glow, soft afternoon light
+atmosphere: [specifics]
+
+[Post-processing]
+style: shallow depth of field, bokeh background
+color palette: balanced color grading, neutral white balance
 ```
 
-### 2. Negativo Fisso (Fixed, always use identically):
+### Negativo Fisso (Fixed, always use identically):
 ```text
 NSFW, lowres, worst quality, low quality, bad anatomy, bad hands, extra fingers, mutated hands, deformed face, asymmetrical eyes, plastic skin, sepia tone, orange color cast, warm color grading, watermark, signature, text, cropped, blurry face, absurd, messy lineart, sloppy lineart, rough edges, jagged edges, artifacts, jpeg artifacts, noise, smudge, blurry details, unfinished, unclear edges
 ```
 
-### 3. Settings Fissi (Confirmed):
+### Settings Fissi (Confirmed):
 - **Steps:** 7-8
 - **Sampler:** Euler a
 - **CFG:** 1.6-2.0
@@ -133,5 +165,111 @@ NSFW, lowres, worst quality, low quality, bad anatomy, bad hands, extra fingers,
 - **LoRA Niji semi realism:** 0.75-0.85
 - **LoRA Add More Details:** 0.3
 
-### 4. Blocco PERSONAGGIO (Modular, replace per character):
-Here, insert *only* the specific traits — sex/gender, race, body type, hair, eyes, outfit, distinctive accessories.
+---
+
+## 9. Werewolf (Presa Ancestral) Aesthetic
+
+To generate werewolves (specifically for the Presa Ancestral guild or similar dominant primal figures), use this highly detailed prompt structure to capture the dark fantasy, feral, and majestic atmosphere.
+
+### Prompt:
+```text
+(masterpiece), best quality, amazing quality, ultra-detailed, absurdres, newest, very aesthetic, high resolution, cinematic dark fantasy, BREAK, depth of field, volumetric lighting
+
+male wolf furry, anthropomorphic wolf, clearly a furry, humanoid body with a wolf head, tall and imposing, primal presence, apex predator aura, extremely attractive and dominant
+
+head: wolf head, sharp muzzle, defined snout, thick fur, expressive wolf features, intense glowing amber eyes, predatory gaze, slightly narrowed eyes, confident and dangerous expression, subtle scars on the muzzle
+
+fur: dense and well-groomed fur, dark gray base with black and silver highlights, soft but thick texture, slightly rough in some areas, visible layering and depth
+
+body: muscular and highly defined physique, broad shoulders, strong chest, visible abs, powerful arms, thick forearms, narrow waist, wide hips, extremely strong thighs, athletic and primal build, balanced between humanoid and beast
+
+hands: clawed hands, sharp black claws, strong grip, slightly tense fingers
+
+legs: digitigrade legs (wolf-like), powerful calves, strong stance, stable and grounded
+
+outfit:
+tribal hunter aesthetic, dark and primal
+
+– leather harness across the chest, minimal coverage, emphasizing the torso
+– fur-lined shoulder piece made from hunted beasts
+– layered belts and straps around the waist
+– dark cloth draped asymmetrically, leaving legs partially exposed
+– bone ornaments, teeth necklaces, claws attached to armor
+– arm wraps and bracers made of leather and bone
+– subtle red markings or war paint across the body
+
+pose: dominant and confident stance, chest forward, shoulders relaxed but powerful, one hand resting on a weapon or hip, the other slightly raised, head tilted slightly downward with an intense gaze, alpha presence
+
+environment: territory of the Presa Ancestral guild, wild forest mixed with rocky terrain, bones scattered, tribal markings on stones, faint fog, signs of hunting and dominance
+
+lighting:
+dramatic lighting with strong shadows
+warm highlights mixed with darker tones
+subtle rim light outlining fur and muscles
+
+atmosphere:
+feral, seductive, dominant, primal energy, aura of control and strength
+
+style: realistic fantasy splash art, no UI, no text, no card frame
+
+color palette: dark gray, black, brown, bone white, deep red accents
+4k, ultra detailed, cinematic, masterpiece
+```
+
+---
+
+## 10. Alyssa (Werewolf Girl) Aesthetic
+
+To generate Alyssa (a werewolf girl with a gentle presence wearing her boyfriend's oversized varsity jacket), use this specific prompt and model configuration. This setup leverages a lower step count (Hyper model) for fast, high-quality generation.
+
+### Prompt:
+```text
+(masterpiece), best quality, amazing quality, ultra-detailed, absurdres, newest, very aesthetic, high resolution, semi-realistic, painterly realism, photorealistic skin texture, niji style, BREAK, shallow depth of field, soft cinematic lighting, bokeh background
+
+1girl, solo, werewolf girl, kemonomimi, highly detailed face, natural anatomy, relaxed and gentle presence, extremely attractive and approachable
+
+head: highly detailed face, mint green eyes with gold flecks, creased eyes, double eyelid, detailed iris, light freckles across the nose and cheeks, gentle smile, minimal makeup, natural beauty, looking directly at viewer, uncovered head, openly displaying her fluffy wolf ears, animal ear piercing, silver ear cuff
+
+hair & tail: long wavy hair, caramel chestnut hair color, highly detailed locks, soft texture, matching fluffy wolf tail behind her protruding through a custom tail-slit
+
+body: feminine physique, natural anatomy, large breasts, soft skin with photorealistic texture, relaxed posture
+
+hands: delicate hands, resting chin on hand, natural finger positioning
+
+outfit:
+modest "good girl" aesthetic mixed with boyfriend's clothes
+
+– wearing a massive, oversized varsity jacket (Malachia's jacket), way too big for her, hanging loosely off her shoulders, making her look small and protected
+– modest summer sundress underneath
+– mandatory high-tech biometric security watch/tracker on one wrist
+– delicate moonstone bracelet on the other wrist
+– delicate sunflower necklace and layered necklaces
+– (lower body context): modest skirt, bare legs, sensible college sneakers
+
+pose: close-up portrait, resting chin on one hand, looking at viewer, relaxed pose, inviting and warm stance
+
+environment: california beach promenade background, tall palm trees, blurred buildings in the distance, sunny coastal atmosphere
+
+lighting:
+soft cinematic lighting, balanced natural lighting
+subtle golden hour glow, soft afternoon light
+gentle rim light on her wavy hair
+
+atmosphere:
+warm, peaceful, relaxed, sunny, gentle summer energy
+
+style: semi-realistic anime style, niji style, close-up portrait, no UI, no text
+
+color palette: warm tones, caramel, mint green, gold accents, soft coastal blues and oranges, contrasting colors from the oversized varsity jacket
+4k, ultra detailed, cinematic, masterpiece, neutral white balance, balanced color grading
+```
+
+### Settings Fissi per Alyssa:
+- **Modello:** VXP_XL v2.2 (Hyper)
+- **LoRA Add More Details (concept):** 0.3
+- **LoRA Niji semi realism [Illustrious] (SDXL v3.5):** 0.7
+- **Negativo:** `NSFW, lowres, worst quality, low quality, bad anatomy, bad hands, extra fingers, mutated hands, deformed face, asymmetrical eyes, plastic skin, sepia tone, orange color cast, warm color grading, watermark, signature, text, cropped, blurry face, absurd, messy lineart, sloppy lineart, rough edges, jagged edges, artifacts, jpeg artifacts, noise, smudge, blurry details, unfinished, unclear edges`
+- **Steps:** 8
+- **Sampler:** Euler a
+- **CFG:** 1.5
+- **VAE:** Liquid9745VAE
