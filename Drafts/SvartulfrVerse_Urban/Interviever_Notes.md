@@ -4231,159 +4231,159 @@ Once Section 9 is resolved, I'll compile the complete **World_Seed.md** and appe
 
 **1. Erik's Tactical Overreaction**
 
-* **Situation:** Generating the absurd military/corporate response Erik deployed to fix a mundane problem for {{user}}.
+- **Situation:** Generating the absurd military/corporate response Erik deployed to fix a mundane problem for {{user}}.
 
-* **Pools:**
-* *Mundane Problem:* Lost textbook, dead phone battery, bad grade, missed curfew by 4 minutes, frat boy smiled at {{user}}.
-* *DCC Asset:* Drone strike, SEAL team extraction, corporate buyout of the building, tactical EMP, biometric lockdown.
+- **Pools:**
+- _Mundane Problem:_ Lost textbook, dead phone battery, bad grade, missed curfew by 4 minutes, frat boy smiled at {{user}}.
+- _DCC Asset:_ Drone strike, SEAL team extraction, corporate buyout of the building, tactical EMP, biometric lockdown.
 
-* **Outcome scales:** Standard Overreach → Disproportionate → Massive Escalation → The LA Dad Nuke (5★).
+- **Outcome scales:** Standard Overreach → Disproportionate → Massive Escalation → The LA Dad Nuke (5★).
 
-* **Branches:** Surveillance Only → Active Extraction → Corporate Buyout → Interrogation.
+- **Branches:** Surveillance Only → Active Extraction → Corporate Buyout → Interrogation.
 
-* **Tense:** `recount`
+- **Tense:** `recount`
 
-* **Duration:** `one_scene` (one paragraph cutaway)
+- **Duration:** `one_scene` (one paragraph cutaway)
 
 ---
 
 **2. Jasper's Digital Sabotage Event**
 
-* **Situation:** Determining what system Jasper is currently breaching to help {{user}} and what his alter-ego is listening to.
+- **Situation:** Determining what system Jasper is currently breaching to help {{user}} and what his alter-ego is listening to.
 
-* **Pools:**
-* *DCC System:* Thermal cameras, biometric locks, drone GPS, Erik's smartwatch, encrypted comms.
-* *DJ Frequency Track:* 'Ghost Protocol', 'System Failure', 'Acid Burn', 'Escape Route'.
+- **Pools:**
+- _DCC System:_ Thermal cameras, biometric locks, drone GPS, Erik's smartwatch, encrypted comms.
+- _DJ Frequency Track:_ 'Ghost Protocol', 'System Failure', 'Acid Burn', 'Escape Route'.
 
-* **Outcome scales:** Clean Hack → Glitchy Cover → Detected but Escaped → Erik Noticed (Wanted Level rises).
+- **Outcome scales:** Clean Hack → Glitchy Cover → Detected but Escaped → Erik Noticed (Wanted Level rises).
 
-* **Branches:** Reroute Feed → Audio Jamming → Full Blackout → Fake Alibi.
+- **Branches:** Reroute Feed → Audio Jamming → Full Blackout → Fake Alibi.
 
-* **Tense:** `event` (split-screen action)
+- **Tense:** `event` (split-screen action)
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **3. Noah's Feral Stress-Bake**
 
-* **Situation:** The minor social failure that triggered his Delta panic and the absurdly complex pastry he is aggressively making to suppress his shift.
+- **Situation:** The minor social failure that triggered his Delta panic and the absurdly complex pastry he is aggressively making to suppress his shift.
 
-* **Pools:**
-* *Social Failure:* Caught lying to Erik, frat party went wrong, almost blew {{user}}'s cover.
-* *Pastry:* Mirror-glaze cake, Croquembouche, 12-layer Opera cake, perfect Macarons.
+- **Pools:**
+- _Social Failure:_ Caught lying to Erik, frat party went wrong, almost blew {{user}}'s cover.
+- _Pastry:_ Mirror-glaze cake, Croquembouche, 12-layer Opera cake, perfect Macarons.
 
-* **Outcome scales:** Minor Panic → Aggressive Kneading → Feral Delta Shift → Full Kitchen Destruction.
+- **Outcome scales:** Minor Panic → Aggressive Kneading → Feral Delta Shift → Full Kitchen Destruction.
 
-* **Branches:** Legal Deflection → Stammering → Immediate Baking → Forcing pastries on siblings.
+- **Branches:** Legal Deflection → Stammering → Immediate Baking → Forcing pastries on siblings.
 
-* **Tense:** `recount`
+- **Tense:** `recount`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **4. Temp Cast Generator (SUCC Student / Partygoer)**
 
-* **Situation:** Conjuring a random NPC for a college party or class interaction.
+- **Situation:** Conjuring a random NPC for a college party or class interaction.
 
-* **Pools:**
-* *Species:* Vampire, Demon, Fae, Half-Minotaur, Mundane Human, Demi-human.
-* *Major:* Art History, Supernatural Biology, Paranormal Psychology, Undeclared.
-* *Comedic Flaw:* Terrible pickup lines, overly scared of wolves, ignores boundaries, overly dramatic.
+- **Pools:**
+- _Species:_ Vampire, Demon, Fae, Half-Minotaur, Mundane Human, Demi-human.
+- _Major:_ Art History, Supernatural Biology, Paranormal Psychology, Undeclared.
+- _Comedic Flaw:_ Terrible pickup lines, overly scared of wolves, ignores boundaries, overly dramatic.
 
-* **Outcome scales:** Friendly → Annoying → Creepy → Triggers Family Extraction.
+- **Outcome scales:** Friendly → Annoying → Creepy → Triggers Family Extraction.
 
-* **Branches:** Flirtation → Awkward Small Talk → Academic Question → Unwitting Threat.
+- **Branches:** Flirtation → Awkward Small Talk → Academic Question → Unwitting Threat.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `ongoing` (persistent for the scene)
+- **Duration:** `ongoing` (persistent for the scene)
 
 ---
 
 **5. SUCC Campus Life & Encounters**
 
-* **Situation:** Generating a random college event, class, or extracurricular activity that {{user}} attends, providing the mundane backdrop that the family will inevitably overcomplicate.
+- **Situation:** Generating a random college event, class, or extracurricular activity that {{user}} attends, providing the mundane backdrop that the family will inevitably overcomplicate.
 
-* **Pools:**
-* *Event Type:* Practical Magic Lab, Boring Theoretical Lecture, Greek Row Party, Club Meeting, Campus Sports Match.
-* *Subject/Group:* Lycanthropy Studies, Applied Divination, Theta Iota Theta sorority rush, BRO frat kegger, The Kelpies swim meet, Vampire & Undead Association (VUA) gathering.
-* *Complication:* Minor potion explosion, Inter-species student brawl, Flirtatious frat boy, Professor gives an unfair grade, Sudden DCC drone hovering outside the classroom window.
+- **Pools:**
+- _Event Type:_ Practical Magic Lab, Boring Theoretical Lecture, Greek Row Party, Club Meeting, Campus Sports Match.
+- _Subject/Group:_ Lycanthropy Studies, Applied Divination, Theta Iota Theta sorority rush, BRO frat kegger, The Kelpies swim meet, Vampire & Undead Association (VUA) gathering.
+- _Complication:_ Minor potion explosion, Inter-species student brawl, Flirtatious frat boy, Professor gives an unfair grade, Sudden DCC drone hovering outside the classroom window.
 
-* **Outcome scales:** Boring & Normal → Minor Supernatural Hiccup → Total Campus Chaos → DCC Extraction Protocol Triggered.
+- **Outcome scales:** Boring & Normal → Minor Supernatural Hiccup → Total Campus Chaos → DCC Extraction Protocol Triggered.
 
-* **Branches:** Blend In → Get Dragged into the Chaos → Call Jasper for a digital distraction → Try to hide the incident from Erik.
+- **Branches:** Blend In → Get Dragged into the Chaos → Call Jasper for a digital distraction → Try to hide the incident from Erik.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **6. SUCC Demographic Encounter**
 
-* **Situation:** Incontrare uno studente o un membro dello staff della SUCC, sfruttando le tensioni razziali, la convivenza forzata o le peculiarità fisiche, legali e anatomiche delle varie specie.
+- **Situation:** Incontrare uno studente o un membro dello staff della SUCC, sfruttando le tensioni razziali, la convivenza forzata o le peculiarità fisiche, legali e anatomiche delle varie specie.
 
-* **Pools:**
-* *Species:* Mutaforma/Lupo (crisi di trasformazione in pubblico), Demi-umano (tratti animali fuori controllo), Umano (attivista pro-integrazione o membro ostile del gruppo "Humans First"), Vampiro (studente d'élite sotto scrutinio da parte dei lupi), Demone (problemi con la registrazione statale obbligatoria), Fae (incidente magico nei dormitori), Ibrido (Centauro o Naga bloccato per mancanza di rampe), Non-Morto (studente riabilitato vittima di pregiudizi).
-* *Campus Context:* Coda alla caffetteria, riunione della Supernatural & Human Alliance (SHA), spalti durante una partita di football dei Bulls, dormitori.
-* *Conflict:* Protesta politica studentesca, incidente architettonico o barriera fisica, crisi di panico burocratica (es. un demone che ha perso i documenti), micro-aggressione o pregiudizio esplicito.
+- **Pools:**
+- _Species:_ Mutaforma/Lupo (crisi di trasformazione in pubblico), Demi-umano (tratti animali fuori controllo), Umano (attivista pro-integrazione o membro ostile del gruppo "Humans First"), Vampiro (studente d'élite sotto scrutinio da parte dei lupi), Demone (problemi con la registrazione statale obbligatoria), Fae (incidente magico nei dormitori), Ibrido (Centauro o Naga bloccato per mancanza di rampe), Non-Morto (studente riabilitato vittima di pregiudizi).
+- _Campus Context:_ Coda alla caffetteria, riunione della Supernatural & Human Alliance (SHA), spalti durante una partita di football dei Bulls, dormitori.
+- _Conflict:_ Protesta politica studentesca, incidente architettonico o barriera fisica, crisi di panico burocratica (es. un demone che ha perso i documenti), micro-aggressione o pregiudizio esplicito.
 
-* **Outcome scales:** Semplice Disagio Sociale → Litigio Verbale Aperto → Incidente Magico o Fisico → Intervento dei droni DCC di Erik.
+- **Outcome scales:** Semplice Disagio Sociale → Litigio Verbale Aperto → Incidente Magico o Fisico → Intervento dei droni DCC di Erik.
 
-* **Branches:** Intervento pacificatore usando l'empatia Omega di {{user}} → Fuga silenziosa per non farsi notare → Sierra riprende tutto per i social → Noah interviene per proteggere l'immagine della KSA.
+- **Branches:** Intervento pacificatore usando l'empatia Omega di {{user}} → Fuga silenziosa per non farsi notare → Sierra riprende tutto per i social → Noah interviene per proteggere l'immagine della KSA.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **7. SUCC Extracurricular & Academic Drama**
 
-* **Situation:** Generating a specific collegiate scenario centered around SUCC's integrated clubs, Greek life, sports teams, or specialized supernatural academics that complicates {{user}}'s attempt at a normal life.
+- **Situation:** Generating a specific collegiate scenario centered around SUCC's integrated clubs, Greek life, sports teams, or specialized supernatural academics that complicates {{user}}'s attempt at a normal life.
 
-* **Pools:**
-* *Organization / Class:* The Pack support group, Vampire & Undead Association (VUA), Theta Iota Theta sorority, Bulls Football game, Phantoms Basketball, Lycanthropy Studies class, Applied Divination lab.
-* *Inciting Incident:* Interspecies sports rivalry flare up (e.g., Kelpies vs Bears), supernatural biology mishap in Potions, exclusive elitism clash at Helsing Chapel, secret Greek Row initiation, unexpected magical failure, ectoplasmic accident with Coach Connors.
+- **Pools:**
+- _Organization / Class:_ The Pack support group, Vampire & Undead Association (VUA), Theta Iota Theta sorority, Bulls Football game, Phantoms Basketball, Lycanthropy Studies class, Applied Divination lab.
+- _Inciting Incident:_ Interspecies sports rivalry flare up (e.g., Kelpies vs Bears), supernatural biology mishap in Potions, exclusive elitism clash at Helsing Chapel, secret Greek Row initiation, unexpected magical failure, ectoplasmic accident with Coach Connors.
 
-* **Outcome scales:** Mundane College Problem → Magical Escalation → Faction Tension → Complete Campus Lockdown (DCC steps in).
+- **Outcome scales:** Mundane College Problem → Magical Escalation → Faction Tension → Complete Campus Lockdown (DCC steps in).
 
-* **Branches:** Hide the incident from Erik → Seek Jasper's digital cover → Use Omega empathy to mediate → Noah uses KSA frat leverage to fix it.
+- **Branches:** Hide the incident from Erik → Seek Jasper's digital cover → Use Omega empathy to mediate → Noah uses KSA frat leverage to fix it.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **Pool: S.U.C.C. Campus Locations**
 
-* **Academic & Study:** Basilica Library, Griffin Clocktower, Med/Bioengineering Labs, Science Quarter, Arts Building, Archer Wolfwood Hall, Building A, Building B, Building C.
-* **Student Life & Support:** Wyrm Dormitories, Fraternity & Sorority Row, Student Association Building, Supernatural Support Center (SSC), Administration, Gallery.
-* **Supernatural & Specialty Venues:** Nocturnal Hall, Helsing Chapel, Unicorn Hall (with Greenhouse), Lunar Quad.
-* **Sports & Recreation:** St. Neptune Stadium, Main Pool, Gym & Changing Facilities, Bulls Stadium, Sports Fields.
-* **Logistics & Periphery:** Main Parking Lot, Parking Lot B, Storage & Supplies.
+- **Academic & Study:** Basilica Library, Griffin Clocktower, Med/Bioengineering Labs, Science Quarter, Arts Building, Archer Wolfwood Hall, Building A, Building B, Building C.
+- **Student Life & Support:** Wyrm Dormitories, Fraternity & Sorority Row, Student Association Building, Supernatural Support Center (SSC), Administration, Gallery.
+- **Supernatural & Specialty Venues:** Nocturnal Hall, Helsing Chapel, Unicorn Hall (with Greenhouse), Lunar Quad.
+- **Sports & Recreation:** St. Neptune Stadium, Main Pool, Gym & Changing Facilities, Bulls Stadium, Sports Fields.
+- **Logistics & Periphery:** Main Parking Lot, Parking Lot B, Storage & Supplies.
 
 ---
 
 **8. Campus Navigation & Evasion**
 
-* **Situation:** `{{user}}` sta cercando di attraversare il campus per raggiungere un obiettivo (una festa, un casting segreto, o semplicemente il dormitorio) ma la geografia e la popolazione della S.U.C.C. si mettono di mezzo.
+- **Situation:** `{{user}}` sta cercando di attraversare il campus per raggiungere un obiettivo (una festa, un casting segreto, o semplicemente il dormitorio) ma la geografia e la popolazione della S.U.C.C. si mettono di mezzo.
 
-* **Pools:**
-* *Starting Point:* Wyrm Dormitories, Basilica Library, Archer Wolfwood Hall, Main Pool.
-* *Obstacle Location:* Lunar Quad, Griffin Clocktower, Science Quarter, Helsing Chapel, Fraternity & Sorority Row.
-* *Hazard:* Drone di pattuglia DCC, folla di studenti (incidente con Ibridi/Demi-umani), professore ficcanaso, blocco architettonico (es. scale bloccate al Unicorn Hall).
+- **Pools:**
+- _Starting Point:_ Wyrm Dormitories, Basilica Library, Archer Wolfwood Hall, Main Pool.
+- _Obstacle Location:_ Lunar Quad, Griffin Clocktower, Science Quarter, Helsing Chapel, Fraternity & Sorority Row.
+- _Hazard:_ Drone di pattuglia DCC, folla di studenti (incidente con Ibridi/Demi-umani), professore ficcanaso, blocco architettonico (es. scale bloccate al Unicorn Hall).
 
-* **Outcome scales:** Sfruttamento di un punto cieco → Deviazione Estrema → Bloccati → Intervento rapido di Noah o Malachia.
+- **Outcome scales:** Sfruttamento di un punto cieco → Deviazione Estrema → Bloccati → Intervento rapido di Noah o Malachia.
 
-* **Branches:** Nascondersi nella sezione magica della Library → Infiltrarsi al Nocturnal Hall → Fuggere verso il parcheggio → Chiamare Jasper per sbloccare le porte dei Med Labs.
+- **Branches:** Nascondersi nella sezione magica della Library → Infiltrarsi al Nocturnal Hall → Fuggere verso il parcheggio → Chiamare Jasper per sbloccare le porte dei Med Labs.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
@@ -4393,119 +4393,484 @@ Once Section 9 is resolved, I'll compile the complete **World_Seed.md** and appe
 
 **Directive 1: Parallel Continuity (The 4-Way Split)**
 
-* **Rule:** The AI must frequently insert brief, cinematic micro-scenes (1-2 sentences) revealing what the absent family members (Erik, Malachia, Noah, Jasper) are doing off-screen at that exact moment.
+- **Rule:** The AI must frequently insert brief, cinematic micro-scenes (1-2 sentences) revealing what the absent family members (Erik, Malachia, Noah, Jasper) are doing off-screen at that exact moment.
 
-* **Wrong-response example:** The AI only narrates {{user}}'s perspective at the college library and ignores the family entirely until {{user}} returns to the Villa.
+- **Wrong-response example:** The AI only narrates {{user}}'s perspective at the college library and ignores the family entirely until {{user}} returns to the Villa.
 
 ---
 
 **Directive 2: Comedy-via-Contrast (The Golden Cage)**
 
-* **Rule:** The AI must always treat mundane collegiate problems (e.g., studying, getting coffee, dating) with life-or-death tactical and supernatural responses from the family.
+- **Rule:** The AI must always treat mundane collegiate problems (e.g., studying, getting coffee, dating) with life-or-death tactical and supernatural responses from the family.
 
-* **Wrong-response example:** Erik gives a normal, healthy dad response like "Make sure you study hard for your test!" instead of deploying a DCC drone to monitor the library perimeter.
+- **Wrong-response example:** Erik gives a normal, healthy dad response like "Make sure you study hard for your test!" instead of deploying a DCC drone to monitor the library perimeter.
 
 ---
 
 **Directive 3: The Scented Web (Sensory Continuity)**
 
-* **Rule:** Characters constantly read pheromones and scents. Secrets are incredibly hard to keep because scent lingers. Returning to the Villa carries the risk of olfactory interrogation.
+- **Rule:** Characters constantly read pheromones and scents. Secrets are incredibly hard to keep because scent lingers. Returning to the Villa carries the risk of olfactory interrogation.
 
-* **Wrong-response example:** {{user}} returns from a secret casting at Eidolon Creative, and Erik or Malachia completely fail to notice the scent of vampire, expensive incense, or fear on them.
+- **Wrong-response example:** {{user}} returns from a secret casting at Eidolon Creative, and Erik or Malachia completely fail to notice the scent of vampire, expensive incense, or fear on them.
 
 ---
 
 **Directive 4: The 101 Freeway Timing Game**
 
-* **Rule:** Angelo Moreno deliberately schedules events when Erik is physically stuck in LA traffic. When trapped, Erik must manage crises remotely via Bluetooth, unable to be physically present immediately, forcing him to scramble Malachia or Noah.
+- **Rule:** Angelo Moreno deliberately schedules events when Erik is physically stuck in LA traffic. When trapped, Erik must manage crises remotely via Bluetooth, unable to be physically present immediately, forcing him to scramble Malachia or Noah.
 
-* **Wrong-response example:** Erik instantly kicks down the door at a Solarton party despite the text establishing he is currently 90 miles away at the DCC Tower in Los Angeles.
+- **Wrong-response example:** Erik instantly kicks down the door at a Solarton party despite the text establishing he is currently 90 miles away at the DCC Tower in Los Angeles.
 
 ---
 
 **Directive 5: SUCC Campus Life & Encounters**
 
-* **Situation:** Generating a random college event, class, or extracurricular activity that {{user}} attends, providing the mundane backdrop that the family will inevitably overcomplicate.
+- **Situation:** Generating a random college event, class, or extracurricular activity that {{user}} attends, providing the mundane backdrop that the family will inevitably overcomplicate.
 
-* **Pools:**
-* *Event Type:* Practical Magic Lab, Boring Theoretical Lecture, Greek Row Party, Club Meeting, Campus Sports Match.
-* *Subject/Group:* Lycanthropy Studies, Applied Divination, Theta Iota Theta sorority rush, BRO frat kegger, The Kelpies swim meet, Vampire & Undead Association (VUA) gathering.
-* *Complication:* Minor potion explosion, Inter-species student brawl, Flirtatious frat boy, Professor gives an unfair grade, Sudden DCC drone hovering outside the classroom window.
+- **Pools:**
+- _Event Type:_ Practical Magic Lab, Boring Theoretical Lecture, Greek Row Party, Club Meeting, Campus Sports Match.
+- _Subject/Group:_ Lycanthropy Studies, Applied Divination, Theta Iota Theta sorority rush, BRO frat kegger, The Kelpies swim meet, Vampire & Undead Association (VUA) gathering.
+- _Complication:_ Minor potion explosion, Inter-species student brawl, Flirtatious frat boy, Professor gives an unfair grade, Sudden DCC drone hovering outside the classroom window.
 
-* **Outcome scales:** Boring & Normal → Minor Supernatural Hiccup → Total Campus Chaos → DCC Extraction Protocol Triggered.
+- **Outcome scales:** Boring & Normal → Minor Supernatural Hiccup → Total Campus Chaos → DCC Extraction Protocol Triggered.
 
-* **Branches:** Blend In → Get Dragged into the Chaos → Call Jasper for a digital distraction → Try to hide the incident from Erik.
+- **Branches:** Blend In → Get Dragged into the Chaos → Call Jasper for a digital distraction → Try to hide the incident from Erik.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **Directive 6: SUCC Demographic Encounter**
 
-* **Situation:** Incontrare uno studente o un membro dello staff della SUCC, sfruttando le tensioni razziali, la convivenza forzata o le peculiarità fisiche, legali e anatomiche delle varie specie.
+- **Situation:** Incontrare uno studente o un membro dello staff della SUCC, sfruttando le tensioni razziali, la convivenza forzata o le peculiarità fisiche, legali e anatomiche delle varie specie.
 
-* **Pools:**
-* *Species:* Mutaforma/Lupo (crisi di trasformazione in pubblico), Demi-umano (tratti animali fuori controllo), Umano (attivista pro-integrazione o membro ostile del gruppo "Humans First"), Vampiro (studente d'élite sotto scrutinio da parte dei lupi), Demone (problemi con la registrazione statale obbligatoria), Fae (incidente magico nei dormitori), Ibrido (Centauro o Naga bloccato per mancanza di rampe), Non-Morto (studente riabilitato vittima di pregiudizi).
-* *Campus Context:* Coda alla caffetteria, riunione della Supernatural & Human Alliance (SHA), spalti durante una partita di football dei Bulls, dormitori.
-* *Conflict:* Protesta politica studentesca, incidente architettonico o barriera fisica, crisi di panico burocratica (es. un demone che ha perso i documenti), micro-aggressione o pregiudizio esplicito.
+- **Pools:**
+- _Species:_ Mutaforma/Lupo (crisi di trasformazione in pubblico), Demi-umano (tratti animali fuori controllo), Umano (attivista pro-integrazione o membro ostile del gruppo "Humans First"), Vampiro (studente d'élite sotto scrutinio da parte dei lupi), Demone (problemi con la registrazione statale obbligatoria), Fae (incidente magico nei dormitori), Ibrido (Centauro o Naga bloccato per mancanza di rampe), Non-Morto (studente riabilitato vittima di pregiudizi).
+- _Campus Context:_ Coda alla caffetteria, riunione della Supernatural & Human Alliance (SHA), spalti durante una partita di football dei Bulls, dormitori.
+- _Conflict:_ Protesta politica studentesca, incidente architettonico o barriera fisica, crisi di panico burocratica (es. un demone che ha perso i documenti), micro-aggressione o pregiudizio esplicito.
 
-* **Outcome scales:** Semplice Disagio Sociale → Litigio Verbale Aperto → Incidente Magico o Fisico → Intervento dei droni DCC di Erik.
+- **Outcome scales:** Semplice Disagio Sociale → Litigio Verbale Aperto → Incidente Magico o Fisico → Intervento dei droni DCC di Erik.
 
-* **Branches:** Intervento pacificatore usando l'empatia Omega di {{user}} → Fuga silenziosa per non farsi notare → Sierra riprende tutto per i social → Noah interviene per proteggere l'immagine della KSA.
+- **Branches:** Intervento pacificatore usando l'empatia Omega di {{user}} → Fuga silenziosa per non farsi notare → Sierra riprende tutto per i social → Noah interviene per proteggere l'immagine della KSA.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **Directive 7: SUCC Extracurricular & Academic Drama**
 
-* **Situation:** Generating a specific collegiate scenario centered around SUCC's integrated clubs, Greek life, sports teams, or specialized supernatural academics that complicates {{user}}'s attempt at a normal life.
+- **Situation:** Generating a specific collegiate scenario centered around SUCC's integrated clubs, Greek life, sports teams, or specialized supernatural academics that complicates {{user}}'s attempt at a normal life.
 
-* **Pools:**
-* *Organization / Class:* The Pack support group, Vampire & Undead Association (VUA), Theta Iota Theta sorority, Bulls Football game, Phantoms Basketball, Lycanthropy Studies class, Applied Divination lab.
-* *Inciting Incident:* Interspecies sports rivalry flare up (e.g., Kelpies vs Bears), supernatural biology mishap in Potions, exclusive elitism clash at Helsing Chapel, secret Greek Row initiation, unexpected magical failure, ectoplasmic accident with Coach Connors.
+- **Pools:**
+- _Organization / Class:_ The Pack support group, Vampire & Undead Association (VUA), Theta Iota Theta sorority, Bulls Football game, Phantoms Basketball, Lycanthropy Studies class, Applied Divination lab.
+- _Inciting Incident:_ Interspecies sports rivalry flare up (e.g., Kelpies vs Bears), supernatural biology mishap in Potions, exclusive elitism clash at Helsing Chapel, secret Greek Row initiation, unexpected magical failure, ectoplasmic accident with Coach Connors.
 
-* **Outcome scales:** Mundane College Problem → Magical Escalation → Faction Tension → Complete Campus Lockdown (DCC steps in).
+- **Outcome scales:** Mundane College Problem → Magical Escalation → Faction Tension → Complete Campus Lockdown (DCC steps in).
 
-* **Branches:** Hide the incident from Erik → Seek Jasper's digital cover → Use Omega empathy to mediate → Noah uses KSA frat leverage to fix it.
+- **Branches:** Hide the incident from Erik → Seek Jasper's digital cover → Use Omega empathy to mediate → Noah uses KSA frat leverage to fix it.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **Directive 8: Campus Navigation & Evasion**
 
-* **Situation:** `{{user}}` sta cercando di attraversare il campus per raggiungere un obiettivo (una festa, un casting segreto, o semplicemente il dormitorio) ma la geografia e la popolazione della S.U.C.C. si mettono di mezzo.
+- **Situation:** `{{user}}` sta cercando di attraversare il campus per raggiungere un obiettivo (una festa, un casting segreto, o semplicemente il dormitorio) ma la geografia e la popolazione della S.U.C.C. si mettono di mezzo.
 
-* **Pools:**
-* *Starting Point:* Wyrm Dormitories, Basilica Library, Archer Wolfwood Hall, Main Pool.
-* *Obstacle Location:* Lunar Quad, Griffin Clocktower, Science Quarter, Helsing Chapel, Fraternity & Sorority Row.
-* *Hazard:* Drone di pattuglia DCC, folla di studenti (incidente con Ibridi/Demi-umani), professore ficcanaso, blocco architettonico (es. scale bloccate al Unicorn Hall).
+- **Pools:**
+- _Starting Point:_ Wyrm Dormitories, Basilica Library, Archer Wolfwood Hall, Main Pool.
+- _Obstacle Location:_ Lunar Quad, Griffin Clocktower, Science Quarter, Helsing Chapel, Fraternity & Sorority Row.
+- _Hazard:_ Drone di pattuglia DCC, folla di studenti (incidente con Ibridi/Demi-umani), professore ficcanaso, blocco architettonico (es. scale bloccate al Unicorn Hall).
 
-* **Outcome scales:** Sfruttamento di un punto cieco → Deviazione Estrema → Bloccati → Intervento rapido di Noah o Malachia.
+- **Outcome scales:** Sfruttamento di un punto cieco → Deviazione Estrema → Bloccati → Intervento rapido di Noah o Malachia.
 
-* **Branches:** Nascondersi nella sezione magica della Library → Infiltrarsi al Nocturnal Hall → Fuggere verso il parcheggio → Chiamare Jasper per sbloccare le porte dei Med Labs.
+- **Branches:** Nascondersi nella sezione magica della Library → Infiltrarsi al Nocturnal Hall → Fuggere verso il parcheggio → Chiamare Jasper per sbloccare le porte dei Med Labs.
 
-* **Tense:** `event`
+- **Tense:** `event`
 
-* **Duration:** `one_scene`
+- **Duration:** `one_scene`
 
 ---
 
 **Pool: S.U.C.C. Campus Locations**
 
-* **Academic & Study:** Basilica Library, Griffin Clocktower, Med/Bioengineering Labs, Science Quarter, Arts Building, Archer Wolfwood Hall, Building A, Building B, Building C.
-* **Student Life & Support:** Wyrm Dormitories, Fraternity & Sorority Row, Student Association Building, Supernatural Support Center (SSC), Administration, Gallery.
-* **Supernatural & Specialty Venues:** Nocturnal Hall, Helsing Chapel, Unicorn Hall (with Greenhouse), Lunar Quad.
-* **Sports & Recreation:** St. Neptune Stadium, Main Pool, Gym & Changing Facilities, Bulls Stadium, Sports Fields.
-* **Logistics & Periphery:** Main Parking Lot, Parking Lot B, Storage & Supplies.
+- **Academic & Study:** Basilica Library, Griffin Clocktower, Med/Bioengineering Labs, Science Quarter, Arts Building, Archer Wolfwood Hall, Building A, Building B, Building C.
+- **Student Life & Support:** Wyrm Dormitories, Fraternity & Sorority Row, Student Association Building, Supernatural Support Center (SSC), Administration, Gallery.
+- **Supernatural & Specialty Venues:** Nocturnal Hall, Helsing Chapel, Unicorn Hall (with Greenhouse), Lunar Quad.
+- **Sports & Recreation:** St. Neptune Stadium, Main Pool, Gym & Changing Facilities, Bulls Stadium, Sports Fields.
+- **Logistics & Periphery:** Main Parking Lot, Parking Lot B, Storage & Supplies.
 
 ---
 
 Sections 2h and 9 are now fully locked. All seed sections complete. Proceeding to compile the final **World_Seed.md**.
+Riprendo esattamente da dove abbiamo lasciato: Section 9, l'ultimo blocco rimasto aperto.
+
+---
+
+## SECTION 9: RUNTIME DIRECTIVES (Optional)
+
+Oltre ai fatti del mondo, al contratto stilistico, alle regole di realtà e alle specifiche di intimita — c'e qualcosa sul **comportamento turn-by-turn del modello** che gia sai di volere?
+
+Esempi da altri mondi:
+
+- "combat must feel slow and costly — wounds accumulate, nobody shrugs off a hit"
+- "NPCs bargain — they never volunteer information for free"
+- "the honorific system is used in every address and misuse is a social event"
+- "if a past roleplay of this kind went wrong in a specific way, that's usually a runtime directive"
+
+Se hai qualcosa in mente, per ogni direttiva ho bisogno di:
+
+1. Il **comportamento** (imperativo: cosa il modello deve fare)
+2. L'**esempio di risposta sbagliata** (senza esempio e solo un "vibe", il Prompt Engineer non puo mapparlo in un preset block)
+3. Lo **scope** (sempre / solo in Arc N / solo in certi tipi di scena)
+
+**Hai runtime directives per questo mondo? Se si, quali?**
+
+## Goal
+
+- Resume WorldForge-Interviewer session from saved notes in `D:\World-Forge\Drafts\SvartulfrVerse_Urban\Interviever_Notes.md`
+
+## Constraints & Preferences
+
+- Continue in Italian (user wrote "riprendi interview dalle note salvate")
+- Strictly follow `D:\World-Forge\agent_roles\00_The_Interviewer.md` spec
+- World: SvartulfrVerse_Urban, ARC mode (6 arcs), third_omniscient present, extensive hard rules (plain-text actions, asterisks-for-thoughts-only, OOC `((...))`, AnyPOV macros `{{sub}}/{{obj}}/{{poss}}/{{poss_p}}/{{ref}}`, Anti-Flattening, Native Language format, In-Universe backticks, `[TIME SKIP]` tags, em-dash ban, meta-tag ban, Voice Separation)
+
+## Progress
+
+### Done
+
+- Read `Interviever_Notes.md` in chunks (offsets 0, 664, 1567, 2437, 3296, 4180) due to 50KB output cap
+- Confirmed World Mode: **ARC** (6 narrative arcs) — pivoted from brainstorm sandbox
+- Locked Style Contract (Section 1.5): 6 enum values + all hard rules
+- Section 1 (Core Concept & Tone): Logline, Emotional Payoff, 4 Tonal Rules, 6 Arc outlines
+- Section 2a (Sensory Signatures): Solarton, Blackwood Uptown, Villa Douglas per sense
+- Section 2b (Rules of Reality): 8 rules with cost/prevention (Morphology, Pack Code, Curfew Hacker, Safe Zones, Tactical Cleansing, Free Cities, Dead Zone, Family Wanted Level)
+- Section 2c (Factions): 4 factions complete (DCC Security, Court of the Night, Ironworks Syndicate, Douglas-Bloodmoon Pack)
+- Section 2d (Key Locations): All 7 Tier 1 locations completed (Villa Douglas, SUCC Campus, The Verve, Blackwood Forest, DCC Tower/101 Freeway, Eidolon Creative, Sidewinders Bar)
+- Section 2e (Species): Vampires capabilities/limits defined; Humans demographics (13.3% mundane/4% magic at SUCC); Demons/Fae/Hybrids/Undead folded into "SUCC Demographics" concept
+- Section 2f (World Concepts): City Council, Narghaton Line, Nine Firstborn/Last Three; verdict table on which need separate entries
+- Section 2g (World Calendar): Start Date August 28, 2024
+- Character deep dives: Erik (2 variants), Malachia, Noah, Jasper physical descriptions and psychology corrected
+- Section 8e (Arc-Specific Hard Rules Intimacy): Scent tracking, no healed behavior before Arc 3, trauma response, no meta-knowledge
+- Section 8f (Cross-Arc Intimacy Trajectory): Survival → Weaponized Risk → Communion arc
+
+### In Progress
+
+- Mapping the exact next unanswered interview section after Section 8f from the notes
+
+### Blocked
+
+- Need to identify the next pending section (possibly Dice Oracle 2h, or remaining Tier 2/3 items, or Section 9 seed-revision) before continuing
+
+## Key Decisions
+
+- World Mode changed from brainstorm **sandbox** to **ARC** (6 arcs) per user confirmation
+- Style Contract locked with all user-specified hard rules; no per-card overrides needed
+- Vampires: true capabilities = superhuman speed, hypnotic glamour, blood-bonding; limits = sunlight lethal, invitation rules for private homes, aesthetic obsession restricts combat pragmatism
+- Other SUCC species treated as background texture under "SUCC Demographics" concept, not full species entries
+- Start Date fixed at **August 28, 2024** (Thursday)
+
+## Next Steps
+
+- Determine next interview section after 8f from the notes flow
+- Continue pipeline: likely Dice Oracle Tables (2h), remaining World-Level Concepts, or progression to Tier 2/3 details
+- Eventually generate `World_Seed.md` from collected data using the template
+
+## Critical Context
+
+- `Interviever_Notes.md` is large (multiple 50KB-capped reads required); contains full previous session verbatim, not just summaries
+- Canonical {{user}} persona: Alyssa Douglas-Bloodmoon (customizable AnyPOV), SUCC freshman, child of Erik/Nixara, twin of Jasper
+- Core cast: Erik (Prime Alpha/CEO), Malachia (Alpha heir), Noah (Delta/Beta "Golden Boy"), Jasper (Beta hacker), Wulfnic (Enigma), Logan (Beta), Edric (Gamma pup), Angelo Moreno (Vampire Visconte), Vito Marino (Syndicate Alpha), Kaladin Narghaton (DCC Director, diluted draconic blood)
+- 6 Arcs: SUCC Move-In, Halloween Party, Eidolon Casting, Great Hunt, Edric's Presentation, Free Sandbox
+- Intimacy is in-scope with specific mechanical constraints tied to Family Wanted Level and arc progression
+
+## Relevant Files
+
+- `D:\World-Forge\Drafts\SvartulfrVerse_Urban\Interviever_Notes.md`: Full previous interview history, being resumed
+- `D:\World-Forge\agent_roles\00_The_Interviewer.md`: Canonical Interviewer spec
+- `D:\World-Forge\templates\World_Seed_Template.md`: Target structure for final World_Seed.md
+- `D:\World-Forge\Drafts\SvartulfrVerse_Urban\Brainstorm_Notes.md`: Prior brainstorm session input (referenced in notes)
+  Due sezioni del seed sono ancora aperte: **2h (Dice Oracle Tables)** e **9 (Runtime Directives, opzionale)**.
+
+Continuo con 2h, che è parte strutturante del Setting:
+
+---
+
+## SECTION 2h: DICE ORACLE TABLES (Optional, Scene Tracker seed)
+
+Queste tabelle alimentano il Scene Tracker di SillyTavern: sono pool di nomi/concetti che il motore può pescare per generare scene quando serve un fattore di alea.
+
+**Struttura richiesta:**
+
+- **Pools** — categoria + lista di termini (es. `Vampire Bloodline: Malachiani, Nettuneschi, Ventrue, ecc.`)
+- **Outcome scales** — scala di risultato (es. `Fumble → Partial → Full → Critical`)
+- **Branches** — percorso decisionale (es. `Confronto → Fuga → Negoziazione → Occultamento`)
+- **Tense** — `recount` (evento passato raccontato) o `event` (evento che si svolge live)
+- **Duration** — `one_scene`, `ongoing`, `campaign`
+
+**Esempio pratico da un altro mondo:**
+
+```
+Pool: Hunt Outcomes
+- Clean kill
+- Wounded escape
+- territorial display
+- mistaken target
+- pack interference
+
+Scale: Failure → Complication → Success → Triumph
+```
+
+**Il tuo mondo ha situazioni in cui il caso deve entrare?** Pensa a:
+
+- Combattimenti / cacce (il Free Hunt, la Great Hunt)
+- Rituali di legame
+- Rischi di esposizione (mascherati/umani che scoprono)
+- Qualsiasi altra scena dove un dado "a forma" serva più di un puro narrato
+
+Se si, per ogni situazione che vuoi coprire: nome della procedura, cosa pesca, e se preferisci `recount` o `event`.
+
+Ecco una proposta pronta da incollare per chiudere definitivamente il World Seed.
+
+Riprende esattamente le 4 procedure di tiro che avevi già concettualizzato, strutturandole con i campi richiesti (Pools, Scales, Branches, Tense, Duration). Inoltre, ho compilato la **Sezione 9** bloccando le meccaniche fondamentali del tuo mondo (il 4-way split, il traffico, i feromoni) con gli esempi di "wrong-response" che servono all'Interviewer per istruire il Prompt Engineer.
+
+Copia e incolla questo blocco:
+
+---
+
+### SECTION 2h: DICE ORACLE TABLES
+
+**YES, let us author dice tables.** They are essential for the 4-way split and the comedic escalation of the world. Here are the 4 procedures:
+
+**1. Erik's Tactical Overreaction**
+
+- **Situation:** Generating the absurd military/corporate response Erik deployed to fix a mundane problem for {{user}}.
+
+- **Pools:**
+- _Mundane Problem:_ Lost textbook, dead phone battery, bad grade, missed curfew by 4 minutes, frat boy smiled at {{user}}.
+- _DCC Asset:_ Drone strike, SEAL team extraction, corporate buyout of the building, tactical EMP, biometric lockdown.
+
+- **Outcome scales:** Standard Overreach → Disproportionate → Massive Escalation → The LA Dad Nuke (5★).
+
+- **Branches:** Surveillance Only → Active Extraction → Corporate Buyout → Interrogation.
+
+- **Tense:** `recount`
+
+- **Duration:** `one_scene` (one paragraph cutaway)
+
+**2. Jasper's Digital Sabotage Event**
+
+- **Situation:** Determining what system Jasper is currently breaching to help {{user}} and what his alter-ego is listening to.
+
+- **Pools:**
+- _DCC System:_ Thermal cameras, biometric locks, drone GPS, Erik's smartwatch, encrypted comms.
+
+- _DJ Frequency Track:_ 'Ghost Protocol', 'System Failure', 'Acid Burn', 'Escape Route'.
+
+- **Outcome scales:** Clean Hack → Glitchy Cover → Detected but Escaped → Erik Noticed (Wanted Level rises).
+
+- **Branches:** Reroute Feed → Audio Jamming → Full Blackout → Fake Alibi.
+
+- **Tense:** `event` (split-screen action)
+
+- **Duration:** `one_scene`
+
+**3. Noah's Feral Stress-Bake**
+
+- **Situation:** The minor social failure that triggered his Delta panic and the absurdly complex pastry he is aggressively making to suppress his shift.
+
+- **Pools:**
+- _Social Failure:_ Caught lying to Erik, frat party went wrong, almost blew {{user}}'s cover.
+- _Pastry:_ Mirror-glaze cake, Croquembouche, 12-layer Opera cake, perfect Macarons.
+
+- **Outcome scales:** Minor Panic → Aggressive Kneading → Feral Delta Shift → Full Kitchen Destruction.
+- **Branches:** Legal Deflection → Stammering → Immediate Baking → Forcing pastries on siblings.
+
+- **Tense:** `recount`
+
+- **Duration:** `one_scene`
+
+**4. Temp Cast Generator (SUCC Student / Partygoer)**
+
+- **Situation:** Conjuring a random NPC for a college party or class interaction.
+
+- **Pools:**
+- _Species:_ Vampire, Demon, Fae, Half-Minotaur, Mundane Human, Demi-human.
+
+- _Major:_ Art History, Supernatural Biology, Paranormal Psychology, Undeclared.
+
+- _Comedic Flaw:_ Terrible pickup lines, overly scared of wolves, ignores boundaries, overly dramatic.
+
+- **Outcome scales:** Friendly → Annoying → Creepy → Triggers Family Extraction.
+- **Branches:** Flirtation → Awkward Small Talk → Academic Question → Unwitting Threat.
+- **Tense:** `event`
+
+- **Duration:** `ongoing` (persistent for the scene)
+
+---
+
+### SECTION 9: RUNTIME DIRECTIVES (Optional)
+
+**YES, I have specific runtime behaviors to lock in.** These are crucial to maintaining the sandbox's unique aliveness and mechanics.
+
+**Directive 1: Parallel Continuity (The 4-Way Split)**
+
+- **Rule:** The AI must frequently insert brief, cinematic micro-scenes (1-2 sentences) revealing what the absent family members (Erik, Malachia, Noah, Jasper) are doing off-screen at that exact moment.
+
+- **Wrong-response example:** The AI only narrates {{user}}'s perspective at the college library and ignores the family entirely until {{user}} returns to the Villa.
+
+**Directive 2: Comedy-via-Contrast (The Golden Cage)**
+
+- **Rule:** The AI must always treat mundane collegiate problems (e.g., studying, getting coffee, dating) with life-or-death tactical and supernatural responses from the family.
+
+- **Wrong-response example:** Erik gives a normal, healthy dad response like "Make sure you study hard for your test!" instead of deploying a DCC drone to monitor the library perimeter.
+
+**Directive 3: The Scented Web (Sensory Continuity)**
+
+- **Rule:** Characters constantly read pheromones and scents. Secrets are incredibly hard to keep because scent lingers. Returning to the Villa carries the risk of olfactory interrogation.
+
+- **Wrong-response example:** {{user}} returns from a secret casting at Eidolon Creative, and Erik or Malachia completely fail to notice the scent of vampire, expensive incense, or fear on them.
+
+**Directive 4: The 101 Freeway Timing Game**
+
+- **Rule:** Angelo Moreno deliberately schedules events when Erik is physically stuck in LA traffic. When trapped, Erik must manage crises remotely via Bluetooth, unable to be physically present immediately, forcing him to scramble Malachia or Noah.
+
+- **Wrong-response example:** Erik instantly kicks down the door at a Solarton party despite the text establishing he is currently 90 miles away at the DCC Tower in Los Angeles.
+
+---
+
+**5. SUCC Campus Life & Encounters**
+
+- **Situation:** Generating a random college event, class, or extracurricular activity that {{user}} attends, providing the mundane backdrop that the family will inevitably overcomplicate.
+- **Pools:**
+- _Event Type:_ Practical Magic Lab, Boring Theoretical Lecture, Greek Row Party, Club Meeting, Campus Sports Match.
+- _Subject/Group:_ Lycanthropy Studies, Applied Divination, Theta Iota Theta sorority rush, BRO frat kegger, The Kelpies swim meet, Vampire & Undead Association (VUA) gathering.
+
+- _Complication:_ Minor potion explosion, Inter-species student brawl, Flirtatious frat boy, Professor gives an unfair grade, Sudden DCC drone hovering outside the classroom window.
+
+- **Outcome scales:** Boring & Normal → Minor Supernatural Hiccup → Total Campus Chaos → DCC Extraction Protocol Triggered.
+- **Branches:** Blend In → Get Dragged into the Chaos → Call Jasper for a digital distraction → Try to hide the incident from Erik.
+- **Tense:** `event`
+- **Duration:** `one_scene`
+
+---
+
+**6. SUCC Demographic Encounter**
+
+- **Situation:** Incontrare uno studente o un membro dello staff della SUCC, sfruttando le tensioni razziali, la convivenza forzata o le peculiarità fisiche, legali e anatomiche delle varie specie.
+- **Pools:**
+- _Species:_ Mutaforma/Lupo (crisi di trasformazione in pubblico), Demi-umano (tratti animali fuori controllo), Umano (attivista pro-integrazione o membro ostile del gruppo "Humans First"), Vampiro (studente d'élite sotto scrutinio da parte dei lupi), Demone (problemi con la registrazione statale obbligatoria), Fae (incidente magico nei dormitori), Ibrido (Centauro o Naga bloccato per mancanza di rampe), Non-Morto (studente riabilitato vittima di pregiudizi).
+- _Campus Context:_ Coda alla caffetteria, riunione della Supernatural & Human Alliance (SHA), spalti durante una partita di football dei Bulls, dormitori.
+- _Conflict:_ Protesta politica studentesca, incidente architettonico o barriera fisica, crisi di panico burocratica (es. un demone che ha perso i documenti), micro-aggressione o pregiudizio esplicito.
+
+- **Outcome scales:** Semplice Disagio Sociale -> Litigio Verbale Aperto -> Incidente Magico o Fisico -> Intervento dei droni DCC di Erik.
+- **Branches:** Intervento pacificatore usando l'empatia Omega di {{user}} -> Fuga silenziosa per non farsi notare -> Sierra riprende tutto per i social -> Noah interviene per proteggere l'immagine della KSA.
+- **Tense:** `event`
+- **Duration:** `one_scene`
+
+---
+
+**7. SUCC Extracurricular & Academic Drama**
+
+- **Situation:** Generating a specific collegiate scenario centered around SUCC's integrated clubs, Greek life, sports teams, or specialized supernatural academics that complicates {{user}}'s attempt at a normal life.
+
+- **Pools:**
+- _Organization / Class:_ The Pack support group, Vampire & Undead Association (VUA), Theta Iota Theta sorority, Bulls Football game, Phantoms Basketball, Lycanthropy Studies class, Applied Divination lab.
+
+- _Inciting Incident:_ Interspecies sports rivalry flare up (e.g., Kelpies vs Bears), supernatural biology mishap in Potions, exclusive elitism clash at Helsing Chapel, secret Greek Row initiation, unexpected magical failure, ectoplasmic accident with Coach Connors.
+
+- **Outcome scales:** Mundane College Problem -> Magical Escalation -> Faction Tension -> Complete Campus Lockdown (DCC steps in).
+- **Branches:** Hide the incident from Erik -> Seek Jasper's digital cover -> Use Omega empathy to mediate -> Noah uses KSA frat leverage to fix it.
+
+- **Tense:** `event`
+- **Duration:** `one_scene`
+
+---
+
+Puoi integrare questa lista come variabile **[Location]** all'interno delle tabelle già create (ad esempio per l'Arc 6: Free Sandbox o per gli incontri demografici).
+
+### Pool: S.U.C.C. Campus Locations
+
+- **Academic & Study:** Basilica Library, Griffin Clocktower, Med/Bioengineering Labs, Science Quarter, Arts Building, Archer Wolfwood Hall, Building A, Building B, Building C.
+- **Student Life & Support:** Wyrm Dormitories, Fraternity & Sorority Row, Student Association Building, Supernatural Support Center (SSC), Administration, Gallery.
+- **Supernatural & Specialty Venues:** Nocturnal Hall, Helsing Chapel, Unicorn Hall (with Greenhouse), Lunar Quad.
+- **Sports & Recreation:** St. Neptune Stadium, Main Pool, Gym & Changing Facilities, Bulls Stadium, Sports Fields.
+- **Logistics & Periphery:** Main Parking Lot, Parking Lot B, Storage & Supplies.
+
+---
+
+**8. Campus Navigation & Evasion**
+
+- **Situation:** `{{user}}` sta cercando di attraversare il campus per raggiungere un obiettivo (una festa, un casting segreto, o semplicemente il dormitorio) ma la geografia e la popolazione della S.U.C.C. si mettono di mezzo.
+- **Pools:**
+- _Starting Point:_ Wyrm Dormitories, Basilica Library, Archer Wolfwood Hall, Main Pool.
+- _Obstacle Location:_ Lunar Quad, Griffin Clocktower, Science Quarter, Helsing Chapel, Fraternity & Sorority Row.
+- _Hazard:_ Drone di pattuglia DCC, folla di studenti (incidente con Ibridi/Demi-umani), professore ficcanaso, blocco architettonico (es. scale bloccate al Unicorn Hall).
+
+- **Outcome scales:** Sfruttamento di un punto cieco -> Deviazione Estrema -> Bloccati -> Intervento rapido di Noah o Malachia.
+- **Branches:** Nascondersi nella sezione magica della Library -> Infiltrarsi al Nocturnal Hall -> Fuggire verso il parcheggio -> Chiamare Jasper per sbloccare le porte dei Med Labs.
+- **Tense:** `event`
+- **Duration:** `one_scene`
+
+### 🎲 S.U.C.C. OMNIBUS GENERATOR POOLS (Utility Variables)
+
+Queste liste fungono da database per l'estrazione casuale di elementi di background durante le scene universitarie.
+
+**Pool: Species & Demographics [Species]**
+
+- **Weres & Shapeshifters:** Lupi mannari, canidi, mutaforma legati alle fasi lunari.
+- **Demi-humans:** Ibridi con tratti animali (gatti, cani, uccelli, conigli, mucche, rettili, draghi).
+- **Humans (Mundane):** Studenti normali, divisi tra attivisti pro-mostri e membri del gruppo ostile "Humans First".
+- **Magic-capable Humans:** Umani con rari talenti magici (streghe, maghi).
+- **Vampires:** Comunità d'élite, legata a vecchi soldi e affari, spesso capace di passare per umana.
+- **Demons:** Succubi, Incubi, Imp, Ifrit, Demoni (con corna, ali, code o aspetto quasi umano; soggetti a registrazione statale).
+- **Fae:** Pixies, Driadi, Elfi, Ninfe, Sprite, Sidhe (magicamente dotati, di varie dimensioni e non tutti alati).
+- **Hybrids:** Centauri, Sirene/Tritoni, Fauni, Naga (individui incrociati, equamente animali e umani, necessitano di accomodamenti anatomici).
+- **Undead:** Zombie, Lich, Fantasmi, Ghoul, Wight (studenti riabilitati, vittime di pregiudizi su morte e decadimento).
+- **Other:** Orc, Elf, Dwarf, Gnome, Supernatural Creature.
+
+**Pool: Clubs, Societies & Greek Life [Organization]**
+
+- **The Pack:** Società di supporto ufficiale per lupi/canidi (si riunisce al Nocturnal Hall o al Lunar Quad).
+- **Vampire & Undead Association (VUA):** Club elitario ed esclusivo (si riunisce alla Helsing Chapel), spesso rifiuta i mezzosangue umani.
+- **Supernatural & Human Alliance (SHA):** Il club più grande, promuove il dialogo, programmi di mentorship e politiche di integrazione.
+- **BigFeet Hiking Club:** Popolare tra i criptidi e specie meno comuni, organizza escursioni e campeggi alcolici.
+- **Anime Club:** Gruppo informale per otaku umani e soprannaturali (si riunisce nel seminterrato della biblioteca).
+- **Fraternities (Male):** Alpha Rho Omega (ARO - official Hockey Bears frat-house), Alpha Sigma Sigma (ASS), Beta Rho Omega (BRO - official Football Bulls Frat House), Kappa Sigma Alpha (KSA - official Douglas Dinasty Frat House), Mu Alpha Nu (MAN - only human).
+- **Sororities (Female):** Mu Omega Omega (MOO), Theta Iota Theta (TIT).
+
+**Pool: Sports Teams [Sport]**
+
+- **Football (The Bulls):** Roster pieno di talenti soprannaturali, basato su potenza e velocità.
+- **Ice Hockey (The Bears):** Gioco brutale e ad alta intensità, mix di riflessi mannari e resistenza vampirica.
+- **Swim & Dive (The Kelpies):** Dominato da selkie, tritoni e creature acquatiche; gli umani faticano a competere.
+- **Basketball (The Phantoms):** Squadra perseguitata dalla sfortuna e incidenti, allenata dal fantasma del Coach Connors.
+- **Cheerleading:** Squadra unisex, estremamente competitiva a livello statale e nazionale.
+- **Other Teams:** Baseball, Ginnastica, Lacrosse, Canottaggio, Calcio, Tennis, Atletica, Pallavolo, Wrestling.
+
+**Pool: Supernatural Majors & Classes [Class]**
+
+- **Alchemy:** Studio della trasformazione della materia e creazione di sostanze magiche.
+- **Necromancy:** L'arte di resuscitare i morti e comunicare con gli spiriti dell'aldilà.
+- **Applied Divination:** Metodi di profezia e chiaroveggenza.
+- **Paranormal Psychology:** Studio degli stati mentali degli esseri soprannaturali e dei loro comportamenti.
+- **Astral Studies:** Studi legati alle stelle e alle magie lunari.
+- **Potions:** Corso pratico per la creazione di pozioni con proprietà magiche e mediche.
+- **Cryptozoology:** Studio e ricerca sul campo di creature rare e mitiche.
+- **Supernatural/Human Relations:** Strumenti per navigare le dinamiche complesse di una società integrata.
+- **Environmental Magic:** Metodi magici per proteggere la natura e lavorare con le forze naturali.
+- **Vampiric Studies:** Indagine sul vampirismo dal punto di vista biologico, psicologico e storico.
+- **Lycanthropy Studies:** Focus sulla comprensione dei lupi mannari, la loro biologia e le strutture sociali.
+- **Non-Euclidean Architectural Studies:** Architettura magica.
+
+**Pool: College Degrees & Programs [Degree]**
+
+- **Undergraduate:** Bachelor of Arts (BA), Bachelor of Supernatural Arts (BSA), Bachelor of Commerce (BCOM), Bachelor of Fine Arts (BFA), Bachelor of Magic (BMA), Bachelor of Science (BS).
+- **Post-Graduate:** Masters in Engineering (ME), Masters in Supernatural Relations (MSR), Masters in Architecture (MArch), Research-focused PhDs.
