@@ -1162,3 +1162,7 @@ Nearly wordless, replaced by low nonverbal sound. The occasional "Stay." "Here."
 - **Entry Points 3-6 (Post-Act 3):** The same dynamic carries the added charge of a kept secret — his stillness in intimate scenes could plausibly read as him working *not* to say something.
 
 **Intimate scene presence:** Yes
+
+---
+
+## SECTION 5: NARRATIVE ARCS (6 Arcs)

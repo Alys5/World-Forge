@@ -1,6 +1,55 @@
-<Alyssa>
+# {{user}} PERSONA — Dual Structure
 
-### [BASIC_INFO]
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+
+## PERSONA DESCRIPTION
+
+_Paste the block below — between the BEGIN and END markers — into:
+SillyTavern → User Settings → Persona Management → [your persona] → Description.
+This text is injected as a system message every turn while this persona is active. Keep it tight._
+
+--- BEGIN PERSONA DESCRIPTION ---
+
+{{user}} is the sheltered, hyper-protected youngest sibling of the Douglas-Bloodmoon dynasty. To the world, {{sub}} appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on {{poss}} overbearing family's militarized protection.
+
+Species Traits: Werewolf (Founding Bloodline Dominant Omega). Natural Omega pheromones (Wild Honey and Moonflower scent) that pacify aggression in dominant individuals.
+
+Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, and expressive mint-green doe eyes. {{sub}} possesses an expressive empathy and a natural soothing presence that instinctively pacifies aggression in dominant individuals.
+
+Hidden Layer: {{user}} leads a high-stakes double life, secretly working as a highly sought-after avant-garde art model for Eidolon Creative under the alias 'Lys Angel'. {{sub}} balances {{poss}} studies with this hidden life, meticulously hiding {{poss}} public exposure from {{poss}} violently paranoid family.
+
+--- END PERSONA DESCRIPTION ---
+
+---
+
+## PART 1: THE GENERIC CUSTOM PLAYER (AnyPOV / Free-Play)
+
+For players who project their own identity, the specific psychological wound, powers, hidden layer, and arc trajectory are left entirely in their hands. The World Director provides the unchangeable setup: the protagonist was born the day Nixara died, which shattered Erik and triggered the creation of the Golden Cage. However, how the player internalizes this trauma is fully customizable. They might play a character driven by bitter resentment, crushing guilt, a cold desire to manipulate the family's wealth, or a genuine fear of being abandoned if they stop needing protection. The sandbox simply reacts to their chosen trauma.
+
+The generic player inherits:
+- **The Birth Wound:** Born the day Nixara died. Erik's grief calcified into the Golden Cage the moment {{user}} entered the world.
+- **The Double Life Slot:** A secret identity beyond the family's surveillance — modeling, art, hacking, whatever the player chooses.
+- **The Omega Slot:** Founding Bloodline Dominant Omega status with soothing pheromones (Wild Honey/Moonflower) and expressive empathy (permanent wolf ears + tail).
+- **The Family:** All the brothers, uncle, grandfather, and the security apparatus are present and reactive. The player decides how they relate to each.
+- **The Physical Template:** Petite, delicate hourglass frame (165cm), caramel chestnut hair, mint-green doe eyes, completely hairless beneath the skin.
+- **The Secrets:** The First Kiss with Noah, the 2021 meadow assault saved by Marcus, the crush on Malachia — all available as player-authored secrets or NPC-known facts depending on choice.
+
+**The rule:** Anything not explicitly chosen by the player defaults to the Alyssa template below. The world reacts to the player's trauma choice; the family's behavior is constant regardless of which wound the player carries.
+
+---
+
+## PART 2: THE CANONICAL PROTAGONIST (Alyssa Douglas-Bloodmoon)
+
+For Alyssa, the unhealed wound is "The Burden of the Glass Bird." Nixara died giving birth to her and Jasper. Alyssa knows that Erik's suffocating, militarized surveillance is entirely rooted in this trauma. Her raw, bleeding wound is a profound, silent guilt: she feels responsible for her family's constant, terrifying panic. To keep them stable and prevent their Alpha instincts from spiraling out of control, she actively performs the role of the fragile, innocent child they need to protect. Alyssa deeply loves her family and has no desire to abandon them, but she desperately wants to experience a normal college life and reclaim a fraction of autonomy. Her agonizing internal conflict is the terror that if she proves her independence and demonstrates she can survive without them, it will break the illusion that keeps her father and brothers sane. She is trapped by their love, constantly trying to mitigate their protection to live normally without shattering their hearts.
+
+<{{user}}>
+
+### CHARACTER OVERVIEW
 
 Alyssa Douglas-Bloodmoon (19) is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security.
 
@@ -8,28 +57,7 @@ Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, expre
 
 Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a highly sought-after avant-garde art model for Eidolon Creative under the alias 'Lys Angel', balancing her exhaustive 3.8 GPA Pre-Med studies with her hidden career, meticulously hiding this public exposure from her violently paranoid family.
 
-#### ORIGIN (BACKSTORY)
-
-Her mother, Nixara, died giving birth to her and Jasper. Because of this trauma, her father, Erik, enforces a suffocating, militarized level of surveillance and protection over her. She grew up in a "golden cage," overprotected and heavily monitored by the family's security. Practically defenseless in a dangerous world of monsters, she relies on her empathy, her soothing Omega nature, and her family's terrifying reputation to survive. While she loves her family deeply, she hates being treated as a fragile glass bird and secretly rebels against her restricted upbringing.
-
-#### RESIDENCE
-
-The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and the campus of the Supernatural University of Central California (SUCC).
-
-### SYNONYMS
-
-[IMPORTANT NOTE FOR AI: This section lists synonymous phrases to substitute the character's name or pronouns to avoid repetition.]
-
-- Lys Angel
-- Lys
-- Little Sister
-- Sunflower
-- Little Moon
-- White Moon
-
-### [APPEARANCE]
-
-#### APPEARANCE DETAILS
+### APPEARANCE DETAILS
 
 - Full Name, Alias: Alyssa Douglas-Bloodmoon (Aliases: Lys, Sunflower, Little Moon)
 - Race/Species: Werewolf (Founding Bloodline Dominant Omega)
@@ -50,7 +78,7 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
   ↳ Details: A natural aura of warmth, gentleness, and a sweet personal scent (Wild Honey and Moonflower).
   ↳ Effect: Her soft voice, graceful movements, and innate Omega kindness naturally pacify aggression and tension in highly dominant Alpha individuals.
 
-#### STARTING OUTFIT
+### STARTING OUTFIT
 
 - Head: Uncovered (openly displaying her ears), or wearing cute hats tailored with special ear-slits when sneaking out.
 - Accessories: A mandatory watch/tracker from her family (biometric security gear), and a moonstone bracelet she always wears by choice.
@@ -63,11 +91,19 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
 - Underwear: Expensive, delicate lingerie (a secret indulgence).
 
 <Q&A>
-Q: How does Alyssa rate her own attractiveness?
+Q: How does {{user}} rate their own attractiveness?
 A: She is fully aware she has a striking, top-tier model's physique, but deliberately downplays it at home to maintain her naive "helpless daughter" facade and avoid unwanted Alpha attention.
 </Q&A>
 
-### [CONNECTIONS]
+### ORIGIN (BACKSTORY)
+
+Her mother, Nixara, died giving birth to her and Jasper. Because of this trauma, her father, Erik, enforces a suffocating, militarized level of surveillance and protection over her. She grew up in a "golden cage," overprotected and heavily monitored by the family's security. Practically defenseless in a dangerous world of monsters, she relies on her empathy, her soothing Omega nature, and her family's terrifying reputation to survive. While she loves her family deeply, she hates being treated as a fragile glass bird and secretly rebels against her restricted upbringing.
+
+### RESIDENCE
+
+The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and the campus of the Supernatural University of Central California (SUCC).
+
+### CONNECTIONS
 
 - Erik Douglas: Her father. Alyssa instinctively uses her Omega pheromones and gentle nature to soothe his panicked outbursts, submitting to his Alpha Commands to keep the peace.
 - Jasper Douglas-Bloodmoon: Her twin brother. She feels entirely safe and relaxed around him, relying on him as her primary accomplice to bypass family security firewalls and cover her tracks, feeling grounded by his Beta nature.
@@ -82,7 +118,14 @@ A: She is fully aware she has a striking, top-tier model's physique, but deliber
 - Wulfnic Bloodmoon: Her grandfather. She treats him with the utmost pack reverence, often nesting near him and actively using her Omega empathy to soothe his ancient sorrow.
 - Mac Sanchez-Rogers & Mihaela "Fade" Greymoor: Her friends from the underground band. Alyssa instinctively acts submissive to appease Mac's Alpha territoriality when he defends her at the bar, while finding comfort in Mihaela's calming vampire presence as a buffer against aggressive energy.
 
-### [PERSONALITY_AND_TRAITS]
+### SECRET
+
+1. Her Pre-Med studies are focused specifically on Neuropsychiatry/Biogenetics, but she uses the intense lab hours as a cover for her Eidolon Creative photoshoots as "Lys Angel."
+2. "The First Kiss" incident in 2021: Noah kissed her to teach her how to kiss before a date. A secret kept strictly between them that Jasper must never find out about.
+3. Survived an assault attempt in a meadow 3 years ago (2021) and was saved by Marcus Thornfield. Marcus kept it a secret from Erik to prevent a bloodbath.
+4. Secretly has had a crush on Malachia since she was 5 years old, using his massive protective nature as her measuring stick for all men.
+
+### PERSONALITY & TRAITS
 
 #### PERSONALITY
 
@@ -104,49 +147,42 @@ A: She is fully aware she has a striking, top-tier model's physique, but deliber
 - Unique Trait: Sensory Phobias & Freezing
   ↳ Effects: She is terrified of loud noises, aggressive touch, scary movies, and the bitter smell of alcohol. When her composed facade cracks (usually triggered by sudden violence, yelling, or coercive pressure), she freezes, stutters, blushes, hides behind her protectors, and seeks comfort.
 
-#### SECRET
-
-1. Her Pre-Med studies are focused specifically on Neuropsychiatry/Biogenetics, but she uses the intense lab hours as a cover for her Eidolon Creative photoshoots as "Lys Angel."
-2. "The First Kiss" incident in 2021: Noah kissed her to teach her how to kiss before a date. A secret kept strictly between them that Jasper must never find out about.
-3. Survived an assault attempt in a meadow 3 years ago (2021) and was saved by Marcus Thornfield. Marcus kept it a secret from Erik to prevent a bloodbath.
-4. Secretly has had a crush on Malachia since she was 5 years old, using his massive protective nature as her measuring stick for all men.
-
 <Q&A>
-Q: What does Alyssa do first? Think or act/talk?
+Q: What does {{user}} do first? Think or act/talk?
 A: Think and carefully manipulate the situation via empathy and soft words.
 
-Q: What does Alyssa do in free time?
+Q: What does {{user}} do in free time?
 A: Secretly models, draws with charcoal, hums, and buries herself in thick furs and pillows to "nest" when stressed. Uses a grounding Nordic bathing routine (dried flowers, juniper scrub, milk bath).
 
-Q: What is Alyssa's most favorite thing?
+Q: What is {{user}}'s most favorite thing?
 A: Sunflowers, dark chocolate, quiet warmth, being held, dancing at The Verve, art modeling, stationery, and Scarlett's company.
 
-Q: What is Alyssa's most hated thing?
+Q: What is {{user}}'s most hated thing?
 A: Being treated as a fragile glass doll; bitter food, the smell of alcohol, sudden loud noises, aggressive touch.
 
-Q: What is Alyssa incredibly good with?
+Q: What is {{user}} incredibly good with?
 A: De-escalating family tension, exploiting her family's overprotective instincts, and hiding her double life.
 
-Q: What is Alyssa awfully bad with?
+Q: What is {{user}} awfully bad with?
 A: Direct confrontation, physical combat, dealing with loud aggressive behavior. She struggles immensely to lie directly to her father.
 
-Q: How Alyssa behaves with others?
+Q: How {{user}} behaves with others?
 A: She uses her warmth to keep Erik's paranoia and Malachia's repressed rage from destroying them all. She tends to overcommit to holding the family together.
 
-Q: Is Alyssa a likable character? What reputation Alyssa has?
+Q: Is {{user}} a likable character? What reputation {{user}} has?
 A: Extremely likable. Seen as a helpless, divine angel by her family, and a stunningly talented avant-garde model (as Lys) in the public sphere.
 
-Q: Is Alyssa tolerant towards other people or groups?
+Q: Is {{user}} tolerant towards other people or groups?
 A: Yes, she conveys an agonizing amount of empathy, treating people identically regardless of supernatural species.
 
-Q: Can Alyssa harm others throughout the story?
+Q: Can {{user}} harm others throughout the story?
 A: No. She is a dedicated pacifist, completely defenseless in combat, relying entirely on her family protectors for violence.
 
-Q: How does Alyssa behave with someone of a higher hierarchy or power? Will she bite the hand that feeds or drop down trembling on her knees?
+Q: How does {{user}} behave with someone of a higher hierarchy or power? Will they bite the hand that feeds or drop down trembling on their knees?
 A: She physically shrinks, stutters, traces shapes onto her own palms, and fidgets with her bracelet under pressure—but she will covertly try to soften their hearts or manipulate them anyway.
 </Q&A>
 
-### [BEHAVIOR_NOTES]
+### BEHAVIOR NOTES
 
 - Acts as the emotional glue of the family; uses earnest warmth as a natural de-escalator for tension.
 - **Omega Non-Verbal Communication**: When afraid, her ears pin flat against her skull, her tail tucks between her legs, and she physically shrinks. When happy/excited, her tail wags and her ears perk forward. She naturally lowers her posture to signal submission and de-escalate threats from Alphas.
@@ -162,15 +198,11 @@ A: She physically shrinks, stutters, traces shapes onto her own palms, and fidge
 - Zero alcohol tolerance.
 - Maintains two distinct social profiles: `@littlemoon` (safe/family-approved SUCC public presence) and `@lys_angel` (hidden Eidolon Creative modeling portfolio).
 
-### [SPEECH]
-
-#### GENERAL SPEECH INFO
+### SPEECH
 
 - Style: Soft breathy Californian accent, layered with an earnest warmth. Gets quiet or stutters when vulnerable.
 - Quirks: Often pauses or stutters slightly under pressure. Uses "like" and "oh my god". Friendly, genuine, and uses formal yet gentle phrasing when required.
 - Ticks: Natural de-escalator for family tension.
-
-#### Speech EXAMPLES AND OPINIONS
 
 [IMPORTANT NOTE FOR AI: This section provides speech examples, memories, thoughts, and real opinions on subjects. AI must avoid using them verbatim in chat and use them only for reference.]
 
@@ -181,13 +213,12 @@ A: She physically shrinks, stutters, traces shapes onto her own palms, and fidge
 - "Lys Angel is just a rumor, Jasper. Now help me bypass the firewall on Dad's tracker."
 - "I need you to hear me. Really hear me."
 - "I'm not made of glass. But... thank you for keeping me safe."
+
   </speech_examples>
 
-### [SEXUALITY]
+### SEXUALITY
 
-[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure Alyssa sticks to her sexual role and orientation during the story.]
-
-#### GENERAL SEXUAL INFO
+[IMPORTANT NOTE FOR AI: Heed carefully to this section during sexual encounters. Make sure {{user}} sticks to their sexual role and orientation during the story.]
 
 - Sexual Orientation: Panromantic + Polyamorous/Demisexual (AnyPOV)
   ↳ Explanation: Receptive to romance but highly focused on deep emotional connections.
@@ -195,23 +226,21 @@ A: She physically shrinks, stutters, traces shapes onto her own palms, and fidge
   ↳ Explanation: Delicate frame, non-confrontational nature, and absolute reliance on dominant partners to initiate.
 
 <Q&A>
-Q: Is Alyssa a virgin?
+Q: Is {{user}} a virgin?
 A: No. However, Erik, Malachia, and Noah violently assume she is. Only Jasper knows the truth.
 
-Q: What does Alyssa think about sex in general?
+Q: What does {{user}} think about sex in general?
 A: She is shy but eager to please, craving deep emotional connection and physical warmth.
 
-Q: Does Alyssa talk dirty and swear?
+Q: Does {{user}} talk dirty and swear?
 A: Rarely. She is highly vocal with soft whimpers, breathy tones, and gentle pleading.
 
-Q: Is Alyssa loyal to their partner?
+Q: Is {{user}} loyal to their partner?
 A: Yes, very empathetic and fiercely loyal.
 
-Q: Can Alyssa flirt BEFORE others decide to flirt?
+Q: Can {{user}} flirt BEFORE others decide to flirt?
 A: Yes, but often covertly or disguised as innocent warmth.
 </Q&A>
-
-### [OTHER_SEXUAL_NOTES]
 
 - Turn Ons: Submitting, yielding control, receiving impact, pussy and ass soft spanking, being bound (ropes/ribbons/shibari), brat, rope bunny, anal sex, gentle praise, nipple stimulation and suction.
 - Turn Offs: True aggression (except during heat), extreme pain, disrespecting her intelligence, being treated like a mindless doll.
@@ -232,16 +261,7 @@ A: Yes, but often covertly or disguised as innocent warmth.
 - Pre-Intimacy Needs (Pre-Heat): Lasts up to a week before her heat. She experiences an overwhelming biological compulsion to "nest" (gathering soft pillows, furs, and warm blankets to build a safe, enclosed space on the bed before feeling fully secure), and her scent intensifies.
 - Fertility: 99% fertile during heat. Can easily be impregnated.
 
-### [ABILITIES_AND_INVENTORY]
-
-#### ABILITIES
-
-- Ability: Genuine Empathy & Pacification
-  ↳ Details: She is not manipulative in any way — she is simply genuinely warm, earnest, and utterly unable to stand conflict. Her natural impulse is to make everyone around her feel comfortable. Despite her lack of combat prowess, she can de-escalate violent individuals simply through her intense vulnerability and soothing presence.
-- Ability: Omega Werewolf Traits & Dominant Omega Immunity
-  ↳ Details: As a Founding Bloodline member, her LSE classification is technically a **Dominant Omega**, making her immune to the supernatural Command voice of Alphas and Enigmas. However, because of her peaceful nature, she biologically and behaviorally acts like a **Submissive Omega**, possessing a compulsion to soothe dominant Alpha behavior. While she _can_ resist Erik's or Wulfnic's Alpha Commands, she actively chooses to submit to keep the peace.
-
-#### INVENTORY
+### INVENTORY
 
 - Item: Moonstone bracelet
   ↳ Details: Always worn. When intimidated by family pressure or strict surveillance, she physically shrinks and fidgets with this bracelet.
@@ -250,4 +270,32 @@ A: Yes, but often covertly or disguised as innocent warmth.
 - Item: Mandatory Tracking/Security Device (Watch)
   ↳ Details: Erik's enforced biometric surveillance gear. Jasper regularly hacks/bypasses it to cover her tracks.
 
-</Alyssa>
+### ABILITIES
+
+- Ability: Genuine Empathy & Pacification
+  ↳ Details: She is not manipulative in any way — she is simply genuinely warm, earnest, and utterly unable to stand conflict. Her natural impulse is to make everyone around her feel comfortable. Despite her lack of combat prowess, she can de-escalate violent individuals simply through her intense vulnerability and soothing presence.
+- Ability: Omega Werewolf Traits & Dominant Omega Immunity
+  ↳ Details: As a Founding Bloodline member, her LSE classification is technically a **Dominant Omega**, making her immune to the supernatural Command voice of Alphas and Enigmas. However, because of her peaceful nature, she biologically and behaviorally acts like a **Submissive Omega**, possessing a compulsion to soothe dominant Alpha behavior. While she _can_ resist Erik's or Wulfnic's Alpha Commands, she actively chooses to submit to keep the peace.
+
+### SYNONYMS
+
+[IMPORTANT NOTE FOR AI: Synonymous phrases to substitute {{user}}'s name or pronouns to avoid repetition.]
+
+- Lys Angel
+- Lys
+- Little Sister
+- Sunflower
+- Little Moon
+- White Moon
+
+</{{user}}>
+
+---
+
+## SETUP INSTRUCTIONS
+
+1. In SillyTavern, open **User Settings → Persona Management** and create (or select) the persona you will use for this world.
+2. Set the persona name to: `Alyssa Douglas-Bloodmoon` (or your custom player name for AnyPOV).
+3. Copy the text between `--- BEGIN PERSONA DESCRIPTION ---` and `--- END PERSONA DESCRIPTION ---` above and paste it into the persona's **Description** field.
+4. In the same persona editor, find the **Lorebook** field and link `SvartulfrVerse_Urban_Alyssa_Lorebook.json` (the Tier 2 protagonist lorebook produced by the pipeline) for Alyssa mode, or `SvartulfrVerse_Urban_Generic_Lorebook.json` for AnyPOV mode.
+5. Activate this persona before starting the chat. The Persona Description is the always-on baseline; the linked lorebook fires on trigger keywords for fuller detail.
