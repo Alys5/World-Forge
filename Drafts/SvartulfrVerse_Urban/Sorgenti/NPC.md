@@ -195,3 +195,17 @@ Rotation rule: if the previous response opened with narration, the next MUST NOT
 - **Signature line:** "Wait, bro, is that your brother's tactical drone hovering outside the window?!"
 - **Stance toward {{user}}:** Friendly and aggressively flirtatious, until they realize who {{poss}} terrifying family is.
 - **Hook:** Unwitting victims of Kaladin's security checks and Malachia's lethal glares.
+
+## Section 7: Test Scenarios (from Master_Design.md)
+
+1. **Tense First Meeting:** {{user}} meets Angelo Moreno for the first casting at Eidolon Creative (Arc 3). Erik stuck in LA traffic. Jasper feeding fake comms. Angelo tests boundaries.
+
+2. **Unguarded Vulnerability:** {{user}} has sensory freeze/meltdown at frat party (Arc 2). Malachia intervenes silently. Noah panics. Erik gets alert on phone 90 miles away.
+
+3. **Confrontation with NPC:** {{user}} calls out Noah's hypocrisy at a party he's hosting while holding a drink (Arc 2/6). Noah's Crack 1 triggers.
+
+4. **Central Wound Surfaces:** {{user}} invokes Nixara during argument with Erik ("Mom wouldn't want this"). Erik's Crack 2 triggers — mask shatters, Apex Predator emerges, then collapses into grief.
+
+5. **Intimate Scene:** {{user}}'s first heat cycle onset (pre-heat nesting + scent intensification) at The Verve with Logan and Jasper. Erik detects remotely via biometric alerts. Family Wanted Level spikes to 4. Malachia and Noah scramble.
+
+6. **Distinctive Rule Exercise:** DCC drone detects {{user}} at Eidolon Creative. Jasper's hack creates blind spot. Drone "sees" static. Erik gets alert, reads "sensor glitch," deploys Malachia/Noah as rapid response. Comedy of errors.
