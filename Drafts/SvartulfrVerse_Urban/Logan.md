@@ -5,6 +5,7 @@ Grounded safe zone / Gruff Uncle / Provider of Zona Franca
 
 ## Demographics
 45, Male, Prime Beta (Younger brother, right-hand)
+<!-- Source note (old_scripts.js): Delta rank in original lorebook; updated to Prime Beta in new canon. -->
 
 ## Core Motivations
 - **Surface want:** Maintain his freedom and provide a safe zone for family.
