@@ -75,12 +75,12 @@
 - **Trigger keywords:** SUCC demographics, 25.8 percent, 13.3 percent, integration, diversity.
 
 ### World Calendar
-- **Start Date:** August 28, 2024 (Wednesday)
-- **Horizon:** The start of Fall Semester classes at SUCC. This provides a hard anchor for the timeline, allowing the narrative arcs (like Halloween and midterms) to progress naturally from the first day of college.
-- **Day 1 Weekday:** Wednesday
+- **Start Date:** August 28, 2024 (Thursday) — SUCC freshman move-in
+- **Months:** 0-indexed (0 = January)
+- **Weekday:** 0–6 (0 = Sunday)
 
 ### Dice Oracle Tables
-*Four procedures defined. The dice fix WHAT is true; the world's system prompt and the narrating model decide HOW it is told. Every value is a short factual token — never a full sentence.*
+*Eight procedures + utility pools defined. The dice fix WHAT is true; the world's system prompt and the narrating model decide HOW it is told. Every value is a short factual token — never a full sentence.*
 
 **Procedure 1: Erik's Tactical Overreaction Recount**
 - **Situation:** Generating the absurd military/corporate response Erik deployed to fix a mundane problem for {{user}}.
@@ -106,9 +106,62 @@
 - **Tense:** Live event.
 - **Duration:** Persistent for the scene.
 
+**Procedure 5: SUCC Campus Life & Encounters**
+- **Situation:** Generating campus-specific micro-events.
+- **Pools:** Location + Social Dynamic + Complication.
+- **Tense:** Live event.
+- **Duration:** Persistent for the scene.
+
+**Procedure 6: SUCC Demographic Encounter**
+- **Situation:** Generating a random supernatural species encounter on campus.
+- **Pools:** Species + Social Context + Reaction to {{user}}.
+- **Tense:** Live event.
+- **Duration:** Persistent for the scene.
+
+**Procedure 7: SUCC Extracurricular & Academic Drama**
+- **Situation:** Generating club, Greek life, or academic complications.
+- **Pools:** Organization + Drama Type + {{user}} Involvement.
+- **Tense:** Live event.
+- **Duration:** Persistent for the scene.
+
+**Procedure 8: Campus Navigation & Evasion**
+- **Situation:** Generating evasion routes when {{user}} needs to avoid family surveillance.
+- **Pools:** Starting Location + Obstacle + Escape Route.
+- **Tense:** Live event.
+- **Duration:** Persistent for the scene.
+
+**Utility Pools:**
+- S.U.C.C. Campus Locations
+- Species & Demographics
+- Clubs/Societies/Greek Life
+- Sports Teams
+- Supernatural Majors
+- College Degrees
+
 ## World Rules & Constraints
 
-### What the World Forbids
+### Factions (Tier 1)
+1. **DCC Security** (Douglas Corporate Command) — Erik's private military/surveillance empire. Kaladin (Director), Marcus (Executive Protection). Covers property, cyber, tactical extraction.
+2. **Court of the Night** — Vampire power structure. Visconte Angelo Moreno (Eidolon Creative public face). Cold war with wolves. Fade Greymoor (defector, hiding in indie music).
+3. **Ironworks Syndicate** — Vito Marino (Alpha). Rival pack territory. Historical friction with Bloodmoons.
+4. **Douglas-Bloodmoon Pack** — Erik (Patriarch), Wulfnic (Alpha of Alphas). Old Bloodline + Pureblood Úlfheðnar descent. Concilio (pack council) meets monthly.
+
+### Key Locations (Tier 1)
+1. **Villa Douglas** — Blackwood Uptown. The estate. Surveillance hub. 24/7 DCC presence.
+2. **SUCC Campus** — Supernatural University. Dorms (Wyrm), Greek Row (KSA/BRO), Basilica Library, Helsing Chapel, Nocturnal Hall, Lunar Quad, etc.
+3. **The Verve** — Logan's nightclub. Safe Zone with active signal jammers. Indie music scene.
+4. **Blackwood Forest** — Dead Zone during full moon. Ritual hunt ground. No tech.
+5. **DCC Tower / 101 Freeway** — LA. Erik's corporate HQ. Traffic is his kryptonite — Angelo exploits this.
+6. **Eidolon Creative** — 100 Velvet Lane, Paradise district. Angelo's studio. Vampire aesthetic. {{user}}'s secret modeling job.
+7. **Sidewinders Bar** — Neutral ground. Old-school werewolf bar. Rough.
+
+### Species
+- **Werewolves:** Hierarchy-driven, scent-communicative, pack-bonded. Prime Alpha biology is load-bearing. Forms: human / hybrid / full wolf.
+- **Vampires:** Superhuman speed, hypnotic glamour, blood-bonding. Sunlight lethal. Invitation rules for private homes. Aesthetic obsession restricts combat pragmatism.
+- **Humans:** 13.3% mundane / 4% magic-capable at SUCC. Mixed reactions to supernatural integration.
+- **Demons, Fae, Hybrids, Undead:** Folded into "SUCC Demographics" concept — background texture, not full species entries.
+
+## What the World Forbids
 - No convenient amnesia. No deus ex machina rescues. No overriding character free will through supernatural means.
 - No lethal force between Cold War factions (Tactical Cleansing and Diplomatic Audit are bounded, non-lethal).
 - Family interference must always read as love, never cruelty.

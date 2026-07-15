@@ -9,9 +9,23 @@
 
 ## PERSONA DESCRIPTION
 
-_Paste the block below — between the BEGIN and END markers — into:
+_From Master_Design.md Section 3 — locked reference. Do not edit._
+
+**Canonical Persona:** Alyssa Douglas-Bloodmoon (customizable AnyPOV)
+**Demographics:** SUCC freshman, 18, twin of Jasper, youngest child of Erik/Nixara
+**External Arc Goal:** From "fragile glass bird" to independent adult who owns her own body, scent, and choices
+**Internal Arc Goal:** Process the Nixara-born trauma into a healthy personal identity
+**Standing Secrets:**
+- Secret Eidolon Creative modeling alias "Lys Angel" (Jasper knows, Malachia suspects, Erik/Noah oblivious)
+- The 2021 First Kiss incident with Noah (strictly between them)
+**Orientation:** Pansexual (AnyPOV maintained)
+**Key Traits:** Omega empathy, twin bond with Jasper, inherited Bloodmoon/Bloodline traits
+
+---
+
+Paste the block below — between the BEGIN and END markers — into:
 SillyTavern → User Settings → Persona Management → [your persona] → Description.
-This text is injected as a system message every turn while this persona is active. Keep it tight._
+This text is injected as a system message every turn while this persona is active. Keep it tight.
 
 --- BEGIN PERSONA DESCRIPTION ---
 

@@ -103,3 +103,33 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 **Status: READY — take it to `/worldforge start` (the Interviewer will read these notes as starting material and run the full interview).**
 
 ---
+
+## Source File References (Sorgenti/)
+
+All data from these Brainstorm Notes has been transferred to the structured source files in `D:\World-Forge\Drafts\SvartulfrVerse_Urban\Sorgenti\`:
+
+| Brainstorm_Notes Section | Target File(s) |
+|---|---|
+| Cast — Erik Douglas | `Sorgenti/Erik.md` |
+| Cast — Malachia Douglas-Bloodmoon | `Sorgenti/Malachia.md` |
+| Cast — Noah Douglas-Bloodmoon | `Sorgenti/Noah.md` |
+| Cast — Jasper Douglas-Bloodmoon | `Sorgenti/Jasper.md` |
+| Cast — Logan Douglas | `Sorgenti/Logan.md` |
+| Cast — Wulfnic Bloodmoon | `Sorgenti/Wulfnic.md` |
+| Cast — Angelo Moreno | `Sorgenti/Angelo.md` |
+| Cast — Edric Douglas | `Sorgenti/Edric.md` |
+| Cast — Kaladin Narghaton | `Sorgenti/Kaladin.md` |
+| Cast — Marcus Thornfield | `Sorgenti/Marcus.md` |
+| Cast — Scarlett Rose | `Sorgenti/Scarlett.md` |
+| Cast — Sierra Cruz | `Sorgenti/Sierra.md` |
+| Prose & style | `Sorgenti/World.md` (Style Contract section) |
+| Intimate content | `Sorgenti/User.md` + individual NPC intimacy substrates |
+| {{user}} slot | `Sorgenti/User.md` (Part 1 + Part 2) |
+| World Mode / sandbox charter | `Sorgenti/World.md` (SANDBOX_STATE, WORLD_PULSE) |
+| Dice oracle leaning | `Sorgenti/World.md` (Dice Oracle Tables section) |
+| Loose fragments / mechanics | `Sorgenti/World.md` + individual NPC files |
+| Gaps (for Interviewer) | `Sorgenti/AllOther.md` (Brainstorm_Notes gaps section) |
+
+**Status: DATA TRANSFER COMPLETE — all structured content from Brainstorm_Notes.md is now reflected in the Sorgenti/ source files.**
+
+---
