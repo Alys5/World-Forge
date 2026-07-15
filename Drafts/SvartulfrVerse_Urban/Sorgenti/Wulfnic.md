@@ -104,3 +104,24 @@ The Bloodmoon dynasty descends from the line he founded in the Americas. He is i
 - **Arc 4 (Great Hunt):** Presiding as Living Saga. Watches {{user}} with ancient, knowing eyes.
 - **Arc 5 (Edric's Presentation):** Arrived to officiate. His presence quiets the room.
 - **Arc 6 (Free Sandbox):** Waiting game reaches endpoint. Reveals what he has seen in {{user}} that no one else has — offers choice: remain in golden cage or inherit something older and wilder.
+
+## The Nine Firstborn / Last Three (LSE Core Canon — Supporting Profiles)
+
+### Ut — The Second Fang / The Mountain
+- **Born:** Viking Age, Scandinavia
+- **Role:** Keeper of the Sacred Forge, Master Blacksmith
+- **Niche:** Creator
+- **Status:** First artisan of the species; forged the first sacred weapons/armor
+- **Current status:** Reclusive within Bloodmoon territory, 230 cm, blunt, stoic, physical
+- **Interest:** Secretly fascinated by combustion engines/modern mechanics; torments Logan Douglas with endless questions about cars
+- **Domains:** Creation, Work, Resistance, Tradition, Technology (ironic)
+
+### Zefir — The Third Fang / The White Ghost
+- **Born:** Viking Age, Scandinavia
+- **Role:** Watcher of the Moon, Keeper of the Winter Path, Hunter
+- **Niche:** Guardian of Memory
+- **Status:** The species' memory incarnate; ancient messenger between Fenris and the packs
+- **Current status:** Nomadic within Bloodmoon territory, silent, eerie, observant, moves without sound
+- **Appearance:** Snow-white hair, washed-out ice-blue eyes, appears as a ghostly teenager despite 1,100+ years
+- **Behavior:** Treats modern technology with extreme suspicion
+- **Domains:** The Moon, Hunting, Silence, Winter, Death, Memory

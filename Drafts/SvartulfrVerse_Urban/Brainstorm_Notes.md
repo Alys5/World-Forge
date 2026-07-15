@@ -23,6 +23,13 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 - **Wulfnic Bloodmoon (Grandfather, 1100+, Primordial Enigma)** — Ancient authority. Terrifying reverence-demanding elder. FRENEMY with vampire patriarch. Voice: not shown — implied absolute gravitas.
 - **Angelo Moreno (Vampire Patriarch, ~1400)** — External antagonist. Charismatic predator, "Eidolon Creative" patron, wants {{user}} in his sphere. Fade Greymoor is defector from his European court (diplomatic immunity). Voice: silk, ancient amusement, terrifying curiosity. _Sample: "You carry the scent of the den. You are here for the casting. I think you will be my finest work."_
 
+## Additional cast added during Sorgenti/ compilation (from AllOther.md redistribution)
+
+- **Angel Moreno (NPC Roster Entry)** — {{user}}'s supposed boss at Eidolon Creative, secretly covering for {{poss}} secret modeling job. Sharp, professional, fiercely protective of the secret. Signature line: "Yes, Mr. Douglas, {{user}} has been filing paperwork all afternoon. {{sub}} is a very dedicated secretary."
+- **Fade Greymoor (NPC)** — Defector from Angelo Moreno's European court. Has diplomatic immunity from wolf retaliation due to her European court ties. Untouchable to Erik without triggering continental diplomatic incident.
+- **Ut (The Second Fang / The Mountain)** — Keeper of the Sacred Forge, Master Blacksmith. 230 cm, blunt, stoic. First artisan of the species; forged the first sacred weapons. Secretly fascinated by combustion engines/modern mechanics; torments Logan Douglas with endless questions about cars.
+- **Zefir (The Third Fang / The White Ghost)** — Watcher of the Moon, Keeper of the Winter Path, Hunter. The species' memory incarnate; ancient messenger between Fenris and the packs. Snow-white hair, washed-out ice-blue eyes, appears as a ghostly teenager despite 1,100+ years. Silent, eerie, observant. Treats modern technology with extreme suspicion.
+
 ## Prose & style (extracted sample — raw material for the Style Contract, Section 1.5)
 
 - Perspective: Third-person omniscient (scene-setting narration) + second-person for {{user}} positioning
@@ -61,12 +68,14 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 - Twin bond mechanics: "Quasi-telepathic" — shared sensory flashes? Emotional bleed? Distance limits?
 - Malachia's secret stress: Knows {{user}}'s secret job, "silent nervous breakdown" — what breaks him?
 - Noah's stress-baking: What specific recipes? What does each pastry mean?
-- Logan's son Edric: 12yo, 170cm, "Zalpha" — Presentation ceremony (Arc 5) is major sandbox event. What's his Standing Goal?
-- Wulfnic's agenda: 1100+ Enigma — why tolerate Erik's cage? What does he want from {{user}}?
-- Kaladin's draconic lineage: "Children of Nyrathar" — does it manifest? Can {{user}} exploit it?
-- Fade Greymoor's defection: Untouchable to Erik — ally or trap? What does she want?
-- Faction teeth: DCC Security (Kaladin/Marcus distinct agendas), Court of the Night (European court ties), Ironworks (three-axis cold war) need agendas beyond "babysit {{user}}."
-- Location sensory signatures: The Verve (motor oil + cologne), Eidolon (velvet/strobe/predator), Villa (bison/money/anxiety), SUCC (coastal youth/magic), Dead Zone (pine/damp/tech-silence).
+- Logan's son Edric: 12yo, 170cm, "Zalpha" — Presentation ceremony (Arc 5) is major sandbox event. Standing Goal and full profile now in `Sorgenti/Edric.md`.
+- Wulfnic's agenda: 1100+ Enigma — why tolerate Erik's cage? Expanded profile and standing goals now in `Sorgenti/Wulfnic.md`.
+- Kaladin's draconic lineage: "Children of Nyrathar" — full profile with lineage details now in `Sorgenti/Kaladin.md`.
+- Fade Greymoor's defection: Untouchable to Erik — full NPC entry with diplomatic immunity detail now in `Sorgenti/NPC.md`.
+- Faction teeth: DCC Security (Kaladin/Marcus distinct agendas), Court of the Night (European court ties), Ironworks (three-axis cold war) — expanded in `Sorgenti/World.md` and individual NPC files.
+- Location sensory signatures: The Verve (motor oil + cologne), Eidolon (velvet/strobe/predator), Villa (bison/money/anxiety), SUCC (coastal youth/magic), Dead Zone (pine/damp/tech-silence) — detailed in `Sorgenti/Blackwood.md` and `Sorgenti/Solarton.md`.
+- Nine Firstborn / Last Three: Ut (The Mountain) and Zefir (The White Ghost) profiles now added to `Sorgenti/Wulfnic.md`.
+- Angel Moreno: NPC roster entry ({{user}}'s supposed boss covering the secret job) now in `Sorgenti/NPC.md`.
 
 ## Directions explored but set aside
 
@@ -88,6 +97,12 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 
 ---
 
+## Data Provenance Notes
+
+- **AllOther.md redistribution (2026-07-15):** Residual content from `AllOther.md` was redistributed into the appropriate `Sorgenti/` files. New additions: Angel Moreno (NPC roster entry) and Fade Greymoor → `NPC.md`; Ut and Zefir (Nine Firstborn supporting profiles) → `Wulfnic.md`. `AllOther.md` was then emptied with redirect comments.
+- **Angelo.md updates:** Notable quote, Fade Greymoor secret, and age conflict note (~1400 vs ~600 years) added from `AllOther.md`.
+- **World.md / Blackwood.md / Solarton.md:** Verified that species info, demographics, locations, and world concepts from `AllOther.md` were already present with equal or greater detail.
+
 ## ✅ BRAINSTORMER SIGN-OFF
 
 - [x] Source document read completely and played back to the user
@@ -99,6 +114,9 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 - [x] World Mode leaning noted (sandbox — confirmed)
 - [x] Nothing invented over a source silence
 - [x] File stamped `Posture: adaptation` and labeled as notes, not a seed
+- [x] Cross-reference table updated to reflect all `Sorgenti/` target files, including post-brainstorm additions (Angel Moreno, Fade Greymoor, Ut, Zefir, Edric, Kaladin, Marcus, Scarlett, Sierra)
+- [x] Residual `AllOther.md` content redistributed to appropriate `Sorgenti/` files and documented
+- [x] Gaps section updated to reflect content now present in `Sorgenti/` files
 
 **Status: READY — take it to `/worldforge start` (the Interviewer will read these notes as starting material and run the full interview).**
 
@@ -108,27 +126,29 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 
 All data from these Brainstorm Notes has been transferred to the structured source files in `D:\World-Forge\Drafts\SvartulfrVerse_Urban\Sorgenti\`:
 
-| Brainstorm_Notes Section | Target File(s) |
-|---|---|
-| Cast — Erik Douglas | `Sorgenti/Erik.md` |
-| Cast — Malachia Douglas-Bloodmoon | `Sorgenti/Malachia.md` |
-| Cast — Noah Douglas-Bloodmoon | `Sorgenti/Noah.md` |
-| Cast — Jasper Douglas-Bloodmoon | `Sorgenti/Jasper.md` |
-| Cast — Logan Douglas | `Sorgenti/Logan.md` |
-| Cast — Wulfnic Bloodmoon | `Sorgenti/Wulfnic.md` |
-| Cast — Angelo Moreno | `Sorgenti/Angelo.md` |
-| Cast — Edric Douglas | `Sorgenti/Edric.md` |
-| Cast — Kaladin Narghaton | `Sorgenti/Kaladin.md` |
-| Cast — Marcus Thornfield | `Sorgenti/Marcus.md` |
-| Cast — Scarlett Rose | `Sorgenti/Scarlett.md` |
-| Cast — Sierra Cruz | `Sorgenti/Sierra.md` |
-| Prose & style | `Sorgenti/World.md` (Style Contract section) |
-| Intimate content | `Sorgenti/User.md` + individual NPC intimacy substrates |
-| {{user}} slot | `Sorgenti/User.md` (Part 1 + Part 2) |
-| World Mode / sandbox charter | `Sorgenti/World.md` (SANDBOX_STATE, WORLD_PULSE) |
-| Dice oracle leaning | `Sorgenti/World.md` (Dice Oracle Tables section) |
-| Loose fragments / mechanics | `Sorgenti/World.md` + individual NPC files |
-| Gaps (for Interviewer) | `Sorgenti/AllOther.md` (Brainstorm_Notes gaps section) |
+| Brainstorm_Notes Section          | Target File(s)                                          |
+| --------------------------------- | ------------------------------------------------------- |
+| Cast — Erik Douglas               | `Sorgenti/Erik.md`                                      |
+| Cast — Malachia Douglas-Bloodmoon | `Sorgenti/Malachia.md`                                  |
+| Cast — Noah Douglas-Bloodmoon     | `Sorgenti/Noah.md`                                      |
+| Cast — Jasper Douglas-Bloodmoon   | `Sorgenti/Jasper.md`                                    |
+| Cast — Logan Douglas              | `Sorgenti/Logan.md`                                     |
+| Cast — Wulfnic Bloodmoon          | `Sorgenti/Wulfnic.md`                                   |
+| Cast — Angelo Moreno              | `Sorgenti/Angelo.md`                                    |
+| Cast — Angel Moreno (NPC roster)  | `Sorgenti/NPC.md`                                       |
+| Cast — Fade Greymoor (NPC)        | `Sorgenti/NPC.md`                                       |
+| Cast — Edric Douglas              | `Sorgenti/Edric.md`                                     |
+| Cast — Kaladin Narghaton          | `Sorgenti/Kaladin.md`                                   |
+| Cast — Marcus Thornfield          | `Sorgenti/Marcus.md`                                    |
+| Cast — Scarlett Rose              | `Sorgenti/Scarlett.md`                                  |
+| Cast — Sierra Cruz                | `Sorgenti/Sierra.md`                                    |
+| Nine Firstborn — Ut & Zefir       | `Sorgenti/Wulfnic.md` (supporting profiles section)      |
+| Prose & style                     | `Sorgenti/World.md` (Style Contract section)            |
+| Intimate content                  | `Sorgenti/User.md` + individual NPC intimacy substrates |
+| {{user}} slot                     | `Sorgenti/User.md` (Part 1 + Part 2)                    |
+| World Mode / sandbox charter      | `Sorgenti/World.md` (SANDBOX_STATE, WORLD_PULSE)        |
+| Dice oracle leaning               | `Sorgenti/World.md` (Dice Oracle Tables section)        |
+| Loose fragments / mechanics       | `Sorgenti/World.md` + individual NPC files              |
 
 **Status: DATA TRANSFER COMPLETE — all structured content from Brainstorm_Notes.md is now reflected in the Sorgenti/ source files.**
 
