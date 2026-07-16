@@ -7,11 +7,11 @@
 
 ## Adapted from
 
-JanitorAI bot profile "Svartúlfr | The Douglas-Bloodmoon Pack" (HTML export) + User_Alyssa.md persona + old_scripts.js lorebook engine — a finished roleplay bot definition for a multi-character sandbox. Read-only; never edited.
+JanitorAI bot profile "Svartúlfr | The Douglas-Bloodmoon Pack" (HTML export) + User_Alyssa.md persona + old_scripts.js lorebook engine — a finished roleplay bot definition for a multi-character arc. Read-only; never edited.
 
 ## The world the document gives us
 
-A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves live openly under the LSE Pack Code. The core tension: {{user}} is the 19-year-old youngest sibling/twin of the Douglas-Bloodmoon dynasty, suffocated by an overprotective family that expresses love through overwhelming force (DCC Security drones, biometric trackers, armored SUVs, a father who deploys SWAT teams for papercuts). The comedy lives in the contrast: mundane college problems (frat parties, castings, grades) met with tactical-grade parental response. World Mode is explicitly sandbox — six opening scenarios (Arc 1–6) are entry points, not narrative arcs.
+A arc set in Blackwood City/Solarton, CA — a "free city" where werewolves live openly under the LSE Pack Code. The core tension: {{user}} is the 19-year-old youngest sibling/twin of the Douglas-Bloodmoon dynasty, suffocated by an overprotective family that expresses love through overwhelming force (DCC Security drones, biometric trackers, armored SUVs, a father who deploys SWAT teams for papercuts). The comedy lives in the contrast: mundane college problems (frat parties, castings, grades) met with tactical-grade parental response. World Mode is explicitly arc — six opening scenarios (Arc 1–6) are entry points, not narrative arcs.
 
 ## Cast visible in the source
 
@@ -49,14 +49,14 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 ## The {{user}} slot (the central decision)
 
 **Recommendation:** Play AS the youngest sibling (Jasper's twin, canonically Alyssa, customizable details). The profile is built around this position — the "golden cage," the twin bond with Jasper, the secret rebellion, the Family Wanted Level mechanic.
-**Cascade:** Erik/Malachia/Noah/Jasper/Logan/Wulfnic become NPCs; the sandbox charter is "survive college while your family deploys military-grade overprotection"; the spine is the tension between autonomy and the family's suffocating love.
+**Cascade:** Erik/Malachia/Noah/Jasper/Logan/Wulfnic become NPCs; the arc charter is "survive college while your family deploys military-grade overprotection"; the spine is the tension between autonomy and the family's suffocating love.
 **Fixed constraints (player-customizable beyond these):** Werewolf, child of Erik/Nixara, twin of Jasper, SUCC freshman.
 **Erik's protection gradient:** Malachia and Noah have "proven themselves" — the overprotection targets the twins (Jasper and {{user}}) as "not mature enough."
 **User confirmed:** This matches intent. Alyssa remains canonical twin for other scenarios/arcs/bot testing.
 
 ## Leaning (not decided)
 
-- World Mode: sandbox (confirmed by source)
+- World Mode: arc (confirmed by source)
 - Style touchstones beyond the source: _The Office_ meets _What We Do in the Shadows_ — workplace comedy energy applied to supernatural family dynamics. _Gilmore Girls_ pacing for father/daughter tension. _Scott Pilgrim_ for "boss battle = mundane problem" energy.
 - Dice oracle: Strong lean — the profile has recounted off-screen pasts (Erik's "47 threats," Jasper's hacks, Noah's baking, Malachia's fights) and conjured temp cast needs (random frat boys, vampire courtiers, DCC operatives, SUCC professors). Maps to `[[DICE_TABLES]]` carrier for recounted pasts / conjured one-scene characters / recurring random events.
 
@@ -68,7 +68,7 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 - Twin bond mechanics: "Quasi-telepathic" — shared sensory flashes? Emotional bleed? Distance limits?
 - Malachia's secret stress: Knows {{user}}'s secret job, "silent nervous breakdown" — what breaks him?
 - Noah's stress-baking: What specific recipes? What does each pastry mean?
-- Logan's son Edric: 12yo, 170cm, "Zalpha" — Presentation ceremony (Arc 5) is major sandbox event. Standing Goal and full profile now in `Source/Edric.md`.
+- Logan's son Edric: 12yo, 170cm, "Zalpha" — Presentation ceremony (Arc 5) is major arc event. Standing Goal and full profile now in `Source/Edric.md`.
 - Wulfnic's agenda: 1100+ Enigma — why tolerate Erik's cage? Expanded profile and standing goals now in `Source/Wulfnic.md`.
 - Kaladin's draconic lineage: "Children of Nyrathar" — full profile with lineage details now in `Source/Kaladin.md`.
 - Fade Greymoor's defection: Untouchable to Erik — full NPC entry with diplomatic immunity detail now in `Source/NPC.md`.
@@ -80,12 +80,12 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 ## Directions explored but set aside
 
 - Playing as new insert / promoted side character (user confirmed twin slot)
-- Arc mode (source explicitly sandbox; no arc spine exists)
+- Arc mode (source explicitly arc; no arc spine exists)
 - Removing heat cycle / explicit intimate content (User_Alyssa.md has it detailed; player can opt out at Interviewer but world supports it)
 
 ## Loose fragments
 
-- "Family Wanted Level" as sandbox's core mechanic — visible, escalating, comedic
+- "Family Wanted Level" as arc's core mechanic — visible, escalating, comedic
 - 101 Freeway as Erik's kryptonite (traffic = comedy engine)
 - Dead Zone in Blackwood Forest (tech-blind sanctuary)
 - Neutral Territories (The Verve, Sidewinders) as player escape valves
@@ -111,7 +111,7 @@ A sandbox set in Blackwood City/Solarton, CA — a "free city" where werewolves 
 - [x] Intimate content the source shows extracted (dynamics, explicitness, kinks/acts) for Phase 2.5
 - [x] {{user}}-slot decision recommended from the document's POV and confirmed by the user (play as Jasper's twin; fixed: werewolf, Erik/Nixara's child, Jasper's twin, SUCC freshman; Erik's protection gradient targets twins)
 - [x] Extracted world recorded as raw material attributed to the source, with gaps the document doesn't fill flagged for the Interviewer
-- [x] World Mode leaning noted (sandbox — confirmed)
+- [x] World Mode leaning noted (arc — confirmed)
 - [x] Nothing invented over a source silence
 - [x] File stamped `Posture: adaptation` and labeled as notes, not a seed
 - [x] Cross-reference table updated to reflect all `Source/` target files, including post-brainstorm additions (Angel Moreno, Fade Greymoor, Ut, Zefir, Edric, Kaladin, Marcus, Scarlett, Sierra)
@@ -146,7 +146,7 @@ All data from these Brainstorm Notes has been transferred to the structured sour
 | Prose & style                     | `Source/World.md` (Style Contract section)            |
 | Intimate content                  | `Source/User.md` + individual NPC intimacy substrates |
 | {{user}} slot                     | `Source/User.md` (Part 1 + Part 2)                    |
-| World Mode / sandbox charter      | `Source/World.md` (SANDBOX_STATE, WORLD_PULSE)        |
+| World Mode / arc charter          | `Source/World.md` (arc_STATE, WORLD_PULSE)            |
 | Dice oracle leaning               | `Source/World.md` (Dice Oracle Tables section)        |
 | Loose fragments / mechanics       | `Source/World.md` + individual NPC files              |
 

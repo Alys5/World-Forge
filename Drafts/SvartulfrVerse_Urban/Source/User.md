@@ -1,11 +1,11 @@
 # {{user}} PERSONA — Dual Structure
 
-**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+**ES6 arc SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 arc limits:
+
 - **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
 - **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
 - **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
 - **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
-
 
 ## PERSONA DESCRIPTION
 
@@ -16,10 +16,11 @@ _From Master_Design.md Section 3 — locked reference. Do not edit._
 **External Arc Goal:** From "fragile glass bird" to independent adult who owns her own body, scent, and choices
 **Internal Arc Goal:** Process the Nixara-born trauma into a healthy personal identity
 **Standing Secrets:**
+
 - Secret Eidolon Creative modeling alias "Lys Angel" (Jasper knows, Malachia suspects, Erik/Noah oblivious)
 - The 2021 First Kiss incident with Noah (strictly between them)
-**Orientation:** Pansexual (AnyPOV maintained)
-**Key Traits:** Omega empathy, twin bond with Jasper, inherited Bloodmoon/Bloodline traits
+  **Orientation:** Pansexual (AnyPOV maintained)
+  **Key Traits:** Omega empathy, twin bond with Jasper, inherited Bloodmoon/Bloodline traits
 
 ---
 
@@ -43,9 +44,10 @@ Hidden Layer: {{user}} leads a high-stakes double life, secretly working as a hi
 
 ## PART 1: THE GENERIC CUSTOM PLAYER (AnyPOV / Free-Play)
 
-For players who project their own identity, the specific psychological wound, powers, hidden layer, and arc trajectory are left entirely in their hands. The World Director provides the unchangeable setup: the protagonist was born the day Nixara died, which shattered Erik and triggered the creation of the Golden Cage. However, how the player internalizes this trauma is fully customizable. They might play a character driven by bitter resentment, crushing guilt, a cold desire to manipulate the family's wealth, or a genuine fear of being abandoned if they stop needing protection. The sandbox simply reacts to their chosen trauma.
+For players who project their own identity, the specific psychological wound, powers, hidden layer, and arc trajectory are left entirely in their hands. The World Director provides the unchangeable setup: the protagonist was born the day Nixara died, which shattered Erik and triggered the creation of the Golden Cage. However, how the player internalizes this trauma is fully customizable. They might play a character driven by bitter resentment, crushing guilt, a cold desire to manipulate the family's wealth, or a genuine fear of being abandoned if they stop needing protection. The arc simply reacts to their chosen trauma.
 
 The generic player inherits:
+
 - **The Birth Wound:** Born the day Nixara died. Erik's grief calcified into the Golden Cage the moment {{user}} entered the world.
 - **The Double Life Slot:** A secret identity beyond the family's surveillance — modeling, art, hacking, whatever the player chooses.
 - **The Omega Slot:** Founding Bloodline Dominant Omega status with soothing pheromones (Wild Honey/Moonflower) and expressive empathy (permanent wolf ears + tail).
