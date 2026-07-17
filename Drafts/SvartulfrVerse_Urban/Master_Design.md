@@ -11,12 +11,12 @@
 ```
 world_mode: arc
 intimacy_in_scope: true
-current_phase: 2
+current_phase: 2.5
 status: IN_PROGRESS
 phases:
   - { n: 0, name: "Interviewer",         status: COMPLETE }
   - { n: 1, name: "Refiner",            status: COMPLETE }
-  - { n: 2, name: "Architect",          status: PENDING }
+  - { n: 2, name: "Architect",          status: COMPLETE }
   - { n: 2.5, name: "Intimacy Architect", status: PENDING }
   - { n: 3, name: "Editor",             status: PENDING }
   - { n: 3.5, name: "Voice Auditor",    status: PENDING }
@@ -441,3 +441,34 @@ No runtime directives declared. (World Seed Section 9 empty; Refiner/ Prompt Eng
 - [x] Later phase rows PENDING; loop Rounds at 0; `1 Refiner` COMPLETE; current_phase = 2
 
 **Status: LOCKED — Proceed to Phase 2 (The Architect)**
+
+---
+
+## ✅ THE ARCHITECT SIGN-OFF (Phase 2)
+
+*Appended 2026-07-17 after all Phase 2 deliverables confirmed present on disk.*
+
+### Deliverables produced
+- **Character cards (15/15):** Card_User.md (dual-layer AnyPOV: Generic + Canonical Alyssa Dominant Omega "Lys Angel" at Eidolon), plus Card_Jasper, Card_Erik, Card_Noah, Card_Logan, Card_Malachia, Card_Wulfnic, Card_Marcus, Card_Angelo, Card_Scarlett, Card_Sierra, Card_Edric, Card_Kaladin, Card_Ut, Card_Zefir.
+- **Instruction files (15/15):** Instructions_User.md ({{original}} both fields + 5-field null STYLE_OVERRIDE) + one per character, each beginning with `{{original}}`.
+- **Tier 2 lorebooks (15):** Tier2_Alyssa.md (protagonist persona, no NPC — form), Tier2_Erik, Tier2_Jasper, Tier2_Noah, Tier2_Logan, Tier2_Malachia (intimacy STRICTLY NON-APPLICABLE sibling boundary), Tier2_Wulfnic, Tier2_Marcus, Tier2_Angelo, Tier2_Scarlett, Tier2_Sierra, Tier2_Edric, Tier2_Kaladin, Tier2_Ut, Tier2_Zefir — each with Standing Goal (+ Escalation Ladder where laddered).
+- **Tier 1 lorebooks (3):** Tier1_World_Entries_part1.md (22 entries: Mechanics, Factions, Species, Locations), Tier1_World_Entries_part2.md, Tier1_Carriers.md (manifest + calendar + dice carriers).
+- **Tier 3 arc lorebooks (6):** Arc1 Golden Cage (24), Arc2 First Rebellion, Arc3 Velvet Trap, Arc4 Primal Grounding (19), Arc5 Shattered Glass (23), Arc6 Open Door (24, endgame standing ARC_STATE with aliveness/activity-cadence directives). All use two-subsection ARC_STATE + CHARACTER_STATE (item 6 drift, item 7 trauma) + LOCATION + NPC_SHIFT (active ladder-stage line) + DRAMATIC_BEAT + TENSION (position 4, priority 90).
+- **JanitorAI external export:** JanitorAI_Bio_Group.json (15-roster group bio) for Phase 6.
+
+### Architect certifications
+- [x] All 15 character cards begin `system_prompt` and `post_history_instructions` with `{{original}}`; no engine/style/perspective rules in cards (override contract, Principle #2).
+- [x] All cards `extensions.world_forge.style_override` = null; all inherit Style Contract default (third_omniscient / present / asterisks_for_thoughts_only / double_quotes / double_asterisks / terse).
+- [x] Protagonist uses AnyPOV macros ({{user}}, {{sub}}, {{obj}}, {{poss}}, {{poss_p}}, {{ref}}); no assumed gender/pronouns anywhere.
+- [x] World ban honored: no prose em dashes or meta-tags. Em-dash form reserved for structural `### ENTRY: X — Aspect` / `NPC —` headers only.
+- [x] Three-tier architecture respected: Tier 1 world (position 0), Tier 2 character (position 1), Tier 3 arc (TENSION at 4). No content spans multiple tiers.
+- [x] Every lorebook entry carries a `Position Rationale:` field (DEFAULT or one-sentence justification).
+- [x] ARC_STATE two-subsection structure used (descriptive + binding Tonal Mandate with imperative directives); activity-cadence directive mechanizes NPC agency.
+- [x] Escalation Ladders authored once in Tier 2 Standing Goal; active stage named in Tier 3 NPC_SHIFT / Arc6 aliveness bullet.
+- [x] NPC/Character identity discipline: one canonical name per character, em-dash comment form, unique across cast, protagonist is persona not NPC.
+- [x] Ranks/ages sourced from Master_Design locked truth (Jasper=Beta, Erik=Prime Dominant Alpha, Logan=Prime Beta; Marcus 32, Kaladin 38, Angelo ~540).
+- [x] 2021 secret and Edric paternity (Arc 5 reveal) reflected per-arc.
+- [x] Malachia intimacy = STRICTLY NON-APPLICABLE sibling boundary; no intimacy content authored.
+- [x] Arc6 treated as endgame standing ARC_STATE (arc mode), not SANDBOX_STATE.
+
+**Status: PHASE 2 COMPLETE — Proceed to Phase 2.5 (Intimacy Architect), then Phase 3 (Editor).**
