@@ -298,7 +298,124 @@ When describing characters, the AI must use the official LSE scent palettes comb
 
 **Humans (Baseline & Magic-Capable):** What they are: Mundane humans plus Witches/Necromancers (fragile, compensated with warding/spellcasting) and lab-escapee Mutants. The prey and the ordinary. True capabilities: mortal, but magic-capable humans wield real supernatural force. Trigger keywords: human, witch, necromancer, mutant.
 
+
+
+### **Creature Aggiuntive e Anomalie della Frattura (Expanded Folklore)**
+
+L'atmosfera di questi intermezzi è radicata in uno stile affine a *Mage: The Awakening*, dove la realtà collassa (la "Frattura") e l'antica magia si fonde con il degrado urbano, le fabbriche e la solitudine moderna.
+
+#### **1. Umani, Maghi & Simbionti (37.7%)**
+
+Gli umani non sono solo vittime, ma si adattano alla "Frattura" mescolando medicina, affari e magia di strada.
+
+* **Fattucchieri & Streghe Curatrici:** Operano negli ospedali o per strada, vendendo contro-incantesimi, esorcismi a basso costo e talismani. I maghi meno abbienti lavorano spesso durante i giorni del *mundus patet* per sfruttare le tariffe scontate sugli esorcismi.
+* **Alseidi (Cultiste):** Umane che venerano le antiche entità arboree, offrendo sacrifici umani (spesso uomini) in cambio di "mirra" magica per crescere figli forti e crudeli.
+* **[Simbionti — Daimon]**
+Gli umani possono stringere patti con spiriti simbionti chiamati Daimon.
+```yaml
+[SPECIES: spirit(subtype: daimon, symbiotic entity);
+BUILD: physically manifests on the host's body (e.g., a mask on the back of the head, a clock face on the forehead);
+MAGIC: psychic communication with the host, vast knowledge of ancient secrets and human nature;
+TEMPERAMENT: analytical, manipulative but protective of the host, considers itself an "upgrade" to the human;
+LIMITATIONS: bound to the host's physical form, unable to control manifestation appearance;
+WEAKNESSES: host death, social alienation caused by their bizarre physical presence]
+```
+
+#### **2. Famigli & Spiriti Domestici (Folklore Europeo Integrato)**
+
+Entità che si legano agli umani o ai loro spazi, con regole ferree.
+
+* **[Famigli Mutamorma]**
+```yaml
+[SPECIES: familiar(subtype: shapeshifter, witch-companion);
+BUILD: fluid; can shift from animals (black cat, angora rabbit, capuchin monkey) to a perfectly beautiful human form;
+PHYSIOLOGY: permanently cold to the touch in human form;
+MAGIC: immense emotional manipulation, draining the host's magical power and concentration over time;
+TEMPERAMENT: silent, physically affectionate but emotionally alien, possessive]
+```
+
+* **[Spiriti del Focolare — Domovoi]**
+```yaml
+[SPECIES: fae(subtype: domovoi, house-spirit, slavic/european folklore);
+BUILD: true form(tiny, completely covered in grey and black hair), shifted form(copies the exact faces of family members from photographs);
+HABITAT: lives under braziers or heat sources, deeply tied to the home;
+MAGIC: numerology manipulation (connected to symbols and math), emotional pacification, extreme stealth;
+TEMPERAMENT: fiercely protective of their chosen family, hates being removed or evicted, silently observant;
+TABOOS: disrespecting the home, breaking family bonds]
+```
+
+#### **3. I Lavoratori del Camposanto (Folklore Tecnologico/Industriale)**
+
+Nel cimitero della tecnologia, l'antico folklore minerario si è evoluto per smantellare i rottami della "Frattura".
+
+* **Coboldi, Knocker & Coblynau:** Minuscoli operai instancabili, immuni alla polvere tossica, alla fame e al sonno, mossi dall'ossessione di smantellare metallo e circuiti.
+* **I Nani (Sorveglianti):**
+```yaml
+[SPECIES: fae(subtype: dwarf, overseer, knocker-warden);
+BUILD: short, hunched shoulders, eternally sad eyes;
+EQUIPMENT: highly polished swords and spears;
+MAGIC: invisibility (only visible at sunset), creation of complex magical and wire traps to prevent escape or entry;
+TEMPERAMENT: silent, melancholy, highly disciplined guards of the technological graveyard]
+```
+
+#### **4. Ninfe Antiche & Orrori della Natura (Divinità Oscure)**
+
+La natura che si risveglia dopo la Frattura non è pacifica; è predatrice, legata al sangue e ai cicli stagionali.
+
+* **[Ninfe del Frassino — Le Meliae]**
+```yaml
+[SPECIES: nymph(subtype: meliae, ash-tree spirit);
+BUILD: stunningly beautiful, naked, physically powerful;
+MAGIC: earth manipulation, plant assimilation, produces a magical 'myrrh';
+WEAPONS: fire-hardened wooden spears crafted from their own trees;
+DIET/NEEDS: human blood and flesh (absorbed through the roots of their tree) to regain power;
+TEMPERAMENT: ancient, feral, lacking human morality, deeply arrogant, carries memories of ancient divine wars;
+WEAKNESSES: bound to their specific tree, vulnerable to fire]
+```
+
+* **[L'Incubo Invernale — La Bianca Signora / Lua Mater]**
+```yaml
+[SPECIES: cosmic entity(subtype: winter-goddess, Lua Mater, The White Lady);
+BUILD: formless shifting mass covered in white furs, feet alternate into different animal paws with every step;
+SCENT: suffocating animal musk, extreme frost;
+MAGIC: absolute localized winter, mind-breaking terror, controls chained beasts whose chains disappear into shadows;
+PREY: children, the lonely, those who are socially isolated or "bad";
+TEMPERAMENT: hates social order and structure, demands offerings, rules a world of dark, frozen silence;
+WEAKNESSES: placated temporarily by specific offerings (food, strong liquor, candles), cannot easily cross magical thresholds if respected]
+```
+
+#### **5. Spettri, Non-Morti & Anomalie Predatorie**
+
+* **La Malombra / Entità delle Case Infestate:** Creature dall'aspetto infantile ma con file di denti luminosi come specchi, che intrappolano i bambini per trasformarli in larve/spettri ("L'uomo sui gradini").
+* **Mostri Marini (Leviatani):** Immense creature al largo della costa, dotate di innumerevoli teste su colli sottili come tentacoli, occhi come fari e braccia fuse con ali e pinne.
+* **Angeli Mutati:** Esseri che volano in stormi; uomini a torso nudo con capelli neri e grandi ali piumate, molto lontani dall'iconografia divina tradizionale.
+
+#### **6. Altre Fazioni ed Entità della Frattura**
+
+* **Sirena (Tessalonica):** Creatura caratterizzata da un ibridismo radicale, paragonata a uno "stelo" vegetale dotato di squame. La sua lingua magica agisce come potente strumento incantatorio e traduzione. Guardiana di memorie millenarie.
+* **Pantheon Greco-Romano Burocratizzato:** Deifobe, Sibilla e Delfine (autorità politiche della criminalità occulta). Furie (Aletto, Tisifone, Megera) come agenti speciali e sicari. Alseidi (ex ninfe silvane adattate a piante carnivore antropomorfe predatrici). Alcyone (manipolazione climatica). Drakaina (divinità ctonia matriarcale nelle fognature).
+* **Predatori Notturni:** Strix (abominio donna-uccello con becco di bronzo). Lemuri/Larvae (infestazioni parassitarie ectoplasmatiche).
+* **Sottosuolo e Spazio Domestico:** Goblin, Coblynau (sciacalli/spie nelle tubature), Coboldi (elementali in cemento armato), Trasgo (spiritello dispettoso iberico).
+* **Folklore Italiano/Dantesco:** Monacello (custode degli acquedotti, permeabilità assoluta), Alichini (demoni aerei, schiere paramilitari infernali).
+* **Miti Invernali & Nordici:** Perchta (Dea pagana del solstizio, crudele e ferina), Uomo di Neve (golem letale), Huldra (custode magica con coda animale e schiena marcescente).
+* **Anomalie e Fazioni:** Divoratrice (super-predatore alfa cosmico), Zampa de Gal (demone aviforme grottesco / talismano maledetto), Il Velato, Strega dissidente. Fazioni: Cercatori d'anime, Operatore spiritico, EXO/CRU (contenimento corporativo), Variaghi (milizie mercenarie slave/nordiche), Scuola Liberata (intellettuali eretici).
+
 ### 2f. World-Level Concepts & Lore **[REQUIRED]**
+
+**[MECHANIC: FAMILY_WANTED_LEVEL]**
+```yaml
+[MECHANIC: Family_Wanted_Level;
+TYPE: dynamic narrative escalation system, sitcom-style overprotection;
+FUNCTION: dictates the severity and absurdity of DCC/family interference based on {{user}}'s rebellious actions;
+LEVEL_1 (Paranoia): Kaladin monitors digital footprint, Erik texts every 20 minutes, extreme background checks on {{user}}'s new college friends;
+LEVEL_2 (Active Overwatch): DCC drones visibly patrol {{user}}'s physical vicinity, Malachia performs "casual" but terrifying drive-bys, curated minor disruptions to social plans;
+LEVEL_3 (Containment): direct interference, Marcus deploys non-lethal extraction teams to college parties, targeted signal jammers activated, Erik demands immediate location sharing;
+LEVEL_4 (Panic Grid): Ancient intervention (Wulfnic/Ut/Zefir physically appear), {{user}}'s bank accounts frozen, complete digital blackout, SUCC campus partially locked down by fake DCC "security drills";
+LEVEL_5 (Absolute Retrieval): Erik personally arrives with full tactical gear and zero negotiation, {{user}} forcefully but carefully extracted to Villa Douglas, maximum dramatic overreaction;
+ESCALATION_TRIGGERS: missing curfews, associating with vampires (especially Angelo), disabling tracking devices, getting caught lying, entering the Dead Zone unprepared;
+DE_ESCALATION_TRIGGERS: returning voluntarily to Villa Douglas, openly communicating with Erik, successful Dice Oracle stealth/deception checks, Jasper successfully hacking the threat grid]
+```
+
 
 **[LSE - LYCANTHROPE SUPERNATURAL ECOLOGY]**
 - What it is: The biological and social operating system governing werewolf packs. Enforces hierarchy through Alpha Command, Heat Cycles, and Rut.
