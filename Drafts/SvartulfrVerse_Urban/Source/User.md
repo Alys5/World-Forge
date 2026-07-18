@@ -42,26 +42,48 @@ Hidden Layer: {{user}} leads a high-stakes double life, secretly working as a hi
 
 ---
 
-## PART 1: THE GENERIC CUSTOM PLAYER (AnyPOV / Free-Play)
+### 3a. Identity & Role
+**Generic Custom User:** The default public face is simply "the youngest Douglas-Bloodmoon sibling, a SUCC freshman from a terrifyingly wealthy family." The private reality is completely blank, waiting for the player's Persona card to define their secret life.
 
-For players who project their own identity, the specific psychological wound, powers, hidden layer, and arc trajectory are left entirely in their hands. The World Director provides the unchangeable setup: the protagonist was born the day Nixara died, which shattered Erik and triggered the creation of the Golden Cage. However, how the player internalizes this trauma is fully customizable. They might play a character driven by bitter resentment, crushing guilt, a cold desire to manipulate the family's wealth, or a genuine fear of being abandoned if they stop needing protection. The arc simply reacts to their chosen trauma.
+**Canonical Alyssa:** Her full name is Alyssa Douglas-Bloodmoon (aliases: Lys, Sunflower, White Moon). Her public face is a perfectly innocent, naive Pre-Med student maintaining a 3.8 GPA. Her private reality is defined by a crushing secret legacy: she inherited her mother Nixara's title of "White Moon" (the spiritual "Queen of the Wolves" to Wulfnic's King, denoting the Dominant Omega closest to the Firstborn bloodline). In Arc 3, she seeks escape from this heavy legacy through a secret double life as the avant-garde art model "Lys Angel".
 
-The generic player inherits:
+### 3b. Physical Description
+**Generic Custom User:** Left entirely blank for the player. The AI must dynamically adapt to the player's Persona.
 
-- **The Birth Wound:** Born the day Nixara died. Erik's grief calcified into the Golden Cage the moment {{user}} entered the world.
-- **The Double Life Slot:** A secret identity beyond the family's surveillance — modeling, art, hacking, whatever the player chooses.
-- **The Omega Slot:** Founding Bloodline Dominant Omega status with soothing pheromones (Wild Honey/Moonflower) and expressive empathy (permanent wolf ears + tail).
-- **The Family:** All the brothers, uncle, grandfather, and the security apparatus are present and reactive. The player decides how they relate to each.
-- **The Physical Template:** Petite, delicate hourglass frame (165cm), caramel chestnut hair, mint-green doe eyes, completely hairless beneath the skin.
-- **The Secrets:** The First Kiss with Noah, the 2021 meadow assault saved by Marcus, the crush on Malachia — all available as player-authored secrets or NPC-known facts depending on choice.
+**Canonical Alyssa:** Petite, delicate hourglass frame (165cm). Caramel chestnut hair falling to her tailbone, and expressive mint-green doe eyes flecked with gold.
+- Sensory: Natural Omega pheromones smelling of Wild Honey and Moonflower.
+- Movement: Graceful, but naturally lowers her posture to signal submission and de-escalate threats. She freezes and shrinks when intimidated.
+- Marks/Tells: A crescent moon birthmark on her left hip. Her permanent wolf ears and tail act as "emotive appendages" that involuntarily betray her true feelings.
 
-**The rule:** Anything not explicitly chosen by the player defaults to the Alyssa template below. The world reacts to the player's trauma choice; the family's behavior is constant regardless of which wound the player carries.
+### 3c. The Wound
+**Generic Custom User (The Birth Wound):** Born the exact day their mother Nixara died. The active wound is the crushing realization that their mere existence triggered their father's suffocating, militarized grief.
 
----
+**Canonical Alyssa (The Burden of the White Moon):** A profound, silent guilt compounded by immense religious/political pressure. She feels responsible for her family's terrifying panic, while simultaneously buckling under the expectations of the Ancients who see her as their future Queen. The wound is her agonizing belief that she is failing everyone: she wants to be a normal girl, but her family needs her to be a fragile glass bird to stay sane, and her species needs her to be a mythic deity.
 
-## PART 2: THE CANONICAL PROTAGONIST (Alyssa Douglas-Bloodmoon)
+### 3d. Power & Limits
+**Generic Custom User:** Powers and limits depend entirely on the player's chosen LSE secondary sex.
 
-For Alyssa, the unhealed wound is "The Burden of the Glass Bird." Nixara died giving birth to her and Jasper. Alyssa knows that Erik's suffocating, militarized surveillance is entirely rooted in this trauma. Her raw, bleeding wound is a profound, silent guilt: she feels responsible for her family's constant, terrifying panic. To keep them stable and prevent their Alpha instincts from spiraling out of control, she actively performs the role of the fragile, innocent child they need to protect. Alyssa deeply loves her family and has no desire to abandon them, but she desperately wants to experience a normal college life and reclaim a fraction of autonomy. Her agonizing internal conflict is the terror that if she proves her independence and demonstrates she can survive without them, it will break the illusion that keeps her father and brothers sane. She is trapped by their love, constantly trying to mitigate their protection to live normally without shattering their hearts.
+**Canonical Alyssa:**
+- **Powers:** Founding Bloodline Dominant Omega (The White Moon). She is immune to the Alpha Command voice. She possesses an extraordinary expressive empathy that instinctively pacifies aggression in dominant individuals.
+- **Limits:** A dedicated pacifist completely defenseless in physical combat. She suffers from sensory phobias, freezing completely under loud noises or aggressive touch. She struggles immensely to lie directly to her father because her ears and tail betray her. During her 3 to 10 day heat cycle, she loses rational consent to primal breeding instincts.
+
+### 3e. Hidden Layer
+**Generic Custom User:** {{user}} desperately craves autonomy and freedom, but is secretly running from the terror of failing outside the cage without the family's limitless wealth to catch them.
+
+**Canonical Alyssa:** She desperately wants to reclaim a fraction of autonomy and live a normal college life. She is actively running from the terrifying destiny of her "White Moon" title. She fears that proving her independence will literally break her family's hearts and force her into the massive political role she wants to escape.
+
+### 3f. {{user}}'s Arc
+- **Arc 1 (The Golden Cage):** {{user}} attempts to maintain a perfect collegiate facade while managing the absurd, suffocating reality of {{poss}} family's constant surveillance.
+- **Arc 2 (The First Rebellion):** {{user}} tastes genuine teenage thrill and autonomy, realizing that pushing the boundaries brings both exhilaration and terrifying familial panic.
+- **Arc 3 (The Velvet Trap):** {{user}} is presented with the opportunity for a high-stakes double life, balancing the empowering validation of a secret identity against the anxiety of predatory external manipulation.
+- **Arc 4 (The Primal Grounding):** Stripped of modern tech and social masks, {{user}} is forced to confront {{poss}} raw biological instincts and the inescapable reality of pack intimacy.
+- **Arc 5 (The Shattered Glass):** {{user}} hits the emotional breaking point, standing {{poss}} ground to prove true independence and forcing the family to finally face their unhealed trauma.
+- **Arc 6 (The Open Door):** {{user}} lives autonomously on {{poss}} own terms, transforming the family's overprotection from a prison into a fiercely loving home.
+
+### 3g. The Contradiction
+**Generic Custom User:** {{sub}} rebels fiercely against the family's power and surveillance, yet subconsciously leverages that exact same billionaire pack reputation to get out of trouble when cornered.
+
+**Canonical Alyssa:** She claims she hates being treated as a fragile glass bird or a mythic Queen, yet she actively weaponizes her innocent, helpless Omega persona to manipulate her brothers and pacify her father into doing what she wants.
 
 <{{user}}>
 
