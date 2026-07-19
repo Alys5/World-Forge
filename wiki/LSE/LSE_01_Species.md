@@ -171,7 +171,16 @@ Both Alpha and Omega have subgender variants that emerge during maturation:
 - **Submissive Alpha:** Raised in warm, nurturing environments. Devoted caregivers. Unlikely to be unfaithful. Fiercely protective of children regardless of biological parentage.
 
 **Omega Subgenders:**
-- **Dominant Omega:** The second-rarest rank. Known as "Legend of The Unsubmitted" — can resist Alpha and Enigma Commands. Only fully submits to their mate (Dominant Alpha or Enigma). Compliance may depend on mood.
+- **Dominant Omega:** The second-rarest rank. Known as "Legend of The Unsubmitted" -- can resist Alpha and Enigma Commands. Only fully submits to their mate (Dominant Alpha or Enigma). Compliance may depend on mood.
+
+  The rarest expression of the Dominant Omega is known as **the White Moon**: a Dominant Omega of Founding Bloodline or higher whose pacification gift reaches continental-bloodline intensity -- capable of instinctively stilling the aggression of Alphas and Enigmas within proximity without a spoken word. The White Moon title is not a political rank but a religious and biological designation recognized by Moon Speakers. According to the Faith of Fenris, a White Moon Dominant Omega is the species' emotional sovereign: the Unsubmitted One who holds the pack together when it fractures. The title is conferred by the Living Sagas (or, in their absence, by unanimous Moon Speaker recognition) and is never self-declared.
+
+  **White Moon biology:** The White Moon's pacification response is involuntary and ambient -- a passive pheromonal field that reads dominant threat-states and responds with Omega-class calming chemistry at anomalous intensity. They are immune to Alpha Command and Enigma Command alike. Their heat cycle is unaffected by this ability. They cannot be compelled, but they can be overwhelmed by sensory phobia (loud noise, aggressive physical contact) -- the ability does not confer combat capability.
+
+  **White Moon pack role:** In pack theory (LSE_03_Civilization), the White Moon occupies the functional apex of the Omega caste not through authority but through necessity: where an ordinary Dominant Omega soothes the immediate pack, a White Moon stabilizes multi-pack or politically fractured situations. Historically, every documented White Moon has been the mate or recognized spiritual partner of the ruling Enigma -- not by law, but by biological complementarity. The Faith of Fenris calls this pairing "the King and the Moon."
+
+  **Rarity:** One White Moon per bloodline generation at most. Many generations produce none. The title has never been documented in a Common Bloodline individual.
+
 - **Submissive Omega:** Extended heats, more attractive to Alphas, more susceptible to assault. More nurturing and sensitive than standard Omegas. Typically prefers a Dominant Alpha as a consensual partner.
 
 ---

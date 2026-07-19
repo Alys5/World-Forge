@@ -193,6 +193,38 @@ Some Moon Speakers maintain that the six did not die but entered a state of dorm
 
 ---
 
+## Documented White Moons
+
+The following individuals have been confirmed as White Moon Dominant Omegas by the Living Sagas or unanimous Moon Speaker consensus. The list is almost certainly incomplete -- the Age of Secrecy likely suppressed documentation of several cases. See LSE_01_Species.md (Dominant Omega subgenders) and LSE_05_Religion.md (Anointing of the White Moon rite) for biological and theological context.
+
+### Nixara Bloodmoon -- The Most Recent White Moon
+
+```
+IDENTITY CARD
++------------------------------------------+
+|  Blood Classification   Founding Blood   |
+|  Secondary Sex          Dominant Omega   |
+|  Designation            White Moon       |
+|  House                  Bloodmoon        |
+|  Status                 Deceased         |
+|  Anointed by            Wulfnic Bloodmoon|
++------------------------------------------+
+```
+
+Nixara Bloodmoon is the most recently confirmed White Moon in the species record. A Founding Bloodline Dominant Omega of House Bloodmoon, she was recognized and formally Anointed by the First Fang (Wulfnic Bloodmoon) -- the first White Moon Anointing conducted by a Living Saga in over three centuries.
+
+**The Caccia-confirmed bond:** Nixara's last participation in La Grande Caccia as a free White Moon was the cycle of approximately 1994. At that Great Hunt, Erik Douglas-Bloodmoon found her in the forest. Their bond was Caccia-confirmed -- the highest theological recognition in the Faith of Fenris, protected from political interference by species law. They married formally in 1996.
+
+Nixara died April 22, 2005. Erik Douglas-Bloodmoon has survived the breaking of a Caccia-confirmed Mate Bond. That he did so is biologically extraordinary; the grief has never left his body.
+
+The LSE record establishes only the institutional facts: she was confirmed as White Moon. Her bond was Caccia-confirmed. She was the last White Moon to run free in La Grande Caccia before her death. Whether a successor has been identified remains open to setting-specific documentation.
+
+Her Anointing has not been revoked. The title of White Moon is non-transferable -- it is a biological designation, not an office. A new White Moon, if one emerges, would be separately recognized.
+
+> **Cross-reference:** Settings that carry Nixara's legacy forward should document any successor claim in their own Tier 1 lorebooks, referencing this entry for biological authority. The 1994 Caccia cycle is the last species-confirmed date on which a White Moon Dominant Omega participated in La Grande Caccia.
+
+---
+
 ## Historical Heroes
 
 > **Placeholder:** Other figures of exceptional importance to specific settings or historical periods.

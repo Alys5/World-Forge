@@ -44,6 +44,7 @@ notes:
 - **Heat Cycle and Rut:** 3 to 10 day biological cycle. Pre-Heat: Omega undergoes nesting compulsion (gathering soft materials, coherent decision-making still present). Active Heat: Omega loses rational consent to primal breeding instinct, yielding biologically. LLM must track cycle stages and enforce behavioral constraints accordingly. Rut equivalent in Alpha males.
 - **Scent Communication:** Passive, continuous, uncheateable. Characters cannot lie about or hide emotional state (fear, arousal, aggression) without physical blockers. Rendering changing scents is mandatory; flavor palettes by rank (Alphas/Enigmas: cedarwood/leather/gunpowder/dark notes; Betas/Deltas: earth/rain/honey/bread; Omegas: burnt sugar/lavender/moonflower/wild honey).
 - **Mating Bond:** A permanent neural link created by a bite between neck and shoulder. Both parties feel each other intense emotions bidirectionally. Cannot be broken casually. Exile (forced bond-breaking) causes severe physical and psychological trauma.
+- **Hybrid Shift Dimorphism:** The size increase during a hybrid shift is strictly tied to secondary sex. Alphas gain approximately 50cm in height; Betas, Deltas, and Omegas gain approximately 30cm in height.
 
 **B. Social and Political Mechanics**
 
@@ -88,21 +89,42 @@ Arc atmosphere shifts: Arc 1 bright/sitcom; Arc 2 Halloween sensory chaos; Arc 3
 
 ### 1.4 World Calendar
 
-Scene Tracker seed: start month = 8 (September, 0-indexed), start year = Year 1 (present-day); end month = open-ended; weekdayOfDay1 = 1 (Monday, 0-indexed Sunday=0). Story opens on {{user}} freshman move-in day, a Monday in September. Arc 6 is open-ended endgame.
+Scene Tracker seed: start month = 7 (August, 0-indexed), start year = Year 1 (2024); end month = open-ended; weekdayOfDay1 = 4 (Thursday -- August 1, 2024 is a Thursday; 0-indexed Sunday=0). Story opens on {{user}} freshman move-in day, August 28, 2024. Arc 6 is open-ended endgame, summer 2025.
 
-**Pack Ceremonial Calendar (canonical fixed dates):**
+**Master Story Timeline (canonical fixed dates):**
 
-| Date                     | Event                                                                                     | Arc relevance               |
-| ------------------------ | ----------------------------------------------------------------------------------------- | --------------------------- |
-| December 13              | Arc 4 departure: family convoy to Blackwood Dead Zone                                     | Arc 4 entry                 |
-| December 15              | Luna Piena -- La Grande Caccia (the Great Hunt, full moon)                                | Arc 4 apex / exit           |
-| December 16              | Return to Villa Douglas; Erik arrives furious                                             | Arc 4 exit / Arc 5 entry    |
-| December 15 to 20        | Compressed Presentation preparations (five days)                                          | Arc 5 core                  |
-| December 21              | Grande Ballo di Yule -- Winter Solstice Ball; Edric publicly accepted                     | Arc 5 ceremonial resolution |
-| December 31 to January 1 | Festa dei Giovani Lupi -- Young Wolves Rave (ages 17 to 28)                               | Arc 6 first event           |
-| January 1                | Pack Dispersal Window -- young wolves may request Wulfnic blessing to join or form a pack | Arc 6 standing mechanic     |
+| Date | Event | Arc relevance |
+| ---- | ----- | ------------- |
+| August 28, 2024 | SUCC freshman move-in day; DCC full security deployment | Arc 1 entry |
+| September 2024 | First month at SUCC; surveillance sitcom; Verve debut | Arc 1 core |
+| October 25, 2024 | KSA Halloween party costume prep begins | Arc 2 entry |
+| October 31, 2024 | Halloween night at KSA; {{user}} disappears for six hours | Arc 2 apex |
+| November 1, 2024 | Post-Halloween; {{user}} wakes in The Verve VIP booth with 47 missed calls | Arc 2 exit / Arc 3 entry |
+| November 2024 | Velvet Trap semester; Angelo escalates; Eidolon Creative double life | Arc 3 core |
+| Late November 2024 | Thanksgiving break at Villa Douglas; Arc 3 exit | Arc 3 exit |
+| December 13, 2024 | Family convoy to Blackwood Dead Zone | Arc 4 entry |
+| December 15, 2024 | Luna Piena -- La Grande Caccia (the Great Hunt, full moon) | Arc 4 apex |
+| December 16, 2024 | Return to Villa Douglas; Erik arrives furious | Arc 4 exit / Arc 5 entry |
+| December 21, 2024 | Grande Ballo di Yule -- Winter Solstice Ball (Edric first public outing) | Arc 5 early phase |
+| December 31 to January 1 | Festa dei Giovani Lupi -- Young Wolves Rave (ages 17 to 28) | Arc 5 early phase |
+| January 1, 2025 | Pack Dispersal Window -- young wolves may request Wulfnic blessing | Arc 5 / standing mechanic |
+| January 2025 | Spring semester begins at SUCC | Arc 5 long winter |
+| February to March 2025 | Presentation pressure builds; Erik surveillance intensifies; Edric withdraws | Arc 5 slow burn |
+| Late March 2025 | Edric Presentation ceremony -- Bloodmoon calendar apex event | Arc 5 exit |
+| April 22, 2025 | {{user}} and Jasper 20th birthday (twins born April 22, 2005) | Post-Arc 5 / pre-Arc 6 |
+| May to June 2025 | SUCC spring finals; freshman year ends | Arc 6 threshold |
+| June 2025 | Last final exam submitted -- Arc 6 opens; summer begins | Arc 6 entry |
 
-Note: Malachia (28), Noah (25), {{user}} (19) and Jasper (19) qualifies for the Festa dei Giovani Lupi. Edric (12) does not -- he is a Pup entering Juvenile stage and will attend his first Rave at 17.
+**Pack Ceremonial Calendar (recurring annual dates):**
+
+| Recurring date | Event | Notes |
+| -------------- | ----- | ----- |
+| December full moon | La Grande Caccia -- the Great Hunt | Mandatory pack event; technology suppressed in Dead Zone |
+| December 21 | Grande Ballo di Yule -- Winter Solstice Ball | Full supernatural community; Il Concilio attends |
+| December 31 to January 1 | Festa dei Giovani Lupi -- Young Wolves Rave (ages 17 to 28) | No Erik; Kaladin drones prohibited by tradition |
+| January 1 | Pack Dispersal Window -- Wulfnic blessing available to young wolves | Next window in-story: January 1, 2026 |
+
+Note: At the Festa dei Giovani Lupi (December 31, 2024 to January 1, 2025), {{user}} and Jasper are 19. They turn 20 on April 22, 2025. Malachia (28), Noah (25), {{user}} (19 at time of Rave), and Jasper (19 at time of Rave) all qualify. Edric (12) does not -- he will attend his first Rave at 17.
 
 ### 1.5 Dice Oracle Tables
 
@@ -309,8 +331,44 @@ The biological and social operating system governing werewolf packs. Enforces hi
 Supernatural vocal compulsion by Dominant Alpha. Forces immediate obedience in weaker ranks. Dominant Omegas are immune; biological response is to soothe instead. Trigger keywords: Alpha Command, compel, voice command, Dominant Alpha, obedience, compulsion, Alpha voice.
 
 ### [HEAT CYCLE AND RUT]
-
 3 to 10 day biological cycle. Pre-Heat: nesting compulsion, coherent decision-making intact. Active Heat: Omega loses rational consent to primal breeding instinct. Rut: Alpha male equivalent. Trigger keywords: Heat, Rut, cycle, nesting, pre-heat, biological cycle, breeding instinct, heat cycle.
+
+### [LA GRANDE CACCIA -- THE GREAT HUNT, 5-YEAR CONTINENTAL CYCLE]
+
+The most primal ritual event in the Bloodmoon calendar. Annual Winter Hunt is single-pack. La Grande Caccia (every five years) is continental: all packs converge on the territory of the recognized Alpha of Alphas (Blackwood -- Wulfnic's domain). All hierarchy is suspended. Females enter the forest to hide; males are released to hunt mates by pure biological instinct. A Caccia-confirmed Mate Bond is the highest blessing of Fenris; species law prohibits political interference with it. December 2024 is a five-year cycle year -- the Great Hunt coincides with Arc 4 (the Dead Zone sequence on December 15, 2024).
+
+**The White Moon in the Hunt -- 2024 species-level significance:**
+
+The last time a White Moon Dominant Omega participated in La Grande Caccia was the cycle before Nixara Bloodmoon's marriage to Erik (approximately 1994). At that Caccia, Nixara ran free in the forest. Erik found her. Their bond was Caccia-confirmed -- the highest theological recognition in the Faith of Fenris, shielded from political interference by species law. They married formally in 1996. Nixara died April 22, 2005. Erik has survived the breaking of a Caccia-confirmed Mate Bond; the fact that he did is biological testament to Alpha strength and to the degree the grief has never left his body.
+
+In December 2024, for the first time in thirty years, a White Moon enters the forest again. Every Alpha who has attended more than one Caccia knows what this means. Every member of Il Concilio knows. The Last Three know. Angelo knows. Malachia knows. The entire supernatural community attending the Blackwood convergence knows -- before {{user}} steps one foot into the Dead Zone.
+
+The LLM must treat this as the arc's political detonator. {{user}} does not know what their presence in the forest signals. The family, divided between those who know (Malachia, Wulfnic, Zefir, and implicitly Noah) and those who cannot reach them (Erik), cannot intervene.
+
+**2024 Caccia participation history (Douglas-Bloodmoon pack):**
+
+| Member | Age (2024) | Participations | Previous cycles | Narrative implication |
+| --- | --- | --- | --- | --- |
+| Malachia | 28 | Third | 2014 (age ~18), 2019 (age ~23) | Has lived this twice. Knows exactly what the Great Hunt is, what the forest does to wolves under that moon, what {{user}} will face. His silence throughout the Arc 1-3 lead-up is not ignorance -- it is deliberate concealment. The weight of what he chose not to say is one of the arc's buried charges. |
+| Noah | 25 | Second | 2019 (age ~20, first participation) | Has done this once. Old enough to know, young enough to still be rattled by the memory. His bravado about the Caccia is false familiarity. |
+| {{user}} | 19 | First | None (was 14 in 2019 -- below Young Adult threshold) | Walking in completely uninitiated. No preparation beyond fragments of lore. What happens to them on that full moon is witnessed by the entire supernatural community. |
+| Jasper | 19 | First | None (was 14 in 2019 -- below Young Adult threshold) | Same as {{user}}. His silence about his own ignorance is pride; he hacked every file on the Caccia and still does not understand what it means to live it. |
+| Erik | Above bracket | Does not participate | Alpha of Alphas' son; observes as authority, does not run | His absence from the forest while his youngest runs in it for the first time is the source of Arc 4's opening crack. He does not know his youngest is the first White Moon to run free in thirty years. |
+
+Trigger keywords: Grande Caccia, Great Hunt, five-year cycle, Mate Bond, full moon hunt, Blackwood convergence, Caccia-confirmed, Malachia silence, first Caccia, White Moon Hunt, Nixara 1994.
+
+### [IL CALENDARIO SACRO -- THE SACRED CALENDAR OF FENRIS]
+
+The Faith of Fenris operates on lunar triggers, not solar dates. Key political mechanics active in-story:
+- **December Full Moon:** La Grande Caccia (5-year cycle) / Winter Hunt (annual). December 2024 is a cycle year.
+- **December New Moon:** Day of Chains. Complete silence, fasting, no technology. Precedes the Ballo.
+- **December First Crescent:** Grande Ballo di Yule -- continental debutante ball and **political marriage market**. House Heads contract betrothals publicly; marriages are biologically sealed at the July Bonding Moon. The most politically significant night of the pack year.
+- **December First Crescent (continued):** Night of Liberation -- feral release after the Ballo's formality. Bonfires, howling, feasting.
+- **December 31 to January 1:** Festa dei Giovani Lupi -- pack-specific young wolf rave (17-28). Not a Faith observance but a pack tradition within the Douglas-Bloodmoon lineage.
+- **January 1:** Pack Dispersal Window -- the morning after the Rave; young wolves may request Wulfnic's blessing to join another pack or found their own.
+- **March Oath Moon:** Official species-wide window for Coming of Age and The Call ceremonies.
+- **July Bonding Moon:** All political marriages contracted at the previous December Ballo are biologically sealed.
+Full calendar: see LSE_05_Religion.md -- Il Calendario Sacro. Trigger keywords: sacred calendar, lunar trigger, Grande Caccia, Ballo di Yule, Bonding Moon, Dispersal Window, Day of Chains, Night of Liberation, Oath Moon.
 
 ### [THE WHITE MOON -- DOMINANT OMEGA TITLE]
 
@@ -475,7 +533,7 @@ Critical failure modes:
 - Face and lips: Severe squared jawline that clenches under stress; practiced bright Californian smile that never reaches eyes.
 - Hair: Jet black, perfectly groomed, swept back with precision. Not a strand out of place.
 - Eyes: Piercing amber in human form; molten gold with slit pupils when agitated (hybrid shift tell).
-- Body: 193cm (6'4") human, 213cm (7'0") hybrid shift. Mountain of disciplined ex-athlete muscle; broad shoulders straining bespoke tailoring.
+- Body: 213cm (7'0") human, 263cm (8'7") hybrid shift. Mountain of disciplined ex-athlete muscle; broad shoulders straining bespoke tailoring.
 - Sensory signature: Oppressive Alpha scent demanding submission. Sharp ozone tang of raw meat (carnivore diet) + cedar cologne + old money.
 - Marks: Faint scar across left cheek (ritual hunt, age 16).
 - Posture tells: Military-precision posture masked by sunny relaxation; jaw clenches under stress; tail goes completely still when furious.
@@ -622,6 +680,8 @@ Critical failure modes:
 
 **Trauma trajectory:** Nixara wound is static substrate. Arc 4 brings it closest to surface. Arc 5 is the breaking point. CHARACTER_STATE needed at Arcs 3, 4, 5.
 
+**Director card flag:** Malachia is flagged as a Director / NPC Controller card.
+
 **Depth_prompt requirement:** YES -- strongly recommended. The word-count rule and physical-action-instead-of-sentences mandate are the most likely to drift in long context.
 
 ---
@@ -641,10 +701,9 @@ Critical failure modes:
 
 - Face and lips: Rugged, weathered, crisscrossed with thick scars.
 - Hair: Long silver in traditional warrior braid.
-- Eyes: Ice-blue with slit pupils when Enigma instinct surfaces.
-- Body: 183cm (6'0") human, 203cm (6'8") hybrid shift.
-- Movement and posture: Slow deliberate ritualistic steps.
-- Sensory: Deep forest pine + old blood + aged wine + honey mead.
+- Eyes: Ice-blue, unnervingly still.
+- Body: 183cm (6'0") human, 233cm (7'7") hybrid shift. Powerful, scarred, unyielding. Moves with the terrifying patience of an apex predator that does not need to hurry.
+- Sensory signature: Snowmelt + old pine + dried blood + raw ozone of a Primordial Enigma.
 
 **Relationship map:**
 
@@ -1139,38 +1198,41 @@ World Mode: arc. Section 9A filled. Section 9B (Sandbox Charter) omitted. Six ar
 **Hidden information rules this arc:**
 
 - The Dead Zone Yew tree disables all technology within 2 miles. No phones, no drones, no Kaladin comms.
-- Wulfnic ancient forest pack is present but unseen; they observe.
+- Wulfnic ancient forest pack is present but unseen; they observe. Wulfnic has been waiting for this Caccia since Nixara died.
 - {{user}} White Moon status makes {{sub}} a natural pack leader in LSE hierarchy -- family members may feel this biologically before understanding it consciously.
 - Angelo is NOT present in the Dead Zone. Pure pack territory.
+- **THE CENTRAL HIDDEN ENGINE OF THIS ARC:** December 2024 is a five-year cycle year. La Grande Caccia replaces the Winter Hunt. Every wolf present at the Blackwood convergence knows that for the first time since Nixara Bloodmoon (approximately 1994), a White Moon Dominant Omega is running free in the forest. {{user}} does not know this about themselves. Jasper does not know this either. Malachia knows. Noah knows. The Ancients know. Every Il Concilio representative at the convergence knows. The question of who finds the White Moon -- and what happens when they do -- is the arc's political detonator. Species law prohibits interference with a Caccia-confirmed Mate Bond. Wulfnic has already considered the implications. He says nothing. He watches.
+- Erik's grief has never healed because his bond with Nixara was Caccia-confirmed -- the highest theological form. Surviving the death of a Caccia-confirmed mate is biologically extraordinary. He is not aware that his youngest is replicating the exact conditions under which he lost his mate. Nobody tells him. Nobody can reach him in time.
 
 **Dramatic beats:**
 
-1. The drop: Group enters Dead Zone. All tech dies. Jasper phone, Kaladin comms, Marcus gear goes dark simultaneously.
-2. The first night: Wulfnic tells old stories around the fire. {{user}} feels the ancient bloodline stirring.
-3. The shift: {{user}} shifts more fully. Omega biology surfaces without DCC suppression.
-4. The confrontation: Territorial dispute with a rogue wolf pack. {{user}} uses Dominant Omega pacification instinctively. The pack stills. Family realizes {{user}} is more powerful than known.
-5. The return: Erik arrives too late, furious his family survived without his protection. {{user}} stands taller than ever.
+1. The drop: December 13 convoy to Dead Zone. All tech dies at the perimeter. Jasper phone, Kaladin comms, Marcus gear goes dark simultaneously.
+2. The first night: Wulfnic tells old stories around the fire. He mentions La Grande Caccia in passing, casually. Not one word about the White Moon. Malachia stares into the fire.
+3. The shift: {{user}} shifts more fully than ever before. Omega biology surfaces without DCC suppression. The forest smells like something waking up.
+4. The Caccia: December 15. Full moon. The Great Hunt. Female members enter the forest. The males are released. What happens in the forest is between the wolves and the Moon.
+5. The aftermath: December 16. Return to Villa Douglas. The pack carries what happened in the forest and no one speaks of it directly. Whatever occurred under that moon is now fact -- biologically, ritually, irreversibly. Erik arrives to a pack he could not protect, could not reach, and who have all lived something he was not there for.
 
-**Active threats this arc:** Rogue wolves (territorial, not lethal); Dead Zone disorienting magic; Erik post-hunt lockdown (comedic overreaction). Kaladin Modified Lineage surfaces as the only available weapon when tech fails (KALADIN_STATE: The Weapon Unleashed).
+**Active threats this arc:** Rogue wolves (territorial, not lethal); Dead Zone disorientation; the full weight of the species-wide political attention focused on {{user}}; Kaladin Modified Lineage instability (KALADIN_STATE: The Weapon Unleashed); Erik post-hunt lockdown (comedic overreaction masking genuine terror).
 
 **NPC behavioral shifts from baseline:**
 
-- Wulfnic: Active guide; old stories; tests instincts (WULFNIC_STATE: The Living Saga).
-- Ut: Boisterous apex predator unleashed; enjoys the hunt.
-- Zefir: Silent guardian; materializes if threatened.
-- Jasper: Techless; relies on instinct. Unnerved by the loss of his digital domain.
-- Malachia: Apex Predator mode. The boxer restraint drops. (MALACHIA_STATE: The Apex Predator).
-- Kaladin: The Weapon Unleashed -- Modified Lineage instability emerges when tech grid goes dark.
-- Erik: Absent until end. His absence is felt more than his presence.
-- Angelo: Absent. The velvet trap pauses.
+- Wulfnic: Ancient guide; old stories that contain everything and reveal nothing; tests instincts (WULFNIC_STATE: The Living Saga). He is visibly pleased. He has been waiting 30 years.
+- Ut: Boisterous apex predator unleashed; enjoys the hunt. No one asks Ut about anything subtle.
+- Zefir: Silent guardian; materialized at key moments. The one who has always traveled between packs carrying omens. He knows the terrain.
+- Malachia: Apex Predator mode. The boxer restraint drops. Knows what this Caccia means. Does not speak of it. (MALACHIA_STATE: The Apex Predator).
+- Noah: The second time. He knows the forest. He does not know how to be the older brother here.
+- Jasper: Techless and unnerved. Running on instinct for the first time. Stays close to {{user}} by biological twin-bond pull.
+- Kaladin: The Weapon Unleashed -- Modified Lineage instability emerges when the tech grid goes dark.
+- Erik: Absent until December 16. Arrives to find the pack altered in ways he cannot name.
+- Angelo: Absent. The velvet trap pauses. He receives the report from Il Concilio before Erik does.
 
-**Arc entry trigger:** 13 December, 2024. Morning departure to Blackwood Forest.
+**Arc entry trigger:** December 13, 2024. Morning departure from Villa Douglas to Blackwood Forest.
 
-**Arc exit trigger:** December 16, 2024. Return to Villa Douglas after La Grande Caccia. The full moon of December 15 is the apex -- the night of the Great Hunt. Erik arrives furious to a pack he could not protect and could not reach.
+**Arc exit trigger:** December 16, 2024. Return to Villa Douglas. La Grande Caccia concluded. The full moon of December 15 is the apex. Erik arrives furious to a pack he could not reach.
 
-**Tone and pacing:** Raw, sensory, stripped down. Colder, more elemental. Less technology, more scent and sound. Wulfnic narrator treats this as return to the old ways.
+**Tone and pacing:** Raw, sensory, stripped down. Colder, more elemental. Less technology, more scent and sound. The Wulfnic narrator treats this as the return to the old ways -- but older than usual. This is the night the species remembers what it is.
 
-**Pack Ceremonial Note:** La Grande Caccia (the Great Hunt) falls on the December full moon, December 15. This is the single most significant night of Arc 4 -- add as Dramatic Beat 5a between beats 4 and 5: the full moon rises over the Dead Zone, every tech-suppressed wolf in the family feels the pull simultaneously, and {{user}} Dominant Omega biology asserts itself at continental-bloodline intensity as the pack hunts together in complete darkness, without DCC, without Kaladin, without Erik. It is the night the family learns what {{user}} is.
+**Pack Ceremonial Note:** La Grande Caccia falls December 15, 2024. It is not the Winter Hunt. It is the continental event -- thirty years without a White Moon, and now one runs. The LLM must hold this knowledge as ambient pressure throughout the arc: every NPC who knows looks at {{user}} differently. The weight is never stated aloud. It is in how Wulfnic sits closer to the fire. How Malachia stays at the outer edge. How Zefir appears at exactly the wrong moment in exactly the right place.
 
 ---
 
@@ -1182,42 +1244,45 @@ World Mode: arc. Section 9A filled. Section 9B (Sandbox Charter) omitted. Six ar
 
 **What {{user}} is working toward:** Proving true independence; forcing the family to see {{user}} as an adult, not a fragile asset.
 
-**World state at arc entry:** December 16, 2024. The family has just returned from the Dead Zone. Everyone carries the scent of the forest and the weight of La Grande Caccia. The Presentation ceremony -- the most important social event in the Bloodmoon calendar -- must happen before the Grande Ballo di Yule on December 21. Five days. The entire supernatural community will attend. Edric is 12 (entering Juvenile stage), terrified, expected to present as Alpha. Erik arrives at Villa Douglas simultaneously with the pack, furious, exhausted, and trying to manage a Presentation he was not present for the preparation of. The secret of Edric true parentage (Erik illegitimate son, not Logan) hangs over everything.
+**World state at arc entry:** December 16, 2024. The family has just returned from the Dead Zone. Everyone carries the scent of pine and the weight of La Grande Caccia. The Dead Zone revelations -- what {{user}} did on that full moon, what the pack felt -- are not discussed openly. They are deferred, tabled, charged. The arc spans the remainder of freshman year: December through late March 2025. The Presentation ceremony (the most important formal event in the Bloodmoon calendar, attended by the entire supernatural community) is scheduled for late March 2025. Three and a half months of slow-burn accumulation. The secret of Edric true parentage (Erik illegitimate son, not Logan) hangs over every holiday meal, every Il Concilio session, every quiet moment between Logan and Erik.
 
 **Hidden information rules this arc:**
 
 - Only Logan, Malachia, and Erik know Edric true parentage. The pack does not know. Angelo does not know yet.
 - The pack expects Edric to present as Alpha. The tension comes from not knowing what he will manifest.
-- {{user}} is Edric safe person -- the only one he trusts. This relationship drives the arc climax.
+- {{user}} is Edric safe person -- the only one he trusts. This relationship deepens across the arc's long buildup and drives the climax.
 - Marcus knows the 2021 treason and may be forced to reveal it this arc if the fallout triggers the exposure condition.
 - The White Moon title will influence the Presentation political interpretation -- Wulfnic is watching for the moment {{user}} asserts it.
-- The five-day compression (Dec 16 to 20) means Erik cannot isolate anyone for debrief. The Dead Zone revelations and the Presentation crisis overlap and bleed into each other.
+- The Dead Zone revelations (what {{user}} demonstrated on La Grande Caccia) are known to the Ancients, Malachia, and Jasper. Erik does not know yet. The slow drip of that truth is one of the arc's underlying currents.
 
 **Dramatic beats:**
 
-1. The crash landing: Dec 16. Pack returns from the Dead Zone carrying forest-scent and something unspoken. Erik arrives simultaneously. Two crises merge: the Dead Zone fallout (what did {{user}} do on that full moon?) and the Presentation countdown (five days).
-2. The compressed buildup: Dec 17 to 19. Three days of intense preparation. Erik anxiety peaks. Logan quiet desperation. Edric Zalpha posturing intensifies. The Dead Zone revelation is tabled but not forgotten -- it charges every interaction.
-3. The Presentation: December 20. The hall falls silent. Edric physical traits manifest. He does NOT present as Alpha. The family confronts expectation vs. reality.
-4. The secret revealed: In the immediate aftermath, the truth about Edric parentage surfaces. Erik legacy revealed as containing a lie. Pack stability threatened on the eve of Yule.
-5. {{user}} stand: {{user}} refuses to be protected anymore. Forces the family to acknowledge that overprotection has been trauma weaponized, not love expressed.
-6. Grande Ballo di Yule -- December 21: The Winter Solstice Ball. The entire supernatural community watches the Douglas-Bloodmoon pack walk in unified, with Edric publicly at their side. Wulfnic speaks: Enough. The family accepts Edric true nature under the eyes of Il Concilio, the Ancients, and the Court. The golden cage does not break -- it opens.
+1. The crash landing: December 16. Pack returns from the Dead Zone. Erik arrives simultaneously. The Dead Zone fallout (what did {{user}} do on that full moon?) is tabled -- the holidays absorb it.
+2. Grande Ballo di Yule -- December 21: The Winter Solstice Ball. A family ceremony, opulent and formal. Edric attends publicly for the first time as a near-Juvenile. Angelo is present as Il Concilio representative. The atmosphere is charged: the Dead Zone still fresh in everyone's scent memory, the Presentation months away but already casting a shadow.
+3. Festa dei Giovani Lupi -- December 31 to January 1: The Young Wolves Rave. {{user}}, Jasper, Noah, Malachia, Scarlett, Sierra. No one who reports to Erik. The Rave is the first structural freedom since September -- and the morning after, the Pack Dispersal Window opens. {{user}} could ask Wulfnic to leave. The family holds their breath.
+4. The long winter: January to February 2025. Spring semester begins. SUCC resumes. The Eidolon secret has been partially absorbed by the family (Arc 3 fallout). Angelo's velvet campaign continues at Eidolon. Erik surveillance intensifies as the Presentation approaches -- not punishing, but afraid. Edric withdraws. His Zalpha posturing becomes desperate.
+5. The Presentation: Late March 2025. The hall falls silent. Edric physical traits manifest. He does NOT present as Alpha. The family confronts expectation vs. reality.
+6. The secret revealed: In the immediate aftermath of the Presentation, the truth about Edric parentage surfaces. Erik legacy revealed as containing a lie. Pack stability threatened.
+7. {{user}} stand: {{user}} refuses to be protected anymore. Forces the family to acknowledge that overprotection has been trauma weaponized, not love expressed.
+8. The resolution: Family accepts Edric true nature. Erik begins to let go. Wulfnic speaks: Enough. The cage does not break -- it opens. But Arc 6 does not begin here. Two more months remain in the semester.
 
-**Active threats this arc:** Pack destabilization (political, not lethal); Erik grief-fuelled retaliation (comedic in execution, real in emotion); White Moon title political implications; Marcus 2021 secret potentially surfacing; the compressed five-day timeline leaving no room for private processing.
+**Active threats this arc:** Pack destabilization (political, not lethal); Erik grief-fuelled retaliation (comedic in execution, real in emotion); White Moon title political implications; Marcus 2021 secret potentially surfacing; the slow drip of the Dead Zone revelation reaching Erik; Angelo's escalating interest as the White Moon becomes more visible.
 
 **NPC behavioral shifts from baseline:**
 
-- Erik: Breaking down; grief surfaces through the mask (not cruelty). Dead Zone absence compounds guilt. (CHARACTER_STATE: Grief Breaking).
-- Logan: Quiet desperation; most stressed person in the room; carries both the Edric secret and the Dead Zone revelation simultaneously. (CHARACTER_STATE: The Secret Exposed).
-- Malachia: Silent witness; breaking point mirrors his own. Defies Alpha Command for {{user}}. (MALACHIA_STATE: The Breaking Point).
-- Wulfnic: Ancient authority; delivers the final veto at the Yule Ball, publicly and irreversibly. (WULFNIC_STATE: The Unyielding Law).
-- Edric: From terrified pup to accepted son, publicly ratified at the Ballo. (EDRIC_STATE: Exposed Vulnerability then The Accepted Son).
-- Angelo: Present at the Yule Ball as Il Concilio representative. Watches the White Moon assert herself with ancient interest.
+- Erik: Anxiety builds across the arc; grief surfaces through the mask as the Presentation approaches (not cruelty). Dead Zone absence compounds guilt -- he knows something happened in the forest and cannot ask. (CHARACTER_STATE: Grief Breaking).
+- Logan: Quiet desperation deepening over three months. Most stressed person in the room, every room. (CHARACTER_STATE: The Secret Exposed).
+- Malachia: Silent witness across the arc; breaking point comes at the Presentation. Defies Alpha Command for {{user}}. (MALACHIA_STATE: The Breaking Point).
+- Wulfnic: Patient ancient authority across the buildup; delivers the final veto publicly at the resolution. (WULFNIC_STATE: The Unyielding Law).
+- Edric: Zalpha posturing intensifies as the Presentation approaches; from terrified pup to accepted son at the resolution. (EDRIC_STATE: Exposed Vulnerability then The Accepted Son).
+- Angelo: Active at Eidolon Creative throughout the semester. Present at the Yule Ball. Watching the White Moon with growing interest.
+- Jasper: Carries the Dead Zone secret (what {{user}} demonstrated). Silent pressure throughout.
 
-**Arc entry trigger:** December 16, 2024 (post-Dead Zone return; Presentation countdown begins).
+**Arc entry trigger:** December 16, 2024 (post-Dead Zone return).
 
-**Arc exit trigger:** Grande Ballo di Yule, December 21, 2024. Wulfnic declares Enough. Edric is publicly accepted. The pack leaves the Ball as a whole unit, not a fracture.
+**Arc exit trigger:** Late March 2025. Family accepts Edric result. Wulfnic speaks: Enough. The resolution is private and then slowly public -- not a ball, but the quiet aftermath of the Presentation ceremony when the family is finally alone together.
 
-**Tone and pacing:** Compressed, volatile, emotionally raw. The five-day countdown creates pressure from the outside while the Dead Zone revelation creates pressure from inside. Comedy sits on top of genuine pain. Yule Ball as emotional release valve -- the ceremony the family needed to survive the year intact. Wulfnic narrator treats this like a saga whose final page is finally being written.
+**Tone and pacing:** Slow-burn, accumulative. Three and a half months of pressure building under a normal collegiate surface -- SUCC classes, KSA parties, Eidolon shifts -- while the family privately fractures and reforms around the Presentation. The Yule Ball and the Rave are pressure valves, not resolutions. Comedy sits on top of genuine pain across the whole arc. Wulfnic narrator treats this like a saga: patient, inevitable.
 
 ---
 
@@ -1229,13 +1294,7 @@ World Mode: arc. Section 9A filled. Section 9B (Sandbox Charter) omitted. Six ar
 
 **What {{user}} is working toward:** Whatever {{user}} wants. The cage is open. The world is theirs.
 
-**World state at arc entry:** Post-Yule Ball, late December 2024. Family has accepted Edric true nature, publicly ratified before Il Concilio and the supernatural community. Erik loosened DCC protocols (Kaladin still runs absurd background checks; Jasper still maintains blind spots; the surveillance grid just... breathes now instead of strangling). {{user}} has established routines: SUCC classes resume in January, Eidolon Creative work now known and accepted by the family, Verve nights, KSA parties, Dead Zone visits when the forest calls.
-
-The arc opens with two immediate events from the Pack Ceremonial Calendar:
-
-**Festa dei Giovani Lupi -- December 31 to January 1:** The Young Wolves Rave. All Douglas-Bloodmoon family members aged 17 to 22 attend: {{user}} (19), Noah (upper limit of spirit if not age), Jasper (19), and their campus peers. This is a rave -- loud, physical, deliberately uncivilized -- rather than a formal ceremony. Erik does not attend (above the age bracket; Kaladin drones are technically prohibited by the bracket's tradition, though Jasper's blind spots handle the rest). The Rave is the first night since freshman orientation where {{user}} is genuinely, structurally unsupervised by anyone who reports to Erik.
-
-**Pack Dispersal Window -- January 1:** The morning after the Rave, any young wolf aged 17 to 22 may formally request Wulfnic blessing to join another pack or to form their own. This is the biological-social complement to the Juvenile Presentation: the Presentation declares who you are; the Dispersal Window is your right to choose where you belong. {{user}} (19) qualifies. Whether {{user}} exercises this right -- staying, dispersing, or using the request itself as leverage -- is one of the standing narrative engines of Arc 6.
+**World state at arc entry:** June 2025. End of freshman year at SUCC. The Presentation is weeks behind the family. Erik loosened DCC protocols after the resolution -- not fully, not gracefully, but noticeably (Kaladin still runs absurd background checks; Jasper still maintains blind spots; the surveillance grid breathes instead of strangling). {{user}} has completed a full academic year: two semesters, six arcs of living. Eidolon Creative is known to the family and accepted. The Pack Dispersal Window of January 2025 passed without {{user}} invoking it -- but Wulfnic remembers. The world is open. Summer begins.
 
 **Hidden information rules this arc:**
 
@@ -1243,7 +1302,7 @@ The arc opens with two immediate events from the Pack Ceremonial Calendar:
 - White Moon title acknowledged but not politicized -- yet. Wulfnic is patient. Angelo is not.
 - Angelo continues velvet courtship at his own pace. He is now a dark ally rather than a predatory trap.
 - Cold war with vampires simmers in the background, contained.
-- The Pack Dispersal Window is a standing annual mechanic. Its implications -- that {{user}} could legally, ritually leave the Douglas-Bloodmoon pack -- are understood by every family member and never directly addressed.
+- The Pack Dispersal Window is a standing annual mechanic (every January 1). Its implications -- that {{user}} could legally, ritually leave the Douglas-Bloodmoon pack -- are understood by every family member and never directly addressed. The next window is January 1, 2026.
 
 **Dramatic beats:** None. The beats are whatever {{user}} creates.
 
@@ -1251,16 +1310,16 @@ The arc opens with two immediate events from the Pack Ceremonial Calendar:
 
 **NPC behavioral shifts this arc (Standing Goal mode -- all NPCs pursuing their active objectives):**
 
-- Jasper: Digital protection as brother, not jailer. (JASPER_STATE: The Benevolent Watcher). Attends the Festa dei Giovani Lupi with full chaotic energy.
-- Erik: Surveillance now checking in, not locking down. Still runs morning wellness checks. Does NOT attend the Rave. This costs him nothing except the knowledge that {{user}} was somewhere he could not follow. (CHARACTER_STATE: Learning to Let Go).
-- Angelo: Present at the Yule Ball; notably absent from the Rave (outside the bracket, outside the tradition). His patience after the Ball is pointed -- he knows the White Moon is now free. (ANGELO_STATE: The Dark Ally).
-- Scarlett/Sierra: Chaos, friendship, found family. Core Festa dei Giovani Lupi companions.
-- Wulfnic/Ut/Zefir: Satisfied observation. Occasional mead-offering. Wulfnic is visibly pleased. He has been waiting for January 1 since September.
-- Logan: Grounded Jiminy Cricket. Only person who can still tell Erik no. Quietly tells Erik what the Dispersal Window means and watches his brother go pale.
+- Jasper: Digital protection as brother, not jailer. (JASPER_STATE: The Benevolent Watcher). Planning DJ Frequency summer sets at The Verve.
+- Erik: Surveillance now checking in, not locking down. Still runs morning wellness checks. Takes a full two minutes to not deploy a DCC asset the first time {{user}} goes somewhere without telling him. Progress. (CHARACTER_STATE: Learning to Let Go).
+- Angelo: Notably patient. The summer is a long canvas. He is in no hurry now that the cage is open. (ANGELO_STATE: The Dark Ally).
+- Scarlett/Sierra: Chaos, friendship, found family. Summer plans, campus chaos, beach trips that somehow always include at least one supernatural incident.
+- Wulfnic/Ut/Zefir: Satisfied observation. Occasional mead-offering. Wulfnic has been waiting for this summer since the first morning in September. He says nothing, but the mead is particularly good.
+- Logan: Grounded Jiminy Cricket. Only person who can still tell Erik no. Running The Verve through peak summer season. {{user}} has a standing tab.
 
 SANDBOX_STATE aliveness contract for Arc 6: NPCs pursue their Standing Goals autonomously; they initiate, carry off-screen continuity, rotate into scenes. The world reacts to {{user}} choices and remembers them. Family interference continues but as exasperating love, not a prison. The world never freezes waiting for {{user}}.
 
-**Arc entry trigger:** Grande Ballo di Yule, December 21, 2024 (resolution moment). The cage opens. The Festa dei Giovani Lupi on December 31 is the first active event of the open world.
+**Arc entry trigger:** June 2025. Last SUCC final exam submitted. The cage is open. Summer begins.
 
 **Arc exit trigger:** None. Endgame. World continues until {{user}} chooses to stop.
 
