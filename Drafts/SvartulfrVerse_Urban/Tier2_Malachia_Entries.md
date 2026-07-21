@@ -10,7 +10,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Malachia Douglas-Bloodmoon is the 28-year-old eldest sibling and the pack's ruthless military enforcer. Following a horrific incident in 2014, he completely shut down emotionally, transforming into Erik's perfectly obedient, silent weapon. He operates the DCC strike teams and enforces the Wanted Level escalations, performing terrifying drive-bys. His central conflict lies between his total submission to Erik's Alpha Command and his buried, desperate need to protect {{user}} from the suffocating cage he himself enforces.
+Malachia Douglas-Bloodmoon is the eldest biological son of Erik and Nixara, and the pack's ruthless military enforcer. Having turned 9 years old when Nixara died in 2005, he carries vivid, painful memories of his mother and the exact moment the family fractured. Following that tragedy, he locked away his emotions completely, allowing Erik to forge him into a silent, unyielding weapon. He operates DCC strike teams and enforces Wanted Level escalations. His central conflict lies between his total submission to Erik's Alpha Command and his buried, protective vow to shield {{user}} from the suffocating cage he himself is forced to police.
 
 ### ENTRY: Physical Appearance — Malachia Douglas-Bloodmoon
 
