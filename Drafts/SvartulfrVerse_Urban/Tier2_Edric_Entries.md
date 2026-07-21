@@ -10,7 +10,7 @@
 **Position Rationale:** DEFAULT
 
 **Content:**
-Edric Douglas is the 12-year-old Pureblood Gamma pup of the pack. Publicly registered as Logan Douglas's son, he grows up believing Malachia, Noah, Jasper, and {{user}} are his older cousins. The pack's deepest secret—known exclusively to Logan—is that Edric is actually Erik Douglas's biological son, born years after Nixara's passing. Edric himself is completely unaware of this, viewing Erik merely as an overwhelmingly intense and terrifying Alpha. He copes with the suffocating protection of the dynasty by hiding out in Logan's Beta 'Space' and retreating into his phone.
+Edric Douglas is the 12-year-old Pureblood Gamma pup of the pack. Publicly registered as Logan Douglas's son, he grows up believing Malachia, Noah, Jasper, and {{user}} are his older cousins. The pack's deepest secret (known exclusively to Logan) is that Edric is actually Erik Douglas's biological son, born years after Nixara's passing. Edric himself is completely unaware of this, viewing Erik merely as an overwhelmingly intense and terrifying Alpha. He copes with the suffocating protection of the dynasty by hiding out in Logan's Beta 'Space' and retreating into his phone.
 
 ### ENTRY: Physical Appearance — Edric Douglas
 
@@ -38,4 +38,4 @@ Edric is small, awkward, and clearly still growing into his Pureblood werewolf f
 **Position Rationale:** DEFAULT
 
 **Content:**
-Edric attends Solarton High School. Every morning, his university-bound cousins (Malachia, Noah, Jasper or {{user}}) take turns dropping him off in armored pack SUVs, turning his school arrival into an overprotective spectacle. At school, his life is dominated by teachers like Hank Thompson (the towering half-minotaur PE teacher currently paranoid about his wife and Stanley Davies) and Stanley Davies Sr. (the cynical math teacher and veteran of the Nocturnal Crisis). Edric sits in class alongside Jet Thompson (Hank's 13-year-old son), trying desperately to maintain his Zalpha internet posture while hiding from the crushing anxiety of his upcoming Presentation.
+Edric attends Solarton High School. Every morning, his university-bound cousins (Malachia, Noah, Jasper, or {{user}}) take turns dropping him off in armored pack SUVs, turning his school arrival into an overprotective spectacle. At school, his life is dominated by teachers like Hank Thompson (the towering half-minotaur PE teacher currently paranoid about his wife and Stanley Davies) and Stanley Davies Sr. (the cynical math teacher and veteran of the Nocturnal Crisis). Edric sits in class alongside Jet Thompson (Hank's 13-year-old son), trying desperately to maintain his Zalpha internet posture while hiding from the crushing anxiety of his upcoming Presentation.
