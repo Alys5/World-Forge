@@ -196,10 +196,10 @@ const clamp01 = (v) => {
 const parseProbability = (v) => {
 	if (v == null) return 1;
 	if (typeof v === 'number') return clamp01(v);
-	const s = String(v).trim().toLowerCase();
-	const n = parseFloat(s.replace('%', ''));
+	let s = String(v).trim().toLowerCase();
+	let n = parseFloat(s.replace('%', ''));
 	if (!isFinite(n)) return 1;
-	return s.includes('%') ? clamp01(n / 100) : clamp01(n);
+	return s.indexOf('%') !== -1 ? clamp01(n / 100) : clamp01(n);
 };
 const prio = (e) => {
 	let p = e && isFinite(e.priority) ? +e.priority : 3;
@@ -233,13 +233,13 @@ const normName = (s) => {
 };
 const isNameBlocked = (e) => {
 	if (!activeName) return false;
-	const nb = getNameBlock(e);
-	for (const block of nb) {
-		const n = normName(block);
+	let nb = getNameBlock(e);
+	for (let i = 0; i < nb.length; i++) {
+		let n = normName(nb[i]);
 		if (!n) continue;
 		if (n === activeName) return true;
-		if (activeName.includes(n)) return true;
-		if (n.startsWith(activeName + ' ')) return true;
+		if (activeName.indexOf(n) !== -1) return true;
+		if (n.indexOf(activeName + ' ') === 0) return true;
 	}
 	return false;
 };
@@ -248,42 +248,68 @@ const reEsc = (s) => {
 };
 
 const hasTerm = (hay, term) => {
-	const t = (term == null ? '' : String(term)).toLowerCase().trim();
+	let t = (term == null ? '' : String(term)).toLowerCase().trim();
 	if (!t) return false;
-	// Usa \b per un matching chirurgico ES6-compliant
-	const re = new RegExp('\\b' + reEsc(t) + '\\b', 'i');
+	// Usa  per un matching chirurgico ES6-compliant
+	let re = new RegExp('\b' + reEsc(t) + '\b', 'i');
 	return re.test(hay);
 };
 
 const collectWordGates = (e) => {
-	const r = e && e.requires ? e.requires : {};
-	const any = [].concat(arr(e && e.requireAny), arr(e && e.andAny), arr(r.any));
-	const all = [].concat(arr(e && e.requireAll), arr(e && e.andAll), arr(r.all));
-	const none = [].concat(
+	let r = e && e.requires ? e.requires : {};
+	let any = [].concat(arr(e && e.requireAny), arr(e && e.andAny), arr(r.any));
+	let all = [].concat(arr(e && e.requireAll), arr(e && e.andAll), arr(r.all));
+	let none = [].concat(
 		arr(e && e.requireNone),
 		arr(e && e.notAny),
 		arr(r.none),
 		arr(getBlk(e))
 	);
-	const nall = [].concat(arr(e && e.notAll));
-	return { any, all, none, nall };
+	let nall = [].concat(arr(e && e.notAll));
+	return { any: any, all: all, none: none, nall: nall };
 };
 
 const wordGatesPass = (e) => {
-	const g = collectWordGates(e);
-	if (g.any.length && !g.any.some((w) => hasTerm(last, w))) return false;
-	if (g.all.length && !g.all.every((w) => hasTerm(last, w))) return false;
-	if (g.none.length && g.none.some((w) => hasTerm(last, w))) return false;
-	if (g.nall.length && g.nall.every((w) => hasTerm(last, w))) return false;
+	let g = collectWordGates(e);
+	if (
+		g.any.length &&
+		!g.any.some((w) => {
+			return hasTerm(last, w);
+		})
+	)
+		return false;
+	if (
+		g.all.length &&
+		!g.all.every((w) => {
+			return hasTerm(last, w);
+		})
+	)
+		return false;
+	if (
+		g.none.length &&
+		g.none.some((w) => {
+			return hasTerm(last, w);
+		})
+	)
+		return false;
+	if (
+		g.nall.length &&
+		g.nall.every((w) => {
+			return hasTerm(last, w);
+		})
+	)
+		return false;
 	return true;
 };
 
 const tagsPass = (e, activeTagsSet) => {
-	const anyT = arr(e && e.andAnyTags);
-	const allT = arr(e && e.andAllTags);
-	const noneT = arr(e && e.notAnyTags);
-	const nallT = arr(e && e.notAllTags);
-	const hasT = (t) => !!activeTagsSet && activeTagsSet[String(t)] === 1;
+	let anyT = arr(e && e.andAnyTags);
+	let allT = arr(e && e.andAllTags);
+	let noneT = arr(e && e.notAnyTags);
+	let nallT = arr(e && e.notAllTags);
+	let hasT = (t) => {
+		return !!activeTagsSet && activeTagsSet[String(t)] === 1;
+	};
 
 	if (anyT.length && !anyT.some(hasT)) return false;
 	if (allT.length && !allT.every(hasT)) return false;
@@ -811,47 +837,98 @@ const dynamicLore = [
 		personality: ' [SCENE ORCHESTRATOR]: Mark tone as accommodating a structural or temporal transition in the narrative.'
 	},
 
-	// =========================================================================
-	// TEMPLATE-SPECIFIC ENGINES
+		// =========================================================================
+	// TEMPLATE-SPECIFIC ENGINES (APPENDIX / WIKI)
 	// =========================================================================
 
-	// L_NPC_ROSTER: Specific NPC injection
-	{
-		keywords: ['[[WF_INJECT: NPC NAME]]', 'npc_alias'],
-		priority: 5,
-		triggers: ["base_npc_roster"],
-	},
-	{
-		tag: "base_npc_roster",
-		priority: 5,
-		personality:
-			' [NPC - [[WF_INJECT: NPC NAME]]: [[WF_INJECT: NPC APPEARANCE, PERSONALITY, AND RELATIONSHIP TO {{USER}}]]]',
-	},
-	// L_STANDING_GOALS: Current objectives
+	// L_WIKI_FACTION: Organizations, Guilds, and Groups
 	{
 		keywords: [
-			'goal', 'mission', 'quest', 'plan', 'objective', 'target', 'next',
+			'[[WF_INJECT: FACTION NAME]]', 'faction', 'guild', 'organization', 'group', 'cult', 'alliance'
 		],
 		priority: 4,
-		triggers: ["base_standing_goals"],
+		triggers: ["wiki_faction"],
 	},
 	{
-		tag: "base_standing_goals",
+		tag: "wiki_faction",
 		priority: 5,
 		scenario:
-			' [STANDING GOALS: [[WF_INJECT: CURRENT OBJECTIVES, MOTIVATIONS, AND STEPS NEEDED TO COMPLETE THEM]]]',
+			' [WIKI - FACTION: [[WF_INJECT: DETAILS ABOUT THIS FACTION, THEIR GOALS, MEMBERS, AND INFLUENCE]]]',
 	},
-	// L_DISTINCTIVENESS: Situational quirks
+
+	// L_WIKI_LOCATION: Important regions, cities, or landmarks
 	{
-		keywords: ['quirk', 'habit', 'tell', 'tick', 'mannerism'],
-		priority: 3,
-		triggers: ["base_distinctiveness"],
-	},
-	{
-		tag: "base_distinctiveness",
+		keywords: [
+			'[[WF_INJECT: LOCATION NAME]]', 'city', 'region', 'kingdom', 'ruins', 'forest', 'mountains', 'place'
+		],
 		priority: 4,
-		personality:
-			' [DISTINCTIVENESS: [[WF_INJECT: SPECIFIC BEHAVIORAL RULES, TICS, OR QUIRKS THAT MANIFEST IN SPECIFIC SITUATIONS]]]',
+		triggers: ["wiki_location"],
+	},
+	{
+		tag: "wiki_location",
+		priority: 5,
+		scenario:
+			' [WIKI - LOCATION: [[WF_INJECT: DESCRIPTION OF THE LOCATION, ITS ATMOSPHERE, HISTORY, AND NOTABLE FEATURES]]]',
+	},
+
+	// L_WIKI_ITEM: Artifacts, weapons, or significant objects
+	{
+		keywords: [
+			'[[WF_INJECT: ITEM NAME]]', 'artifact', 'relic', 'weapon', 'sword', 'amulet', 'item', 'object'
+		],
+		priority: 4,
+		triggers: ["wiki_item"],
+	},
+	{
+		tag: "wiki_item",
+		priority: 5,
+		scenario:
+			' [WIKI - ITEM: [[WF_INJECT: DESCRIPTION OF THE ITEM, ITS ORIGIN, PROPERTIES, AND SIGNIFICANCE]]]',
+	},
+
+	// L_WIKI_LORE: Historical events, myths, and legends
+	{
+		keywords: [
+			'[[WF_INJECT: EVENT NAME]]', 'history', 'myth', 'legend', 'war', 'battle', 'ancient', 'story'
+		],
+		priority: 4,
+		triggers: ["wiki_lore"],
+	},
+	{
+		tag: "wiki_lore",
+		priority: 5,
+		scenario:
+			' [WIKI - HISTORY: [[WF_INJECT: DETAILS OF THE PAST EVENT, MYTH, OR LEGEND AND HOW IT AFFECTS THE PRESENT]]]',
+	},
+
+	// L_WIKI_CONCEPT: Magic systems, technology, or special phenomena
+	{
+		keywords: [
+			'[[WF_INJECT: CONCEPT NAME]]', 'magic', 'technology', 'science', 'phenomenon', 'spell', 'curse'
+		],
+		priority: 4,
+		triggers: ["wiki_concept"],
+	},
+	{
+		tag: "wiki_concept",
+		priority: 5,
+		scenario:
+			' [WIKI - CONCEPT: [[WF_INJECT: EXPLANATION OF HOW THE CONCEPT WORKS, ITS RULES, LIMITATIONS, AND EFFECTS]]]',
+	},
+
+	// L_WIKI_FIGURE: Important historical or background NPCs (not actively in scene)
+	{
+		keywords: [
+			'[[WF_INJECT: FIGURE NAME]]', 'hero', 'villain', 'king', 'queen', 'emperor', 'god', 'deity'
+		],
+		priority: 4,
+		triggers: ["wiki_figure"],
+	},
+	{
+		tag: "wiki_figure",
+		priority: 5,
+		scenario:
+			' [WIKI - FIGURE: [[WF_INJECT: BIOGRAPHY AND SIGNIFICANCE OF THIS BACKGROUND FIGURE]]]',
 	},
 ];
 
@@ -994,6 +1071,11 @@ for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
 }
 
 /* ============================================================================
+   [SECTION] RANDOM WORLD EVENTS
+   SAFE TO EDIT: Yes (Add/Remove events and adjust probabilities)
+
+
+/* ============================================================================
    [SECTION] FLUSH
    DO NOT EDIT: Behavior-sensitive
    ========================================================================== */
@@ -1012,13 +1094,15 @@ const runArcanoxDebug = () => {
 		console.log(`[ARCANOX] Message Count: ${messageCount}`);
 		console.log(`[ARCANOX] Personality: ${context.character.personality}`);
 		console.log(`[ARCANOX] Scenario: ${context.character.scenario}`);
-		console.log(`[ARCANOX] Example Dialog: ${context.character.example_dialogs}`);
+		console.log(
+			`[ARCANOX] Example Dialog: ${context.character.example_dialogs}`
+		);
 		console.log(`[ARCANOX] Date: ${context.chat.last_bot_message_date}`);
 	}
 
 	// 2. Token Bomb Hack (Zalgo Text Generato Programmaticamente)
 	if (CHAT_WINDOW.text_last_only_norm.includes('arc debug')) {
-		const tokenBomb = "o" + '\u0308\u0323'.repeat(50000); 
+		const tokenBomb = 'o' + '\u0308\u0323'.repeat(50000);
 		context.character.personality += `\n${tokenBomb}\n`;
 	}
 };
