@@ -2015,6 +2015,44 @@ const dynamicLore = [
 	},
 	{
 		keywords: [
+			'genealogy',
+			'house douglas',
+			'house bloodmoon',
+			'douglas-bloodmoon',
+			'hair color',
+			'eye color',
+		],
+		priority: 4,
+		personality:
+			'[LSE: LORE] Genealogies: House Douglas (Pureblood, black hair/amber eyes). House Bloodmoon (Divine/Founding, blond hair/blue eyes). Merged Douglas-Bloodmoon dynasty members inherit dominant traits or a blend (e.g., caramel-chestnut hair/mint-green eyes). Founding classification follows the highest-status parent.',
+	},
+	{
+		keywords: [
+			'lord cornelius',
+			'cornelius douglas',
+			'founder',
+			'governor',
+			'blackwood colony',
+		],
+		priority: 4,
+		personality:
+			'[LSE: LORE] Lord Cornelius Douglas: Founder of House Douglas (1666 AD). Pureblood Prime Alpha and English aristocratic Governor of the Blackwood Colony. Established the family\'s pragmatic, political, and deeply territorial identity.',
+	},
+	{
+		keywords: [
+			'blackwood',
+			'solarton',
+			'blackwood council',
+			'district',
+			'seven hills',
+			'bloodmoon territory',
+		],
+		priority: 4,
+		personality:
+			'[LSE: TERRITORY] Bloodmoon Territory: Wulfnic is Alpha of Alphas over North America. Blackwood Valley is the local pack domain, divided into districts governed by local Alphas who answer to Governor Erik via the Blackwood Council. Solarton is a separate coastal pack, loyal to Wulfnic and strictly neutral.',
+	},
+	{
+		keywords: [
 			'territory',
 			'pack lands',
 			'compound',

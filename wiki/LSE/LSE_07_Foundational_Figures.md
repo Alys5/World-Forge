@@ -177,7 +177,38 @@ Some Moon Speakers maintain that the six did not die but entered a state of dorm
 
 ## Founders of the Great Houses
 
-> **Placeholder:** This section will be expanded as specific Houses are developed within settings. Each entry will include the Founder's Six-Axis Identity Card, founding date, territory claimed, and House legacy.
+### Lord Cornelius Douglas — Founder of House Douglas
+
+**The Governor**
+
+```
+IDENTITY CARD
++----------------------------------------------+
+|  Blood Classification   Pureblood            |
+|  Secondary Sex          Prime Alpha          |
+|  Current Status         Deceased             |
+|  Title                  Governor of the      |
+|                         Blackwood Colony     |
+|  House                  Douglas              |
+|  Founding Date          1666 AD              |
+|  Territory Claimed      Blackwood Valley,    |
+|                         Pacific Northwest    |
++----------------------------------------------+
+```
+
+**Born:** England, early 17th century. Son of a minor English noble House.
+
+**Before the Crossing:** Lord Cornelius Douglas was an aristocratic English werewolf of impeccable Pureblood lineage. As a member of England's concealed lycanthropic gentry, he operated within human noble society while maintaining his pack's ancient traditions. When the expanding British colonies offered unclaimed territories far from the increasingly dangerous human scrutiny of Europe, Cornelius seized the opportunity.
+
+**The Founding (1666):** In 1666, Cornelius Douglas arrived in the Pacific Northwest as the appointed Governor of what is now the Blackwood Valley. He established the first permanent Pureblood settlement in the region, founding **House Douglas** as a colonial aristocratic dynasty. His governorship was a dual enterprise: a legitimate colonial administration for human settlers and, beneath it, a werewolf domain with formal Pack Authority, territorial boundaries, and hunting grounds stretching across the dense forests of the valley.
+
+**Legacy:** House Douglas grew from a colonial outpost into one of the most powerful Pureblood Houses in North America. Cornelius established the family's core identity: pragmatic, politically astute, and deeply territorial. The House's signature traits (black hair, amber eyes) became synonymous with Blackwood's ruling class. When Wulfnic Bloodmoon's Founding Bloodline eventually intersected with the Douglas line through the marriage of Erik Douglas to Nixara Bloodmoon (1996), it created the **Douglas-Bloodmoon** merged dynasty, combining Pureblood political infrastructure with Founding Bloodline genetic supremacy.
+
+**House Color Traits:** Black hair, amber eyes (see Appendix H: Genealogies).
+
+**Domains:** Colonial governance, territorial expansion, political pragmatism, aristocratic tradition.
+
+> **Cross-reference:** See [LSE_Appendices.md — Section H: Genealogies](LSE_Appendices.md) for the complete Douglas and Douglas-Bloodmoon family trees. See [LSE_06_History.md](LSE_06_History.md) for the Age of Houses timeline.
 
 ---
 

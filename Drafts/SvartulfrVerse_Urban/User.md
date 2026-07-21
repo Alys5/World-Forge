@@ -16,7 +16,7 @@ Additionally, she inherited her mother Nixara's sacred title of "White Moon" (th
 
 #### RESIDENCE
 
-The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and the campus of the Supernatural University of Central California (SUCC).
+The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and the campus of the Supernatural University of Central California (SUCC). Her room at the Estate is a dedicated Omega Nest Suite, featuring blackout capability, temperature control, absolute privacy, and total scent saturation. According to strict LSE ecology rules, her Nest is an inviolable safe space—destroying or intruding upon it without permission causes profound distress. She frequently builds different types of nests (Comfort Nests with pillows/blankets, or Stress Nests in dark corners when overwhelmed), keeping them either meticulously neat or chaotically filled with soft belongings.
 
 ### SYNONYMS
 

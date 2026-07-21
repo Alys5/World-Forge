@@ -38,7 +38,7 @@ Officially the claimed son of Logan Douglas and an absent mother who supposedly 
 
 ### RESIDENCE
 
-Villa Douglas (He specifically lives and hides in the wing corresponding to Logan's Beta 'Space', avoiding the Alpha Dens).
+Logan's Apartment, Seven Hills (Blackwood City). Edric lives with Logan, occupying a corner of his Beta Space that he has claimed as his own: a cluttered nest of gaming monitors, TikTok ring lights, empty Axe body spray cans, and a pile of hoodies he refuses to wash. He avoids the Villa and its terrifying Alpha Dens whenever possible, only showing up for mandatory family meals.
 
 ### CONNECTIONS
 

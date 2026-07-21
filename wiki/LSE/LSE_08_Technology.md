@@ -77,7 +77,7 @@ Werewolf combat spans three categories:
 Werewolf industry operates both openly (through human-facing corporate fronts) and covertly (species-specific manufacturing):
 
 ### Corporate Fronts
-- **DCC (Douglas Consolidated Corporation):** The most prominent example. A human-facing corporation that serves as the economic engine of House Bloodmoon.
+- **DCC (Douglas Commercial Coalition):** The most prominent example. A human-facing corporation that serves as the economic engine of House Bloodmoon.
 - Similar corporate structures exist across other Houses worldwide.
 
 ### Species-Specific Industry

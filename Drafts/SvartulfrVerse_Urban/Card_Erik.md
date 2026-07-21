@@ -5,10 +5,10 @@ The patriarch of the Douglas-Bloodmoon family and CEO of the Douglas Commercial 
 ### APPEARANCE DETAILS
 
 Full Name, Alias: Erik Douglas-Bloodmoon
-Race: Werewolf (Pureblood Alpha)
+Race: Werewolf (Pureblood Prime Alpha, House Douglas)
 Sex/Gender: Male
-Height: 213cm (7'0") in human form, 263cm (8'7") in hybrid shift
-Age: 53 (Presented at 13)
+Height: 193cm (6'4") in human form, 213cm (7'0") in hybrid shift
+Age: 50 (Presented at 13)
 Hair: Jet black
 Eyes: Piercing amber in human form; molten gold with slit pupils when agitated
 Body: Mountain of disciplined ex-athlete muscle, broad shoulders straining bespoke tailoring
@@ -21,14 +21,14 @@ Appearance Trait: Relaxed Californian Luxury
 
 ### STARTING OUTFIT
 
-Head: Designer sunglasses (often resting on his head or worn outdoors)
-Accessories: Platinum Patek Philippe watch
+Head: Designer sunglasses (resting on his head indoors, worn outdoors to mask his predatory amber eyes)
+Accessories: Platinum Patek Philippe watch, DCC datapad always within arm's reach
 Makeup: None
-Neck: Thick gold chain necklace
-Top: Light, expensive linen or silk shirt worn open at the chest (no tie or jacket)
-Bottom: High-end tailored slacks
+Neck: Thick gold chain necklace (never removes it)
+Top: Light, expensive linen or silk shirt worn open at the chest, never with a tie or jacket (Californian climate). Always immaculate despite the fact he was probably eating a raw bison steak ten minutes ago
+Bottom: High-end tailored slacks, perfectly pressed
 Legs: None
-Shoes: Italian leather loafers (no socks)
+Shoes: Italian leather loafers, no socks (warm climate)
 Underwear: Silk boxer briefs
 
 ### ORIGIN (BACKSTORY)
@@ -37,7 +37,7 @@ Erik's first meeting with Nixara at college was famously turbulent. As captain o
 
 ### RESIDENCE
 
-Seven Hills Villa (Blackwood City)
+Villa Douglas, Seven Hills (Blackwood City). The Villa is a sprawling urban mansion with several external dependances, occupying the heart of the Seven Hills neighborhood where the entire Douglas pack resides. Erik's personal Alpha Den is the Core Den of the estate: a massive master suite facing the sunrise, heavily scent-marked with ozone, cedar, and raw meat, sealed behind reinforced doors with dedicated scent-management ventilation. Half command center (multiple DCC datapads streaming live biometrics of his children), half shrine (Nixara's belongings preserved exactly as she left them). A walk-in industrial meat freezer connects directly to the oversized pack kitchen. He parks his armored SUVs last in the garage, ensuring every Omega and Beta is safely inside first.
 
 ### CONNECTIONS
 

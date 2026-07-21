@@ -118,13 +118,119 @@ Werewolf naming conventions vary by culture, bloodline, and era:
 
 ## H. Genealogies
 
-> **Placeholder:** Genealogical trees for specific Houses and Bloodlines will be documented here as settings develop.
+### House Douglas (Pureblood)
+
+**House Color Traits:** Black hair, amber eyes.
+
+A Pureblood House of the werewolf aristocracy. Multi-generational descendants of Founding Bloodlines, possessing long lifespans, stable genetics, and strong pack bonds.
+
+| Member | Blood Classification | Secondary Sex | House Color Expression | Notes |
+|---|---|---|---|---|
+| **Erik Douglas-Bloodmoon** | Pureblood | Prime Alpha | Black hair, amber eyes | Patriarch. CEO of DCC. Married into House Bloodmoon via Nixara. |
+| **Logan Douglas** | Pureblood | Prime Beta | Black hair, amber eyes | Erik's younger brother. Owner of The Verve. |
+| **Edric Douglas** | Pureblood | Gamma (unpresented) | Black hair, amber eyes | Publicly Logan's son. Secretly Erik's illegitimate child. |
+
+---
+
+### House Bloodmoon (Divine Blood / Founding Bloodline)
+
+**House Color Traits:** Blond hair, blue eyes.
+
+The most ancient werewolf dynasty in North America, founded by Wulfnic Bloodmoon (~1025 AD). Its living patriarch is one of the Nine Firstborn (Divine Blood). Direct children and grandchildren of the Firstborn are classified as Founding Bloodlines.
+
+| Member | Blood Classification | Secondary Sex | House Color Expression | Notes |
+|---|---|---|---|---|
+| **Wulfnic Bloodmoon** | Divine Blood (Firstborn) | Primordial Enigma | Silver-white hair (originally blond), ice-blue eyes | The First Fang. Alpha of Alphas. Born ~827 AD. |
+| **Nixara Bloodmoon** _(deceased)_ | Founding Bloodline | Dominant Omega (White Moon) | Blond hair, blue eyes | Wulfnic's daughter. Died 2005 giving birth to the twins. |
+
+**Shield-Brothers of Wulfnic (co-residents of the Bloodmoon Longhouse):**
+
+| Member | Blood Classification | Secondary Sex | Notes |
+|---|---|---|---|
+| **Ut (The Mountain)** | Divine Blood (Firstborn) | Primordial Enigma | The Second Fang. Keeper of the Sacred Forge. |
+| **Zefir (The White Ghost)** | Divine Blood (Firstborn) | Primordial Enigma | The Third Fang. Watcher of the Moon. |
+
+---
+
+### House Douglas-Bloodmoon (Merged Dynasty)
+
+**House Color Traits:** Variable. Children of Erik (Pureblood, House Douglas) and Nixara (Founding Bloodline, House Bloodmoon) express either dominant House coloring or a blend of both.
+
+| Member | Blood Classification | Secondary Sex | House Color Expression | Color Inheritance |
+|---|---|---|---|---|
+| **Malachia Douglas-Bloodmoon** | Founding Bloodline | Alpha | Black hair, amber eyes | Douglas-dominant |
+| **Noah Douglas-Bloodmoon** | Founding Bloodline | Delta | Blond hair, blue eyes | Bloodmoon-dominant |
+| **Jasper Douglas-Bloodmoon** | Founding Bloodline | Beta | Caramel-chestnut hair, mint-green eyes | Douglas-Bloodmoon blend |
+| **{{user}} / Alyssa Douglas-Bloodmoon** | Founding Bloodline | Dominant Omega (White Moon) | Caramel-chestnut hair, mint-green eyes | Douglas-Bloodmoon blend |
+
+> **Note:** All children of Erik and Nixara are classified as **Founding Bloodline** (not Pureblood) because their mother Nixara was a direct daughter of the Firstborn Wulfnic. The Founding classification follows the highest-status parent's bloodline.
 
 ---
 
 ## I. Maps
 
-> **Placeholder:** Territorial maps for specific settings (e.g., Bloodmoon territory in the Pacific Northwest) will be added here.
+### Bloodmoon Territory (Pacific Northwest, North America)
+
+Wulfnic Bloodmoon holds the title of **Alpha of Alphas** over the entire North American continent (United States and Canada), granting him supreme political and spiritual authority over all werewolf packs in those territories. This continental authority is distinct from his local pack territory.
+
+The **Blackwood Valley** is the ancestral seat of the Seven Hills Pack (the Douglas-Bloodmoon pack) and the personal territory of the Bloodmoon dynasty. It does not encompass Wulfnic's continental jurisdiction, only his pack's immediate domain.
+
+**Key Locations:**
+
+| Location | Type | Controlled By | Notes |
+|---|---|---|---|
+| **Blackwood City** | Urban center | House Douglas-Bloodmoon (political), House Bloodmoon (spiritual) | The primary supernatural city in the territory. Mixed human-supernatural population. |
+| **Seven Hills** | Residential neighborhood (Blackwood City) | Douglas Pack | The entire Douglas pack resides within this exclusive neighborhood. Contains Villa Douglas and Logan's garage/apartment. |
+| **Villa Douglas** | Urban mansion compound (Seven Hills) | Erik Douglas-Bloodmoon | Sprawling mansion with external dependances (Malachia's gym, DCC Security compound). The Core Den of the pack. |
+| **Logan's Garage & Apartment** | Residential/commercial (Seven Hills) | Logan Douglas | Signal-jammed "Zona Franca." Edric resides here with Logan. |
+| **The Bloodmoon Longhouse** | Traditional Norse hall (Blackwood Forest) | Wulfnic, Ut, Zefir | Built beneath an ancient yew tree in the heart of the forest. No electricity, no modern technology. The Dead Zone. |
+| **Blackwood Forest** | Wilderness (pack territory) | Seven Hills Pack | Ancient forest surrounding the city. Contains the Longhouse, hunting grounds, and sacred sites. The Dead Zone yew creates an acoustic vacuum that bricks all modern tech. |
+| **SUCC (Supernatural University of Central California)** | University campus | Neutral territory | Where {{user}}, Jasper, Noah, and Malachia attend. Faction conflict suspended on campus grounds. |
+| **Solarton** | Coastal city | Neutral / Angelo Moreno's territory | The human-facing college town. Contains Eidolon Creative studio. |
+| **The Verve** | Bar/garage (Blackwood City) | Logan Douglas | Logan's business. Functions as a neutral safe haven for the pack's younger members. |
+| **DCC Tower** | Corporate headquarters (Blackwood City) | Erik Douglas-Bloodmoon | The Douglas Commercial Coalition's command center. |
+| **KSA Fraternity House** | Fraternity (SUCC Campus) | Noah Douglas-Bloodmoon (President) | Noah's social command center. Secondary residence. |
+
+**Political Structure:**
+
+Blackwood City is divided into **districts**, each governed by a local pack with its own Alpha. All district packs answer to Erik Douglas-Bloodmoon and the Douglas Pack through the **Blackwood Council**, a governing body where Erik functions as a de facto Governor over the entire city. The Council system mirrors the colonial governorship established by Lord Cornelius Douglas in 1666.
+
+Solarton is a separate territory governed by its own pack, founded in the early 1900s. This pack is loyal to Wulfnic and maintains **neutral status**, making Solarton a safe zone where faction conflicts are suspended.
+
+**Territorial Hierarchy:**
+
+```
+WULFNIC BLOODMOON — Alpha of Alphas (Continental Authority: North America & Canada)
+    |
+    +-- [All werewolf packs on the continent fall under his supreme authority]
+    |
+    +-- BLACKWOOD VALLEY (Inland Territory)
+    |       |
+    |       +-- Blackwood Forest (Pack hunting grounds / Longhouse / Dead Zone)
+    |       |
+    |       +-- Blackwood City (District System — governed by the Blackwood Council)
+    |               |
+    |               +-- THE BLACKWOOD COUNCIL (Erik Douglas-Bloodmoon, Governor)
+    |               |       All district Alphas report to Erik through the Council.
+    |               |
+    |               +-- Seven Hills District (Douglas Pack — Erik's personal territory)
+    |               |       |
+    |               |       +-- Villa Douglas (Core Den / Erik)
+    |               |       |       +-- Dependance: DCC Security (Kaladin's Den)
+    |               |       |       +-- Dependance: Training Grounds/Gym (Malachia's territory)
+    |               |       |
+    |               |       +-- Logan's Garage & Apartment (Beta Space / Edric)
+    |               |
+    |               +-- [Other Districts] (Each governed by a local pack Alpha)
+    |               |
+    |               +-- DCC Tower (Corporate HQ)
+    |               +-- The Verve (Logan's Bar)
+    |
+    +-- SOLARTON (Coastal Territory — separate pack, est. early 1900s, loyal to Wulfnic, neutral)
+            +-- SUCC Campus (Neutral Territory)
+            +-- Eidolon Creative (Angelo Moreno's territory)
+            +-- KSA Fraternity House (Noah)
+```
 
 ---
 

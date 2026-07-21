@@ -93,6 +93,13 @@ As bloodlines diversified and territories expanded, political structures formali
 - **Inter-House diplomacy** began, establishing the first treaties, alliances, and marriage agreements.
 - The distinction between **Bloodline** (genetics), **House** (politics), and **Pack** (social unit) became codified.
 
+**Notable Foundings:**
+
+| Date | House | Founder | Territory | Notes |
+|---|---|---|---|---|
+| ~1025 AD | **House Bloodmoon** | Wulfnic Bloodmoon (Divine Blood) | Pacific Northwest (North America) | First permanent werewolf domain in the New World. Founding Bloodline. |
+| 1666 AD | **House Douglas** | Lord Cornelius Douglas (Pureblood) | Blackwood Valley, Pacific Northwest | English colonial aristocrat. Pureblood House. Governor of the Blackwood Colony. |
+
 ---
 
 ## The Age of Kingdoms
@@ -121,11 +128,21 @@ As human civilization grew, industrialized, and developed technologies that thre
 
 Contemporary werewolf society operates in the shadows of the human world:
 
-- Noble Houses maintain power through **corporate empires** (e.g., DCC — Douglas Consolidated Corporation).
+- Noble Houses maintain power through **corporate empires** (e.g., DCC -- Douglas Commercial Coalition).
 - Packs adapt to urban, suburban, and rural environments while maintaining core ecological structures.
 - Technology is adopted and adapted for species-specific needs.
 - The tension between **traditional** pack values and **modern** individualism creates ongoing cultural conflict.
 - The Faith of Fenris persists as a living tradition, with the Last Three Firstborn serving as both historical anchors and religious figures.
+
+**Notable Events (Modern Era):**
+
+| Date | Event | Significance |
+|---|---|---|
+| ~1994 | **La Grande Caccia: Erik and Nixara** | The last Caccia-confirmed White Moon bond. Erik Douglas-Bloodmoon (Pureblood, House Douglas) and Nixara Bloodmoon (Founding Bloodline, House Bloodmoon) unite their Houses. |
+| 1996 | **Marriage of Erik and Nixara** | Formal creation of the **Douglas-Bloodmoon** merged dynasty. Pureblood political infrastructure fused with Founding Bloodline genetic supremacy. |
+| 2005 | **Death of Nixara** | Nixara dies giving birth to twins ({{user}}/Alyssa and Jasper). Erik's grief reshapes the family into the Golden Cage. |
+| ~2010s | **DCC expansion** | Erik transforms the Douglas Commercial Coalition into an international corporate empire, weaponizing it as a protective apparatus for his children. |
+| 2024 | **{{user}} enters SUCC** | The story begins. The Golden Cage faces its first real test. |
 
 ---
 

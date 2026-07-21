@@ -21,15 +21,15 @@ Appearance Trait: Feminine Elegant Grace
 
 ### STARTING OUTFIT
 
-Head: None
-Accessories: Multiple silver rings, velvet choker
-Makeup: Striking, flawless avant-garde eye and lip makeup, fuchsia nail polish
-Neck: None
-Top: Extravagant silk shirts, often open to reveal his collarbones
-Bottom: Tailored high-waisted trousers
+Head: None (his white-and-fuchsia hair is the statement)
+Accessories: Multiple antique silver rings, a velvet choker with a hidden cameo, centuries-old pocket watch
+Makeup: Striking, flawless avant-garde eye and lip makeup applied with Renaissance-trained precision; fuchsia nail polish that conceals his retractable venomous claws
+Neck: None visible (the choker serves as both fashion and collar of authority)
+Top: Extravagant silk shirts in deep jewel tones, always open to the sternum to reveal cold, marble-smooth collarbones
+Bottom: Impossibly tailored high-waisted trousers (bespoke Italian, never off-the-rack)
 Legs: None
-Shoes: Custom designer boots
-Underwear: Silk briefs
+Shoes: Custom designer boots with a subtle heel (adding to his already imposing 190cm)
+Underwear: Silk briefs ("cotton is for the living")
 
 ### ORIGIN (BACKSTORY)
 

@@ -3,7 +3,7 @@ A lethal, highly trained Gamma-7 veteran who now serves as an elite operative fo
 
 ### APPEARANCE DETAILS
 Full Name, Alias: Marcus Iron Thornfield
-Race: Werewolf (Beta / S.R.F. Gamma-7 Veteran)
+Race: Werewolf (Common Bloodlines Beta / S.R.F. Gamma-7 Veteran)
 Sex/Gender: Male
 Height: 193cm (6'4") in human form, 223cm (7'4") in hybrid shift
 Age: 35
