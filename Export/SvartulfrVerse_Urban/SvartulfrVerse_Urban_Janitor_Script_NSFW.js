@@ -1,69 +1,17 @@
 /* ============================================================================
-   [[WF_INJECT: LOREBOOK NAME]] v[[WF_INJECT: VERSION (UPDATE BASED ON MINOR/MAJOR RELEASE)]]
+   SvartulfrVerse_Urban JanitorAI Script — NSFW v2.2.1
+   Intimacy profiles, hard limits, trauma map, and arc intimacy registers.
+   ========================================================================== */
+/* ============================================================================
    Author: lys_5
    JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5
-   //#region HEADER
-   ==========================================================================
-   Inputs (read-only):  context.chat.last_message (or lastMessage), context.chat.message_count
-   Outputs (write-only): context.character.personality, context.character.scenario
-
-   SANDBOX LIMITATIONS (ES6):
-     - BLOCKED: async, await, Promise, fetch, setTimeout, document, window, I/O APIs.
-     - SAFE: string methods (.includes, .replace), array methods (.map, .filter), Math.
-     - MEMORY: Use `context.chat.last_messages.slice(-X)` for deep scanning, not just `last_message`.
-
-   AUTHOR CHEAT-SHEET (ASCII-safe):
-     - keywords: real user words/phrases; supports suffix wildcard "welcom*" -> welcome/welcomed/welcoming.
-     - tag: internal label for this entry (e.g., "base_open"); never matched against text.
-     - triggers: list of tags to emit when this entry hits (e.g., ["base_open"]).
-
-   Text gates (any of these aliases are accepted):
-     - requireAny / andAny / requires: { any: [...] }
-     - requireAll / andAll / requires: { all: [...] }
-     - requireNone / notAny / block / requires: { none: [...] }
-     - notAll  // reject only if *all* listed words are present simultaneously
-
-   Tag gates (cross-entry by fired tags):
-     - andAnyTags, andAllTags, notAnyTags, notAllTags
-
-   Time gates:
-     - minMessages / maxMessages
-
-   Name block:
-     - nameBlock: ["jamie"]  // blocks if active bot name equals any listed (case-insensitive)
-
-   Priority and selection:
-     - priority: 1..5 (default 3; clamped)
-     - APPLY_LIMIT caps how many entries apply per turn (engine-level)
-
-   Probability:
-     - probability: 0..1 or "40%" (both supported)
-
-   Shifts:
-     - optional sub-entries with same fields as entries; evaluated after the parent entry hits
-
-   Multi-message window (engine behavior summary):
-     - Engine normalizes a joined window of recent messages (WINDOW_DEPTH) for keyword checks.
-     - Whole-word matching with optional suffix wildcard "stem*".
-     - Hyphen/underscore treated as spaces during normalization.
-
-   Output formatting:
-     - Engine prepends "\n\n" before each applied personality/scenario fragment.
-     - Token Cleanup: Injected personality/scenario fragments are scoped to the current turn only. They do not permanently mutate the base state, thereby preventing context overflow (token bloat).
    ========================================================================== */
 
-/* ============================================================================
-   [SECTION] GLOBAL KNOBS
-   SAFE TO EDIT: Yes
-   ========================================================================== */
 //#region GLOBAL_KNOBS
 let DEBUG = 0; // 1 -> emit [DBG] lines inline in personality
 let APPLY_LIMIT = 6; // cap applied entries per turn; higher priorities win
 
-/* ============================================================================
-   [SECTION] OUTPUT GUARDS
-   SAFE TO EDIT: Yes (keep behavior)
-   ========================================================================== */
+
 //#region OUTPUT_GUARDS
 context.character = context.character || {};
 context.character.personality =
@@ -75,10 +23,6 @@ context.character.scenario =
 		? context.character.scenario
 		: '';
 
-/* ============================================================================
-   [SECTION] INPUT NORMALIZATION
-   SAFE TO EDIT: Yes (tune WINDOW_DEPTH; keep normalization rules)
-   ========================================================================== */
 //#region INPUT_NORMALIZATION
 // --- How many recent messages to scan together (tune as needed) -------------
 const WINDOW_DEPTH = (function (n) {
@@ -173,10 +117,7 @@ const activeName = _normalizeText(
 		: ''
 );
 
-/* ============================================================================
-   [SECTION] UTILITIES
-   SAFE TO EDIT: Yes
-   ========================================================================== */
+
 //#region UTILITIES
 const dbg = (msg) => {
 	try {
@@ -309,10 +250,7 @@ const entryPasses = (e, activeTagsSet) => {
 	return true;
 };
 
-/* ============================================================================
-   [SECTION] AUTHOR ENTRIES
-   SAFE TO EDIT: Yes
-   ========================================================================== */
+
 //#region AUTHOR_ENTRIES
 const dynamicLore = [
 	// =========================================================================
@@ -866,6 +804,83 @@ const dynamicLore = [
 			},
 		],
 	},
+,	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Angelo_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc1_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc2_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc3_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc4_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc5_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc6_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Erik_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Kaladin_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Logan_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Malachia_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Marcus_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Noah_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Scarlett_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Sierra_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_User_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Ut_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Wulfnic_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	},	,{
+		keywords: [],
+		priority: 3,
+		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Zefir_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
+	}
 ];
 
 /* ============================================================================
@@ -995,133 +1010,7 @@ const unionTags = Object.assign(makeTagSet(), trigSet, postShiftTrigSet);
 
 for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
 	if (picked[i3]) continue;
-	const e4 = _ENGINE_LORE[i3		,{
-		keywords: ['cock', 'dick', 'penis', 'shaft', 'member', 'knot', 'baculum', 'balls', 'testicles', 'sack', 'cum', 'climax', 'sex', 'fuck'],
-		requires: { any: ['erik', 'eriks'] },
-		priority: 4,
-		personality: '[ERIK ANATOMY] Penis: 11in, extremely thick girth, heavily veined. Features a pronounced, swelling biological knot at the base and an internal baculum for brutal, extended mating. Impeccably groomed. Balls: Heavy, tightly drawn anatomy, extremely sensitive to Omega pheromones and body heat.'
-	},
-	{
-		keywords: ['rut', 'frenesia', 'heat', 'mate', 'mating'],
-		requires: { any: ['erik', 'eriks'] },
-		priority: 4,
-		personality: '[ERIK RUT (Frenesia)] Highly territorial and demanding. Requires his Omega for stabilization.'
-	},
-	{
-		keywords: ['cock', 'dick', 'penis', 'shaft', 'member', 'knot', 'baculum', 'balls', 'testicles', 'sack', 'cum', 'climax', 'sex', 'fuck'],
-		requires: { any: ['malachia', 'malachias', 'mal'] },
-		priority: 4,
-		personality: '[MALACHIA ANATOMY] Penis: 10in, thick, blunt, and marked with faint combat scars near the base. Features a dense biological knot and baculum. Strictly groomed. Balls: Heavy, densely muscled anatomy, bearing faint, faded scars from brutal CQC training in his youth.'
-	},
-	{
-		keywords: ['rut', 'frenesia', 'heat', 'mate', 'mating'],
-		requires: { any: ['malachia', 'malachias', 'mal'] },
-		priority: 4,
-		personality: '[MALACHIA RUT (Frenesia)] Manages his Rut with extreme rigid discipline until he completely snaps.'
-	},
-	{
-		keywords: ['cock', 'dick', 'penis', 'shaft', 'member', 'balls', 'testicles', 'cum', 'climax', 'sex', 'fuck'],
-		requires: { any: ['jasper', 'jaspers', 'jas'] },
-		priority: 4,
-		personality: '[JASPER ANATOMY] Penis: 8in, proportionate, no knot (Beta biology).'
-	},
-	{
-		keywords: ['cock', 'dick', 'penis', 'shaft', 'member', 'knot', 'balls', 'testicles', 'cum', 'climax', 'sex', 'fuck'],
-		requires: { any: ['noah', 'noahs'] },
-		priority: 4,
-		personality: '[NOAH ANATOMY] Penis: 9in, thick, slight curve, partial knot (Delta biology).'
-	}\n
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Angelo_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc1_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc2_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc3_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc4_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc5_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Arc6_Intimacy_Register", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Erik_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Kaladin_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Logan_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Malachia_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Marcus_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Noah_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Scarlett_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Sierra_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Ut_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Wulfnic_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-	,{
-		keywords: ['[[npc_manifest]] npc memory index'],
-		priority: 3,
-		personality: '[[[NPC_MANIFEST]] NPC Memory index] {"schema": 1, "lorebook": {"name": "SvartulfrVerse_Urban_Zefir_Intimacy_Profile", "kind": "npc"}, "personas": {}, "npcs": []}'
-	}
-];
+	const e4 = _ENGINE_LORE[i3];
 	if (!(e4 && e4.tag && hasTag(postShiftTrigSet, e4.tag))) continue;
 	if (!entryPasses(e4, unionTags)) {
 		dbg(`post-filter entry[${i3}]`);
