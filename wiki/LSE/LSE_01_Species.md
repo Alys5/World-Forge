@@ -335,35 +335,38 @@ Scent glands are skin areas that hold and release pheromone-carrying secretions.
 
 When generating Tier 2 Lorebooks or Character Cards for Werewolves, use the following comprehensive parameter block:
 
-```yaml
-[NAME: (birth name, alias, pack-name, or lupine call-sign);  
-SPECIES: werewolf(subtype: feral-born, bitten, bloodline, hybrid variant, lone shifter, revenant-bound);  
-SEX: (biological sex);  
-GENDER: (gender identity);  
-AGE: (human age), transformation onset age, total years as turned;  
-HEIGHT: human form(ft/in or cm), shifted height(wolfman, direwolf, trueform—specify stance);  
-BUILD: human form(lean, dense, scarred), wereform(muscle-bulked, digitigrade, broad-chested, clawed);  
-SKIN: human form(standard), wereform(fur coverage: full/partial, color: ash, black, russet, silver);  
-EYES: baseline color, shifted glow(color and intensity), pupil shift(slitted, round, void);  
-HAIR: human head hair vs. body hair/fur integration (if any);  
-LIMBS: human(two arms, two legs), wereform(clawed hands, digitigrade legs, prehensile tail—if any);  
-TEETH: human form(slight elongation), wereform(pronounced canines, shearing molars, bone-crunch jaw);  
-MOVEMENT: upright lope, low-run, sprint gait, quadrupedal burst, wall-scaling (if applicable);  
-VOICE: human tone vs. growled speech, wereform(vocal distortions, howls, mind-echo projection);  
-SPEECH: clipped under stress, lupine metaphors, scent-referenced language, pack-rank affectation;  
-SCENT: musk, wet fur, blood-iron, burnt sinew, forest rot, aggression-trigger pheromones;  
-PHYSIOLOGY: dual-heart rate system during shift, pain threshold(high), healing factor(rapid under moonlight), senses(hyper-acute: scent, sound, motion-tracking), metabolism(elevated post-shift), blood anomaly(if viral/cursed);  
-TRANSFORMATION: cycle-bound(full moon, trigger-based, rage-linked, voluntary), shift duration, partial-shift control;  
-DIET: carnivorous focus, raw-preference, bone marrow craving, ritual hunts;  
-CLOTHING: durable, tearaway, minimal, ritual hides, pack-crest accessories;  
-WEAPONS: claws, teeth, brute force, pack coordination, howl-based coordination, blood-sense tracking;  
-MAGIC: rare (unless tied to curse or ancestral spirit), blood-binding, lunar rites, dream-scent projection;
-TEMPERAMENT: territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone;  
-SOCIAL STRUCTURE: pack-based(alpha/beta/omega or anarchic), lone wolf(exiled or estranged), bloodline hierarchy, challenge-claim dominance law;  
-BELIEFS: moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies;  
-CULTURAL TRAITS: oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill;  
-TABOOS: killing pack, rejecting shift, refusing a blood challenge, feeding on kin;  
-TRIGGERS: silver scent, full moon proximity, loss of control, prey resistance, betrayal scent;  
-PREFERENCES: deep woods, raw meat, silence, heartbeat rhythms, night air, bone dens;  
-WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), lunar paralysis(rare), blood frenzy, human guilt, memory bleed]
+```markdown
+### PHYSICAL DESCRIPTION — BASELINE
+Full Name, Alias: [Birth name, alias, pack-name, or lupine call-sign]
+Race: Werewolf (Subtype: feral-born, bitten, bloodline, hybrid variant, lone shifter, revenant-bound)
+Sex/Gender: [Biological sex / Gender identity]
+Height: [Human form (ft/in or cm), shifted height (wolfman, direwolf, trueform—specify stance)]
+Age: [Human age], transformation onset age, total years as turned
+Hair: [Human head hair vs. body hair/fur integration (if any)]
+Eyes: [Baseline color, shifted glow (color and intensity), pupil shift (slitted, round, void)]
+Body/Build: [Human form (lean, dense, scarred), wereform (muscle-bulked, digitigrade, broad-chested, clawed)]
+Skin: [Human form (standard), wereform (fur coverage: full/partial, color: ash, black, russet, silver)]
+Limbs: [Human (two arms, two legs), wereform (clawed hands, digitigrade legs, prehensile tail—if any)]
+Teeth: [Human form (slight elongation), wereform (pronounced canines, shearing molars, bone-crunch jaw)]
+Movement: [Upright lope, low-run, sprint gait, quadrupedal burst, wall-scaling (if applicable)]
+Voice: [Human tone vs. growled speech, wereform (vocal distortions, howls, mind-echo projection)]
+Speech: [Clipped under stress, lupine metaphors, scent-referenced language, pack-rank affectation]
+Sensory Signature/Scent: [Musk, wet fur, blood-iron, burnt sinew, forest rot, aggression-trigger pheromones]
+
+### ABILITIES
+Physiology: [Dual-heart rate system during shift, pain threshold (high), healing factor (rapid under moonlight), senses (hyper-acute), metabolism (elevated post-shift), blood anomaly]
+Transformation: [Cycle-bound (full moon, trigger-based, rage-linked, voluntary), shift duration, partial-shift control]
+Weapons: [Claws, teeth, brute force, pack coordination, howl-based coordination, blood-sense tracking]
+Magic: [Rare (unless tied to curse or ancestral spirit), blood-binding, lunar rites, dream-scent projection]
+Weaknesses: [Silver (burning, poisoning), wolfsbane (hallucinogenic or fatal), lunar paralysis (rare), blood frenzy, human guilt, memory bleed]
+
+### [BEHAVIOR_NOTES]
+- **Temperament**: [Territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone]
+- **Social Structure**: [Pack-based (alpha/beta/omega or anarchic), lone wolf (exiled or estranged), bloodline hierarchy, challenge-claim dominance law]
+- **Beliefs**: [Moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies]
+- **Cultural Traits**: [Oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill]
+- **Taboos**: [Killing pack, rejecting shift, refusing a blood challenge, feeding on kin]
+- **Triggers**: [Silver scent, full moon proximity, loss of control, prey resistance, betrayal scent]
+- **Preferences**: [Deep woods, silence, heartbeat rhythms, night air, bone dens]
+- **Dietary Preference**: [Carnivorous focus, raw-preference, bone marrow craving, ritual hunts]
 ```

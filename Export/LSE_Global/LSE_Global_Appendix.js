@@ -1825,47 +1825,75 @@ This genetic architecture opens the door to:
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Character Card Integration (Parameter Block)**\n\nWhen generating Tier 2 Lorebooks or Character Cards for Werewolves, use the following comprehensive parameter block:
 
-\`\`\`yaml
-[NAME: (birth name, alias, pack-name, or lupine call-sign);  
-SPECIES: werewolf(subtype: feral-born, bitten, bloodline, hybrid variant, lone shifter, revenant-bound);  
-SEX: (biological sex);  
-GENDER: (gender identity);  
-AGE: (human age), transformation onset age, total years as turned;  
-HEIGHT: human form(ft/in or cm), shifted height(wolfman, direwolf, trueform—specify stance);  
-BUILD: human form(lean, dense, scarred), wereform(muscle-bulked, digitigrade, broad-chested, clawed);  
-SKIN: human form(standard), wereform(fur coverage: full/partial, color: ash, black, russet, silver);  
-EYES: baseline color, shifted glow(color and intensity), pupil shift(slitted, round, void);  
-HAIR: human head hair vs. body hair/fur integration (if any);  
-LIMBS: human(two arms, two legs), wereform(clawed hands, digitigrade legs, prehensile tail—if any);  
-TEETH: human form(slight elongation), wereform(pronounced canines, shearing molars, bone-crunch jaw);  
-MOVEMENT: upright lope, low-run, sprint gait, quadrupedal burst, wall-scaling (if applicable);  
-VOICE: human tone vs. growled speech, wereform(vocal distortions, howls, mind-echo projection);  
-SPEECH: clipped under stress, lupine metaphors, scent-referenced language, pack-rank affectation;  
-SCENT: musk, wet fur, blood-iron, burnt sinew, forest rot, aggression-trigger pheromones;  
-PHYSIOLOGY: dual-heart rate system during shift, pain threshold(high), healing factor(rapid under moonlight), senses(hyper-acute: scent, sound, motion-tracking), metabolism(elevated post-shift), blood anomaly(if viral/cursed);  
-TRANSFORMATION: cycle-bound(full moon, trigger-based, rage-linked, voluntary), shift duration, partial-shift control;  
-DIET: carnivorous focus, raw-preference, bone marrow craving, ritual hunts;  
-CLOTHING: durable, tearaway, minimal, ritual hides, pack-crest accessories;  
-WEAPONS: claws, teeth, brute force, pack coordination, howl-based coordination, blood-sense tracking;  
-MAGIC: rare (unless tied to curse or ancestral spirit), blood-binding, lunar rites, dream-scent projection;
-TEMPERAMENT: territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone;  
-SOCIAL STRUCTURE: pack-based(alpha/beta/omega or anarchic), lone wolf(exiled or estranged), bloodline hierarchy, challenge-claim dominance law;  
-BELIEFS: moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies;  
-CULTURAL TRAITS: oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill;  
-TABOOS: killing pack, rejecting shift, refusing a blood challenge, feeding on kin;  
-TRIGGERS: silver scent, full moon proximity, loss of control, prey resistance, betrayal scent;  
-PREFERENCES: deep woods, raw meat, silence, heartbeat rhythms, night air, bone dens;  
-WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), lunar paralysis(rare), blood frenzy, human guilt, memory bleed]
+\`\`\`markdown]`
+	},
+
+	{
+		keywords: ['physical description — baseline'],
+		priority: 4,
+		triggers: ["wiki_auto_51"],
+	},
+	{
+		tag: "wiki_auto_51",
+		priority: 5,
+		scenario: ` [WIKI - CONCEPT: **PHYSICAL DESCRIPTION — BASELINE**\n\nFull Name, Alias: [Birth name, alias, pack-name, or lupine call-sign]
+Race: Werewolf (Subtype: feral-born, bitten, bloodline, hybrid variant, lone shifter, revenant-bound)
+Sex/Gender: [Biological sex / Gender identity]
+Height: [Human form (ft/in or cm), shifted height (wolfman, direwolf, trueform—specify stance)]
+Age: [Human age], transformation onset age, total years as turned
+Hair: [Human head hair vs. body hair/fur integration (if any)]
+Eyes: [Baseline color, shifted glow (color and intensity), pupil shift (slitted, round, void)]
+Body/Build: [Human form (lean, dense, scarred), wereform (muscle-bulked, digitigrade, broad-chested, clawed)]
+Skin: [Human form (standard), wereform (fur coverage: full/partial, color: ash, black, russet, silver)]
+Limbs: [Human (two arms, two legs), wereform (clawed hands, digitigrade legs, prehensile tail—if any)]
+Teeth: [Human form (slight elongation), wereform (pronounced canines, shearing molars, bone-crunch jaw)]
+Movement: [Upright lope, low-run, sprint gait, quadrupedal burst, wall-scaling (if applicable)]
+Voice: [Human tone vs. growled speech, wereform (vocal distortions, howls, mind-echo projection)]
+Speech: [Clipped under stress, lupine metaphors, scent-referenced language, pack-rank affectation]
+Sensory Signature/Scent: [Musk, wet fur, blood-iron, burnt sinew, forest rot, aggression-trigger pheromones]]`
+	},
+
+	{
+		keywords: ['abilities'],
+		priority: 4,
+		triggers: ["wiki_auto_52"],
+	},
+	{
+		tag: "wiki_auto_52",
+		priority: 5,
+		scenario: ` [WIKI - CONCEPT: **ABILITIES**\n\nPhysiology: [Dual-heart rate system during shift, pain threshold (high), healing factor (rapid under moonlight), senses (hyper-acute), metabolism (elevated post-shift), blood anomaly]
+Transformation: [Cycle-bound (full moon, trigger-based, rage-linked, voluntary), shift duration, partial-shift control]
+Weapons: [Claws, teeth, brute force, pack coordination, howl-based coordination, blood-sense tracking]
+Magic: [Rare (unless tied to curse or ancestral spirit), blood-binding, lunar rites, dream-scent projection]
+Weaknesses: [Silver (burning, poisoning), wolfsbane (hallucinogenic or fatal), lunar paralysis (rare), blood frenzy, human guilt, memory bleed]]`
+	},
+
+	{
+		keywords: ['[behavior_notes]'],
+		priority: 4,
+		triggers: ["wiki_auto_53"],
+	},
+	{
+		tag: "wiki_auto_53",
+		priority: 5,
+		scenario: ` [WIKI - CONCEPT: **[BEHAVIOR_NOTES]**\n\n- **Temperament**: [Territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone]
+- **Social Structure**: [Pack-based (alpha/beta/omega or anarchic), lone wolf (exiled or estranged), bloodline hierarchy, challenge-claim dominance law]
+- **Beliefs**: [Moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies]
+- **Cultural Traits**: [Oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill]
+- **Taboos**: [Killing pack, rejecting shift, refusing a blood challenge, feeding on kin]
+- **Triggers**: [Silver scent, full moon proximity, loss of control, prey resistance, betrayal scent]
+- **Preferences**: [Deep woods, silence, heartbeat rhythms, night air, bone dens]
+- **Dietary Preference**: [Carnivorous focus, raw-preference, bone marrow craving, ritual hunts]
 \`\`\`]`
 	},
 
 	{
 		keywords: ['psychology'],
 		priority: 4,
-		triggers: ["wiki_auto_51"],
+		triggers: ["wiki_auto_54"],
 	},
 	{
-		tag: "wiki_auto_51",
+		tag: "wiki_auto_54",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Psychology**\n\nEach secondary sex exhibits a statistical psychological profile. These are tendencies, not rigid rules. Individual variation is expected and common.]`
 	},
@@ -1873,10 +1901,10 @@ WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), luna
 	{
 		keywords: ['alpha — psychological profile'],
 		priority: 4,
-		triggers: ["wiki_auto_52"],
+		triggers: ["wiki_auto_55"],
 	},
 	{
-		tag: "wiki_auto_52",
+		tag: "wiki_auto_55",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Alpha — Psychological Profile**\n\n- High competitiveness
 - Low avoidance (confronts threats directly)
@@ -1889,10 +1917,10 @@ WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), luna
 	{
 		keywords: ['delta — psychological profile'],
 		priority: 4,
-		triggers: ["wiki_auto_53"],
+		triggers: ["wiki_auto_56"],
 	},
 	{
-		tag: "wiki_auto_53",
+		tag: "wiki_auto_56",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Delta — Psychological Profile**\n\n- High cooperation
 - Strong problem-solving orientation
@@ -1905,10 +1933,10 @@ WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), luna
 	{
 		keywords: ['beta — psychological profile'],
 		priority: 4,
-		triggers: ["wiki_auto_54"],
+		triggers: ["wiki_auto_57"],
 	},
 	{
-		tag: "wiki_auto_54",
+		tag: "wiki_auto_57",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Beta — Psychological Profile**\n\n- High stability and emotional regulation
 - Strong planning and organizational skills
@@ -1921,10 +1949,10 @@ WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), luna
 	{
 		keywords: ['omega — psychological profile'],
 		priority: 4,
-		triggers: ["wiki_auto_55"],
+		triggers: ["wiki_auto_58"],
 	},
 	{
-		tag: "wiki_auto_55",
+		tag: "wiki_auto_58",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Omega — Psychological Profile**\n\n- Extremely high empathy
 - Strong social resilience
@@ -1937,10 +1965,10 @@ WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), luna
 	{
 		keywords: ['enigma — psychological profile'],
 		priority: 4,
-		triggers: ["wiki_auto_56"],
+		triggers: ["wiki_auto_59"],
 	},
 	{
-		tag: "wiki_auto_56",
+		tag: "wiki_auto_59",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Enigma — Psychological Profile**\n\n- Supreme confidence and self-possession
 - Cannot be psychologically dominated
@@ -1954,10 +1982,10 @@ WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), luna
 	{
 		keywords: ['neurobiology'],
 		priority: 4,
-		triggers: ["wiki_auto_57"],
+		triggers: ["wiki_auto_60"],
 	},
 	{
-		tag: "wiki_auto_57",
+		tag: "wiki_auto_60",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Neurobiology**\n\nThe werewolf nervous system provides a scientific basis for the species' distinctive traits. The supernatural "tropes" of the Omegaverse are grounded in neurochemistry, not magic.]`
 	},
@@ -1965,10 +1993,10 @@ WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), luna
 	{
 		keywords: ['pheromone pathway'],
 		priority: 4,
-		triggers: ["wiki_auto_58"],
+		triggers: ["wiki_auto_61"],
 	},
 	{
-		tag: "wiki_auto_58",
+		tag: "wiki_auto_61",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pheromone Pathway**\n\nPheromones produced by scent glands activate a dedicated neural pathway:
 
@@ -1985,10 +2013,10 @@ This pathway triggers:
 	{
 		keywords: ['the command — neurochemical mechanism'],
 		priority: 4,
-		triggers: ["wiki_auto_59"],
+		triggers: ["wiki_auto_62"],
 	},
 	{
-		tag: "wiki_auto_59",
+		tag: "wiki_auto_62",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Command — Neurochemical Mechanism**\n\nThe Command is not magic or mind control. It is a neuro-pheromonal reflex:
 
@@ -2007,10 +2035,10 @@ This pathway triggers:
 	{
 		keywords: ['bonding neuroscience'],
 		priority: 4,
-		triggers: ["wiki_auto_60"],
+		triggers: ["wiki_auto_63"],
 	},
 	{
-		tag: "wiki_auto_60",
+		tag: "wiki_auto_63",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Bonding Neuroscience**\n\nThe mating bite creates a permanent neural link by:
 1. Injecting pheromone-laden saliva into the scent gland.
@@ -2025,10 +2053,10 @@ Bond degradation (fade, scrubbing, or breaking) causes neurological distress pro
 	{
 		keywords: ['communication'],
 		priority: 4,
-		triggers: ["wiki_auto_61"],
+		triggers: ["wiki_auto_64"],
 	},
 	{
-		tag: "wiki_auto_61",
+		tag: "wiki_auto_64",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Communication**\n\nWerewolves possess a complex, multi-layered communication system far beyond human language. In wolf ethology, communication involves the entire body.]`
 	},
@@ -2036,10 +2064,10 @@ Bond degradation (fade, scrubbing, or breaking) causes neurological distress pro
 	{
 		keywords: ['non-verbal channels'],
 		priority: 4,
-		triggers: ["wiki_auto_62"],
+		triggers: ["wiki_auto_65"],
 	},
 	{
-		tag: "wiki_auto_62",
+		tag: "wiki_auto_65",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Non-Verbal Channels**\n\n| Channel | Examples | Function |
 |---|---|---|
@@ -2054,10 +2082,10 @@ Bond degradation (fade, scrubbing, or breaking) causes neurological distress pro
 	{
 		keywords: ['vocalizations'],
 		priority: 4,
-		triggers: ["wiki_auto_63"],
+		triggers: ["wiki_auto_66"],
 	},
 	{
-		tag: "wiki_auto_63",
+		tag: "wiki_auto_66",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Vocalizations**\n\n**Omega Sounds:**
 - **Keening:** Wail-like call for attention, comfort, or needs. "I'm upset! Comfort me!"
@@ -2081,10 +2109,10 @@ Bond degradation (fade, scrubbing, or breaking) causes neurological distress pro
 	{
 		keywords: ['territory structure'],
 		priority: 4,
-		triggers: ["wiki_auto_64"],
+		triggers: ["wiki_auto_67"],
 	},
 	{
-		tag: "wiki_auto_64",
+		tag: "wiki_auto_67",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Territory Structure**\n\nEvery pack maintains a defined territorial structure:
 
@@ -2102,10 +2130,10 @@ Core Den (secure heart — pups, pregnant Omegas, elders)
 	{
 		keywords: ['daily routine'],
 		priority: 4,
-		triggers: ["wiki_auto_65"],
+		triggers: ["wiki_auto_68"],
 	},
 	{
-		tag: "wiki_auto_65",
+		tag: "wiki_auto_68",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Daily Routine**\n\n| Time | Activity |
 |---|---|
@@ -2118,10 +2146,10 @@ Core Den (secure heart — pups, pregnant Omegas, elders)
 	{
 		keywords: ['pack living accommodations'],
 		priority: 4,
-		triggers: ["wiki_auto_66"],
+		triggers: ["wiki_auto_69"],
 	},
 	{
-		tag: "wiki_auto_66",
+		tag: "wiki_auto_69",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pack Living Accommodations**\n\nPack members prefer to live within close proximity (ideally within a mile of each other or in the same residence). Common dwelling types for larger packs:
 - **Mansions** — Large shared family dwellings.
@@ -2135,10 +2163,10 @@ Core Den (secure heart — pups, pregnant Omegas, elders)
 	{
 		keywords: ['alloparenting'],
 		priority: 4,
-		triggers: ["wiki_auto_67"],
+		triggers: ["wiki_auto_70"],
 	},
 	{
-		tag: "wiki_auto_67",
+		tag: "wiki_auto_70",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Alloparenting**\n\nPups are not raised solely by their biological parents. The entire pack participates in _alloparenting_:
 
@@ -2154,10 +2182,10 @@ Core Den (secure heart — pups, pregnant Omegas, elders)
 	{
 		keywords: ['succession: the call of the pack'],
 		priority: 4,
-		triggers: ["wiki_auto_68"],
+		triggers: ["wiki_auto_71"],
 	},
 	{
-		tag: "wiki_auto_68",
+		tag: "wiki_auto_71",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Succession: The Call of the Pack**\n\nInstead of brutal fights for hierarchical dominance, succession follows natural ethological patterns. When a young adult reaches 18–22 years of age, they experience the **Call of the Pack** — an instinctive drive to establish their adult identity:
 
@@ -2172,10 +2200,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['ecological roles'],
 		priority: 4,
-		triggers: ["wiki_auto_69"],
+		triggers: ["wiki_auto_72"],
 	},
 	{
-		tag: "wiki_auto_69",
+		tag: "wiki_auto_72",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Ecological Roles**\n\nEvery functional pack requires individuals filling essential ecological roles. These are distinct from Pack Roles (authority-based) and Professions (occupation-based):
 
@@ -2196,10 +2224,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['omega nests'],
 		priority: 4,
-		triggers: ["wiki_auto_70"],
+		triggers: ["wiki_auto_73"],
 	},
 	{
-		tag: "wiki_auto_70",
+		tag: "wiki_auto_73",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Omega Nests**\n\nNests are safe, scent-rich spaces that Omegas construct for comfort, heat management, and childbirth.
 
@@ -2221,10 +2249,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['alpha dens'],
 		priority: 4,
-		triggers: ["wiki_auto_71"],
+		triggers: ["wiki_auto_74"],
 	},
 	{
-		tag: "wiki_auto_71",
+		tag: "wiki_auto_74",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Alpha Dens**\n\nAlphas create dens by heavily scent-marking a room, claiming it as their territory. They are highly protective of their dens.
 
@@ -2236,10 +2264,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['beta spaces'],
 		priority: 4,
-		triggers: ["wiki_auto_72"],
+		triggers: ["wiki_auto_75"],
 	},
 	{
-		tag: "wiki_auto_72",
+		tag: "wiki_auto_75",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Beta Spaces**\n\nBetas create personal "spaces" rather than dens or nests — an office, entertainment corner, hammock, personal swing. These reflect their balanced, adaptable nature.
 
@@ -2249,10 +2277,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['scent reference lists'],
 		priority: 4,
-		triggers: ["wiki_auto_73"],
+		triggers: ["wiki_auto_76"],
 	},
 	{
-		tag: "wiki_auto_73",
+		tag: "wiki_auto_76",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Scent Reference Lists**\n\nScents are not rigidly tied to secondary sex. The following are common associations:]`
 	},
@@ -2260,10 +2288,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['alpha/enigma scent palette'],
 		priority: 4,
-		triggers: ["wiki_auto_74"],
+		triggers: ["wiki_auto_77"],
 	},
 	{
-		tag: "wiki_auto_74",
+		tag: "wiki_auto_77",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Alpha/Enigma Scent Palette**\n\nMustard, Peppermint, Whiskey, Dark Chocolate, Stale Wine, Root Beer, Fresh Coffee, Green Tea, Barbecue Sauce, Pepper, Tequila, Red Wine, Vodka, Ginger, Black Tea, Maple Syrup, Coconut, Cedarwood, Seawater, Amber, Forest, Roses, Fresh Blood, Leather, Coal, Mahogany, Charcoal, Gasoline, Gunpowder, Hot Iron, Old Paper.]`
 	},
@@ -2271,10 +2299,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['delta/beta scent palette'],
 		priority: 4,
-		triggers: ["wiki_auto_75"],
+		triggers: ["wiki_auto_78"],
 	},
 	{
-		tag: "wiki_auto_75",
+		tag: "wiki_auto_78",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Delta/Beta Scent Palette**\n\nMochi, Green Apples, Pumpkin, Rice, Honey, Toffee, Flour, Champagne, Fresh Bread, Almond, Brown Sugar, Grapes, Milk, Hazelnuts, Banana, Orange, Peanut Butter, Silver, Earth, Freshly-Cut Grass, Oil, Clay, Fresh Rain, Lilies, Ice, Sand, Fresh Ink, Soap, Cotton, Fresh Laundry.]`
 	},
@@ -2282,10 +2310,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['omega scent palette'],
 		priority: 4,
-		triggers: ["wiki_auto_76"],
+		triggers: ["wiki_auto_79"],
 	},
 	{
-		tag: "wiki_auto_76",
+		tag: "wiki_auto_79",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Omega Scent Palette**\n\nBurnt Sugar, Lemons, Piña Colada, Bubblegum, Crème Brûlée, White Chocolate, Sugar, Cinnamon, Whipped Cream, Cotton Candy, Strawberries, Peaches, Mint, Caramel, Raspberry Jam, Cherry Blossoms, Lavender, Tulips, Daisies, Lip Gloss.
 
@@ -2299,10 +2327,10 @@ This natural dispersal (Pack Split) prevents inbreeding and naturally resolves r
 	{
 		keywords: ['social hierarchy'],
 		priority: 4,
-		triggers: ["wiki_auto_77"],
+		triggers: ["wiki_auto_80"],
 	},
 	{
-		tag: "wiki_auto_77",
+		tag: "wiki_auto_80",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Social Hierarchy**\n\nWerewolf society is organized in nested layers, from the species level down to the individual:
 
@@ -2319,10 +2347,10 @@ Species (Werewolf)
 	{
 		keywords: ['bloodline vs. house vs. pack'],
 		priority: 4,
-		triggers: ["wiki_auto_78"],
+		triggers: ["wiki_auto_81"],
 	},
 	{
-		tag: "wiki_auto_78",
+		tag: "wiki_auto_81",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **Bloodline vs. House vs. Pack**\n\n| Level | Determined by | Function | Example |
 |---|---|---|---|
@@ -2338,10 +2366,10 @@ These three levels are **independent**. A pack may include members of different 
 	{
 		keywords: ['culture'],
 		priority: 4,
-		triggers: ["wiki_auto_79"],
+		triggers: ["wiki_auto_82"],
 	},
 	{
-		tag: "wiki_auto_79",
+		tag: "wiki_auto_82",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Culture**\n\nNo two packs are identical. Local environment, history, and tradition create distinct pack cultures (LSE Principle V: Culture Evolves).]`
 	},
@@ -2349,10 +2377,10 @@ These three levels are **independent**. A pack may include members of different 
 	{
 		keywords: ['cultural variables'],
 		priority: 4,
-		triggers: ["wiki_auto_80"],
+		triggers: ["wiki_auto_83"],
 	},
 	{
-		tag: "wiki_auto_80",
+		tag: "wiki_auto_83",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Cultural Variables**\n\nEvery pack develops its own:
 - **Rituals:** Naming ceremonies, coming-of-age rites, seasonal celebrations.
@@ -2367,10 +2395,10 @@ These three levels are **independent**. A pack may include members of different 
 	{
 		keywords: ['example: bloodmoon culture (pacific northwest)'],
 		priority: 4,
-		triggers: ["wiki_auto_81"],
+		triggers: ["wiki_auto_84"],
 	},
 	{
-		tag: "wiki_auto_81",
+		tag: "wiki_auto_84",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Example: Bloodmoon Culture (Pacific Northwest)**\n\n\`\`\`
 Bloodmoon Culture
@@ -2389,10 +2417,10 @@ Other packs in different environments would develop entirely different cultures.
 	{
 		keywords: ['example ritual: eíða-siðr (il giuramento frontale del branco svartúlfr)'],
 		priority: 4,
-		triggers: ["wiki_auto_82"],
+		triggers: ["wiki_auto_85"],
 	},
 	{
-		tag: "wiki_auto_82",
+		tag: "wiki_auto_85",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Example Ritual: Eíða-Siðr (Il Giuramento Frontale del Branco Svartúlfr)**\n\nL'**Eíða-Siðr** è il rito di sottomissione, alleanza e imprinting biologico con cui un nuovo membro entra a far parte del branco.
 Il giurante rimane **faccia a faccia** con l'Alpha durante tutte e sette le leggi. Il contatto fisico frontale costante stimola l'interscambio feromonale e stabilisce visivamente la gerarchia, la fiducia e il rispetto reciproco.
@@ -2433,10 +2461,10 @@ Il giurante rimane **faccia a faccia** con l'Alpha durante tutte e sette le legg
 	{
 		keywords: ['types of packs'],
 		priority: 4,
-		triggers: ["wiki_auto_83"],
+		triggers: ["wiki_auto_86"],
 	},
 	{
-		tag: "wiki_auto_83",
+		tag: "wiki_auto_86",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Types of Packs**\n\nPack structure has evolved significantly over time:]`
 	},
@@ -2444,10 +2472,10 @@ Il giurante rimane **faccia a faccia** con l'Alpha durante tutte e sette le legg
 	{
 		keywords: ['traditional packs'],
 		priority: 4,
-		triggers: ["wiki_auto_84"],
+		triggers: ["wiki_auto_87"],
 	},
 	{
-		tag: "wiki_auto_84",
+		tag: "wiki_auto_87",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Traditional Packs**\n\nYour pack is your tribe, your town, your community. Packs have geographical permanence. There is one main pack leader with several subordinate pack leaders (feudalism-like branches). Everyone belongs to a pack; being packless is dangerous. Packs are extremely territorial.]`
 	},
@@ -2455,10 +2483,10 @@ Il giurante rimane **faccia a faccia** con l'Alpha durante tutte e sette le legg
 	{
 		keywords: ['contemporary packs'],
 		priority: 4,
-		triggers: ["wiki_auto_85"],
+		triggers: ["wiki_auto_88"],
 	},
 	{
-		tag: "wiki_auto_85",
+		tag: "wiki_auto_88",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Contemporary Packs**\n\nPacks remain communities but lose the feudalism element. Being packless carries less stigma. Hereditary pack ties function like cultural heritage rather than active governance. New packs form as found families or communities, often without formal structure.]`
 	},
@@ -2466,10 +2494,10 @@ Il giurante rimane **faccia a faccia** con l'Alpha durante tutte e sette le legg
 	{
 		keywords: ['modern packs'],
 		priority: 4,
-		triggers: ["wiki_auto_86"],
+		triggers: ["wiki_auto_89"],
 	},
 	{
-		tag: "wiki_auto_86",
+		tag: "wiki_auto_89",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Modern Packs**\n\nTraditional pack language is considered antiquated. Active pack membership is associated with conservatism or elitism. Closed-pack lands are rare and completely sealed. The word "pack" is used informally to describe friend groups or found families.
 
@@ -2479,10 +2507,10 @@ Il giurante rimane **faccia a faccia** con l'Alpha durante tutte e sette le legg
 	{
 		keywords: ['pack economy'],
 		priority: 4,
-		triggers: ["wiki_auto_87"],
+		triggers: ["wiki_auto_90"],
 	},
 	{
-		tag: "wiki_auto_87",
+		tag: "wiki_auto_90",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pack Economy**\n\nEvery functional pack operates a micro-economy:
 
@@ -2498,10 +2526,10 @@ Pack Treasury
 	{
 		keywords: ['inter-pack economy'],
 		priority: 4,
-		triggers: ["wiki_auto_88"],
+		triggers: ["wiki_auto_91"],
 	},
 	{
-		tag: "wiki_auto_88",
+		tag: "wiki_auto_91",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Inter-Pack Economy**\n\nHouses and Confederations operate larger economies spanning multiple packs, involving:
 - Trade agreements
@@ -2515,10 +2543,10 @@ Pack Treasury
 	{
 		keywords: ['medicine'],
 		priority: 4,
-		triggers: ["wiki_auto_89"],
+		triggers: ["wiki_auto_92"],
 	},
 	{
-		tag: "wiki_auto_89",
+		tag: "wiki_auto_92",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Medicine**\n\nWerewolf medicine addresses species-specific biological needs:
 
@@ -2538,10 +2566,10 @@ Pack Treasury
 	{
 		keywords: ['suppressant forms'],
 		priority: 4,
-		triggers: ["wiki_auto_90"],
+		triggers: ["wiki_auto_93"],
 	},
 	{
-		tag: "wiki_auto_90",
+		tag: "wiki_auto_93",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Suppressant Forms**\n\n| Form | Use Case | Limitations |
 |---|---|---|
@@ -2553,10 +2581,10 @@ Pack Treasury
 	{
 		keywords: ['pain scale for omegas (most to least painful)'],
 		priority: 4,
-		triggers: ["wiki_auto_91"],
+		triggers: ["wiki_auto_94"],
 	},
 	{
-		tag: "wiki_auto_91",
+		tag: "wiki_auto_94",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pain Scale for Omegas (Most to Least Painful)**\n\n1. **Red Heat (Blood Estrus):** Mate neglects Omega during heat. Vaginal bleeding, blood tears. Excruciating.
 2. **Scrubbing:** Removing a mating mark from the scent gland. Deeply traumatic.
@@ -2570,10 +2598,10 @@ Pack Treasury
 	{
 		keywords: ['education'],
 		priority: 4,
-		triggers: ["wiki_auto_92"],
+		triggers: ["wiki_auto_95"],
 	},
 	{
-		tag: "wiki_auto_92",
+		tag: "wiki_auto_95",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Education**\n\nWerewolf education follows the Life Cycle stages:
 
@@ -2592,10 +2620,10 @@ Pack Treasury
 	{
 		keywords: ['adoption'],
 		priority: 4,
-		triggers: ["wiki_auto_93"],
+		triggers: ["wiki_auto_96"],
 	},
 	{
-		tag: "wiki_auto_93",
+		tag: "wiki_auto_96",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Adoption**\n\nAdoption in werewolf society is complex due to the bonding system. Three types exist:]`
 	},
@@ -2603,10 +2631,10 @@ Pack Treasury
 	{
 		keywords: ['bonding adoption'],
 		priority: 4,
-		triggers: ["wiki_auto_94"],
+		triggers: ["wiki_auto_97"],
 	},
 	{
-		tag: "wiki_auto_94",
+		tag: "wiki_auto_97",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Bonding Adoption**\n\nThe minor breaks their existing familial bond and is adopted by a new pack through demonstrated reciprocal pack bonds. Requires:
 1. Reciprocated pack bond with at least two non-minor pack members.
@@ -2617,10 +2645,10 @@ Pack Treasury
 	{
 		keywords: ['state adoption'],
 		priority: 4,
-		triggers: ["wiki_auto_95"],
+		triggers: ["wiki_auto_98"],
 	},
 	{
-		tag: "wiki_auto_95",
+		tag: "wiki_auto_98",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **State Adoption**\n\nThe minor enters foster care and is adopted through formal legal process. Less demanding than bonding adoption:
 - No immediate bond required.
@@ -2631,10 +2659,10 @@ Pack Treasury
 	{
 		keywords: ['secondary adoption'],
 		priority: 4,
-		triggers: ["wiki_auto_96"],
+		triggers: ["wiki_auto_99"],
 	},
 	{
-		tag: "wiki_auto_96",
+		tag: "wiki_auto_99",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Secondary Adoption**\n\nA second chance after failed bonding adoption. More rigorous:
 - Surprise check-ins every three weeks for six months.
@@ -2647,10 +2675,10 @@ Pack Treasury
 	{
 		keywords: ['parental names'],
 		priority: 4,
-		triggers: ["wiki_auto_97"],
+		triggers: ["wiki_auto_100"],
 	},
 	{
-		tag: "wiki_auto_97",
+		tag: "wiki_auto_100",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Parental Names**\n\nParental names can follow primary gender or secondary gender conventions:
 
@@ -2665,10 +2693,10 @@ Pack Treasury
 	{
 		keywords: ['weddings'],
 		priority: 4,
-		triggers: ["wiki_auto_98"],
+		triggers: ["wiki_auto_101"],
 	},
 	{
-		tag: "wiki_auto_98",
+		tag: "wiki_auto_101",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Weddings**\n\nWedding attire follows secondary gender color traditions:
 - **Alphas & Enigmas:** Red (luck, stability, passion)
@@ -2683,10 +2711,10 @@ Pack Treasury
 	{
 		keywords: ['pack authority structure'],
 		priority: 4,
-		triggers: ["wiki_auto_99"],
+		triggers: ["wiki_auto_102"],
 	},
 	{
-		tag: "wiki_auto_99",
+		tag: "wiki_auto_102",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pack Authority Structure**\n\nPack Authority defines the chain of command within a single pack. It is earned, assigned, and maintained through trust and competence — not through biological secondary sex (LSE Principle III).
 
@@ -2703,10 +2731,10 @@ Pack Leader
 	{
 		keywords: ['pack leader'],
 		priority: 4,
-		triggers: ["wiki_auto_100"],
+		triggers: ["wiki_auto_103"],
 	},
 	{
-		tag: "wiki_auto_100",
+		tag: "wiki_auto_103",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pack Leader**\n\nAt the top of the pack's chain of command. Responsible for overall safety, well-being, and final decisions. **Does not need to be an Alpha** — can be any secondary sex.]`
 	},
@@ -2714,10 +2742,10 @@ Pack Leader
 	{
 		keywords: ['leader\'s mate / pack mom'],
 		priority: 4,
-		triggers: ["wiki_auto_101"],
+		triggers: ["wiki_auto_104"],
 	},
 	{
-		tag: "wiki_auto_101",
+		tag: "wiki_auto_104",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Leader's Mate / Pack Mom**\n\nThe mother figure for the entire pack. Provides guidance, emotional comfort, and protection. Heavily involved in daily operations. Extremely valuable in larger packs.]`
 	},
@@ -2725,10 +2753,10 @@ Pack Leader
 	{
 		keywords: ['right hand(s)'],
 		priority: 4,
-		triggers: ["wiki_auto_102"],
+		triggers: ["wiki_auto_105"],
 	},
 	{
-		tag: "wiki_auto_102",
+		tag: "wiki_auto_105",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Right Hand(s)**\n\nThe leader's most trusted advisor(s). Takes over if the leader is incapacitated. Assists in strategic decisions (finances, education, logistics). May include **Peacekeepers** — specialists who settle internal arguments before they reach the Pack Leader.]`
 	},
@@ -2736,10 +2764,10 @@ Pack Leader
 	{
 		keywords: ['left hand(s)'],
 		priority: 4,
-		triggers: ["wiki_auto_103"],
+		triggers: ["wiki_auto_106"],
 	},
 	{
-		tag: "wiki_auto_103",
+		tag: "wiki_auto_106",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Left Hand(s)**\n\nResponsible for physical protection and enforcement. Notoriously effective in combat. Uncommon in average packs but prevalent in packs involved in security, military, or criminal operations.]`
 	},
@@ -2747,10 +2775,10 @@ Pack Leader
 	{
 		keywords: ['caretaker(s)'],
 		priority: 4,
-		triggers: ["wiki_auto_104"],
+		triggers: ["wiki_auto_107"],
 	},
 	{
-		tag: "wiki_auto_104",
+		tag: "wiki_auto_107",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Caretaker(s)**\n\nWork under the Pack Mom. Usually stay-at-home members. Handle meals, cleaning, socialization, pup management. Young adults aging out of "pup" status often serve as caretakers to learn pack management.]`
 	},
@@ -2758,10 +2786,10 @@ Pack Leader
 	{
 		keywords: ['pup(s)'],
 		priority: 4,
-		triggers: ["wiki_auto_105"],
+		triggers: ["wiki_auto_108"],
 	},
 	{
-		tag: "wiki_auto_105",
+		tag: "wiki_auto_108",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pup(s)**\n\nPack members under 17–21 (varies by pack). At the bottom of the authority structure. Protected and nurtured.
 
@@ -2771,10 +2799,10 @@ Pack Leader
 	{
 		keywords: ['social status hierarchy'],
 		priority: 4,
-		triggers: ["wiki_auto_106"],
+		triggers: ["wiki_auto_109"],
 	},
 	{
-		tag: "wiki_auto_106",
+		tag: "wiki_auto_109",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Social Status Hierarchy**\n\nSocial Status defines political standing within a Noble House. It is separate from Pack Authority and may be inherited or earned.
 
@@ -2789,10 +2817,10 @@ House Head (Patriarch/Matriarch)
 	{
 		keywords: ['house head'],
 		priority: 4,
-		triggers: ["wiki_auto_107"],
+		triggers: ["wiki_auto_110"],
 	},
 	{
-		tag: "wiki_auto_107",
+		tag: "wiki_auto_110",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **House Head**\n\nThe supreme authority of a Noble House. Governs multiple packs under the House banner. Typically the eldest or most qualified member of the founding family. In some Houses, this position is hereditary; in others, it is contested through council vote.]`
 	},
@@ -2800,10 +2828,10 @@ House Head (Patriarch/Matriarch)
 	{
 		keywords: ['lord'],
 		priority: 4,
-		triggers: ["wiki_auto_108"],
+		triggers: ["wiki_auto_111"],
 	},
 	{
-		tag: "wiki_auto_108",
+		tag: "wiki_auto_111",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Lord**\n\nLeaders of major family branches within the House. Govern specific territories or functional domains (military, commerce, diplomacy). Answer to the House Head.]`
 	},
@@ -2811,10 +2839,10 @@ House Head (Patriarch/Matriarch)
 	{
 		keywords: ['knight'],
 		priority: 4,
-		triggers: ["wiki_auto_109"],
+		triggers: ["wiki_auto_112"],
 	},
 	{
-		tag: "wiki_auto_109",
+		tag: "wiki_auto_112",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Knight**\n\nSworn warriors, officers, or individuals who have earned formal recognition from the House. May hold specific duties (border defense, diplomatic escort, judicial enforcement). Title may be hereditary or awarded.]`
 	},
@@ -2822,10 +2850,10 @@ House Head (Patriarch/Matriarch)
 	{
 		keywords: ['citizen'],
 		priority: 4,
-		triggers: ["wiki_auto_110"],
+		triggers: ["wiki_auto_113"],
 	},
 	{
-		tag: "wiki_auto_110",
+		tag: "wiki_auto_113",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Citizen**\n\nAny acknowledged member of the House who is not an officer, lord, or sworn knight. Includes common bloodlines under House protection.
 
@@ -2835,10 +2863,10 @@ House Head (Patriarch/Matriarch)
 	{
 		keywords: ['house government'],
 		priority: 4,
-		triggers: ["wiki_auto_111"],
+		triggers: ["wiki_auto_114"],
 	},
 	{
-		tag: "wiki_auto_111",
+		tag: "wiki_auto_114",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **House Government**\n\nA Noble House governs multiple packs across a territory:
 
@@ -2855,10 +2883,10 @@ House Head
 	{
 		keywords: ['house council'],
 		priority: 4,
-		triggers: ["wiki_auto_112"],
+		triggers: ["wiki_auto_115"],
 	},
 	{
-		tag: "wiki_auto_112",
+		tag: "wiki_auto_115",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **House Council**\n\nComposed of Lords, senior Elders, and trusted advisors. Advises the House Head on major decisions. In some Houses, the Council can overrule the Head on specific matters (treaties, declarations of war).
 
@@ -2868,10 +2896,10 @@ House Head
 	{
 		keywords: ['continental council'],
 		priority: 4,
-		triggers: ["wiki_auto_113"],
+		triggers: ["wiki_auto_116"],
 	},
 	{
-		tag: "wiki_auto_113",
+		tag: "wiki_auto_116",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Continental Council**\n\nThe highest level of werewolf governance. A diplomatic body representing multiple Houses across a continent or major region.]`
 	},
@@ -2879,10 +2907,10 @@ House Head
 	{
 		keywords: ['structure'],
 		priority: 4,
-		triggers: ["wiki_auto_114"],
+		triggers: ["wiki_auto_117"],
 	},
 	{
-		tag: "wiki_auto_114",
+		tag: "wiki_auto_117",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Structure**\n\n\`\`\`
 Continental Council
@@ -2896,10 +2924,10 @@ Continental Council
 	{
 		keywords: ['functions'],
 		priority: 4,
-		triggers: ["wiki_auto_115"],
+		triggers: ["wiki_auto_118"],
 	},
 	{
-		tag: "wiki_auto_115",
+		tag: "wiki_auto_118",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Functions**\n\n- Arbitration of inter-House disputes
 - Continental defense coordination
@@ -2913,10 +2941,10 @@ Continental Council
 	{
 		keywords: ['treaties & alliances'],
 		priority: 4,
-		triggers: ["wiki_auto_116"],
+		triggers: ["wiki_auto_119"],
 	},
 	{
-		tag: "wiki_auto_116",
+		tag: "wiki_auto_119",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Treaties & Alliances**\n\nInter-pack and inter-House relationships are formalized through treaties:
 
@@ -2935,10 +2963,10 @@ Continental Council
 	{
 		keywords: ['pack law (internal)'],
 		priority: 4,
-		triggers: ["wiki_auto_117"],
+		triggers: ["wiki_auto_120"],
 	},
 	{
-		tag: "wiki_auto_117",
+		tag: "wiki_auto_120",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pack Law (Internal)**\n\nEnforced by the Pack Leader and Right/Left Hands. Covers:
 - Internal disputes between pack members
@@ -2951,10 +2979,10 @@ Continental Council
 	{
 		keywords: ['house law (regional)'],
 		priority: 4,
-		triggers: ["wiki_auto_118"],
+		triggers: ["wiki_auto_121"],
 	},
 	{
-		tag: "wiki_auto_118",
+		tag: "wiki_auto_121",
 		priority: 5,
 		scenario: ` [WIKI - LOCATION: **House Law (Regional)**\n\nEnforced by the House Head and House Council. Covers:
 - Inter-pack disputes within the House
@@ -2966,10 +2994,10 @@ Continental Council
 	{
 		keywords: ['continental law (species-wide)'],
 		priority: 4,
-		triggers: ["wiki_auto_119"],
+		triggers: ["wiki_auto_122"],
 	},
 	{
-		tag: "wiki_auto_119",
+		tag: "wiki_auto_122",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Continental Law (Species-wide)**\n\nEnforced by the Continental Council. Covers:
 - Inter-House warfare and violations
@@ -2981,10 +3009,10 @@ Continental Council
 	{
 		keywords: ['crimes & punishments'],
 		priority: 4,
-		triggers: ["wiki_auto_120"],
+		triggers: ["wiki_auto_123"],
 	},
 	{
-		tag: "wiki_auto_120",
+		tag: "wiki_auto_123",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Crimes & Punishments**\n\n| Crime | Jurisdiction | Typical Punishment |
 |---|---|---|
@@ -3000,10 +3028,10 @@ Continental Council
 	{
 		keywords: ['exile'],
 		priority: 4,
-		triggers: ["wiki_auto_121"],
+		triggers: ["wiki_auto_124"],
 	},
 	{
-		tag: "wiki_auto_121",
+		tag: "wiki_auto_124",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Exile**\n\nExile is the ultimate social punishment. The exiled individual has all pack bonds forcibly broken (causing severe physical and psychological trauma). They become a Rogue — packless, unprotected, and distrusted by all organized packs.]`
 	},
@@ -3011,10 +3039,10 @@ Continental Council
 	{
 		keywords: ['adoption & transfer'],
 		priority: 4,
-		triggers: ["wiki_auto_122"],
+		triggers: ["wiki_auto_125"],
 	},
 	{
-		tag: "wiki_auto_122",
+		tag: "wiki_auto_125",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Adoption & Transfer**\n\n- **Adoption:** See [LSE_03_Civilization.md](LSE_03_Civilization.md) for the three adoption types.
 - **Transfer:** A pack member may petition to transfer to a different pack within the same House. Requires approval from both Pack Leaders and the House Council. Transfer between Houses requires Continental Council acknowledgment.
@@ -3027,10 +3055,10 @@ Continental Council
 	{
 		keywords: ['dogma'],
 		priority: 4,
-		triggers: ["wiki_auto_123"],
+		triggers: ["wiki_auto_126"],
 	},
 	{
-		tag: "wiki_auto_123",
+		tag: "wiki_auto_126",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Dogma**\n\nFor werewolves, **Fenris (Fenrir)** is not a monster.
 
@@ -3055,10 +3083,10 @@ Humans remember Fenris as a monster because they wrote history from the perspect
 	{
 		keywords: ['the great betrayal'],
 		priority: 4,
-		triggers: ["wiki_auto_124"],
+		triggers: ["wiki_auto_127"],
 	},
 	{
-		tag: "wiki_auto_124",
+		tag: "wiki_auto_127",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Great Betrayal**\n\nThe werewolf account of the binding of Fenris:
 
@@ -3077,10 +3105,10 @@ From this betrayal arose the werewolves' ancestral hatred of tyranny and their a
 	{
 		keywords: ['ragnarök — the liberation'],
 		priority: 4,
-		triggers: ["wiki_auto_125"],
+		triggers: ["wiki_auto_128"],
 	},
 	{
-		tag: "wiki_auto_125",
+		tag: "wiki_auto_128",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Ragnarök — The Liberation**\n\nFor humans: *Fenris devours Odin. The world ends.*
 
@@ -3094,10 +3122,10 @@ Ragnarök is not the apocalypse. It is the **Liberation of the First Wolf** — 
 	{
 		keywords: ['the pantheon'],
 		priority: 4,
-		triggers: ["wiki_auto_126"],
+		triggers: ["wiki_auto_129"],
 	},
 	{
-		tag: "wiki_auto_126",
+		tag: "wiki_auto_129",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Pantheon**\n\nThe gods of the Norse tradition are reinterpreted through the werewolf perspective. The Æsir are not "evil" — they simply belong to a different tradition.
 
@@ -3117,10 +3145,10 @@ Ragnarök is not the apocalypse. It is the **Liberation of the First Wolf** — 
 	{
 		keywords: ['the nine precepts of fenris'],
 		priority: 4,
-		triggers: ["wiki_auto_127"],
+		triggers: ["wiki_auto_130"],
 	},
 	{
-		tag: "wiki_auto_127",
+		tag: "wiki_auto_130",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Nine Precepts of Fenris**\n\nThe core moral code of the Faith. Note that nearly every precept derives from real wolf behavior:
 
@@ -3140,10 +3168,10 @@ Ragnarök is not the apocalypse. It is the **Liberation of the First Wolf** — 
 	{
 		keywords: ['the moon'],
 		priority: 4,
-		triggers: ["wiki_auto_128"],
+		triggers: ["wiki_auto_131"],
 	},
 	{
-		tag: "wiki_auto_128",
+		tag: "wiki_auto_131",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Moon**\n\nThe Moon is not a goddess in the Faith of Fenris. It is the **Symbol of the Pact** — the bond between Fenris and his children. The Moon witnesses all oaths, hunts, and rites.]`
 	},
@@ -3151,10 +3179,10 @@ Ragnarök is not the apocalypse. It is the **Liberation of the First Wolf** — 
 	{
 		keywords: ['moon phases & meaning'],
 		priority: 4,
-		triggers: ["wiki_auto_129"],
+		triggers: ["wiki_auto_132"],
 	},
 	{
-		tag: "wiki_auto_129",
+		tag: "wiki_auto_132",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Moon Phases & Meaning**\n\n| Phase | Symbol | Meaning |
 |---|---|---|
@@ -3169,10 +3197,10 @@ The religious calendar follows the **lunar cycle** rather than the solar calenda
 	{
 		keywords: ['the white moon — living symbol of the pact'],
 		priority: 4,
-		triggers: ["wiki_auto_130"],
+		triggers: ["wiki_auto_133"],
 	},
 	{
-		tag: "wiki_auto_130",
+		tag: "wiki_auto_133",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The White Moon — Living Symbol of the Pact**\n\nIn theological tradition, the Moon witnesses. But the Moon does not speak.
 
@@ -3191,10 +3219,10 @@ The title is conferred by the Living Sagas or by unanimous Moon Speaker recognit
 	{
 		keywords: ['the cult of the living sagas'],
 		priority: 4,
-		triggers: ["wiki_auto_131"],
+		triggers: ["wiki_auto_134"],
 	},
 	{
-		tag: "wiki_auto_131",
+		tag: "wiki_auto_134",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Cult of the Living Sagas**\n\nThe Last Three Firstborn — Wulfnic, Ut, and Zefir — are alive. Their historical existence is documented in [LSE_06_History.md](LSE_06_History.md). Their biographies are in [LSE_07_Foundational_Figures.md](LSE_07_Foundational_Figures.md).
 
@@ -3212,10 +3240,10 @@ In the Faith of Fenris, they are revered as **Living Sagas** — saints who walk
 	{
 		keywords: ['religious institutions'],
 		priority: 4,
-		triggers: ["wiki_auto_132"],
+		triggers: ["wiki_auto_135"],
 	},
 	{
-		tag: "wiki_auto_132",
+		tag: "wiki_auto_135",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Religious Institutions**\n\nThe Faith of Fenris is **not** a centralized religion like Catholicism. It is a decentralized network of communities guided by elders and tradition-keepers.]`
 	},
@@ -3223,10 +3251,10 @@ In the Faith of Fenris, they are revered as **Living Sagas** — saints who walk
 	{
 		keywords: ['hierarchy'],
 		priority: 4,
-		triggers: ["wiki_auto_133"],
+		triggers: ["wiki_auto_136"],
 	},
 	{
-		tag: "wiki_auto_133",
+		tag: "wiki_auto_136",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Hierarchy**\n\n\`\`\`
 High Fang (Supreme spiritual authority — extremely rare, often unfilled)
@@ -3240,10 +3268,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['high fang'],
 		priority: 4,
-		triggers: ["wiki_auto_134"],
+		triggers: ["wiki_auto_137"],
 	},
 	{
-		tag: "wiki_auto_134",
+		tag: "wiki_auto_137",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **High Fang**\n\nThe supreme spiritual authority of the Faith. This position is often unfilled for decades or centuries, as it requires recognition by a supermajority of Moon Speakers across multiple continents. The High Fang speaks for the Faith on species-wide matters.]`
 	},
@@ -3251,10 +3279,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['moon speakers'],
 		priority: 4,
-		triggers: ["wiki_auto_135"],
+		triggers: ["wiki_auto_138"],
 	},
 	{
-		tag: "wiki_auto_135",
+		tag: "wiki_auto_138",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Moon Speakers**\n\nPriests and theologians. They lead ceremonies, interpret the Precepts, maintain the lunar calendar, and serve as spiritual advisors to Pack Leaders and House Heads. A Moon Speaker is trained through apprenticeship, not ordination.]`
 	},
@@ -3262,10 +3290,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['keepers'],
 		priority: 4,
-		triggers: ["wiki_auto_136"],
+		triggers: ["wiki_auto_139"],
 	},
 	{
-		tag: "wiki_auto_136",
+		tag: "wiki_auto_139",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Keepers**\n\nCustodians of physical relics, sacred texts (The Saga of Fenris / The Book of Fangs), sacred sites, and oral tradition. Many Keepers are also scholars and historians.]`
 	},
@@ -3273,10 +3301,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['pack elders'],
 		priority: 4,
-		triggers: ["wiki_auto_137"],
+		triggers: ["wiki_auto_140"],
 	},
 	{
-		tag: "wiki_auto_137",
+		tag: "wiki_auto_140",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Pack Elders**\n\nLocal spiritual guides within individual packs. They lead daily prayers, seasonal rites, and funeral ceremonies. Any respected Elder can serve this role.
 
@@ -3286,10 +3314,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['sacred sites'],
 		priority: 4,
-		triggers: ["wiki_auto_138"],
+		triggers: ["wiki_auto_141"],
 	},
 	{
-		tag: "wiki_auto_138",
+		tag: "wiki_auto_141",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Sacred Sites**\n\n| Site Type | Description |
 |---|---|
@@ -3304,10 +3332,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['il calendario sacro -- the sacred calendar of fenris'],
 		priority: 4,
-		triggers: ["wiki_auto_139"],
+		triggers: ["wiki_auto_142"],
 	},
 	{
-		tag: "wiki_auto_139",
+		tag: "wiki_auto_142",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Il Calendario Sacro -- The Sacred Calendar of Fenris**\n\nThe Faith of Fenris does not follow fixed solar dates. All sacred observances are activated by **lunar phase triggers** -- the Moon being the Symbol of the Pact, not a decorative backdrop. A ceremony tied to the Full Moon occurs on the night the Moon is full in the local sky, regardless of the calendar date. Regional packs may observe additional local holy days; the entries below are the species-wide recognized canon.
 
@@ -3317,10 +3345,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['january -- la rinascita (the rebirth)'],
 		priority: 4,
-		triggers: ["wiki_auto_140"],
+		triggers: ["wiki_auto_143"],
 	},
 	{
-		tag: "wiki_auto_140",
+		tag: "wiki_auto_143",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **January -- La Rinascita (The Rebirth)**\n\n**Lunar trigger:** First Full Moon of the year -- **First Howl (Il Primo Ululato)**
 
@@ -3334,10 +3362,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['february -- la vita (life)'],
 		priority: 4,
-		triggers: ["wiki_auto_141"],
+		triggers: ["wiki_auto_144"],
 	},
 	{
-		tag: "wiki_auto_141",
+		tag: "wiki_auto_144",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **February -- La Vita (Life)**\n\n**Lunar trigger:** First Quarter Moon (Growth) -- **La Benedizione di Freya (Freya's Blessing)**
 
@@ -3351,10 +3379,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['march -- il giuramento (the oath)'],
 		priority: 4,
-		triggers: ["wiki_auto_142"],
+		triggers: ["wiki_auto_145"],
 	},
 	{
-		tag: "wiki_auto_142",
+		tag: "wiki_auto_145",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **March -- Il Giuramento (The Oath)**\n\n**Lunar trigger:** Full Moon -- **Il Rito di Tyr (Luna del Giuramento -- The Oath Moon)**
 
@@ -3370,10 +3398,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['april -- la memoria (memory)'],
 		priority: 4,
-		triggers: ["wiki_auto_143"],
+		triggers: ["wiki_auto_146"],
 	},
 	{
-		tag: "wiki_auto_143",
+		tag: "wiki_auto_146",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **April -- La Memoria (Memory)**\n\n**Lunar trigger:** Waning Moon (Memory) -- **Il Canto delle Radici (The Song of the Roots)**
 
@@ -3387,10 +3415,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['may -- il dominio (the domain)'],
 		priority: 4,
-		triggers: ["wiki_auto_144"],
+		triggers: ["wiki_auto_147"],
 	},
 	{
-		tag: "wiki_auto_144",
+		tag: "wiki_auto_147",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **May -- Il Dominio (The Domain)**\n\n**Lunar trigger:** Full Moon -- **La Caccia di Skadi (Luna dei Confini -- The Border Moon)**
 
@@ -3404,10 +3432,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['late spring -- l\'approdo dei primi (the firstborns\' landfall)'],
 		priority: 4,
-		triggers: ["wiki_auto_145"],
+		triggers: ["wiki_auto_148"],
 	},
 	{
-		tag: "wiki_auto_145",
+		tag: "wiki_auto_148",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Late Spring -- L'Approdo dei Primi (The Firstborns' Landfall)**\n\n**Lunar trigger:** First Quarter Moon (Growth) -- observed between May and June, before the Summer Solstice.
 
@@ -3423,10 +3451,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['june -- l\'ombra (the shadow)'],
 		priority: 4,
-		triggers: ["wiki_auto_146"],
+		triggers: ["wiki_auto_149"],
 	},
 	{
-		tag: "wiki_auto_146",
+		tag: "wiki_auto_149",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **June -- L'Ombra (The Shadow)**\n\n**Lunar trigger:** New Moon at the Summer Solstice -- **La Prova della Luce (The Trial of Light)**
 
@@ -3440,10 +3468,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['july -- il sangue (the blood)'],
 		priority: 4,
-		triggers: ["wiki_auto_147"],
+		triggers: ["wiki_auto_150"],
 	},
 	{
-		tag: "wiki_auto_147",
+		tag: "wiki_auto_150",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **July -- Il Sangue (The Blood)**\n\n**Lunar trigger:** Full Moon of midsummer -- **Luna del Sangue Caldo (The Bonding Moon)**
 
@@ -3457,10 +3485,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['august -- la custodia (the stewardship)'],
 		priority: 4,
-		triggers: ["wiki_auto_148"],
+		triggers: ["wiki_auto_151"],
 	},
 	{
-		tag: "wiki_auto_148",
+		tag: "wiki_auto_151",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **August -- La Custodia (The Stewardship)**\n\n**Lunar trigger:** First Quarter Moon -- **L'Adunanza dei Custodi (The Keepers' Moot)**
 
@@ -3474,10 +3502,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['september -- il raccolto (the harvest)'],
 		priority: 4,
-		triggers: ["wiki_auto_149"],
+		triggers: ["wiki_auto_152"],
 	},
 	{
-		tag: "wiki_auto_149",
+		tag: "wiki_auto_152",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **September -- Il Raccolto (The Harvest)**\n\n**Lunar trigger:** Full Moon -- **La Caccia dell'Ultimo Raccolto (The Last Harvest Hunt)**
 
@@ -3491,10 +3519,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['october -- l\'oltretomba (the beyond)'],
 		priority: 4,
-		triggers: ["wiki_auto_150"],
+		triggers: ["wiki_auto_153"],
 	},
 	{
-		tag: "wiki_auto_150",
+		tag: "wiki_auto_153",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **October -- L'Oltretomba (The Beyond)**\n\n**Lunar trigger:** Waning Moon into New Moon -- **Le Notti di Hel (The Nights of Hel -- The Month of the Ancestors)**
 
@@ -3508,10 +3536,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['november -- il gelo (the frost)'],
 		priority: 4,
-		triggers: ["wiki_auto_151"],
+		triggers: ["wiki_auto_154"],
 	},
 	{
-		tag: "wiki_auto_151",
+		tag: "wiki_auto_154",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **November -- Il Gelo (The Frost)**\n\n**Lunar trigger:** Full Moon -- **Luna del Gelo (The Frost Moon)**
 
@@ -3525,10 +3553,10 @@ High Fang (Supreme spiritual authority — extremely rare, often unfilled)
 	{
 		keywords: ['december -- l\'istinto e le catene (instinct and chains)'],
 		priority: 4,
-		triggers: ["wiki_auto_152"],
+		triggers: ["wiki_auto_155"],
 	},
 	{
-		tag: "wiki_auto_152",
+		tag: "wiki_auto_155",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **December -- L'Istinto e le Catene (Instinct and Chains)**\n\nDecember contains the Faith's three most significant sacred events, triggered by separate lunar phases within the same month.
 
@@ -3582,10 +3610,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['mobile observance -- founding moon (luna della fondazione)'],
 		priority: 4,
-		triggers: ["wiki_auto_153"],
+		triggers: ["wiki_auto_156"],
 	},
 	{
-		tag: "wiki_auto_153",
+		tag: "wiki_auto_156",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Mobile Observance -- Founding Moon (Luna della Fondazione)**\n\nObserved on the Full Moon closest to the founding date of the individual House or local pack. A civic celebration specific to the community, not a species-wide event. Content varies by tradition: oral history, Pack Adoption ceremonies, feasting, remembrance of the Founder. The Founding Moon is the most locally customized observance in the Faith.
 
@@ -3595,10 +3623,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['rites'],
 		priority: 4,
-		triggers: ["wiki_auto_154"],
+		triggers: ["wiki_auto_157"],
 	},
 	{
-		tag: "wiki_auto_154",
+		tag: "wiki_auto_157",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Rites**\n\n| Rite | Occasion | Key Elements |
 |---|---|---|
@@ -3619,10 +3647,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['timeline'],
 		priority: 4,
-		triggers: ["wiki_auto_155"],
+		triggers: ["wiki_auto_158"],
 	},
 	{
-		tag: "wiki_auto_155",
+		tag: "wiki_auto_158",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Timeline**\n\n\`\`\`
 ≈ Mythic Age ─────────────── Origin of the species. Fenris. The unknown.
@@ -3652,10 +3680,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['religious canon'],
 		priority: 4,
-		triggers: ["wiki_auto_156"],
+		triggers: ["wiki_auto_159"],
 	},
 	{
-		tag: "wiki_auto_156",
+		tag: "wiki_auto_159",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Religious Canon**\n\n> Fenris, the First Wolf, walked the earth before the age of men. He was a primordial being, coeval with the Æsir. When he chose to create his children, he selected nine mortal warriors of exceptional worth — the Úlfheðnar — and remade them with his own divine blood. They became the Nine Firstborn, the first true werewolves.]`
 	},
@@ -3663,10 +3691,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['recorded history'],
 		priority: 4,
-		triggers: ["wiki_auto_157"],
+		triggers: ["wiki_auto_160"],
 	},
 	{
-		tag: "wiki_auto_157",
+		tag: "wiki_auto_160",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Recorded History**\n\n> The origin of lycanthropy is undocumented. No verifiable record predates the Viking Age (~800 AD). The earliest confirmed werewolves appear in Norse and Icelandic accounts from the 9th–10th centuries.]`
 	},
@@ -3674,10 +3702,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['unknown truth'],
 		priority: 4,
-		triggers: ["wiki_auto_158"],
+		triggers: ["wiki_auto_161"],
 	},
 	{
-		tag: "wiki_auto_158",
+		tag: "wiki_auto_161",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Unknown Truth**\n\n> Whether Fenris physically existed as a divine entity, whether the Nine Firstborn were divinely created or transformed through an unknown natural mechanism, and whether the Mythic Age represents literal history or mythologized memory — all remain unknowable.
 
@@ -3687,10 +3715,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['the true pureblood — a historical event'],
 		priority: 4,
-		triggers: ["wiki_auto_159"],
+		triggers: ["wiki_auto_162"],
 	},
 	{
-		tag: "wiki_auto_159",
+		tag: "wiki_auto_162",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The True Pureblood — A Historical Event**\n\nThe existence of the Nine Firstborn is the most significant event in werewolf history. They are not a biological category of the species — they are a **unique, unrepeatable historical event**.
 
@@ -3710,10 +3738,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['the founding of the first packs'],
 		priority: 4,
-		triggers: ["wiki_auto_160"],
+		triggers: ["wiki_auto_163"],
 	},
 	{
-		tag: "wiki_auto_160",
+		tag: "wiki_auto_163",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Founding of the First Packs**\n\nThe Nine Firstborn dispersed across the Norse world, each founding a pack that would grow into a Founding Bloodline and eventually a Noble House. They established the first Pack Authority structures, territorial boundaries, and the oral traditions that would become the Faith of Fenris.
 
@@ -3723,10 +3751,10 @@ Immediately following the formality of the Ballo, the same night or the night af
 	{
 		keywords: ['the age of expansion'],
 		priority: 4,
-		triggers: ["wiki_auto_161"],
+		triggers: ["wiki_auto_164"],
 	},
 	{
-		tag: "wiki_auto_161",
+		tag: "wiki_auto_164",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Age of Expansion**\n\nAs the Firstborn's descendants multiplied, werewolf packs spread beyond Scandinavia:
 
@@ -3744,10 +3772,10 @@ Each expansion created new cultural branches while maintaining bloodline connect
 	{
 		keywords: ['the age of houses'],
 		priority: 4,
-		triggers: ["wiki_auto_162"],
+		triggers: ["wiki_auto_165"],
 	},
 	{
-		tag: "wiki_auto_162",
+		tag: "wiki_auto_165",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **The Age of Houses**\n\nAs bloodlines diversified and territories expanded, political structures formalized:
 
@@ -3769,10 +3797,10 @@ Each expansion created new cultural branches while maintaining bloodline connect
 	{
 		keywords: ['the age of kingdoms'],
 		priority: 4,
-		triggers: ["wiki_auto_163"],
+		triggers: ["wiki_auto_166"],
 	},
 	{
-		tag: "wiki_auto_163",
+		tag: "wiki_auto_166",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Age of Kingdoms**\n\nThe peak of open werewolf civilization:
 
@@ -3787,10 +3815,10 @@ Each expansion created new cultural branches while maintaining bloodline connect
 	{
 		keywords: ['the age of secrecy'],
 		priority: 4,
-		triggers: ["wiki_auto_164"],
+		triggers: ["wiki_auto_167"],
 	},
 	{
-		tag: "wiki_auto_164",
+		tag: "wiki_auto_167",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Age of Secrecy**\n\nAs human civilization grew, industrialized, and developed technologies that threatened supernatural secrecy:
 
@@ -3805,10 +3833,10 @@ Each expansion created new cultural branches while maintaining bloodline connect
 	{
 		keywords: ['the modern era'],
 		priority: 4,
-		triggers: ["wiki_auto_165"],
+		triggers: ["wiki_auto_168"],
 	},
 	{
-		tag: "wiki_auto_165",
+		tag: "wiki_auto_168",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Modern Era**\n\nContemporary werewolf society operates in the shadows of the human world:
 
@@ -3834,10 +3862,10 @@ Each expansion created new cultural branches while maintaining bloodline connect
 	{
 		keywords: ['the living sagas — historical fact'],
 		priority: 4,
-		triggers: ["wiki_auto_166"],
+		triggers: ["wiki_auto_169"],
 	},
 	{
-		tag: "wiki_auto_166",
+		tag: "wiki_auto_169",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Living Sagas — Historical Fact**\n\nThree of the Nine Firstborn survive to the present day. Their existence is **documented historical fact**, not legend.
 
@@ -3857,10 +3885,10 @@ The six remaining Firstborn are lost to history. Whether they perished, went int
 	{
 		keywords: ['the nine firstborn'],
 		priority: 4,
-		triggers: ["wiki_auto_167"],
+		triggers: ["wiki_auto_170"],
 	},
 	{
-		tag: "wiki_auto_167",
+		tag: "wiki_auto_170",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Nine Firstborn**\n\nAccording to the Faith of Fenris (Religious Canon), Fenris chose nine mortal Úlfheðnar warriors and remade them with his own Divine Blood during the Mythic Age. According to Recorded History, nine extraordinary individuals appeared during the Viking Age with biological characteristics far exceeding any known werewolf.
 
@@ -3880,10 +3908,10 @@ For over a millennium they guided the first packs and founded the great dynastie
 	{
 		keywords: ['the last three — the living sagas'],
 		priority: 4,
-		triggers: ["wiki_auto_168"],
+		triggers: ["wiki_auto_171"],
 	},
 	{
-		tag: "wiki_auto_168",
+		tag: "wiki_auto_171",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Last Three — The Living Sagas**\n\nThe three surviving Firstborn are known collectively as **The Last Three**, **The Living Sagas**, or **The Last Firstborn**. They are the oldest living beings in werewolf civilization and the only direct link to the species' origin.
 
@@ -3916,10 +3944,10 @@ In the Faith of Fenris, they represent the three essential aspects of a function
 	{
 		keywords: ['wulfnic bloodmoon — the first fang'],
 		priority: 4,
-		triggers: ["wiki_auto_169"],
+		triggers: ["wiki_auto_172"],
 	},
 	{
-		tag: "wiki_auto_169",
+		tag: "wiki_auto_172",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Wulfnic Bloodmoon — The First Fang**\n\n**The Builder King**
 
@@ -3962,10 +3990,10 @@ IDENTITY CARD
 	{
 		keywords: ['ut — the second fang'],
 		priority: 4,
-		triggers: ["wiki_auto_170"],
+		triggers: ["wiki_auto_173"],
 	},
 	{
-		tag: "wiki_auto_170",
+		tag: "wiki_auto_173",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Ut — The Second Fang**\n\n**The Mountain**
 
@@ -4007,10 +4035,10 @@ IDENTITY CARD
 	{
 		keywords: ['zefir — the third fang'],
 		priority: 4,
-		triggers: ["wiki_auto_171"],
+		triggers: ["wiki_auto_174"],
 	},
 	{
-		tag: "wiki_auto_171",
+		tag: "wiki_auto_174",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Zefir — The Third Fang**\n\n**The White Ghost**
 
@@ -4053,10 +4081,10 @@ IDENTITY CARD
 	{
 		keywords: ['the six lost firstborn'],
 		priority: 4,
-		triggers: ["wiki_auto_172"],
+		triggers: ["wiki_auto_175"],
 	},
 	{
-		tag: "wiki_auto_172",
+		tag: "wiki_auto_175",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Six Lost Firstborn**\n\nSix of the Nine Firstborn are lost to history. Their names, fates, and the bloodlines they may have founded are subjects of ongoing scholarly debate and theological speculation.
 
@@ -4070,10 +4098,10 @@ Some Moon Speakers maintain that the six did not die but entered a state of dorm
 	{
 		keywords: ['lord cornelius douglas — founder of house douglas'],
 		priority: 4,
-		triggers: ["wiki_auto_173"],
+		triggers: ["wiki_auto_176"],
 	},
 	{
-		tag: "wiki_auto_173",
+		tag: "wiki_auto_176",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **Lord Cornelius Douglas — Founder of House Douglas**\n\n**The Governor**
 
@@ -4112,10 +4140,10 @@ IDENTITY CARD
 	{
 		keywords: ['legendary alphas'],
 		priority: 4,
-		triggers: ["wiki_auto_174"],
+		triggers: ["wiki_auto_177"],
 	},
 	{
-		tag: "wiki_auto_174",
+		tag: "wiki_auto_177",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Legendary Alphas**\n\n> **Placeholder:** Exceptional Alpha figures throughout history who achieved renown without Firstborn lineage.
 
@@ -4125,10 +4153,10 @@ IDENTITY CARD
 	{
 		keywords: ['ascended enigmas'],
 		priority: 4,
-		triggers: ["wiki_auto_175"],
+		triggers: ["wiki_auto_178"],
 	},
 	{
-		tag: "wiki_auto_175",
+		tag: "wiki_auto_178",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Ascended Enigmas**\n\n> **Placeholder:** The ~10 individuals across two millennia who presented as Enigma-class beings without Divine Blood lineage. Each case is extraordinary and species-significant.
 
@@ -4138,10 +4166,10 @@ IDENTITY CARD
 	{
 		keywords: ['documented white moons'],
 		priority: 4,
-		triggers: ["wiki_auto_176"],
+		triggers: ["wiki_auto_179"],
 	},
 	{
-		tag: "wiki_auto_176",
+		tag: "wiki_auto_179",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Documented White Moons**\n\nThe following individuals have been confirmed as White Moon Dominant Omegas by the Living Sagas or unanimous Moon Speaker consensus. The list is almost certainly incomplete -- the Age of Secrecy likely suppressed documentation of several cases. See LSE_01_Species.md (Dominant Omega subgenders) and LSE_05_Religion.md (Anointing of the White Moon rite) for biological and theological context.]`
 	},
@@ -4149,10 +4177,10 @@ IDENTITY CARD
 	{
 		keywords: ['nixara bloodmoon -- the most recent white moon'],
 		priority: 4,
-		triggers: ["wiki_auto_177"],
+		triggers: ["wiki_auto_180"],
 	},
 	{
-		tag: "wiki_auto_177",
+		tag: "wiki_auto_180",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Nixara Bloodmoon -- The Most Recent White Moon**\n\n\`\`\`
 IDENTITY CARD
@@ -4184,10 +4212,10 @@ Her Anointing has not been revoked. The title of White Moon is non-transferable 
 	{
 		keywords: ['historical heroes'],
 		priority: 4,
-		triggers: ["wiki_auto_178"],
+		triggers: ["wiki_auto_181"],
 	},
 	{
-		tag: "wiki_auto_178",
+		tag: "wiki_auto_181",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Historical Heroes**\n\n> **Placeholder:** Other figures of exceptional importance to specific settings or historical periods.
 
@@ -4199,10 +4227,10 @@ Her Anointing has not been revoked. The title of White Moon is non-transferable 
 	{
 		keywords: ['design principle'],
 		priority: 4,
-		triggers: ["wiki_auto_179"],
+		triggers: ["wiki_auto_182"],
 	},
 	{
-		tag: "wiki_auto_179",
+		tag: "wiki_auto_182",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Design Principle**\n\nWerewolf technology follows a dual-track model:
 
@@ -4217,10 +4245,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['transportation'],
 		priority: 4,
-		triggers: ["wiki_auto_180"],
+		triggers: ["wiki_auto_183"],
 	},
 	{
-		tag: "wiki_auto_180",
+		tag: "wiki_auto_183",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Transportation**\n\n| Mode | Human Tech | Werewolf Adaptation |
 |---|---|---|
@@ -4235,10 +4263,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['weapons'],
 		priority: 4,
-		triggers: ["wiki_auto_181"],
+		triggers: ["wiki_auto_184"],
 	},
 	{
-		tag: "wiki_auto_181",
+		tag: "wiki_auto_184",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Weapons**\n\nWerewolf combat spans three categories:]`
 	},
@@ -4246,10 +4274,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['natural weapons'],
 		priority: 4,
-		triggers: ["wiki_auto_182"],
+		triggers: ["wiki_auto_185"],
 	},
 	{
-		tag: "wiki_auto_182",
+		tag: "wiki_auto_185",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Natural Weapons**\n\n- Claws (retractable, present in all shift forms)
 - Teeth/fangs (devastating in Hybrid and Full Shift)
@@ -4260,10 +4288,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['traditional weapons'],
 		priority: 4,
-		triggers: ["wiki_auto_183"],
+		triggers: ["wiki_auto_186"],
 	},
 	{
-		tag: "wiki_auto_183",
+		tag: "wiki_auto_186",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Traditional Weapons**\n\n- Forged melee weapons (swords, axes, mauls — sacred craft tradition linked to Ut)
 - Hunting implements (bows, spears, traps)
@@ -4273,10 +4301,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['modern weapons'],
 		priority: 4,
-		triggers: ["wiki_auto_184"],
+		triggers: ["wiki_auto_187"],
 	},
 	{
-		tag: "wiki_auto_184",
+		tag: "wiki_auto_187",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Modern Weapons**\n\n- Firearms (adopted from human technology)
 - Tactical equipment (body armor adapted for shift forms)
@@ -4290,10 +4318,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['medicine'],
 		priority: 4,
-		triggers: ["wiki_auto_185"],
+		triggers: ["wiki_auto_188"],
 	},
 	{
-		tag: "wiki_auto_185",
+		tag: "wiki_auto_188",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Medicine**\n\n> **Cross-reference:** For detailed medical treatments (suppressants, bond therapy, fertility medicine), see [LSE_03_Civilization.md](LSE_03_Civilization.md).]`
 	},
@@ -4301,10 +4329,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['species-specific medical technology'],
 		priority: 4,
-		triggers: ["wiki_auto_186"],
+		triggers: ["wiki_auto_189"],
 	},
 	{
-		tag: "wiki_auto_186",
+		tag: "wiki_auto_189",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Species-Specific Medical Technology**\n\n| Technology | Function |
 |---|---|
@@ -4318,10 +4346,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['medical facilities'],
 		priority: 4,
-		triggers: ["wiki_auto_187"],
+		triggers: ["wiki_auto_190"],
 	},
 	{
-		tag: "wiki_auto_187",
+		tag: "wiki_auto_190",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Medical Facilities**\n\n- **Pack Clinics:** Basic medical care within pack territory. Staffed by pack Healers.
 - **House Hospitals:** Advanced facilities operated by Noble Houses. Species-specific surgery, intensive bond therapy, fertility treatment.
@@ -4333,10 +4361,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['industry'],
 		priority: 4,
-		triggers: ["wiki_auto_188"],
+		triggers: ["wiki_auto_191"],
 	},
 	{
-		tag: "wiki_auto_188",
+		tag: "wiki_auto_191",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Industry**\n\nWerewolf industry operates both openly (through human-facing corporate fronts) and covertly (species-specific manufacturing):]`
 	},
@@ -4344,10 +4372,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['corporate fronts'],
 		priority: 4,
-		triggers: ["wiki_auto_189"],
+		triggers: ["wiki_auto_192"],
 	},
 	{
-		tag: "wiki_auto_189",
+		tag: "wiki_auto_192",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Corporate Fronts**\n\n- **DCC (Douglas Commercial Coalition):** The most prominent example. A human-facing corporation that serves as the economic engine of House Bloodmoon.
 - Similar corporate structures exist across other Houses worldwide.]`
@@ -4356,10 +4384,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['species-specific industry'],
 		priority: 4,
-		triggers: ["wiki_auto_190"],
+		triggers: ["wiki_auto_193"],
 	},
 	{
-		tag: "wiki_auto_190",
+		tag: "wiki_auto_193",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Species-Specific Industry**\n\n| Sector | Products |
 |---|---|
@@ -4374,10 +4402,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['communications'],
 		priority: 4,
-		triggers: ["wiki_auto_191"],
+		triggers: ["wiki_auto_194"],
 	},
 	{
-		tag: "wiki_auto_191",
+		tag: "wiki_auto_194",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Communications**\n\n| System | Function |
 |---|---|
@@ -4392,10 +4420,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['architecture'],
 		priority: 4,
-		triggers: ["wiki_auto_192"],
+		triggers: ["wiki_auto_195"],
 	},
 	{
-		tag: "wiki_auto_192",
+		tag: "wiki_auto_195",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Architecture**\n\nWerewolf architecture serves both human-facing aesthetics and species-specific biological needs:]`
 	},
@@ -4403,10 +4431,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['design requirements'],
 		priority: 4,
-		triggers: ["wiki_auto_193"],
+		triggers: ["wiki_auto_196"],
 	},
 	{
-		tag: "wiki_auto_193",
+		tag: "wiki_auto_196",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Design Requirements**\n\n- **Scent Management:** Ventilation systems that can contain, circulate, or neutralize pheromones.
 - **Shift Accommodation:** Doorways, corridors, and rooms sized for Hybrid Shift occupants (significantly larger than human standard).
@@ -4418,10 +4446,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['common structures'],
 		priority: 4,
-		triggers: ["wiki_auto_194"],
+		triggers: ["wiki_auto_197"],
 	},
 	{
-		tag: "wiki_auto_194",
+		tag: "wiki_auto_197",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Common Structures**\n\n| Structure | Characteristics |
 |---|---|
@@ -4435,10 +4463,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['housing details'],
 		priority: 4,
-		triggers: ["wiki_auto_195"],
+		triggers: ["wiki_auto_198"],
 	},
 	{
-		tag: "wiki_auto_195",
+		tag: "wiki_auto_198",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Housing Details**\n\n- **Bathrooms:** Giant baths for family bathing (bonding time). Bathing together is normal until pup scent fades.
 - **Bedrooms:** Alpha rooms face sunrise (early risers). Omega rooms have blackout curtains and face the sun for warmth. Beta rooms are flexible.
@@ -4453,10 +4481,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['a. secondary sex matrix'],
 		priority: 4,
-		triggers: ["wiki_auto_196"],
+		triggers: ["wiki_auto_199"],
 	},
 	{
-		tag: "wiki_auto_196",
+		tag: "wiki_auto_199",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **A. Secondary Sex Matrix**\n\n| Attribute | Enigma | Alpha | Delta | Beta | Omega |
 |---|---|---|---|---|---|
@@ -4476,10 +4504,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['b. pack role matrix'],
 		priority: 4,
-		triggers: ["wiki_auto_197"],
+		triggers: ["wiki_auto_200"],
 	},
 	{
-		tag: "wiki_auto_197",
+		tag: "wiki_auto_200",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **B. Pack Role Matrix**\n\n| Pack Role | Authority Level | Typical Duties | Notes |
 |---|---|---|---|
@@ -4496,10 +4524,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['c. social status matrix (house)'],
 		priority: 4,
-		triggers: ["wiki_auto_198"],
+		triggers: ["wiki_auto_201"],
 	},
 	{
-		tag: "wiki_auto_198",
+		tag: "wiki_auto_201",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **C. Social Status Matrix (House)**\n\n| Status | Authority | Inheritance | Function |
 |---|---|---|---|
@@ -4514,10 +4542,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['d. profession matrix'],
 		priority: 4,
-		triggers: ["wiki_auto_199"],
+		triggers: ["wiki_auto_202"],
 	},
 	{
-		tag: "wiki_auto_199",
+		tag: "wiki_auto_202",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **D. Profession Matrix**\n\n| Category | Examples |
 |---|---|
@@ -4538,10 +4566,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['e. blood classification matrix'],
 		priority: 4,
-		triggers: ["wiki_auto_200"],
+		triggers: ["wiki_auto_203"],
 	},
 	{
-		tag: "wiki_auto_200",
+		tag: "wiki_auto_203",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **E. Blood Classification Matrix**\n\n| Classification | Origin | Lifespan | Regeneration | Command | Shift Stability | Population |
 |---|---|---|---|---|---|---|
@@ -4557,10 +4585,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['personal names'],
 		priority: 4,
-		triggers: ["wiki_auto_201"],
+		triggers: ["wiki_auto_204"],
 	},
 	{
-		tag: "wiki_auto_201",
+		tag: "wiki_auto_204",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Personal Names**\n\nWerewolf naming conventions vary by culture, bloodline, and era:
 - **Norse/Traditional:** Old Norse or Icelandic names (Wulfnic, Zefir, Edric, Kaladin).
@@ -4571,10 +4599,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['house & pack names'],
 		priority: 4,
-		triggers: ["wiki_auto_202"],
+		triggers: ["wiki_auto_205"],
 	},
 	{
-		tag: "wiki_auto_202",
+		tag: "wiki_auto_205",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **House & Pack Names**\n\n- **Houses:** Named after the founding bloodline (e.g., House Bloodmoon).
 - **Packs:** Named after territory, landmark, or founding story (e.g., Seven Hills Pack).]`
@@ -4583,10 +4611,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['titles'],
 		priority: 4,
-		triggers: ["wiki_auto_203"],
+		triggers: ["wiki_auto_206"],
 	},
 	{
-		tag: "wiki_auto_203",
+		tag: "wiki_auto_206",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Titles**\n\n| Title | Context |
 |---|---|
@@ -4605,10 +4633,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['g. timeline summary'],
 		priority: 4,
-		triggers: ["wiki_auto_204"],
+		triggers: ["wiki_auto_207"],
 	},
 	{
-		tag: "wiki_auto_204",
+		tag: "wiki_auto_207",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **G. Timeline Summary**\n\n| Era | Approximate Period | Key Events |
 |---|---|---|
@@ -4626,10 +4654,10 @@ This dual-track creates a civilization that is technologically modern but biolog
 	{
 		keywords: ['house douglas (pureblood)'],
 		priority: 4,
-		triggers: ["wiki_auto_205"],
+		triggers: ["wiki_auto_208"],
 	},
 	{
-		tag: "wiki_auto_205",
+		tag: "wiki_auto_208",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **House Douglas (Pureblood)**\n\n**House Color Traits:** Black hair, amber eyes.
 
@@ -4647,10 +4675,10 @@ A Pureblood House of the werewolf aristocracy. Multi-generational descendants of
 	{
 		keywords: ['house bloodmoon (divine blood / founding bloodline)'],
 		priority: 4,
-		triggers: ["wiki_auto_206"],
+		triggers: ["wiki_auto_209"],
 	},
 	{
-		tag: "wiki_auto_206",
+		tag: "wiki_auto_209",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **House Bloodmoon (Divine Blood / Founding Bloodline)**\n\n**House Color Traits:** Blond hair, blue eyes.
 
@@ -4674,10 +4702,10 @@ The most ancient werewolf dynasty in North America, founded by Wulfnic Bloodmoon
 	{
 		keywords: ['house douglas-bloodmoon (merged dynasty)'],
 		priority: 4,
-		triggers: ["wiki_auto_207"],
+		triggers: ["wiki_auto_210"],
 	},
 	{
-		tag: "wiki_auto_207",
+		tag: "wiki_auto_210",
 		priority: 5,
 		scenario: ` [WIKI - FACTION: **House Douglas-Bloodmoon (Merged Dynasty)**\n\n**House Color Traits:** Variable. Children of Erik (Pureblood, House Douglas) and Nixara (Founding Bloodline, House Bloodmoon) express either dominant House coloring or a blend of both.
 
@@ -4696,10 +4724,10 @@ The most ancient werewolf dynasty in North America, founded by Wulfnic Bloodmoon
 	{
 		keywords: ['bloodmoon territory (pacific northwest, north america)'],
 		priority: 4,
-		triggers: ["wiki_auto_208"],
+		triggers: ["wiki_auto_211"],
 	},
 	{
-		tag: "wiki_auto_208",
+		tag: "wiki_auto_211",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Bloodmoon Territory (Pacific Northwest, North America)**\n\nWulfnic Bloodmoon holds the title of **Alpha of Alphas** over the entire North American continent (United States and Canada), granting him supreme political and spiritual authority over all werewolf packs in those territories. This continental authority is distinct from his local pack territory.
 
@@ -4768,10 +4796,10 @@ WULFNIC BLOODMOON — Alpha of Alphas (Continental Authority: North America & Ca
 	{
 		keywords: ['j. music genres'],
 		priority: 4,
-		triggers: ["wiki_auto_209"],
+		triggers: ["wiki_auto_212"],
 	},
 	{
-		tag: "wiki_auto_209",
+		tag: "wiki_auto_212",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **J. Music Genres**\n\nWerewolf culture has produced its own music traditions:
 
@@ -4792,10 +4820,10 @@ WULFNIC BLOODMOON — Alpha of Alphas (Continental Authority: North America & Ca
 	{
 		keywords: ['brazilian omegaverse customs'],
 		priority: 4,
-		triggers: ["wiki_auto_210"],
+		triggers: ["wiki_auto_213"],
 	},
 	{
-		tag: "wiki_auto_210",
+		tag: "wiki_auto_213",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Brazilian Omegaverse Customs**\n\n- **Physical Contact:** Minimal personal space. Touch is a primary communication tool.
 - **Clumping (vs. Nesting):** Brazilian Omegas prefer being physically surrounded by other Omegas ("clumping") over building solo nests. Faster and more calming.
@@ -4812,10 +4840,10 @@ WULFNIC BLOODMOON — Alpha of Alphas (Continental Authority: North America & Ca
 	{
 		keywords: ['framework overview'],
 		priority: 4,
-		triggers: ["wiki_auto_211"],
+		triggers: ["wiki_auto_214"],
 	},
 	{
-		tag: "wiki_auto_211",
+		tag: "wiki_auto_214",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Framework Overview**\n\n\`\`\`
 LSE (Lupine Social Ecology)
@@ -4857,10 +4885,10 @@ LSE (Lupine Social Ecology)
 	{
 		keywords: ['module index'],
 		priority: 4,
-		triggers: ["wiki_auto_212"],
+		triggers: ["wiki_auto_215"],
 	},
 	{
-		tag: "wiki_auto_212",
+		tag: "wiki_auto_215",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **Module Index**\n\n| Module         | File                                                             | Contents                                                                                                                                                                                                    |
 | -------------- | ---------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -4881,10 +4909,10 @@ LSE (Lupine Social Ecology)
 	{
 		keywords: ['the seven lse principles'],
 		priority: 4,
-		triggers: ["wiki_auto_213"],
+		triggers: ["wiki_auto_216"],
 	},
 	{
-		tag: "wiki_auto_213",
+		tag: "wiki_auto_216",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Seven LSE Principles**\n\n1. **Biology is not Destiny.**
 2. **Packs are Families.**
@@ -4900,10 +4928,10 @@ LSE (Lupine Social Ecology)
 	{
 		keywords: ['the six-axis identity system'],
 		priority: 4,
-		triggers: ["wiki_auto_214"],
+		triggers: ["wiki_auto_217"],
 	},
 	{
-		tag: "wiki_auto_214",
+		tag: "wiki_auto_217",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **The Six-Axis Identity System**\n\n\`\`\`
 INDIVIDUAL IDENTITY

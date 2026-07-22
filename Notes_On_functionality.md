@@ -466,7 +466,7 @@ Character book entry keys (inside data.character_book.entries[]):
 | tags | array/string | Classification metadata; extension-dependent prompt use. | Canonical is `data.tags`. |
 | create_date | string (ISO) | Metadata only. | No direct LLM effect. |
 | data.name | string | Canonical character identity. | Used in prompt assembly/macros. |
-| data.description | string | Core character definition block. Must include `[BEHAVIOR_NOTES]` with Dietary Preference, and `PHYSICAL DESCRIPTION` with `SPECIES: DIET` format. | Injected by context templates. |
+| data.description | string | Core character definition block. Must include `[BEHAVIOR_NOTES]` with Dietary Preference. | Injected by context templates. |
 | data.personality | string | Core behavior/style block. | Injected by context templates. |
 | data.scenario | string | Core scene/context block. | Injected by context templates. |
 | data.first_mes | string | First message seed. | Used at chat start. |

@@ -77,7 +77,7 @@ Instead, rely on the Antigravity Skill matching engine. As Antigravity, you can 
    read-only check `python tools/validate_export.py Export/[WorldName]` verifies parse validity,
    mojibake, `{{original}}` presence, and position enums. It never modifies files.
 8. **Export Directory Structure.** All generated drafts and final exports MUST be placed in their respective `Drafts/[WorldName]/` and `Export/[WorldName]/` subdirectories, never in the root `Drafts/` or `Export/` folder.
-9. **Card Dietary Requirements.** Every character card MUST include `Dietary Preference` inside its `[BEHAVIOR_NOTES]`. For supernatural entities, the `PHYSICAL DESCRIPTION — BASELINE` MUST include a `DIET:` line inside the `SPECIES:` attribute array.
+9. **Card Dietary Requirements.** Every character card MUST include `Dietary Preference` inside its `[BEHAVIOR_NOTES]`.
 ---
 
 ## Context discipline (all models — not a hard window limit)
