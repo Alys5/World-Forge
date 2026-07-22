@@ -20,8 +20,8 @@ Features: Moves with eerie, predatory silence despite his massive size. A magica
 Breast/Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Massively endowed Alpha anatomy, featuring a biological knot and internal baculum.
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Clit/Balls: Heavy, densely muscled anatomy, bearing faint, faded scars from brutal CQC training in his youth.
+Anus: Thick, muscular, highly guarded.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Dominant, expansive, and highly territorial. Naturally positions himself as a physical shield and takes up space in any room.
 Appearance Trait: Massive, heavily scarred brawler
@@ -43,7 +43,7 @@ Top: Tight black compression shirt stretched across his massive frame, or a plai
 Bottom: Worn grey sweatpants or tactical cargo pants (never jeans, never anything that restricts a combat shift)
 Legs: None
 Shoes: Scuffed boxing shoes when coming from the gym, heavy black boots otherwise
-Underwear: Standard boxer briefs
+Underwear: Black tactical compression shorts.
 
 ### ORIGIN (BACKSTORY)
 

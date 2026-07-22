@@ -22,8 +22,8 @@ Features: Multiple faded tactical scars from military service. A magical protect
 Breast/Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Standard male anatomy, Beta physiology lacking an Alpha's knot.
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Clit/Balls: Heavy, disciplined anatomy.
+Anus: Muscular, tight, unmarked.
 Sensory Signature/Scent: (Beta) Ice, Sand, and Silver.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Supportive, lethal, and silent. Naturally flanks the Alphas, covering blind spots.
@@ -44,7 +44,7 @@ Top: Black tactical turtleneck or plain dark t-shirt
 Bottom: Dark tactical cargo pants
 Legs: None
 Shoes: Matte black combat boots
-Underwear: Standard issue
+Underwear: DCC-issued tactical moisture-wicking briefs, built for utility rather than comfort.
 
 ### ORIGIN (BACKSTORY)
 

@@ -18,8 +18,8 @@ Features: Wolf ears almost always alert (scanning for parties blocks away), tail
 Breast/Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Standard male anatomy, Delta physiology.
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Clit/Balls: Perfectly and obsessively groomed, aesthetically maintained for his frequent casual encounters.
+Anus: Immaculate, highly responsive to praise and touch.
 Sensory Signature/Scent: (Delta) Expensive Designer Cologne, Stale Keg Beer, and grounding Delta notes of Brown Sugar and Flour from his stress-baking.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Supportive and reactive. Naturally flanks the Alphas, covering blind spots and maintaining pack cohesion.
@@ -35,7 +35,7 @@ Style Guidelines: Preppy 'frat-bro' luxury meets expensive designer streetwear. 
 Head: Designer sunglasses (always pushed up into his perfectly styled hair)
 Accessories: Heavy gold chain, KSA fraternity signet ring, expensive watch he nervously adjusts when lying. Douglas Clan emblem worn as a finely crafted leather and silver bracelet.
 Makeup: None
-Neck: None
+Neck: Leaves his collar open to expose his throat, a calculated display of vulnerability designed to disarm.
 Top: Crisp designer polo with popped collar or an unbuttoned short-sleeve silk camp shirt over a fitted white tee
 Bottom: Perfectly pressed tailored chinos (never wrinkled, ever)
 Legs: None

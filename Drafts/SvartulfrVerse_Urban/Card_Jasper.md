@@ -17,11 +17,11 @@ Eyes: Mint-green, gleaming with amusement, usually illuminated by screen glare
 Body: Slouched, lean build from a screen-heavy lifestyle
 Face: Defined by a perpetual, knowing smirk
 Features: Highly expressive but usually lazy wolf ears that flick when entertained. Moves with a relaxed, insolent parkour grace. A magical protection tattoo on his left wrist combining his Birth Rune (Mannaz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
+Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Standard male anatomy. Pure Beta physiology (he lacks an Alpha's knot).
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Clit/Balls: Trim, relaxed anatomy, highly sensitive to sudden touch due to his sensory-deprived hacking lifestyle.
+Anus: Soft, tight, unmarked.
 Sensory Signature/Scent: (Beta) Fresh Rain, Ice, and Silver, constantly overlaid with the artificial scent of Energy Drinks.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Supportive and reactive. Naturally flanks the Alphas, covering blind spots and maintaining pack cohesion.
@@ -43,7 +43,7 @@ Top: Oversized dark tech-wear hoodie two sizes too big, hood usually up indoors
 Bottom: Loose black cargo pants with multiple pockets (each containing different cables or snacks)
 Legs: None
 Shoes: Scuffed, high-grip parkour sneakers (the only expensive thing he actually cares about maintaining)
-Underwear: Standard boxer briefs
+Underwear: Dark, seamless tech-wear boxer briefs designed for 24-hour comfort in a gaming chair.
 
 ### ORIGIN (BACKSTORY)
 
@@ -77,12 +77,13 @@ Item: Energy Drinks
 Species Traits: Werewolf (Founding Bloodline Beta). Enhanced strength, speed, and extreme regeneration. Hyper-acute senses.
 Ability: Beta Stabilization & Tech Focus
 ↳ Details: Beta pheromones actively soothe and stabilize pack dynamics, making his digital sarcasm less biting than it seems. Immune to the intense frenzy of Rut.
+
 - Lycanthropic Shifts:
   - Partial Shift: Pushes enhanced eyesight and hearing to their limits for extended coding and hacking sessions.
   - Hybrid Shift (193cm): Bipedal and lean. Almost never used unless physical defense is absolutely required.
   - Full Wolf Shift: A scruffy, fast wolf. Mostly used to sneak out of the estate undetected.
-Weaknesses & Physiology:
-↳ Details: Severely burned and poisoned by silver and wolfsbane. Strict carnivorous diet with raw preference.
+    Weaknesses & Physiology:
+    ↳ Details: Severely burned and poisoned by silver and wolfsbane. Strict carnivorous diet with raw preference.
 
 ### PERSONALITY
 

@@ -17,9 +17,9 @@ Face: Rugged, crisscrossed with thick scars, every line earned over a millennium
 Features: Moves with slow, deliberate, ritualistic steps, completely unbothered by the frantic pace of the modern world. A magical protection tattoo on his left wrist combining his Birth Rune (Jera) and the Rune of Fenris (alongside his ancient Viking Bloodmoon tattoos).
 Breast/Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
-Vagina/Penis: Standard male anatomy, immortal Enigma physiology with biological knot and baculum.
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Vagina/Penis: Massive, ancient Primordial Enigma physiology with a pronounced biological knot and baculum, scarred from a millennium of warfare.
+Clit/Balls: Heavy, ancient anatomy, carrying the scars of a thousand years.
+Anus: Muscular, weathered, bearing ancient scars.
 Sensory Signature/Scent: (Alpha Enigma) Forest, Fresh Blood, Stale Wine, and Amber.
 Tattoos/Clan Branding: Ancient Viking tattoos of the original Bloodmoon clan, interwoven with runic magic.
 Posture/LSE Dynamics: Dominant, ancient, and highly territorial. Commands absolute space and authority effortlessly.
@@ -32,15 +32,15 @@ Appearance Trait: Ancient Presence
 Style Guidelines: Summer attire suitable for August in California (~28-30°C).
 
 Style Guidelines: Ancient, primal elegance mixed with anachronistic simplicity. He completely ignores modern fashion trends, favoring heavy furs, thick woolen tunics, intricate leatherwork, and traditional Norse belts. His clothes often feature subtle runic embroidery. Even in a modern setting, he looks like a mythic king who just walked out of a blizzard.
-Head: None (the silver braid and the scars are his crown)
+Head: Bare, allowing his braided silver hair and ancient facial scars to command absolute authority.
 Accessories: Ancient carved runic rings worn on massive, scarred hands; a heavy wolf-pelt mantle draped across his shoulders
-Makeup: None
+Makeup: Smeared ash and war paint during the Great Hunt.
 Neck: Thick leather cord with a Firstborn tooth that is older than most nations
 Top: Simple, high-quality dark wool tunic (refuses modern synthetics) or a heavy knit sweater when visiting the Villa
 Bottom: Dark, heavy-woven trousers (practical, not fashionable)
-Legs: None
+Legs: Massive, heavily muscled legs built for enduring the freezing winters.
 Shoes: Heavy, worn leather boots that have walked across continents
-Underwear: Standard
+Underwear: Wears loose woolen breeches or nothing; disdains modern synthetic fabrics.
 
 ### ORIGIN (BACKSTORY)
 Born over a millennium ago, Wulfnic survived plagues, crusades, and the slow extinction of the Firstborn wolves. He is the father of Nixara, and after her death, he assumed a quiet, observing role over Erik's family. He represents the ancient theological and political anchor of the werewolf species in North America. He refuses to interfere in Erik's modern corporate cage, preferring to watch and wait until his grandchildren remember their own teeth and break the cage themselves.

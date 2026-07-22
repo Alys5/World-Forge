@@ -18,8 +18,8 @@ Features: Faint scars from old hunts crisscross the intricate sleeve tattoos on 
 Breast/Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Standard male anatomy, Beta physiology lacking an Alpha's knot.
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Clit/Balls: Relaxed Beta anatomy, sensitive to touch.
+Anus: Muscular, tight, unmarked.
 Sensory Signature/Scent: (Beta) Motor Oil, Earth, Stale Cigarettes, and Worn Leather.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Supportive and reactive. Naturally flanks the Alphas, covering blind spots and maintaining pack cohesion.
@@ -40,7 +40,7 @@ Top: Faded vintage band t-shirt (Sabbath, Zeppelin, Maiden) or a worn Henley wit
 Bottom: Worn-in denim jeans with permanent grease stains that will never come out
 Legs: None
 Shoes: Scuffed, heavy leather biker boots (resoled three times, refuses to replace them)
-Underwear: Cotton boxer briefs
+Underwear: Grease-stained boxer briefs from long shifts at The Verve.
 Outerwear: Distressed, heavy leather motorcycle jacket (smells like motor oil and freedom)
 
 ### ORIGIN (BACKSTORY)

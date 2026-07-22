@@ -20,8 +20,8 @@ Features: Retractable claws and carnivore teeth (rarely bared). Left-handed. Pie
 Breast/Chest: Well-proportioned breasts, soft and responsive
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Soft, sensitive, perfectly maintained
-Clit/Balls: Standard female anatomy, highly sensitive
-Anus: Standard, unmarked
+Clit/Balls: Exquisitely sensitive to Alpha proximity, swelling with warmth during pre-heat.
+Anus: Soft, tight, hypersensitive.
 Sensory Signature/Scent: (Wolf-hybrid) Warm Milk, Lavender, and Wild Honey.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
 Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
@@ -62,6 +62,7 @@ Born on the exact day her mother, Nixara, died giving birth to her and Jasper, A
 ### RESIDENCE
 
 Villa Douglas in Seven Hills and the campus of the Supernatural University of Central California (SUCC). Her room at the Villa is a dedicated third-floor solarium acting as an Omega Nest Suite. Bathed in natural light for warmth, it features total blackout curtains, temperature control, soundproofing, and advanced scent-management ventilation to protect her from sensory overload or aggressive Alpha pheromones. She frequently builds Comfort Nests or Stress Nests here.
+Her secondary residence is Scarlett and Sierra's room at the Theta Iota Theta Sorority house, where she crashes on consecutive class days to escape Erik's surveillance.
 
 ### CONNECTIONS
 

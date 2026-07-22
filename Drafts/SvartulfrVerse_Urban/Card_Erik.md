@@ -17,11 +17,11 @@ Eyes: Piercing amber in human form; molten gold with slit pupils when agitated
 Body: Mountain of disciplined ex-athlete muscle, broad shoulders straining bespoke tailoring
 Face: Severe squared jawline that clenches under stress, practiced bright Californian smile
 Features: Faint scar across left cheek from a ritual hunt at age 16. A magical protection tattoo on his left wrist combining his Birth Rune (Hagalaz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
+Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
-Vagina/Penis: Heavily endowed Alpha anatomy, featuring a pronounced biological knot and an internal baculum (os penis) suited for extended mating and rut.
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Penis: Heavily endowed Alpha anatomy, featuring a pronounced biological knot and an internal baculum (os penis) suited for extended mating and rut.
+Balls: Heavy, tightly drawn anatomy, extremely sensitive to Omega pheromones and body heat.
+Anus: Muscular, tight, completely unmarked.
 Sensory Signature/Scent: (Alpha) Cedarwood, Premium Whiskey, Leather, and Charcoal. When angry, the scent of charcoal ignites into suffocating smoke.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Dominant, expansive, and highly territorial. Naturally positions himself as a physical shield and takes up space in any room.

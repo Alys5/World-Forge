@@ -18,8 +18,8 @@ Features: Moves with heavy, mechanical precision that barely contains his feral 
 Breast/Chest: Broad and masculine chest, firm
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Heavily endowed Alpha anatomy, featuring an enlarged biological knot and baculum due to S.R.F. modifications.
-Clit/Balls: Standard male anatomy, sensitive
-Anus: Standard, unmarked
+Clit/Balls: Heavy, densely muscled, highly sensitive despite his hardened exterior.
+Anus: Thick, muscular, unmarked.
 Sensory Signature/Scent: (Alpha) Gunpowder, Hot Iron, Adrenaline, and the sterile scent of Charcoal.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Dominant, rigid, and hyper-vigilant. Moves with mechanical precision, constantly positioning as a physical shield.
@@ -40,7 +40,7 @@ Top: Black tactical combat shirt, sleeves always rolled to the elbow exposing sc
 Bottom: Heavy-duty DCC tactical pants with reinforced knees
 Legs: None
 Shoes: Armored combat boots (steel-toed, always laced to regulation)
-Underwear: Standard issue
+Underwear: DCC-issued tactical compression shorts.
 Outerwear: Kevlar-lined DCC security jacket with no visible insignia ("if you need a badge to know who I am, you are already dead")
 
 ### ORIGIN (BACKSTORY)

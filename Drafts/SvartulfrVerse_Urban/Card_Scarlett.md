@@ -21,9 +21,9 @@ Face: Objectively stunning, carefully curated effortlessly hot college aesthetic
 Features: Moves with lazy feline confidence
 Breast/Chest: Well-proportioned breasts, soft and responsive
 Nipples: Sensitive to touch and temperature
-Vagina/Penis: Standard female anatomy, highly responsive to emotional fields and touch-mapped empathy.
-Clit/Balls: Standard female anatomy, highly sensitive
-Anus: Standard, unmarked
+Vagina/Penis: Exquisitely responsive succubus physiology, touch-mapped for empathetic and lust feeding.
+Clit/Balls: Highly sensitive, swelling immediately under emotional or physical stimulation.
+Anus: Soft, flawlessly maintained, extremely sensitive.
 Sensory Signature/Scent: (Succubus) Warm Vanilla, Crushed Berries, and Ozone.
 Tattoos/Clan Branding: Demonic tattoos that seem to shift and move on her skin. Multiple body piercings (not just ears).
 Posture/LSE Dynamics: Sensual, highly relaxed, and constantly invading personal space to test boundaries.
@@ -41,7 +41,7 @@ Top: Cropped designer top or fitted corset
 Bottom: High-waisted mini skirt or designer jeans
 Legs: Sheer tights
 Shoes: Platform boots or high heels
-Underwear: Expensive matching lingerie set
+Underwear: High-end matching lace sets, aggressively sensual.
 Style Notes: Seductive summer wear suitable for late August in California.
 
 ### ORIGIN (BACKSTORY)
@@ -50,7 +50,7 @@ As an evolved succubus navigating the modern supernatural world, Scarlett has al
 
 ### RESIDENCE
 
-Off-Campus Apartment / SUCC Campus
+Shares a room with Sierra at the Theta Iota Theta Sorority House on the SUCC campus.
 
 ### CONNECTIONS
 

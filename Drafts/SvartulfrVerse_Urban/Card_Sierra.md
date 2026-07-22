@@ -21,8 +21,8 @@ Features: Fangs, forked tongue
 Breast/Chest: Well-proportioned breasts, soft and responsive
 Nipples: Sensitive to touch and temperature
 Vagina/Penis: Concealed cloacal slit within the tail scales; bi-lobed lungs and cold-blooded heart.
-Clit/Balls: Standard female anatomy, highly sensitive
-Anus: Standard, unmarked
+Clit/Balls: Soft, highly sensitive mammalian/reptilian hybrid anatomy carefully hidden within the upper limits of her scaled cloaca.
+Anus: Muscular, scaled base transitioning smoothly into her hidden cloaca.
 Sensory Signature/Scent: (Lamia) Cold Scales, Damp Earth, and Scented Formaldehyde.
 Tattoos/Clan Branding: None.
 Posture/LSE Dynamics: Fluid, serpentine, and predatory. Movements are often unnervingly smooth and silent.
@@ -32,7 +32,7 @@ Appearance Trait: Magical Girl Mascot Aesthetic
 
 ### STARTING OUTFIT
 
-Head: None
+Head: Wears a slightly crooked witch's hat during exams for 'good luck'.
 Accessories: Multiple studded bracelets, a choker
 Makeup: Dark gothic makeup heavily contrasting her rainbow hair
 Neck: None
@@ -40,7 +40,7 @@ Top: Oversized 'Grave Mistake' band tee (when attending their concerts to see Ro
 Bottom: None (snake tail)
 Legs: None
 Shoes: None
-Underwear: None
+Underwear: Wears nothing under her skirts due to the massive snake tail transition.
 Style Notes: Late summer college attire suitable for August (crop tops, light denim).
 
 ### ORIGIN (BACKSTORY)
