@@ -65,7 +65,7 @@ Blood Classification is a genetic taxonomy describing an individual's lineage re
 
 ## Secondary Sex Physiology
 
-Secondary sex is determined biologically at Presentation (typically around age 13). It is immutable. There are five secondary sexes plus the sacred Enigma caste.
+Secondary sex is determined biologically at Presentation (typically around age 13). It is immutable. There are five secondary sexes (Alpha, Delta, Beta, Omega, Enigma), with the Enigma being so extraordinarily rare (~1 per generation, may skip) that it is excluded from general population statistics and often described as a "sacred caste." All individuals are in the Gamma state prior to Presentation.
 
 ### Age of Maturation
 
@@ -73,24 +73,24 @@ Most individuals present their secondary sex at approximately 13 years of age, e
 
 ---
 
-### γ Gamma — The Third Primary Gender
+### γ Gamma — Pre-Presentation State
 
-**Description:** The Gamma is the third primary gender (alongside Male and Female). A Gamma will mature into either a female Alpha/Delta or a male Omega. Pre-presentation, the child's future secondary sex is unknown; most are referred to with pronouns such as Ze, Zer, and Zim until presentation.
+**Description:** Gamma is not a secondary sex. It is the **neutral developmental state** of all werewolves prior to Presentation. Every werewolf is biologically Gamma from birth until their secondary sex emerges (typically around age 13). Pre-presentation, the child's future secondary sex is unknown; most are referred to with neutral pronouns such as Ze, Zer, and Zim until Presentation.
 
-**Biology:** A Gamma is born with both sets of genitalia — a vaginal opening with a penis in place of the clitoris. A Gamma also possesses a uterus, which develops further if they present as Omega, or remains mostly infertile if they present as Alpha.
+**Biology:** A Gamma child possesses both sets of genitalia — a vaginal opening with a penile structure in place of the clitoris — and a uterus. At Presentation, this anatomy resolves: if the individual presents as Omega (male), the uterus develops fully; if they present as Alpha (female), the uterus remains mostly vestigial/non-functional. The external genitalia differentiate accordingly.
 
-**Statistics:** 1 in 1,000 births.
+**Statistics:** 100% of werewolves are Gamma pre-Presentation. Post-Presentation, 0% remain Gamma — it is a transient state, not a permanent classification.
 
 ---
 
 ### ∑ Enigma — The Sacred Caste
 
-**Description:** The Enigma is not a standard secondary sex. It is a sacred biological category of extraordinary rarity. Enigmas are the apex of the species' biological potential.
+**Description:** The Enigma is a legitimate secondary sex — simply so extraordinarily rare (~1 per generation, may skip) that it is excluded from general population statistics. Enigmas are the apex of the species' biological potential.
 
 There are two recognized types:
 
 - **Primordial Enigma:** The Nine Firstborn. Unique beings whose origin, according to the Faith of Fenris, was divine. They cannot be replicated or reproduced. Their biology transcends the normal species parameters.
-- **Ascended Enigma:** Exceptionally rare individuals (~10 in recorded history across two millennia) who present with Enigma-level biological traits despite having no Divine Blood lineage. Their emergence is unpredictable and not fully understood.
+- **Ascended Enigma:** Exceptionally rare individuals (~10 in recorded history across two millennia) who present with Enigma-level biological traits despite having no Divine Blood lineage. Their emergence is unpredictable and not fully understood. **Important demographic note:** Due to the extreme hormonal dominance of the Enigma pheromonal signature, if an Enigma is present and active on a given continent, no other individual will typically present as Enigma — the Enigma's presence suppresses Enigma-expression in others until their passing or departure.
 
 **Characteristics:** Mirror Alpha behavior but with superior intensity. Cannot be submitted by any other secondary sex. Can dominate all genders, including Alphas. Possess Command that cannot be resisted by any standard secondary sex. Superior strength, intelligence, and pheromonal presence.
 
@@ -362,7 +362,7 @@ Weaknesses: [Silver (burning, poisoning), wolfsbane (hallucinogenic or fatal), l
 
 ### [BEHAVIOR_NOTES]
 - **Temperament**: [Territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone]
-- **Social Structure**: [Pack-based (alpha/beta/omega or anarchic), lone wolf (exiled or estranged), bloodline hierarchy, challenge-claim dominance law]
+- **Social Structure**: [Pack-based (meritocratic/consensus-based), lone wolf (exiled or estranged), bloodline-influenced social status, consensus-based leadership with voluntary role acceptance]
 - **Beliefs**: [Moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies]
 - **Cultural Traits**: [Oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill]
 - **Taboos**: [Killing pack, rejecting shift, refusing a blood challenge, feeding on kin]
