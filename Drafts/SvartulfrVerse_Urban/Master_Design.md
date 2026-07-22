@@ -12,14 +12,14 @@ _Phase 1 deliverable. Locked by the Refiner. This document is the single source 
 world_name: SvartulfrVerse_Urban
 world_mode: arc
 intimacy_in_scope: true
-current_phase: 3
+current_phase: 3.5
 status: IN_PROGRESS
 
 phases:
   1_Refiner: COMPLETE
   2_Architect: COMPLETE
   2.5_IntimacyArchitect: COMPLETE
-  3_Editor: PENDING
+  3_Editor: COMPLETE
   3.5_VoiceAuditor: PENDING
   3.6_ArcAuditor: PENDING
   3.7_IntimacyAuditor: PENDING
