@@ -16,7 +16,7 @@ FIELD GUIDANCE:
 
 - description: Write in dense prose. Format the description using the exact sections below with explicit markdown headers:
   ### CHARACTER OVERVIEW (Describe the overall idea for your scenario here)
-  ### PHYSICAL DESCRIPTION — BASELINE (Full Name, Alias, Race, Sex/Gender, Height, Age, Hair, Eyes, Body, Face, Features, Privates, Sensory Signature/Scent, Tattoos/Clan Branding, Posture/LSE Dynamics)
+  ### PHYSICAL DESCRIPTION — BASELINE (Full Name, Alias, Race, Sex/Gender, Height, Age, Hair, Eyes, Body, Face, Features, Breast/Chest, Nipples, Vagina/Penis, Clit/Balls, Anus, Sensory Signature/Scent, Tattoos/Clan Branding, Posture/LSE Dynamics)
   ### STARTING OUTFIT (Head, Accessories, Makeup, Neck, Top, Bottom, Legs, Shoes, Underwear)
   ### ORIGIN (BACKSTORY) (Brief backstory)
   ### RESIDENCE (City, house, rooms, etc.)
@@ -198,7 +198,11 @@ Eyes: [Baseline color, shifted glow (color and intensity), pupil shift (slitted,
 Body: [Human form (lean, dense, scarred), wereform (muscle-bulked, digitigrade, broad-chested, clawed)]
 Face: [Human form (jawline, expression), wereform (muzzle structure, snarl)]
 Features: [Scars, tattoos, birthmarks, clan branding]
-Privates: [Anatomy specifics, knotting physiology if Alpha/Enigma, secondary sex characteristics]
+Breast/Chest: [Details]
+Nipples: [Details]
+Vagina/Penis: [Anatomy specifics, knotting physiology if Alpha/Enigma, secondary sex characteristics]
+Clit/Balls: [Details]
+Anus: [Details]
 Sensory Signature/Scent: [Musk, wet fur, blood-iron, burnt sinew, forest rot, pheromone profile]
 Appearance Trait: [Trait]
 ↳ Details: [Details]

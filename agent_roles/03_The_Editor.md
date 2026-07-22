@@ -150,7 +150,7 @@ Score each criterion 1–3. Pass threshold: all ≥2, at least three = 3.
 | **Voice Distinctiveness** | Character identifiable from prose alone without being named.                      |
 | **Tonal Coherence**       | Prose register matches the world's established atmosphere.                        |
 
-**Physical description order check:** Does the character's physical description proceed in the correct order? Face & lips → hair → eyes → body/hips/legs → breast/chest & nipples & vagina/penis & clit/balls & anus → movement & posture → sensory signature → dietary preference. Incorrect order = improvement request.
+**Physical description order check:** Does the character's physical description proceed in the exact order specified by the template? Full Name/Alias → Race → Sex/Gender → Height → Age → Hair → Eyes → Body → Face → Features → Breast/Chest → Nipples → Vagina/Penis → Clit/Balls → Anus → Sensory Signature/Scent → Tattoos/Clan Branding → Posture/LSE Dynamics. Incorrect order = improvement request.
 
 ### Step 4 — Lorebook Entry Quality Audit
 
