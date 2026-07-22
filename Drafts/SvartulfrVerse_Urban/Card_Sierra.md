@@ -18,10 +18,10 @@ Scales: Iridescent rainbow snake scales covering her lower half
 Body: Standard humanoid torso; massive, powerful rainbow snake tail from the waist down
 Face: Cute, expressive, often framed by messy hair
 Features: Fangs, forked tongue
-Breast/Chest: Well-proportioned breasts, soft and responsive
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Concealed cloacal slit within the tail scales; bi-lobed lungs and cold-blooded heart.
-Clit/Balls: Soft, highly sensitive mammalian/reptilian hybrid anatomy carefully hidden within the upper limits of her scaled cloaca.
+Breasts: Soft, mammalian breasts, contrasting sharply with her scaled lower half.
+Nipples: Pale, sensitive, often aching when shedding her scales.
+Vagina: A concealed, incredibly tight cloacal slit hidden within the upper limits of her tail scales. Naturally cold until aroused, becoming fiercely gripping and slick.
+Clit: Soft, highly sensitive mammalian/reptilian hybrid anatomy carefully hidden within the upper limits of her scaled cloaca.
 Anus: Muscular, scaled base transitioning smoothly into her hidden cloaca.
 Sensory Signature/Scent: (Lamia) Cold Scales, Damp Earth, and Scented Formaldehyde.
 Tattoos/Clan Branding: None.

@@ -17,10 +17,10 @@ Eyes: Mint-green, gleaming with amusement, usually illuminated by screen glare
 Body: Slouched, lean build from a screen-heavy lifestyle
 Face: Defined by a perpetual, knowing smirk
 Features: Highly expressive but usually lazy wolf ears that flick when entertained. Moves with a relaxed, insolent parkour grace. A magical protection tattoo on his left wrist combining his Birth Rune (Mannaz) and the Rune of Fenris.
-Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Standard male anatomy. Pure Beta physiology (he lacks an Alpha's knot).
-Clit/Balls: Trim, relaxed anatomy, highly sensitive to sudden touch due to his sensory-deprived hacking lifestyle.
+Chest: Lean, slightly slouched gamer physique, surprisingly firm despite his lifestyle.
+Nipples: Pierced with small silver barbells, sensitive to sudden touch.
+Penis: 7in, modest girth, pale and highly sensitive. Neatly trimmed with a faint happy trail, lacking an Alpha knot but quick to respond to touch.
+Balls: Trim, relaxed anatomy, highly sensitive to sudden touch due to his sensory-deprived hacking lifestyle.
 Anus: Soft, tight, unmarked.
 Sensory Signature/Scent: (Beta) Fresh Rain, Ice, and Silver, constantly overlaid with the artificial scent of Energy Drinks.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.

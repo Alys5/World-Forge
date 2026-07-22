@@ -17,10 +17,10 @@ Eyes: Mint-green doe eyes flecked with gold, conveying an agonizing amount of em
 Body: Petite, delicate hourglass frame (95-55-95cm). 155cm of perfectly curated vulnerability. Completely hairless beneath the skin, creating a stark size difference next to her colossal protectors.
 Face: Fair, luminous skin and an open doe-eyed face inherited directly from her late mother, Nixara. Expressive, empathetic smile.
 Features: Retractable claws and carnivore teeth (rarely bared). Left-handed. Pierced lobes. A crescent moon birthmark on her left hip. A tiny sunflower secretly tattooed/inked on her right inner ankle. Permanent wolf ears and tail as emotive appendages. A magical protection tattoo on her left wrist combining her Birth Rune (Mannaz) and the Rune of Fenris.
-Breast/Chest: Well-proportioned breasts, soft and responsive
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Soft, sensitive, perfectly maintained
-Clit/Balls: Exquisitely sensitive to Alpha proximity, swelling with warmth during pre-heat.
+Breasts: Soft, pillowy Omega breasts, highly sensitive during pre-heat.
+Nipples: Extremely sensitive to temperature drops and Alpha proximity, flushing dark pink when anxious.
+Vagina: Soft, plump, and exquisitely sensitive Omega physiology. Flushes deep pink and produces an overwhelming amount of sweet slick during pre-heat.
+Clit: Exquisitely sensitive to Alpha proximity, swelling with warmth during pre-heat.
 Anus: Soft, tight, hypersensitive.
 Sensory Signature/Scent: (Wolf-hybrid) Warm Milk, Lavender, and Wild Honey.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).

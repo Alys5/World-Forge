@@ -19,10 +19,10 @@ Horns: Red, curling delicately like a ram's
 Body: Flawless hourglass figure, perfect skin
 Face: Objectively stunning, carefully curated effortlessly hot college aesthetic
 Features: Moves with lazy feline confidence
-Breast/Chest: Well-proportioned breasts, soft and responsive
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Exquisitely responsive succubus physiology, touch-mapped for empathetic and lust feeding.
-Clit/Balls: Highly sensitive, swelling immediately under emotional or physical stimulation.
+Breasts: Plush, heavy succubus breasts, artificially enhanced by magic to draw the eye.
+Nipples: Dark, perpetually erect, and hyper-sensitive to ambient lust.
+Vagina: Perfectly shaved, plump and exquisitely responsive succubus physiology. Naturally lubricates with a sweet, highly addictive slick designed for lust feeding.
+Clit: Highly sensitive, swelling immediately under emotional or physical stimulation.
 Anus: Soft, flawlessly maintained, extremely sensitive.
 Sensory Signature/Scent: (Succubus) Warm Vanilla, Crushed Berries, and Ozone.
 Tattoos/Clan Branding: Demonic tattoos that seem to shift and move on her skin. Multiple body piercings (not just ears).

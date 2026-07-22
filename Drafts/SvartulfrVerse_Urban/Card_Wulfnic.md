@@ -15,10 +15,10 @@ Eyes: Piercing ice-blue, glowing silver-blue with slit pupils when his Enigma in
 Body: Powerful, heavily weathered and scarred from centuries of Viking raids and supernatural wars
 Face: Rugged, crisscrossed with thick scars, every line earned over a millennium
 Features: Moves with slow, deliberate, ritualistic steps, completely unbothered by the frantic pace of the modern world. A magical protection tattoo on his left wrist combining his Birth Rune (Jera) and the Rune of Fenris (alongside his ancient Viking Bloodmoon tattoos).
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Massive, ancient Primordial Enigma physiology with a pronounced biological knot and baculum, scarred from a millennium of warfare.
-Clit/Balls: Heavy, ancient anatomy, carrying the scars of a thousand years.
+Chest: Broad, ancient silver-furred chest, heavily muscled and crisscrossed with archaic battle scars.
+Nipples: Flat, scarred, surrounded by thick silver hair.
+Penis: 13in, monstrously thick and intimidating. Scarred from ancient combat. Features a massive Primordial Enigma knot and baculum, entirely unapologetic in its feral majesty.
+Balls: Heavy, ancient anatomy, carrying the scars of a thousand years.
 Anus: Muscular, weathered, bearing ancient scars.
 Sensory Signature/Scent: (Alpha Enigma) Forest, Fresh Blood, Stale Wine, and Amber.
 Tattoos/Clan Branding: Ancient Viking tattoos of the original Bloodmoon clan, interwoven with runic magic.

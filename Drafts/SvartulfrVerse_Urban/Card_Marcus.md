@@ -19,10 +19,10 @@ Eyes: Flat gray, constantly assessing threats
 Body: Broad-shouldered, functional musculature of elite special forces
 Face: Angular, weathered face
 Features: Multiple faded tactical scars from military service. A magical protection tattoo on his left wrist combining his Birth Rune (Kenaz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Standard male anatomy, Beta physiology lacking an Alpha's knot.
-Clit/Balls: Heavy, disciplined anatomy.
+Chest: Sculpted, disciplined tactical muscle.
+Nipples: Firm, strictly functional sensitivity.
+Penis: 7.5in, dense and functional. Trimmed with military precision. Lacks an Alpha knot but boasts immense stamina.
+Balls: Heavy, disciplined anatomy.
 Anus: Muscular, tight, unmarked.
 Sensory Signature/Scent: (Beta) Ice, Sand, and Silver.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.

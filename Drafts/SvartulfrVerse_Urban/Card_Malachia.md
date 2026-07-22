@@ -17,10 +17,10 @@ Eyes: Cold, intense amber that rarely blink
 Body: A terrifying physical specimen: massive, thick neck, broad shoulders built from raw genetics and years of professional heavyweight boxing
 Face: Stoic, slightly crooked nose (broken twice in the ring), faded scar through left eyebrow, resting murder face
 Features: Moves with eerie, predatory silence despite his massive size. A magical protection tattoo on his left wrist combining his Birth Rune (Thurisaz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Massively endowed Alpha anatomy, featuring a biological knot and internal baculum.
-Clit/Balls: Heavy, densely muscled anatomy, bearing faint, faded scars from brutal CQC training in his youth.
+Chest: Dense, heavily scarred combat muscle, built for lethal CQC.
+Nipples: Flat, toughened by constant friction from tactical gear.
+Penis: 10in, thick, blunt, and marked with faint combat scars near the base. Features a dense biological knot and baculum. Strictly groomed.
+Balls: Heavy, densely muscled anatomy, bearing faint, faded scars from brutal CQC training in his youth.
 Anus: Thick, muscular, highly guarded.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
 Posture/LSE Dynamics: Dominant, expansive, and highly territorial. Naturally positions himself as a physical shield and takes up space in any room.

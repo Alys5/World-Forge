@@ -15,10 +15,10 @@ Eyes: Deeply observant amber that miss absolutely nothing
 Body: Fit, heavily tattooed biker build with broad shoulders
 Face: Rugged, square jawline perpetually shadowed by stubble, weathered but handsome
 Features: Faint scars from old hunts crisscross the intricate sleeve tattoos on both arms. A magical protection tattoo on his left wrist combining his Birth Rune (Eihwaz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Standard male anatomy, Beta physiology lacking an Alpha's knot.
-Clit/Balls: Relaxed Beta anatomy, sensitive to touch.
+Chest: Broad, hairy, and comforting Beta chest.
+Nipples: Relaxed and highly responsive to gentle affection.
+Penis: 8in, thick and comfortable girth. Uncircumcised, heavily veined, and surrounded by a thick, untrimmed patch of coarse Beta hair. Lacks an Alpha knot.
+Balls: Relaxed Beta anatomy, sensitive to touch.
 Anus: Muscular, tight, unmarked.
 Sensory Signature/Scent: (Beta) Motor Oil, Earth, Stale Cigarettes, and Worn Leather.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.

@@ -17,9 +17,9 @@ Eyes: Piercing amber in human form; molten gold with slit pupils when agitated
 Body: Mountain of disciplined ex-athlete muscle, broad shoulders straining bespoke tailoring
 Face: Severe squared jawline that clenches under stress, practiced bright Californian smile
 Features: Faint scar across left cheek from a ritual hunt at age 16. A magical protection tattoo on his left wrist combining his Birth Rune (Hagalaz) and the Rune of Fenris.
-Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Penis: Heavily endowed Alpha anatomy, featuring a pronounced biological knot and an internal baculum (os penis) suited for extended mating and rut.
+Chest: Massive, heavily muscled pectorals built from intense physical training and Alpha genetics.
+Nipples: Dark, flat, and highly sensitive to his Omega's touch.
+Penis: 11in, extremely thick girth, heavily veined. Features a pronounced, swelling biological knot at the base and an internal baculum for brutal, extended mating. Impeccably groomed.
 Balls: Heavy, tightly drawn anatomy, extremely sensitive to Omega pheromones and body heat.
 Anus: Muscular, tight, completely unmarked.
 Sensory Signature/Scent: (Alpha) Cedarwood, Premium Whiskey, Leather, and Charcoal. When angry, the scent of charcoal ignites into suffocating smoke.

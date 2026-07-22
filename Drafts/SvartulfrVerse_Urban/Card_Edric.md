@@ -17,7 +17,7 @@ Eyes: Amber, frequently darting away in nervousness
 Body: Slender but tense, always coiled
 Face: Moody tween face, jawline often set in stubbornness
 Features: Flinches and shrinks when his bravado cracks. A magical protection tattoo on his left wrist combining his Birth Rune (Tiwaz) and the Rune of Fenris.
-Chest: Broad and masculine chest, firm
+Chest: Narrow, lanky boyish chest.
 Sensory Signature/Scent: (Pre-Pup) Milk, Cotton, and Sand. His scent is still unformed and distinctly childish.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris)
 Posture/LSE Dynamics: Supportive and reactive, though constantly bristling against Alpha authority. Naturally flanks the pack.

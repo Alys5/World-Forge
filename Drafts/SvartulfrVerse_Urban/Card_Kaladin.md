@@ -15,10 +15,10 @@ Eyes: Piercing, unnatural green, bleeding into hyper-luminescent feral gold when
 Body: Massive density and sheer width of muscle defying standard Alpha biology due to S.R.F. genetic modifications
 Face: Angular, a roadmap of extreme military trauma: burn scars, bullet wounds, and surgical marks from the S.R.F. augmentation labs
 Features: Moves with heavy, mechanical precision that barely contains his feral aggression. A magical protection tattoo on his left wrist combining his Birth Rune (Ehwaz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Heavily endowed Alpha anatomy, featuring an enlarged biological knot and baculum due to S.R.F. modifications.
-Clit/Balls: Heavy, densely muscled, highly sensitive despite his hardened exterior.
+Chest: Thick, dense muscle mass designed to absorb impact, covered in faint tactical scars.
+Nipples: Flat, scarred, and largely desensitized from combat.
+Penis: 10.5in, dense and heavily veined. Brutally enlarged by S.R.F. modifications, featuring an overly pronounced biological knot and baculum. Kept military-shaven.
+Balls: Heavy, densely muscled, highly sensitive despite his hardened exterior.
 Anus: Thick, muscular, unmarked.
 Sensory Signature/Scent: (Alpha) Gunpowder, Hot Iron, Adrenaline, and the sterile scent of Charcoal.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.

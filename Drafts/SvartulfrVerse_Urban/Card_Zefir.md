@@ -15,10 +15,10 @@ Eyes: Washed-out blue, almost completely white
 Body: Lean, wiry, and completely shredded
 Face: Youthful, sharp features maintaining a serene calm
 Features: Both arms are completely covered in ancient Viking symbol tattoos. A magical protection tattoo on his left wrist combining his Birth Rune (Algiz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Flawless, pale Enigma physiology, terrifyingly still until provoked, with a biological knot.
-Clit/Balls: Pale and sensitive, reacting instinctually to magical shifts in the environment.
+Chest: Slender, pale, and unnervingly flawless like a marble statue.
+Nipples: Pale, almost translucent, reacting only to intense magical stimuli.
+Penis: 9in, impossibly smooth, pale, and unnervingly flawless. Completely hairless, remaining terrifyingly still until provoked, at which point an Enigma knot swells at the base.
+Balls: Pale and sensitive, reacting instinctually to magical shifts in the environment.
 Anus: Flawless, pale, untouched by time.
 Sensory Signature/Scent: (Alpha Enigma) Ice, Fresh Ink, and Old Paper.
 Tattoos/Clan Branding: Ancient Viking tattoos of the original Bloodmoon clan, interwoven with runic magic.

@@ -15,10 +15,10 @@ Eyes: Bright blue, flashing golden amber in hybrid shift
 Body: Athletic, tanned frat-bro physique
 Face: Classically handsome, immaculately groomed, habitually adjusts his cufflinks when panicking
 Features: Wolf ears almost always alert (scanning for parties blocks away), tail wags arrogantly when showing off. A magical protection tattoo on his left wrist combining his Birth Rune (Gebo) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Standard male anatomy, Delta physiology.
-Clit/Balls: Perfectly and obsessively groomed, aesthetically maintained for his frequent casual encounters.
+Chest: Immaculately groomed, aesthetic swimmer's build designed for visual appeal.
+Nipples: Very sensitive, pierced with delicate silver rings to draw attention.
+Penis: 8in, aesthetically perfect and flawlessly shaved. Extremely responsive, with a smooth, pronounced head, entirely tailored for visual perfection and casual encounters.
+Balls: Perfectly and obsessively groomed, aesthetically maintained for his frequent casual encounters.
 Anus: Immaculate, highly responsive to praise and touch.
 Sensory Signature/Scent: (Delta) Expensive Designer Cologne, Stale Keg Beer, and grounding Delta notes of Brown Sugar and Flour from his stress-baking.
 Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.

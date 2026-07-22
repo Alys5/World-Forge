@@ -17,9 +17,9 @@ Eyes: Lilac, glowing faintly in the dark
 Body: Tall, masculine muscular build
 Face: Hypnotic perfection, sharp aristocratic features, cold marble-smooth skin
 Features: Retractable fangs, striking eye and lip makeup
-Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Penis: Cold, marble-smooth immortal flesh, lacking mortal warmth but highly responsive to blood-lust.
+Chest: Cold, flawless marble-like pectorals, entirely hairless and statuesque.
+Nipples: Pale and perpetually cold, hardening only when feeding.
+Penis: 8.5in, perfectly proportioned and marble-smooth. Completely hairless, icy to the touch, and lacking mortal warmth until flushed with the thrill of the hunt or fresh blood.
 Balls: Unyieldingly cold and pale, physically pristine.
 Anus: Flawless, eternally pristine, perpetually chilled.
 Sensory Signature/Scent: (Vampire) Expensive Rose Water, Cold Marble, and Stale Blood.
@@ -47,7 +47,7 @@ Born in the 1480s in Cuneo, Italy. Sent to serve as a "garzone" in Leonardo da V
 
 ### RESIDENCE
 
-Eidolon Creative Studio & Penthouse (Blackwood City)
+The Obsidian Penthouse atop Eidolon Creative (Downtown Blackwood), an opulent, temperature-controlled gallery doubling as a fortress.
 
 ### CONNECTIONS
 

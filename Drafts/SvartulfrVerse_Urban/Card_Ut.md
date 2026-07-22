@@ -15,10 +15,10 @@ Eyes: Iron-colored, heavy with ancient weight
 Body: Built like a walking boulder with tree-trunk limbs
 Face: Mostly hidden behind a wild, bushy red-blonde beard
 Features: Covered in ancient runic tattoos and thick, jagged scars. A magical protection tattoo on his left wrist combining his Birth Rune (Laguz) and the Rune of Fenris.
-Breast/Chest: Broad and masculine chest, firm
-Nipples: Sensitive to touch and temperature
-Vagina/Penis: Massively endowed immortal Enigma anatomy, featuring a heavy biological knot and baculum.
-Clit/Balls: Heavy, weathered ancient anatomy, scarred from centuries of brutal survival.
+Chest: Massive, barrel-chested and covered in centuries of jagged scars and runic tattoos.
+Nipples: Weathered, scarred over, entirely desensitized.
+Penis: 12in, terrifyingly thick and weathered. Bears ancient, faded scars along the shaft. Features a massive Enigma knot and baculum, surrounded by a thick tangle of coarse hair.
+Balls: Heavy, weathered ancient anatomy, scarred from centuries of brutal survival.
 Anus: Thick, heavily muscled, bearing the faint white lines of ancient combat.
 Sensory Signature/Scent: (Alpha Enigma) Coal, Hot Iron, Mahogany, and Amber.
 Tattoos/Clan Branding: Ancient Viking tattoos of the original Bloodmoon clan, interwoven with runic magic.
