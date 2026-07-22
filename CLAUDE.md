@@ -117,7 +117,7 @@ These principles took multiple iterations to converge on. Each one has a specifi
 Every piece of world information belongs to exactly one tier:
 
 - **Tier 1 — World Lorebook** (permanent, arc-agnostic): world rules, factions, species, mechanics, standing locations. Position 0 (Before Char Def). Never replaced or disabled.
-- **Tier 2 — Character Lorebooks** (permanent, arc-agnostic, one per major character): physical description, psychological dimensions, relationships, history. Position 1 (After Char Def). Never replaced.
+- **Tier 2 — Character Lorebooks** (permanent, arc-agnostic, one per major character): physical description (including Dietary Preference and `SPECIES: DIET` format), psychological dimensions, relationships, history. Position 1 (After Char Def). Never replaced.
 - **Tier 3 — Arc Lorebooks** (modular, one per arc, swapped in/out): ARC_STATE, CHARACTER_STATE, NPC_SHIFT, DRAMATIC_BEAT, TENSION, hidden information rules. Only one arc lorebook active at a time.
 
 If you find content that would fit in multiple tiers, this is a design smell. Surface it for review — the right home is usually the most modular tier (Tier 3 if it changes per-arc, Tier 2 if it changes per-character, Tier 1 only if it's truly universal).

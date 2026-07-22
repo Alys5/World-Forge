@@ -171,7 +171,7 @@ This section is critical. It is the section users most often write thinly. Push 
 
 **Arc trajectory.** "One sentence per arc — what is {{user}}'s internal journey across the story?" If they cannot articulate this, the arcs are not yet about anything.
 
-**Physical description.** "Walk me through how {{user}} is built, in order: face and lips, hair, eyes, body, movement and posture, sensory signature." If the user wants to skip this, push back: "Other characters react to {{user}}. The model needs to know who they are reacting to. Five minutes here saves an hour of fixing later."
+**Physical description.** "Walk me through how {{user}} is built, in order: face and lips, hair, eyes, body, movement and posture, sensory signature, and dietary preference." If the user wants to skip this, push back: "Other characters react to {{user}}. The model needs to know who they are reacting to. Five minutes here saves an hour of fixing later."
 
 **Voice and manner.** "How does {{user}} actually sound when they speak? Sentence length, vocabulary, accent if any, what they never say directly." Without this, NPCs cannot react to {{user}}'s dialogue correctly.
 
@@ -193,7 +193,7 @@ If any of these come back generic, push: "Most characters want safety. What does
 
 **Then card style override (only if flagged in Section 1.5).** If you flagged this card in the Section 1.5 per-card override question, capture the override now. Five independent fields, ask each only if relevant: "What perspective does this card need that's different from the world default? What tense — does this card narrate in past while the world is present, or vice versa? What narration marker does this card need (asterisks for narration, asterisks for thoughts only, or plain prose)? What dialogue marker — double quotes, single quotes, em-dash, unmarked? What emphasis marker? In one sentence, why is the world default structurally wrong for this card — not just less preferred?" Record perspective, tense, narration_marker, dialogue_marker, and emphasis_marker overrides (each as the enum value or `INHERIT`), and the rationale. If you didn't flag this card in Section 1.5, leave all five override fields as `INHERIT` and skip this question. Do not introduce overrides reactively per character — the decision was made world-wide at Section 1.5.
 
-**Then physical description in anatomical order.** Same approach as the protagonist. Push if they resist it.
+**Then physical description in anatomical order.** Same approach as the protagonist. Push if they resist it. Be sure to ask about their Dietary Preference, and if they are a supernatural entity, specific species diet mechanisms.
 
 **Then relationships.** For every other character this person interacts with: "What does this person want from the other? What do they fear from the other? What is unresolved between them?" Relationships that are described without specifying these are decorative.
 

@@ -11,6 +11,20 @@ The pipeline ships as living markdown specifications rather than versioned
 software, so entries are grouped by date and pull request rather than release
 numbers. Newest first.
 
+## 2026-07-22 — Golden Standard Alignments: Dietary Preferences & SPECIES attributes
+
+Aligned the World-Forge documentation and agent specifications with the `SvartulfrVerse_Urban` golden standard.
+
+### Added
+- **Dietary Preference**: Included `Dietary Preference` as a standard, required field within the `[BEHAVIOR_NOTES]` section of all character cards.
+- **SPECIES Dictionary Extension**: Expanded the `PHYSICAL DESCRIPTION — BASELINE` template for supernatural entities to strictly enforce a `DIET:` line inside the `SPECIES:` attribute array.
+
+### Changed
+- Agent instructions (`Interviewer`, `Refiner`, `Architect`, `Editor`) updated to elicit, generate, and validate these new fields.
+- World Forge architectural documentation (including `Notes_On_functionality`, `Notes_Quick_Reference`, `CLAUDE.md`, and workflows) updated to mirror the new formatting requirements.
+
+---
+
 ## 2026-07-13 — ES6 Sandbox Constraints & WorldForge-Scripter Bot
 
 Integrated comprehensive **ES6 Sandbox Scripting Constraints** across all 30+ agent roles, mini-agents, and workflows. This enforces strict execution safety in JanitorAI by explicitly blocking async/I/O calls and mandating `.slice(-X)` for memory scanning. Migrated complex JavaScript regex logic (Narrative Engines) into highly optimized `dynamicLore` JSON static objects.

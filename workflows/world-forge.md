@@ -230,7 +230,7 @@ If the user resists developing a section, the Interviewer adds an explicit note 
 3. **No blockers:** produces `Master_Design.md` with REFINER SIGN-OFF → Phase 2.
 4. **Blockers found:** produces `UNRESOLVED_QUESTIONS.md` → **PAUSE.** Await user answers.
 
-A complete Master Design contains: world laws/factions/locations/species/concepts (Tier 1), character foundations + physical descriptions in anatomical order + protagonist spec (Tier 2), all arcs with hidden information rules + dramatic beats (Tier 3), LLM behavioral requirements per card including depth_prompt assessment, intimacy specifications routed from Section 8 to the appropriate tier source for the Intimacy Architect, and runtime directives from World Seed Section 9 recorded in Section 12 (validated, rerouted where misplaced, or `No runtime directives declared.`) for the Prompt Engineer.
+A complete Master Design contains: world laws/factions/locations/species/concepts (Tier 1), character foundations + physical descriptions in anatomical order (including Dietary Preference and `SPECIES: DIET` format) + protagonist spec (Tier 2), all arcs with hidden information rules + dramatic beats (Tier 3), LLM behavioral requirements per card including depth_prompt assessment, intimacy specifications routed from Section 8 to the appropriate tier source for the Intimacy Architect, and runtime directives from World Seed Section 9 recorded in Section 12 (validated, rerouted where misplaced, or `No runtime directives declared.`) for the Prompt Engineer.
 
 ---
 
@@ -241,7 +241,7 @@ A complete Master Design contains: world laws/factions/locations/species/concept
 **Output:** All draft files in `Drafts/`
 
 **Mandatory outputs (all eight required):**
-1. `Card_[CharName].md` — character card content per card (MUST strictly include all foundational JanitorAI fields in `description` with explicit null-states)
+1. `Card_[CharName].md` — character card content per card (MUST strictly include all foundational JanitorAI fields in `description` with explicit null-states, and `[BEHAVIOR_NOTES]` must contain Dietary Preference)
 2. `User.md` — `{{user}}` Persona Description text (paste-ready for ST → User Settings → Persona Management; paired with the Tier 2 Protagonist Lorebook)
 3. `Tier2_[ProtagonistName]_Entries.md` — Protagonist Lorebook ({{user}} identity reference)
 4. `Tier1_World_Entries.md` — all Tier 1 entries

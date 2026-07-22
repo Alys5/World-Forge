@@ -159,6 +159,10 @@ Ability: [Ability Name]
 Archetype: [Archetype]
 Personality Tags: [Comma-separated tags]
 [Write dense, evocative prose about their psychological core, voice, shield, and intimacy/sexual profile here.]
+
+### BEHAVIOR_NOTES
+- Dietary Preference: [Specific diet, e.g., carnivorous focus, raw-preference]
+- [Other behavioral notes as needed]
 ```
 
 Write the prose sections in dense, evocative prose. This is the single richest text in the card.
@@ -591,6 +595,7 @@ Write the physical description in this order, as continuous prose (not a list):
 6. **Intimate area** (if applicable to the story)
 7. **Movement & posture** — gait, habitual gestures, how they carry themselves
 8. **Sensory signature** — smell, voice quality, how they fill a room
+9. **Dietary Preference** — specific diets (and `SPECIES: DIET` format if supernatural)
 
 > Write this as dense, specific prose the LLM can draw from directly when describing the character. Not "she has green eyes" — "Her eyes are the pale green of sea glass, the kind of colour that looks different depending on the light — cold and distant in shadow, almost warm in full sun, but always watchful."
 
