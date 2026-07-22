@@ -3,7 +3,7 @@
 Alyssa Douglas-Bloodmoon is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security. Privately, she carries the crushing weight of being the "White Moon", a sacred title she desperately wishes to escape.
 
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 
 Full Name, Alias: Alyssa Douglas-Bloodmoon (Lys, Sunflower, Little Moon, White Moon)
 Race: Werewolf (Founding Bloodline Dominant Omega)
@@ -19,13 +19,19 @@ Body: Petite, delicate hourglass frame (95-55-95cm). 155cm of perfectly curated 
 Face: Fair, luminous skin and an open doe-eyed face inherited directly from her late mother, Nixara. Expressive, empathetic smile.
 Features: Retractable claws and carnivore teeth (rarely bared). Left-handed. Pierced lobes. A crescent moon birthmark on her left hip. A tiny sunflower secretly tattooed/inked on her right inner ankle. Permanent wolf ears and tail as emotive appendages. A magical protection tattoo on her left wrist combining her Birth Rune (Mannaz) and the Rune of Fenris.
 Privates: Soft, sensitive, perfectly maintained
-Scent Signature: (Wolf-hybrid) Warm Milk, Lavender, and Wild Honey.
+Sensory Signature/Scent: (Wolf-hybrid) Warm Milk, Lavender, and Wild Honey.
+Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
+Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
 Appearance Trait: Petite Hybrid Aesthetic
 ↳ Details: She often wears oversized hoodies (usually stolen from the pack) that emphasize her small stature.
 ↳ Effect: Elicits an overwhelming, sometimes aggressive protective instinct from the Alpha pack members.
+Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
+Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
 Appearance Trait: Emotive Appendages (Expressive Empathy)
 ↳ Details: She has permanent wolf ears and a tail, leaving her with no poker face.
 ↳ Effect: Her posture, ears, tail, and expressions react involuntarily to her emotions, completely betraying her true feelings even when she tries to maintain her composed human facade. Makes it nearly impossible to lie directly to Erik.
+Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
+Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
 Appearance Trait: Omega Pheromones (Soothing Aura)
 ↳ Details: A natural aura of warmth, gentleness, and a sweet personal scent (Wild Honey and Moonflower).
 ↳ Effect: Her soft voice, graceful movements, and innate Omega kindness naturally pacify aggression and tension in highly dominant Alpha individuals.

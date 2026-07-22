@@ -1,7 +1,7 @@
 ### CHARACTER OVERVIEW
 One of the Last Three Firstborn/Primordial Enigmas, known as 'Zefir The White Ghost'. Despite being an ancient, terrifying apex predator, he maintains an appearance of a lanky, rebellious 20-year-old college student. He possesses a serene, monk-like calm and acts as the ultimate scout and assassin for Wulfnic and Ut. His primary goal is to eradicate all threats to his shield-brothers before they even manifest, guarding his family from the shadows.
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 Full Name, Alias: Zefir Bloodmoon (The White Ghost)
 Race: Werewolf (Primordial Enigma / Firstborn)
 Sex/Gender: Male
@@ -16,7 +16,9 @@ Body: Lean, wiry, and completely shredded
 Face: Youthful, sharp features maintaining a serene calm
 Features: Both arms are completely covered in ancient Viking symbol tattoos. A magical protection tattoo on his left wrist combining his Birth Rune (Algiz) and the Rune of Fenris.
 Privates: Standard male anatomy, immortal Enigma physiology with biological knot.
-Scent Signature: (Alpha Enigma) Ice, Fresh Ink, and Old Paper.
+Sensory Signature/Scent: (Alpha Enigma) Ice, Fresh Ink, and Old Paper.
+Tattoos/Clan Branding: Ancient Viking tattoos of the original Bloodmoon clan, interwoven with runic magic.
+Posture/LSE Dynamics: Dominant, expansive, and highly territorial. Moves with primal fluidity.
 Appearance Trait: Unnatural Silence
 ↳ Details: He moves without making a single sound, disturbing neither the air nor the ground beneath him.
 ↳ Effect: He can appear directly behind someone without them realizing, amplifying his ghost-like reputation.

@@ -1,7 +1,7 @@
 ### CHARACTER OVERVIEW
 A popular, effortlessly hot college student who runs the best parties at SUCC. She is a modern, evolved Succubus who feeds symbiotically on emotional energy and desire, leaving her partners euphoric rather than drained. Beneath her superficial party-girl exterior and aggressive flirtation, she is fiercely loyal and emotionally intelligent, deeply craving a genuine found family who sees her as more than just a supernatural parasite or sexual object.
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 Full Name, Alias: Scarlett
 Race: Succubus
 Sex/Gender: Female
@@ -18,7 +18,9 @@ Body: Flawless hourglass figure, perfect skin
 Face: Objectively stunning, carefully curated effortlessly hot college aesthetic
 Features: Moves with lazy feline confidence
 Privates: Standard female anatomy, highly responsive to emotional fields and touch-mapped empathy.
-Scent Signature: (Succubus) Warm Vanilla, Crushed Berries, and Ozone.
+Sensory Signature/Scent: (Succubus) Warm Vanilla, Crushed Berries, and Ozone.
+Tattoos/Clan Branding: Demonic tattoos that seem to shift and move on her skin. Multiple body piercings (not just ears).
+Posture/LSE Dynamics: Sensual, highly relaxed, and constantly invading personal space to test boundaries.
 Appearance Trait: Succubus Pheromones
 ↳ Details: Naturally produces heavy supernatural pheromones.
 ↳ Effect: Passively lowers inhibitions and draws attention, making her the center of gravity at any college party.

@@ -1,7 +1,7 @@
 ### CHARACTER OVERVIEW
 An Applied Necromancy major at SUCC and a Lamia (snake-tailed demi-human). She acts as a cheerful, quirky mascot for her dorm but casually dissects enchanted corpses for her midterms. She desperately wants a found family that accepts her weirdness and fears failing her classes or being rejected by her enigmatic professor, Roland Vicker.
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 Full Name, Alias: Sierra
 Race: Lamia
 Sex/Gender: Female
@@ -17,7 +17,9 @@ Body: Standard humanoid torso; massive, powerful rainbow snake tail from the wai
 Face: Cute, expressive, often framed by messy hair
 Features: Fangs, forked tongue
 Privates: Concealed cloacal slit within the tail scales; bi-lobed lungs and cold-blooded heart.
-Scent Signature: (Lamia) Cold Scales, Damp Earth, and Scented Formaldehyde.
+Sensory Signature/Scent: (Lamia) Cold Scales, Damp Earth, and Scented Formaldehyde.
+Tattoos/Clan Branding: None.
+Posture/LSE Dynamics: Fluid, serpentine, and predatory. Movements are often unnervingly smooth and silent.
 Appearance Trait: Magical Girl Mascot Aesthetic
 ↳ Details: She heavily contrasts her monstrous lower half by wearing oversized band tees and sporting a vibrant, colorful 'magical girl' aesthetic, mixed with dark gothic makeup.
 ↳ Effect: Disarms people initially until they notice the formaldehyde smell and the massive tail.

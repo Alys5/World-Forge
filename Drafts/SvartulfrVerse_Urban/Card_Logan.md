@@ -1,7 +1,7 @@
 ### CHARACTER OVERVIEW
 The 'cool uncle' of the Douglas-Bloodmoon family and the sibling who got away from the dynastic pressure. He acts as Erik's Jiminy Cricket, providing a laid-back, grounded perspective that directly opposes Erik's gilded cage. He values freedom above all else and maintains his garage as a 'Zona Franca' (safe zone) for his nieces and nephews. Behind his unbothered biker exterior, he carries a static burden: protecting Edric, a child whose true parentage is the family's most guarded secret.
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 Full Name, Alias: Logan Douglas
 Race: Werewolf (Pureblood Beta, House Douglas)
 Sex/Gender: Male
@@ -16,7 +16,9 @@ Body: Fit, heavily tattooed biker build with broad shoulders
 Face: Rugged, square jawline perpetually shadowed by stubble, weathered but handsome
 Features: Faint scars from old hunts crisscross the intricate sleeve tattoos on both arms. A magical protection tattoo on his left wrist combining his Birth Rune (Eihwaz) and the Rune of Fenris.
 Privates: Standard male anatomy, Beta physiology lacking an Alpha's knot.
-Scent Signature: (Beta) Motor Oil, Earth, Stale Cigarettes, and Worn Leather.
+Sensory Signature/Scent: (Beta) Motor Oil, Earth, Stale Cigarettes, and Worn Leather.
+Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris), identifying him as Douglas clan.
+Posture/LSE Dynamics: Supportive and reactive. Naturally flanks the Alphas, covering blind spots and maintaining pack cohesion.
 Appearance Trait: Full Sleeve Tattoos
 ↳ Details: Both arms covered in intricate, faded ink telling stories of old packs, hunts, and freedom.
 ↳ Effect: Emphasizes his separation from Erik's sterile corporate aesthetic.

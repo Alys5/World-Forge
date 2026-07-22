@@ -95,7 +95,7 @@ Physical: Petite, delicate hourglass frame (155cm), caramel chestnut hair, expre
 
 Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a highly sought-after avant-garde art model for Eidolon Creative under the alias 'Lys Angel', balancing her exhaustive 3.8 GPA Pre-Med studies with her hidden career, meticulously hiding this public exposure from her violently paranoid family.
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 
 - Full Name, Alias: Alyssa Douglas-Bloodmoon (Aliases: Lys, Sunflower, Little Moon)
 - Race/Species: Werewolf (Founding Bloodline Dominant Omega)
@@ -109,10 +109,14 @@ Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a hi
 - Features: Retractable claws and carnivore teeth (rarely bared). Left-handed. Pierced lobes. A crescent moon birthmark on her left hip. A tiny sunflower secretly tattooed/inked on her right inner ankle.
 - Privates: Breasts DD-Cup (big tits, firm, heavy, very sensitive, pink tiny nipples), pussy/vagina (hairless, tight, heavy natural lubrication, extreme sensitive, pink clit and pink inner labia), anus (hairless, small, tight, pink, very sensitive).
 
-- Appearance Trait: Emotive Appendages (Expressive Empathy)
+- Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
+Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
+Appearance Trait: Emotive Appendages (Expressive Empathy)
   ↳ Details: She has permanent wolf ears and a tail, leaving her with no poker face.
   ↳ Effect: Her posture, ears, tail, and expressions react involuntarily to her emotions, completely betraying her true feelings even when she tries to maintain her composed human facade.
-- Appearance Trait: Omega Pheromones (Soothing Aura)
+- Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
+Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
+Appearance Trait: Omega Pheromones (Soothing Aura)
   ↳ Details: A natural aura of warmth, gentleness, and a sweet personal scent (Wild Honey and Moonflower).
   ↳ Effect: Her soft voice, graceful movements, and innate Omega kindness naturally pacify aggression and tension in highly dominant Alpha individuals.
 

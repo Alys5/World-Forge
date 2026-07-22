@@ -1,7 +1,7 @@
 ### CHARACTER OVERVIEW
 The Alpha of Alphas and one of the Last Three Firstborn/Primordial Enigmas. A literal 1100-year-old Viking demigod, he sits in a modern California mansion judging college frat drama with the gravity of a bloody saga. He manages all werewolf packs in North America alongside Ut and Zefir. He watches his descendants with a detached, omniscient perspective, deeply desiring to see the true primal strength of his bloodline awaken in his grandchildren, stripped of modern corporate sterility.
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 Full Name, Alias: Wulfnic Bloodmoon (The Omniscient Jarl)
 Race: Werewolf (Primordial Enigma / Firstborn)
 Sex/Gender: Male
@@ -16,7 +16,9 @@ Body: Powerful, heavily weathered and scarred from centuries of Viking raids and
 Face: Rugged, crisscrossed with thick scars, every line earned over a millennium
 Features: Moves with slow, deliberate, ritualistic steps, completely unbothered by the frantic pace of the modern world. A magical protection tattoo on his left wrist combining his Birth Rune (Jera) and the Rune of Fenris (alongside his ancient Viking Bloodmoon tattoos).
 Privates: Standard male anatomy, immortal Enigma physiology with biological knot and baculum.
-Scent Signature: (Alpha Enigma) Forest, Fresh Blood, Stale Wine, and Amber.
+Sensory Signature/Scent: (Alpha Enigma) Forest, Fresh Blood, Stale Wine, and Amber.
+Tattoos/Clan Branding: Ancient Viking tattoos of the original Bloodmoon clan, interwoven with runic magic.
+Posture/LSE Dynamics: Dominant, ancient, and highly territorial. Commands absolute space and authority effortlessly.
 Appearance Trait: Ancient Presence
 ↳ Details: Radiates an ancient, overwhelming Enigma aura that forces respect and submission without speaking.
 ↳ Effect: Modern technology and corporate bravado seem profoundly trivial in his presence.

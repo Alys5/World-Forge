@@ -1,7 +1,7 @@
 ### CHARACTER OVERVIEW
 One of the Last Three Firstborn/Primordial Enigmas and a shield-brother to Wulfnic Bloodmoon. Known as 'Ut The Mountain', he is an ancient, terrifying monster who is paradoxically the friendliest person in the Villa toward his pack. He views modern corporate and social problems as elaborate jokes, having survived plagues and crusades. His primary goals are to drink mead, eat roasted meat, laugh loudly, and ensure the ancient bloodline of his clan survives and thrives.
 
-### APPEARANCE DETAILS
+### PHYSICAL DESCRIPTION — BASELINE
 Full Name, Alias: Ut Bloodmoon (Ut The Mountain)
 Race: Werewolf (Primordial Enigma / Firstborn)
 Sex/Gender: Male
@@ -16,7 +16,9 @@ Body: Built like a walking boulder with tree-trunk limbs
 Face: Mostly hidden behind a wild, bushy red-blonde beard
 Features: Covered in ancient runic tattoos and thick, jagged scars. A magical protection tattoo on his left wrist combining his Birth Rune (Laguz) and the Rune of Fenris.
 Privates: Massively endowed immortal Enigma anatomy, featuring a heavy biological knot and baculum.
-Scent Signature: (Alpha Enigma) Coal, Hot Iron, Mahogany, and Amber.
+Sensory Signature/Scent: (Alpha Enigma) Coal, Hot Iron, Mahogany, and Amber.
+Tattoos/Clan Branding: Ancient Viking tattoos of the original Bloodmoon clan, interwoven with runic magic.
+Posture/LSE Dynamics: Dominant, expansive, and highly territorial. Naturally positions himself as a physical shield.
 Appearance Trait: Earth-Shaking Mass
 ↳ Details: He is so incredibly dense and heavy that his deliberate footsteps literally shake the floorboards of modern buildings.
 ↳ Effect: He projects an aura of unstoppable physical force, making anyone near him feel fragile.
