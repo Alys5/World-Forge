@@ -35,10 +35,10 @@ def generate_js(entries):
     with open(template_file, 'r', encoding='utf-8') as f:
         template = f.read()
     
-    # We will inject our entries at the bottom of the template.
-    footer_idx = template.rfind('];')
+    # We will inject our entries at the bottom of the dynamicLore array.
+    footer_idx = template.find('];\n\n/* ============================================================================\n   [SECTION] COMPILATION')
     if footer_idx == -1:
-        print("Error: Could not find ]; in template")
+        print("Error: Could not find ]; before COMPILATION in template")
         return
         
     base_js = template[:footer_idx]
@@ -64,7 +64,7 @@ def generate_js(entries):
 """
     wiki_js += "];\n"
     
-    final_js = base_js + wiki_js
+    final_js = base_js + wiki_js + template[footer_idx + 2:]
     
     version_str = datetime.datetime.now().strftime("%Y.%m.%d")
     final_js = final_js.replace("[[WF_INJECT: LOREBOOK NAME]]", "LSE Global Appendix")
