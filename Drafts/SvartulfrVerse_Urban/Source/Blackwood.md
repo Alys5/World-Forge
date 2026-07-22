@@ -24,7 +24,7 @@ Supernatural city / Seat of the Douglas-Bloodmoon pack
 
 ### Seven Hills / Villa Douglas
 
-- **Physical description:** The aristocratic, hilly heartland of the werewolf pack (home to 5,000 affiliated wolves). Features the ancestral **Villa Douglas** (555 Oak Road, Seven Hills, Blackwood, CA) — an early 1900s estate featuring outdoor pools, Malachia's high-tech gym (ex-ballroom), Noah's ancient-modern kitchen, a dedicated East Wing for supernatural guests, and {{user}}'s/{{user}}'s sanctuary in the 3rd-floor ex-solarium.
+- **Physical description:** The aristocratic, hilly heartland of the werewolf pack (home to 5,000 affiliated wolves). Features the ancestral **Villa Douglas** (555 Oak Road, Seven Hills, Blackwood, CA) — an early 1900s estate optimized as an LSE compound with oversized architecture and scent-management ventilation. It features outdoor pools, an indoor thermal Pack Bathhouse, Malachia's high-tech gym (ex-ballroom), Noah's communal pack kitchen, a dedicated East Wing for supernatural guests, and {{user}}'s/{{user}}'s sanctuary in the 3rd-floor ex-solarium (outfitted as an isolated Omega Nest). The perimeter uses scent-based biometric security.
 - **Narrative function:** The impregnable fortress and ancestral home of the Douglas-Bloodmoon family.
 - **Trigger keywords:** Seven Hills, Villa Douglas, 555 Oak Road, Blackwood, Malachia's gym, {{user}}'s room
 

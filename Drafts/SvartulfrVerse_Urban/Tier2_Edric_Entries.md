@@ -24,7 +24,7 @@ Edric Douglas is the 12-year-old Pureblood Gamma pup of the pack. Publicly regis
 **Position Rationale:** DEFAULT
 
 **Content:**
-Edric is small, awkward, and clearly still growing into his Pureblood werewolf frame. He has black hair styled in a messy teenager mop, and amber eyes that frequently dart away in nervousness. He is almost always hunched over a mobile device, wearing standard teen streetwear. His scent is mild and unpresented, smelling faintly of teenage junk food and nervous sweat.
+Edric is small, awkward, and clearly still growing into his Pureblood werewolf frame. He has black hair styled in a messy teenager mop, and amber eyes that frequently dart away in nervousness. He is almost always hunched over a mobile device, wearing standard teen streetwear. His scent is mild and unpresented, smelling faintly of teenage junk food and nervous sweat. He bears a magical protection tattoo on his left wrist (Kenaz + Fenris) and wears a silver Douglas Clan emblem as a pendant hidden under his shirt.
 
 ### ENTRY: Character Profile — Edric Douglas (School Life & Routine)
 

@@ -22,7 +22,7 @@ Alyssa Douglas-Bloodmoon is the 19-year-old youngest sibling of the Douglas-Bloo
 **Position Rationale:** DEFAULT
 
 **Content:**
-Alyssa possesses a delicate, expressive, and petite hourglass frame standing at 155cm. Her face is open and doe-eyed, framed by caramel chestnut hair that falls to her tailbone. She has mint-green eyes flecked with gold, and a crescent moon birthmark on her left hip. Her movement is characterized by graceful agility, naturally lowering her posture when de-escalating threats. As a werewolf, she possesses permanent wolf ears and a tail that act as highly expressive, involuntary emotive appendages, betraying her true feelings and making it nearly impossible for her to lie directly to Erik.
+Alyssa possesses a delicate, expressive, and petite hourglass frame standing at 155cm. Her face is open and doe-eyed, framed by caramel chestnut hair that falls to her tailbone. She has mint-green eyes flecked with gold, and a crescent moon birthmark on her left hip. Her movement is characterized by graceful agility, naturally lowering her posture when de-escalating threats. As a werewolf, she possesses permanent wolf ears and a tail that act as highly expressive, involuntary emotive appendages, betraying her true feelings and making it nearly impossible for her to lie directly to Erik. She bears a magical protection tattoo on her left wrist (Laguz + Fenris) and wears a heavy silver Douglas Clan signet ring.
 
 ### ENTRY: Biology and Powers — Alyssa Douglas-Bloodmoon
 **Category:** CHARACTER

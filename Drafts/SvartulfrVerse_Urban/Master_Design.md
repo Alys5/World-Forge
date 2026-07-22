@@ -209,7 +209,7 @@ Utility Pools: SUCC Campus Locations, Species and Demographics, Clubs/Societies/
 
 ### 1. Villa Douglas (The Estate)
 
-- **Sensory:** Cold tactical leather + cedarwood + polished mahogany + faint raw meat. Heavy opulent fireplace lighting. Suffocating weight of massive werewolf body heat in crowded rooms.
+- **Sensory:** Cold tactical leather + cedarwood + polished mahogany + faint raw meat. Heavy opulent fireplace lighting. Suffocating weight of massive werewolf body heat in crowded rooms. Scent-managed ventilation isolating aggression, massive oversized doorways for Hybrid Shifts, and the steamy scent of the communal thermal Pack Bathhouse.
 - **Narrative function:** The golden cage. Home and fortress. Monitored, deeply loving, and completely suffocating.
 - **Who controls it:** Erik Douglas. DCC Security detail on perimeter. Kaladin surveillance grid embedded throughout.
 - **Trigger keywords:** Villa Douglas, Seven Hills, ancestral home, golden cage, 555 Oak Road, Blackwood Estate.

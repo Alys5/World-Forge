@@ -22,4 +22,4 @@ Zefir, known as The Third Fang and The White Ghost, is the final member of the L
 **Position Rationale:** DEFAULT
 
 **Content:**
-Zefir possesses a lithe, unnervingly silent grace. He has snow-white hair shaved on the sides into a stark mohawk, and his eyes are a washed-out blue that borders on completely white. He is covered in ancient, faded tribal tattoos that shift when looked at directly. His scent is the chilling aroma of frostbite, ozone, and fresh snow.
+Zefir possesses a lithe, unnervingly silent grace. He has snow-white hair shaved on the sides into a stark mohawk, and his eyes are a washed-out blue that borders on completely white. He is covered in ancient, faded tribal tattoos that shift when looked at directly, including the mandatory magical protection tattoo on his left wrist (Ehwaz + Fenris). His scent is the chilling aroma of frostbite, ozone, and fresh snow.

@@ -24,7 +24,7 @@ Malachia Douglas-Bloodmoon is the eldest biological son of Erik and Nixara, and 
 **Position Rationale:** DEFAULT
 
 **Content:**
-Malachia is a towering, heavily muscled Alpha (210cm) radiating lethal military precision. His black hair is kept in a closely shaved military cut, and his cold amber eyes are completely devoid of visible emotion. He moves in total, unnerving silence, like a ghost wrapped in tactical gear. His scent is oppressively sterile—cordite, cold steel, and freezing rain—lacking any of the warmth normally associated with a pack bond.
+Malachia is a towering, heavily muscled Alpha (210cm) radiating lethal military precision. His black hair is kept in a closely shaved military cut, and his cold amber eyes are completely devoid of visible emotion. He moves in total, unnerving silence, like a ghost wrapped in tactical gear. His scent is oppressively sterile—cordite, cold steel, and freezing rain—lacking any of the warmth normally associated with a pack bond. He bears a magical protection tattoo on his left wrist (Uruz + Fenris) and wears the Douglas Clan emblem forged into his belt buckle.
 
 ### ENTRY: Psychology and Relationships — Malachia Douglas-Bloodmoon
 

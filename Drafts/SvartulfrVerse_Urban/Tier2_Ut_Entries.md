@@ -22,4 +22,4 @@ Ut, known as The Second Fang and The Mountain, is one of the Last Three Primordi
 **Position Rationale:** DEFAULT
 
 **Content:**
-Ut is impossibly massive, built like a living tectonic plate. His hair is wild, unkempt steel-gray, and his eyes are the color of heavy iron, holding an ancient, crushing weight. He moves with the slow, devastating inevitability of a glacier. His scent is the primal aroma of shattered stone, deep earth, and dried blood.
+Ut is impossibly massive, built like a living tectonic plate. His hair is wild, unkempt steel-gray, and his eyes are the color of heavy iron, holding an ancient, crushing weight. He moves with the slow, devastating inevitability of a glacier. His scent is the primal aroma of shattered stone, deep earth, and dried blood. His body is covered in ancient runic tattoos and thick, jagged scars that he proudly displays. Among these is the mandatory magical protection tattoo on his left wrist (Berkana + Fenris).

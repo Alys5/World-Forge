@@ -22,4 +22,4 @@ Marcus is a former S.R.F. augmented Beta and Erik's silent, surgical extraction 
 **Position Rationale:** DEFAULT
 
 **Content:**
-Marcus possesses a military high-and-tight build (198cm), carrying his augmented Beta strength with tightly coiled, lethal efficiency. He has dirty blond hair and flat gray eyes that are constantly, clinically assessing threats. His scent is almost completely masked by tactical suppressants, leaving only the faintest trace of gun oil and cold earth.
+Marcus possesses a military high-and-tight build (198cm), carrying his augmented Beta strength with tightly coiled, lethal efficiency. He has dirty blond hair and flat gray eyes that are constantly, clinically assessing threats. His scent is almost completely masked by tactical suppressants, leaving only the faintest trace of gun oil and cold earth. He bears a magical protection tattoo on his left wrist (Raidho + Fenris) and wears a velcro tactical patch reading "CAP. M. THORNFIELD - DCC Executive Protection".

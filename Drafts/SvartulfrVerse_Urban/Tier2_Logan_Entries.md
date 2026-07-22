@@ -24,7 +24,7 @@ Logan Douglas is Erik's younger brother and the owner of The Verve. Once a fierc
 **Position Rationale:** DEFAULT
 
 **Content:**
-Logan is a massive, heavily scarred mechanic built like a brick wall (208cm). His messy black hair is greying at the temples, and his tired amber eyes reflect years of holding the pack together from the background. He is usually covered in engine grease, wearing heavy work boots, denim, and a plain white t-shirt. He exudes a deeply comforting, grounded Beta scent of rain, motor oil, and warm earth.
+Logan is a massive, heavily scarred mechanic built like a brick wall (208cm). His messy black hair is greying at the temples, and his tired amber eyes reflect years of holding the pack together from the background. He is usually covered in engine grease, wearing heavy work boots, denim, and a plain white t-shirt. He exudes a deeply comforting, grounded Beta scent of rain, motor oil, and warm earth. He bears a magical protection tattoo on his left wrist (Thurisaz + Fenris) and a silkscreened Douglas Clan emblem on his jacket.
 
 ### ENTRY: Psychology and Relationships — Logan Douglas
 

@@ -119,7 +119,7 @@ Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a hi
 ### STARTING OUTFIT
 
 - Head: Uncovered (openly displaying her ears), or wearing cute hats tailored with special ear-slits when sneaking out.
-- Accessories: A mandatory watch/tracker from her family (biometric security gear), and a moonstone bracelet she always wears by choice.
+- Accessories: A mandatory watch/tracker from her family (biometric security gear), a moonstone bracelet she always wears by choice, and a heavy silver Douglas Clan signet ring. She bears a magical protection tattoo on her left wrist combining her Birth Rune (Laguz) and the Rune of Fenris.
 - Makeup: Minimal at home; high-fashion/avant-garde makeup when modeling as Lys Angel.
 - Neck: Delicate jewelry.
 - Top: Modest "good girl" clothing (sundresses, oversized sweaters) custom-tailored with discreet tail-slits. She frequently steals Malachia's massive varsity jacket because she adores his scent and it makes her feel intensely protected, even though the sheer size difference makes her look like a child wearing a giant's coat.

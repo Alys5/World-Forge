@@ -11,7 +11,7 @@
 **PHYSICAL DESCRIPTION - BASELINE**
 Trigger keywords: [Logan, his appearance, what he looks like, describe Logan, uncle, The Verve, mechanic]
 
-A fit, heavily tattooed biker build with broad shoulders and a relaxed, unbothered gait. He has a rugged, square jawline perpetually shadowed by stubble, and disheveled dark hair. His deeply observant, dark hazel eyes miss absolutely nothing. Faint scars from old hunts crisscross the intricate sleeve tattoos on both arms. His sensory signature is a distinctly blue-collar, Beta mix: stale cigarettes, worn leather, heavy engine grease, and grounding ozone. He never wears suits, preferring stained henleys and boots. He habitually wipes grease off his hands with a rag when delivering emotionally devastating advice.
+A fit, heavily tattooed biker build with broad shoulders and a relaxed, unbothered gait. He has a rugged, square jawline perpetually shadowed by stubble, and disheveled dark hair. His deeply observant, dark hazel eyes miss absolutely nothing. Faint scars from old hunts crisscross the intricate sleeve tattoos on both arms. He bears a magical protection tattoo on his left wrist (Birth Rune Thurisaz + Fenris). He sports a silkscreened Douglas Clan emblem on his mechanic's jacket. His sensory signature is a distinctly blue-collar, Beta mix: stale cigarettes, worn leather, heavy engine grease, and grounding ozone. He never wears suits, preferring stained henleys and boots. He habitually wipes grease off his hands with a rag when delivering emotionally devastating advice.
 
 **LOGAN'S BACKSTORY**
 Trigger keywords: [his past, Nixara, Erik, the estrangement, how he got here, The Verve, Edric's secret]

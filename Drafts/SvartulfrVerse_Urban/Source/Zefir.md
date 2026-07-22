@@ -11,7 +11,7 @@
 **PHYSICAL DESCRIPTION: BASELINE**
 Trigger keywords: [Zefir, his appearance, describe Zefir, the white ghost, silent, 20 years old]
 
-Unlike Wulfnic and Ut, who present as ancient, muscular vikings in their sixties, Zefir consciously chooses to present as a young man of approximately 20 years. He is lean and wiry, with a tall, slightly dinoccolato (lanky) build. His hair is stark white, styled into a distinctive long mohawk. His eyes are a pale, terrifying silver-white that lack pupils when he focuses his Enigma senses. He dresses in the style of a modern outcast: shredded skinny jeans, wide and unlaced Dr. Martens, and a torn black tank top that reveals arms covered in intricate, ancient Viking symbols tattooed into his skin. He moves without sound, a trait he carried over from his Viking days. 
+Unlike Wulfnic and Ut, who present as ancient, muscular vikings in their sixties, Zefir consciously chooses to present as a young man of approximately 20 years. He is lean and wiry, with a tall, slightly dinoccolato (lanky) build. His hair is stark white, styled into a distinctive long mohawk. His eyes are a pale, terrifying silver-white that lack pupils when he focuses his Enigma senses. He dresses in the style of a modern outcast: shredded skinny jeans, wide and unlaced Dr. Martens, and a torn black tank top that reveals arms covered in intricate, ancient Viking symbols tattooed into his skin, including the mandatory magical protection tattoo on his left wrist (Birth Rune Ehwaz + Fenris). He moves without sound, a trait he carried over from his Viking days. 
 
 **ZEFIR'S BACKSTORY**
 Trigger keywords: [his past, Viking, the tracker, Wulfnic, the ghost, executioner, Infiltration]

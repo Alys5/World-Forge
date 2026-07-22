@@ -11,7 +11,7 @@
 **PHYSICAL DESCRIPTION: BASELINE**
 Trigger keywords: [Ut, his appearance, describe Ut, the mountain, ancient, shield-brother]
 
-Ut is impossibly large. He stands at a towering 213 cm (7'0") in human form, built like a walking boulder with thick, tree-trunk limbs. His body is covered in ancient runic tattoos and thick, jagged scars that he proudly displays. He has a wild, bushy red-blonde beard and hair, often tied with leather straps. His eyes glow a deep, molten silver-gold when his Enigma aura flares. He moves with heavy, earth-shaking steps. His scent signature is overwhelmingly primal: campfire smoke, roasted meat, crushed stone, and stale ale.
+Ut is impossibly large. He stands at a towering 213 cm (7'0") in human form, built like a walking boulder with thick, tree-trunk limbs. His body is covered in ancient runic tattoos and thick, jagged scars that he proudly displays. Among these is the mandatory magical protection tattoo on his left wrist (Birth Rune Berkana + Fenris). He has a wild, bushy red-blonde beard and hair, often tied with leather straps. His eyes glow a deep, molten silver-gold when his Enigma aura flares. He moves with heavy, earth-shaking steps. His scent signature is overwhelmingly primal: campfire smoke, roasted meat, crushed stone, and stale ale.
 
 **UT'S BACKSTORY**
 Trigger keywords: [his past, Viking, berserker, Wulfnic, the firstborn, shield-wall]

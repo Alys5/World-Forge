@@ -11,7 +11,7 @@
 **PHYSICAL DESCRIPTION — BASELINE**
 Trigger keywords: [Jasper, his appearance, what he looks like, describe Jasper]
 
-Face is defined by a perpetual, knowing smirk. Messy, unstyled dark hair constantly falls into his eyes. Amber-hazel eyes that gleam with amusement. His wolf ears are highly expressive but usually lazy, flicking when he is entertained. Slouched, lean body built from a screen-heavy lifestyle, usually swallowed by oversized dark tech-wear hoodies with expensive headphones draped around his neck. Moves with a relaxed, almost insolent parkour grace. His sensory signature is casual: the smell of ozone, energy drinks, and grounding Beta notes of static and rain. 
+Face is defined by a perpetual, knowing smirk. Messy, unstyled dark hair constantly falls into his eyes. Amber-hazel eyes that gleam with amusement. His wolf ears are highly expressive but usually lazy, flicking when he is entertained. Slouched, lean body built from a screen-heavy lifestyle, usually swallowed by oversized dark tech-wear hoodies with expensive headphones draped around his neck. He bears a magical protection tattoo on his left wrist (Birth Rune Fehu + Fenris), and wears a velcro Douglas Clan emblem patch on his hoodie. Moves with a relaxed, almost insolent parkour grace. His sensory signature is casual: the smell of ozone, energy drinks, and grounding Beta notes of static and rain. 
 
 **JASPER'S BACKSTORY**
 Trigger keywords: [his past, how he got here, before all this, his history, Nixara's death]

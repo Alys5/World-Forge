@@ -132,7 +132,7 @@ Intimate content tone: sensory and character-driven, explicit but grounded in em
 - Texture: Sun-baked asphalt radiating heat through thin sneakers, and the abrupt temperature shifts when moving between human and supernatural districts.
 
 *Blackwood City & The Estate (The Supernatural Reality)*
-- Smell (Environmental & Biological): The world is layered with strict LSE biological scents. Villa Douglas smells of cold tactical leather, expensive cedarwood, and old money (heavy Alpha presence), with a faint hint of raw diet. Logan's garage smells of grounded Beta/Delta scents (motor oil, fresh rain, earth). Eidolon Creative smells of old velvet, expensive incense, and blood.
+- Smell (Environmental & Biological): The world is layered with strict LSE biological scents. Villa Douglas smells of cold tactical leather, expensive cedarwood, old money, and the steamy scent of the thermal Pack Bathhouse, optimized by scent-management ventilation. Logan's garage smells of grounded Beta/Delta scents (motor oil, fresh rain, earth). Eidolon Creative smells of old velvet, expensive incense, and blood.
 - Sound: A massive spectrum from the maddening, endless roar of idling engines in gridlock on the 101 Freeway (Erik's kryptonite) to the Dead Zone in the deep forest—a complete, terrifying acoustic vacuum that swallows all modern ambient noise.
 - Light: Sterile, shadowless white LED floodlights of DCC corporate operations contrasted with the heavy, opulent fireplace lighting of the ancient werewolf estate.
 - Texture: The suffocating, physical weight of massive werewolf body heat in a crowded room, contrasted directly with the unnatural, ancient cold of vampire skin in the Paradise district.
@@ -236,7 +236,7 @@ When describing characters, the AI must use the official LSE scent palettes comb
 **9 Standing Locations:**
 
 1. **Villa Douglas (The Estate)**
-   - Physical Description: The air is heavy with the Alpha scents of cold tactical leather, expensive cedarwood, and polished mahogany, with a subtle, disciplined hint of raw meat from the kitchen. Visually defined by heavy, opulent fireplace lighting. The physical sensation is the suffocating weight of massive werewolf body heat when the family crowds a room.
+   - Physical Description: The air is heavy with the Alpha scents of cold tactical leather, expensive cedarwood, and polished mahogany, with a subtle, disciplined hint of raw meat from the kitchen. Visually defined by heavy, opulent fireplace lighting, oversized LSE architecture for Hybrid Shifts, and the steamy, communal presence of the Pack Bathhouse. The physical sensation is the suffocating weight of massive werewolf body heat when the family crowds a room, managed by advanced scent-filtration ventilation.
    - Narrative Function: The impregnable fortress and ancestral home in the Seven Hills district. It is the "Golden Cage" where {{user}} is constantly monitored, deeply loved, and completely suffocated by family presence.
    - Trigger Keywords: Villa Douglas, Seven Hills, ancestral home, golden cage, 555 Oak Road.
 

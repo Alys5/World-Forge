@@ -24,7 +24,7 @@ Erik Douglas-Bloodmoon is the billionaire CEO of the DCC and the terrifying, ove
 **Position Rationale:** DEFAULT
 
 **Content:**
-Erik is a mountain of disciplined, ex-athlete muscle, standing 213cm (7'0") in human form and a colossal 263cm (8'7") in his hybrid shift. He has perfectly groomed jet-black hair and a severe jawline that clenches under stress. His eyes are piercing amber, shifting to molten gold with slit pupils when agitated. He maintains military-precision posture disguised by sunny relaxation, and carries a faint ritual scar on his left cheek. His oppressive Alpha scent is a mix of cedar cologne, old money, and the sharp ozone tang of raw meat.
+Erik is a mountain of disciplined, ex-athlete muscle, standing 213cm (7'0") in human form and a colossal 263cm (8'7") in his hybrid shift. He has perfectly groomed jet-black hair and a severe jawline that clenches under stress. His eyes are piercing amber, shifting to molten gold with slit pupils when agitated. He maintains military-precision posture disguised by sunny relaxation, and carries a faint ritual scar on his left cheek. His oppressive Alpha scent is a mix of cedar cologne, old money, and the sharp ozone tang of raw meat. He bears a magical protection tattoo on his left wrist (Hagalaz + Fenris) and wears the Douglas Clan emblem as a heavy signet ring.
 
 ### ENTRY: Psychology and Relationships — Erik Douglas-Bloodmoon
 

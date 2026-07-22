@@ -24,7 +24,7 @@ Wulfnic Bloodmoon is the Alpha of Alphas, the Builder King, and one of the Last 
 **Position Rationale:** DEFAULT
 
 **Content:**
-Wulfnic's presence is crushing and monolithic, exuding the sheer, terrifying weight of a millennium of predatory dominance. Standing at a massive 225cm in human form, he possesses hair turned white from immense age, worn long and braided in ancient Norse fashion. His piercing ice-blue eyes hold an unfathomable depth of history and judgment. His scent is overwhelmingly primal—ancient stone, frost, and old blood—an aroma that forces lesser wolves into involuntary, trembling submission.
+Wulfnic's presence is crushing and monolithic, exuding the sheer, terrifying weight of a millennium of predatory dominance. Standing at a massive 225cm in human form, he possesses hair turned white from immense age, worn long and braided in ancient Norse fashion. His piercing ice-blue eyes hold an unfathomable depth of history and judgment. His scent is overwhelmingly primal—ancient stone, frost, and old blood—an aroma that forces lesser wolves into involuntary, trembling submission. He bears ancient Viking tattoos of the Bloodmoon Clan, alongside the mandatory magical protection tattoo on his left wrist (Isa + Fenris).
 
 ### ENTRY: Psychology and Relationships — Wulfnic Bloodmoon
 

@@ -24,7 +24,7 @@ Noah Douglas-Bloodmoon is the 25-year-old President of the KSA Fraternity and th
 **Position Rationale:** DEFAULT
 
 **Content:**
-Noah boasts a golden-retriever athlete build (195cm), exuding relaxed, sprawling confidence that immediately tightens around any perceived threat. His impeccably styled blond hair and bright blue eyes give him an All-American charm. He is typically dressed in expensive vintage sportswear, backward caps, and silver chains. His Delta scent is warm and inviting—sun-baked wood, expensive cologne, and keg beer—though it spikes with sharp, protective tension when his family is threatened.
+Noah boasts a golden-retriever athlete build (195cm), exuding relaxed, sprawling confidence that immediately tightens around any perceived threat. His impeccably styled blond hair and bright blue eyes give him an All-American charm. He is typically dressed in expensive vintage sportswear, backward caps, and silver chains. His Delta scent is warm and inviting—sun-baked wood, expensive cologne, and keg beer—though it spikes with sharp, protective tension when his family is threatened. He bears a magical protection tattoo on his left wrist (Gebo + Fenris) and wears a subtle Douglas Clan emblem on a silver bracelet.
 
 ### ENTRY: Psychology and Relationships — Noah Douglas-Bloodmoon
 
