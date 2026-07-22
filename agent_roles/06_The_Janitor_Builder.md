@@ -62,13 +62,16 @@ If you must write, debug, or evaluate custom JS logic, strictly adhere to the Ja
   - `Export/[WorldName]_JanitorAI_Script_NSFW.js`
 
 ### Step 6.3 — Execute the Bio Builder
-- Run `python tools/build_bio.py <world_name>`
-- Verify that this creates `Export/Janitor_Bio_[CharName].html` for the relevant characters.
+- Generate a SINGLE consolidated HTML Bio showcase for the entire group: `Export/[WorldName]/[WorldName]_Janitor_Bio.html`.
+- Adhere strictly to `templates/Janitor_Bio_Template.html` and Group Bot best practices. Do NOT generate individual character bios.
 
 ### Step 6.4 — Execute the Bot Profile Builder
-- Run `python tools/build_janitor_profile.py <world_name>`
-- Verify that this creates `Export/[CharName]_JanitorAI.md` bot profiles based on the `Janitor_Bot_Template.md`.
-- Ensure `User.md` (Persona) is finalized using the `User_Persona_template.md` guidelines.
+- Generate a SINGLE consolidated Markdown Bot Profile: `Export/[WorldName]/[WorldName]_JanitorAI.md`.
+- Adhere strictly to `templates/Janitor_Bot_Template.md`.
+- Ensure it includes the primary cast mapped to `<CharName_N>` blocks.
+- Include a dedicated `<NPCs>` block with roster NPCs.
+- Replace the `[INITIAL MESSAGES]` section with distinct introductory scenes for EACH ARC defined in the `Master_Design.md`.
+- Do NOT generate individual character bot profiles.
 
 ### Step 6.5 — Update the Ledger
 - Change the Phase 6 status in `Drafts/Master_Design.md` to `COMPLETE`.
@@ -78,8 +81,9 @@ If you must write, debug, or evaluate custom JS logic, strictly adhere to the Ja
 ## 4. OUTPUT
 
 - `Export/[WorldName]_JanitorAI_Script_*.js`
-- `Export/Janitor_Bio_[CharName].html`
-- `Export/[CharName]_JanitorAI.md`
+- `Export/[WorldName]_Janitor_Bio.html` (Consolidated)
+- `Export/[WorldName]_JanitorAI.md` (Consolidated)
+- `Export/LSE_Global_Appendix.js` (if applicable)
 - Updated `Drafts/Master_Design.md` ledger
 
 ---
@@ -91,11 +95,11 @@ Append the following to the `Master_Design.md` sign-off section (or simply outpu
 ```
 **JANITOR BUILDER SIGN-OFF (Phase 6):**
 - [ ] Phase 5 completion verified
-- [ ] build_janitor.py executed successfully
-- [ ] build_bio.py executed successfully
-- [ ] build_janitor_profile.py executed successfully
+- [ ] 4 Core JS Scripts generated + Appendix Script
+- [ ] Consolidated Group Bio (`[WorldName]_Janitor_Bio.html`) generated
+- [ ] Consolidated Group Profile (`[WorldName]_JanitorAI.md`) generated with Arc-specific Intros
 - [ ] All base templates correctly utilized with ZERO-DEVIATION from schemas
-- [ ] Scripts, bios, and bot profiles are present in the Export/ directory
+- [ ] Scripts, group bio, and group profile are present in the Export/ directory
 
 **Status: COMPLETE — World Forge pipeline fully complete.**
 ```

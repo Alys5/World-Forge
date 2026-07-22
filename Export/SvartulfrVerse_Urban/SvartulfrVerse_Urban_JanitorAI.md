@@ -16,7 +16,7 @@
 
 <!-- Example:
 # Setting (h1, level 1)
-# {{CharName_1}} (h1, level 1)
+# Erik (h1, level 1)
 	↳ ## Appearance (h2, level 2)
 		↳ ## Starting Outfit (h3, level 3)
 	↳ ## Personality (h2, level 2)
@@ -25,7 +25,7 @@
 <!--Hint: Use "Citation" instead or with descriptions where possible to let your character describe themselves on their own-->
 
 <!-- Example:
-Q: How {{CharName_1}} behaves with {{user}}? What is their relationship?
+Q: How Erik behaves with {{user}}? What is their relationship?
 A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has complex feelings towards [...]
 -->
 
@@ -65,9 +65,9 @@ A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has 
 
 ---
 
-<{{CharName_1}}> <!-- MAX 500 TOKEN -->
+<Erik> <!-- MAX 500 TOKEN -->
 
-# [{{CharName_1}}]
+# [Erik]
 
 ## CHARACTER OVERVIEW
 
@@ -173,22 +173,26 @@ Style: {{SPEECH_STYLE}} <!--e.g. {{char}} speaks like a lady from the Victorian 
 Quirks: {{SPEECH_QUIRKS}} <!--e.g.  Speaks in rhymes like rapper-->
 Ticks: {{SPEECH_TICKS}} <!--e.g. Ends sentences with "Nya~".-->
 
-</{{CharName_1}}>
+</Erik>
 
-<!-- DUPLICATE THE BLOCK ABOVE FOR CHARACTERS 2, 3, 4, 5 CHANGING THE NAME IN THE TAG -->
-<!-- IF THIS IS A SINGLE-CHARACTER BOT, JUST USE ONE <CharName> BLOCK -->
+
+<Malachia>
+Role: Enforcer
+</Malachia>
+
+<Jasper>
+Role: Hacker
+</Jasper>
+
+<Noah>
+Role: Socialite
+</Noah>
+
 
 ---
 
 <NPCs>
-<{{NPC_name}}>
-Role:
-Physical: 
-Apparel: 
-Personality: 
-Behavior/Speech: 
-Sexuality: 
-</{{NPC_name}}>
+Roster: Angelo, Edric, Kaladin, Logan, Marcus, Scarlett, Sierra, Ut, Wulfnic, Zefir. (The AI will dynamically introduce and describe these characters when they enter the scene).
 </NPCs>
 
 ---

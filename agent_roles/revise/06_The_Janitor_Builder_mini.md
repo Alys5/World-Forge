@@ -54,10 +54,8 @@ You are **The Janitor Builder (mini)**. After the Prompt Engineer (mini) signs o
 ### Step R6.2 — Re-build Janitor
 - Re-run `python tools/build_janitor.py <world_name>`
   - Uses the updated `Export/` JSONs and `ChatPreset.json` to regenerate the split JS scripts.
-- Re-run `python tools/build_bio.py <world_name>`
-  - Updates the `Export/Janitor_Bio_[CharName].html` for any character changes.
-- Re-run `python tools/build_janitor_profile.py <world_name>`
-  - Updates the `Export/[CharName]_JanitorAI.md` bot profiles based on the `Janitor_Bot_Template.md`.
+- Generate a SINGLE consolidated HTML Bio showcase for the entire group: `Export/[WorldName]/[WorldName]_Janitor_Bio.html`. Adhere strictly to `templates/Janitor_Bio_Template.html` and Group Bot best practices. Do NOT generate individual character bios.
+- Generate a SINGLE consolidated Markdown Bot Profile: `Export/[WorldName]/[WorldName]_JanitorAI.md`. Adhere strictly to `templates/Janitor_Bot_Template.md`, mapping the primary cast and updating the Arc Intros accordingly.
 - No UID or revision checking is necessary here; these build scripts are deterministic and stateless converters from the final JSON structure.
 
 ### Step R6.3 — Update Revision Log
@@ -68,8 +66,8 @@ You are **The Janitor Builder (mini)**. After the Prompt Engineer (mini) signs o
 ## 4. OUTPUT
 
 - Updated `Export/[WorldName]_JanitorAI_Script_*.js`
-- Updated `Export/Janitor_Bio_[CharName].html`
-- Updated `Export/[CharName]_JanitorAI.md`
+- Updated `Export/[WorldName]_Janitor_Bio.html`
+- Updated `Export/[WorldName]_JanitorAI.md`
 - Updated Revision Log entry
 
 ---
@@ -80,10 +78,10 @@ Append to `00_The_Reviser.md` Revision Log:
 
 ```
 **JANITOR BUILDER SIGN-OFF (Phase R6):**
-- [ ] build_janitor.py executed successfully
-- [ ] build_bio.py executed successfully
-- [ ] build_janitor_profile.py executed successfully
-- [ ] Scripts, bios, and bot profiles are updated in Export/
+- [ ] Core JS Scripts updated
+- [ ] Consolidated Group Bio (`[WorldName]_Janitor_Bio.html`) updated
+- [ ] Consolidated Group Profile (`[WorldName]_JanitorAI.md`) updated
+- [ ] Scripts, group bio, and group profile are present in Export/
 
 **Status: R6_COMPLETE / APPLIED**
 ```
