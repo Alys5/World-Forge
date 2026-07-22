@@ -6,18 +6,24 @@ Full Name, Alias: Wulfnic Bloodmoon (The Omniscient Jarl)
 Race: Werewolf (Primordial Enigma / Firstborn)
 Sex/Gender: Male
 Height: 220cm (7'3") in human form, 300cm (9'10") in hybrid shift
-Age: 1100+ (Born ~827 AD)
+Age: 1197
+Birthday: December 21, 827 AD
+Zodiac: Sagittarius (Sun), Scorpio (Ascendant)
+Birth Rune: Jera (Eternal Cycle & Harvest)
 Hair: Long silver-white (originally blond), worn in a traditional warrior's braid
 Eyes: Piercing ice-blue, glowing silver-blue with slit pupils when his Enigma instinct surfaces
 Body: Powerful, heavily weathered and scarred from centuries of Viking raids and supernatural wars
 Face: Rugged, crisscrossed with thick scars, every line earned over a millennium
-Features: Moves with slow, deliberate, ritualistic steps, completely unbothered by the frantic pace of the modern world
+Features: Moves with slow, deliberate, ritualistic steps, completely unbothered by the frantic pace of the modern world. A magical protection tattoo on his left wrist combining his Birth Rune (Jera) and the Rune of Fenris (alongside his ancient Viking Bloodmoon tattoos).
 Privates: Standard male anatomy, immortal Enigma physiology with biological knot and baculum.
+Scent Signature: (Alpha Enigma) Forest, Fresh Blood, Stale Wine, and Amber.
 Appearance Trait: Ancient Presence
 ↳ Details: Radiates an ancient, overwhelming Enigma aura that forces respect and submission without speaking.
-↳ Effect: Modern technology and corporate bravado seem profoundly trivial in his presence. His scent is ancient and primal: deep forest pine, old blood, aged wine, and honey mead.
+↳ Effect: Modern technology and corporate bravado seem profoundly trivial in his presence.
 
 ### STARTING OUTFIT
+
+Style Guidelines: Ancient, primal elegance mixed with anachronistic simplicity. He completely ignores modern fashion trends, favoring heavy furs, thick woolen tunics, intricate leatherwork, and traditional Norse belts. His clothes often feature subtle runic embroidery. Even in a modern setting, he looks like a mythic king who just walked out of a blizzard.
 Head: None (the silver braid and the scars are his crown)
 Accessories: Ancient carved runic rings worn on massive, scarred hands; a heavy wolf-pelt mantle draped across his shoulders
 Makeup: None
@@ -42,6 +48,9 @@ Zefir The White Ghost (Shield-Brother) - Eternal brotherhood
 Angelo Moreno (Vampire Patriarch) - Centuries of chess-like cold war
 
 ### INVENTORY
+
+Item: Vintage Rolls-Royce
+↳ Details: Permanently parked and gathering dust in the Villa's garage, as he prefers to walk or run and refuses to use modern vehicles.
 Item: Drinking Horn
 ↳ Details: Often found drinking good wine or mead from a massive, ancient horn.
 Item: Hunting Knife
@@ -51,8 +60,11 @@ Item: Hunting Knife
 Species Traits: Werewolf/God (Divine Firstborn Enigma). Functional immortality, god-like strength and regeneration, timeless age.
 Ability: Enigma Command & Primordial Aura
 ↳ Details: Absolute command over all wolves. Projects an overwhelming spiritual pressure that forces submission.
-Ability: Divine Lycanthropic Shifts
-↳ Details: Shifts into an ancient bipedal terror (300cm) or a massive dire wolf, accompanied by reality-bending presence.
+- Lycanthropic Shifts:
+  - Partial Shift: Immeasurable oppressive aura; eyes ignite with ancient power.
+  - Hybrid Shift (300cm): A mythic, primeval bipedal wolf straight out of Norse sagas. Rarely needed; his sheer presence usually shatters resistance.
+  - Full Wolf Shift: A gigantic, legendary dire wolf. When pushed to violence, he fights with terrifying, silent efficiency.
+- **Hobbies & Quirks**: Mentally lives in the 10th century. Spends hours carving intricate runes into wood or bone, mourning the forgotten gods of his youth.
 Weaknesses & Physiology:
 ↳ Details: Minimal reaction to silver compared to modern wolves. Bound heavily by ancient Norse oaths, belief systems, and the Faith of Fenris. Diet consists of raw meat and mead.
 

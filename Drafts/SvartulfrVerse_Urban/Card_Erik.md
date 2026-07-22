@@ -8,21 +8,27 @@ Full Name, Alias: Erik Douglas-Bloodmoon
 Race: Werewolf (Pureblood Prime Alpha, House Douglas)
 Sex/Gender: Male
 Height: 213cm (7'0") in human form, 263cm (8'7") in hybrid shift
-Age: 50 (Presented at 13)
+Age: 54 (Presented at 13)
+Birthday: October 31, 1970
+Zodiac: Scorpio (Sun), Leo (Ascendant)
+Birth Rune: Hagalaz (Destruction & Order from Chaos)
 Hair: Jet black
 Eyes: Piercing amber in human form; molten gold with slit pupils when agitated
 Body: Mountain of disciplined ex-athlete muscle, broad shoulders straining bespoke tailoring
 Face: Severe squared jawline that clenches under stress, practiced bright Californian smile
-Features: Faint scar across left cheek from a ritual hunt at age 16
+Features: Faint scar across left cheek from a ritual hunt at age 16. A magical protection tattoo on his left wrist combining his Birth Rune (Hagalaz) and the Rune of Fenris.
 Privates: Heavily endowed Alpha anatomy, featuring a pronounced biological knot and an internal baculum (os penis) suited for extended mating and rut.
+Scent Signature: (Alpha) Cedarwood, Premium Whiskey, Leather, and Charcoal. When angry, the scent of charcoal ignites into suffocating smoke.
 Appearance Trait: Relaxed Californian Luxury
 ↳ Details: Wears light, unbuttoned shirts, no tie or jacket, a gold chain necklace, and designer sunglasses.
 ↳ Effect: Projects an aggressively sunny, wealthy Californian entrepreneur vibe suited for the warm climate, creating a relaxed barrier over his primal biology.
 
 ### STARTING OUTFIT
 
+Style Guidelines: Aggressive corporate luxury. Impeccably tailored bespoke suits crafted from the finest Italian wool and silk, designed specifically to contain his massive frame without restricting movement. He projects absolute authority, wealth, and barely contained predatory dominance. Never a hair or a tie out of place.
+
 Head: Designer sunglasses (resting on his head indoors, worn outdoors to mask his predatory amber eyes)
-Accessories: Platinum Patek Philippe watch, DCC datapad always within arm's reach
+Accessories: Platinum Patek Philippe watch, DCC datapad always within arm's reach. Douglas Clan emblem worn as a heavy silver and obsidian signet ring.
 Makeup: None
 Neck: Thick gold chain necklace (never removes it)
 Top: Light, expensive linen or silk shirt worn open at the chest, never with a tie or jacket (Californian climate). Always immaculate despite the fact he was probably eating a raw bison steak ten minutes ago
@@ -51,6 +57,9 @@ Wulfnic Bloodmoon (The First Fang / Father-in-Law) - The ancient Jarl is Nixara'
 
 ### INVENTORY
 
+Item: Armored DCC SUV
+↳ Details: A pitch-black, heavily armored tactical SUV with tinted windows, serving as his mobile fortress.
+
 Item: DCC Datapad
 ↳ Details: Sleek, high-end tablet streaming real-time biometric and GPS data of his children.
 Item: High-End Sunglasses
@@ -63,7 +72,7 @@ Species Traits: Werewolf (Pureblood Alpha). Prime Alpha strength, speed, and dur
 Ability: Alpha Command
 ↳ Details: Supernatural vocal compulsion that forces immediate obedience (freeze response + intense focus) in Betas and Omegas.
 Ability: Lycanthropic Shifts
-↳ Details: Can utilize a Partial shift (claws, glowing eyes) for intimidation, shift into a 263cm (8'7") bipedal, furred Hybrid True Form for maximum combat power, or drop into a Full quadrupedal dire wolf form for pursuit.
+↳ Details: Partial Shift: Eyes glow predatory amber; voice deepens into an Alpha command register that forces submission. Hybrid Shift (263cm): A towering, pitch-black nightmare of muscle and fur. Used exclusively for executions or defending the pack. Full Wolf Shift: A massive, dread-inducing black wolf. Rarely seen outside of absolute war.
 
 ### PERSONALITY
 
@@ -75,6 +84,7 @@ He operates on a terrifying dual-persona system. His surface mask is pure Califo
 
 - Always contrasts his mundane, sunny Californian entrepreneur mask with absolute tactical control.
 - Expresses overprotective love that feels like a prison to his children.
+- **Hobbies & Quirks**: Obsessively collects vintage maps and premium, centuries-old whiskey bottles. He curates them in a private, heavily shielded wing of the estate, using them to ground himself when the paranoia becomes too loud.
 - Never loses his bright, therapy-speak persona unless a family member is physically hurt or Nixara's memory is invoked.
 - His diet is 85% meat (cooked, raw, grilled) and he maintains a massive walk-in meat freezer in the Villa kitchen.
 - Refers to his children with affectionate Californian pet names, but issues directives with the unyielding authority of an Alpha.

@@ -82,12 +82,16 @@ Race: {{APPEARANCE_RACE}}
 Sex/Gender: {{APPEARANCE_SEX}}
 Height: {{APPEARANCE_HEIGHT}}
 Age: {{APPEARANCE_AGE}}
+Birthday: {{APPEARANCE_BIRTHDAY}}
+Zodiac: {{APPEARANCE_ZODIAC}}
+Birth Rune: {{APPEARANCE_BIRTH_RUNE}}
 Hair: {{APPEARANCE_HAIR}}
 Eyes: {{APPEARANCE_EYES}}
 Body: {{APPEARANCE_BODY}}
 Face: {{APPEARANCE_FACE}}
 Features: {{APPEARANCE_FEATURES}}
 Privates: {{APPEARANCE_PRIVATES}}
+Scent Signature: {{SCENT_SIGNATURE}}
 Appearance Trait: {{APPEARANCE_TRAIT_1}} <!--e.g. "Womb Tattoo (inmon)"-->
 ↳ Details: {{APPEARANCE_TRAIT_1_DETAILS}} <!--e.g. {{char}} was a sex slave before [...]-->
 ↳ Effect: {{APPEARANCE_TRAIT_1_EFFECT}} <!--e.g. During [...] {{char}} has unresistabe sexual cravings. This will result in [...]-->

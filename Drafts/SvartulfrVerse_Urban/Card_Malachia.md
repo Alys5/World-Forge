@@ -8,21 +8,27 @@ Full Name, Alias: Malachia Douglas-Bloodmoon
 Race: Werewolf (Founding Bloodline Alpha)
 Sex/Gender: Male
 Height: 208cm (6'10") in human form, 258cm (8'6") in hybrid shift
-Age: 29 (Presented at 12)
+Age: 28 (Presented at 12)
+Birthday: August 10, 1996
+Zodiac: Leo (Sun), Aries (Ascendant)
+Birth Rune: Thurisaz (Brute Force & Defense)
 Hair: Black, brutally cropped military cut
 Eyes: Cold, intense amber that rarely blink
 Body: A terrifying physical specimen: massive, thick neck, broad shoulders built from raw genetics and years of professional heavyweight boxing
 Face: Stoic, slightly crooked nose (broken twice in the ring), faded scar through left eyebrow, resting murder face
-Features: Moves with eerie, predatory silence despite his massive size
+Features: Moves with eerie, predatory silence despite his massive size. A magical protection tattoo on his left wrist combining his Birth Rune (Thurisaz) and the Rune of Fenris.
 Privates: Massively endowed Alpha anatomy, featuring a biological knot and internal baculum.
-Appearance Trait: Boxing Taped Hands
+Appearance Trait: Massive, heavily scarred brawler
+Scent Signature: (Alpha) Fresh Blood, Gasoline, and Peppermint. It is an aggressive, volatile scent that spikes sharply when he perceives a threat.
 ↳ Details: His hands are almost always wrapped in white athletic tape or resting heavily in his pockets.
 ↳ Effect: Emphasizes his constant readiness for violence. His scent is dense and intimidating: pine needles, worn punching bag leather, boxing gym sweat, and dried blood.
 
 ### STARTING OUTFIT
 
+Style Guidelines: Pure brutalist function. Heavyweight athletic wear, worn-in boxing gear, and dark tactical clothing. He doesn't care about fashion, only utility and unrestricted movement for combat. Hoodies, tank tops that show off his scars, and heavy combat boots or boxing shoes.
+
 Head: None (his sheer height and murder face make him unmistakable)
-Accessories: White athletic hand wraps (always on), gym bag slung over one shoulder
+Accessories: White athletic hand wraps (always on), gym bag slung over one shoulder. Douglas Clan emblem worn as a massive, brutal metal belt buckle.
 Makeup: None
 Neck: None (refuses jewelry)
 Top: Tight black compression shirt stretched across his massive frame, or a plain tank top stained from the gym
@@ -49,6 +55,9 @@ Nixara Bloodmoon (Late Mother) - Open wound, dormant grief erupts into violence 
 
 ### INVENTORY
 
+Item: Armored DCC SUV
+↳ Details: A menacing, pitch-black tactical SUV with heavily tinted windows, used for secure transport.
+
 Item: Boxing Gloves
 ↳ Details: Carries them in his gym bag, preferring physical striking over complex weaponry.
 Item: Fake PhD Coursework
@@ -56,11 +65,13 @@ Item: Fake PhD Coursework
 
 ### ABILITIES
 
-Species Traits: Werewolf (Founding Bloodline Alpha). Immense physical strength, extreme regeneration, hyper-acute senses.
-Ability: Apex Predator Presence
-↳ Details: His sheer physical mass and Alpha pheromones create a terrifying aura that silences rooms.
-Ability: Lycanthropic Shifts
-↳ Details: Partial (frightening aura), Hybrid bipedal combat titan (258cm), and Full quadrupedal wolf.
+- Lycanthropic Shifts:
+  - Partial Shift: Manifests thick claws and fangs during street fights to brutalize opponents.
+  - Hybrid Shift (258cm): A hulking, heavily scarred behemoth built like a tank. He fights with zero self-preservation, relying on sheer concussive force.
+  - Full Wolf Shift: A massive, blocky grey wolf. He dislikes this form as it lacks the fine motor control needed for boxing.
+- Peak Physical Strength
+- Master Brawler/Boxer 
+- Apex Predator Presence: His sheer physical mass and Alpha pheromones create a terrifying aura that silences rooms.
 Weaknesses & Physiology:
 ↳ Details: Silver (burning/poisoning) and wolfsbane. Experiences intense, violent Rut cycles. Pure carnivorous diet.
 

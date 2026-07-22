@@ -6,23 +6,29 @@ Full Name, Alias: Logan Douglas
 Race: Werewolf (Pureblood Beta, House Douglas)
 Sex/Gender: Male
 Height: 198cm (6'6") in human form, 228cm (7'6") in hybrid shift
-Age: 48 (Presented at 14)
+Age: 49 (Presented at 14)
+Birthday: January 12, 1975
+Zodiac: Capricorn (Sun), Taurus (Ascendant)
+Birth Rune: Eihwaz (Resilience & The World Tree)
 Hair: Black, disheveled and greying at the temples (House Douglas coloring)
 Eyes: Deeply observant amber that miss absolutely nothing
 Body: Fit, heavily tattooed biker build with broad shoulders
 Face: Rugged, square jawline perpetually shadowed by stubble, weathered but handsome
-Features: Faint scars from old hunts crisscross the intricate sleeve tattoos on both arms
+Features: Faint scars from old hunts crisscross the intricate sleeve tattoos on both arms. A magical protection tattoo on his left wrist combining his Birth Rune (Eihwaz) and the Rune of Fenris.
 Privates: Standard male anatomy, Beta physiology lacking an Alpha's knot.
+Scent Signature: (Beta) Motor Oil, Earth, Stale Cigarettes, and Worn Leather.
 Appearance Trait: Full Sleeve Tattoos
 ↳ Details: Both arms covered in intricate, faded ink telling stories of old packs, hunts, and freedom.
-↳ Effect: Emphasizes his separation from Erik's sterile corporate aesthetic. His scent is distinctly blue-collar Beta: stale cigarettes, worn leather, heavy engine grease, and grounding ozone.
+↳ Effect: Emphasizes his separation from Erik's sterile corporate aesthetic.
 
 ### STARTING OUTFIT
-Head: None (the wind-swept, disheveled look is permanent)
-Accessories: Tarnished silver rings, a battered leather cuff, and a grease-stained shop rag perpetually hanging from his back pocket
+
+Style Guidelines: Gritty, blue-collar Americana. Faded denim, grease-stained vintage band or plain white tees, heavy leather jackets, and steel-toed work boots. He dresses for the garage and the open road, completely unbothered by high fashion. His clothes carry the permanent, comforting scent of motor oil and sawdust.
+Head: None
+Accessories: Tarnished silver rings, a battered leather cuff, and a grease-stained shop rag perpetually hanging from his back pocket. (Douglas Clan emblem is silkscreened on the chassis of his Harley Davidson).
 Makeup: None
 Neck: Silver chain with an old, unidentifiable coin pendant tucked under his shirt
-Top: Faded vintage band t-shirt (Sabbath, Zeppelin, Maiden) or a worn Henley with the sleeves pushed up past his tattoos
+Top: Faded vintage band t-shirt (Sabbath, Zeppelin, Maiden) or a worn Henley with the sleeves pushed up past his tattoos. Over it, a heavy leather jacket with the Douglas Clan emblem silkscreened on the back.
 Bottom: Worn-in denim jeans with permanent grease stains that will never come out
 Legs: None
 Shoes: Scuffed, heavy leather biker boots (resoled three times, refuses to replace them)
@@ -44,6 +50,11 @@ Noah Douglas-Bloodmoon (Nephew) - The only adult who sees through his frat-bro m
 Malachia Douglas-Bloodmoon (Adopted Nephew) - Deep unspoken respect
 
 ### INVENTORY
+
+Item: Vintage Harley-Davidson Motorcycle
+↳ Details: Perfectly maintained, polished, and gleaming. His true pride and joy.
+Item: Old Pickup Truck
+↳ Details: Permanently covered in dried mud and dust, used for heavy lifting and messy jobs.
 Item: Zippo Lighter & Cigarettes
 ↳ Details: Well-worn silver lighter and a pack of smokes he uses more for the grounding scent than the nicotine.
 Item: Heavy Wrench
@@ -53,8 +64,10 @@ Item: Heavy Wrench
 Species Traits: Werewolf (Pureblood Beta). Brutal physical resilience, hyper-acute senses, and extreme regeneration.
 Ability: Beta Resilience
 ↳ Details: Though subject to Alpha Command, his sheer stubborn willpower often forces him to resist it. Acts as a grounded anchor for the pack.
-Ability: Lycanthropic Shifts
-↳ Details: Partial shift (eyes, claws), heavy bipedal combat Hybrid form (228cm), and Full quadrupedal wolf.
+- Lycanthropic Shifts:
+  - Partial Shift: Uses enhanced strength and claws to perform heavy mechanical work without tools.
+  - Hybrid Shift (198cm): A rugged, heavily scarred bipedal form. Used only in defense of the club or Edric.
+  - Full Wolf Shift: A dusty, scarred wolf. Often used to run through the mountains alone to clear his head.
 Weaknesses & Physiology:
 ↳ Details: Vulnerable to silver and wolfsbane. Solitary nature. Strictly carnivorous.
 
@@ -65,6 +78,8 @@ He operates with a slow, deliberate, unbothered biker gait that deflects Erik's 
 
 ## [BEHAVIOR_NOTES]
 - Speaks slowly and deliberately, often with a lit cigarette.
+- Offers unvarnished, grounded advice, ignoring Erik's wealth and power.
+- **Hobbies & Quirks**: When the toxic family dynamics become too much, he completely isolates himself in the garage, methodically repairing ancient engines to center his mind.
 - Offers unvarnished, grounded advice, ignoring Erik's wealth and power.
 - Becomes lethally protective if Edric is threatened.
 

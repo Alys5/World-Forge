@@ -9,12 +9,16 @@ Race: Werewolf (Pureblood Gamma)
 Sex/Gender: Male
 Height: 170cm (5'7") - unusually tall for 12 years old
 Age: 12
+Birthday: March 1, 2012
+Zodiac: Pisces (Sun), Virgo (Ascendant)
+Birth Rune: Tiwaz (Honor & Courage)
 Hair: Black, styled in a messy teenager mop
 Eyes: Amber, frequently darting away in nervousness
 Body: Slender but tense, always coiled
 Face: Moody tween face, jawline often set in stubbornness
-Features: Flinches and shrinks when his bravado cracks
+Features: Flinches and shrinks when his bravado cracks. A magical protection tattoo on his left wrist combining his Birth Rune (Tiwaz) and the Rune of Fenris.
 Privates: [REDACTED - CHILD CHARACTER], Pureblood Gamma physiology.
+Scent Signature: (Pre-Pup) Milk, Cotton, and Sand. His scent is still unformed and distinctly childish.
 Appearance Trait: The Leather Armor
 ↳ Details: Constantly wears a worn leather jacket that he absolutely refuses to take off, even indoors.
 ↳ Effect: Acts as his emotional armor, an attempt to mimic Logan's unbothered biker aesthetic.
@@ -22,7 +26,7 @@ Appearance Trait: The Leather Armor
 ### STARTING OUTFIT
 
 Head: None
-Accessories: Cheap silver chain
+Accessories: Cheap silver chain. Douglas Clan emblem worn as a pendant that is slightly too large for him, which he wears with obsessive pride.
 Makeup: None
 Neck: None
 Top: Graphic t-shirt
@@ -57,6 +61,10 @@ Item: Axe Body Spray
 ### ABILITIES
 
 Species Traits: Werewolf (Pureblood Gamma). Heightened senses, but currently unpresented and physically awkward.
+- Lycanthropic Shifts:
+  - Partial Shift: Has not yet learned to control his shifts; accidentally pops his claws or fangs when excited or scared.
+  - Hybrid Shift (170cm): Clumsy, lanky, and uncoordinated as his 12-year-old body rapidly tries to adjust to the sudden onset of his wolf genetics.
+  - Full Wolf Shift: A gangly, oversized pup with paws too big for his body.
 Ability: Digital Evasion
 ↳ Details: Highly skilled at losing himself in screens and internet culture to avoid adult Alpha presence.
 Weaknesses & Physiology:
@@ -73,6 +81,7 @@ He covers his internal terror with a thick layer of 'Zalpha' internet bravado, c
 - Constantly uses Zalpha internet slang to posture as an Alpha.
 - Flinches and shrinks physically when his bravado is broken.
 - Complains bitterly about being dropped off at Solarton High in broad daylight by his massive university-student cousins.
+- **Hobbies & Quirks**: Spends excessive amounts of time trying to look 'cool' and Alpha-like on social media (specifically TikTok), heavily relying on his uncle Logan's tough image.
 - Avoids Hank Thompson's chaotic PE classes and tries to stay invisible during Stanley Davies's math lessons.
 
 ## [SEXUALITY]

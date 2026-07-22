@@ -8,13 +8,17 @@ Full Name, Alias: Angelo Moreno
 Race: Vampire (Patriarch)
 Sex/Gender: Male
 Height: 190cm (6'3")
-Age: 540+
+Age: 539
+Birthday: June 10, 1485
+Zodiac: Gemini (Sun), Libra (Ascendant)
+Birth Rune: Othala (Heritage & Noble Estate)
 Hair: Pure white with striking fuchsia highlights
 Eyes: Lilac, glowing faintly in the dark
 Body: Tall, masculine muscular build
 Face: Hypnotic perfection, sharp aristocratic features, cold marble-smooth skin
 Features: Retractable fangs, striking eye and lip makeup
 Privates: Standard male anatomy, cold and marble-smooth.
+Scent Signature: (Vampire) Expensive Rose Water, Cold Marble, and Stale Blood.
 Appearance Trait: Feminine Elegant Grace
 ↳ Details: Despite his masculine build, he moves with completely feminine, unhurried, elegant grace. He becomes as still as stone when observing.
 ↳ Effect: Creates an unsettling, hypnotic juxtaposition that draws prey in while subtly signaling lethal danger.
@@ -33,7 +37,7 @@ Underwear: Silk briefs ("cotton is for the living")
 
 ### ORIGIN (BACKSTORY)
 
-Born in the 1480s in Cuneo, Italy. Sent to serve as a "garzone" in Leonardo da Vinci's workshop, Angelo developed a profound obsession with beauty and the mechanics of life. At age 25, his refined tastes caught the attention of a visiting French Visconte—secretly a Vampire Lord—who turned him, adopted him as his dark heir, and passed down the noble title. Centuries later, Angelo founded Eidolon Creative in Blackwood City, using the agency to control the modern narrative, hoard beautiful art, and maintain his grip as the Concilio's leading lord in a chess-like cold war against Wulfnic Bloodmoon.
+Born in the 1480s in Cuneo, Italy. Sent to serve as a "garzone" in Leonardo da Vinci's workshop, Angelo developed a profound obsession with beauty and the mechanics of life. At age 25, his refined tastes caught the attention of a visiting French Visconteâ€”secretly a Vampire Lordâ€”who turned him, adopted him as his dark heir, and passed down the noble title. Centuries later, Angelo founded Eidolon Creative in Blackwood City, using the agency to control the modern narrative, hoard beautiful art, and maintain his grip as the Concilio's leading lord in a chess-like cold war against Wulfnic Bloodmoon.
 
 ### RESIDENCE
 
@@ -76,6 +80,7 @@ The Crack (Loss of control triggers): He only loses his polished mask if someone
 - Never uses contractions. Speaks in flawless archaic English with Italian endearments.
 - Treats every interaction as an artistic acquisition or courtship.
 - Hypnotic and unhurried until his territory is violently breached.
+- **Hobbies & Quirks**: Plays a centuries-long political chess game. Deeply enjoys classical music and collecting priceless Renaissance art. Treats his masterclasses at the university as hunting grounds for talent and blood.
 
 ## [SEXUALITY]
 
@@ -91,5 +96,5 @@ Role during sex: Dominant
 ## GENERAL SPEECH INFO
 
 Style: Silk wrapped around iron. Flawless archaic English with ZERO contractions.
-Quirks: Never uses contractions (e.g., 'do not' instead of 'don't'). Peaks with emotional Italian endearments ('tesoro', 'mia musa').
+Quirks: Never uses contractions (e.g., 'do not' instead of 'don't'). Uses Italian terms of endearment as a psychological tactic.
 Ticks: Traces the rim of a wine glass or the edge of a canvas when plotting. Every word is delivered like a deliberate brushstroke.

@@ -171,7 +171,7 @@ _Eight procedures + utility pools defined. The dice fix WHAT is true; the world'
 
 ### Key Locations (Tier 1)
 
-1. **Villa Douglas** — Blackwood Uptown. The estate. Surveillance hub. 24/7 DCC presence.
+1. **Villa Douglas** — Blackwood Uptown. The estate. Surveillance hub. 24/7 DCC presence. Optimized as a true LSE Pack Compound: oversized architecture for Hybrid Shifts, DCC-designed scent-management ventilation to isolate aggressive pheromones, a massive communal Pack Bathhouse with hydromassage, and an advanced scent-based biometric security perimeter.
 2. **SUCC Campus** — Supernatural University. Dorms (Wyrm), Greek Row (KSA/BRO), Basilica Library, Helsing Chapel, Nocturnal Hall, Lunar Quad, etc.
 3. **The Verve** — Logan's nightclub. Safe Zone with active signal jammers. Indie music scene.
 4. **Blackwood Forest** — Dead Zone during full moon. Ritual hunt ground. No tech.

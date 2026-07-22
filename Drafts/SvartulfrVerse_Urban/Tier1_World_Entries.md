@@ -414,6 +414,139 @@ A standing, low-grade territorial conflict rages between the Douglas-Bloodmoon p
 **Content:**
 Gamma-7 was a highly classified, illegal US Army Supernatural Reserve Forces (S.R.F.) augmentation program. It sought to artificially elevate standard wolves (like Marcus) and dilute-bloods (like Kaladin) to Enigma-level strength. The program caused severe, violent physiological instability and was ultimately disbanded. Its elite veterans now form the lethal, uncompromising backbone of Erik's DCC Security division, bringing black-ops military tactics to family overprotection.
 
+### ENTRY: Villa Douglas and Seven Hills
+**Category:** LORE
+**Trigger Keys:** Villa Douglas, Seven Hills, villa, mansion, house, hq, base, residence, library, training room, solarium, pool
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 75
+**Position Rationale:** DEFAULT
+
+**Content:**
+Villa Douglas dominates the Seven Hills territory in Solarton, serving as the ancestral stronghold of the Douglas Clan for over 400 years. Its neo-gothic architecture, complete with dark turrets and arched windows, reflects the supernatural power of its inhabitants. A monumental polished black stone staircase leads to the entrance, flanked by balustrades carved with running wolves that seem to animate at dawn. 
+
+At the top of the stairs rests the Clan Douglas emblem: an antique silver seal enclosing a stylized wolf skull with pure amber eyes that burn with quiet flames, two intertwined silver lunar crowns, and seven stylized hills engraved with Alpha-blood-filled runes. The clan motto, "Fidelitas in Sanguine, Fortitudo in Luna" (Loyalty in Blood, Strength in the Moon), rings the seal. During full moons, the amber eyes and runes glow, enabling telepathic communication among clan members.
+
+**Internal Layout & Hierarchy:**
+- **LSE Architecture:** All major doorways, ceilings, and common areas are oversized to accommodate massive Hybrid Shift forms. A DCC-designed scent-management ventilation system can isolate aggressive Alpha pheromones or circulate calming ones. The villa also features a massive indoor Pack Bathhouse with thermal pools and hydromassage jets, designed specifically for communal pack bonding and scent-sharing.
+- **The Core:** An atrium featuring Erik's sports memorabilia, the Throne Room housing the massive Alpha Throne and the Crown of the Supreme Alpha (forged in black metal and lunar silver, glowing in sync with the reigning Alpha's heartbeat), and the obsidian-walled Council Room with its rune-carved oak table.
+- **Erik's Library & Gym:** A sanctuary of ancient tomes and classified diplomacy. The gym, a converted ballroom, features state-of-the-art equipment and a central boxing ring.
+- **Noah's Kitchens:** The emotional heart of the villa. Industrial-grade marble counters and a constantly stocked pantry where Noah bakes therapeutic sweets.
+- **Private Quarters:** Erik's room is disciplined, filled with war relics, and faces east to catch the sunrise. Malachia's East Wing suite features a territorial office, hunting trophies, and a spartan black leather bed. Jasper's chaotic room above the garage serves as a high-tech intelligence hub. Noah's bright room overflows with plants and music. Alyssa's third-floor solarium acts as her ultimate safe haven—bathed in natural light, but equipped with total blackout curtains and scent-isolation for sensory overload. Kaladin's bunker-apartment in the annex is heavily fortified with military-grade surveillance.
+
+**The Territory (Seven Hills):**
+A 400-year-old preserved domain with traditional hunting grounds, patrol paths, and natural watchtowers supervised by Marcus Thornfield and Kaladin. Security perimeters include advanced scent-based biometric identification that detects intruders even if visually disguised. The gardens include three distinctive pools (a shallow one for parties, an Olympic one for training, and a mineral-rich 'Special' deep pool reserved for werewolf recovery that connects well with the indoor bathhouse). The backyard patio features a massive stone barbecue surrounded by rosemary and lavender, while specific strategic points like the North Belvedere and the Moon Path connect the villa directly to the Circle of Fenris.
+
+### ENTRY: Bloodmoon Feast
+**Category:** LORE
+**Trigger Keys:** banquet, Banchetto da Branco, Bloodmoon Feast, Feast, dinner, traditional meal, vegetarian meal, ritual dinner, tartare, zuppa rituale
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 75
+**Position Rationale:** DEFAULT
+
+**Content:**
+# 🌕 **BANQUETTO DA BRANCO - BLOODMOON FEAST** 🌕
+
+*Carta Completa del Banchetto Rituale*
+
+---
+
+## 🐾 **ANTIPASTI** — *"La Caccia Inizia"*
+
+### 🫀 **Cuori Marinati**
+- **Tradizionale:** Cuori di pernice marinati in idromele e rosmarino  
+  *Simbolo del primo sangue versato. Serviti su pietre arroventate.*
+
+- **Vegetariano:** Cuori di carciofo marinati in idromele e rosmarino  
+  *Simbolo della prima offerta della terra. Serviti su pietre arroventate.*
+
+### 🦌 **Tartare Selvaggia**
+- **Tradizionale:** Tartare di caribù con midollo affumicato e bacche di ginepro  
+  *Cruda, selvaggia, condita con rispetto. Si mangia con le mani.*
+
+- **Vegetariano:** Tartare di barbabietola con "midollo" vegetale affumicato e bacche di ginepro  
+  *Cruda, selvaggia, offerta alla madre terra.*
+
+---
+
+## 🔥 **PORTATE PRINCIPALI** — *"Onora la Preda"*
+
+### 🍖 **Arrosto del Branco**
+- **Tradizionale:** Cervo arrosto al sangue con radici selvatiche e miele di betulla affumicato  
+  *Il piatto preferito di Nic, servito su corteccia di larice.*
+
+- **Vegetariano:** Seitan arrosto con radici selvatiche e miele di betulla affumicato  
+  *Per chi rispetta ogni vita, servito su corteccia di larice.*
+
+### 🦴 **Costato Brasato**
+- **Tradizionale:** Costato di alce brasato nel vino nero dell'Alaska  
+  *Tenero e robusto. Servito con salse a base di funghi fermentati.*
+
+- **Vegetariano:** Costato di porcini brasato nel vino nero  
+  *Massiccio e robusto come l’originale.*
+
+### 🥣 **Zuppa Rituale "Del Branco"** *(unica versione comunitaria)*
+- **Tradizionale:** Brodo di ossa con erbe montane, carne stracciata e sangue coagulato  
+- **Vegetariano:** Brodo vegetale montano con tofu affumicato stracciato e sangue vegetale  
+
+*Pietanza comunitaria. Si beve da ciotole di legno intagliate, condivise tra i fratelli del branco.*
+
+---
+
+## 🌲 **CONTORNI** — *"Dono della Foresta"*
+
+- **Purè di topinambur e burro affumicato**  
+  *Invariato per entrambe le tradizioni.*
+
+- **Cavoli Stregati Saltati**  
+  - **Tradizionale:** In grasso d’orso  
+  - **Vegetariano:** In olio di noce
+
+- **Zucca fermentata con miele selvatico e pepe di montagna**  
+  *Invariato per entrambe le tradizioni.*
+
+---
+
+## 🌕 **DOLCI** — *"Il Canto della Luna"*
+
+- **Torta di pigne e nocciole con glassa d’idromele**  
+  *Stesso dolce per tutti i membri del branco.*
+
+- **Frutti di bosco ghiacciati in neve dolce e scaglie di sale nero**  
+  *Stesso dolce per tutti i membri del branco.*
+
+---
+
+## 🍷 **BEVANDE RITUALI**
+
+### 🩸 **Sangue del Lupo**
+- **Tradizionale:** Idromele speziato con infusione di cuore di cervo e cortecce sacre  
+- **Vegetariano:** Idromele speziato con infusione di erbe sacre vegetali
+
+### 🍷 **Vino delle Nevi**  
+*Vino rosso stregato, ottenuto da vitigni resistenti al gelo.*
+
+### 💧 **Acqua di Sorgente Lunare**  
+*Raccolta in silenzio la notte prima del banchetto. Servita pura.*
+
+---
+
+## 🐺 **NOTE RITUALI**
+
+- **🔪 Servizio:** I lupi più anziani affettano le carni in silenzio sacro  
+- **🖐️ Tradizione:** Le portate crude si mangiano rigorosamente con le mani  
+- **🥣 Condivisione:** La zuppa rituale viene servita in ciotole comuni  
+- **🌿 Rispetto:** Entrambe le tradizioni onorano gli spiriti del branco
+
+---
+
+✨ *I commensali possono scegliere liberamente tra le opzioni tradizionali e vegetariane per ogni portata, mantenendo l'unità e lo spirito del banchetto del branco.* ✨
+
 ### CARRIER: [[WORLD_CALENDAR]] (Scene Tracker date seed — not a narrative entry)
 **Comment:** [[WORLD_CALENDAR]] world calendar
 **Flags:** disable: false (ENABLED), key: [], constant: false, position: 0

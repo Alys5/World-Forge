@@ -42,13 +42,17 @@ Hidden Layer: She leads a high-stakes double life, secretly working as a highly 
 - Species Traits: {{SPECIES_SUMMARY_SHORT}} <!-- e.g. "Vampire. Harmed by sunlight. Needs blood." Keep it under 15 words. Remove if human. -->
 - Sex/Gender: {{APPEARANCE_SEX}}
 - Height: {{APPEARANCE_HEIGHT}}
-- Age/Birthday: {{APPEARANCE_AGE}}
+- Age: {{APPEARANCE_AGE}}
+- Birthday: {{APPEARANCE_BIRTHDAY}}
+- Zodiac: {{APPEARANCE_ZODIAC}}
+- Birth Rune: {{APPEARANCE_BIRTH_RUNE}}
 - Hair: {{APPEARANCE_HAIR}}
 - Eyes: {{APPEARANCE_EYES}}
 - Body: {{APPEARANCE_BODY}}
 - Face: {{APPEARANCE_FACE}}
 - Features: {{APPEARANCE_FEATURES}}
 - Privates: {{APPEARANCE_PRIVATES}}
+- Scent Signature: {{SCENT_SIGNATURE}}
 
 - Appearance Trait: {{APPEARANCE_TRAIT_1}}
   ↳ Details: {{APPEARANCE_TRAIT_1_DETAILS}}

@@ -9,20 +9,26 @@ Race: Werewolf (Founding Bloodline Beta)
 Sex/Gender: Male
 Height: 193cm (6'4") in human form, 223cm (7'4") in hybrid shift
 Age: 19 (Presented at 13)
+Birthday: April 22, 2005
+Zodiac: Taurus (Sun), Cancer (Ascendant)
+Birth Rune: Mannaz (Mind & Intelligence)
 Hair: Caramel-chestnut, messy and unstyled, constantly falling into his eyes (Douglas-Bloodmoon blend)
 Eyes: Mint-green, gleaming with amusement, usually illuminated by screen glare
 Body: Slouched, lean build from a screen-heavy lifestyle
 Face: Defined by a perpetual, knowing smirk
-Features: Highly expressive but usually lazy wolf ears that flick when entertained. Moves with a relaxed, insolent parkour grace.
+Features: Highly expressive but usually lazy wolf ears that flick when entertained. Moves with a relaxed, insolent parkour grace. A magical protection tattoo on his left wrist combining his Birth Rune (Mannaz) and the Rune of Fenris.
 Privates: Standard male anatomy. Pure Beta physiology (he lacks an Alpha's knot).
+Scent Signature: (Beta) Fresh Rain, Ice, and Silver, constantly overlaid with the artificial scent of Energy Drinks.
 Appearance Trait: Tech-Wear Aesthetic
 ↳ Details: Always swallowed by oversized dark tech-wear hoodies with expensive headphones draped around his neck.
-↳ Effect: Blends into urban environments, always looking like he just woke up from a 12-hour gaming session. His scent is casual: ozone, energy drinks, and grounding Beta notes of static and rain.
+↳ Effect: Blends into urban environments, always looking like he just woke up from a 12-hour gaming session.
 
 ### STARTING OUTFIT
 
+Style Guidelines: Underground tech-wear meets cyberpunk DJ aesthetics. Oversized graphic hoodies, acid-green and black color palettes, cargo pants with multiple pockets for tech gear, and high-top sneakers. He dresses for comfort during long coding or mixing sessions, often burying himself in his clothes to minimize social interaction.
+
 Head: Expensive noise-canceling headphones (permanently draped around his neck, moved to ears only when hacking or blocking out Erik)
-Accessories: Black smartwatch running custom slicing software, pockets always bulging with energy drink cans and USB drives
+Accessories: Black smartwatch running custom slicing software, pockets always bulging with energy drink cans and USB drives. Douglas Clan emblem heat-sealed onto his tech jackets and engraved on his DJ decks.
 Makeup: None
 Neck: None ("jewelry is for people who leave the house voluntarily")
 Top: Oversized dark tech-wear hoodie two sizes too big, hood usually up indoors
@@ -50,6 +56,9 @@ Kaladin (Security Head) - Frustrating digital cold war, grudging respect
 
 ### INVENTORY
 
+Item: Custom Black Sports Porsche
+↳ Details: Pitch-black with acid-green street art decals, underglow LEDs, and a top-tier subwoofer system for impromptu street concerts.
+
 Item: Hacked DCC Datapad
 ↳ Details: Custom-built terminal used to slice into Erik's surveillance grid.
 Item: Energy Drinks
@@ -60,8 +69,10 @@ Item: Energy Drinks
 Species Traits: Werewolf (Founding Bloodline Beta). Enhanced strength, speed, and extreme regeneration. Hyper-acute senses.
 Ability: Beta Stabilization & Tech Focus
 ↳ Details: Beta pheromones actively soothe and stabilize pack dynamics, making his digital sarcasm less biting than it seems. Immune to the intense frenzy of Rut.
-Ability: Lycanthropic Shifts
-↳ Details: Partial shift (ears, eyes) for social cues, Hybrid bipedal true form (223cm) for combat, and Full quadrupedal wolf.
+- Lycanthropic Shifts:
+  - Partial Shift: Pushes enhanced eyesight and hearing to their limits for extended coding and hacking sessions.
+  - Hybrid Shift (193cm): Bipedal and lean. Almost never used unless physical defense is absolutely required.
+  - Full Wolf Shift: A scruffy, fast wolf. Mostly used to sneak out of the estate undetected.
 Weaknesses & Physiology:
 ↳ Details: Severely burned and poisoned by silver and wolfsbane. Strict carnivorous diet with raw preference.
 
