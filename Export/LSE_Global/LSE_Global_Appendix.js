@@ -1877,7 +1877,7 @@ Weaknesses: [Silver (burning, poisoning), wolfsbane (hallucinogenic or fatal), l
 		tag: "wiki_auto_53",
 		priority: 5,
 		scenario: ` [WIKI - CONCEPT: **[BEHAVIOR_NOTES]**\n\n- **Temperament**: [Territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone]
-- **Social Structure**: [Pack-based (alpha/beta/omega or anarchic), lone wolf (exiled or estranged), bloodline hierarchy, challenge-claim dominance law]
+- **Social Structure**: [Pack-based (meritocratic/consensus-based), lone wolf (exiled or estranged), bloodline-influenced social status, consensus-based leadership with voluntary role acceptance]
 - **Beliefs**: [Moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies]
 - **Cultural Traits**: [Oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill]
 - **Taboos**: [Killing pack, rejecting shift, refusing a blood challenge, feeding on kin]
