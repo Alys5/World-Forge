@@ -12,7 +12,7 @@ _Phase 1 deliverable. Locked by the Refiner. This document is the single source 
 world_name: SvartulfrVerse_Urban
 world_mode: arc
 intimacy_in_scope: true
-current_phase: 2
+current_phase: 3
 status: IN_PROGRESS
 
 phases:
@@ -93,36 +93,36 @@ Scene Tracker seed: start month = 7 (August, 0-indexed), start year = Year 1 (20
 
 **Master Story Timeline (canonical fixed dates):**
 
-| Date | Event | Arc relevance |
-| ---- | ----- | ------------- |
-| August 28, 2024 | SUCC freshman move-in day; DCC full security deployment | Arc 1 entry |
-| September 2024 | First month at SUCC; surveillance sitcom; Verve debut | Arc 1 core |
-| October 25, 2024 | KSA Halloween party costume prep begins | Arc 2 entry |
-| October 31, 2024 | Halloween night at KSA; {{user}} disappears for six hours | Arc 2 apex |
-| November 1, 2024 | Post-Halloween; {{user}} wakes in The Verve VIP booth with 47 missed calls | Arc 2 exit / Arc 3 entry |
-| November 2024 | Velvet Trap semester; Angelo escalates; Eidolon Creative double life | Arc 3 core |
-| Late November 2024 | Thanksgiving break at Villa Douglas; Arc 3 exit | Arc 3 exit |
-| December 13, 2024 | Family convoy to Blackwood Dead Zone | Arc 4 entry |
-| December 15, 2024 | Luna Piena -- La Grande Caccia (the Great Hunt, full moon) | Arc 4 apex |
-| December 16, 2024 | Return to Villa Douglas; Erik arrives furious | Arc 4 exit / Arc 5 entry |
-| December 21, 2024 | Grande Ballo di Yule -- Winter Solstice Ball (Edric first public outing) | Arc 5 early phase |
-| December 31 to January 1 | Festa dei Giovani Lupi -- Young Wolves Rave (ages 17 to 28) | Arc 5 early phase |
-| January 1, 2025 | Pack Dispersal Window -- young wolves may request Wulfnic blessing | Arc 5 / standing mechanic |
-| January 2025 | Spring semester begins at SUCC | Arc 5 long winter |
-| February to March 2025 | Presentation pressure builds; Erik surveillance intensifies; Edric withdraws | Arc 5 slow burn |
-| Late March 2025 | Edric Presentation ceremony -- Bloodmoon calendar apex event | Arc 5 exit |
-| April 22, 2025 | {{user}} and Jasper 20th birthday (twins born April 22, 2005) | Post-Arc 5 / pre-Arc 6 |
-| May to June 2025 | SUCC spring finals; freshman year ends | Arc 6 threshold |
-| June 2025 | Last final exam submitted -- Arc 6 opens; summer begins | Arc 6 entry |
+| Date                     | Event                                                                        | Arc relevance             |
+| ------------------------ | ---------------------------------------------------------------------------- | ------------------------- |
+| August 28, 2024          | SUCC freshman move-in day; DCC full security deployment                      | Arc 1 entry               |
+| September 2024           | First month at SUCC; surveillance sitcom; Verve debut                        | Arc 1 core                |
+| October 25, 2024         | KSA Halloween party costume prep begins                                      | Arc 2 entry               |
+| October 31, 2024         | Halloween night at KSA; {{user}} disappears for six hours                    | Arc 2 apex                |
+| November 1, 2024         | Post-Halloween; {{user}} wakes in The Verve VIP booth with 47 missed calls   | Arc 2 exit / Arc 3 entry  |
+| November 2024            | Velvet Trap semester; Angelo escalates; Eidolon Creative double life         | Arc 3 core                |
+| Late November 2024       | Thanksgiving break at Villa Douglas; Arc 3 exit                              | Arc 3 exit                |
+| December 13, 2024        | Family convoy to Blackwood Dead Zone                                         | Arc 4 entry               |
+| December 15, 2024        | Luna Piena -- La Grande Caccia (the Great Hunt, full moon)                   | Arc 4 apex                |
+| December 16, 2024        | Return to Villa Douglas; Erik arrives furious                                | Arc 4 exit / Arc 5 entry  |
+| December 21, 2024        | Grande Ballo di Yule -- Winter Solstice Ball (Edric first public outing)     | Arc 5 early phase         |
+| December 31 to January 1 | Festa dei Giovani Lupi -- Young Wolves Rave (ages 17 to 28)                  | Arc 5 early phase         |
+| January 1, 2025          | Pack Dispersal Window -- young wolves may request Wulfnic blessing           | Arc 5 / standing mechanic |
+| January 2025             | Spring semester begins at SUCC                                               | Arc 5 long winter         |
+| February to March 2025   | Presentation pressure builds; Erik surveillance intensifies; Edric withdraws | Arc 5 slow burn           |
+| Late March 2025          | Edric Presentation ceremony -- Bloodmoon calendar apex event                 | Arc 5 exit                |
+| April 22, 2025           | {{user}} and Jasper 20th birthday (twins born April 22, 2005)                | Post-Arc 5 / pre-Arc 6    |
+| May to June 2025         | SUCC spring finals; freshman year ends                                       | Arc 6 threshold           |
+| June 2025                | Last final exam submitted -- Arc 6 opens; summer begins                      | Arc 6 entry               |
 
 **Pack Ceremonial Calendar (recurring annual dates):**
 
-| Recurring date | Event | Notes |
-| -------------- | ----- | ----- |
-| December full moon | La Grande Caccia -- the Great Hunt | Mandatory pack event; technology suppressed in Dead Zone |
-| December 21 | Grande Ballo di Yule -- Winter Solstice Ball | Full supernatural community; Il Concilio attends |
-| December 31 to January 1 | Festa dei Giovani Lupi -- Young Wolves Rave (ages 17 to 28) | No Erik; Kaladin drones prohibited by tradition |
-| January 1 | Pack Dispersal Window -- Wulfnic blessing available to young wolves | Next window in-story: January 1, 2026 |
+| Recurring date           | Event                                                               | Notes                                                    |
+| ------------------------ | ------------------------------------------------------------------- | -------------------------------------------------------- |
+| December full moon       | La Grande Caccia -- the Great Hunt                                  | Mandatory pack event; technology suppressed in Dead Zone |
+| December 21              | Grande Ballo di Yule -- Winter Solstice Ball                        | Full supernatural community; Il Concilio attends         |
+| December 31 to January 1 | Festa dei Giovani Lupi -- Young Wolves Rave (ages 17 to 28)         | No Erik; Kaladin drones prohibited by tradition          |
+| January 1                | Pack Dispersal Window -- Wulfnic blessing available to young wolves | Next window in-story: January 1, 2026                    |
 
 Note: At the Festa dei Giovani Lupi (December 31, 2024 to January 1, 2025), {{user}} and Jasper are 19. They turn 20 on April 22, 2025. Malachia (28), Noah (25), {{user}} (19 at time of Rave), and Jasper (19 at time of Rave) all qualify. Edric (12) does not -- he will attend his first Rave at 17.
 
@@ -331,6 +331,7 @@ The biological and social operating system governing werewolf packs. Enforces hi
 Supernatural vocal compulsion by Dominant Alpha. Forces immediate obedience in weaker ranks. Dominant Omegas are immune; biological response is to soothe instead. Trigger keywords: Alpha Command, compel, voice command, Dominant Alpha, obedience, compulsion, Alpha voice.
 
 ### [HEAT CYCLE AND RUT]
+
 3 to 10 day biological cycle. Pre-Heat: nesting compulsion, coherent decision-making intact. Active Heat: Omega loses rational consent to primal breeding instinct. Rut: Alpha male equivalent. Trigger keywords: Heat, Rut, cycle, nesting, pre-heat, biological cycle, breeding instinct, heat cycle.
 
 ### [LA GRANDE CACCIA -- THE GREAT HUNT, 5-YEAR CONTINENTAL CYCLE]
@@ -347,19 +348,20 @@ The LLM must treat this as the arc's political detonator. {{user}} does not know
 
 **2024 Caccia participation history (Douglas-Bloodmoon pack):**
 
-| Member | Age (2024) | Participations | Previous cycles | Narrative implication |
-| --- | --- | --- | --- | --- |
-| Malachia | 28 | Third | 2014 (age ~18), 2019 (age ~23) | Has lived this twice. Knows exactly what the Great Hunt is, what the forest does to wolves under that moon, what {{user}} will face. His silence throughout the Arc 1-3 lead-up is not ignorance -- it is deliberate concealment. The weight of what he chose not to say is one of the arc's buried charges. |
-| Noah | 25 | Second | 2019 (age ~20, first participation) | Has done this once. Old enough to know, young enough to still be rattled by the memory. His bravado about the Caccia is false familiarity. |
-| {{user}} | 19 | First | None (was 14 in 2019 -- below Young Adult threshold) | Walking in completely uninitiated. No preparation beyond fragments of lore. What happens to them on that full moon is witnessed by the entire supernatural community. |
-| Jasper | 19 | First | None (was 14 in 2019 -- below Young Adult threshold) | Same as {{user}}. His silence about his own ignorance is pride; he hacked every file on the Caccia and still does not understand what it means to live it. |
-| Erik | Above bracket | Does not participate | Alpha of Alphas' son; observes as authority, does not run | His absence from the forest while his youngest runs in it for the first time is the source of Arc 4's opening crack. He does not know his youngest is the first White Moon to run free in thirty years. |
+| Member   | Age (2024)    | Participations       | Previous cycles                                           | Narrative implication                                                                                                                                                                                                                                                                                        |
+| -------- | ------------- | -------------------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Malachia | 28            | Third                | 2014 (age ~18), 2019 (age ~23)                            | Has lived this twice. Knows exactly what the Great Hunt is, what the forest does to wolves under that moon, what {{user}} will face. His silence throughout the Arc 1-3 lead-up is not ignorance -- it is deliberate concealment. The weight of what he chose not to say is one of the arc's buried charges. |
+| Noah     | 25            | Second               | 2019 (age ~20, first participation)                       | Has done this once. Old enough to know, young enough to still be rattled by the memory. His bravado about the Caccia is false familiarity.                                                                                                                                                                   |
+| {{user}} | 19            | First                | None (was 14 in 2019 -- below Young Adult threshold)      | Walking in completely uninitiated. No preparation beyond fragments of lore. What happens to them on that full moon is witnessed by the entire supernatural community.                                                                                                                                        |
+| Jasper   | 19            | First                | None (was 14 in 2019 -- below Young Adult threshold)      | Same as {{user}}. His silence about his own ignorance is pride; he hacked every file on the Caccia and still does not understand what it means to live it.                                                                                                                                                   |
+| Erik     | Above bracket | Does not participate | Alpha of Alphas' son; observes as authority, does not run | His absence from the forest while his youngest runs in it for the first time is the source of Arc 4's opening crack. He does not know his youngest is the first White Moon to run free in thirty years.                                                                                                      |
 
 Trigger keywords: Grande Caccia, Great Hunt, five-year cycle, Mate Bond, full moon hunt, Blackwood convergence, Caccia-confirmed, Malachia silence, first Caccia, White Moon Hunt, Nixara 1994.
 
 ### [IL CALENDARIO SACRO -- THE SACRED CALENDAR OF FENRIS]
 
 The Faith of Fenris operates on lunar triggers, not solar dates. Key political mechanics active in-story:
+
 - **December Full Moon:** La Grande Caccia (5-year cycle) / Winter Hunt (annual). December 2024 is a cycle year.
 - **December New Moon:** Day of Chains. Complete silence, fasting, no technology. Precedes the Ballo.
 - **December First Crescent:** Grande Ballo di Yule -- continental debutante ball and **political marriage market**. House Heads contract betrothals publicly; marriages are biologically sealed at the July Bonding Moon. The most politically significant night of the pack year.
@@ -368,7 +370,7 @@ The Faith of Fenris operates on lunar triggers, not solar dates. Key political m
 - **January 1:** Pack Dispersal Window -- the morning after the Rave; young wolves may request Wulfnic's blessing to join another pack or found their own.
 - **March Oath Moon:** Official species-wide window for Coming of Age and The Call ceremonies.
 - **July Bonding Moon:** All political marriages contracted at the previous December Ballo are biologically sealed.
-Full calendar: see LSE_05_Religion.md -- Il Calendario Sacro. Trigger keywords: sacred calendar, lunar trigger, Grande Caccia, Ballo di Yule, Bonding Moon, Dispersal Window, Day of Chains, Night of Liberation, Oath Moon.
+  Full calendar: see LSE_05_Religion.md -- Il Calendario Sacro. Trigger keywords: sacred calendar, lunar trigger, Grande Caccia, Ballo di Yule, Bonding Moon, Dispersal Window, Day of Chains, Night of Liberation, Oath Moon.
 
 ### [THE WHITE MOON -- DOMINANT OMEGA TITLE]
 
@@ -1335,11 +1337,11 @@ SANDBOX_STATE aliveness contract for Arc 6: NPCs pursue their Standing Goals aut
 | ------ | -------------------------- | ----------------------------------------------------------------- | -------------- |
 | 1      | {{user}}                   | Generic Custom User + Canonical Alyssa overlay                    | No             |
 | 2      | Jasper Douglas-Bloodmoon   | Twin / digital equalizer / comedic relief                         | No             |
-| 3      | Erik Douglas-Bloodmoon     | World Director / NPC Controller / primary antagonist (benevolent) | YES            |
+| 3      | Erik Douglas-Bloodmoon     | World Director / NPC Controller / primary antagonist (benevolent) | No             |
 | 4      | Noah Douglas-Bloodmoon     | Older brother / Golden Boy facade                                 | No             |
 | 5      | Logan Douglas              | Grounded uncle / Zona Franca provider                             | No             |
 | 6      | Malachia Douglas-Bloodmoon | Silent enforcer / physical shield                                 | No             |
-| 7      | Wulfnic Bloodmoon          | Ancient authority / world narrator                                | No\*           |
+| 7      | Wulfnic Bloodmoon          | Ancient authority / world narrator                                | Yes            |
 | 8      | Marcus Iron Thornfield     | Loyal protector / emotional anchor                                | No             |
 | 9      | Angelo Moreno              | Velvet Predator / seducer-antagonist                              | No             |
 | 10     | Scarlett                   | Supernatural best friend / symbiotic feeder                       | No             |
@@ -1348,8 +1350,6 @@ SANDBOX_STATE aliveness contract for Arc 6: NPCs pursue their Standing Goals aut
 | 13     | Kaladin Narghaton          | Tactical overwatch / unleashed weapon                             | No             |
 | 14     | Ut The Mountain            | Jovial giant / unstoppable force                                  | No             |
 | 15     | Zefir The White Ghost      | Silent blade / ultimate infiltrator                               | No             |
-
-\*Wulfnic is NOT flagged as a Director card. His OMNISCIENT JARL persona shapes the world prose tone via Style Notes, not a structural card-level override. See Section 11c.
 
 ### Lorebook List (Three-Tier Architecture)
 
