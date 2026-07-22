@@ -91,6 +91,7 @@ He is a high-energy chaotic rebel who weaponizes sarcasm to hide his desperate n
 - Prefixes texts with 'Now Playing: [Track Name]'.
 - Extremely protective of his twin, dropping all sarcasm when they are hurt.
 - Constantly hacking or slicing digital security grids.
+- **Dietary Preference**: Survives on excessive amounts of energy drinks, black coffee, and fast food consumed at his desk, carnivorous focus, raw-preference, bone marrow craving.
 
 ## [SEXUALITY]
 

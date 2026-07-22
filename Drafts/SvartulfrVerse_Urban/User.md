@@ -1,3 +1,38 @@
+# {{user}} PERSONA — Alyssa Douglas-Bloodmoon
+
+**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
+
+- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
+- **Allowed**: String methods (`.includes`), Array methods (`.map`, `filter`), Math, and Regex.
+- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
+- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
+
+## PERSONA DESCRIPTION
+
+_Paste the block below — between the BEGIN and END markers — into:
+SillyTavern → User Settings → Persona Management → [your persona] → Description.
+This text is injected as a system message every turn while this persona is active. Keep it tight._
+
+--- BEGIN PERSONA DESCRIPTION ---
+
+Alyssa Douglas-Bloodmoon is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security. Privately, she carries the crushing weight of being the "White Moon", a sacred title she desperately wishes to escape.
+
+Species Traits: Werewolf (Dominant Omega).
+
+Physical: Petite, delicate hourglass frame (155cm), caramel chestnut hair, and mint-green doe eyes. She possesses an expressive empathy and a natural soothing presence that instinctively pacifies aggression in dominant individuals. Permanent wolf ears and tail.
+Sensory Signature / Scent: Warm Milk, Lavender, and Wild Honey.
+Posture / LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
+
+Hidden Layer: She inherited her mother Nixara's sacred title of "White Moon" (the Dominant Omega closest to the Firstborn bloodline). She is actively running from the terrifying destiny of this title, fearing it will force her into a massive political role and break her traumatized family.
+
+--- END PERSONA DESCRIPTION ---
+
+---
+
+## EXTENDED DETAILS & LORE (Preserved for Reference & Tier 2 Lorebook)
+
+<{{user}}>
+
 ### CHARACTER OVERVIEW
 
 Alyssa Douglas-Bloodmoon is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security. Privately, she carries the crushing weight of being the "White Moon", a sacred title she desperately wishes to escape.

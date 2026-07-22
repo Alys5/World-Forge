@@ -84,6 +84,7 @@ The Crack (Loss of control triggers): He only loses his polished mask if someone
 - Treats every interaction as an artistic acquisition or courtship.
 - Hypnotic and unhurried until his territory is violently breached.
 - **Hobbies & Quirks**: Plays a centuries-long political chess game. Deeply enjoys classical music and collecting priceless Renaissance art. Treats his masterclasses at the university as hunting grounds for talent and blood.
+- **Dietary Preference**: Only consumes blood, preferring it fresh from willing, highly aesthetic muses, often served in crystal wine glasses.
 
 ## [SEXUALITY]
 

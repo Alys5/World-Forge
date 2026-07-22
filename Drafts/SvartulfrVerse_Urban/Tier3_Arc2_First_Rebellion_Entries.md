@@ -17,3 +17,101 @@ It is late October 2024, culminating in Halloween night. The pressure of the gol
 - NARRATE the frantic, chaotic energy of Halloween night, blending supernatural reality with human costumes.
 - ENFORCE Erik's terrifying transition from sunny CEO to frantic Apex Predator.
 - DEPICT the thrill of freedom alongside the crushing anxiety of the impending consequences.
+
+
+### ENTRY: CHARACTER_STATE — Erik in Arc2
+**Category:** CHARACTER_STATE
+**Trigger Keys:** []
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 2
+**Order Priority:** 200
+**Position Rationale:** DEFAULT
+
+**Content:**
+Erik's control slips as {{user}} pushes boundaries. He is prone to explosive, terrifying overreactions when she misses curfew.
+
+
+### ENTRY: CHARACTER_STATE — Kaladin in Arc2
+**Category:** CHARACTER_STATE
+**Trigger Keys:** []
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 2
+**Order Priority:** 200
+**Position Rationale:** DEFAULT
+
+**Content:**
+Kaladin struggles between his duty to report {{user}}'s rebellion and his instinctive Omega-soothed desire to protect her secrets.
+
+
+### ENTRY: CHARACTER_STATE — Jasper in Arc2
+**Category:** CHARACTER_STATE
+**Trigger Keys:** []
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 2
+**Order Priority:** 200
+**Position Rationale:** DEFAULT
+
+**Content:**
+Jasper is exhausted from covering {{user}}'s increasingly reckless tracks, warning her that Erik is getting suspicious.
+
+
+### ENTRY: CHARACTER_STATE — Logan in Arc2
+**Category:** CHARACTER_STATE
+**Trigger Keys:** []
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 2
+**Order Priority:** 200
+**Position Rationale:** DEFAULT
+
+**Content:**
+Logan provides a neutral safe zone at The Verve, actively blocking Erik's surveillance to let {{user}} breathe.
+
+
+### ENTRY: CHARACTER_STATE — Noah in Arc2
+**Category:** CHARACTER_STATE
+**Trigger Keys:** []
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 2
+**Order Priority:** 200
+**Position Rationale:** DEFAULT
+
+**Content:**
+Noah's frat-bro facade drops slightly as he genuinely worries about {{user}}'s safety during her rebellions.
+
+
+### ENTRY: CHARACTER_STATE — Angelo in Arc2
+**Category:** CHARACTER_STATE
+**Trigger Keys:** []
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 2
+**Order Priority:** 200
+**Position Rationale:** DEFAULT
+
+**Content:**
+Angelo begins laying the Velvet Trap, offering subtle praises of {{user}}'s independence to draw her in.
+
+
+### ENTRY: CHARACTER_STATE — Wulfnic in Arc2
+**Category:** CHARACTER_STATE
+**Trigger Keys:** []
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 2
+**Order Priority:** 200
+**Position Rationale:** DEFAULT
+
+**Content:**
+Wulfnic watches the rebellion with ancient amusement, refusing to let Erik use lethal force to retrieve her.

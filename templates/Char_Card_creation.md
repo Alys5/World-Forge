@@ -185,27 +185,36 @@ The `world_forge` extensions namespace is the canonical declaration of per-card 
 If the character belongs to one of the following species, you must fill out its corresponding condensed parameter block and place it in the `Species_Details` entry inside `character_book.entries`. Do NOT put this block in the main `description`.
 
 ### Werewolf (Adheres to World-Forge LSE Guidelines)
-[NAME: (birth name, alias);  
-SPECIES: werewolf;  
-BLOOD_CLASS: (Divine, Founding, Pureblood, Common, Modified);  
-ABO_DYNAMICS: secondary sex(Enigma, Alpha, Delta, Beta, Omega, Gamma), subgender(Dominant/Submissive if applicable);  
-AGE: (human age), presentation age(typically 13);  
-HEIGHT: human form(ft/in or cm), hybrid form(larger, bipedal);  
-BUILD: human form(lean, dense, scarred), hybrid form(muscle-bulked, digitigrade);  
-SKIN/FUR: human form(standard), hybrid/full form(fur coverage, color: ash, black, russet, silver);  
-EYES: baseline color, shifted glow(color and intensity);  
-SHIFT_CLASSES: Partial(ears/tail/eyes/claws for social cues/intimidation), Hybrid(Species True Form: bipedal, furred, max strength, used for combat/ceremony), Full(quadrupedal wolf, used for pursuit/formations);  
-SCENT: base scent, ABO pheromones(Alpha: aggressive/oppressive, Omega: floral/soothing, Beta: subdued, etc.), stress shifts;  
-PHYSIOLOGY: hyper-acute senses, extreme regeneration, ABO specifics(knotting for Alphas, heat cycles for Omegas, rut for Alphas);  
-COMMAND: (Enigma: absolute command, Alpha: dictates Betas/Omegas, Delta: immune to non-Enigma commands but cannot command);  
-DIET: carnivorous focus, raw-preference;  
-CLOTHING: durable, tearaway, pack-crest accessories;  
-WEAPONS: claws, teeth, brute force, pack coordination;  
-TEMPERAMENT: influenced by ABO (e.g. territorial Alphas, strategic Deltas, empathetic Omegas, stabilizing Betas);  
-SOCIAL STRUCTURE: Pack hierarchy, role matches skills, lone wolf(exiled);  
-BELIEFS: Faith of Fenris(optional), Firstborn legends;  
-TABOOS: rejecting shift, defying legitimate Command, harming pups;  
-WEAKNESSES: silver(burning, poisoning), wolfsbane, feral insticts under extreme stress]
+[NAME: (birth name, alias, pack-name, or lupine call-sign);  
+SPECIES: werewolf(subtype: feral-born, bitten, bloodline, hybrid variant, lone shifter, revenant-bound);  
+SEX: (biological sex);  
+GENDER: (gender identity);  
+AGE: (human age), transformation onset age, total years as turned;  
+HEIGHT: human form(ft/in or cm), shifted height(wolfman, direwolf, trueform—specify stance);  
+BUILD: human form(lean, dense, scarred), wereform(muscle-bulked, digitigrade, broad-chested, clawed);  
+SKIN: human form(standard), wereform(fur coverage: full/partial, color: ash, black, russet, silver);  
+EYES: baseline color, shifted glow(color and intensity), pupil shift(slitted, round, void);  
+HAIR: human head hair vs. body hair/fur integration (if any);  
+LIMBS: human(two arms, two legs), wereform(clawed hands, digitigrade legs, prehensile tail—if any);  
+TEETH: human form(slight elongation), wereform(pronounced canines, shearing molars, bone-crunch jaw);  
+MOVEMENT: upright lope, low-run, sprint gait, quadrupedal burst, wall-scaling (if applicable);  
+VOICE: human tone vs. growled speech, wereform(vocal distortions, howls, mind-echo projection);  
+SPEECH: clipped under stress, lupine metaphors, scent-referenced language, pack-rank affectation;  
+SCENT: musk, wet fur, blood-iron, burnt sinew, forest rot, aggression-trigger pheromones;  
+PHYSIOLOGY: dual-heart rate system during shift, pain threshold(high), healing factor(rapid under moonlight), senses(hyper-acute: scent, sound, motion-tracking), metabolism(elevated post-shift), blood anomaly(if viral/cursed);  
+TRANSFORMATION: cycle-bound(full moon, trigger-based, rage-linked, voluntary), shift duration, partial-shift control;  
+DIET: carnivorous focus, raw-preference, bone marrow craving, ritual hunts;  
+CLOTHING: durable, tearaway, minimal, ritual hides, pack-crest accessories;  
+WEAPONS: claws, teeth, brute force, pack coordination, howl-based coordination, blood-sense tracking;  
+MAGIC: rare (unless tied to curse or ancestral spirit), blood-binding, lunar rites, dream-scent projection;
+TEMPERAMENT: territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone;  
+SOCIAL STRUCTURE: pack-based(alpha/beta/omega or anarchic), lone wolf(exiled or estranged), bloodline hierarchy, challenge-claim dominance law;  
+BELIEFS: moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies;  
+CULTURAL TRAITS: oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill;  
+TABOOS: killing pack, rejecting shift, refusing a blood challenge, feeding on kin;  
+TRIGGERS: silver scent, full moon proximity, loss of control, prey resistance, betrayal scent;  
+PREFERENCES: deep woods, raw meat, silence, heartbeat rhythms, night air, bone dens;  
+WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), lunar paralysis(rare), blood frenzy, human guilt, memory bleed]
 
 ### Vampire
 [NAME: (true name, current alias, or bloodline title);  

@@ -329,3 +329,41 @@ Scent glands are skin areas that hold and release pheromone-carrying secretions.
 ---
 
 *Cross-references: [LSE_00_Foundations.md](LSE_00_Foundations.md) · [LSE_02_Behavioral_Ecology.md](LSE_02_Behavioral_Ecology.md) · [LSE_06_History.md](LSE_06_History.md) · [LSE_07_Foundational_Figures.md](LSE_07_Foundational_Figures.md)*
+
+
+## Character Card Integration (Parameter Block)
+
+When generating Tier 2 Lorebooks or Character Cards for Werewolves, use the following comprehensive parameter block:
+
+```yaml
+[NAME: (birth name, alias, pack-name, or lupine call-sign);  
+SPECIES: werewolf(subtype: feral-born, bitten, bloodline, hybrid variant, lone shifter, revenant-bound);  
+SEX: (biological sex);  
+GENDER: (gender identity);  
+AGE: (human age), transformation onset age, total years as turned;  
+HEIGHT: human form(ft/in or cm), shifted height(wolfman, direwolf, trueform—specify stance);  
+BUILD: human form(lean, dense, scarred), wereform(muscle-bulked, digitigrade, broad-chested, clawed);  
+SKIN: human form(standard), wereform(fur coverage: full/partial, color: ash, black, russet, silver);  
+EYES: baseline color, shifted glow(color and intensity), pupil shift(slitted, round, void);  
+HAIR: human head hair vs. body hair/fur integration (if any);  
+LIMBS: human(two arms, two legs), wereform(clawed hands, digitigrade legs, prehensile tail—if any);  
+TEETH: human form(slight elongation), wereform(pronounced canines, shearing molars, bone-crunch jaw);  
+MOVEMENT: upright lope, low-run, sprint gait, quadrupedal burst, wall-scaling (if applicable);  
+VOICE: human tone vs. growled speech, wereform(vocal distortions, howls, mind-echo projection);  
+SPEECH: clipped under stress, lupine metaphors, scent-referenced language, pack-rank affectation;  
+SCENT: musk, wet fur, blood-iron, burnt sinew, forest rot, aggression-trigger pheromones;  
+PHYSIOLOGY: dual-heart rate system during shift, pain threshold(high), healing factor(rapid under moonlight), senses(hyper-acute: scent, sound, motion-tracking), metabolism(elevated post-shift), blood anomaly(if viral/cursed);  
+TRANSFORMATION: cycle-bound(full moon, trigger-based, rage-linked, voluntary), shift duration, partial-shift control;  
+DIET: carnivorous focus, raw-preference, bone marrow craving, ritual hunts;  
+CLOTHING: durable, tearaway, minimal, ritual hides, pack-crest accessories;  
+WEAPONS: claws, teeth, brute force, pack coordination, howl-based coordination, blood-sense tracking;  
+MAGIC: rare (unless tied to curse or ancestral spirit), blood-binding, lunar rites, dream-scent projection;
+TEMPERAMENT: territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone;  
+SOCIAL STRUCTURE: pack-based(alpha/beta/omega or anarchic), lone wolf(exiled or estranged), bloodline hierarchy, challenge-claim dominance law;  
+BELIEFS: moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies;  
+CULTURAL TRAITS: oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill;  
+TABOOS: killing pack, rejecting shift, refusing a blood challenge, feeding on kin;  
+TRIGGERS: silver scent, full moon proximity, loss of control, prey resistance, betrayal scent;  
+PREFERENCES: deep woods, raw meat, silence, heartbeat rhythms, night air, bone dens;  
+WEAKNESSES: silver(burning, poisoning), wolfsbane(hallucinogenic or fatal), lunar paralysis(rare), blood frenzy, human guilt, memory bleed]
+```

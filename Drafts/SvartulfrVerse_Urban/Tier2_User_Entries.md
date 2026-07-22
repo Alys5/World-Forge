@@ -49,3 +49,46 @@ Alyssa is a Founding Bloodline Dominant Omega, inheriting the sacred title of th
 
 **Content:**
 Behind the facade of a naive college student, Alyssa leads a secret double life. She works as an avant-garde art model under the alias "Lys Angel" at Eidolon Creative, a vampire-controlled studio. This life is entirely unknown to Erik and Noah, though it is a secret kept by Malachia, the Ancients, and Visconte Angelo Moreno. Her involvement at Eidolon provides the autonomy and validation she craves, but simultaneously places her in a high-stakes, predatory environment right on the political cusp of the Cold War between wolves and vampires.
+
+
+### ENTRY: Species_Details — User
+**Category:** CHARACTER
+**Trigger Keys:** User, werewolf
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 1
+**Order Priority:** 110
+**Position Rationale:** DEFAULT
+
+**Content:**
+[NAME: Alyssa Douglas-Bloodmoon (Lys, Sunflower, Little Moon, White Moon);  
+SPECIES: werewolf(bloodline);  
+SEX: Female;  
+GENDER: Female;  
+AGE: 19, presentation age 13;  
+HEIGHT: human form 155cm (5'1") in human form, shifted height bipedal hybrid trueform;  
+BUILD: human form petite, wereform muscle-bulked, digitigrade, clawed;  
+SKIN: human form standard, wereform full fur coverage;  
+EYES: baseline standard, shifted glow glowing with intense predator focus;  
+HAIR: integrated with fur during shift;  
+LIMBS: human (two arms, two legs) / wereform (clawed hands, digitigrade legs);  
+TEETH: human form slight elongation / wereform pronounced canines and bone-crunch jaw;  
+MOVEMENT: upright lope, quadrupedal burst;  
+VOICE: human tone / wereform growled speech;  
+SPEECH: scent-referenced language, pack-rank affectation;  
+SCENT: (Wolf-hybrid) Warm Milk, Lavender, and Wild Honey.;  
+PHYSIOLOGY: dual-heart rate system during shift, pain threshold(high), healing factor(rapid under moonlight), senses(hyper-acute);  
+TRANSFORMATION: voluntary, rage-linked;  
+DIET: carnivorous focus, raw-preference;  
+CLOTHING: durable, tearaway;  
+WEAPONS: claws, teeth, brute force;  
+MAGIC: rare;
+TEMPERAMENT: territorial, highly protective;  
+SOCIAL STRUCTURE: pack-based hierarchy;  
+BELIEFS: moon as judge;  
+CULTURAL TRAITS: scars as status;  
+TABOOS: killing pack, rejecting shift;  
+TRIGGERS: loss of control, prey resistance, betrayal scent;  
+PREFERENCES: deep woods, raw meat, silence;  
+WEAKNESSES: silver (burning, poisoning), wolfsbane]

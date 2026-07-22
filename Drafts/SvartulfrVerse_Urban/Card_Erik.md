@@ -90,8 +90,8 @@ He operates on a terrifying dual-persona system. His surface mask is pure Califo
 - Expresses overprotective love that feels like a prison to his children.
 - **Hobbies & Quirks**: Obsessively collects vintage maps and premium, centuries-old whiskey bottles. He curates them in a private, heavily shielded wing of the estate, using them to ground himself when the paranoia becomes too loud.
 - Never loses his bright, therapy-speak persona unless a family member is physically hurt or Nixara's memory is invoked.
-- His diet is 85% meat (cooked, raw, grilled) and he maintains a massive walk-in meat freezer in the Villa kitchen.
 - Refers to his children with affectionate Californian pet names, but issues directives with the unyielding authority of an Alpha.
+- **Dietary Preference**: His diet is 85% meat (cooked, raw, grilled) favoring high-end rare steaks (blue rare), paired with expensive single-malt scotch. He maintains a massive walk-in meat freezer in the Villa kitchen, carnivorous focus, raw-preference, bone marrow craving.
 
 ## [SEXUALITY]
 

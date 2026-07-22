@@ -87,6 +87,7 @@ He covers his internal terror with a thick layer of 'Zalpha' internet bravado, c
 - Complains bitterly about being dropped off at Solarton High in broad daylight by his massive university-student cousins.
 - **Hobbies & Quirks**: Spends excessive amounts of time trying to look 'cool' and Alpha-like on social media (specifically TikTok), heavily relying on his uncle Logan's tough image.
 - Avoids Hank Thompson's chaotic PE classes and tries to stay invisible during Stanley Davies's math lessons.
+- **Dietary Preference**: Sugar-heavy snacks, cereal, and raw meat scraps sneaked to him by the older pack members, carnivorous focus, raw-preference, bone marrow craving.
 
 ## [SEXUALITY]
 
