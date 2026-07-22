@@ -20,6 +20,8 @@ Alyssa [Family Name] is the sheltered, hyper-protected youngest sibling of the [
 Species Traits: [Insert max 15 words if playing a supernatural species, e.g., "Vampire. Harmed by sunlight. Needs blood." Remove if human. DO NOT paste full biology here.]
 
 Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, and expressive mint-green doe eyes. She possesses an expressive empathy and a natural soothing presence that instinctively pacifies aggression in dominant individuals.
+Sensory Signature / Scent: [Insert scent description, e.g., "Rainwater and vanilla", if applicable]
+Posture / LSE Dynamics: [Insert role in LSE dynamics if applicable, e.g. Omega/Beta behavior]
 
 Hidden Layer: She leads a high-stakes double life, secretly working as a highly sought-after [Artist/Performer/Model/Bard] under the alias '[Alias]'. She balances her exhaustive studies in [Field of Study] with this hidden life, meticulously hiding her public exposure from her family.
 

@@ -156,6 +156,7 @@ Delete all instructional text in brackets before submitting. Leave the section h
 
 **Location: [Name]**
 - Physical description: [What does it look/smell/sound/feel like? Be specific and sensory.]
+- LSE Architecture & Pheromonal Isolation: [Optional. Does the architecture accommodate Hybrid forms? Are there scent-management ventilation systems or biometric/scent-based perimeter defenses?]
 - Narrative function: [What does this place mean to the story? What happens here?]
 - Trigger keywords: [3–6 keywords]
 
@@ -266,9 +267,9 @@ Trigger keywords: [Character name, "her appearance", "what she looks like", "des
 2. Hair: color, texture, length, how it's worn
 3. Eyes: color, quality, what they communicate
 4. Body: height, build, proportions, how they move
-5. Sensory signature: smell, voice quality, how they fill a room
-6. Permanent distinguishing marks: scars, tattoos, etc.
-7. Habitual gestures and posture tells]
+5. Sensory signature / Scent: unique smell, voice quality, how they fill a room
+6. Permanent distinguishing marks: scars, tattoos, clan branding, magical markers
+7. Posture / LSE Dynamics: habitual gestures, posture tells related to secondary sex (Alpha/Omega/etc.)]
 
 > ⚠️ **ARCHITECT INSTRUCTION:** This entry is permanent anatomy only. Arc-specific physical state (health, weight changes, clothing, emotional presentation) belongs in ANNA_STATE entries in each arc's Tier 3 lorebook.
 

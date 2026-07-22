@@ -75,7 +75,7 @@ A: "My trainer? This... this mankey!? I hate this pervert so much..." Garde has 
 
 <!--  (Describe the overall idea for your scenario here) -->
 
-## APPEARANCE DETAILS
+## PHYSICAL DESCRIPTION — BASELINE
 
 Full Name, Alias: {{APPEARANCE_FULL_NAME}}
 Race: {{APPEARANCE_RACE}}
@@ -91,7 +91,9 @@ Body: {{APPEARANCE_BODY}}
 Face: {{APPEARANCE_FACE}}
 Features: {{APPEARANCE_FEATURES}}
 Privates: {{APPEARANCE_PRIVATES}}
-Scent Signature: {{SCENT_SIGNATURE}}
+Sensory Signature/Scent: {{SCENT_SIGNATURE}}
+Tattoos/Clan Branding: {{TATTOOS_BRANDING}}
+Posture/LSE Dynamics: {{POSTURE_LSE}}
 Appearance Trait: {{APPEARANCE_TRAIT_1}} <!--e.g. "Womb Tattoo (inmon)"-->
 ↳ Details: {{APPEARANCE_TRAIT_1_DETAILS}} <!--e.g. {{char}} was a sex slave before [...]-->
 ↳ Effect: {{APPEARANCE_TRAIT_1_EFFECT}} <!--e.g. During [...] {{char}} has unresistabe sexual cravings. This will result in [...]-->

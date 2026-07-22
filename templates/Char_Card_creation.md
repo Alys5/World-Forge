@@ -16,7 +16,7 @@ FIELD GUIDANCE:
 
 - description: Write in dense prose. Format the description using the exact sections below with explicit markdown headers:
   ### CHARACTER OVERVIEW (Describe the overall idea for your scenario here)
-  ### APPEARANCE DETAILS (Full Name, Alias, Race, Sex/Gender, Height, Age, Hair, Eyes, Body, Face, Features, Privates, Appearance Traits + Details/Effects)
+  ### PHYSICAL DESCRIPTION — BASELINE (Full Name, Alias, Race, Sex/Gender, Height, Age, Hair, Eyes, Body, Face, Features, Privates, Sensory Signature/Scent, Tattoos/Clan Branding, Posture/LSE Dynamics)
   ### STARTING OUTFIT (Head, Accessories, Makeup, Neck, Top, Bottom, Legs, Shoes, Underwear)
   ### ORIGIN (BACKSTORY) (Brief backstory)
   ### RESIDENCE (City, house, rooms, etc.)

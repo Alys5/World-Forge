@@ -31,7 +31,7 @@ POSITION VALUES (use the correct one for each entry type):
 
 ENTRY TYPE → CORRECT POSITION:
 - World rules, factions, species definitions → position: 0
-- Character physical descriptions, psychology, NPC profiles → position: 1
+- Character physical descriptions (PHYSICAL DESCRIPTION — BASELINE), sensory signatures, tattoos/branding, psychology, NPC profiles → position: 1
 - Character Q&A and Premade Story Plans (Milestones) → position: 1
 - Background Trivia (Residence, Connections, Secrets) → position: 1
 - Sexuality, Sexual Preferences, Speech Examples, Synonyms → position: 1
