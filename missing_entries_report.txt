@@ -1,0 +1,55 @@
+Missing 54 entries in JS files:
+[Angelo.json] missing entry: Character Description
+[Edric.json] missing entry: Character Description
+[Erik.json] missing entry: Character Description
+[Jasper.json] missing entry: Character Description
+[Kaladin.json] missing entry: Character Description
+[Logan.json] missing entry: Character Description
+[Malachia.json] missing entry: Character Description
+[Marcus.json] missing entry: Character Description
+[Noah.json] missing entry: Character Description
+[Scarlett.json] missing entry: Character Description
+[Sierra.json] missing entry: Character Description
+[Ut.json] missing entry: Character Description
+[Wulfnic.json] missing entry: Character Description
+[Zefir.json] missing entry: Character Description
+[SvartulfrVerse_Urban_Arc1_Lorebook.json] missing entry: ARC_STATE — Arc 1: The Golden Cage
+[SvartulfrVerse_Urban_Arc1_Lorebook.json] missing entry: CHARACTER_STATE — Erik in Arc1
+[SvartulfrVerse_Urban_Arc1_Lorebook.json] missing entry: CHARACTER_STATE — Jasper in Arc1
+[SvartulfrVerse_Urban_Arc1_Lorebook.json] missing entry: CHARACTER_STATE — Malachia in Arc1
+[SvartulfrVerse_Urban_Arc1_Lorebook.json] missing entry: CHARACTER_STATE — Noah in Arc1
+[SvartulfrVerse_Urban_Arc2_Lorebook.json] missing entry: ARC_STATE — Arc 2: The First Rebellion
+[SvartulfrVerse_Urban_Arc2_Lorebook.json] missing entry: CHARACTER_STATE — Erik in Arc2
+[SvartulfrVerse_Urban_Arc2_Lorebook.json] missing entry: CHARACTER_STATE — Jasper in Arc2
+[SvartulfrVerse_Urban_Arc2_Lorebook.json] missing entry: CHARACTER_STATE — Noah in Arc2
+[SvartulfrVerse_Urban_Arc3_Lorebook.json] missing entry: ARC_STATE — Arc 3: The Velvet Trap
+[SvartulfrVerse_Urban_Arc3_Lorebook.json] missing entry: CHARACTER_STATE — Erik in Arc3
+[SvartulfrVerse_Urban_Arc3_Lorebook.json] missing entry: CHARACTER_STATE — Scarlett in Arc3
+[SvartulfrVerse_Urban_Arc4_Lorebook.json] missing entry: ARC_STATE — Arc 4: Primal Grounding
+[SvartulfrVerse_Urban_Arc4_Lorebook.json] missing entry: CHARACTER_STATE — Ut in Arc4
+[SvartulfrVerse_Urban_Arc5_Lorebook.json] missing entry: ARC_STATE — Arc 5: Shattered Glass
+[SvartulfrVerse_Urban_Arc5_Lorebook.json] missing entry: CHARACTER_STATE — Noah in Arc5
+[SvartulfrVerse_Urban_Arc6_Lorebook.json] missing entry: ARC_STATE — Arc 6: The Open Door
+[SvartulfrVerse_Urban_Arc6_Lorebook.json] missing entry: CHARACTER_STATE — Erik in Arc6
+[SvartulfrVerse_Urban_Arc6_Lorebook.json] missing entry: CHARACTER_STATE — Jasper in Arc6
+[SvartulfrVerse_Urban_Edric_Lorebook.json] missing entry: Species_Details — Edric
+[SvartulfrVerse_Urban_Erik_Lorebook.json] missing entry: Psychology and Relationships — Erik Douglas-Bloodmoon
+[SvartulfrVerse_Urban_Erik_Lorebook.json] missing entry: Alpha Den & Territory — Erik Douglas-Bloodmoon
+[SvartulfrVerse_Urban_Erik_Lorebook.json] missing entry: Species_Details — Erik
+[SvartulfrVerse_Urban_Jasper_Lorebook.json] missing entry: Character Profile — Jasper Douglas-Bloodmoon
+[SvartulfrVerse_Urban_Jasper_Lorebook.json] missing entry: Species_Details — Jasper
+[SvartulfrVerse_Urban_Kaladin_Lorebook.json] missing entry: Species_Details — Kaladin
+[SvartulfrVerse_Urban_Logan_Lorebook.json] missing entry: Character Profile — Logan Douglas
+[SvartulfrVerse_Urban_Logan_Lorebook.json] missing entry: Species_Details — Logan
+[SvartulfrVerse_Urban_Malachia_Lorebook.json] missing entry: Species_Details — Malachia
+[SvartulfrVerse_Urban_Marcus_Lorebook.json] missing entry: Character Profile — Marcus
+[SvartulfrVerse_Urban_Marcus_Lorebook.json] missing entry: Species_Details — Marcus
+[SvartulfrVerse_Urban_Noah_Lorebook.json] missing entry: Species_Details — Noah
+[SvartulfrVerse_Urban_Ut_Lorebook.json] missing entry: Species_Details — Ut
+[SvartulfrVerse_Urban_World_Lorebook.json] missing entry: Villa Douglas
+[SvartulfrVerse_Urban_World_Lorebook.json] missing entry: Bloodmoon Feast
+[SvartulfrVerse_Urban_World_Lorebook.json] missing entry: Eíða-Siðr (The Oath of the Seven Laws)
+[SvartulfrVerse_Urban_Wulfnic_Lorebook.json] missing entry: Physical Appearance — Wulfnic Bloodmoon
+[SvartulfrVerse_Urban_Wulfnic_Lorebook.json] missing entry: Psychology and Relationships — Wulfnic Bloodmoon
+[SvartulfrVerse_Urban_Wulfnic_Lorebook.json] missing entry: Species_Details — Wulfnic
+[SvartulfrVerse_Urban_Zefir_Lorebook.json] missing entry: Species_Details — Zefir
