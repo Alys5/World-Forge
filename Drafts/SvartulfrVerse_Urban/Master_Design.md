@@ -18,7 +18,7 @@ status: IN_PROGRESS
 phases:
   1_Refiner: COMPLETE
   2_Architect: COMPLETE
-  2.5_IntimacyArchitect: PENDING
+  2.5_IntimacyArchitect: COMPLETE
   3_Editor: PENDING
   3.5_VoiceAuditor: PENDING
   3.6_ArcAuditor: PENDING
