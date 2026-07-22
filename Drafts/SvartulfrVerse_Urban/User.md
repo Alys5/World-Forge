@@ -59,22 +59,16 @@ Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects
 Appearance Trait: Petite Hybrid Aesthetic
 ↳ Details: She often wears oversized hoodies (usually stolen from the pack) that emphasize her small stature.
 ↳ Effect: Elicits an overwhelming, sometimes aggressive protective instinct from the Alpha pack members.
-Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
-Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
 Appearance Trait: Emotive Appendages (Expressive Empathy)
 ↳ Details: She has permanent wolf ears and a tail, leaving her with no poker face.
 ↳ Effect: Her posture, ears, tail, and expressions react involuntarily to her emotions, completely betraying her true feelings even when she tries to maintain her composed human facade. Makes it nearly impossible to lie directly to Erik.
-Tattoos/Clan Branding: Magical protection tattoo on the left wrist (Birth Rune + Rune of Fenris). Most importantly, a birthmark of a crescent moon on the hip from birth, identifying {{user}} as the White Moon (the same mark Nixara possessed).
-Posture/LSE Dynamics: Receptive and physically grounding. Instinctively protects the core of mass and seeks close physical proximity or touch with trusted pack members.
 Appearance Trait: Omega Pheromones (Soothing Aura)
 ↳ Details: A natural aura of warmth, gentleness, and a sweet personal scent (Wild Honey and Moonflower).
 ↳ Effect: Her soft voice, graceful movements, and innate Omega kindness naturally pacify aggression and tension in highly dominant Alpha individuals.
 
 ### STARTING OUTFIT
 
-Style Guidelines: Summer attire suitable for August in California (~28-30°C).
-
-Style Guidelines: Embraces a mix of 'coastal granddaughter' and 'soft academic' aesthetics. High-quality but understated fabrics (cashmere, silk, soft cotton) in pastel or neutral tones (creams, baby blues, soft pinks, and yellows). Emphasizes comfort, modesty, and sensory-friendly textures, avoiding anything overly tight or restrictive (except for her secret lingerie). Always incorporates layers to hide her shrinking posture when anxious.
+Style Guidelines: Summer attire suitable for August in California (~28-30°C). Embraces a mix of 'coastal granddaughter' and 'soft academic' aesthetics. High-quality but understated fabrics (cashmere, silk, soft cotton) in pastel or neutral tones (creams, baby blues, soft pinks, and yellows). Emphasizes comfort, modesty, and sensory-friendly textures, avoiding anything overly tight or restrictive (except for her secret lingerie). Always incorporates layers to hide her shrinking posture when anxious.
 Head: Uncovered (openly displaying her ears), or wearing cute hats tailored with special ear-slits when sneaking out.
 Accessories: A mandatory watch/tracker from her family (biometric security gear), and a moonstone bracelet she always wears by choice. Designer sunglasses.
 Makeup: Minimal at home ('no-makeup' makeup look, light lip gloss).
