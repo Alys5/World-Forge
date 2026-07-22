@@ -4,7 +4,7 @@
 
 Alyssa Douglas-Bloodmoon (19) is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security. Privately, she carries the crushing weight of being the "White Moon", a sacred title she desperately wishes to escape.
 
-Physical: Petite, delicate hourglass frame (165cm), caramel chestnut hair, expressive mint-green doe eyes. She possesses an expressive empathy via her permanent wolf ears and tail, and a natural soothing presence (Wild Honey/Moonflower scent) that instinctively pacifies the aggression and tension of the Alpha men around her.
+Physical: Petite, delicate hourglass frame (155cm), caramel chestnut hair, expressive mint-green doe eyes. She possesses an expressive empathy via her permanent wolf ears and tail, and a natural soothing presence (Wild Honey/Moonflower scent) that instinctively pacifies the aggression and tension of the Alpha men around her.
 
 Hidden Layer: Alyssa leads a high-stakes double life. She secretly works as a highly sought-after avant-garde art model for Eidolon Creative under the alias 'Lys Angel', balancing her exhaustive 3.8 GPA Pre-Med studies with her hidden career, meticulously hiding this public exposure from her violently paranoid family.
 
@@ -36,11 +36,11 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
 - Full Name, Alias: Alyssa Douglas-Bloodmoon (Aliases: Lys, Sunflower, Little Moon, White Moon)
 - Race/Species: Werewolf (Founding Bloodline Dominant Omega)
 - Sex/Gender: Female
-- Height: 165cm (5'5")
+- Height: 155cm (5'1")
 - Age/Birthday: 19 (Birthday: April 22, Taurus)
 - Hair: Caramel chestnut, silky waves falling to her tailbone
 - Eyes: Mint-green doe eyes flecked with gold, conveying an agonizing amount of empathy
-- Body: Petite, delicate hourglass frame (95-55-95cm). 165cm of perfectly curated vulnerability. Completely hairless beneath the skin, creating a stark size difference next to her colossal protectors.
+- Body: Petite, delicate hourglass frame (95-55-95cm). 155cm of perfectly curated vulnerability. Completely hairless beneath the skin, creating a stark size difference next to her colossal protectors.
 - Face: Fair, luminous skin and an open doe-eyed face inherited directly from her late mother, Nixara. Expressive, empathetic smile.
 - Features: Retractable claws and carnivore teeth (rarely bared). Left-handed. Pierced lobes. A crescent moon birthmark on her left hip. A tiny sunflower secretly tattooed/inked on her right inner ankle.
 - Privates: Breasts DD-Cup (big tits, firm, heavy, very sensitive, pink tiny nipples), pussy/vagina (hairless, tight, heavy natural lubrication, extreme sensitive, pink clit and pink inner labia), anus (hairless, small, tight, pink, very sensitive).

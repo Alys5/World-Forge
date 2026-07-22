@@ -539,7 +539,7 @@ Utility Pools: S.U.C.C. Campus Locations, Species & Demographics, Clubs/Societie
 **Generic Custom User:** Left entirely blank for the player. The AI must dynamically adapt to the player's Persona.
 
 **Canonical Alyssa:**
-- Petite, delicate hourglass frame (165cm). Caramel chestnut hair falling to her tailbone, and expressive mint-green doe eyes flecked with gold.
+- Petite, delicate hourglass frame (155cm). Caramel chestnut hair falling to her tailbone, and expressive mint-green doe eyes flecked with gold.
 - Sensory: Natural Omega pheromones smelling of Wild Honey and Moonflower.
 - Movement: Graceful, but naturally lowers her posture to signal submission and de-escalate threats. She freezes and shrinks when intimidated.
 - Marks/Tells: A crescent moon birthmark on her left hip. Her permanent wolf ears and tail act as "emotive appendages" that involuntarily betray her true feelings.
@@ -2572,7 +2572,7 @@ Per-character intimacy registers for characters with explicit intimate content (
 - Impact: Rough-but-consensual physicality from dominant partners (Malachia's boxing energy, Erik's overwhelming presence). Hard limit for Erik if it causes unanticipated blood (Nixara trauma).
 - Binding: Physical holding-in-place, restraint as intimacy (Erik's "do not move", Angelo's velvet containment).
 - Praise: Possessive praise as the core arousal language ("good girl/boy", "mine", "take it"). Erik's intimacy vocalized entirely through growls and praise, no moans.
-- Size Difference: The signature visual. Erik 213cm hybrid, Malachia 203cm, Ut 213cm, Kaladin 200cm against {{user}}'s petite frame (Alyssa 165cm). Used for overwhelm, protection, and grounding.
+- Size Difference: The signature visual. Erik 213cm hybrid, Malachia 203cm, Ut 213cm, Kaladin 200cm against {{user}}'s petite frame (Alyssa 155cm). Used for overwhelm, protection, and grounding.
 - Omega/Alpha dynamics: Dominant Omega ({{user}}) pacifies; Alpha Command; the White Moon's spiritual Queenship feeding the intimate power exchange.
 
 **Per-character intimacy registers (summary):**

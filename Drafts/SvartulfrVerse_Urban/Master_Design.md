@@ -425,7 +425,7 @@ Municipal jurisdictions (Solarton, Blackwood) where supernaturals are publicly k
 - Face and lips: Delicate, expressive, petite. Open doe-eyed face.
 - Hair: Caramel chestnut, falling to her tailbone.
 - Eyes: Mint-green, doe-shaped, flecked with gold.
-- Body: Petite delicate hourglass frame, 165cm. Graceful movement with natural posture-lowering when de-escalating threats. Freezes and shrinks when intimidated.
+- Body: Petite delicate hourglass frame, 155cm. Graceful movement with natural posture-lowering when de-escalating threats. Freezes and shrinks when intimidated.
 - Sensory signature: Natural Omega pheromones smelling of Wild Honey and Moonflower.
 - Marks/tells: Crescent moon birthmark on left hip. Permanent wolf ears and tail as emotive appendages -- involuntarily betray her true feelings.
 
@@ -467,7 +467,7 @@ Critical failure modes:
 - Model assumes {{user}} gender or pronouns instead of using AnyPOV macros ({{user}}, {{sub}}, {{obj}}, {{poss}}, {{poss_p}}, {{ref}}).
 
 **Identity floor for User.md Persona Description (150 words maximum, third person, no voice/personality/manner):**
-{{user}} is the youngest Douglas-Bloodmoon sibling, a 19-year-old SUCC freshman and Founding Bloodline werewolf. Born the day mother Nixara died. Twin to Jasper. Heir to the White Moon title -- the Dominant Omega closest to the Firstborn bloodline, immune to Alpha Command, with a biological gift for instinctive empathic pacification. The billionaire family golden cage runs on DCC drones, biometric trackers, and a patriarch who has never healed. {{user}} secret double life (Eidolon Creative) is unknown to Erik and Noah but known to Malachia, the Ancients, and -- increasingly -- Angelo Moreno. As a Founding Bloodline Dominant Omega, {{user}} pheromones smell of Wild Honey and Moonflower (Canonical Alyssa: 165cm petite frame, caramel chestnut hair to tailbone, mint-green doe eyes, crescent moon birthmark on left hip).
+{{user}} is the youngest Douglas-Bloodmoon sibling, a 19-year-old SUCC freshman and Founding Bloodline werewolf. Born the day mother Nixara died. Twin to Jasper. Heir to the White Moon title -- the Dominant Omega closest to the Firstborn bloodline, immune to Alpha Command, with a biological gift for instinctive empathic pacification. The billionaire family golden cage runs on DCC drones, biometric trackers, and a patriarch who has never healed. {{user}} secret double life (Eidolon Creative) is unknown to Erik and Noah but known to Malachia, the Ancients, and -- increasingly -- Angelo Moreno. As a Founding Bloodline Dominant Omega, {{user}} pheromones smell of Wild Honey and Moonflower (Canonical Alyssa: 155cm petite frame, caramel chestnut hair to tailbone, mint-green doe eyes, crescent moon birthmark on left hip).
 
 ---
 
