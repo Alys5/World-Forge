@@ -338,23 +338,41 @@ When generating Tier 2 Lorebooks or Character Cards for Werewolves, use the foll
 ```markdown
 ### PHYSICAL DESCRIPTION — BASELINE
 Full Name, Alias: [Birth name, alias, pack-name, or lupine call-sign]
-Race: Werewolf (Subtype: feral-born, bitten, bloodline, hybrid variant, lone shifter, revenant-bound)
-Sex/Gender: [Biological sex / Gender identity]
-Height: [Human form (ft/in or cm), shifted height (wolfman, direwolf, trueform—specify stance)]
+Race: Werewolf (Blood Classification: Divine Blood, Founding Bloodline, Pureblood, Common, or Modified)
+Secondary Sex: [Alpha, Beta, Omega, Delta, Enigma, or Gamma (pre-presentation)]
+Gender Identity: [Gender identity]
+Height: [Human form (ft/in or cm), shifted height (hybrid form / full shift)]
 Age: [Human age], transformation onset age, total years as turned
 Hair: [Human head hair vs. body hair/fur integration (if any)]
 Eyes: [Baseline color, shifted glow (color and intensity), pupil shift (slitted, round, void)]
-Body/Build: [Human form (lean, dense, scarred), wereform (muscle-bulked, digitigrade, broad-chested, clawed)]
-Skin: [Human form (standard), wereform (fur coverage: full/partial, color: ash, black, russet, silver)]
-Limbs: [Human (two arms, two legs), wereform (clawed hands, digitigrade legs, prehensile tail—if any)]
-Teeth: [Human form (slight elongation), wereform (pronounced canines, shearing molars, bone-crunch jaw)]
-Movement: [Upright lope, low-run, sprint gait, quadrupedal burst, wall-scaling (if applicable)]
-Voice: [Human tone vs. growled speech, wereform (vocal distortions, howls, mind-echo projection)]
-Speech: [Clipped under stress, lupine metaphors, scent-referenced language, pack-rank affectation]
-Sensory Signature/Scent: [Musk, wet fur, blood-iron, burnt sinew, forest rot, aggression-trigger pheromones]
+Body: [Human form (lean, dense, scarred), wereform (muscle-bulked, digitigrade, broad-chested, clawed)]
+Face: [Human form (jawline, expression), wereform (muzzle structure, snarl)]
+Features: [Scars, tattoos, birthmarks, clan branding]
+Privates: [Anatomy specifics, knotting physiology if Alpha/Enigma, secondary sex characteristics]
+Sensory Signature/Scent: [Musk, wet fur, blood-iron, burnt sinew, forest rot, pheromone profile]
+Appearance Trait: [Trait]
+↳ Details: [Details]
+↳ Effect: [Effect]
+
+### STARTING OUTFIT
+Style Guidelines: [General style]
+Head: [Headwear/glasses]
+Accessories: [Jewelry, pack-crest accessories]
+Makeup: [Makeup]
+Neck: [Neckwear]
+Top: [Shirt/jacket, durable/tearaway if needed]
+Bottom: [Pants/skirt]
+Legs: [Hosiery/socks]
+Shoes: [Footwear]
+Underwear: [Underwear]
+
+### INVENTORY
+Item: [Item Name]
+↳ Details: [Details]
 
 ### ABILITIES
-Physiology: [Dual-heart rate system during shift, pain threshold (high), healing factor (rapid under moonlight), senses (hyper-acute), metabolism (elevated post-shift), blood anomaly]
+Species Traits: [Werewolf capabilities: Partial shift, Hybrid shift, Full shift, healing factor, heightened senses]
+Physiology: [Dual-heart rate system during shift, pain threshold (high), metabolism (elevated post-shift), blood anomaly]
 Transformation: [Cycle-bound (full moon, trigger-based, rage-linked, voluntary), shift duration, partial-shift control]
 Weapons: [Claws, teeth, brute force, pack coordination, howl-based coordination, blood-sense tracking]
 Magic: [Rare (unless tied to curse or ancestral spirit), blood-binding, lunar rites, dream-scent projection]
@@ -362,7 +380,7 @@ Weaknesses: [Silver (burning, poisoning), wolfsbane (hallucinogenic or fatal), l
 
 ### [BEHAVIOR_NOTES]
 - **Temperament**: [Territorial, loyalty-coded, emotionally volatile, highly protective, vengeance-prone]
-- **Social Structure**: [Pack-based (meritocratic/consensus-based), lone wolf (exiled or estranged), bloodline-influenced social status, consensus-based leadership with voluntary role acceptance]
+- **Social Structure**: [Pack-based (alpha/beta/omega or anarchic), lone wolf (exiled or estranged), bloodline hierarchy, challenge-claim dominance law]
 - **Beliefs**: [Moon as judge, blood memory, sacred kill rites, bone shrines, howl-legacies]
 - **Cultural Traits**: [Oaths sealed in blood, scars as status, challenge duels, scent-based mourning, mate-claiming via ritual kill]
 - **Taboos**: [Killing pack, rejecting shift, refusing a blood challenge, feeding on kin]
