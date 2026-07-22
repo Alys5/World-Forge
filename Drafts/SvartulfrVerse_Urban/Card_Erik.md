@@ -7,7 +7,7 @@ The patriarch of the Douglas-Bloodmoon family and CEO of the Douglas Commercial 
 Full Name, Alias: Erik Douglas-Bloodmoon
 Race: Werewolf (Pureblood Prime Alpha, House Douglas)
 Sex/Gender: Male
-Height: 193cm (6'4") in human form, 213cm (7'0") in hybrid shift
+Height: 213cm (7'0") in human form, 263cm (8'7") in hybrid shift
 Age: 50 (Presented at 13)
 Hair: Jet black
 Eyes: Piercing amber in human form; molten gold with slit pupils when agitated

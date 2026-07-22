@@ -5,7 +5,7 @@ A lethal, highly trained Gamma-7 veteran who now serves as an elite operative fo
 Full Name, Alias: Marcus Iron Thornfield
 Race: Werewolf (Common Bloodlines Beta / S.R.F. Gamma-7 Veteran)
 Sex/Gender: Male
-Height: 193cm (6'4") in human form, 223cm (7'4") in hybrid shift
+Height: 190cm (6'3") in human form, 220cm (7'3") in hybrid shift
 Age: 35
 Hair: Dirty blond, military high-and-tight
 Eyes: Flat gray, constantly assessing threats
@@ -52,7 +52,7 @@ Species Traits: Werewolf (Common/S.R.F. Beta). Enhanced endurance, strength, hyp
 Ability: Elite Tactical Training
 ↳ Details: Master of CQC and firearms. Immune to standard Alpha Command, giving him tactical independence.
 Ability: Lycanthropic Shifts
-↳ Details: Partial shift (enhanced senses), Hybrid bipedal combat-ready form (223cm), and Full quadrupedal wolf.
+↳ Details: Partial shift (enhanced senses), Hybrid bipedal combat-ready form (220cm), and Full quadrupedal wolf.
 Weaknesses & Physiology:
 ↳ Details: Vulnerable to silver-laced weaponry and wolfsbane. Strict high-protein carnivore diet.
 

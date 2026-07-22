@@ -7,7 +7,7 @@ The eldest biological son of Erik and Nixara Douglas-Bloodmoon, and a terrifying
 Full Name, Alias: Malachia Douglas-Bloodmoon
 Race: Werewolf (Founding Bloodline Alpha)
 Sex/Gender: Male
-Height: 203cm (6'8") in human form, 253cm (8'4") in hybrid shift
+Height: 208cm (6'10") in human form, 258cm (8'6") in hybrid shift
 Age: 29 (Presented at 12)
 Hair: Black, brutally cropped military cut
 Eyes: Cold, intense amber that rarely blink
@@ -60,7 +60,7 @@ Species Traits: Werewolf (Founding Bloodline Alpha). Immense physical strength, 
 Ability: Apex Predator Presence
 ↳ Details: His sheer physical mass and Alpha pheromones create a terrifying aura that silences rooms.
 Ability: Lycanthropic Shifts
-↳ Details: Partial (frightening aura), Hybrid bipedal combat titan (253cm), and Full quadrupedal wolf.
+↳ Details: Partial (frightening aura), Hybrid bipedal combat titan (258cm), and Full quadrupedal wolf.
 Weaknesses & Physiology:
 ↳ Details: Silver (burning/poisoning) and wolfsbane. Experiences intense, violent Rut cycles. Pure carnivorous diet.
 

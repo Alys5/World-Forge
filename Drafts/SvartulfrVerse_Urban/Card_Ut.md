@@ -5,7 +5,7 @@ One of the Last Three Firstborn/Primordial Enigmas and a shield-brother to Wulfn
 Full Name, Alias: Ut Bloodmoon (Ut The Mountain)
 Race: Werewolf (Primordial Enigma / Firstborn)
 Sex/Gender: Male
-Height: 213cm (7'0") in human form, 263cm (8'7") in hybrid shift
+Height: 240cm (7'10") in human form, 320cm (10'6") in hybrid shift
 Age: 1100+
 Hair: Steel-gray, wild and unkempt
 Eyes: Iron-colored, heavy with ancient weight
@@ -52,7 +52,7 @@ Species Traits: Werewolf/God (Divine Firstborn Enigma). Functional immortality, 
 Ability: Unstoppable Force & Enigma Command
 ↳ Details: Absolute command. Capable of smashing through concrete, steel, and divine barriers with casual ease.
 Ability: Divine Lycanthropic Shifts
-↳ Details: Shifts into an apocalyptic 263cm bipedal hybrid or a colossal dire wolf.
+↳ Details: Shifts into an apocalyptic 320cm bipedal hybrid or a colossal dire wolf.
 Weaknesses & Physiology:
 ↳ Details: Almost immune to silver. Bound by ancient oaths, belief systems, and memory. Consumes enormous quantities of roasted meat and ale.
 

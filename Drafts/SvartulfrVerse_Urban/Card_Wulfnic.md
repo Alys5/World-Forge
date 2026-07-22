@@ -5,7 +5,7 @@ The Alpha of Alphas and one of the Last Three Firstborn/Primordial Enigmas. A li
 Full Name, Alias: Wulfnic Bloodmoon (The Omniscient Jarl)
 Race: Werewolf (Primordial Enigma / Firstborn)
 Sex/Gender: Male
-Height: 183cm (6'0") in human form, 203cm (6'8") in hybrid shift
+Height: 220cm (7'3") in human form, 300cm (9'10") in hybrid shift
 Age: 1100+ (Born ~827 AD)
 Hair: Long silver-white (originally blond), worn in a traditional warrior's braid
 Eyes: Piercing ice-blue, glowing silver-blue with slit pupils when his Enigma instinct surfaces
@@ -52,7 +52,7 @@ Species Traits: Werewolf/God (Divine Firstborn Enigma). Functional immortality, 
 Ability: Enigma Command & Primordial Aura
 ↳ Details: Absolute command over all wolves. Projects an overwhelming spiritual pressure that forces submission.
 Ability: Divine Lycanthropic Shifts
-↳ Details: Shifts into an ancient bipedal terror (233cm) or a massive dire wolf, accompanied by reality-bending presence.
+↳ Details: Shifts into an ancient bipedal terror (300cm) or a massive dire wolf, accompanied by reality-bending presence.
 Weaknesses & Physiology:
 ↳ Details: Minimal reaction to silver compared to modern wolves. Bound heavily by ancient Norse oaths, belief systems, and the Faith of Fenris. Diet consists of raw meat and mead.
 

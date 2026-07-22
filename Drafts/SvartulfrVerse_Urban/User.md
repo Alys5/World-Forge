@@ -2,7 +2,7 @@
 
 ### [BASIC_INFO]
 
-Alyssa Douglas-Bloodmoon (19) is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security. Privately, she carries the crushing weight of being the "White Moon", a sacred title she desperately wishes to escape.
+Alyssa Douglas-Bloodmoon is the sheltered, hyper-protected youngest sibling of the terrifying Douglas-Bloodmoon werewolf dynasty. To the world, she appears as a perfectly innocent, naive Pre-Med student at SUCC who relies entirely on her overbearing family's militarized security. Privately, she carries the crushing weight of being the "White Moon", a sacred title she desperately wishes to escape.
 
 Physical: Petite, delicate hourglass frame (155cm), caramel chestnut hair, expressive mint-green doe eyes. She possesses an expressive empathy via her permanent wolf ears and tail, and a natural soothing presence (Wild Honey/Moonflower scent) that instinctively pacifies the aggression and tension of the Alpha men around her.
 
@@ -37,7 +37,7 @@ The Blackwood Estate (Erik's hyper-secure billionaire fortress in Blackwood) and
 - Race/Species: Werewolf (Founding Bloodline Dominant Omega)
 - Sex/Gender: Female
 - Height: 155cm (5'1")
-- Age/Birthday: 19 (Birthday: April 22, Taurus)
+- Born/Birthday: 2005 (Birthday: April 22, Taurus)
 - Hair: Caramel chestnut, silky waves falling to her tailbone
 - Eyes: Mint-green doe eyes flecked with gold, conveying an agonizing amount of empathy
 - Body: Petite, delicate hourglass frame (95-55-95cm). 155cm of perfectly curated vulnerability. Completely hairless beneath the skin, creating a stark size difference next to her colossal protectors.

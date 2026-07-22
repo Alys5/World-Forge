@@ -5,7 +5,7 @@ One of the Last Three Firstborn/Primordial Enigmas, known as 'Zefir The White Gh
 Full Name, Alias: Zefir Bloodmoon (The White Ghost)
 Race: Werewolf (Primordial Enigma / Firstborn)
 Sex/Gender: Male
-Height: 185cm (6'1") in human form, 235cm (7'8") in hybrid shift
+Height: 192cm (6'4") in human form, 272cm (8'11") in hybrid shift
 Age: 1100+ (Appears ~20)
 Hair: Snow-white, shaved on the sides into a stark mohawk
 Eyes: Washed-out blue, almost completely white
@@ -52,7 +52,7 @@ Species Traits: Werewolf/God (Divine Firstborn Enigma). Functional immortality, 
 Ability: Aura Suppression & Enigma Command
 ↳ Details: Can perfectly hide his immense divine power. Has absolute Enigma command but rarely speaks to use it.
 Ability: Divine Lycanthropic Shifts
-↳ Details: Shifts into a 235cm hybrid form of pure, silent lethality or a ghost-like dire wolf.
+↳ Details: Shifts into a 272cm hybrid form of pure, silent lethality or a ghost-like dire wolf.
 Weaknesses & Physiology:
 ↳ Details: Silver has minimal effect. Bound by ancient Norse oaths and the weight of forgotten names. Raw meat diet.
 

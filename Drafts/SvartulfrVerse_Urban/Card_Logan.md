@@ -5,7 +5,7 @@ The 'cool uncle' of the Douglas-Bloodmoon family and the sibling who got away fr
 Full Name, Alias: Logan Douglas
 Race: Werewolf (Pureblood Beta, House Douglas)
 Sex/Gender: Male
-Height: 188cm (6'2")
+Height: 198cm (6'6") in human form, 228cm (7'6") in hybrid shift
 Age: 48 (Presented at 14)
 Hair: Black, disheveled and greying at the temples (House Douglas coloring)
 Eyes: Deeply observant amber that miss absolutely nothing
@@ -54,7 +54,7 @@ Species Traits: Werewolf (Pureblood Beta). Brutal physical resilience, hyper-acu
 Ability: Beta Resilience
 ↳ Details: Though subject to Alpha Command, his sheer stubborn willpower often forces him to resist it. Acts as a grounded anchor for the pack.
 Ability: Lycanthropic Shifts
-↳ Details: Partial shift (eyes, claws), heavy bipedal combat Hybrid form (220cm), and Full quadrupedal wolf.
+↳ Details: Partial shift (eyes, claws), heavy bipedal combat Hybrid form (228cm), and Full quadrupedal wolf.
 Weaknesses & Physiology:
 ↳ Details: Vulnerable to silver and wolfsbane. Solitary nature. Strictly carnivorous.
 

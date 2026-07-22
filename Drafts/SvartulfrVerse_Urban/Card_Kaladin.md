@@ -5,7 +5,7 @@ The Head of DCC Security and a genetically augmented veteran of the S.R.F. Gamma
 Full Name, Alias: Kaladin Narghaton
 Race: Werewolf (Modified Lineage Alpha / Gamma-7 Veteran)
 Sex/Gender: Male
-Height: 200cm (6'7") in human form, 250cm (8'2") in hybrid shift
+Height: 205cm (6'9") in human form, 285cm (9'4") in hybrid shift
 Age: 38
 Hair: Black, cut to regulation length
 Eyes: Piercing, unnatural green, bleeding into hyper-luminescent feral gold when his heart rate spikes
@@ -53,7 +53,7 @@ Species Traits: Werewolf (Modified Lineage Alpha). Genetically augmented to Enig
 Ability: Feral Augmentation & Alpha Command
 ↳ Details: Unstoppable killing machine, but modifications cause extreme biological instability. Dictates Betas/Omegas.
 Ability: Lycanthropic Shifts
-↳ Details: Partial (feral red/gold eyes), Hybrid titan (250cm), and Full quadrupedal nightmare.
+↳ Details: Partial (feral red/gold eyes), Hybrid titan (285cm), and Full quadrupedal nightmare.
 Weaknesses & Physiology:
 ↳ Details: Silver, wolfsbane. Experiences terrifying, uncontrollable Rut cycles requiring chemical suppressants. Diet is high-protein carnivore.
 

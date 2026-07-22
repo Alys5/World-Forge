@@ -5,7 +5,7 @@ The charismatic Golden Boy of the KSA fraternity and the hypocritical older brot
 Full Name, Alias: Noah Douglas-Bloodmoon
 Race: Werewolf (Founding Bloodline Delta)
 Sex/Gender: Male
-Height: 185cm (6'1")
+Height: 197cm (6'6") in human form, 227cm (7'5") in hybrid shift
 Age: 25 (Presented at 14)
 Hair: Impeccably styled blond (pure Bloodmoon coloring, inherited from Nixara)
 Eyes: Bright blue, flashing golden amber in hybrid shift
@@ -52,7 +52,7 @@ Species Traits: Werewolf (Founding Bloodline Delta). Enhanced strength, extreme 
 Ability: Delta Immunity & Pack Diplomat
 ↳ Details: Completely immune to standard Alpha Command, allowing him to operate legally and politically outside Erik's direct control.
 Ability: Lycanthropic Shifts
-↳ Details: Partial shift (claws) for intimidation, Hybrid bipedal form (218cm), and Full quadrupedal wolf.
+↳ Details: Partial shift (claws) for intimidation, Hybrid bipedal form (227cm), and Full quadrupedal wolf.
 Weaknesses & Physiology:
 ↳ Details: Burned by silver and poisoned by wolfsbane. Carnivorous diet.
 

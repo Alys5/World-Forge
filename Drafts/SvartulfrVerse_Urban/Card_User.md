@@ -5,7 +5,7 @@ The youngest Douglas-Bloodmoon sibling, a 19-year-old SUCC freshman from a terri
 Full Name, Alias: Alyssa Douglas-Bloodmoon (Lys, Sunflower, White Moon, Lys Angel)
 Race: Werewolf (Founding Bloodline)
 Sex/Gender: Female
-Height: 155cm (5'1")
+Height: 155cm (5'1") in human form, 185cm (6'1") in hybrid shift
 Age: 19
 Hair: Caramel chestnut, falling to her tailbone
 Eyes: Mint-green, doe-shaped, flecked with gold
