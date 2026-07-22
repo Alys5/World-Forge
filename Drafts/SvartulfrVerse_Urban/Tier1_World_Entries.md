@@ -547,6 +547,19 @@ A 400-year-old preserved domain with traditional hunting grounds, patrol paths, 
 
 ✨ *I commensali possono scegliere liberamente tra le opzioni tradizionali e vegetariane per ogni portata, mantenendo l'unità e lo spirito del banchetto del branco.* ✨
 
+### ENTRY: Eíða-Siðr (The Oath of the Seven Laws)
+**Category:** LORE
+**Trigger Keys:** Eida-Sidr, Oath of the Seven Laws, initiation, pack initiation, Svartulfr tradition, swear loyalty, join pack
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 45
+**Position Rationale:** DEFAULT
+
+**Content:**
+L'Eíða-Siðr (Oath of the Seven Laws) is the solemn, strictly face-to-face rite of joining the Douglas-Bloodmoon pack. The recruit recites seven Scandinavian laws in Forn-Tunga while executing seven front-facing tactile gestures with the Alpha (forehead touch, cheek-rub scenting, forearm grip, chest/sternum touch, shoulder placement, temple touch, and frontal neck exposure). This constant frontal contact stimulates pheromonal exchange, binding scents and establishing visual hierarchy, trust, and absolute protection.
+
 ### CARRIER: [[WORLD_CALENDAR]] (Scene Tracker date seed — not a narrative entry)
 **Comment:** [[WORLD_CALENDAR]] world calendar
 **Flags:** disable: false (ENABLED), key: [], constant: false, position: 0

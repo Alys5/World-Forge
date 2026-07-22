@@ -59,6 +59,41 @@ Bloodmoon Culture
 
 Other packs in different environments would develop entirely different cultures.
 
+### Example Ritual: Eíða-Siðr (Il Giuramento Frontale del Branco Svartúlfr)
+
+L'**Eíða-Siðr** è il rito di sottomissione, alleanza e imprinting biologico con cui un nuovo membro entra a far parte del branco.
+Il giurante rimane **faccia a faccia** con l'Alpha durante tutte e sette le leggi. Il contatto fisico frontale costante stimola l'interscambio feromonale e stabilisce visivamente la gerarchia, la fiducia e il rispetto reciproco.
+
+#### Il Rituale Passaggio per Passaggio (Postura Frontale)
+
+1. **ᛚ — *Eðli er eigi ørlög.*** (La Biologia non è Destino.)
+   * **Gesto Tattile:** Pressione delle Fronti (Contatto Visivo e Mentale).
+   * **Azione:** Il giurante inclina la testa in avanti fino ad appoggiare la propria fronte contro quella dell'Alpha. Gli occhi si incrociano a distanza ravvicinata prima che il contatto avvenga, simboleggiando la scelta e la volontà libera.
+
+2. **ᛖ — *Vargflokkar eru ættir.*** (I Branchi sono Famiglie.)
+   * **Gesto Tattile:** Inclinazione del Capo e Sfrego della Guancia (Incrocio dei Profumi).
+   * **Azione:** Rimanendo di fronte all'Alpha, il giurante inclina la testa di lato e strofina delicatamente la propria guancia contro la guancia e la mandibola dell'Alpha. I profumi primari delle ghiandole facciali si mescolano frontalmente.
+
+3. **ᚦ — *Forysta er unnin ok haldin.*** (La Leadership si guadagna e si mantiene.)
+   * **Gesto Tattile:** Presa Frontale degli Avambracci.
+   * **Azione:** Entrambi sollevano le braccia: l'Alpha afferra l'avambraccio del giurante e il giurante afferra l'avambraccio dell'Alpha in una salda presa guerriera frontale.
+
+4. **ᚨ — *Hverr ulfr hefir sinn stað.*** (Ogni Lupo ha una Nicchia.)
+   * **Gesto Tattile:** Palmo Piatto sul Petto (Riconoscimento del Cuore).
+   * **Azione:** Il giurante posa la mano destra aperta al centro del petto dell'Alpha (sullo sterno), avvertendone il battito. Riconosce l'autorità dell'Alpha e il proprio posto all'interno dell'architettura del branco.
+
+5. **ᚱ — *Siðr breytisk.*** (La Cultura evolve.)
+   * **Gesto Tattile:** Mani sulle Spalle (L'Alleanza Diretta).
+   * **Azione:** Senza spostarsi di lato, il giurante posa entrambe le mani sulle spalle dell'Alpha, mantenendo la posizione frontale a braccia tese o semi-flesse. Simboleggia il sostenersi a vicenda di fronte alle sfide del futuro.
+
+6. **ᚲ — *Trú ok saga eru skilin.*** (Fede e Storia sono separate.)
+   * **Gesto Tattile:** Tocco delle Tempie / Sguardo Diretto.
+   * **Azione:** L'Alpha allunga le mani di fronte a sé e sfiora con i polpastrelli le tempie del giurante, mantenendo uno sguardo fisso e penetrante nei suoi occhi. Rappresenta la chiarezza di visione e la verità storica priva di inganni.
+
+7. **ᚷ — *Flokkrinn lifir framar hinum eina.*** (Il Branco viene prima dell'Individuo.)
+   * **Gesto Tattile:** Reclinazione del Capo ed Esposizione Frontale della Gola.
+   * **Azione:** Rimanendo al centro, di fronte all'Alpha, il giurante reclina il capo all'indietro ed espone la giugulare. L'Alpha si sporge leggermente in avanti e posa le labbra o un respiro caldo direttamente sull'incavo della gola/collo del giurante. È l'atto finale di resa e protezione assoluta.
+
 ---
 
 ## Types of Packs
