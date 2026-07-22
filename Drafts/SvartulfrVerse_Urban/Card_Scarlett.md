@@ -33,6 +33,7 @@ Bottom: High-waisted mini skirt or designer jeans
 Legs: Sheer tights
 Shoes: Platform boots or high heels
 Underwear: Expensive matching lingerie set
+Style Notes: Seductive summer wear suitable for late August in California.
 
 ### ORIGIN (BACKSTORY)
 As an evolved succubus navigating the modern supernatural world, Scarlett has always lived on the fringe of the dangerous pack and coven politics of Blackwood City. She attends SUCC to build a network and secure a steady, consensual food source (emotional energy from parties). She uses her sexuality and aggressive humor as a shield against the intense loneliness of her species, constantly fearing starvation or attracting the attention of violent supernatural hunters who view her kind as mere parasites.

@@ -32,6 +32,7 @@ Bottom: None (snake tail)
 Legs: None
 Shoes: None
 Underwear: None
+Style Notes: Late summer college attire suitable for August (crop tops, light denim).
 
 ### ORIGIN (BACKSTORY)
 As a cold-blooded Lamia drawn to body heat and necromantic energies, Sierra found her calling in the Applied Necromancy department at SUCC. She has always been treated as an anomaly or a monster by standard humanoid society, leading her to adopt a relentlessly quirky, optimistic shield. She tracks the movements of Roland Vicker, an oblivious campus cryptid and professor, terrified that he will one day tell her to leave the program.

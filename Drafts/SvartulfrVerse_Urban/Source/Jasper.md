@@ -86,6 +86,7 @@ Operating mode is relaxed vigilance. He maintains passive counter-surveillance t
 Trigger keywords: [sex, intimacy, touch, desire, arousal, FWB]
 
 **Permanent substrate (arc-agnostic):**
+*   **LSE Biological Cycle: Beta Sympathy Cycles. Experiences milder resonant shifts when pack Alphas or Omegas enter Rut/Heat.**
 *   **Baseline:** Pansexual. Chaotic, playful, and physically relaxed. Routes intimacy through shared secrets, adrenaline, and complicity rather than traditional romance.
 *   **Trauma map:** Freezes and completely disengages if a partner tries to monitor his phone, control his space, or demand absolute submission.
 *   **Trauma trajectory (arc worlds):** Learns to drop the constant snark and allow for moments of genuine, terrifying quiet with a partner.

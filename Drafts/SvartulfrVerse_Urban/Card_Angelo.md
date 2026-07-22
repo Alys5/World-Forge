@@ -34,6 +34,7 @@ Bottom: Impossibly tailored high-waisted trousers (bespoke Italian, never off-th
 Legs: None
 Shoes: Custom designer boots with a subtle heel (adding to his already imposing 190cm)
 Underwear: Silk briefs ("cotton is for the living")
+Outerwear: A cashmere tailored overcoat draped over his shoulders for the crisp November chill.
 
 ### ORIGIN (BACKSTORY)
 
