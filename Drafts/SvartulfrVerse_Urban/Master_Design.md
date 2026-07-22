@@ -32,6 +32,48 @@ notes:
   - 3.6 is IN SCOPE (world_mode: arc)
 ```
 
+## Revision Log
+
+### Revision R1 — 2026-07-22 16:50 UTC
+**Status:** PENDING
+**World Mode:** arc
+**Scope type:** tier2_character_modify_field
+**Mode:** freeform
+
+**User intent (verbatim):**
+> Rimuovere le descrizioni generiche "Breast/Chest: Broad and masculine chest, firm" e "Nipples: Sensitive to touch and temperature", e rimuovere ogni menzione di "Standard male anatomy". Separare i campi Clit/Balls e Breast/Chest per lasciare solo quello corretto per il gender del personaggio. Rendere tutto unico e dettagliato (es. misure e particolarità viscerali).
+
+**Evidence (optional):**
+> None provided.
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+- Master Design sections to update: none
+- Drafts files to create: none
+- Drafts files to modify: Card_*.md
+- Export files to recompile: Character JSON cards
+- Chat preset changes: no
+- JanitorAI scripts to regenerate: yes
+
+**Phases affected:** Refiner, Architect, Editor, Compiler, Prompt Engineer, Janitor Builder
+**Phases skipped:** Intimacy Architect, Voice Auditor, Arc Transition Auditor, Intimacy Auditor
+
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0
+
+**Cross-references the user should be aware of:**
+- None.
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Status: APPLIED**
+
+## ✅ REVISION COMPLETE
+
 ---
 
 ## SECTION 1: WORLD LAWS AND MECHANICS (Tier 1 Source)
