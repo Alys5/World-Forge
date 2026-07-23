@@ -72,7 +72,222 @@ notes:
 
 **Status: APPLIED**
 
-## ✅ REVISION COMPLETE
+### Revision R2 — 2026-07-23 21:35 UTC
+**Status:** APPLIED
+**World Mode:** arc
+**Scope type:** tier3_arc_recalibration + export_janitor_bio_update
+**Mode:** freeform
+
+**User intent (verbatim):**
+> Aggiornare gli archi (Arc 4 La Grande Caccia, Grand Festival, veto di Wulfnic su Erik tramite legge di Fenris, agency totale del giocatore) e raffinare la Bio JanitorAI con i crediti crossover a iorveths, le Sette Leggi di Fenris in norreno con traduzione e i tag [WIP] sugli archi 4-6.
+
+**Evidence (optional):**
+> Modifiche dirette a Master_Design.md Section 9A, Tier3_Arc4_Primal_Grounding_Entries.md, SvartulfrVerse_Urban_Janitor_Bio.html e SvartulfrVerse_Urban_JanitorAI.md.
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade:**
+- Master Design sections updated: Section 9A (Arc 4)
+- Drafts files modified: Tier3_Arc4_Primal_Grounding_Entries.md
+- Export files recompiled/updated: SvartulfrVerse_Urban_Arc4_Lorebook.json, SvartulfrVerse_Urban_Janitor_Bio.html, SvartulfrVerse_Urban_JanitorAI.md
+- Revision manifest updated: REVISED_FILES.md
+
+**Phases affected:** Refiner-mini, Architect-mini, Editor-mini, Compiler-mini, JanitorBuilder-mini
+
+**Reviser / Architect-mini sign-off:**
+- [x] Cascade touched as specified
+- [x] All parent foundational rules upheld
+- [x] In-place edits replaced in situ
+- [x] Voice and register match existing world content
+- [x] Export lorebooks and Janitor AI profiles validated
+
+**Intimacy-Architect-mini sign-off (Phase R2.5):**
+- [x] Every intimacy file in the cascade has been touched as specified (`Tier3_Arc4_Intimacy_Register.md`)
+- [x] No card content modified (cards are Architect-mini's domain)
+- [x] Substrate vs Register separation preserved
+- [x] All cross-references to existing intimacy files are consistent
+- [x] No function/substrate contradictions introduced
+- [x] Inline revision markers placed at change sites (`<!-- REVISED IN R2 ... -->`)
+- [x] World's intimate prose register inherited (feral LSE biological mechanics, acoustic vacuum, Fenris law tension)
+
+**Editor-mini sign-off (Phase R3, Round 1):**
+
+### Touched Files Audited
+- `Master_Design.md` Section 9A
+- `Tier3_Arc4_Primal_Grounding_Entries.md`
+- `Tier3_Arc4_Intimacy_Register.md`
+
+### Hard-Fail Rules (parent rules 1–10)
+- [x] Position Rationale present and meaningful on every entry
+- [x] ARC_STATE two-subsection structure preserved on touched ARC_STATE (Dramatic Situation + Tonal Mandate)
+- [x] No tier contamination in touched entries
+- [x] All cascade files present and valid
+- [x] Cross-arc consistency preserved
+
+### Cross-Reference Integrity
+- [x] Touched files do not contradict untouched files
+- [x] Master Design canonical sections match draft content for touched areas
+- [x] Inline revision markers present at change sites
+- [x] No stacked/duplicated content — every in-place edit replaced its target
+- [x] No silent scope expansion
+
+### Layer 4 (Intimacy)
+- [x] Tier 3 Intimacy Register does not duplicate substrate
+- [x] Function/substrate contradictions absent
+
+**Status: R3_COMPLETE**
+
+**Voice-Auditor-mini sign-off (Phase R3.5):**
+
+### Audit Scope
+- Affected character(s): Wulfnic, Erik, Ut, Jasper, Zefir, Kaladin, Angelo
+- Affected arc(s): Arc 4 (Primal Grounding)
+- Evidence test cases: N/A
+- Section 7b test cases: 7
+
+### Findings
+- Trigger-response fidelity: PASS
+- Voice distinctiveness: PASS
+- Arc register integrity: PASS (Grand Festival, Fenris Law, acoustic blackout, White Moon agency)
+- Multi-axis bleed: N/A
+- Voice continuity: PASS
+
+### Severity Summary
+- Critical: 0
+- High: 0
+- Medium: 0
+
+**Status: R3.5_COMPLETE**
+
+**Arc-Transition-Auditor-mini sign-off (Phase R3.6):**
+
+### Seams Audited
+- Arc 3 → Arc 4 (Velvet Trap → Primal Grounding)
+- Arc 4 → Arc 5 (Primal Grounding → Shattered Glass)
+
+### Per-Dimension Findings
+- Trigger continuity: PASS (Dec 13 departure & Dec 16 return match triggers)
+- CHARACTER_STATE continuity: PASS (Erik trauma/rage, White Moon agency, Kaladin tech blackout instability)
+- NPC behavioral shift continuity: PASS (Wulfnic Fenris law invocation, Ut festival shielding)
+- World state continuity: PASS (Acoustic vacuum & La Grande Caccia 5-year cycle)
+- Hidden information rule continuity: PASS
+- Dramatic beat sequence: PASS (Grand Festival → Ritual Call → Release/Caccia → Aftermath)
+- Tone register continuity: PASS (Urban psychological tension → Raw elemental forest grounding → Breaking point)
+
+### Severity Summary
+- Critical: 0
+- High: 0
+- Medium: 0
+
+**Status: R3.6_COMPLETE**
+
+**Intimacy-Auditor-mini sign-off (Phase R3.7):**
+
+### Audit Scope
+- Affected character(s): Bloodmoon Pack & {{user}}
+- Affected arc(s) with intimate beats: Arc 4 (Primal Grounding)
+- Evidence test cases: N/A
+- Section 7b intimate test cases: 4
+
+### Voice Fidelity Lens
+- Evidence reproduction: N/A
+- Substrate fidelity: PASS
+- Trauma map fidelity: PASS (Erik Nixara trauma map clean)
+- Voice continuity into intimate scenes: PASS
+- Hard limit integrity: PASS
+
+### Thematic Register Lens
+- Function fidelity: PASS (Feral Grounding and Primal Biological Imperative)
+- Prose register match: PASS (Dwells on scent, physical grounding, acoustic vacuum; elides tech)
+- Direction fidelity: PASS (White Moon agency in La Grande Caccia)
+- Arc atmosphere preservation: PASS
+
+### Severity Summary
+- Critical: 0
+- High: 0
+- Medium: 0
+- Function/substrate conflicts: 0
+
+**Status: R3.7_COMPLETE**
+
+**Compiler-mini sign-off (Phase R4):**
+
+### Files Compiled
+- `SvartulfrVerse_Urban_Arc4_Lorebook.json`: 9 entries (9 existing preserved, 0 new, 9 modified)
+- `SvartulfrVerse_Urban_Janitor_Bio.html`: HTML bio update (iorveths crossover credit, Seven Laws of Fenris, WIP tags)
+- `SvartulfrVerse_Urban_JanitorAI.md`: prompt header cleanup
+
+### Pre-Save Guards (parent rules 1–12)
+- [x] JSON parses on every written file
+- [x] {{original}} preserved on every touched card
+- [x] No metadata fields outside schema
+- [x] Position fields correct
+- [x] All entries have Position Rationale
+- [x] Every entry's object key equals String(uid)
+- [x] Entry fields camelCase per ST schema
+- [x] No inline revision marker survives in any JSON value
+- [x] Every written file is UTF-8 — non-ASCII intact (em-dashes, Old Norse runes, curly quotes)
+
+### UID Continuity
+- [x] Existing entries keep their UIDs across all touched lorebooks (0 to 8)
+- [x] No entries deleted that weren't explicitly in the cascade
+
+### User Report & Revision Manifest
+- [x] "What Changes When" report produced
+- [x] `Export/REVISED_FILES.md` updated with Revision R2 entry
+
+**Status: R4_COMPLETE**
+
+**Prompt-Engineer-mini sign-off (Phase R5):**
+
+### Audit Scope
+- Touched entries audited: 9 entries in `SvartulfrVerse_Urban_Arc4_Lorebook.json`
+- Touched profiles audited: `SvartulfrVerse_Urban_Janitor_Bio.html`, `SvartulfrVerse_Urban_JanitorAI.md`
+
+### Findings
+- Position correctness: PASS
+- Keyword coverage / collisions: PASS
+- Token budget concerns: None
+- Card override architecture: PASS
+- Style Contract consistency: PASS
+
+### Preset Changes Applied
+- Trigger A (Multi-Character Dynamics block): Not fired
+- Trigger B (NSFW block): Not fired
+- Trigger C (Style Contract multi-axis flag): Not fired
+- Trigger F (Dice Oracle Interpretation block): Not fired
+
+### Manual Corrections
+- Sections 7/8 recommendations count: 0
+- Files with outstanding recommendations: None
+
+**Status: R5_COMPLETE**
+
+**JANITOR BUILDER SIGN-OFF (Phase R6):**
+- [x] Core JS Scripts updated
+- [x] Consolidated Group Bio (`SvartulfrVerse_Urban_Janitor_Bio.html`) updated (crossover credit to iorveths, Seven Laws of Fenris, WIP tags)
+- [x] Consolidated Group Profile (`SvartulfrVerse_Urban_JanitorAI.md`) updated
+- [x] Scripts, group bio, and group profile present and verified in Export/
+
+**Status: R6_COMPLETE / APPLIED**
+
+## ✅ REVISION R2 COMPLETE
+
+---
+
+### Revision R3 — JanitorAI AnyPOV Generic User Prompt Recalibration
+
+**Date:** 2026-07-23  
+**Trigger:** Diagnostic audit (`/worldforge revise --brainstorm`)  
+**Scope:** `janitor_export_modify`  
+**Intent:** Ensure complete separation between AnyPOV Generic User (open player persona card rank, gender, physique) and Canonical Alyssa in JanitorAI group prompts.
+
+#### Cascade
+- `Export/SvartulfrVerse_Urban/SvartulfrVerse_Urban_JanitorAI.md` (recalibrated `{{user}}` rank, nest, and hierarchy definitions to open AnyPOV standards)
+
+**Status: APPLIED**
+
+## ✅ REVISION R3 COMPLETE
 
 ---
 

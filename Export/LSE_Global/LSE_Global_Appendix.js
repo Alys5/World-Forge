@@ -1,18 +1,69 @@
 /* ============================================================================
-   LSE Global Appendix v2026.07.22
-   Wiki templates and auto-generated entries covering all 11 LSE modules:
-   species, principles, axes, terminology, and lorebook triggers.
-   ========================================================================== */
-/* ============================================================================
+   LSE Global Appendix v2026.07.23
    Author: lys_5
    JanitorAI Profile: https://janitorai.com/profiles/df1f0279-2607-4c9b-9b4e-ee02438d70a2_profile-of-lys-5
+   //#region HEADER
+   ==========================================================================
+   Inputs (read-only):  context.chat.last_message (or lastMessage), context.chat.message_count
+   Outputs (write-only): context.character.personality, context.character.scenario
+
+   SANDBOX LIMITATIONS (ES6):
+     - BLOCKED: async, await, Promise, fetch, setTimeout, document, window, I/O APIs.
+     - SAFE: string methods (.includes, .replace), array methods (.map, .filter), Math.
+     - MEMORY: Use `context.chat.last_messages.slice(-X)` for deep scanning, not just `last_message`.
+
+   AUTHOR CHEAT-SHEET (ASCII-safe):
+     - keywords: real user words/phrases; supports suffix wildcard "welcom*" -> welcome/welcomed/welcoming.
+     - tag: internal label for this entry (e.g., "base_open"); never matched against text.
+     - triggers: list of tags to emit when this entry hits (e.g., ["base_open"]).
+
+   Text gates (any of these aliases are accepted):
+     - requireAny / andAny / requires: { any: [...] }
+     - requireAll / andAll / requires: { all: [...] }
+     - requireNone / notAny / block / requires: { none: [...] }
+     - notAll  // reject only if *all* listed words are present simultaneously
+
+   Tag gates (cross-entry by fired tags):
+     - andAnyTags, andAllTags, notAnyTags, notAllTags
+
+   Time gates:
+     - minMessages / maxMessages
+
+   Name block:
+     - nameBlock: ["jamie"]  // blocks if active bot name equals any listed (case-insensitive)
+
+   Priority and selection:
+     - priority: 1..5 (default 3; clamped)
+     - APPLY_LIMIT caps how many entries apply per turn (engine-level)
+
+   Probability:
+     - probability: 0..1 or "40%" (both supported)
+
+   Shifts:
+     - optional sub-entries with same fields as entries; evaluated after the parent entry hits
+
+   Multi-message window (engine behavior summary):
+     - Engine normalizes a joined window of recent messages (WINDOW_DEPTH) for keyword checks.
+     - Whole-word matching with optional suffix wildcard "stem*".
+     - Hyphen/underscore treated as spaces during normalization.
+
+   Output formatting:
+     - Engine prepends "\n\n" before each applied personality/scenario fragment.
+     - Token Cleanup: Injected personality/scenario fragments are scoped to the current turn only. They do not permanently mutate the base state, thereby preventing context overflow (token bloat).
    ========================================================================== */
 
+/* ============================================================================
+   [SECTION] GLOBAL KNOBS
+   SAFE TO EDIT: Yes
+   ========================================================================== */
 //#region GLOBAL_KNOBS
 let DEBUG = 0; // 1 -> emit [DBG] lines inline in personality
 let APPLY_LIMIT = 6; // cap applied entries per turn; higher priorities win
 
-
+/* ============================================================================
+   [SECTION] OUTPUT GUARDS
+   SAFE TO EDIT: Yes (keep behavior)
+   ========================================================================== */
 //#region OUTPUT_GUARDS
 context.character = context.character || {};
 context.character.personality =
@@ -24,6 +75,10 @@ context.character.scenario =
 		? context.character.scenario
 		: '';
 
+/* ============================================================================
+   [SECTION] INPUT NORMALIZATION
+   SAFE TO EDIT: Yes (tune WINDOW_DEPTH; keep normalization rules)
+   ========================================================================== */
 //#region INPUT_NORMALIZATION
 // --- How many recent messages to scan together (tune as needed) -------------
 const WINDOW_DEPTH = (function (n) {
@@ -118,7 +173,10 @@ const activeName = _normalizeText(
 		: ''
 );
 
-
+/* ============================================================================
+   [SECTION] UTILITIES
+   SAFE TO EDIT: Yes
+   ========================================================================== */
 //#region UTILITIES
 const dbg = (msg) => {
 	try {
@@ -277,7 +335,10 @@ const entryPasses = (e, activeTagsSet) => {
 	return true;
 };
 
-
+/* ============================================================================
+   [SECTION] AUTHOR ENTRIES
+   SAFE TO EDIT: Yes
+   ========================================================================== */
 //#region AUTHOR_ENTRIES
 const dynamicLore = [
 	// =========================================================================
@@ -5056,6 +5117,11 @@ for (let i3 = 0; i3 < _ENGINE_LORE.length; i3++) {
 	if (e4.scenario) bufS += '\n\n' + e4.scenario;
 	dbg(`post-shift triggered entry[${i3}] p=${prio(e4)}`);
 }
+
+/* ============================================================================
+   [SECTION] RANDOM WORLD EVENTS
+   SAFE TO EDIT: Yes (Add/Remove events and adjust probabilities)
+
 
 /* ============================================================================
    [SECTION] FLUSH
