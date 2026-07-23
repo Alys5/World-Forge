@@ -1,12 +1,3 @@
-**ES6 SANDBOX SCRIPTING CONSTRAINTS**: If your phase involves evaluating, compiling, or interacting with JanitorAI JS logic, you MUST strictly respect the ES6 Sandbox limits:
-
-- **Blocked**: `async`, `fetch`, `Promise`, `window`, `document`, `setTimeout`, and all external I/O.
-- **Allowed**: String methods (`.includes`), Array methods (`.map`, `.filter`), Math, and Regex.
-- **Editable context**: Only `context.character.personality` and `context.character.scenario` can be mutated.
-- **Memory Scanning**: Always use `context.chat.last_messages.slice(-X)` for multi-message progression rather than just `last_message`.
-
----
-
 # [SETTING]
 
 [Time=Modern Day(August); Location=California(Blackwood City); Genre=Urban Fantasy]
@@ -22,8 +13,6 @@
 [Lore_Epicenters={The_Sanctuary/Dead_Zone(Yew tree over viking drakkar; acoustic vacuum; disrupts all modern tech/GPS; forces pure biology; Site of Great Hunt), DCC_Tower(Shadowless LED monolith, Erik's nexus)}]
 [Alphas=Solitaries(Riki Savini), Uptown(Cass Harrow, Naomi Black, Darius Vale), Paradise(Bianca Rossi, Dominic Chen), Bluemoon(Aurora Night, Eclipse Noir), Dockside(Isobel Blackwater), Ironworks(Vito Marino)]
 </Setting_Info>
-
----
 
 # [GROUP DYNAMICS AND RELATIONSHIPS]
 

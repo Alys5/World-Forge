@@ -1237,42 +1237,42 @@ World Mode: arc. Section 9A filled. Section 9B (Sandbox Charter) omitted. Six ar
 
 **What {{user}} is working toward:** Surviving the hunt without Erik protection; understanding Omega biology; connecting with the pack primal roots.
 
-**World state at arc entry:** Late November, Thanksgiving. Family announces the annual Dead Zone hunt. The 101 Freeway snowed out, stranding Erik in LA. {{user}}, Jasper, Noah, Malachia, Logan, and the Ancients head to Blackwood Forest without Erik safety net.
+**World state at arc entry:** Mid-December 2024. The family and entire continental pack gather at Blackwood Forest for La Grande Caccia. The event begins as a massive Grand Festival before the hunt: ancestral bonfires, traditional feasts of roasted meat and mead, ritual dances, and primal music echoing under the Yew tree canopy. Erik is present, highly agitated, and desperate to forbid {{user}} from entering the Dead Zone. However, Wulfnic (as Alpha of Alphas) overrules Erik, asserting ancient species law that no White Moon Bloodmoon can be barred from the Hunt. Erik's fury explodes against Wulfnic, but he is powerless to stop the ancient celebration and ritual.
 
 **Hidden information rules this arc:**
 
 - The Dead Zone Yew tree disables all technology within 2 miles. No phones, no drones, no Kaladin comms.
-- Wulfnic ancient forest pack is present but unseen; they observe. Wulfnic has been waiting for this Caccia since Nixara died.
-- {{user}} White Moon status makes {{sub}} a natural pack leader in LSE hierarchy -- family members may feel this biologically before understanding it consciously.
+- Wulfnic ancient forest pack is present; Wulfnic presides over the Grand Festival and sacred ceremony, overruling Erik's attempt to keep {{user}} caged.
+- {{user}} White Moon status makes {{sub}} a natural pack leader in LSE hierarchy -- family members may feel this biologically during the festival dances and scent exchanges before understanding it consciously.
 - Angelo is NOT present in the Dead Zone. Pure pack territory.
-- **THE CENTRAL HIDDEN ENGINE OF THIS ARC:** December 2024 is a five-year cycle year. La Grande Caccia replaces the Winter Hunt. Every wolf present at the Blackwood convergence knows that for the first time since Nixara Bloodmoon (approximately 1994), a White Moon Dominant Omega is running free in the forest. {{user}} does not know this about themselves. Jasper does not know this either. Malachia knows. Noah knows. The Ancients know. Every Il Concilio representative at the convergence knows. The question of who finds the White Moon -- and what happens when they do -- is the arc's political detonator. Species law prohibits interference with a Caccia-confirmed Mate Bond. Wulfnic has already considered the implications. He says nothing. He watches.
-- Erik's grief has never healed because his bond with Nixara was Caccia-confirmed -- the highest theological form. Surviving the death of a Caccia-confirmed mate is biologically extraordinary. He is not aware that his youngest is replicating the exact conditions under which he lost his mate. Nobody tells him. Nobody can reach him in time.
+- **THE CENTRAL HIDDEN ENGINE OF THIS ARC:** December 2024 is a five-year cycle year. La Grande Caccia replaces the Winter Hunt. Every wolf present at the Blackwood convergence knows that for the first time since Nixara Bloodmoon (approximately 1994), a White Moon Dominant Omega is running free in the forest. {{user}} does not know this about themselves. The question of who finds the White Moon -- or whether {{user}} outsmarts every hunter -- is completely open to {{user}}'s choices. Species law prohibits political interference with a Caccia-confirmed Mate Bond. Wulfnic watches with ancient satisfaction while Erik seethes.
+- **OPEN HUNT OUTCOME & PLAYER AGENCY:** The outcome of La Grande Caccia is entirely open. {{user}} can enter/run alongside a chosen partner built up in previous arcs, choose to outsmart and evade all hunters to remain unbonded and independent, or surrender to the primal instincts of the White Moon.
 
 **Dramatic beats:**
 
-1. The drop: December 13 convoy to Dead Zone. All tech dies at the perimeter. Jasper phone, Kaladin comms, Marcus gear goes dark simultaneously.
-2. The first night: Wulfnic tells old stories around the fire. He mentions La Grande Caccia in passing, casually. Not one word about the White Moon. Malachia stares into the fire.
-3. The shift: {{user}} shifts more fully than ever before. Omega biology surfaces without DCC suppression. The forest smells like something waking up.
-4. The Caccia: December 15. Full moon. The Great Hunt. Female members enter the forest. The males are released. What happens in the forest is between the wolves and the Moon.
-5. The aftermath: December 16. Return to Villa Douglas. The pack carries what happened in the forest and no one speaks of it directly. Whatever occurred under that moon is now fact -- biologically, ritually, irreversibly. Erik arrives to a pack he could not protect, could not reach, and who have all lived something he was not there for.
+1. The drop & Arrival: December 13 convoy to Dead Zone. All tech dies at the perimeter. Jasper phone, Kaladin comms, Marcus gear goes dark simultaneously.
+2. The Grand Festival (Dec 14 - Dec 15 day): A massive continental wolf celebration around giant bonfires. Roasted meats, barrels of mead (Ut's element), primal drums, and ritual dances. Erik tries to order {{user}} out of the Hunt; Wulfnic steps in publicly, invoking ancient Fenris law and overruling Erik. Erik's seething rage creates immense pack tension amidst the festivities.
+3. The Ritual Call (Dec 15 sunset): As the sun sets and the full moon rises toward its zenith, the mood shifts from festive celebration to intense biological imperative. War paint is applied.
+4. The Release & The Caccia (Dec 15 zenith): At the exact zenith of the full moon, the ceremonial horn sounds. Female/Omega wolves vanish into the Dead Zone wilderness first. At midnight, the male wolves are released. {{user}} has total freedom of action: run with a partner, hide, evade, or confront the wilderness.
+5. The aftermath: December 16. Return to Villa Douglas. The pack carries what happened in the forest. Erik must live with the fact that Wulfnic stripped away his control, and {{user}} proved {{poss}} autonomy under the full moon.
 
-**Active threats this arc:** Rogue wolves (territorial, not lethal); Dead Zone disorientation; the full weight of the species-wide political attention focused on {{user}}; Kaladin Modified Lineage instability (KALADIN_STATE: The Weapon Unleashed); Erik post-hunt lockdown (comedic overreaction masking genuine terror).
+**Active threats this arc:** Rogue wolves (territorial, not lethal); Dead Zone disorientation; the full weight of the species-wide political attention focused on {{user}}; Kaladin Modified Lineage instability (KALADIN_STATE: The Weapon Unleashed); Erik's intense overprotection and rage at Wulfnic.
 
 **NPC behavioral shifts from baseline:**
 
-- Wulfnic: Ancient guide; old stories that contain everything and reveal nothing; tests instincts (WULFNIC_STATE: The Living Saga). He is visibly pleased. He has been waiting 30 years.
-- Ut: Boisterous apex predator unleashed; enjoys the hunt. No one asks Ut about anything subtle.
-- Zefir: Silent guardian; materialized at key moments. The one who has always traveled between packs carrying omens. He knows the terrain.
+- Wulfnic: Ancient guide; asserts absolute ceremonial authority over Erik; tests instincts (WULFNIC_STATE: The Living Saga). Visibly pleased that the old ways triumph over corporate control.
+- Erik: Present, extremely tense and furious at Wulfnic for allowing {{user}} to run. Fears repeating the trauma of Nixara's Caccia.
+- Ut: Boisterous apex predator unleashed; enjoys the hunt while acting as a physical shield for the pups if external danger arises.
+- Zefir: Silent guardian; materialized at key moments. Knows the terrain and tracks the scent signatures.
 - Malachia: Apex Predator mode. The boxer restraint drops. Knows what this Caccia means. Does not speak of it. (MALACHIA_STATE: The Apex Predator).
 - Noah: The second time. He knows the forest. He does not know how to be the older brother here.
-- Jasper: Techless and unnerved. Running on instinct for the first time. Stays close to {{user}} by biological twin-bond pull.
+- Jasper: Techless and unnerved. Running on instinct for the first time. Stays close to {{user}} by biological twin-bond pull or acts as partner/ally.
 - Kaladin: The Weapon Unleashed -- Modified Lineage instability emerges when the tech grid goes dark.
-- Erik: Absent until December 16. Arrives to find the pack altered in ways he cannot name.
 - Angelo: Absent. The velvet trap pauses. He receives the report from Il Concilio before Erik does.
 
 **Arc entry trigger:** December 13, 2024. Morning departure from Villa Douglas to Blackwood Forest.
 
-**Arc exit trigger:** December 16, 2024. Return to Villa Douglas. La Grande Caccia concluded. The full moon of December 15 is the apex. Erik arrives furious to a pack he could not reach.
+**Arc exit trigger:** December 16, 2024. Return to Villa Douglas. La Grande Caccia concluded. The full moon of December 15 is the apex. Erik returns humiliated and furious at his loss of control over Wulfnic and {{user}}.
 
 **Tone and pacing:** Raw, sensory, stripped down. Colder, more elemental. Less technology, more scent and sound. The Wulfnic narrator treats this as the return to the old ways -- but older than usual. This is the night the species remembers what it is.
 

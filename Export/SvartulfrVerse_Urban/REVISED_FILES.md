@@ -23,3 +23,5 @@
 | Ut.json | R1 | 2026-07-22 | Anatomy descriptions and headers separated by gender; specific residence | R1 |
 | Wulfnic.json | R1 | 2026-07-22 | Anatomy descriptions and headers separated by gender | R1 |
 | Zefir.json | R1 | 2026-07-22 | Anatomy descriptions and headers separated by gender; specific residence | R1 |
+| SvartulfrVerse_Urban_Arc4_Lorebook.json | R2 | 2026-07-23 | Recalibrated Arc 4 narrative structure: La Grande Caccia 5-year cycle, Grand Festival, Wulfnic overruling Erik via Fenris law, and player agency choices | R2 |
+
