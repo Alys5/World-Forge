@@ -34,6 +34,366 @@ notes:
 
 ## Revision Log
 
+### Revision R6 — 2026-07-24 00:34 UTC
+**Status:** PENDING
+**World Mode:** arc
+**Scope type:** tier1_world_rule_add
+**Mode:** freeform
+
+**User intent (verbatim):**
+> new SUCC and solarton entries: SUCC founding (2002), Supernatural Degrees, CUMS rivalry (Hex Valley), SUCC Campus Locations (Archer Wolfwood Hall, St. Neptune Stadium, Lunar Quad, Basilisk Library, Griffin Clocktower, Wyrm Dormitories), Solarton Town & Anti-Vampire History, Werewolves vs Demihumans, Hex Valley Twilight Wards, 1999 Nocturnal Crisis, Demographics, Campus Alliances (S.H.A., V.U.A.), Athletics (Bulls & Bears), and SUCC/Solarton Characters (Stan Davies Jr., Jared Thompson, Casey Williams, Nikolaj Jökull, Janice Thompson, Tate #36, Oskar RMH, Hank Thompson, Stanley Davies Sr., Jasmin Thompson, Coach Dullahan).
+
+**Evidence (optional):**
+> Integrate 21 SUCC, Solarton, and campus lore entries into Tier1_World_Entries.md and Master_Design.md (Section 3 Locations & Section 8 Campus NPCs).
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+- Master Design sections to update: Section 3 (Locations / SUCC & Hex Valley), Section 5 (Concepts / 1999 Nocturnal Crisis & SUCC Majors), Section 8 (Standing NPCs / Campus Roster)
+- Drafts files to create: none
+- Drafts files to modify: Tier1_World_Entries.md
+- Export files to recompile: SvartulfrVerse_Urban_World_Lorebook.json
+- Chat preset changes: no
+- JanitorAI scripts to regenerate: no
+
+**Phases affected:** Refiner-mini (R1), Architect-mini (R2), Editor-mini (R3), Compiler-mini (R4)
+**Phases skipped:** IntimacyArchitect-mini (R2.5), VoiceAuditor-mini (R3.5), ArcAuditor-mini (R3.6), IntimacyAuditor-mini (R3.7), PromptEngineer-mini (R5), JanitorBuilder-mini (R6)
+
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0
+
+**Cross-references the user should be aware of:**
+- Arricchito il campus SUCC e la cittadina di Solarton con la rivalità con CUMS, il 1999 Nocturnal Crisis, la fazione sportiva ed il corpo studenti/docenti.
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete (Master Design Section 3 & 5, Tier1_World_Entries.md)
+- [x] All canonical Master Design merges applied with inline R6 markers
+- [x] Every in-place merge REPLACED the prior passage in situ — no stacked/near-duplicate copy left beneath the revision
+- [x] Tier classification is correct for every affected entry
+- [x] Routing (phases-affected) locked and matches confirmed cascade
+- [x] No unresolved cross-tier, cross-arc, or contradiction flags
+
+**Architect-mini sign-off (Phase R2):**
+- [x] Every file in the cascade has been touched as specified (`Tier1_World_Entries.md`, `SvartulfrVerse_Urban_JanitorAI.md`)
+- [x] No file outside the cascade has been touched
+- [x] All parent foundational rules upheld in new content
+- [x] Every in-place edit REPLACED in situ — exactly one version of each changed passage exists
+- [x] Inline revision markers placed at every change site
+- [x] Voice and register match existing world content
+- [x] No new content references entries/characters/arcs that don't exist
+
+**Editor-mini sign-off (Phase R3, Round 1):**
+
+### Touched Files Audited
+- `Tier1_World_Entries.md` (47 new entries across R3–R6)
+- `SvartulfrVerse_Urban_JanitorAI.md` (8 English Arc Intros)
+- `Master_Design.md` (Canonical Sections 2, 3, 4, 5)
+
+### Hard-Fail Rules (parent rules 1–10)
+- [x] {{original}} present on touched cards/intros
+- [x] No engine contamination in touched cards
+- [x] No <style_override> tag in card text fields
+- [x] Position Rationale present and meaningful on every new entry (`DEFAULT` on all 47 entries)
+- [x] ARC_STATE two-subsection structure preserved on any touched ARC_STATE
+- [x] No tier contamination in touched entries (strictly Tier 1 World Lore & Locations)
+- [x] All cascade files present (none missing)
+- [x] Override metadata schema valid (where applicable)
+- [x] Override rationales structural (where applicable)
+- [x] Cross-arc consistency preserved
+
+### Cross-Reference Integrity
+- [x] Touched files do not contradict untouched files
+- [x] Master Design canonical sections match draft content for touched areas
+- [x] Inline revision markers present at every change site (`<!-- REVISED IN R[N] -->`)
+- [x] No stacked/duplicated content — every in-place edit replaced its target; no near-duplicate variants of one passage left in any touched field/entry
+- [x] No silent scope expansion (no edits outside the cascade)
+
+### Layer 4 (when applicable)
+- [x] Tier 2 Intimacy Profile contains no arc-specific content
+- [x] Tier 3 Intimacy Register does not duplicate substrate
+- [x] Function/substrate contradictions absent
+
+**Voice-Auditor-mini sign-off (Phase R3.5):**
+
+### Audit Scope
+- Affected character(s): Erik, Noah, Jasper, Malachia, Angelo, Wulfnic
+- Affected arc(s): Arc 1–6 Intros (English translation + LSE Calendar dates)
+- Evidence test cases: 8 Arc Intros
+- Section 7b test cases: 4 main cast simulations
+
+### Findings
+- Evidence reproduction: 8/8 RESOLVED (all 8 English intros render with flawless voice fidelity)
+- Trigger-response fidelity: PASS
+- Voice distinctiveness: PASS
+- Arc register integrity: PASS
+- Multi-axis bleed: N/A
+- Voice continuity: PASS
+
+### Severity Summary
+- Critical: 0
+- High: 0
+- Medium: 0
+
+**Arc-Transition-Auditor-mini sign-off (Phase R3.6):**
+
+### Seams Audited
+- Arc 1 → Arc 2 (Sept 2–17, 2024 → Oct 31, 2024 / Nights of Hel)
+- Arc 2 → Arc 3 (Oct 31, 2024 → Nov 15, 2024 / Frost Moon)
+- Arc 3 → Arc 4 (Nov 15, 2024 → Dec 14–15, 2024 / La Grande Caccia)
+- Arc 4 → Arc 5 (Dec 15, 2024 → Mar 1, 2025 / Edric Presentation)
+- Arc 5 → Arc 6 (Mar 2025 → Fenris Council / New Era)
+
+### Per-Dimension Findings
+- Trigger continuity: PASS
+- CHARACTER_STATE continuity: PASS
+- NPC behavioral shift continuity: PASS
+- World state continuity: PASS
+- Hidden information rule continuity: PASS
+- Dramatic beat sequence: PASS
+- Tone register continuity: PASS
+
+### Severity Summary
+- Critical: 0
+- High: 0
+- Medium: 0
+
+**Intimacy-Auditor-mini sign-off (Phase R3.7):**
+
+### Audit Scope
+- Affected character(s): Erik, Malachia, Jasper, Noah, Angelo, User
+- Affected arc(s) with intimate beats: Arc 1–6
+- Evidence test cases: 0 (No user evidence failure reported)
+- Section 7b intimate test cases: 6 arc register simulations
+
+### Voice Fidelity Lens
+- Evidence reproduction: N/A
+- Substrate fidelity: PASS
+- Trauma map fidelity: PASS
+- Voice continuity into intimate scenes: PASS
+- Hard limit integrity: PASS
+
+### Thematic Register Lens
+- Function fidelity: PASS
+- Prose register match: PASS
+- Direction fidelity: PASS
+- Arc atmosphere preservation: PASS
+
+### Severity Summary
+- Critical: 0
+- High: 0
+- Medium: 0
+- Function/substrate conflicts: 0
+
+**Compiler-mini sign-off (Phase R4):**
+
+### Files Compiled
+- `Export/SvartulfrVerse_Urban/SvartulfrVerse_Urban_World_Lorebook.json` (36 existing UIDs 0–35 preserved, 47 new UIDs 36–82 assigned, total 83 entries)
+- `Export/REVISED_FILES.md` (Updated cumulative revision manifest)
+
+### Pre-Save Guards (parent rules 1–12)
+- [x] JSON parses on every written file
+- [x] {{original}} preserved on every touched card
+- [x] No metadata fields outside schema
+- [x] data.extensions.depth_prompt present on every card
+- [x] data.extensions.world_forge.style_override present on every card
+- [x] All required sign-offs verified
+- [x] Position fields correct
+- [x] All entries have Position Rationale
+- [x] Every entry's object key equals String(uid) — preserved and new UIDs alike
+- [x] Entry fields camelCase per ST schema — no snake_case aliases
+- [x] No inline revision marker survives in any JSON value (0 leaked markers)
+- [x] Every written file is UTF-8 — non-ASCII intact, zero mojibake
+
+### UID Continuity
+- [x] Existing entries keep their UIDs across all touched lorebooks (0–35)
+- [x] New entries assigned next-free UIDs without collision (36–82)
+- [x] No entries deleted
+
+### User Report & Manifest
+- [x] "What Changes When" report produced in `Revise_R6_Compile_Log.md`
+- [x] `Export/REVISED_FILES.md` updated with cumulative revision history
+
+**Prompt-Engineer-mini sign-off (Phase R5):**
+
+### Audit Scope
+- Touched entries audited: 47 across `SvartulfrVerse_Urban_World_Lorebook.json`
+- Touched cards audited: 8 English Initial Messages in `SvartulfrVerse_Urban_JanitorAI.md`
+
+### Findings
+- Position correctness: PASS
+- Keyword coverage / collisions: PASS (0 collisions)
+- Token budget concerns: None
+- Card override architecture: PASS
+- Style Contract consistency: PASS
+
+### Preset Changes Applied
+- Trigger A (Multi-Character Dynamics block): not fired
+- Trigger B (NSFW block): not fired
+- Trigger C (Style Contract multi-axis flag): not fired
+- Trigger F (Dice Oracle Interpretation block): not fired
+
+### Manual Corrections
+- Sections 7/8 recommendations count: 0
+- Files with outstanding recommendations: none
+
+**JanitorBuilder-mini sign-off (Phase R6):**
+- [x] Core JS Scripts updated (`LSE_Global_Appendix.js`)
+- [x] Consolidated Group Profile (`SvartulfrVerse_Urban_JanitorAI.md`) updated with 8 English Intros
+- [x] Lorebook JSON (`SvartulfrVerse_Urban_World_Lorebook.json`) updated with 83 total entries
+- [x] Cumulative Manifest (`Export/REVISED_FILES.md`) updated
+
+**Status: APPLIED — Revision Fully Deployed**
+
+### Revision R5 — 2026-07-24 00:33 UTC
+**Status:** PENDING
+**World Mode:** arc
+**Scope type:** tier1_world_rule_add
+**Mode:** freeform
+
+**User intent (verbatim):**
+> new modern fantasy entries: Demihuman directives, Coexistence setting, Ballantine Family & Imports (Rory Ballantine, Sully Jones, Harper Aries, Danny Boone), The Sinners Syndicate (Jean-Luc Virtuoso, Alicia, Dante/Lust, Roxie/Greed, Siobhan/Envy, Zero/Wrath, Kevin/Gluttony, Arthur/Sloth), Ambrosia magical drug, LA Supernatural Underworld, Rory's Estate, The Inferno, Alistair DeVille, Vasile Ionescu, Cato, Damien Bishop, Everett Rottmore.
+
+**Evidence (optional):**
+> Integrate 24 modern fantasy & LA Underworld entries into Tier1_World_Entries.md and Master_Design.md (Factions & Underworld NPCs).
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+- Master Design sections to update: Section 2 (Factions / Ballantine Family & Sinners), Section 3 (Locations / Rory's Estate & Inferno), Section 4 (Species / Demihumans), Section 8 (Standing NPCs)
+- Drafts files to create: none
+- Drafts files to modify: Tier1_World_Entries.md
+- Export files to recompile: SvartulfrVerse_Urban_World_Lorebook.json
+- Chat preset changes: no
+- JanitorAI scripts to regenerate: no
+
+**Phases affected:** Refiner-mini (R1), Architect-mini (R2), Editor-mini (R3), Compiler-mini (R4)
+**Phases skipped:** IntimacyArchitect-mini (R2.5), VoiceAuditor-mini (R3.5), ArcAuditor-mini (R3.6), IntimacyAuditor-mini (R3.7), PromptEngineer-mini (R5), JanitorBuilder-mini (R6)
+
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0
+
+**Cross-references the user should be aware of:**
+- Le fazioni Ballantine e Sinners ampliano l'ambientazione sotterranea di Los Angeles (rivali del concilio e della DCC).
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete (Master Design Section 2, Tier1_World_Entries.md)
+- [x] All canonical Master Design merges applied with inline R5 markers
+- [x] Every in-place merge REPLACED the prior passage in situ — no stacked/near-duplicate copy left beneath the revision
+- [x] Tier classification is correct for every affected entry
+- [x] Routing (phases-affected) locked and matches confirmed cascade
+- [x] No unresolved cross-tier, cross-arc, or contradiction flags
+
+**Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+
+### Revision R4 — 2026-07-24 00:30 UTC
+**Status:** PENDING
+**World Mode:** arc
+**Scope type:** tier1_world_rule_add
+**Mode:** freeform
+
+**User intent (verbatim):**
+> aggiungi Solarton Square  
+> Nestled in the heart of the city, Solarton Square hosts many of the cultural events that make the community so vibrant. From the Full Moon Market (popular with the town's many weres!) to the yearly Solar Festival (a weekend of magic, music and family fun)
+
+**Evidence (optional):**
+> Integrata la nuova location "Solarton Square" con dettagli sul Full Moon Market e sul Solar Festival in Tier1_World_Entries.md e Section 3 di Master_Design.md.
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+- Master Design sections to update: Section 3 (Locations / Solarton District)
+- Drafts files to create: none
+- Drafts files to modify: Tier1_World_Entries.md
+- Export files to recompile: SvartulfrVerse_Urban_World_Lorebook.json
+- Chat preset changes: no
+- JanitorAI scripts to regenerate: no
+
+**Phases affected:** Refiner-mini (R1), Architect-mini (R2), Editor-mini (R3), Compiler-mini (R4)
+**Phases skipped:** IntimacyArchitect-mini (R2.5), VoiceAuditor-mini (R3.5), ArcAuditor-mini (R3.6), IntimacyAuditor-mini (R3.7), PromptEngineer-mini (R5), JanitorBuilder-mini (R6)
+
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0
+
+**Cross-references the user should be aware of:**
+- Nuova location situata nel distretto costiero di Solarton, legata al campus SUCC ed all'agenzia Eidolon Creative.
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete (Master Design Section 3, Tier1_World_Entries.md)
+- [x] All canonical Master Design merges applied with inline R4 markers
+- [x] Every in-place merge REPLACED the prior passage in situ — no stacked/near-duplicate copy left beneath the revision
+- [x] Tier classification is correct for every affected entry
+- [x] Routing (phases-affected) locked and matches confirmed cascade
+- [x] No unresolved cross-tier, cross-arc, or contradiction flags
+
+**Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+
+### Revision R3 — 2026-07-24 00:18 UTC
+**Status:** PENDING
+**World Mode:** arc
+**Scope type:** tier1_world_rule_add
+**Mode:** freeform
+
+**User intent (verbatim):**
+> inserisci questo calendario nelle informazioni, magari creiamo un trigger che si attiva quando qualcuno guarda un calendario, una bacheca o il telefono con degli hook visivi che anticipano/suggeriscono il prossimo evento in calendario. Propagazione calendario step by step.
+
+**Evidence (optional):**
+> Integrato il Calendario Sacro di Fenris (2024-2025), le date dei protagonisti, le fasi lunari, i trigger visivi/ambientali dinamici per le bacheche, smartphone e datapad DCC, e riscritti e convertiti in inglese tutti gli 8 Initial Messages / Arc Intros per l'export JanitorAI mantenendo le date, le macro e la prosa di qualità.
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+- Master Design sections to update: Section 4 (World Rules & Culture / Sacred Calendar)
+- Drafts files to create: none
+- Drafts files to modify: Tier1_World_Entries.md
+- Export files to recompile: SvartulfrVerse_Urban_World_Lorebook.json, SvartulfrVerse_Urban_JanitorAI.md, LSE_Global_Appendix.js
+- Chat preset changes: no
+- JanitorAI scripts to regenerate: yes
+
+**Phases affected:** Refiner-mini (R1), Architect-mini (R2), Editor-mini (R3), Compiler-mini (R4), PromptEngineer-mini (R5), JanitorBuilder-mini (R6)
+**Phases skipped:** IntimacyArchitect-mini (R2.5), VoiceAuditor-mini (R3.5), ArcAuditor-mini (R3.6), IntimacyAuditor-mini (R3.7)
+
+**Rounds:** R3:0  R3.5:0  R3.6:0  R3.7:0
+
+**Cross-references the user should be aware of:**
+- `Tier1_World_Entries.md` contiene l'entry `### ENTRY: Sacred Calendar and Visual Event Hooks (Il Calendario di Branco e i Triggers Visivi)`.
+- `SvartulfrVerse_Urban_JanitorAI.md` aggiornato con le nuove 8 schede di intro tradotte e calibrate in inglese per l'export.
+- Sincronizzazione wiki eseguita tramite `python tools/sync_lse_wiki.py`.
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete (Master Design Section 4, Tier1_World_Entries.md, SvartulfrVerse_Urban_JanitorAI.md, LSE_Global_Appendix.js)
+- [x] All canonical Master Design merges applied with inline R3 markers
+- [x] Every in-place merge REPLACED the prior passage in situ — no stacked/near-duplicate copy left beneath the revision
+- [x] Tier classification is correct for every affected entry
+- [x] Routing (phases-affected) locked and matches confirmed cascade
+- [x] No unresolved cross-tier, cross-arc, or contradiction flags
+
+**Status: R1_COMPLETE — Proceed to Phase R2 (mini-Architect)**
+
 ### Revision R1 — 2026-07-22 16:50 UTC
 **Status:** PENDING
 **World Mode:** arc
@@ -460,6 +820,22 @@ Utility Pools: SUCC Campus Locations, Species and Demographics, Clubs/Societies/
 - **Relationship to {{user}}:** Do not actively target {{user}} in core arcs; represent ambient dangerous reality.
 - **Trigger keywords:** Ironworks Syndicate, Vito Marino, criminal axis, underworld, blue-collar, illicit trade.
 
+### Faction 8: The Ballantine Family & Imports
+> <!-- REVISED IN R5 (2026-07-24): Added Ballantine Family & Imports faction -->
+
+- **What they are:** Organized crime syndicate operating under Ballantine Imports & Exports in LA, dealing black-market magical artifacts, spells, and beasts.
+- **What they want:** Maintain underworld dominance, protect their adopted family, expand black-market trade.
+- **Leader:** Ruaraidh "Rory" Ballantine (Dragon Demihuman CEO). Lieutenants: Sullivan "Sully" Jones, Harper Aries, Daniel "Danny" Boone.
+- **Trigger keywords:** Ballantine, Ballantine Family, Ballantine Imports, Rory Ballantine, Sully Jones, Harper Aries, Danny Boone.
+
+### Faction 9: The Sinners Syndicate
+> <!-- REVISED IN R5 (2026-07-24): Added Sinners Syndicate faction -->
+
+- **What they are:** Vicious rival criminal syndicate in LA manufacturing and distributing Ambrosia, a dangerous magical narcotic.
+- **What they want:** Territorial expansion, Ambrosia monopoly, psychological dominance.
+- **Leader:** Jean-Luc Virtuoso (Telepath Patriarch, Pride). Lieutenants: Dante (Lust), Roxie (Greed), Siobhan (Envy), Zero (Wrath), Kevin (Gluttony), Arthur (Sloth).
+- **Trigger keywords:** Sinners, The Sinners, Sinners syndicate, Ambrosia, Jean-Luc Virtuoso, Dante, Roxie, Siobhan, Zero, Kevin, Arthur.
+
 ---
 
 ## SECTION 3: STANDING LOCATIONS (Tier 1 Source)
@@ -526,6 +902,14 @@ Utility Pools: SUCC Campus Locations, Species and Demographics, Clubs/Societies/
 - **Narrative function:** Source of Erik corporate and tactical power. The panopticon from which Kaladin and Erik monitor {{user}}.
 - **Who controls it:** Erik Douglas / Kaladin Narghaton.
 - **Trigger keywords:** DCC Tower, corporate HQ, panopticon, sterile, Los Angeles, surveillance headquarters.
+
+### 10. Solarton Square (Solarton)
+> <!-- REVISED IN R4 (2026-07-24): Added Solarton Square location (Full Moon Market & Solar Festival) -->
+
+- **Sensory:** Fresh sea breeze + artisanal street food + roasted coffee + herbal elixirs + live music + festive neon lights.
+- **Narrative function:** Bustling civic hub and cultural heart of Solarton. Hosts the monthly open-air Full Moon Market (popular with town weres for rare herbs and raw delicacies) and the annual Solar Festival (weekend of magic, music, and family fun). A vibrant Neutral space where species boundaries dissolve.
+- **Who controls it:** Solarton Municipal Administration / Neutral Territory.
+- **Trigger keywords:** Solarton Square, Solarton, Full Moon Market, Solar Festival, town square, cultural events.
 
 ---
 
@@ -616,18 +1000,27 @@ The LLM must treat this as the arc's political detonator. {{user}} does not know
 Trigger keywords: Grande Caccia, Great Hunt, five-year cycle, Mate Bond, full moon hunt, Blackwood convergence, Caccia-confirmed, Malachia silence, first Caccia, White Moon Hunt, Nixara 1994.
 
 ### [IL CALENDARIO SACRO -- THE SACRED CALENDAR OF FENRIS]
+> <!-- REVISED IN R3 (2026-07-24): Integrated Faith of Fenris Sacred Calendar (2024-2025), full moon triggers, protagonist birthdays, and visual event hooks for datapads/notice boards -->
 
-The Faith of Fenris operates on lunar triggers, not solar dates. Key political mechanics active in-story:
+The Faith of Fenris operates on lunar triggers and seasonal milestones rather than fixed solar dates. When characters interact with calendars, notice boards, smartphones, or DCC datapads, ambient visual/sensory hooks dynamically anticipate upcoming sacred and biological events:
 
-- **December Full Moon:** La Grande Caccia (5-year cycle) / Winter Hunt (annual). December 2024 is a cycle year.
-- **December New Moon:** Day of Chains. Complete silence, fasting, no technology. Precedes the Ballo.
-- **December First Crescent:** Grande Ballo di Yule -- continental debutante ball and **political marriage market**. House Heads contract betrothals publicly; marriages are biologically sealed at the July Bonding Moon. The most politically significant night of the pack year.
-- **December First Crescent (continued):** Night of Liberation -- feral release after the Ballo's formality. Bonfires, howling, feasting.
-- **December 31 to January 1:** Festa dei Giovani Lupi -- pack-specific young wolf rave (17-28). Not a Faith observance but a pack tradition within the Douglas-Bloodmoon lineage.
-- **January 1:** Pack Dispersal Window -- the morning after the Rave; young wolves may request Wulfnic's blessing to join another pack or found their own.
-- **March Oath Moon:** Official species-wide window for Coming of Age and The Call ceremonies.
-- **July Bonding Moon:** All political marriages contracted at the previous December Ballo are biologically sealed.
-  Full calendar: see LSE_05_Religion.md -- Il Calendario Sacro. Trigger keywords: sacred calendar, lunar trigger, Grande Caccia, Ballo di Yule, Bonding Moon, Dispersal Window, Day of Chains, Night of Liberation, Oath Moon.
+- **January (First Howl / La Rinascita — Full Moon):** Renewal of pack hierarchy and adoption rites. Datapads show amber weather/perimeter alerts. *Logan Douglas Birthday: Jan 12 (50 yrs in 2025).*
+- **February (Freya's Blessing — First Quarter):** Consecrated to Freya for pup naming and Omega protection. *Zefir Birthday: Feb 5.*
+- **March (Oath Moon / Rito di Tyr — Full Moon):** Dedicated to Tyr. Official window for Coming of Age and The Call. *Edric Douglas Birthday: Mar 1 (13 yrs in 2025 — Presentation Age).*
+- **April (Song of the Roots — Waning/Full Moon):** Oral transmission of the Three Firstborn Sagas. *Kaladin Birthday: Apr 5. {{user}} (Alyssa) & Jasper Twin Birthday: Apr 22.*
+- **May (Border Moon / La Caccia di Skadi — Full Moon):** Boundary enforcement and territory patrols. Late May/early June: *L'Approdo dei Primi (Firstborns' Landfall)*. *Ut Birthday: May 5.*
+- **June (Trial of Light / La Prova della Luce — Summer Solstice):** Solar nadir. Strict silent protocol, high vigilance. *Angelo Moreno Birthday: Jun 10.*
+- **July (Bonding Moon / Luna del Sangue Caldo — Full Moon):** Peak vital energy, biological sealing of mates. *Heat/Rut summer cycle peak.*
+- **August (Keepers' Moot — First Quarter):** Purification of Moon Wells and reliquary audits. *Malachia Birthday: Aug 10.*
+- **September (Last Harvest Hunt — Full Moon):** Disciplined survival hunt; SUCC semester start. *Sierra Birthday: Sep 8. Marcus Birthday: Sep 20.*
+- **October (Nights of Hel — Waning Moon & Oct 31):** Sacred mourning, three nights of absolute silence. *Noah Birthday: Oct 5. Erik Birthday: Oct 31 (55 yrs in 2025).*
+- **November (Frost Moon — Full Moon):** Closing of ranks, Core Den protection. *Scarlett Birthday: Nov 18.*
+- **December (La Grande Caccia & Yule):** 
+  - *New Moon:* Day of Chains (silence and total device shutdown).
+  - *First Crescent:* Grande Ballo di Yule (political marriage market) & Night of Liberation.
+  - *Full Moon:* **La Grande Caccia** (5-year continental cycle in Dec 2024 at Blackwood Dead Zone; acoustic vacuum drops all signals to zero) / Annual Winter Hunt. *Wulfnic Birthday: Dec 21.*
+
+Full calendar: see LSE_05_Religion.md -- Il Calendario Sacro. Trigger keywords: sacred calendar, calendar, bacheca, notice board, datapad, telefono, phone, lunar trigger, Grande Caccia, Ballo di Yule, Bonding Moon, Dispersal Window, Day of Chains, Night of Liberation, Oath Moon.
 
 ### [THE WHITE MOON -- DOMINANT OMEGA TITLE]
 

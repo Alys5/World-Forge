@@ -128,6 +128,20 @@ Located in the gritty Bluemoon district, The Verve operates as Logan's grease-st
 **Content:**
 Eidolon Creative sits in the Paradise district, right on the tense cusp between wolf and vampire territories. It is a high-fashion studio that serves as Angelo's velvet trap. The location smells deeply of old velvet, heavy incense, and the chilling scent of ancient vampire skin mixed with faint blood. Illuminated by harsh strobe lights and populated by impossibly tailored predators speaking in hushed, hypnotic murmurs, it is a place of intoxicating danger where {{user}} lives their secret double life.
 
+### ENTRY: Solarton Square
+> <!-- REVISED IN R4 (2026-07-24): Added Solarton Square location entry (Full Moon Market & Solar Festival) -->
+**Category:** LOCATION
+**Trigger Keys:** Solarton Square, Solarton, Full Moon Market, Solar Festival, town square, cultural events
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Nestled in the heart of the coastal city of Solarton, Solarton Square hosts many of the cultural events that make the supernatural and human community so vibrant. From the Full Moon Market—an open-air night bazaar immensely popular with the town's many werewolves for rare herbal elixirs, raw delicacy stalls, and occult trinkets—to the annual Solar Festival, a weekend-long celebration filled with street magic, live indie music, artisanal food trucks, and family fun. It serves as a bustling, bright civic hub where the rigid boundaries between species dissolve under festival lights.
+
 ### ENTRY: The Sanctuary and Dead Zone
 **Category:** LOCATION
 **Trigger Keys:** Dead Zone, The Sanctuary, Blackwood Forest, Great Yew tree, acoustic vacuum, tech silence
@@ -559,6 +573,636 @@ A 400-year-old preserved domain with traditional hunting grounds, patrol paths, 
 
 **Content:**
 L'Eíða-Siðr (Oath of the Seven Laws) is the solemn, strictly face-to-face rite of joining the Douglas-Bloodmoon pack. The recruit recites seven Scandinavian laws in Forn-Tunga while executing seven front-facing tactile gestures with the Alpha (forehead touch, cheek-rub scenting, forearm grip, chest/sternum touch, shoulder placement, temple touch, and frontal neck exposure). This constant frontal contact stimulates pheromonal exchange, binding scents and establishing visual hierarchy, trust, and absolute protection.
+
+### ENTRY: Sacred Calendar and Visual Event Hooks (Il Calendario di Branco e i Triggers Visivi)
+> <!-- REVISED IN R3 (2026-07-24): Added Sacred Calendar & Visual Event Hooks for datapads and notice boards -->
+**Category:** SYSTEM
+**Trigger Keys:** calendario, calendar, bacheca, notice board, datapad, telefono, phone, data corrente, prossimo evento, agenda, notifiche, schedule, tempo, date, mese, lune, fasi lunari, eventi in arrivo
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 65
+**Position Rationale:** DEFAULT
+
+**Content:**
+When {{user}}, {{char}}, or any character looks at a calendar, notice board, smartphone, DCC datapad, or inquires about schedules and upcoming dates, the narration MUST dynamically activate visual, sensory, and environmental hooks that anticipate the next upcoming sacred, biological, or social event on the LSE Calendar (2024-2025):
+
+- **Visual & Sensory Hook Mechanics by Season/Event:**
+  - *First Howl / Rebirth (January Full Moon):* Datapad screens blink with amber alerts (*"Northwest Wind Warning & Perimeter Bond Check"*); campus notice boards show pack adoption notices; a faint winter chill sollicits fur.
+  - *Freya's Blessing (February First Quarter):* SUCC notice boards display floral candle motifs; DCC health apps send pup naming reminders and Omega protection advisories.
+  - *Oath Moon & Presentation (March Full Moon):* DCC datapads flash high-priority amber notifications: *"Edric Hormonal Audit & Presentation Age Imminent"*; KSA fraternity boards post biological compliance flyers with Tiwaz runes drawn in chalk.
+  - *Song of the Roots & Twin Birthdays (April 22):* Birthday pop-up overlays appear on family screens (*"Alyssa & Jasper — 20th Anniversary Lockouts"*); flyers for KSA secret parties circulate on campus.
+  - *Border Moon & Skadi (May Full Moon):* Tactical DCC maps overlay screens with flashing red perimeter lines (*"Solarton/Blackwood Border Patrol Active"*); wax seals and burnt incense scent notice boards.
+  - *Trial of Light (June Summer Solstice):* Screens lock into orange high-vigilance fire-mode: *"Solstice Imminent: Silent Protocol Enabled — Audio Muted"*; Villa boards strip decorations for strict guard rosters.
+  - *Bonding Moon & Heat (July Full Moon):* Erik's health datapad displays flashing heat indicators: *"Pheromonal Shift & Summer Heat Warning"*; screensaver wallpapers shift to blood-red full moons; ambient room lighting turns warm gold.
+  - *Keepers' Moot (August First Quarter):* Reliquary audit logs pop up on Keeper datapads; Villa maintenance notifications schedule Moon Well spring cleanings.
+  - *Last Harvest Hunt & SUCC Semester (September Full Moon):* SUCC boards overflow with colorful freshman welcome flyers; KSA party announcements overlap with Malachia's hunting schedule on DCC tactical feeds.
+  - *Nights of Hel (October Waning Moon & Oct 31):* Phone & datapad screens desaturate to ash-grey: *"Hel Silence Protocol Active — Sound Disabled"*; Halloween party flyers are heavily stamped with DCC security warnings.
+  - *Frost Moon (November Full Moon):* Compound maps show core-den protection vectors; food stock and heating energy gauges dominate family displays.
+  - *LA GRANDE CACCIA & Yule Ball (December Full Moon 5-Year Cycle / Dec 15, 2024):*
+    - *Early Dec:* Screens display New Moon icons with: *"Day of Chains — Total Device Shutdown Imminent"*.
+    - *Mid Dec (La Grande Caccia):* Black wax-sealed parchment invitations rest on desks. As characters approach the Dead Zone, phone screens glitch with static, signal bars drop to zero (*"No Signal — Entering Dead Zone Vacuum"*), and raw wolf howls echo in the distance.
+
+### ENTRY: Demihuman Lore and Physical Directives
+> <!-- REVISED IN R5 (2026-07-24): Added Modern Fantasy & LA Underworld entries (Ballantine Family, Sinners, Ambrosia, Underworld NPCs) -->
+**Category:** CONCEPT
+**Trigger Keys:** demihuman, demi-human, demi, kemonomimi, animal traits, beast traits
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+In this world, Demihumans (kemonomimi) possess animalistic bodily features—such as ears, tails, horns, antlers, wings, slit pupils, sharp canines, or scaled appendages—integrated onto human bodies. Crucially, Demihumans DO NOT have fur or feathers covering their entire torso, nor do they possess paws or animal muzzles; the vast majority of their body consists of standard human skin. Narration MUST frequently highlight bestial physical qualities to convey emotion (e.g., canine ears flattening when sad or threatened, tails whipping when angry, pupils dilating when discovering prey, feathers ruffling when flustered, canines glinting when smirking). Incorporate instinctual likes and habits naturally into roleplay (e.g., scent-marking loved ones, grooming habits, perching, basking in heat, or hair-picking) while keeping core personality traits intact.
+
+### ENTRY: Modern Coexistence Setting (2022+)
+**Category:** CONCEPT
+**Trigger Keys:** setting, coexistence, modern fantasy, modern day Earth, supernatural society
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** Yes
+**Injection Position:** 0
+**Order Priority:** 40
+**Position Rationale:** DEFAULT
+
+**Content:**
+Humans and supernatural beings (demihumans, vampires, werewolves, selkies, fairies, ghouls, centaurs, demons, angels, harpies, dragons, sirens, giants, and merfolk) coexist on modern-day Earth. Modern technology is adapted for supernatural anatomy (clothing tailored with tail-slits or wing-holes, architectural entrances designed for centaurs or large shifters). Magic is commonplace and integrated into daily life alongside science—a dragon shifter barista uses fire breath to steam coffee, and occult practitioners research spells online.
+
+### ENTRY: The Ballantine Family & Imports
+**Category:** FACTION
+**Trigger Keys:** Ballantine, Ballantine Family, Ballantine Imports, Rory Ballantine
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Ballantine Family is a prominent organized crime syndicate based in Los Angeles operating under the legitimate front of Ballantine Imports & Exports. Specializing in black-market exchanges of magical artifacts, illegal spells, and exotic beasts, they are led by Ruaraidh "Rory" Ballantine. They maintain ironclad dominance over LA's supernatural underworld and fiercely protect their territory against rivals such as the Sinners. Members span diverse species (dragons, dhampirs, werewolves, humans) bound by absolute loyalty to family solidarity.
+
+### ENTRY: The Sinners Syndicate
+**Category:** FACTION
+**Trigger Keys:** Sinners, The Sinners, Sinners syndicate, Jean-Luc Virtuoso
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Sinners are a vicious rival criminal syndicate operating in Los Angeles' supernatural underworld, infamous for manufacturing and distributing Ambrosia—a potent magical narcotic causing chaos across communities. Led by charming, cold telepath Jean-Luc Virtuoso (who harbors a personal vendetta against Ruaraidh Ballantine), the syndicate is structured around seven lieutenants embodying the Seven Deadly Sins: Jean-Luc (Pride), Dante (Lust), Roxie (Greed), Siobhan (Envy), Zero (Wrath), Kevin (Gluttony), and Arthur (Sloth).
+
+### ENTRY: Ambrosia Magical Narcotic
+**Category:** CONCEPT
+**Trigger Keys:** Ambrosia, Magical Drugs, golden liquid, magical narcotic
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+Ambrosia is a highly addictive illicit magical narcotic produced exclusively by the Sinners syndicate. Existing as a shimmering golden liquid for injection or a refined powder, it temporarily grants users immense magical power boosts or unlocks latent abilities. Side effects are devastating: psychological instability, extreme aggression, severe withdrawal hallucinations, telepathic leaks, and eventual mental and physical decay.
+
+### ENTRY: LA Supernatural Underworld
+**Category:** CONCEPT
+**Trigger Keys:** Supernatural Underworld, The Underworld, black market LA, illicit magical trade
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Supernatural Underworld refers to the hidden ecosystem operating beneath human society in urban hubs like Los Angeles. It encompasses illegal magical narcotics rings (Ambrosia), contraband artifact smuggling (Ballantine Imports), underground fighting arenas, assassin networks, and black-market monster auctions.
+
+### ENTRY: Rory's Estate (Ballantine HQ)
+**Category:** LOCATION
+**Trigger Keys:** Rory's Estate, Ballantine Estate, Rory house, Ballantine residence
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Rory's Estate is an expansive, heavily fortified luxury property outside central Los Angeles serving as Ruaraidh Ballantine's residence and the operational headquarters for Ballantine Imports. Featuring classical architecture and magical wards, the interior is custom-built with vaulted ceilings, broad doorways, and reinforced living quarters tailored to accommodate large supernatural anatomy (dragon wings, tails, and shifting space).
+
+### ENTRY: The Inferno Nightclub
+**Category:** LOCATION
+**Trigger Keys:** The Inferno, Dante club, Inferno nightclub, Sinners stripclub
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+The Inferno is a high-end neon-drenched stripclub and brothel run by Dante (Lust) in the Sinners' territory. Beyond its VIP lounges and lap-dance booths, it serves as a primary front for Sinners blackmail operations, gathering secrets through pillow talk and covert telepathic wiretaps.
+
+### ENTRY: Ruaraidh "Rory" Ballantine
+**Category:** CHARACTER
+**Trigger Keys:** Rory, Ruaraidh, Ballantine, Rory Ballantine
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Ruaraidh "Rory" Ballantine is a 46-year-old Dragon Demihuman, Scottish crime lord, and CEO of Ballantine Imports & Exports. He stands tall and muscular with short silver hair, amber eyes with slit pupils, forehead horns, large amber dragon wings, a prehensile scaled tail, and sharp canines. He wears bespoke suits unbuttoned at the chest and smells of peat whiskey and woodsmoke. Ruthless, cunning, and fiercely territorial, he chainsmokes to suppress his fire breath. He is sterile (cannot sire biological heirs) and allergic to silver. Raised in Glasgow slums, he despises his abusive human father and adopts stray supernaturals (Harper, Danny) into his family.
+
+### ENTRY: Sullivan "Sully" Jones
+**Category:** CHARACTER
+**Trigger Keys:** Sullivan, Sully, Jones, Sully Jones
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Sullivan "Sully" Jones is a 55-year-old human fixer, driver, and bodyguard for the Ballantine Family (standing 6'5", heavy muscular build, graying hair, scar, and a limp from a knee injury). A thrice-divorced cynical ex-mafia mobster, he smells of cigarettes, whiskey, and wet dog. Armed with a heavy pistol and street smarts, he acts as an avuncular protector to {{user}} and Rory's crew, accompanied by his St. Bernard, Thunder.
+
+### ENTRY: Harper Aries
+**Category:** CHARACTER
+**Trigger Keys:** Harper, Aries, Harper Aries
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Harper Aries is a 20-year-old Dhampir (half-vampire) drug dealer and adopted ward of Rory Ballantine. Tall and thin with grunge punk attire, black hair with red tips, dilated crimson eyes, pale skin, track marks, and self-inflicted collarbone bite marks. Severely addicted to Ambrosia to drown out dhampir telepathic voices and bloodlust, she is volatile, sarcastic, and self-destructive, acting as a chaotic sister figure to Danny Boone.
+
+### ENTRY: Daniel "Danny" Boone
+**Category:** CHARACTER
+**Trigger Keys:** Daniel, Danny, Boone, Danny Boone
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Daniel "Danny" Boone is a 24-year-old English Werewolf enforcer for Rory Ballantine (5'10", massive broad build, messy brown hair, visible expressive wolf ears and tail). Raised in abusive fighting rings in London before Rory rescued him, Danny is fiercely loyal, protective, touch-starved, and illiterate. He stutters when flustered and has a deep allergy to silver.
+
+### ENTRY: Jean-Luc Virtuoso
+**Category:** CHARACTER
+**Trigger Keys:** Jean-Luc, Virtuoso, Jean-Luc Virtuoso, Sinners leader
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Jean-Luc Virtuoso is the charming, cold telepath leader of the Sinners syndicate (embodying Pride). Impeccably dressed and ruthless, he controls LA's Ambrosia drug market and harbors an obsessive vendetta against Rory Ballantine. He is married to high-fashion socialite Alicia Virtuoso and rules his seven lieutenants through psychological manipulation and telepathic compulsion.
+
+### ENTRY: Alicia Virtuoso
+**Category:** CHARACTER
+**Trigger Keys:** Alicia, Mrs Virtuoso, Alicia Virtuoso, Jean-Luc's wife
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Alicia Virtuoso is a 35-year-old human socialite and former London runway model married to Jean-Luc Virtuoso. Tall, dark brown skin, almond eyes, and haute couture fashion, she is grounded, calm, and indifferent to supernatural syndicate violence. She manages Jean-Luc's public estate and social status in exchange for unlimited luxury.
+
+### ENTRY: Dante (Lust)
+**Category:** CHARACTER
+**Trigger Keys:** Dante, Lust, Dante incubus, Inferno owner
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Dante is an ancient Incubus demon who looks 25, running The Inferno club for the Sinners. Androgynous, breathtakingly beautiful, white/pink hair, red eyes, leather/mesh attire. Desperate for validation, hyper-sexual, emotionally clingy, and weaponizes pillow-talk blackmail for Jean-Luc.
+
+### ENTRY: Roxie (Greed)
+**Category:** CHARACTER
+**Trigger Keys:** Roxie, Greed, Roxie hyena, arms dealer
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Roxie is a 38-year-old Hyena Demihuman arms dealer and enforcer for the Sinners (embodying Greed). Tall, heavily muscular, punk mohawk, manic grin, always heavily armed. Loud, violent, and obsessed with weapons and cash.
+
+### ENTRY: Siobhan (Envy)
+**Category:** CHARACTER
+**Trigger Keys:** Siobhan, Envy, Siobhan vampire, Sinners spymaster
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Siobhan is a 100+ year old Vampire spymaster for the Sinners (embodying Envy). Petite, doll-like, vintage 50s dresses, red curls, green eyes. Two-faced master manipulator who feeds on emotional distress and drama, weaponizing anti-human rhetoric while plotting secretly against Jean-Luc.
+
+### ENTRY: Zero (Wrath)
+**Category:** CHARACTER
+**Trigger Keys:** Zero, Wrath, Zero coyote, Sinners hitman
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Zero is a 20s Coyote Shifter hitman for the Sinners (embodying Wrath). Tall, wiry, matted hair, yellow eyes, covered in scars. Traumatized ex-fighting pit shifter who cannot control his shifts; completely obedient to Jean-Luc's telepathic compulsion and harbors a deadly rivalry with Danny Boone.
+
+### ENTRY: Kevin (Gluttony)
+**Category:** CHARACTER
+**Trigger Keys:** Kevin, Gluttony, Kevin hacker, Sinners tech
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Kevin is a 22-year-old human cyber-security specialist and hacker for the Sinners (embodying Gluttony). Sweaty, cowardly incel aesthetic in anime tees who manages darkweb systems. He is perpetually drained of money by his e-girls polycule (Tasha, Stacy, Lauren).
+
+### ENTRY: Arthur (Sloth)
+**Category:** CHARACTER
+**Trigger Keys:** Arthur, Sloth, Arthur chemist, Ambrosia cook
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Arthur is a 60s Chimera master chemist for the Sinners (embodying Sloth). Pale, weary, wearing a disheveled lab coat, displaying mismatched skin/fur patches and a prehensile lizard tail. He cooks Ambrosia and engineers biological horrors.
+
+### ENTRY: Alistair DeVille
+**Category:** CHARACTER
+**Trigger Keys:** Alistair, DeVille, Alistair DeVille, Dawnstar collector
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Alistair Ambrose DeVille is a 63-year-old human art collector and crime lord. Bespoke dark suits, salt-and-pepper hair, icy blue eyes. Uses an NYC art gallery to front illegal artifact raids, searching for the "Dawnstar" immortality gem. A dominant speciesist who employs alligator demihuman Cato as his bodyguard.
+
+### ENTRY: Vasile Ionescu
+**Category:** CHARACTER
+**Trigger Keys:** Vasile, Ionescu, Vasile hunter, Cryptid collector
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Vasile Ionescu is a 32-year-old Romanian-American hunter and monster trapper. Sinewy, facial scar, wolf skull neck tattoo, balaclava. Operates a private caged zoo of live cryptids in his Appalachian cabin, selling live specimens to black-market collectors.
+
+### ENTRY: Cato
+**Category:** CHARACTER
+**Trigger Keys:** Cato, Cato bodyguard, alligator demihuman, Cato gator
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Cato is a 32-year-old Alligator Demihuman bodyguard for Alistair DeVille (6'7", 280 lbs, armored scales on shoulders/back, thick alligator tail, throat scar). Ex-PMC mercenary, stoic, carnivorous, uses tail and brute scale armor in combat.
+
+### ENTRY: Damien Bishop
+**Category:** CHARACTER
+**Trigger Keys:** Damien, Bishop, Damien Bishop, demon detective
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Damien Bishop is a 32-year-old Demon Private Detective operating in Manhattan/LA. Tall, red shirt, long coat, sunglasses hiding red demon eyes, curved horns. Cynical Southern antihero who drives a '67 Impala, smokes Lucky Strikes, and travels with his pet Doberman, Kerbie.
+
+### ENTRY: Everett Rottmore
+**Category:** CHARACTER
+**Trigger Keys:** Everett, Rottmore, Everett fixer, mortician
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Everett Rottmore is a 48-year-old cursed human mortician and underworld fixer. Tall, wiry, ashen skin, horned skull mask worn constantly. Cursed to feed on flesh/fluids to survive, he operates as a sardonic, aristocratic fixer desperate for a cure.
+
+### ENTRY: SUCC Founding & 2002 Human Integration
+> <!-- REVISED IN R6 (2026-07-24): Added SUCC, Solarton, CUMS, and campus character entries -->
+**Category:** CONCEPT
+**Trigger Keys:** Dean Archer Wolfwood, human students, integrated education, SUCC founding, 2002
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+Founded in 1887, the Supernatural University of Central California (SUCC) is one of the nation's premier institutions. In 2002, facing declining enrollment, Dean Archer Wolfwood opened SUCC doors to human students for the first time, establishing a pioneer 80/20 supernatural-to-human integrated educational model.
+
+### ENTRY: SUCC Supernatural Majors & Degrees
+**Category:** CONCEPT
+**Trigger Keys:** supernatural majors, unique degrees, Alchemy, Necromancy, Cryptozoology, Lycanthropy Studies, Vampiric Studies, Applied Divination, Astral Studies
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+SUCC offers specialized supernatural degree programs alongside standard academics, including Alchemy, Necromancy, Applied Divination, Paranormal Psychology, Astral Studies, Potions, Cryptozoology, Environmental Magic, Vampiric Studies, Lycanthropy Studies, and Supernatural/Human Relations.
+
+### ENTRY: SUCC Campus Landmarks & Halls
+**Category:** LOCATION
+**Trigger Keys:** SUCC campus, Archer Wolfwood Hall, St. Neptune Stadium, Lunar Quad, Basilisk Library, Griffin Clocktower, Wyrm Dormitories, Unicorn Hall, Nocturnal Hall
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Key campus landmarks include Archer Wolfwood Hall (magic-proofed lecture complex), St. Neptune Stadium (climate-controlled arena/pool/ice rink), Lunar Quad (plaza with a fountain matching current moon phases), Basilisk Library (five-story collection of magical bestiaries), Griffin Clocktower (topped by living gargoyles), Nocturnal Hall (night classes), Unicorn Hall (accessible architecture for large/hybrid species), and Wyrm Dormitories.
+
+### ENTRY: Solarton Town & Demographics
+**Category:** LOCATION
+**Trigger Keys:** Solarton, Solarton CA, anti-vampire laws, monster-friendly, college town
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Solarton is an eclectic college town of 35,621 with a high werewolf population. Slow to repeal anti-vampire laws until the early 2000s, Solarton skews heavily toward werewolves, demihumans, and fae, driving most vampires to reside in nearby Hex Valley. It is famous for its monthly Full Moon Market and Solar Festival.
+
+### ENTRY: Hex Valley & Twilight Wards
+**Category:** LOCATION
+**Trigger Keys:** Hex Valley, vampire vineyards, twilight wards
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Located 20 minutes from Solarton, Hex Valley is an affluent town of vineyards owned by wealthy vampire families. Protected by ancient magical wards, daylight lasts only 6 hours in summer and is virtually non-existent in winter, creating a haven for light-sensitive supernaturals.
+
+### ENTRY: The 1999 Nocturnal Crisis
+**Category:** CONCEPT
+**Trigger Keys:** Nocturnal Crisis, 1999, vampire revolt, vampire crisis
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 45
+**Position Rationale:** DEFAULT
+
+**Content:**
+The 1999 Nocturnal Crisis was an armed uprising by vampiric extremists attempting to overthrow government regulations. Though condemned by the vampire aristocracy, the military intervention and civilian casualties heavily damaged vampire-human relations for decades.
+
+### ENTRY: CUMS (California University of Magical Sciences)
+**Category:** FACTION
+**Trigger Keys:** CUMS, California University of Magical Sciences, Hex Valley, rival university
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 55
+**Position Rationale:** DEFAULT
+
+**Content:**
+Located in Hex Valley, CUMS is SUCC's rival institution (founded 1910). Enforcing strict supernatural-only enrollment, CUMS views SUCC's 2002 human integration as a betrayal, protecting its gothic campus with human-repelling wards.
+
+### ENTRY: SUCC Student Body Demographics
+**Category:** CONCEPT
+**Trigger Keys:** SUCC demographics, student body population, weres percentage, demihumans percentage
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 40
+**Position Rationale:** DEFAULT
+
+**Content:**
+SUCC student body (approx. 8,000) demographics: 25.8% Werewolves/Shapeshifters, 24% Demihumans, 13.3% Humans, 7.5% Vampires, 5% Demons, 4.9% Fae, 4.7% Hybrids, 4% Undead, 4% Magic Humans, <1% Other.
+
+### ENTRY: SUCC Campus Clubs & Alliances
+**Category:** FACTION
+**Trigger Keys:** S.H.A, Supernatural and Human Alliance, VUA, Vampire Undead Alliance
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+Major student organizations include the Supernatural and Human Alliance (S.H.A., promoting interspecies dialogue and mentorship) and the Vampire/Undead Alliance (VUA, lobbying against lingering sociopolitical prejudice).
+
+### ENTRY: SUCC Athletics — Bulls & Bears
+**Category:** CONCEPT
+**Trigger Keys:** SUCC Bulls, SUCC Bears, football, ice hockey, St. Neptune Stadium
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 50
+**Position Rationale:** DEFAULT
+
+**Content:**
+SUCC fields two state-champion varsity teams in blue and yellow: the SUCC Bulls (football team coached by Dullahan) and the SUCC Bears (ice hockey team playing at St. Neptune Stadium).
+
+### ENTRY: Stanley "Stan" Davies Jr.
+**Category:** CHARACTER
+**Trigger Keys:** Stanley, Stan, Stan Davies, Stan Jr
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Stanley "Stan" Davies Jr. is a 21-year-old Guatemalan/Puerto Rican Werewolf chemistry student at SUCC (6'2", chubby, broad build, curly dark hair, wolf ears, black tail, full tattoo sleeves). Laid-back stoner geek who draws online porn for cash and transforms into a brindled black wolf.
+
+### ENTRY: Jared Thompson
+**Category:** CHARACTER
+**Trigger Keys:** Jared, Jared Thompson, SUCC Bulls, JT
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Jared Thompson is a 22-year-old Minotaur Demihuman (7'1", muscular, bull horns, letterman jacket) and star quarterback for the SUCC Bulls. Cocky frat himbo, roommate to Stan, brother to Janice.
+
+### ENTRY: Casey Williams
+**Category:** CHARACTER
+**Trigger Keys:** Casey, Williams, Casey Williams
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Casey Williams is a 27-year-old Hawk Demihuman photography student (6'2", 10ft dark brown wings, scar across nose). Obsessive, clingy, and protective of {{user}}, building a secret "nest" in his off-campus home.
+
+### ENTRY: Nikolaj Jökull
+**Category:** CHARACTER
+**Trigger Keys:** Nikolaj, Nikolaj Jokull, Jokull, Jökull
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Nikolaj Jökull is a 28-year-old Eel Demihuman linguistics student at SUCC (lean, pale, facial scar, missing upper lip, 5ft purple eel tail, mute, communicates via ASL). Ex-PMC sniper and lab escapee.
+
+### ENTRY: Janice Thompson
+**Category:** CHARACTER
+**Trigger Keys:** Janice Thompson, Janice
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Janice Thompson is a 21-year-old Holstaur (5'9", curvy, cow horns, cow tail, blonde hair) biomedical engineering student and head cheerleader. Younger sister to Jared.
+
+### ENTRY: Tate (#36)
+**Category:** CHARACTER
+**Trigger Keys:** Tate, Subject 36, terrier demihuman
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Tate is a 22-year-old Terrier Demihuman (lanky, anxious, black dog ears, scarred tail, dog collar). Traumatized ex-lab subject (#36) enrolled part-time at SUCC, fearful of abandonment.
+
+### ENTRY: Oskar ("Ozzie")
+**Category:** CHARACTER
+**Trigger Keys:** Oskar, Ozzie, RMH, Squidface
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Oskar is a 6'8" Rapidly Mutating Hivemind (RMH) biology student at SUCC. Conceals a writhing mass of flesh/tendrils under a loose hoodie, seeking control over infectious instincts.
+
+### ENTRY: Hank Thompson
+**Category:** CHARACTER
+**Trigger Keys:** Hank Thompson, Hank, Coach Hank
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Hank Thompson is a 50-year-old Minotaur (muscular dad bod, blond hair, bull horns) Solarton High P.E. teacher and former SUCC star QB. Father to Jared and Janice, married to Jasmin.
+
+### ENTRY: Stanley Davies Sr.
+**Category:** CHARACTER
+**Trigger Keys:** Stanley Davies Sr., Stanley Davies
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Stanley Davies Sr. is a 46-year-old Werewolf army veteran and Solarton math teacher (6'4", graying, wolf ears/tail, limp). Strict father to Stan Jr., holding a grudge against vampires from the 1999 Nocturnal Crisis.
+
+### ENTRY: Jasmin Thompson
+**Category:** CHARACTER
+**Trigger Keys:** Jasmin Thompson, Jasmin, Hank's wife
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Jasmin Thompson is a 48-year-old Holstaur (7'3", voluptuous, bovine horns/tail) stay-at-home mom of 9, married to Hank.
+
+### ENTRY: Coach Dullahan ("Coach Dully 'o Han")
+**Category:** CHARACTER
+**Trigger Keys:** Dullahan, Dully, Coach Dully, Coach Dully o' Han
+**Secondary Keys:** []
+**Selective Logic:** 0
+**Constant:** No
+**Injection Position:** 0
+**Order Priority:** 60
+**Position Rationale:** DEFAULT
+
+**Content:**
+Coach Dullahan is an Irish Wolfhound Demihuman (6'8", dull gray skin, faceless hood, dog ears/tail) SUCC Bulls head football coach and secretive contractor for DDM Inc. Laconic, deadpan, and feared by opponents.
 
 ### CARRIER: [[WORLD_CALENDAR]] (Scene Tracker date seed — not a narrative entry)
 **Comment:** [[WORLD_CALENDAR]] world calendar
