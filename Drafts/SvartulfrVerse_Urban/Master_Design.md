@@ -34,6 +34,89 @@ notes:
 
 ## Revision Log
 
+### Revision R7 — 2026-07-24 00:48 UTC
+**Status:** R3.5_COMPLETE
+**World Mode:** arc
+**Scope type:** tier2_character_modify_field
+**Mode:** freeform
+
+**User intent (verbatim):**
+> controlliamo che Erik sia correttamente inserito come Ex Capitano della squadra di Hockey della SUCC, i Bears, e che sia corretto gli anni in cui giocava rispetto alla nuova età e che sia scritto del fatto che nella sua carriera nell'hockey ne è uscito imbattuto, mai perso una partita con lui come capitano. Aggiungi anche che ha finanziato la costruzione del St. Neptune Stadium, lo stadio di hockey della SUCC, e che è attualmente lo sponsor di maggioranza della squadra.
+
+**Evidence (optional):**
+> Verification and update of Erik Douglas-Bloodmoon's backstory, St. Neptune Stadium construction funding, DCC majority sponsorship, and SUCC Bears Hockey entries (1988–1992 undefeated captain record, 55yo age alignment).
+
+**Section 1 / 11 impact:** none
+
+**Expected cascade (Reviser pre-analysis — confirmed by mini-Refiner in Step R1):**
+- Master Design sections to update: Section 8 (Erik Standing Profile), Section 3 (St. Neptune Stadium), Section 4 (SUCC Athletics / Bears)
+- Drafts files to create: none
+- Drafts files to modify: Card_Erik.md, Tier2_Erik_Entries.md, Tier1_World_Entries.md
+- Export files to recompile: SvartulfrVerse_Urban_World_Lorebook.json, SvartulfrVerse_Urban_JanitorAI.md
+- Chat preset changes: no
+- JanitorAI scripts to regenerate: yes
+
+**Phases affected:** Refiner-mini (R1), Architect-mini (R2), Editor-mini (R3), VoiceAuditor-mini (R3.5), Compiler-mini (R4), PromptEngineer-mini (R5), JanitorBuilder-mini (R6)
+**Phases skipped:** IntimacyArchitect-mini (R2.5), ArcAuditor-mini (R3.6), IntimacyAuditor-mini (R3.7)
+
+**Rounds:** R3:0  R3.5:1  R3.6:0  R3.7:0
+
+**Cross-references the user should be aware of:**
+- L'età di Erik è 55 anni nel 2025 (nato il 31 Ottobre 1969). I suoi anni universitari alla SUCC sono stati 1988–1992, durante i quali è stato Capitano imbattuto dei SUCC Bears. Erik tramite la DCC ha interamente finanziato la costruzione del St. Neptune Stadium ed è lo sponsor di maggioranza dei Bears.
+
+**Reviser sign-off:**
+- [x] Single-revision-at-a-time precondition satisfied
+- [x] Section 1 / 11 bright line verified non-triggering
+- [x] Scope type matches user intent (confirmed by user)
+- [x] Phases-affected list reflects the routing matrix in `workflows/world-forge-revise.md`
+
+**Confirmed cascade (Refiner-mini R1):**
+- Master Design sections updated: Section 3 (SUCC Campus / St. Neptune Stadium), Section 7 (Erik Douglas-Bloodmoon profile)
+- Drafts files to modify: `Card_Erik.md`, `Tier2_Erik_Entries.md`, `Tier1_World_Entries.md`
+- Export files to recompile: `SvartulfrVerse_Urban_World_Lorebook.json`, `SvartulfrVerse_Urban_JanitorAI.md`
+
+**Refiner-mini sign-off (Phase R1):**
+- [x] Section 1 / 11 bright-line re-verified (no late hits)
+- [x] Confirmed cascade is complete (all sections, drafts, exports listed)
+- [x] All canonical Master Design merges applied with inline R7 markers
+- [x] Every in-place merge REPLACED the prior passage in situ — no stacked/near-duplicate copy left beneath the revision
+- [x] Tier classification is correct for every affected entry
+- [x] Routing (phases-affected) locked and matches confirmed cascade
+- [x] No unresolved cross-tier, cross-arc, or contradiction flags
+
+**Architect-mini sign-off (Phase R2):**
+- [x] Every file in the cascade has been touched as specified (`Card_Erik.md`, `Tier2_Erik_Entries.md`, `Tier1_World_Entries.md`)
+- [x] No file outside the cascade has been touched
+- [x] All parent foundational rules upheld in new content (`{{original}}`, no engine content in cards, Position Rationale, style override metadata-only, cross-arc consistency)
+- [x] Every in-place edit REPLACED in situ — exactly one version of each changed passage exists; no stacked/duplicated variants left beneath a revised copy
+- [x] Inline revision markers (`<!-- REVISED IN R7: ... -->`) placed at every change site
+- [x] Voice and register match existing world content
+- [x] No new content references entries/characters/arcs that don't exist
+
+**Editor-mini sign-off (Phase R3, Round 1):**
+
+### Touched Files Audited
+- `Card_Erik.md`
+- `Tier2_Erik_Entries.md`
+- `Tier1_World_Entries.md`
+
+### Hard-Fail Rules (parent rules 1–10)
+- [x] {{original}} preserved on touched cards / instructions
+- [x] No engine contamination in touched cards
+- [x] No <style_override> tag in card text fields
+- [x] Position Rationale present and meaningful on every entry
+- [x] No tier contamination in touched entries
+- [x] All cascade files present (none missing)
+
+### Cross-Reference Integrity
+- [x] Touched files do not contradict untouched files
+- [x] Master Design canonical sections match draft content for touched areas
+- [x] Inline revision markers present at every change site (`<!-- REVISED IN R7: ... -->`)
+- [x] No stacked/duplicated content — every in-place edit replaced its target; no near-duplicate variants left
+- [x] No silent scope expansion (no edits outside the cascade)
+
+**Status: R3.5_COMPLETE — Proceed to Phase R4 (Compiler-mini)**
+
 ### Revision R6 — 2026-07-24 00:34 UTC
 **Status:** PENDING
 **World Mode:** arc
@@ -855,11 +938,12 @@ Utility Pools: SUCC Campus Locations, Species and Demographics, Clubs/Societies/
 - **Trigger keywords:** The Verve, Bluemoon district, Uncle Logan, signal jammers, safe zone, 808 Neon Avenue.
 
 ### 3. SUCC Campus and Greek Row (Solarton)
+> <!-- REVISED IN R7 (2026-07-24): Added St. Neptune Stadium ice hockey arena, funded by Erik Douglas / DCC, who remains the majority sponsor of the SUCC Bears -->
 
 - **Sensory:** Sea breeze + cheap campus coffee + coconut tanning oil + keg beer. Chaotic college chatter punctuated by DCC drone hum.
-- **Narrative function:** Diverse academic heart of Solarton; Neutral Territory. The normal college life {{user}} fights to maintain.
-- **Who controls it:** SUCC campus administration; Noah runs Greek Row.
-- **Trigger keywords:** SUCC campus, Solarton, Greek Row, normalcy, 1 University Drive.
+- **Narrative function:** Diverse academic heart of Solarton; Neutral Territory. Home to Archer Wolfwood Hall, Lunar Quad, and St. Neptune Stadium (SUCC Bears ice hockey arena, funded by Erik Douglas / DCC). The normal college life {{user}} fights to maintain.
+- **Who controls it:** SUCC campus administration; Noah runs Greek Row; Erik / DCC is majority athletics sponsor (St. Neptune Stadium).
+- **Trigger keywords:** SUCC campus, Solarton, Greek Row, St. Neptune Stadium, SUCC Bears, hockey, normalcy, 1 University Drive.
 
 ### 4. Eidolon Creative (Paradise District)
 
@@ -1170,6 +1254,7 @@ Critical failure modes:
 ---
 
 ### Character 2: Erik Douglas-Bloodmoon
+> <!-- REVISED IN R7 (2026-07-24): Updated Erik backstory — Ex-Captain of the SUCC Bears ice hockey team (1988–1992, ages 19–23, 55yo in 2024/2025), retired completely undefeated (0 losses under his captaincy), funded the construction of St. Neptune Stadium via DCC, and remains the majority team sponsor -->
 
 **Core foundation:**
 
@@ -1179,13 +1264,14 @@ Critical failure modes:
 - Contradiction: Aggressively sunny wealthy Californian CEO who is actually a terrifying Apex Predator.
 - Shield: Zen positivity + therapy-speak + limitless wealth masking parental insecurity.
 - Crack: Mask shatters when {{user}} is physically hurt or when Nixara memory is invoked.
+- Legacy Backstory: Legendary Ex-Captain of the SUCC Bears ice hockey team (1988–1992, ages 19–23). Retired with an astonishing UNDEFEATED career record (0 losses with Erik as Captain). Later funded the construction of St. Neptune Stadium on the SUCC campus through the DCC, where he remains the majority team sponsor and patron.
 
 **Physical description:**
 
 - Face and lips: Severe squared jawline that clenches under stress; practiced bright Californian smile that never reaches eyes.
 - Hair: Jet black, perfectly groomed, swept back with precision. Not a strand out of place.
 - Eyes: Piercing amber in human form; molten gold with slit pupils when agitated (hybrid shift tell).
-- Body: 213cm (7'0") human, 263cm (8'7") hybrid shift. Mountain of disciplined ex-athlete muscle; broad shoulders straining bespoke tailoring.
+- Body: 213cm (7'0") human, 263cm (8'7") hybrid shift. Mountain of disciplined ex-athlete muscle (undefeated college hockey legend); broad shoulders straining bespoke tailoring.
 - Sensory signature: Oppressive Alpha scent demanding submission. Sharp ozone tang of raw meat (carnivore diet) + cedar cologne + old money.
 - Marks: Faint scar across left cheek (ritual hunt, age 16).
 - Posture tells: Military-precision posture masked by sunny relaxation; jaw clenches under stress; tail goes completely still when furious.

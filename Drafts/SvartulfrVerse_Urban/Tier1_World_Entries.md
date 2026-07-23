@@ -1059,7 +1059,8 @@ Major student organizations include the Supernatural and Human Alliance (S.H.A.,
 **Position Rationale:** DEFAULT
 
 **Content:**
-SUCC fields two state-champion varsity teams in blue and yellow: the SUCC Bulls (football team coached by Dullahan) and the SUCC Bears (ice hockey team playing at St. Neptune Stadium).
+<!-- REVISED IN R7: Updated SUCC Bears hockey lore with Erik Douglas's undefeated captaincy (1988–1992, 0 losses), St. Neptune Stadium funding via DCC, and ongoing majority sponsorship -->
+SUCC fields two state-champion varsity teams in blue and yellow: the SUCC Bulls (football team coached by Dullahan) and the SUCC Bears (ice hockey team playing at St. Neptune Stadium). St. Neptune Stadium was constructed through full capital funding from Erik Douglas via the DCC. Erik himself is a legendary Ex-Captain of the SUCC Bears (1988–1992), having retired with a completely UNDEFEATED career record (0 losses under his captaincy). To this day, Erik and the DCC remain the majority financial sponsors and patrons of the SUCC Bears.
 
 ### ENTRY: Stanley "Stan" Davies Jr.
 **Category:** CHARACTER
